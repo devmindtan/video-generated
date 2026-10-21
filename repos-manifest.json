@@ -1,0 +1,102 @@
+[
+  {
+    "repo": "remotion-dev/skills",
+    "path": "repos/remotion-dev--skills",
+    "commit": "039e8a2fc78b67efc228d5645367838b85818a1c"
+  },
+  {
+    "repo": "motiondivision/ai-kit",
+    "path": "repos/motiondivision--ai-kit",
+    "commit": "78a83b1485fa70dab9037c480de0c7cf53930df7"
+  },
+  {
+    "repo": "greensock/gsap-skills",
+    "path": "repos/greensock--gsap-skills",
+    "commit": "aed9cfd3277740755f6bfc1155c7aa645403b760"
+  },
+  {
+    "repo": "svg/svgo",
+    "path": "repos/svg--svgo",
+    "commit": "e4cb29bebcc9820ac979dfc05106b512cc5de986"
+  },
+  {
+    "repo": "vercel/satori",
+    "path": "repos/vercel--satori",
+    "commit": "074f0b38ed0f5d8fa768f709c0bb072b2d6c99e1"
+  },
+  {
+    "repo": "greensock/GSAP",
+    "path": "repos/greensock--GSAP",
+    "commit": "13e2b790546426a1a2e0e9b409f3f8dc6d6611f2"
+  },
+  {
+    "repo": "juliangarnier/anime",
+    "path": "repos/juliangarnier--anime",
+    "commit": "01b81be1df6843ccfe0a71c0699a746bf740dd77"
+  },
+  {
+    "repo": "motiondivision/motion",
+    "path": "repos/motiondivision--motion",
+    "commit": "a03a6daf30d6ff63286e716a0f612d3b3a493802"
+  },
+  {
+    "repo": "rive-app/rive-wasm",
+    "path": "repos/rive-app--rive-wasm",
+    "commit": "3a132146bf3dd603a0504c78db41a73c14bc802f"
+  },
+  {
+    "repo": "LottieFiles/dotlottie-web",
+    "path": "repos/LottieFiles--dotlottie-web",
+    "commit": "d8a4e9e2cf76740b7b3848257f962b38d71aa71a"
+  },
+  {
+    "repo": "remotion-dev/remotion",
+    "path": "repos/remotion-dev--remotion",
+    "commit": "bbe11edd856120b2d51ac05e4349e7bdb1e97ec1"
+  },
+  {
+    "repo": "motion-canvas/motion-canvas",
+    "path": "repos/motion-canvas--motion-canvas",
+    "commit": "7b91435c301d530351dcf5ebb91dd139c002e405"
+  },
+  {
+    "repo": "mrdoob/three.js",
+    "path": "repos/mrdoob--three.js",
+    "commit": "faaed9edfcdfb2426617c9fc9921b7a3b0c6a0c7"
+  },
+  {
+    "repo": "pmndrs/react-three-fiber",
+    "path": "repos/pmndrs--react-three-fiber",
+    "commit": "d74622ea8ed717f7212d7e19d65ff3e325508389"
+  },
+  {
+    "repo": "pmndrs/drei",
+    "path": "repos/pmndrs--drei",
+    "commit": "bf6f4addf47467d3885de272d94ca5127f6ef68f"
+  },
+  {
+    "repo": "pmndrs/react-three-rapier",
+    "path": "repos/pmndrs--react-three-rapier",
+    "commit": "ae5c3fede5ca489fd7eaa8271e9d9c5eabc88e98"
+  },
+  {
+    "repo": "pmndrs/react-postprocessing",
+    "path": "repos/pmndrs--react-postprocessing",
+    "commit": "92853cbcd32c2e7f651b57f6f2ef529839c3b3e1"
+  },
+  {
+    "repo": "goldfire/howler.js",
+    "path": "repos/goldfire--howler.js",
+    "commit": "1d3053576a860e9854645493ad6c4a72c6cc6e45"
+  },
+  {
+    "repo": "Vanilagy/mediabunny",
+    "path": "repos/Vanilagy--mediabunny",
+    "commit": "03d524ffa1a1429616bcd4434f97714a77432bd7"
+  },
+  {
+    "repo": "FFmpeg/FFmpeg",
+    "path": "repos/FFmpeg--FFmpeg",
+    "commit": "c50d6fca7ac14271e3164a19afedcf4c58834ffb"
+  }
+]

@@ -1,0 +1,11 @@
+node_modules/
+repos/
+out/
+projects/
+.remotion/
+.venv/
+__pycache__/
+
+.cache/
+
+.env.local

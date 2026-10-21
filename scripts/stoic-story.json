@@ -1,0 +1,63 @@
+[
+  {
+    "id": "01-philosopher",
+    "start": 0,
+    "duration": 7,
+    "text": "Người thông minh không nói mọi điều mình biết. Họ biết lúc nào nên dừng lại. Nói ít, nhưng đúng thời điểm. Đây là ba lúc bạn nên chọn im lặng.",
+    "sentences": [
+      "Người thông minh không nói mọi điều mình biết.",
+      "Họ biết lúc nào nên dừng lại.",
+      "Nói ít, nhưng đúng thời điểm.",
+      "Đây là ba lúc bạn nên chọn im lặng."
+    ]
+  },
+  {
+    "id": "02-warrior",
+    "start": 7,
+    "duration": 11,
+    "text": "Một, khi đang tức giận. Một câu nói lúc nóng đầu có thể làm tổn thương người bạn yêu quý. Đừng vội trả lời chỉ để thắng. Bạn không thể lấy lại lời đã nói. Hãy bình tĩnh, rồi nói điều thật sự cần thiết.",
+    "sentences": [
+      "Một, khi đang tức giận.",
+      "Một câu nói lúc nóng đầu có thể làm tổn thương người bạn yêu quý.",
+      "Đừng vội trả lời chỉ để thắng.",
+      "Bạn không thể lấy lại lời đã nói.",
+      "Hãy bình tĩnh, rồi nói điều thật sự cần thiết."
+    ]
+  },
+  {
+    "id": "03-thinker",
+    "start": 18,
+    "duration": 12,
+    "text": "Hai, khi chưa biết toàn bộ sự thật. Điều bạn nhìn thấy có thể chỉ là một góc của câu chuyện. Đừng biến suy đoán thành kết luận. Hãy hỏi thêm, nghe cả hai phía, rồi mới đưa ra phán xét. Im lặng lúc này là sự tôn trọng.",
+    "sentences": [
+      "Hai, khi chưa biết toàn bộ sự thật.",
+      "Điều bạn nhìn thấy có thể chỉ là một góc của câu chuyện.",
+      "Đừng biến suy đoán thành kết luận.",
+      "Hãy hỏi thêm, nghe cả hai phía, rồi mới đưa ra phán xét.",
+      "Im lặng lúc này là sự tôn trọng."
+    ]
+  },
+  {
+    "id": "04-ascent",
+    "start": 30,
+    "duration": 10,
+    "text": "Ba, khi kế hoạch mới bắt đầu. Chia sẻ với người có thể giúp bạn, nhưng đừng xem lời khen là thành quả. Nói ít lại, hành động nhiều hơn. Kiên trì làm việc mỗi ngày. Để kết quả tự lên tiếng.",
+    "sentences": [
+      "Ba, khi kế hoạch mới bắt đầu.",
+      "Chia sẻ với người có thể giúp bạn, nhưng đừng xem lời khen là thành quả.",
+      "Nói ít lại, hành động nhiều hơn.",
+      "Kiên trì làm việc mỗi ngày.",
+      "Để kết quả tự lên tiếng."
+    ]
+  },
+  {
+    "id": "05-flame",
+    "start": 40,
+    "duration": 5,
+    "text": "Im lặng đúng lúc là bản lĩnh, không phải yếu đuối. Lưu lại để nhắc mình mỗi ngày.",
+    "sentences": [
+      "Im lặng đúng lúc là bản lĩnh, không phải yếu đuối.",
+      "Lưu lại để nhắc mình mỗi ngày."
+    ]
+  }
+]

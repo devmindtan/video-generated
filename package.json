@@ -1,0 +1,50 @@
+{
+  "name": "video-playground",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "remotion studio src/index.tsx",
+    "render": "remotion render src/index.tsx HelloVideo out/hello.mp4",
+    "still": "remotion still src/index.tsx HelloVideo out/preview.png --frame=45",
+    "typecheck": "tsc --noEmit",
+    "render:stoic": "remotion render src/index.tsx StoicSilence out/3-quy-tac-im-lang.mp4",
+    "still:stoic": "remotion still src/index.tsx StoicSilence out/stoic-preview.png --frame=90",
+    "audio:stoic": "python3 scripts/make-stoic-audio.py",
+    "voice:stoic": ".venv/bin/python scripts/make-stoic-voice.py",
+    "music:stoic": ".venv/bin/python scripts/make-stoic-score.py",
+    "check:audio": ".venv/bin/python scripts/check-stoic-audio.py",
+    "thumbnail:stoic": "remotion still src/index.tsx StoicThumbnail public/stoic/thumbnail.png"
+  },
+  "dependencies": {
+    "@lottiefiles/dotlottie-web": "0.81.0",
+    "@motion-canvas/2d": "3.17.2",
+    "@motion-canvas/core": "3.17.2",
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.2",
+    "@react-three/postprocessing": "3.2.1",
+    "@react-three/rapier": "2.2.0",
+    "@remotion/captions": "4.0.537",
+    "@remotion/cli": "4.0.537",
+    "@remotion/fonts": "4.0.537",
+    "@remotion/media": "4.0.537",
+    "@rive-app/canvas": "2.45.0",
+    "animejs": "4.5.0",
+    "gsap": "3.15.0",
+    "howler": "2.2.4",
+    "mediabunny": "1.62.0",
+    "motion": "14.5.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.537",
+    "satori": "0.63.2",
+    "svgo": "4.1.0",
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@types/howler": "2.2.13",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/three": "0.186.0",
+    "typescript": "7.0.2"
+  }
+}

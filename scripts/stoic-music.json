@@ -1,0 +1,10 @@
+{
+  "file": "stoic/audio/experience.mp3",
+  "sourceStartSeconds": 75,
+  "videoStartSeconds": 0,
+  "videoEndSeconds": 45,
+  "baseVolume": 0.68,
+  "speechVolume": 0.34,
+  "fadeInSeconds": 0.7,
+  "fadeOutSeconds": 1.3
+}

@@ -1,0 +1,31 @@
+{
+  "tool": "Built-in image_gen",
+  "aspectRatio": "9:16",
+  "scenes": [
+    {
+      "name": "01-philosopher",
+      "file": "images/01-philosopher.png",
+      "prompt": "Use case: stylized-concept. Asset type: full-bleed portrait background for a 1080x1920 cinematic Stoic philosophy video. Create ONE vertical 9:16 image, not a collage. An ancient Roman philosopher marble bust, fine crack along cheek, deep black background, one narrow golden shaft of light grazing the eyes, delicate drifting smoke, dramatic chiaroscuro. Bust fills upper two thirds, eyes at upper third, dark negative space below for later captions. Photoreal cinematic art direction, tactile weathered marble, restrained charcoal and antique gold palette, fine film grain, rich shadows with visible detail, contemplative solemn mood, museum-quality composition. No text, no lettering, no logo, no watermark."
+    },
+    {
+      "name": "02-warrior",
+      "file": "images/02-warrior.png",
+      "prompt": "Use case: stylized-concept. Asset type: full-bleed portrait background for a 1080x1920 cinematic Stoic philosophy video. Create ONE vertical 9:16 image, not a collage. An ancient Spartan warrior marble statue wearing a classical helmet, stoic calm eyes, dark thunderstorm behind, a distant branching lightning bolt and subtle crimson rim light, textured wet stone, no violence. Face and shoulders in upper two thirds, dark negative space below. Photoreal cinematic art direction, tactile weathered marble, restrained charcoal and antique gold palette, fine film grain, rich shadows with visible detail, contemplative solemn mood, museum-quality composition. No text, no lettering, no logo, no watermark."
+    },
+    {
+      "name": "03-thinker",
+      "file": "images/03-thinker.png",
+      "prompt": "Use case: stylized-concept. Asset type: full-bleed portrait background for a 1080x1920 cinematic Stoic philosophy video. Create ONE vertical 9:16 image, not a collage. An ancient marble statue of a contemplative philosopher, hand resting at chin, dense charcoal fog, a few small floating broken marble fragments, soft silver moonlight, mysterious dramatic shadows. Face and shoulders in upper two thirds, dark negative space below. Photoreal cinematic art direction, tactile weathered marble, restrained charcoal and antique gold palette, fine film grain, rich shadows with visible detail, contemplative solemn mood, museum-quality composition. No text, no lettering, no logo, no watermark."
+    },
+    {
+      "name": "04-ascent",
+      "file": "images/04-ascent.png",
+      "prompt": "Use case: stylized-concept. Asset type: full-bleed portrait background for a 1080x1920 cinematic Stoic philosophy video. Create ONE vertical 9:16 image, not a collage. A lone small hooded wanderer ascending an ancient winding stone path to a distant snowy mountain peak beneath a magnificent subtle Milky Way and cold stars. Epic scale, deep blue-black night, muted warm gold light along the path, figure near center. Dark lower area suitable for overlaid captions. Photoreal cinematic art direction, tactile weathered marble, restrained charcoal and antique gold palette, fine film grain, rich shadows with visible detail, contemplative solemn mood, museum-quality composition. No text, no lettering, no logo, no watermark."
+    },
+    {
+      "name": "05-flame",
+      "file": "images/05-flame.png",
+      "prompt": "Use case: stylized-concept. Asset type: full-bleed portrait background for a 1080x1920 cinematic Stoic philosophy video. Create ONE vertical 9:16 image, not a collage. Close-up of an anatomically convincing sculpted marble hand, palm upward holding one tiny steady warm golden flame, delicate veins and cracks in white marble, deep black background, cinematic shallow depth of field, flame centered just above mid-height. Dark lower third suitable for later typography. Photoreal cinematic art direction, tactile weathered marble, restrained charcoal and antique gold palette, fine film grain, rich shadows with visible detail, contemplative solemn mood, museum-quality composition. No text, no lettering, no logo, no watermark."
+    }
+  ]
+}
