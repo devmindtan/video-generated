@@ -1,0 +1,68 @@
+[
+  {
+    "id": "01-remorse",
+    "start": 0,
+    "duration": 8,
+    "leadIn": 0.28,
+    "tail": 0.45,
+    "temperature": 0.48,
+    "text": "Có phải bạn đang tự trách mình vì mọi chuyện không như kỳ vọng? Dừng lại một chút... và nghe điều này.",
+    "sentences": [
+      {"text": "Có phải bạn đang tự trách mình vì mọi chuyện không như kỳ vọng?", "pauseAfter": 1.0, "gainDb": -0.15},
+      {"text": "Dừng lại một chút... và nghe điều này.", "pauseAfter": 0, "gainDb": -0.35}
+    ]
+  },
+  {
+    "id": "02-mirror",
+    "start": 8,
+    "duration": 12,
+    "leadIn": 0.22,
+    "tail": 0.42,
+    "targetSpeed": 0.86,
+    "temperature": 0.5,
+    "text": "Đừng dùng hiểu biết hôm nay để kết tội quyết định của hôm qua. Khi ấy, với những gì mình biết và có thể làm, bạn đã chọn điều mình tin là tốt nhất.",
+    "sentences": [
+      {"text": "Đừng dùng hiểu biết hôm nay để kết tội quyết định của hôm qua.", "pauseAfter": 0.9, "gainDb": 0.05},
+      {"text": "Khi ấy, với những gì mình biết và có thể làm, bạn đã chọn điều mình tin là tốt nhất.", "pauseAfter": 0, "gainDb": -0.15}
+    ]
+  },
+  {
+    "id": "03-kintsugi",
+    "start": 20,
+    "duration": 12,
+    "leadIn": 0.22,
+    "tail": 0.45,
+    "targetSpeed": 0.86,
+    "temperature": 0.5,
+    "text": "Vết nứt không làm bạn kém giá trị. Không cần che giấu điều đã qua. Những dấu vết ấy cho thấy: bạn từng vấp ngã, đã can đảm đứng dậy và vẫn chọn bước tiếp.",
+    "sentences": [
+      {"text": "Vết nứt không làm bạn kém giá trị. Không cần che giấu điều đã qua. Những dấu vết ấy cho thấy: bạn từng vấp ngã, đã can đảm đứng dậy và vẫn chọn bước tiếp.", "pauseAfter": 0, "gainDb": 0.12}
+    ]
+  },
+  {
+    "id": "04-forgive",
+    "start": 32,
+    "duration": 9,
+    "leadIn": 0.2,
+    "tail": 0.35,
+    "temperature": 0.5,
+    "text": "Hôm nay, hãy tha thứ cho chính mình. Đừng biến tâm trí thành phiên tòa, nơi bạn vừa là bị cáo, vừa là người phán xét tàn nhẫn nhất.",
+    "sentences": [
+      {"text": "Hôm nay, hãy tha thứ cho chính mình.", "pauseAfter": 0.62, "gainDb": -0.05},
+      {"text": "Đừng biến tâm trí thành phiên tòa, nơi bạn vừa là bị cáo, vừa là người phán xét tàn nhẫn nhất.", "pauseAfter": 0, "gainDb": 0.25}
+    ]
+  },
+  {
+    "id": "05-breathe",
+    "start": 41,
+    "duration": 7,
+    "leadIn": 0.18,
+    "tail": 2.75,
+    "maxTail": 3.5,
+    "temperature": 0.46,
+    "text": "Thở sâu nhé. Bạn không hề muộn. Hãy kiên nhẫn với chính mình.",
+    "sentences": [
+      {"text": "Thở sâu nhé. Bạn không hề muộn. Hãy kiên nhẫn với chính mình.", "pauseAfter": 0, "gainDb": -0.4}
+    ]
+  }
+]

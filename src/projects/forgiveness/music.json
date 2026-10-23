@@ -1,0 +1,14 @@
+{
+  "file": "solitude/audio/past-live.mp3",
+  "sourceStartSeconds": 30.5,
+  "sourceEndSeconds": 78.5,
+  "videoStartSeconds": 0,
+  "videoEndSeconds": 48,
+  "speechVolume": 0.12,
+  "pauseVolume": 0.12,
+  "fadeInSeconds": 2,
+  "finalLiftStartSeconds": 44,
+  "finalLiftPeakSeconds": 45,
+  "finalLiftVolume": 0.22,
+  "fadeOutSeconds": 3
+}

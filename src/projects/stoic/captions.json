@@ -1,0 +1,229 @@
+[
+  [
+    {
+      "text": "Khổ đau không đến từ thế giới ngoài kia.",
+      "startMs": 180,
+      "endMs": 1920,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "Nó đến từ việc bạn dốc sức",
+      "startMs": 2260,
+      "endMs": 3700,
+      "timestampMs": 2260,
+      "confidence": null
+    },
+    {
+      "text": "cho điều mình không thể kiểm soát.",
+      "startMs": 3700,
+      "endMs": 5040,
+      "timestampMs": 3700,
+      "confidence": null
+    },
+    {
+      "text": "Đây là ba thứ cần buông bỏ.",
+      "startMs": 5360,
+      "endMs": 6580,
+      "timestampMs": 5360,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Một: ý kiến người khác.",
+      "startMs": 0,
+      "endMs": 1180,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Bạn không thể điều khiển miệng lưỡi thế gian.",
+      "startMs": 1540,
+      "endMs": 3340,
+      "timestampMs": 1540,
+      "confidence": null
+    },
+    {
+      "text": "Tìm kiếm sự công nhận từ bên",
+      "startMs": 3760,
+      "endMs": 4820,
+      "timestampMs": 3760,
+      "confidence": null
+    },
+    {
+      "text": "ngoài chỉ biến bạn thành tù nhân",
+      "startMs": 4820,
+      "endMs": 6440,
+      "timestampMs": 4820,
+      "confidence": null
+    },
+    {
+      "text": "của phán xét.",
+      "startMs": 6440,
+      "endMs": 7060,
+      "timestampMs": 6440,
+      "confidence": null
+    },
+    {
+      "text": "Giá trị của bạn không nằm trong",
+      "startMs": 7440,
+      "endMs": 8740,
+      "timestampMs": 7440,
+      "confidence": null
+    },
+    {
+      "text": "lời họ nói.",
+      "startMs": 8740,
+      "endMs": 9340,
+      "timestampMs": 8740,
+      "confidence": null
+    },
+    {
+      "text": "Hãy nhớ điều đó.",
+      "startMs": 9600,
+      "endMs": 10440,
+      "timestampMs": 9600,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Hai: quá khứ đã qua.",
+      "startMs": 0,
+      "endMs": 1280,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Mọi dằn vặt hay hối tiếc đều",
+      "startMs": 1820,
+      "endMs": 3400,
+      "timestampMs": 1820,
+      "confidence": null
+    },
+    {
+      "text": "không thay đổi được một giây của",
+      "startMs": 3400,
+      "endMs": 4520,
+      "timestampMs": 3400,
+      "confidence": null
+    },
+    {
+      "text": "ngày hôm qua.",
+      "startMs": 4520,
+      "endMs": 5040,
+      "timestampMs": 4520,
+      "confidence": null
+    },
+    {
+      "text": "Hãy nhận lấy bài học, khép cuốn",
+      "startMs": 5400,
+      "endMs": 6840,
+      "timestampMs": 5400,
+      "confidence": null
+    },
+    {
+      "text": "sách lại, rồi tập trung vào bước",
+      "startMs": 6840,
+      "endMs": 8380,
+      "timestampMs": 6840,
+      "confidence": null
+    },
+    {
+      "text": "chân tiếp theo.",
+      "startMs": 8380,
+      "endMs": 8920,
+      "timestampMs": 8380,
+      "confidence": null
+    },
+    {
+      "text": "Bạn không thể quay lại, nhưng luôn",
+      "startMs": 9440,
+      "endMs": 10820,
+      "timestampMs": 9440,
+      "confidence": null
+    },
+    {
+      "text": "có thể bước tiếp.",
+      "startMs": 10820,
+      "endMs": 11480,
+      "timestampMs": 10820,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Ba: cách người khác đối xử với bạn.",
+      "startMs": 180,
+      "endMs": 2040,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "Đó là bản chất của họ.",
+      "startMs": 2320,
+      "endMs": 3280,
+      "timestampMs": 2320,
+      "confidence": null
+    },
+    {
+      "text": "Cách bạn phản ứng mới quyết định",
+      "startMs": 3660,
+      "endMs": 4800,
+      "timestampMs": 3660,
+      "confidence": null
+    },
+    {
+      "text": "phẩm chất của bạn.",
+      "startMs": 4800,
+      "endMs": 5540,
+      "timestampMs": 4800,
+      "confidence": null
+    },
+    {
+      "text": "Đừng hạ mình xuống ngang hàng với",
+      "startMs": 5940,
+      "endMs": 7440,
+      "timestampMs": 5940,
+      "confidence": null
+    },
+    {
+      "text": "sự tiêu cực của người khác.",
+      "startMs": 7440,
+      "endMs": 8460,
+      "timestampMs": 7440,
+      "confidence": null
+    },
+    {
+      "text": "Hãy chọn phẩm giá.",
+      "startMs": 8740,
+      "endMs": 9500,
+      "timestampMs": 8740,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Bình yên bắt đầu khi bạn buông",
+      "startMs": 0,
+      "endMs": 1520,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "điều không thuộc về mình.",
+      "startMs": 1520,
+      "endMs": 2560,
+      "timestampMs": 1520,
+      "confidence": null
+    },
+    {
+      "text": "Theo dõi để rèn tâm mỗi ngày.",
+      "startMs": 2840,
+      "endMs": 4200,
+      "timestampMs": 2840,
+      "confidence": null
+    }
+  ]
+]

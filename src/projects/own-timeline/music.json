@@ -1,0 +1,11 @@
+{
+  "file": "own-timeline/audio/healing-score.wav",
+  "speechVolume": 0.12,
+  "pauseVolume": 0.2,
+  "fadeInSeconds": 1.8,
+  "finalLiftStartSeconds": 41.5,
+  "finalLiftPeakSeconds": 42.8,
+  "finalLiftVolume": 0.24,
+  "fadeOutSeconds": 2.2,
+  "videoEndSeconds": 45
+}

@@ -1,0 +1,69 @@
+[
+  {
+    "id": "01-rain",
+    "start": 0,
+    "duration": 8,
+    "leadIn": 0.25,
+    "tail": 0.4,
+    "temperature": 0.46,
+    "text": "Càng nắm chặt một nắm cát... cát càng trôi qua kẽ tay. Có khi, bạn kiệt sức chỉ vì không nỡ buông.",
+    "sentences": [
+      {"text": "Càng nắm chặt một nắm cát... cát càng trôi qua kẽ tay.", "pauseAfter": 0.72, "gainDb": -0.15},
+      {"text": "Có khi, bạn kiệt sức chỉ vì không nỡ buông.", "pauseAfter": 0, "gainDb": -0.25}
+    ]
+  },
+  {
+    "id": "02-chains",
+    "start": 8,
+    "duration": 12,
+    "leadIn": 0.2,
+    "tail": 0.4,
+    "temperature": 0.5,
+    "text": "Bạn sợ buông điều đã không còn thuộc về mình: một mối quan hệ làm bạn tổn thương, một kỳ vọng không còn phù hợp, hay phiên bản cũ của chính bạn. Bạn nghĩ níu giữ là mạnh mẽ... nhưng buông tay mới cần dũng khí.",
+    "sentences": [
+      {"text": "Bạn sợ buông điều đã không còn thuộc về mình: một mối quan hệ làm bạn tổn thương, một kỳ vọng không còn phù hợp, hay phiên bản cũ của chính bạn.", "pauseAfter": 0.72, "gainDb": -0.05},
+      {"text": "Bạn nghĩ níu giữ là mạnh mẽ... nhưng buông tay mới cần dũng khí.", "pauseAfter": 0, "gainDb": 0.25}
+    ]
+  },
+  {
+    "id": "03-flame",
+    "start": 20,
+    "duration": 12,
+    "leadIn": 0.2,
+    "tail": 0.5,
+    "targetSpeed": 0.82,
+    "temperature": 0.48,
+    "text": "Người sáng suốt không níu giữ điều gió muốn cuốn đi. Khi mở bàn tay, bạn có thể mất một thứ... nhưng cũng tạo chỗ cho một thế giới mới bước vào.",
+    "sentences": [
+      {"text": "Người sáng suốt không níu giữ điều gió muốn cuốn đi.", "pauseAfter": 0.82, "gainDb": 0.05},
+      {"text": "Khi mở bàn tay, bạn có thể mất một thứ... nhưng cũng tạo chỗ cho một thế giới mới bước vào.", "pauseAfter": 0, "gainDb": 0.1}
+    ]
+  },
+  {
+    "id": "04-clouds",
+    "start": 32,
+    "duration": 10,
+    "leadIn": 0.2,
+    "tail": 0.4,
+    "temperature": 0.5,
+    "text": "Hãy để quá khứ ở nơi nó thuộc về. Bình yên không phải là đời không còn sóng gió. Bình yên là biết điều gì đáng giữ, và điều gì nên mỉm cười cho qua.",
+    "sentences": [
+      {"text": "Hãy để quá khứ ở nơi nó thuộc về.", "pauseAfter": 0.58, "gainDb": -0.1},
+      {"text": "Bình yên không phải là đời không còn sóng gió.", "pauseAfter": 0.52, "gainDb": 0.05},
+      {"text": "Bình yên là biết điều gì đáng giữ, và điều gì nên mỉm cười cho qua.", "pauseAfter": 0, "gainDb": -0.15}
+    ]
+  },
+  {
+    "id": "05-water",
+    "start": 42,
+    "duration": 6,
+    "leadIn": 0.18,
+    "tail": 1.55,
+    "temperature": 0.46,
+    "text": "Thả lỏng đôi vai. Tối nay, hãy trả tự do cho chính tâm trí của bạn.",
+    "sentences": [
+      {"text": "Thả lỏng đôi vai.", "pauseAfter": 0.48, "gainDb": -0.35},
+      {"text": "Tối nay, hãy trả tự do cho chính tâm trí của bạn.", "pauseAfter": 0, "gainDb": -0.5}
+    ]
+  }
+]

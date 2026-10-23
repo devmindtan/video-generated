@@ -1,0 +1,201 @@
+[
+  [
+    {
+      "text": "Không phải món quà nào cũng miễn phí.",
+      "startMs": 0,
+      "endMs": 1960,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Có người giúp bạn một việc nhỏ...",
+      "startMs": 2420,
+      "endMs": 3840,
+      "timestampMs": 2420,
+      "confidence": null
+    },
+    {
+      "text": "rồi dùng chính việc đó để khiến",
+      "startMs": 4180,
+      "endMs": 5740,
+      "timestampMs": 4180,
+      "confidence": null
+    },
+    {
+      "text": "bạn khó nói “không”.",
+      "startMs": 5740,
+      "endMs": 6520,
+      "timestampMs": 5740,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Bạn thấy ngại.",
+      "startMs": 0,
+      "endMs": 800,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Bạn sợ bị xem là vô ơn.",
+      "startMs": 800,
+      "endMs": 2540,
+      "timestampMs": 800,
+      "confidence": null
+    },
+    {
+      "text": "Và chỉ vì đã nhận một lần",
+      "startMs": 3100,
+      "endMs": 4300,
+      "timestampMs": 3100,
+      "confidence": null
+    },
+    {
+      "text": "giúp đỡ, bạn bắt đầu đồng ý",
+      "startMs": 4300,
+      "endMs": 6000,
+      "timestampMs": 4300,
+      "confidence": null
+    },
+    {
+      "text": "với những điều mình không muốn.",
+      "startMs": 6000,
+      "endMs": 7200,
+      "timestampMs": 6000,
+      "confidence": null
+    },
+    {
+      "text": "Cảm giác mắc nợ ấy có thể",
+      "startMs": 7700,
+      "endMs": 8980,
+      "timestampMs": 7700,
+      "confidence": null
+    },
+    {
+      "text": "trở thành sợi dây kéo bạn đi.",
+      "startMs": 8980,
+      "endMs": 10500,
+      "timestampMs": 8980,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Một bữa ăn không mua được lòng",
+      "startMs": 0,
+      "endMs": 1560,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "trung thành của bạn.",
+      "startMs": 1560,
+      "endMs": 2420,
+      "timestampMs": 1560,
+      "confidence": null
+    },
+    {
+      "text": "Một lần giúp đỡ cũng không cho",
+      "startMs": 2900,
+      "endMs": 4260,
+      "timestampMs": 2900,
+      "confidence": null
+    },
+    {
+      "text": "ai quyền bước qua ranh giới của bạn.",
+      "startMs": 4260,
+      "endMs": 5960,
+      "timestampMs": 4260,
+      "confidence": null
+    },
+    {
+      "text": "Biết ơn là điều tốt...",
+      "startMs": 6520,
+      "endMs": 7600,
+      "timestampMs": 6520,
+      "confidence": null
+    },
+    {
+      "text": "nhưng biết ơn không có nghĩa là",
+      "startMs": 8020,
+      "endMs": 9340,
+      "timestampMs": 8020,
+      "confidence": null
+    },
+    {
+      "text": "phải trả giá bằng sự bình yên.",
+      "startMs": 9340,
+      "endMs": 10840,
+      "timestampMs": 9340,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Khi thấy mình bị ép phải đáp",
+      "startMs": 0,
+      "endMs": 1400,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "lại, đừng đồng ý ngay.",
+      "startMs": 1400,
+      "endMs": 2720,
+      "timestampMs": 1400,
+      "confidence": null
+    },
+    {
+      "text": "Hãy cho mình một chút thời gian.",
+      "startMs": 2720,
+      "endMs": 4500,
+      "timestampMs": 2720,
+      "confidence": null
+    },
+    {
+      "text": "Sau đó chỉ cần nói: “Mình trân",
+      "startMs": 4940,
+      "endMs": 6620,
+      "timestampMs": 4940,
+      "confidence": null
+    },
+    {
+      "text": "trọng điều bạn đã làm, nhưng chuyện",
+      "startMs": 6620,
+      "endMs": 8340,
+      "timestampMs": 6620,
+      "confidence": null
+    },
+    {
+      "text": "này mình không thể đồng ý.”",
+      "startMs": 8340,
+      "endMs": 9480,
+      "timestampMs": 8340,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Lòng tốt thật sự luôn tôn trọng câu “không”.",
+      "startMs": 180,
+      "endMs": 2020,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "Hãy biết ơn...",
+      "startMs": 2640,
+      "endMs": 3220,
+      "timestampMs": 2640,
+      "confidence": null
+    },
+    {
+      "text": "nhưng đừng vì thế mà đánh mất mình.",
+      "startMs": 3540,
+      "endMs": 5140,
+      "timestampMs": 3540,
+      "confidence": null
+    }
+  ]
+]

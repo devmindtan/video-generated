@@ -1,0 +1,74 @@
+[
+  {
+    "id": "01-plan",
+    "start": 0,
+    "duration": 8,
+    "leadIn": 0.14,
+    "tail": 0.28,
+    "maxTail": 2.8,
+    "temperature": 0.42,
+    "text": "Kế hoạch chưa bắt đầu mà đã kể với quá nhiều người... rất dễ không bao giờ hoàn thành. Và không phải ai biết cũng sẽ giúp bạn.",
+    "sentences": [
+      {"text": "Kế hoạch chưa bắt đầu mà đã kể với quá nhiều người...", "pauseAfter": 0.42, "gainDb": 0.15},
+      {"text": "rất dễ không bao giờ hoàn thành.", "pauseAfter": 0.34, "gainDb": 0.28},
+      {"text": "Và không phải ai biết cũng sẽ giúp bạn.", "pauseAfter": 0, "gainDb": 0.38}
+    ]
+  },
+  {
+    "id": "02-noise",
+    "start": 8,
+    "duration": 10,
+    "leadIn": 0.14,
+    "tail": 0.28,
+    "maxTail": 3.2,
+    "temperature": 0.42,
+    "text": "Khi ý định bị lộ quá sớm, lời bàn tán, sự hoài nghi và kỳ vọng từ bên ngoài bắt đầu chen vào. Bạn dễ mất tập trung trước khi kịp đi bước đầu tiên.",
+    "sentences": [
+      {"text": "Khi ý định bị lộ quá sớm, lời bàn tán, sự hoài nghi và kỳ vọng từ bên ngoài bắt đầu chen vào.", "pauseAfter": 0.42, "gainDb": 0.14},
+      {"text": "Bạn dễ mất tập trung trước khi kịp đi bước đầu tiên.", "pauseAfter": 0, "gainDb": 0.34}
+    ]
+  },
+  {
+    "id": "03-discretion",
+    "start": 18,
+    "duration": 12,
+    "leadIn": 0.14,
+    "tail": 0.3,
+    "maxTail": 3.4,
+    "temperature": 0.41,
+    "text": "Giữ kín kế hoạch không có nghĩa là lừa dối. Đó là biết điều gì cần nói, nói với ai, và nói vào lúc nào. Hãy bảo vệ mục tiêu lớn bằng những hành động nhỏ, đều đặn.",
+    "sentences": [
+      {"text": "Giữ kín kế hoạch không có nghĩa là lừa dối.", "pauseAfter": 0.4, "gainDb": 0.26},
+      {"text": "Đó là biết điều gì cần nói, nói với ai, và nói vào lúc nào.", "pauseAfter": 0.42, "gainDb": 0.12},
+      {"text": "Hãy bảo vệ mục tiêu lớn bằng những hành động nhỏ, đều đặn.", "pauseAfter": 0, "gainDb": 0.34}
+    ]
+  },
+  {
+    "id": "04-action",
+    "start": 30,
+    "duration": 9,
+    "leadIn": 0.14,
+    "tail": 0.28,
+    "maxTail": 3.0,
+    "temperature": 0.42,
+    "text": "Đừng dùng lời hứa để tạo ấn tượng. Hãy làm trong im lặng, kiểm tra từng bước, rồi chỉ công bố khi kết quả đã đủ rõ.",
+    "sentences": [
+      {"text": "Đừng dùng lời hứa để tạo ấn tượng.", "pauseAfter": 0.4, "gainDb": 0.22},
+      {"text": "Hãy làm trong im lặng, kiểm tra từng bước, rồi chỉ công bố khi kết quả đã đủ rõ.", "pauseAfter": 0, "gainDb": 0.36}
+    ]
+  },
+  {
+    "id": "05-result",
+    "start": 39,
+    "duration": 6,
+    "leadIn": 0.12,
+    "tail": 0.3,
+    "maxTail": 1.8,
+    "temperature": 0.41,
+    "text": "Không phải kế hoạch nào cũng cần khán giả. Giữ kín điều quan trọng... cho đến khi kết quả tự lên tiếng.",
+    "sentences": [
+      {"text": "Không phải kế hoạch nào cũng cần khán giả.", "pauseAfter": 0.3, "gainDb": 0.18},
+      {"text": "Giữ kín điều quan trọng... cho đến khi kết quả tự lên tiếng.", "pauseAfter": 0, "gainDb": 0.38}
+    ]
+  }
+]

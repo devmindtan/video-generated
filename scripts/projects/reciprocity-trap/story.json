@@ -1,0 +1,72 @@
+[
+  {
+    "id": "01-apple",
+    "start": 0,
+    "duration": 8,
+    "leadIn": 0.18,
+    "tail": 0.42,
+    "temperature": 0.44,
+    "text": "Không phải món quà nào cũng miễn phí. Có người giúp bạn một việc nhỏ... rồi dùng chính việc đó để khiến bạn khó nói “không”.",
+    "sentences": [
+      {"text": "Không phải món quà nào cũng miễn phí.", "pauseAfter": 0.42, "gainDb": 0.2},
+      {"text": "Có người giúp bạn một việc nhỏ... rồi dùng chính việc đó để khiến bạn khó nói “không”.", "pauseAfter": 0, "gainDb": 0.38}
+    ]
+  },
+  {
+    "id": "02-puppet",
+    "start": 8,
+    "duration": 11,
+    "leadIn": 0.16,
+    "tail": 0.32,
+    "temperature": 0.46,
+    "text": "Bạn thấy ngại. Bạn sợ bị xem là vô ơn. Và chỉ vì đã nhận một lần giúp đỡ, bạn bắt đầu đồng ý với những điều mình không muốn. Cảm giác mắc nợ ấy có thể trở thành sợi dây kéo bạn đi.",
+    "sentences": [
+      {"text": "Bạn thấy ngại.", "pauseAfter": 0.28, "gainDb": 0.12},
+      {"text": "Bạn sợ bị xem là vô ơn.", "pauseAfter": 0.36, "gainDb": 0.28},
+      {"text": "Và chỉ vì đã nhận một lần giúp đỡ, bạn bắt đầu đồng ý với những điều mình không muốn.", "pauseAfter": 0.38, "gainDb": 0.28},
+      {"text": "Cảm giác mắc nợ ấy có thể trở thành sợi dây kéo bạn đi.", "pauseAfter": 0, "gainDb": 0.38}
+    ]
+  },
+  {
+    "id": "03-scale",
+    "start": 19,
+    "duration": 12,
+    "leadIn": 0.15,
+    "tail": 0.35,
+    "temperature": 0.44,
+    "text": "Một bữa ăn không mua được lòng trung thành của bạn. Một lần giúp đỡ cũng không cho ai quyền bước qua ranh giới của bạn. Biết ơn là điều tốt... nhưng biết ơn không có nghĩa là phải trả giá bằng sự bình yên.",
+    "sentences": [
+      {"text": "Một bữa ăn không mua được lòng trung thành của bạn.", "pauseAfter": 0.38, "gainDb": 0.3},
+      {"text": "Một lần giúp đỡ cũng không cho ai quyền bước qua ranh giới của bạn.", "pauseAfter": 0.42, "gainDb": 0.38},
+      {"text": "Biết ơn là điều tốt... nhưng biết ơn không có nghĩa là phải trả giá bằng sự bình yên.", "pauseAfter": 0, "gainDb": 0.3}
+    ]
+  },
+  {
+    "id": "04-chalice",
+    "start": 31,
+    "duration": 10,
+    "leadIn": 0.15,
+    "tail": 0.32,
+    "temperature": 0.43,
+    "text": "Khi thấy mình bị ép phải đáp lại, đừng đồng ý ngay. Hãy cho mình một chút thời gian. Sau đó chỉ cần nói: “Mình trân trọng điều bạn đã làm, nhưng chuyện này mình không thể đồng ý.”",
+    "sentences": [
+      {"text": "Khi thấy mình bị ép phải đáp lại, đừng đồng ý ngay.", "pauseAfter": 0.36, "gainDb": 0.32},
+      {"text": "Hãy cho mình một chút thời gian.", "pauseAfter": 0.38, "gainDb": 0.2},
+      {"text": "Sau đó chỉ cần nói: “Mình trân trọng điều bạn đã làm, nhưng chuyện này mình không thể đồng ý.”", "pauseAfter": 0, "gainDb": 0.4}
+    ]
+  },
+  {
+    "id": "05-chains",
+    "start": 41,
+    "duration": 7,
+    "leadIn": 0.12,
+    "tail": 1.6,
+    "temperature": 0.46,
+    "text": "Lòng tốt thật sự luôn tôn trọng câu “không”. Hãy biết ơn... nhưng đừng vì thế mà đánh mất mình.",
+    "sentences": [
+      {"text": "Lòng tốt thật sự luôn tôn trọng câu “không”.", "pauseAfter": 0.42, "gainDb": 0.38},
+      {"text": "Hãy biết ơn... nhưng đừng vì thế mà đánh mất mình.", "pauseAfter": 0, "gainDb": 0.35}
+    ]
+  }
+]
+

@@ -1,0 +1,17 @@
+{
+  "file": "Ludovico Einaudi - Night (Official Video).mp3",
+  "sourceStartSeconds": 0,
+  "sourceEndSeconds": 234.4,
+  "playbackRate": 0.8,
+  "preservePitch": true,
+  "toneFrequency": 1,
+  "videoStartSeconds": 0,
+  "videoEndSeconds": 293,
+  "speechVolume": 0.07,
+  "pauseVolume": 0.1,
+  "fadeInSeconds": 4,
+  "finalLiftStartSeconds": 285,
+  "finalLiftPeakSeconds": 288,
+  "finalLiftVolume": 0.14,
+  "fadeOutSeconds": 5
+}

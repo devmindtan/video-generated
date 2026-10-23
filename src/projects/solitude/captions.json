@@ -1,0 +1,180 @@
+[
+  [
+    {
+      "text": "Có những ngày, bạn nhận ra người",
+      "startMs": 0,
+      "endMs": 1960,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "thật sự hiểu mình ngày càng ít.",
+      "startMs": 1960,
+      "endMs": 3700,
+      "timestampMs": 1960,
+      "confidence": null
+    },
+    {
+      "text": "Giữa một thế giới ồn ào, con",
+      "startMs": 4620,
+      "endMs": 6320,
+      "timestampMs": 4620,
+      "confidence": null
+    },
+    {
+      "text": "đường phía trước chỉ còn một bóng người.",
+      "startMs": 6320,
+      "endMs": 8120,
+      "timestampMs": 6320,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Bạn bè thưa dần.",
+      "startMs": 0,
+      "endMs": 1080,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Những cuộc vui cũ không còn vừa với bạn.",
+      "startMs": 1940,
+      "endMs": 3840,
+      "timestampMs": 1940,
+      "confidence": null
+    },
+    {
+      "text": "Đừng vội nghĩ mình đang đi sai.",
+      "startMs": 4720,
+      "endMs": 6220,
+      "timestampMs": 4720,
+      "confidence": null
+    },
+    {
+      "text": "Có những mối quan hệ rời đi,",
+      "startMs": 7160,
+      "endMs": 8460,
+      "timestampMs": 7160,
+      "confidence": null
+    },
+    {
+      "text": "chỉ vì bạn đã chọn lớn lên.",
+      "startMs": 8800,
+      "endMs": 10220,
+      "timestampMs": 8800,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Bản lĩnh không nằm ở việc tách",
+      "startMs": 0,
+      "endMs": 1600,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "mình khỏi mọi người.",
+      "startMs": 1600,
+      "endMs": 2400,
+      "timestampMs": 1600,
+      "confidence": null
+    },
+    {
+      "text": "Nó nằm ở khả năng đứng vững,",
+      "startMs": 3400,
+      "endMs": 4880,
+      "timestampMs": 3400,
+      "confidence": null
+    },
+    {
+      "text": "ngay cả khi không ai xác nhận",
+      "startMs": 5240,
+      "endMs": 6600,
+      "timestampMs": 5240,
+      "confidence": null
+    },
+    {
+      "text": "lựa chọn của bạn.",
+      "startMs": 6600,
+      "endMs": 7440,
+      "timestampMs": 6600,
+      "confidence": null
+    },
+    {
+      "text": "Cô độc, nếu được dùng đúng cách,",
+      "startMs": 8340,
+      "endMs": 10140,
+      "timestampMs": 8340,
+      "confidence": null
+    },
+    {
+      "text": "là khoảng lặng để bạn nghe rõ",
+      "startMs": 10440,
+      "endMs": 11900,
+      "timestampMs": 10440,
+      "confidence": null
+    },
+    {
+      "text": "điều mình tin.",
+      "startMs": 11900,
+      "endMs": 12440,
+      "timestampMs": 11900,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Hãy làm bạn với chính mình.",
+      "startMs": 0,
+      "endMs": 1460,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Khi không còn cần tiếng vỗ tay",
+      "startMs": 2360,
+      "endMs": 4120,
+      "timestampMs": 2360,
+      "confidence": null
+    },
+    {
+      "text": "để bước tiếp, bạn sẽ thôi trao",
+      "startMs": 4120,
+      "endMs": 6140,
+      "timestampMs": 4120,
+      "confidence": null
+    },
+    {
+      "text": "quyền bình yên của mình cho đám đông.",
+      "startMs": 6140,
+      "endMs": 7840,
+      "timestampMs": 6140,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Đừng sợ đoạn đường tối.",
+      "startMs": 0,
+      "endMs": 1320,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Cứ giữ ngọn lửa ấy.",
+      "startMs": 2160,
+      "endMs": 3260,
+      "timestampMs": 2160,
+      "confidence": null
+    },
+    {
+      "text": "Và chính bạn sẽ thắp sáng lối đi.",
+      "startMs": 3260,
+      "endMs": 5900,
+      "timestampMs": 3260,
+      "confidence": null
+    }
+  ]
+]

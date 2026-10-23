@@ -1,0 +1,70 @@
+[
+  {
+    "id": "01-stop",
+    "start": 0,
+    "duration": 8,
+    "leadIn": 0.25,
+    "tail": 0.7,
+    "text": "Nếu hôm nay bạn thấy kiệt sức, hãy dừng lại một chút. Hít một hơi thật sâu.",
+    "sentences": [
+      {"text": "Nếu hôm nay bạn thấy kiệt sức, hãy dừng lại một chút.", "pauseAfter": 1.1, "gainDb": -0.1},
+      {"text": "Hít một hơi thật sâu.", "pauseAfter": 0, "gainDb": -0.35}
+    ]
+  },
+  {
+    "id": "02-rest",
+    "start": 8,
+    "duration": 12,
+    "leadIn": 0.25,
+    "tail": 0.45,
+    "temperature": 0.65,
+    "text": "Cây không nở hoa suốt bốn mùa. Biển cũng có ngày sóng lặng. Bạn không phải cỗ máy. Bạn được phép mệt, và được phép nghỉ ngơi.",
+    "sentences": [
+      {"text": "Cây không nở hoa suốt bốn mùa.", "pauseAfter": 0.8, "gainDb": 0.05},
+      {"text": "Biển cũng có ngày sóng lặng.", "pauseAfter": 0.8, "gainDb": 0.05},
+      {"text": "Bạn không phải cỗ máy.", "pauseAfter": 1.0, "gainDb": 0},
+      {"text": "Bạn được phép mệt, và được phép nghỉ ngơi.", "pauseAfter": 0, "gainDb": -0.35}
+    ]
+  },
+  {
+    "id": "03-grow",
+    "start": 20,
+    "duration": 12,
+    "leadIn": 0.25,
+    "tail": 0.6,
+    "text": "Áp lực hôm nay không đến để vùi dập bạn. Nó đang âm thầm tôi luyện sức bền bên trong. Dù chưa nhận ra, bạn vẫn đang lớn lên.",
+    "sentences": [
+      {"text": "Áp lực hôm nay không đến để vùi dập bạn.", "pauseAfter": 1.0, "gainDb": 0.1},
+      {"text": "Nó đang âm thầm tôi luyện sức bền bên trong.", "pauseAfter": 1.0, "gainDb": 0.25},
+      {"text": "Dù chưa nhận ra, bạn vẫn đang lớn lên.", "pauseAfter": 0, "gainDb": -0.3}
+    ]
+  },
+  {
+    "id": "04-rise",
+    "start": 32,
+    "duration": 10,
+    "leadIn": 0.22,
+    "tail": 0.35,
+    "text": "Hãy đi chậm nếu cần. Nhưng đừng bỏ cuộc. Giông bão rồi sẽ tan. Và bạn sẽ bước tiếp.",
+    "sentences": [
+      {"text": "Hãy đi chậm nếu cần.", "pauseAfter": 0.85, "gainDb": 0},
+      {"text": "Nhưng đừng bỏ cuộc.", "pauseAfter": 1.0, "gainDb": 0.75},
+      {"text": "Giông bão rồi sẽ tan.", "pauseAfter": 1.0, "gainDb": 0},
+      {"text": "Và bạn sẽ bước tiếp.", "pauseAfter": 0, "gainDb": -0.3}
+    ]
+  },
+  {
+    "id": "05-tomorrow",
+    "start": 42,
+    "duration": 6,
+    "leadIn": 0.18,
+    "tail": 0.35,
+    "targetSpeed": 0.9,
+    "temperature": 0.65,
+    "text": "Đêm nay, hãy ngủ ngon. Ngày mai, bạn sẽ ổn thôi.",
+    "sentences": [
+      {"text": "Đêm nay, hãy ngủ ngon.", "pauseAfter": 1.0, "gainDb": 0},
+      {"text": "Ngày mai, bạn sẽ ổn thôi.", "pauseAfter": 0, "gainDb": -0.4}
+    ]
+  }
+]

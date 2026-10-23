@@ -1,0 +1,72 @@
+[
+  {
+    "id": "01-alone",
+    "start": 0,
+    "duration": 9,
+    "leadIn": 0.28,
+    "tail": 0.65,
+    "temperature": 0.52,
+    "text": "Có những ngày, bạn nhận ra người thật sự hiểu mình ngày càng ít. Giữa một thế giới ồn ào, con đường phía trước chỉ còn một bóng người.",
+    "sentences": [
+      {"text": "Có những ngày, bạn nhận ra người thật sự hiểu mình ngày càng ít.", "pauseAfter": 1.0, "gainDb": -0.2},
+      {"text": "Giữa một thế giới ồn ào, con đường phía trước chỉ còn một bóng người.", "pauseAfter": 0, "gainDb": -0.35}
+    ]
+  },
+  {
+    "id": "02-filter",
+    "start": 9,
+    "duration": 11,
+    "leadIn": 0.24,
+    "tail": 0.5,
+    "temperature": 0.48,
+    "text": "Bạn bè thưa dần. Những cuộc vui cũ không còn vừa với bạn. Đừng vội nghĩ mình đang đi sai. Có những mối quan hệ rời đi, chỉ vì bạn đã chọn lớn lên.",
+    "sentences": [
+      {"text": "Bạn bè thưa dần.", "pauseAfter": 0.7, "gainDb": -0.15},
+      {"text": "Những cuộc vui cũ không còn vừa với bạn.", "pauseAfter": 0.75, "gainDb": -0.05},
+      {"text": "Đừng vội nghĩ mình đang đi sai.", "pauseAfter": 0.8, "gainDb": 0.15},
+      {"text": "Có những mối quan hệ rời đi, chỉ vì bạn đã chọn lớn lên.", "pauseAfter": 0, "gainDb": -0.2}
+    ]
+  },
+  {
+    "id": "03-silence",
+    "start": 20,
+    "duration": 14,
+    "leadIn": 0.22,
+    "tail": 0.55,
+    "temperature": 0.48,
+    "text": "Bản lĩnh không nằm ở việc tách mình khỏi mọi người. Nó nằm ở khả năng đứng vững, ngay cả khi không ai xác nhận lựa chọn của bạn. Cô độc, nếu được dùng đúng cách, là khoảng lặng để bạn nghe rõ điều mình tin.",
+    "sentences": [
+      {"text": "Bản lĩnh không nằm ở việc tách mình khỏi mọi người.", "pauseAfter": 0.85, "gainDb": 0.05},
+      {"text": "Nó nằm ở khả năng đứng vững, ngay cả khi không ai xác nhận lựa chọn của bạn.", "pauseAfter": 0.9, "gainDb": 0.3},
+      {"text": "Cô độc, nếu được dùng đúng cách, là khoảng lặng để bạn nghe rõ điều mình tin.", "pauseAfter": 0, "gainDb": -0.05}
+    ]
+  },
+  {
+    "id": "04-self",
+    "start": 34,
+    "duration": 10,
+    "leadIn": 0.22,
+    "tail": 0.5,
+    "temperature": 0.54,
+    "text": "Hãy làm bạn với chính mình. Khi không còn cần tiếng vỗ tay để bước tiếp, bạn sẽ thôi trao quyền bình yên của mình cho đám đông.",
+    "sentences": [
+      {"text": "Hãy làm bạn với chính mình.", "pauseAfter": 0.9, "gainDb": -0.1},
+      {"text": "Khi không còn cần tiếng vỗ tay để bước tiếp, bạn sẽ thôi trao quyền bình yên của mình cho đám đông.", "pauseAfter": 0, "gainDb": 0.15}
+    ]
+  },
+  {
+    "id": "05-torch",
+    "start": 44,
+    "duration": 8,
+    "leadIn": 0.18,
+    "tail": 1.8,
+    "targetSpeed": 0.92,
+    "temperature": 0.48,
+    "text": "Đừng sợ đoạn đường tối. Cứ giữ ngọn lửa ấy. Và chính bạn sẽ thắp sáng lối đi.",
+    "sentences": [
+      {"text": "Đừng sợ đoạn đường tối.", "pauseAfter": 0.72, "gainDb": -0.15},
+      {"text": "Cứ giữ ngọn lửa ấy.", "pauseAfter": 0.72, "gainDb": 0.1},
+      {"text": "Và chính bạn sẽ thắp sáng lối đi.", "pauseAfter": 0, "gainDb": -0.35}
+    ]
+  }
+]

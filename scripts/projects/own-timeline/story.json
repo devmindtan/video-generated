@@ -1,0 +1,69 @@
+[
+  {
+    "id": "01-hourglass",
+    "start": 0,
+    "duration": 8,
+    "leadIn": 0.2,
+    "tail": 0.28,
+    "temperature": 0.42,
+    "text": "Có phải bạn đang nhìn sang thành công của người khác... rồi tự hỏi sao mình vẫn chưa tới đâu? Dừng lại một chút.",
+    "sentences": [
+      {"text": "Có phải bạn đang nhìn sang thành công của người khác... rồi tự hỏi sao mình vẫn chưa tới đâu?", "pauseAfter": 1, "gainDb": 0.15},
+      {"text": "Dừng lại một chút.", "pauseAfter": 0, "gainDb": -0.15}
+    ]
+  },
+  {
+    "id": "02-book",
+    "start": 8,
+    "duration": 11,
+    "leadIn": 0.15,
+    "tail": 0.25,
+    "temperature": 0.36,
+    "text": "Bạn đang so sánh những ngày đầu chật vật của mình với thành quả rực rỡ nhất mà họ phô bày ra ngoài. Nhưng không ai chụp lại những đêm thất bại và nước mắt trong bóng tối.",
+    "sentences": [
+      {"text": "Bạn đang so sánh những ngày đầu chật vật của mình với thành quả rực rỡ nhất mà họ phô bày ra ngoài.", "pauseAfter": 0.38, "gainDb": 0.05},
+      {"text": "Nhưng không ai chụp lại những đêm thất bại và nước mắt trong bóng tối.", "pauseAfter": 0, "gainDb": 0.3}
+    ]
+  },
+  {
+    "id": "03-trees",
+    "start": 19,
+    "duration": 12,
+    "leadIn": 0.15,
+    "tail": 0.3,
+    "temperature": 0.43,
+    "text": "Cây sồi mất hàng chục năm để cắm rễ sâu, trong khi hoa cỏ chỉ cần vài tuần để nở rộ rồi chóng tàn. Một nền móng vững chắc chưa bao giờ được xây dựng trong một sớm một chiều.",
+    "sentences": [
+      {"text": "Cây sồi mất hàng chục năm để cắm rễ sâu, trong khi hoa cỏ chỉ cần vài tuần để nở rộ rồi chóng tàn.", "pauseAfter": 0.42, "gainDb": 0.05},
+      {"text": "Một nền móng vững chắc chưa bao giờ được xây dựng trong một sớm một chiều.", "pauseAfter": 0, "gainDb": 0.18}
+    ]
+  },
+  {
+    "id": "04-wanderer",
+    "start": 31,
+    "duration": 9,
+    "leadIn": 0.14,
+    "tail": 0.28,
+    "temperature": 0.48,
+    "text": "Bạn không chậm trễ, cũng chẳng đi sớm hơn ai. Bạn đang ở đúng múi giờ của cuộc đời mình. Việc duy nhất cần làm là bước tiếp phần việc hôm nay.",
+    "sentences": [
+      {"text": "Bạn không chậm trễ, cũng chẳng đi sớm hơn ai.", "pauseAfter": 0.3, "gainDb": 0.25},
+      {"text": "Bạn đang ở đúng múi giờ của cuộc đời mình.", "pauseAfter": 0.28, "gainDb": 0.38},
+      {"text": "Việc duy nhất cần làm là bước tiếp phần việc hôm nay.", "pauseAfter": 0, "gainDb": 0.42}
+    ]
+  },
+  {
+    "id": "05-ripple",
+    "start": 40,
+    "duration": 5,
+    "leadIn": 0.12,
+    "tail": 2,
+    "maxTail": 2.2,
+    "temperature": 0.4,
+    "text": "Thở một hơi thật sâu. Cứ đi rồi sẽ đến.",
+    "sentences": [
+      {"text": "Thở một hơi thật sâu.", "pauseAfter": 0.3, "gainDb": -0.2},
+      {"text": "Cứ đi rồi sẽ đến.", "pauseAfter": 0, "gainDb": -0.3}
+    ]
+  }
+]

@@ -1,0 +1,166 @@
+[
+  [
+    {
+      "text": "Kế hoạch chưa bắt đầu mà đã",
+      "startMs": 0,
+      "endMs": 1400,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "kể với quá nhiều người...",
+      "startMs": 1400,
+      "endMs": 2600,
+      "timestampMs": 1400,
+      "confidence": null
+    },
+    {
+      "text": "rất dễ không bao giờ hoàn thành.",
+      "startMs": 3160,
+      "endMs": 4680,
+      "timestampMs": 3160,
+      "confidence": null
+    },
+    {
+      "text": "Và không phải ai biết cũng sẽ giúp bạn.",
+      "startMs": 4680,
+      "endMs": 7120,
+      "timestampMs": 4680,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Khi ý định bị lộ quá sớm,",
+      "startMs": 0,
+      "endMs": 1680,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "lời bàn tán, sự hoài nghi và",
+      "startMs": 1860,
+      "endMs": 3540,
+      "timestampMs": 1860,
+      "confidence": null
+    },
+    {
+      "text": "kỳ vọng từ bên ngoài bắt đầu chen vào.",
+      "startMs": 3540,
+      "endMs": 5360,
+      "timestampMs": 3540,
+      "confidence": null
+    },
+    {
+      "text": "Bạn dễ mất tập trung trước khi",
+      "startMs": 5940,
+      "endMs": 7400,
+      "timestampMs": 5940,
+      "confidence": null
+    },
+    {
+      "text": "kịp đi bước đầu tiên.",
+      "startMs": 7400,
+      "endMs": 8440,
+      "timestampMs": 7400,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Giữ kín kế hoạch không có nghĩa",
+      "startMs": 0,
+      "endMs": 1760,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "là lừa dối.",
+      "startMs": 1760,
+      "endMs": 2460,
+      "timestampMs": 1760,
+      "confidence": null
+    },
+    {
+      "text": "Đó là biết điều gì cần nói,",
+      "startMs": 3000,
+      "endMs": 4380,
+      "timestampMs": 3000,
+      "confidence": null
+    },
+    {
+      "text": "nói với ai, và nói vào lúc nào.",
+      "startMs": 4580,
+      "endMs": 6360,
+      "timestampMs": 4580,
+      "confidence": null
+    },
+    {
+      "text": "Hãy bảo vệ mục tiêu lớn bằng",
+      "startMs": 7020,
+      "endMs": 8360,
+      "timestampMs": 7020,
+      "confidence": null
+    },
+    {
+      "text": "những hành động nhỏ, đều đặn.",
+      "startMs": 8360,
+      "endMs": 9820,
+      "timestampMs": 8360,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Đừng dùng lời hứa để tạo ấn tượng.",
+      "startMs": 0,
+      "endMs": 1760,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Hãy làm trong im lặng, kiểm tra",
+      "startMs": 2160,
+      "endMs": 3640,
+      "timestampMs": 2160,
+      "confidence": null
+    },
+    {
+      "text": "từng bước, rồi chỉ công bố khi",
+      "startMs": 3640,
+      "endMs": 5480,
+      "timestampMs": 3640,
+      "confidence": null
+    },
+    {
+      "text": "kết quả đã đủ rõ.",
+      "startMs": 5480,
+      "endMs": 6520,
+      "timestampMs": 5480,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Không phải kế hoạch nào cũng cần khán giả.",
+      "startMs": 0,
+      "endMs": 2100,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Giữ kín điều quan trọng...",
+      "startMs": 2420,
+      "endMs": 3880,
+      "timestampMs": 2420,
+      "confidence": null
+    },
+    {
+      "text": "cho đến khi kết quả tự lên tiếng.",
+      "startMs": 3880,
+      "endMs": 5560,
+      "timestampMs": 3880,
+      "confidence": null
+    }
+  ]
+]

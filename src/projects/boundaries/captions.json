@@ -1,0 +1,180 @@
+[
+  [
+    {
+      "text": "Nếu bạn luôn gác mọi việc để",
+      "startMs": 0,
+      "endMs": 1700,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "có mặt mỗi khi người khác cần...",
+      "startMs": 1700,
+      "endMs": 3120,
+      "timestampMs": 1700,
+      "confidence": null
+    },
+    {
+      "text": "sự giúp đỡ của bạn rất dễ",
+      "startMs": 3120,
+      "endMs": 5220,
+      "timestampMs": 3120,
+      "confidence": null
+    },
+    {
+      "text": "bị xem là mặc định.",
+      "startMs": 5220,
+      "endMs": 6280,
+      "timestampMs": 5220,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Con người thường quen rất nhanh với",
+      "startMs": 180,
+      "endMs": 1760,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "điều luôn có sẵn.",
+      "startMs": 1760,
+      "endMs": 3360,
+      "timestampMs": 1760,
+      "confidence": null
+    },
+    {
+      "text": "Khi sự nhiệt tình lặp lại mà",
+      "startMs": 3360,
+      "endMs": 4780,
+      "timestampMs": 3360,
+      "confidence": null
+    },
+    {
+      "text": "không có giới hạn, nó dần bị",
+      "startMs": 4780,
+      "endMs": 6380,
+      "timestampMs": 4780,
+      "confidence": null
+    },
+    {
+      "text": "xem như nghĩa vụ — không còn",
+      "startMs": 6380,
+      "endMs": 7820,
+      "timestampMs": 6380,
+      "confidence": null
+    },
+    {
+      "text": "là một món quà.",
+      "startMs": 7820,
+      "endMs": 8580,
+      "timestampMs": 7820,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Giữ lại khoảng trống không phải để",
+      "startMs": 0,
+      "endMs": 1540,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "thao túng ai.",
+      "startMs": 1540,
+      "endMs": 2160,
+      "timestampMs": 1540,
+      "confidence": null
+    },
+    {
+      "text": "Đừng trả lời khi bạn đang bận.",
+      "startMs": 2800,
+      "endMs": 4140,
+      "timestampMs": 2800,
+      "confidence": null
+    },
+    {
+      "text": "Đừng nhận mọi lời nhờ vả.",
+      "startMs": 4640,
+      "endMs": 5880,
+      "timestampMs": 4640,
+      "confidence": null
+    },
+    {
+      "text": "Sự tôn trọng bắt đầu khi bạn",
+      "startMs": 6360,
+      "endMs": 8020,
+      "timestampMs": 6360,
+      "confidence": null
+    },
+    {
+      "text": "biết tôn trọng thời gian của chính mình.",
+      "startMs": 8020,
+      "endMs": 9660,
+      "timestampMs": 8020,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Từ chối không khiến bạn ích kỷ.",
+      "startMs": 0,
+      "endMs": 1540,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Nó xác nhận thời gian và năng",
+      "startMs": 2040,
+      "endMs": 3360,
+      "timestampMs": 2040,
+      "confidence": null
+    },
+    {
+      "text": "lượng của bạn có giới hạn.",
+      "startMs": 3360,
+      "endMs": 4640,
+      "timestampMs": 3360,
+      "confidence": null
+    },
+    {
+      "text": "Người chỉ tôn trọng bạn khi bạn nói “có”...",
+      "startMs": 5140,
+      "endMs": 6860,
+      "timestampMs": 5140,
+      "confidence": null
+    },
+    {
+      "text": "chưa từng thật sự tôn trọng bạn.",
+      "startMs": 7220,
+      "endMs": 8600,
+      "timestampMs": 7220,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Hãy tử tế, nhưng cần có ranh giới.",
+      "startMs": 0,
+      "endMs": 1960,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Theo dõi kênh để hiểu hơn về",
+      "startMs": 1960,
+      "endMs": 3500,
+      "timestampMs": 1960,
+      "confidence": null
+    },
+    {
+      "text": "tâm lý cuộc sống.",
+      "startMs": 3500,
+      "endMs": 4320,
+      "timestampMs": 3500,
+      "confidence": null
+    }
+  ]
+]

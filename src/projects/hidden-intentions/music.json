@@ -1,0 +1,17 @@
+{
+  "file": "Past Lives (Slow & Reverb).mp3",
+  "sourceStartSeconds": 34.5,
+  "sourceEndSeconds": 79.5,
+  "playbackRate": 1,
+  "preservePitch": true,
+  "toneFrequency": 1,
+  "videoStartSeconds": 0,
+  "videoEndSeconds": 45,
+  "speechVolume": 0.12,
+  "pauseVolume": 0.15,
+  "fadeInSeconds": 1.8,
+  "finalLiftStartSeconds": 42,
+  "finalLiftPeakSeconds": 43,
+  "finalLiftVolume": 0.19,
+  "fadeOutSeconds": 2.4
+}

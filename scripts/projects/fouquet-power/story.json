@@ -1,0 +1,141 @@
+[
+  {
+    "id": "01-opening-question",
+    "start": 0,
+    "duration": 45,
+    "leadIn": 0.55,
+    "tail": 1.25,
+    "targetSpeed": 0.92,
+    "temperature": 0.42,
+    "text": "Bạn đã bao giờ bước ra khỏi một cuộc họp với cảm giác rất khó hiểu chưa? Bạn có một ý tưởng tốt. Bạn nói rõ ràng. Bạn thật lòng muốn công việc tốt hơn. Nhưng thay vì được lắng nghe, căn phòng bỗng im xuống. Người quản lý nhìn bạn lạnh hơn. Đồng nghiệp tránh tiếp lời. Và từ hôm đó, những cơ hội quan trọng cũng ít dần. Lúc ấy, bạn có thể tự hỏi: Mình làm tốt thì có gì sai? Câu trả lời là: không có gì sai cả. Vấn đề đôi khi không nằm ở năng lực của bạn, mà nằm ở cách năng lực ấy xuất hiện trong mắt người khác. Hôm nay, chúng ta không học cách giả vờ yếu kém. Chúng ta sẽ học cách thể hiện giá trị mà không vô tình biến người bên cạnh thành đối thủ.",
+    "sentences": [
+      {"text": "Bạn đã bao giờ bước ra khỏi một cuộc họp với cảm giác rất khó hiểu chưa?", "pauseAfter": 0.75, "gainDb": 0.28},
+      {"text": "Bạn có một ý tưởng tốt.", "pauseAfter": 0.38, "gainDb": 0.12},
+      {"text": "Bạn nói rõ ràng.", "pauseAfter": 0.38, "gainDb": 0.12},
+      {"text": "Bạn thật lòng muốn công việc tốt hơn.", "pauseAfter": 0.52, "gainDb": 0.18},
+      {"text": "Nhưng thay vì được lắng nghe, căn phòng bỗng im xuống.", "pauseAfter": 0.42, "gainDb": 0.3},
+      {"text": "Người quản lý nhìn bạn lạnh hơn.", "pauseAfter": 0.4, "gainDb": 0.16},
+      {"text": "Đồng nghiệp tránh tiếp lời.", "pauseAfter": 0.42, "gainDb": 0.12},
+      {"text": "Và từ hôm đó, những cơ hội quan trọng cũng ít dần.", "pauseAfter": 0.65, "gainDb": 0.26},
+      {"text": "Lúc ấy, bạn có thể tự hỏi: Mình làm tốt thì có gì sai?", "pauseAfter": 0.7, "gainDb": 0.34},
+      {"text": "Câu trả lời là: không có gì sai cả.", "pauseAfter": 0.58, "gainDb": 0.32},
+      {"text": "Vấn đề đôi khi không nằm ở năng lực của bạn, mà nằm ở cách năng lực ấy xuất hiện trong mắt người khác.", "pauseAfter": 0.65, "gainDb": 0.28},
+      {"text": "Hôm nay, chúng ta không học cách giả vờ yếu kém.", "pauseAfter": 0.55, "gainDb": 0.34},
+      {"text": "Chúng ta sẽ học cách thể hiện giá trị mà không vô tình biến người bên cạnh thành đối thủ.", "pauseAfter": 0, "gainDb": 0.36}
+    ]
+  },
+  {
+    "id": "02-vaux-story",
+    "start": 45,
+    "duration": 49,
+    "leadIn": 0.35,
+    "tail": 1.0,
+    "targetSpeed": 0.92,
+    "minWordMatchRatio": 0.75,
+    "temperature": 0.43,
+    "text": "Để hiểu điều đó, hãy trở lại nước Pháp năm một nghìn sáu trăm sáu mươi mốt. Nicolas Fouquet là Tổng quản Tài chính dưới triều vua Louis thứ mười bốn. Ông giàu có, có năng lực, và quen biết rất nhiều người tài giỏi. Fouquet cho xây lâu đài Vaux-le-Vicomte, một công trình đẹp đến mức khiến cả giới quý tộc phải nhắc đến. Tối ngày mười bảy tháng tám, ông mở một buổi tiệc lớn để đón nhà vua. Hàng nghìn ngọn nến thắp sáng khu vườn. Một vở kịch mới được trình diễn. Pháo hoa phủ kín bầu trời. Fouquet muốn nói với nhà vua rằng: Tôi có năng lực. Tôi có thể tạo nên những điều phi thường. Nhưng mười chín ngày sau, ông bị bắt. Sau một phiên tòa kéo dài, bản án lưu đày bị đổi thành tù chung thân. Fouquet không bao giờ trở lại cuộc sống quyền quý trước đó nữa.",
+    "sentences": [
+      {"text": "Để hiểu điều đó, hãy trở lại nước Pháp năm một nghìn sáu trăm sáu mươi mốt.", "pauseAfter": 0.62, "gainDb": 0.24},
+      {"text": "Nicolas Fouquet là Tổng quản Tài chính dưới triều vua Louis thứ mười bốn.", "pauseAfter": 0.46, "gainDb": 0.18},
+      {"text": "Ông giàu có, có năng lực, và quen biết rất nhiều người tài giỏi.", "pauseAfter": 0.42, "gainDb": 0.18},
+      {"text": "Fouquet cho xây lâu đài Vaux-le-Vicomte, một công trình đẹp đến mức khiến cả giới quý tộc phải nhắc đến.", "pauseAfter": 0.58, "gainDb": 0.24},
+      {"text": "Tối ngày mười bảy tháng tám, ông mở một buổi tiệc lớn để đón nhà vua.", "pauseAfter": 0.45, "gainDb": 0.22},
+      {"text": "Hàng nghìn ngọn nến thắp sáng khu vườn.", "pauseAfter": 0.34, "gainDb": 0.2},
+      {"text": "Một vở kịch mới được trình diễn.", "pauseAfter": 0.34, "gainDb": 0.14},
+      {"text": "Pháo hoa phủ kín bầu trời.", "pauseAfter": 0.58, "gainDb": 0.28},
+      {"text": "Fouquet muốn nói với nhà vua rằng: Tôi có năng lực.", "pauseAfter": 0.38, "gainDb": 0.28},
+      {"text": "Tôi có thể tạo nên những điều phi thường.", "pauseAfter": 0.7, "gainDb": 0.34},
+      {"text": "Nhưng mười chín ngày sau, ông bị bắt.", "pauseAfter": 0.62, "gainDb": 0.42},
+      {"text": "Sau một phiên tòa kéo dài, bản án lưu đày bị đổi thành tù chung thân.", "pauseAfter": 0.5, "gainDb": 0.26},
+      {"text": "Fouquet không bao giờ trở lại cuộc sống quyền quý trước đó nữa.", "pauseAfter": 0, "gainDb": 0.18}
+    ]
+  },
+  {
+    "id": "03-history-nuance",
+    "start": 94,
+    "duration": 52,
+    "leadIn": 0.32,
+    "tail": 1.1,
+    "targetSpeed": 0.92,
+    "temperature": 0.42,
+    "text": "Nghe đến đây, người ta thường kết luận rất nhanh: Fouquet bị bắt vì đã tổ chức một buổi tiệc lộng lẫy hơn cả nhà vua. Nhưng lịch sử không đơn giản như một câu chuyện cảnh báo. Tài liệu của chính lâu đài Vaux-le-Vicomte cho biết nhà vua đã quyết định bắt Fouquet từ tháng năm, hơn ba tháng trước buổi tiệc. Giữa họ đã có những cáo buộc về tài chính, những cuộc đấu đá chính trị, và một niềm tin đã rạn nứt từ lâu. Vì vậy, sẽ không đúng nếu nói chỉ một đêm khoe tài đã hủy hoại cả cuộc đời Fouquet. Tuy nhiên, buổi tiệc vẫn có ý nghĩa. Nó không tạo ra toàn bộ mâu thuẫn, nhưng khiến mâu thuẫn ấy hiện ra rõ hơn. Trước cả triều đình, một người phục vụ nhà vua lại xuất hiện giàu có, được ngưỡng mộ và có sức ảnh hưởng đáng kinh ngạc. Với một người luôn muốn giữ quyền kiểm soát tuyệt đối, hình ảnh đó rất dễ trở thành một lời đe dọa.",
+    "sentences": [
+      {"text": "Nghe đến đây, người ta thường kết luận rất nhanh: Fouquet bị bắt vì đã tổ chức một buổi tiệc lộng lẫy hơn cả nhà vua.", "pauseAfter": 0.7, "gainDb": 0.26},
+      {"text": "Nhưng lịch sử không đơn giản như một câu chuyện cảnh báo.", "pauseAfter": 0.62, "gainDb": 0.4},
+      {"text": "Tài liệu của chính lâu đài Vaux-le-Vicomte cho biết nhà vua đã quyết định bắt Fouquet từ tháng năm, hơn ba tháng trước buổi tiệc.", "pauseAfter": 0.62, "gainDb": 0.3},
+      {"text": "Giữa họ đã có những cáo buộc về tài chính, những cuộc đấu đá chính trị, và một niềm tin đã rạn nứt từ lâu.", "pauseAfter": 0.58, "gainDb": 0.22},
+      {"text": "Vì vậy, sẽ không đúng nếu nói chỉ một đêm khoe tài đã hủy hoại cả cuộc đời Fouquet.", "pauseAfter": 0.6, "gainDb": 0.3},
+      {"text": "Tuy nhiên, buổi tiệc vẫn có ý nghĩa.", "pauseAfter": 0.46, "gainDb": 0.18},
+      {"text": "Nó không tạo ra toàn bộ mâu thuẫn, nhưng khiến mâu thuẫn ấy hiện ra rõ hơn.", "pauseAfter": 0.54, "gainDb": 0.28},
+      {"text": "Trước cả triều đình, một người phục vụ nhà vua lại xuất hiện giàu có, được ngưỡng mộ và có sức ảnh hưởng đáng kinh ngạc.", "pauseAfter": 0.52, "gainDb": 0.24},
+      {"text": "Với một người luôn muốn giữ quyền kiểm soát tuyệt đối, hình ảnh đó rất dễ trở thành một lời đe dọa.", "pauseAfter": 0, "gainDb": 0.34}
+    ]
+  },
+  {
+    "id": "04-power-psychology",
+    "start": 146,
+    "duration": 52,
+    "leadIn": 0.32,
+    "tail": 1.05,
+    "targetSpeed": 0.92,
+    "temperature": 0.41,
+    "text": "Câu chuyện ấy vẫn lặp lại trong đời sống hôm nay, chỉ là không còn ngai vàng và cung điện. Trong một cuộc họp, nếu bạn nói: Cách này sai rồi, để tôi chỉ cho mọi người cách đúng, người nghe rất dễ cảm thấy mình đang bị hạ thấp. Từ giây phút đó, họ không còn tập trung vào ý tưởng của bạn nữa. Họ chỉ muốn bảo vệ vị trí của mình. Đây là điều quan trọng: con người không chỉ nghe nội dung. Họ còn âm thầm hỏi: Người này đang giúp mình, hay đang chứng minh rằng họ giỏi hơn mình? Cùng một ý tưởng, nhưng cách nói khác nhau sẽ tạo ra hai phản ứng khác nhau. Khi người khác cảm thấy được tôn trọng, họ có thể suy nghĩ. Khi họ cảm thấy bị bẽ mặt, họ thường chống lại trước rồi mới tìm lý do sau. Điều đó không có nghĩa bạn phải im lặng trước điều sai. Nó chỉ nhắc bạn rằng một ý tưởng đúng vẫn cần một cánh cửa phù hợp để đi vào.",
+    "sentences": [
+      {"text": "Câu chuyện ấy vẫn lặp lại trong đời sống hôm nay, chỉ là không còn ngai vàng và cung điện.", "pauseAfter": 0.6, "gainDb": 0.26},
+      {"text": "Trong một cuộc họp, nếu bạn nói: Cách này sai rồi, để tôi chỉ cho mọi người cách đúng, người nghe rất dễ cảm thấy mình đang bị hạ thấp.", "pauseAfter": 0.62, "gainDb": 0.3},
+      {"text": "Từ giây phút đó, họ không còn tập trung vào ý tưởng của bạn nữa.", "pauseAfter": 0.42, "gainDb": 0.2},
+      {"text": "Họ chỉ muốn bảo vệ vị trí của mình.", "pauseAfter": 0.65, "gainDb": 0.32},
+      {"text": "Đây là điều quan trọng: con người không chỉ nghe nội dung.", "pauseAfter": 0.4, "gainDb": 0.3},
+      {"text": "Họ còn âm thầm hỏi: Người này đang giúp mình, hay đang chứng minh rằng họ giỏi hơn mình?", "pauseAfter": 0.75, "gainDb": 0.38},
+      {"text": "Cùng một ý tưởng, nhưng cách nói khác nhau sẽ tạo ra hai phản ứng khác nhau.", "pauseAfter": 0.5, "gainDb": 0.22},
+      {"text": "Khi người khác cảm thấy được tôn trọng, họ có thể suy nghĩ.", "pauseAfter": 0.38, "gainDb": 0.22},
+      {"text": "Khi họ cảm thấy bị bẽ mặt, họ thường chống lại trước rồi mới tìm lý do sau.", "pauseAfter": 0.6, "gainDb": 0.28},
+      {"text": "Điều đó không có nghĩa bạn phải im lặng trước điều sai.", "pauseAfter": 0.46, "gainDb": 0.3},
+      {"text": "Nó chỉ nhắc bạn rằng một ý tưởng đúng vẫn cần một cánh cửa phù hợp để đi vào.", "pauseAfter": 0, "gainDb": 0.34}
+    ]
+  },
+  {
+    "id": "05-practical-path",
+    "start": 198,
+    "duration": 57,
+    "leadIn": 0.3,
+    "tail": 1.05,
+    "targetSpeed": 0.92,
+    "temperature": 0.4,
+    "text": "Vậy bạn nên làm gì khi thật sự có một ý tưởng tốt? Trước hết, đừng bắt đầu bằng việc chứng minh ai sai. Hãy bắt đầu bằng điều cả nhóm cùng muốn đạt được. Thay vì nói: Kế hoạch này không ổn, bạn có thể nói: Em thấy có một rủi ro ở bước này. Mình có thể thử thêm phương án khác không? Bạn vẫn nói đúng điều cần nói, nhưng người nghe không bị đẩy vào thế phải tự bảo vệ mình. Nếu vấn đề nhạy cảm, hãy trao đổi riêng. Có những lời góp ý rất hữu ích khi nói giữa hai người, nhưng lại trở thành một cuộc đấu khi nói trước cả căn phòng. Khi kết quả tốt xuất hiện, hãy gọi tên những người đã góp sức. Chia sẻ công lao không làm giá trị của bạn nhỏ đi. Nó cho thấy bạn đủ vững để không phải giành hết ánh sáng. Nhưng cũng đừng xóa tên mình khỏi thành quả. Hãy lưu lại phần việc, số liệu và quyết định quan trọng bằng thư điện tử hoặc báo cáo. Khiêm nhường không có nghĩa là để người khác nhận hết công sức của bạn.",
+    "sentences": [
+      {"text": "Vậy bạn nên làm gì khi thật sự có một ý tưởng tốt?", "pauseAfter": 0.72, "gainDb": 0.34},
+      {"text": "Trước hết, đừng bắt đầu bằng việc chứng minh ai sai.", "pauseAfter": 0.48, "gainDb": 0.3},
+      {"text": "Hãy bắt đầu bằng điều cả nhóm cùng muốn đạt được.", "pauseAfter": 0.56, "gainDb": 0.32},
+      {"text": "Thay vì nói: Kế hoạch này không ổn, bạn có thể nói: Em thấy có một rủi ro ở bước này.", "pauseAfter": 0.34, "gainDb": 0.2},
+      {"text": "Mình có thể thử thêm phương án khác không?", "pauseAfter": 0.68, "gainDb": 0.3},
+      {"text": "Bạn vẫn nói đúng điều cần nói, nhưng người nghe không bị đẩy vào thế phải tự bảo vệ mình.", "pauseAfter": 0.58, "gainDb": 0.28},
+      {"text": "Nếu vấn đề nhạy cảm, hãy trao đổi riêng.", "pauseAfter": 0.5, "gainDb": 0.28},
+      {"text": "Có những lời góp ý rất hữu ích khi nói giữa hai người, nhưng lại trở thành một cuộc đấu khi nói trước cả căn phòng.", "pauseAfter": 0.58, "gainDb": 0.24},
+      {"text": "Khi kết quả tốt xuất hiện, hãy gọi tên những người đã góp sức.", "pauseAfter": 0.46, "gainDb": 0.22},
+      {"text": "Chia sẻ công lao không làm giá trị của bạn nhỏ đi.", "pauseAfter": 0.38, "gainDb": 0.28},
+      {"text": "Nó cho thấy bạn đủ vững để không phải giành hết ánh sáng.", "pauseAfter": 0.58, "gainDb": 0.3},
+      {"text": "Nhưng cũng đừng xóa tên mình khỏi thành quả.", "pauseAfter": 0.52, "gainDb": 0.34},
+      {"text": "Hãy lưu lại phần việc, số liệu và quyết định quan trọng bằng thư điện tử hoặc báo cáo.", "pauseAfter": 0.5, "gainDb": 0.22},
+      {"text": "Khiêm nhường không có nghĩa là để người khác nhận hết công sức của bạn.", "pauseAfter": 0, "gainDb": 0.38}
+    ]
+  },
+  {
+    "id": "06-closing-light",
+    "start": 255,
+    "duration": 38,
+    "leadIn": 0.38,
+    "tail": 1.65,
+    "targetSpeed": 0.9,
+    "temperature": 0.4,
+    "text": "Và nếu bạn đã nói bằng sự tôn trọng, làm việc bằng năng lực, chia sẻ công lao rõ ràng, nhưng vẫn liên tục bị chèn ép chỉ vì mình làm tốt, hãy nhìn thẳng vào sự thật: có thể vấn đề không còn nằm ở cách bạn giao tiếp. Có thể đó là một môi trường không muốn bạn lớn lên. Khi ấy, đừng vội đối đầu, cũng đừng tự thu nhỏ mình. Hãy âm thầm xây dựng lựa chọn, rồi bước đi khi đã sẵn sàng. Bạn không cần tắt ánh sáng của mình. Chỉ cần nhớ: ánh sáng có giá trị nhất khi nó giúp mọi người nhìn rõ đường đi, chứ không phải khi nó được dùng để chứng minh ai sáng hơn ai.",
+    "sentences": [
+      {"text": "Và nếu bạn đã nói bằng sự tôn trọng, làm việc bằng năng lực, chia sẻ công lao rõ ràng, nhưng vẫn liên tục bị chèn ép chỉ vì mình làm tốt, hãy nhìn thẳng vào sự thật: có thể vấn đề không còn nằm ở cách bạn giao tiếp.", "pauseAfter": 0.68, "gainDb": 0.3},
+      {"text": "Có thể đó là một môi trường không muốn bạn lớn lên.", "pauseAfter": 0.62, "gainDb": 0.38},
+      {"text": "Khi ấy, đừng vội đối đầu, cũng đừng tự thu nhỏ mình.", "pauseAfter": 0.5, "gainDb": 0.28},
+      {"text": "Hãy âm thầm xây dựng lựa chọn, rồi bước đi khi đã sẵn sàng.", "pauseAfter": 0.72, "gainDb": 0.34},
+      {"text": "Bạn không cần tắt ánh sáng của mình.", "pauseAfter": 0.62, "gainDb": 0.42},
+      {"text": "Chỉ cần nhớ: ánh sáng có giá trị nhất khi nó giúp mọi người nhìn rõ đường đi, chứ không phải khi nó được dùng để chứng minh ai sáng hơn ai.", "pauseAfter": 0, "gainDb": 0.38}
+    ]
+  }
+]

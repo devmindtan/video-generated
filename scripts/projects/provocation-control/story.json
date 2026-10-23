@@ -1,0 +1,76 @@
+[
+  {
+    "id": "01-provocation",
+    "start": 0,
+    "duration": 8,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "maxTail": 3.2,
+    "temperature": 0.43,
+    "text": "Khi ai đó cố tình chọc giận bạn, họ không tìm một câu trả lời. Họ đang chờ bạn mất kiểm soát.",
+    "sentences": [
+      {"text": "Khi ai đó cố tình chọc giận bạn, họ không tìm một câu trả lời.", "pauseAfter": 0.42, "gainDb": 0.15},
+      {"text": "Họ đang chờ bạn mất kiểm soát.", "pauseAfter": 0, "gainDb": 0.4}
+    ]
+  },
+  {
+    "id": "02-trap",
+    "start": 8,
+    "duration": 9,
+    "leadIn": 0.14,
+    "tail": 0.28,
+    "maxTail": 3.0,
+    "temperature": 0.43,
+    "text": "Chỉ cần bạn nổi nóng, câu chuyện sẽ đổi hướng. Lời khiêu khích của họ bị quên mất, còn bạn trở thành người sai.",
+    "sentences": [
+      {"text": "Chỉ cần bạn nổi nóng, câu chuyện sẽ đổi hướng.", "pauseAfter": 0.4, "gainDb": 0.2},
+      {"text": "Lời khiêu khích của họ bị quên mất, còn bạn trở thành người sai.", "pauseAfter": 0, "gainDb": 0.35}
+    ]
+  },
+  {
+    "id": "03-pause",
+    "start": 17,
+    "duration": 12,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "maxTail": 3.5,
+    "temperature": 0.41,
+    "text": "Vì vậy, đừng phản ứng ngay. Hạ vai xuống. Thở chậm một nhịp. Rồi tự hỏi: họ muốn giải quyết vấn đề, hay chỉ muốn kéo mình vào cảm xúc của họ?",
+    "sentences": [
+      {"text": "Vì vậy, đừng phản ứng ngay.", "pauseAfter": 0.36, "gainDb": 0.25},
+      {"text": "Hạ vai xuống.", "pauseAfter": 0.38, "gainDb": -0.05},
+      {"text": "Thở chậm một nhịp.", "pauseAfter": 0.48, "gainDb": -0.12},
+      {"text": "Rồi tự hỏi: họ muốn giải quyết vấn đề, hay chỉ muốn kéo mình vào cảm xúc của họ?", "pauseAfter": 0, "gainDb": 0.18}
+    ]
+  },
+  {
+    "id": "04-boundary",
+    "start": 29,
+    "duration": 13,
+    "leadIn": 0.14,
+    "tail": 0.3,
+    "maxTail": 3.6,
+    "temperature": 0.42,
+    "text": "Nếu cần, hãy nói: “Tôi sẽ tiếp tục khi chúng ta có thể nói chuyện bình tĩnh.” Rồi dừng lại. Im lặng lúc này không phải yếu đuối. Đó là giới hạn bạn đã chọn.",
+    "sentences": [
+      {"text": "Nếu cần, hãy nói: “Tôi sẽ tiếp tục khi chúng ta có thể nói chuyện bình tĩnh.”", "pauseAfter": 0.5, "gainDb": 0.16},
+      {"text": "Rồi dừng lại.", "pauseAfter": 0.38, "gainDb": 0.05},
+      {"text": "Im lặng lúc này không phải yếu đuối.", "pauseAfter": 0.34, "gainDb": 0.18},
+      {"text": "Đó là giới hạn bạn đã chọn.", "pauseAfter": 0, "gainDb": 0.42}
+    ]
+  },
+  {
+    "id": "05-control",
+    "start": 42,
+    "duration": 7,
+    "leadIn": 0.14,
+    "tail": 0.42,
+    "maxTail": 2.6,
+    "temperature": 0.41,
+    "text": "Người làm chủ được phản ứng của mình sẽ không dễ bị điều khiển. Bình tĩnh là cách bạn giữ lại quyền kiểm soát.",
+    "sentences": [
+      {"text": "Người làm chủ được phản ứng của mình sẽ không dễ bị điều khiển.", "pauseAfter": 0.36, "gainDb": 0.18},
+      {"text": "Bình tĩnh là cách bạn giữ lại quyền kiểm soát.", "pauseAfter": 0, "gainDb": 0.38}
+    ]
+  }
+]

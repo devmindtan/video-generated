@@ -1,0 +1,69 @@
+[
+  {
+    "id": "01-cage",
+    "start": 0,
+    "duration": 8,
+    "leadIn": 0.18,
+    "tail": 0.35,
+    "temperature": 0.44,
+    "text": "Nếu bạn luôn gác mọi việc để có mặt mỗi khi người khác cần... sự giúp đỡ của bạn rất dễ bị xem là mặc định.",
+    "sentences": [
+      {"text": "Nếu bạn luôn gác mọi việc để có mặt mỗi khi người khác cần...", "pauseAfter": 0.62, "gainDb": 0.15},
+      {"text": "sự giúp đỡ của bạn rất dễ bị xem là mặc định.", "pauseAfter": 0, "gainDb": 0.35}
+    ]
+  },
+  {
+    "id": "02-watch",
+    "start": 8,
+    "duration": 11,
+    "leadIn": 0.16,
+    "tail": 0.32,
+    "temperature": 0.46,
+    "text": "Con người thường quen rất nhanh với điều luôn có sẵn. Khi sự nhiệt tình lặp lại mà không có giới hạn, nó dần bị xem như nghĩa vụ — không còn là một món quà.",
+    "sentences": [
+      {"text": "Con người thường quen rất nhanh với điều luôn có sẵn.", "pauseAfter": 0.48, "gainDb": 0.1},
+      {"text": "Khi sự nhiệt tình lặp lại mà không có giới hạn, nó dần bị xem như nghĩa vụ — không còn là một món quà.", "pauseAfter": 0, "gainDb": 0.25}
+    ]
+  },
+  {
+    "id": "03-boundary",
+    "start": 19,
+    "duration": 12,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "temperature": 0.44,
+    "text": "Giữ lại khoảng trống không phải để thao túng ai. Đừng trả lời khi bạn đang bận. Đừng nhận mọi lời nhờ vả. Sự tôn trọng bắt đầu khi bạn biết tôn trọng thời gian của chính mình.",
+    "sentences": [
+      {"text": "Giữ lại khoảng trống không phải để thao túng ai.", "pauseAfter": 0.42, "gainDb": 0.2},
+      {"text": "Đừng trả lời khi bạn đang bận.", "pauseAfter": 0.38, "gainDb": 0.35},
+      {"text": "Đừng nhận mọi lời nhờ vả.", "pauseAfter": 0.42, "gainDb": 0.35},
+      {"text": "Sự tôn trọng bắt đầu khi bạn biết tôn trọng thời gian của chính mình.", "pauseAfter": 0, "gainDb": 0.25}
+    ]
+  },
+  {
+    "id": "04-no",
+    "start": 31,
+    "duration": 9,
+    "leadIn": 0.15,
+    "tail": 0.28,
+    "temperature": 0.46,
+    "text": "Từ chối không khiến bạn ích kỷ. Nó xác nhận thời gian và năng lượng của bạn có giới hạn. Người chỉ tôn trọng bạn khi bạn nói “có”... chưa từng thật sự tôn trọng bạn.",
+    "sentences": [
+      {"text": "Từ chối không khiến bạn ích kỷ.", "pauseAfter": 0.4, "gainDb": 0.35},
+      {"text": "Nó xác nhận thời gian và năng lượng của bạn có giới hạn.", "pauseAfter": 0.4, "gainDb": 0.2},
+      {"text": "Người chỉ tôn trọng bạn khi bạn nói “có”... chưa từng thật sự tôn trọng bạn.", "pauseAfter": 0, "gainDb": 0.4}
+    ]
+  },
+  {
+    "id": "05-king",
+    "start": 40,
+    "duration": 5,
+    "leadIn": 0.12,
+    "tail": 0.55,
+    "temperature": 0.5,
+    "text": "Hãy tử tế, nhưng cần có ranh giới. Theo dõi kênh để hiểu hơn về tâm lý cuộc sống.",
+    "sentences": [
+      {"text": "Hãy tử tế, nhưng cần có ranh giới. Theo dõi kênh để hiểu hơn về tâm lý cuộc sống.", "pauseAfter": 0, "gainDb": 0.25}
+    ]
+  }
+]

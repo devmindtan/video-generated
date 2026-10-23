@@ -1,0 +1,10 @@
+{
+  "file": "exhausted/audio/original-healing-score.wav",
+  "sourceStartSeconds": 0,
+  "videoStartSeconds": 0,
+  "videoEndSeconds": 48,
+  "speechVolume": 0.3,
+  "pauseVolume": 0.35,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 1.5
+}

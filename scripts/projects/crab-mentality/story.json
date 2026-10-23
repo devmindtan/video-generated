@@ -1,0 +1,72 @@
+[
+  {
+    "id": "01-mask",
+    "start": 0,
+    "duration": 8,
+    "leadIn": 0.16,
+    "tail": 0.34,
+    "temperature": 0.43,
+    "text": "Có người muốn thấy bạn sống tốt... cho đến khi bạn bắt đầu sống tốt hơn hình ảnh họ từng gắn cho bạn.",
+    "sentences": [
+      {"text": "Có người muốn thấy bạn sống tốt...", "pauseAfter": 0.58, "gainDb": 0.2},
+      {"text": "cho đến khi bạn bắt đầu sống tốt hơn hình ảnh họ từng gắn cho bạn.", "pauseAfter": 0, "gainDb": 0.42}
+    ]
+  },
+  {
+    "id": "02-crabs",
+    "start": 8,
+    "duration": 11,
+    "leadIn": 0.14,
+    "tail": 0.28,
+    "temperature": 0.45,
+    "text": "Khi bạn thất bại, lời an ủi đến rất dễ. Nhưng khi bạn tiến bộ, những câu đùa hạ thấp và lời khuyên khiến bạn chùn bước bắt đầu xuất hiện. Người ta thường gọi đó là hiệu ứng “cua trong rọ”.",
+    "sentences": [
+      {"text": "Khi bạn thất bại, lời an ủi đến rất dễ.", "pauseAfter": 0.38, "gainDb": 0.18},
+      {"text": "Nhưng khi bạn tiến bộ, những câu đùa hạ thấp và lời khuyên khiến bạn chùn bước bắt đầu xuất hiện.", "pauseAfter": 0.4, "gainDb": 0.36},
+      {"text": "Người ta thường gọi đó là hiệu ứng “cua trong rọ”.", "pauseAfter": 0, "gainDb": 0.4}
+    ]
+  },
+  {
+    "id": "03-dagger",
+    "start": 19,
+    "duration": 12,
+    "leadIn": 0.14,
+    "tail": 0.3,
+    "temperature": 0.47,
+    "text": "Sự đố kỵ hiếm khi tự nhận tên. Nó thường khoác áo quan tâm: “Đừng mơ cao quá”, “Lỡ thất bại thì sao?”. Hãy phân biệt lời góp ý có lý do, có giải pháp... với lời chỉ khiến bạn sợ hãi và nhỏ lại.",
+    "sentences": [
+      {"text": "Sự đố kỵ hiếm khi tự nhận tên.", "pauseAfter": 0.38, "gainDb": 0.28},
+      {"text": "Nó thường khoác áo quan tâm: “Đừng mơ cao quá”, “Lỡ thất bại thì sao?”.", "pauseAfter": 0.42, "gainDb": 0.38},
+      {"text": "Hãy phân biệt lời góp ý có lý do, có giải pháp... với lời chỉ khiến bạn sợ hãi và nhỏ lại.", "pauseAfter": 0, "gainDb": 0.34}
+    ]
+  },
+  {
+    "id": "04-queen",
+    "start": 31,
+    "duration": 10,
+    "leadIn": 0.14,
+    "tail": 0.3,
+    "temperature": 0.43,
+    "text": "Đừng vội kể kế hoạch cho người luôn phủ nhận nỗ lực của bạn. Hãy chia sẻ với người biết phản biện bằng sự thật và thiện chí. Còn lại, cứ âm thầm làm việc — để kết quả lên tiếng.",
+    "sentences": [
+      {"text": "Đừng vội kể kế hoạch cho người luôn phủ nhận nỗ lực của bạn.", "pauseAfter": 0.35, "gainDb": 0.3},
+      {"text": "Hãy chia sẻ với người biết phản biện bằng sự thật và thiện chí.", "pauseAfter": 0.36, "gainDb": 0.2},
+      {"text": "Còn lại, cứ âm thầm làm việc — để kết quả lên tiếng.", "pauseAfter": 0, "gainDb": 0.42}
+    ]
+  },
+  {
+    "id": "05-panther",
+    "start": 41,
+    "duration": 7,
+    "leadIn": 0.12,
+    "tail": 1.45,
+    "temperature": 0.47,
+    "text": "Bạn không cần tất cả đồng thuận. Bình tĩnh tiến lên. Theo dõi kênh để hiểu tâm lý con người.",
+    "sentences": [
+      {"text": "Bạn không cần tất cả đồng thuận.", "pauseAfter": 0.32, "gainDb": 0.36},
+      {"text": "Bình tĩnh tiến lên.", "pauseAfter": 0.3, "gainDb": 0.44},
+      {"text": "Theo dõi kênh để hiểu tâm lý con người.", "pauseAfter": 0, "gainDb": 0.25}
+    ]
+  }
+]
+

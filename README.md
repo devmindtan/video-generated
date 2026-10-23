@@ -20,9 +20,9 @@ Mở địa chỉ Remotion Studio hiển thị trong terminal, chọn compositio
 
 ## Chỉnh sửa hoặc thêm video
 
-1. Tạo hoặc chỉnh sửa component React trong `src/`.
-2. Đăng ký component bằng `<Composition>` trong `src/index.tsx`, khai báo `id`, kích thước, `fps` và `durationInFrames`. Với ảnh tĩnh, dùng `<Still>`.
-3. Đặt ảnh, âm thanh và tài nguyên khác trong `public/`; sử dụng `staticFile()` của Remotion để tham chiếu chúng.
+1. Tạo hoặc chỉnh sửa project trong `src/projects/<slug>/`.
+2. Đăng ký component bằng `<Composition>` trong `src/projects/registry.tsx`, khai báo `id`, kích thước, `fps` và `durationInFrames`. Với ảnh tĩnh, dùng `<Still>`.
+3. Đặt ảnh, âm thanh và tài nguyên khác trong `public/<slug>/`; sử dụng `staticFile()` của Remotion để tham chiếu chúng.
 4. Xem trước trong Studio và kiểm tra TypeScript:
 
 ```sh
@@ -42,7 +42,7 @@ npm run render
 
 Đầu ra lần lượt là `out/preview.png` và `out/hello.mp4`.
 
-Để xuất composition khác, thay `CompositionId` bằng `id` đã đăng ký trong `src/index.tsx`:
+Để xuất composition khác, thay `CompositionId` bằng `id` đã đăng ký trong `src/projects/registry.tsx`:
 
 ```sh
 npx remotion still src/index.tsx CompositionId out/preview.png --frame=0
@@ -57,17 +57,22 @@ Lần xuất đầu tiên có thể cần kết nối mạng để Remotion tả
 
 | Đường dẫn | Mục đích |
 | --- | --- |
-| `src/` | Component video, composition và mã nguồn ứng dụng |
-| `src/index.tsx` | Điểm khởi tạo và đăng ký composition |
-| `public/` | Ảnh, âm thanh và tài nguyên dùng trong video |
-| `scripts/` | Script hỗ trợ tạo và kiểm tra tài nguyên |
-| `docs/` | Tài liệu và kịch bản |
+| `src/index.tsx` | Điểm khởi tạo Remotion; không chứa code riêng của video |
+| `src/projects/<slug>/` | Video, thumbnail, captions và config runtime riêng của một project |
+| `src/projects/registry.tsx` | Nơi đăng ký toàn bộ composition và still |
+| `src/shared/` | Mã runtime đã được ít nhất hai project dùng chung |
+| `src/examples/` | Composition thử nghiệm, không thuộc project sản xuất |
+| `public/<slug>/` | Asset lớn của từng project; giữ URL ổn định |
+| `scripts/projects/<slug>/` | Story và pipeline riêng của project |
+| `scripts/shared/` | Công cụ sản xuất dùng chung |
+| `scripts/tooling/` | Công cụ bảo trì repository |
+| `docs/projects/<slug>/` | Kịch bản, review và mô tả riêng của project |
 | `out/` | Kết quả xuất ảnh, video và các tệp kiểm tra |
 | `skills/` | Hướng dẫn sử dụng Remotion, Motion và GSAP cho agent |
 | `repos/` | Mã nguồn upstream để tham khảo |
 | `repos-manifest.json` | Danh sách repository upstream và commit tương ứng |
 
-Sử dụng các npm package đã cài ở thư mục gốc khi phát triển. Không chỉnh sửa `repos/` để triển khai video. Nếu cần tải lại các repository tham khảo còn thiếu, chạy `python3 scripts/clone-repos.py`.
+Quy tắc phân ranh giới và checklist thêm project nằm trong [`docs/architecture.md`](docs/architecture.md). Sử dụng các npm package đã cài ở thư mục gốc khi phát triển. Không chỉnh sửa `repos/` để triển khai video. Nếu cần tải lại các repository tham khảo còn thiếu, chạy `python3 scripts/tooling/clone-repos.py`.
 
 ## Làm việc với agent
 
