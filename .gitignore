@@ -1,11 +1,11 @@
 node_modules/
 repos/
 out/
-projects/
+/projects/
 .remotion/
 .venv/
 __pycache__/
-
+public/
 .cache/
-
+*.mp4
 .env.local
