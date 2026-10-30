@@ -2,7 +2,7 @@
 const $=selector=>document.querySelector(selector);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fold=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase();
-const iconPaths={grid:'M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z',list:'M8 6h13 M8 12h13 M8 18h13 M3 6h.01 M3 12h.01 M3 18h.01',book:'M12 5C8 2 4 3 2 4v16c3-1 6-1 10 1 4-2 7-2 10-1V4c-3-1-6-1-10 1v16',play:'m9 5 10 7-10 7Z',image:'M3 3h18v18H3z M3 17l6-6 4 4 3-3 5 5 M8 7h.01',arrow:'M7 17 17 7 M7 7h10v10',plus:'M12 5v14 M5 12h14',search:'M21 21l-5-5 M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0',folder:'M3 7V4h6l2 3h10v13H3z',refresh:'M20 7A9 9 0 1 0 21 15 M20 2v6h-6',menu:'M3 6h18 M3 12h18 M3 18h18',close:'M6 6l12 12 M18 6 6 18',channel:'M4 5h16v14H4z M8 9h8 M8 13h5',spark:'m12 3 3 6 6 3-6 3-3 6-3-6-6-3 6-3z'};
+const iconPaths={back:'M19 12H5 M11 6l-6 6 6 6',grid:'M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z',list:'M8 6h13 M8 12h13 M8 18h13 M3 6h.01 M3 12h.01 M3 18h.01',book:'M12 5C8 2 4 3 2 4v16c3-1 6-1 10 1 4-2 7-2 10-1V4c-3-1-6-1-10 1v16',play:'m9 5 10 7-10 7Z',image:'M3 3h18v18H3z M3 17l6-6 4 4 3-3 5 5 M8 7h.01',arrow:'M7 17 17 7 M7 7h10v10',plus:'M12 5v14 M5 12h14',search:'M21 21l-5-5 M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0',folder:'M3 7V4h6l2 3h10v13H3z',refresh:'M20 7A9 9 0 1 0 21 15 M20 2v6h-6',menu:'M3 6h18 M3 12h18 M3 18h18',close:'M6 6l12 12 M18 6 6 18',channel:'M4 5h16v14H4z M8 9h8 M8 13h5',spark:'m12 3 3 6 6 3-6 3-3 6-3-6-6-3 6-3z'};
 function icon(name){return `<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="${iconPaths[name]||iconPaths.folder}"/></svg>`;}
 function dirtyNotes(){return Boolean(state.drawer&&!state.drawer.book&&!$('#drawer').hidden&&$('#notes-text')&&state.drawer.notes!==$('#notes-text').value);}
 function canLeaveNotes(){return !dirtyNotes()||confirm('Ghi chú chưa được lưu. Bạn có muốn rời hồ sơ này?');}
@@ -23,8 +23,51 @@ async function api(url,body){
 }
 function studio(id){return `http://localhost:3000/${encodeURIComponent(id)}`;}
 function duration(value){if(value==null)return 'Chưa chốt';const seconds=Math.round(value);return `${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,'0')}`;}
-function updateUrl(){const p=new URLSearchParams();if(state.channel)p.set('channel',state.channel);if(state.series)p.set('series',state.series);if(state.query)p.set('q',state.query);if(state.status)p.set('status',state.status);if(state.sort!=='recent')p.set('sort',state.sort);if(state.layout==='list')p.set('layout','list');if(state.view==='books')p.set('view','books');history.replaceState(null,'',`${location.pathname}${p.size?'?'+p:''}${location.hash}`);}
-function navigate({channel='',series='',view='projects'}={}){state.channel=channel;state.series=series;state.view=view;state.limit=12;state.query='';state.status='';$('#search').value='';$('#status-filter').value='';setMenu(false);updateUrl();render();window.scrollTo(0,0);}
+let routeIndex=history.state?.workspaceIndex||0,skipRoutePop=false,routeRequest=0;
+history.replaceState({...history.state,workspaceIndex:routeIndex},'',location.href);
+function recordRoute(url,push=false){
+  const next=new URL(url,location.origin);if(next.href===location.href)return;
+  if(push){routeIndex++;history.pushState({workspaceIndex:routeIndex},'',next);}else history.replaceState({workspaceIndex:routeIndex},'',next);
+}
+function collectionUrl({channel='',series='',view='projects'}={}){const p=new URLSearchParams();if(channel)p.set('channel',channel);if(series)p.set('series',series);if(view==='books')p.set('view','books');return '/'+(p.size?'?'+p:'');}
+function updateUrl(push=false){const p=new URLSearchParams();if(state.channel)p.set('channel',state.channel);if(state.series)p.set('series',state.series);if(state.query)p.set('q',state.query);if(state.status)p.set('status',state.status);if(state.sort!=='recent')p.set('sort',state.sort);if(state.layout==='list')p.set('layout','list');if(state.view==='books')p.set('view','books');recordRoute(`${location.pathname}${p.size?'?'+p:''}${location.hash}`,push);}
+function hideDrawer(){state.documentRequest++;routeRequest++;$('#drawer').hidden=true;$('#drawer-backdrop').hidden=true;state.drawer=null;document.body.classList.remove('overlay-open');$('.workspace').inert=false;$('#sidebar').inert=false;}
+function navigate({channel='',series='',view='projects'}={}){
+  if(!canLeaveNotes())return;hideDrawer();setMenu(false);
+  const owner=state.data.series.find(s=>s.id===series);state.channel=owner?.channel||channel;state.series=owner?.id||'';state.view=view;state.limit=12;state.query='';state.status='';
+  $('#search').value='';$('#status-filter').value='';recordRoute(collectionUrl(state),true);render();window.scrollTo(0,0);
+}
+function breadcrumbs(drawer=false){
+  const detail=drawer?state.drawer:null;
+  const series=state.data.series.find(s=>s.id===(detail?.series||state.series));
+  const channel=state.data.channels.find(c=>c.id===(series?.channel||detail?.channel||state.channel));
+  const entries=[{title:'Tổng quan',url:'/'}];
+  if(channel)entries.push({title:channel.title,url:collectionUrl({channel:channel.id})});
+  if(series)entries.push({title:series.title,url:collectionUrl({channel:channel?.id,series:series.id})});
+  if(detail?.book||(!detail&&state.view==='books'))entries.push({title:'Tủ sách',url:collectionUrl({channel:channel?.id,series:series?.id,view:'books'})});
+  if(detail){const book=detail.book&&state.data.books.find(b=>b.id===detail.id&&b.series===detail.series);entries.push({title:book?.title||detail.title});}
+  return '<ol>'+entries.map((e,i)=>`<li>${i===entries.length-1?`<span aria-current="page">${esc(e.title)}</span>`:`<a href="${esc(e.url)}" data-route>${esc(e.title)}</a>`}</li>`).join('')+'</ol>';
+}
+function renderBreadcrumbs(){
+  $('#breadcrumb').innerHTML=breadcrumbs();if(state.drawer)$('#drawer-breadcrumb').innerHTML=breadcrumbs(true);
+  $('#back-button').disabled=routeIndex===0&&!state.channel&&!state.series&&state.view!=='books';
+}
+function back(){
+  if(routeIndex>0){history.back();return;}
+  if(state.drawer?.book){navigate({series:state.drawer.series,view:'books'});return;}
+  if(state.drawer){navigate({series:state.drawer.series});return;}
+  if(state.view==='books'&&state.series){navigate({series:state.series});return;}
+  if(state.series){navigate({channel:state.data.series.find(s=>s.id===state.series)?.channel||state.channel});return;}navigate();
+}
+async function restoreRoute(event){
+  if(skipRoutePop){skipRoutePop=false;return;}
+  const next=event.state?.workspaceIndex||0;
+  if(!canLeaveNotes()){skipRoutePop=true;history.go(routeIndex-next);return;}
+  routeIndex=next;hideDrawer();setMenu(false);
+  const p=new URLSearchParams(location.search);
+  Object.assign(state,{channel:p.get('channel')||'',series:p.get('series')||'',view:p.get('view')==='books'?'books':'projects',query:p.get('q')||'',status:p.get('status')||'',sort:p.get('sort')||'recent',layout:p.get('layout')==='list'?'list':'grid',limit:12});
+  $('#status-filter').value=state.status;$('#sort-filter').value=state.sort;$('#grid-view').classList.toggle('active',state.layout==='grid');$('#list-view').classList.toggle('active',state.layout==='list');render();await openHash();
+}
 async function refresh(initial=false){
   if(refreshing)return;refreshing=true;$('#refresh-button').disabled=true;
   try{state.data=await api('/api/workspace');$('#load-error').hidden=true;$('#connection').classList.remove('offline');$('#connection').lastChild.textContent='Đã kết nối';render();if(initial)openHash();}
@@ -50,7 +93,8 @@ function render(){
   $('#delete-series-button').hidden=!state.series||state.view==='books';
   const channel=state.data.channels.find(c=>c.id===state.channel),series=state.data.series.find(s=>s.id===state.series);
   $('#page-title').textContent=state.view==='books'?'Tủ sách nghiên cứu':series?.title||channel?.title||'Không gian sáng tạo';
-  $('#breadcrumb').textContent=state.view==='books'?'Tủ sách':series?.title||channel?.title||'Tổng quan';
+  renderBreadcrumbs();
+  $('#new-project-button').className='button '+(state.view==='books'?'secondary':'primary');
   $('#eyebrow').textContent=state.view==='books'?'TỪ TRANG SÁCH ĐẾN CÂU CHUYỆN':series?'TỪNG TẬP, MỘT CÂU CHUYỆN':channel?'NHỮNG CÂU CHUYỆN CỦA KÊNH':'MỘT NƠI CHO MỌI Ý TƯỞNG';
   $('#page-description').textContent=state.view==='books'?'Giữ nguồn, ghi chú và những ý tưởng cho series sách ở cùng một nơi.':series?.summary||'Tìm bản dựng, kịch bản và tài liệu theo từng series.';
   const visible=state.data.projects.filter(p=>(!state.channel||p.channel===state.channel)&&(!state.series||p.series===state.series));
@@ -69,13 +113,13 @@ function render(){
 }
 function projectCard(p,index=0){
   const hasImage=Boolean(p.previewType);
-  return `<article class="project-card card-channel-${esc(p.channel)}"><a href="#project/${encodeURIComponent(p.id)}" class="card-cover" data-project="${esc(p.id)}" aria-label="Mở dự án ${esc(p.title)}">${hasImage?`<img width="1080" height="1920" loading="${index<3?'eager':'lazy'}" decoding="async" src="/api/preview/${encodeURIComponent(p.id)}" alt="" data-preview-image>`:'<span class="cover-placeholder" aria-hidden="true">✧</span>'}<span class="format-badge">${p.format==='short'?'SHORT':'VIDEO DÀI'}</span>${hasImage?`<span class="preview-label">${p.previewType==='thumbnail-background'?'Nền thumbnail':'Ảnh cảnh'}</span>`:''}<span class="duration-badge">${duration(p.durationSeconds)}</span></a><div class="card-body"><div class="card-series">${esc(p.seriesTitle)}</div><a href="#project/${encodeURIComponent(p.id)}" class="card-title" data-project="${esc(p.id)}">${esc(p.title)}</a><div class="card-id">${esc(p.id)}</div><div class="card-footer"><span class="status ${esc(p.status)}">${esc(statusNames[p.status]||p.status)}</span><div class="card-links">${p.videoId?`<a data-watch="video" data-id="${esc(p.id)}" href="${studio(p.videoId)}" target="_blank" rel="noopener" title="Xem video" aria-label="Xem video ${esc(p.title)}">${icon("play")}<span>Video</span></a>`:''}${p.thumbnailId?`<a data-watch="thumbnail" data-id="${esc(p.id)}" href="${studio(p.thumbnailId)}" target="_blank" rel="noopener" title="Xem thumbnail" aria-label="Xem thumbnail ${esc(p.title)}">${icon("image")}<span>Thumbnail</span></a>`:''}<button data-project="${esc(p.id)}" title="Mở hồ sơ" aria-label="Mở hồ sơ ${esc(p.title)}">${icon("arrow")}</button></div></div></div></article>`;
+  return `<article class="project-card card-channel-${esc(p.channel)}"><a href="#project/${encodeURIComponent(p.id)}" class="card-cover" data-project="${esc(p.id)}" aria-label="Mở dự án ${esc(p.title)}">${hasImage?`<img width="1080" height="1920" loading="${index<3?'eager':'lazy'}" decoding="async" src="/api/preview/${encodeURIComponent(p.id)}" alt="" data-preview-image>`:'<span class="cover-placeholder" aria-hidden="true">✧</span>'}<span class="format-badge">${p.format==='short'?'SHORT':'VIDEO DÀI'}</span>${hasImage?`<span class="preview-label">${p.previewType==='thumbnail-background'?'Nền thumbnail':'Ảnh cảnh'}</span>`:''}<span class="duration-badge">${duration(p.durationSeconds)}</span></a><div class="card-body"><div class="card-series">${esc(p.seriesTitle)}</div><a href="#project/${encodeURIComponent(p.id)}" class="card-title" data-project="${esc(p.id)}">${esc(p.title)}</a><div class="card-id">${esc(p.id)}</div><div class="card-footer"><span class="status ${esc(p.status)}">${esc(statusNames[p.status]||p.status)}</span><div class="card-links">${p.videoId?`<a data-watch="video" data-id="${esc(p.id)}" href="${studio(p.videoId)}" target="_blank" rel="noopener" title="Xem video" aria-label="Xem video ${esc(p.title)}">${icon("play")}<span>Video</span></a>`:''}${p.thumbnailId?`<a data-watch="thumbnail" data-id="${esc(p.id)}" href="${studio(p.thumbnailId)}" target="_blank" rel="noopener" title="Xem thumbnail" aria-label="Xem thumbnail ${esc(p.title)}">${icon("image")}<span>Thumbnail</span></a>`:''}<button data-project="${esc(p.id)}" title="Mở hồ sơ" aria-label="Mở hồ sơ ${esc(p.title)}">${icon("folder")}<span>Hồ sơ</span></button></div></div></div></article>`;
 }
-function bookCard(b){return `<article class="project-card book-card"><button class="card-cover" data-book="${esc(b.id)}" data-book-series="${esc(b.series)}" aria-label="Mở hồ sơ ${esc(b.title)}"><span class="book-object">${esc(b.title)}<small>${esc(b.authors.join(', '))}</small></span></button><div class="card-body"><div class="card-series">HỒ SƠ NGHIÊN CỨU</div><button class="card-title" data-book="${esc(b.id)}" data-book-series="${esc(b.series)}">${esc(b.title)}</button><div class="card-id">${esc(b.authors.join(', '))}</div><div class="card-footer"><span class="status ${b.hasSource?'production':'planning'}">${esc(b.hasSource&&b.status==='awaiting-source'?'Chờ kiểm tra nguồn':bookStatusNames[b.status]||b.status)}</span><div class="card-links"><button data-book="${esc(b.id)}" data-book-series="${esc(b.series)}" aria-label="Mở hồ sơ sách">${icon("arrow")}</button></div></div></div></article>`;}
+function bookCard(b){return `<article class="project-card book-card"><button class="card-cover" data-book="${esc(b.id)}" data-book-series="${esc(b.series)}" aria-label="Mở hồ sơ ${esc(b.title)}"><span class="book-object">${esc(b.title)}<small>${esc(b.authors.join(', '))}</small></span></button><div class="card-body"><div class="card-series">HỒ SƠ NGHIÊN CỨU</div><button class="card-title" data-book="${esc(b.id)}" data-book-series="${esc(b.series)}">${esc(b.title)}</button><div class="card-id">${esc(b.authors.join(', '))}</div><div class="card-footer"><span class="status ${b.hasSource?'production':'planning'}">${esc(b.hasSource&&b.status==='awaiting-source'?'Chờ kiểm tra nguồn':bookStatusNames[b.status]||b.status)}</span><div class="card-links"><button data-book="${esc(b.id)}" data-book-series="${esc(b.series)}" aria-label="Mở hồ sơ sách">${icon("folder")}<span>Hồ sơ</span></button></div></div></div></article>`;}
 function renderCards(){
   if(!state.data)return;
   const q=fold(state.query);let items;
-  if(state.view==='books')items=state.data.books.filter(b=>!q||fold(`${b.title} ${b.authors.join(' ')}`).includes(q));
+  if(state.view==='books')items=state.data.books.filter(b=>(!state.series||b.series===state.series)&&(!state.channel||b.channel===state.channel)&&(!q||fold(`${b.title} ${b.authors.join(' ')}`).includes(q)));
   else items=state.data.projects.filter(p=>(!state.channel||p.channel===state.channel)&&(!state.series||p.series===state.series)&&(!state.status||p.status===state.status)&&(!q||fold(`${p.title} ${p.id} ${p.seriesTitle}`).includes(q)));
   items.sort((a,b)=>state.sort==='title'?a.title.localeCompare(b.title,'vi'):String(b.updatedAt||'').localeCompare(String(a.updatedAt||''))||a.title.localeCompare(b.title,'vi'));
   $('#project-count').textContent=items.length;
@@ -84,20 +128,16 @@ function renderCards(){
   $('#pagination').innerHTML=items.length?`<span>Hiển thị ${Math.min(state.limit,items.length)} / ${items.length} ${state.view==='books'?'cuốn sách':'dự án'}</span>${items.length>state.limit?'<button class="button secondary" data-more>Xem thêm ↓</button>':''}`:'';
   document.querySelectorAll('[data-preview-image]').forEach(image=>image.addEventListener('error',()=>{image.replaceWith(Object.assign(document.createElement('span'),{className:'cover-placeholder',textContent:'✧'}));},{once:true}));
 }
-function showDrawer(){focusBeforeDrawer=document.activeElement;setMenu(false);$('.workspace').inert=true;$('#sidebar').inert=true;$('#drawer').hidden=false;$('#drawer-backdrop').hidden=false;document.body.classList.add('overlay-open');$('#close-drawer').focus();}
-function closeDrawer(){
-  if(!canLeaveNotes())return;
-  state.documentRequest++;$('#drawer').hidden=true;$('#drawer-backdrop').hidden=true;state.drawer=null;document.body.classList.remove('overlay-open');$('.workspace').inert=false;$('#sidebar').inert=false;
-  history.replaceState(null,'',location.pathname+location.search);focusBeforeDrawer?.focus();
-}
-async function openProject(id){
+function showDrawer(){renderBreadcrumbs();focusBeforeDrawer=document.activeElement;setMenu(false);$('.workspace').inert=true;$('#sidebar').inert=true;$('#drawer').hidden=false;$('#drawer-backdrop').hidden=false;document.body.classList.add('overlay-open');$('#close-drawer').focus();}
+function closeDrawer(){if(!canLeaveNotes())return;hideDrawer();recordRoute(location.pathname+location.search);renderBreadcrumbs();focusBeforeDrawer?.focus();}
+async function openProject(id,record=true){
   if(!canLeaveNotes())return;
   try{
-    const detail=await api('/api/project?id='+encodeURIComponent(id));state.drawer=detail;state.documentRequest++;
-    history.replaceState(null,'',location.pathname+location.search+'#project/'+encodeURIComponent(id));
+    const request=++routeRequest;const detail=await api('/api/project?id='+encodeURIComponent(id));if(request!==routeRequest)return;state.drawer=detail;state.documentRequest++;
+    if(record)recordRoute(location.pathname+location.search+'#project/'+encodeURIComponent(id),true);
     $('#drawer-eyebrow').textContent='HỒ SƠ DỰ ÁN';
     const metadata=state.data.projects.find(p=>p.id===id),video=detail.registrations.find(r=>r.kind==='Composition'),thumb=detail.registrations.find(r=>r.kind==='Still');
-    $('#drawer-content').innerHTML=`<h2 id="drawer-title">${esc(detail.title)}</h2><div class="drawer-meta"><span>${esc(detail.seriesTitle)}</span><span>·</span><span>${metadata?.format==='short'?'Short':'Video dài'} · ${duration(metadata?.durationSeconds)}</span><span class="status ${esc(detail.status)}">${esc(statusNames[detail.status])}</span></div><div class="drawer-actions">${video?`<a class="button primary" data-watch="video" data-id="${esc(id)}" href="${studio(video.id)}" target="_blank" rel="noopener">${icon("play")} Xem video</a>`:''}${video?`<button class="button secondary" data-studio="${esc(video.id)}" data-id="${esc(id)}">Mở Studio</button>`:''}${thumb?`<a class="button secondary" data-watch="thumbnail" data-id="${esc(id)}" href="${studio(thumb.id)}" target="_blank" rel="noopener">${icon("image")} Xem thumbnail</a>`:''}</div><section class="drawer-section"><h3>Tài liệu của tập</h3><div class="document-tabs" id="document-tabs">${detail.documents.map(d=>`<button data-document="${esc(d.id)}">${esc(d.name)}</button>`).join('')}</div><div id="document-view" class="document-view">Đang mở tài liệu…</div></section><section class="drawer-section"><h3>Ghi chú của bạn</h3><textarea id="notes-text" class="notes-input" maxlength="40000" placeholder="Ý tưởng cần bổ sung, điều cần sửa, việc cần làm…" aria-label="Ghi chú dự án">${esc(detail.notes)}</textarea><div class="notes-footer"><small id="notes-status">Lưu thành file riêng trong thư mục tài liệu.</small><button class="button secondary" id="save-notes">Lưu ghi chú</button></div></section><section class="drawer-section"><h3>Đi đến thư mục</h3><div class="folder-list">${Object.entries(detail.paths).map(([kind,folder])=>`<button class="folder-button" data-folder="${esc(kind)}">${icon("folder")} ${esc({source:'Bản dựng',scripts:'Công cụ của tập',docs:'Tài liệu',assets:'Ảnh & âm thanh'}[kind]||kind)}<small>${esc(folder)}</small></button>`).join('')}</div></section>`;
+    $('#drawer-content').innerHTML=`<h2 id="drawer-title">${esc(detail.title)}</h2><div class="drawer-meta"><span>${esc(detail.seriesTitle)}</span><span>·</span><span>${metadata?.format==='short'?'Short':'Video dài'} · ${duration(metadata?.durationSeconds)}</span><span class="status ${esc(detail.status)}">${esc(statusNames[detail.status])}</span></div><div class="drawer-actions">${video?`<a class="button primary" data-watch="video" data-id="${esc(id)}" href="${studio(video.id)}" target="_blank" rel="noopener">${icon("play")} Xem video</a>`:''}${video?`<button class="button studio-button" data-studio="${esc(video.id)}" data-id="${esc(id)}">${icon("arrow")} Mở Studio</button>`:''}${thumb?`<a class="button secondary" data-watch="thumbnail" data-id="${esc(id)}" href="${studio(thumb.id)}" target="_blank" rel="noopener">${icon("image")} Xem thumbnail</a>`:''}</div><section class="drawer-section"><h3>Tài liệu của tập</h3><div class="document-tabs" id="document-tabs">${detail.documents.map(d=>`<button data-document="${esc(d.id)}">${esc(d.name)}</button>`).join('')}</div><div id="document-view" class="document-view">Đang mở tài liệu…</div></section><section class="drawer-section"><h3>Ghi chú của bạn</h3><textarea id="notes-text" class="notes-input" maxlength="40000" placeholder="Ý tưởng cần bổ sung, điều cần sửa, việc cần làm…" aria-label="Ghi chú dự án">${esc(detail.notes)}</textarea><div class="notes-footer"><small id="notes-status">Lưu thành file riêng trong thư mục tài liệu.</small><button class="button primary" id="save-notes">Lưu ghi chú</button></div></section><section class="drawer-section"><h3>Đi đến thư mục</h3><div class="folder-list">${Object.entries(detail.paths).map(([kind,folder])=>`<button class="folder-button" data-folder="${esc(kind)}">${icon("folder")} ${esc({source:'Bản dựng',scripts:'Công cụ của tập',docs:'Tài liệu',assets:'Ảnh & âm thanh'}[kind]||kind)}<small>${esc(folder)}</small></button>`).join('')}</div></section>`;
     $('#drawer-content').insertAdjacentHTML('beforeend','<section class="drawer-section"><button class="button danger" data-delete-project>Xóa dự án</button></section>');
     showDrawer();
     if(detail.documents.length)openDocument(detail.documents[0].id);else $('#document-view').innerHTML='<p class="empty-document">Chưa có tài liệu. Hãy bắt đầu bằng ghi chú của bạn.</p>';
@@ -124,11 +164,11 @@ function renderDocument(doc){
     else if(!line.trim()){flush();}else{list=null;paragraph.push(line);}
   }flush();
 }
-async function openBook(series,id){
+async function openBook(series,id,record=true){
   if(!canLeaveNotes())return;
   const book=state.data.books.find(b=>b.id===id&&b.series===series);if(!book)return;
   state.drawer={book:true,id,series};state.documentRequest++;
-  history.replaceState(null,'',location.pathname+location.search+'#book/'+encodeURIComponent(series)+'/'+encodeURIComponent(id));
+  if(record)recordRoute(location.pathname+location.search+'#book/'+encodeURIComponent(series)+'/'+encodeURIComponent(id),true);
   $('#drawer-eyebrow').textContent='TỦ SÁCH · HỒ SƠ NGHIÊN CỨU';
   const names={'research.md':'Nghiên cứu','season-plan.md':'Kế hoạch series','chapters.json':'Bản đồ chương','book.json':'Thông tin nguồn'};
   $('#drawer-content').innerHTML=`<h2 id="drawer-title">${esc(book.title)}</h2><div class="drawer-meta">${esc(book.authors.join(', '))}<span class="status ${book.hasSource?'production':'planning'}">${esc(book.hasSource&&book.status==='awaiting-source'?'Chờ kiểm tra nguồn':bookStatusNames[book.status]||book.status)}</span></div><div class="book-notice">${esc(book.note||'Hồ sơ nghiên cứu dùng chung cho các tập trong series.')}</div><section class="drawer-section"><h3>Tài liệu nghiên cứu</h3><div class="document-tabs">${book.documents.map(file=>`<button data-book-document="${esc(file)}">${esc(names[file]||file)}</button>`).join('')}</div><div id="document-view" class="document-view">Đang mở…</div></section><button class="button primary" data-project-from-book>＋ Lên ý tưởng một tập</button>`;
@@ -164,15 +204,18 @@ function updateCreateSeries(book){
   updateCreateDuration();
 }
 function updateCreateDuration(){const form=$('#create-form');const series=state.data.series.find(s=>s.id===form.elements.series?.value);form.elements.duration.value=series?.channel==='tam-ly-cuoc-song'&&form.elements.format.value==='short'?'45':'';}
-function openHash(){const parts=location.hash.slice(1).split('/').map(decodeURIComponent);if(parts[0]==='project'&&parts[1])openProject(parts[1]);if(parts[0]==='book'&&parts[1]&&parts[2])openBook(parts[1],parts[2]);}
+async function openHash(){try{const parts=location.hash.slice(1).split('/').map(decodeURIComponent);if(parts[0]==='project'&&parts[1])await openProject(parts[1],false);if(parts[0]==='book'&&parts[1]&&parts[2])await openBook(parts[1],parts[2],false);}catch{toast('Đường dẫn hồ sơ không hợp lệ.');}}
 document.addEventListener('click',async event=>{
-  const target=event.target.closest('button,a[data-project],a[data-channel],a[data-series],a[data-nav],a[data-watch],[data-books]');if(!target)return;
+  const target=event.target.closest('button,a[data-project],a[data-channel],a[data-series],a[data-nav],a[data-watch],a[data-route],[data-books]');if(!target||target.disabled)return;
   if(target.tagName==='A'){if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||event.button!==0)return;event.preventDefault();}
-  if(target.dataset.watch){event.preventDefault();watch(target.dataset.id,target.dataset.watch);}
+  if(target.hasAttribute('data-back'))back();
+  else if(target.hasAttribute('data-route')){const p=new URL(target.href).searchParams;navigate({channel:p.get('channel')||'',series:p.get('series')||'',view:p.get('view')||'projects'});}
+  else if(target.dataset.watch){event.preventDefault();watch(target.dataset.id,target.dataset.watch);}
   else if(target.dataset.studio)launchStudio(target.dataset.id,target.dataset.studio);
   else if(target.hasAttribute('data-delete-project'))askDelete('project',state.drawer.id);
   else if(target.dataset.nav==='all')navigate();
-  else if(target.dataset.nav==='books'||target.hasAttribute('data-books'))navigate({view:'books'});
+  else if(target.dataset.nav==='books')navigate({view:'books'});
+  else if(target.hasAttribute('data-books'))navigate({channel:state.channel,series:state.series,view:'books'});
   else if(target.dataset.channel)navigate({channel:target.dataset.channel});
   else if(target.dataset.series){const series=state.data.series.find(s=>s.id===target.dataset.series);navigate({channel:series.channel,series:series.id});}
   else if(target.dataset.project)openProject(target.dataset.project);
@@ -187,7 +230,7 @@ document.addEventListener('click',async event=>{
 $('#refresh-button').addEventListener('click',()=>refresh());
 $('#new-project-button').addEventListener('click',()=>showCreate());$('#new-series-button').addEventListener('click',()=>showCreate('series'));
 $('#search').addEventListener('input',event=>{state.query=event.target.value;state.limit=12;clearTimeout(searchTimer);searchTimer=setTimeout(()=>{updateUrl();renderCards();},100);});
-$('#series-filter').addEventListener('change',event=>{state.series=event.target.value;state.limit=12;updateUrl();render();});
+$('#series-filter').addEventListener('change',event=>navigate({channel:state.channel,series:event.target.value}));
 $('#status-filter').addEventListener('change',event=>{state.status=event.target.value;state.limit=12;updateUrl();renderCards();});
 $('#sort-filter').addEventListener('change',event=>{state.sort=event.target.value;updateUrl();renderCards();});
 $('#grid-view').addEventListener('click',()=>{state.layout='grid';updateUrl();$('#grid-view').classList.add('active');$('#list-view').classList.remove('active');renderCards();});
@@ -212,7 +255,7 @@ window.addEventListener('focus',()=>{if(state.data)refresh();});
 document.querySelectorAll('[data-icon]').forEach(node=>node.innerHTML=icon(node.dataset.icon));
 $('#status-filter').value=state.status;$('#sort-filter').value=state.sort;
 $('#grid-view').classList.toggle('active',state.layout==='grid');$('#list-view').classList.toggle('active',state.layout==='list');
-window.addEventListener('hashchange',openHash);
+window.addEventListener('popstate',restoreRoute);
 refresh(true);
 
 let selectedMedia=null,deletePlan=null;

@@ -25,6 +25,7 @@ Mở **http://127.0.0.1:4310**. Website chỉ bind loopback, không cần tài k
 ```sh
 npm run test:manager
 npm run test:manager:browser
+npm run test:manager:navigation
 ```
 
 Backend test dùng fixture tạm. Browser test cần website đang chạy, dùng `playwright-core` với Chrome sẵn có (`/usr/bin/google-chrome`, đổi bằng `CHROME_PATH`), profile tự tách và headless. Không tải browser mới. Thử đọc dữ liệu thật và thao tác trên form nhưng không submit; không lưu ghi chú hoặc tạo tập thử trong workspace thật. Screenshot/report QA ở `.cache/project-manager/qa/`.
@@ -38,3 +39,5 @@ Các lệnh chạy server/browser có thể cần quyền bind localhost trong m
 ## Khôi phục xóa nhầm
 
 Mỗi lần xóa có `.manager-trash/<timestamp-id>/manifest.json`, bản sao các file đã chuyển ở `files/`, cùng nội dung trước đó của registry và danh bạ trong `snapshots`. Dừng chỉnh sửa danh bạ, kiểm tra bản sao rồi ghép lại đường dẫn/entry cần khôi phục; không ghi đè toàn bộ snapshot cũ nếu đã có tập mới. Chạy `npm run projects:check` và `npm run typecheck` sau khôi phục. Chưa có nút khôi phục tự động.
+
+Điều hướng có nút Quay lại và breadcrumb bấm được về cấp cha. Back/Forward khôi phục trang, bộ lọc và hồ sơ; ghi chú chưa lưu vẫn được cảnh báo. Sidebar ẩn scrollbar nhưng giữ thao tác cuộn. Nút chính xanh đậm, phụ viền trung tính, mở Studio xanh lam, xóa đỏ.

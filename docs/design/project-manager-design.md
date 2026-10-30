@@ -38,3 +38,10 @@ Người dùng cần tìm đúng dự án và mở video, thumbnail, kịch bả
 ## Bổ sung chức năng quản lý (2026-10-30)
 
 Giữ tokens/kiểu chữ ở trên; bỏ logo để nhường sidebar cho danh mục. Thanh cuộn mảnh bo tròn, có tương phản trên cả nền sáng và sidebar. Player dùng dialog lớn, video giữ tỷ lệ gốc với controls và poster từ thumbnail đã xuất. Hộp xóa có kiểm kê và nút hủy trước hành động. Tủ sách có thao tác thêm sách ở đầu trang và thêm PDF trong hồ sơ từng cuốn; series giới thiệu số sách thay vì tên một cuốn cố định. Mọi dữ liệu thử ghi vào fixture.
+
+## Điều hướng và phân cấp thao tác (2026-10-30)
+
+- Giữ palette xanh rừng/trắng, chữ 13–16px cho điều hướng. Sidebar cuộn được bằng chuột/chạm/bàn phím nhưng không vẽ scrollbar.
+- Nút chính nền xanh đậm; thao tác phụ viền trung tính; quay lại/hủy kiểu nhẹ; mở Studio xanh lam kèm biểu tượng mở ngoài; xóa đỏ và tách khỏi nhóm tạo nội dung. Trong tủ sách chỉ “Thêm sách” là nút chính.
+- Header: Quay lại + breadcrumb Tổng quan / Kênh / Series. Hồ sơ dự án có breadcrumb riêng đầy đủ tới tên tập; hồ sơ sách đi qua series / tủ sách / tên sách. Các cấp cha là liên kết thật.
+- Lịch sử pushState cho điều hướng, replaceState cho nhập tìm kiếm; Back/Forward phục hồi bộ lọc và hồ sơ. Truy cập trực tiếp không có lịch sử nội bộ thì Quay lại về cấp cha. Giữ cảnh báo ghi chú chưa lưu.

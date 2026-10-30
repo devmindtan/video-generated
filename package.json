@@ -162,7 +162,8 @@
     "test:catalog": "node scripts/catalog/catalog.test.cjs",
     "manager": "node tools/project-manager/server.cjs",
     "test:manager": "node tools/project-manager/manager.test.cjs",
-    "test:manager:browser": "node tools/project-manager/browser.test.cjs"
+    "test:manager:browser": "node tools/project-manager/browser.test.cjs",
+    "test:manager:navigation": "node tools/project-manager/navigation.test.cjs"
   },
   "dependencies": {
     "@lottiefiles/dotlottie-web": "0.81.0",

@@ -1,0 +1,57 @@
+/* Read-only navigation/visual regression checks against the local manager. */
+const {chromium}=require('playwright-core');
+const assert=require('node:assert/strict');
+const fs=require('node:fs'),path=require('node:path');
+(async()=>{
+ const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH||'/usr/bin/google-chrome'});
+ const page=await browser.newPage({viewport:{width:1440,height:1000}}),base=process.env.MANAGER_TEST_URL||'http://127.0.0.1:4310';
+ const out=path.resolve('.cache/project-manager/navigation');fs.mkdirSync(out,{recursive:true});const errors=[],checks=[];
+ page.on('pageerror',e=>errors.push(e.message));const mark=s=>{checks.push(s);console.log('✓ '+s);};
+ const shot=name=>page.screenshot({path:path.join(out,name+'.png')});
+ const overflow=async()=>assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+ try{
+  await page.goto(base,{waitUntil:'networkidle'});await page.locator('.project-card').first().waitFor();
+  assert.ok(await page.locator('#back-button').isDisabled());
+  assert.equal(await page.locator('#navigation').evaluate(n=>getComputedStyle(n).scrollbarWidth),'none');
+  await page.setViewportSize({width:1440,height:650});
+  assert.ok(await page.locator('#navigation').evaluate(n=>{n.scrollTop=300;return n.scrollTop>0;}));
+  await page.setViewportSize({width:1440,height:1000});mark('Sidebar scrollbar hidden while overflow remains scrollable; root Back disabled');
+  await page.locator('[data-channel="tam-ly-cuoc-song"]').click();
+  await page.locator('[data-series="self-help-shorts"]').click();
+  assert.deepEqual(await page.locator('#breadcrumb li').allTextContents(),['Tổng quan','Tâm lý cuộc sống','Self-help và lời nhắc cuộc sống']);
+  await shot('series');mark('Breadcrumb follows real channel and series hierarchy');
+  await page.locator('#back-button').click();await page.waitForURL(u=>!u.searchParams.has('series')&&u.searchParams.get('channel')==='tam-ly-cuoc-song');
+  await page.goForward();await page.waitForURL(u=>u.searchParams.get('series')==='self-help-shorts');
+  assert.match(await page.locator('#page-title').innerText(),/Self-help/);mark('App Back and browser Forward restore collection');
+  await page.locator('#search').fill('mot ngay lam chua tot');await page.waitForTimeout(200);
+  await page.locator('.card-title').click();await page.locator('#drawer:not([hidden])').waitFor();
+  assert.equal(await page.locator('#drawer-breadcrumb li').count(),4);
+  assert.match(await page.locator('#drawer-breadcrumb [aria-current]').innerText(),/một ngày làm chưa tốt/);
+  await shot('detail');
+  await page.locator('#drawer [data-back]').click();await page.locator('#drawer').waitFor({state:'hidden'});
+  assert.equal(await page.locator('#search').inputValue(),'mot ngay lam chua tot');
+  await page.goForward();await page.locator('#drawer:not([hidden])').waitFor();mark('Detail Back/Forward restores prior search and correct project breadcrumb');
+  const notes=page.locator('#notes-text'),original=await notes.inputValue();await notes.fill(original+'\nUnsaved navigation test');
+  page.once('dialog',d=>d.dismiss());await page.goBack();await page.waitForURL(u=>u.hash.includes('project/one-bad-day'));
+  assert.match(await notes.inputValue(),/Unsaved navigation test/);
+  await notes.fill(original);mark('Browser Back cancellation preserves unsaved notes and returns to original URL');
+  await page.locator('#drawer-breadcrumb a').last().click();await page.locator('#drawer').waitFor({state:'hidden'});
+  assert.equal(new URL(page.url()).searchParams.get('series'),'self-help-shorts');assert.equal(new URL(page.url()).hash,'');
+  await page.locator('#breadcrumb a').nth(1).click();assert.equal(new URL(page.url()).searchParams.has('series'),false);mark('Breadcrumb links open project parent and channel parent');
+  await page.goto(base+'/#project/one-bad-day',{waitUntil:'networkidle'});await page.locator('#drawer:not([hidden])').waitFor();
+  await page.locator('#drawer [data-back]').click();await page.locator('#drawer').waitFor({state:'hidden'});
+  assert.equal(new URL(page.url()).searchParams.get('series'),'self-help-shorts');mark('Direct project link Back falls back to canonical parent');
+  await page.goto(base+'/?series=self-help-shorts',{waitUntil:'networkidle'});await page.locator('#back-button').click();await page.waitForURL(u=>u.searchParams.get('channel')==='tam-ly-cuoc-song'&&!u.searchParams.has('series'));mark('Direct series link Back resolves the owner channel');
+  await page.locator('[data-nav="books"]').click();await page.locator('.book-card .card-title').first().click();await page.locator('#drawer:not([hidden])').waitFor();
+  assert.match(await page.locator('#drawer-breadcrumb').innerText(),/Đọc sách, hiểu mình/);assert.match(await page.locator('#drawer-breadcrumb').innerText(),/Tủ sách/);
+  await page.locator('#drawer-breadcrumb a').last().click();await page.locator('#drawer').waitFor({state:'hidden'});
+  assert.equal(new URL(page.url()).searchParams.get('view'),'books');
+  assert.ok(await page.locator('#new-book-button').evaluate(n=>n.classList.contains('primary')));
+  assert.ok(await page.locator('#new-project-button').evaluate(n=>n.classList.contains('secondary')));mark('Book breadcrumb and one primary action in library');
+  await page.setViewportSize({width:768,height:1000});await overflow();await shot('tablet');
+  await page.setViewportSize({width:390,height:844});await overflow();await shot('mobile-books');
+  await page.locator('.book-card .card-title').first().click();await page.locator('#drawer:not([hidden])').waitFor();await overflow();await shot('mobile-book-detail');
+  await page.locator('#drawer-breadcrumb a').last().click();await page.locator('#drawer').waitFor({state:'hidden'});mark('Tablet/mobile breadcrumb remains readable, fits and navigates');
+  assert.deepEqual(errors,[]);fs.writeFileSync(path.join(out,'report.json'),JSON.stringify({checks,errors,mutationsSubmitted:0},null,2));
+ }finally{await browser.close();}
+})().catch(e=>{console.error(e);process.exitCode=1;});

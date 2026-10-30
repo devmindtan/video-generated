@@ -37,3 +37,11 @@
 - Thêm sách riêng, chọn PDF để chép vào private library; không ghi đè và không tự đọc/ingest. Series không còn cố định một tên sách.
 - Xóa có kiểm kê, xác nhận và revision chống xác nhận cũ; chuyển file vào thùng rác, cập nhật registry/catalog và rollback khi thất bại. Nguồn PDF riêng tư giữ nguyên.
 - 10 backend tests + 16 browser checks + 6 catalog tests đạt; `typecheck`, `projects:check` đạt. Kiểm tra hình desktop/tablet/mobile, player, thumbnail, form sách và xác nhận xóa. Browser test không submit ghi/xóa dữ liệu thật.
+
+## Điều hướng và nút thao tác (2026-10-30)
+
+- Sidebar ẩn scrollbar nhưng vẫn cuộn được ở chiều cao cửa sổ 650px; các vùng tài liệu giữ scrollbar riêng.
+- Breadcrumb có liên kết thật: Tổng quan → Kênh → Series → Dự án; hồ sơ sách có thêm Tủ sách. Có nút Quay lại ở header và drawer, mở trực tiếp thì về cấp cha.
+- Lịch sử điều hướng được lưu đúng; Back/Forward khôi phục trang, tìm kiếm và hồ sơ. Hủy rời trang giữ ghi chú chưa lưu.
+- Phân cấp nút: primary xanh đậm, secondary viền trung tính, Studio xanh lam, xóa đỏ, quay lại/hủy kiểu nhẹ. Tủ sách chỉ có một nút tạo chính. Nút Hồ sơ có nhãn rõ ràng.
+- 10 kiểm tra điều hướng bằng Chrome đạt, cộng 16 kiểm tra trình duyệt hiện có và 10 backend tests. TypeScript đạt. Đã xem ảnh desktop, hồ sơ và mobile; không ghi dữ liệu dự án thật.
