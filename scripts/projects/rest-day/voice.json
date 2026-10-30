@@ -1,0 +1,199 @@
+{
+  "voice": "Quốc Tuấn",
+  "selection": "Continue Quốc Tuấn for this new episode; local native 1x",
+  "source": "rest-day/audio/narration-quoc-tuan-v3.wav",
+  "sourceSha256": "cdb7e9d77befe26abd3547e87f13482195a6fd7e1e89224caed5269c95ef5394",
+  "activeSource": "rest-day/audio/narration-quoc-tuan-v3-pauses.wav",
+  "activeSha256": "676757960a0d0974f7212e0bd4258d35b4039bcf27b41d050ba1cb16f323dd16",
+  "qualityProfile": "legacy24",
+  "sampleRateHz": 24000,
+  "playbackRate": 1,
+  "wordMatchRatio": 1.0,
+  "sourceDurationSeconds": 38.14154166666667,
+  "durationSeconds": 45,
+  "addedSilenceSeconds": 6.858458333333333,
+  "cuts": [
+    {
+      "sourceSample": 144331,
+      "addedSamples": 27310
+    },
+    {
+      "sourceSample": 255187,
+      "addedSamples": 22189
+    },
+    {
+      "sourceSample": 384014,
+      "addedSamples": 17069
+    },
+    {
+      "sourceSample": 476817,
+      "addedSamples": 22189
+    },
+    {
+      "sourceSample": 587313,
+      "addedSamples": 22189
+    },
+    {
+      "sourceSample": 730924,
+      "addedSamples": 22189
+    },
+    {
+      "sourceSample": 801635,
+      "addedSamples": 17069
+    }
+  ],
+  "copySpans": [
+    {
+      "sourceStart": 0,
+      "sourceEnd": 144331,
+      "outputStart": 0,
+      "outputEnd": 144331
+    },
+    {
+      "sourceStart": 144331,
+      "sourceEnd": 255187,
+      "outputStart": 171641,
+      "outputEnd": 282497
+    },
+    {
+      "sourceStart": 255187,
+      "sourceEnd": 384014,
+      "outputStart": 304686,
+      "outputEnd": 433513
+    },
+    {
+      "sourceStart": 384014,
+      "sourceEnd": 476817,
+      "outputStart": 450582,
+      "outputEnd": 543385
+    },
+    {
+      "sourceStart": 476817,
+      "sourceEnd": 587313,
+      "outputStart": 565574,
+      "outputEnd": 676070
+    },
+    {
+      "sourceStart": 587313,
+      "sourceEnd": 730924,
+      "outputStart": 698259,
+      "outputEnd": 841870
+    },
+    {
+      "sourceStart": 730924,
+      "sourceEnd": 801635,
+      "outputStart": 864059,
+      "outputEnd": 934770
+    },
+    {
+      "sourceStart": 801635,
+      "sourceEnd": 915397,
+      "outputStart": 951839,
+      "outputEnd": 1065601
+    }
+  ],
+  "tailAddedSamples": 14399,
+  "phraseRanges": [
+    {
+      "text": "Ngày nghỉ, bạn vừa nằm xuống đã nghĩ đến những việc chưa làm. Nghỉ thêm một lát cũng thấy mình đang lãng phí thời gian.",
+      "startSeconds": 0.25,
+      "endSeconds": 5.763791666666667,
+      "scene": 1
+    },
+    {
+      "text": "Bạn quen đo giá trị bản thân bằng kết quả, nên chẳng làm gì lại thấy mình vô dụng.",
+      "startSeconds": 7.401708333333334,
+      "endSeconds": 11.520708333333333,
+      "scene": 2
+    },
+    {
+      "text": "Nhưng hãy nhớ lúc quá mệt: đọc một đoạn ba lần vẫn không hiểu, làm sai rồi mất cả buổi sửa lại.",
+      "startSeconds": 12.94525,
+      "endSeconds": 17.938041666666667,
+      "scene": 3
+    },
+    {
+      "text": "Bạn bỏ thêm thời gian, nhưng chỉ đang trả giá cho việc không chịu nghỉ.",
+      "startSeconds": 18.899250000000002,
+      "endSeconds": 22.366041666666668,
+      "scene": 3
+    },
+    {
+      "text": "Nghỉ ngơi giúp bạn lấy lại sức lực và sự tập trung, kể cả khi công việc chưa xong.",
+      "startSeconds": 23.840583333333335,
+      "endSeconds": 27.919583333333332,
+      "scene": 4
+    },
+    {
+      "text": "Bạn thương người thân vất vả, chỉ mong họ được nghỉ. Vậy sao với bản thân, bạn lại đợi đến kiệt sức?",
+      "startSeconds": 29.344125,
+      "endSeconds": 34.77791666666667,
+      "scene": 5
+    },
+    {
+      "text": "Một ngày nghỉ đâu cần thành tích mới có giá trị.",
+      "startSeconds": 36.302458333333334,
+      "endSeconds": 38.77375,
+      "scene": 6
+    },
+    {
+      "text": "Bạn cần được chăm sóc cả trước khi mình không còn sức để làm thêm điều gì nữa.",
+      "startSeconds": 39.83495833333333,
+      "endSeconds": 43.75004166666667,
+      "scene": 6
+    }
+  ],
+  "chapters": [
+    {
+      "scene": 1,
+      "startSeconds": 0.25,
+      "endSeconds": 5.763791666666667
+    },
+    {
+      "scene": 2,
+      "startSeconds": 7.401708333333334,
+      "endSeconds": 11.520708333333333
+    },
+    {
+      "scene": 3,
+      "startSeconds": 12.94525,
+      "endSeconds": 22.366041666666668
+    },
+    {
+      "scene": 4,
+      "startSeconds": 23.840583333333335,
+      "endSeconds": 27.919583333333332
+    },
+    {
+      "scene": 5,
+      "startSeconds": 29.344125,
+      "endSeconds": 34.77791666666667
+    },
+    {
+      "scene": 6,
+      "startSeconds": 36.302458333333334,
+      "endSeconds": 43.75004166666667
+    }
+  ],
+  "sceneStartsFrames": [
+    0,
+    197,
+    367,
+    693,
+    859,
+    1066
+  ],
+  "sceneLengthsFrames": [
+    203,
+    176,
+    332,
+    172,
+    213,
+    284
+  ],
+  "allOriginalPcmSamplesPreserved": true,
+  "paidApiCalls": 0,
+  "listeningReview": "Pending user review; ASR/PCM checks do not establish perceived quality",
+  "sourceAssembly": "voice-auditions/rest-day-assembled-v3/assembly.json",
+  "rawRecognitionFile": "voice-auditions/rest-day-assembled-v3/recognition/narration-quoc-tuan-recognition.json"
+}

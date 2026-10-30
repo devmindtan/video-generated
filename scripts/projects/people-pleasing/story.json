@@ -1,0 +1,102 @@
+[
+  {
+    "id": "01-mask",
+    "start": 0,
+    "duration": 8,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Miệng nói “được thôi”, trong đầu chỉ muốn từ chối. Bạn nhận thêm việc dù đã quá tải. Làm vừa lòng họ, nhưng lại bỏ mặc mình.",
+    "sentences": [
+      {
+        "text": "Miệng nói “được thôi”, trong đầu chỉ muốn từ chối.",
+        "pauseAfter": 0.28
+      },
+      {
+        "text": "Bạn nhận thêm việc dù đã quá tải. Làm vừa lòng họ, nhưng lại bỏ mặc mình.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "02-collar",
+    "start": 8,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Không phải lần đồng ý nào cũng xuất phát từ lòng tốt. Đôi khi, bạn chỉ sợ người khác thất vọng. Một lời khen thoáng qua, đổi bằng cả buổi tối và công việc còn dang dở của mình.",
+    "sentences": [
+      {
+        "text": "Không phải lần đồng ý nào cũng xuất phát từ lòng tốt. Đôi khi, bạn chỉ sợ người khác thất vọng.",
+        "pauseAfter": 0.28
+      },
+      {
+        "text": "Một lời khen thoáng qua, đổi bằng cả buổi tối và công việc còn dang dở của mình.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "03-silk",
+    "start": 18,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Nếu lần nào bạn cũng nhận lời, người khác dễ nghĩ bạn luôn sẵn sàng. Họ không biết bạn đang bực hay mệt, vì bạn chưa nói ra. Im lặng không khiến giới hạn của bạn tự nhiên được hiểu.",
+    "sentences": [
+      {
+        "text": "Nếu lần nào bạn cũng nhận lời, người khác dễ nghĩ bạn luôn sẵn sàng.",
+        "pauseAfter": 0.28
+      },
+      {
+        "text": "Họ không biết bạn đang bực hay mệt, vì bạn chưa nói ra. Im lặng không khiến giới hạn của bạn tự nhiên được hiểu.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "04-gate",
+    "start": 28,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Thử nói rõ: “Hôm nay tôi không nhận thêm việc.” Hoặc: “Tôi giúp được phần này, phần còn lại thì không.” Bạn có thể lịch sự mà vẫn dứt khoát. Không cần giải thích mãi để được chấp thuận.",
+    "sentences": [
+      {
+        "text": "Thử nói rõ: “Hôm nay tôi không nhận thêm việc.” Hoặc: “Tôi giúp được phần này, phần còn lại thì không.”",
+        "pauseAfter": 0.28
+      },
+      {
+        "text": "Bạn có thể lịch sự mà vẫn dứt khoát. Không cần giải thích mãi để được chấp thuận.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "05-spotlight",
+    "start": 38,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Người khác có thể thất vọng khi bạn từ chối. Điều đó không có nghĩa là bạn ích kỷ. Giúp đỡ là một lựa chọn, không phải lời hứa luôn sẵn sàng. Tử tế không có nghĩa là luôn đồng ý.",
+    "sentences": [
+      {
+        "text": "Người khác có thể thất vọng khi bạn từ chối. Điều đó không có nghĩa là bạn ích kỷ.",
+        "pauseAfter": 0.28
+      },
+      {
+        "text": "Giúp đỡ là một lựa chọn, không phải lời hứa luôn sẵn sàng. Tử tế không có nghĩa là luôn đồng ý.",
+        "pauseAfter": 0
+      }
+    ]
+  }
+]

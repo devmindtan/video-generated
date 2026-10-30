@@ -1,0 +1,215 @@
+[
+  [
+    {
+      "text": "“Chưa từng thất bại.” Nhưng việc muốn",
+      "startMs": 0,
+      "endMs": 1720,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "làm, bạn vẫn chưa bắt đầu.",
+      "startMs": 1720,
+      "endMs": 3200,
+      "timestampMs": 1720,
+      "confidence": null
+    },
+    {
+      "text": "Chưa thua chưa có nghĩa là giỏi.",
+      "startMs": 3540,
+      "endMs": 4760,
+      "timestampMs": 3540,
+      "confidence": null
+    },
+    {
+      "text": "Có thể bạn chỉ chưa dám thử.",
+      "startMs": 5060,
+      "endMs": 6280,
+      "timestampMs": 5060,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Bạn chờ chuẩn bị kỹ hơn, tự",
+      "startMs": 0,
+      "endMs": 1660,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "tin hơn, rồi mới làm.",
+      "startMs": 1660,
+      "endMs": 2880,
+      "timestampMs": 1660,
+      "confidence": null
+    },
+    {
+      "text": "Nghe rất hợp lý.",
+      "startMs": 3100,
+      "endMs": 4180,
+      "timestampMs": 3100,
+      "confidence": null
+    },
+    {
+      "text": "Nhưng nếu lần nào cũng tìm thêm",
+      "startMs": 4400,
+      "endMs": 5620,
+      "timestampMs": 4400,
+      "confidence": null
+    },
+    {
+      "text": "một thứ để chờ, thì đó không",
+      "startMs": 5620,
+      "endMs": 7320,
+      "timestampMs": 5620,
+      "confidence": null
+    },
+    {
+      "text": "còn là chuẩn bị.",
+      "startMs": 7320,
+      "endMs": 7880,
+      "timestampMs": 7320,
+      "confidence": null
+    },
+    {
+      "text": "Đó là né tránh.",
+      "startMs": 8220,
+      "endMs": 8960,
+      "timestampMs": 8220,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Làm thử, bạn mới biết thực tế",
+      "startMs": 0,
+      "endMs": 1840,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "khác dự tính ở đâu.",
+      "startMs": 1840,
+      "endMs": 2720,
+      "timestampMs": 1840,
+      "confidence": null
+    },
+    {
+      "text": "Nếu kết quả chưa tốt, hãy tìm",
+      "startMs": 3040,
+      "endMs": 4680,
+      "timestampMs": 3040,
+      "confidence": null
+    },
+    {
+      "text": "nguyên nhân và đổi cách làm.",
+      "startMs": 4680,
+      "endMs": 5920,
+      "timestampMs": 4680,
+      "confidence": null
+    },
+    {
+      "text": "Thất bại không tự khiến bạn giỏi hơn.",
+      "startMs": 6180,
+      "endMs": 7880,
+      "timestampMs": 6180,
+      "confidence": null
+    },
+    {
+      "text": "Cách bạn sửa sai mới quan trọng.",
+      "startMs": 8220,
+      "endMs": 9520,
+      "timestampMs": 8220,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Thời gian trôi qua, kế hoạch vẫn nằm đó.",
+      "startMs": 0,
+      "endMs": 2360,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Bạn chưa mất mặt vì thất bại,",
+      "startMs": 2620,
+      "endMs": 4060,
+      "timestampMs": 2620,
+      "confidence": null
+    },
+    {
+      "text": "nhưng cũng chưa biết mình có thể",
+      "startMs": 4340,
+      "endMs": 5460,
+      "timestampMs": 4340,
+      "confidence": null
+    },
+    {
+      "text": "làm được gì.",
+      "startMs": 5460,
+      "endMs": 6200,
+      "timestampMs": 5460,
+      "confidence": null
+    },
+    {
+      "text": "Đến lúc nhìn lại, điều khiến bạn",
+      "startMs": 6200,
+      "endMs": 7860,
+      "timestampMs": 6200,
+      "confidence": null
+    },
+    {
+      "text": "tiếc có khi chính là những lần không thử.",
+      "startMs": 7860,
+      "endMs": 9460,
+      "timestampMs": 7860,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Chọn một việc bạn đã hoãn.",
+      "startMs": 0,
+      "endMs": 1360,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Hôm nay, làm một phần nhỏ đến",
+      "startMs": 1580,
+      "endMs": 2980,
+      "timestampMs": 1580,
+      "confidence": null
+    },
+    {
+      "text": "nơi đến chốn.",
+      "startMs": 2980,
+      "endMs": 4020,
+      "timestampMs": 2980,
+      "confidence": null
+    },
+    {
+      "text": "Chưa tốt thì sửa, chưa biết thì học.",
+      "startMs": 4020,
+      "endMs": 5640,
+      "timestampMs": 4020,
+      "confidence": null
+    },
+    {
+      "text": "Đừng giữ thành tích “chưa từng thua”",
+      "startMs": 5960,
+      "endMs": 7260,
+      "timestampMs": 5960,
+      "confidence": null
+    },
+    {
+      "text": "bằng cách mãi không bắt đầu.",
+      "startMs": 7260,
+      "endMs": 8280,
+      "timestampMs": 7260,
+      "confidence": null
+    }
+  ]
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "id": "01-wheel", "start": 0, "duration": 8, "leadIn": 0.16, "tail": 0.3, "targetSpeed": 1, "maxTail": 4,
+    "text": "Ai cũng bảo bạn phải có kỷ luật thép. Nhưng ép mình làm mãi một việc mà không biết để làm gì… liệu bền được bao lâu?",
+    "sentences": [{"text": "Ai cũng bảo bạn phải có kỷ luật thép.", "pauseAfter": 0.35}, {"text": "Nhưng ép mình làm mãi một việc mà không biết để làm gì… liệu bền được bao lâu?", "pauseAfter": 0}]
+  },
+  {
+    "id": "02-gears", "start": 8, "duration": 10, "leadIn": 0.18, "tail": 0.4, "targetSpeed": 1, "maxTail": 4,
+    "text": "Kỷ luật giúp bạn giữ lời với chính mình, kể cả những hôm không có hứng. Nhưng nếu chỉ còn việc ép mình hoàn thành chỉ tiêu, bạn rất dễ quên mục tiêu ban đầu.",
+    "sentences": [{"text": "Kỷ luật giúp bạn giữ lời với chính mình, kể cả những hôm không có hứng.", "pauseAfter": 0.4}, {"text": "Nhưng nếu chỉ còn việc ép mình hoàn thành chỉ tiêu, bạn rất dễ quên mục tiêu ban đầu.", "pauseAfter": 0}]
+  },
+  {
+    "id": "03-fire", "start": 18, "duration": 10, "leadIn": 0.18, "tail": 0.3, "targetSpeed": 1, "maxTail": 4,
+    "text": "Động lực ở đây không phải cơn hưng phấn sau một video truyền cảm hứng. Đó là lý do bạn chọn công việc này, kỹ năng này, và vẫn muốn theo đuổi khi chẳng còn ai cổ vũ.",
+    "sentences": [{"text": "Động lực ở đây không phải cơn hưng phấn sau một video truyền cảm hứng.", "pauseAfter": 0.35}, {"text": "Đó là lý do bạn chọn công việc này, kỹ năng này, và vẫn muốn theo đuổi khi chẳng còn ai cổ vũ.", "pauseAfter": 0}]
+  },
+  {
+    "id": "04-engine", "start": 28, "duration": 10, "leadIn": 0.18, "tail": 0.3, "targetSpeed": 1, "maxTail": 4,
+    "text": "Hãy nghĩ đến một chuyến xe: lý do là đích đến, động lực là nhiên liệu, còn kỷ luật thì giữ tay lái. Chỉ có hứng thì dễ bỏ dở. Chỉ biết gồng thì dễ quên mình đang đi đâu.",
+    "sentences": [{"text": "Hãy nghĩ đến một chuyến xe: lý do là đích đến, động lực là nhiên liệu, còn kỷ luật thì giữ tay lái.", "pauseAfter": 0.3}, {"text": "Chỉ có hứng thì dễ bỏ dở.", "pauseAfter": 0.25}, {"text": "Chỉ biết gồng thì dễ quên mình đang đi đâu.", "pauseAfter": 0}]
+  },
+  {
+    "id": "05-horizon", "start": 38, "duration": 10, "leadIn": 0.18, "tail": 0.5, "targetSpeed": 1, "maxTail": 4,
+    "text": "Trước khi tự siết thêm một nguyên tắc, hãy hỏi: việc này phục vụ điều gì mình thật sự muốn? Giữ lấy thói quen, nhưng đừng quên lý do đã khiến bạn chọn nó.",
+    "sentences": [{"text": "Trước khi tự siết thêm một nguyên tắc, hãy hỏi: việc này phục vụ điều gì mình thật sự muốn?", "pauseAfter": 0.5}, {"text": "Giữ lấy thói quen, nhưng đừng quên lý do đã khiến bạn chọn nó.", "pauseAfter": 0}]
+  }
+]

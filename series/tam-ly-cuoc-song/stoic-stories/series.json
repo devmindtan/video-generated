@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "stoic-stories",
+  "channel": "tam-ly-cuoc-song",
+  "title": "Câu chuyện Stoic dài",
+  "studioFolder": "Stoic-Stories",
+  "formats": [
+    "long"
+  ],
+  "defaultDurationSeconds": null,
+  "summary": "Các video kể chuyện dài hiện có; giữ thời lượng và bản dựng đã làm.",
+  "projects": [
+    {
+      "id": "fouquet-power",
+      "title": "Kịch bản đầy đủ — Đừng tỏa sáng sai cách: Bài học quyền lực từ Nicolas Fouquet",
+      "status": "existing",
+      "format": "long",
+      "paths": {
+        "source": "src/projects/fouquet-power",
+        "scripts": "scripts/projects/fouquet-power",
+        "docs": "docs/projects/fouquet-power",
+        "assets": "public/fouquet-power"
+      },
+      "registrations": [
+        {
+          "id": "StoicFouquetPower",
+          "kind": "Composition"
+        },
+        {
+          "id": "FouquetPowerThumbnail",
+          "kind": "Still"
+        }
+      ]
+    }
+  ]
+}

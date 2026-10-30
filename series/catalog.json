@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "channels": [
+    {
+      "id": "tam-ly-cuoc-song",
+      "title": "Tâm lý cuộc sống",
+      "studioFolder": "Tam-Ly-Cuoc-Song"
+    },
+    {
+      "id": "kids",
+      "title": "Kênh thiếu nhi",
+      "studioFolder": "Kids"
+    },
+    {
+      "id": "client-work",
+      "title": "Video khách hàng",
+      "studioFolder": "Client-Work"
+    }
+  ],
+  "series": [
+    {
+      "id": "self-help-shorts",
+      "channel": "tam-ly-cuoc-song",
+      "path": "series/tam-ly-cuoc-song/self-help-shorts/series.json"
+    },
+    {
+      "id": "stoic-stories",
+      "channel": "tam-ly-cuoc-song",
+      "path": "series/tam-ly-cuoc-song/stoic-stories/series.json"
+    },
+    {
+      "id": "book-insights",
+      "channel": "tam-ly-cuoc-song",
+      "path": "series/tam-ly-cuoc-song/book-insights/series.json"
+    },
+    {
+      "id": "tiny-dino",
+      "channel": "kids",
+      "path": "series/kids/tiny-dino/series.json"
+    },
+    {
+      "id": "ocean-stories",
+      "channel": "kids",
+      "path": "series/kids/ocean-stories/series.json"
+    },
+    {
+      "id": "product-videos",
+      "channel": "client-work",
+      "path": "series/client-work/product-videos/series.json"
+    },
+    {
+      "id": "abc",
+      "channel": "tam-ly-cuoc-song",
+      "path": "series/tam-ly-cuoc-song/abc/series.json"
+    }
+  ]
+}

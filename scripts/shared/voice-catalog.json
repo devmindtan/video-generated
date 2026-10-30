@@ -1,0 +1,10 @@
+{
+  "title": "Nghe thử toàn bộ giọng VieNeu",
+  "temperature": 0.5,
+  "leadIn": 0.16,
+  "tail": 0.3,
+  "sentences": [
+    {"text": "Ta không phải đợi mất đi mới biết một điều quý giá đến đâu.", "pauseAfter": 0.32},
+    {"text": "Đôi chân vẫn đưa mình đi mỗi ngày, nhưng mấy khi ta nghĩ đến chúng… ngoài những lúc thấy đau?", "pauseAfter": 0}
+  ]
+}

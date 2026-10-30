@@ -1,0 +1,46 @@
+{
+  "durationSeconds": 48,
+  "dimensions": [
+    1080,
+    1920
+  ],
+  "voice": "Hải Đăng",
+  "narrationTempo": 1,
+  "minimumWordMatchRatio": 0.9429,
+  "mixPeakDbFS": -1.67,
+  "backgroundBelowVoiceDuringSpeechDb": 12.1,
+  "musicEdit": {
+    "src": "single-task/audio/experience-reverb-full.wav",
+    "from": 0,
+    "trimBefore": 2585.7,
+    "durationInFrames": 1404.3,
+    "playbackRate": 0.85,
+    "volume": null
+  },
+  "speechVolume": 0.33,
+  "pauseVolume": 0.38,
+  "sfxCues": [
+    {
+      "file": "metal-friction.wav",
+      "atSeconds": 8,
+      "durationSeconds": 2,
+      "volume": 0.7
+    },
+    {
+      "file": "engine-rumble.wav",
+      "atSeconds": 29,
+      "durationSeconds": 4,
+      "volume": 0.8
+    }
+  ],
+  "sceneTailSeconds": [
+    1.486,
+    1.866,
+    1.76,
+    0.72,
+    1.429
+  ],
+  "imagesChecked": 5,
+  "apiCalls": 0,
+  "compositionRendered": false
+}

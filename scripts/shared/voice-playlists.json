@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "preferredPlaylist": "production",
+  "playlists": [
+    {
+      "id": "production",
+      "name": "Giọng đã chọn",
+      "voiceNames": ["Hải Đăng", "Minh Đức", "Xuân Vĩnh", "Ngọc Linh", "Quốc Tuấn"],
+      "selectedFrom": {
+        "catalog": "all-presets-v1",
+        "numbers": [5, 11, 14, 16, 25]
+      }
+    }
+  ],
+  "policy": "Ưu tiên nhóm này khi chọn giọng cho nội dung mới; chưa chọn một giọng mặc định duy nhất. Không tự đổi giọng các video đang có hoặc thay giọng B thiếu nhi đã duyệt. Lưu theo tên preset, không dùng số thứ tự để gọi TTS."
+}

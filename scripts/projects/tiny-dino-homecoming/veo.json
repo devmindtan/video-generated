@@ -1,0 +1,110 @@
+{
+  "model": "veo-3.1-fast-generate-preview",
+  "aspectRatio": "16:9",
+  "resolution": "720p",
+  "durationSeconds": 8,
+  "sampleCount": 1,
+  "negativePrompt": "extra limbs, duplicate characters, distorted faces, scary imagery, changing character colors, text, captions, logos, watermarks, speech, singing, music",
+  "promptSuffix": "Original warm colorful 3D family animation. Input image is first frame. Preserve Tí Hon's lime green skin, cream muzzle and belly, rounded coral crest, teal spots and amber eyes; preserve cyan-violet butterfly and pastel snail. Landscape 16:9. Coherent anatomy, natural physics, real character motion, gentle pacing suitable for young children. No words, dialogue, singing, music, text or captions. Only nonverbal sound effects and quiet nature ambience.",
+  "shots": [
+    {
+      "scene": "01-hatch-wide",
+      "model": "veo-3.1-generate-preview",
+      "image": "tiny-dino-homecoming/images/01-hatch.png",
+      "timelineSeconds": 8,
+      "prompt": "Tí Hon rises a little in the already open speckled eggshell, blinks and gives one small cute sneeze. Loose shell fragments wobble, golden sparkles float. Camera gently pushes closer. Sound: delicate shell clicks, cute nonverbal sneeze, soft jungle birds."
+    },
+    {
+      "scene": "01-hatch-close",
+      "image": "tiny-dino-homecoming/images/01-hatch.png",
+      "timelineSeconds": 8,
+      "prompt": "From the exact starting image, camera slowly moves closer to Tí Hon's expressive face. He looks around in wonder, tilts his head, lifts one tiny paw and smiles. Preserve the already open egg. Sound: quiet birds, gentle shell rustle."
+    },
+    {
+      "scene": "02-log-wide",
+      "image": "tiny-dino-homecoming/images/02-log.png",
+      "timelineSeconds": 9,
+      "prompt": "Tí Hon takes two small hesitant steps across the broad low mossy log over shallow water, briefly wobbles, spreads his arms and regains balance safely. Feet stay in natural contact, no falling. Gentle tracking camera. Sound: tiny soft footsteps, flowing shallow water."
+    },
+    {
+      "scene": "02-log-close",
+      "image": "tiny-dino-homecoming/images/02-log.png",
+      "timelineSeconds": 9,
+      "prompt": "Camera gently pushes toward Tí Hon as he holds his arms out, glances at his feet, then beams proudly and takes one careful step. Stay on the same log; no fall, no extra characters. Sound: soft footsteps on moss, birds and gentle water."
+    },
+    {
+      "scene": "03-butterfly-wide",
+      "image": "tiny-dino-homecoming/images/03-butterfly.png",
+      "timelineSeconds": 9,
+      "prompt": "The ONE luminous cyan-violet butterfly flutters slowly toward Tí Hon and lands gently on his snout. He follows it with his eyes, blinks and smiles in delight. Camera steady. Sound: delicate wing flutter and small sparkling chimes, quiet jungle."
+    },
+    {
+      "scene": "03-butterfly-close",
+      "image": "tiny-dino-homecoming/images/03-butterfly.png",
+      "timelineSeconds": 9,
+      "prompt": "Camera slowly moves to a closer view of Tí Hon smiling at the butterfly. Butterfly hovers close to his nose then drifts a little toward the path; Tí Hon tilts his head and takes one tiny curious step. Sound: delicate wing flutter, quiet forest."
+    },
+    {
+      "scene": "04-slide-wide",
+      "image": "tiny-dino-homecoming/images/04-slide.png",
+      "timelineSeconds": 9,
+      "prompt": "Tí Hon is already sitting on the broad smooth curved leaf. He glides down toward a soft dry bed of flower petals. The butterfly follows beside him. His feet point forward, tiny arms spread, petals bounce at landing. Smooth coherent safe movement. Sound: gentle slide whoosh and soft petals."
+    },
+    {
+      "scene": "04-slide-close-v2",
+      "promptSuffix": "Original warm colorful 3D family animation. Input image is first frame. Preserve ONLY the two existing characters: the green baby dinosaur and the ONE luminous cyan-violet butterfly. Tí Hon keeps lime green skin, cream muzzle and belly, coral crest, teal spots and amber eyes. No other creature appears. Landscape 16:9. Natural safe movement, coherent anatomy. No words, speech, singing, music, text or captions. Only forest ambience and soft nonverbal sound effects.",
+      "image": "tiny-dino-homecoming/images/04-slide.png",
+      "timelineSeconds": 9,
+      "prompt": "Tí Hon finishes a short safe glide on the broad leaf into soft dry flower petals. He stays seated with feet forward, looks left then right, a little worried because he is lost. The ONE blue butterfly returns close beside his face and flutters reassuringly. Camera gently moves closer to their faces. Exactly the two original characters, no snails, no new animals, no new arrivals, no duplication, no extra limbs. Sound: soft rustling petals, delicate butterfly wings, peaceful forest."
+    },
+    {
+      "scene": "05-mushrooms-wide",
+      "image": "tiny-dino-homecoming/images/05-mushrooms.png",
+      "timelineSeconds": 16,
+      "prompt": "Tí Hon bends his knees and makes one brave little hop from the bank onto the nearest broad mushroom cap. The cap compresses gently then springs back; he balances and smiles. Butterfly guides nearby. Gentle camera tracking. Sound: flowing water, one soft cartoon boing."
+    },
+    {
+      "scene": "05-mushrooms-close",
+      "image": "tiny-dino-homecoming/images/05-mushrooms.png",
+      "timelineSeconds": 16,
+      "prompt": "Camera gently moves closer to Tí Hon's happy face as he balances on a broad mushroom, gives a small joyful bounce and lands safely with both feet. Butterfly flutters reassuringly beside him. No dangerous fall or diving. Sound: soft boing, tiny footsteps, calm stream."
+    },
+    {
+      "scene": "06-snail-wide",
+      "image": "tiny-dino-homecoming/images/06-snail.png",
+      "timelineSeconds": 14,
+      "prompt": "The friendly pastel snail crawls a small distance toward Tí Hon, leaving a faint shiny trail. Exactly two eye stalks nod in greeting. Tí Hon bends slightly to inspect the candy-like spiral shell while butterfly hovers nearby. Sound: soft grass rustle, delicate shell chime."
+    },
+    {
+      "scene": "06-snail-close-v2",
+      "image": "tiny-dino-homecoming/images/06-snail.png",
+      "timelineSeconds": 14,
+      "prompt": "The friendly pastel snail slowly turns its WHOLE BODY a little toward the distant sunflower hill and gives one subtle nod. Its TWO short eye stalks retain their original length and shape throughout. Tí Hon looks toward the hill, then smiles gratefully. Both dinosaur paws remain relaxed against his own belly, NEVER touching the snail or its eyes. No sticks, no pointing objects, no stretching or grabbing. Butterfly flutters gently overhead. Slow camera move closer. Sound: gentle leaves and quiet forest, no speech."
+    },
+    {
+      "scene": "07-rain-wide",
+      "image": "tiny-dino-homecoming/images/07-rain.png",
+      "timelineSeconds": 12,
+      "prompt": "Tí Hon holds the broad green leaf steadily above himself, the butterfly and snail. Gentle summer rain falls and beads roll off the leaf, friends snuggle under the dry shelter. Warm cozy atmosphere, no lightning. Sound: soft rain pattering on leaf, gentle distant water."
+    },
+    {
+      "scene": "07-rain-close",
+      "image": "tiny-dino-homecoming/images/07-rain.png",
+      "timelineSeconds": 12,
+      "prompt": "Slow close camera move under the green leaf shelter. Tí Hon smiles warmly down at the snail, butterfly gently folds and opens wings beside him, raindrops trickle off the leaf edges. All stay dry and calm. Sound: cozy soft rain and leaf rustle, no thunder."
+    },
+    {
+      "scene": "08-nest-wide",
+      "image": "tiny-dino-homecoming/images/08-nest.png",
+      "timelineSeconds": 13,
+      "prompt": "Tí Hon takes quick joyful little steps toward his loving mother beside the warm nest. Mother lowers her long neck and gently nuzzles the baby. Rainbow shines above the sunny flower hill. Camera tracks slowly. Sound: soft footsteps on grass, birds, gentle nonverbal dinosaur coo."
+    },
+    {
+      "scene": "08-nest-close-v2",
+      "image": "tiny-dino-homecoming/images/08-nest.png",
+      "timelineSeconds": 13,
+      "prompt": "Starting from the already hugging first frame, mother gently nuzzles baby Tí Hon and blinks with a warm smile. Baby stays snuggled in the nest, turns his head toward the LEFT and lifts ONE tiny paw in a grateful wave. Very slow camera PUSH IN toward their faces. Keep exactly the FOUR EXISTING characters: one mother, one baby, ONE small candy-shell snail in its original bottom LEFT position, ONE butterfly in its original LEFT position. The snail stays small and still, exactly two eyes only at stalk tips, NO facial eyes. No new characters anywhere, no right foreground snail, no duplication, no walking into frame, no change in scale. Sound: quiet grass rustle, gentle nonverbal coo, peaceful birds."
+    }
+  ],
+  "provider": "gemini"
+}

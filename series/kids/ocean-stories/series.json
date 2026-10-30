@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "ocean-stories",
+  "channel": "kids",
+  "title": "Chuyện dưới đại dương",
+  "studioFolder": "Ocean-Stories",
+  "formats": [
+    "short",
+    "long"
+  ],
+  "defaultDurationSeconds": null,
+  "summary": "Bọt Biển và những câu chuyện đại dương; footage chuyển động thật, kiểm tra âm thanh theo môi trường.",
+  "projects": [
+    {
+      "id": "glowing-whale",
+      "title": "Kịch bản đầy đủ — Bé Cá Voi Phát Sáng",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/glowing-whale",
+        "scripts": "scripts/projects/glowing-whale",
+        "docs": "docs/projects/glowing-whale",
+        "assets": "public/glowing-whale"
+      },
+      "registrations": [
+        {
+          "id": "GlowingWhale",
+          "kind": "Composition"
+        },
+        {
+          "id": "GlowingWhaleThumbnail",
+          "kind": "Still"
+        }
+      ]
+    }
+  ]
+}

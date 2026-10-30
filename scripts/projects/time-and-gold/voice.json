@@ -1,0 +1,319 @@
+{
+  "voice": "Quốc Tuấn",
+  "selection": "Continue Quốc Tuấn from the previous selected episode; local native 1x",
+  "source": "time-and-gold/audio/narration-quoc-tuan-v1.wav",
+  "sourceSha256": "8655ac832202d4942887eeae323c1b5a6a075f3a923f10fa22218312aed1d5c7",
+  "activeSource": "time-and-gold/audio/narration-quoc-tuan-v2-mother-fix.wav",
+  "activeSha256": "bf4519e29b09c23a131e07ca777a1c523ca12dabc087cb4f7f413d33b404fbcd",
+  "qualityProfile": "legacy24",
+  "sampleRateHz": 24000,
+  "playbackRate": 1,
+  "wordMatchRatio": 0.9829,
+  "sourceDurationSeconds": 45.89966666666667,
+  "durationSeconds": 50,
+  "addedSilenceSeconds": 4.100333333333333,
+  "cuts": [
+    {
+      "sourceSample": 86635,
+      "addedSamples": 8507
+    },
+    {
+      "sourceSample": 140777,
+      "addedSamples": 5317
+    },
+    {
+      "sourceSample": 217886,
+      "addedSamples": 6912
+    },
+    {
+      "sourceSample": 298759,
+      "addedSamples": 5317
+    },
+    {
+      "sourceSample": 356770,
+      "addedSamples": 5317
+    },
+    {
+      "sourceSample": 450725,
+      "addedSamples": 6912
+    },
+    {
+      "sourceSample": 508046,
+      "addedSamples": 5317
+    },
+    {
+      "sourceSample": 570106,
+      "addedSamples": 5317
+    },
+    {
+      "sourceSample": 676212,
+      "addedSamples": 6912
+    },
+    {
+      "sourceSample": 744941,
+      "addedSamples": 5317
+    },
+    {
+      "sourceSample": 828330,
+      "addedSamples": 5317
+    },
+    {
+      "sourceSample": 920940,
+      "addedSamples": 6912
+    },
+    {
+      "sourceSample": 952410,
+      "addedSamples": 5317
+    },
+    {
+      "sourceSample": 1001978,
+      "addedSamples": 5317
+    }
+  ],
+  "copySpans": [
+    {
+      "sourceStart": 0,
+      "sourceEnd": 86635,
+      "outputStart": 0,
+      "outputEnd": 86635
+    },
+    {
+      "sourceStart": 86635,
+      "sourceEnd": 140777,
+      "outputStart": 95142,
+      "outputEnd": 149284
+    },
+    {
+      "sourceStart": 140777,
+      "sourceEnd": 217886,
+      "outputStart": 154601,
+      "outputEnd": 231710
+    },
+    {
+      "sourceStart": 217886,
+      "sourceEnd": 298759,
+      "outputStart": 238622,
+      "outputEnd": 319495
+    },
+    {
+      "sourceStart": 298759,
+      "sourceEnd": 356770,
+      "outputStart": 324812,
+      "outputEnd": 382823
+    },
+    {
+      "sourceStart": 356770,
+      "sourceEnd": 450725,
+      "outputStart": 388140,
+      "outputEnd": 482095
+    },
+    {
+      "sourceStart": 450725,
+      "sourceEnd": 508046,
+      "outputStart": 489007,
+      "outputEnd": 546328
+    },
+    {
+      "sourceStart": 508046,
+      "sourceEnd": 570106,
+      "outputStart": 551645,
+      "outputEnd": 613705
+    },
+    {
+      "sourceStart": 570106,
+      "sourceEnd": 676212,
+      "outputStart": 619022,
+      "outputEnd": 725128
+    },
+    {
+      "sourceStart": 676212,
+      "sourceEnd": 744941,
+      "outputStart": 732040,
+      "outputEnd": 800769
+    },
+    {
+      "sourceStart": 744941,
+      "sourceEnd": 828330,
+      "outputStart": 806086,
+      "outputEnd": 889475
+    },
+    {
+      "sourceStart": 828330,
+      "sourceEnd": 920940,
+      "outputStart": 894792,
+      "outputEnd": 987402
+    },
+    {
+      "sourceStart": 920940,
+      "sourceEnd": 952410,
+      "outputStart": 994314,
+      "outputEnd": 1025784
+    },
+    {
+      "sourceStart": 952410,
+      "sourceEnd": 1001978,
+      "outputStart": 1031101,
+      "outputEnd": 1080669
+    },
+    {
+      "sourceStart": 1001978,
+      "sourceEnd": 1101592,
+      "outputStart": 1085986,
+      "outputEnd": 1185600
+    }
+  ],
+  "tailAddedSamples": 14400,
+  "phraseRanges": [
+    {
+      "text": "Nếu một ngày có thật nhiều tiền, bạn muốn mua lại ngày nào?",
+      "startSeconds": 0.3,
+      "endSeconds": 3.3098,
+      "scene": 1
+    },
+    {
+      "text": "Một buổi chiều còn được ngồi cạnh mẹ?",
+      "startSeconds": 4.264258333333333,
+      "endSeconds": 6.013333333333334,
+      "scene": 1
+    },
+    {
+      "text": "Hay những năm tháng mình còn đủ khỏe để đi bất cứ đâu?",
+      "startSeconds": 6.5916999999999994,
+      "endSeconds": 9.354600000000001,
+      "scene": 1
+    },
+    {
+      "text": "Ta thường hẹn: kiếm đủ tiền rồi sẽ về nhà nhiều hơn.",
+      "startSeconds": 10.242600000000001,
+      "endSeconds": 13.1623,
+      "scene": 2
+    },
+    {
+      "text": "Công việc ổn rồi sẽ chăm sóc bản thân.",
+      "startSeconds": 13.683841666666666,
+      "endSeconds": 15.800941666666667,
+      "scene": 2
+    },
+    {
+      "text": "Cứ thế, những điều quan trọng phải chờ một ngày chưa biết bao giờ tới.",
+      "startSeconds": 16.322483333333334,
+      "endSeconds": 19.787283333333335,
+      "scene": 2
+    },
+    {
+      "text": "Tiền có thể mua một chuyến đi đẹp hơn.",
+      "startSeconds": 20.675283333333333,
+      "endSeconds": 22.638683333333333,
+      "scene": 3
+    },
+    {
+      "text": "Nhưng không mua lại được sức khỏe của năm hai mươi tuổi.",
+      "startSeconds": 23.110225,
+      "endSeconds": 25.421024999999997,
+      "scene": 3
+    },
+    {
+      "text": "Có thể mua một căn nhà lớn, nhưng không giữ mãi những người từng ngồi trong đó.",
+      "startSeconds": 25.942566666666664,
+      "endSeconds": 29.888666666666666,
+      "scene": 3
+    },
+    {
+      "text": "Bạn vẫn cần làm việc, vẫn cần tiền để sống.",
+      "startSeconds": 30.826666666666664,
+      "endSeconds": 33.21536666666667,
+      "scene": 4
+    },
+    {
+      "text": "Nhưng đừng chờ mọi thứ đầy đủ mới dành thời gian cho điều mình quý.",
+      "startSeconds": 33.73690833333333,
+      "endSeconds": 36.911408333333334,
+      "scene": 4
+    },
+    {
+      "text": "Một cuộc hẹn nhỏ hôm nay có thể đáng giá hơn món quà lớn đến quá muộn.",
+      "startSeconds": 37.43305,
+      "endSeconds": 40.84175,
+      "scene": 4
+    },
+    {
+      "text": "Thời gian là vàng.",
+      "startSeconds": 41.729749999999996,
+      "endSeconds": 42.54105,
+      "scene": 5
+    },
+    {
+      "text": "Nhưng vàng còn có thể kiếm thêm.",
+      "startSeconds": 43.16249166666667,
+      "endSeconds": 44.82789166666667,
+      "scene": 5
+    },
+    {
+      "text": "Còn ngày hôm nay, dù giàu đến đâu, bạn cũng chỉ có một lần.",
+      "startSeconds": 45.44943333333333,
+      "endSeconds": 48.60003333333333,
+      "scene": 5
+    }
+  ],
+  "chapters": [
+    {
+      "scene": 1,
+      "startSeconds": 0.3,
+      "endSeconds": 9.354600000000001
+    },
+    {
+      "scene": 2,
+      "startSeconds": 10.242600000000001,
+      "endSeconds": 19.787283333333335
+    },
+    {
+      "scene": 3,
+      "startSeconds": 20.675283333333333,
+      "endSeconds": 29.888666666666666
+    },
+    {
+      "scene": 4,
+      "startSeconds": 30.826666666666664,
+      "endSeconds": 40.84175
+    },
+    {
+      "scene": 5,
+      "startSeconds": 41.729749999999996,
+      "endSeconds": 48.60003333333333
+    }
+  ],
+  "sceneStartsFrames": [
+    0,
+    294,
+    607,
+    911,
+    1239
+  ],
+  "sceneLengthsFrames": [
+    300,
+    319,
+    310,
+    334,
+    261
+  ],
+  "allOriginalPcmSamplesPreserved": false,
+  "paidApiCalls": 0,
+  "listeningReview": "Pending user review; ASR/PCM checks do not establish perceived quality",
+  "speechRepair": {
+    "reason": "User heard mẹ as mẽ; replace only this phrase",
+    "previousSource": "time-and-gold/audio/narration-quoc-tuan-v1-pauses.wav",
+    "previousSha256": "b05cd247c15f8fc434216997938c864292fa8f142de7d0f302e27ec235351556",
+    "replacementSource": "voice-auditions/time-and-gold-mother-fix-v1/25-quoc-tuan.wav",
+    "replacementSha256": "dda4e9950ca2943a05888c15c6d024016cedeeb2fa0f19cf09d26c8deb39d841",
+    "startSample": 102342,
+    "endSample": 145684,
+    "replacementStartSample": 2880,
+    "replacementEndSample": 44858,
+    "ttsText": "Một buổi chiều còn được ngồi cạnh mẹ.",
+    "recognition": "Một buổi chiều con được ngồi cạnh mẹ.",
+    "targetWordAccentCheck": "mẹ present; mẽ absent; listening confirmation still pending",
+    "unaffectedPcmPreserved": true,
+    "allOtherCaptionAndSceneTimesPreserved": true
+  },
+  "copySpansReferTo": "time-and-gold/audio/narration-quoc-tuan-v1-pauses.wav"
+}

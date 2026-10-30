@@ -1,0 +1,78 @@
+{
+  "durationSeconds": 48,
+  "dimensions": [
+    1080,
+    1920
+  ],
+  "voice": "Hải Đăng",
+  "narrationTempo": 1,
+  "minimumWordMatchRatio": 0.9756,
+  "sceneTailSeconds": [
+    2.178,
+    2.468,
+    1.897,
+    2.415,
+    0.982
+  ],
+  "mixPeakDbFS": -0.86,
+  "musicBelowVoiceDuringSpeechDb": 6.68,
+  "musicEdit": {
+    "src": "own-timeline/audio/snowfall.mp3",
+    "from": 0,
+    "trimBefore": 747,
+    "durationInFrames": 1440,
+    "playbackRate": 0.85,
+    "volume": null
+  },
+  "narrationEdits": [
+    {
+      "src": "take-stock/audio/01-shoes-voice-full.wav",
+      "from": 0,
+      "trimBefore": 0,
+      "durationInFrames": 240,
+      "playbackRate": 1,
+      "volume": 1
+    },
+    {
+      "src": "take-stock/audio/02-cage-voice-full.wav",
+      "from": 240,
+      "trimBefore": 0,
+      "durationInFrames": 300,
+      "playbackRate": 1,
+      "volume": 1
+    },
+    {
+      "src": "take-stock/audio/03-perspective-voice-full.wav",
+      "from": 540,
+      "trimBefore": 0,
+      "durationInFrames": 300,
+      "playbackRate": 1,
+      "volume": 1
+    },
+    {
+      "src": "take-stock/audio/04-ground-voice-full.wav",
+      "from": 840,
+      "trimBefore": 0,
+      "durationInFrames": 300,
+      "playbackRate": 1,
+      "volume": 1
+    },
+    {
+      "src": "take-stock/audio/05-pillar-voice-full.wav",
+      "from": 1140,
+      "trimBefore": 0,
+      "durationInFrames": 300,
+      "playbackRate": 1,
+      "volume": 1
+    }
+  ],
+  "speechVolume": 0.35,
+  "pauseVolume": 0.4,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 2,
+  "sfxEnabled": false,
+  "imagesChecked": 5,
+  "geminiVeoCalls": 0,
+  "compositionRendered": false,
+  "listeningReview": "Pending user audition in Studio; numerical checks do not establish perceived quality"
+}

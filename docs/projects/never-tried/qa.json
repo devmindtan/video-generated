@@ -1,0 +1,78 @@
+{
+  "durationSeconds": 48,
+  "dimensions": [
+    1080,
+    1920
+  ],
+  "voice": "Hải Đăng",
+  "narrationTempo": 1,
+  "minimumWordMatchRatio": 0.9459,
+  "sceneTailSeconds": [
+    1.572,
+    0.859,
+    0.365,
+    0.379,
+    1.532
+  ],
+  "mixPeakDbFS": -1.73,
+  "musicBelowVoiceDuringSpeechDb": 11.86,
+  "musicEdit": {
+    "src": "own-timeline/audio/snowfall.mp3",
+    "from": 0,
+    "trimBefore": 747,
+    "durationInFrames": 1440,
+    "playbackRate": 0.85,
+    "volume": null
+  },
+  "narrationEdits": [
+    {
+      "src": "never-tried/audio/01-sword-voice-full.wav",
+      "from": 0,
+      "trimBefore": 0,
+      "durationInFrames": 240,
+      "playbackRate": 1,
+      "volume": 1
+    },
+    {
+      "src": "never-tried/audio/02-anchor-voice-full.wav",
+      "from": 240,
+      "trimBefore": 0,
+      "durationInFrames": 300,
+      "playbackRate": 1,
+      "volume": 1
+    },
+    {
+      "src": "never-tried/audio/03-shield-voice-full.wav",
+      "from": 540,
+      "trimBefore": 0,
+      "durationInFrames": 300,
+      "playbackRate": 1,
+      "volume": 1
+    },
+    {
+      "src": "never-tried/audio/04-chair-voice-full.wav",
+      "from": 840,
+      "trimBefore": 0,
+      "durationInFrames": 300,
+      "playbackRate": 1,
+      "volume": 1
+    },
+    {
+      "src": "never-tried/audio/05-runner-voice-full.wav",
+      "from": 1140,
+      "trimBefore": 0,
+      "durationInFrames": 300,
+      "playbackRate": 1,
+      "volume": 1
+    }
+  ],
+  "speechVolume": 0.18,
+  "pauseVolume": 0.26,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 2,
+  "sfxEnabled": false,
+  "imagesChecked": 5,
+  "geminiVeoCalls": 0,
+  "compositionRendered": false,
+  "listeningReview": "Pending user audition in Studio; numerical checks do not establish perceived quality"
+}

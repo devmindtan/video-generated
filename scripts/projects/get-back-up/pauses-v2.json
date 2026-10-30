@@ -1,0 +1,22 @@
+{
+  "source": "get-back-up/audio/narration-quoc-tuan-v1.wav",
+  "output": "get-back-up/audio/narration-quoc-tuan-v2-pauses.wav",
+  "playbackRate": 0.99,
+  "compositionSeconds": 41,
+  "cuts": [
+    {"near": 3.46, "add": 0.28, "after": "không phải là làm lại"},
+    {"near": 6.1985, "add": 0.5, "after": "đoạn 1"},
+    {"near": 8.94, "add": 0.18, "after": "chẳng tới đâu"},
+    {"near": 10.26, "add": 0.18, "after": "người khác cười"},
+    {"near": 11.9961, "add": 0.5, "after": "đoạn 2"},
+    {"near": 15.21, "add": 0.25, "after": "mãi mãi không làm được"},
+    {"near": 18.9495, "add": 0.5, "after": "đoạn 3"},
+    {"near": 22.17, "add": 0.22, "after": "một việc nhỏ"},
+    {"near": 23.5, "add": 0.16, "after": "điều chưa hiểu"},
+    {"near": 25.24, "add": 0.2, "after": "chỗ mình đang mắc"},
+    {"near": 26.8485, "add": 0.6, "after": "đoạn 4"},
+    {"near": 29.38, "add": 0.24, "after": "vấp ngã biến mất"},
+    {"near": 31.94, "add": 0.3, "after": "chỗ mình đã ngã"},
+    {"near": 33.39, "add": 0.5, "after": "Bạn đã từng ngã ở đó"}
+  ]
+}

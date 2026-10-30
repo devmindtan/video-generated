@@ -1,0 +1,302 @@
+{
+  "voice": "Quốc Tuấn",
+  "selection": "New episode editorial candidate from preferred playlist; pending listening review",
+  "source": "dream-trap/audio/narration-quoc-tuan-v1.wav",
+  "sourceSha256": "501e3ede9f01cb792755aa9255ea7a20867d17013a6f69d4daa5c2c9bbb2581c",
+  "activeSource": "dream-trap/audio/narration-quoc-tuan-v2-pauses.wav",
+  "activeSha256": "7cf30da077f2a76c9a45397839e5148d2a1dbc98e4dd84400fae7142721a7cec",
+  "qualityProfile": "legacy24",
+  "sampleRateHz": 24000,
+  "playbackRate": 1,
+  "wordMatchRatio": 0.9942,
+  "sourceDurationSeconds": 43.752833333333335,
+  "durationSeconds": 48,
+  "addedSilenceSeconds": 4.247166666666667,
+  "cuts": [
+    {
+      "sourceSample": 62407,
+      "addedSamples": 6000
+    },
+    {
+      "sourceSample": 137232,
+      "addedSamples": 6000
+    },
+    {
+      "sourceSample": 201756,
+      "addedSamples": 10800
+    },
+    {
+      "sourceSample": 311465,
+      "addedSamples": 6000
+    },
+    {
+      "sourceSample": 354055,
+      "addedSamples": 6000
+    },
+    {
+      "sourceSample": 409342,
+      "addedSamples": 9600
+    },
+    {
+      "sourceSample": 500743,
+      "addedSamples": 6000
+    },
+    {
+      "sourceSample": 556488,
+      "addedSamples": 6000
+    },
+    {
+      "sourceSample": 620407,
+      "addedSamples": 9600
+    },
+    {
+      "sourceSample": 698837,
+      "addedSamples": 6000
+    },
+    {
+      "sourceSample": 765365,
+      "addedSamples": 6000
+    },
+    {
+      "sourceSample": 852785,
+      "addedSamples": 9600
+    },
+    {
+      "sourceSample": 895586,
+      "addedSamples": 6000
+    },
+    {
+      "sourceSample": 970481,
+      "addedSamples": 6000
+    }
+  ],
+  "copySpans": [
+    {
+      "sourceStart": 0,
+      "sourceEnd": 62407,
+      "outputStart": 0,
+      "outputEnd": 62407
+    },
+    {
+      "sourceStart": 62407,
+      "sourceEnd": 137232,
+      "outputStart": 68407,
+      "outputEnd": 143232
+    },
+    {
+      "sourceStart": 137232,
+      "sourceEnd": 201756,
+      "outputStart": 149232,
+      "outputEnd": 213756
+    },
+    {
+      "sourceStart": 201756,
+      "sourceEnd": 311465,
+      "outputStart": 224556,
+      "outputEnd": 334265
+    },
+    {
+      "sourceStart": 311465,
+      "sourceEnd": 354055,
+      "outputStart": 340265,
+      "outputEnd": 382855
+    },
+    {
+      "sourceStart": 354055,
+      "sourceEnd": 409342,
+      "outputStart": 388855,
+      "outputEnd": 444142
+    },
+    {
+      "sourceStart": 409342,
+      "sourceEnd": 500743,
+      "outputStart": 453742,
+      "outputEnd": 545143
+    },
+    {
+      "sourceStart": 500743,
+      "sourceEnd": 556488,
+      "outputStart": 551143,
+      "outputEnd": 606888
+    },
+    {
+      "sourceStart": 556488,
+      "sourceEnd": 620407,
+      "outputStart": 612888,
+      "outputEnd": 676807
+    },
+    {
+      "sourceStart": 620407,
+      "sourceEnd": 698837,
+      "outputStart": 686407,
+      "outputEnd": 764837
+    },
+    {
+      "sourceStart": 698837,
+      "sourceEnd": 765365,
+      "outputStart": 770837,
+      "outputEnd": 837365
+    },
+    {
+      "sourceStart": 765365,
+      "sourceEnd": 852785,
+      "outputStart": 843365,
+      "outputEnd": 930785
+    },
+    {
+      "sourceStart": 852785,
+      "sourceEnd": 895586,
+      "outputStart": 940385,
+      "outputEnd": 983186
+    },
+    {
+      "sourceStart": 895586,
+      "sourceEnd": 970481,
+      "outputStart": 989186,
+      "outputEnd": 1064081
+    },
+    {
+      "sourceStart": 970481,
+      "sourceEnd": 1050068,
+      "outputStart": 1070081,
+      "outputEnd": 1149668
+    }
+  ],
+  "tailAddedSamples": 2332,
+  "phraseRanges": [
+    {
+      "text": "Bạn đã tưởng tượng rất rõ ngày mình thành công.",
+      "startSeconds": 0.25,
+      "endSeconds": 2.4503,
+      "scene": 1
+    },
+    {
+      "text": "Làm được gì, sống ra sao, ai sẽ nhìn mình khác đi.",
+      "startSeconds": 3.0003,
+      "endSeconds": 5.818,
+      "scene": 1
+    },
+    {
+      "text": "Nhưng hôm nay, bạn đã làm gì cho điều đó?",
+      "startSeconds": 6.368,
+      "endSeconds": 8.4815,
+      "scene": 1
+    },
+    {
+      "text": "Bạn lưu thêm một video, viết thêm một kế hoạch, rồi thấy mình như vừa tiến bộ.",
+      "startSeconds": 9.7815,
+      "endSeconds": 13.7777,
+      "scene": 2
+    },
+    {
+      "text": "Việc cần làm vẫn nằm đó.",
+      "startSeconds": 14.3277,
+      "endSeconds": 15.8273,
+      "scene": 2
+    },
+    {
+      "text": "Chỉ có cảm giác là bạn đang tiến lên.",
+      "startSeconds": 16.3273,
+      "endSeconds": 18.2059,
+      "scene": 2
+    },
+    {
+      "text": "Đáng ngại hơn là khi kết quả không như ý, bạn chỉ tìm điều muốn nghe.",
+      "startSeconds": 19.2059,
+      "endSeconds": 22.564300000000003,
+      "scene": 3
+    },
+    {
+      "text": "Ai góp ý cũng bị xem là không hiểu.",
+      "startSeconds": 23.1143,
+      "endSeconds": 25.162000000000003,
+      "scene": 3
+    },
+    {
+      "text": "Còn sai sót thì lần nào cũng có lý do.",
+      "startSeconds": 25.662000000000003,
+      "endSeconds": 27.9003,
+      "scene": 3
+    },
+    {
+      "text": "Muốn biết mình đang ở đâu, hãy nhìn vào thứ đã làm xong.",
+      "startSeconds": 28.9003,
+      "endSeconds": 31.7182,
+      "scene": 4
+    },
+    {
+      "text": "Thử ý tưởng với người thật. Hỏi điều gì chưa ổn.",
+      "startSeconds": 32.2682,
+      "endSeconds": 34.7402,
+      "scene": 4
+    },
+    {
+      "text": "Một lời góp ý khó nghe có thể giúp bạn sửa điều mình đã bỏ sót.",
+      "startSeconds": 35.2902,
+      "endSeconds": 38.4827,
+      "scene": 4
+    },
+    {
+      "text": "Cứ giữ giấc mơ của bạn.",
+      "startSeconds": 39.4827,
+      "endSeconds": 40.8161,
+      "scene": 5
+    },
+    {
+      "text": "Nhưng đừng lấy điều mình sẽ làm để thay cho điều mình chưa làm.",
+      "startSeconds": 41.366099999999996,
+      "endSeconds": 44.161699999999996,
+      "scene": 5
+    },
+    {
+      "text": "Tương lai ấy cần một việc được bắt đầu ngay hôm nay.",
+      "startSeconds": 44.7617,
+      "endSeconds": 47.202799999999996,
+      "scene": 5
+    }
+  ],
+  "chapters": [
+    {
+      "scene": 1,
+      "startSeconds": 0.25,
+      "endSeconds": 8.4815
+    },
+    {
+      "scene": 2,
+      "startSeconds": 9.7815,
+      "endSeconds": 18.2059
+    },
+    {
+      "scene": 3,
+      "startSeconds": 19.2059,
+      "endSeconds": 27.9003
+    },
+    {
+      "scene": 4,
+      "startSeconds": 28.9003,
+      "endSeconds": 38.4827
+    },
+    {
+      "scene": 5,
+      "startSeconds": 39.4827,
+      "endSeconds": 47.202799999999996
+    }
+  ],
+  "sceneStartsFrames": [
+    0,
+    274,
+    561,
+    852,
+    1169
+  ],
+  "sceneLengthsFrames": [
+    280,
+    293,
+    297,
+    323,
+    271
+  ],
+  "allOriginalPcmSamplesPreserved": true,
+  "paidApiCalls": 0,
+  "listeningReview": "Pending user review; ASR/PCM checks do not establish perceived quality"
+}

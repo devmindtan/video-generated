@@ -1,0 +1,19 @@
+{
+  "title": "Bạn không cần đợi hết sợ mới bắt đầu",
+  "temperature": 0.5,
+  "leadIn": 0.45,
+  "tail": 0.65,
+  "maxDurationSeconds": 90,
+  "sentences": [
+    {
+      "scene": 4,
+      "text": "Mỗi lần thử là một lần bạn biết rõ hơn: điều gì thật sự khó, mình còn thiếu gì, và lần sau cần làm khác ra sao.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 6,
+      "text": "Chọn một việc nhỏ bạn đã trì hoãn. Hôm nay, thử làm việc đó trước khi thấy mình hoàn toàn sẵn sàng.",
+      "pauseAfter": 0
+    }
+  ]
+}

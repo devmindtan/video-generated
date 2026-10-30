@@ -1,0 +1,27 @@
+{
+  "durationSeconds": 48,
+  "dimensions": [
+    1080,
+    1920
+  ],
+  "voice": "Hải Đăng",
+  "narrationTempo": 1,
+  "musicPlaybackRate": 0.8,
+  "minimumWordMatchRatio": 0.92,
+  "mixPeakDbFS": -1.47,
+  "musicBelowVoiceDuringSpeechDb": 8.58,
+  "finalVoiceEndsAtSeconds": 47.384,
+  "sceneTailSeconds": [
+    1.69,
+    2.282,
+    0.563,
+    2.994,
+    0.616
+  ],
+  "imagesChecked": 5,
+  "apiCalls": 0,
+  "compositionRendered": false,
+  "warnings": [
+    "Audition music/voice balance; music is less than 10 dB below active speech."
+  ]
+}

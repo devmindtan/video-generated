@@ -1,0 +1,194 @@
+[
+  [
+    {
+      "text": "Tôi đã khóc khi không có giày",
+      "startMs": 0,
+      "endMs": 1560,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "để đi… cho đến khi tôi thấy",
+      "startMs": 1560,
+      "endMs": 3940,
+      "timestampMs": 1560,
+      "confidence": null
+    },
+    {
+      "text": "một người không có chân để đi giày.",
+      "startMs": 3940,
+      "endMs": 5720,
+      "timestampMs": 3940,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Câu nói ấy không khiến đôi chân",
+      "startMs": 0,
+      "endMs": 1660,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "trần bớt đau.",
+      "startMs": 1660,
+      "endMs": 2680,
+      "timestampMs": 1660,
+      "confidence": null
+    },
+    {
+      "text": "Nhưng nó khiến ta nhận ra: thứ",
+      "startMs": 2920,
+      "endMs": 4500,
+      "timestampMs": 2920,
+      "confidence": null
+    },
+    {
+      "text": "mình vẫn xem là bình thường, có",
+      "startMs": 4500,
+      "endMs": 5920,
+      "timestampMs": 4500,
+      "confidence": null
+    },
+    {
+      "text": "thể lại là điều một người khác mong mỏi.",
+      "startMs": 5920,
+      "endMs": 7400,
+      "timestampMs": 5920,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Ta dễ nhìn thấy đôi giày còn",
+      "startMs": 0,
+      "endMs": 1480,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "thiếu, mà quên đôi chân đang đưa",
+      "startMs": 1480,
+      "endMs": 3180,
+      "timestampMs": 1480,
+      "confidence": null
+    },
+    {
+      "text": "mình đi mỗi ngày.",
+      "startMs": 3180,
+      "endMs": 4120,
+      "timestampMs": 3180,
+      "confidence": null
+    },
+    {
+      "text": "Cứ mải nhìn vào điều chưa có,",
+      "startMs": 4340,
+      "endMs": 5760,
+      "timestampMs": 4340,
+      "confidence": null
+    },
+    {
+      "text": "ta dần coi những gì đang có",
+      "startMs": 6040,
+      "endMs": 7260,
+      "timestampMs": 6040,
+      "confidence": null
+    },
+    {
+      "text": "chẳng đáng là bao.",
+      "startMs": 7260,
+      "endMs": 7920,
+      "timestampMs": 7260,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Ta không phải đợi mất đi mới",
+      "startMs": 0,
+      "endMs": 1380,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "biết một điều quý giá đến đâu.",
+      "startMs": 1380,
+      "endMs": 3180,
+      "timestampMs": 1380,
+      "confidence": null
+    },
+    {
+      "text": "Đôi chân vẫn đưa mình đi mỗi",
+      "startMs": 3180,
+      "endMs": 4720,
+      "timestampMs": 3180,
+      "confidence": null
+    },
+    {
+      "text": "ngày, nhưng mấy khi ta nghĩ đến",
+      "startMs": 4720,
+      "endMs": 6080,
+      "timestampMs": 4720,
+      "confidence": null
+    },
+    {
+      "text": "chúng… ngoài những lúc thấy đau?",
+      "startMs": 6080,
+      "endMs": 7460,
+      "timestampMs": 6080,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Bạn vẫn có thể mong một đôi",
+      "startMs": 0,
+      "endMs": 1500,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "giày tốt hơn.",
+      "startMs": 1500,
+      "endMs": 2280,
+      "timestampMs": 1500,
+      "confidence": null
+    },
+    {
+      "text": "Chỉ đừng vì chưa có nó mà",
+      "startMs": 2660,
+      "endMs": 3720,
+      "timestampMs": 2660,
+      "confidence": null
+    },
+    {
+      "text": "quên trân trọng đôi chân.",
+      "startMs": 3720,
+      "endMs": 4920,
+      "timestampMs": 3720,
+      "confidence": null
+    },
+    {
+      "text": "Biết ơn không phải là thôi mong",
+      "startMs": 5100,
+      "endMs": 6180,
+      "timestampMs": 5100,
+      "confidence": null
+    },
+    {
+      "text": "muốn, mà là đừng đợi mất đi",
+      "startMs": 6180,
+      "endMs": 7920,
+      "timestampMs": 6180,
+      "confidence": null
+    },
+    {
+      "text": "mới nhận ra giá trị.",
+      "startMs": 7920,
+      "endMs": 8920,
+      "timestampMs": 7920,
+      "confidence": null
+    }
+  ]
+]

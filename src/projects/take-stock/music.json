@@ -1,0 +1,14 @@
+{
+  "file": "own-timeline/audio/snowfall.mp3",
+  "speechVolume": 0.35,
+  "pauseVolume": 0.40,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 2,
+  "credit": {
+    "title": "snowfall",
+    "artists": ["Øneheart", "reidenshi"],
+    "sourceUrl": "https://oneheartisok.bandcamp.com/track/snowfall",
+    "processing": "Local playback at 0.85x, not a separately credited official remix."
+  },
+  "editingNote": "Full Snowfall source reused read-only. Native Audio Start/Duration/End, trim and speed stay editable in Studio. Keep speechVolume/pauseVolume and caption ducking here. Fade follows audible clip edges; narration native 1x; no SFX."
+}

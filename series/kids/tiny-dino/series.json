@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "id": "tiny-dino",
+  "channel": "kids",
+  "title": "Những chuyến phiêu lưu của Tí Hon",
+  "studioFolder": "Tiny-Dino",
+  "formats": [
+    "short",
+    "long"
+  ],
+  "defaultDurationSeconds": null,
+  "summary": "Short và tập dài cùng nội dung; phải dùng footage chuyển động thật và giọng B đã duyệt.",
+  "projects": [
+    {
+      "id": "tiny-dino-adventure",
+      "title": "Kịch bản đầy đủ — Chuyến phiêu lưu của chú khủng long con bị lạc",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/tiny-dino-adventure",
+        "scripts": "scripts/projects/tiny-dino-adventure",
+        "docs": "docs/projects/tiny-dino-adventure",
+        "assets": "public/tiny-dino-adventure"
+      },
+      "registrations": [
+        {
+          "id": "TinyDinoAdventure",
+          "kind": "Composition"
+        },
+        {
+          "id": "TinyDinoAdventureChildVoice",
+          "kind": "Composition"
+        },
+        {
+          "id": "TinyDinoAdventureThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "tiny-dino-homecoming",
+      "title": "Kịch bản đầy đủ — Cuộc phiêu lưu tìm đường về tổ của Tí Hon",
+      "status": "existing",
+      "format": "long",
+      "paths": {
+        "source": "src/projects/tiny-dino-homecoming",
+        "scripts": "scripts/projects/tiny-dino-homecoming",
+        "docs": "docs/projects/tiny-dino-homecoming",
+        "assets": "public/tiny-dino-homecoming"
+      },
+      "registrations": [
+        {
+          "id": "TinyDinoHomecoming",
+          "kind": "Composition"
+        },
+        {
+          "id": "TinyDinoHomecomingThumbnail",
+          "kind": "Still"
+        }
+      ]
+    }
+  ]
+}

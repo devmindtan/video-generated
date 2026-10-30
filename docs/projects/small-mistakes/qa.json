@@ -1,0 +1,78 @@
+{
+  "composition": "StoicSmallMistakes",
+  "durationSeconds": 50,
+  "voice": "Quốc Tuấn",
+  "tempo": 1,
+  "sourcePcmPreserved": false,
+  "unaffectedPcmPreserved": true,
+  "speechRepairs": {
+    "previousSource": "small-mistakes/audio/narration-quoc-tuan-v1-pauses.wav",
+    "previousSha256": "a43d71959062dac10672fc9ab4bedbc2ce5a6ae8c050daf4dcf5819100114c54",
+    "replacementSource": "voice-auditions/small-mistakes-pronunciation-fix-v2/25-quoc-tuan.wav",
+    "replacementSha256": "a4c9d4ebdfe04bef0716f62efbbdc98caa8ccaf73c8f1915ee933a74a8b07dd2",
+    "regions": [
+      {
+        "phraseIndex": 4,
+        "startSample": 256196,
+        "endSample": 335305,
+        "replacementStartSample": 4800,
+        "replacementEndSample": 80556
+      },
+      {
+        "phraseIndex": 11,
+        "startSample": 799154,
+        "endSample": 876506,
+        "replacementStartSample": 94956,
+        "replacementEndSample": 171581
+      },
+      {
+        "phraseIndex": 12,
+        "startSample": 877706,
+        "endSample": 976929,
+        "replacementStartSample": 185981,
+        "replacementEndSample": 273454
+      }
+    ],
+    "rawRecognition": "Chắc họ thấy mình kém lắm, lẽ ra mình nên im lặng. Xai thông tin thì đính chính, nói chưa rõ thì tập lại. Một lỗi nhỏ cần được sửa, đâu cần trở thành lý do để bạn tự chê mình.",
+    "unaffectedPcmPreserved": true,
+    "listeningReview": "Pending user confirmation; accent-insensitive ASR is not pronunciation approval"
+  },
+  "addedSilenceSeconds": 1.974875,
+  "captionPages": 29,
+  "captionTextUnchanged": true,
+  "sceneStartsFrames": [
+    0,
+    73,
+    310,
+    542,
+    849,
+    1220
+  ],
+  "imageAssetsVisuallyInspected": 6,
+  "musicEdit": {
+    "src": "Ludovico Einaudi - Night (Official Video).mp3",
+    "from": 0,
+    "trimBefore": 1618.62,
+    "durationInFrames": 1500,
+    "playbackRate": 0.79,
+    "volume": null
+  },
+  "speechEdit": {
+    "src": "small-mistakes/audio/narration-quoc-tuan-v2-pronunciation.wav",
+    "from": 0,
+    "trimBefore": 0,
+    "durationInFrames": null,
+    "playbackRate": 1,
+    "volume": 1
+  },
+  "mixPeakDbFS": -2.09,
+  "musicBelowVoiceDb": 18.5,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 2,
+  "paidApiCalls": 0,
+  "sfxEnabled": false,
+  "videoRendered": false,
+  "thumbnailRendered": false,
+  "listeningReview": "Pending user listening; automated checks do not approve perceived quality",
+  "recognitionNote": "Raw audit reviewed; nên and lỗi nhỏ phrases replaced at native 1x. ASR still spells Sai as Xai; listening review needed, no pronunciation approval inferred."
+}

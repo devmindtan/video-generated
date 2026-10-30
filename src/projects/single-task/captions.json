@@ -1,0 +1,173 @@
+[
+  [
+    {
+      "text": "Thừa nhận đi: không phải lúc nào",
+      "startMs": 180,
+      "endMs": 1600,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "bạn cũng mệt vì việc quá nhiều.",
+      "startMs": 1600,
+      "endMs": 3220,
+      "timestampMs": 1600,
+      "confidence": null
+    },
+    {
+      "text": "Mở mười cái tab, nhưng chẳng hoàn",
+      "startMs": 3480,
+      "endMs": 4980,
+      "timestampMs": 3480,
+      "confidence": null
+    },
+    {
+      "text": "thành nổi một việc.",
+      "startMs": 4980,
+      "endMs": 5580,
+      "timestampMs": 4980,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Kiểm tra thư ba lần, dọn lại",
+      "startMs": 0,
+      "endMs": 1580,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "bàn làm việc, lướt tin tức thêm năm phút.",
+      "startMs": 1580,
+      "endMs": 3540,
+      "timestampMs": 1580,
+      "confidence": null
+    },
+    {
+      "text": "Đó không phải chuẩn bị nữa, mà",
+      "startMs": 3940,
+      "endMs": 5400,
+      "timestampMs": 3940,
+      "confidence": null
+    },
+    {
+      "text": "là né việc khó nhất bạn đang",
+      "startMs": 5400,
+      "endMs": 6740,
+      "timestampMs": 5400,
+      "confidence": null
+    },
+    {
+      "text": "ngại bắt đầu.",
+      "startMs": 6740,
+      "endMs": 7300,
+      "timestampMs": 6740,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Ngồi vào bàn mà tâm trí ở",
+      "startMs": 0,
+      "endMs": 1280,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "chỗ khác chỉ làm hao năng lượng.",
+      "startMs": 1280,
+      "endMs": 3020,
+      "timestampMs": 1280,
+      "confidence": null
+    },
+    {
+      "text": "Làm thì không ra làm, chơi thì",
+      "startMs": 3020,
+      "endMs": 4800,
+      "timestampMs": 3020,
+      "confidence": null
+    },
+    {
+      "text": "không yên tâm.",
+      "startMs": 4800,
+      "endMs": 5680,
+      "timestampMs": 4800,
+      "confidence": null
+    },
+    {
+      "text": "Đến hai giờ chiều, bạn đã mệt",
+      "startMs": 5680,
+      "endMs": 7360,
+      "timestampMs": 5680,
+      "confidence": null
+    },
+    {
+      "text": "mà việc chính vẫn chưa xong.",
+      "startMs": 7360,
+      "endMs": 8520,
+      "timestampMs": 7360,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Dẹp các việc linh tinh sang một bên.",
+      "startMs": 0,
+      "endMs": 2000,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Chọn đúng một việc khó bạn đang né.",
+      "startMs": 2280,
+      "endMs": 3600,
+      "timestampMs": 2280,
+      "confidence": null
+    },
+    {
+      "text": "Đóng mạng xã hội, bấm giờ ba",
+      "startMs": 4020,
+      "endMs": 5540,
+      "timestampMs": 4020,
+      "confidence": null
+    },
+    {
+      "text": "mươi phút và làm cho ra một",
+      "startMs": 5540,
+      "endMs": 7080,
+      "timestampMs": 5540,
+      "confidence": null
+    },
+    {
+      "text": "phần cụ thể.",
+      "startMs": 7080,
+      "endMs": 7600,
+      "timestampMs": 7080,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Đừng tìm cảm hứng nữa.",
+      "startMs": 0,
+      "endMs": 1320,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Quay lại làm việc đi.",
+      "startMs": 1640,
+      "endMs": 2780,
+      "timestampMs": 1640,
+      "confidence": null
+    },
+    {
+      "text": "Cảm hứng sẽ đến sau khi bạn bắt đầu.",
+      "startMs": 3000,
+      "endMs": 4600,
+      "timestampMs": 3000,
+      "confidence": null
+    }
+  ]
+]

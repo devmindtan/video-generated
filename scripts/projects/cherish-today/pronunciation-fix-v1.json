@@ -1,0 +1,13 @@
+{
+  "title": "Nghe lại bốn cụm phát âm — giữ nguyên lời đã duyệt",
+  "temperature": 0.45,
+  "leadIn": 0.3,
+  "tail": 0.8,
+  "maxDurationSeconds": 120,
+  "sentences": [
+    {"scene": 1, "text": "Được nghe giọng nói quen thuộc ấy, ngồi ăn cùng nhau, rồi hỏi han vài chuyện chẳng có gì đặc biệt.", "pauseAfter": 0.65},
+    {"scene": 2, "text": "Ta cứ hẹn một bữa cơm, để dành một chuyến đi, nghĩ rằng đợi bớt bận rồi sẽ dành thời gian cho nhau nhiều hơn.", "pauseAfter": 0.65},
+    {"scene": 3, "text": "Nhưng trong lúc ta chờ một dịp thuận tiện, người mình thương cũng đang già đi, đang mỏi mệt, và có những lúc cần mình mà chẳng nói ra.", "pauseAfter": 0.7},
+    {"scene": 5, "text": "Khi vẫn còn có nhau trong đời, đừng xem sự hiện diện của nhau là điều hiển nhiên, rồi cứ để những điều muốn làm cùng nhau chờ mãi.", "pauseAfter": 0}
+  ]
+}

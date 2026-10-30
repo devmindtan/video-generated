@@ -1,0 +1,17 @@
+{
+  "title": "Rà phát âm các câu cảm xúc — Quốc Tuấn",
+  "temperature": 0.45,
+  "leadIn": 0.2,
+  "tail": 0.3,
+  "maxDurationSeconds": 90,
+  "sentences": [
+    {"text": "Còn người ở nhà chờ bạn về, lại phải chịu những câu nặng nề nhất.", "pauseAfter": 0.5},
+    {"text": "Bạn đã nhịn suốt cả ngày. Về đến nhà, chỉ một câu hỏi cũng khiến bạn cáu.", "pauseAfter": 0.5},
+    {"text": "nên để những bực dọc trút ra, mà chẳng nghĩ nhiều đến cách họ đón nhận.", "pauseAfter": 0.5},
+    {"text": "Nhưng bạn đâu biết rằng. Lời cay nghiệt từ người thân, có thể đau hơn rất nhiều lời khó nghe ngoài đường.", "pauseAfter": 0.5},
+    {"text": "Vì người nói ra là người mình tin tưởng. Họ biết mình yếu lòng ở đâu.", "pauseAfter": 0.5},
+    {"text": "Bạn nói xong rồi nguôi giận. Người nghe vẫn phải sống cùng câu nói ấy.", "pauseAfter": 0.5},
+    {"text": "Bạn thấy nhẹ đi, vì đã trút được bực bội.", "pauseAfter": 0.5},
+    {"text": "còn họ bắt đầu giữ ý hơn, hỏi ít hơn, dè chừng cả những chuyện trước đây vẫn nói rất tự nhiên.", "pauseAfter": 0}
+  ]
+}

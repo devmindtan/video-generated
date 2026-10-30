@@ -1,0 +1,18 @@
+{
+  "provider": "gemini",
+  "model": "veo-3.1-lite-generate-preview",
+  "aspectRatio": "9:16",
+  "resolution": "720p",
+  "durationSeconds": 8,
+  "sampleCount": 1,
+  "negativePrompt": "text, watermark, extra fins, distorted anatomy, camera zoom, speech, music",
+  "promptSuffix": "Family-friendly stylized 3D animation. Preserve the input whale identity and proportions. Stable wide camera, no zoom or cuts, no dialogue or music.",
+  "shots": [
+    {
+      "scene": "api-smoke-test-20261024",
+      "image": "glowing-whale/images/07-shine-v2.png",
+      "timelineSeconds": 8,
+      "prompt": "The same cute round blue baby whale gently waves one existing flipper at the sunset ocean surface. Soft small ripples spread outward. Keep the face and golden belly visible. One calm continuous shot, no jumping or diving."
+    }
+  ]
+}

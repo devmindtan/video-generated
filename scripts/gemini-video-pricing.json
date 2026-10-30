@@ -1,0 +1,16 @@
+{
+  "verifiedAt": "2026-10-24",
+  "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing",
+  "usdPerSecond": {
+    "veo-3.1-generate-preview": {"720p": "0.40", "1080p": "0.40"},
+    "veo-3.1-fast-generate-preview": {"720p": "0.10", "1080p": "0.12"},
+    "veo-3.1-lite-generate-preview": {"720p": "0.05", "1080p": "0.08"}
+  },
+  "exchangeRate": {
+    "vndPerUsd": "26020",
+    "verifiedAt": "2026-10-24",
+    "source": "https://portal.vietcombank.com.vn/Usercontrols/TVPortal.TyGia/pXML.aspx"
+  },
+  "taxAndFeeMultiplier": "1.20",
+  "note": "VCB USD sell rate verified from XML dated 10/24/2026 8:06:56 AM. Buffer is not a tax-rate guarantee or Google's actual conversion rate. Never assume API balance is subscription credit."
+}

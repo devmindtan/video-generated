@@ -1,0 +1,19 @@
+{
+  "title": "Đừng biến một ngày làm chưa tốt thành lý do bỏ cả hành trình",
+  "temperature": 0.4,
+  "leadIn": 0.45,
+  "tail": 0.65,
+  "maxDurationSeconds": 90,
+  "sentences": [
+    {
+      "scene": 3,
+      "text": "Bạn muốn bỏ, vì cố tiếp nghĩa là còn có thể thất vọng về bản thân thêm lần nữa.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 5,
+      "text": "Bạn cần hiểu điều khiến mình dừng lại để còn sửa. Tự trách mình chẳng thay được việc đó.",
+      "pauseAfter": 0.45
+    }
+  ]
+}

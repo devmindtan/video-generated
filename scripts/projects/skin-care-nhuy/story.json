@@ -1,0 +1,83 @@
+[
+  {
+    "id": "01-greeting",
+    "start": 0,
+    "duration": 5,
+    "leadIn": 0.12,
+    "tail": 0.18,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.58,
+    "text": "Xin chào các con vợ của chồng... Hôm nay, chăm mấy vùng da sống nội tâm nhé.",
+    "sentences": [
+      {"text": "Xin chào các con vợ của chồng...", "pauseAfter": 0.24, "gainDb": 0.35},
+      {"text": "Hôm nay, chăm mấy vùng da sống nội tâm nhé.", "pauseAfter": 0, "gainDb": 0.15}
+    ]
+  },
+  {
+    "id": "02-product",
+    "start": 5,
+    "duration": 5,
+    "leadIn": 0.08,
+    "tail": 0.12,
+    "minWordMatchRatio": 0.78,
+    "temperature": 0.54,
+    "text": "Neothera Armpit Cream. Tên gọi nách, nhưng khuỷu tay và đầu gối cũng được ké.",
+    "sentences": [
+      {"text": "Neothera Armpit Cream.", "pauseAfter": 0.16, "gainDb": 0.2},
+      {"text": "Tên gọi nách, nhưng khuỷu tay và đầu gối cũng được ké.", "pauseAfter": 0, "gainDb": 0.35}
+    ]
+  },
+  {
+    "id": "03-ingredients",
+    "start": 10,
+    "duration": 6,
+    "leadIn": 0.08,
+    "tail": 0.12,
+    "minWordMatchRatio": 0.72,
+    "temperature": 0.52,
+    "text": "Mặt sau chữ đông như họp phụ huynh. Nhớ: Alpha Arbutin, Niacinamide và mận Kakadu.",
+    "sentences": [
+      {"text": "Mặt sau chữ đông như họp phụ huynh.", "pauseAfter": 0.2, "gainDb": 0.4},
+      {"text": "Nhớ: Alpha Arbutin, Niacinamide và mận Kakadu.", "pauseAfter": 0, "gainDb": 0.15}
+    ]
+  },
+  {
+    "id": "04-texture",
+    "start": 16,
+    "duration": 5,
+    "leadIn": 0.08,
+    "tail": 0.12,
+    "temperature": 0.58,
+    "text": "Kem trắng, mịn. Bóp vừa đủ, đừng phủ như bánh sinh nhật.",
+    "sentences": [
+      {"text": "Kem trắng, mịn.", "pauseAfter": 0.16, "gainDb": 0.15},
+      {"text": "Bóp vừa đủ, đừng phủ như bánh sinh nhật.", "pauseAfter": 0, "gainDb": 0.45}
+    ]
+  },
+  {
+    "id": "05-apply",
+    "start": 21,
+    "duration": 5,
+    "leadIn": 0.08,
+    "tail": 0.12,
+    "temperature": 0.5,
+    "text": "Thoa nhẹ, tán đều. Da nhạy cảm thì thử một vùng nhỏ trước.",
+    "sentences": [
+      {"text": "Thoa nhẹ, tán đều.", "pauseAfter": 0.14, "gainDb": 0.15},
+      {"text": "Da nhạy cảm thì thử một vùng nhỏ trước.", "pauseAfter": 0, "gainDb": 0.1}
+    ]
+  },
+  {
+    "id": "06-outro",
+    "start": 26,
+    "duration": 4,
+    "leadIn": 0.06,
+    "tail": 0.1,
+    "temperature": 0.6,
+    "text": "Gọn, nhanh, thơm tho. Hết phim... giải tán, các con vợ!",
+    "sentences": [
+      {"text": "Gọn, nhanh, thơm tho.", "pauseAfter": 0.18, "gainDb": 0.2},
+      {"text": "Hết phim... giải tán, các con vợ!", "pauseAfter": 0, "gainDb": 0.5}
+    ]
+  }
+]

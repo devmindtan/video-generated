@@ -1,0 +1,102 @@
+[
+  {
+    "id": "01-shoes",
+    "start": 0,
+    "duration": 8,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Đôi giày vẫn dùng tốt. Nhưng thấy người khác mang đôi đắt hơn, bạn bỗng thấy đôi mình thật tệ. Chưa mất gì, mà đã thấy mình thua kém.",
+    "sentences": [
+      {
+        "text": "Đôi giày vẫn dùng tốt. Nhưng thấy người khác mang đôi đắt hơn, bạn bỗng thấy đôi mình thật tệ.",
+        "pauseAfter": 0.22
+      },
+      {
+        "text": "Chưa mất gì, mà đã thấy mình thua kém.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "02-cage",
+    "start": 8,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Cứ nhìn người có nhiều hơn, lúc nào bạn cũng thấy mình thiếu. Trong khi đó, những gì vẫn giúp bạn sống và làm việc mỗi ngày lại dễ bị bỏ qua, chỉ vì chúng đã quá quen.",
+    "sentences": [
+      {
+        "text": "Cứ nhìn người có nhiều hơn, lúc nào bạn cũng thấy mình thiếu.",
+        "pauseAfter": 0.22
+      },
+      {
+        "text": "Trong khi đó, những gì vẫn giúp bạn sống và làm việc mỗi ngày lại dễ bị bỏ qua, chỉ vì chúng đã quá quen.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "03-tools",
+    "start": 18,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Thử nhìn lại: kỹ năng bạn đã học, công cụ vẫn dùng được, người sẵn lòng giúp khi bạn cần. Những thứ ấy không xóa hết khó khăn. Nhưng chúng cũng không phải là con số không.",
+    "sentences": [
+      {
+        "text": "Thử nhìn lại: kỹ năng bạn đã học, công cụ vẫn dùng được, người sẵn lòng giúp khi bạn cần.",
+        "pauseAfter": 0.22
+      },
+      {
+        "text": "Những thứ ấy không xóa hết khó khăn. Nhưng chúng cũng không phải là con số không.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "04-ground",
+    "start": 28,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Biết ơn không có nghĩa là phải hài lòng với mọi thứ. Bạn vẫn có thể muốn một công việc tốt hơn, một cuộc sống dễ thở hơn, mà không xem những gì mình đang có là vô giá trị.",
+    "sentences": [
+      {
+        "text": "Biết ơn không có nghĩa là phải hài lòng với mọi thứ.",
+        "pauseAfter": 0.22
+      },
+      {
+        "text": "Bạn vẫn có thể muốn một công việc tốt hơn, một cuộc sống dễ thở hơn, mà không xem những gì mình đang có là vô giá trị.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "05-pillar",
+    "start": 38,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Đừng đợi bằng người khác rồi mới hành động. Dùng điều đã học và công cụ đang có để làm tốt hơn việc trước mắt. Biết ơn không giữ bạn đứng yên. Nó nhắc bạn đừng bỏ phí những gì đang có.",
+    "sentences": [
+      {
+        "text": "Đừng đợi bằng người khác rồi mới hành động. Dùng điều đã học và công cụ đang có để làm tốt hơn việc trước mắt.",
+        "pauseAfter": 0.22
+      },
+      {
+        "text": "Biết ơn không giữ bạn đứng yên. Nó nhắc bạn đừng bỏ phí những gì đang có.",
+        "pauseAfter": 0
+      }
+    ]
+  }
+]

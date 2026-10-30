@@ -1,0 +1,102 @@
+[
+  {
+    "id": "01-crossroads",
+    "start": 0,
+    "duration": 8,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Người bảo kiên trì, người khuyên buông bỏ. Người giục mạo hiểm, người nhắc an toàn. Ai cũng có lý. Vậy rốt cuộc, nghe ai?",
+    "sentences": [
+      {
+        "text": "Người bảo kiên trì, người khuyên buông bỏ. Người giục mạo hiểm, người nhắc an toàn.",
+        "pauseAfter": 0.28
+      },
+      {
+        "text": "Ai cũng có lý. Vậy rốt cuộc, nghe ai?",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "02-bottles",
+    "start": 8,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Hãy xem lời khuyên như một toa thuốc: chỉ có ích khi đúng vấn đề. Câu “cố thêm chút nữa” có thể giúp một người bắt đầu, nhưng lại khiến người khác phớt lờ sự mệt mỏi.",
+    "sentences": [
+      {
+        "text": "Hãy xem lời khuyên như một toa thuốc: chỉ có ích khi đúng vấn đề.",
+        "pauseAfter": 0.28
+      },
+      {
+        "text": "Câu “cố thêm chút nữa” có thể giúp một người bắt đầu, nhưng lại khiến người khác phớt lờ sự mệt mỏi.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "03-porcelain",
+    "start": 18,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Người cứ trì hoãn có thể cần một lịch làm việc rõ ràng. Người đã làm suốt nhiều tuần không nghỉ lại cần giảm tải. Cả hai cùng nghe “kỷ luật hơn nữa”, kết quả đâu thể giống nhau.",
+    "sentences": [
+      {
+        "text": "Người cứ trì hoãn có thể cần một lịch làm việc rõ ràng. Người đã làm suốt nhiều tuần không nghỉ lại cần giảm tải.",
+        "pauseAfter": 0.28
+      },
+      {
+        "text": "Cả hai cùng nghe “kỷ luật hơn nữa”, kết quả đâu thể giống nhau.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "04-balance",
+    "start": 28,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Trước khi làm theo, hãy hỏi: mình đang né việc khó, hay thực sự đã quá tải? Mình cần thử sức, hay cần làm chắc điều đang có? Lời khuyên phải trả lời đúng câu hỏi của bạn.",
+    "sentences": [
+      {
+        "text": "Trước khi làm theo, hãy hỏi: mình đang né việc khó, hay thực sự đã quá tải?",
+        "pauseAfter": 0.28
+      },
+      {
+        "text": "Mình cần thử sức, hay cần làm chắc điều đang có? Lời khuyên phải trả lời đúng câu hỏi của bạn.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "05-reflection",
+    "start": 38,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Đừng mượn hoàn cảnh của người khác để quyết định cuộc đời mình. Một lời khuyên đáng giữ không chỉ nghe hay. Nó phải hợp với việc bạn đang đối mặt, và giúp bạn biết nên làm gì.",
+    "sentences": [
+      {
+        "text": "Đừng mượn hoàn cảnh của người khác để quyết định cuộc đời mình.",
+        "pauseAfter": 0.28
+      },
+      {
+        "text": "Một lời khuyên đáng giữ không chỉ nghe hay. Nó phải hợp với việc bạn đang đối mặt, và giúp bạn biết nên làm gì.",
+        "pauseAfter": 0
+      }
+    ]
+  }
+]

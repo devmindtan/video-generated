@@ -1,0 +1,8 @@
+{
+  "file": "single-task/audio/experience-reverb-full.wav",
+  "speechVolume": 0.28,
+  "pauseVolume": 0.36,
+  "fadeInSeconds": 1,
+  "fadeOutSeconds": 2,
+  "editingNote": "Timing/source trim/speed stay editable on native Audio in Studio Edit. Full source reused read-only; narration stays 1x. Fade follows audible clip/composition boundaries. Volumes and fade lengths remain adjustable here."
+}

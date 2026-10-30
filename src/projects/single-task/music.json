@@ -1,0 +1,8 @@
+{
+  "file": "single-task/audio/experience-reverb-full.wav",
+  "sourceFile": "stoic/audio/experience.mp3",
+  "speechVolume": 0.30,
+  "pauseVolume": 0.38,
+  "editingNote": "Edit music start/end and source trim on the Audio clip in Studio Edit. Adjust speechVolume (during narration) and pauseVolume (between narration) here; ducking follows captions without locking music timing.",
+  "version": "Local reverb treatment; not a verified third-party remix"
+}

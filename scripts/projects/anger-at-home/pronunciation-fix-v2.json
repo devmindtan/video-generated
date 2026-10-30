@@ -1,0 +1,14 @@
+{
+  "title": "Các cụm nói tự nhiên hơn — Quốc Tuấn",
+  "temperature": 0.55,
+  "leadIn": 0.2,
+  "tail": 0.3,
+  "maxDurationSeconds": 90,
+  "sentences": [
+    {"text": "Bạn đã nhịn suốt cả ngày. Về đến nhà, chỉ một câu hỏi cũng khiến bạn nổi nóng.", "pauseAfter": 0.5},
+    {"text": "nên để những bực dọc tuôn ra mà chẳng nghĩ nhiều đến cách họ đón nhận.", "pauseAfter": 0.5},
+    {"text": "Bạn nói xong rồi hết giận. Người nghe vẫn phải sống cùng câu nói ấy.", "pauseAfter": 0.5},
+    {"text": "Bạn thấy nhẹ đi vì đã nói hết những bực bội,", "pauseAfter": 0.5},
+    {"text": "còn họ bắt đầu cẩn trọng hơn, hỏi ít hơn, dè chừng cả những chuyện trước đây vẫn nói rất tự nhiên.", "pauseAfter": 0}
+  ]
+}

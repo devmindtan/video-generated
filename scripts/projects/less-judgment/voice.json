@@ -1,0 +1,328 @@
+{
+  "voice": "Quốc Tuấn",
+  "selection": "Continue Quốc Tuấn from the previous selected episode; local native 1x",
+  "source": "less-judgment/audio/narration-quoc-tuan-v1.wav",
+  "sourceSha256": "534b3482778cd43a3348ed6440e04c2e1abf554f0a4af22332c7f0fc79ba831e",
+  "activeSource": "less-judgment/audio/narration-quoc-tuan-v2-pronunciation.wav",
+  "activeSha256": "ffdb9037976479a0473f17f80e14bf2ce419d8f8c47316591128cb4a23deb20a",
+  "qualityProfile": "legacy24",
+  "sampleRateHz": 24000,
+  "playbackRate": 1,
+  "wordMatchRatio": 0.9939,
+  "sourceDurationSeconds": 43.76620833333333,
+  "durationSeconds": 50,
+  "addedSilenceSeconds": 6.233791666666667,
+  "cuts": [
+    {
+      "sourceSample": 38933,
+      "addedSamples": 8195
+    },
+    {
+      "sourceSample": 127687,
+      "addedSamples": 8195
+    },
+    {
+      "sourceSample": 223046,
+      "addedSamples": 12292
+    },
+    {
+      "sourceSample": 271370,
+      "addedSamples": 8195
+    },
+    {
+      "sourceSample": 322337,
+      "addedSamples": 8195
+    },
+    {
+      "sourceSample": 422622,
+      "addedSamples": 12292
+    },
+    {
+      "sourceSample": 476266,
+      "addedSamples": 8195
+    },
+    {
+      "sourceSample": 546240,
+      "addedSamples": 8195
+    },
+    {
+      "sourceSample": 622358,
+      "addedSamples": 12292
+    },
+    {
+      "sourceSample": 673152,
+      "addedSamples": 8195
+    },
+    {
+      "sourceSample": 745135,
+      "addedSamples": 8195
+    },
+    {
+      "sourceSample": 800107,
+      "addedSamples": 12292
+    },
+    {
+      "sourceSample": 867612,
+      "addedSamples": 8195
+    },
+    {
+      "sourceSample": 947170,
+      "addedSamples": 12292
+    }
+  ],
+  "copySpans": [
+    {
+      "sourceStart": 0,
+      "sourceEnd": 38933,
+      "outputStart": 0,
+      "outputEnd": 38933
+    },
+    {
+      "sourceStart": 38933,
+      "sourceEnd": 127687,
+      "outputStart": 47128,
+      "outputEnd": 135882
+    },
+    {
+      "sourceStart": 127687,
+      "sourceEnd": 223046,
+      "outputStart": 144077,
+      "outputEnd": 239436
+    },
+    {
+      "sourceStart": 223046,
+      "sourceEnd": 271370,
+      "outputStart": 251728,
+      "outputEnd": 300052
+    },
+    {
+      "sourceStart": 271370,
+      "sourceEnd": 322337,
+      "outputStart": 308247,
+      "outputEnd": 359214
+    },
+    {
+      "sourceStart": 322337,
+      "sourceEnd": 422622,
+      "outputStart": 367409,
+      "outputEnd": 467694
+    },
+    {
+      "sourceStart": 422622,
+      "sourceEnd": 476266,
+      "outputStart": 479986,
+      "outputEnd": 533630
+    },
+    {
+      "sourceStart": 476266,
+      "sourceEnd": 546240,
+      "outputStart": 541825,
+      "outputEnd": 611799
+    },
+    {
+      "sourceStart": 546240,
+      "sourceEnd": 622358,
+      "outputStart": 619994,
+      "outputEnd": 696112
+    },
+    {
+      "sourceStart": 622358,
+      "sourceEnd": 673152,
+      "outputStart": 708404,
+      "outputEnd": 759198
+    },
+    {
+      "sourceStart": 673152,
+      "sourceEnd": 745135,
+      "outputStart": 767393,
+      "outputEnd": 839376
+    },
+    {
+      "sourceStart": 745135,
+      "sourceEnd": 800107,
+      "outputStart": 847571,
+      "outputEnd": 902543
+    },
+    {
+      "sourceStart": 800107,
+      "sourceEnd": 867612,
+      "outputStart": 914835,
+      "outputEnd": 982340
+    },
+    {
+      "sourceStart": 867612,
+      "sourceEnd": 947170,
+      "outputStart": 990535,
+      "outputEnd": 1070093
+    },
+    {
+      "sourceStart": 947170,
+      "sourceEnd": 1050389,
+      "outputStart": 1082385,
+      "outputEnd": 1185604
+    }
+  ],
+  "tailAddedSamples": 14396,
+  "phraseRanges": [
+    {
+      "text": "Bạn đang uống cà phê.",
+      "startSeconds": 0.3,
+      "endSeconds": 1.4972,
+      "scene": 1
+    },
+    {
+      "text": "Người đối diện liếc sang bàn bên: Ăn mặc thế kia mà cũng ra đường.",
+      "startSeconds": 2.0886583333333335,
+      "endSeconds": 5.486758333333333,
+      "scene": 1
+    },
+    {
+      "text": "Rồi kể chuyện người quen nghỉ việc: Đang ổn định lại bỏ, nghĩ gì không biết.",
+      "startSeconds": 6.178216666666667,
+      "endSeconds": 9.771208333333334,
+      "scene": 1
+    },
+    {
+      "text": "Bạn không biết rõ hai người đó.",
+      "startSeconds": 10.788683333333333,
+      "endSeconds": 12.377183333333333,
+      "scene": 2
+    },
+    {
+      "text": "Nhưng vẫn góp vài câu cho hợp chuyện.",
+      "startSeconds": 12.968641666666667,
+      "endSeconds": 14.817241666666666,
+      "scene": 2
+    },
+    {
+      "text": "Cứ thế, cuộc trò chuyện chỉ còn là những lời khen chê người vắng mặt.",
+      "startSeconds": 15.4587,
+      "endSeconds": 18.741791666666668,
+      "scene": 2
+    },
+    {
+      "text": "Bộ đồ ấy có thể chỉ là sở thích.",
+      "startSeconds": 20.299466666666667,
+      "endSeconds": 22.109566666666666,
+      "scene": 3
+    },
+    {
+      "text": "Quyết định nghỉ việc có thể đã được cân nhắc nhiều tháng.",
+      "startSeconds": 22.701025,
+      "endSeconds": 25.341625,
+      "scene": 3
+    },
+    {
+      "text": "Chỉ nghe vài câu, mình chưa thể hiểu hết chuyện của họ.",
+      "startSeconds": 25.983083333333333,
+      "endSeconds": 28.679683333333333,
+      "scene": 3
+    },
+    {
+      "text": "Không cần phản bác cho căng thẳng.",
+      "startSeconds": 29.841849999999997,
+      "endSeconds": 31.508249999999997,
+      "scene": 4
+    },
+    {
+      "text": "Bạn có thể nói: Chuyện của họ, mình cũng không rõ.",
+      "startSeconds": 32.09970833333333,
+      "endSeconds": 34.79900833333333,
+      "scene": 4
+    },
+    {
+      "text": "Rồi hỏi: Dạo này bạn thế nào?",
+      "startSeconds": 35.49046666666667,
+      "endSeconds": 37.405966666666664,
+      "scene": 4
+    },
+    {
+      "text": "Đưa cuộc nói chuyện trở về người đang ngồi trước mặt.",
+      "startSeconds": 38.31813333333333,
+      "endSeconds": 40.63083333333333,
+      "scene": 4
+    },
+    {
+      "text": "Bạn không cần một lời nhận xét cho mọi chuyện mình nhìn thấy.",
+      "startSeconds": 41.572291666666665,
+      "endSeconds": 44.36219166666667,
+      "scene": 5
+    },
+    {
+      "text": "Một buổi gặp gỡ đâu cần trở thành buổi chấm điểm những người vắng mặt.",
+      "startSeconds": 45.32435833333333,
+      "endSeconds": 48.60015833333333,
+      "scene": 5
+    }
+  ],
+  "chapters": [
+    {
+      "scene": 1,
+      "startSeconds": 0.3,
+      "endSeconds": 9.771208333333334
+    },
+    {
+      "scene": 2,
+      "startSeconds": 10.788683333333333,
+      "endSeconds": 18.741791666666668
+    },
+    {
+      "scene": 3,
+      "startSeconds": 20.299466666666667,
+      "endSeconds": 28.679683333333333
+    },
+    {
+      "scene": 4,
+      "startSeconds": 29.841849999999997,
+      "endSeconds": 40.63083333333333
+    },
+    {
+      "scene": 5,
+      "startSeconds": 41.572291666666665,
+      "endSeconds": 48.60015833333333
+    }
+  ],
+  "sceneStartsFrames": [
+    0,
+    307,
+    592,
+    878,
+    1233
+  ],
+  "sceneLengthsFrames": [
+    313,
+    291,
+    292,
+    361,
+    267
+  ],
+  "allOriginalPcmSamplesPreserved": false,
+  "paidApiCalls": 0,
+  "listeningReview": "Pending user review; ASR/PCM checks do not establish perceived quality",
+  "speechRepairs": {
+    "previousSource": "less-judgment/audio/narration-quoc-tuan-v1-pauses.wav",
+    "previousSha256": "bcd65025df3ee64817f139a8a8138df96905bed7630303c9cc80488bb03a9a17",
+    "replacementSource": "voice-auditions/less-judgment-pronunciation-fix-v2/25-quoc-tuan.wav",
+    "replacementSha256": "0b18cdf4ac116dee8b81d5444f358639125a42b077dae5c3b02adb4f685cf082",
+    "regions": [
+      {
+        "phraseIndex": 2,
+        "startSample": 148277,
+        "endSample": 240636,
+        "replacementStartSample": 4800,
+        "replacementEndSample": 91032
+      },
+      {
+        "phraseIndex": 5,
+        "startSample": 371009,
+        "endSample": 468893,
+        "replacementStartSample": 105432,
+        "replacementEndSample": 184226
+      }
+    ],
+    "rawRecognition": "rồi kể chuyện người quen nghỉ việc, đang ổn định lại bỏ, nghĩ gì không biết. Cứ thế, cuộc trò chuyện chỉ còn là những lời khen chê người vắng mặt.",
+    "unaffectedPcmPreserved": true,
+    "listeningReview": "Pending user confirmation; accent-insensitive ASR is not pronunciation approval"
+  },
+  "copySpansReferTo": "less-judgment/audio/narration-quoc-tuan-v1-pauses.wav"
+}

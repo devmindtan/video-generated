@@ -1,0 +1,32 @@
+{
+  "01-hatch": {
+    "src": "tiny-dino-adventure/video/01-hatch.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-generate-001"
+  },
+  "02-log": {
+    "src": "tiny-dino-adventure/video/02-log.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.8,
+    "model": "veo-3.1-generate-001"
+  },
+  "03-butterfly": {
+    "src": "tiny-dino-adventure/video/03-butterfly.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.6666666666666666,
+    "model": "veo-3.1-generate-001"
+  },
+  "04-slide": {
+    "src": "tiny-dino-adventure/video/04-slide.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.6666666666666666,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "05-goodbye": {
+    "src": "tiny-dino-adventure/video/05-goodbye.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-generate-001"
+  }
+}

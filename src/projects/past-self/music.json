@@ -1,0 +1,9 @@
+{
+  "file": "own-timeline/audio/snowfall.mp3",
+  "sourceStartSeconds": 24.9,
+  "speechVolume": 0.25,
+  "pauseVolume": 0.30,
+  "fadeInSeconds": 1.5,
+  "fadeOutSeconds": 2.0,
+  "videoEndSeconds": 50
+}

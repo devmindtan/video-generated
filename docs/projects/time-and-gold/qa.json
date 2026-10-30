@@ -1,0 +1,61 @@
+{
+  "composition": "StoicTimeAndGold",
+  "durationSeconds": 50,
+  "voice": "Quốc Tuấn",
+  "tempo": 1,
+  "sourcePcmPreserved": false,
+  "unaffectedPcmPreserved": true,
+  "speechRepair": {
+    "reason": "User heard mẹ as mẽ; replace only this phrase",
+    "previousSource": "time-and-gold/audio/narration-quoc-tuan-v1-pauses.wav",
+    "previousSha256": "b05cd247c15f8fc434216997938c864292fa8f142de7d0f302e27ec235351556",
+    "replacementSource": "voice-auditions/time-and-gold-mother-fix-v1/25-quoc-tuan.wav",
+    "replacementSha256": "dda4e9950ca2943a05888c15c6d024016cedeeb2fa0f19cf09d26c8deb39d841",
+    "startSample": 102342,
+    "endSample": 145684,
+    "replacementStartSample": 2880,
+    "replacementEndSample": 44858,
+    "ttsText": "Một buổi chiều còn được ngồi cạnh mẹ.",
+    "recognition": "Một buổi chiều con được ngồi cạnh mẹ.",
+    "targetWordAccentCheck": "mẹ present; mẽ absent; listening confirmation still pending",
+    "unaffectedPcmPreserved": true,
+    "allOtherCaptionAndSceneTimesPreserved": true
+  },
+  "addedSilenceSeconds": 4.100333333333333,
+  "captionPages": 27,
+  "captionTextUnchanged": true,
+  "sceneStartsFrames": [
+    0,
+    294,
+    607,
+    911,
+    1239
+  ],
+  "imageAssetsVisuallyInspected": 5,
+  "musicEdit": {
+    "src": "Ludovico Einaudi - Night (Official Video).mp3",
+    "from": 0,
+    "trimBefore": 1557,
+    "durationInFrames": 1500,
+    "playbackRate": 0.85,
+    "volume": null
+  },
+  "speechEdit": {
+    "src": "time-and-gold/audio/narration-quoc-tuan-v2-mother-fix.wav",
+    "from": 0,
+    "trimBefore": 0,
+    "durationInFrames": null,
+    "playbackRate": 1,
+    "volume": 1
+  },
+  "mixPeakDbFS": -1.97,
+  "musicBelowVoiceDb": 14.84,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 2,
+  "paidApiCalls": 0,
+  "sfxEnabled": false,
+  "videoRendered": false,
+  "thumbnailRendered": false,
+  "listeningReview": "Pending user listening; automated checks do not approve perceived quality",
+  "recognitionNote": "Original audit 98.29%; mẹ phrase replaced with accent-aware target check. Listening confirmation pending; normalized word-match scores do not validate tones."
+}

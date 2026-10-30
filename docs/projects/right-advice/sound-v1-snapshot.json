@@ -1,0 +1,9 @@
+{
+  "note": "Original source files and generator are preserved unchanged. Snapshot of last user-edited cue timing before sound-v2.",
+  "fps": 30,
+  "cues": [
+    {"file": "right-advice/audio/crossroads-wind.wav", "from": 60, "durationInFrames": 90, "volume": 0.8},
+    {"file": "right-advice/audio/porcelain-crack.wav", "from": 539, "durationInFrames": 36, "volume": 0.75},
+    {"file": "right-advice/audio/brass-clink.wav", "from": 842, "durationInFrames": 42, "volume": 0.8}
+  ]
+}

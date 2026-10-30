@@ -1,0 +1,14 @@
+{
+  "title": "Đứng dậy sau vấp ngã — nghe thử giọng",
+  "temperature": 0.5,
+  "leadIn": 0.16,
+  "tail": 0.35,
+  "maxDurationSeconds": 120,
+  "sentences": [
+    {"text": "Sau một lần thất bại, điều khó nhất đôi khi không phải là làm lại. Mà là dám tin rằng mình vẫn có thể làm được.", "pauseAfter": 0.4},
+    {"text": "Bạn sợ thử thêm lần nữa rồi vẫn chẳng tới đâu. Sợ người khác cười. Sợ lại phải thất vọng về chính mình.", "pauseAfter": 0.4},
+    {"text": "Nhưng một lần làm chưa được không có nghĩa là mãi mãi không làm được. Hãy nhìn lại xem lần trước mình sai ở đâu, để lần này làm khác đi.", "pauseAfter": 0.4},
+    {"text": "Chưa đủ sức làm lại tất cả thì bắt đầu từ một việc nhỏ. Học lại điều chưa hiểu. Nhờ giúp ở chỗ mình đang mắc. Không cần chứng minh gì với ai.", "pauseAfter": 0.4},
+    {"text": "Đứng dậy không khiến lần vấp ngã biến mất. Nhưng nó cho bạn cơ hội đi xa hơn chỗ mình đã ngã. Bạn đã từng ngã ở đó. Không có nghĩa là bạn phải dừng ở đó.", "pauseAfter": 0}
+  ]
+}

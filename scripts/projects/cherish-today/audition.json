@@ -1,0 +1,50 @@
+{
+  "title": "Đừng để lời thương bắt đầu bằng giá như",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.8,
+  "maxDurationSeconds": 120,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Đôi khi, điều ta mong mỏi nhất lại chỉ là được sống thêm một ngày bình thường bên người mình thương.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 2,
+      "text": "Ta cứ hẹn một bữa cơm, để dành một chuyến đi, nghĩ rằng đợi bớt bận rồi sẽ dành thời gian cho nhau nhiều hơn.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 3,
+      "text": "Nhưng trong lúc ta chờ một dịp thuận tiện, người mình thương cũng đang già đi, đang mỏi mệt, và có những lúc cần mình mà chẳng nói ra.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 4,
+      "text": "Có khi chỉ mong mình ngồi thêm một lát, nghe hết câu chuyện, hoặc nhớ gọi về mà không cần có việc gì.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 5,
+      "text": "Chẳng ai biết ngày mai sẽ ra sao.",
+      "pauseAfter": 0.35
+    },
+    {
+      "scene": 5,
+      "text": "Khi vẫn còn có nhau trong đời, đừng xem sự hiện diện của nhau là điều hiển nhiên, rồi cứ để những điều muốn làm cùng nhau chờ mãi.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 6,
+      "text": "Hãy để người mình thương cảm nhận được tình thương ấy ngay hôm nay,",
+      "pauseAfter": 0.35
+    },
+    {
+      "scene": 6,
+      "text": "để những lời chưa nói không phải bắt đầu bằng hai chữ giá như.",
+      "pauseAfter": 0
+    }
+  ],
+  "edit": "45s editorial cut; retained native takes, no new synthesis"
+}

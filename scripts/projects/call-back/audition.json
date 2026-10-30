@@ -1,0 +1,21 @@
+{
+  "title": "Để mai — cho đến khi không còn ngày mai",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.8,
+  "maxDurationSeconds": 120,
+  "sentences": [
+    {"scene": 1, "text": "Điện thoại hiện tên mẹ.", "pauseAfter": 0.3},
+    {"scene": 1, "text": "Bạn nhìn qua rồi úp xuống: Để lát gọi lại.", "pauseAfter": 0.35},
+    {"scene": 1, "text": "Chẳng có chuyện gì nghiêm trọng. Bạn chỉ đang bận, như mọi ngày.", "pauseAfter": 0.6},
+    {"scene": 2, "text": "Ta dễ dành thời gian cho những việc có hạn chót.", "pauseAfter": 0.3},
+    {"scene": 2, "text": "Còn một bữa cơm với nhà, một cuộc hỏi han… lại cứ để sau.", "pauseAfter": 0.3},
+    {"scene": 2, "text": "Vì nghĩ người thân vẫn luôn ở đó.", "pauseAfter": 0.65},
+    {"scene": 3, "text": "Rồi đến một ngày, bạn chỉ muốn nghe lại câu: Ăn cơm chưa con?", "pauseAfter": 0.5},
+    {"scene": 3, "text": "Cầm điện thoại lên, mới nhận ra người từng gọi cho mình mỗi tối… giờ không thể gọi nữa.", "pauseAfter": 1.25},
+    {"scene": 4, "text": "Điều làm bạn tiếc không phải là chưa mua được món quà đắt tiền.", "pauseAfter": 0.35},
+    {"scene": 4, "text": "Mà là từng có thể ngồi lại thêm một chút, nghe hết một câu chuyện… nhưng đã vội đi.", "pauseAfter": 0.65},
+    {"scene": 5, "text": "Nếu vẫn còn người để gọi, còn một nơi để về,", "pauseAfter": 0.35},
+    {"scene": 5, "text": "đừng để mọi lời thương chỉ được nói bằng hai chữ giá như.", "pauseAfter": 0}
+  ]
+}

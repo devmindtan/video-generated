@@ -1,0 +1,70 @@
+{
+  "composition": "StoicLessJudgment",
+  "durationSeconds": 50,
+  "voice": "Quốc Tuấn",
+  "tempo": 1,
+  "sourcePcmPreserved": false,
+  "unaffectedPcmPreserved": true,
+  "speechRepairs": {
+    "previousSource": "less-judgment/audio/narration-quoc-tuan-v1-pauses.wav",
+    "previousSha256": "bcd65025df3ee64817f139a8a8138df96905bed7630303c9cc80488bb03a9a17",
+    "replacementSource": "voice-auditions/less-judgment-pronunciation-fix-v2/25-quoc-tuan.wav",
+    "replacementSha256": "0b18cdf4ac116dee8b81d5444f358639125a42b077dae5c3b02adb4f685cf082",
+    "regions": [
+      {
+        "phraseIndex": 2,
+        "startSample": 148277,
+        "endSample": 240636,
+        "replacementStartSample": 4800,
+        "replacementEndSample": 91032
+      },
+      {
+        "phraseIndex": 5,
+        "startSample": 371009,
+        "endSample": 468893,
+        "replacementStartSample": 105432,
+        "replacementEndSample": 184226
+      }
+    ],
+    "rawRecognition": "rồi kể chuyện người quen nghỉ việc, đang ổn định lại bỏ, nghĩ gì không biết. Cứ thế, cuộc trò chuyện chỉ còn là những lời khen chê người vắng mặt.",
+    "unaffectedPcmPreserved": true,
+    "listeningReview": "Pending user confirmation; accent-insensitive ASR is not pronunciation approval"
+  },
+  "addedSilenceSeconds": 6.233791666666667,
+  "captionPages": 24,
+  "captionTextUnchanged": true,
+  "sceneStartsFrames": [
+    0,
+    307,
+    592,
+    878,
+    1233
+  ],
+  "imageAssetsVisuallyInspected": 5,
+  "musicEdit": {
+    "src": "Ludovico Einaudi - Night (Official Video).mp3",
+    "from": 0,
+    "trimBefore": 1618.62,
+    "durationInFrames": 1500,
+    "playbackRate": 0.79,
+    "volume": null
+  },
+  "speechEdit": {
+    "src": "less-judgment/audio/narration-quoc-tuan-v2-pronunciation.wav",
+    "from": 0,
+    "trimBefore": 0,
+    "durationInFrames": null,
+    "playbackRate": 1,
+    "volume": 1
+  },
+  "mixPeakDbFS": -2.09,
+  "musicBelowVoiceDb": 18.77,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 2,
+  "paidApiCalls": 0,
+  "sfxEnabled": false,
+  "videoRendered": false,
+  "thumbnailRendered": false,
+  "listeningReview": "Pending user listening; automated checks do not approve perceived quality",
+  "recognitionNote": "Original raw audit reviewed; quen and scene 2 summary repaired. Replacement raw transcript matches accents; listening review pending."
+}

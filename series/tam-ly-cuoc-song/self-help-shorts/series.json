@@ -1,0 +1,724 @@
+{
+  "schemaVersion": 1,
+  "id": "self-help-shorts",
+  "channel": "tam-ly-cuoc-song",
+  "title": "Self-help và lời nhắc cuộc sống",
+  "studioFolder": "Self-Help-Shorts",
+  "formats": [
+    "short"
+  ],
+  "defaultDurationSeconds": 45,
+  "summary": "Các Shorts triết lý/tâm lý hiện có; cùng một tập giữ video và thumbnail cạnh nhau.",
+  "projects": [
+    {
+      "id": "one-bad-day",
+      "title": "Đừng biến một ngày làm chưa tốt thành lý do bỏ cả hành trình",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/one-bad-day",
+        "scripts": "scripts/projects/one-bad-day",
+        "docs": "docs/projects/one-bad-day",
+        "assets": "public/one-bad-day"
+      },
+      "registrations": [
+        {
+          "id": "StoicOneBadDay",
+          "kind": "Composition"
+        },
+        {
+          "id": "OneBadDayThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "start-before-ready",
+      "title": "Bạn không cần đợi hết sợ mới bắt đầu",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/start-before-ready",
+        "scripts": "scripts/projects/start-before-ready",
+        "docs": "docs/projects/start-before-ready",
+        "assets": "public/start-before-ready"
+      },
+      "registrations": [
+        {
+          "id": "StoicStartBeforeReady",
+          "kind": "Composition"
+        },
+        {
+          "id": "StartBeforeReadyThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "stoic",
+      "title": "Kịch bản đầy đủ — 3 thứ bạn nên ngừng bận tâm",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/stoic",
+        "scripts": "scripts/projects/stoic",
+        "docs": "docs/projects/stoic",
+        "assets": "public/stoic"
+      },
+      "registrations": [
+        {
+          "id": "StoicControl",
+          "kind": "Composition"
+        },
+        {
+          "id": "StoicThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "past-self",
+      "title": "Kịch bản đầy đủ — Học cách tha thứ cho chính mình trong quá khứ",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/past-self",
+        "scripts": "scripts/projects/past-self",
+        "docs": "docs/projects/past-self",
+        "assets": "public/past-self"
+      },
+      "registrations": [
+        {
+          "id": "StoicPastSelf",
+          "kind": "Composition"
+        },
+        {
+          "id": "PastSelfThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "let-it-settle",
+      "title": "Kịch bản đầy đủ — Bạn không cần phải sửa chữa mọi thứ ngay lập tức",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/let-it-settle",
+        "scripts": "scripts/projects/let-it-settle",
+        "docs": "docs/projects/let-it-settle",
+        "assets": "public/let-it-settle"
+      },
+      "registrations": [
+        {
+          "id": "StoicLetItSettle",
+          "kind": "Composition"
+        },
+        {
+          "id": "LetItSettleThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "single-task",
+      "title": "Kịch bản đầy đủ — Một việc. Không tab thứ hai.",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/single-task",
+        "scripts": "scripts/projects/single-task",
+        "docs": "docs/projects/single-task",
+        "assets": "public/single-task"
+      },
+      "registrations": [
+        {
+          "id": "StoicSingleTask",
+          "kind": "Composition"
+        },
+        {
+          "id": "SingleTaskThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "discipline-purpose",
+      "title": "Kịch bản đầy đủ — Kỷ luật cần một lý do",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/discipline-purpose",
+        "scripts": "scripts/projects/discipline-purpose",
+        "docs": "docs/projects/discipline-purpose",
+        "assets": "public/discipline-purpose"
+      },
+      "registrations": [
+        {
+          "id": "StoicDisciplinePurpose",
+          "kind": "Composition"
+        },
+        {
+          "id": "DisciplinePurposeThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "right-advice",
+      "title": "Kịch bản đầy đủ — Lời khuyên đúng còn tùy hoàn cảnh",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/right-advice",
+        "scripts": "scripts/projects/right-advice",
+        "docs": "docs/projects/right-advice",
+        "assets": "public/right-advice"
+      },
+      "registrations": [
+        {
+          "id": "StoicRightAdvice",
+          "kind": "Composition"
+        },
+        {
+          "id": "RightAdviceThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "people-pleasing",
+      "title": "Kịch bản đầy đủ — Tử tế, đừng quên giới hạn",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/people-pleasing",
+        "scripts": "scripts/projects/people-pleasing",
+        "docs": "docs/projects/people-pleasing",
+        "assets": "public/people-pleasing"
+      },
+      "registrations": [
+        {
+          "id": "StoicPeoplePleasing",
+          "kind": "Composition"
+        },
+        {
+          "id": "PeoplePleasingThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "never-tried",
+      "title": "Kịch bản đầy đủ — Chưa thua, hay chưa thử?",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/never-tried",
+        "scripts": "scripts/projects/never-tried",
+        "docs": "docs/projects/never-tried",
+        "assets": "public/never-tried"
+      },
+      "registrations": [
+        {
+          "id": "StoicNeverTried",
+          "kind": "Composition"
+        },
+        {
+          "id": "NeverTriedThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "take-stock",
+      "title": "Kịch bản đầy đủ — Đừng đợi mất đi mới biết trân trọng",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/take-stock",
+        "scripts": "scripts/projects/take-stock",
+        "docs": "docs/projects/take-stock",
+        "assets": "public/take-stock"
+      },
+      "registrations": [
+        {
+          "id": "StoicTakeStock",
+          "kind": "Composition"
+        },
+        {
+          "id": "TakeStockThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "get-back-up",
+      "title": "Đứng dậy sau vấp ngã — lời và giọng đã chốt",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/get-back-up",
+        "scripts": "scripts/projects/get-back-up",
+        "docs": "docs/projects/get-back-up",
+        "assets": "public/get-back-up"
+      },
+      "registrations": [
+        {
+          "id": "StoicGetBackUp",
+          "kind": "Composition"
+        },
+        {
+          "id": "GetBackUpThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "dream-trap",
+      "title": "Bạn đang cố gắng… hay chỉ đang tưởng tượng?",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/dream-trap",
+        "scripts": "scripts/projects/dream-trap",
+        "docs": "docs/projects/dream-trap",
+        "assets": "public/dream-trap"
+      },
+      "registrations": [
+        {
+          "id": "StoicDreamTrap",
+          "kind": "Composition"
+        },
+        {
+          "id": "DreamTrapThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "call-back",
+      "title": "“Để mai” — cho đến khi không còn ngày mai",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/call-back",
+        "scripts": "scripts/projects/call-back",
+        "docs": "docs/projects/call-back",
+        "assets": "public/call-back"
+      },
+      "registrations": [
+        {
+          "id": "StoicCallBack",
+          "kind": "Composition"
+        },
+        {
+          "id": "CallBackThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "time-and-gold",
+      "title": "Có tiền rồi, bạn sẽ mua lại ngày nào?",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/time-and-gold",
+        "scripts": "scripts/projects/time-and-gold",
+        "docs": "docs/projects/time-and-gold",
+        "assets": "public/time-and-gold"
+      },
+      "registrations": [
+        {
+          "id": "StoicTimeAndGold",
+          "kind": "Composition"
+        },
+        {
+          "id": "TimeAndGoldThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "less-judgment",
+      "title": "Chuyện gì cũng cần một lời nhận xét sao?",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/less-judgment",
+        "scripts": "scripts/projects/less-judgment",
+        "docs": "docs/projects/less-judgment",
+        "assets": "public/less-judgment"
+      },
+      "registrations": [
+        {
+          "id": "StoicLessJudgment",
+          "kind": "Composition"
+        },
+        {
+          "id": "LessJudgmentThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "small-mistakes",
+      "title": "Bạn còn nghĩ mãi. Họ có khi đã quên.",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/small-mistakes",
+        "scripts": "scripts/projects/small-mistakes",
+        "docs": "docs/projects/small-mistakes",
+        "assets": "public/small-mistakes"
+      },
+      "registrations": [
+        {
+          "id": "StoicSmallMistakes",
+          "kind": "Composition"
+        },
+        {
+          "id": "SmallMistakesThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "anger-at-home",
+      "title": "Đừng để người thương bạn phải thu mình",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/anger-at-home",
+        "scripts": "scripts/projects/anger-at-home",
+        "docs": "docs/projects/anger-at-home",
+        "assets": "public/anger-at-home"
+      },
+      "registrations": [
+        {
+          "id": "StoicAngerAtHome",
+          "kind": "Composition"
+        },
+        {
+          "id": "AngerAtHomeThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "cherish-today",
+      "title": "Khi vẫn còn có nhau — bản 45 giây",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/cherish-today",
+        "scripts": "scripts/projects/cherish-today",
+        "docs": "docs/projects/cherish-today",
+        "assets": "public/cherish-today"
+      },
+      "registrations": [
+        {
+          "id": "StoicCherishToday",
+          "kind": "Composition"
+        },
+        {
+          "id": "CherishTodayThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "rest-day",
+      "title": "Một ngày nghỉ không cần phải tạo ra thành tích",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/rest-day",
+        "scripts": "scripts/projects/rest-day",
+        "docs": "docs/projects/rest-day",
+        "assets": "public/rest-day"
+      },
+      "registrations": [
+        {
+          "id": "StoicRestDay",
+          "kind": "Composition"
+        },
+        {
+          "id": "RestDayThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "apology-change",
+      "title": "Xin lỗi và thay đổi — phần kết đã sửa",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/apology-change",
+        "scripts": "scripts/projects/apology-change",
+        "docs": "docs/projects/apology-change",
+        "assets": "public/apology-change"
+      },
+      "registrations": [
+        {
+          "id": "StoicApologyChange",
+          "kind": "Composition"
+        },
+        {
+          "id": "ApologyChangeThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "listen-first",
+      "title": "Bạn đang lắng nghe, hay đang sửa chữa người khác?",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/listen-first",
+        "scripts": "scripts/projects/listen-first",
+        "docs": "docs/projects/listen-first",
+        "assets": "public/listen-first"
+      },
+      "registrations": [
+        {
+          "id": "StoicListenFirst",
+          "kind": "Composition"
+        },
+        {
+          "id": "ListenFirstThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "exhausted",
+      "title": "Kịch bản đầy đủ — Dành cho những ngày bạn cảm thấy kiệt sức",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/exhausted",
+        "scripts": "scripts/projects/exhausted",
+        "docs": "docs/projects/exhausted",
+        "assets": "public/exhausted"
+      },
+      "registrations": [
+        {
+          "id": "StoicExhausted",
+          "kind": "Composition"
+        },
+        {
+          "id": "ExhaustedThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "solitude",
+      "title": "Kịch bản đầy đủ — Nghệ thuật bước đi một mình",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/solitude",
+        "scripts": "scripts/projects/solitude",
+        "docs": "docs/projects/solitude",
+        "assets": "public/solitude"
+      },
+      "registrations": [
+        {
+          "id": "StoicSolitude",
+          "kind": "Composition"
+        },
+        {
+          "id": "SolitudeThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "forgiveness",
+      "title": "Kịch bản đầy đủ — Tâm thư gửi chính bạn: Đừng tự trách mình vì đã không hoàn hảo",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/forgiveness",
+        "scripts": "scripts/projects/forgiveness",
+        "docs": "docs/projects/forgiveness",
+        "assets": "public/forgiveness"
+      },
+      "registrations": [
+        {
+          "id": "StoicForgiveness",
+          "kind": "Composition"
+        },
+        {
+          "id": "ForgivenessThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "letting-go",
+      "title": "Kịch bản đầy đủ — Học cách buông tay để tìm lại tự do",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/letting-go",
+        "scripts": "scripts/projects/letting-go",
+        "docs": "docs/projects/letting-go",
+        "assets": "public/letting-go"
+      },
+      "registrations": [
+        {
+          "id": "StoicLettingGo",
+          "kind": "Composition"
+        },
+        {
+          "id": "LettingGoThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "boundaries",
+      "title": "Kịch bản đầy đủ — Quy tắc ngầm: Lòng tốt và ranh giới cá nhân",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/boundaries",
+        "scripts": "scripts/projects/boundaries",
+        "docs": "docs/projects/boundaries",
+        "assets": "public/boundaries"
+      },
+      "registrations": [
+        {
+          "id": "StoicBoundaries",
+          "kind": "Composition"
+        },
+        {
+          "id": "BoundariesThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "crab-mentality",
+      "title": "Kịch bản đầy đủ — Tại sao người xung quanh sợ bạn thành công hơn thất bại?",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/crab-mentality",
+        "scripts": "scripts/projects/crab-mentality",
+        "docs": "docs/projects/crab-mentality",
+        "assets": "public/crab-mentality"
+      },
+      "registrations": [
+        {
+          "id": "StoicCrabMentality",
+          "kind": "Composition"
+        },
+        {
+          "id": "CrabMentalityThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "reciprocity-trap",
+      "title": "Kịch bản đầy đủ — Bẫy mang ơn: Đừng để món quà lấy mất quyền từ chối",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/reciprocity-trap",
+        "scripts": "scripts/projects/reciprocity-trap",
+        "docs": "docs/projects/reciprocity-trap",
+        "assets": "public/reciprocity-trap"
+      },
+      "registrations": [
+        {
+          "id": "StoicReciprocityTrap",
+          "kind": "Composition"
+        },
+        {
+          "id": "ReciprocityTrapThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "provocation-control",
+      "title": "Kịch bản đầy đủ — Quy luật ngầm số 2: Đừng phản ứng ngay khi bị khiêu khích",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/provocation-control",
+        "scripts": "scripts/projects/provocation-control",
+        "docs": "docs/projects/provocation-control",
+        "assets": "public/provocation-control"
+      },
+      "registrations": [
+        {
+          "id": "StoicProvocationControl",
+          "kind": "Composition"
+        }
+      ]
+    },
+    {
+      "id": "hidden-intentions",
+      "title": "Kịch bản đầy đủ — Quy luật che giấu ý định: Đừng để người khác đoán được bước đi tiếp theo",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/hidden-intentions",
+        "scripts": "scripts/projects/hidden-intentions",
+        "docs": "docs/projects/hidden-intentions",
+        "assets": "public/hidden-intentions"
+      },
+      "registrations": [
+        {
+          "id": "StoicHiddenIntentions",
+          "kind": "Composition"
+        }
+      ]
+    },
+    {
+      "id": "own-timeline",
+      "title": "Kịch bản đầy đủ — Đừng so sánh trang đầu của mình với trang giữa của người khác",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/own-timeline",
+        "scripts": "scripts/projects/own-timeline",
+        "docs": "docs/projects/own-timeline",
+        "assets": "public/own-timeline"
+      },
+      "registrations": [
+        {
+          "id": "StoicOwnTimeline",
+          "kind": "Composition"
+        },
+        {
+          "id": "OwnTimelineThumbnail",
+          "kind": "Still"
+        }
+      ]
+    },
+    {
+      "id": "abc",
+      "title": "abc",
+      "status": "planning",
+      "format": "short",
+      "durationSeconds": 45,
+      "paths": {
+        "source": "src/projects/abc",
+        "scripts": "scripts/projects/abc",
+        "docs": "docs/projects/abc",
+        "assets": "public/abc"
+      },
+      "registrations": []
+    }
+  ]
+}

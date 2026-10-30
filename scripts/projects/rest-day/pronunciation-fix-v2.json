@@ -1,0 +1,24 @@
+{
+  "title": "Ba câu tinh gọn và đối chiếu phát âm",
+  "temperature": 0.45,
+  "leadIn": 0.25,
+  "tail": 0.65,
+  "maxDurationSeconds": 60,
+  "sentences": [
+    {
+      "scene": 4,
+      "text": "Nghỉ ngơi giúp bạn lấy lại sức lực và sự tập trung, kể cả khi công việc chưa xong.",
+      "pauseAfter": 0.5
+    },
+    {
+      "scene": 5,
+      "text": "Bạn thương người thân vất vả, chỉ mong họ được nghỉ. Vậy sao với bản thân, bạn lại đợi đến kiệt sức?",
+      "pauseAfter": 0.6
+    },
+    {
+      "scene": 6,
+      "text": "Một ngày nghỉ đâu cần thành tích mới có giá trị.",
+      "pauseAfter": 0.35
+    }
+  ]
+}

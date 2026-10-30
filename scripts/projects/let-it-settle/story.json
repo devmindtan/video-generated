@@ -1,0 +1,27 @@
+[
+  {
+    "id": "01-storm", "start": 0, "duration": 8, "leadIn": 0.2, "tail": 0.5, "targetSpeed": 1, "maxTail": 5,
+    "text": "Một giờ sáng. Bạn nằm im, nhưng trong đầu vẫn đang tranh luận với một tin nhắn, một cuộc hẹn, một chuyện còn dang dở.",
+    "sentences": [{"text": "Một giờ sáng.", "pauseAfter": 0.35}, {"text": "Bạn nằm im, nhưng trong đầu vẫn đang tranh luận với một tin nhắn, một cuộc hẹn, một chuyện còn dang dở.", "pauseAfter": 0}]
+  },
+  {
+    "id": "02-stir", "start": 8, "duration": 10, "leadIn": 0.22, "tail": 0.5, "targetSpeed": 1, "maxTail": 5,
+    "text": "Nghĩ thêm một chút nữa chắc sẽ ra. Bạn tự nhủ vậy. Nhưng càng nghĩ, chuyện nhỏ càng lớn, còn một câu nói ban chiều bỗng mang đến cả chục cách hiểu.",
+    "sentences": [{"text": "Nghĩ thêm một chút nữa chắc sẽ ra.", "pauseAfter": 0.3}, {"text": "Bạn tự nhủ vậy.", "pauseAfter": 0.35}, {"text": "Nhưng càng nghĩ, chuyện nhỏ càng lớn, còn một câu nói ban chiều bỗng mang đến cả chục cách hiểu.", "pauseAfter": 0}]
+  },
+  {
+    "id": "03-pause", "start": 18, "duration": 10, "leadIn": 0.22, "tail": 0.5, "targetSpeed": 1, "maxTail": 5,
+    "text": "Bạn đọc lại tin nhắn lần thứ mười. Vẫn những dòng chữ ấy, nhưng mỗi lần lại nghĩ ra một điều đáng lo. Lúc này, bạn đang tìm cách giải quyết… hay chỉ đoán thêm những điều chưa xảy ra?",
+    "sentences": [{"text": "Bạn đọc lại tin nhắn lần thứ mười.", "pauseAfter": 0.25}, {"text": "Vẫn những dòng chữ ấy, nhưng mỗi lần lại nghĩ ra một điều đáng lo.", "pauseAfter": 0.2}, {"text": "Lúc này, bạn đang tìm cách giải quyết… hay chỉ đoán thêm những điều chưa xảy ra?", "pauseAfter": 0}]
+  },
+  {
+    "id": "04-clear", "start": 28, "duration": 12, "leadIn": 0.22, "tail": 0.6, "targetSpeed": 1, "maxTail": 5,
+    "text": "Lấy giấy ra, ghi đúng một dòng: Sáng mai, mình sẽ xử lý việc gì trước? Rồi gấp lại. Chuyện chưa gấp cứ nằm trên giấy đã, không cần nằm trong đầu bạn suốt đêm.",
+    "sentences": [{"text": "Lấy giấy ra, ghi đúng một dòng: Sáng mai, mình sẽ xử lý việc gì trước?", "pauseAfter": 0.5}, {"text": "Rồi gấp lại.", "pauseAfter": 0.45}, {"text": "Chuyện chưa gấp cứ nằm trên giấy đã, không cần nằm trong đầu bạn suốt đêm.", "pauseAfter": 0}]
+  },
+  {
+    "id": "05-sleep", "start": 40, "duration": 8, "leadIn": 0.22, "tail": 0.5, "targetSpeed": 1, "maxTail": 5,
+    "text": "Có thể sáng mai, vấn đề vẫn còn đó. Nhưng bạn sẽ không phải đối diện với nó bằng một đêm trắng. Đặt xuống thôi. Ngủ đã.",
+    "sentences": [{"text": "Có thể sáng mai, vấn đề vẫn còn đó.", "pauseAfter": 0.2}, {"text": "Nhưng bạn sẽ không phải đối diện với nó bằng một đêm trắng.", "pauseAfter": 0.25}, {"text": "Đặt xuống thôi. Ngủ đã.", "pauseAfter": 0, "gainDb": -0.3}]
+  }
+]

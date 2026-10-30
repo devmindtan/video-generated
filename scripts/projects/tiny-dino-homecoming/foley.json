@@ -1,0 +1,23 @@
+[
+  {"shot":"01-hatch-wide","sourceSecond":1.6,"kind":"crack","gain":0.16,"pan":-0.1},
+  {"shot":"01-hatch-wide","sourceSecond":2.1,"kind":"crack","gain":0.12,"pan":0.15},
+  {"shot":"01-hatch-close","sourceSecond":2.8,"kind":"shell","gain":0.09,"pan":0},
+  {"shot":"02-log-wide","sourceSecond":1.3,"kind":"step","gain":0.13,"pan":-0.15},
+  {"shot":"02-log-wide","sourceSecond":2.8,"kind":"step","gain":0.13,"pan":0.15},
+  {"shot":"02-log-wide","sourceSecond":4.4,"kind":"step","gain":0.14,"pan":-0.1},
+  {"shot":"02-log-close","sourceSecond":2.0,"kind":"step","gain":0.11,"pan":0.1},
+  {"shot":"02-log-close","sourceSecond":4.2,"kind":"step","gain":0.11,"pan":-0.1},
+  {"shot":"03-butterfly-wide","sourceSecond":3.5,"kind":"sparkle","gain":0.1,"pan":0.3},
+  {"shot":"03-butterfly-close","sourceSecond":2.7,"kind":"flutter","gain":0.085,"pan":0.25},
+  {"shot":"04-slide-wide","sourceSecond":1.4,"kind":"slide","gain":0.14,"pan":0},
+  {"shot":"04-slide-wide","sourceSecond":4.1,"kind":"petals","gain":0.14,"pan":0},
+  {"shot":"04-slide-close-v2","sourceSecond":2.0,"kind":"flutter","gain":0.07,"pan":0.3},
+  {"shot":"05-mushrooms-wide","sourceSecond":2.6,"kind":"bounce","gain":0.2,"pan":-0.2},
+  {"shot":"05-mushrooms-wide","sourceSecond":4.9,"kind":"landing","gain":0.16,"pan":0},
+  {"shot":"05-mushrooms-close","sourceSecond":3.3,"kind":"bounce","gain":0.19,"pan":0.15},
+  {"shot":"05-mushrooms-close","sourceSecond":4.7,"kind":"landing","gain":0.16,"pan":0},
+  {"shot":"06-snail-wide","sourceSecond":2.5,"kind":"sparkle","gain":0.08,"pan":0.3},
+  {"shot":"07-rain-wide","sourceSecond":0.6,"kind":"leaf","gain":0.1,"pan":0},
+  {"shot":"08-nest-wide","sourceSecond":2.6,"kind":"petals","gain":0.08,"pan":0},
+  {"shot":"08-nest-close-v2","sourceSecond":3.1,"kind":"sparkle","gain":0.075,"pan":-0.2}
+]

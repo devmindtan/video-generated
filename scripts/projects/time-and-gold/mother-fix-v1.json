@@ -1,0 +1,10 @@
+{
+  "title": "Sửa phát âm mẹ — Quốc Tuấn",
+  "temperature": 0.45,
+  "leadIn": 0.12,
+  "tail": 0.18,
+  "maxDurationSeconds": 20,
+  "sentences": [
+    {"text": "Một buổi chiều còn được ngồi cạnh mẹ.", "pauseAfter": 0}
+  ]
+}

@@ -1,0 +1,187 @@
+[
+  [
+    {
+      "text": "Một giờ sáng.",
+      "startMs": 0,
+      "endMs": 1360,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Bạn nằm im, nhưng trong đầu vẫn",
+      "startMs": 1540,
+      "endMs": 2960,
+      "timestampMs": 1540,
+      "confidence": null
+    },
+    {
+      "text": "đang tranh luận với một tin nhắn,",
+      "startMs": 2960,
+      "endMs": 4360,
+      "timestampMs": 2960,
+      "confidence": null
+    },
+    {
+      "text": "một cuộc hẹn, một chuyện còn dang dở.",
+      "startMs": 4540,
+      "endMs": 6310,
+      "timestampMs": 4540,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Nghĩ thêm một chút nữa chắc sẽ ra.",
+      "startMs": 0,
+      "endMs": 2120,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Bạn tự nhủ vậy.",
+      "startMs": 2400,
+      "endMs": 3280,
+      "timestampMs": 2400,
+      "confidence": null
+    },
+    {
+      "text": "Nhưng càng nghĩ, chuyện nhỏ càng lớn,",
+      "startMs": 3280,
+      "endMs": 5380,
+      "timestampMs": 3280,
+      "confidence": null
+    },
+    {
+      "text": "còn một câu nói ban chiều bỗng",
+      "startMs": 5480,
+      "endMs": 6580,
+      "timestampMs": 5480,
+      "confidence": null
+    },
+    {
+      "text": "mang đến cả chục cách hiểu.",
+      "startMs": 6580,
+      "endMs": 7560,
+      "timestampMs": 6580,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Bạn đọc lại tin nhắn lần thứ mười.",
+      "startMs": 180,
+      "endMs": 2260,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "Vẫn những dòng chữ ấy, nhưng mỗi",
+      "startMs": 2260,
+      "endMs": 3640,
+      "timestampMs": 2260,
+      "confidence": null
+    },
+    {
+      "text": "lần lại nghĩ ra một điều đáng lo.",
+      "startMs": 3640,
+      "endMs": 5060,
+      "timestampMs": 3640,
+      "confidence": null
+    },
+    {
+      "text": "Lúc này, bạn đang tìm cách giải",
+      "startMs": 5520,
+      "endMs": 6880,
+      "timestampMs": 5520,
+      "confidence": null
+    },
+    {
+      "text": "quyết… hay chỉ đoán thêm những điều",
+      "startMs": 6880,
+      "endMs": 8680,
+      "timestampMs": 6880,
+      "confidence": null
+    },
+    {
+      "text": "chưa xảy ra?",
+      "startMs": 8680,
+      "endMs": 9260,
+      "timestampMs": 8680,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Lấy giấy ra, ghi đúng một dòng:",
+      "startMs": 0,
+      "endMs": 1920,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Sáng mai, mình sẽ xử lý việc gì trước?",
+      "startMs": 1980,
+      "endMs": 3780,
+      "timestampMs": 1980,
+      "confidence": null
+    },
+    {
+      "text": "Rồi gấp lại.",
+      "startMs": 4380,
+      "endMs": 5120,
+      "timestampMs": 4380,
+      "confidence": null
+    },
+    {
+      "text": "Chuyện chưa gấp cứ nằm trên giấy",
+      "startMs": 5580,
+      "endMs": 6940,
+      "timestampMs": 5580,
+      "confidence": null
+    },
+    {
+      "text": "đã, không cần nằm trong đầu bạn suốt đêm.",
+      "startMs": 6940,
+      "endMs": 8820,
+      "timestampMs": 6940,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Có thể sáng mai, vấn đề vẫn còn đó.",
+      "startMs": 0,
+      "endMs": 2440,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Nhưng bạn sẽ không phải đối diện",
+      "startMs": 2800,
+      "endMs": 4100,
+      "timestampMs": 2800,
+      "confidence": null
+    },
+    {
+      "text": "với nó bằng một đêm trắng.",
+      "startMs": 4100,
+      "endMs": 5520,
+      "timestampMs": 4100,
+      "confidence": null
+    },
+    {
+      "text": "Đặt xuống thôi.",
+      "startMs": 5900,
+      "endMs": 6520,
+      "timestampMs": 5900,
+      "confidence": null
+    },
+    {
+      "text": "Ngủ đã.",
+      "startMs": 6820,
+      "endMs": 7120,
+      "timestampMs": 6820,
+      "confidence": null
+    }
+  ]
+]

@@ -1,0 +1,271 @@
+[
+  {
+    "id": "01-hatch",
+    "temperature": 0.65,
+    "start": 0,
+    "duration": 16,
+    "leadIn": 0.7,
+    "tail": 1,
+    "maxTail": 6,
+    "distributePauses": false,
+    "text": "Giữa khu rừng phép màu, Tí Hon vừa chào đời. Bé tò mò nhìn quanh từ chiếc vỏ trứng nhỏ. Xin chào Tí Hon! Những điều mới lạ đang chờ bé phía trước.",
+    "sentences": [
+      {
+        "at": 0.7,
+        "text": "Giữa khu rừng phép màu, Tí Hon vừa chào đời.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 5.2,
+        "text": "Bé tò mò nhìn quanh từ chiếc vỏ trứng nhỏ.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 10.3,
+        "text": "Xin chào Tí Hon! Những điều mới lạ đang chờ bé phía trước.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "02-log",
+    "start": 16,
+    "duration": 18,
+    "leadIn": 0.7,
+    "tail": 1,
+    "maxTail": 6,
+    "distributePauses": false,
+    "text": "Tí Hon bước lên một thân cây phủ rêu, bắc ngang dòng suối nhỏ. Bé dang tay, giữ thăng bằng rồi bước thật chậm. Bờ cỏ đã ở ngay phía trước rồi! Hoan hô, bé đã làm được rồi!",
+    "sentences": [
+      {
+        "at": 0.7,
+        "text": "Tí Hon bước lên một thân cây phủ rêu, bắc ngang dòng suối nhỏ.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 6.2,
+        "text": "Bé dang tay, giữ thăng bằng rồi bước thật chậm.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 11.7,
+        "text": "Bờ cỏ đã ở ngay phía trước rồi!",
+        "pauseAfter": 0
+      },
+      {
+        "at": 14.5,
+        "text": "Hoan hô, bé đã làm được rồi!",
+        "pauseAfter": 0
+      }
+    ],
+    "temperature": 0.65
+  },
+  {
+    "id": "03-butterfly",
+    "start": 34,
+    "duration": 18,
+    "leadIn": 0.7,
+    "tail": 1,
+    "maxTail": 6,
+    "distributePauses": false,
+    "text": "Một đốm sáng xanh bay tới. Là bạn Bướm Xanh! Bướm nhẹ nhàng bay lên, Tí Hon nhìn theo đầy thích thú. Hai bạn cùng hướng về con đường nhỏ. Tí Hon có bạn đồng hành rồi!",
+    "sentences": [
+      {
+        "at": 0.7,
+        "text": "Một đốm sáng xanh bay tới. Là bạn Bướm Xanh!",
+        "pauseAfter": 0
+      },
+      {
+        "at": 6.5,
+        "text": "Bướm nhẹ nhàng bay lên, Tí Hon nhìn theo đầy thích thú.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 12.1,
+        "text": "Hai bạn cùng hướng về con đường nhỏ. Tí Hon có bạn đồng hành rồi!",
+        "pauseAfter": 0
+      }
+    ],
+    "temperature": 0.65
+  },
+  {
+    "id": "04-slide",
+    "start": 52,
+    "duration": 18,
+    "leadIn": 0.7,
+    "tail": 1,
+    "maxTail": 6,
+    "distributePauses": false,
+    "text": "Vù! Tí Hon trượt xuống chiếc lá, đáp vào thảm hoa mềm. Nhưng nhìn quanh, bé chẳng thấy tổ đâu nữa. Bé hơi lo. Bướm Xanh vẫn ở bên cạnh. Tí Hon bình tĩnh, cùng bạn tìm đường về.",
+    "sentences": [
+      {
+        "at": 0.7,
+        "text": "Vù! Tí Hon trượt xuống chiếc lá, đáp vào thảm hoa mềm.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 6.7,
+        "text": "Nhưng nhìn quanh, bé chẳng thấy tổ đâu nữa. Bé hơi lo.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 12.3,
+        "text": "Bướm Xanh vẫn ở bên cạnh. Tí Hon bình tĩnh, cùng bạn tìm đường về.",
+        "pauseAfter": 0
+      }
+    ],
+    "temperature": 0.65
+  },
+  {
+    "id": "05-mushrooms",
+    "start": 70,
+    "duration": 32,
+    "leadIn": 0.7,
+    "tail": 1.3,
+    "maxTail": 6,
+    "distributePauses": false,
+    "text": "Đến suối nấm rồi! Một, hai, ba... Nhảy nào! Những mũ nấm mềm nối nhau qua dòng nước trong vắt. Tí Hon dang tay giữ thăng bằng. Bướm Xanh bay lên trước, dẫn bé tới cây nấm tiếp theo. Bờ cỏ kia rồi! Từng bước nhỏ đã đưa hai bạn sang bên kia.",
+    "sentences": [
+      {
+        "at": 0.4,
+        "text": "Đến suối nấm rồi!",
+        "pauseAfter": 0
+      },
+      {
+        "at": 1.7,
+        "text": "Một, hai, ba... Nhảy nào!",
+        "pauseAfter": 0
+      },
+      {
+        "at": 5.5,
+        "text": "Những mũ nấm mềm nối nhau qua dòng nước trong vắt.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 10,
+        "text": "Tí Hon dang tay giữ thăng bằng.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 16.7,
+        "text": "Bướm Xanh bay lên trước, dẫn bé tới cây nấm tiếp theo.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 24.8,
+        "text": "Bờ cỏ kia rồi! Từng bước nhỏ đã đưa hai bạn sang bên kia.",
+        "pauseAfter": 0
+      }
+    ],
+    "temperature": 0.65
+  },
+  {
+    "id": "06-snail",
+    "start": 102,
+    "duration": 28,
+    "leadIn": 0.7,
+    "tail": 1.3,
+    "maxTail": 6,
+    "distributePauses": false,
+    "text": "Bên bờ suối, Tí Hon gặp một bạn Ốc Sên. Chiếc vỏ xoắn của bạn lấp lánh như viên kẹo! Tí Hon kể rằng bé đang tìm đường về với mẹ. Ốc Sên hướng về đồi hoa hướng dương. Tổ ấm ở bên kia ngọn đồi. Tí Hon vẫy tay cảm ơn. Có bạn giúp đỡ, bé yên tâm hơn rồi!",
+    "sentences": [
+      {
+        "at": 0.7,
+        "text": "Bên bờ suối, Tí Hon gặp một bạn Ốc Sên.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 5,
+        "text": "Chiếc vỏ xoắn của bạn lấp lánh như viên kẹo!",
+        "pauseAfter": 0
+      },
+      {
+        "at": 9.2,
+        "text": "Tí Hon kể rằng bé đang tìm đường về với mẹ.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 15,
+        "text": "Ốc Sên hướng về đồi hoa hướng dương. Tổ ấm ở bên kia ngọn đồi.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 22,
+        "text": "Tí Hon vẫy tay cảm ơn. Có bạn giúp đỡ, bé yên tâm hơn rồi!",
+        "pauseAfter": 0
+      }
+    ],
+    "temperature": 0.65
+  },
+  {
+    "id": "07-rain",
+    "start": 130,
+    "duration": 24,
+    "leadIn": 0.7,
+    "tail": 1.3,
+    "maxTail": 6,
+    "distributePauses": false,
+    "text": "Lộp độp! Mưa rơi trên chiếc ô lá xanh. Dưới tán lá, Tí Hon che chở cho Bướm Xanh và Ốc Sên. Bé giữ chiếc lá thật chắc, để các bạn cùng được khô ráo. Mưa đang nhẹ hạt. Ba người bạn ngước nhìn ánh nắng trở về.",
+    "sentences": [
+      {
+        "at": 0.7,
+        "text": "Lộp độp! Mưa rơi trên chiếc ô lá xanh.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 5,
+        "text": "Dưới tán lá, Tí Hon che chở cho Bướm Xanh và Ốc Sên.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 10.2,
+        "text": "Bé giữ chiếc lá thật chắc, để các bạn cùng được khô ráo.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 16.5,
+        "text": "Mưa đang nhẹ hạt. Ba người bạn ngước nhìn ánh nắng trở về.",
+        "pauseAfter": 0
+      }
+    ],
+    "temperature": 0.65
+  },
+  {
+    "id": "08-nest",
+    "start": 154,
+    "duration": 26,
+    "leadIn": 0.7,
+    "tail": 1.3,
+    "maxTail": 6,
+    "distributePauses": false,
+    "text": "Mưa tạnh rồi! Cầu vồng sáng trên đồi hoa. Tí Hon đã về bên mẹ, trong chiếc tổ thân quen. Bé nép vào mẹ, vui vì chuyến đi đã đưa mình trở lại nơi ấm áp. Cảm ơn Bướm Xanh và Ốc Sên nhé! Có lòng dũng cảm và những người bạn tốt, hành trình nào cũng thêm ý nghĩa.",
+    "sentences": [
+      {
+        "at": 0.7,
+        "text": "Mưa tạnh rồi! Cầu vồng sáng trên đồi hoa.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 5.5,
+        "text": "Tí Hon đã về bên mẹ, trong chiếc tổ thân quen.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 10.8,
+        "text": "Bé nép vào mẹ, vui vì chuyến đi đã đưa mình trở lại nơi ấm áp.",
+        "pauseAfter": 0
+      },
+      {
+        "at": 17,
+        "text": "Cảm ơn Bướm Xanh và Ốc Sên nhé!",
+        "pauseAfter": 0
+      },
+      {
+        "at": 20.4,
+        "text": "Có lòng dũng cảm và những người bạn tốt, hành trình nào cũng thêm ý nghĩa.",
+        "pauseAfter": 0
+      }
+    ],
+    "temperature": 0.65
+  }
+]

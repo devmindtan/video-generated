@@ -1,0 +1,8 @@
+{
+  "file": "own-timeline/audio/snowfall.mp3",
+  "speechVolume": 0.35,
+  "pauseVolume": 0.40,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 2,
+  "editingNote": "Snowfall full source, reused read-only. Native Audio Start/Duration/End and source trim stay independently editable in Studio Edit. Volume/ducking and fade lengths remain here; fades follow audible clip/composition edges. Narration stays native 1x. No SFX."
+}

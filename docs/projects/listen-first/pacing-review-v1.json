@@ -1,0 +1,971 @@
+{
+  "source": "public/listen-first/audio/narration-quoc-tuan-v1-pauses.wav",
+  "words": [
+    {
+      "text": "Có",
+      "start": 0.0,
+      "end": 0.42,
+      "confidence": 0.6985487937927246
+    },
+    {
+      "text": "người",
+      "start": 0.42,
+      "end": 0.66,
+      "confidence": 0.9919216632843018
+    },
+    {
+      "text": "vừa",
+      "start": 0.66,
+      "end": 0.82,
+      "confidence": 0.9914363026618958
+    },
+    {
+      "text": "kể",
+      "start": 0.82,
+      "end": 1.02,
+      "confidence": 0.9959714412689209
+    },
+    {
+      "text": "rằng",
+      "start": 1.02,
+      "end": 1.24,
+      "confidence": 0.9976014494895935
+    },
+    {
+      "text": "họ",
+      "start": 1.24,
+      "end": 1.4,
+      "confidence": 0.9694210886955261
+    },
+    {
+      "text": "đang",
+      "start": 1.4,
+      "end": 1.58,
+      "confidence": 0.9859996438026428
+    },
+    {
+      "text": "rất",
+      "start": 1.58,
+      "end": 1.76,
+      "confidence": 0.996119499206543
+    },
+    {
+      "text": "mệt,",
+      "start": 1.76,
+      "end": 2.12,
+      "confidence": 0.9981982111930847
+    },
+    {
+      "text": "bạn",
+      "start": 2.22,
+      "end": 2.4,
+      "confidence": 0.97504723072052
+    },
+    {
+      "text": "đã",
+      "start": 2.4,
+      "end": 2.6,
+      "confidence": 0.9959226846694946
+    },
+    {
+      "text": "vội",
+      "start": 2.6,
+      "end": 2.74,
+      "confidence": 0.9961147606372833
+    },
+    {
+      "text": "chỉ",
+      "start": 2.74,
+      "end": 2.98,
+      "confidence": 0.9697754383087158
+    },
+    {
+      "text": "ra",
+      "start": 2.98,
+      "end": 3.12,
+      "confidence": 0.9479310512542725
+    },
+    {
+      "text": "họ",
+      "start": 3.12,
+      "end": 3.32,
+      "confidence": 0.990446925163269
+    },
+    {
+      "text": "nên",
+      "start": 3.32,
+      "end": 3.5,
+      "confidence": 0.9915942549705505
+    },
+    {
+      "text": "làm",
+      "start": 3.5,
+      "end": 3.7,
+      "confidence": 0.9984773993492126
+    },
+    {
+      "text": "gì,",
+      "start": 3.7,
+      "end": 4.08,
+      "confidence": 0.9948305487632751
+    },
+    {
+      "text": "đáng",
+      "start": 4.2,
+      "end": 4.32,
+      "confidence": 0.9871223866939545
+    },
+    {
+      "text": "lẽ",
+      "start": 4.32,
+      "end": 4.46,
+      "confidence": 0.9985458850860596
+    },
+    {
+      "text": "phải",
+      "start": 4.46,
+      "end": 4.64,
+      "confidence": 0.9941176176071167
+    },
+    {
+      "text": "nghĩ",
+      "start": 4.64,
+      "end": 4.8,
+      "confidence": 0.9943197965621948
+    },
+    {
+      "text": "thế",
+      "start": 4.8,
+      "end": 5.04,
+      "confidence": 0.9969509840011597
+    },
+    {
+      "text": "nào.",
+      "start": 5.04,
+      "end": 5.5,
+      "confidence": 0.9991477727890015
+    },
+    {
+      "text": "Bạn",
+      "start": 6.82,
+      "end": 6.96,
+      "confidence": 0.9712139666080475
+    },
+    {
+      "text": "muốn",
+      "start": 6.96,
+      "end": 7.16,
+      "confidence": 0.9790927171707153
+    },
+    {
+      "text": "giúp,",
+      "start": 7.16,
+      "end": 7.58,
+      "confidence": 0.9985545873641968
+    },
+    {
+      "text": "nhưng",
+      "start": 7.76,
+      "end": 7.92,
+      "confidence": 0.9974833130836487
+    },
+    {
+      "text": "chưa",
+      "start": 7.92,
+      "end": 8.14,
+      "confidence": 0.9820330739021301
+    },
+    {
+      "text": "nghe",
+      "start": 8.14,
+      "end": 8.3,
+      "confidence": 0.9985578656196594
+    },
+    {
+      "text": "hết",
+      "start": 8.3,
+      "end": 8.48,
+      "confidence": 0.9980467557907104
+    },
+    {
+      "text": "câu",
+      "start": 8.48,
+      "end": 8.7,
+      "confidence": 0.9984967708587646
+    },
+    {
+      "text": "chuyện,",
+      "start": 8.7,
+      "end": 9.1,
+      "confidence": 0.9953179061412811
+    },
+    {
+      "text": "bạn",
+      "start": 9.22,
+      "end": 9.36,
+      "confidence": 0.9965841770172119
+    },
+    {
+      "text": "đã",
+      "start": 9.36,
+      "end": 9.5,
+      "confidence": 0.9984937906265259
+    },
+    {
+      "text": "biến",
+      "start": 9.5,
+      "end": 9.68,
+      "confidence": 0.9728422462940216
+    },
+    {
+      "text": "nỗi",
+      "start": 9.68,
+      "end": 9.86,
+      "confidence": 0.9960292279720306
+    },
+    {
+      "text": "buồn",
+      "start": 9.86,
+      "end": 10.08,
+      "confidence": 0.9970919092496237
+    },
+    {
+      "text": "của",
+      "start": 10.08,
+      "end": 10.26,
+      "confidence": 0.9980267882347107
+    },
+    {
+      "text": "họ",
+      "start": 10.26,
+      "end": 10.4,
+      "confidence": 0.9990045428276062
+    },
+    {
+      "text": "thành",
+      "start": 10.4,
+      "end": 10.56,
+      "confidence": 0.9973316192626953
+    },
+    {
+      "text": "một",
+      "start": 10.56,
+      "end": 10.8,
+      "confidence": 0.9639062285423279
+    },
+    {
+      "text": "bài",
+      "start": 10.8,
+      "end": 10.92,
+      "confidence": 0.9907307028770447
+    },
+    {
+      "text": "toán",
+      "start": 10.92,
+      "end": 11.12,
+      "confidence": 0.9841928780078888
+    },
+    {
+      "text": "cần",
+      "start": 11.12,
+      "end": 11.36,
+      "confidence": 0.9878387451171875
+    },
+    {
+      "text": "dài.",
+      "start": 11.36,
+      "end": 11.84,
+      "confidence": 0.6248753368854523
+    },
+    {
+      "text": "Họ",
+      "start": 13.04,
+      "end": 13.2,
+      "confidence": 0.98603755235672
+    },
+    {
+      "text": "phải",
+      "start": 13.2,
+      "end": 13.38,
+      "confidence": 0.9958875775337219
+    },
+    {
+      "text": "giải",
+      "start": 13.38,
+      "end": 13.64,
+      "confidence": 0.9930833876132965
+    },
+    {
+      "text": "thích",
+      "start": 13.64,
+      "end": 13.76,
+      "confidence": 0.9960016906261444
+    },
+    {
+      "text": "thêm,",
+      "start": 13.76,
+      "end": 14.26,
+      "confidence": 0.9941363036632538
+    },
+    {
+      "text": "rồi",
+      "start": 14.44,
+      "end": 14.6,
+      "confidence": 0.9927899837493896
+    },
+    {
+      "text": "tự",
+      "start": 14.6,
+      "end": 14.82,
+      "confidence": 0.9897166788578033
+    },
+    {
+      "text": "bảo",
+      "start": 14.82,
+      "end": 15.02,
+      "confidence": 0.9985183775424957
+    },
+    {
+      "text": "vệ",
+      "start": 15.02,
+      "end": 15.12,
+      "confidence": 0.9996314346790314
+    },
+    {
+      "text": "cảm",
+      "start": 15.12,
+      "end": 15.4,
+      "confidence": 0.9974575638771057
+    },
+    {
+      "text": "xúc",
+      "start": 15.4,
+      "end": 15.48,
+      "confidence": 0.998627245426178
+    },
+    {
+      "text": "của",
+      "start": 15.48,
+      "end": 15.72,
+      "confidence": 0.9970694184303284
+    },
+    {
+      "text": "mình.",
+      "start": 15.72,
+      "end": 16.1,
+      "confidence": 0.997859537601471
+    },
+    {
+      "text": "Cuối",
+      "start": 16.74,
+      "end": 16.94,
+      "confidence": 0.9550358653068542
+    },
+    {
+      "text": "cùng,",
+      "start": 16.94,
+      "end": 17.34,
+      "confidence": 0.9992856383323669
+    },
+    {
+      "text": "người",
+      "start": 17.54,
+      "end": 17.68,
+      "confidence": 0.9935761094093323
+    },
+    {
+      "text": "cần",
+      "start": 17.68,
+      "end": 17.86,
+      "confidence": 0.9918513894081116
+    },
+    {
+      "text": "được",
+      "start": 17.86,
+      "end": 18.0,
+      "confidence": 0.9913772344589233
+    },
+    {
+      "text": "ăn",
+      "start": 18.0,
+      "end": 18.22,
+      "confidence": 0.6178439259529114
+    },
+    {
+      "text": "uỷ",
+      "start": 18.22,
+      "end": 18.38,
+      "confidence": 0.7541254957516988
+    },
+    {
+      "text": "lại",
+      "start": 18.38,
+      "end": 18.58,
+      "confidence": 0.9938927888870239
+    },
+    {
+      "text": "thấy",
+      "start": 18.58,
+      "end": 18.72,
+      "confidence": 0.996327817440033
+    },
+    {
+      "text": "mình",
+      "start": 18.72,
+      "end": 19.0,
+      "confidence": 0.9966617822647095
+    },
+    {
+      "text": "như",
+      "start": 19.0,
+      "end": 19.16,
+      "confidence": 0.9883744716644287
+    },
+    {
+      "text": "đang",
+      "start": 19.16,
+      "end": 19.28,
+      "confidence": 0.9983083009719849
+    },
+    {
+      "text": "bị",
+      "start": 19.28,
+      "end": 19.46,
+      "confidence": 0.9990528225898743
+    },
+    {
+      "text": "chấm",
+      "start": 19.46,
+      "end": 19.66,
+      "confidence": 0.980818510055542
+    },
+    {
+      "text": "điểm.",
+      "start": 19.66,
+      "end": 20.0,
+      "confidence": 0.9909018278121948
+    },
+    {
+      "text": "Đôi",
+      "start": 21.34,
+      "end": 21.48,
+      "confidence": 0.9839104413986206
+    },
+    {
+      "text": "khi,",
+      "start": 21.48,
+      "end": 21.86,
+      "confidence": 0.9989092350006104
+    },
+    {
+      "text": "họ",
+      "start": 21.98,
+      "end": 22.1,
+      "confidence": 0.9983398914337158
+    },
+    {
+      "text": "biết",
+      "start": 22.1,
+      "end": 22.22,
+      "confidence": 0.9991357922554016
+    },
+    {
+      "text": "mình",
+      "start": 22.22,
+      "end": 22.44,
+      "confidence": 0.9965284466743469
+    },
+    {
+      "text": "cần",
+      "start": 22.44,
+      "end": 22.56,
+      "confidence": 0.9892832040786743
+    },
+    {
+      "text": "làm",
+      "start": 22.56,
+      "end": 22.74,
+      "confidence": 0.9992726445198059
+    },
+    {
+      "text": "gì",
+      "start": 22.74,
+      "end": 22.94,
+      "confidence": 0.9965609908103943
+    },
+    {
+      "text": "rồi,",
+      "start": 22.94,
+      "end": 23.22,
+      "confidence": 0.984187126159668
+    },
+    {
+      "text": "chỉ",
+      "start": 23.52,
+      "end": 23.72,
+      "confidence": 0.990019679069519
+    },
+    {
+      "text": "là",
+      "start": 23.72,
+      "end": 23.82,
+      "confidence": 0.9759613275527954
+    },
+    {
+      "text": "hôm",
+      "start": 23.82,
+      "end": 24.0,
+      "confidence": 0.9972825050354004
+    },
+    {
+      "text": "nay,",
+      "start": 24.0,
+      "end": 24.38,
+      "confidence": 0.9993236064910889
+    },
+    {
+      "text": "họ",
+      "start": 24.52,
+      "end": 24.6,
+      "confidence": 0.9967048764228821
+    },
+    {
+      "text": "chưa",
+      "start": 24.6,
+      "end": 24.8,
+      "confidence": 0.9953688979148865
+    },
+    {
+      "text": "đủ",
+      "start": 24.8,
+      "end": 25.04,
+      "confidence": 0.9962861239910126
+    },
+    {
+      "text": "sức",
+      "start": 25.04,
+      "end": 25.2,
+      "confidence": 0.99917271733284
+    },
+    {
+      "text": "để",
+      "start": 25.2,
+      "end": 25.4,
+      "confidence": 0.9970083832740784
+    },
+    {
+      "text": "làm.",
+      "start": 25.4,
+      "end": 25.68,
+      "confidence": 0.9966013431549072
+    },
+    {
+      "text": "Điều",
+      "start": 26.380000000000003,
+      "end": 26.78,
+      "confidence": 0.9356541236241659
+    },
+    {
+      "text": "họ",
+      "start": 26.78,
+      "end": 26.94,
+      "confidence": 0.996542751789093
+    },
+    {
+      "text": "tìm",
+      "start": 26.94,
+      "end": 27.12,
+      "confidence": 0.9984794855117798
+    },
+    {
+      "text": "ở",
+      "start": 27.12,
+      "end": 27.28,
+      "confidence": 0.9695963263511658
+    },
+    {
+      "text": "bạn",
+      "start": 27.28,
+      "end": 27.46,
+      "confidence": 0.9988316893577576
+    },
+    {
+      "text": "có",
+      "start": 27.46,
+      "end": 27.68,
+      "confidence": 0.9780406951904297
+    },
+    {
+      "text": "thể",
+      "start": 27.68,
+      "end": 27.8,
+      "confidence": 0.9971712231636047
+    },
+    {
+      "text": "chỉ",
+      "start": 27.8,
+      "end": 28.0,
+      "confidence": 0.9981836676597595
+    },
+    {
+      "text": "là",
+      "start": 28.0,
+      "end": 28.14,
+      "confidence": 0.9953718781471252
+    },
+    {
+      "text": "một",
+      "start": 28.14,
+      "end": 28.32,
+      "confidence": 0.9461835622787476
+    },
+    {
+      "text": "nơi",
+      "start": 28.32,
+      "end": 28.44,
+      "confidence": 0.9981859028339386
+    },
+    {
+      "text": "được",
+      "start": 28.44,
+      "end": 28.64,
+      "confidence": 0.9938321113586426
+    },
+    {
+      "text": "nói",
+      "start": 28.64,
+      "end": 28.86,
+      "confidence": 0.9985439777374268
+    },
+    {
+      "text": "thật",
+      "start": 28.86,
+      "end": 29.02,
+      "confidence": 0.998457670211792
+    },
+    {
+      "text": "rằng",
+      "start": 29.02,
+      "end": 29.4,
+      "confidence": 0.9896921515464783
+    },
+    {
+      "text": "mình",
+      "start": 29.4,
+      "end": 29.8,
+      "confidence": 0.6313983798027039
+    },
+    {
+      "text": "đang",
+      "start": 29.8,
+      "end": 29.98,
+      "confidence": 0.9853742122650146
+    },
+    {
+      "text": "không",
+      "start": 29.98,
+      "end": 30.2,
+      "confidence": 0.9929680228233337
+    },
+    {
+      "text": "ổn",
+      "start": 30.2,
+      "end": 30.7,
+      "confidence": 0.9988464117050171
+    },
+    {
+      "text": "mà",
+      "start": 30.7,
+      "end": 30.92,
+      "confidence": 0.7885059714317322
+    },
+    {
+      "text": "không",
+      "start": 30.92,
+      "end": 31.18,
+      "confidence": 0.9959424138069153
+    },
+    {
+      "text": "phải",
+      "start": 31.18,
+      "end": 31.3,
+      "confidence": 0.9953137636184692
+    },
+    {
+      "text": "nghe",
+      "start": 31.3,
+      "end": 31.5,
+      "confidence": 0.9971473515033722
+    },
+    {
+      "text": "thêm",
+      "start": 31.5,
+      "end": 31.64,
+      "confidence": 0.9920809268951416
+    },
+    {
+      "text": "mình",
+      "start": 31.64,
+      "end": 31.88,
+      "confidence": 0.8828054666519165
+    },
+    {
+      "text": "đã",
+      "start": 31.88,
+      "end": 32.08,
+      "confidence": 0.9937734007835388
+    },
+    {
+      "text": "sai",
+      "start": 32.08,
+      "end": 32.24,
+      "confidence": 0.9922611117362976
+    },
+    {
+      "text": "ở",
+      "start": 32.24,
+      "end": 32.42,
+      "confidence": 0.9991337656974792
+    },
+    {
+      "text": "đâu.",
+      "start": 32.42,
+      "end": 32.98,
+      "confidence": 0.9989872574806213
+    },
+    {
+      "text": "Trước",
+      "start": 34.06,
+      "end": 34.16,
+      "confidence": 0.9727628529071808
+    },
+    {
+      "text": "khi",
+      "start": 34.16,
+      "end": 34.46,
+      "confidence": 0.9993093013763428
+    },
+    {
+      "text": "đưa",
+      "start": 34.46,
+      "end": 34.62,
+      "confidence": 0.9864333868026733
+    },
+    {
+      "text": "lời",
+      "start": 34.62,
+      "end": 34.78,
+      "confidence": 0.9976870119571686
+    },
+    {
+      "text": "khuyên,",
+      "start": 34.78,
+      "end": 35.18,
+      "confidence": 0.9915626247723898
+    },
+    {
+      "text": "thử",
+      "start": 35.3,
+      "end": 35.38,
+      "confidence": 0.9800744950771332
+    },
+    {
+      "text": "hỏi",
+      "start": 35.38,
+      "end": 35.84,
+      "confidence": 0.9992043673992157
+    },
+    {
+      "text": "bạn",
+      "start": 35.84,
+      "end": 36.1,
+      "confidence": 0.4244956076145172
+    },
+    {
+      "text": "muốn",
+      "start": 36.1,
+      "end": 36.3,
+      "confidence": 0.9957777261734009
+    },
+    {
+      "text": "mình",
+      "start": 36.3,
+      "end": 36.46,
+      "confidence": 0.989729642868042
+    },
+    {
+      "text": "cùng",
+      "start": 36.46,
+      "end": 36.64,
+      "confidence": 0.9198508262634277
+    },
+    {
+      "text": "tìm",
+      "start": 36.64,
+      "end": 36.86,
+      "confidence": 0.9973456859588623
+    },
+    {
+      "text": "cách",
+      "start": 36.86,
+      "end": 37.1,
+      "confidence": 0.9997574687004089
+    },
+    {
+      "text": "hay",
+      "start": 37.1,
+      "end": 37.34,
+      "confidence": 0.8859683871269226
+    },
+    {
+      "text": "chỉ",
+      "start": 37.34,
+      "end": 37.52,
+      "confidence": 0.9916681051254272
+    },
+    {
+      "text": "cần",
+      "start": 37.52,
+      "end": 37.64,
+      "confidence": 0.9957041144371033
+    },
+    {
+      "text": "mình",
+      "start": 37.64,
+      "end": 37.82,
+      "confidence": 0.9954366087913513
+    },
+    {
+      "text": "ngồi",
+      "start": 37.82,
+      "end": 38.0,
+      "confidence": 0.9966323375701904
+    },
+    {
+      "text": "nghe.",
+      "start": 38.0,
+      "end": 38.88,
+      "confidence": 0.9983761310577393
+    },
+    {
+      "text": "Được",
+      "start": 39.74,
+      "end": 39.88,
+      "confidence": 0.9916045665740967
+    },
+    {
+      "text": "thấu",
+      "start": 39.88,
+      "end": 40.04,
+      "confidence": 0.9879590570926666
+    },
+    {
+      "text": "hiểu",
+      "start": 40.04,
+      "end": 40.26,
+      "confidence": 0.9841435551643372
+    },
+    {
+      "text": "có",
+      "start": 40.26,
+      "end": 40.4,
+      "confidence": 0.9933919310569763
+    },
+    {
+      "text": "khi",
+      "start": 40.4,
+      "end": 40.64,
+      "confidence": 0.9940021634101868
+    },
+    {
+      "text": "chính",
+      "start": 40.64,
+      "end": 40.8,
+      "confidence": 0.9838963747024536
+    },
+    {
+      "text": "là",
+      "start": 40.8,
+      "end": 40.96,
+      "confidence": 0.9970153570175171
+    },
+    {
+      "text": "điều",
+      "start": 40.96,
+      "end": 41.1,
+      "confidence": 0.9896804690361023
+    },
+    {
+      "text": "giúp",
+      "start": 41.1,
+      "end": 41.32,
+      "confidence": 0.9979821443557739
+    },
+    {
+      "text": "một",
+      "start": 41.32,
+      "end": 41.54,
+      "confidence": 0.9413193464279175
+    },
+    {
+      "text": "người",
+      "start": 41.54,
+      "end": 41.84,
+      "confidence": 0.9973803162574768
+    },
+    {
+      "text": "đủ",
+      "start": 41.84,
+      "end": 42.1,
+      "confidence": 0.9947057962417603
+    },
+    {
+      "text": "sức",
+      "start": 42.1,
+      "end": 42.32,
+      "confidence": 0.998416393995285
+    },
+    {
+      "text": "bắt",
+      "start": 42.32,
+      "end": 42.58,
+      "confidence": 0.9864920079708099
+    },
+    {
+      "text": "đầu",
+      "start": 42.58,
+      "end": 42.78,
+      "confidence": 0.9994586110115051
+    },
+    {
+      "text": "giải",
+      "start": 42.78,
+      "end": 42.96,
+      "confidence": 0.9972864985466003
+    },
+    {
+      "text": "quyết",
+      "start": 42.96,
+      "end": 43.14,
+      "confidence": 0.9984519779682159
+    },
+    {
+      "text": "chuyện",
+      "start": 43.14,
+      "end": 43.38,
+      "confidence": 0.994891345500946
+    },
+    {
+      "text": "của",
+      "start": 43.38,
+      "end": 43.58,
+      "confidence": 0.9917771816253662
+    },
+    {
+      "text": "họ.",
+      "start": 43.58,
+      "end": 43.74,
+      "confidence": 0.9998095631599426
+    }
+  ]
+}

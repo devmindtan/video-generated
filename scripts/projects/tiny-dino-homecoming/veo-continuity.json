@@ -1,0 +1,179 @@
+{
+  "model": "veo-3.1-fast-generate-preview",
+  "aspectRatio": "16:9",
+  "resolution": "720p",
+  "durationSeconds": 8,
+  "sampleCount": 1,
+  "negativePrompt": "camera zoom, push in, duplicated characters, repeating action, reset pose, extra limbs, changing colors, scary imagery, text, speech, music",
+  "promptSuffix": "",
+  "shots": [
+    {
+      "scene": "01-hatch-continue-v3-1",
+      "image": "tiny-dino-homecoming/continuity/01-hatch-continue-v3-1.png",
+      "timelineSeconds": 8.599999999999998,
+      "previous": "01-hatch-wide",
+      "previousSourceEnd": 8,
+      "prompt": "Continue from this exact final pose in the open eggshell. Baby quietly looks at the ferns on his right, gently lifts one paw, then looks back at the bright forest path. Never close or hatch the egg again. No second sneeze.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Only the existing baby; no snail, no new characters. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    },
+    {
+      "scene": "02-log-continue-v3-1",
+      "image": "tiny-dino-homecoming/continuity/02-log-continue-v3-1.png",
+      "timelineSeconds": 6.3999999999999995,
+      "previous": "02-log-wide",
+      "previousSourceEnd": 6.2,
+      "prompt": "Continue the careful walk along the SAME log from the exact supplied pose. Baby takes one new steady forward step toward the far end, arms lower naturally after recovering balance. Do not wobble again or reset his feet. Keep log and stream fixed.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Only the existing baby; no snail, no new characters. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    },
+    {
+      "scene": "02-log-continue-v3-2",
+      "model": "veo-3.1-generate-preview",
+      "image": "tiny-dino-homecoming/continuity/02-log-continue-v3-2.png",
+      "timelineSeconds": 6.599999999999998,
+      "previous": "02-log-continue-v3-1",
+      "previousSourceEnd": 6.3999999999999995,
+      "prompt": "Baby finishes crossing THIS SAME log and steps from its far end onto the safe grassy bank. He pauses confidently and looks toward a faint blue light approaching from offscreen. Do not recross the log. No snail.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Only the existing baby; no snail, no new characters. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    },
+    {
+      "scene": "03-butterfly-continue-v3-1",
+      "model": "veo-3.1-generate-preview",
+      "image": "tiny-dino-homecoming/continuity/03-butterfly-continue-v3-1.png",
+      "timelineSeconds": 6.3999999999999995,
+      "previous": "03-butterfly-wide",
+      "previousSourceEnd": 6.2,
+      "prompt": "Continue from the butterfly's exact current position. It lifts away from the baby's snout and hovers at arm's length. Baby lowers his paws and follows the butterfly with his eyes. Do not land on nose again.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Exactly ONE baby and ONE cyan-violet butterfly. No snails, no mother, no new characters. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    },
+    {
+      "scene": "03-butterfly-continue-v3-2",
+      "model": "veo-3.1-generate-preview",
+      "image": "tiny-dino-homecoming/continuity/03-butterfly-continue-v3-2.png",
+      "timelineSeconds": 6.599999999999998,
+      "previous": "03-butterfly-continue-v3-1",
+      "previousSourceEnd": 6.3999999999999995,
+      "prompt": "Butterfly gently moves along the existing forest path toward the right; baby turns his whole body and follows with two small steps. Do not repeat their greeting. Keep both characters visible in a medium-wide framing.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Exactly ONE baby and ONE cyan-violet butterfly. No snails, no mother, no new characters. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    },
+    {
+      "scene": "04-slide-continue-v3-1",
+      "image": "tiny-dino-homecoming/continuity/04-slide-continue-v3-1.png",
+      "timelineSeconds": 6.3999999999999995,
+      "previous": "04-slide-wide",
+      "previousSourceEnd": 6.2,
+      "prompt": "Continue AFTER the slide landing, from exactly where baby is seated among the petals. He brushes one petal from his paw, then looks left and right, a little uncertain. Do not slide again, do not move him back onto the leaf.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Exactly ONE baby and ONE cyan-violet butterfly. No snails, no mother, no new characters. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    },
+    {
+      "scene": "04-slide-continue-v3-2",
+      "image": "tiny-dino-homecoming/continuity/04-slide-continue-v3-2.png",
+      "timelineSeconds": 6.599999999999998,
+      "previous": "04-slide-continue-v3-1",
+      "previousSourceEnd": 6.3999999999999995,
+      "prompt": "The butterfly comes gently alongside the baby's shoulder. Baby stands carefully, looks toward the path, then takes one purposeful step in that direction. Keep the leaf slide behind them; no new animals.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Exactly ONE baby and ONE cyan-violet butterfly. No snails, no mother, no new characters. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    },
+    {
+      "scene": "05-mushrooms-continue-v3-1",
+      "image": "tiny-dino-homecoming/continuity/05-mushrooms-continue-v3-1.png",
+      "timelineSeconds": 8.399999999999999,
+      "previous": "05-mushrooms-wide",
+      "previousSourceEnd": 8,
+      "prompt": "Continue on the mushroom the baby has JUST reached. The cap settles, baby steadies his feet and looks toward the NEXT mushroom and the far bank. No new jump yet; no reset to the bank.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Exactly ONE baby and ONE cyan-violet butterfly. No snails, no mother, no new characters. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    },
+    {
+      "scene": "05-mushrooms-continue-v3-2",
+      "image": "tiny-dino-homecoming/continuity/05-mushrooms-continue-v3-2.png",
+      "timelineSeconds": 8.399999999999999,
+      "previous": "05-mushrooms-continue-v3-1",
+      "previousSourceEnd": 8,
+      "prompt": "Baby makes ONE new controlled hop from his current cap to the next cap closer to the far grassy bank. Both feet land safely; butterfly guides ahead. Do not jump in place or return to the old mushroom.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Exactly ONE baby and ONE cyan-violet butterfly. No snails, no mother, no new characters. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    },
+    {
+      "scene": "05-mushrooms-continue-v3-3",
+      "image": "tiny-dino-homecoming/continuity/05-mushrooms-continue-v3-3.png",
+      "timelineSeconds": 8.599999999999998,
+      "previous": "05-mushrooms-continue-v3-2",
+      "previousSourceEnd": 8,
+      "prompt": "Baby steps from the LAST reachable mushroom onto the far grassy bank, then looks back proudly at the stream. Butterfly joins him on the bank. End with both safely across. Never replay earlier hops.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Exactly ONE baby and ONE cyan-violet butterfly. No snails, no mother, no new characters. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    },
+    {
+      "scene": "06-snail-continue-v3-1",
+      "image": "tiny-dino-homecoming/continuity/06-snail-continue-v3-1.png",
+      "timelineSeconds": 7.3999999999999995,
+      "previous": "06-snail-wide",
+      "previousSourceEnd": 7.2,
+      "prompt": "Continue from the greeting pose. Baby straightens a little, looks at the snail's candy-like shell, and gives a small friendly nod. Snail remains in the same place. No repeated approach or bending again.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Exactly ONE baby, ONE cyan-violet butterfly and ONE pastel candy-shell snail, exactly two eyes at stalk tips, same scale. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    },
+    {
+      "scene": "06-snail-continue-v3-2",
+      "image": "tiny-dino-homecoming/continuity/06-snail-continue-v3-2.png",
+      "timelineSeconds": 7.399999999999999,
+      "previous": "06-snail-continue-v3-1",
+      "previousSourceEnd": 7.3999999999999995,
+      "prompt": "The snail slowly turns its WHOLE body toward the sunflower hill in the established background. Baby and butterfly follow that direction with their gaze. Two short eye stalks stay the SAME length; no touching, sticks, stretching or grabbing.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Exactly ONE baby, ONE cyan-violet butterfly and ONE pastel candy-shell snail, exactly two eyes at stalk tips, same scale. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    },
+    {
+      "scene": "06-snail-continue-v3-3",
+      "image": "tiny-dino-homecoming/continuity/06-snail-continue-v3-3.png",
+      "timelineSeconds": 7.599999999999998,
+      "previous": "06-snail-continue-v3-2",
+      "previousSourceEnd": 7.399999999999999,
+      "prompt": "Baby gives ONE grateful little wave, then turns his feet toward the sunflower path, inviting the snail and butterfly to join him. Preserve original sizes and positions. No repeat of greeting or shell inspection.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Exactly ONE baby, ONE cyan-violet butterfly and ONE pastel candy-shell snail, exactly two eyes at stalk tips, same scale. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    },
+    {
+      "scene": "07-rain-continue-v5-1",
+      "model": "veo-3.1-fast-generate-preview",
+      "image": "tiny-dino-homecoming/continuity/07-rain-continue-v5-1.png",
+      "timelineSeconds": 7.4,
+      "previous": "07-rain-close",
+      "previousSourceEnd": 7.4,
+      "prompt": "Continue this exact cozy pose. The ONE baby keeps holding the SAME raised leaf and gently blinks. The ONE snail stays beside him without walking. The ONE butterfly stays on the baby's shoulder. Rain beads run along the leaf. Do not move anyone to a new place. NO new characters or animals enter. Preserve exactly the existing three friends. Camera remains fixed.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Exactly ONE baby, ONE cyan-violet butterfly and ONE pastel candy-shell snail, exactly two eyes at stalk tips, same scale. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    },
+    {
+      "scene": "07-rain-continue-v5-2",
+      "model": "veo-3.1-fast-generate-preview",
+      "image": "tiny-dino-homecoming/continuity/07-rain-continue-v5-2.png",
+      "timelineSeconds": 6.6,
+      "previous": "07-rain-continue-v5-1",
+      "previousSourceEnd": 7.4,
+      "prompt": "Continue the exact three-friend shelter pose. Rain slowly becomes lighter and sunlight gently warms the SAME setting. Baby and snail lift their eyes a little toward the bright path, butterfly opens its wings once on the SAME shoulder. Keep the leaf raised and intact. Do not add animals, do not walk or change places. Fixed camera, no zoom.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Exactly ONE baby, ONE cyan-violet butterfly and ONE pastel candy-shell snail, exactly two eyes at stalk tips, same scale. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    },
+    {
+      "scene": "08-nest-continue-v3-1",
+      "image": "tiny-dino-homecoming/continuity/08-nest-continue-v3-1.png",
+      "timelineSeconds": 6.8999999999999995,
+      "previous": "08-nest-wide",
+      "previousSourceEnd": 6.7,
+      "prompt": "Continue from the already reunited cuddle. Mother gently rests her cheek against baby's head. Baby relaxes against her, smiling. No running or arriving again. Keep ONE snail and ONE butterfly on the left.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Exactly ONE mother, ONE baby, ONE cyan-violet butterfly and ONE small candy-shell snail at left. No duplicated characters. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    },
+    {
+      "scene": "08-nest-continue-v3-2",
+      "image": "tiny-dino-homecoming/continuity/08-nest-continue-v3-2.png",
+      "timelineSeconds": 6.899999999999999,
+      "previous": "08-nest-continue-v3-1",
+      "previousSourceEnd": 6.8999999999999995,
+      "prompt": "Baby turns toward the two friends on the LEFT and gives ONE small grateful wave while staying beside mother. Snail gives a tiny nod; butterfly flutters gently in its current place. No new arrivals or duplicate characters.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Exactly ONE mother, ONE baby, ONE cyan-violet butterfly and ONE small candy-shell snail at left. No duplicated characters. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    },
+    {
+      "scene": "08-nest-continue-v3-3",
+      "image": "tiny-dino-homecoming/continuity/08-nest-continue-v3-3.png",
+      "timelineSeconds": 6.699999999999999,
+      "previous": "08-nest-continue-v3-2",
+      "previousSourceEnd": 6.899999999999999,
+      "prompt": "Mother and baby settle comfortably together in the nest, looking toward the peaceful rainbow. Friends remain visible to their left, quietly content. Finish calm and still in pose, with natural blinking and wings. Do not wave or hug again.",
+      "promptSuffix": "Original warm colorful 3D family animation, landscape 16:9. The image is the EXACT last displayed pose of the PRECEDING clip; continue its action and spatial geography, never restart the scene. Preserve lime green baby dinosaur, cream muzzle/belly, coral crest, teal spots, amber eyes. Exactly ONE mother, ONE baby, ONE cyan-violet butterfly and ONE small candy-shell snail at left. No duplicated characters. Camera LOCKED in the input framing: NO zoom, NO push in, NO pullback, NO cuts or reframing. Gentle natural character motion, stable anatomy, no teleporting. No words, speech, singing, music, captions or logos; only nature ambience and nonverbal SFX."
+    }
+  ],
+  "provider": "gemini"
+}

@@ -1,0 +1,12 @@
+{
+  "expected": "để những lời chưa nói không phải bắt đầu bằng hai chữ giá như.",
+  "recognizedCroppedFinalPhrase": "để những lời chưa nói không phải bắt đầu bằng hai chữ giá như",
+  "sourceRangeSeconds": [
+    50.543958333333336,
+    53.43429166666667
+  ],
+  "tailAllDigitalZero": true,
+  "finalPhraseDurationSeconds": 2.8903333333333334,
+  "fullTranscriptHasExtraCTA": true,
+  "listeningReview": "Pending; this checks ASR context and PCM only"
+}

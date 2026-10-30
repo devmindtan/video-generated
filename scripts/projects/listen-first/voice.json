@@ -1,0 +1,276 @@
+{
+  "voice": "Quốc Tuấn",
+  "selection": "Continue Quốc Tuấn for this new episode; local native 1x",
+  "source": "listen-first/audio/narration-quoc-tuan-v1-pauses.wav",
+  "sourceSha256": "7cc0134cca7c911bf2699aeff28cc0f5832fee178be9bd700e60f7c953ed3856",
+  "activeSource": "listen-first/audio/narration-quoc-tuan-v2-pacing.wav",
+  "activeSha256": "1787de702132d6b03a05c6dfbeae1d9b912ac2a7192ece188f780804dcd31635",
+  "qualityProfile": "legacy24",
+  "sampleRateHz": 24000,
+  "playbackRate": 1,
+  "wordMatchRatio": null,
+  "sourceDurationSeconds": 45,
+  "durationSeconds": 45,
+  "addedSilenceSeconds": 0,
+  "cuts": [],
+  "copySpans": [
+    {
+      "sourceStart": 0,
+      "sourceEnd": 51585,
+      "outputStart": 4800,
+      "outputEnd": 56385
+    },
+    {
+      "sourceStart": 51585,
+      "sourceEnd": 97525,
+      "outputStart": 62145,
+      "outputEnd": 108085
+    },
+    {
+      "sourceStart": 97525,
+      "sourceEnd": 139200,
+      "outputStart": 111925,
+      "outputEnd": 153600
+    },
+    {
+      "sourceStart": 153600,
+      "sourceEnd": 735050,
+      "outputStart": 153600,
+      "outputEnd": 735050
+    },
+    {
+      "sourceStart": 735050,
+      "sourceEnd": 799680,
+      "outputStart": 739370,
+      "outputEnd": 804000
+    },
+    {
+      "sourceStart": 804000,
+      "sourceEnd": 860160,
+      "outputStart": 804000,
+      "outputEnd": 860160
+    },
+    {
+      "sourceStart": 860160,
+      "sourceEnd": 930720,
+      "outputStart": 865440,
+      "outputEnd": 936000
+    },
+    {
+      "sourceStart": 936000,
+      "sourceEnd": 965842,
+      "outputStart": 936000,
+      "outputEnd": 965842
+    },
+    {
+      "sourceStart": 965842,
+      "sourceEnd": 1014858,
+      "outputStart": 971122,
+      "outputEnd": 1020138
+    },
+    {
+      "sourceStart": 1014858,
+      "sourceEnd": 1070400,
+      "outputStart": 1024458,
+      "outputEnd": 1080000
+    }
+  ],
+  "tailAddedSamples": 0,
+  "phraseRanges": [
+    {
+      "text": "Có người vừa kể rằng họ đang rất mệt, bạn đã vội chỉ ra họ nên làm gì, đáng lẽ phải nghĩ thế nào.",
+      "startSeconds": 0.45,
+      "endSeconds": 5.967083333333333,
+      "scene": 1
+    },
+    {
+      "text": "Bạn muốn giúp. Nhưng chưa nghe hết câu chuyện, bạn đã biến nỗi buồn của họ thành một bài toán cần giải.",
+      "startSeconds": 6.699208333333333,
+      "endSeconds": 11.745708333333333,
+      "scene": 2
+    },
+    {
+      "text": "Họ phải giải thích thêm, rồi tự bảo vệ cảm xúc của mình.",
+      "startSeconds": 12.962458333333334,
+      "endSeconds": 15.980666666666666,
+      "scene": 3
+    },
+    {
+      "text": "Cuối cùng, người cần được an ủi lại thấy mình như đang bị chấm điểm.",
+      "startSeconds": 16.731916666666667,
+      "endSeconds": 20.006,
+      "scene": 3
+    },
+    {
+      "text": "Đôi khi, họ biết mình cần làm gì rồi. Chỉ là hôm nay, họ chưa đủ sức để làm.",
+      "startSeconds": 21.22275,
+      "endSeconds": 25.715958333333333,
+      "scene": 4
+    },
+    {
+      "text": "Điều họ tìm ở bạn có thể chỉ là một nơi được nói thật rằng mình đang không ổn, mà không phải nghe thêm mình đã sai ở đâu.",
+      "startSeconds": 26.567291666666666,
+      "endSeconds": 32.901291666666665,
+      "scene": 4
+    },
+    {
+      "text": "Trước khi đưa lời khuyên, thử hỏi: Bạn muốn mình cùng tìm cách, hay chỉ cần mình ngồi nghe?",
+      "startSeconds": 33.93804166666666,
+      "endSeconds": 38.528625,
+      "scene": 5
+    },
+    {
+      "text": "Được thấu hiểu có khi chính là điều giúp một người đủ sức bắt đầu giải quyết chuyện của họ.",
+      "startSeconds": 39.575375,
+      "endSeconds": 44.15,
+      "scene": 6
+    }
+  ],
+  "chapters": [
+    {
+      "scene": 1,
+      "startSeconds": 0.45,
+      "endSeconds": 5.967083333333333
+    },
+    {
+      "scene": 2,
+      "startSeconds": 6.699208333333333,
+      "endSeconds": 11.745708333333333
+    },
+    {
+      "scene": 3,
+      "startSeconds": 12.962458333333334,
+      "endSeconds": 20.006
+    },
+    {
+      "scene": 4,
+      "startSeconds": 21.22275,
+      "endSeconds": 32.901291666666665
+    },
+    {
+      "scene": 5,
+      "startSeconds": 33.93804166666666,
+      "endSeconds": 38.528625
+    },
+    {
+      "scene": 6,
+      "startSeconds": 39.575375,
+      "endSeconds": 44.15
+    }
+  ],
+  "sceneStartsFrames": [
+    0,
+    190,
+    371,
+    618,
+    1000,
+    1168
+  ],
+  "sceneLengthsFrames": [
+    196,
+    187,
+    253,
+    388,
+    174,
+    182
+  ],
+  "paidApiCalls": 0,
+  "listeningReview": "Pending user review; ASR/PCM checks do not establish perceived quality",
+  "rawRecognitionFile": "voice-auditions/listen-first-quoc-tuan-v1/recognition/25-quoc-tuan-recognition.json",
+  "priorSourceWordMatchRatio": 1.0,
+  "speechPcmPreserved": true,
+  "pacingEdit": {
+    "backup": "public/listen-first/backups/pacing-v1",
+    "inserts": [
+      {
+        "at": 0,
+        "samples": 4800,
+        "region": "opening",
+        "boundaryRmsPcm16": 0
+      },
+      {
+        "at": 51585,
+        "samples": 5760,
+        "region": "opening",
+        "boundaryRmsPcm16": 1.1067971810589328
+      },
+      {
+        "at": 97525,
+        "samples": 3840,
+        "region": "opening",
+        "boundaryRmsPcm16": 3.0909815053905882
+      },
+      {
+        "at": 735050,
+        "samples": 4320,
+        "region": "safe-space",
+        "boundaryRmsPcm16": 1.2127791774817596
+      },
+      {
+        "at": 860160,
+        "samples": 5280,
+        "region": "question",
+        "boundaryRmsPcm16": 10.500595221224367
+      },
+      {
+        "at": 965842,
+        "samples": 5280,
+        "region": "ending",
+        "boundaryRmsPcm16": 11.68866972756096
+      },
+      {
+        "at": 1014858,
+        "samples": 4320,
+        "region": "ending",
+        "boundaryRmsPcm16": 2.170829334609241
+      }
+    ],
+    "removals": [
+      {
+        "start": 139200,
+        "end": 153600,
+        "region": "opening"
+      },
+      {
+        "start": 799680,
+        "end": 804000,
+        "region": "safe-space"
+      },
+      {
+        "start": 930720,
+        "end": 936000,
+        "region": "question"
+      },
+      {
+        "start": 1070400,
+        "end": 1080000,
+        "region": "ending"
+      }
+    ],
+    "regions": [
+      {
+        "name": "opening",
+        "startSample": 0,
+        "endSample": 153600
+      },
+      {
+        "name": "safe-space",
+        "startSample": 633600,
+        "endSample": 804000
+      },
+      {
+        "name": "question",
+        "startSample": 811200,
+        "endSample": 936000
+      },
+      {
+        "name": "ending",
+        "startSample": 945600,
+        "endSample": 1080000
+      }
+    ],
+    "redistributedSilenceSeconds": 1.4,
+    "outsideRegionsUnchanged": true
+  },
+  "recognitionNote": "No new TTS; all speech PCM retained. Prior unpaced transcript matches authored tones. Word-alignment pass on paced audio flags giải/dài and an ủi/ăn uỷ despite identical speech PCM; listening review remains pending."
+}

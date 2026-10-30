@@ -1,0 +1,3 @@
+# Isolated .venv-pdf; core text extraction, no layout/LLM model or API.
+# Reference clones may be newer; runtime is pinned independently.
+PyMuPDF==1.26.7

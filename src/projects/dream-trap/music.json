@@ -1,0 +1,13 @@
+{
+  "file": "Ludovico Einaudi - Night (Official Video).mp3",
+  "speechVolume": 0.30,
+  "pauseVolume": 0.35,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 2,
+  "credit": {
+    "title": "Night",
+    "artists": ["Ludovico Einaudi"],
+    "attributionSource": "Title and artist taken from local source filename: Ludovico Einaudi - Night (Official Video).mp3."
+  },
+  "editingNote": "Full source recording, native 1x playback. Edit Audio Start/Duration/End and source trim independently in Studio; ducking volumes remain here. Fades follow actual audible clip/composition edges."
+}

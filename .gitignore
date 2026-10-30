@@ -9,3 +9,20 @@ public/
 .cache/
 *.mp4
 .env.local
+budgets/shorts/*.lock
+
+.venv-pdf/
+
+library/books/
+
+.venv-web/
+
+docs/projects/*/.manager-history/
+
+# Recoverable local manager deletions (may include private media)
+.manager-trash/
+
+# Local credentials; only the documented template is versioned
+.env
+.env.*
+!.env.example

@@ -1,0 +1,184 @@
+{
+  "voice": "Quốc Tuấn",
+  "selection": "Continue Quốc Tuấn for this new episode; local native 1x",
+  "source": "one-bad-day/audio/narration-quoc-tuan-v2-source.wav",
+  "sourceSha256": "5083c377171f3df4b49d8779dff04ff7fb79b3a197ecd0f7b7252e189600265e",
+  "activeSource": "one-bad-day/audio/narration-quoc-tuan-v2-pauses.wav",
+  "activeSha256": "c7bd16245e5562fa36ff42b5ee222bcfe391773800102882e0a13eca0ee8b90f",
+  "qualityProfile": "legacy24",
+  "sampleRateHz": 24000,
+  "playbackRate": 1,
+  "wordMatchRatio": 1.0,
+  "sourceDurationSeconds": 38.65720833333334,
+  "durationSeconds": 45,
+  "addedSilenceSeconds": 6.342791666666667,
+  "cuts": [
+    {
+      "sourceSample": 167750,
+      "addedSamples": 28272
+    },
+    {
+      "sourceSample": 349457,
+      "addedSamples": 22971
+    },
+    {
+      "sourceSample": 457414,
+      "addedSamples": 17670
+    },
+    {
+      "sourceSample": 541484,
+      "addedSamples": 22971
+    },
+    {
+      "sourceSample": 652294,
+      "addedSamples": 22971
+    },
+    {
+      "sourceSample": 764314,
+      "addedSamples": 22971
+    }
+  ],
+  "copySpans": [
+    {
+      "sourceStart": 0,
+      "sourceEnd": 167750,
+      "outputStart": 0,
+      "outputEnd": 167750
+    },
+    {
+      "sourceStart": 167750,
+      "sourceEnd": 349457,
+      "outputStart": 196022,
+      "outputEnd": 377729
+    },
+    {
+      "sourceStart": 349457,
+      "sourceEnd": 457414,
+      "outputStart": 400700,
+      "outputEnd": 508657
+    },
+    {
+      "sourceStart": 457414,
+      "sourceEnd": 541484,
+      "outputStart": 526327,
+      "outputEnd": 610397
+    },
+    {
+      "sourceStart": 541484,
+      "sourceEnd": 652294,
+      "outputStart": 633368,
+      "outputEnd": 744178
+    },
+    {
+      "sourceStart": 652294,
+      "sourceEnd": 764314,
+      "outputStart": 767149,
+      "outputEnd": 879169
+    },
+    {
+      "sourceStart": 764314,
+      "sourceEnd": 927773,
+      "outputStart": 902140,
+      "outputEnd": 1065599
+    }
+  ],
+  "tailAddedSamples": 14401,
+  "phraseRanges": [
+    {
+      "text": "Khi tự nhủ mình chẳng bao giờ làm được đến cùng, bạn có đang quên hết những ngày mình đã cố gắng, chỉ vì hôm nay làm chưa tốt?",
+      "startSeconds": 0.45,
+      "endSeconds": 6.764583333333333,
+      "scene": 1
+    },
+    {
+      "text": "Có thể bạn đã đặt nhiều hy vọng vào lần này. Nên một lần không giữ đúng kế hoạch cũng khiến bạn sợ rằng: cuối cùng, mình vẫn chẳng thay đổi được gì.",
+      "startSeconds": 8.392583333333334,
+      "endSeconds": 15.513708333333334,
+      "scene": 2
+    },
+    {
+      "text": "Bạn muốn bỏ, vì cố tiếp nghĩa là còn có thể thất vọng về bản thân thêm lần nữa.",
+      "startSeconds": 16.920833333333334,
+      "endSeconds": 20.994041666666664,
+      "scene": 3
+    },
+    {
+      "text": "Nhưng đừng vội lấy một ngày để kết luận về cả con người mình.",
+      "startSeconds": 22.13029166666667,
+      "endSeconds": 25.208208333333335,
+      "scene": 3
+    },
+    {
+      "text": "Hãy xem hôm nay vướng ở đâu: bạn quá mệt, đặt việc quá sức, hay cần đổi cách làm?",
+      "startSeconds": 26.615333333333332,
+      "endSeconds": 30.80741666666667,
+      "scene": 4
+    },
+    {
+      "text": "Bạn cần hiểu điều khiến mình dừng lại để còn sửa. Tự trách mình chẳng thay được việc đó.",
+      "startSeconds": 32.164541666666665,
+      "endSeconds": 36.407041666666665,
+      "scene": 5
+    },
+    {
+      "text": "Ngày mai, làm lại từ phần vừa sức. Những ngày bạn đã cố gắng vẫn có giá trị, kể cả khi hôm nay chưa được như mong đợi.",
+      "startSeconds": 37.814166666666665,
+      "endSeconds": 43.75,
+      "scene": 6
+    }
+  ],
+  "chapters": [
+    {
+      "scene": 1,
+      "startSeconds": 0.45,
+      "endSeconds": 6.764583333333333
+    },
+    {
+      "scene": 2,
+      "startSeconds": 8.392583333333334,
+      "endSeconds": 15.513708333333334
+    },
+    {
+      "scene": 3,
+      "startSeconds": 16.920833333333334,
+      "endSeconds": 25.208208333333335
+    },
+    {
+      "scene": 4,
+      "startSeconds": 26.615333333333332,
+      "endSeconds": 30.80741666666667
+    },
+    {
+      "scene": 5,
+      "startSeconds": 32.164541666666665,
+      "endSeconds": 36.407041666666665
+    },
+    {
+      "scene": 6,
+      "startSeconds": 37.814166666666665,
+      "endSeconds": 43.75
+    }
+  ],
+  "sceneStartsFrames": [
+    0,
+    227,
+    487,
+    777,
+    945,
+    1113
+  ],
+  "sceneLengthsFrames": [
+    233,
+    266,
+    296,
+    174,
+    174,
+    237
+  ],
+  "allOriginalPcmSamplesPreserved": true,
+  "paidApiCalls": 0,
+  "listeningReview": "Pending user review; ASR/PCM checks do not establish perceived quality",
+  "rawRecognitionFile": "voice-auditions/one-bad-day-assembled-v3/recognition/narration-quoc-tuan-recognition.json",
+  "sourceAssembly": "voice-auditions/one-bad-day-assembled-v3/assembly.json",
+  "recognitionNote": "First take flagged về bản thân -> với bản thân and còn sửa -> con sửa in raw ASR. Selected only the improved về bản thân sentence; other sentence PCM and original pauses preserved. The còn sửa phrase retains the original take because repair candidates introduced additional ASR substitutions (thay -> thấy). Full assembly raw transcript reviewed separately; listening approval remains pending."
+}

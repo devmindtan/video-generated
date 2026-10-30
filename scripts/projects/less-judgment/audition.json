@@ -1,0 +1,24 @@
+{
+  "title": "Chuyện gì cũng cần một lời nhận xét sao?",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.8,
+  "maxDurationSeconds": 120,
+  "sentences": [
+    {"scene": 1, "text": "Bạn đang uống cà phê.", "pauseAfter": 0.25},
+    {"scene": 1, "text": "Người đối diện liếc sang bàn bên: Ăn mặc thế kia mà cũng ra đường.", "pauseAfter": 0.35},
+    {"scene": 1, "text": "Rồi kể chuyện người quen nghỉ việc: Đang ổn định lại bỏ, nghĩ gì không biết.", "pauseAfter": 0.6},
+    {"scene": 2, "text": "Bạn không biết rõ hai người đó.", "pauseAfter": 0.25},
+    {"scene": 2, "text": "Nhưng vẫn góp vài câu cho hợp chuyện.", "pauseAfter": 0.3},
+    {"scene": 2, "text": "Cứ thế, cuộc trò chuyện chỉ còn là những lời khen chê người vắng mặt.", "pauseAfter": 0.6},
+    {"scene": 3, "text": "Bộ đồ ấy có thể chỉ là sở thích.", "pauseAfter": 0.25},
+    {"scene": 3, "text": "Quyết định nghỉ việc có thể đã được cân nhắc nhiều tháng.", "pauseAfter": 0.3},
+    {"scene": 3, "text": "Chỉ nghe vài câu, mình chưa thể hiểu hết chuyện của họ.", "pauseAfter": 0.65},
+    {"scene": 4, "text": "Không cần phản bác cho căng thẳng.", "pauseAfter": 0.25},
+    {"scene": 4, "text": "Bạn có thể nói: Chuyện của họ, mình cũng không rõ.", "pauseAfter": 0.35},
+    {"scene": 4, "text": "Rồi hỏi: Dạo này bạn thế nào?", "pauseAfter": 0.4},
+    {"scene": 4, "text": "Đưa cuộc nói chuyện trở về người đang ngồi trước mặt.", "pauseAfter": 0.6},
+    {"scene": 5, "text": "Bạn không cần một lời nhận xét cho mọi chuyện mình nhìn thấy.", "pauseAfter": 0.45},
+    {"scene": 5, "text": "Một buổi gặp gỡ đâu cần trở thành buổi chấm điểm những người vắng mặt.", "pauseAfter": 0}
+  ]
+}

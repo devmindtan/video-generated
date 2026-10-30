@@ -1,0 +1,8 @@
+{
+  "file": "single-task/audio/experience-reverb-full.wav",
+  "speechVolume": 0.33,
+  "pauseVolume": 0.38,
+  "fadeInSeconds": 2,
+  "fadeOutSeconds": 2,
+  "editingNote": "Music timing/source trim are editable on the native Audio clip in Studio Edit. Keep speechVolume and pauseVolume adjustable here. Full source shared read-only with single-task; no baked video-length excerpt."
+}

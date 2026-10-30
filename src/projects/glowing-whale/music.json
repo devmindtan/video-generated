@@ -1,0 +1,8 @@
+{
+  "file": "glowing-whale/audio/ocean-wonder-score.wav",
+  "speechVolume": 0.14,
+  "pauseVolume": 0.22,
+  "fadeInSeconds": 0.5,
+  "fadeOutSeconds": 1.2,
+  "videoEndSeconds": 60
+}

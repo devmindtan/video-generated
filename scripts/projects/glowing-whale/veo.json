@@ -1,0 +1,54 @@
+{
+  "model": "veo-3.1-generate-preview",
+  "aspectRatio": "9:16",
+  "resolution": "720p",
+  "durationSeconds": 8,
+  "sampleCount": 1,
+  "negativePrompt": "duplicated whale, extra fins, legs, hands, extra tails, deformed faces, changing skin or belly colors, predators, horror, scary spikes, text, subtitles, logo, watermark, zoom, fast camera motion, speech, singing, music",
+  "promptSuffix": "Original family-friendly stylized 3D animation. Use input image as the starting frame and preserve the exact character identity: chubby sky-blue whale, navy dorsal fin, teal eyes, two side flippers, horizontal two-fluke tail, golden glowing cream oval belly. Calm smooth natural swimming and coherent anatomy. Portrait 9:16. Keep full characters visible in the middle of the frame with room above and below for titles. No camera zoom, cuts, reframing or change of character. No speech, lip syncing, music or singing, only gentle water and bubbles.",
+  "shots": [
+    {
+      "scene": "01-shy",
+      "image": "glowing-whale/images/01-shy.png",
+      "timelineSeconds": 8.3,
+      "prompt": "The baby whale looks down at his golden glowing belly, shyly brings both existing flippers closer to it, then gently swims halfway behind the rounded rock on the right. Do not fully hide him; preserve visible eyes and golden glow. One continuous action, stable medium-wide camera, no zoom."
+    },
+    {
+      "scene": "02-turtle",
+      "image": "glowing-whale/images/02-turtle.png",
+      "timelineSeconds": 9.3,
+      "prompt": "The ancient turtle slowly swims a little closer and raises one existing flipper in a gentle reassuring gesture near the whale's head without touching or fusing bodies. Whale lifts his gaze and gives a small hopeful smile. Soft natural fin movement, no speaking or lip syncing. Fixed medium-wide camera."
+    },
+    {
+      "scene": "03-lost-fish",
+      "image": "glowing-whale/images/03-lost-fish.png",
+      "timelineSeconds": 9.3,
+      "prompt": "The five little clownfish huddle together, blink worriedly and gently flutter their fins in the softly dim rocky passage. Small suspended particles drift toward a faint blue exit. No predators, no flashing eyes, no panic or peril. Stable wide shot."
+    },
+    {
+      "scene": "04-brave",
+      "image": "glowing-whale/images/04-brave.png",
+      "timelineSeconds": 9.3,
+      "prompt": "The whale lifts his gaze with a kind determined expression, then tilts forward and swims downward toward the rounded blue rocky passage on the right. His belly light gradually becomes warmer and brighter. Only one whale; continuous motion, stable medium-wide camera, no underwater inhalation or human hand gestures."
+    },
+    {
+      "scene": "05-guide",
+      "image": "glowing-whale/images/05-guide.png",
+      "timelineSeconds": 9.3,
+      "prompt": "The whale swims steadily toward the brighter exit at upper right, tail moving naturally up and down; the five clownfish follow safely behind. The golden belly illuminates the rounded rocks and colorful coral as they advance along the passage. Do not circle, reverse, restart or teleport. Stable wide camera."
+    },
+    {
+      "scene": "06-reunion",
+      "image": "glowing-whale/images/06-reunion.png",
+      "timelineSeconds": 9.3,
+      "prompt": "The five little clownfish swim one slow loose celebratory arc around the smiling whale in the open coral reef, maintaining separation. Whale gently wiggles his two flippers and smiles, golden belly steady. Small bubbles rise, no extra fish spawn. Stable medium-wide camera."
+    },
+    {
+      "scene": "07-shine",
+      "image": "glowing-whale/images/07-shine.png",
+      "timelineSeconds": 7,
+      "prompt": "The whale continues ONE small joyful breach above the calm ocean, then returns safely to the water with a soft splash and tiny rainbow-mist droplets. Keep the whale's blue color and golden oval belly. Gentle motion with a readable arc; no repeated jumps or fireworks. Locked wide camera."
+    }
+  ],
+  "provider": "gemini"
+}

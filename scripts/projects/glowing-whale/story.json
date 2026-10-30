@@ -1,0 +1,163 @@
+[
+  {
+    "id": "01-shy",
+    "start": 0,
+    "duration": 8,
+    "leadIn": 0.35,
+    "tail": 0.35,
+    "maxTail": 4,
+    "targetSpeed": 0.98,
+    "temperature": 0.52,
+    "text": "Bé cá voi Bọt Biển có chiếc bụng phát sáng. Bé cứ giấu đi, vì thấy mình khác các bạn.",
+    "sentences": [
+      {
+        "text": "Bé cá voi Bọt Biển có chiếc bụng phát sáng.",
+        "at": 0.35,
+        "pauseAfter": 0
+      },
+      {
+        "text": "Bé cứ giấu đi, vì thấy mình khác các bạn.",
+        "at": 3.8,
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "02-turtle",
+    "start": 8,
+    "duration": 9,
+    "leadIn": 0.35,
+    "tail": 0.35,
+    "maxTail": 4,
+    "targetSpeed": 0.98,
+    "temperature": 0.6,
+    "text": "Cụ Rùa nhẹ nhàng an ủi: Đừng buồn nhé! Sự khác biệt của con cũng có thể là một món quà.",
+    "sentences": [
+      {
+        "text": "Cụ Rùa nhẹ nhàng an ủi:",
+        "at": 0.35,
+        "pauseAfter": 0
+      },
+      {
+        "text": "Đừng buồn nhé! Sự khác biệt của con cũng có thể là một món quà.",
+        "at": 2.7,
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "03-lost-fish",
+    "start": 17,
+    "duration": 9,
+    "leadIn": 0.4,
+    "tail": 0.35,
+    "maxTail": 4,
+    "targetSpeed": 0.98,
+    "temperature": 0.6,
+    "text": "Bỗng, mấy bạn cá hề bị lạc vào hẻm đá tối. Loay hoay mãi, các bạn vẫn chưa tìm thấy lối ra.",
+    "sentences": [
+      {
+        "text": "Bỗng, mấy bạn cá hề bị lạc vào hẻm đá tối.",
+        "at": 0.4,
+        "pauseAfter": 0
+      },
+      {
+        "text": "Loay hoay mãi, các bạn vẫn chưa tìm thấy lối ra.",
+        "at": 4.4,
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "04-brave",
+    "start": 26,
+    "duration": 9,
+    "leadIn": 0.4,
+    "tail": 0.35,
+    "maxTail": 4,
+    "targetSpeed": 0.98,
+    "temperature": 0.6,
+    "text": "Bọt Biển muốn giúp các bạn! Bé bình tĩnh, rồi can đảm bơi vào hẻm đá.",
+    "sentences": [
+      {
+        "text": "Bọt Biển muốn giúp các bạn!",
+        "at": 0.4,
+        "pauseAfter": 0
+      },
+      {
+        "text": "Bé bình tĩnh, rồi can đảm bơi vào hẻm đá.",
+        "at": 3,
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "05-guide",
+    "start": 35,
+    "duration": 9,
+    "leadIn": 0.4,
+    "tail": 0.35,
+    "maxTail": 4,
+    "targetSpeed": 0.98,
+    "temperature": 0.6,
+    "text": "Chiếc bụng vàng sáng lên như một ngọn đèn. Bọt Biển bơi chậm, soi đường cho đàn cá theo sau.",
+    "sentences": [
+      {
+        "text": "Chiếc bụng vàng sáng lên như một ngọn đèn.",
+        "at": 0.4,
+        "pauseAfter": 0
+      },
+      {
+        "text": "Bọt Biển bơi chậm, soi đường cho đàn cá theo sau.",
+        "at": 4,
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "06-reunion",
+    "start": 44,
+    "duration": 9,
+    "leadIn": 0.4,
+    "tail": 0.35,
+    "maxTail": 4,
+    "targetSpeed": 0.98,
+    "temperature": 0.6,
+    "text": "Ra tới rạn san hô rồi! Đàn cá vui mừng bơi quanh, cảm ơn người bạn dũng cảm.",
+    "sentences": [
+      {
+        "text": "Ra tới rạn san hô rồi!",
+        "at": 0.4,
+        "pauseAfter": 0
+      },
+      {
+        "text": "Đàn cá vui mừng bơi quanh, cảm ơn người bạn dũng cảm.",
+        "at": 2.8,
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "07-shine",
+    "start": 53,
+    "duration": 7,
+    "leadIn": 0.3,
+    "tail": 0.35,
+    "maxTail": 4,
+    "targetSpeed": 0.98,
+    "temperature": 0.6,
+    "text": "Khác biệt cũng thật đáng yêu! Đăng ký kênh, cùng Bọt Biển khám phá đại dương nhé!",
+    "sentences": [
+      {
+        "text": "Khác biệt cũng thật đáng yêu!",
+        "at": 0.3,
+        "pauseAfter": 0
+      },
+      {
+        "text": "Đăng ký kênh, cùng Bọt Biển khám phá đại dương nhé!",
+        "at": 2.6,
+        "pauseAfter": 0
+      }
+    ]
+  }
+]

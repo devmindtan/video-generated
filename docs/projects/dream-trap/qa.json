@@ -1,0 +1,44 @@
+{
+  "composition": "StoicDreamTrap",
+  "durationSeconds": 48,
+  "voice": "Quốc Tuấn",
+  "tempo": 1,
+  "sourcePcmPreserved": true,
+  "addedSilenceSeconds": 4.247166666666667,
+  "captionPages": 27,
+  "captionTextUnchanged": true,
+  "sceneStartsFrames": [
+    0,
+    274,
+    561,
+    852,
+    1169
+  ],
+  "imageAssetsVisuallyInspected": 5,
+  "musicEdit": {
+    "src": "Ludovico Einaudi - Night (Official Video).mp3",
+    "from": 0,
+    "trimBefore": 1245,
+    "durationInFrames": 1440,
+    "playbackRate": 1,
+    "volume": null
+  },
+  "speechEdit": {
+    "src": "dream-trap/audio/narration-quoc-tuan-v2-pauses.wav",
+    "from": 0,
+    "trimBefore": 0,
+    "durationInFrames": null,
+    "playbackRate": 1,
+    "volume": 1
+  },
+  "mixPeakDbFS": -2.01,
+  "musicBelowVoiceDb": 17.67,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 2,
+  "paidApiCalls": 0,
+  "sfxEnabled": false,
+  "videoRendered": false,
+  "thumbnailRendered": false,
+  "listeningReview": "Pending user listening; automated checks do not approve perceived quality",
+  "recognitionNote": "99.42% word match; review khác/khắc and ngay/ngày against local source audio"
+}

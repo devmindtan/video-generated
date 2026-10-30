@@ -3,12 +3,12 @@
     "id": "01-hourglass",
     "start": 0,
     "duration": 8,
-    "leadIn": 0.2,
-    "tail": 0.28,
-    "temperature": 0.42,
-    "text": "Có phải bạn đang nhìn sang thành công của người khác... rồi tự hỏi sao mình vẫn chưa tới đâu? Dừng lại một chút.",
+    "leadIn": 0.1,
+    "tail": 0.15,
+    "temperature": 0.65,
+    "text": "Có phải bạn đang nhìn vào thành công của người khác... rồi tự hỏi sao mình vẫn chưa tới đâu? Dừng lại một chút.",
     "sentences": [
-      {"text": "Có phải bạn đang nhìn sang thành công của người khác... rồi tự hỏi sao mình vẫn chưa tới đâu?", "pauseAfter": 1, "gainDb": 0.15},
+      {"text": "Có phải bạn đang nhìn vào thành công của người khác... rồi tự hỏi sao mình vẫn chưa tới đâu?", "pauseAfter": 1, "gainDb": 0.15},
       {"text": "Dừng lại một chút.", "pauseAfter": 0, "gainDb": -0.15}
     ]
   },
@@ -18,11 +18,12 @@
     "duration": 11,
     "leadIn": 0.15,
     "tail": 0.25,
-    "temperature": 0.36,
-    "text": "Bạn đang so sánh những ngày đầu chật vật của mình với thành quả rực rỡ nhất mà họ phô bày ra ngoài. Nhưng không ai chụp lại những đêm thất bại và nước mắt trong bóng tối.",
+    "targetSpeed": 0.78,
+    "temperature": 0.65,
+    "text": "Bạn đang so sánh hậu trường ngổn ngang của mình với sân khấu rực rỡ của người khác. Nhưng chẳng ai đăng tải những đêm thất bại hay những lần muốn bỏ cuộc.",
     "sentences": [
-      {"text": "Bạn đang so sánh những ngày đầu chật vật của mình với thành quả rực rỡ nhất mà họ phô bày ra ngoài.", "pauseAfter": 0.38, "gainDb": 0.05},
-      {"text": "Nhưng không ai chụp lại những đêm thất bại và nước mắt trong bóng tối.", "pauseAfter": 0, "gainDb": 0.3}
+      {"text": "Bạn đang so sánh hậu trường ngổn ngang của mình với sân khấu rực rỡ của người khác.", "pauseAfter": 0.38, "gainDb": 0.05},
+      {"text": "Nhưng chẳng ai đăng tải những đêm thất bại hay những lần muốn bỏ cuộc.", "pauseAfter": 0, "gainDb": 0.3}
     ]
   },
   {
@@ -31,39 +32,43 @@
     "duration": 12,
     "leadIn": 0.15,
     "tail": 0.3,
-    "temperature": 0.43,
-    "text": "Cây sồi mất hàng chục năm để cắm rễ sâu, trong khi hoa cỏ chỉ cần vài tuần để nở rộ rồi chóng tàn. Một nền móng vững chắc chưa bao giờ được xây dựng trong một sớm một chiều.",
+    "maxTail": 2.7,
+    "temperature": 0.5,
+    "text": "Cây cổ thụ không lớn lên trong một mùa. Nhiều năm đầu, phần quan trọng nhất của nó vẫn nằm khuất dưới đất: những chiếc rễ âm thầm bám sâu. Thứ muốn đứng vững trước giông gió luôn cần thời gian để lớn lên.",
     "sentences": [
-      {"text": "Cây sồi mất hàng chục năm để cắm rễ sâu, trong khi hoa cỏ chỉ cần vài tuần để nở rộ rồi chóng tàn.", "pauseAfter": 0.42, "gainDb": 0.05},
-      {"text": "Một nền móng vững chắc chưa bao giờ được xây dựng trong một sớm một chiều.", "pauseAfter": 0, "gainDb": 0.18}
+      {"text": "Cây cổ thụ không lớn lên trong một mùa.", "pauseAfter": 0.32, "gainDb": 0.05},
+      {"text": "Nhiều năm đầu, phần quan trọng nhất của nó vẫn nằm khuất dưới đất: những chiếc rễ âm thầm bám sâu.", "pauseAfter": 0.34, "gainDb": 0.1},
+      {"text": "Thứ muốn đứng vững trước giông gió luôn cần thời gian để lớn lên.", "pauseAfter": 0, "gainDb": 0.22}
     ]
   },
   {
     "id": "04-wanderer",
     "start": 31,
     "duration": 9,
-    "leadIn": 0.14,
-    "tail": 0.28,
-    "temperature": 0.48,
-    "text": "Bạn không chậm trễ, cũng chẳng đi sớm hơn ai. Bạn đang ở đúng múi giờ của cuộc đời mình. Việc duy nhất cần làm là bước tiếp phần việc hôm nay.",
+    "leadIn": 0.1,
+    "tail": 0.2,
+    "temperature": 0.45,
+    "text": "Bạn không hề chậm trễ, cũng chẳng cần chạy theo ai. Bạn đang ở đúng múi giờ của riêng mình. Việc duy nhất lúc này: tập trung vào bước chân hôm nay.",
     "sentences": [
-      {"text": "Bạn không chậm trễ, cũng chẳng đi sớm hơn ai.", "pauseAfter": 0.3, "gainDb": 0.25},
-      {"text": "Bạn đang ở đúng múi giờ của cuộc đời mình.", "pauseAfter": 0.28, "gainDb": 0.38},
-      {"text": "Việc duy nhất cần làm là bước tiếp phần việc hôm nay.", "pauseAfter": 0, "gainDb": 0.42}
+      {"text": "Bạn không hề chậm trễ, cũng chẳng cần chạy theo ai.", "pauseAfter": 0.14, "gainDb": 0.25},
+      {"text": "Bạn đang ở đúng múi giờ của riêng mình.", "pauseAfter": 0.14, "gainDb": 0.38},
+      {"text": "Việc duy nhất lúc này: tập trung vào bước chân hôm nay.", "pauseAfter": 0, "gainDb": 0.42}
     ]
   },
   {
     "id": "05-ripple",
     "start": 40,
     "duration": 5,
-    "leadIn": 0.12,
+    "leadIn": 0,
     "tail": 2,
-    "maxTail": 2.2,
-    "temperature": 0.4,
-    "text": "Thở một hơi thật sâu. Cứ đi rồi sẽ đến.",
+    "maxTail": 2.4,
+    "targetSpeed": 0.65,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.45,
+    "text": "Hít vào thật sâu. Rồi bước tiếp.",
     "sentences": [
-      {"text": "Thở một hơi thật sâu.", "pauseAfter": 0.3, "gainDb": -0.2},
-      {"text": "Cứ đi rồi sẽ đến.", "pauseAfter": 0, "gainDb": -0.3}
+      {"text": "Hít vào thật sâu.", "pauseAfter": 0.18, "gainDb": -0.3},
+      {"text": "Rồi bước tiếp.", "pauseAfter": 0, "gainDb": -0.2}
     ]
   }
 ]

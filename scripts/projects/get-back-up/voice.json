@@ -1,0 +1,45 @@
+{
+  "voice": "Quốc Tuấn",
+  "gender": "male",
+  "selection": "approved by user for get-back-up only",
+  "source": "get-back-up/audio/narration-quoc-tuan-v1.wav",
+  "auditionSource": "voice-auditions/get-back-up-v1/25-quoc-tuan.wav",
+  "captionsSource": "voice-auditions/get-back-up-v1/25-quoc-tuan-captions.json",
+  "sha256": "8bee9f68d2460e0bceee1d260067ed6849215d31e2f654e5b31120f6f409b000",
+  "qualityProfile": "legacy24",
+  "sampleRateHz": 24000,
+  "pcmSubtype": "PCM_16",
+  "playbackRate": 1,
+  "durationSeconds": 35.59,
+  "phraseRanges": [
+    {
+      "text": "Sau một lần thất bại, điều khó nhất đôi khi không phải là làm lại. Mà là dám tin rằng mình vẫn có thể làm được.",
+      "startSeconds": 0.16,
+      "endSeconds": 5.9985
+    },
+    {
+      "text": "Bạn sợ thử thêm lần nữa rồi vẫn chẳng tới đâu. Sợ người khác cười. Sợ lại phải thất vọng về chính mình.",
+      "startSeconds": 6.3985,
+      "endSeconds": 11.7961
+    },
+    {
+      "text": "Nhưng một lần làm chưa được không có nghĩa là mãi mãi không làm được. Hãy nhìn lại xem lần trước mình sai ở đâu, để lần này làm khác đi.",
+      "startSeconds": 12.1961,
+      "endSeconds": 18.7495
+    },
+    {
+      "text": "Chưa đủ sức làm lại tất cả thì bắt đầu từ một việc nhỏ. Học lại điều chưa hiểu. Nhờ giúp ở chỗ mình đang mắc. Không cần chứng minh gì với ai.",
+      "startSeconds": 19.1495,
+      "endSeconds": 26.6485
+    },
+    {
+      "text": "Đứng dậy không khiến lần vấp ngã biến mất. Nhưng nó cho bạn cơ hội đi xa hơn chỗ mình đã ngã. Bạn đã từng ngã ở đó. Không có nghĩa là bạn phải dừng ở đó.",
+      "startSeconds": 27.0485,
+      "endSeconds": 35.2402
+    }
+  ],
+  "note": "Original take and SHA remain unchanged. User requested more pauses: v2 inserts only silence, preserves every original PCM sample, and keeps user's voice gain1.2/playback .99. No resynthesis or additional slowdown.",
+  "activeSource": "get-back-up/audio/narration-quoc-tuan-v2-pauses.wav",
+  "activePlaybackRate": 0.99,
+  "pacingMetadata": "get-back-up/audio/pacing-v2.json"
+}

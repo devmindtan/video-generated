@@ -1,0 +1,14 @@
+{
+  "continuityV3": true,
+  "muteNativeShots": ["06-snail-continue-v3-3"],
+  "shotDissolveSeconds": 0.4,
+  "sceneDissolveSeconds": 0.4,
+  "sfxFile": "tiny-dino-homecoming/audio/homecoming-continuity-sfx-v3.wav",
+  "sfxVolume": 0.85,
+  "nativeTargetRmsDb": -23,
+  "nativePeakLimit": 0.4,
+  "nativeSpeechGain": 0.7,
+  "nativePauseGain": 1.0,
+  "foleySpeechGain": 0.85,
+  "foleyPauseGain": 1.0
+}

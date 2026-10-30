@@ -1,0 +1,15 @@
+{
+  "book": "hieu-ve-trai-tim",
+  "sourceSha256": null,
+  "edition": null,
+  "pageNumberConvention": "pdfPage is 1-based; printed labels require visual confirmation",
+  "chapters": [],
+  "chapterExampleSchema": {
+    "title": "Fill only after inspecting the source contents",
+    "pdfStart": null,
+    "pdfEnd": null,
+    "printedStartVerified": null,
+    "mappingSource": "bookmark-checked or printed-toc-checked",
+    "readStatus": "unread"
+  }
+}

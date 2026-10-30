@@ -1,0 +1,7 @@
+{
+  "file": "glowing-whale/audio/ocean-underwater-sfx-v2.wav",
+  "volume": 1,
+  "ambienceFile": "glowing-whale/audio/ocean-underwater-ambience-v2.wav",
+  "actionsFile": "glowing-whale/audio/ocean-water-actions-v2.wav",
+  "timingFile": "glowing-whale/audio/foley-timing-v2.json"
+}

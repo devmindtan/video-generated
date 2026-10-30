@@ -1,0 +1,7 @@
+{
+  "file":"tiny-dino-homecoming/audio/homecoming-score.wav",
+  "speechVolume":0.22,
+  "pauseVolume":0.38,
+  "fadeInSeconds":1.5,
+  "fadeOutSeconds":3
+}

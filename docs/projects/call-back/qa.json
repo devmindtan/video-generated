@@ -1,0 +1,51 @@
+{
+  "composition": "StoicCallBack",
+  "durationSeconds": 48,
+  "voice": "Quốc Tuấn",
+  "tempo": 1,
+  "sourcePcmPreserved": true,
+  "addedSilenceSeconds": 7.705125,
+  "captionPages": 25,
+  "captionTextUnchanged": true,
+  "sceneStartsFrames": [
+    0,
+    276,
+    596,
+    909,
+    1197
+  ],
+  "imageAssetsVisuallyInspected": 5,
+  "musicEdit": {
+    "src": "Ludovico Einaudi - Night (Official Video).mp3",
+    "from": 0,
+    "trimBefore": 1245,
+    "durationInFrames": 1440,
+    "playbackRate": 0.8,
+    "volume": null
+  },
+  "speechEdit": {
+    "src": "call-back/audio/narration-quoc-tuan-v1-pauses.wav",
+    "from": 0,
+    "trimBefore": 0,
+    "durationInFrames": null,
+    "playbackRate": 1,
+    "volume": 1
+  },
+  "mixPeakDbFS": -2.16,
+  "musicBelowVoiceDb": 19.81,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 2,
+  "paidApiCalls": 0,
+  "sfxEnabled": false,
+  "videoRendered": false,
+  "thumbnailRendered": false,
+  "listeningReview": "Pending user listening; automated checks do not approve perceived quality",
+  "recognitionNote": "Quốc Tuấn: 100% word match; listening review pending",
+  "quietBeat": {
+    "startSeconds": 28.93525,
+    "lowStartSeconds": 29.38525,
+    "lowEndSeconds": 30.80779,
+    "endSeconds": 31.35779
+  },
+  "quietBeatVolume": 0.25
+}

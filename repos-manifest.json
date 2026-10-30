@@ -1,5 +1,10 @@
 [
   {
+    "repo": "pnnbao97/VieNeu-TTS",
+    "path": "repos/pnnbao97--VieNeu-TTS",
+    "commit": "04044e1b8f822f946bafb2c88b716459f4164152"
+  },
+  {
     "repo": "remotion-dev/skills",
     "path": "repos/remotion-dev--skills",
     "commit": "039e8a2fc78b67efc228d5645367838b85818a1c"
@@ -98,5 +103,30 @@
     "repo": "FFmpeg/FFmpeg",
     "path": "repos/FFmpeg--FFmpeg",
     "commit": "c50d6fca7ac14271e3164a19afedcf4c58834ffb"
+  },
+  {
+    "repo": "pymupdf/PyMuPDF",
+    "path": "repos/pymupdf--PyMuPDF",
+    "commit": "959eb54527caef7027e6dc9b6220bac66928026a"
+  },
+  {
+    "repo": "ocrmypdf/OCRmyPDF",
+    "path": "repos/ocrmypdf--OCRmyPDF",
+    "commit": "b457e9efa68c3a46be2470ffb222ed1bccc4dcbc"
+  },
+  {
+    "repo": "anthropics/skills",
+    "path": "repos/anthropics--skills",
+    "commit": "ca45fc496a3436251f191354091d557da31c15b5"
+  },
+  {
+    "repo": "vercel-labs/agent-skills",
+    "path": "repos/vercel-labs--agent-skills",
+    "commit": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62"
+  },
+  {
+    "repo": "vercel-labs/web-interface-guidelines",
+    "path": "repos/vercel-labs--web-interface-guidelines",
+    "commit": "434b7f91364665f2f733b310ec54809bf8f37937"
   }
 ]

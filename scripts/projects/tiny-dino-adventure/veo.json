@@ -1,0 +1,43 @@
+{
+  "model": "veo-3.1-generate-preview",
+  "aspectRatio": "9:16",
+  "resolution": "720p",
+  "durationSeconds": 8,
+  "sampleCount": 1,
+  "negativePrompt": "extra limbs, duplicated characters, deformed faces, changing character colors, text, subtitles, logos, watermarks, flickering, scary imagery",
+  "promptSuffix": "Original stylized 3D family animation. Use the input image as the first frame. Preserve Tí Hon's lime green skin, cream muzzle and belly, rounded coral crest, teal spots, amber eyes, and the cyan-violet butterfly identity. Keep portrait 9:16 composition. Show actual character movement with coherent anatomy and smooth physics. No speech, singing, music, captions or titles; ambient audio only. The soundtrack will be replaced in editing.",
+  "shots": [
+    {
+      "scene": "01-hatch",
+      "image": "tiny-dino-adventure/images/01-hatch.png",
+      "timelineSeconds": 8,
+      "prompt": "The baby dinosaur rises a little from the already cracked eggshell, blinks happily, then gives one small cute sneeze. Loose shell fragments wobble gently and a few golden sparkles float away. Preserve the existing open eggshell, do not make it hatch twice. Stable camera and clear expressive face."
+    },
+    {
+      "scene": "02-log",
+      "image": "tiny-dino-adventure/images/02-log.png",
+      "timelineSeconds": 10,
+      "prompt": "Tí Hon takes two tiny wobbly steps along the broad mossy log over the shallow stream. He briefly loses balance, spreads both little arms, steadies his feet, and smiles proudly. Feet contact the log naturally, no falling. Gentle forward camera drift."
+    },
+    {
+      "scene": "03-butterfly",
+      "image": "tiny-dino-adventure/images/03-butterfly.png",
+      "timelineSeconds": 12,
+      "prompt": "The luminous blue butterfly flutters delicate wings, moves slowly toward Tí Hon and lands lightly on his snout. Tí Hon follows it with his large eyes, blinks, then smiles and giggles silently. Pollen glitters in warm light, camera steady. Preserve both characters."
+    },
+    {
+      "scene": "04-slide",
+      "image": "tiny-dino-adventure/images/04-slide.png",
+      "timelineSeconds": 12,
+      "prompt": "Tí Hon, already seated on the giant curved leaf slide, glides down smoothly toward a soft bed of colorful flower petals. Tiny arms lift with delight and feet point forward. Butterfly follows alongside. Petals bounce softly as he reaches the bottom. Smooth tracking camera, no teleporting, coherent safe action.",
+      "model": "veo-3.1-fast-generate-preview"
+    },
+    {
+      "scene": "05-goodbye",
+      "image": "tiny-dino-adventure/images/05-goodbye.png",
+      "timelineSeconds": 6,
+      "prompt": "Tí Hon sits comfortably under the sunset tree, looks toward the camera, smiles and waves his tiny paw twice. The glowing butterfly resting on the coral crest slowly opens and closes its wings. Warm sunset rays shimmer; gentle subtle camera pullback. Preserve facial details and exactly two arms."
+    }
+  ],
+  "provider": "gemini"
+}

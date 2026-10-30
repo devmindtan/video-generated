@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "book-insights",
+  "channel": "tam-ly-cuoc-song",
+  "title": "Đọc sách, hiểu mình",
+  "studioFolder": "Book-Insights",
+  "formats": [
+    "long",
+    "short"
+  ],
+  "defaultDurationSeconds": null,
+  "summary": "Series tóm tắt và phân tích sách; nghiên cứu theo nguồn, duyệt script trước sản xuất.",
+  "projects": []
+}

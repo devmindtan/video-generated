@@ -1,0 +1,311 @@
+{
+  "voice": "Quốc Tuấn",
+  "selection": "Continue Quốc Tuấn from the previous selected episode; local native 1x",
+  "source": "anger-at-home/audio/narration-quoc-tuan-v2.wav",
+  "sourceSha256": "d4fd07b177f7c329aecb1f6a8aa2b8355e8fe85a17606b230a65a684a7d12367",
+  "activeSource": "anger-at-home/audio/narration-quoc-tuan-v2-pauses.wav",
+  "activeSha256": "5de2fa139d95a1201d627e5f6e8f1f1ad30ebfc04d07795495acac2707fbba83",
+  "qualityProfile": "legacy24",
+  "sampleRateHz": 24000,
+  "playbackRate": 1,
+  "wordMatchRatio": 0.9871,
+  "sourceDurationSeconds": 58.549166666666665,
+  "durationSeconds": 60,
+  "addedSilenceSeconds": 1.4508333333333334,
+  "cuts": [
+    {
+      "sourceSample": 75115,
+      "addedSamples": 2029
+    },
+    {
+      "sourceSample": 168408,
+      "addedSamples": 1649
+    },
+    {
+      "sourceSample": 285761,
+      "addedSamples": 1268
+    },
+    {
+      "sourceSample": 358920,
+      "addedSamples": 1268
+    },
+    {
+      "sourceSample": 447329,
+      "addedSamples": 1649
+    },
+    {
+      "sourceSample": 577918,
+      "addedSamples": 1268
+    },
+    {
+      "sourceSample": 664466,
+      "addedSamples": 1268
+    },
+    {
+      "sourceSample": 794407,
+      "addedSamples": 1649
+    },
+    {
+      "sourceSample": 895214,
+      "addedSamples": 1268
+    },
+    {
+      "sourceSample": 958063,
+      "addedSamples": 1268
+    },
+    {
+      "sourceSample": 1088099,
+      "addedSamples": 1649
+    },
+    {
+      "sourceSample": 1135027,
+      "addedSamples": 1268
+    },
+    {
+      "sourceSample": 1259546,
+      "addedSamples": 1649
+    },
+    {
+      "sourceSample": 1316973,
+      "addedSamples": 1268
+    }
+  ],
+  "copySpans": [
+    {
+      "sourceStart": 0,
+      "sourceEnd": 75115,
+      "outputStart": 0,
+      "outputEnd": 75115
+    },
+    {
+      "sourceStart": 75115,
+      "sourceEnd": 168408,
+      "outputStart": 77144,
+      "outputEnd": 170437
+    },
+    {
+      "sourceStart": 168408,
+      "sourceEnd": 285761,
+      "outputStart": 172086,
+      "outputEnd": 289439
+    },
+    {
+      "sourceStart": 285761,
+      "sourceEnd": 358920,
+      "outputStart": 290707,
+      "outputEnd": 363866
+    },
+    {
+      "sourceStart": 358920,
+      "sourceEnd": 447329,
+      "outputStart": 365134,
+      "outputEnd": 453543
+    },
+    {
+      "sourceStart": 447329,
+      "sourceEnd": 577918,
+      "outputStart": 455192,
+      "outputEnd": 585781
+    },
+    {
+      "sourceStart": 577918,
+      "sourceEnd": 664466,
+      "outputStart": 587049,
+      "outputEnd": 673597
+    },
+    {
+      "sourceStart": 664466,
+      "sourceEnd": 794407,
+      "outputStart": 674865,
+      "outputEnd": 804806
+    },
+    {
+      "sourceStart": 794407,
+      "sourceEnd": 895214,
+      "outputStart": 806455,
+      "outputEnd": 907262
+    },
+    {
+      "sourceStart": 895214,
+      "sourceEnd": 958063,
+      "outputStart": 908530,
+      "outputEnd": 971379
+    },
+    {
+      "sourceStart": 958063,
+      "sourceEnd": 1088099,
+      "outputStart": 972647,
+      "outputEnd": 1102683
+    },
+    {
+      "sourceStart": 1088099,
+      "sourceEnd": 1135027,
+      "outputStart": 1104332,
+      "outputEnd": 1151260
+    },
+    {
+      "sourceStart": 1135027,
+      "sourceEnd": 1259546,
+      "outputStart": 1152528,
+      "outputEnd": 1277047
+    },
+    {
+      "sourceStart": 1259546,
+      "sourceEnd": 1316973,
+      "outputStart": 1278696,
+      "outputEnd": 1336123
+    },
+    {
+      "sourceStart": 1316973,
+      "sourceEnd": 1405180,
+      "outputStart": 1337391,
+      "outputEnd": 1425598
+    }
+  ],
+  "tailAddedSamples": 14402,
+  "phraseRanges": [
+    {
+      "text": "Người làm bạn bực cả ngày chưa chắc đã nghe một lời trách móc.",
+      "startSeconds": 0.3,
+      "endSeconds": 2.979791666666667,
+      "scene": 1
+    },
+    {
+      "text": "Còn người ở nhà chờ bạn về lại phải chịu những câu nặng nề nhất.",
+      "startSeconds": 3.364333333333333,
+      "endSeconds": 6.776541666666667,
+      "scene": 1
+    },
+    {
+      "text": "Bạn đã nhịn suốt cả ngày. Về đến nhà, chỉ một câu hỏi cũng khiến bạn nổi nóng.",
+      "startSeconds": 7.4952499999999995,
+      "endSeconds": 11.909958333333334,
+      "scene": 2
+    },
+    {
+      "text": "Bạn quen với việc người thân sẽ nhường nhịn, sẽ hiểu mình,",
+      "startSeconds": 12.262791666666667,
+      "endSeconds": 15.036083333333334,
+      "scene": 2
+    },
+    {
+      "text": "nên để những bực dọc tuôn ra mà chẳng nghĩ nhiều đến cách họ đón nhận.",
+      "startSeconds": 15.338916666666666,
+      "endSeconds": 18.572625000000002,
+      "scene": 2
+    },
+    {
+      "text": "Nhưng bạn đâu biết rằng, lời cay nghiệt từ người thân có thể đau hơn rất nhiều lời khó nghe ngoài đường.",
+      "startSeconds": 19.291333333333334,
+      "endSeconds": 24.207541666666668,
+      "scene": 3
+    },
+    {
+      "text": "Vì người nói ra là người mình tin tưởng. Họ biết mình yếu lòng ở đâu.",
+      "startSeconds": 24.660375,
+      "endSeconds": 27.916541666666667,
+      "scene": 3
+    },
+    {
+      "text": "Và trong chính căn nhà của mình, chẳng ai muốn lúc nào cũng phải chuẩn bị tinh thần để chịu tổn thương.",
+      "startSeconds": 28.269375,
+      "endSeconds": 33.18358333333334,
+      "scene": 3
+    },
+    {
+      "text": "Bạn nói xong rồi hết giận. Người nghe vẫn phải sống cùng câu nói ấy.",
+      "startSeconds": 33.95229166666667,
+      "endSeconds": 37.602583333333335,
+      "scene": 4
+    },
+    {
+      "text": "Bạn thấy nhẹ đi vì đã nói hết những bực bội,",
+      "startSeconds": 38.055416666666666,
+      "endSeconds": 40.349125,
+      "scene": 4
+    },
+    {
+      "text": "còn họ bắt đầu cẩn trọng hơn, hỏi ít hơn, dè chừng cả những chuyện trước đây vẫn nói rất tự nhiên.",
+      "startSeconds": 40.65195833333333,
+      "endSeconds": 45.595125,
+      "scene": 4
+    },
+    {
+      "text": "Mệt mỏi cần được cảm thông.",
+      "startSeconds": 46.36383333333333,
+      "endSeconds": 47.81916666666667,
+      "scene": 5
+    },
+    {
+      "text": "Nhưng người thân cũng cần được đối xử tử tế, ngay cả trong ngày bạn chẳng còn chút kiên nhẫn nào.",
+      "startSeconds": 48.172,
+      "endSeconds": 52.88529166666667,
+      "scene": 5
+    },
+    {
+      "text": "Đừng để bạn được trở về là chính mình,",
+      "startSeconds": 53.604,
+      "endSeconds": 55.49679166666667,
+      "scene": 6
+    },
+    {
+      "text": "còn người thương bạn lại phải thu mình mỗi khi bạn trở về.",
+      "startSeconds": 55.899625,
+      "endSeconds": 58.599916666666665,
+      "scene": 6
+    }
+  ],
+  "chapters": [
+    {
+      "scene": 1,
+      "startSeconds": 0.3,
+      "endSeconds": 6.776541666666667
+    },
+    {
+      "scene": 2,
+      "startSeconds": 7.4952499999999995,
+      "endSeconds": 18.572625000000002
+    },
+    {
+      "scene": 3,
+      "startSeconds": 19.291333333333334,
+      "endSeconds": 33.18358333333334
+    },
+    {
+      "scene": 4,
+      "startSeconds": 33.95229166666667,
+      "endSeconds": 45.595125
+    },
+    {
+      "scene": 5,
+      "startSeconds": 46.36383333333333,
+      "endSeconds": 52.88529166666667
+    },
+    {
+      "scene": 6,
+      "startSeconds": 53.604,
+      "endSeconds": 58.599916666666665
+    }
+  ],
+  "sceneStartsFrames": [
+    0,
+    214,
+    568,
+    1007,
+    1379,
+    1597
+  ],
+  "sceneLengthsFrames": [
+    220,
+    360,
+    445,
+    378,
+    224,
+    203
+  ],
+  "allOriginalPcmSamplesPreserved": true,
+  "paidApiCalls": 0,
+  "listeningReview": "Pending user review; ASR/PCM checks do not establish perceived quality",
+  "sourceAssembly": "voice-auditions/anger-at-home-assembled-v2/assembly.json",
+  "rawRecognitionFile": "voice-auditions/anger-at-home-assembled-v2/recognition/narration-quoc-tuan-recognition.json"
+}

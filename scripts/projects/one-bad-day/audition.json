@@ -1,0 +1,44 @@
+{
+  "title": "Đừng biến một ngày làm chưa tốt thành lý do bỏ cả hành trình",
+  "temperature": 0.45,
+  "leadIn": 0.45,
+  "tail": 0.65,
+  "maxDurationSeconds": 90,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Khi tự nhủ mình chẳng bao giờ làm được đến cùng, bạn có đang quên hết những ngày mình đã cố gắng, chỉ vì hôm nay làm chưa tốt?",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 2,
+      "text": "Có thể bạn đã đặt nhiều hy vọng vào lần này. Nên một lần không giữ đúng kế hoạch cũng khiến bạn sợ rằng: cuối cùng, mình vẫn chẳng thay đổi được gì.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 3,
+      "text": "Bạn muốn bỏ, vì cố tiếp nghĩa là còn có thể thất vọng về bản thân thêm lần nữa.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 3,
+      "text": "Nhưng đừng vội lấy một ngày để kết luận về cả con người mình.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 4,
+      "text": "Hãy xem hôm nay vướng ở đâu: bạn quá mệt, đặt việc quá sức, hay cần đổi cách làm?",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 5,
+      "text": "Bạn cần hiểu điều khiến mình dừng lại để còn sửa. Tự trách mình chẳng thay được việc đó.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 6,
+      "text": "Ngày mai, làm lại từ phần vừa sức. Những ngày bạn đã cố gắng vẫn có giá trị, kể cả khi hôm nay chưa được như mong đợi.",
+      "pauseAfter": 0
+    }
+  ]
+}

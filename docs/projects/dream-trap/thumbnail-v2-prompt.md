@@ -1,0 +1,7 @@
+# Thumbnail background v2
+
+Source asset: `public/dream-trap/images/thumbnail-reflection-v2.png`.
+
+Generated using the built-in imagegen tool; inspected before use. Separate asset, no change to the five scene images. Existing headline and layout retained. Thumbnail component prepared, no thumbnail export/render.
+
+Use case: stylized-concept. Asset type: photoreal cinematic portrait background for a vertical 9:16 Stoic YouTube thumbnail about confusing imagined achievement with actual progress. Primary request: visually arresting contrast between a weary ordinary young Vietnamese man at an untouched blank notebook and an idealized successful version reflected in glass. Tight over-the-shoulder medium-close frame: actual man in simple charcoal shirt, shoulder and profile at left, his hand idle beside blank notebook; large glass reflection at upper center/right shows the same man's face composed and wearing a sharp dark suit, subtle warm rim light. The contrast should read instantly, strong large human silhouettes, realistic anatomy and optical plausibility as a deliberate dream metaphor, not two independent people. Dark slate and ivory with subtle antique gold, moody editorial photography, hard directional window light, very clear focal hierarchy. Keep the two faces/reflection in the upper 55% of the frame. Bottom 45% deep dark simple shadow reserved for overlay headlines. No words, letters, numbers, logos, watermarks, decorative frames, collage or split-screen panels. Vertical 9:16 high detail.

@@ -1,0 +1,25 @@
+{
+  "durationSeconds": 30.133333,
+  "dimensions": [
+    368,
+    654
+  ],
+  "fps": 30,
+  "sourceAudioMuted": true,
+  "voice": "Adam bựa",
+  "voiceProvider": "VieNeu-TTS v3 Turbo 3.8.3 (local CPU)",
+  "maximumTempo": 1.04,
+  "wordMatchRatios": [
+    0.8235,
+    0.8,
+    0.8,
+    0.9167,
+    0.9231,
+    1.0
+  ],
+  "sfxCueCount": 7,
+  "mixPeakDbFS": -2.12,
+  "sfxBelowVoiceDuringSpeechDb": 24.51,
+  "rendered": false,
+  "listeningReview": "Pending user audition in Studio; numerical checks do not establish perceived quality."
+}

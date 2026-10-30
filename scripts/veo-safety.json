@@ -1,0 +1,12 @@
+{
+  "generationEnabled": false,
+  "provider": "gemini",
+  "preferredWorkflow": "gemini-subscription-manual",
+  "fallbackWorkflow": "disabled",
+  "automaticFallback": false,
+  "maxNewJobsPerRun": 1,
+  "automaticRetries": false,
+  "shortBudgetVnd": 20000,
+  "budgetLedgerDirectory": "budgets/shorts",
+  "note": "User paused API video generation on 2026-10-24. Manual Gemini subscription workflow only. Do not test generation, migrate models or resume paid API without a new explicit user request. Preserve existing footage and budget history."
+}

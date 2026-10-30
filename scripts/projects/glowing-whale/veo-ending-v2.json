@@ -1,0 +1,18 @@
+{
+  "model": "veo-3.1-generate-preview",
+  "aspectRatio": "9:16",
+  "resolution": "720p",
+  "durationSeconds": 8,
+  "sampleCount": 1,
+  "negativePrompt": "duplicated whale, extra fins, legs, hands, extra tails, deformed faces, changing skin or belly colors, predators, horror, scary spikes, text, subtitles, logo, watermark, zoom, fast camera motion, speech, singing, music, long body, realistic throat pleats, narwhal, full aerial flip, underwater face hiding, camera crossing waterline",
+  "promptSuffix": "Original family-friendly stylized 3D animation. Use input image as the starting frame and preserve the exact character identity: chubby sky-blue whale, navy dorsal fin, teal eyes, two side flippers, horizontal two-fluke tail, golden glowing cream oval belly. Calm smooth natural swimming and coherent anatomy. Portrait 9:16. Keep full characters visible in the middle of the frame with room above and below for titles. No camera zoom, cuts, reframing or change of character. No speech, lip syncing, music or singing, only gentle water and bubbles.",
+  "shots": [
+    {
+      "scene": "07-shine-v2",
+      "image": "glowing-whale/images/07-shine-v2.png",
+      "timelineSeconds": 7,
+      "prompt": "The SAME round cartoon baby whale floats happily at the sunset surface. He makes one tiny buoyant upward bob of only a few centimeters, raises one existing flipper in a small friendly wave, blinks and smiles. Gentle ripples and a few glittery water droplets spread around his belly. Keep his face, eyes and round golden oval belly ABOVE the water and visible throughout. No jump, dive, roll, splash covering face, camera movement, body elongation or realistic throat grooves. Preserve the exact big-eyed cartoon face and chubby proportions from the first frame. One continuous calm ending shot."
+    }
+  ],
+  "provider": "gemini"
+}

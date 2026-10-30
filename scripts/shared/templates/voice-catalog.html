@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Nghe thử 25 giọng VieNeu</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#101319;color:#f3eee5;font:17px/1.6 system-ui,sans-serif}
+    main{max-width:1120px;margin:auto;padding:36px 24px 80px}h1{font-size:clamp(27px,5vw,42px);line-height:1.2}h1,h2{color:#dfbd82}h2{font-size:21px;margin:0}
+    p{color:#c1c6cf}blockquote{border-left:3px solid #dfbd82;padding:12px 22px;margin:24px 0;background:#1c212b}
+    .toolbar{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0;position:sticky;top:0;z-index:2;background:#101319;padding:12px 0}.toolbar>*{min-height:45px;border:1px solid #4b5261;border-radius:8px;padding:8px 14px;font:inherit}
+    button{background:#dfbd82;color:#13161c;cursor:pointer}button.secondary{background:#252c38;color:#f3eee5}input,select{background:#1c212b;color:#f3eee5}input{flex:1;min-width:180px}
+    button:disabled{opacity:.5;cursor:default}:focus-visible{outline:3px solid #dfbd82;outline-offset:3px}
+    #voices{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}article{border:1px solid #343d4b;border-radius:12px;padding:20px;background:#1c212b}article[hidden]{display:none}article.playing{border-color:#dfbd82;outline:1px solid #dfbd82}
+    article p{font-size:14px;margin:8px 0 14px}audio{display:block;width:100%}#now{color:#dfbd82;min-height:30px}
+  </style>
+</head>
+<body><main>
+  <h1 id="catalog-title">Nghe thử giọng VieNeu</h1>
+  <p>Cùng một đoạn lời · 24 kHz theo cách xử lý đang dùng · tốc độ gốc 1× · không nhạc. Chỉ nghe thử, không thay giọng trong video.</p>
+  <p id="kids-note">Trúc Ly trong danh sách là giọng gốc, chưa nâng tông như bản B của video thiếu nhi.</p>
+  <blockquote id="sample"></blockquote>
+  <p id="progress" aria-live="polite"></p>
+  <div class="toolbar">
+    <button id="play-all">▶ Nghe lần lượt</button><button id="stop" class="secondary">Dừng</button>
+    <select id="playlist" aria-label="Playlist giọng"><option value="">Tất cả giọng</option></select>
+    <input id="search" type="search" placeholder="Tìm tên giọng…" aria-label="Tìm tên giọng">
+    <select id="gender" aria-label="Giới tính"><option value="">Nam và nữ</option><option>Nam</option><option>Nữ</option></select>
+    <select id="region" aria-label="Vùng giọng"><option value="">Tất cả vùng</option><option>Bắc</option><option>Trung</option><option>Nam</option></select>
+  </div>
+  <p id="selection" aria-live="polite"></p><p id="now" aria-live="polite"></p><div id="voices"></div>
+  <p>Chọn theo phát âm, nhịp và chất giọng bạn thích. Nhận dạng tự động chỉ giúp phát hiện chỗ cần nghe kỹ, không quyết định giọng nào hay hơn. Danh sách cập nhật dần nếu quá trình tạo mẫu còn chạy.</p>
+</main>
+<script id="catalog-data" type="application/json">__CATALOG_DATA__</script>
+<script>
+  const $=id=>document.getElementById(id);
+  let catalog=JSON.parse($('catalog-data').textContent),queue=[],cursor=0,sequential=false,current=null,playlistInitialized=false;
+  const normalize=s=>s.toLowerCase().replace(/đ/g,'d').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  function filters(){
+    const selected=(catalog.playlists||[]).find(p=>p.id===$('playlist').value);
+    let visible=0;
+    for(const item of catalog.voices){
+      const card=$(item.id);
+      card.hidden=!((!selected||selected.voiceNames.includes(item.name))&&normalize(item.name).includes(normalize($('search').value))&&(!$('gender').value||item.gender===$('gender').value)&&(!$('region').value||item.region===$('region').value));
+      if(!card.hidden)visible++;
+    }
+    $('selection').textContent=`Đang hiện ${visible} giọng${selected?' · '+selected.name:''}. Đổi sang “Tất cả giọng” để nghe lại toàn bộ.`;
+  }
+  function stop(){sequential=false;document.querySelectorAll('audio').forEach(a=>a.pause());$('now').textContent='Đã dừng.';}
+  function next(){
+    if(!sequential)return;
+    if(cursor>=queue.length){stop();$('now').textContent='Đã nghe hết danh sách đã chọn.';return;}
+    current=$(queue[cursor]).querySelector('audio');
+    current.currentTime=0;current.play().catch(()=>{sequential=false;$('now').textContent='Bấm phát để tiếp tục nghe.';});
+  }
+  function update(data){
+    catalog=data;$('sample').textContent=data.text;
+    $('catalog-title').textContent=data.title;document.title=data.title;
+    $('kids-note').hidden=!data.voices.some(v=>v.name==='Trúc Ly');
+    for(const list of data.playlists||[]){
+      if(!Array.from($('playlist').options).some(o=>o.value===list.id)){
+        const option=document.createElement('option');option.value=list.id;option.textContent=list.name;$('playlist').append(option);
+      }
+    }
+    if(!playlistInitialized){$('playlist').value=data.preferredPlaylist||'';playlistInitialized=true;}
+    $('progress').textContent=`Đã có ${data.voices.filter(v=>v.status==='ready').length}/${data.voices.length} giọng. Có thể phát riêng hoặc nghe lần lượt theo bộ lọc.`;
+    for(const item of data.voices){
+      let card=$(item.id);
+      if(!card){card=document.createElement('article');card.id=item.id;const h=document.createElement('h2');h.textContent=item.id.slice(0,2)+' · '+item.name;card.append(h);const p=document.createElement('p');p.className='info';card.append(p);$('voices').append(card);}
+      const preferred=(data.playlists||[]).find(p=>p.id===data.preferredPlaylist);
+      card.querySelector('h2').textContent=item.id.slice(0,2)+' · '+item.name+(preferred?.voiceNames.includes(item.name)?' ★':'');
+      const verification=item.wordMatchRatio===undefined?'Cần nghe kiểm tra lời':`Khớp lời ${Math.round(item.wordMatchRatio*100)}%`;
+      card.querySelector('.info').textContent=item.label.replace(/^.*? — /, '')+' · '+(item.status==='ready'?`${item.durationSeconds}s · ${verification}`:item.status==='error'?'Tạo mẫu chưa thành công':'Đang chờ tạo mẫu…');
+      if(item.status==='ready'&&!card.querySelector('audio')){
+        const audio=document.createElement('audio');audio.controls=true;audio.preload='none';audio.src=item.file;audio.setAttribute('aria-label','Nghe giọng '+item.name);
+        audio.addEventListener('play',()=>{
+          if(sequential&&current!==audio)sequential=false;
+          document.querySelectorAll('audio').forEach(a=>{if(a!==audio)a.pause();});
+          card.classList.add('playing');$('now').textContent='Đang nghe: '+item.name;
+        });
+        audio.addEventListener('pause',()=>card.classList.remove('playing'));
+        audio.addEventListener('ended',()=>{card.classList.remove('playing');if(sequential){cursor++;next();}});
+        card.append(audio);
+      }
+    }
+    filters();$('play-all').disabled=!data.voices.some(v=>v.status==='ready');
+  }
+  $('play-all').onclick=()=>{stop();queue=catalog.voices.filter(v=>v.status==='ready'&&!$(v.id).hidden).map(v=>v.id);cursor=0;sequential=true;next();};
+  $('stop').onclick=stop;
+  for(const id of ['search','gender','region','playlist'])$(id).addEventListener('input',filters);
+  update(catalog);
+  if(location.protocol!=='file:')setInterval(async()=>{try{const r=await fetch('manifest.json',{cache:'no-store'});if(r.ok)update(await r.json());}catch{}},10000);
+</script>
+</body></html>

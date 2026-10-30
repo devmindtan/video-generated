@@ -1,0 +1,336 @@
+{
+  "voice": "Quốc Tuấn",
+  "selection": "Continue Quốc Tuấn from the previous selected episode; local native 1x",
+  "source": "small-mistakes/audio/narration-quoc-tuan-v1.wav",
+  "sourceSha256": "869405e09b1a6ddce9c0916ba5003e8f8de4ce10549c49b0b64075c980b323e1",
+  "activeSource": "small-mistakes/audio/narration-quoc-tuan-v2-pronunciation.wav",
+  "activeSha256": "fe0dce3bf95182d9b5976a9c4183800350ea9a1ad53ac0fc7a0c73f747b15e17",
+  "qualityProfile": "legacy24",
+  "sampleRateHz": 24000,
+  "playbackRate": 1,
+  "wordMatchRatio": 0.9786,
+  "sourceDurationSeconds": 48.025125,
+  "durationSeconds": 50,
+  "addedSilenceSeconds": 1.974875,
+  "cuts": [
+    {
+      "sourceSample": 56626,
+      "addedSamples": 3341
+    },
+    {
+      "sourceSample": 116594,
+      "addedSamples": 2088
+    },
+    {
+      "sourceSample": 158328,
+      "addedSamples": 2088
+    },
+    {
+      "sourceSample": 238764,
+      "addedSamples": 2715
+    },
+    {
+      "sourceSample": 319985,
+      "addedSamples": 2088
+    },
+    {
+      "sourceSample": 419614,
+      "addedSamples": 2715
+    },
+    {
+      "sourceSample": 507984,
+      "addedSamples": 2088
+    },
+    {
+      "sourceSample": 544186,
+      "addedSamples": 2088
+    },
+    {
+      "sourceSample": 658534,
+      "addedSamples": 2715
+    },
+    {
+      "sourceSample": 709987,
+      "addedSamples": 2088
+    },
+    {
+      "sourceSample": 769452,
+      "addedSamples": 2088
+    },
+    {
+      "sourceSample": 845316,
+      "addedSamples": 2088
+    },
+    {
+      "sourceSample": 946339,
+      "addedSamples": 2715
+    },
+    {
+      "sourceSample": 1014024,
+      "addedSamples": 2088
+    }
+  ],
+  "copySpans": [
+    {
+      "sourceStart": 0,
+      "sourceEnd": 56626,
+      "outputStart": 0,
+      "outputEnd": 56626
+    },
+    {
+      "sourceStart": 56626,
+      "sourceEnd": 116594,
+      "outputStart": 59967,
+      "outputEnd": 119935
+    },
+    {
+      "sourceStart": 116594,
+      "sourceEnd": 158328,
+      "outputStart": 122023,
+      "outputEnd": 163757
+    },
+    {
+      "sourceStart": 158328,
+      "sourceEnd": 238764,
+      "outputStart": 165845,
+      "outputEnd": 246281
+    },
+    {
+      "sourceStart": 238764,
+      "sourceEnd": 319985,
+      "outputStart": 248996,
+      "outputEnd": 330217
+    },
+    {
+      "sourceStart": 319985,
+      "sourceEnd": 419614,
+      "outputStart": 332305,
+      "outputEnd": 431934
+    },
+    {
+      "sourceStart": 419614,
+      "sourceEnd": 507984,
+      "outputStart": 434649,
+      "outputEnd": 523019
+    },
+    {
+      "sourceStart": 507984,
+      "sourceEnd": 544186,
+      "outputStart": 525107,
+      "outputEnd": 561309
+    },
+    {
+      "sourceStart": 544186,
+      "sourceEnd": 658534,
+      "outputStart": 563397,
+      "outputEnd": 677745
+    },
+    {
+      "sourceStart": 658534,
+      "sourceEnd": 709987,
+      "outputStart": 680460,
+      "outputEnd": 731913
+    },
+    {
+      "sourceStart": 709987,
+      "sourceEnd": 769452,
+      "outputStart": 734001,
+      "outputEnd": 793466
+    },
+    {
+      "sourceStart": 769452,
+      "sourceEnd": 845316,
+      "outputStart": 795554,
+      "outputEnd": 871418
+    },
+    {
+      "sourceStart": 845316,
+      "sourceEnd": 946339,
+      "outputStart": 873506,
+      "outputEnd": 974529
+    },
+    {
+      "sourceStart": 946339,
+      "sourceEnd": 1014024,
+      "outputStart": 977244,
+      "outputEnd": 1044929
+    },
+    {
+      "sourceStart": 1014024,
+      "sourceEnd": 1152603,
+      "outputStart": 1047017,
+      "outputEnd": 1185596
+    }
+  ],
+  "tailAddedSamples": 14404,
+  "phraseRanges": [
+    {
+      "text": "Trong lớp, bạn trả lời nhầm một câu.",
+      "startSeconds": 0.3,
+      "endSeconds": 2.2094,
+      "scene": 1
+    },
+    {
+      "text": "Trong cuộc họp, bạn nói vấp lúc trình bày.",
+      "startSeconds": 2.6486083333333332,
+      "endSeconds": 4.847308333333333,
+      "scene": 1
+    },
+    {
+      "text": "Chuyện chỉ diễn ra vài giây.",
+      "startSeconds": 5.234308333333333,
+      "endSeconds": 6.6982083333333335,
+      "scene": 1
+    },
+    {
+      "text": "Nhưng tối về, bạn vẫn nhớ từng ánh mắt nhìn mình lúc đó.",
+      "startSeconds": 7.035208333333333,
+      "endSeconds": 9.961708333333334,
+      "scene": 1
+    },
+    {
+      "text": "Chắc họ thấy mình kém lắm. Lẽ ra mình nên im lặng.",
+      "startSeconds": 10.674833333333334,
+      "endSeconds": 13.831333333333333,
+      "scene": 2
+    },
+    {
+      "text": "Bạn tua lại khoảnh khắc ấy, rồi tưởng tượng mọi người cũng đang nhớ nó rõ như mình.",
+      "startSeconds": 14.021033333333333,
+      "endSeconds": 17.697233333333333,
+      "scene": 2
+    },
+    {
+      "text": "Nhưng bạn có nhớ chính xác lần gần nhất người khác nói vấp không?",
+      "startSeconds": 18.41035833333333,
+      "endSeconds": 21.592458333333333,
+      "scene": 3
+    },
+    {
+      "text": "Có lẽ chẳng nhớ nổi.",
+      "startSeconds": 22.07945833333333,
+      "endSeconds": 23.23785833333333,
+      "scene": 3
+    },
+    {
+      "text": "Lúc đó, bạn còn bận nghĩ câu trả lời của mình, hoặc lo đến lượt mình sẽ nói ra sao.",
+      "startSeconds": 23.624858333333336,
+      "endSeconds": 27.93935833333333,
+      "scene": 3
+    },
+    {
+      "text": "Họ có thể nhận ra lỗi của bạn.",
+      "startSeconds": 28.652483333333333,
+      "endSeconds": 30.37138333333333,
+      "scene": 4
+    },
+    {
+      "text": "Nhưng nhận ra không có nghĩa là họ sẽ nhớ mãi.",
+      "startSeconds": 30.708383333333334,
+      "endSeconds": 32.91108333333333,
+      "scene": 4
+    },
+    {
+      "text": "Sai thông tin thì đính chính. Nói chưa rõ thì tập lại.",
+      "startSeconds": 33.29808333333334,
+      "endSeconds": 36.49079166666667,
+      "scene": 4
+    },
+    {
+      "text": "Một lỗi nhỏ cần được sửa, đâu cần trở thành lý do để bạn tự chê mình.",
+      "startSeconds": 36.571083333333334,
+      "endSeconds": 40.21579166666667,
+      "scene": 4
+    },
+    {
+      "text": "Bạn không cần nói hoàn hảo mới đáng được lắng nghe.",
+      "startSeconds": 41.01850833333334,
+      "endSeconds": 43.33870833333334,
+      "scene": 5
+    },
+    {
+      "text": "Lần sau có điều muốn hỏi, có ý kiến muốn góp, đừng để vài giây ngượng ngùng hôm nay giữ bạn im lặng.",
+      "startSeconds": 43.82570833333333,
+      "endSeconds": 48.59980833333333,
+      "scene": 5
+    }
+  ],
+  "chapters": [
+    {
+      "scene": 1,
+      "startSeconds": 0.3,
+      "endSeconds": 9.961708333333334
+    },
+    {
+      "scene": 2,
+      "startSeconds": 10.674833333333334,
+      "endSeconds": 17.697233333333333
+    },
+    {
+      "scene": 3,
+      "startSeconds": 18.41035833333333,
+      "endSeconds": 27.93935833333333
+    },
+    {
+      "scene": 4,
+      "startSeconds": 28.652483333333333,
+      "endSeconds": 40.21579166666667
+    },
+    {
+      "scene": 5,
+      "startSeconds": 41.01850833333334,
+      "endSeconds": 48.59980833333333
+    }
+  ],
+  "sceneStartsFrames": [
+    0,
+    310,
+    542,
+    849,
+    1220
+  ],
+  "sceneLengthsFrames": [
+    316,
+    238,
+    313,
+    377,
+    280
+  ],
+  "openingCutFrame": 73,
+  "allOriginalPcmSamplesPreserved": false,
+  "paidApiCalls": 0,
+  "listeningReview": "Pending user review; ASR/PCM checks do not establish perceived quality",
+  "speechRepairs": {
+    "previousSource": "small-mistakes/audio/narration-quoc-tuan-v1-pauses.wav",
+    "previousSha256": "a43d71959062dac10672fc9ab4bedbc2ce5a6ae8c050daf4dcf5819100114c54",
+    "replacementSource": "voice-auditions/small-mistakes-pronunciation-fix-v2/25-quoc-tuan.wav",
+    "replacementSha256": "a4c9d4ebdfe04bef0716f62efbbdc98caa8ccaf73c8f1915ee933a74a8b07dd2",
+    "regions": [
+      {
+        "phraseIndex": 4,
+        "startSample": 256196,
+        "endSample": 335305,
+        "replacementStartSample": 4800,
+        "replacementEndSample": 80556
+      },
+      {
+        "phraseIndex": 11,
+        "startSample": 799154,
+        "endSample": 876506,
+        "replacementStartSample": 94956,
+        "replacementEndSample": 171581
+      },
+      {
+        "phraseIndex": 12,
+        "startSample": 877706,
+        "endSample": 976929,
+        "replacementStartSample": 185981,
+        "replacementEndSample": 273454
+      }
+    ],
+    "rawRecognition": "Chắc họ thấy mình kém lắm, lẽ ra mình nên im lặng. Xai thông tin thì đính chính, nói chưa rõ thì tập lại. Một lỗi nhỏ cần được sửa, đâu cần trở thành lý do để bạn tự chê mình.",
+    "unaffectedPcmPreserved": true,
+    "listeningReview": "Pending user confirmation; accent-insensitive ASR is not pronunciation approval"
+  },
+  "copySpansReferTo": "small-mistakes/audio/narration-quoc-tuan-v1-pauses.wav"
+}

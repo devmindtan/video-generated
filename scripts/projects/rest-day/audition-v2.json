@@ -1,0 +1,49 @@
+{
+  "title": "Một ngày nghỉ không cần thành tích",
+  "temperature": 0.5,
+  "leadIn": 0.25,
+  "tail": 0.65,
+  "maxDurationSeconds": 60,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Ngày nghỉ, bạn vừa nằm xuống đã nghĩ đến những việc chưa làm. Nghỉ thêm một lát cũng thấy mình đang lãng phí thời gian.",
+      "pauseAfter": 0.5
+    },
+    {
+      "scene": 2,
+      "text": "Bạn quen đo giá trị bản thân bằng kết quả, nên chẳng làm gì lại thấy mình vô dụng.",
+      "pauseAfter": 0.5
+    },
+    {
+      "scene": 3,
+      "text": "Nhưng hãy nhớ lúc quá mệt: đọc một đoạn ba lần vẫn không hiểu, làm sai rồi mất cả buổi sửa lại.",
+      "pauseAfter": 0.25
+    },
+    {
+      "scene": 3,
+      "text": "Bạn bỏ thêm thời gian, nhưng chỉ đang trả giá cho việc không chịu nghỉ.",
+      "pauseAfter": 0.55
+    },
+    {
+      "scene": 4,
+      "text": "Nghỉ ngơi giúp bạn lấy lại sức lực và sự tập trung, kể cả khi công việc còn dang dở.",
+      "pauseAfter": 0.5
+    },
+    {
+      "scene": 5,
+      "text": "Bạn thương người thân vất vả, chỉ mong họ được nghỉ. Đến lượt mình, sao lại phải kiệt sức mới chịu dừng?",
+      "pauseAfter": 0.6
+    },
+    {
+      "scene": 6,
+      "text": "Một ngày không có thành tích không có nghĩa là bạn đã sống uổng phí.",
+      "pauseAfter": 0.35
+    },
+    {
+      "scene": 6,
+      "text": "Bạn cần được chăm sóc cả trước khi mình không còn sức để làm thêm điều gì nữa.",
+      "pauseAfter": 0
+    }
+  ]
+}

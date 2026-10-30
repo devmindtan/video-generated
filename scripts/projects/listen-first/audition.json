@@ -1,0 +1,17 @@
+{
+  "title": "Bạn đang lắng nghe, hay đang sửa chữa người khác?",
+  "temperature": 0.45,
+  "leadIn": 0.25,
+  "tail": 0.65,
+  "maxDurationSeconds": 90,
+  "sentences": [
+    {"scene": 1, "text": "Có người vừa kể rằng họ đang rất mệt, bạn đã vội chỉ ra họ nên làm gì, đáng lẽ phải nghĩ thế nào.", "pauseAfter": 0.45},
+    {"scene": 2, "text": "Bạn muốn giúp. Nhưng chưa nghe hết câu chuyện, bạn đã biến nỗi buồn của họ thành một bài toán cần giải.", "pauseAfter": 0.5},
+    {"scene": 3, "text": "Họ phải giải thích thêm, rồi tự bảo vệ cảm xúc của mình.", "pauseAfter": 0.2},
+    {"scene": 3, "text": "Cuối cùng, người cần được an ủi lại thấy mình như đang bị chấm điểm.", "pauseAfter": 0.5},
+    {"scene": 4, "text": "Đôi khi, họ biết mình cần làm gì rồi. Chỉ là hôm nay, họ chưa đủ sức để làm.", "pauseAfter": 0.3},
+    {"scene": 4, "text": "Điều họ tìm ở bạn có thể chỉ là một nơi được nói thật rằng mình đang không ổn, mà không phải nghe thêm mình đã sai ở đâu.", "pauseAfter": 0.5},
+    {"scene": 5, "text": "Trước khi đưa lời khuyên, thử hỏi: Bạn muốn mình cùng tìm cách, hay chỉ cần mình ngồi nghe?", "pauseAfter": 0.55},
+    {"scene": 6, "text": "Được thấu hiểu có khi chính là điều giúp một người đủ sức bắt đầu giải quyết chuyện của họ.", "pauseAfter": 0}
+  ]
+}

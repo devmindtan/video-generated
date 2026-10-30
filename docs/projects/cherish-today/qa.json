@@ -1,0 +1,46 @@
+{
+  "composition": "StoicCherishToday",
+  "durationSeconds": 45,
+  "voice": "Quốc Tuấn",
+  "tempo": 1,
+  "sourcePcmPreserved": true,
+  "sourceDurationSeconds": 41.13908333333333,
+  "addedSilenceSeconds": 3.8609166666666668,
+  "captionPages": 23,
+  "captionTextUnchanged": true,
+  "sceneStartsFrames": [
+    0,
+    171,
+    363,
+    601,
+    790,
+    1099
+  ],
+  "imageAssetsVisuallyInspected": 6,
+  "musicEdit": {
+    "src": "Ludovico Einaudi - Night (Official Video).mp3",
+    "from": 0,
+    "trimBefore": 1618.62,
+    "durationInFrames": 1800,
+    "playbackRate": 0.79,
+    "volume": null
+  },
+  "speechEdit": {
+    "src": "cherish-today/audio/narration-quoc-tuan-v3-45s.wav",
+    "from": 0,
+    "trimBefore": 0,
+    "durationInFrames": null,
+    "playbackRate": 1,
+    "volume": 1
+  },
+  "mixPeakDbFS": -1.98,
+  "musicBelowVoiceDb": 18.57,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 2,
+  "paidApiCalls": 0,
+  "sfxEnabled": false,
+  "videoRendered": false,
+  "thumbnailRendered": false,
+  "listeningReview": "Pending user listening; automated checks do not approve perceived quality",
+  "recognitionNote": "No new synthesis. Retained clauses preserve original PCM; removed hỏi han clause and its tone flag. Full-source transcript contains discarded phrases and must not be treated as a new transcription."
+}

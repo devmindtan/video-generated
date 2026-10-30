@@ -1,0 +1,50 @@
+{
+  "01-shy": {
+    "src": "glowing-whale/video/01-shy.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.9638554216867469,
+    "model": "veo-3.1-generate-001"
+  },
+  "02-turtle": {
+    "src": "glowing-whale/video/02-turtle.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.8602150537634408,
+    "model": "veo-3.1-generate-001"
+  },
+  "03-lost-fish": {
+    "src": "glowing-whale/video/03-lost-fish.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.8602150537634408,
+    "model": "veo-3.1-generate-001"
+  },
+  "04-brave": {
+    "src": "glowing-whale/video/04-brave.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.8602150537634408,
+    "model": "veo-3.1-generate-001"
+  },
+  "05-guide": {
+    "src": "glowing-whale/video/05-guide.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.8602150537634408,
+    "model": "veo-3.1-generate-001"
+  },
+  "06-reunion": {
+    "src": "glowing-whale/video/06-reunion.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.8602150537634408,
+    "model": "veo-3.1-generate-001"
+  },
+  "07-shine": {
+    "src": "glowing-whale/video/07-shine.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-generate-001"
+  },
+  "07-shine-v2": {
+    "src": "glowing-whale/video/07-shine-v2.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-generate-001"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "durationSeconds": 45,
+  "dimensions": [
+    1080,
+    1920
+  ],
+  "voice": "Hải Đăng",
+  "narrationTempo": 1,
+  "minimumWordMatchRatio": 0.92,
+  "mixPeakDbFS": -1.38,
+  "musicBelowVoiceDuringSpeechDb": 13.53,
+  "musicVersion": "Local reverb treatment; not a verified third-party remix",
+  "musicSourcePreserved": true,
+  "musicEdit": {
+    "src": "single-task/audio/experience-reverb-full.wav",
+    "from": 0,
+    "trimBefore": 2550,
+    "durationInFrames": 1350,
+    "playbackRate": 0.85,
+    "volume": null
+  },
+  "musicSourceDurationSeconds": 317.159125,
+  "speechVolume": 0.3,
+  "pauseVolume": 0.38,
+  "musicTimelineRangeSeconds": [
+    0.0,
+    52.94117647058824
+  ],
+  "musicSourceRangeSeconds": [
+    85.0,
+    130.0
+  ],
+  "sceneTailSeconds": [
+    1.284,
+    2.523,
+    2.316,
+    2.244,
+    2.212
+  ],
+  "imagesChecked": 5,
+  "apiCalls": 0,
+  "compositionRendered": false
+}

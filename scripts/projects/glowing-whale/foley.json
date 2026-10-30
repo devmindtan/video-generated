@@ -1,0 +1,212 @@
+[
+  {
+    "scene": "01-shy",
+    "sourceSecond": 0.6,
+    "kind": "bubble",
+    "gain": 0.32,
+    "pan": -0.25
+  },
+  {
+    "scene": "01-shy",
+    "sourceSecond": 2.3,
+    "kind": "bubble",
+    "gain": 0.24,
+    "pan": 0.25
+  },
+  {
+    "scene": "01-shy",
+    "sourceSecond": 4.5,
+    "kind": "swim",
+    "gain": 0.4,
+    "pan": -0.25
+  },
+  {
+    "scene": "01-shy",
+    "sourceSecond": 6.4,
+    "kind": "bubble",
+    "gain": 0.24,
+    "pan": 0.25
+  },
+  {
+    "scene": "02-turtle",
+    "sourceSecond": 1,
+    "kind": "swim",
+    "gain": 0.35,
+    "pan": -0.25
+  },
+  {
+    "scene": "02-turtle",
+    "sourceSecond": 3.6,
+    "kind": "bubble",
+    "gain": 0.26,
+    "pan": 0.25
+  },
+  {
+    "scene": "02-turtle",
+    "sourceSecond": 6.2,
+    "kind": "bubble",
+    "gain": 0.25,
+    "pan": -0.25
+  },
+  {
+    "scene": "03-lost-fish",
+    "sourceSecond": 0.7,
+    "kind": "bubble",
+    "gain": 0.25,
+    "pan": -0.25
+  },
+  {
+    "scene": "03-lost-fish",
+    "sourceSecond": 2.8,
+    "kind": "bubble",
+    "gain": 0.24,
+    "pan": 0.25
+  },
+  {
+    "scene": "03-lost-fish",
+    "sourceSecond": 5.5,
+    "kind": "swim",
+    "gain": 0.3,
+    "pan": -0.25
+  },
+  {
+    "scene": "03-lost-fish",
+    "sourceSecond": 6.6,
+    "kind": "bubble",
+    "gain": 0.27,
+    "pan": 0.25
+  },
+  {
+    "scene": "04-brave",
+    "sourceSecond": 1.8,
+    "kind": "glow",
+    "gain": 0.045,
+    "pan": -0.25
+  },
+  {
+    "scene": "04-brave",
+    "sourceSecond": 2.9,
+    "kind": "swim",
+    "gain": 0.4,
+    "pan": 0.25
+  },
+  {
+    "scene": "04-brave",
+    "sourceSecond": 5.2,
+    "kind": "swim",
+    "gain": 0.42,
+    "pan": -0.25
+  },
+  {
+    "scene": "04-brave",
+    "sourceSecond": 6.5,
+    "kind": "bubble",
+    "gain": 0.32,
+    "pan": 0.25
+  },
+  {
+    "scene": "05-guide",
+    "sourceSecond": 0.5,
+    "kind": "swim",
+    "gain": 0.42,
+    "pan": -0.25
+  },
+  {
+    "scene": "05-guide",
+    "sourceSecond": 1.8,
+    "kind": "bubble",
+    "gain": 0.32,
+    "pan": 0.25
+  },
+  {
+    "scene": "05-guide",
+    "sourceSecond": 3.2,
+    "kind": "swim",
+    "gain": 0.4,
+    "pan": -0.25
+  },
+  {
+    "scene": "05-guide",
+    "sourceSecond": 4.5,
+    "kind": "bubble",
+    "gain": 0.32,
+    "pan": 0.25
+  },
+  {
+    "scene": "05-guide",
+    "sourceSecond": 5.8,
+    "kind": "swim",
+    "gain": 0.4,
+    "pan": -0.25
+  },
+  {
+    "scene": "05-guide",
+    "sourceSecond": 6.8,
+    "kind": "bubble",
+    "gain": 0.26,
+    "pan": 0.25
+  },
+  {
+    "scene": "06-reunion",
+    "sourceSecond": 0.8,
+    "kind": "bubble",
+    "gain": 0.3,
+    "pan": -0.25
+  },
+  {
+    "scene": "06-reunion",
+    "sourceSecond": 2.1,
+    "kind": "swim",
+    "gain": 0.32,
+    "pan": 0.25
+  },
+  {
+    "scene": "06-reunion",
+    "sourceSecond": 3.2,
+    "kind": "bubble",
+    "gain": 0.32,
+    "pan": -0.25
+  },
+  {
+    "scene": "06-reunion",
+    "sourceSecond": 5,
+    "kind": "swim",
+    "gain": 0.34,
+    "pan": 0.25
+  },
+  {
+    "scene": "06-reunion",
+    "sourceSecond": 6.3,
+    "kind": "bubble",
+    "gain": 0.3,
+    "pan": -0.25
+  },
+  {
+    "scene": "07-shine",
+    "sourceSecond": 1,
+    "kind": "ripple",
+    "gain": 0.28,
+    "pan": -0.25
+  },
+  {
+    "scene": "07-shine",
+    "sourceSecond": 3.6,
+    "kind": "ripple",
+    "gain": 0.32,
+    "pan": 0.25
+  },
+  {
+    "scene": "07-shine",
+    "sourceSecond": 4.8,
+    "kind": "glow",
+    "gain": 0.045,
+    "pan": -0.25
+  },
+  {
+    "scene": "07-shine",
+    "sourceSecond": 5.8,
+    "kind": "ripple",
+    "gain": 0.23,
+    "pan": 0.25
+  }
+]

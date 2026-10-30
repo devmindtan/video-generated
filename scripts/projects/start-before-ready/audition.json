@@ -1,0 +1,49 @@
+{
+  "title": "Bạn không cần đợi hết sợ mới bắt đầu",
+  "temperature": 0.45,
+  "leadIn": 0.45,
+  "tail": 0.65,
+  "maxDurationSeconds": 90,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Nếu cứ đợi hết sợ mới bắt đầu, bạn sẽ còn chờ rất lâu.",
+      "pauseAfter": 0.25
+    },
+    {
+      "scene": 1,
+      "text": "Vì sự tự tin không tự xuất hiện chỉ sau một thời gian suy nghĩ.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 2,
+      "text": "Bạn muốn biết mình có làm được không, nhưng lại muốn có câu trả lời trước khi thử. Chính đòi hỏi ấy khiến bạn mắc kẹt.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 3,
+      "text": "Lần đầu có thể lúng túng, có thể làm chưa tốt. Nhưng làm chưa tốt là điều có thể sửa.",
+      "pauseAfter": 0.3
+    },
+    {
+      "scene": 3,
+      "text": "Còn chưa thử, bạn chỉ có thể tiếp tục đoán về khả năng của mình.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 4,
+      "text": "Mỗi lần thử là một lần bạn biết rõ hơn: điều gì thật sự khó, mình còn thiếu gì, và lần sau cần làm khác ra sao.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 5,
+      "text": "Cảm giác sợ vẫn có thể còn đó. Nhưng nó không cần quyết định thay bạn.",
+      "pauseAfter": 0.5
+    },
+    {
+      "scene": 6,
+      "text": "Chọn một việc nhỏ bạn đã trì hoãn. Hôm nay, thử làm việc đó trước khi thấy mình hoàn toàn sẵn sàng.",
+      "pauseAfter": 0
+    }
+  ]
+}

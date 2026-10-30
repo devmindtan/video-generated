@@ -1,0 +1,12 @@
+{
+  "title": "Phần kết mới — niềm tin sau lời xin lỗi",
+  "temperature": 0.45,
+  "leadIn": 0.25,
+  "tail": 0.65,
+  "maxDurationSeconds": 30,
+  "sentences": [
+    {"scene": 5, "text": "Họ đã tin lời xin lỗi của bạn đủ nhiều rồi.", "pauseAfter": 0.25},
+    {"scene": 6, "text": "Điều họ cần bây giờ là được ở bên bạn mà không phải lo chuyện cũ sẽ lặp lại.", "pauseAfter": 0.4},
+    {"scene": 6, "text": "Đừng để người đã chọn tha thứ lại phải hối hận vì đã tin mình.", "pauseAfter": 0}
+  ]
+}

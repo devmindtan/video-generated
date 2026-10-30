@@ -1,0 +1,11 @@
+{
+  "file": "tiny-dino-adventure/sfx/veo-synced-v2.wav",
+  "volume": 0.85,
+  "speechGain": 0.55,
+  "pauseGain": 0.9,
+  "targetRmsDb": -25,
+  "maxSourceGain": 6,
+  "sourcePeakLimit": 0.48,
+  "fadeInSeconds": 0.12,
+  "fadeOutSeconds": 0.24
+}

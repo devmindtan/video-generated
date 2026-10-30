@@ -1,0 +1,11 @@
+{
+  "title": "Quen và cuộc trò chuyện — Quốc Tuấn",
+  "temperature": 0.45,
+  "leadIn": 0.2,
+  "tail": 0.3,
+  "maxDurationSeconds": 30,
+  "sentences": [
+    {"text": "Rồi kể chuyện người quen nghỉ việc. Đang ổn định lại bỏ, nghĩ gì không biết.", "pauseAfter": 0.6},
+    {"text": "Cứ thế, cuộc trò chuyện chỉ còn là những lời khen chê người vắng mặt.", "pauseAfter": 0}
+  ]
+}

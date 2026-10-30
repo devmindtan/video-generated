@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "product-videos",
+  "channel": "client-work",
+  "title": "Video sản phẩm",
+  "studioFolder": "Product-Videos",
+  "formats": [
+    "short",
+    "long"
+  ],
+  "defaultDurationSeconds": null,
+  "summary": "Tách nội dung khách hàng khỏi hai kênh nội dung.",
+  "projects": [
+    {
+      "id": "skin-care-nhuy",
+      "title": "Kịch bản đầy đủ — Neothera Armpit Cream — Adam bựa",
+      "status": "existing",
+      "format": "short",
+      "paths": {
+        "source": "src/projects/skin-care-nhuy",
+        "scripts": "scripts/projects/skin-care-nhuy",
+        "docs": "docs/projects/skin-care-nhuy",
+        "assets": "public/skin-care-nhuy"
+      },
+      "registrations": [
+        {
+          "id": "SkinCareNhuyAdam",
+          "kind": "Composition"
+        }
+      ]
+    }
+  ]
+}

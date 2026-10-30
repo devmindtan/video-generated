@@ -1,0 +1,7 @@
+# Thumbnail v2 — Chưa hiểu hết… đã vội phán xét?
+
+Ảnh mới: public/less-judgment/images/thumbnail-blind-judgment-v2.png. Tạo bằng imagegen tích hợp, đã xem trước khi dùng; tượng đá, không người thật. Chỉ thay thumbnail; không thay năm ảnh hoặc lời trong video. Giữ component cũ tại public/less-judgment/backups/thumbnail-v1/Thumbnail.tsx. Không export/render thumbnail.
+
+## Prompt
+
+Use case: stylized-concept. Asset type: vertical 9:16 cinematic photorealistic Stoic YouTube thumbnail background about judging others without understanding their story. One large unmistakably carved antique white marble classical bust, eyes entirely covered with a dark charcoal cloth blindfold, visibly a statue not a living person. Three-quarter profile, mouth closed, restrained expression, weathered tactile marble. Statue occupies upper center/right from 12 to 55 percent of the frame; a closed unmarked dark book on stone at its base, not a busy prop collection. Hard warm gold rim light from one side and deep charcoal shadows on the other, near-black uncluttered background, dramatic sculptural photography, instantly legible at small size. Bottom 45 percent deep clean dark shadow reserved for added typography. Metaphor of premature blind judgment, elegant and grounded not horror, no violence. No living people, skin, human faces, hands, portraits or reflections. No words, letters, numbers, logos, watermark, collage or split panels. High detail, strong contrast, no wide distant framing.

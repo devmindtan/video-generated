@@ -1,0 +1,9 @@
+{
+  "file": "tiny-dino-adventure/audio/tiny-dino-playful-score.wav",
+  "videoStartSeconds": 0,
+  "videoEndSeconds": 48,
+  "speechVolume": 0.2,
+  "pauseVolume": 0.3,
+  "fadeInSeconds": 0.5,
+  "fadeOutSeconds": 1.2
+}

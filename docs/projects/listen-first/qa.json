@@ -1,0 +1,48 @@
+{
+  "composition": "StoicListenFirst",
+  "durationSeconds": 45,
+  "voice": "Quốc Tuấn",
+  "tempo": 1,
+  "sourcePcmPreserved": false,
+  "speechPcmPreserved": true,
+  "redistributedSilenceSeconds": 1.4,
+  "sourceDurationSeconds": 45,
+  "addedSilenceSeconds": 0,
+  "captionPages": 24,
+  "captionTextUnchanged": true,
+  "sceneStartsFrames": [
+    0,
+    190,
+    371,
+    618,
+    1000,
+    1168
+  ],
+  "imageAssetsVisuallyInspected": 6,
+  "musicEdit": {
+    "src": "Ludovico Einaudi - Night (Official Video).mp3",
+    "from": 0,
+    "trimBefore": 1618.62,
+    "durationInFrames": 1350,
+    "playbackRate": 0.79,
+    "volume": null
+  },
+  "speechEdit": {
+    "src": "listen-first/audio/narration-quoc-tuan-v2-pacing.wav",
+    "from": 0,
+    "trimBefore": 0,
+    "durationInFrames": null,
+    "playbackRate": 1,
+    "volume": 1
+  },
+  "mixPeakDbFS": -1.91,
+  "musicBelowVoiceDb": 18.42,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 2,
+  "paidApiCalls": 0,
+  "sfxEnabled": false,
+  "videoRendered": false,
+  "thumbnailRendered": false,
+  "listeningReview": "Pending user listening; automated checks do not approve perceived quality",
+  "recognitionNote": "No new TTS; all speech PCM retained. Prior unpaced transcript matches authored tones. Word-alignment pass on paced audio flags giải/dài and an ủi/ăn uỷ despite identical speech PCM; listening review remains pending."
+}

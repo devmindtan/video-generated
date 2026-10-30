@@ -1,0 +1,102 @@
+[
+  {
+    "id": "01-sword",
+    "start": 0,
+    "duration": 8,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "“Chưa từng thất bại.” Nhưng việc muốn làm, bạn vẫn chưa bắt đầu. Chưa thua chưa có nghĩa là giỏi. Có thể bạn chỉ chưa dám thử.",
+    "sentences": [
+      {
+        "text": "“Chưa từng thất bại.” Nhưng việc muốn làm, bạn vẫn chưa bắt đầu.",
+        "pauseAfter": 0.28
+      },
+      {
+        "text": "Chưa thua chưa có nghĩa là giỏi. Có thể bạn chỉ chưa dám thử.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "02-anchor",
+    "start": 8,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Bạn chờ chuẩn bị kỹ hơn, tự tin hơn, rồi mới làm. Nghe rất hợp lý. Nhưng nếu lần nào cũng tìm thêm một thứ để chờ, thì đó không còn là chuẩn bị. Đó là né tránh.",
+    "sentences": [
+      {
+        "text": "Bạn chờ chuẩn bị kỹ hơn, tự tin hơn, rồi mới làm. Nghe rất hợp lý.",
+        "pauseAfter": 0.28
+      },
+      {
+        "text": "Nhưng nếu lần nào cũng tìm thêm một thứ để chờ, thì đó không còn là chuẩn bị. Đó là né tránh.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "03-shield",
+    "start": 18,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Làm thử, bạn mới biết thực tế khác dự tính ở đâu. Nếu kết quả chưa tốt, hãy tìm nguyên nhân và đổi cách làm. Thất bại không tự khiến bạn giỏi hơn. Cách bạn sửa sai mới quan trọng.",
+    "sentences": [
+      {
+        "text": "Làm thử, bạn mới biết thực tế khác dự tính ở đâu. Nếu kết quả chưa tốt, hãy tìm nguyên nhân và đổi cách làm.",
+        "pauseAfter": 0.16
+      },
+      {
+        "text": "Thất bại không tự khiến bạn giỏi hơn. Cách bạn sửa sai mới quan trọng.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "04-chair",
+    "start": 28,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Thời gian trôi qua, kế hoạch vẫn nằm đó. Bạn chưa mất mặt vì thất bại, nhưng cũng chưa biết mình có thể làm được gì. Đến lúc nhìn lại, điều khiến bạn tiếc có khi chính là những lần không thử.",
+    "sentences": [
+      {
+        "text": "Thời gian trôi qua, kế hoạch vẫn nằm đó. Bạn chưa mất mặt vì thất bại, nhưng cũng chưa biết mình có thể làm được gì.",
+        "pauseAfter": 0.16
+      },
+      {
+        "text": "Đến lúc nhìn lại, điều khiến bạn tiếc có khi chính là những lần không thử.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "05-runner",
+    "start": 38,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Chọn một việc bạn đã hoãn. Hôm nay, làm một phần nhỏ đến nơi đến chốn. Chưa tốt thì sửa, chưa biết thì học. Đừng giữ thành tích “chưa từng thua” bằng cách mãi không bắt đầu.",
+    "sentences": [
+      {
+        "text": "Chọn một việc bạn đã hoãn. Hôm nay, làm một phần nhỏ đến nơi đến chốn.",
+        "pauseAfter": 0.28
+      },
+      {
+        "text": "Chưa tốt thì sửa, chưa biết thì học. Đừng giữ thành tích “chưa từng thua” bằng cách mãi không bắt đầu.",
+        "pauseAfter": 0
+      }
+    ]
+  }
+]

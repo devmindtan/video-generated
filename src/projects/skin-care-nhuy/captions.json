@@ -1,0 +1,119 @@
+[
+  [
+    {
+      "text": "Xin chào các con vợ của chồng...",
+      "startMs": 0,
+      "endMs": 2260,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Hôm nay, chăm mấy vùng da sống",
+      "startMs": 2260,
+      "endMs": 3920,
+      "timestampMs": 2260,
+      "confidence": null
+    },
+    {
+      "text": "nội tâm nhé.",
+      "startMs": 3920,
+      "endMs": 4580,
+      "timestampMs": 3920,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Neothera Armpit Cream.",
+      "startMs": 180,
+      "endMs": 1580,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "Tên gọi nách, nhưng khuỷu tay và",
+      "startMs": 1860,
+      "endMs": 3540,
+      "timestampMs": 1860,
+      "confidence": null
+    },
+    {
+      "text": "đầu gối cũng được ké.",
+      "startMs": 3540,
+      "endMs": 4560,
+      "timestampMs": 3540,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Mặt sau chữ đông như họp phụ huynh.",
+      "startMs": 0,
+      "endMs": 2060,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Nhớ: Alpha Arbutin, Niacinamide và mận Kakadu.",
+      "startMs": 2100,
+      "endMs": 5739,
+      "timestampMs": 2100,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Kem trắng, mịn.",
+      "startMs": 0,
+      "endMs": 1360,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Bóp vừa đủ, đừng phủ như bánh sinh nhật.",
+      "startMs": 1360,
+      "endMs": 3420,
+      "timestampMs": 1360,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Thoa nhẹ, tán đều.",
+      "startMs": 0,
+      "endMs": 1380,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Da nhạy cảm thì thử một vùng nhỏ trước.",
+      "startMs": 1640,
+      "endMs": 3320,
+      "timestampMs": 1640,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Gọn, nhanh, thơm tho.",
+      "startMs": 0,
+      "endMs": 1280,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Hết phim...",
+      "startMs": 1680,
+      "endMs": 2120,
+      "timestampMs": 1680,
+      "confidence": null
+    },
+    {
+      "text": "giải tán, các con vợ!",
+      "startMs": 2120,
+      "endMs": 3140,
+      "timestampMs": 2120,
+      "confidence": null
+    }
+  ]
+]

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "abc",
+  "channel": "tam-ly-cuoc-song",
+  "title": "abc",
+  "studioFolder": "abc",
+  "formats": [
+    "long",
+    "short"
+  ],
+  "defaultDurationSeconds": null,
+  "summary": "Chưa duyệt mục tiêu series.",
+  "projects": []
+}

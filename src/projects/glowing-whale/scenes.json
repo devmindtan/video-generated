@@ -1,0 +1,51 @@
+[
+  {
+    "id": "01-shy",
+    "start": 0,
+    "duration": 8,
+    "title": "Chiếc bụng phát sáng kỳ lạ…",
+    "kicker": "BÉ CÁ VOI BỌT BIỂN"
+  },
+  {
+    "id": "02-turtle",
+    "start": 8,
+    "duration": 9,
+    "title": "Khác biệt cũng là món quà",
+    "kicker": "LỜI NHẮN CỦA CỤ RÙA"
+  },
+  {
+    "id": "03-lost-fish",
+    "start": 17,
+    "duration": 9,
+    "title": "Các bạn cá bị lạc rồi!",
+    "kicker": "TRONG HẺM ĐÁ TỐI"
+  },
+  {
+    "id": "04-brave",
+    "start": 26,
+    "duration": 9,
+    "title": "Dũng cảm tiến lên nào!",
+    "kicker": "BỌT BIỂN QUYẾT TÂM"
+  },
+  {
+    "id": "05-guide",
+    "start": 35,
+    "duration": 9,
+    "title": "Ngọn đèn nhỏ dẫn đường",
+    "kicker": "ÁNH SÁNG TRONG BÓNG TỐI"
+  },
+  {
+    "id": "06-reunion",
+    "start": 44,
+    "duration": 9,
+    "title": "Cảm ơn bạn dũng cảm!",
+    "kicker": "VỀ RẠN SAN HÔ RỒI"
+  },
+  {
+    "id": "07-shine",
+    "start": 53,
+    "duration": 7,
+    "title": "Hãy tự tin tỏa sáng!",
+    "kicker": "KHÁC BIỆT CŨNG ĐÁNG YÊU"
+  }
+]

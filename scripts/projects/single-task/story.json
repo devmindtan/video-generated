@@ -1,0 +1,27 @@
+[
+  {
+    "id": "01-scroll", "start": 0, "duration": 7, "leadIn": 0.12, "tail": 0.3, "targetSpeed": 1, "maxTail": 4,
+    "text": "Thừa nhận đi: không phải lúc nào bạn cũng mệt vì việc quá nhiều. Mở mười cái tab, nhưng chẳng hoàn thành nổi một việc.",
+    "sentences": [{"text": "Thừa nhận đi: không phải lúc nào bạn cũng mệt vì việc quá nhiều.", "pauseAfter": 0.22}, {"text": "Mở mười cái tab, nhưng chẳng hoàn thành nổi một việc.", "pauseAfter": 0}]
+  },
+  {
+    "id": "02-typewriter", "start": 7, "duration": 10, "leadIn": 0.12, "tail": 0.3, "targetSpeed": 1, "maxTail": 4,
+    "text": "Kiểm tra thư ba lần, dọn lại bàn làm việc, lướt tin tức thêm năm phút. Đó không phải chuẩn bị nữa, mà là né việc khó nhất bạn đang ngại bắt đầu.",
+    "sentences": [{"text": "Kiểm tra thư ba lần, dọn lại bàn làm việc, lướt tin tức thêm năm phút.", "pauseAfter": 0.25}, {"text": "Đó không phải chuẩn bị nữa, mà là né việc khó nhất bạn đang ngại bắt đầu.", "pauseAfter": 0}]
+  },
+  {
+    "id": "03-battery", "start": 17, "duration": 11, "leadIn": 0.12, "tail": 0.3, "targetSpeed": 1, "maxTail": 4,
+    "text": "Ngồi vào bàn mà tâm trí ở chỗ khác chỉ làm hao năng lượng. Làm thì không ra làm, chơi thì không yên tâm. Đến hai giờ chiều, bạn đã mệt mà việc chính vẫn chưa xong.",
+    "sentences": [{"text": "Ngồi vào bàn mà tâm trí ở chỗ khác chỉ làm hao năng lượng.", "pauseAfter": 0.22}, {"text": "Làm thì không ra làm, chơi thì không yên tâm.", "pauseAfter": 0.22}, {"text": "Đến hai giờ chiều, bạn đã mệt mà việc chính vẫn chưa xong.", "pauseAfter": 0}]
+  },
+  {
+    "id": "04-laptop", "start": 28, "duration": 10, "leadIn": 0.12, "tail": 0.3, "targetSpeed": 1, "maxTail": 4,
+    "text": "Dẹp các việc linh tinh sang một bên. Chọn đúng một việc khó bạn đang né. Đóng mạng xã hội, bấm giờ ba mươi phút và làm cho ra một phần cụ thể.",
+    "sentences": [{"text": "Dẹp các việc linh tinh sang một bên.", "pauseAfter": 0.18}, {"text": "Chọn đúng một việc khó bạn đang né.", "pauseAfter": 0.18}, {"text": "Đóng mạng xã hội, bấm giờ ba mươi phút và làm cho ra một phần cụ thể.", "pauseAfter": 0}]
+  },
+  {
+    "id": "05-chisel", "start": 38, "duration": 7, "leadIn": 0.12, "tail": 0.5, "targetSpeed": 1, "maxTail": 4,
+    "text": "Đừng tìm cảm hứng nữa. Quay lại làm việc đi. Cảm hứng sẽ đến sau khi bạn bắt đầu.",
+    "sentences": [{"text": "Đừng tìm cảm hứng nữa.", "pauseAfter": 0.22}, {"text": "Quay lại làm việc đi.", "pauseAfter": 0.22}, {"text": "Cảm hứng sẽ đến sau khi bạn bắt đầu.", "pauseAfter": 0, "gainDb": 0.15}]
+  }
+]

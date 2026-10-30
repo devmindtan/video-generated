@@ -1,0 +1,24 @@
+{
+  "title": "Đừng để người thương bạn phải thu mình",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.8,
+  "maxDurationSeconds": 120,
+  "sentences": [
+    {"scene": 1, "text": "Người làm bạn bực cả ngày chưa chắc đã nghe một lời trách móc.", "pauseAfter": 0.3},
+    {"scene": 1, "text": "Còn người ở nhà chờ bạn về lại phải chịu những câu nặng nề nhất.", "pauseAfter": 0.65},
+    {"scene": 2, "text": "Bạn đã nhịn suốt cả ngày. Về đến nhà, chỉ một câu hỏi cũng khiến bạn nổi nóng.", "pauseAfter": 0.3},
+    {"scene": 2, "text": "Bạn quen với việc người thân sẽ nhường nhịn, sẽ hiểu mình,", "pauseAfter": 0.25},
+    {"scene": 2, "text": "nên để những bực dọc tuôn ra mà chẳng nghĩ nhiều đến cách họ đón nhận.", "pauseAfter": 0.65},
+    {"scene": 3, "text": "Nhưng bạn đâu biết rằng, lời cay nghiệt từ người thân có thể đau hơn rất nhiều lời khó nghe ngoài đường.", "pauseAfter": 0.4},
+    {"scene": 3, "text": "Vì người nói ra là người mình tin tưởng. Họ biết mình yếu lòng ở đâu.", "pauseAfter": 0.3},
+    {"scene": 3, "text": "Và trong chính căn nhà của mình, chẳng ai muốn lúc nào cũng phải chuẩn bị tinh thần để chịu tổn thương.", "pauseAfter": 0.7},
+    {"scene": 4, "text": "Bạn nói xong rồi hết giận. Người nghe vẫn phải sống cùng câu nói ấy.", "pauseAfter": 0.4},
+    {"scene": 4, "text": "Bạn thấy nhẹ đi vì đã nói hết những bực bội,", "pauseAfter": 0.25},
+    {"scene": 4, "text": "còn họ bắt đầu cẩn trọng hơn, hỏi ít hơn, dè chừng cả những chuyện trước đây vẫn nói rất tự nhiên.", "pauseAfter": 0.7},
+    {"scene": 5, "text": "Mệt mỏi cần được cảm thông.", "pauseAfter": 0.3},
+    {"scene": 5, "text": "Nhưng người thân cũng cần được đối xử tử tế, ngay cả trong ngày bạn chẳng còn chút kiên nhẫn nào.", "pauseAfter": 0.65},
+    {"scene": 6, "text": "Đừng để bạn được trở về là chính mình,", "pauseAfter": 0.35},
+    {"scene": 6, "text": "còn người thương bạn lại phải thu mình mỗi khi bạn trở về.", "pauseAfter": 0}
+  ]
+}

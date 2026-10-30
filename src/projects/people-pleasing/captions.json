@@ -1,0 +1,201 @@
+[
+  [
+    {
+      "text": "Miệng nói “được thôi”, trong đầu chỉ",
+      "startMs": 180,
+      "endMs": 2080,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "muốn từ chối.",
+      "startMs": 2080,
+      "endMs": 3080,
+      "timestampMs": 2080,
+      "confidence": null
+    },
+    {
+      "text": "Bạn nhận thêm việc dù đã quá tải.",
+      "startMs": 3080,
+      "endMs": 4900,
+      "timestampMs": 3080,
+      "confidence": null
+    },
+    {
+      "text": "Làm vừa lòng họ, nhưng lại bỏ mặc mình.",
+      "startMs": 5160,
+      "endMs": 6660,
+      "timestampMs": 5160,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Không phải lần đồng ý nào cũng",
+      "startMs": 0,
+      "endMs": 1480,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "xuất phát từ lòng tốt.",
+      "startMs": 1480,
+      "endMs": 2760,
+      "timestampMs": 1480,
+      "confidence": null
+    },
+    {
+      "text": "Đôi khi, bạn chỉ sợ người khác thất vọng.",
+      "startMs": 2940,
+      "endMs": 5500,
+      "timestampMs": 2940,
+      "confidence": null
+    },
+    {
+      "text": "Một lời khen thoáng qua, đổi bằng",
+      "startMs": 5560,
+      "endMs": 7180,
+      "timestampMs": 5560,
+      "confidence": null
+    },
+    {
+      "text": "cả buổi tối và công việc còn",
+      "startMs": 7180,
+      "endMs": 8540,
+      "timestampMs": 7180,
+      "confidence": null
+    },
+    {
+      "text": "dang dở của mình.",
+      "startMs": 8540,
+      "endMs": 9200,
+      "timestampMs": 8540,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Nếu lần nào bạn cũng nhận lời,",
+      "startMs": 0,
+      "endMs": 1700,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "người khác dễ nghĩ bạn luôn sẵn sàng.",
+      "startMs": 1860,
+      "endMs": 3640,
+      "timestampMs": 1860,
+      "confidence": null
+    },
+    {
+      "text": "Họ không biết bạn đang bực hay",
+      "startMs": 3880,
+      "endMs": 5040,
+      "timestampMs": 3880,
+      "confidence": null
+    },
+    {
+      "text": "mệt, vì bạn chưa nói ra.",
+      "startMs": 5040,
+      "endMs": 6380,
+      "timestampMs": 5040,
+      "confidence": null
+    },
+    {
+      "text": "Im lặng không khiến giới hạn của",
+      "startMs": 6760,
+      "endMs": 8040,
+      "timestampMs": 6760,
+      "confidence": null
+    },
+    {
+      "text": "bạn tự nhiên được hiểu.",
+      "startMs": 8040,
+      "endMs": 8780,
+      "timestampMs": 8040,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Thử nói rõ: “Hôm nay tôi không",
+      "startMs": 0,
+      "endMs": 1620,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "nhận thêm việc.” Hoặc: “Tôi giúp được",
+      "startMs": 1620,
+      "endMs": 3460,
+      "timestampMs": 1620,
+      "confidence": null
+    },
+    {
+      "text": "phần này, phần còn lại thì không.”",
+      "startMs": 3460,
+      "endMs": 5200,
+      "timestampMs": 3460,
+      "confidence": null
+    },
+    {
+      "text": "Bạn có thể lịch sự mà vẫn dứt khoát.",
+      "startMs": 5200,
+      "endMs": 7320,
+      "timestampMs": 5200,
+      "confidence": null
+    },
+    {
+      "text": "Không cần giải thích mãi để được chấp thuận.",
+      "startMs": 7640,
+      "endMs": 9160,
+      "timestampMs": 7640,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Người khác có thể thất vọng khi",
+      "startMs": 0,
+      "endMs": 1480,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "bạn từ chối.",
+      "startMs": 1480,
+      "endMs": 2420,
+      "timestampMs": 1480,
+      "confidence": null
+    },
+    {
+      "text": "Điều đó không có nghĩa là bạn ích kỷ.",
+      "startMs": 2640,
+      "endMs": 4520,
+      "timestampMs": 2640,
+      "confidence": null
+    },
+    {
+      "text": "Giúp đỡ là một lựa chọn, không",
+      "startMs": 4620,
+      "endMs": 5940,
+      "timestampMs": 4620,
+      "confidence": null
+    },
+    {
+      "text": "phải lời hứa luôn sẵn sàng.",
+      "startMs": 5940,
+      "endMs": 7360,
+      "timestampMs": 5940,
+      "confidence": null
+    },
+    {
+      "text": "Tử tế không có nghĩa là luôn đồng ý.",
+      "startMs": 7580,
+      "endMs": 9080,
+      "timestampMs": 7580,
+      "confidence": null
+    }
+  ]
+]

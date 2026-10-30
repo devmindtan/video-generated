@@ -1,0 +1,24 @@
+{
+  "title": "Có tiền rồi, bạn sẽ mua lại ngày nào?",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.8,
+  "maxDurationSeconds": 120,
+  "sentences": [
+    {"scene": 1, "text": "Nếu một ngày có thật nhiều tiền, bạn muốn mua lại ngày nào?", "pauseAfter": 0.6},
+    {"scene": 1, "text": "Một buổi chiều còn được ngồi cạnh mẹ?", "pauseAfter": 0.3},
+    {"scene": 1, "text": "Hay những năm tháng mình còn đủ khỏe để đi bất cứ đâu?", "pauseAfter": 0.6},
+    {"scene": 2, "text": "Ta thường hẹn: kiếm đủ tiền rồi sẽ về nhà nhiều hơn.", "pauseAfter": 0.3},
+    {"scene": 2, "text": "Công việc ổn rồi sẽ chăm sóc bản thân.", "pauseAfter": 0.3},
+    {"scene": 2, "text": "Cứ thế, những điều quan trọng phải chờ một ngày chưa biết bao giờ tới.", "pauseAfter": 0.6},
+    {"scene": 3, "text": "Tiền có thể mua một chuyến đi đẹp hơn.", "pauseAfter": 0.25},
+    {"scene": 3, "text": "Nhưng không mua lại được sức khỏe của năm hai mươi tuổi.", "pauseAfter": 0.3},
+    {"scene": 3, "text": "Có thể mua một căn nhà lớn, nhưng không giữ mãi những người từng ngồi trong đó.", "pauseAfter": 0.65},
+    {"scene": 4, "text": "Bạn vẫn cần làm việc, vẫn cần tiền để sống.", "pauseAfter": 0.3},
+    {"scene": 4, "text": "Nhưng đừng chờ mọi thứ đầy đủ mới dành thời gian cho điều mình quý.", "pauseAfter": 0.3},
+    {"scene": 4, "text": "Một cuộc hẹn nhỏ hôm nay có thể đáng giá hơn món quà lớn đến quá muộn.", "pauseAfter": 0.6},
+    {"scene": 5, "text": "Thời gian là vàng.", "pauseAfter": 0.4},
+    {"scene": 5, "text": "Nhưng vàng còn có thể kiếm thêm.", "pauseAfter": 0.4},
+    {"scene": 5, "text": "Còn ngày hôm nay, dù giàu đến đâu, bạn cũng chỉ có một lần.", "pauseAfter": 0}
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Bạn còn nghĩ mãi. Họ có khi đã quên.",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.8,
+  "maxDurationSeconds": 120,
+  "sentences": [
+    {"scene": 1, "text": "Trong lớp, bạn trả lời nhầm một câu.", "pauseAfter": 0.3},
+    {"scene": 1, "text": "Trong cuộc họp, bạn nói vấp lúc trình bày.", "pauseAfter": 0.3},
+    {"scene": 1, "text": "Chuyện chỉ diễn ra vài giây.", "pauseAfter": 0.25},
+    {"scene": 1, "text": "Nhưng tối về, bạn vẫn nhớ từng ánh mắt nhìn mình lúc đó.", "pauseAfter": 0.6},
+    {"scene": 2, "text": "Chắc họ thấy mình kém lắm. Lẽ ra mình nên im lặng.", "pauseAfter": 0.35},
+    {"scene": 2, "text": "Bạn tua lại khoảnh khắc ấy, rồi tưởng tượng mọi người cũng đang nhớ nó rõ như mình.", "pauseAfter": 0.6},
+    {"scene": 3, "text": "Nhưng bạn có nhớ chính xác lần gần nhất người khác nói vấp không?", "pauseAfter": 0.4},
+    {"scene": 3, "text": "Có lẽ chẳng nhớ nổi.", "pauseAfter": 0.3},
+    {"scene": 3, "text": "Lúc đó, bạn còn bận nghĩ câu trả lời của mình, hoặc lo đến lượt mình sẽ nói ra sao.", "pauseAfter": 0.6},
+    {"scene": 4, "text": "Họ có thể nhận ra lỗi của bạn.", "pauseAfter": 0.25},
+    {"scene": 4, "text": "Nhưng nhận ra không có nghĩa là họ sẽ nhớ mãi.", "pauseAfter": 0.3},
+    {"scene": 4, "text": "Sai thông tin thì đính chính. Nói chưa rõ thì tập lại.", "pauseAfter": 0.35},
+    {"scene": 4, "text": "Một lỗi nhỏ cần được sửa, đâu cần trở thành lý do để bạn tự chê mình.", "pauseAfter": 0.6},
+    {"scene": 5, "text": "Bạn không cần nói hoàn hảo mới đáng được lắng nghe.", "pauseAfter": 0.4},
+    {"scene": 5, "text": "Lần sau có điều muốn hỏi, có ý kiến muốn góp, đừng để vài giây ngượng ngùng hôm nay giữ bạn im lặng.", "pauseAfter": 0}
+  ]
+}

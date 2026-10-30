@@ -1,0 +1,10 @@
+{
+  "title": "Đối chiếu riêng câu Muốn giữ một người",
+  "temperature": 0.55,
+  "leadIn": 0.25,
+  "tail": 0.65,
+  "maxDurationSeconds": 20,
+  "sentences": [
+    {"scene": 6, "text": "Muốn giữ một người, đừng chỉ cho họ nghe rằng bạn hối hận.", "pauseAfter": 0}
+  ]
+}

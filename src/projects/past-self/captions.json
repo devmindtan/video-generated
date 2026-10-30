@@ -1,0 +1,180 @@
+[
+  [
+    {
+      "text": "Có bao giờ, giữa đêm, bạn nhớ",
+      "startMs": 0,
+      "endMs": 2020,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "lại một quyết định sai… rồi ước",
+      "startMs": 2020,
+      "endMs": 3980,
+      "timestampMs": 2020,
+      "confidence": null
+    },
+    {
+      "text": "mình có thể quay về làm khác đi?",
+      "startMs": 3980,
+      "endMs": 5340,
+      "timestampMs": 3980,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Bạn trách mình quá ngây thơ, quá yếu lòng.",
+      "startMs": 0,
+      "endMs": 2540,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Nhưng ngày ấy, bạn chưa có những",
+      "startMs": 2820,
+      "endMs": 4280,
+      "timestampMs": 2820,
+      "confidence": null
+    },
+    {
+      "text": "trải nghiệm và hiểu biết mà hôm",
+      "startMs": 4280,
+      "endMs": 5500,
+      "timestampMs": 4280,
+      "confidence": null
+    },
+    {
+      "text": "nay bạn mới có.",
+      "startMs": 5500,
+      "endMs": 6600,
+      "timestampMs": 5500,
+      "confidence": null
+    },
+    {
+      "text": "Chính những lần vấp ngã đã dạy",
+      "startMs": 6600,
+      "endMs": 8000,
+      "timestampMs": 6600,
+      "confidence": null
+    },
+    {
+      "text": "bạn điều đó.",
+      "startMs": 8000,
+      "endMs": 8580,
+      "timestampMs": 8000,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Có những chuyện bạn đã làm sai.",
+      "startMs": 0,
+      "endMs": 2060,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Tha thứ không phải là xem như",
+      "startMs": 2060,
+      "endMs": 3700,
+      "timestampMs": 2060,
+      "confidence": null
+    },
+    {
+      "text": "chưa từng xảy ra, mà là nhận",
+      "startMs": 3700,
+      "endMs": 5280,
+      "timestampMs": 3700,
+      "confidence": null
+    },
+    {
+      "text": "lỗi, sửa điều còn có thể, rồi",
+      "startMs": 5280,
+      "endMs": 7000,
+      "timestampMs": 5280,
+      "confidence": null
+    },
+    {
+      "text": "cho mình cơ hội.",
+      "startMs": 7000,
+      "endMs": 7660,
+      "timestampMs": 7000,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Đừng dùng những điều hôm nay mới",
+      "startMs": 0,
+      "endMs": 1500,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "hiểu để mãi trách mình của ngày xưa.",
+      "startMs": 1500,
+      "endMs": 3000,
+      "timestampMs": 1500,
+      "confidence": null
+    },
+    {
+      "text": "Bạn không thể đổi chuyện đã qua,",
+      "startMs": 3880,
+      "endMs": 5100,
+      "timestampMs": 3880,
+      "confidence": null
+    },
+    {
+      "text": "nhưng có thể chọn cách sống từ hôm nay.",
+      "startMs": 5540,
+      "endMs": 7380,
+      "timestampMs": 5540,
+      "confidence": null
+    },
+    {
+      "text": "Bắt đầu bằng một việc nhỏ mà",
+      "startMs": 7740,
+      "endMs": 9020,
+      "timestampMs": 7740,
+      "confidence": null
+    },
+    {
+      "text": "bạn vẫn còn làm được.",
+      "startMs": 9020,
+      "endMs": 9840,
+      "timestampMs": 9020,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Bạn không cần quên hết mới được bình yên.",
+      "startMs": 0,
+      "endMs": 2440,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Hãy nhẹ lòng với mình một chút.",
+      "startMs": 2660,
+      "endMs": 4300,
+      "timestampMs": 2660,
+      "confidence": null
+    },
+    {
+      "text": "Theo dõi kênh để cùng lắng nghe",
+      "startMs": 4620,
+      "endMs": 5900,
+      "timestampMs": 4620,
+      "confidence": null
+    },
+    {
+      "text": "những lời nhắc dịu dàng.",
+      "startMs": 5900,
+      "endMs": 6780,
+      "timestampMs": 5900,
+      "confidence": null
+    }
+  ]
+]

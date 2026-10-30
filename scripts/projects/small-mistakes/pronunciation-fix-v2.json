@@ -1,0 +1,12 @@
+{
+  "title": "Câu tự trách và sửa lỗi — Quốc Tuấn",
+  "temperature": 0.55,
+  "leadIn": 0.2,
+  "tail": 0.3,
+  "maxDurationSeconds": 30,
+  "sentences": [
+    {"text": "Chắc họ thấy mình kém lắm. Lẽ ra, mình nên im lặng.", "pauseAfter": 0.6},
+    {"text": "Sai thông tin, thì đính chính. Nói chưa rõ, thì tập lại.", "pauseAfter": 0.6},
+    {"text": "Một lỗi nhỏ cần được sửa. Đâu cần trở thành lý do để bạn tự chê mình.", "pauseAfter": 0}
+  ]
+}

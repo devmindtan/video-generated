@@ -1,0 +1,102 @@
+[
+  {
+    "id": "01-shoes",
+    "start": 0,
+    "duration": 8,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Tôi đã khóc khi không có giày để đi… cho đến khi tôi thấy một người không có chân để đi giày.",
+    "sentences": [
+      {
+        "text": "Tôi đã khóc khi không có giày để đi…",
+        "pauseAfter": 1
+      },
+      {
+        "text": "cho đến khi tôi thấy một người không có chân để đi giày.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "02-cage",
+    "start": 8,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Câu nói ấy không khiến đôi chân trần bớt đau. Nhưng nó khiến ta nhận ra: thứ mình vẫn xem là bình thường, có thể lại là điều một người khác mong mỏi.",
+    "sentences": [
+      {
+        "text": "Câu nói ấy không khiến đôi chân trần bớt đau.",
+        "pauseAfter": 0.22
+      },
+      {
+        "text": "Nhưng nó khiến ta nhận ra: thứ mình vẫn xem là bình thường, có thể lại là điều một người khác mong mỏi.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "03-perspective",
+    "start": 18,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Ta dễ nhìn thấy đôi giày còn thiếu, mà quên đôi chân đang đưa mình đi mỗi ngày. Cứ mải nhìn vào điều chưa có, ta dần coi những gì đang có chẳng đáng là bao.",
+    "sentences": [
+      {
+        "text": "Ta dễ nhìn thấy đôi giày còn thiếu, mà quên đôi chân đang đưa mình đi mỗi ngày.",
+        "pauseAfter": 0.22
+      },
+      {
+        "text": "Cứ mải nhìn vào điều chưa có, ta dần coi những gì đang có chẳng đáng là bao.",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "04-ground",
+    "start": 28,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Ta không phải đợi mất đi mới biết một điều quý giá đến đâu. Đôi chân vẫn đưa mình đi mỗi ngày, nhưng mấy khi ta nghĩ đến chúng… ngoài những lúc thấy đau?",
+    "sentences": [
+      {
+        "text": "Ta không phải đợi mất đi mới biết một điều quý giá đến đâu.",
+        "pauseAfter": 0.32
+      },
+      {
+        "text": "Đôi chân vẫn đưa mình đi mỗi ngày, nhưng mấy khi ta nghĩ đến chúng… ngoài những lúc thấy đau?",
+        "pauseAfter": 0
+      }
+    ]
+  },
+  {
+    "id": "05-pillar",
+    "start": 38,
+    "duration": 10,
+    "leadIn": 0.16,
+    "tail": 0.3,
+    "targetSpeed": 1,
+    "maxTail": 3,
+    "text": "Bạn vẫn có thể mong một đôi giày tốt hơn. Chỉ đừng vì chưa có nó mà quên trân trọng đôi chân. Biết ơn không phải là thôi mong muốn, mà là đừng đợi mất đi mới nhận ra giá trị.",
+    "sentences": [
+      {
+        "text": "Bạn vẫn có thể mong một đôi giày tốt hơn. Chỉ đừng vì chưa có nó mà quên trân trọng đôi chân.",
+        "pauseAfter": 0.22
+      },
+      {
+        "text": "Biết ơn không phải là thôi mong muốn, mà là đừng đợi mất đi mới nhận ra giá trị.",
+        "pauseAfter": 0
+      }
+    ]
+  }
+]

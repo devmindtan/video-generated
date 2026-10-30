@@ -1,0 +1,15 @@
+{
+  "file": "Past Lives (Slow & Reverb).mp3",
+  "speechVolume": 0.30,
+  "pauseVolume": 0.35,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 2,
+  "credit": {
+    "title": "Past Lives (Slow & Reverb)",
+    "artists": ["Dj Nestor"],
+    "sourceUrl": null,
+    "attributionSource": "Embedded ID3 title/artist in the user's local MP3; not independent verification of original/remix rights.",
+    "processing": "User-selected local Slow & Reverb recording; native music playback 1x."
+  },
+  "editingNote": "Preserve user's Past Lives source, source trim 41.5s, music playback 1x, speechVolume/pauseVolume .35/.40 and voice gain1.2/playback .99. Music span extended to41s for the new pauses; fade follows audible clip/composition edges. Full source and native Edit controls remain; no SFX."
+}

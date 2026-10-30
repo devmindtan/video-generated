@@ -1,0 +1,66 @@
+[
+  {
+    "id": "01-hatch",
+    "start": 0,
+    "duration": 16,
+    "title": "Chào mừng Tí Hon!",
+    "wideShot": "01-hatch-wide",
+    "closeShot": "01-hatch-close"
+  },
+  {
+    "id": "02-log",
+    "start": 16,
+    "duration": 18,
+    "title": "Những bước chân đầu tiên",
+    "wideShot": "02-log-wide",
+    "closeShot": "02-log-close"
+  },
+  {
+    "id": "03-butterfly",
+    "start": 34,
+    "duration": 18,
+    "title": "Xin chào Bướm Xanh!",
+    "wideShot": "03-butterfly-wide",
+    "closeShot": "03-butterfly-close"
+  },
+  {
+    "id": "04-slide",
+    "start": 52,
+    "duration": 18,
+    "title": "Vui quá… nhưng tổ đâu rồi?",
+    "wideShot": "04-slide-wide",
+    "closeShot": "04-slide-close-v2"
+  },
+  {
+    "id": "05-mushrooms",
+    "start": 70,
+    "duration": 32,
+    "title": "Nhảy qua suối nấm!",
+    "wideShot": "05-mushrooms-wide",
+    "closeShot": "05-mushrooms-close"
+  },
+  {
+    "id": "06-snail",
+    "start": 102,
+    "duration": 28,
+    "title": "Ốc Sên Vỏ Kẹo chỉ đường",
+    "wideShot": "06-snail-wide",
+    "closeShot": "06-snail-close-v2"
+  },
+  {
+    "id": "07-rain",
+    "start": 130,
+    "duration": 24,
+    "title": "Chiếc ô của tình bạn",
+    "wideShot": "07-rain-wide",
+    "closeShot": "07-rain-close"
+  },
+  {
+    "id": "08-nest",
+    "start": 154,
+    "duration": 26,
+    "title": "Về tổ ấm rồi!",
+    "wideShot": "08-nest-wide",
+    "closeShot": "08-nest-close-v2"
+  }
+]

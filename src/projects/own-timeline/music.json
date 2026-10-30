@@ -1,7 +1,7 @@
 {
-  "file": "own-timeline/audio/healing-score.wav",
-  "speechVolume": 0.12,
-  "pauseVolume": 0.2,
+  "file": "own-timeline/audio/snowfall.mp3",
+  "speechVolume": 0.25,
+  "pauseVolume": 0.25,
   "fadeInSeconds": 1.8,
   "finalLiftStartSeconds": 41.5,
   "finalLiftPeakSeconds": 42.8,

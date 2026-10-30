@@ -1,25 +1,25 @@
 # Kịch bản đầy đủ — Đừng so sánh trang đầu của mình với trang giữa của người khác
 
-45 giây · 1080×1920 · giọng nam Thiện Minh · phong cách Stoicism điện ảnh.
+45 giây · 1080×1920 · giọng nam Hải Đăng · phong cách Stoicism điện ảnh.
 
 Lời đọc theo cụm ý liền mạch; chỉ nhấn ở điểm then chốt và hạ nhẹ ở cuối mỗi cảnh; phụ đề căn theo bản thu.
 
 ## Cảnh 1 · 00–08 giây
 
-Có phải bạn đang nhìn sang thành công của người khác... rồi tự hỏi sao mình vẫn chưa tới đâu? Dừng lại một chút.
+Có phải bạn đang nhìn vào thành công của người khác... rồi tự hỏi sao mình vẫn chưa tới đâu? Dừng lại một chút.
 
 ## Cảnh 2 · 08–19 giây
 
-Bạn đang so sánh những ngày đầu chật vật của mình với thành quả rực rỡ nhất mà họ phô bày ra ngoài. Nhưng không ai chụp lại những đêm thất bại và nước mắt trong bóng tối.
+Bạn đang so sánh hậu trường ngổn ngang của mình với sân khấu rực rỡ của người khác. Nhưng chẳng ai đăng tải những đêm thất bại hay những lần muốn bỏ cuộc.
 
 ## Cảnh 3 · 19–31 giây
 
-Cây sồi mất hàng chục năm để cắm rễ sâu, trong khi hoa cỏ chỉ cần vài tuần để nở rộ rồi chóng tàn. Một nền móng vững chắc chưa bao giờ được xây dựng trong một sớm một chiều.
+Cây cổ thụ không lớn lên trong một mùa. Nhiều năm đầu, phần quan trọng nhất của nó vẫn nằm khuất dưới đất: những chiếc rễ âm thầm bám sâu. Thứ muốn đứng vững trước giông gió luôn cần thời gian để lớn lên.
 
 ## Cảnh 4 · 31–40 giây
 
-Bạn không chậm trễ, cũng chẳng đi sớm hơn ai. Bạn đang ở đúng múi giờ của cuộc đời mình. Việc duy nhất cần làm là bước tiếp phần việc hôm nay.
+Bạn không hề chậm trễ, cũng chẳng cần chạy theo ai. Bạn đang ở đúng múi giờ của riêng mình. Việc duy nhất lúc này: tập trung vào bước chân hôm nay.
 
 ## Cảnh 5 · 40–45 giây
 
-Thở một hơi thật sâu. Cứ đi rồi sẽ đến.
+Hít vào thật sâu. Rồi bước tiếp.

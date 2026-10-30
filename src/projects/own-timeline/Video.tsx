@@ -89,7 +89,7 @@ const Captions: FC<{readonly index: number}> = ({index}) => {
   const caption = (captionsData[index] as Caption[]).find((item) => now >= item.startMs && now < item.endMs);
   if (!caption) return null;
 
-  const emphasis = /thành công|chưa tới đâu|Dừng lại|chật vật|rực rỡ|bóng tối|cắm rễ sâu|nền móng vững chắc|đúng múi giờ|bước tiếp|thật sâu|sẽ đến/gi;
+  const emphasis = /thành công|chưa tới đâu|Dừng lại|hậu trường|sân khấu rực rỡ|bỏ cuộc|rễ âm thầm bám sâu|đứng vững|đúng múi giờ|bước chân hôm nay|Thở sâu|bước tiếp/gi;
   const parts = caption.text.split(emphasis);
   const matches = caption.text.match(emphasis) ?? [];
 
@@ -152,8 +152,8 @@ const HourglassScene: FC = () => {
         />
       ))}
       <CinematicGrade light="50% 35%" />
-      <Heading eyebrow="LỜI NHẮC CHO CHÍNH BẠN" top={1030}>
-        Gửi bạn, người đang<br /><span style={{color: GOLD}}>cảm thấy tụt lại...</span>
+      <Heading eyebrow="LỜI NHẮC CHO CHÍNH BẠN" top={940}>
+        Gửi bạn, người đang<br /><span style={{color: GOLD}}>cảm thấy mình tụt lại</span><br />phía sau...
       </Heading>
       <Captions index={0} />
     </SceneFade>
@@ -320,7 +320,7 @@ const RippleScene: FC = () => {
           opacity: interpolate(frame, [2.7 * fps, 3.25 * fps], [0, 1], clamp),
         }}
       >
-        ĐĂNG KÝ KÊNH · CÙNG NHAU ĐI TIẾP
+        ĐĂNG KÝ KÊNH
       </div>
     </SceneFade>
   );
@@ -354,7 +354,7 @@ export const OwnTimelineVideo: FC = () => {
         <Sequence name="Kiên nhẫn và bước tiếp" from={40 * fps} durationInFrames={5 * fps}><RippleScene /></Sequence>
       </Track>
 
-      <Track name="Lời đọc · Thiện Minh · Trầm ấm và nâng đỡ">
+      <Track name="Lời đọc · Hải Đăng · Nam tự nhiên">
         <Audio from={0} durationInFrames={8 * fps} src={staticFile('own-timeline/audio/01-hourglass-voice-full.wav')} />
         <Audio from={8 * fps} durationInFrames={11 * fps} src={staticFile('own-timeline/audio/02-book-voice-full.wav')} />
         <Audio from={19 * fps} durationInFrames={12 * fps} src={staticFile('own-timeline/audio/03-trees-voice-full.wav')} />
@@ -363,10 +363,12 @@ export const OwnTimelineVideo: FC = () => {
       </Track>
 
       <Audio
-        name="Original healing score · Piano và cello"
+        name="Snowfall · Øneheart và reidenshi"
         src={staticFile(musicConfig.file)}
         durationInFrames={45 * fps}
         volume={ownTimelineMusicVolume(frame, fps)}
+        trimBefore={747}
+        playbackRate={0.8}
       />
     </AbsoluteFill>
   );

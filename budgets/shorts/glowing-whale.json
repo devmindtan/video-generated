@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "project": "glowing-whale",
+  "capVnd": 20000,
+  "reservations": [
+    {
+      "reserveVnd": 12490,
+      "model": "veo-3.1-lite-generate-preview",
+      "resolution": "720p",
+      "seconds": 8,
+      "usdPerSecond": "0.05",
+      "vndPerUsd": "26020",
+      "taxAndFeeMultiplier": "1.20",
+      "priceVerifiedAt": "2026-10-24",
+      "fxVerifiedAt": "2026-10-24",
+      "id": "9f9e04538d9f455da03de04da9eb881b",
+      "scene": "api-smoke-test-20261024",
+      "digest": "c8750d43034681492b7770174c49c4b218f3e57e455993ed5ee82fa284690eff",
+      "status": "dispatched",
+      "createdAt": "2026-10-24T08:22:15.300776+07:00"
+    }
+  ]
+}

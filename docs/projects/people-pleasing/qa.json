@@ -1,0 +1,36 @@
+{
+  "durationSeconds": 48,
+  "dimensions": [
+    1080,
+    1920
+  ],
+  "voice": "Hải Đăng",
+  "narrationTempo": 1,
+  "minimumWordMatchRatio": 0.9487,
+  "sceneTailSeconds": [
+    1.16,
+    0.616,
+    1.064,
+    0.738,
+    0.786
+  ],
+  "mixPeakDbFS": -0.52,
+  "musicBelowVoiceDuringSpeechDb": 5.59,
+  "musicEdit": {
+    "src": "own-timeline/audio/snowfall.mp3",
+    "from": 0,
+    "trimBefore": 747,
+    "durationInFrames": 1440,
+    "playbackRate": 1,
+    "volume": null
+  },
+  "speechVolume": 0.35,
+  "pauseVolume": 0.4,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 2,
+  "sfxEnabled": false,
+  "imagesChecked": 5,
+  "geminiVeoCalls": 0,
+  "compositionRendered": false,
+  "listeningReview": "Pending user audition in Studio; numerical checks do not establish perceived quality"
+}

@@ -1,0 +1,15 @@
+{
+  "enabled": false,
+  "masterVolume": 1,
+  "volumeGuide": "masterVolume: 0=tắt tiếng, 0.5=giảm một nửa biên độ, 1=giữ mức hiện tại, >1=tăng (có thể clipping). Các trường *Volume bên dưới chỉnh từng lớp, 0=tắt riêng lớp đó. Không ảnh hưởng nhạc hoặc giọng đọc.",
+  "windVolume": 0.85,
+  "roomVolume": 0.8,
+  "balanceRoomVolume": 0.8,
+  "clearingVolume": 0.7,
+  "woodVolume": 0.7,
+  "bottleVolume": 0.75,
+  "porcelainVolume": 0.75,
+  "brassVolume": 0.8,
+  "bedSpeechDuck": 0.25,
+  "note": "Sound v2: scene ambience plus material layers; original local synthesis, not recorded foley. Set enabled=false to audition without SFX. All clip timing is native/editable in Studio. V1 sources remain untouched; snapshot in docs/projects/right-advice/sound-v1-snapshot.json. Ending has no SFX after 41.5s."
+}

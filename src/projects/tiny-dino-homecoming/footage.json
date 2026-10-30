@@ -1,0 +1,242 @@
+{
+  "01-hatch-wide": {
+    "src": "tiny-dino-homecoming/video/01-hatch-wide.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-generate-001"
+  },
+  "01-hatch-close": {
+    "src": "tiny-dino-homecoming/video/01-hatch-close.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "02-log-wide": {
+    "src": "tiny-dino-homecoming/video/02-log-wide.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.8888888888888888,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "02-log-close": {
+    "src": "tiny-dino-homecoming/video/02-log-close.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.8888888888888888,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "03-butterfly-wide": {
+    "src": "tiny-dino-homecoming/video/03-butterfly-wide.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.8888888888888888,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "03-butterfly-close": {
+    "src": "tiny-dino-homecoming/video/03-butterfly-close.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.8888888888888888,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "04-slide-wide": {
+    "src": "tiny-dino-homecoming/video/04-slide-wide.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.8888888888888888,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "04-slide-close": {
+    "src": "tiny-dino-homecoming/video/04-slide-close.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.8888888888888888,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "05-mushrooms-wide": {
+    "src": "tiny-dino-homecoming/video/05-mushrooms-wide.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.5,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "05-mushrooms-close": {
+    "src": "tiny-dino-homecoming/video/05-mushrooms-close.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.5,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "06-snail-wide": {
+    "src": "tiny-dino-homecoming/video/06-snail-wide.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.5714285714285714,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "06-snail-close": {
+    "src": "tiny-dino-homecoming/video/06-snail-close.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.5714285714285714,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "07-rain-wide": {
+    "src": "tiny-dino-homecoming/video/07-rain-wide.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.6666666666666666,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "07-rain-close": {
+    "src": "tiny-dino-homecoming/video/07-rain-close.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.6666666666666666,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "08-nest-wide": {
+    "src": "tiny-dino-homecoming/video/08-nest-wide.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.6153846153846154,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "08-nest-close": {
+    "src": "tiny-dino-homecoming/video/08-nest-close.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.6153846153846154,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "06-snail-close-v2": {
+    "src": "tiny-dino-homecoming/video/06-snail-close-v2.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.5714285714285714,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "08-nest-close-v2": {
+    "src": "tiny-dino-homecoming/video/08-nest-close-v2.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.6153846153846154,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "04-slide-close-v2": {
+    "src": "tiny-dino-homecoming/video/04-slide-close-v2.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.8888888888888888,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "04-slide-continue-v3-1": {
+    "src": "tiny-dino-homecoming/video/04-slide-continue-v3-1.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "05-mushrooms-continue-v3-1": {
+    "src": "tiny-dino-homecoming/video/05-mushrooms-continue-v3-1.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.9523809523809526,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "07-rain-continue-v3-1": {
+    "src": "tiny-dino-homecoming/video/07-rain-continue-v3-1.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.9523809523809526,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "01-hatch-continue-v3-1": {
+    "src": "tiny-dino-homecoming/video/01-hatch-continue-v3-1.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.9302325581395351,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "04-slide-continue-v3-2": {
+    "src": "tiny-dino-homecoming/video/04-slide-continue-v3-2.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "05-mushrooms-continue-v3-2": {
+    "src": "tiny-dino-homecoming/video/05-mushrooms-continue-v3-2.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.9523809523809526,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "07-rain-continue-v3-2": {
+    "src": "tiny-dino-homecoming/video/07-rain-continue-v3-2.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.9302325581395351,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "08-nest-continue-v3-1": {
+    "src": "tiny-dino-homecoming/video/08-nest-continue-v3-1.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "02-log-continue-v3-1": {
+    "src": "tiny-dino-homecoming/video/02-log-continue-v3-1.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "06-snail-continue-v3-1": {
+    "src": "tiny-dino-homecoming/video/06-snail-continue-v3-1.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "05-mushrooms-continue-v3-3": {
+    "src": "tiny-dino-homecoming/video/05-mushrooms-continue-v3-3.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 0.9302325581395351,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "03-butterfly-continue-v3-1": {
+    "src": "tiny-dino-homecoming/video/03-butterfly-continue-v3-1.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-generate-001"
+  },
+  "08-nest-continue-v3-2": {
+    "src": "tiny-dino-homecoming/video/08-nest-continue-v3-2.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "06-snail-continue-v3-2": {
+    "src": "tiny-dino-homecoming/video/06-snail-continue-v3-2.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "08-nest-continue-v3-3": {
+    "src": "tiny-dino-homecoming/video/08-nest-continue-v3-3.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "06-snail-continue-v3-3": {
+    "src": "tiny-dino-homecoming/video/06-snail-continue-v3-3.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "02-log-continue-v3-2": {
+    "src": "tiny-dino-homecoming/video/02-log-continue-v3-2.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-generate-001"
+  },
+  "07-rain-continue-v4-1": {
+    "src": "tiny-dino-homecoming/video/07-rain-continue-v4-1.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-generate-001"
+  },
+  "03-butterfly-continue-v3-2": {
+    "src": "tiny-dino-homecoming/video/03-butterfly-continue-v3-2.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-generate-001"
+  },
+  "07-rain-continue-v5-1": {
+    "src": "tiny-dino-homecoming/video/07-rain-continue-v5-1.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-fast-generate-001"
+  },
+  "07-rain-continue-v5-2": {
+    "src": "tiny-dino-homecoming/video/07-rain-continue-v5-2.mp4",
+    "sourceDurationSeconds": 8.0,
+    "playbackRate": 1,
+    "model": "veo-3.1-fast-generate-001"
+  }
+}

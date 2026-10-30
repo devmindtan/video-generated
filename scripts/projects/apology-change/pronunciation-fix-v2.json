@@ -1,0 +1,14 @@
+{
+  "title": "Đối chiếu Muốn giữ một người — take 2",
+  "temperature": 0.45,
+  "leadIn": 0.25,
+  "tail": 0.65,
+  "maxDurationSeconds": 20,
+  "sentences": [
+    {
+      "scene": 6,
+      "text": "Muốn giữ một người, đừng chỉ cho họ nghe rằng bạn hối hận.",
+      "pauseAfter": 0
+    }
+  ]
+}

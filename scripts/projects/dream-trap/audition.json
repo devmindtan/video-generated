@@ -1,0 +1,24 @@
+{
+  "title": "Bạn đang cố gắng… hay chỉ đang tưởng tượng?",
+  "temperature": 0.5,
+  "leadIn": 0.25,
+  "tail": 0.7,
+  "maxDurationSeconds": 120,
+  "sentences": [
+    {"scene": 1, "text": "Bạn đã tưởng tượng rất rõ ngày mình thành công.", "pauseAfter": 0.3},
+    {"scene": 1, "text": "Làm được gì, sống ra sao, ai sẽ nhìn mình khác đi.", "pauseAfter": 0.3},
+    {"scene": 1, "text": "Nhưng hôm nay, bạn đã làm gì cho điều đó?", "pauseAfter": 0.85},
+    {"scene": 2, "text": "Bạn lưu thêm một video, viết thêm một kế hoạch, rồi thấy mình như vừa tiến bộ.", "pauseAfter": 0.3},
+    {"scene": 2, "text": "Việc cần làm vẫn nằm đó.", "pauseAfter": 0.25},
+    {"scene": 2, "text": "Chỉ có cảm giác là bạn đang tiến lên.", "pauseAfter": 0.6},
+    {"scene": 3, "text": "Đáng ngại hơn là khi kết quả không như ý, bạn chỉ tìm điều muốn nghe.", "pauseAfter": 0.3},
+    {"scene": 3, "text": "Ai góp ý cũng bị xem là không hiểu.", "pauseAfter": 0.25},
+    {"scene": 3, "text": "Còn sai sót thì lần nào cũng có lý do.", "pauseAfter": 0.6},
+    {"scene": 4, "text": "Muốn biết mình đang ở đâu, hãy nhìn vào thứ đã làm xong.", "pauseAfter": 0.3},
+    {"scene": 4, "text": "Thử ý tưởng với người thật. Hỏi điều gì chưa ổn.", "pauseAfter": 0.3},
+    {"scene": 4, "text": "Một lời góp ý khó nghe có thể giúp bạn sửa điều mình đã bỏ sót.", "pauseAfter": 0.6},
+    {"scene": 5, "text": "Cứ giữ giấc mơ của bạn.", "pauseAfter": 0.3},
+    {"scene": 5, "text": "Nhưng đừng lấy điều mình sẽ làm để thay cho điều mình chưa làm.", "pauseAfter": 0.35},
+    {"scene": 5, "text": "Tương lai ấy cần một việc được bắt đầu ngay hôm nay.", "pauseAfter": 0}
+  ]
+}

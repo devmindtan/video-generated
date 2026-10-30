@@ -1,0 +1,78 @@
+[
+  {
+    "id": "01-hatch",
+    "start": 0,
+    "duration": 8,
+    "leadIn": 0.18,
+    "tail": 0.25,
+    "targetSpeed": 0.9,
+    "temperature": 0.62,
+    "text": "Xin chào các bạn nhỏ! Trong khu rừng phép màu, một chú khủng long con vừa chào đời. Bé tên là Tí Hon!",
+    "sentences": [
+      {"text": "Xin chào các bạn nhỏ!", "pauseAfter": 0.14, "gainDb": 0.35},
+      {"text": "Trong khu rừng phép màu, một chú khủng long con vừa chào đời.", "pauseAfter": 0.12, "gainDb": 0.25},
+      {"text": "Bé tên là Tí Hon!", "pauseAfter": 0, "gainDb": 0.42}
+    ]
+  },
+  {
+    "id": "02-log",
+    "start": 8,
+    "duration": 10,
+    "leadIn": 0.12,
+    "tail": 0.2,
+    "targetSpeed": 0.82,
+    "temperature": 0.62,
+    "text": "Tí Hon bắt đầu những bước đi đầu tiên. Ôi, suýt ngã rồi! Nhưng không sao, bé đã dũng cảm giữ thăng bằng được rồi đấy.",
+    "sentences": [
+      {"text": "Tí Hon bắt đầu những bước đi đầu tiên.", "pauseAfter": 0.12, "gainDb": 0.22},
+      {"text": "Ôi, suýt ngã rồi!", "pauseAfter": 0.13, "gainDb": 0.5},
+      {"text": "Nhưng không sao, bé đã dũng cảm giữ thăng bằng được rồi đấy.", "pauseAfter": 0, "gainDb": 0.3}
+    ]
+  },
+  {
+    "id": "03-butterfly",
+    "start": 18,
+    "duration": 12,
+    "leadIn": 0.14,
+    "tail": 0.25,
+    "targetSpeed": 0.86,
+    "temperature": 0.58,
+    "text": "Nhìn kìa! Một bạn bướm phát sáng bay tới, đậu ngay trên mũi Tí Hon. Giữa khu rừng rộng lớn, hai bạn nhỏ đã tìm thấy nhau. Tí Hon không còn một mình nữa!",
+    "sentences": [
+      {"text": "Nhìn kìa!", "pauseAfter": 0.12, "gainDb": 0.5},
+      {"text": "Một bạn bướm phát sáng bay tới, đậu ngay trên mũi Tí Hon.", "pauseAfter": 0.16, "gainDb": 0.28},
+      {"text": "Giữa khu rừng rộng lớn, hai bạn nhỏ đã tìm thấy nhau.", "pauseAfter": 0.14, "gainDb": 0.2},
+      {"text": "Tí Hon không còn một mình nữa!", "pauseAfter": 0, "gainDb": 0.35}
+    ]
+  },
+  {
+    "id": "04-slide",
+    "start": 30,
+    "duration": 12,
+    "leadIn": 0.1,
+    "tail": 0.25,
+    "targetSpeed": 0.9,
+    "temperature": 0.64,
+    "text": "Vù! Trượt xuống chiếc lá thật là vui! Bạn bướm xanh luôn bay bên cạnh, cùng Tí Hon tìm đường về nhà. Dù có đi lạc một chút, bé vẫn dũng cảm bước tiếp và gặp bao điều kỳ diệu.",
+    "sentences": [
+      {"text": "Vù!", "pauseAfter": 0.08, "gainDb": 0.55},
+      {"text": "Trượt xuống chiếc lá thật là vui!", "pauseAfter": 0.14, "gainDb": 0.4},
+      {"text": "Bạn bướm xanh luôn bay bên cạnh, cùng Tí Hon tìm đường về nhà.", "pauseAfter": 0.13, "gainDb": 0.22},
+      {"text": "Dù có đi lạc một chút, bé vẫn dũng cảm bước tiếp và gặp bao điều kỳ diệu.", "pauseAfter": 0, "gainDb": 0.25}
+    ]
+  },
+  {
+    "id": "05-goodbye",
+    "start": 42,
+    "duration": 6,
+    "leadIn": 0.08,
+    "tail": 0.2,
+    "minWordMatchRatio": 0.85,
+    "temperature": 0.58,
+    "text": "Muốn khám phá trọn chuyến phiêu lưu cùng Tí Hon? Xem tập đầy đủ nhé!",
+    "sentences": [
+      {"text": "Muốn khám phá trọn chuyến phiêu lưu cùng Tí Hon?", "pauseAfter": 0.18, "gainDb": 0.28},
+      {"text": "Xem tập đầy đủ nhé!", "pauseAfter": 0, "gainDb": 0.32}
+    ]
+  }
+]

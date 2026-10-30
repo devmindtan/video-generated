@@ -1,0 +1,59 @@
+{
+  "title": "Xin lỗi rồi, sao mọi thứ vẫn như cũ?",
+  "temperature": 0.5,
+  "leadIn": 0.25,
+  "tail": 0.65,
+  "maxDurationSeconds": 90,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Lần đầu bạn xin lỗi, người ta tin là bạn đã hiểu. Lần thứ hai, họ nghĩ ai cũng cần thời gian để thay đổi.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 2,
+      "text": "Nhưng rồi vẫn chuyện ấy xảy ra, vẫn họ tổn thương, vẫn bạn nói mình không cố ý.",
+      "pauseAfter": 0.55
+    },
+    {
+      "scene": 3,
+      "text": "Đến một lúc, điều khiến họ mệt không còn là lỗi lầm ấy nữa.",
+      "pauseAfter": 0.25
+    },
+    {
+      "scene": 3,
+      "text": "Mà là mỗi lần tin bạn, họ lại phải chịu thêm một lần thất vọng.",
+      "pauseAfter": 0.55
+    },
+    {
+      "scene": 4,
+      "text": "Bạn thấy họ lạnh nhạt, ít nói, không còn muốn tranh luận.",
+      "pauseAfter": 0.25
+    },
+    {
+      "scene": 4,
+      "text": "Có thể vì những điều cần nói, họ đã nói hết từ những lần trước.",
+      "pauseAfter": 0.55
+    },
+    {
+      "scene": 5,
+      "text": "Một lời xin lỗi chỉ có ý nghĩa khi nó khiến lần sau khác đi.",
+      "pauseAfter": 0.25
+    },
+    {
+      "scene": 5,
+      "text": "Họ đã tin lời xin lỗi của bạn đủ nhiều rồi.",
+      "pauseAfter": 0.55
+    },
+    {
+      "scene": 6,
+      "text": "Điều họ cần bây giờ là được ở bên bạn mà không phải lo chuyện cũ sẽ lặp lại.",
+      "pauseAfter": 0.7
+    },
+    {
+      "scene": 6,
+      "text": "Đừng để người đã chọn tha thứ lại phải hối hận vì đã tin mình.",
+      "pauseAfter": 0
+    }
+  ]
+}

@@ -1,0 +1,274 @@
+[
+  {
+    "id": "01-hatch",
+    "start": 0,
+    "duration": 16,
+    "shots": [
+      {
+        "key": "01-hatch-wide",
+        "from": 0,
+        "duration": 8.2,
+        "sourceStart": 0,
+        "rate": 0.9756097560975611,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "01-hatch-continue-v3-1",
+        "from": 7.8,
+        "duration": 8.599999999999998,
+        "sourceStart": 0,
+        "rate": 0.9302325581395351,
+        "fadeIn": 0.4
+      }
+    ]
+  },
+  {
+    "id": "02-log",
+    "start": 16,
+    "duration": 18,
+    "shots": [
+      {
+        "key": "02-log-wide",
+        "from": 0,
+        "duration": 6.2,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "02-log-continue-v3-1",
+        "from": 5.8,
+        "duration": 6.3999999999999995,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "02-log-continue-v3-2",
+        "from": 11.8,
+        "duration": 6.599999999999998,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      }
+    ]
+  },
+  {
+    "id": "03-butterfly",
+    "start": 34,
+    "duration": 18,
+    "shots": [
+      {
+        "key": "03-butterfly-wide",
+        "from": 0,
+        "duration": 6.2,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "03-butterfly-continue-v3-1",
+        "from": 5.8,
+        "duration": 6.3999999999999995,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "03-butterfly-continue-v3-2",
+        "from": 11.8,
+        "duration": 6.599999999999998,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      }
+    ]
+  },
+  {
+    "id": "04-slide",
+    "start": 52,
+    "duration": 18,
+    "shots": [
+      {
+        "key": "04-slide-wide",
+        "from": 0,
+        "duration": 6.2,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "04-slide-continue-v3-1",
+        "from": 5.8,
+        "duration": 6.3999999999999995,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "04-slide-continue-v3-2",
+        "from": 11.8,
+        "duration": 6.599999999999998,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      }
+    ]
+  },
+  {
+    "id": "05-mushrooms",
+    "start": 70,
+    "duration": 32,
+    "shots": [
+      {
+        "key": "05-mushrooms-wide",
+        "from": 0,
+        "duration": 8.2,
+        "sourceStart": 0,
+        "rate": 0.9756097560975611,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "05-mushrooms-continue-v3-1",
+        "from": 7.8,
+        "duration": 8.399999999999999,
+        "sourceStart": 0,
+        "rate": 0.9523809523809526,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "05-mushrooms-continue-v3-2",
+        "from": 15.8,
+        "duration": 8.399999999999999,
+        "sourceStart": 0,
+        "rate": 0.9523809523809526,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "05-mushrooms-continue-v3-3",
+        "from": 23.8,
+        "duration": 8.599999999999998,
+        "sourceStart": 0,
+        "rate": 0.9302325581395351,
+        "fadeIn": 0.4
+      }
+    ]
+  },
+  {
+    "id": "06-snail",
+    "start": 102,
+    "duration": 28,
+    "shots": [
+      {
+        "key": "06-snail-wide",
+        "from": 0,
+        "duration": 7.2,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "06-snail-continue-v3-1",
+        "from": 6.8,
+        "duration": 7.3999999999999995,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "06-snail-continue-v3-2",
+        "from": 13.8,
+        "duration": 7.399999999999999,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "06-snail-continue-v3-3",
+        "from": 20.8,
+        "duration": 7.599999999999998,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      }
+    ]
+  },
+  {
+    "id": "07-rain",
+    "start": 130,
+    "duration": 24,
+    "shots": [
+      {
+        "key": "07-rain-wide",
+        "from": 0,
+        "duration": 4.2,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "07-rain-close",
+        "from": 3.8,
+        "duration": 7.4,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "07-rain-continue-v5-1",
+        "from": 10.8,
+        "duration": 7.4,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "07-rain-continue-v5-2",
+        "from": 17.8,
+        "duration": 6.6,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      }
+    ]
+  },
+  {
+    "id": "08-nest",
+    "start": 154,
+    "duration": 26,
+    "shots": [
+      {
+        "key": "08-nest-wide",
+        "from": 0,
+        "duration": 6.7,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "08-nest-continue-v3-1",
+        "from": 6.3,
+        "duration": 6.8999999999999995,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "08-nest-continue-v3-2",
+        "from": 12.8,
+        "duration": 6.899999999999999,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      },
+      {
+        "key": "08-nest-continue-v3-3",
+        "from": 19.3,
+        "duration": 6.699999999999999,
+        "sourceStart": 0,
+        "rate": 1,
+        "fadeIn": 0.4
+      }
+    ]
+  }
+]

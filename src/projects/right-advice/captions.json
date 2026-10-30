@@ -1,0 +1,201 @@
+[
+  [
+    {
+      "text": "Người bảo kiên trì, người khuyên buông bỏ.",
+      "startMs": 0,
+      "endMs": 2080,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Người giục mạo hiểm, người nhắc an toàn.",
+      "startMs": 2280,
+      "endMs": 4100,
+      "timestampMs": 2280,
+      "confidence": null
+    },
+    {
+      "text": "Ai cũng có lý.",
+      "startMs": 4340,
+      "endMs": 5180,
+      "timestampMs": 4340,
+      "confidence": null
+    },
+    {
+      "text": "Vậy rốt cuộc, nghe ai?",
+      "startMs": 5420,
+      "endMs": 6260,
+      "timestampMs": 5420,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Hãy xem lời khuyên như một toa",
+      "startMs": 0,
+      "endMs": 1460,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "thuốc: chỉ có ích khi đúng vấn đề.",
+      "startMs": 1460,
+      "endMs": 3500,
+      "timestampMs": 1460,
+      "confidence": null
+    },
+    {
+      "text": "Câu “cố thêm chút nữa” có thể",
+      "startMs": 3640,
+      "endMs": 4760,
+      "timestampMs": 3640,
+      "confidence": null
+    },
+    {
+      "text": "giúp một người bắt đầu, nhưng lại",
+      "startMs": 4760,
+      "endMs": 6300,
+      "timestampMs": 4760,
+      "confidence": null
+    },
+    {
+      "text": "khiến người khác phớt lờ sự mệt mỏi.",
+      "startMs": 6300,
+      "endMs": 7960,
+      "timestampMs": 6300,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Người cứ trì hoãn có thể cần",
+      "startMs": 0,
+      "endMs": 1380,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "một lịch làm việc rõ ràng.",
+      "startMs": 1380,
+      "endMs": 3060,
+      "timestampMs": 1380,
+      "confidence": null
+    },
+    {
+      "text": "Người đã làm suốt nhiều tuần không",
+      "startMs": 3240,
+      "endMs": 4560,
+      "timestampMs": 3240,
+      "confidence": null
+    },
+    {
+      "text": "nghỉ lại cần giảm tải.",
+      "startMs": 4560,
+      "endMs": 5580,
+      "timestampMs": 4560,
+      "confidence": null
+    },
+    {
+      "text": "Cả hai cùng nghe “kỷ luật hơn",
+      "startMs": 5960,
+      "endMs": 7140,
+      "timestampMs": 5960,
+      "confidence": null
+    },
+    {
+      "text": "nữa”, kết quả đâu thể giống nhau.",
+      "startMs": 7140,
+      "endMs": 8620,
+      "timestampMs": 7140,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Trước khi làm theo, hãy hỏi: mình",
+      "startMs": 0,
+      "endMs": 1820,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "đang né việc khó, hay thực sự",
+      "startMs": 1820,
+      "endMs": 3460,
+      "timestampMs": 1820,
+      "confidence": null
+    },
+    {
+      "text": "đã quá tải?",
+      "startMs": 3460,
+      "endMs": 4320,
+      "timestampMs": 3460,
+      "confidence": null
+    },
+    {
+      "text": "Mình cần thử sức, hay cần làm",
+      "startMs": 4580,
+      "endMs": 6220,
+      "timestampMs": 4580,
+      "confidence": null
+    },
+    {
+      "text": "chắc điều đang có?",
+      "startMs": 6220,
+      "endMs": 7100,
+      "timestampMs": 6220,
+      "confidence": null
+    },
+    {
+      "text": "Lời khuyên phải trả lời đúng câu",
+      "startMs": 7400,
+      "endMs": 8540,
+      "timestampMs": 7400,
+      "confidence": null
+    },
+    {
+      "text": "hỏi của bạn.",
+      "startMs": 8540,
+      "endMs": 8920,
+      "timestampMs": 8540,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Đừng mượn hoàn cảnh của người khác",
+      "startMs": 0,
+      "endMs": 1560,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "để quyết định cuộc đời mình.",
+      "startMs": 1560,
+      "endMs": 3020,
+      "timestampMs": 1560,
+      "confidence": null
+    },
+    {
+      "text": "Một lời khuyên đáng giữ không chỉ nghe hay.",
+      "startMs": 3340,
+      "endMs": 4960,
+      "timestampMs": 3340,
+      "confidence": null
+    },
+    {
+      "text": "Nó phải hợp với việc bạn đang",
+      "startMs": 5340,
+      "endMs": 6420,
+      "timestampMs": 5340,
+      "confidence": null
+    },
+    {
+      "text": "đối mặt, và giúp bạn biết nên làm gì.",
+      "startMs": 6420,
+      "endMs": 8240,
+      "timestampMs": 6420,
+      "confidence": null
+    }
+  ]
+]

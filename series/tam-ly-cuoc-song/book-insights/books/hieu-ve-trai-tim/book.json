@@ -1,0 +1,16 @@
+{
+  "id": "hieu-ve-trai-tim",
+  "title": "Hiểu về trái tim",
+  "authors": [
+    "Minh Niệm"
+  ],
+  "status": "awaiting-source",
+  "sourceSha256": null,
+  "cacheEdition": null,
+  "editionDetails": null,
+  "chapterMap": "chapters.json",
+  "research": "research.md",
+  "seasonPlan": "season-plan.md",
+  "pdfInbox": "library/books/inbox/",
+  "note": "Chưa nhận PDF; không giả định trang/chương hoặc đã đọc sách."
+}

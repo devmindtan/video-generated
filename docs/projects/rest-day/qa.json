@@ -1,0 +1,46 @@
+{
+  "composition": "StoicRestDay",
+  "durationSeconds": 45,
+  "voice": "Quốc Tuấn",
+  "tempo": 1,
+  "sourcePcmPreserved": true,
+  "sourceDurationSeconds": 38.14154166666667,
+  "addedSilenceSeconds": 6.858458333333333,
+  "captionPages": 24,
+  "captionTextUnchanged": true,
+  "sceneStartsFrames": [
+    0,
+    197,
+    367,
+    693,
+    859,
+    1066
+  ],
+  "imageAssetsVisuallyInspected": 7,
+  "musicEdit": {
+    "src": "Ludovico Einaudi - Night (Official Video).mp3",
+    "from": 0,
+    "trimBefore": 1618.62,
+    "durationInFrames": 1350,
+    "playbackRate": 0.79,
+    "volume": null
+  },
+  "speechEdit": {
+    "src": "rest-day/audio/narration-quoc-tuan-v3-pauses.wav",
+    "from": 0,
+    "trimBefore": 0,
+    "durationInFrames": null,
+    "playbackRate": 1,
+    "volume": 1
+  },
+  "mixPeakDbFS": -2.09,
+  "musicBelowVoiceDb": 18.19,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 2,
+  "paidApiCalls": 0,
+  "sfxEnabled": false,
+  "videoRendered": false,
+  "thumbnailRendered": false,
+  "listeningReview": "Pending user listening; automated checks do not approve perceived quality",
+  "recognitionNote": "Raw Vietnamese ASR reviewed separately; word-match does not establish tone accuracy; listening review pending."
+}

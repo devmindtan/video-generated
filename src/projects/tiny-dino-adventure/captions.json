@@ -1,0 +1,180 @@
+[
+  [
+    {
+      "text": "Xin chào các bạn nhỏ!",
+      "startMs": 0,
+      "endMs": 1340,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Trong khu rừng phép màu, một chú",
+      "startMs": 1660,
+      "endMs": 3300,
+      "timestampMs": 1660,
+      "confidence": null
+    },
+    {
+      "text": "khủng long con vừa chào đời.",
+      "startMs": 3300,
+      "endMs": 4540,
+      "timestampMs": 3300,
+      "confidence": null
+    },
+    {
+      "text": "Bé tên là Tí Hon!",
+      "startMs": 4940,
+      "endMs": 5800,
+      "timestampMs": 4940,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Tí Hon bắt đầu những bước đi đầu tiên.",
+      "startMs": 180,
+      "endMs": 2140,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "Ôi, suýt ngã rồi!",
+      "startMs": 2620,
+      "endMs": 4020,
+      "timestampMs": 2620,
+      "confidence": null
+    },
+    {
+      "text": "Nhưng không sao, bé đã dũng cảm",
+      "startMs": 4400,
+      "endMs": 6080,
+      "timestampMs": 4400,
+      "confidence": null
+    },
+    {
+      "text": "giữ thăng bằng được rồi đấy.",
+      "startMs": 6080,
+      "endMs": 7400,
+      "timestampMs": 6080,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Nhìn kìa!",
+      "startMs": 0,
+      "endMs": 700,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Một bạn bướm phát sáng bay tới,",
+      "startMs": 1100,
+      "endMs": 2500,
+      "timestampMs": 1100,
+      "confidence": null
+    },
+    {
+      "text": "đậu ngay trên mũi Tí Hon.",
+      "startMs": 2980,
+      "endMs": 4140,
+      "timestampMs": 2980,
+      "confidence": null
+    },
+    {
+      "text": "Giữa khu rừng rộng lớn, hai bạn",
+      "startMs": 4140,
+      "endMs": 6400,
+      "timestampMs": 4140,
+      "confidence": null
+    },
+    {
+      "text": "nhỏ đã tìm thấy nhau.",
+      "startMs": 6400,
+      "endMs": 7560,
+      "timestampMs": 6400,
+      "confidence": null
+    },
+    {
+      "text": "Tí Hon không còn một mình nữa!",
+      "startMs": 7960,
+      "endMs": 9380,
+      "timestampMs": 7960,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Vù!",
+      "startMs": 0,
+      "endMs": 380,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Trượt xuống chiếc lá thật là vui!",
+      "startMs": 380,
+      "endMs": 2060,
+      "timestampMs": 380,
+      "confidence": null
+    },
+    {
+      "text": "Bạn bướm xanh luôn bay bên cạnh,",
+      "startMs": 2520,
+      "endMs": 3880,
+      "timestampMs": 2520,
+      "confidence": null
+    },
+    {
+      "text": "cùng Tí Hon tìm đường về nhà.",
+      "startMs": 4200,
+      "endMs": 5480,
+      "timestampMs": 4200,
+      "confidence": null
+    },
+    {
+      "text": "Dù có đi lạc một chút, bé",
+      "startMs": 5880,
+      "endMs": 7440,
+      "timestampMs": 5880,
+      "confidence": null
+    },
+    {
+      "text": "vẫn dũng cảm bước tiếp và gặp",
+      "startMs": 7440,
+      "endMs": 8920,
+      "timestampMs": 7440,
+      "confidence": null
+    },
+    {
+      "text": "bao điều kỳ diệu.",
+      "startMs": 8920,
+      "endMs": 9839,
+      "timestampMs": 8920,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Muốn khám phá trọn chuyến phiêu lưu",
+      "startMs": 0,
+      "endMs": 1580,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "cùng Tí Hon?",
+      "startMs": 1580,
+      "endMs": 2100,
+      "timestampMs": 1580,
+      "confidence": null
+    },
+    {
+      "text": "Xem tập đầy đủ nhé!",
+      "startMs": 2500,
+      "endMs": 3600,
+      "timestampMs": 2500,
+      "confidence": null
+    }
+  ]
+]

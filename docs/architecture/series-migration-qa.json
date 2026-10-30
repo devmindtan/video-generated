@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-29",
+  "catalog": {
+    "channels": 3,
+    "series": 6,
+    "projects": 37,
+    "registeredCompositionsAndStills": 72,
+    "planning": 0
+  },
+  "migration": {
+    "unchangedRegistrations": 72,
+    "unchangedSourceFiles": 160,
+    "note": "One-time migration audit; legitimate future episode edits need not match this baseline."
+  },
+  "series": [
+    {
+      "id": "self-help-shorts",
+      "channel": "tam-ly-cuoc-song",
+      "projects": 32
+    },
+    {
+      "id": "stoic-stories",
+      "channel": "tam-ly-cuoc-song",
+      "projects": 1
+    },
+    {
+      "id": "book-insights",
+      "channel": "tam-ly-cuoc-song",
+      "projects": 0
+    },
+    {
+      "id": "tiny-dino",
+      "channel": "kids",
+      "projects": 2
+    },
+    {
+      "id": "ocean-stories",
+      "channel": "kids",
+      "projects": 1
+    },
+    {
+      "id": "product-videos",
+      "channel": "client-work",
+      "projects": 1
+    }
+  ],
+  "checks": {
+    "catalogTests": 6,
+    "kidsRegressionTests": 6,
+    "oneBadDayQA": "passed",
+    "typecheck": "passed",
+    "diffWhitespace": "passed",
+    "studioBuild": "passed"
+  },
+  "notes": [
+    "Production source, composition props and IDs were preserved; only registration Folder ownership changed.",
+    "Book series awaiting user source; no book composition or media generated.",
+    "Studio compiled/opened; no rendered-frame/UI screenshot inspection claimed."
+  ],
+  "rendered": false,
+  "paidGenerationCalls": 0
+}

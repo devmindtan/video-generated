@@ -1,0 +1,56 @@
+{
+  "composition": "StoicGetBackUp",
+  "durationSeconds": 41,
+  "dimensions": [
+    1080,
+    1920
+  ],
+  "voice": "Quốc Tuấn",
+  "originalTakeUnchanged": true,
+  "allOriginalPcmSamplesPreserved": true,
+  "narrationTempo": 0.99,
+  "additionalSlowdown": false,
+  "addedSilenceSourceSeconds": 4.61,
+  "narrationDurationSeconds": 40.60623,
+  "captionPages": 22,
+  "captionTextUnchanged": true,
+  "captionTimingRebasedForPausesAndUserRate": true,
+  "sceneStartsSeconds": [
+    0.0,
+    6.8,
+    13.5333,
+    21.3,
+    30.4333
+  ],
+  "imagesChecked": 5,
+  "musicEdit": {
+    "src": "Past Lives (Slow & Reverb).mp3",
+    "from": 0,
+    "trimBefore": 1245,
+    "durationInFrames": 1230,
+    "playbackRate": 1,
+    "volume": null
+  },
+  "voiceEdit": {
+    "src": "get-back-up/audio/narration-quoc-tuan-v2-pauses.wav",
+    "from": 0,
+    "trimBefore": 0,
+    "durationInFrames": null,
+    "playbackRate": 0.99,
+    "volume": 1.2
+  },
+  "speechVolume": 0.35,
+  "pauseVolume": 0.4,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 2,
+  "mixPeakDbFS": 1.23,
+  "musicBelowVoiceDuringSpeechDb": 4.52,
+  "sfxEnabled": false,
+  "geminiVeoCalls": 0,
+  "compositionRendered": false,
+  "mixWarnings": [
+    "Mix exceeds0dBFS with current user gain/music settings; reduce levels before export",
+    "Music less than10dB below voice; user listening review needed"
+  ],
+  "listeningReview": "Original voice selected; new pauses and final music mix pending user review"
+}
