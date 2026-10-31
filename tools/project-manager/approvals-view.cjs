@@ -158,7 +158,14 @@ function createApprovals(root) {
     for (const f of item.files) {
       let data;try {data = JSON.parse(fs.readFileSync(path.join(root, f.path || f), 'utf8'));} catch {continue;}
       if (item.id === 'music') add(`${data.credit?.title || path.basename(data.file || '')}${data.credit?.artists ? ' — ' + data.credit.artists.join(', ') : ''} (${nameOf(f.path || f)})`, data.file);
-      if (item.id === 'voice') add(`Đoạn mẫu: ${data.name || data.voice || ''}`, data.sample || Object.values(data.segments || {})[0]?.file);
+      if (item.id === 'voice') {
+        // sample: one path, or {proposed, alternatives} when several takes wait for the user's pick.
+        const sample = data.sample, voice = data.name || data.voice || '';
+        if (sample && typeof sample === 'object') {
+          add(`Đoạn mẫu đề xuất: ${voice}`, sample.proposed);
+          for (const [k, rel] of (sample.alternatives || []).entries()) add(`Đoạn mẫu khác ${k + 1}: ${path.basename(path.dirname(String(rel)))}`, rel);
+        } else add(`Đoạn mẫu: ${voice}`, sample || Object.values(data.segments || {})[0]?.file || data.source);
+      }
     }
     return out;
   }
@@ -170,7 +177,7 @@ function createApprovals(root) {
       items: r.items.map(i => ({id: i.id, title: i.title, guide: i.guide, files: i.files.map(f => ({path: f.path, name: nameOf(f.path), exists: f.exists, changed: f.changed}))})),
       missing: r.missing.map(rel => ({path: rel, name: nameOf(rel)})), drift: r.drift.map(rel => ({path: rel, name: nameOf(rel)})),
       pending: r.pending && {id: r.pending.id, reason: r.pending.reason, createdAt: r.pending.createdAt, files: Object.keys(r.pending.changed).map(nameOf)},
-      patches: r.patches.map(p => ({id: p.id, reason: p.reason, status: p.status, createdAt: p.createdAt, decidedAt: p.decidedAt, note: p.note, files: Object.keys(p.changed).map(nameOf)})),
+      patches: r.patches.map(p => ({id: p.id, reason: p.reason, status: p.status, createdAt: p.createdAt, decidedAt: p.decidedAt, note: p.note, files: Object.keys(p.changed).map(nameOf), itemNotes: Object.entries(p.itemNotes || {}).map(([rel, n]) => ({name: nameOf(rel), text: n.text}))})),
       scenes: r.scenes.map(s => ({id: s.id, title: s.title, status: s.status, clips: s.clips.map((c, i) => ({index: i, renderedAt: c.renderedAt, lockVersion: c.lockVersion, status: c.status, note: c.note, decidedAt: c.decidedAt}))})),
       final: r.final, preview};
   }
@@ -180,7 +187,8 @@ function createApprovals(root) {
     const text = rel => fs.readFileSync(path.join(root, rel), 'utf8').slice(0, 300000);
     if (mode === 'lock') {
       const lockFiles = review.load(root, id).locks.at(-1)?.files || {};
-      return {mode, revision: v.revision, state: r.state, items: r.items.map(i => ({key: i.id, title: i.title, guide: i.guide, audio: audioOf(id, i),
+      const lockEntry = review.load(root, id).locks[0] || null;
+      return {mode, revision: v.revision, state: r.state, notes: r.notes.lock || {}, lockedNotes: lockEntry?.itemNotes || {}, lockNote: lockEntry?.note || '', items: r.items.map(i => ({key: i.id, kind: i.id, title: i.title, guide: i.guide, audio: audioOf(id, i),
         files: i.files.map(f => {
           if (!f.exists) return {path: f.path, name: nameOf(f.path), status: 'missing'};
           if (!TEXT.test(f.path)) return {path: f.path, name: nameOf(f.path), status: 'binary'};
@@ -191,15 +199,15 @@ function createApprovals(root) {
     const patch = review.load(root, id).patches.find(p => p.id === patchId);
     if (!patch) throw new Error('Không có bản vá này');
     const itemOf = rel => r.items.find(i => i.files.some(f => f.path === rel));
-    return {mode: 'patch', revision: v.revision, patch: {id: patch.id, reason: patch.reason, status: patch.status, createdAt: patch.createdAt, baseVersion: patch.baseVersion, note: patch.note},
-      items: Object.entries(patch.changed).map(([rel, c], k) => {
+    return {mode: 'patch', revision: v.revision, notes: r.notes[patch.id] || {}, lockedNotes: patch.itemNotes || {}, patch: {id: patch.id, reason: patch.reason, status: patch.status, createdAt: patch.createdAt, baseVersion: patch.baseVersion, note: patch.note},
+      items: Object.entries(patch.changed).map(([rel, c]) => {
         const item = itemOf(rel), before = approvals.approvedContent(root, c.before), after = approvals.approvedContent(root, c.after);
         const file = {path: rel, name: nameOf(rel)};
         if (!c.after) Object.assign(file, {status: 'missing'});
         else if (!TEXT.test(rel) || !after) Object.assign(file, {status: 'binary'});
         else if (!before) Object.assign(file, {status: 'text', text: after.toString('utf8').slice(0, 300000)});
         else Object.assign(file, {status: 'changed', ...diff(before.toString('utf8'), after.toString('utf8'))});
-        return {key: 'p' + k, title: !item || nameOf(rel) === item.title ? nameOf(rel) : `${item.title}: ${nameOf(rel)}`, guide: item?.guide || '', audio: item ? audioOf(id, {id: item.id, files: [rel]}) : [], files: [file]};
+        return {key: rel, kind: item?.id || '', title: !item || nameOf(rel) === item.title ? nameOf(rel) : `${item.title}: ${nameOf(rel)}`, guide: item?.guide || '', audio: item ? audioOf(id, {id: item.id, files: [rel]}) : [], files: [file]};
       })};
   }
   function checked(id, revision) {
@@ -216,9 +224,15 @@ function createApprovals(root) {
   }
   function decidePatch({id, patch, decision, note = '', revision}) {
     if (typeof note !== 'string' || note.length > 2000) throw new Error('Ghi chú tối đa 2000 ký tự');
-    if (decision === 'returned' && !note.trim()) throw new Error('Ghi chú lý do trả lại để agent biết cần sửa gì');
+    const itemNotes = review.summary(root, cli.plan(root, id)).notes[patch] || {};
+    if (decision === 'returned' && !note.trim() && !Object.keys(itemNotes).length) throw new Error('Ghi chú lý do trả lại để agent biết cần sửa gì');
     checked(id, revision);
     return review.decidePatch(root, cli.plan(root, id), patch, {decision, note: note.trim(), by: userName()});
+  }
+  // Draft note on one item of the open lock or patch review; saved as you type, read by agents via `automation review`.
+  function reviewNote({id, context, item, text = ''}) {
+    if (typeof context !== 'string' || typeof item !== 'string') throw new Error('Thiếu mục cần ghi chú');
+    return {note: review.setNote(root, cli.plan(root, id), {context, item, text, by: userName()})};
   }
   function reviewScene({id, scene, clip, decision, note = ''}) {
     if (typeof note !== 'string' || note.length > 4000) throw new Error('Ghi chú tối đa 4000 ký tự');
@@ -245,6 +259,6 @@ function createApprovals(root) {
     try {const p = progress.view(root, id);return p.plan ? {overall: p.overall, running: p.counts.running, interrupted: p.counts.interrupted, failed: p.counts.failed, total: p.counts.total, done: p.counts.done} : null;}
     catch {return null;}
   }
-  return {approvalsView: view, approveGate, gateReview, projectMedia, reviewView, reviewDetail, lockProject, decidePatch, reviewScene, reviewMedia, progressView, progressSummary};
+  return {approvalsView: view, approveGate, gateReview, projectMedia, reviewView, reviewDetail, lockProject, decidePatch, reviewNote, reviewScene, reviewMedia, progressView, progressSummary};
 }
 module.exports = {createApprovals};

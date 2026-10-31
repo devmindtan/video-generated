@@ -245,7 +245,7 @@ function renderGates(){
   const summary=locked?`Chốt lần đầu ${when(d.lockedAt)}${d.lockedBy?` · ${esc(d.lockedBy)}`:''}${d.version>1?` · ${d.version-1} bản vá đã vào bản chốt`:''}`:'Chưa chốt: sản xuất bắt đầu sau khi bạn chốt gói ban đầu.';
   const sceneCard=s=>{const last=s.clips[s.clips.length-1];return `<li class="scene-row status-${esc(s.status)}"><div class="scene-card-head"><strong>${esc(s.title)}</strong><span class="scene-badge">${sceneText[s.status]}</span></div><small class="scene-meta">${s.clips.length?`${s.clips.length} clip · ${when(last.renderedAt)}`:'Agent xuất clip khi cảnh làm xong'}</small>${last?.note?`<p class="scene-note-text">${esc(last.note)}</p>`:''}${s.clips.length?`<button class="button ${s.status==='pending'?'primary':'secondary'} scene-open" data-scene-open="${esc(s.id)}">${s.status==='pending'?'Xem và duyệt':'Xem clip'}</button>`:''}</li>`;};
   const scenes=`<section class="review-scenes" aria-labelledby="scenes-title"><div class="block-head"><h4 id="scenes-title">Các cảnh</h4>${total?`<span class="count">${approved}/${total} đạt</span>`:''}</div>${total?`<div class="scene-progress" aria-hidden="true"><span data-width="${Math.round(approved/total*100)}"></span></div><ul class="scene-grid">${d.scenes.map(sceneCard).join('')}</ul>`:'<p class="empty-block">Chưa có danh sách cảnh. Agent thêm <code>scenes.json</code> (hoặc dùng <code>story.json</code>) khi chia cảnh.</p>'}</section>`;
-  const patchItem=p=>`<li class="patch-item status-${esc(p.status)}"><div class="patch-item-head"><button class="link-button" data-review-open="patch" data-patch="${esc(p.id)}">${esc(p.id)}</button><span class="patch-badge">${esc(patchText[p.status]||p.status)}</span><time>${when(p.decidedAt||p.createdAt)}</time></div><p>${esc(p.reason)}</p>${p.files.length?`<small>${esc(p.files.join(', '))}</small>`:''}${p.note?`<small class="patch-note">Ghi chú: ${esc(p.note)}</small>`:''}</li>`;
+  const patchItem=p=>`<li class="patch-item status-${esc(p.status)}"><div class="patch-item-head"><button class="link-button" data-review-open="patch" data-patch="${esc(p.id)}">${esc(p.id)}</button><span class="patch-badge">${esc(patchText[p.status]||p.status)}</span><time>${when(p.decidedAt||p.createdAt)}</time></div><p>${esc(p.reason)}</p>${p.files.length?`<small>${esc(p.files.join(', '))}</small>`:''}${p.note?`<small class="patch-note">Ghi chú: ${esc(p.note)}</small>`:''}${(p.itemNotes||[]).map(n=>`<small class="patch-note">${esc(n.name)}: ${esc(n.text)}</small>`).join('')}</li>`;
   const history=d.patches.filter(p=>p.status!=='pending');
   const patches=`<aside class="patch-panel" aria-labelledby="patches-title"><div class="block-head"><h4 id="patches-title">Bản vá</h4>${d.patches.length?`<span class="count">${d.patches.length}</span>`:''}</div><p class="patch-intro">${locked?'Mọi chỉnh sửa sau khi chốt, ở bất kỳ giai đoạn nào, đều thành bản vá để bạn chấp nhận hoặc trả lại.':'Sau khi chốt, mọi chỉnh sửa trong suốt quá trình làm sẽ hiện ở đây để bạn duyệt.'}</p>${d.drift.length?`<p class="warn patch-drift">Có thay đổi chưa vào bản vá: ${esc(names(d.drift))}. Agent cần tạo bản vá để bạn duyệt.</p>`:''}${d.pending?`<div class="patch-pending"><span>Chờ bạn duyệt</span><strong>${esc(d.pending.id)}: ${esc(d.pending.reason)}</strong><small>${esc(d.pending.files.join(', '))} · ${when(d.pending.createdAt)}</small><button class="button primary" data-review-open="patch" data-patch="${esc(d.pending.id)}">Xem bản vá</button></div>`:''}${history.length?`<ol class="patch-list">${history.map(patchItem).join('')}</ol>`:locked&&!d.pending?'<p class="empty-block">Chưa có bản vá nào.</p>':''}</aside>`;
   box.innerHTML=`<div class="review-top"><div class="review-summary"><span class="lock-chip state-${esc(d.state)}">${esc(d.state==='unlocked'?'Chưa chốt':`Bản chốt v${d.version}`)}</span><span>${summary}</span></div><ol class="review-stepper" aria-label="Các giai đoạn duyệt">${stepper}</ol></div><div class="gate-next is-${next.tone}"><div><span>Việc của bạn</span><strong>${next.title}</strong>${next.small?`<small>${next.small}</small>`:''}</div>${next.button||''}</div><div class="review-grid">${scenes}${patches}</div>`;
@@ -307,7 +307,7 @@ async function openReview(gate){
   try{state.reviewMode='gate';state.review=await api(`/api/approval-review?id=${encodeURIComponent(state.drawer.id)}&gate=${encodeURIComponent(gate)}`);state.reviewExpanded={};state.reviewSeen=new Set();state.reviewIndex=0;renderReview();$('#review-dialog').showModal();$('#review-dialog .rail-item')?.focus();}
   catch(error){toast(error.message);}
 }
-function showItem(i){document.querySelectorAll('#review-dialog audio').forEach(a=>a.pause());state.reviewIndex=i;renderReview();$('#review-dialog .review-body').scrollTop=0;$('#review-dialog .rail-item.is-current')?.focus();}
+function showItem(i){document.querySelectorAll('#review-dialog audio').forEach(a=>a.pause());if(state.reviewMode==='detail')flushNotes();state.reviewIndex=i;renderReview();$('#review-dialog .review-body').scrollTop=0;$('#review-dialog .rail-item.is-current')?.focus();}
 // Tiến trình: what the agent planned after the lock and is doing now. Read-only; refreshed while the tab is open.
 const taskText={pending:'Chưa làm',running:'Đang làm',done:'Xong',failed:'Lỗi',blocked:'Đang chờ',interrupted:'Bị ngắt'};
 const eventText={plan:'Lập kế hoạch',replan:'Cập nhật kế hoạch','plan-add':'Thêm việc',running:'Bắt đầu',update:'Cập nhật',done:'Xong',failed:'Lỗi',blocked:'Đang chờ',pending:'Đặt lại',log:'Ghi chú'};
@@ -336,16 +336,59 @@ function renderProgress(){
 }
 // One timer for the open project: refresh only while Tiến trình is visible.
 setInterval(()=>{if(state.drawer&&state.projectTab==='progress'&&!$('#drawer').hidden&&document.visibilityState==='visible')loadProgress(state.drawer.id,true);},4000);
+// Music and voice settings in words: the choices you check first, other parameters folded, the raw file last.
+const vnNum=v=>String(+(+v).toFixed(2)).replace('.',','),pct=v=>`${Math.round(v*100)}%`,sec=v=>`${vnNum(v)} giây`,rate=v=>`${vnNum(v)}×`,listOf=v=>Array.isArray(v)?v.join(', '):v;
+const pick=(o,k)=>k.split('.').reduce((a,p)=>a?.[p],o);
+const SETTINGS={
+  music:[['credit.title','Bài'],['credit.artists','Tác giả',listOf],['credit.source','Nguồn'],['credit.sourceUrl','Trang nguồn'],['file','File nhạc'],
+    ['speechVolume','Âm lượng khi có lời',pct],['pauseVolume','Âm lượng lúc ngừng lời',pct],['baseVolume','Âm lượng nền',pct],['fadeInSeconds','Fade vào',sec],['fadeOutSeconds','Fade ra',sec],
+    ['playbackRate','Tốc độ phát',rate],['preservePitch','Giữ cao độ khi đổi tốc độ',v=>v?'Có':'Không'],
+    [o=>Number.isFinite(o.lowerFromSeconds)&&`Từ giây ${vnNum(o.lowerFromSeconds)}, hạ dần trong ${sec(o.lowerOverSeconds||0)} xuống ${pct(o.lowerToVolume||0)}`,'Hạ nhạc'],
+    [o=>Number.isFinite(o.videoStartSeconds)&&`${sec(o.videoStartSeconds)} – ${Number.isFinite(o.videoEndSeconds)?sec(o.videoEndSeconds):'hết video'}`,'Đoạn trên video'],
+    [o=>Number.isFinite(o.sourceStartSeconds)&&`${sec(o.sourceStartSeconds)} – ${Number.isFinite(o.sourceEndSeconds)?sec(o.sourceEndSeconds):'hết bài'}`,'Đoạn dùng trong bài'],
+    ['credit.processing','Xử lý'],['editingNote','Ghi chú dựng']],
+  voice:[[o=>o.name||o.voice,'Giọng'],['option','Cách chọn giọng',v=>({1:'Cách 1: giọng có sẵn (VieNeu)',2:'Cách 2: clone giọng'})[v]||v],['gender','Giới tính',v=>({male:'Nam',female:'Nữ'})[v]||v],
+    ['engine','Công cụ'],['consent','Sự đồng ý',v=>({self:'Giọng của bạn',permission:'Người trong bản ghi đã đồng ý'})[v]||v],['reference','Bản ghi mẫu'],['referenceText','Lời của bản ghi mẫu'],
+    ['pitchSemitones','Cao độ',v=>+v?`${v>0?'+':''}${vnNum(v)} bán cung`:'Giữ nguyên'],[o=>o.speed??o.playbackRate,'Tốc độ',rate],['durationSeconds','Thời lượng',sec],
+    ['processing','Cách xử lý'],['selection','Lựa chọn'],['sample.status','Đoạn mẫu'],['listeningReview','Nghe duyệt',v=>typeof v==='object'?JSON.stringify(v):v],
+    [o=>o.segments&&Object.keys(o.segments).length&&`${Object.keys(o.segments).length} đoạn: ${Object.keys(o.segments).join(', ')}`,'Các đoạn đã ghép']]};
+const USED={music:['credit','file','speechVolume','pauseVolume','baseVolume','fadeInSeconds','fadeOutSeconds','playbackRate','preservePitch','lowerFromSeconds','lowerOverSeconds','lowerToVolume','videoStartSeconds','videoEndSeconds','sourceStartSeconds','sourceEndSeconds','editingNote'],
+  voice:['name','voice','option','gender','engine','consent','reference','referenceText','pitchSemitones','speed','playbackRate','durationSeconds','processing','selection','sample','listeningReview','segments']};
+const shortValue=v=>Array.isArray(v)?`${v.length} mục`:v&&typeof v==='object'?`${Object.keys(v).length} mục`:String(v);
+function settingsView(kind,text){
+  let data;try{data=JSON.parse(text);}catch{return null;}
+  const rows=SETTINGS[kind].map(([k,label,fmt])=>{const raw=typeof k==='function'?k(data):pick(data,k);return raw===undefined||raw===null||raw===''||raw===false&&typeof k==='function'?null:[label,fmt?fmt(raw):listOf(raw)];}).filter(Boolean);
+  const rest=Object.entries(data).filter(([k])=>!USED[kind].includes(k));
+  return `<dl class="setting-list">${rows.map(([l,v])=>`<div${String(v).length>90?' class="is-long"':''}><dt>${esc(l)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>${rest.length?`<details class="setting-more"><summary>Thông số khác (${rest.length})</summary><dl class="setting-list is-compact">${rest.map(([k,v])=>`<div><dt><code>${esc(k)}</code></dt><dd>${esc(shortValue(v))}</dd></div>`).join('')}</dl></details>`:''}<details class="setting-more"><summary>Xem file gốc</summary><pre class="setting-raw">${esc(text)}</pre></details>`;
+}
 // Lock and patch: the same checklist layout (items on the left, one at a time on the right, "seen" before deciding).
 function detailPanel(item){
   const id=encodeURIComponent(state.drawer.id);
-  const audio=item.audio.length?`<ul class="voice-takes">${item.audio.map(a=>`<li><strong>${esc(a.name)}</strong><audio controls preload="none" src="/api/review/media?id=${id}&kind=${encodeURIComponent(a.kind)}&key=${encodeURIComponent(a.key)}"></audio></li>`).join('')}</ul>`:'';
+  const audio=item.audio.length?`<ul class="voice-takes is-pair">${item.audio.map(a=>`<li><strong>${esc(a.name)}</strong><audio controls preload="none" src="/api/review/media?id=${id}&kind=${encodeURIComponent(a.kind)}&key=${encodeURIComponent(a.key)}"></audio></li>`).join('')}</ul>`:'';
   const files=item.files.map((f,i)=>`<section class="detail-file"><h4>${esc(f.name)} <code>${esc(f.path)}</code></h4>${
     f.status==='changed'?`<p class="review-hint">So với bản chốt: dòng <span class="d-plus">thêm</span> nền xanh, dòng <span class="d-minus">bỏ</span> nền đỏ, chữ đổi được tô đậm.</p>${f.tooLarge?'<p class="muted">Tài liệu quá dài để so từng dòng.</p>':diffRows(f.rows,`${item.key}-${i}`)}`
+    :f.status==='text'&&SETTINGS[item.kind]&&f.path.endsWith('.json')&&settingsView(item.kind,f.text)?settingsView(item.kind,f.text)
     :f.status==='text'?`<div class="review-doc document-view" data-doc="${i}"></div>`
     :f.status==='missing'?'<p class="warn">Chưa có file này.</p>':'<p class="muted">Không xem được dạng chữ.</p>'}</section>`).join('');
-  return `<p class="review-hint">${esc(item.guide)}</p>${audio}${files}`;
+  return `<p class="review-hint">${esc(item.guide)}</p>${audio?`<h4 class="listen-title">Nghe</h4>${audio}`:''}${files}`;
 }
+// Per-item notes: typed under the item, saved as you go (agents read them even before the lock), editable on return.
+const noteContext=()=>state.review.mode==='lock'?'lock':state.review.patch.id;
+const railSmall=it=>[...it.files.map(f=>f.status==='changed'?'đã sửa':f.status==='missing'?'chưa có':''),(state.reviewNotes[it.key]||state.reviewLockedNotes[it.key])?'có ghi chú':''].filter(Boolean).join(' · ');
+function noteStateText(key){
+  const n=state.reviewNotes[key];if(state.noteTimers[key])return 'Đang lưu…';
+  return n?`Đã lưu ${when(n.at)}${n.changedSince?' · nội dung đã sửa sau ghi chú này':''}`:'Tự lưu khi bạn gõ. Agent đọc được ngay, kể cả khi bạn chưa chốt.';
+}
+async function saveNote(key){
+  clearTimeout(state.noteTimers[key]);delete state.noteTimers[key];
+  const text=state.noteDrafts[key];if(text===undefined||text===(state.reviewNotes[key]?.text||''))return;
+  try{const out=await api('/api/review/note',{id:state.drawer.id,context:noteContext(),item:key,text});
+    if(out.note)state.reviewNotes[key]=out.note;else delete state.reviewNotes[key];delete state.noteDrafts[key];}
+  catch(error){toast(`Chưa lưu được ghi chú: ${error.message}`);return;}
+  const items=state.review.items,i=items.findIndex(it=>it.key===key),small=$(`#review-dialog [data-review-item="${i}"] small`);if(small)small.textContent=railSmall(items[i]);
+  const st=$('#review-dialog .note-state');if(st&&$('#item-note')?.dataset.key===key)st.textContent=noteStateText(key);
+}
+const flushNotes=()=>Promise.all(Object.keys(state.noteDrafts).map(saveNote));
 function renderDetail(){
   const r=state.review,lock=r.mode==='lock',items=r.items,seen=state.reviewSeen,current=items[state.reviewIndex]||items[0];
   const done=items.filter(i=>seen.has(i.key)).length,ready=done===items.length,editable=lock?r.state==='unlocked':r.patch.status==='pending';
@@ -353,18 +396,22 @@ function renderDetail(){
   const badge=lock?(r.state==='unlocked'?'Chờ bạn chốt':'Đã chốt'):patchText[r.patch.status]||r.patch.status;
   const intro=lock?(r.state==='unlocked'?'Xem hết năm mục rồi bấm Chốt. Sau khi chốt, mọi chỉnh sửa đi qua bản vá để bạn duyệt.':'Nội dung đang dùng; phần sửa sau bản chốt được so với bản chốt.')
     :`${esc(r.patch.reason)} · tạo ${when(r.patch.createdAt)} trên bản v${r.patch.baseVersion}${r.patch.note?` · Ghi chú: ${esc(r.patch.note)}`:''}`;
-  const rail=`<aside class="review-rail" aria-label="Danh sách cần xem"><p class="rail-title">${editable?'Cần bạn xem':'Nội dung'} <span>${done}/${items.length}</span></p><ol>${items.map((it,i)=>`<li><button class="rail-item${it===current?' is-current':''}${seen.has(it.key)?' is-seen':''}" data-review-item="${i}" aria-current="${it===current}"><span class="rail-check" aria-hidden="true">${seen.has(it.key)?'✓':i+1}</span><span class="rail-name">${esc(it.title)}<small>${esc(it.files.map(f=>f.status==='changed'?'đã sửa':f.status==='missing'?'chưa có':'').filter(Boolean).join(', '))}</small></span></button></li>`).join('')}</ol></aside>`;
-  const panel=current?`<section class="review-panel" aria-labelledby="panel-title"><header><h3 id="panel-title">${esc(current.title)}</h3></header><div class="panel-body">${detailPanel(current)}</div>${editable?`<div class="panel-actions">${state.reviewIndex>0?'<button class="button quiet" data-review-prev>Mục trước</button>':'<span></span>'}<button class="button ${seen.has(current.key)?'secondary':'primary'}" data-review-seen>${state.reviewIndex<items.length-1?(seen.has(current.key)?'Mục tiếp theo':'Đã xem, sang mục tiếp'):'Đã xem mục này'}</button></div>`:''}</section>`:'<section class="review-panel"><p class="muted">Không có nội dung.</p></section>';
+  const rail=`<aside class="review-rail" aria-label="Danh sách cần xem"><p class="rail-title">${editable?'Cần bạn xem':'Nội dung'} <span>${done}/${items.length}</span></p><ol>${items.map((it,i)=>`<li><button class="rail-item${it===current?' is-current':''}${seen.has(it.key)?' is-seen':''}" data-review-item="${i}" aria-current="${it===current}"><span class="rail-check" aria-hidden="true">${seen.has(it.key)?'✓':i+1}</span><span class="rail-name">${esc(it.title)}<small>${esc(railSmall(it))}</small></span></button></li>`).join('')}</ol></aside>`;
+  const recorded=current&&state.reviewLockedNotes[current.key]?`<div class="note-recorded"><span>Ghi chú của bạn khi ${lock?'chốt':'duyệt'} (${when(state.reviewLockedNotes[current.key].at)})</span><p>${esc(state.reviewLockedNotes[current.key].text)}</p></div>`:'';
+  const draft=current?state.noteDrafts[current.key]??state.reviewNotes[current.key]?.text??'':'';
+  const noteBar=current&&editable?`<div class="panel-foot"><label class="item-note" for="item-note"><span>Ghi chú cho mục “${esc(current.title)}”</span><textarea id="item-note" data-key="${esc(current.key)}" rows="2" maxlength="4000" placeholder="Chỗ cần sửa hoặc lưu ý cho agent. Không bắt buộc.">${esc(draft)}</textarea></label><div class="panel-actions">${state.reviewIndex>0?'<button class="button quiet" data-review-prev>Mục trước</button>':''}<p class="note-state" role="status">${esc(noteStateText(current.key))}</p><button class="button ${seen.has(current.key)?'secondary':'primary'}" data-review-seen>${state.reviewIndex<items.length-1?(seen.has(current.key)?'Mục tiếp theo':'Đã xem, sang mục tiếp'):'Đã xem mục này'}</button></div></div>`:'';
+  const panel=current?`<section class="review-panel" aria-labelledby="panel-title"><header><h3 id="panel-title">${esc(current.title)}</h3></header><div class="panel-body">${detailPanel(current)}${recorded}</div>${noteBar}</section>`:'<section class="review-panel"><p class="muted">Không có nội dung.</p></section>';
   const note=$('#review-form [name=note]')?.value||'';
   const foot=!editable?`<footer class="review-foot"><p>${lock?`Đã chốt; đang dùng bản v${state.gates.version}.`:`${esc(patchText[r.patch.status]||r.patch.status)}.`}</p><div class="review-actions"><button class="button secondary" data-review-close>Đóng</button></div></footer>`
-    :`<form class="review-foot" id="review-form"><span class="foot-progress${ready?' is-ready':''}">${ready?'✓ Đã xem hết':`Đã xem ${done}/${items.length}`}</span><label class="review-note"><span>Ghi chú</span><input name="note" maxlength="2000" autocomplete="off" placeholder="${lock?'Không bắt buộc':'Bắt buộc khi trả lại'}"></label><p class="review-status" role="status"></p><div class="review-actions"><button type="button" class="button quiet" data-review-close>Để sau</button>${lock?'':'<button type="button" class="button secondary" data-patch-return>Trả lại</button>'}<button type="submit" class="button primary"${ready?'':' disabled'}>${lock?'Chốt ban đầu':'Chấp nhận'}</button></div></form>`;
+    :`<form class="review-foot" id="review-form"><span class="foot-progress${ready?' is-ready':''}">${ready?'✓ Đã xem hết':`Đã xem ${done}/${items.length}`}</span><label class="review-note"><span>Ghi chú chung</span><input name="note" maxlength="${lock?1000:2000}" autocomplete="off" placeholder="${lock?'Không bắt buộc':'Cần ghi chú (chung hoặc ở từng mục) khi trả lại'}"></label><p class="review-status" role="status"></p><div class="review-actions"><button type="button" class="button quiet" data-review-close>Để sau</button>${lock?'':'<button type="button" class="button secondary" data-patch-return>Trả lại</button>'}<button type="submit" class="button primary"${ready?'':' disabled'}>${lock?'Chốt ban đầu':'Chấp nhận'}</button></div></form>`;
   $('#review-content').innerHTML=`<header class="review-head"><div><span class="gate-badge phase-${editable?'turn':'done'}">${esc(badge)}</span><h2 id="review-title">${esc(title)}</h2><p>${intro}</p></div><button class="icon-button" data-review-close aria-label="Đóng">${icon('close')}</button></header><div class="review-layout">${rail}<div class="review-body">${panel}</div></div>${foot}`;
   if($('#review-form [name=note]'))$('#review-form [name=note]').value=note;
   document.querySelectorAll('#review-dialog [data-doc]').forEach(box=>{const f=current.files[Number(box.dataset.doc)];box.append(f.path.endsWith('.md')?renderMarkdown(f.text):Object.assign(document.createElement('pre'),{textContent:f.text}));});
 }
 async function openDetail(mode,patch){
   try{state.review=await api(`/api/review-detail?id=${encodeURIComponent(state.drawer.id)}&mode=${mode}${patch?`&patch=${encodeURIComponent(patch)}`:''}`);
-    state.reviewMode='detail';state.reviewExpanded={};state.reviewSeen=new Set();state.reviewIndex=0;renderReview();$('#review-dialog').showModal();$('#review-dialog .rail-item')?.focus();}
+    state.reviewMode='detail';state.reviewExpanded={};state.reviewSeen=new Set();state.reviewIndex=0;
+    state.reviewNotes={...state.review.notes};state.reviewLockedNotes=state.review.lockedNotes||{};state.noteDrafts={};state.noteTimers={};renderReview();$('#review-dialog').showModal();$('#review-dialog .rail-item')?.focus();}
   catch(error){toast(error.message);}
 }
 // Scene clips: watch the latest clip (with voice), see earlier clips and notes, mark Đạt or write what to fix.
@@ -388,8 +435,9 @@ async function decideScene(decision){
   catch(error){status.textContent=error.message;form.querySelectorAll('button').forEach(b=>{b.disabled=false;});}
 }
 async function decidePatch(decision){
+  await flushNotes();
   const form=$('#review-form'),status=form.querySelector('.review-status'),r=state.review;
-  if(decision==='returned'&&!form.elements.note.value.trim()){status.textContent='Ghi chú lý do trả lại để agent biết cần sửa gì.';form.elements.note.focus();return;}
+  if(decision==='returned'&&!form.elements.note.value.trim()&&!Object.keys(state.reviewNotes).length){status.textContent='Ghi chú lý do trả lại để agent biết cần sửa gì.';form.elements.note.focus();return;}
   form.querySelectorAll('button').forEach(b=>{b.disabled=true;});
   try{const out=await api('/api/review/patch',{id:state.drawer.id,patch:r.patch.id,decision,note:form.elements.note.value,revision:r.revision});$('#review-dialog').close();await loadGates(state.drawer.id);toast(decision==='accepted'?`Đã chấp nhận ${r.patch.id}; đang dùng bản chốt v${out.version}.`:`Đã trả lại ${r.patch.id}.`);}
   catch(error){status.textContent=error.message;form.querySelectorAll('button').forEach(b=>{b.disabled=false;});}
@@ -410,7 +458,11 @@ $('#review-dialog').addEventListener('click',event=>{
   if(event.target.closest('[data-review-seen]')){const items=reviewList();state.reviewSeen.add((items[state.reviewIndex]||items[0]).key);const next=items.findIndex((it,i)=>i>state.reviewIndex&&!state.reviewSeen.has(it.key));showItem(next>=0?next:Math.min(state.reviewIndex+1,items.length-1));return;}
   const fold=event.target.closest('[data-unfold]');if(fold){state.reviewExpanded[fold.dataset.unfold]=true;const top=$('#review-dialog .review-body').scrollTop;renderReview();$('#review-dialog .review-body').scrollTop=top;}
 });
-$('#review-dialog').addEventListener('close',()=>document.querySelectorAll('#review-dialog audio,#review-dialog video').forEach(a=>a.pause()));
+$('#review-dialog').addEventListener('close',()=>{document.querySelectorAll('#review-dialog audio,#review-dialog video').forEach(a=>a.pause());if(state.reviewMode==='detail')flushNotes().then(()=>state.drawer&&loadGates(state.drawer.id));});
+$('#review-dialog').addEventListener('input',event=>{
+  const box=event.target.closest('#item-note');if(!box)return;const key=box.dataset.key;state.noteDrafts[key]=box.value;
+  clearTimeout(state.noteTimers[key]);state.noteTimers[key]=setTimeout(()=>saveNote(key),700);$('#review-dialog .note-state').textContent='Đang lưu…';
+});
 $('#review-dialog').addEventListener('play',event=>document.querySelectorAll('#review-dialog audio').forEach(a=>{if(a!==event.target)a.pause();}),true);
 $('#review-dialog').addEventListener('submit',async event=>{
   event.preventDefault();
@@ -419,6 +471,7 @@ $('#review-dialog').addEventListener('submit',async event=>{
     const items=state.review.items,status=event.target.querySelector('.review-status');
     if(items.some(it=>!state.reviewSeen.has(it.key))){status.textContent='Hãy xem hết các mục trong danh sách trước.';return;}
     if(state.review.mode==='patch')return decidePatch('accepted');
+    await flushNotes();
     const button=event.target.querySelector('button[type=submit]');button.disabled=true;
     try{const out=await api('/api/review/lock',{id:state.drawer.id,note:event.target.elements.note.value,revision:state.review.revision,confirm:true});$('#review-dialog').close();await loadGates(state.drawer.id);toast(`Đã chốt ban đầu (v${out.version}).`);}
     catch(error){status.textContent=error.message;button.disabled=false;}

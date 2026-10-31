@@ -217,6 +217,26 @@ test('initial lock of five items, patches accepted or returned one by one, then 
  assert.equal(done.scenes[0].clips[0].note,'Ảnh nến quá tối');
  assert.equal(JSON.parse(fs.readFileSync(path.join(root,`${D}/approvals.json`),'utf8')).schemaVersion,2);
 }));
+test('per-item review notes: drafts agents can read, "changed since" after an edit, taken by the lock or the patch decision',()=>fixture(root=>{
+ const review=require('./review.cjs'),id='self-help-shorts',p=plan(root,id),D=`docs/projects/${id}`,X=`scripts/projects/${id}`,S=`src/projects/${id}`;
+ put(root,`${D}/script.md`,'s1');put(root,`${S}/music.json`,'{"file":"m.mp3"}');put(root,`${X}/voice.json`,'{"voice":"Hải Đăng"}');
+ put(root,`${D}/production-spec.md`,'45 giây');put(root,`${D}/image-prompts.md`,'cảnh 1');
+ assert.throws(()=>review.setNote(root,p,{context:'lock',item:'nope',text:'x',by:'u'}),/Không có mục/);
+ review.setNote(root,p,{context:'lock',item:'script',text:' Câu 2 dài ',by:'u'});review.setNote(root,p,{context:'lock',item:'music',text:'Nhạc to',by:'u'});
+ assert.deepEqual([review.summary(root,p).notes.lock.script.text,review.summary(root,p).notes.lock.script.changedSince],['Câu 2 dài',false]);
+ put(root,`${D}/script.md`,'s1b');assert.equal(review.summary(root,p).notes.lock.script.changedSince,true);   // agent fixed it
+ review.setNote(root,p,{context:'lock',item:'music',text:'',by:'u'});assert.deepEqual(Object.keys(review.summary(root,p).notes.lock),['script']);
+ const l=review.lock(root,p,{by:'u'});assert.deepEqual(Object.keys(l.itemNotes),['script']);assert.deepEqual(review.summary(root,p).notes,{});
+ assert.throws(()=>review.setNote(root,p,{context:'lock',item:'script',text:'x',by:'u'}),/bản vá/);
+ put(root,`${D}/script.md`,'s2');const p1=review.createPatch(root,p,{reason:'a',by:'a'});
+ assert.throws(()=>review.setNote(root,p,{context:p1.id,item:`${D}/image-prompts.md`,text:'x',by:'u'}),/Không có mục/);   // only files in the patch
+ review.setNote(root,p,{context:p1.id,item:`${D}/script.md`,text:'Vẫn dài',by:'u'});
+ put(root,`${D}/script.md`,'s3');const p2=review.createPatch(root,p,{reason:'b',by:'a'});
+ assert.equal(review.summary(root,p).notes[p2.id][`${D}/script.md`].text,'Vẫn dài','notes follow a replaced proposal');
+ assert.throws(()=>review.setNote(root,p,{context:p1.id,item:`${D}/script.md`,text:'x',by:'u'}),/không còn chờ/);
+ assert.equal(review.decidePatch(root,p,p2.id,{decision:'returned',by:'u'}).patch.itemNotes[`${D}/script.md`].text,'Vẫn dài');
+}));
+
 test('live progress: agent plan after the lock, weighted percent, re-plans keep work, interruptions keep the last state',()=>fixture(root=>{
  const progress=require('./progress.cjs'),id='self-help-shorts';
  assert.throws(()=>progress.setPlan(root,id,{tasks:[]}),/ít nhất một việc/);

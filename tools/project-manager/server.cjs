@@ -53,6 +53,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
         if(route==='/api/review/lock')return send(200,store.lockProject(body));
         if(route==='/api/review/patch')return send(200,store.decidePatch(body));
         if(route==='/api/review/scene')return send(200,store.reviewScene(body));
+        if(route==='/api/review/note')return send(200,store.reviewNote(body));
         if(route==='/api/voice-reference-clip')return send(201,await store.cutVoiceReference(body));
         if(route==='/api/voice-reference-meta')return send(200,store.updateVoiceReference(body));
         if(route==='/api/book-meta')return send(200,store.updateBook(body));

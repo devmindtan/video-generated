@@ -25,7 +25,7 @@ function items(root, plan) {
 
 function load(root, id) {
   const store = approvals.load(root, id);
-  return {...store, locks: store.locks || [], patches: store.patches || [], scenes: store.scenes || {}};
+  return {...store, locks: store.locks || [], patches: store.patches || [], scenes: store.scenes || {}, notes: store.notes || {}};
 }
 function save(root, id, store) {
   const file = approvals.storePath(root, id), tmp = `${file}.${process.pid}.tmp`;
@@ -71,8 +71,45 @@ function summary(root, plan) {
   else if (notApproved.length) blockers.push(`Cảnh chưa đạt hoặc chưa có clip: ${notApproved.map(s => s.title).join(', ')}`);
   return {state: !lock ? 'unlocked' : pending ? 'patch-pending' : 'locked', version: lock?.version || 0,
     lockedAt: lock?.at || null, lockedBy: lock?.by || null, items: list, missing: files.filter(f => !f.exists).map(f => f.path),
-    drift, pending, patches: [...store.patches].reverse(), scenes, scenesApproved: scenes.length > 0 && !notApproved.length,
+    drift, pending, patches: [...store.patches].reverse(), notes: openNotes(root, plan, store, pending), scenes, scenesApproved: scenes.length > 0 && !notApproved.length,
     final: {ready: !blockers.length, blockers}};
+}
+
+// Per-item notes written while reviewing (manager), kept as drafts until the lock or the patch decision takes
+// them: store.notes[context][item] with context 'lock' or a pending patch id; item is the item id (lock) or the
+// file path (patch). Each note remembers the item's file hashes, so a later edit shows as "changed since".
+function noteFiles(root, plan, store, context, item) {
+  if (context === 'lock') return items(root, plan).find(i => i.id === item)?.files || null;
+  const patch = store.patches.find(p => p.id === context);
+  return patch && patch.changed[item] ? [item] : null;
+}
+function setNote(root, plan, {context, item, text, by}) {
+  if (typeof text !== 'string' || text.length > 4000) throw new Error('Ghi chú tối đa 4000 ký tự');
+  const store = load(root, plan.projectId);
+  if (context === 'lock' ? latestLock(store) : store.patches.find(p => p.id === context)?.status !== 'pending')
+    throw Object.assign(new Error(context === 'lock' ? 'Đã chốt ban đầu; ghi chú mới đi kèm bản vá' : 'Bản vá này không còn chờ duyệt'), {status: 409});
+  const files = noteFiles(root, plan, store, context, item);
+  if (!files) throw new Error('Không có mục này để ghi chú');
+  const notes = store.notes[context] ||= {};
+  if (text.trim()) notes[item] = {text: text.trim(), at: now(), by, files: Object.fromEntries(files.map(rel => [rel, approvals.sha256(root, rel)]))};
+  else delete notes[item];
+  if (!Object.keys(notes).length) delete store.notes[context];
+  store.notes = {...store.notes};save(root, plan.projectId, store);
+  return notes[item] || null;
+}
+const noteView = (root, notes = {}) => Object.fromEntries(Object.entries(notes).map(([item, n]) =>
+  [item, {...n, changedSince: Object.entries(n.files || {}).some(([rel, sha]) => approvals.sha256(root, rel) !== sha)}]));
+function openNotes(root, plan, store, pending) {
+  const out = {};
+  if (store.notes.lock) out.lock = noteView(root, store.notes.lock);
+  if (pending && store.notes[pending.id]) out[pending.id] = noteView(root, store.notes[pending.id]);
+  return out;
+}
+// Drafts become part of the record they were written for (lock entry or patch decision).
+function takeNotes(store, context) {
+  const notes = store.notes[context] || {};
+  delete store.notes[context];
+  return Object.fromEntries(Object.entries(notes).map(([item, n]) => [item, {text: n.text, at: n.at}]));
 }
 
 function lock(root, plan, {by, note = ''}) {
@@ -82,7 +119,7 @@ function lock(root, plan, {by, note = ''}) {
   const missing = Object.keys(files).filter(rel => !files[rel]);
   if (missing.length) throw new Error(`Thiếu file, chưa chốt được: ${missing.join(', ')}`);
   for (const [rel, hash] of Object.entries(files)) approvals.snapshot(root, rel, hash);
-  const entry = {version: 1, files, by, at: now(), note, fromPatch: null};
+  const entry = {version: 1, files, by, at: now(), note, itemNotes: takeNotes(store, 'lock'), fromPatch: null};
   store.locks.push(entry);save(root, plan.projectId, store);
   return entry;
 }
@@ -98,7 +135,8 @@ function createPatch(root, plan, {reason, by}) {
   }
   if (!Object.keys(changed).length) throw new Error('Không có thay đổi nào so với bản chốt v' + base.version);
   // A newer patch replaces one still waiting: the user only ever decides on the latest proposal.
-  for (const p of store.patches) if (p.status === 'pending') {p.status = 'superseded';p.decidedAt = now();}
+  // Notes on the replaced proposal carry over: they are about the same files.
+  for (const p of store.patches) if (p.status === 'pending') {p.status = 'superseded';p.decidedAt = now();if (store.notes[p.id]) store.notes[`p${store.patches.length + 1}`] = store.notes[p.id];delete store.notes[p.id];}
   const patch = {id: `p${store.patches.length + 1}`, baseVersion: base.version, changed, reason: reason.trim(), by, createdAt: now(),
     status: 'pending', decidedAt: null, decidedBy: null, note: ''};
   store.patches.push(patch);save(root, plan.projectId, store);
@@ -118,7 +156,7 @@ function decidePatch(root, plan, patchId, {decision, note = '', by}) {
     for (const [rel, c] of Object.entries(patch.changed)) files[rel] = c.after;
     store.locks.push({version: base.version + 1, files, by, at: now(), note, fromPatch: patch.id});
   }
-  Object.assign(patch, {status: decision, decidedAt: now(), decidedBy: by, note});
+  Object.assign(patch, {status: decision, decidedAt: now(), decidedBy: by, note, itemNotes: takeNotes(store, patch.id)});
   save(root, plan.projectId, store);
   return {patch, version: latestLock(store).version};
 }
@@ -146,4 +184,4 @@ function reviewScene(root, plan, sceneId, clipIndex, {decision, note = '', by}) 
   return clip;
 }
 
-module.exports = {items, summary, lock, createPatch, decidePatch, sceneDefs, addClip, reviewScene, load};
+module.exports = {items, summary, lock, createPatch, decidePatch, sceneDefs, addClip, reviewScene, setNote, load};

@@ -336,13 +336,27 @@ body.has-player .drawer.detail-page{padding-bottom:120px}
 .rail-name{min-width:0;overflow-wrap:anywhere}.rail-name small{display:block;font-size:12px;color:#61754e;margin-top:1px}.rail-empty{font-size:13px;color:#61754e;padding:8px}
 .rail-prior{margin:14px 6px 0;font-size:13px;color:#526a46}.rail-prior summary{cursor:pointer}.rail-prior ul{margin:6px 0 0;padding-left:18px}
 .review-body{overflow:auto;padding:18px 24px 24px;background:#f6f8f5;min-height:0}
-.review-panel{background:#fff;border:1px solid #d4dfcc;border-radius:10px;overflow:hidden}
+.review-panel{background:#fff;border:1px solid #d4dfcc;border-radius:10px;overflow:clip}
 .review-panel>header{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;padding:14px 18px;border-bottom:1px solid #edf1ea;background:#fafcf8}.review-panel h3{font-size:18px;margin:0}.review-panel>header code{flex-basis:100%;font-size:12px;color:#61754e;overflow-wrap:anywhere}
 .panel-body>p{padding:0 18px}.review-hint{font-size:14px;color:#3e5a31;margin:14px 0}
-.panel-actions{display:flex;justify-content:space-between;gap:10px;padding:14px 18px;border-top:1px solid #edf1ea;background:#fafcf8}
+.panel-actions{display:flex;align-items:center;gap:10px 14px}.panel-actions [data-review-seen]{margin-left:auto}
+.panel-foot{position:sticky;bottom:-24px;z-index:1;display:grid;gap:8px;padding:12px 18px 14px;border-top:1px solid #dfe8d8;background:#fafcf8;box-shadow:0 -6px 14px #1a33280d}
+.item-note{display:grid;gap:5px}.item-note span{font-size:13px;font-weight:700;color:#3e5a31}
+.item-note textarea{width:100%;min-height:58px;resize:vertical;border:1px solid #c0d0b4;border-radius:7px;padding:9px 12px;font:inherit;font-size:14px;line-height:1.5;background:#fff;color:var(--ink)}
+.item-note textarea:focus-visible{outline:2px solid #2f5d3a;outline-offset:1px;border-color:#2f5d3a}
+.note-state{flex:1;min-width:0;margin:0;font-size:13px;color:#61754e}
+.note-recorded{margin:16px 18px;padding:12px 14px;border-left:3px solid var(--accent);background:#fbf8ef;border-radius:0 8px 8px 0}.note-recorded span{font-size:13px;font-weight:700;color:#6b5420}.note-recorded p{margin:4px 0 0;font-size:14px;white-space:pre-wrap}
+.listen-title{margin:4px 18px 6px;font-size:14px;color:var(--ink)}
+.setting-list{margin:0;padding:4px 18px 8px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}
+.setting-list>div{display:grid;gap:2px;padding:9px 0;border-top:1px solid #edf1ea;min-width:0}.setting-list>div.is-long{grid-column:1/-1}
+.setting-list dt{font-size:13px;color:#61754e}.setting-list dd{margin:0;font-size:15px;color:var(--ink);overflow-wrap:anywhere;line-height:1.5}
+.setting-list.is-compact dd{font-size:14px}.setting-list.is-compact code{font-size:12px}
+.setting-more{margin:6px 18px 0;font-size:14px}.setting-more summary{cursor:pointer;padding:8px 0;color:#2f5d3a;font-weight:700}.setting-more .setting-list{padding:0 0 8px}
+.setting-raw{margin:0 0 12px;padding:12px;max-height:320px;overflow:auto;background:#f4f7f1;border:1px solid #e1e9db;border-radius:7px;font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere}
 /* Inside the review the panel scrolls, not the document box: no own scroll area, no scroll trapping. */
 .review-doc{border:0;border-radius:0;max-height:none;overflow:visible;overscroll-behavior:auto}.diff-wrap{overscroll-behavior-x:contain;overscroll-behavior-y:auto;overflow-x:auto}
 .voice-takes{list-style:none;margin:0;padding:0 18px 12px}.voice-takes li{display:grid;grid-template-columns:minmax(120px,200px) 80px minmax(0,1fr);gap:12px;align-items:center;padding:8px 0;border-top:1px solid #edf1ea}.voice-takes li:first-child{border-top:0}
+.voice-takes.is-pair li{grid-template-columns:minmax(140px,260px) minmax(0,1fr)}
 .voice-takes strong{font-size:14px;overflow-wrap:anywhere}.voice-takes span{font-size:13px;color:#61754e}.voice-takes audio{width:100%}
 .studio-links{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0 18px 16px}
 .image-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;padding:0 18px 16px}.image-grid img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:6px;background:#eef3ea}.image-grid figcaption{font-size:12px;color:#61754e;margin-top:4px;overflow-wrap:anywhere}
@@ -361,7 +375,10 @@ body.has-player .drawer.detail-page{padding-bottom:120px}
 @media(max-width:760px){.gate-step{grid-template-columns:30px minmax(0,1fr)}.gate-step .button{grid-column:2;justify-self:start}.gate-next{flex-direction:column;align-items:stretch}
  .review-dialog{width:100vw;height:100dvh;border-radius:0}.review-layout{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}.review-rail{border-right:0;border-bottom:1px solid var(--line);max-height:34dvh}
  .review-head,.review-body,.review-foot{padding-left:14px;padding-right:14px}.review-head h2{font-size:20px}.review-actions{width:100%}.review-actions .button{flex:1}.d-no{min-width:24px;padding:1px 4px}
- .voice-takes li{grid-template-columns:1fr auto}.voice-takes audio{grid-column:1/-1}}
+ .voice-takes li{grid-template-columns:1fr auto}.voice-takes audio{grid-column:1/-1}
+ .setting-list{grid-template-columns:1fr}.panel-foot{position:static;box-shadow:none;padding:10px 12px 12px}.item-note textarea{min-height:48px}.panel-actions .button{flex:1}
+ .review-dialog .review-rail{padding:8px 10px;max-height:none}.review-dialog .rail-title{display:none}.review-dialog .review-rail ol{display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin}.review-dialog .rail-item{width:auto;flex:none;align-items:center;white-space:nowrap;padding:6px 10px 6px 6px;border-color:#d4dfcc}.review-dialog .rail-name small{display:none}
+ .review-dialog .foot-progress{display:none}.review-dialog .review-foot{padding-top:10px;padding-bottom:10px;gap:8px}}
 .media-unplayable{padding:28px 20px;text-align:center;background:#f3f6ef;border-radius:10px}.media-unplayable p{margin:0 0 14px;font-size:15px;color:#3e5a31}
 .temp-name{display:inline-block;margin-left:8px;font-size:11px;font-weight:700;color:#795a1d;background:#f8f0dc;border-radius:4px;padding:1px 6px;vertical-align:1px}
 .media-preparing{box-sizing:border-box;width:100%;margin:0;padding:28px 20px;text-align:center;font-size:15px;color:#3e5a31;background:#f3f6ef;border-radius:10px}
@@ -417,7 +434,8 @@ body.has-player .drawer.detail-page{padding-bottom:120px}
 .status-accepted .patch-badge{background:#edf3e4;color:#426035}.status-returned .patch-badge{background:#fdf2ea;color:#a14a26}
 .patch-item p{margin:4px 0 2px;font-size:14px;color:var(--ink)}.patch-item small{display:block;font-size:13px;color:var(--muted);overflow-wrap:anywhere}.patch-note{color:#7a4a2e!important}
 .empty-block{margin:0;padding:14px;border:1px dashed var(--line);border-radius:10px;font-size:14px;color:var(--muted)}
-@media(max-width:1100px){.review-grid{grid-template-columns:1fr}.patch-panel{position:static}}
+@media(max-width:1100px){.review-grid{grid-template-columns:1fr}.patch-panel{position:static}.voice-takes.is-pair li{grid-template-columns:1fr;gap:6px}.panel-actions{flex-wrap:wrap}.note-state{flex-basis:100%;order:-1}}
+@media(min-width:761px) and (max-width:1100px){.review-layout{grid-template-columns:220px minmax(0,1fr)}}
 @media(max-width:760px){.review-stepper{grid-template-columns:1fr}.review-stepper .gate-step{padding:12px}.scene-grid{grid-template-columns:1fr}.scene-open{min-height:44px}}
 
 /* Tiến trình tab: overall progress, what is running now, task plan by kind beside the activity timeline. */

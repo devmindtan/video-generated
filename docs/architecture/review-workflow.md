@@ -26,6 +26,13 @@ Một màn hình, năm mục; nút **Chốt** chỉ bật khi đã xem hết t�
 
 Bấm Chốt ghi **bản chốt v1**: hash + bản sao của mọi file trong gói, người chốt, thời điểm, ghi chú.
 
+Mỗi mục hiện dạng dễ đọc (nhạc nền và giọng đọc: tên bài, tác giả, âm lượng %, fade, cách chọn giọng, sự đồng ý,
+cao độ, tốc độ, kèm trình nghe; JSON gốc gập lại). Dưới mỗi mục có ô **ghi chú cho mục này**: tự lưu khi gõ,
+còn nguyên khi quay lại mục đó, rail đánh dấu "có ghi chú". Ghi chú là bản nháp agent đọc được ngay qua
+`automation review <slug>` (trường `notes`, kể cả khi chưa chốt; `changedSince` = file của mục đã đổi sau ghi
+chú). Khi chốt, ghi chú vào bản chốt (`itemNotes`); agent xử lý chúng qua bản vá. Bản vá cũng có ghi chú từng
+file; trả lại chỉ cần ghi chú chung hoặc ghi chú ở một mục.
+
 ## 2. Bản vá (chỉnh sửa trong quá trình làm)
 
 - Sau khi chốt, agent sửa một mục rồi tạo bản vá: `npm run automation -- patch <slug> --reason "<lý do>"`.
@@ -60,6 +67,7 @@ video vẫn thủ công theo yêu cầu.
  "patches": [{"id": "p1", "baseVersion": 1, "changed": {"<rel>": {"before": "…", "after": "…"}}, "reason": "…",
               "status": "pending|accepted|returned", "createdAt": "…", "decidedAt": "…", "note": "…"}],
  "scenes":  {"<cảnh>": {"clips": [{"file": "…", "sha256": "…", "renderedAt": "…", "status": "pending|approved|needs-changes", "note": "…"}]}},
+ "notes":   {"lock|<patch id>": {"<mục hoặc file>": {"text": "…", "at": "…", "by": "…", "files": {"<rel>": "<sha256>"}}}},
  "history": []}
 ```
 
