@@ -37,7 +37,10 @@ const {chromium}=require('playwright-core'),{createManager}=require('./server.cj
   await card.locator('[data-ref-preview]').click();assert.equal(await card.locator('[data-ref-preview]').getAttribute('aria-pressed'),'false');mark('Preview plays the chosen window and stops');
   await card.locator('[data-ref-cut]').click();await page.locator('.ref-clips li').first().waitFor();
   assert.equal(await card.locator('.ref-wave').count(),0,'editor gone: full recording deleted');assert.ok(!fs.existsSync(path.join(root,'library/voice-references/giong-thu-o-nha/source.wav')));
-  const clipPath=await page.locator('.ref-clips code').first().innerText();assert.match(clipPath,/^library\/voice-references\/giong-thu-o-nha\/clips\/000250-20s\.wav$/);
+  const clipPath=await page.locator('.ref-path').first().innerText();assert.match(clipPath,/^library\/voice-references\/giong-thu-o-nha\/clips\/000250-20s\.wav$/);
+  assert.equal(await card.locator('.play-button').count(),1,'one play control stays in the main row; details are information only');
+  await page.screenshot({path:path.join(out,'refs-detail-1440.png'),fullPage:true});
+  await page.setViewportSize({width:390,height:1000});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'open details do not overflow on mobile');await page.screenshot({path:path.join(out,'refs-detail-390.png'),fullPage:true});await page.setViewportSize({width:1440,height:1000});
   assert.ok(fs.existsSync(path.join(root,clipPath)));assert.equal(await card.locator('.ref-command').getAttribute('open'),null,'clone command starts collapsed');assert.match(await card.locator('.ref-command code').textContent(),/--consent self/);await card.locator('[data-ref-toggle]').click();assert.equal(await page.locator('.ref-panel').count(),0);assert.match(await card.locator('.row-title small').innerText(),/1 đoạn mẫu/);
   mark('Clip cut, full recording deleted, row collapses to one compact line');
   for(const width of [768,390]){await page.setViewportSize({width,height:1000});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no overflow at '+width);await page.screenshot({path:path.join(out,`refs-${width}.png`),fullPage:true});}
