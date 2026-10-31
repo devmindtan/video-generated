@@ -1,7 +1,32 @@
 {
   "schemaVersion": 2,
   "projectId": "know-when-to-quit",
-  "history": [],
+  "history": [
+    {
+      "projectId": "know-when-to-quit",
+      "stageId": "review-preview",
+      "decision": "approved",
+      "artifactSha256": {
+        "src/projects/know-when-to-quit/Video.tsx": "dbcb1549a0edfbc0646da9108b484dd101fd72c3bd05e21b824e2e8e401bf6fa",
+        "src/projects/know-when-to-quit/Thumbnail.tsx": "240a25faee000a927cea7473b49fc931979d80ef5e2dad49c422088e91cff87e",
+        "src/projects/know-when-to-quit/captions.json": "15fe2a50757cfe13c3fcfe1c65ab791d39373aa0d10f0fb4fa9f2da74eccc0e7",
+        "src/projects/know-when-to-quit/music.json": "7afce3828fb0178115b069406029db73724c208fc17693318fe30f1b2e3eb7a4",
+        "docs/projects/know-when-to-quit/script-review.md": "5d81644e66e1814bfcb2bbbe41de45cedcdfc2c1a329aa5b1a89b4034ecfad17",
+        "docs/projects/know-when-to-quit/script.md": "b6b9fb84d643c90d46db33bc5f373057b6f07b9bfc6e578176fd30f8bc48a1b8",
+        "docs/projects/know-when-to-quit/brief.md": "f82f07ddd5b2c8b7a6ab2b9866caa158f38aa15c7348a5f3e2769d284db22ea7",
+        "scripts/projects/know-when-to-quit/voice.json": "f3a07b7b06d242ba17fb642e1591bafcdd3b7ee95e9b5237adbbe2dfa9b44b38",
+        "docs/projects/know-when-to-quit/voice-audition.md": "4ae9b3527b417448f9c009dad26e2f0f10fe710164a5437600befae0c46fb78a",
+        "docs/projects/know-when-to-quit/production-spec.md": "d92c42301ace57e2ea129a3ddd99a965d4b5ff7a23905f1a92c7e6af0f25309a",
+        "docs/projects/know-when-to-quit/image-prompts.md": "c1a7b2cc456a507dc4c754165027f7eaaf9cb05b6b8a7ff4d343aa79dddd7c68",
+        "docs/projects/know-when-to-quit/qa.json": "5f31b4035328c197b07c1fbcd95ed9a464e2376dc93b5cf32c048f27c3e15172",
+        "docs/projects/know-when-to-quit/description.md": "84818fcbb5a2fbbb8ac1f78ee8f6994f7a54fdc55193e2935425454958535fd2"
+      },
+      "missing": [],
+      "approvedBy": "devmindtan (trang quản lý)",
+      "approvedAt": "2026-10-31T16:53:34.396Z",
+      "note": ""
+    }
+  ],
   "locks": [
     {
       "version": 1,

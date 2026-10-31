@@ -709,9 +709,9 @@
     {
       "id": "know-when-to-quit",
       "title": "Biết dừng cũng là dũng cảm",
-      "status": "production",
+      "status": "existing",
       "format": "short",
-      "durationSeconds": 45,
+      "durationSeconds": 47,
       "paths": {
         "source": "src/projects/know-when-to-quit",
         "scripts": "scripts/projects/know-when-to-quit",

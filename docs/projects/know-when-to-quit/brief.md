@@ -4,8 +4,8 @@
 - Series: self-help-shorts
 - Project ID: know-when-to-quit
 - Định dạng: short
-- Thời lượng: 45 giây
-- Trạng thái: planning, chưa có composition/asset/giọng.
+- Thời lượng: 47,3 giây (mục tiêu 45, cho phép 42–48)
+- Trạng thái: đã dựng xong và duyệt hết (chốt v3, 5 cảnh Đạt, xem bản dựng 2026-10-31); chưa xuất video, chưa đăng.
 
 ## Nội dung
 
@@ -35,8 +35,8 @@
 
 ## Hoàn thành
 
-- [ ] Mục tiêu/dàn ý/kịch bản đã duyệt
-- [ ] Code, scripts, asset trong các đường dẫn chuẩn
-- [ ] Đăng ký literal Composition/Still trong đúng Studio Folder; cập nhật registrations và status trong series.json
-- [ ] Caption/thumbnail typography, âm nhạc có tác giả, QA timing và nghe duyệt
+- [x] Mục tiêu/dàn ý/kịch bản đã duyệt
+- [x] Code, scripts, asset trong các đường dẫn chuẩn
+- [x] Đăng ký literal Composition/Still trong đúng Studio Folder; cập nhật registrations và status trong series.json
+- [x] Caption/thumbnail typography, âm nhạc có tác giả, QA timing và nghe duyệt
 - [ ] Không render tự động
