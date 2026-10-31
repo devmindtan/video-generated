@@ -122,6 +122,8 @@ Cả hai đều tạo take thử: nghe chọn, giữ take cũ, ghi take đã ch�
 
 ### Agent làm gì khi người dùng yêu cầu giọng clone (lựa chọn 2)
 
+Nếu người dùng đã thêm bản ghi trên trang quản lý (Giọng đọc → Bản ghi giọng mẫu để clone sau), dùng đoạn mẫu đã cắt ở `library/voice-references/<mã>/clips/<bắt đầu>-<độ dài>s.wav` làm `--ref`, và lấy `--consent` theo xác nhận đã ghi trong `reference.json` của bản ghi đó.
+
 1. **Bản ghi mẫu và sự đồng ý.** Cần đường dẫn file người dùng đưa (WAV/MP3/FLAC/M4A/OGG, 10–30 giây, một người nói, rõ, không nhạc) và biết đó là giọng của ai: `self` (của người dùng) hoặc `permission` (người trong bản ghi đã đồng ý). Thiếu một trong hai thì hỏi lại. Không tự tìm hay cắt giọng từ video/internet. Nếu người dùng cho biết lời nói trong bản ghi, truyền vào `--ref-text`.
 2. **Ghi lựa chọn vào brief** của tập: `Giọng: cách 2 — clone (consent: self)`. Tập thiếu nhi chỉ dùng clone khi người dùng nói rõ cho tập đó; mặc định vẫn Trúc Ly giọng B.
 3. **Thử ngắn trước** (CPU chậm, khoảng 100 giây cho mỗi câu 4 giây, chiếm 6–7 GB RAM; không chạy song song VieNeu, Remotion render hay model khác):

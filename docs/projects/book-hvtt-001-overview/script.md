@@ -11,7 +11,7 @@
 
 ## 0. Lời chào (≈ 0:00–0:35)
 
-Xin chào cả nhà, chào mừng mọi người đã đến với series Đọc sách, hiểu mình.
+Xin chào cả nhà. Chào mừng mọi người đã đến với series Đọc sách, hiểu mình.
 
 Ở series này, mình sẽ đọc trọn từng cuốn sách, rồi kể lại những nội dung chính và những điều đáng giữ trong mỗi cuốn. Nếu bạn là người không có nhiều thời gian và cần đọc sách để có thêm kiến thức, thì đây là dành cho bạn.
 
@@ -143,6 +143,6 @@ Mặc dù cuốn sách này còn nhiều những chỗ chưa hay, nhưng tổng 
 
 ## 6. Kết
 
-Đến đây là kết thúc rồi, các bạn thấy thế nào? Nếu hay thì hãy comment vào bên dưới video và cho mình một lượt đăng ký kênh để mình có động lực để có thể làm thêm nhiều những video thế này hơn nữa nhé. [nghỉ] Hẹn gặp lại cả nhà.
+Đến đây là kết thúc rồi, các bạn thấy thế nào? Nếu hay thì hãy bình luận vào bên dưới video và cho mình một lượt đăng ký kênh để mình có động lực để có thể làm thêm nhiều những video thế này hơn nữa nhé. [nghỉ] Hẹn gặp lại cả nhà.
 
 {Lời người dùng 2026-10-30, giữ nguyên chữ}

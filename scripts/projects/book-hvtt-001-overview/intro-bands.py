@@ -3,7 +3,10 @@
 Reads the voice-catalog audition take (public/voice-auditions/<take>/), never synthesizes audio,
 and writes src/projects/book-hvtt-001-overview/intro-takes.json so the bars are derived from the
 frame number (preview, seeking and rendering agree) without loading audio in the browser.
-Usage: .venv/bin/python scripts/projects/book-hvtt-001-overview/intro-bands.py [--take book-hvtt-intro-v1 book-hvtt-intro-xv-b ...]
+Usage (selected voice, after publish-voice.py):
+  .venv/bin/python scripts/projects/book-hvtt-001-overview/intro-bands.py --ids 00-intro
+  .venv/bin/python scripts/projects/book-hvtt-001-overview/intro-bands.py --ids 99-outro --out src/projects/book-hvtt-001-overview/outro-takes.json
+Auditions: --take book-hvtt-intro-v1 book-hvtt-intro-xv-b ...
 Voices from later takes get the take's last suffix appended to their id (14-xuan-vinh-b).
 """
 import argparse, json
@@ -49,23 +52,26 @@ def analyse(path):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--take', nargs='+', default=['book-hvtt-intro-v1', 'book-hvtt-intro-xv-b', 'book-hvtt-intro-xv-c', 'book-hvtt-intro-xv-d', 'book-hvtt-intro-clone-v2', 'book-hvtt-intro-clone-v3', 'book-hvtt-intro-clone-v3-tram1', 'book-hvtt-intro-clone-v3-tram2', 'book-hvtt-intro-clone-v3-sang1', 'book-hvtt-intro-clone-v4a-sang1', 'book-hvtt-intro-clone-v4b-sang1'])
+    parser.add_argument('--take', nargs='+', default=['book-hvtt-001-overview/audio'])
+    parser.add_argument('--out', default='src/projects/book-hvtt-001-overview/intro-takes.json')
+    parser.add_argument('--ids', nargs='*', help='Only these voice ids')
     args = parser.parse_args()
     voices = []
     for n, take in enumerate(args.take):
-        folder = ROOT / 'public/voice-auditions' / take
+        # A take is an audition folder name, or a public-relative path such as book-hvtt-001-overview/audio.
+        folder = ROOT / 'public' / take if '/' in take else ROOT / 'public/voice-auditions' / take
         manifest = json.loads((folder / 'manifest.json').read_text())
-        suffix = '' if n == 0 or 'clone' in take else '-' + take.rsplit('-', 1)[-1]
+        suffix = '' if n == 0 or 'clone' in take or '/' in take else '-' + take.rsplit('-', 1)[-1]
         for v in manifest['voices']:
-            if v.get('status') != 'ready':
+            if v.get('status') != 'ready' or (args.ids and v['id'] not in args.ids):
                 continue
             frames, bands, level = analyse(folder / v['file'])
             captions = json.loads((folder / v['captionsFile']).read_text()) if v.get('captionsFile') else []
             voices.append({'id': v['id'] + suffix, 'name': v['name'] + suffix.replace('-', ' ').upper(), 'take': take,
-                           'settings': manifest['config'].get('title'), 'file': f"voice-auditions/{take}/{v['file']}",
+                           'settings': manifest['config'].get('title'), 'file': f"{take}/{v['file']}" if '/' in take else f"voice-auditions/{take}/{v['file']}",
                            'durationSeconds': v['durationSeconds'], 'frames': frames, 'captions': captions,
                            'phraseRanges': v.get('phraseRanges'), 'bands': bands, 'level': level})
-    out = ROOT / 'src/projects/book-hvtt-001-overview/intro-takes.json'
+    out = ROOT / args.out
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({'takes': args.take, 'fps': FPS, 'status': 'audition — chờ người dùng nghe chọn giọng',
                                'voices': voices}, ensure_ascii=False, separators=(',', ':')) + '\n')

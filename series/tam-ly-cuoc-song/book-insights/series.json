@@ -27,6 +27,10 @@
         {
           "id": "BookHvttIntro",
           "kind": "Composition"
+        },
+        {
+          "id": "BookHvttOutro",
+          "kind": "Composition"
         }
       ],
       "book": "hieu-ve-trai-tim"

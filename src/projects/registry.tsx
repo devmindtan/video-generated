@@ -39,6 +39,7 @@ import {DisciplinePurposeThumbnail} from './discipline-purpose/Thumbnail';
 import {RightAdviceVideo} from './right-advice/Video';
 import {RightAdviceThumbnail} from './right-advice/Thumbnail';
 import {BookInsightsIntro, bookIntroMetadata} from './book-hvtt-001-overview/Intro';
+import {BookInsightsOutro, bookOutroMetadata} from './book-hvtt-001-overview/Outro';
 import {PeoplePleasingVideo} from './people-pleasing/Video';
 import {PeoplePleasingThumbnail} from './people-pleasing/Thumbnail';
 import {NeverTriedVideo} from './never-tried/Video';
@@ -209,12 +210,13 @@ export const ProjectCompositions: FC = () => (
       <Folder name="Book-Insights">
         <Folder name="book-hvtt-001-overview">
           <Composition id="BookHvttIntro" component={BookInsightsIntro} calculateMetadata={bookIntroMetadata} durationInFrames={1050} fps={30} width={1920} height={1080} defaultProps={{
-            voice: 'clone-ban-v4a-sang1',
+            voice: '00-intro',
             channelLabel: 'TÂM LÝ CUỘC SỐNG',
             episodeLabel: 'TẬP 01',
             bookTitle: 'Hiểu về trái tim',
             bookAuthor: 'Minh Niệm',
           }} />
+          <Composition id="BookHvttOutro" component={BookInsightsOutro} calculateMetadata={bookOutroMetadata} durationInFrames={540} fps={30} width={1920} height={1080} defaultProps={{voice: '99-outro', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
         </Folder>
       </Folder>
       <Folder name="Stoic-Stories">

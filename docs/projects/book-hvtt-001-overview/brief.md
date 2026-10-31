@@ -29,7 +29,7 @@ Giọng điệu: ấm, gần gũi, không giảng đạo. Tránh lặp khuôn m�
 | 3D | Sống giữa mọi người | ≈ 1 phút 45 | Cô đơn (Ch10), biết ơn (Ch13), tô canh chua (Ch48), con cò và người bà (Ch50). |
 | 4 | Ý kiến cá nhân | do người dùng | **Người dùng đưa khi video đã dựng gần xong**; không chờ để duyệt kịch bản hay dựng các phần khác. Khi có: thêm vào kịch bản, tạo giọng và dựng riêng đoạn này, duyệt lại kịch bản. |
 | 5 | Nhận xét chung | ≈ 10 giây | Lời người dùng: "Mặc dù cuốn sách này còn nhiều những chỗ chưa hay, nhưng tổng quan đây là một cuốn sách hay. Nếu bạn có thời gian, có thể đọc qua để hiểu hơn." |
-| 6 | Kết | ≈ 20 giây | Lời người dùng: "Đến đây là kết thúc rồi, các bạn thấy thế nào? Nếu hay thì hãy comment vào bên dưới video và cho mình một lượt đăng ký kênh để mình có động lực để có thể làm thêm nhiều những video thế này hơn nữa nhé. Hẹn gặp lại cả nhà." |
+| 6 | Kết | ≈ 20 giây | Lời người dùng: "Đến đây là kết thúc rồi, các bạn thấy thế nào? Nếu hay thì hãy bình luận vào bên dưới video và cho mình một lượt đăng ký kênh để mình có động lực để có thể làm thêm nhiều những video thế này hơn nữa nhé. Hẹn gặp lại cả nhà." |
 
 Ước tổng: ≈ 10 phút lời đọc trước phần 4; cộng phần 4 và thẻ chuyển nhóm khoảng 11–12 phút, trong khoảng 10–15 phút.
 
@@ -41,6 +41,7 @@ Giọng điệu: ấm, gần gũi, không giảng đạo. Tránh lặp khuôn m�
 - Nhạc intro (2026-10-30): người dùng chọn **Pufino – Enlivening (freetouse.com)** từ thư viện dùng chung, âm lượng đều 0,4, không hiệu ứng. Bản trước: bản gốc tự soạn trên máy bằng `scripts/projects/book-hvtt-001-overview/make-intro-sound.py` (piano, pad dây, chuông, sub nhẹ; D trưởng, 76 BPM; không sample, không nhạc của người khác). Người dùng 2026-10-30: không dùng hiệu ứng âm thanh; nhạc nền đều, không lên xuống theo lời, to hơn một chút (0,5). Âm lượng/fade ở `src/projects/book-hvtt-001-overview/music.json`. Credit: "Nhạc: sáng tác gốc cho kênh". Nhạc cho phần nội dung chính: chưa chọn.
 - Bìa sách: thư mục `covers/` có ảnh bìa nhưng bìa là tác phẩm có bản quyền của nhà phát hành; mặc định không dùng làm hình chính, chỉ nhắc tên sách bằng chữ, trừ khi bạn quyết khác.
 - Thumbnail: chuẩn bị component, không tự export.
+- Outro (2026-10-31): composition `BookHvttOutro`, cùng phong cách intro; thẻ "Bình luận bên dưới" và "Đăng ký kênh" sáng lên đúng lúc giọng đọc nói "bình luận" (take hiện tại vẫn nói "comment") và "đăng ký", kết bằng "HẸN GẶP LẠI". Nhạc Pufino – Enlivening, đều 0,25, cài ở `outro-music.json`.
 - Cổng 30 giây đầu: khi dựng thật, làm intro (phần 0, lời chào) và 30 giây đầu tiên SAU intro (không tính intro; người dùng chỉnh 2026-10-30) rồi mở Studio cho người dùng duyệt; sau đó làm tiếp từng phần hoặc toàn bộ theo lựa chọn của người dùng. Không render để duyệt.
 
 ## Nguồn và kiểm chứng

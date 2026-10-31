@@ -77,3 +77,8 @@ Người dùng chọn `clone-ban-v3-sang1` và báo cụm "Đọc sách, hiểu 
 | `clone-ban-v4b-sang1` | B: "…đến với series" + nghỉ 0,12 giây + "Đọc sách, hiểu mình." tạo riêng | cụm tên 2,35 tiếng/giây |
 
 Cả hai +1 bán cung như bản đã chọn. Mặc định đặt `clone-ban-v4b-sang1`; chờ người dùng nghe. Lời trong script.md chưa đổi (cách A chỉ khác dấu câu; cách B giữ nguyên chữ).
+
+## Chốt cách A; outro (2026-10-31)
+
+- Người dùng chọn **cách A**: intro mặc định `clone-ban-v4a-sang1`. Câu 1 trong script.md và audition.json đổi thành "Xin chào cả nhà. Chào mừng mọi người đã đến với series Đọc sách, hiểu mình." (thêm dấu chấm).
+- Outro: take đang nối vào `BookHvttOutro` là `outro-v1` (VoxCPM2, cùng bản mẫu, `--consent self`), ghép → `public/voice-auditions/book-hvtt-outro-clone-v1/` (15,1 giây), +1 bán cung → `outro-ban-sang1`. Take này vẫn nói **“comment”**, trong khi script đích đã đổi thành **“bình luận”**; `audition-outro.json` giữ câu đích để tạo take thay thế sau. Câu "Hẹn gặp lại cả nhà." đọc khá nhanh (≈ 4,9 tiếng/giây). Chưa được nghe duyệt; không coi ASR là duyệt phát âm.

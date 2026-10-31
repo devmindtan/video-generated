@@ -2,7 +2,8 @@
   "schemaVersion": 1,
   "general": {
     "rules": [
-      "Video dài: khi bắt tay dựng thật (ảnh, giọng, nhạc, caption, composition), làm intro (lời chào) và chỉ 30 giây đầu tiên SAU intro (không tính intro) trước, rồi mở Studio cho người dùng duyệt. Chỉ làm tiếp sau khi người dùng duyệt, theo lựa chọn của họ: từng phần tiếp theo hoặc toàn bộ phần còn lại. Không render/export để duyệt."
+      "Video dài: khi bắt tay dựng thật (ảnh, giọng, nhạc, caption, composition), làm intro (lời chào) và chỉ 30 giây đầu tiên SAU intro (không tính intro) trước, rồi mở Studio cho người dùng duyệt. Chỉ làm tiếp sau khi người dùng duyệt, theo lựa chọn của họ: từng phần tiếp theo hoặc toàn bộ phần còn lại. Không render/export để duyệt.",
+      "Một giọng cho cả tập: intro, nội dung, outro cùng nguồn giọng và cùng xử lý (tập hvtt-001: clone giọng người dùng +1 bán cung). Giọng đã chọn chép vào public/<slug>/audio/ theo tên NN-đoạn-voice-full.wav (00-intro, 01-…, 99-outro) kèm NN-đoạn-captions.json và voice-metadata.json; ghi scripts/projects/<slug>/voice.json. Bản nghe thử giữ nguyên trong voice-auditions."
     ],
     "notes": ""
   },
@@ -10,7 +11,7 @@
     "script": {
       "rules": [
         "Tập dài mở đầu theo lời người dùng: \"Xin chào cả nhà, chào mừng mọi người đã đến với series Đọc sách, hiểu mình. Ở series này, mình sẽ…\", rồi \"Nếu bạn là người không có nhiều thời gian và cần đọc sách để có thêm kiến thức, thì đây là dành cho bạn.\", rồi \"Chúc cả nhà một ngày tràn đầy niềm vui và hạnh phúc. Để không làm mất thời gian của mọi người, chúng ta hãy cùng nhau bắt đầu.\" Khoảng 30 giây; intro dựng sẵn: BookHvttIntro.",
-        "Tập dài kết thúc bằng đúng lời người dùng: \"Đến đây là kết thúc rồi, các bạn thấy thế nào? Nếu hay thì hãy comment vào bên dưới video và cho mình một lượt đăng ký kênh để mình có động lực để có thể làm thêm nhiều những video thế này hơn nữa nhé. Hẹn gặp lại cả nhà.\" Không tự viết lại câu chữ; chỉ đổi khi người dùng sửa.",
+        "Tập dài kết thúc bằng đúng lời người dùng: \"Đến đây là kết thúc rồi, các bạn thấy thế nào? Nếu hay thì hãy bình luận vào bên dưới video và cho mình một lượt đăng ký kênh để mình có động lực để có thể làm thêm nhiều những video thế này hơn nữa nhé. Hẹn gặp lại cả nhà.\" Không tự viết lại câu chữ; chỉ đổi khi người dùng sửa.",
         "Phần ý kiến cá nhân do người dùng đưa khi video đã dựng gần xong, không phải lúc viết kịch bản. Không chờ phần này để duyệt kịch bản hay dựng các phần khác; để chỗ trống có đánh dấu (trong kịch bản và trên timeline, ngay trước câu nhận xét chung), không tự viết thay. Khi người dùng đưa ý kiến: thêm vào kịch bản, tạo giọng và dựng riêng đoạn đó, rồi người dùng duyệt lại kịch bản.",
         "Tập trung vào nội dung chính của sách; không bắt lỗi chi tiết từng chỗ sai (thuốc, số liệu…). Những chỗ chưa hay chỉ gói trong một câu nhận xét chung ở cuối, trước lời kết, theo ý người dùng: \"Mặc dù cuốn sách này còn nhiều những chỗ chưa hay, nhưng tổng quan đây là một cuốn sách hay. Nếu bạn có thời gian, có thể đọc qua để hiểu hơn.\" Vẫn không đưa nội dung sai hoặc nhạy cảm của sách vào lời đọc."
       ],

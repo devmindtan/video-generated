@@ -1,0 +1,9 @@
+{
+  "file": "audio-library/music/Pufino - Enlivening (freetouse.com).mp3",
+  "speechVolume": 0.25,
+  "pauseVolume": 0.25,
+  "fadeInSeconds": 1.2,
+  "fadeOutSeconds": 1.8,
+  "credit": {"title": "Enlivening", "artists": ["Pufino"], "source": "freetouse.com"},
+  "editingNote": "Outro uses the same track as the intro (playbackRate 0.85 as the user set on the intro). Steady bed like the intro (speechVolume = pauseVolume); set them apart to duck under speech. Native Audio Start/Duration/End and source trim stay editable in Studio Edit; edge fades follow the clip/composition."
+}

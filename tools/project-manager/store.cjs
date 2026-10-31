@@ -21,7 +21,7 @@ function checkedId(value) {
 }
 function createStore(root) {
   const workspaceRoot=fs.realpathSync(root);
-  const extra={...require('./features.cjs').features(root),...require('./workflow.cjs').createWorkflow(root),...require('./library.cjs').createLibrary(root)};
+  const extra={...require('./features.cjs').features(root),...require('./workflow.cjs').createWorkflow(root),...require('./library.cjs').createLibrary(root),...require('./voice-references.cjs').createVoiceReferences(root)};
   function location(relative) {
     const target=inside(root,relative);
     if (exists(target)&&!fs.realpathSync(target).startsWith(workspaceRoot+path.sep)) throw new Error('Folder escapes workspace');

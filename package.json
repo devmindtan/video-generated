@@ -177,7 +177,8 @@
     "graph:explain": ".venv-graph/bin/graphify explain",
     "graph:path": ".venv-graph/bin/graphify path",
     "test:manager:audio-upload": "node --test tools/project-manager/library-upload.test.cjs && node tools/project-manager/audio-upload.test.cjs",
-    "test:manager:inline-edit": "node tools/project-manager/inline-edit.test.cjs"
+    "test:manager:inline-edit": "node tools/project-manager/inline-edit.test.cjs",
+    "test:manager:voice-refs": "node --test tools/project-manager/voice-references.test.cjs && node tools/project-manager/voice-refs-ui.test.cjs"
   },
   "dependencies": {
     "@lottiefiles/dotlottie-web": "0.81.0",

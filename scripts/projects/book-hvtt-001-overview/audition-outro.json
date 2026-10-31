@@ -1,0 +1,24 @@
+{
+  "title": "Đọc sách, hiểu mình — outro (lời kết) — clone giọng người dùng",
+  "temperature": 0.5,
+  "leadIn": 0.4,
+  "tail": 0.6,
+  "maxDurationSeconds": 40,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Đến đây là kết thúc rồi, các bạn thấy thế nào?",
+      "pauseAfter": 0.55
+    },
+    {
+      "scene": 1,
+      "text": "Nếu hay thì hãy bình luận vào bên dưới video và cho mình một lượt đăng ký kênh để mình có động lực để có thể làm thêm nhiều những video thế này hơn nữa nhé.",
+      "pauseAfter": 0.6
+    },
+    {
+      "scene": 1,
+      "text": "Hẹn gặp lại cả nhà.",
+      "pauseAfter": 0
+    }
+  ]
+}

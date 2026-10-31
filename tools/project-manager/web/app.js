@@ -660,7 +660,7 @@ async function renderResources(){
   // Rebuild only when the data or tab changed, so a refresh on window focus keeps typing and playback intact.
   const key=view+(view==='music'?state.musicTab||'tracks':'')+JSON.stringify(state.library[view]);
   if(state.resourceKey===key&&box.querySelector('#resource-list'))return;
-  state.resourceKey=key;view==='voices'?voiceShell(state.library.voices):musicShell(state.library.music);renderResourceList();renderVoiceStudio();
+  state.resourceKey=key;view==='voices'?voiceShell(state.library.voices):musicShell(state.library.music);renderResourceList();renderVoiceStudio();if(view==='voices')loadVoiceRefs();
 }
 const toolbar=(placeholder,selects)=>`<div class="resource-toolbar"><label class="search-field"><span data-icon="search" aria-hidden="true">${icon('search')}</span><input id="resource-search" type="search" autocomplete="off" placeholder="${esc(placeholder)}" aria-label="${esc(placeholder)}" value="${esc(state.query)}"></label>${selects}<span class="filter-result" id="resource-count" aria-live="polite"></span></div>`;
 const select=(id,label,options,value)=>`<label class="sr-only" for="${id}">${esc(label)}</label><select id="${id}">${options.map(([v,t])=>`<option value="${esc(v)}" ${v===value?'selected':''}>${esc(t)}</option>`).join('')}</select>`;
@@ -671,11 +671,101 @@ function voiceShell(data){
   $('#resource-view').innerHTML=`<section class="voice-options" aria-labelledby="voice-options-title"><h2 id="voice-options-title">Hai cách lấy giọng cho video mới</h2>
 <div class="voice-option-grid"><article class="voice-option"><div class="vo-head"><span class="vo-num" aria-hidden="true">1</span><strong>Giọng có sẵn</strong><span class="tag">Mặc định</span></div><p>25 giọng VieNeu chạy trên máy, nhanh. Ưu tiên nhóm giọng đã chọn; video thiếu nhi giữ Trúc Ly giọng B. Nghe và chọn ở danh sách bên dưới.</p><div class="vs-actions"><button class="button secondary" data-scroll-chosen>Xem giọng có sẵn</button></div></article>
 <article class="voice-option studio-callout" id="vs-panel" aria-labelledby="vs-title" aria-live="polite"></article></div>
-<p class="resource-note">Ghi lựa chọn vào brief của tập, ví dụ “Giọng: cách 1 — Hải Đăng”. Không ghi thì dùng cách 1.</p></section><section class="resource-block" aria-labelledby="chosen-title"><div class="resource-heading"><h2 id="chosen-title">${esc(data.playlist?.name||'Giọng đã chọn')} <span class="count" id="chosen-count"></span></h2><p>Nhóm ưu tiên khi làm nội dung mới. Bấm “Chọn giọng” ở bất kỳ giọng nào để thêm vào đây. Chọn giọng không đổi giọng của video đã có.</p></div><div class="voice-grid" id="chosen-list"></div></section>
+<p class="resource-note">Ghi lựa chọn vào brief của tập, ví dụ “Giọng: cách 1 — Hải Đăng”. Không ghi thì dùng cách 1.</p></section><section class="resource-block ref-block" id="voice-refs" aria-labelledby="refs-title"></section><section class="resource-block" aria-labelledby="chosen-title"><div class="resource-heading"><h2 id="chosen-title">${esc(data.playlist?.name||'Giọng đã chọn')} <span class="count" id="chosen-count"></span></h2><p>Nhóm ưu tiên khi làm nội dung mới. Bấm “Chọn giọng” ở bất kỳ giọng nào để thêm vào đây. Chọn giọng không đổi giọng của video đã có.</p></div><div class="voice-grid" id="chosen-list"></div></section>
 <section class="resource-block" aria-labelledby="all-voices-title"><div class="resource-heading"><h2 id="all-voices-title">Tất cả giọng VieNeu <span class="count">${data.voices.length}</span></h2><p>Mỗi mẫu đọc cùng một đoạn: “${esc(data.sampleText)}” Mẫu đã qua kiểm tra nhận dạng chữ, chưa có nghĩa là đã nghe duyệt. Giọng B thiếu nhi là Trúc Ly nâng 2,5 semitone; mẫu ở đây là preset gốc.</p></div>
 ${toolbar('Tìm tên giọng hoặc tên tập',select('voice-gender','Lọc giới tính',[['','Nam và nữ'],['Nam','Giọng nam'],['Nữ','Giọng nữ']],f.gender||'')+select('voice-region','Lọc vùng',[['','Mọi vùng'],...regions.map(r=>[r,'Giọng '+r])],f.region||'')+select('voice-use','Lọc theo sử dụng',[['','Mọi giọng'],['used','Đang dùng trong tập'],['unused','Chưa tập nào dùng']],f.use||''))}
 <div class="voice-grid" id="resource-list"></div>${data.otherVoices.length||data.unrecorded?`<p class="resource-note">${data.otherVoices.map(o=>`${esc(o.name)}: ${o.usedBy.length} tập (không có trong bộ mẫu). `).join('')}${data.unrecorded?`${data.unrecorded} tập chưa ghi giọng trong metadata.`:''}</p>`:''}</section>`;
 }
+// Voice reference recordings (for cloning later): add with consent, pick a 10–30 s window on the waveform, cut.
+const clock=s=>{s=Math.max(0,s);const m=Math.floor(s/60),r=s-m*60;return `${m}:${r.toFixed(1).padStart(4,'0')}`;};
+const parseClock=t=>{const m=String(t).trim().match(/^(?:(\d+):)?(\d+(?:[.,]\d+)?)$/);return m?Number(m[1]||0)*60+Number(m[2].replace(',','.')):NaN;};
+async function loadVoiceRefs(){
+  const box=$('#voice-refs');if(!box)return;
+  try{state.voiceRefs=(await api('/api/voice-references')).references;}catch(error){box.innerHTML=`<p class="workflow-empty">Không đọc được bản ghi giọng mẫu: ${esc(error.message)}</p>`;return;}
+  state.refSel=state.refSel||{};for(const r of state.voiceRefs)if(!state.refSel[r.id]&&r.suggestion)state.refSel[r.id]={start:r.suggestion.startSeconds,len:r.suggestion.durationSeconds};
+  renderVoiceRefs();
+}
+function refWave(r){
+  const sel=state.refSel[r.id],w=900,x=sel.start/r.durationSeconds*w,width=sel.len/r.durationSeconds*w;
+  return `<svg class="ref-wave" viewBox="0 0 ${w} 80" preserveAspectRatio="none" role="slider" tabindex="0" aria-label="Chọn điểm bắt đầu đoạn mẫu, phím mũi tên để dời 1 giây" aria-valuemin="0" aria-valuemax="${Math.floor(r.durationSeconds)}" aria-valuenow="${Math.floor(sel.start)}" aria-valuetext="Bắt đầu ${clock(sel.start)}" data-ref-wave="${esc(r.id)}"><rect class="ref-sel" x="${x}" y="0" width="${Math.max(2,width)}" height="80" /><g class="ref-bars">${r.peaks.map((p,i)=>`<rect x="${i}" y="${40-Math.max(1,p*.38)}" width="1" height="${Math.max(2,p*.76)}" />`).join('')}</g><line class="ref-head" x1="${x}" x2="${x}" y1="0" y2="80" /></svg>`;
+}
+// One compact row per recording; the editor (waveform, window, cut) or the clip list opens for one row at a time.
+function refRow(r){
+  const open=state.refOpen===r.id,clip=r.clips[r.clips.length-1],used=[...new Set(r.clips.flatMap(c=>c.usedBy))];
+  const play=clip?playButton('reference-clip',`${r.id}/${clip.file}`,`${r.title} · đoạn mẫu`,`${r.speaker} · ${clip.durationSeconds} giây`):r.hasSource?playButton('reference',r.id,r.title,`${r.speaker} · cả bản ghi`):'<span class="play-missing" title="Chưa có đoạn mẫu">—</span>';
+  const clipState=r.clips.length?`<span class="ref-chip ref-chip-ready">${r.clips.length} đoạn mẫu</span>`:'<span class="ref-chip ref-chip-warn">Chưa cắt đoạn mẫu</span>';
+  const usage=used.length?`<span class="ref-usage">Dùng trong ${used.map(esc).join(', ')}</span>`:'<span class="ref-usage muted">Chưa dùng trong tập nào</span>';
+  return `<li class="resource-row ref-row${open?' open':''}" data-ref="${esc(r.id)}">${play}<div class="row-title ref-identity"><strong>${esc(r.title)}</strong><small class="ref-meta"><span class="ref-speaker">${esc(r.speaker)}</span><span class="ref-consent">${esc(r.consentLabel)}</span>${clipState}${usage}</small></div><button class="button quiet expand-button ref-toggle" data-ref-toggle aria-expanded="${open}"><span>${open?'Thu gọn':r.hasSource?'Chọn đoạn mẫu':'Chi tiết'}</span><i aria-hidden="true"></i></button>
+${open?`<div class="ref-panel">${r.hasSource?refEditor(r):''}${r.clips.length?refClips(r):''}${!r.hasSource&&!r.clips.length?'<p class="muted">Không còn file gốc và chưa có đoạn mẫu.</p>':''}</div>`:''}</li>`;
+}
+function refEditor(r){
+  const sel=state.refSel[r.id];
+  return `${refWave(r)}<div class="ref-scale"><span>0:00</span><span>${clock(r.durationSeconds).replace(/\.\d$/,'')}</span></div>
+<div class="ref-controls"><label class="field"><span>Bắt đầu</span><input class="ref-start" value="${clock(sel.start)}" inputmode="decimal" aria-label="Bắt đầu đoạn mẫu (phút:giây)"></label><label class="field"><span>Độ dài</span><select class="ref-len" aria-label="Độ dài đoạn mẫu">${[10,15,20,30].filter(n=>n<=r.durationSeconds).map(n=>`<option value="${n}" ${n===sel.len?'selected':''}>${n} giây</option>`).join('')}</select></label>
+<p class="ref-range">Đoạn chọn: <strong>${clock(sel.start)} – ${clock(sel.start+sel.len)}</strong></p>
+<div class="ref-actions"><button class="button quiet" data-ref-suggest>Dùng gợi ý ${clock(r.suggestion.startSeconds)}</button><button class="button secondary" data-ref-preview aria-pressed="false">Nghe đoạn này</button><button class="button primary" data-ref-cut>Cắt, lưu đoạn mẫu và xóa file gốc</button></div></div>
+<p class="ref-note">Sau khi lưu đoạn mẫu, file ghi âm đầy đủ sẽ bị xóa; chỉ giữ đoạn đã cắt.</p><p class="ref-status" role="status"></p>`;
+}
+const refClips=r=>`<ul class="ref-clips">${r.clips.map(c=>`<li>${playButton('reference-clip',`${r.id}/${c.file}`,`${r.title} · ${clock(c.startSeconds)}`,`Đoạn mẫu ${c.durationSeconds} giây`)}<div class="ref-clip-body"><div class="ref-clip-head"><strong>${clock(c.startSeconds)} – ${clock(c.startSeconds+c.durationSeconds)}</strong><span>${c.durationSeconds} giây</span>${c.usedBy.length?`<span class="ref-used">Đã dùng: ${c.usedBy.map(esc).join(', ')}</span>`:''}</div><code class="ref-path">${esc(c.path)}</code><details class="ref-command"><summary>Lệnh dùng đoạn này để clone</summary><small><code>npm run voicestudio -- clone --project &lt;mã-tập&gt; --take &lt;tên-take&gt; --ref ${esc(c.path)} --consent ${esc(r.consent)} --scene 1</code></small></details></div></li>`).join('')}</ul><p class="ref-status" role="status"></p>`;
+function renderVoiceRefs(){
+  const box=$('#voice-refs');if(!box)return;const open=state.addRefOpen;
+  box.innerHTML=`<div class="resource-heading ref-heading"><div><div class="ref-title-line"><h2 id="refs-title">Bản ghi giọng mẫu để clone sau</h2><span class="ref-count">${state.voiceRefs.length} bản ghi</span></div><p>Giữ những đoạn giọng 10–30 giây đã được đồng ý để dùng lại khi một tập chọn giọng clone.</p><p class="ref-local-note"><strong>Chỉ lưu trên máy</strong><code>library/voice-references/</code><span>Không đưa lên Git · không tự clone</span></p></div><button class="button ${open?'quiet':'primary'}" data-add-ref aria-expanded="${open?'true':'false'}">${open?'Đóng':'＋ Thêm bản ghi giọng'}</button></div>
+${open?`<form id="add-ref-form" class="inline-edit add-ref-form"><label class="field"><span>File ghi âm (WAV, MP3, M4A, OGG, FLAC; tối đa 500 MB)</span><input id="ref-file" type="file" accept=".wav,.mp3,.m4a,.ogg,.flac,audio/*" required></label><div class="field-row"><label class="field"><span>Người nói</span><input id="ref-speaker" maxlength="120" required autocomplete="off" placeholder="Tên người trong bản ghi"></label><label class="field"><span>Tên bản ghi <small>(không bắt buộc)</small></span><input id="ref-title" maxlength="160" autocomplete="off" placeholder="Mặc định lấy tên file"></label></div><fieldset class="add-audio-kind"><legend>Xác nhận</legend><label><input type="radio" name="ref-consent" value="self"> Đây là giọng của tôi</label><label><input type="radio" name="ref-consent" value="permission"> Người trong bản ghi đã đồng ý cho clone</label></fieldset><p class="resource-note">Không thêm giọng lấy từ video, người nổi tiếng hay người sáng tạo khác khi chưa có sự đồng ý của họ.</p><div class="inline-edit-actions"><p id="add-ref-status" role="status"></p><button type="submit" class="button primary">Thêm bản ghi</button></div></form>`:''}
+${state.voiceRefs.length?`<ul class="resource-rows ref-rows">${state.voiceRefs.map(refRow).join('')}</ul>`:'<p class="workflow-empty">Chưa có bản ghi giọng mẫu.</p>'}`;
+  syncPlayButtons();
+}
+function updateRefCard(id){const r=state.voiceRefs.find(x=>x.id===id),card=document.querySelector(`[data-ref="${CSS.escape(id)}"]`);if(!r||!card)return;const sel=state.refSel[id];
+  sel.start=Math.min(Math.max(0,sel.start),Math.max(0,r.durationSeconds-sel.len));
+  if(!card.querySelector('.ref-wave'))return;card.querySelector('.ref-wave').outerHTML=refWave(r);card.querySelector('.ref-start').value=clock(sel.start);card.querySelector('.ref-range strong').textContent=`${clock(sel.start)} – ${clock(sel.start+sel.len)}`;}
+const refPreview=new Audio();refPreview.preload='none';let refPreviewId=null;
+function stopRefPreview(){refPreview.pause();if(refPreviewId)document.querySelector(`[data-ref="${CSS.escape(refPreviewId)}"] [data-ref-preview]`)?.setAttribute('aria-pressed','false');document.querySelectorAll('[data-ref-preview]').forEach(b=>{b.textContent='Nghe đoạn này';});refPreviewId=null;}
+refPreview.addEventListener('timeupdate',()=>{const sel=refPreviewId&&state.refSel[refPreviewId];if(!sel)return;
+  const card=document.querySelector(`[data-ref="${CSS.escape(refPreviewId)}"]`),r=state.voiceRefs.find(x=>x.id===refPreviewId),head=card?.querySelector('.ref-head');
+  if(head&&r){const x=refPreview.currentTime/r.durationSeconds*900;head.setAttribute('x1',x);head.setAttribute('x2',x);}
+  if(refPreview.currentTime>=sel.start+sel.len)stopRefPreview();});
+async function refAction(target){
+  const card=target.closest('[data-ref]'),id=card.dataset.ref,r=state.voiceRefs.find(x=>x.id===id),sel=state.refSel[id],status=card.querySelector('.ref-status');
+  if(target.hasAttribute('data-ref-suggest')){sel.start=r.suggestion.startSeconds;updateRefCard(id);status.textContent='Đã chọn đoạn gợi ý: ít khoảng lặng nhất.';}
+  else if(target.hasAttribute('data-ref-preview')){
+    if(refPreviewId===id){stopRefPreview();return;}stopRefPreview();if(!player.paused)player.pause();
+    refPreviewId=id;refPreview.src=audioUrl('reference',id);target.setAttribute('aria-pressed','true');target.textContent='Dừng nghe';
+    try{await new Promise((ok,fail)=>{if(refPreview.readyState>=1)return ok();refPreview.addEventListener('loadedmetadata',ok,{once:true});refPreview.addEventListener('error',()=>fail(Error('Không phát được bản ghi')),{once:true});refPreview.load();});refPreview.currentTime=sel.start;await refPreview.play();}
+    catch(error){if(error.name!=='AbortError'){status.textContent=error.message;stopRefPreview();}}
+  }else if(target.hasAttribute('data-ref-cut')){
+    target.disabled=true;status.textContent='Đang cắt đoạn mẫu…';
+    try{stopRefPreview();const clip=await api('/api/voice-reference-clip',{id,startSeconds:sel.start,durationSeconds:sel.len});await loadVoiceRefs();
+      const s=document.querySelector(`[data-ref="${CSS.escape(id)}"] .ref-status`);if(s)s.textContent=`Đã lưu ${clip.path}; đã xóa file ghi âm đầy đủ.`;toast('Đã lưu đoạn mẫu và xóa file gốc.');}
+    catch(error){status.textContent=error.message;target.disabled=false;}
+  }
+}
+async function submitRef(event){
+  event.preventDefault();const file=$('#ref-file').files[0],consent=document.querySelector('input[name="ref-consent"]:checked')?.value,status=$('#add-ref-status'),button=event.target.querySelector('button[type=submit]');
+  if(!file||!consent){status.textContent='Chọn file và xác nhận sự đồng ý.';return;}
+  button.disabled=true;status.textContent=`Đang chép và phân tích ${file.name}…`;
+  try{const q=new URLSearchParams({name:file.name,speaker:$('#ref-speaker').value,title:$('#ref-title').value,consent});
+    const response=await fetch('/api/voice-reference?'+q,{method:'POST',headers:{'Content-Type':'application/octet-stream','X-Workspace-Token':state.data.token},body:file});
+    let result;try{result=await response.json();}catch{throw Error('Không đọc được phản hồi của trang quản lý.');}if(!response.ok)throw Error(result.error);
+    state.addRefOpen=false;state.refOpen=result.id;await loadVoiceRefs();toast(`Đã thêm “${result.title}”. Đoạn gợi ý bắt đầu ở ${clock(result.suggestion.startSeconds)}.`);
+    document.querySelector(`[data-ref="${CSS.escape(result.id)}"] .ref-wave`)?.focus();
+  }catch(error){status.textContent=error.message;button.disabled=false;}
+}
+$('#resource-view').addEventListener('click',event=>{
+  const t=event.target;const toggle=t.closest('[data-ref-toggle]');if(toggle){const id=toggle.closest('[data-ref]').dataset.ref;stopRefPreview();state.refOpen=state.refOpen===id?null:id;renderVoiceRefs();document.querySelector(`[data-ref="${CSS.escape(id)}"] [data-ref-toggle]`)?.focus();return;}
+  if(t.closest('[data-add-ref]')){state.addRefOpen=!state.addRefOpen;renderVoiceRefs();(state.addRefOpen?$('#ref-file'):$('[data-add-ref]'))?.focus();return;}
+  const action=t.closest('[data-ref-suggest],[data-ref-preview],[data-ref-cut]');if(action){refAction(action);return;}
+  const wave=t.closest('[data-ref-wave]');if(wave){const id=wave.dataset.refWave,r=state.voiceRefs.find(x=>x.id===id),box=wave.getBoundingClientRect();state.refSel[id].start=Math.round((event.clientX-box.left)/box.width*r.durationSeconds*10)/10;updateRefCard(id);document.querySelector(`[data-ref="${CSS.escape(id)}"] .ref-wave`)?.focus();}
+});
+$('#resource-view').addEventListener('keydown',event=>{
+  const wave=event.target.closest?.('[data-ref-wave]');if(!wave||!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();
+  const id=wave.dataset.refWave,r=state.voiceRefs.find(x=>x.id===id),sel=state.refSel[id],step=event.shiftKey?5:1;
+  sel.start=event.key==='Home'?0:event.key==='End'?r.durationSeconds-sel.len:sel.start+(event.key==='ArrowRight'?step:-step);updateRefCard(id);document.querySelector(`[data-ref="${CSS.escape(id)}"] .ref-wave`)?.focus();
+});
+$('#resource-view').addEventListener('change',event=>{
+  const card=event.target.closest?.('[data-ref]');if(!card)return;const id=card.dataset.ref,sel=state.refSel[id];
+  if(event.target.matches('.ref-start')){const v=parseClock(event.target.value);if(Number.isFinite(v))sel.start=v;updateRefCard(id);}
+  if(event.target.matches('.ref-len')){sel.len=Number(event.target.value);updateRefCard(id);}
+});
+$('#resource-view').addEventListener('submit',event=>{if(event.target.id==='add-ref-form')submitRef(event);});
 function voiceCard(v){
   const used=v.usedBy.length?`<details class="usage"><summary>Dùng trong ${v.usedBy.length} tập</summary>${usageList(v.usedBy)}</details>`:'<p class="usage-none">Chưa tập nào dùng</p>';
   return `<article class="voice-card${v.preferred?' is-chosen':''}">${v.sample?playButton('voice',v.id,v.name,`Giọng mẫu số ${v.number}, ${v.gender}, ${v.region}`):''}<div class="voice-main"><h3>${esc(v.name)} <small>số ${v.number}</small></h3><p>${esc(v.gender)}, giọng ${esc(v.region)}${v.durationSeconds?`, mẫu ${Math.round(v.durationSeconds)} giây`:''}</p>${v.name==='Trúc Ly'?'<div class="tags"><span class="tag">Gốc của giọng B thiếu nhi</span></div>':''}</div><button class="button pick-button ${v.preferred?'quiet':'secondary'}" data-pick-voice="${esc(v.name)}" aria-pressed="${v.preferred}">${v.preferred?'Bỏ chọn':`${icon('plus')} Chọn giọng`}</button>${used}</article>`;

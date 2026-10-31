@@ -12,16 +12,16 @@ import takes from './intro-takes.json';
 // with a modern voice visualizer whose bars follow the narration (bands precomputed per frame by
 // scripts/projects/book-hvtt-001-overview/intro-bands.py). Voice is an audition take until the user picks one.
 
-type Voice = {id: string; name: string; file: string; durationSeconds: number; frames: number; captions: Caption[]; bands: number[][]; level: number[]};
+export type Voice = {id: string; name: string; file: string; durationSeconds: number; frames: number; captions: Caption[]; bands: number[][]; level: number[]};
 export type BookIntroProps = {voice: string; channelLabel: string; episodeLabel: string; bookTitle: string; bookAuthor: string};
 
 const voices = (takes as unknown as {voices: Voice[]}).voices;
 const OUTRO_SECONDS = 3.2;
-const INK = '#0d1411';
-const GOLD = '#d9b56f';
-const IVORY = '#f2ede3';
-const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
-const ease = Easing.bezier(.16, 1, .3, 1);
+export const INK = '#0d1411';
+export const GOLD = '#d9b56f';
+export const IVORY = '#f2ede3';
+export const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
+export const ease = Easing.bezier(.16, 1, .3, 1);
 const emphasis = /(Đọc sách, hiểu mình|không có nhiều thời gian|dành cho bạn|niềm vui|hạnh phúc|bắt đầu)/gi;
 
 const voiceOf = (id: string) => voices.find((v) => v.id === id) ?? voices[0];
@@ -42,16 +42,15 @@ export const bookIntroMetadata: CalculateMetadataFunction<BookIntroProps> = ({pr
   return {durationInFrames: Math.ceil(((voice?.durationSeconds ?? 30) + OUTRO_SECONDS) * 30)};
 };
 
-const Grain: FC<{frame: number}> = ({frame}) => {
-  // Film-like grain: the seed changes every 3 frames, deterministic for render and seeking.
-  const seed = Math.floor(frame / 3) % 24;
-  return <svg width="100%" height="100%" style={{position: 'absolute', inset: 0, opacity: .11, mixBlendMode: 'overlay'}}>
-    <filter id={`grain-${seed}`}><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves={2} seed={seed} stitchTiles="stitch" /><feColorMatrix type="saturate" values="0" /></filter>
-    <rect width="100%" height="100%" filter={`url(#grain-${seed})`} />
-  </svg>;
+// Film grain from one static noise tile, shifted every 3 frames. No per-frame SVG filter: Studio preview
+// repainted feTurbulence only around moving text, which showed up as grey patches.
+export const Grain: FC<{frame: number}> = ({frame}) => {
+  const step = Math.floor(frame / 3);
+  return <div style={{position: 'absolute', inset: 0, opacity: .06, backgroundImage: `url(${staticFile('book-hvtt-001-overview/images/film-grain.png')})`, backgroundSize: '512px 512px',
+    backgroundPosition: `${Math.floor(random(`grain-x-${step}`) * 512)}px ${Math.floor(random(`grain-y-${step}`) * 512)}px`, pointerEvents: 'none'}} />;
 };
 
-const Dust: FC<{frame: number}> = ({frame}) => <>{Array.from({length: 46}, (_, i) => {
+export const Dust: FC<{frame: number}> = ({frame}) => <>{Array.from({length: 46}, (_, i) => {
   const x = random(`dust-x-${i}`) * 1920;
   const speed = 6 + random(`dust-s-${i}`) * 14;
   const y = 1080 - ((random(`dust-y-${i}`) * 1180 + frame * speed / 30) % 1180);
@@ -59,7 +58,7 @@ const Dust: FC<{frame: number}> = ({frame}) => <>{Array.from({length: 46}, (_, i
   return <div key={i} style={{position: 'absolute', left: x + Math.sin(frame / 40 + i) * 14, top: y, width: size, height: size, borderRadius: '50%', background: GOLD, opacity: .12 + random(`dust-o-${i}`) * .3, filter: 'blur(.6px)'}} />;
 })}</>;
 
-const Frame: FC<{frame: number; fps: number}> = ({frame, fps}) => {
+export const Frame: FC<{frame: number; fps: number}> = ({frame, fps}) => {
   const draw = interpolate(frame, [.1 * fps, 1.8 * fps], [1, 0], {...clamp, easing: ease});
   const corner = interpolate(frame, [1.2 * fps, 2 * fps], [0, 1], {...clamp, easing: ease});
   const perimeter = 2 * (1920 - 112 + 1080 - 112);
@@ -75,7 +74,7 @@ const Frame: FC<{frame: number; fps: number}> = ({frame, fps}) => {
   </svg>;
 };
 
-const OpenBook: FC<{frame: number; fps: number; glow: number}> = ({frame, fps, glow}) => {
+export const OpenBook: FC<{frame: number; fps: number; glow: number}> = ({frame, fps, glow}) => {
   const draw = interpolate(frame, [.5 * fps, 2.4 * fps], [1, 0], {...clamp, easing: ease});
   const page = 'M0 18 C-70 0 -150 2 -210 22 L-210 132 C-150 112 -70 110 0 128 Z';
   return <svg width={460} height={170} viewBox="-230 -10 460 170" style={{display: 'block', margin: '0 auto', filter: `drop-shadow(0 0 ${8 + glow * 18}px rgba(217,181,111,${.18 + glow * .35}))`}}>
@@ -88,7 +87,7 @@ const OpenBook: FC<{frame: number; fps: number; glow: number}> = ({frame, fps, g
 };
 
 // Mirrored spectrum: lowest band in the centre, bars rise and fall with the speaking voice.
-const Visualizer: FC<{bands: number[]; level: number; appear: number}> = ({bands, level, appear}) => {
+export const Visualizer: FC<{bands: number[]; level: number; appear: number}> = ({bands, level, appear}) => {
   const bars = [...[...bands].reverse(), ...bands];
   return <div style={{position: 'absolute', left: 360, right: 360, top: 700, height: 150, display: 'flex', alignItems: 'center', justifyContent: 'space-between', opacity: appear}}>
     <div style={{position: 'absolute', left: '50%', top: '50%', width: 900, height: 170, translate: '-50% -50%', background: `radial-gradient(ellipse, rgba(217,181,111,${.06 + level * .16}), transparent 70%)`}} />
@@ -101,11 +100,11 @@ const Visualizer: FC<{bands: number[]; level: number; appear: number}> = ({bands
   </div>;
 };
 
-const Captions: FC<{captions: Caption[]; ms: number}> = ({captions, ms}) => {
+export const Captions: FC<{captions: Caption[]; ms: number; highlight?: RegExp}> = ({captions, ms, highlight = emphasis}) => {
   const page = captions.find((c) => ms >= c.startMs && ms < c.endMs + 250);
   if (!page) return null;
   const fade = interpolate(ms, [page.startMs - 60, page.startMs + 140], [0, 1], clamp);
-  const parts = page.text.split(emphasis);
+  const parts = page.text.split(highlight);
   return <div data-testid="book-intro-caption" style={{position: 'absolute', left: 260, right: 260, top: 880, minHeight: 120, display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', color: IVORY, fontSize: 44, fontWeight: 700, lineHeight: 1.4, textShadow: '0 3px 14px #000', opacity: fade, translate: `0 ${(1 - fade) * 8}px`}}>
     <div>{parts.map((p, i) => <span key={i} style={{color: i % 2 === 1 ? GOLD : undefined}}>{p}</span>)}</div>
   </div>;
