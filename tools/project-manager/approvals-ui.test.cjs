@@ -106,6 +106,9 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   await page.locator('.scene-row').nth(1).locator('[data-scene-open]').click();await dialog.locator('.scene-video').waitFor();await dialog.locator('#review-form [name=note]').fill('');await dialog.locator('#review-form button[type=submit]').click();
   await page.waitForFunction(()=>/2\/2 cảnh đạt/.test(document.querySelector('#gates')?.textContent||''));
   assert.match(await next.innerText(),/Xem bản dựng/);mark('Scene clips: note required for Chưa đạt, earlier clips kept, all scenes Đạt opens the final review');
+  await next.locator('[data-gate-review="review-preview"]').click();await dialog.locator('.rail-item').first().waitFor();
+  assert.match(await dialog.locator('.rail-prior summary').innerText(),/Đã duyệt trước/,'locked files count as reviewed by the lock');await page.keyboard.press('Escape');
+  mark('Final review opens after a manager lock (no hash entry for initial-lock)');
   for(const width of [768,390]){await page.setViewportSize({width,height:900});await open();
    assert.ok(await page.locator('#drawer').evaluate(d=>d.scrollWidth<=d.clientWidth+1),'page fits at '+width);const panel=await page.locator('.patch-panel').boundingBox(),scenes=await page.locator('.review-scenes').boundingBox();assert.ok(panel&&panel.y>=scenes.y+scenes.height-1,'patch panel stacks under the scenes at '+width);
    await page.locator('.patch-panel').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(out,`gates-${width}.png`)});

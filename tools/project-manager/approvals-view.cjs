@@ -126,7 +126,9 @@ function createApprovals(root) {
     for (const s of plan.stages.filter(s => s.kind === 'human-approval' && s.invalidates.includes(gate))) {
       s.bindsArtifacts.forEach(rel => inherited.add(rel));
       const st = approvals.gateState(root, plan, s.id);
-      if (st.state === 'approved') for (const [rel, hash] of Object.entries(st.entry.artifactSha256)) earlier.set(rel, {hash, gate: NAMES[s.id] || s.id});
+      // Lock and scene reviews are recorded in the manager, not as hash-bound entries: the latest lock holds the hashes.
+      const hashes = st.entry ? st.entry.artifactSha256 : s.id === 'initial-lock' ? review.load(root, id).locks.at(-1)?.files || {} : {};
+      if (st.state === 'approved') for (const [rel, hash] of Object.entries(hashes)) earlier.set(rel, {hash, gate: NAMES[s.id] || s.id});
     }
     const files = g.files.map(f => {
       const name = FILE_NAMES[path.basename(f.path)] || path.basename(f.path), base = {path: f.path, name, own: !inherited.has(f.path)};
