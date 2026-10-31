@@ -26,7 +26,22 @@ function event(store, type, task, message = '', percent = null) {
   store.events.push({at: now(), type, task: task?.id || null, title: task?.title || null, message, percent});
   if (store.events.length > MAX_EVENTS) store.events.splice(0, store.events.length - MAX_EVENTS);
 }
-const percentOf = t => t.status === 'done' ? 100 : t.steps?.total ? Math.round(100 * t.steps.done / t.steps.total) : t.percent || 0;
+// Plan steps may be a count or a list of step names ("Cảnh 1", …); stored as {done, total[, names]}. A list
+// used to be stored as the total itself, which made the percent NaN (shown as "null%"); old files are read through this.
+function stepsOf(s, done = 0) {
+  if (s == null || s === false) return null;
+  const names = Array.isArray(s) ? s.map(String) : Array.isArray(s.total) ? s.total.map(String) : Array.isArray(s.names) ? s.names.map(String) : null;
+  const total = names ? names.length : Number(typeof s === 'object' ? s.total : s);
+  if (!Number.isInteger(total) || total < 1) throw new Error(`Số phần (steps) không hợp lệ: ${JSON.stringify(s)}`);
+  const d = Math.max(0, Math.min(total, Math.floor(Number(typeof s === 'object' && !Array.isArray(s) ? s.done ?? done : done) || 0)));
+  return names ? {done: d, total, names} : {done: d, total};
+}
+const safeSteps = s => {try {return stepsOf(s);} catch {return null;}};
+const percentOf = t => {
+  if (t.status === 'done') return 100;
+  const s = safeSteps(t.steps), p = s ? 100 * s.done / s.total : Number(t.percent);
+  return Number.isFinite(p) ? Math.round(Math.max(0, Math.min(100, p))) : 0;
+};
 function alive(pid) {try {process.kill(pid, 0);return true;} catch (e) {return e.code === 'EPERM';}}
 
 // The plan comes from the agent after the lock: [{id, title, kind?, weight?, detail?, steps?}]. Re-planning keeps
@@ -41,7 +56,7 @@ function setPlan(root, id, {tasks, summary = '', by = 'agent', lockVersion = 0})
     const prev = old.get(t.id) || {};
     return {id: t.id, title: t.title.trim(), kind: KINDS[t.kind] ? t.kind : 'other', detail: t.detail || '', weight: t.weight > 0 ? t.weight : 1,
       status: prev.status || 'pending', percent: prev.percent || 0,
-      steps: t.steps ? {done: prev.steps?.done || 0, total: t.steps} : prev.steps || null,
+      steps: t.steps ? stepsOf(t.steps, safeSteps(prev.steps)?.done || 0) : safeSteps(prev.steps),
       note: prev.note || '', startedAt: prev.startedAt || null, updatedAt: prev.updatedAt || null, finishedAt: prev.finishedAt || null, pid: prev.pid || null};
   });
   store.plan = {createdAt: store.plan?.createdAt || now(), updatedAt: now(), by, summary, lockVersion};
@@ -66,11 +81,15 @@ function update(root, id, taskId, {status, percent, steps, note, pid}) {
   const t = now(), before = task.status;
   if (status) task.status = status;
   if (percent !== undefined) task.percent = Math.max(0, Math.min(100, Number(percent) || 0));
-  if (steps) task.steps = {done: Math.max(0, steps.done), total: Math.max(1, steps.total)};
+  const names = safeSteps(task.steps)?.names;
+  if (steps) task.steps = stepsOf({done: steps.done, total: steps.total});
+  else if (task.steps) task.steps = safeSteps(task.steps);
+  if (names && task.steps?.total === names.length) task.steps.names = names;
   if (note !== undefined) task.note = note;
   if (pid !== undefined) task.pid = pid;
   if (task.status === 'running' && !task.startedAt) task.startedAt = t;
   if (['done', 'failed'].includes(task.status)) {task.finishedAt = t;task.pid = null;}
+  if (task.status === 'done' && task.steps) task.steps.done = task.steps.total;
   if (task.status === 'running' && before !== 'running') task.finishedAt = null;
   task.updatedAt = t;
   event(store, task.status !== before ? task.status : 'update', task, note || '', percentOf(task));
@@ -88,7 +107,8 @@ function view(root, id, {at = Date.now()} = {}) {
   const store = load(root, id);
   const tasks = store.tasks.map(t => {
     const stale = t.status === 'running' && ((t.pid && !alive(t.pid)) || at - Date.parse(t.updatedAt || t.startedAt || 0) > STALE_MS);
-    return {...t, percent: percentOf(t), display: stale ? 'interrupted' : t.status, kindTitle: KINDS[t.kind]};
+    const steps = t.status === 'done' && safeSteps(t.steps) ? {...safeSteps(t.steps), done: safeSteps(t.steps).total} : safeSteps(t.steps);
+    return {...t, steps, weight: t.weight > 0 ? t.weight : 1, percent: percentOf(t), display: stale ? 'interrupted' : t.status, kindTitle: KINDS[t.kind]};
   });
   const weight = tasks.reduce((a, t) => a + t.weight, 0);
   const overall = weight ? Math.round(tasks.reduce((a, t) => a + t.weight * t.percent, 0) / weight) : 0;

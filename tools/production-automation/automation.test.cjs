@@ -261,6 +261,14 @@ test('live progress: agent plan after the lock, weighted percent, re-plans keep 
  assert.equal(progress.load(root,id).tasks[0].status,'running');assert.equal(progress.view(root,id).tasks[0].percent,50);
  progress.ensureTask(root,id,{id:'clip-01',title:'Xuất clip cảnh 1',kind:'clip'});progress.ensureTask(root,id,{id:'clip-01',title:'x'});
  assert.equal(progress.view(root,id).tasks.filter(t=>t.id==='clip-01').length,1);
+ // Steps given as a list of names count their length (a list used to become the total itself: percent NaN, "null%").
+ progress.setPlan(root,id,{lockVersion:2,tasks:[{id:'voice',title:'Clone giọng toàn bộ',kind:'voice',weight:2,steps:10},{id:'clips',title:'Clip duyệt',kind:'clip',steps:['Cảnh 1','Cảnh 2','Cảnh 3','Cảnh 4']}]});
+ progress.update(root,id,'clips',{status:'running',steps:{done:1,total:4}});
+ v=progress.view(root,id);assert.deepEqual(v.tasks[1].steps,{done:1,total:4,names:['Cảnh 1','Cảnh 2','Cảnh 3','Cảnh 4']});assert.equal(v.tasks[1].percent,25);assert.equal(v.overall,42);
+ assert.throws(()=>progress.setPlan(root,id,{tasks:[{id:'x',title:'x',steps:'nhiều'}]}),/steps/);
+ progress.update(root,id,'clips',{status:'done'});assert.deepEqual(progress.load(root,id).tasks[1].steps.done,4);
+ const raw=progress.load(root,id);raw.tasks[1]={...raw.tasks[1],status:'pending',steps:{done:0,total:['a','b']}};fs.writeFileSync(progress.file(root,id),JSON.stringify(raw));
+ v=progress.view(root,id);assert.equal(v.tasks[1].percent,0);assert.equal(v.tasks[1].steps.total,2);assert.ok(Number.isFinite(v.overall));
  progress.log(root,id,'Đang đợi máy GPU bật');assert.equal(progress.view(root,id).events[0].message,'Đang đợi máy GPU bật');
  assert.ok(fs.existsSync(path.join(root,'.automation/progress',`${id}.json`)));assert.ok(denied(`.automation/progress/${id}.json`));
 }));
