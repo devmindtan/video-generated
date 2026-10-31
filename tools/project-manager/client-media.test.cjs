@@ -19,11 +19,12 @@ async function fixture(t) {
   write('src/projects/registry.tsx',`import {Video} from './edited/Video';
 export const Projects=()=> <Folder name="Client-Work"><Folder name="Product-Videos"><Folder name="edited"><Composition id="EditedCut" component={Video} durationInFrames={30} fps={30} width={720} height={1280}/></Folder></Folder></Folder>;`);
   write('public/edited/imported-video.mp4',mp4('ORIGINAL'));
-  const server=createManager({root,openFolder:async()=>{}});
+  const opened=[],server=createManager({root,openFolder:async folder=>opened.push(folder)});
   await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
   const base=`http://127.0.0.1:${server.address().port}`,workspace=async()=>(await fetch(base+'/api/workspace')).json(),token=(await workspace()).token;
   t.after(async()=>{server.closeAllConnections();await new Promise(resolve=>server.close(resolve));fs.rmSync(root,{recursive:true,force:true});});
-  return {root,write,base,workspace,token};
+  const post=(route,body)=>fetch(base+route,{method:'POST',headers:{Origin:base,'Content-Type':'application/json','X-Workspace-Token':token},body:JSON.stringify(body)});
+  return {root,write,base,workspace,token,opened,post};
 }
 
 test('client projects have one video: the import until an export exists',async t=>{
@@ -34,6 +35,18 @@ test('client projects have one video: the import until an export exists',async t
   assert.deepEqual(await project().then(p=>[p.importedVideo,p.renderedVideo]),[false,true]);
   assert.equal(await (await fetch(f.base+'/api/media?id=edited&kind=video')).text().then(x=>x.slice(12)),'EDITED');
   assert.equal((await fetch(f.base+'/api/media?id=edited&kind=original')).status,404);
+});
+
+test('the folder of the rendered (or imported) video can be opened, wherever it was rendered',async t=>{
+  const f=await fixture(t),real=p=>fs.realpathSync(path.join(f.root,p));
+  assert.equal((await f.workspace()).projects.find(p=>p.id==='edited').videoFolder,'public/edited');
+  assert.equal((await f.post('/api/open-folder',{id:'edited',group:'video'})).status,200);
+  const later=Date.now()/1000+5;f.write('out/EditedCut.mp4',mp4('EDITED'));fs.utimesSync(path.join(f.root,'out/EditedCut.mp4'),later,later);
+  assert.equal((await f.workspace()).projects.find(p=>p.id==='edited').videoFolder,'out');
+  assert.equal((await f.post('/api/open-folder',{id:'edited',group:'video'})).status,200);
+  assert.deepEqual(f.opened,[real('public/edited'),real('out')]);
+  const missing=await f.post('/api/open-folder',{id:'edited',group:'thumbnail'});assert.equal(missing.status,400);assert.match((await missing.json()).error,/Chưa có bản xuất/);
+  assert.equal((await f.post('/api/open-folder',{id:'edited',group:'../..'})).status,400);assert.equal(f.opened.length,2);
 });
 
 test('a client video can be imported without a name and gets a temporary one',async t=>{

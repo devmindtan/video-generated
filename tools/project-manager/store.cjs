@@ -122,7 +122,8 @@ function createStore(root) {
         seriesTitle:series.title,durationSeconds:node?.fps&&node.durationFrames?node.durationFrames/node.fps:project.durationSeconds??null,
         renderedVideo:Boolean(renderedVideo),renderedThumbnail:Boolean(renderedThumbnail),importedVideo:Boolean(renderedVideo?.imported),videoId:video?.id||null,thumbnailId:thumbnail?.id||null,previewType:image?.type||null,updatedAt,book:project.book||null,
         hasScript:exists(path.join(location(project.paths.docs),'script.md')),
-        hasDescription:exists(path.join(location(project.paths.docs),'description.md')),autoNamed:Boolean(project.autoNamed)};
+        hasDescription:exists(path.join(location(project.paths.docs),'description.md')),autoNamed:Boolean(project.autoNamed),
+        videoFolder:renderedVideo?path.relative(root,path.dirname(renderedVideo.file)):null};
     }));
     return {channels:catalog.channels,series:catalog.series.map(s=>({id:s.id,title:s.title,channel:s.channel,summary:s.summary,
       formats:s.formats,projectCount:s.projects.length})),projects,books:catalog.series.flatMap(books),
@@ -177,8 +178,11 @@ function createStore(root) {
   }
   function folder(id,group) {
     const {project}=context(id);
-    if (!['source','scripts','docs','assets'].includes(group)) throw new Error('Unknown folder');
-    const directory=fs.realpathSync(location(project.paths[group]));
+    if (!['source','scripts','docs','assets','video','thumbnail'].includes(group)) throw new Error('Unknown folder');
+    // Exports live wherever they were rendered (out/, projects/<id>/, public/<id>/): open the file's own folder.
+    const exported=['video','thumbnail'].includes(group)?extra.media(project.id,group):null;
+    if (['video','thumbnail'].includes(group)&&!exported) throw new Error('Chưa có bản xuất');
+    const directory=fs.realpathSync(exported?path.dirname(exported.file):location(project.paths[group]));
     if (!directory.startsWith(fs.realpathSync(root)+path.sep)||!fs.statSync(directory).isDirectory()) throw new Error('Folder not available');
     return directory;
   }
