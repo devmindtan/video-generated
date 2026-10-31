@@ -18,6 +18,8 @@ library/books/
 .venv-web/
 
 docs/projects/*/.manager-history/
+# Manager edit history next to series workflow notes and the voice playlist
+.manager-history/
 
 # Recoverable local manager deletions (may include private media)
 .manager-trash/
@@ -26,3 +28,12 @@ docs/projects/*/.manager-history/
 .env
 .env.*
 !.env.example
+
+# Local code graph (graphify), rebuilt by npm run graph:update
+graphify-out/
+
+# Local agent runs: staging copies, events and patches awaiting approval
+.automation/
+
+# VoiceStudio runtime (source checkout, Python env, models, generated voices)
+.voicestudio/

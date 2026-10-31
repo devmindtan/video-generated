@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 3,
+  "mode": "human-gated-drafts",
+  "runtime": "repos/devmindtan--multi-agent-system",
+  "commit": "4ac3558151c6378dd654c0c1a03f4cb608d636f6",
+  "automaticExecution": false,
+  "automaticApply": false,
+  "automaticRender": false,
+  "automaticPublish": false,
+  "paidGeneration": false,
+  "maxParallelTasksInitially": 1,
+  "futureApprovalContract": {
+    "requiredFields": [
+      "projectId",
+      "stageId",
+      "artifactSha256",
+      "approvedBy",
+      "approvedAt"
+    ],
+    "bindsTo": "sha256 of every file in the approval stage's bindsArtifacts",
+    "invalidateOnArtifactChange": true,
+    "invalidates": "the approval and every stage listed in its invalidates",
+    "implemented": true,
+    "store": "docs/projects/<slug>/approvals.json (written only by `automation approve`)"
+  },
+  "deniedPaths": [
+    ".env",
+    ".env.*",
+    ".git/**",
+    ".venv/**",
+    ".venv-*/**",
+    "node_modules/**",
+    "repos/**",
+    "library/**",
+    "budgets/**",
+    "out/**",
+    ".manager-trash/**",
+    "**/.manager-history/**",
+    "public/*/backups/**",
+    "scripts/veo-safety.json",
+    "**/*.mp4",
+    "docs/projects/*/approvals.json",
+    ".automation/**",
+    "graphify-out/**"
+  ],
+  "operations": {
+    "projects-check": {
+      "npmScript": "projects:check",
+      "writes": false,
+      "network": false
+    },
+    "typecheck": {
+      "npmScript": "typecheck",
+      "writes": false,
+      "network": false
+    },
+    "project-check": {
+      "npmScript": "check:{projectId}",
+      "writes": false,
+      "network": false
+    }
+  },
+  "operatorOnlyOperations": {
+    "voice-audition": "Local TTS via voice:audition; heavy CPU/RAM, run by the user or a future host runner, never an LLM tool call.",
+    "pdf-retrieval": "Bounded npm run pdf -- search/pages in .venv-pdf; the agent receives excerpts, never library/books paths.",
+    "render": "Manual Studio/render on explicit request only.",
+    "voice-clone": "Voice option 2 via `npm run voicestudio -- clone` (local VoiceStudio/VoxCPM2): only when the user asks, with their reference recording and consent; heavy CPU/RAM; never an LLM tool call."
+  },
+  "upstreamBlockers": [
+    "Enforce file read/write scopes before tools execute; exclude secrets, private books and backups.",
+    "Replace executable-only command allowlist with fixed operations and sandbox without external network or inherited credentials.",
+    "Validate parsed endpoint hostname, redirects and local_only policy; substring checks are insufficient.",
+    "Inject project tool/profile configuration through CLI and every worker; settings alone does not override tools.yaml.",
+    "Implement human approval stages bound to artifact hashes, resume and invalidation.",
+    "Preserve ignored media via explicit read-only asset mounts; worktrees alone omit these files."
+  ],
+  "upstreamProbes": [
+    {
+      "id": "substring-endpoint-check",
+      "file": "core/llm_gateway.py",
+      "pattern": "in api_base for host in",
+      "blocker": 2
+    },
+    {
+      "id": "sandbox-not-required",
+      "file": "config/tools.yaml",
+      "pattern": "sandbox_required: false",
+      "blocker": 1
+    },
+    {
+      "id": "interpreters-allowed",
+      "file": "config/tools.yaml",
+      "pattern": "- (python3?|node|npm|npx)\\s*$",
+      "blocker": 1
+    },
+    {
+      "id": "auto-apply-default",
+      "file": "config/settings.yaml",
+      "pattern": "apply_changes: true",
+      "blocker": 4
+    },
+    {
+      "id": "parallel-default",
+      "file": "config/settings.yaml",
+      "pattern": "max_parallel_tasks: ([2-9]|\\d{2,})",
+      "blocker": 4
+    },
+    {
+      "id": "root-only-path-guard",
+      "file": "tools/fs_tools.py",
+      "pattern": "Access outside project root is forbidden",
+      "blocker": 0
+    },
+    {
+      "id": "default-tool-config",
+      "file": "tools/bash_tools.py",
+      "pattern": "tool_config or load_tool_config\\(\\)",
+      "blocker": 3
+    }
+  ],
+  "runner": {
+    "runtime": "../multi-agent-system",
+    "runtimeBranch": "production-hardening",
+    "python": ".venv-agents/bin/python",
+    "runDirectory": ".automation/runs",
+    "runnableStages": [
+      "brief",
+      "script",
+      "editorial-review",
+      "visual-plan",
+      "metadata"
+    ],
+    "blockedStages": {
+      "assembly": "Needs an approved read-only asset mount and Remotion checks inside the sandbox.",
+      "sources": "PDF retrieval stays an operator task (npm run pdf) so private books never enter a worker.",
+      "voice-audition": "Local TTS is heavy and needs listening; run voice:audition yourself.",
+      "qa": "Run the listed npm checks directly; they are deterministic and need no model."
+    },
+    "stagingLimits": {
+      "maxFiles": 300,
+      "maxBytes": 2000000,
+      "maxFileBytes": 300000
+    },
+    "requiredRuntimeFeatures": [
+      {
+        "file": "core/policy.py",
+        "pattern": "class PathPolicy"
+      },
+      {
+        "file": "main.py",
+        "pattern": "--plan-file"
+      },
+      {
+        "file": "core/engine.py",
+        "pattern": "run.awaiting_approval"
+      },
+      {
+        "file": "core/llm_gateway.py",
+        "pattern": "def is_local_endpoint"
+      },
+      {
+        "file": "config/agents.yaml",
+        "pattern": "prompts/writer.md"
+      },
+      {
+        "file": "core/llm_gateway.py",
+        "pattern": "reasoning_effort"
+      }
+    ],
+    "settings": {
+      "system": {
+        "local_only": true,
+        "max_retries_per_task": 1,
+        "max_replans": 0,
+        "default_timeout_seconds": 900,
+        "enforce_json_mode": true,
+        "max_executor_steps": 12,
+        "context_max_files": 300,
+        "context_max_depth": 6
+      },
+      "scheduler": {
+        "max_parallel_tasks": 1,
+        "max_parallel_writers": 1,
+        "fail_fast": true,
+        "apply_changes": false
+      },
+      "models": {
+        "planner": {
+          "provider": "ollama",
+          "model_name": "qwen2.5-coder:7b-instruct",
+          "api_base": "http://127.0.0.1:11434",
+          "temperature": 0.1
+        },
+        "executor": {
+          "provider": "ollama_chat",
+          "model_name": "qwen3:8b",
+          "api_base": "http://127.0.0.1:11434",
+          "temperature": 0.4,
+          "reasoning_effort": "none"
+        },
+        "reviewer": {
+          "provider": "ollama_chat",
+          "model_name": "qwen3:8b",
+          "api_base": "http://127.0.0.1:11434",
+          "temperature": 0,
+          "reasoning_effort": "none"
+        }
+      },
+      "cloud_fallback": {
+        "enabled": false
+      }
+    },
+    "tools": {
+      "commands": {
+        "mode": "operations",
+        "sandbox_with_bubblewrap": true,
+        "sandbox_required": true,
+        "network": false,
+        "clear_environment": true,
+        "hide_home": true,
+        "operations": {},
+        "timeout_seconds": 120
+      },
+      "filesystem": {
+        "ignored_directories": [
+          ".git",
+          "node_modules",
+          "__pycache__"
+        ],
+        "max_read_bytes": 300000,
+        "denied_paths": []
+      }
+    },
+    "contextRules": {
+      "common": [
+        "Kênh YouTube tiếng Việt. Viết tiếng Việt tự nhiên, đủ dấu, câu nói được thành lời.",
+        "Không bịa trích dẫn, số trang, số liệu hay nguồn. Chỗ chưa chắc ghi 'Cần kiểm tra'.",
+        "Đây là bản nháp chờ người duyệt: không tuyên bố đã nghe duyệt, đã render hay đã đăng.",
+        "Tránh cụm sáo đã dùng nhiều: 'Có những…', 'Bạn được phép…', 'bước tiếp', 'nhẹ lòng'; ưu tiên tình huống cụ thể.",
+        "Không đổi thời lượng, giọng, nhạc hay timing đã có nếu tác vụ không yêu cầu.",
+        "Chỉ nêu tên tập hoặc file khi đã đọc nó bằng read_file; tìm file bằng list_files với mẫu như docs/projects/*/script.md."
+      ],
+      "philosophy": [
+        "Shorts triết lý mới mặc định 45 giây, đọc tốc độ 1× có khoảng lặng; tập cũ giữ thời lượng hiện có.",
+        "Hình ảnh: ảnh tĩnh + animation theo frame; ưu tiên đồ vật, thiên nhiên, kiến trúc, tượng; người thì không lộ mặt. Không dùng Gemini/Veo.",
+        "Typography Stoic: Stoic Sans Bold 700, phụ đề màu ngà, nhấn từ khóa màu vàng."
+      ],
+      "kids": [
+        "Truyện thiếu nhi cần footage chuyển động thật; nếu thiếu thì ghi rõ thiếu, không thay bằng ảnh tĩnh.",
+        "Giọng đã chọn: Trúc Ly giọng B. Lời kể bám hành động nhìn thấy trên hình."
+      ],
+      "book": [
+        "Tách rõ: ý tác giả, diễn giải của kênh, ví dụ tự tạo. Dẫn chương/trang từ ghi chú nghiên cứu; thiếu thì ghi 'Cần kiểm tra'.",
+        "Không chép nguyên văn dài từ sách; không coi điểm khớp tìm kiếm là đã đọc đủ sách."
+      ]
+    },
+    "stageInstructions": {
+      "brief": "Viết brief.md: khán giả, thông điệp chính trong một câu, tình huống cụ thể dự kiến, format và thời lượng đề xuất, các quyết định người dùng cần chốt.",
+      "script": "Viết script.md: lời đọc tiếng Việt theo cảnh, ghi chú khoảng lặng, ước tính thời lượng ở tốc độ 1×.",
+      "editorial-review": "Viết script-review.md nhận xét kịch bản hiện có: điểm mạnh, câu khó đọc, chỗ lặp mô-típ so với các tập khác (đọc docs/projects/*/script.md), luận điểm cần kiểm tra, ước tính thời lượng ở 1×. Đề xuất sửa từng câu cụ thể; KHÔNG viết lại toàn bộ kịch bản và KHÔNG sửa script.md.",
+      "visual-plan": "Viết production-spec.md (cảnh, thời lượng cảnh, chuyển động) và image-prompts.md (mỗi cảnh một prompt ảnh) bám đúng kịch bản đã duyệt.",
+      "metadata": "Viết description.md: tiêu đề đề xuất, mô tả ngắn, hashtag, và dòng nhạc nền gồm TÊN BÀI và TÁC GIẢ lấy từ music.json; không có thì ghi 'Cần kiểm tra'."
+    },
+    "maxRunMinutes": 45
+  }
+}

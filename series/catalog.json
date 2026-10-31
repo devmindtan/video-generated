@@ -47,11 +47,6 @@
       "id": "product-videos",
       "channel": "client-work",
       "path": "series/client-work/product-videos/series.json"
-    },
-    {
-      "id": "abc",
-      "channel": "tam-ly-cuoc-song",
-      "path": "series/tam-ly-cuoc-song/abc/series.json"
     }
   ]
 }

@@ -1,15 +1,1135 @@
 {
   "book": "hieu-ve-trai-tim",
-  "sourceSha256": null,
-  "edition": null,
-  "pageNumberConvention": "pdfPage is 1-based; printed labels require visual confirmation",
-  "chapters": [],
-  "chapterExampleSchema": {
-    "title": "Fill only after inspecting the source contents",
-    "pdfStart": null,
-    "pdfEnd": null,
-    "printedStartVerified": null,
-    "mappingSource": "bookmark-checked or printed-toc-checked",
-    "readStatus": "unread"
-  }
+  "sourceSha256": "3e6d6ca9e366a41c82b6a4cb72f8fb31ed369d2b82f4730e0ca52cdb4986115e",
+  "edition": "3e6d6ca9e366a41c82b6a4cb72f8fb31ed369d2b82f4730e0ca52cdb4986115e-de2a45e349f9",
+  "pageNumberConvention": "Số trang là trang PDF, đếm từ 1. Bản ebook này không có nhãn trang hay số trang in, nên chỉ trích dẫn bằng trang PDF.",
+  "mappingSummary": "Đã kiểm bookmark ngày 2026-10-30: cả 54 tiêu đề cấp 1 nằm đúng ở đầu trang được trỏ tới. Mỗi chương bắt đầu ở đầu trang, nên trang cuối là trang ngay trước chương sau.",
+  "orderNote": "Mục lục in (trang PDF 6-8) đặt \"Nâng đỡ\" sau \"Sòng phẳng\", nhưng trong PDF này chương đó nằm ở trang 271-275, ngay trước \"Lời tác giả\". Bookmark khớp với trang thật.",
+  "coverage": {
+    "chaptersRead": 50,
+    "chaptersTotal": 50,
+    "status": "complete"
+  },
+  "frontMatter": [
+    {
+      "title": "Bìa (ảnh, không có chữ)",
+      "pdfStart": 1,
+      "pdfEnd": 1,
+      "mappingSource": "visual-check"
+    },
+    {
+      "title": "LỜI NÓI ĐẦU CỦA LẦN TÁI BẢN CÓ CHỈNH LÝ",
+      "pdfStart": 2,
+      "pdfEnd": 3,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "readAt": "2026-10-30"
+    },
+    {
+      "title": "Lời Giới Thiệu",
+      "pdfStart": 4,
+      "pdfEnd": 5,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "readAt": "2026-10-30"
+    },
+    {
+      "title": "MỤC LỤC",
+      "pdfStart": 6,
+      "pdfEnd": 8,
+      "mappingSource": "bookmark-checked"
+    }
+  ],
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Khổ Đau",
+      "pdfStart": 9,
+      "pdfEnd": 13,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Chỉ là bất như ý",
+          "pdfPage": 9
+        },
+        {
+          "title": "Giá trị của khổ đau",
+          "pdfPage": 11
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 2,
+      "title": "Hạnh Phúc",
+      "pdfStart": 14,
+      "pdfEnd": 19,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Thỏa mãn cảm xúc",
+          "pdfPage": 14
+        },
+        {
+          "title": "Thỏa mãn ý chí",
+          "pdfPage": 16
+        },
+        {
+          "title": "Hạnh phúc chân thật",
+          "pdfPage": 17
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 3,
+      "title": "Tình Yêu",
+      "pdfStart": 20,
+      "pdfEnd": 23,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Đã mang lấy một chữ tình",
+          "pdfPage": 20
+        },
+        {
+          "title": "Yêu không đúng cách",
+          "pdfPage": 21
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 4,
+      "title": "Tình Thương",
+      "pdfStart": 24,
+      "pdfEnd": 27,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Tình thương là hiến tặng",
+          "pdfPage": 24
+        },
+        {
+          "title": "Tình thương là chia sớt",
+          "pdfPage": 25
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 5,
+      "title": "Tức Giận",
+      "pdfStart": 28,
+      "pdfEnd": 32,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Cơn giận từ đâu tới?",
+          "pdfPage": 28
+        },
+        {
+          "title": "Chuyển hóa cơn giận",
+          "pdfPage": 29
+        },
+        {
+          "title": "Có thương đừng giận",
+          "pdfPage": 31
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 6,
+      "title": "Chịu Đựng",
+      "pdfStart": 33,
+      "pdfEnd": 36,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Chấp nhận để đi tới",
+          "pdfPage": 33
+        },
+        {
+          "title": "Khả năng chịu đựng",
+          "pdfPage": 34
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 7,
+      "title": "Ghen Tuông",
+      "pdfStart": 37,
+      "pdfEnd": 40,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Tuy một mà hai",
+          "pdfPage": 37
+        },
+        {
+          "title": "Dìu nhau qua gian khó",
+          "pdfPage": 38
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 8,
+      "title": "Tha Thứ",
+      "pdfStart": 41,
+      "pdfEnd": 45,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Chất liệu ân tình",
+          "pdfPage": 41
+        },
+        {
+          "title": "Làm sao có thể tha thứ?",
+          "pdfPage": 43
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 9,
+      "title": "Sòng Phẳng",
+      "pdfStart": 46,
+      "pdfEnd": 49,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Công bằng hay sòng phẳng?",
+          "pdfPage": 46
+        },
+        {
+          "title": "Làm sao trả hết những ân tình?",
+          "pdfPage": 47
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 10,
+      "title": "Cô Đơn",
+      "pdfStart": 50,
+      "pdfEnd": 54,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Những bức tường vô hình",
+          "pdfPage": 50
+        },
+        {
+          "title": "Người biết sống một mình",
+          "pdfPage": 52
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 11,
+      "title": "Hiến Tặng",
+      "pdfStart": 55,
+      "pdfEnd": 60,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Cho và nhận",
+          "pdfPage": 55
+        },
+        {
+          "title": "Phước và Đức",
+          "pdfPage": 57
+        },
+        {
+          "title": "Vì người hay vì mình?",
+          "pdfPage": 58
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 12,
+      "title": "Trao Thân",
+      "pdfStart": 61,
+      "pdfEnd": 64,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Ý thức trách nhiệm",
+          "pdfPage": 61
+        },
+        {
+          "title": "Thái độ kính trọng",
+          "pdfPage": 62
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 13,
+      "title": "Tạ Ơn",
+      "pdfStart": 65,
+      "pdfEnd": 69,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Vun đắp cội nguồn",
+          "pdfPage": 65
+        },
+        {
+          "title": "Ngày Tạ Ơn của Việt Nam",
+          "pdfPage": 67
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 14,
+      "title": "Nhàm Chán",
+      "pdfStart": 70,
+      "pdfEnd": 74,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Bình thường hóa cảm xúc",
+          "pdfPage": 70
+        },
+        {
+          "title": "Thương sao cho vẹn thì thương",
+          "pdfPage": 71
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 15,
+      "title": "Kính Trọng",
+      "pdfStart": 75,
+      "pdfEnd": 79,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Nền tảng mọi liên hệ",
+          "pdfPage": 75
+        },
+        {
+          "title": "Thương nhau phải kính nhau",
+          "pdfPage": 76
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 16,
+      "title": "Nghi Ngờ",
+      "pdfStart": 80,
+      "pdfEnd": 85,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Thực tại kỳ bí",
+          "pdfPage": 80
+        },
+        {
+          "title": "Từ chối sự thật",
+          "pdfPage": 81
+        },
+        {
+          "title": "Bóng tối nghi ngờ",
+          "pdfPage": 82
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 17,
+      "title": "Lắng Nghe",
+      "pdfStart": 86,
+      "pdfEnd": 90,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Ai cũng cần lắng nghe",
+          "pdfPage": 86
+        },
+        {
+          "title": "Lắng nghe tận nguồn cơn",
+          "pdfPage": 87
+        },
+        {
+          "title": "Lắng nghe đời mình",
+          "pdfPage": 89
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 18,
+      "title": "Phán Xét",
+      "pdfStart": 91,
+      "pdfEnd": 96,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Thói quen phán xét",
+          "pdfPage": 91
+        },
+        {
+          "title": "Có chắc không?",
+          "pdfPage": 93
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 19,
+      "title": "Ái Ngữ",
+      "pdfStart": 97,
+      "pdfEnd": 101,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Tiếp năng lượng cho nhau",
+          "pdfPage": 97
+        },
+        {
+          "title": "Lắng nghe lời mình nói",
+          "pdfPage": 99
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 20,
+      "title": "Thành Kiến",
+      "pdfStart": 102,
+      "pdfEnd": 105,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Bức tường ngăn cách",
+          "pdfPage": 102
+        },
+        {
+          "title": "Giữ gìn con mắt trong",
+          "pdfPage": 103
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 21,
+      "title": "Làm Mới",
+      "pdfStart": 106,
+      "pdfEnd": 111,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Làm mới lại vườn tâm",
+          "pdfPage": 106
+        },
+        {
+          "title": "Phương pháp làm mới",
+          "pdfPage": 107
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 22,
+      "title": "Che Đậy",
+      "pdfStart": 112,
+      "pdfEnd": 117,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Văn hóa che đậy",
+          "pdfPage": 112
+        },
+        {
+          "title": "Đắc nhân tâm",
+          "pdfPage": 114
+        },
+        {
+          "title": "Dặn lòng bỏ cuộc chơi",
+          "pdfPage": 115
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 23,
+      "title": "Thành Thật",
+      "pdfStart": 118,
+      "pdfEnd": 123,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Thành thật với nhau",
+          "pdfPage": 118
+        },
+        {
+          "title": "Thành thật với chính mình",
+          "pdfPage": 119
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 24,
+      "title": "Nguyên Tắc",
+      "pdfStart": 124,
+      "pdfEnd": 128,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Sự bảo hộ cần thiết",
+          "pdfPage": 124
+        },
+        {
+          "title": "Vượt thoát nguyên tắc",
+          "pdfPage": 125
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 25,
+      "title": "Tùy Duyên",
+      "pdfStart": 129,
+      "pdfEnd": 133,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Muôn sự tại duyên",
+          "pdfPage": 129
+        },
+        {
+          "title": "Tùy duyên phải bất biến",
+          "pdfPage": 131
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 26,
+      "title": "Tuyệt Vọng",
+      "pdfStart": 134,
+      "pdfEnd": 138,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Lạc mất cái tôi",
+          "pdfPage": 134
+        },
+        {
+          "title": "Không biết đi về đâu",
+          "pdfPage": 135
+        },
+        {
+          "title": "Rác cũng là hoa",
+          "pdfPage": 136
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 27,
+      "title": "Niềm Tin",
+      "pdfStart": 139,
+      "pdfEnd": 144,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Tin người",
+          "pdfPage": 139
+        },
+        {
+          "title": "Tin đời",
+          "pdfPage": 141
+        },
+        {
+          "title": "Tin mình",
+          "pdfPage": 142
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 28,
+      "title": "Ý Chí",
+      "pdfStart": 145,
+      "pdfEnd": 149,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Sức mạnh của ý chí",
+          "pdfPage": 145
+        },
+        {
+          "title": "Khơi dậy ý chí",
+          "pdfPage": 147
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 29,
+      "title": "Do Dự",
+      "pdfStart": 150,
+      "pdfEnd": 155,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Chọn lựa nào đúng đắn?",
+          "pdfPage": 150
+        },
+        {
+          "title": "Đừng lỗi hẹn với cuộc sống",
+          "pdfPage": 153
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 30,
+      "title": "Thất Bại",
+      "pdfStart": 156,
+      "pdfEnd": 160,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Ai cũng sợ thất bại",
+          "pdfPage": 156
+        },
+        {
+          "title": "Chỉ là chưa thành công",
+          "pdfPage": 157
+        },
+        {
+          "title": "Mỉm cười với thất bại",
+          "pdfPage": 158
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 31,
+      "title": "Thành Công",
+      "pdfStart": 161,
+      "pdfEnd": 164,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Thành công về cái gì?",
+          "pdfPage": 161
+        },
+        {
+          "title": "Thành công nào đáng tìm?",
+          "pdfPage": 162
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 32,
+      "title": "Tham Vọng",
+      "pdfStart": 165,
+      "pdfEnd": 170,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Từ tham lam đến tham vọng",
+          "pdfPage": 165
+        },
+        {
+          "title": "Vượt khỏi tầm với",
+          "pdfPage": 166
+        },
+        {
+          "title": "Tham mà không tham",
+          "pdfPage": 168
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 33,
+      "title": "Biết Đủ",
+      "pdfStart": 171,
+      "pdfEnd": 176,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Tương lai đi về đâu?",
+          "pdfPage": 171
+        },
+        {
+          "title": "Kinh tế và phi kinh tế",
+          "pdfPage": 172
+        },
+        {
+          "title": "Tìm một lối đi",
+          "pdfPage": 174
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 34,
+      "title": "Dựa Dẫm",
+      "pdfStart": 177,
+      "pdfEnd": 181,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Ngọn đèn sẽ tắt",
+          "pdfPage": 177
+        },
+        {
+          "title": "Làm chủ đời mình",
+          "pdfPage": 179
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 35,
+      "title": "Nương Tựa",
+      "pdfStart": 182,
+      "pdfEnd": 186,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Tế bào cần cơ thể",
+          "pdfPage": 182
+        },
+        {
+          "title": "Đừng một mình ra khơi",
+          "pdfPage": 184
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 36,
+      "title": "Yếu Đuối",
+      "pdfStart": 187,
+      "pdfEnd": 192,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Thói quen hưởng thụ",
+          "pdfPage": 187
+        },
+        {
+          "title": "Sức mạnh bên trong",
+          "pdfPage": 189
+        },
+        {
+          "title": "Chí lớn tung trời",
+          "pdfPage": 191
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 37,
+      "title": "Sám Hối",
+      "pdfStart": 193,
+      "pdfEnd": 198,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Nhìn lại lỗi lầm",
+          "pdfPage": 193
+        },
+        {
+          "title": "Chuyển hóa lỗi lầm",
+          "pdfPage": 195
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 38,
+      "title": "Lười Biếng",
+      "pdfStart": 199,
+      "pdfEnd": 204,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Cuộc đời bỏ lại",
+          "pdfPage": 199
+        },
+        {
+          "title": "Nửa bước chưa rời",
+          "pdfPage": 201
+        },
+        {
+          "title": "Thêm một chút nữa",
+          "pdfPage": 202
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 39,
+      "title": "Buông Xả",
+      "pdfStart": 205,
+      "pdfEnd": 209,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Tiện nghi vật chất",
+          "pdfPage": 205
+        },
+        {
+          "title": "Tiện nghi tinh thần",
+          "pdfPage": 207
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 40,
+      "title": "Tưởng Tượng",
+      "pdfStart": 210,
+      "pdfEnd": 215,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Sống trong mộng tưởng",
+          "pdfPage": 210
+        },
+        {
+          "title": "Nhận diện đơn thuần",
+          "pdfPage": 213
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 41,
+      "title": "Định Tâm",
+      "pdfStart": 216,
+      "pdfEnd": 222,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Nhìn rõ thực tại",
+          "pdfPage": 216
+        },
+        {
+          "title": "Nghệ thuật định tâm",
+          "pdfPage": 218
+        },
+        {
+          "title": "Hơi thở mầu nhiệm",
+          "pdfPage": 219
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 42,
+      "title": "Cảm Xúc",
+      "pdfStart": 223,
+      "pdfEnd": 228,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Cơ chế cảm xúc",
+          "pdfPage": 223
+        },
+        {
+          "title": "Chăm sóc cảm xúc",
+          "pdfPage": 225
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 43,
+      "title": "Bình Yên",
+      "pdfStart": 229,
+      "pdfEnd": 234,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Cảnh bình tâm cũng bình",
+          "pdfPage": 229
+        },
+        {
+          "title": "Tâm yên cảnh sẽ yên",
+          "pdfPage": 231
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 44,
+      "title": "Lo Lắng",
+      "pdfStart": 235,
+      "pdfEnd": 240,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Ngày sau sẽ ra sao?",
+          "pdfPage": 235
+        },
+        {
+          "title": "Phút hiện tại nhiệm mầu",
+          "pdfPage": 237
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 45,
+      "title": "Thảnh Thơi",
+      "pdfStart": 241,
+      "pdfEnd": 245,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Phương tiện cũng là mục đích",
+          "pdfPage": 241
+        },
+        {
+          "title": "Thảnh thơi bây giờ hoặc không bao giờ",
+          "pdfPage": 242
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 46,
+      "title": "Độc Tài",
+      "pdfStart": 246,
+      "pdfEnd": 252,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Phá vỡ thế cân bằng",
+          "pdfPage": 246
+        },
+        {
+          "title": "Quyền lực hay yếu đuối?",
+          "pdfPage": 249
+        },
+        {
+          "title": "Quyền lực đích thực",
+          "pdfPage": 251
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 47,
+      "title": "Khiêm Cung",
+      "pdfStart": 253,
+      "pdfEnd": 258,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Gieo mình ra bão",
+          "pdfPage": 253
+        },
+        {
+          "title": "Nhân vô thập toàn",
+          "pdfPage": 254
+        },
+        {
+          "title": "Văn minh tâm hồn",
+          "pdfPage": 256
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 48,
+      "title": "Ích Kỷ",
+      "pdfStart": 259,
+      "pdfEnd": 263,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Ta và không phải ta",
+          "pdfPage": 259
+        },
+        {
+          "title": "Cái tôi chân thật",
+          "pdfPage": 261
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 49,
+      "title": "Trách Nhiệm",
+      "pdfStart": 264,
+      "pdfEnd": 270,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Có làm có chịu",
+          "pdfPage": 264
+        },
+        {
+          "title": "Tìm hướng đi lên",
+          "pdfPage": 265
+        }
+      ],
+      "readAt": "2026-10-30"
+    },
+    {
+      "number": 50,
+      "title": "Nâng Đỡ",
+      "pdfStart": 271,
+      "pdfEnd": 275,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "sections": [
+        {
+          "title": "Bàn tay từ ái",
+          "pdfPage": 271
+        },
+        {
+          "title": "Khả năng vào vai",
+          "pdfPage": 272
+        },
+        {
+          "title": "Cần nhau một tấm lòng",
+          "pdfPage": 274
+        }
+      ],
+      "readAt": "2026-10-30"
+    }
+  ],
+  "backMatter": [
+    {
+      "title": "Lời tác giả",
+      "pdfStart": 276,
+      "pdfEnd": 278,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read",
+      "readAt": "2026-10-30"
+    },
+    {
+      "title": "Trang trắng",
+      "pdfStart": 279,
+      "pdfEnd": 279,
+      "mappingSource": "visual-check"
+    }
+  ],
+  "blankPages": [
+    123,
+    222,
+    234,
+    279
+  ]
 }

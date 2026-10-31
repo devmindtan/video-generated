@@ -4,13 +4,26 @@
   "authors": [
     "Minh Niệm"
   ],
-  "status": "awaiting-source",
-  "sourceSha256": null,
-  "cacheEdition": null,
-  "editionDetails": null,
+  "status": "research",
+  "sourceSha256": "3e6d6ca9e366a41c82b6a4cb72f8fb31ed369d2b82f4730e0ca52cdb4986115e",
+  "cacheEdition": "3e6d6ca9e366a41c82b6a4cb72f8fb31ed369d2b82f4730e0ca52cdb4986115e-de2a45e349f9",
+  "editionDetails": {
+    "edition": "Bản \"tái bản có chỉnh lý\" (theo tiêu đề lời nói đầu, PDF page 2)",
+    "translator": null,
+    "publisher": null,
+    "year": null,
+    "provenance": "PDF người dùng thêm qua trang quản lý ngày 2026-10-30. Có watermark \"Ebook miễn phí tại : www.Sachvui.Com\" (PDF pages 14, 276): bản ebook phát tán lại, không phải file của nhà xuất bản. PDF không có trang thông tin xuất bản."
+  },
   "chapterMap": "chapters.json",
   "research": "research.md",
   "seasonPlan": "season-plan.md",
-  "pdfInbox": "library/books/inbox/",
-  "note": "Chưa nhận PDF; không giả định trang/chương hoặc đã đọc sách."
+  "note": "Đã đọc đủ 50/50 chương cùng lời nói đầu, lời giới thiệu, lời tác giả; ghi chú, luận điểm có nguồn và điểm không dùng ở research.md. Chưa có dàn ý tập hay kịch bản được duyệt.",
+  "sourceFile": "library/books/hieu-ve-trai-tim/sources/hieu-ve-trai-tim.pdf",
+  "pdfPages": 279,
+  "extractedCharacters": 544203,
+  "textLayer": "native",
+  "ocr": false,
+  "chaptersTotal": 50,
+  "chaptersRead": 50,
+  "checkedAt": "2026-10-30"
 }

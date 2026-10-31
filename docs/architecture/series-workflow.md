@@ -69,6 +69,22 @@ Sau khi có tài liệu và duyệt kịch bản:
 3. Ghi đúng IDs/kinds vào `registrations` của tập rồi chuyển sang production. Trạng thái không tự thay bằng CLI tạo hồ sơ.
 4. Chạy `projects:check`, typecheck và QA của tập. Không chạy batch render hoặc tái tạo tất cả giọng để kiểm tra kiến trúc.
 
+## Quy trình sản xuất và ghi chú theo series
+
+Trang quản lý hiện quy trình của từng series (trang series → Quy trình sản xuất): các bước đánh số theo giai đoạn, ai làm (agent soạn nháp, bạn chạy công cụ, bạn duyệt, kiểm tra, thủ công), đầu vào/đầu ra và các bước phải kiểm lại khi kết quả đổi. Đồ thị bước lấy từ `tools/production-automation/cli.cjs` theo profile của series (triết lý, sách, thiếu nhi); series chưa có profile (ví dụ Video khách hàng) chưa có quy trình được duyệt.
+
+Bạn thêm quy tắc và ghi chú vào `series/<channel>/<series>/workflow.json`:
+
+```json
+{
+  "schemaVersion": 1,
+  "general": {"rules": ["Quy tắc cho mọi bước"], "notes": ""},
+  "stages": {"script": {"rules": ["Mở đầu bằng một tình huống cụ thể"], "notes": "Bối cảnh cho agent"}}
+}
+```
+
+Agent đọc `general` và mục của bước đang làm trước khi làm; runner chèn chúng vào `project_context.md`. Quy tắc/ghi chú chỉ bổ sung hướng dẫn, không đổi bước, cổng duyệt, và không mở khóa render, đăng tải hay sinh nội dung trả phí. Lưu từ web kiểm tra phiên bản (sửa ngoài trang thì web từ chối ghi đè) và giữ bản cũ trong `.manager-history/`.
+
 ## Thêm series
 
 ```sh

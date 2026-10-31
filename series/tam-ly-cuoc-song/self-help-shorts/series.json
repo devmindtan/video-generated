@@ -705,20 +705,6 @@
           "kind": "Still"
         }
       ]
-    },
-    {
-      "id": "abc",
-      "title": "abc",
-      "status": "planning",
-      "format": "short",
-      "durationSeconds": 45,
-      "paths": {
-        "source": "src/projects/abc",
-        "scripts": "scripts/projects/abc",
-        "docs": "docs/projects/abc",
-        "assets": "public/abc"
-      },
-      "registrations": []
     }
   ]
 }

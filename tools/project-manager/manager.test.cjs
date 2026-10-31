@@ -72,18 +72,18 @@ test('mutations require origin and session token; planning creates no render or 
   assert.equal((await f.post('/api/projects',body)).status,400);
   assert.equal((await f.post('/api/render',{})).status,404);
 });
-test('folder opening is limited to known project directories and new series uses catalog workflow',async t=>{
+test('folder opening is limited to known project directories and series cannot be created from the manager',async t=>{
   const f=await fixture(t);
   assert.equal((await f.post('/api/open-folder',{id:'old',group:'docs'})).status,200);
   assert.deepEqual(f.opened,[path.join(f.root,'docs/projects/old')]);
   assert.equal((await f.post('/api/open-folder',{id:'../../',group:'docs'})).status,400);
-  assert.equal((await f.post('/api/series',{channel:'tam-ly-cuoc-song',id:'new-series',title:'Series mới',formats:'long,short'})).status,201);
-  const next=await (await fetch(f.base+'/api/workspace')).json();assert.equal(next.series.length,2);
+  assert.equal((await f.post('/api/series',{channel:'tam-ly-cuoc-song',id:'new-series',title:'Series mới',formats:'long,short'})).status,404);
+  const next=await (await fetch(f.base+'/api/workspace')).json();assert.equal(next.series.length,1);
 });
 test('rendered media is discovered and served with seek ranges; source images are not rendered thumbnails',async t=>{
  const f=await fixture(t);f.write('projects/Old/Old.mp4','0123456789');f.write('projects/Old/OldThumb.png',Buffer.from('89504e470d0a1a0a','hex'));
  const data=await (await fetch(f.base+'/api/workspace')).json();assert.equal(data.projects[0].renderedVideo,true);assert.equal(data.projects[0].renderedThumbnail,true);
- const response=await fetch(f.base+'/api/media?id=old&kind=video',{headers:{Range:'bytes=2-5'}});assert.equal(response.status,206);assert.equal(await response.text(),'2345');assert.equal(response.headers.get('content-range'),'bytes 2-5/10');
+ const response=await fetch(f.base+'/api/media?id=old&kind=video',{headers:{Range:'bytes=2-5'}});assert.equal(response.status,206,await response.clone().text());assert.equal(await response.text(),'2345');assert.equal(response.headers.get('content-range'),'bytes 2-5/10');
  assert.equal((await fetch(f.base+'/api/media?id=old&kind=video',{headers:{Range:'bytes=20-30'}})).status,416);
  assert.equal((await fetch(f.base+'/api/media?id=old&kind=source')).status,404);
 });
@@ -108,13 +108,12 @@ test('delete requires fresh confirmation; archives production files and removes 
  assert.equal((await (await fetch(f.base+'/api/workspace')).json()).projects.length,0);
  require('../../scripts/catalog/catalog.cjs').validate(require('../../scripts/catalog/catalog.cjs').load(f.root));
 });
-test('empty and populated series deletion preserve private book sources and validate catalog',async t=>{
- const f=await fixture(t);await f.post('/api/series',{channel:'tam-ly-cuoc-song',id:'empty',title:'Trống',formats:'short'});
- let plan=await (await f.post('/api/delete-preview',{kind:'series',id:'empty'})).json();assert.equal(plan.projectCount,0);assert.equal(plan.registrations,0);
- assert.equal((await f.post('/api/delete',{...plan,confirm:true})).status,200);
- plan=await (await f.post('/api/delete-preview',{kind:'series',id:'demo'})).json();assert.equal(plan.projectCount,1);
- assert.equal((await f.post('/api/delete',{...plan,confirm:true})).status,200);
- assert.equal((await (await fetch(f.base+'/api/workspace')).json()).series.length,0);assert.equal(fs.existsSync(path.join(f.root,'library/books/private.pdf')),true);
+test('series cannot be deleted from the manager',async t=>{
+ const f=await fixture(t);const catalog=fs.readFileSync(path.join(f.root,'series/catalog.json'),'utf8');
+ assert.equal((await f.post('/api/delete-preview',{kind:'series',id:'demo'})).status,400);
+ assert.equal((await f.post('/api/delete',{kind:'series',id:'demo',revision:'x',confirm:true})).status,400);
+ assert.equal(fs.readFileSync(path.join(f.root,'series/catalog.json'),'utf8'),catalog);
+ assert.equal((await (await fetch(f.base+'/api/workspace')).json()).projects.length,1);
 });
 test('Studio launch validates the requested project composition before starting',async t=>{
  const f=await fixture(t);let starts=0;
@@ -124,4 +123,76 @@ test('Studio launch validates the requested project composition before starting'
  const post=body=>fetch(base+'/api/studio',{method:'POST',headers:{Origin:base,'X-Workspace-Token':token,'Content-Type':'application/json'},body:JSON.stringify(body)});
  assert.equal((await post({id:'old',composition:'NotRegistered'})).status,400);assert.equal(starts,0);
  const res=await post({id:'old',composition:'Old'});assert.equal(res.status,200);assert.equal((await res.json()).url,'http://localhost:3000/Old');assert.equal(starts,1);
+});
+test('book covers stay scoped to book records, preserve old images and reject non-image input',async t=>{
+ const f=await fixture(t),png=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jRZkAAAAASUVORK5CYII=','base64');
+ const upload=(body,book='test-book',token=f.workspace.token)=>fetch(f.base+'/api/book-cover?series=demo&book='+encodeURIComponent(book),{method:'POST',headers:{Origin:f.base,'X-Workspace-Token':token,'Content-Type':'image/png'},body});
+ assert.equal((await fetch(f.base+'/api/book-cover?series=demo&book=test-book')).status,404);
+ assert.equal((await upload(png,'test-book','bad-token')).status,403);
+ const r=await upload(png);assert.equal(r.status,201);const first=await r.json();
+ const image=await fetch(f.base+'/api/book-cover?series=demo&book=test-book');assert.equal(image.headers.get('content-type'),'image/png');assert.deepEqual(Buffer.from(await image.arrayBuffer()),png);
+ assert.equal((await upload('<svg onload="alert(1)"/>')).status,400);
+ assert.equal((await upload(png,'../test-book')).status,400);
+ const second=Buffer.concat([png,Buffer.from('another image take')]);assert.equal((await upload(second)).status,201);
+ const folder=path.join(f.root,'series/tam-ly-cuoc-song/demo/books/test-book/covers');assert.ok(fs.existsSync(path.join(folder,first.revision)));
+ const ws=await (await fetch(f.base+'/api/workspace')).json();assert.notEqual(ws.books[0].cover,first.revision);
+ assert.equal(JSON.parse(fs.readFileSync(path.join(f.root,'series/tam-ly-cuoc-song/demo/books/test-book/book.json'))).sourceSha256,null);
+});
+test('series workflow shows automation stages; only per-stage rules and notes are writable, with conflict check and history',async t=>{
+ const f=await fixture(t),file=path.join(f.root,'series/tam-ly-cuoc-song/demo/workflow.json');
+ const flow=await (await fetch(f.base+'/api/workflow?series=demo')).json();
+ assert.equal(flow.profile,'philosophy');assert.equal(flow.stages[0].id,'brief');assert.equal(flow.stages.find(s=>s.id==='approve-script').automation.mode,'gate');
+ assert.ok(flow.phases.flatMap(p=>p.stages).length===flow.stages.length);assert.equal(fs.existsSync(file),false);
+ assert.equal((await f.post('/api/workflow',{series:'demo',stage:'script',rules:['Mở đầu bằng một tình huống cụ thể'],notes:'Tránh giọng giảng giải.',revision:'stale'})).status,409);
+ assert.equal((await f.post('/api/workflow',{series:'demo',stage:'render-now',rules:[],notes:'x',revision:flow.revision})).status,400);
+ assert.equal((await f.post('/api/workflow',{series:'../demo',stage:'script',rules:[],notes:'',revision:flow.revision})).status,400);
+ assert.equal((await f.post('/api/workflow',{series:'demo',stage:'script',rules:['a'.repeat(501)],notes:'',revision:flow.revision})).status,400);
+ const saved=await (await f.post('/api/workflow',{series:'demo',stage:'script',rules:[' Mở đầu bằng một tình huống cụ thể ',''],notes:'Tránh giọng giảng giải.',revision:flow.revision})).json();
+ assert.deepEqual(JSON.parse(fs.readFileSync(file,'utf8')).stages.script,{rules:['Mở đầu bằng một tình huống cụ thể'],notes:'Tránh giọng giảng giải.'});
+ // An external edit wins: the old revision is refused and the user's extra keys survive the next save.
+ const external=JSON.parse(fs.readFileSync(file,'utf8'));external.owner='edited in IDE';fs.writeFileSync(file,JSON.stringify(external));
+ assert.equal((await f.post('/api/workflow',{series:'demo',stage:'general',rules:['Giữ tông trầm'],notes:'',revision:saved.revision})).status,409);
+ const fresh=await (await fetch(f.base+'/api/workflow?series=demo')).json();assert.deepEqual(fresh.stages.find(s=>s.id==='script').config.rules,['Mở đầu bằng một tình huống cụ thể']);
+ assert.equal((await f.post('/api/workflow',{series:'demo',stage:'general',rules:['Giữ tông trầm'],notes:'',revision:fresh.revision})).status,200);
+ const data=JSON.parse(fs.readFileSync(file,'utf8'));assert.equal(data.owner,'edited in IDE');assert.deepEqual(data.general.rules,['Giữ tông trầm']);
+ assert.equal(fs.readdirSync(path.join(f.root,'series/tam-ly-cuoc-song/demo/.manager-history')).filter(n=>n.startsWith('workflow-')).length,1);
+ assert.equal(fs.readFileSync(path.join(f.root,'docs/projects/old/script.md'),'utf8'),'# Kịch bản\n\nNội dung tiếng Việt.');
+});
+test('voice playlist: choose/unchoose presets by name with conflict check and history; narration untouched',async t=>{
+ const f=await fixture(t),playlistFile=path.join(f.root,'scripts/shared/voice-playlists.json');
+ f.write('public/voice-auditions/all-presets-v1/manifest.json',{text:'Mẫu',voices:[{id:'01-a',name:'An',gender:'Nam',region:'Bắc',file:'01-a.wav'},{id:'02-b',name:'Bình',gender:'Nữ',region:'Nam',file:'02-b.wav'}]});
+ f.write('public/voice-auditions/all-presets-v1/01-a.wav','RIFF');f.write('scripts/projects/old/voice.json',{voice:'Bình'});
+ f.write('scripts/shared/voice-playlists.json',JSON.stringify({schemaVersion:1,preferredPlaylist:'production',playlists:[{id:'production',name:'Giọng đã chọn',voiceNames:['An'],selectedFrom:{catalog:'all-presets-v1',numbers:[1]}}],policy:'Giữ nguyên.'},null,2)+'\n');
+ const voices=await (await fetch(f.base+'/api/voices')).json();
+ assert.deepEqual(voices.voices.map(v=>[v.name,v.preferred,v.usedBy.length,v.sample]),[['An',true,0,true],['Bình',false,1,false]]);
+ assert.equal((await f.post('/api/voice-playlist',{voiceNames:['An','Bình'],revision:'stale'})).status,409);
+ for(const bad of [['Ai đó'],['An','An'],'An'])assert.equal((await f.post('/api/voice-playlist',{voiceNames:bad,revision:voices.playlist.revision})).status,400);
+ const saved=await (await f.post('/api/voice-playlist',{voiceNames:['An','Bình'],revision:voices.playlist.revision})).json();
+ const data=JSON.parse(fs.readFileSync(playlistFile,'utf8'));
+ assert.deepEqual(data.playlists[0].voiceNames,['An','Bình']);assert.deepEqual(data.playlists[0].selectedFrom.numbers,[1,2]);assert.equal(data.policy,'Giữ nguyên.');
+ assert.equal((await f.post('/api/voice-playlist',{voiceNames:['Bình'],revision:saved.revision})).status,200);
+ assert.equal(fs.readdirSync(path.join(f.root,'scripts/shared/.manager-history')).length,2);
+ assert.deepEqual(JSON.parse(fs.readFileSync(path.join(f.root,'scripts/projects/old/voice.json'),'utf8')),{voice:'Bình'});
+ assert.equal((await fetch(f.base+'/api/audio?kind=voice&key=01-a')).status,200);assert.equal((await fetch(f.base+'/api/audio?kind=voice&key=02-b')).status,404);
+});
+test('VoiceStudio launch requires the session token and returns the loopback URL',async t=>{
+ const f=await fixture(t);let starts=0;
+ const server=createManager({root:f.root,ensureVoiceStudio:async()=>{starts++;return {ready:true,url:'http://127.0.0.1:3900/',version:'test'};},voiceStudio:{status:async()=>({state:'off'}),stop:async()=>({stopped:0,forced:0})}});await new Promise(r=>server.listen(0,'127.0.0.1',r));
+ t.after(()=>{server.closeAllConnections();return new Promise(r=>server.close(r));});
+ const base=`http://127.0.0.1:${server.address().port}`,token=(await (await fetch(base+'/api/workspace')).json()).token;
+ const post=(headers)=>fetch(base+'/api/voicestudio',{method:'POST',headers:{Origin:base,'Content-Type':'application/json',...headers},body:'{}'});
+ assert.equal((await post({'X-Workspace-Token':'wrong'})).status,403);assert.equal(starts,0);
+ const ok=await post({'X-Workspace-Token':token});assert.equal(ok.status,200);assert.equal((await ok.json()).url,'http://127.0.0.1:3900/');assert.equal(starts,1);
+ assert.equal((await (await fetch(base+'/api/voicestudio')).json()).state,'off');assert.equal(starts,1);
+});
+test('VoiceStudio status is read-only; stop requires the session token',async t=>{
+ const f=await fixture(t);let stops=0;
+ const server=createManager({root:f.root,voiceStudio:{status:async()=>({state:'ready',version:'test',memoryBytes:1024,engine:{id:'voxcpm2',name:'VoxCPM2'}}),stop:async()=>{stops++;return {stopped:2,forced:0};}}});
+ await new Promise(r=>server.listen(0,'127.0.0.1',r));t.after(()=>{server.closeAllConnections();return new Promise(r=>server.close(r));});
+ const base=`http://127.0.0.1:${server.address().port}`,token=(await (await fetch(base+'/api/workspace')).json()).token;
+ const status=await (await fetch(base+'/api/voicestudio')).json();assert.equal(status.state,'ready');assert.equal(status.engine.id,'voxcpm2');assert.equal(stops,0);
+ const post=headers=>fetch(base+'/api/voicestudio/stop',{method:'POST',headers:{Origin:base,'Content-Type':'application/json',...headers},body:'{}'});
+ assert.equal((await post({'X-Workspace-Token':'wrong'})).status,403);assert.equal(stops,0);
+ assert.equal((await post({'X-Workspace-Token':token,Origin:'https://evil.example'})).status,403);assert.equal(stops,0);
+ const ok=await post({'X-Workspace-Token':token});assert.equal(ok.status,200);assert.deepEqual(await ok.json(),{stopped:2,forced:0});assert.equal(stops,1);
 });

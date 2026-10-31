@@ -97,7 +97,8 @@ def main():
                 chunks=[np.zeros(round(cfg['leadIn']*24000))]
                 phrase_ranges=[]
                 for sentence in cfg['sentences']:
-                    sampling={'top_k':25,'top_p':.95,'repetition_penalty':1.2}
+                    # Optional per-config sampling override for A/B auditions; defaults keep existing cache keys.
+                    sampling={'top_k':25,'top_p':.95,'repetition_penalty':1.2,**cfg.get('sampling',{})}
                     key=cache_key(record['name'],sentence['text'],cfg['temperature'],PROFILES['legacy24'],identity,sampling)
                     source=cache/(key+'.wav')
                     if not source.exists():

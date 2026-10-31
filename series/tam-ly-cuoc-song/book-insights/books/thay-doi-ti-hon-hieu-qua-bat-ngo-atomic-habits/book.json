@@ -1,0 +1,28 @@
+{
+  "id": "thay-doi-ti-hon-hieu-qua-bat-ngo-atomic-habits",
+  "title": "Thay đổi tí hon hiệu quả bất ngờ (Atomic Habits)",
+  "authors": [
+    "James Clear"
+  ],
+  "status": "research",
+  "sourceSha256": "288f095fb01af39904f8df91d2d40a7799601ff584a42eb496aa402016fa08ae",
+  "note": "Đã đọc đủ 20/20 chương cùng lời nói đầu, phần giới thiệu, phần kết và phụ lục (bị cắt ở PDF 178); ghi chú, luận điểm có nguồn, lỗi bản dịch và điểm không dùng ở research.md. Chưa có dàn ý tập hay kịch bản được duyệt.",
+  "cacheEdition": "288f095fb01af39904f8df91d2d40a7799601ff584a42eb496aa402016fa08ae-de2a45e349f9",
+  "editionDetails": {
+    "edition": "Bản dịch tiếng Việt \"Atomic Habits - Thay Đổi Tí Hon, Hiệu Quả Bất Ngờ\"",
+    "translator": "Lý Ngọc Anh",
+    "publisher": null,
+    "year": null,
+    "provenance": "PDF người dùng thêm qua trang quản lý ngày 2026-10-30. Trang 2 ghi \"James Clear & Lý Ngọc Anh (dịch)\" và từ khóa \"Best Seller, Self Help\": bản ebook chuyển đổi, không có trang thông tin xuất bản."
+  },
+  "sourceFile": "library/books/thay-doi-ti-hon-hieu-qua-bat-ngo-atomic-habits/sources/thay-doi-ti-hon-hieu-qua-bat-ngo-pdf.pdf",
+  "pdfPages": 186,
+  "extractedCharacters": 432113,
+  "textLayer": "native",
+  "ocr": false,
+  "chapterMap": "chapters.json",
+  "research": "research.md",
+  "chaptersTotal": 20,
+  "chaptersRead": 20,
+  "checkedAt": "2026-10-30"
+}

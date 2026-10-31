@@ -94,3 +94,44 @@ Cùng hai cụm lời ở `scripts/shared/voice-catalog.json`, cùng temperature
 Giọng Trúc Ly là preset gốc, chưa nâng +2,5 semitone như bản B đã chọn cho kids. Các preset không bị biến đổi để bắt chước giọng video đang dùng. Không có preset nào được tự áp dụng vào video.
 
 Take mới không ghi đè take cũ. Nếu quá trình bị gián đoạn, `--resume` là lựa chọn tiếp tục rõ ràng: giữ mẫu hoàn tất, chỉ thử phần chưa hoàn tất. Không áp dụng cơ chế này cho API có phí. Không render MP4/still/thumbnail.
+
+## VoiceStudio — studio giọng nói local (cài 2026-10-30)
+
+Nguồn tham khảo: `repos/debpalash--VoiceStudio`, ghim `4d4cb0b` trong `repos-manifest.json` (không sửa). Bản chạy là một checkout riêng cùng commit ở `.voicestudio/app` (ngoài Git), giống cách multi-agent-system có runtime riêng.
+
+- Mở: trang quản lý → **Studio giọng nói** (sidebar hoặc nút trên trang Giọng đọc), hoặc `npm run voicestudio -- start` rồi vào http://127.0.0.1:3900/. `npm run voicestudio -- status` báo trạng thái. Server chạy nền; log ở `.voicestudio/server.log`.
+- Cài đặt: `bun` 1.4.2 qua mise (không kích hoạt toàn cục); Python 3.11 + PyTorch `2.8.0+cpu` theo `uv.lock` của repo trong `.voicestudio/app/.venv`; giao diện web build vào `.voicestudio/app/frontend/dist`. Lệnh cài lại: `.voicestudio/install.sh` (đặt `OMNIVOICE_TORCH_VARIANT=cpu`). Không dùng `curl … | sh`, không đụng `.venv` của VieNeu hay các môi trường khác.
+- Chạy: chỉ bind `127.0.0.1:3900` (API loopback không cần khóa; không bật chia sẻ mạng), `OMNIVOICE_ANALYTICS_DISABLED=1`, dữ liệu và cache model trong `.voicestudio/data` (`HF_HOME=.voicestudio/data/huggingface`). Gỡ: dừng server và xóa `.voicestudio/`.
+- Model: **VoxCPM2** (`openbmb/VoxCPM2`, Apache-2.0, có tiếng Việt, 48 kHz, nhân bản và thiết kế giọng bằng mô tả) cài qua sidecar một chạm vào `.voicestudio/data/engines/voxcpm2`. **OmniVoice** (engine mặc định) **không tải**: trọng số CC-BY-NC, chỉ phi thương mại, không hợp với kênh có thể kiếm tiền. Người dùng đã chọn VoxCPM2 ngày 2026-10-30; muốn dùng OmniVoice cần người dùng tự chấp nhận license. CosyVoice 3 và MOSS-TTS-Nano không có tiếng Việt.
+- Máy không có GPU NVIDIA: tạo giọng chạy CPU, chậm hơn VieNeu nhiều; thử câu ngắn trước.
+- Take tạo ra đi qua thử A/B, nghe chọn, giữ take cũ; điểm ASR không chứng minh thanh điệu tiếng Việt đúng. Không thay giọng đã duyệt của video hiện có nếu không được yêu cầu.
+
+## Hai lựa chọn giọng cho video mới (người dùng chốt 2026-10-30)
+
+Mỗi video mới chọn một trong hai cách và ghi vào `brief.md` của tập (ví dụ `Giọng: lựa chọn 1 — Hải Đăng` hoặc `Giọng: lựa chọn 2 — clone từ bản ghi của tôi`). Không ghi thì dùng lựa chọn 1.
+
+| | Lựa chọn 1 — Giọng có sẵn (mặc định) | Lựa chọn 2 — Clone giọng (khi muốn) |
+|---|---|---|
+| Công cụ | VieNeu v3 Turbo trong `.venv` (`voice:audition`) | VoiceStudio + VoxCPM2 (`npm run voicestudio -- start`, trang quản lý → Studio giọng nói) |
+| Nguồn giọng | 25 preset; ưu tiên playlist trong `scripts/shared/voice-playlists.json`; kids giữ Trúc Ly giọng B | Bản ghi mẫu người dùng cung cấp; hoặc thiết kế giọng bằng mô tả |
+| Điều kiện | Không | Bản ghi là giọng của người dùng hoặc người đã đồng ý cho clone. Không clone người nổi tiếng, người sáng tạo khác hay giọng lấy từ video khi chưa có sự đồng ý |
+| Bản ghi mẫu | — | 10–30 giây, một người nói, rõ, không nhạc nền hay tiếng vang; VoxCPM2 chỉ dùng 30 giây đầu. Lưu trong VoiceStudio (`.voicestudio/data`, ngoài Git), không đưa vào `public/` |
+| Tốc độ trên máy này | Nhanh | Chậm: câu 4 giây mất khoảng 100 giây trên CPU, dùng khoảng 6–7 GB RAM; tắt VoiceStudio khi xong |
+
+Cả hai đều tạo take thử: nghe chọn, giữ take cũ, ghi take đã chọn vào metadata của tập. Agent không tự chuyển sang lựa chọn 2.
+
+### Agent làm gì khi người dùng yêu cầu giọng clone (lựa chọn 2)
+
+1. **Bản ghi mẫu và sự đồng ý.** Cần đường dẫn file người dùng đưa (WAV/MP3/FLAC/M4A/OGG, 10–30 giây, một người nói, rõ, không nhạc) và biết đó là giọng của ai: `self` (của người dùng) hoặc `permission` (người trong bản ghi đã đồng ý). Thiếu một trong hai thì hỏi lại. Không tự tìm hay cắt giọng từ video/internet. Nếu người dùng cho biết lời nói trong bản ghi, truyền vào `--ref-text`.
+2. **Ghi lựa chọn vào brief** của tập: `Giọng: cách 2 — clone (consent: self)`. Tập thiếu nhi chỉ dùng clone khi người dùng nói rõ cho tập đó; mặc định vẫn Trúc Ly giọng B.
+3. **Thử ngắn trước** (CPU chậm, khoảng 100 giây cho mỗi câu 4 giây, chiếm 6–7 GB RAM; không chạy song song VieNeu, Remotion render hay model khác):
+
+   ```sh
+   npm run voicestudio -- clone --project <slug> --take clone-v1 --ref <file> --consent self --scene 1
+   ```
+
+   Lời đọc: `--scene N` hoặc `--all` (theo `scripts/projects/<slug>/audition.json`), `--text-file <file>` (mỗi dòng/đoạn một WAV), hoặc `--text "…"`. Tùy chọn: `--ref-text "…"`, `--instruct "…"` (phong cách đọc), `--seed N`, `--keep-running`.
+4. **Đưa người dùng nghe** `public/<slug>/voice-auditions/<take>/index.html`. Chỉ chạy `--all` cho cả kịch bản khi họ đồng ý với giọng ở bản thử. Mỗi lần chạy dùng tên take mới; lệnh từ chối ghi đè.
+5. **Không tự áp dụng** take vào `Video.tsx`/captions/timing. Việc ghép take đã chọn là bước dựng riêng, sau khi người dùng chọn take.
+
+Lệnh tự bật VoiceStudio nếu đang tắt và tự tắt khi xong (trừ khi nó đã mở sẵn hoặc có `--keep-running`), kể cả khi lỗi giữa chừng. Bản ghi mẫu được chép theo SHA vào `.voicestudio/data/references/` (ngoài Git, không vào `public/`); `manifest.json` của take ghi SHA, tên file gốc, sự đồng ý, engine/model, seed, thời gian tạo và trạng thái "chờ nghe chọn". Mã: `tools/voicestudio/clone.cjs`; kiểm tra: `npm run test:voicestudio` (VoiceStudio giả, workspace tạm).

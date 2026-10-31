@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "files": {
+    "audio-library/music/Pufino - Enlivening (freetouse.com).mp3": {
+      "kind": "music",
+      "title": "Enlivening",
+      "artists": [
+        "Pufino"
+      ],
+      "originalName": "Pufino - Enlivening (freetouse.com).mp3",
+      "sha256": "60f8b4899cec7f909b4af6f821bbb016942c6eb266acc83b1794e7ccdb15af7d",
+      "bytes": 6116089,
+      "addedAt": "2026-10-30T16:34:27.997Z",
+      "updatedAt": "2026-10-30T16:41:33.405Z"
+    },
+    "audio-library/music/Aylex - Passionate (freetouse.com).mp3": {
+      "kind": "music",
+      "title": "Passionate",
+      "artists": [
+        "Aylex"
+      ],
+      "originalName": "Aylex - Passionate (freetouse.com).mp3",
+      "sha256": "206dd647542feaf2802e814dd1b4831f6df0a2d108151db2d049b42b9e96f611",
+      "bytes": 5283142,
+      "addedAt": "2026-10-30T16:35:28.700Z"
+    },
+    "audio-library/music/Nebulite - Wedding Waltz (freetouse.com).mp3": {
+      "kind": "music",
+      "title": "Wedding Waltz",
+      "artists": [
+        "Nebulite"
+      ],
+      "originalName": "Nebulite - Wedding Waltz (freetouse.com).mp3",
+      "sha256": "1638643b9853fcf250cf787c2dc7ab8c0984d43bb3e046995c133ca6f01d1ed4",
+      "bytes": 5363605,
+      "addedAt": "2026-10-30T17:05:20.227Z"
+    },
+    "audio-library/music/Moavii - Butterflies (freetouse.com).mp3": {
+      "kind": "music",
+      "title": "Butterflies",
+      "artists": [
+        "Moavii"
+      ],
+      "originalName": "Moavii - Butterflies (freetouse.com).mp3",
+      "sha256": "3238368d8933b2ebb774287fc9159a58564329585588a397f40048e2e8879a2e",
+      "bytes": 5649968,
+      "addedAt": "2026-10-30T17:05:41.333Z"
+    }
+  }
+}

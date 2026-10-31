@@ -1,0 +1,38 @@
+{
+  "title": "Đọc sách, hiểu mình — intro — Xuân Vĩnh D: nhiệt độ 0,35 · phạt lặp 1,5 · top-k 15 (thử bớt kéo dài cuối câu)",
+  "temperature": 0.35,
+  "leadIn": 0.16,
+  "tail": 0.35,
+  "maxDurationSeconds": 60,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Xin chào cả nhà, rất vui được gặp lại mọi người.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Đây là Đọc sách, hiểu mình. Mỗi tập, mình đọc trọn một cuốn sách, rồi kể lại những nội dung chính và những điều đáng giữ trong cuốn sách ấy.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Nếu bạn là người không có nhiều thời gian và cần đọc sách để có thêm kiến thức, thì đây là dành cho bạn.",
+      "pauseAfter": 0.5
+    },
+    {
+      "scene": 1,
+      "text": "Chúc cả nhà một ngày tràn đầy niềm vui và hạnh phúc.",
+      "pauseAfter": 0.6
+    },
+    {
+      "scene": 1,
+      "text": "Để không làm mất thời gian của mọi người, chúng ta hãy cùng nhau bắt đầu.",
+      "pauseAfter": 0
+    }
+  ],
+  "sampling": {
+    "repetition_penalty": 1.5,
+    "top_k": 15
+  }
+}

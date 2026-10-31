@@ -43,6 +43,8 @@ const fs=require('node:fs'),path=require('node:path');
   assert.equal(new URL(page.url()).searchParams.get('series'),'self-help-shorts');mark('Direct project link Back falls back to canonical parent');
   await page.goto(base+'/?series=self-help-shorts',{waitUntil:'networkidle'});await page.locator('#back-button').click();await page.waitForURL(u=>u.searchParams.get('channel')==='tam-ly-cuoc-song'&&!u.searchParams.has('series'));mark('Direct series link Back resolves the owner channel');
   await page.locator('[data-nav="books"]').click();await page.locator('.book-card .card-title').first().click();await page.locator('#drawer:not([hidden])').waitFor();
+  const pageMode=await page.evaluate(()=>{const d=document.querySelector('#drawer'),v=document.querySelector('#document-view');return {page:d.classList.contains('book-page'),role:d.getAttribute('role'),sidebar:!document.querySelector('#sidebar').inert,backdrop:document.querySelector('#drawer-backdrop').hidden,left:Math.round(d.getBoundingClientRect().left)===Math.round(document.querySelector('#sidebar').getBoundingClientRect().right)};});
+  assert.deepEqual(pageMode,{page:true,role:'region',sidebar:true,backdrop:true,left:true},'book opens as a full page beside a usable sidebar');
   assert.match(await page.locator('#drawer-breadcrumb').innerText(),/Đọc sách, hiểu mình/);assert.match(await page.locator('#drawer-breadcrumb').innerText(),/Tủ sách/);
   await page.locator('#drawer-breadcrumb a').last().click();await page.locator('#drawer').waitFor({state:'hidden'});
   assert.equal(new URL(page.url()).searchParams.get('view'),'books');

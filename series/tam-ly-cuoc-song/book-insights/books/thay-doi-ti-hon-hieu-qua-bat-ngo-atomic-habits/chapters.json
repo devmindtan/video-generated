@@ -1,0 +1,330 @@
+{
+  "book": "thay-doi-ti-hon-hieu-qua-bat-ngo-atomic-habits",
+  "sourceSha256": "288f095fb01af39904f8df91d2d40a7799601ff584a42eb496aa402016fa08ae",
+  "edition": "288f095fb01af39904f8df91d2d40a7799601ff584a42eb496aa402016fa08ae-de2a45e349f9",
+  "pageNumberConvention": "Số trang là trang PDF, đếm từ 1. Bản ebook này không có nhãn trang hay số trang in, nên chỉ trích dẫn bằng trang PDF.",
+  "mappingSummary": "Đã kiểm bookmark ngày 2026-10-30: tiêu đề \"Chương N\" có trên đúng trang được trỏ tới. Chữ chạy liên tục nên chương thường bắt đầu giữa trang, và trang cuối của chương là trang đầu của chương sau. Chương 2 có hai bookmark (số chương và tên chương) cùng ở trang 18.",
+  "partNote": "Các phần lấy theo tên chương mở đầu mỗi quy luật (chương 4, 8, 11, 15) và bookmark \"KIẾN THỨC NỀN TẢNG\". Chương 18-20 không có tiêu đề phần trong PDF này.",
+  "coverage": {
+    "chaptersRead": 20,
+    "chaptersTotal": 20,
+    "status": "complete"
+  },
+  "frontMatter": [
+    {
+      "title": "Bìa (ảnh, không có chữ)",
+      "pdfStart": 1,
+      "pdfEnd": 1,
+      "mappingSource": "visual-check"
+    },
+    {
+      "title": "Thông tin sách: tên, tác giả James Clear, dịch giả Lý Ngọc Anh",
+      "pdfStart": 2,
+      "pdfEnd": 2,
+      "mappingSource": "text-checked"
+    },
+    {
+      "title": "Lời nói đầu và Phần giới thiệu",
+      "pdfStart": 3,
+      "pdfEnd": 7,
+      "mappingSource": "bookmark-checked"
+    }
+  ],
+  "chapters": [
+    {
+      "number": 1,
+      "title": "NHỮNG NGUYÊN TẮC CƠ BẢN",
+      "part": "Kiến thức nền tảng",
+      "pdfStart": 7,
+      "pdfEnd": 18,
+      "startsMidPage": true,
+      "summaryPdfPage": 17,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 2,
+      "title": "CÁCH THỨC CÁC THÓI QUEN HÌNH THÀNH NÊN ĐẶC TÍNH /NHÂN DẠNG CỦA BẠN (VÀ NGƯỢC LẠI)",
+      "part": "Kiến thức nền tảng",
+      "pdfStart": 18,
+      "pdfEnd": 26,
+      "startsMidPage": true,
+      "summaryPdfPage": 26,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 3,
+      "title": "4 BƯỚC ĐỂ XÂY DỰNG NHỮNG THÓI QUEN TỐT HƠN",
+      "part": "Kiến thức nền tảng",
+      "pdfStart": 26,
+      "pdfEnd": 33,
+      "startsMidPage": true,
+      "summaryPdfPage": 33,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 4,
+      "title": "QUY LUẬT SỐ 1 - KHIẾN VIỆC ĐÓ TRỞ NÊN HIỂN NHIÊN",
+      "part": "Quy luật số 1 — Khiến việc đó trở nên hiển nhiên",
+      "pdfStart": 33,
+      "pdfEnd": 40,
+      "startsMidPage": true,
+      "summaryPdfPage": 40,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 5,
+      "title": "CÁCH TỐT NHẤT ĐỂ BẮT ĐẦU MỘT THÓI QUEN",
+      "part": "Quy luật số 1 — Khiến việc đó trở nên hiển nhiên",
+      "pdfStart": 40,
+      "pdfEnd": 49,
+      "startsMidPage": true,
+      "summaryPdfPage": 49,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 6,
+      "title": "Động lực được đánh giá cao quá mức; Trong khi môi trường lại có vai trò quan trọng hơn.",
+      "part": "Quy luật số 1 — Khiến việc đó trở nên hiển nhiên",
+      "pdfStart": 49,
+      "pdfEnd": 57,
+      "startsMidPage": true,
+      "summaryPdfPage": 57,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 7,
+      "title": "BÍ KÍP TỰ KIỂM SOÁT BẢN THÂN",
+      "part": "Quy luật số 1 — Khiến việc đó trở nên hiển nhiên",
+      "pdfStart": 57,
+      "pdfEnd": 61,
+      "startsMidPage": true,
+      "summaryPdfPage": 60,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 8,
+      "title": "QUY LUẬT SỐ 2: KHIẾN CHÚNG TRỞ NÊN HẤP DẪN",
+      "part": "Quy luật số 2 — Khiến chúng trở nên hấp dẫn",
+      "pdfStart": 61,
+      "pdfEnd": 71,
+      "startsMidPage": true,
+      "summaryPdfPage": 70,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 9,
+      "title": "Vai trò của gia đình, bạn bè trong việc hình thành thói quen",
+      "part": "Quy luật số 2 — Khiến chúng trở nên hấp dẫn",
+      "pdfStart": 71,
+      "pdfEnd": 79,
+      "startsMidPage": true,
+      "summaryPdfPage": 79,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 10,
+      "title": "CÁCH NHẬN RA VÀ LOẠI BỎ CÁC YẾU TỐ DẪN TỚI THÓI QUEN XẤU",
+      "part": "Quy luật số 2 — Khiến chúng trở nên hấp dẫn",
+      "pdfStart": 79,
+      "pdfEnd": 87,
+      "startsMidPage": true,
+      "summaryPdfPage": 87,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 11,
+      "title": "QUY LUẬT SỐ 3: KHIẾN VIỆC ĐÓ TRỞ NÊN DỄ DÀNG",
+      "part": "Quy luật số 3 — Khiến việc đó trở nên dễ dàng",
+      "pdfStart": 87,
+      "pdfEnd": 93,
+      "startsMidPage": true,
+      "summaryPdfPage": 93,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 12,
+      "title": "QUI LUẬT NỖ LỰC TỐI THIỂU",
+      "part": "Quy luật số 3 — Khiến việc đó trở nên dễ dàng",
+      "pdfStart": 93,
+      "pdfEnd": 101,
+      "startsMidPage": true,
+      "summaryPdfPage": 101,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 13,
+      "title": "LOẠI BỎ SỰ TRÌ HOÃN BẰNG CÁCH SỬ DỤNG QUI LUẬT HAI PHÚT",
+      "part": "Quy luật số 3 — Khiến việc đó trở nên dễ dàng",
+      "pdfStart": 101,
+      "pdfEnd": 110,
+      "startsMidPage": true,
+      "summaryPdfPage": 110,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 14,
+      "title": "CÁCH BIẾN THÓI QUEN TỐT THÀNH QUEN THUỘC VÀ THÓI QUEN XẤU THÀNH BẤT KHẢ THI",
+      "part": "Quy luật số 3 — Khiến việc đó trở nên dễ dàng",
+      "pdfStart": 110,
+      "pdfEnd": 119,
+      "startsMidPage": true,
+      "summaryPdfPage": 118,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 15,
+      "title": "QUI LUẬT SỐ 4: KHIẾN VIỆC ĐÓ MANG TÍNH THỎA MÃN",
+      "part": "Quy luật số 4 — Khiến việc đó mang tính thỏa mãn",
+      "pdfStart": 119,
+      "pdfEnd": 128,
+      "startsMidPage": true,
+      "summaryPdfPage": 127,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 16,
+      "title": "CÁCH THỨC THEO DÕI THÓI QUEN TỐT MỖI NGÀY",
+      "part": "Quy luật số 4 — Khiến việc đó mang tính thỏa mãn",
+      "pdfStart": 128,
+      "pdfEnd": 136,
+      "startsMidPage": true,
+      "summaryPdfPage": 136,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 17,
+      "title": "MỘT NGƯỜI BẠN ĐỒNG HÀNH TRÁCH NHIỆM CÓ THỂ THAY ĐỔI MỌI THỨ",
+      "part": "Quy luật số 4 — Khiến việc đó mang tính thỏa mãn",
+      "pdfStart": 136,
+      "pdfEnd": 143,
+      "startsMidPage": true,
+      "summaryPdfPage": 143,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 18,
+      "title": "NHỮNG CHIẾN THUẬT TỐI ƯU BIẾN TỪ BÌNH THƯỜNG TỚI VĨ ĐẠI",
+      "part": null,
+      "pdfStart": 143,
+      "pdfEnd": 153,
+      "startsMidPage": true,
+      "summaryPdfPage": 152,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 19,
+      "title": "QUI LUẬT GOLDILOCKS",
+      "part": null,
+      "pdfStart": 153,
+      "pdfEnd": 162,
+      "startsMidPage": true,
+      "summaryPdfPage": 161,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "number": 20,
+      "title": "MẶT TRÁI CỦA VIỆC TẠO DỰNG THÓI QUEN TỐT",
+      "part": null,
+      "pdfStart": 162,
+      "pdfEnd": 173,
+      "startsMidPage": true,
+      "summaryPdfPage": null,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    }
+  ],
+  "backMatter": [
+    {
+      "title": "Phần kết",
+      "pdfStart": 173,
+      "pdfEnd": 175,
+      "mappingSource": "bookmark-checked",
+      "readStatus": "read"
+    },
+    {
+      "title": "Phụ lục",
+      "pdfStart": 175,
+      "pdfEnd": 178,
+      "mappingSource": "text-checked",
+      "readStatus": "read",
+      "note": "Bookmark phần này bị hỏng (chứa nguyên đoạn văn làm tiêu đề); dùng số trang ở đây. Nội dung ebook dừng giữa câu ở PDF 178 (\"Hệ thống 1 .\"); phần còn lại của phụ lục bản gốc không có trong file."
+    },
+    {
+      "title": "Mục lục ebook và bản lặp phụ lục",
+      "pdfStart": 179,
+      "pdfEnd": 186,
+      "mappingSource": "text-checked",
+      "note": "Phần thừa của ebook: trang 179-182 lặp mục lục và phụ lục, trang 183-186 lặp lại 179-182. Không tính là nội dung thêm."
+    }
+  ],
+  "figures": {
+    "intact": [
+      31,
+      32,
+      44,
+      50,
+      61,
+      66,
+      76,
+      91,
+      92,
+      94,
+      104,
+      106,
+      109,
+      113,
+      118,
+      142,
+      156,
+      164
+    ],
+    "brokenPlaceholders": [
+      9,
+      12,
+      14,
+      19,
+      21
+    ],
+    "note": "Hình minh họa là ảnh, chữ trong hình (thường tiếng Anh) không tìm kiếm được. Trang 9, 12, 14, 19, 21 chỉ còn biểu tượng ảnh lỗi: các hình này bị mất trong PDF."
+  },
+  "textArtifacts": "123/186 trang kết thúc bằng một dòng dấu rời (ví dụ \"ắ ố ế ẫ\") do font. Chữ xung quanh vẫn đủ dấu; bỏ qua dòng này khi trích. Cache giữ nguyên."
+}

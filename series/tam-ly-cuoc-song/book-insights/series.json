@@ -10,5 +10,26 @@
   ],
   "defaultDurationSeconds": null,
   "summary": "Series tóm tắt và phân tích sách; nghiên cứu theo nguồn, duyệt script trước sản xuất.",
-  "projects": []
+  "projects": [
+    {
+      "id": "book-hvtt-001-overview",
+      "title": "Hiểu về trái tim: tổng quan và đánh giá",
+      "status": "production",
+      "format": "long",
+      "durationSeconds": 750,
+      "paths": {
+        "source": "src/projects/book-hvtt-001-overview",
+        "scripts": "scripts/projects/book-hvtt-001-overview",
+        "docs": "docs/projects/book-hvtt-001-overview",
+        "assets": "public/book-hvtt-001-overview"
+      },
+      "registrations": [
+        {
+          "id": "BookHvttIntro",
+          "kind": "Composition"
+        }
+      ],
+      "book": "hieu-ve-trai-tim"
+    }
+  ]
 }

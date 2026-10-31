@@ -53,3 +53,13 @@ npm run typecheck
 ## Thư mục
 
 `series/` tổ chức biên tập; `src/projects/`, `scripts/projects/`, `docs/projects/` và `public/<id>/` giữ nội dung riêng từng tập. `src/shared/` và `scripts/shared/` chứa công cụ dùng chung. `repos/` chỉ để tham khảo upstream.
+
+### Chuẩn bị tự động hóa sản xuất
+
+Repo multi-agent tham chiếu đã được ghim trong `repos-manifest.json`. Xem [đánh giá, workflow và lộ trình nâng cấp](docs/architecture/production-automation.md).
+
+- `npm run automation -- doctor`: kiểm tra clone/revision và các điều kiện còn thiếu.
+- `npm run automation -- plan <project-id>`: lập manifest các chặng từ canonical catalog; không sửa tập hay chạy sản xuất.
+- `npm run test:automation`: kiểm tra lớp lập kế hoạch bằng fixture.
+
+Đây là chế độ chuẩn bị, chưa bật runtime/model, scheduler, auto-render hay API có phí. Manifest không chạy trực tiếp được trên upstream.

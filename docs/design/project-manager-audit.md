@@ -45,3 +45,18 @@
 - Lịch sử điều hướng được lưu đúng; Back/Forward khôi phục trang, tìm kiếm và hồ sơ. Hủy rời trang giữ ghi chú chưa lưu.
 - Phân cấp nút: primary xanh đậm, secondary viền trung tính, Studio xanh lam, xóa đỏ, quay lại/hủy kiểu nhẹ. Tủ sách chỉ có một nút tạo chính. Nút Hồ sơ có nhãn rõ ràng.
 - 10 kiểm tra điều hướng bằng Chrome đạt, cộng 16 kiểm tra trình duyệt hiện có và 10 backend tests. TypeScript đạt. Đã xem ảnh desktop, hồ sơ và mobile; không ghi dữ liệu dự án thật.
+
+## Ảnh bìa sách (2026-10-30)
+
+Đã kiểm tra chọn ảnh, thay ảnh, ảnh còn sau tải lại trang, ảnh cũ còn trên đĩa và hiển thị trên desktop/tablet/mobile bằng fixture. Đã xem screenshot editor và tủ sách. 11 backend tests và TypeScript đạt. Chỉ route ảnh bìa được phục vụ, không mở đường dẫn PDF/cache sách.
+
+## Tỷ lệ bìa và mật độ tủ sách (2026-10-30)
+
+- Lưới riêng cho sách: 5 cột ở 1440px, 2 cột ở 390px; số cột tự thích ứng vùng nội dung. Tên sách dài vẫn hiển thị đầy đủ; footer căn đều.
+- Đo viền trắng trên ảnh thu nhỏ tối đa 512px, chỉ thay vùng hiển thị CSS. Kiểm tra fixture ảnh vuông có bìa dọc bên trong: tỷ lệ bìa hiển thị 0.52–0.55, file nguồn không bị xử lý lại. Ảnh thay thế và ảnh cũ vẫn được giữ trong covers/.
+- Backend 11 tests đạt. Browser: upload/thay ảnh/lưu sau reload; bố cục grid/list ở 1440/768/390px; tên cực dài; 10 kiểm tra điều hướng và 16 kiểm tra tổng quát đều đạt. TypeScript và diff check đạt. Đã xem screenshot desktop/tablet và editor mobile.
+- Các thao tác ghi trong kiểm tra dùng workspace tạm. Không render video, không push Git.
+
+## Thẻ tủ sách tinh gọn (2026-10-30)
+
+Bỏ khung bao trắng, đường chia footer và nút Hồ sơ trùng thao tác; bìa và tên vẫn mở hồ sơ bằng bàn phím/chuột. Nền đặt bìa nhẹ, tên căn đầu, tác giả và trạng thái nguồn rõ ràng. Giữ tỷ lệ ảnh, 5 cột desktop và 2 cột mobile. Đã xem screenshot ở 1440/768/390px; kiểm tra grid/list, tên dài, thay bìa, điều hướng và 16 kiểm tra trình duyệt tổng quát đều đạt; 11 backend tests đạt. Không sửa file bìa gốc hoặc dữ liệu sách thật.

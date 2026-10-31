@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "projectId": "book-hvtt-001-overview",
+  "history": [
+    {
+      "projectId": "book-hvtt-001-overview",
+      "stageId": "approve-script",
+      "decision": "approved",
+      "artifactSha256": {
+        "docs/projects/book-hvtt-001-overview/script-review.md": "df68cf5afe6a3fe5f84c6cdc80b5ad537a22035e9a4fad00a8689a276c606204",
+        "docs/projects/book-hvtt-001-overview/script.md": "d868c8382692bcc0828a4f80bc1bd6231145003e6696f32d460f5293598a891e",
+        "docs/projects/book-hvtt-001-overview/sources.md": "8c384181beec8d42fc0f45282189d0d0d47300012b0cf4bef1917341f70c25aa",
+        "docs/projects/book-hvtt-001-overview/brief.md": "ba002207a2a194092434dff3db41436f03e8034b1238500ed4681d4b00830d42"
+      },
+      "missing": [],
+      "approvedBy": "devmindtan",
+      "approvedAt": "2026-10-30T14:52:19.071Z",
+      "note": ""
+    }
+  ]
+}

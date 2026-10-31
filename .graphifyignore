@@ -1,0 +1,23 @@
+# Code-only knowledge graph for agents. Keep private, generated and heavy data out.
+.env
+.env.*
+.venv*/
+node_modules/
+repos/
+library/
+public/
+out/
+budgets/
+.manager-trash/
+**/.manager-history/
+graphify-out/
+skills/
+*.mp4
+*.wav
+*.mp3
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.webp
+.voicestudio/

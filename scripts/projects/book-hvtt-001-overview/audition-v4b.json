@@ -1,0 +1,39 @@
+{
+  "title": "Đọc sách, hiểu mình — intro (lời chào) — nghe thử giọng",
+  "temperature": 0.5,
+  "leadIn": 0.16,
+  "tail": 0.35,
+  "maxDurationSeconds": 60,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Xin chào cả nhà, chào mừng mọi người đã đến với series",
+      "pauseAfter": 0.12
+    },
+    {
+      "scene": 1,
+      "text": "Đọc sách, hiểu mình.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Ở series này, mình sẽ đọc trọn từng cuốn sách, rồi kể lại những nội dung chính và những điều đáng giữ trong mỗi cuốn.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Nếu bạn là người không có nhiều thời gian và cần đọc sách để có thêm kiến thức, thì đây là dành cho bạn.",
+      "pauseAfter": 0.5
+    },
+    {
+      "scene": 1,
+      "text": "Chúc cả nhà một ngày tràn đầy niềm vui và hạnh phúc.",
+      "pauseAfter": 0.6
+    },
+    {
+      "scene": 1,
+      "text": "Để không làm mất thời gian của mọi người, chúng ta hãy cùng nhau bắt đầu.",
+      "pauseAfter": 0
+    }
+  ]
+}

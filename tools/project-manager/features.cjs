@@ -31,6 +31,26 @@ function features(root){
   function media(id,kind){const p=project(id);return exportsFor(p).find(f=>f.kind===kind)||null;}
   function bookFolder(sid,id){if(!slug(id))throw Error('Invalid book id');const s=series(sid);return safe(path.relative(root,path.join(path.dirname(s.file),'books',id)));}
   function sources(sid,id){if(!fs.existsSync(path.join(bookFolder(sid,id),'book.json')))throw Error('Book not found');const folder=safe(`library/books/${id}/sources`);return fs.existsSync(folder)?fs.readdirSync(folder).filter(n=>n.toLowerCase().endsWith('.pdf')).map(name=>({name,size:fs.statSync(safe(`library/books/${id}/sources/${name}`)).size})):[];}
+  function coverFolder(sid,id){const folder=bookFolder(sid,id);if(!fs.existsSync(path.join(folder,'book.json')))throw Error('Book not found');const covers=safe(path.relative(root,path.join(folder,'covers')));if(fs.realpathSync(folder)!==folder||(fs.existsSync(covers)&&fs.realpathSync(covers)!==covers))throw Error('Cover folder must not be a symlink');return covers;}
+  function bookCover(sid,id){
+    const folder=coverFolder(sid,id),pointer=safe(path.relative(root,path.join(folder,'current.json')));if(!fs.existsSync(pointer))return null;if(fs.lstatSync(pointer).isSymbolicLink())throw Error('Invalid cover metadata path');
+    const meta=read(pointer);if(!/^[a-f0-9]{64}\.(png|jpg|webp)$/.test(meta.file))throw Error('Invalid cover metadata');
+    const file=safe(path.relative(root,path.join(folder,meta.file)));if(!fs.existsSync(file)||!fs.statSync(file).isFile())return null;if(fs.lstatSync(file).isSymbolicLink())throw Error('Invalid cover image path');
+    return {file,revision:meta.file};
+  }
+  async function uploadCover(sid,id,request){
+    const folder=coverFolder(sid,id);let bytes=0;const chunks=[];
+    for await(const chunk of request){bytes+=chunk.length;if(bytes>8*1024*1024)throw Error('Ảnh bìa tối đa 8 MB');chunks.push(chunk);}
+    const data=Buffer.concat(chunks);let ext;
+    if(data.length>=33&&data.subarray(0,8).equals(Buffer.from('89504e470d0a1a0a','hex'))&&data.toString('ascii',12,16)==='IHDR')ext='png';
+    else if(data.length>=4&&data[0]===255&&data[1]===216&&data[2]===255&&data[data.length-2]===255&&data[data.length-1]===217)ext='jpg';
+    else if(data.length>=20&&data.toString('ascii',0,4)==='RIFF'&&data.toString('ascii',8,12)==='WEBP')ext='webp';
+    else throw Error('Chỉ nhận ảnh JPG, PNG hoặc WebP hợp lệ');
+    fs.mkdirSync(folder,{recursive:true});const name=digest(data)+'.'+ext,file=safe(path.relative(root,path.join(folder,name)));
+    try{fs.writeFileSync(file,data,{flag:'wx'});}catch(e){if(e.code!=='EEXIST')throw e;}
+    const temp=path.join(folder,'.cover-'+crypto.randomUUID()+'.tmp');write(temp,{file:name,updatedAt:new Date().toISOString()});
+    fs.renameSync(temp,safe(path.relative(root,path.join(folder,'current.json'))));return {revision:name};
+  }
   function newBook(b){
     if(!slug(b.id)||typeof b.title!=='string'||!b.title.trim()||b.title.length>300)throw Error('Tên và mã sách không hợp lệ');
     if(load(root).series.some(s=>s.id==='book-insights')&&b.series!=='book-insights')throw Error('Hồ sơ sách thuộc series Đọc sách, hiểu mình.');
@@ -54,27 +74,27 @@ function features(root){
       return {name,size,sha256:hash.digest('hex'),path:path.relative(root,dest)};
     }catch(e){await handle.close().catch(()=>{});if(fs.existsSync(temp))fs.unlinkSync(temp);throw e;}
   }
+  // Series have their own workflow and structure; the manager only deletes individual projects.
   function deletion(kind,id){
-    if(!['project','series'].includes(kind))throw Error('Invalid deletion kind');
-    const catalog=load(root);validate(catalog);const s=kind==='series'?series(id):catalog.series.find(s=>s.projects.some(p=>p.id===id));if(!s)throw Error('Not found');
-    const projects=kind==='series'?s.projects:[project(id)];
+    if(kind!=='project')throw Error('Chỉ có thể xóa dự án');
+    const catalog=load(root);validate(catalog);const s=catalog.series.find(s=>s.projects.some(p=>p.id===id));if(!s)throw Error('Not found');
+    const projects=[project(id)];
     const paths=projects.flatMap(p=>Object.values(p.paths)).filter(p=>fs.existsSync(safe(p)));
     const exports=projects.flatMap(exportsFor);for(const f of exports){const rel=path.relative(root,f.file);if(!paths.some(p=>rel.startsWith(p+'/')))paths.push(rel);}
-    if(kind==='series')paths.push(path.relative(root,path.dirname(s.file)));
     const fingerprints=[];function scan(rel){const f=safe(rel),st=fs.lstatSync(f);if(st.isSymbolicLink())throw Error('Không xóa thư mục có symlink; kiểm tra thủ công.');fingerprints.push([rel,st.size,st.mtimeMs]);if(st.isDirectory())for(const n of fs.readdirSync(f).sort())scan(path.join(rel,n));}
     [...new Set(paths)].forEach(scan);
     const config=[s.file,path.join(root,'series/catalog.json'),path.join(root,'src/projects/registry.tsx')];
     const revision=digest(JSON.stringify(fingerprints)+config.map(f=>fs.readFileSync(f,'utf8')).join(''));
-    return {kind,id,title:kind==='series'?s.title:projects[0].title,projectCount:projects.length,registrations:projects.reduce((n,p)=>n+p.registrations.length,0),rendered:exports.length,files:fingerprints.filter(x=>fs.statSync(safe(x[0])).isFile()).length,paths:[...new Set(paths)],revision,privateSourcesRetained:true};
+    return {kind,id,title:projects[0].title,projectCount:projects.length,registrations:projects.reduce((n,p)=>n+p.registrations.length,0),rendered:exports.length,files:fingerprints.filter(x=>fs.statSync(safe(x[0])).isFile()).length,paths:[...new Set(paths)],revision,privateSourcesRetained:true};
   }
   function remove(b){
     const plan=deletion(b.kind,b.id);if(b.confirm!==true||b.revision!==plan.revision)throw Error('Dữ liệu đã đổi hoặc chưa xác nhận. Mở lại hộp xác nhận.');
-    const catalog=load(root),s=b.kind==='series'?series(b.id):catalog.series.find(s=>s.projects.some(p=>p.id===b.id));
-    const ids=new Set((b.kind==='series'?s.projects:[project(b.id)]).map(p=>p.id));
+    const s=load(root).series.find(s=>s.projects.some(p=>p.id===b.id));
+    const ids=new Set([b.id]);
     const reg=safe('src/projects/registry.tsx'),original=fs.readFileSync(reg,'utf8'),ast=parse(original,{sourceType:'module',plugins:['typescript','jsx']}),ranges=[];
     function walk(n,folders=[]){if(!n||typeof n!=='object')return;let next=folders;
       if(n.type==='ImportDeclaration'&&ids.has(n.source.value.match(/^\.\/([^/]+)\//)?.[1])){ranges.push([n.start,n.end]);return;}
-      if(n.type==='JSXElement'&&n.openingElement.name.name==='Folder'){const name=n.openingElement.attributes.find(a=>a.name?.name==='name')?.value?.value;next=[...folders,name];if((folders.length===2&&ids.has(name))||(b.kind==='series'&&folders.length===1&&name===s.studioFolder&&folders[0]===catalog.channels.find(c=>c.id===s.channel).studioFolder)){ranges.push([n.start,n.end]);return;}}
+      if(n.type==='JSXElement'&&n.openingElement.name.name==='Folder'){const name=n.openingElement.attributes.find(a=>a.name?.name==='name')?.value?.value;next=[...folders,name];if(folders.length===2&&ids.has(name)){ranges.push([n.start,n.end]);return;}}
       for(const [k,v]of Object.entries(n)){if(['loc','start','end'].includes(k))continue;if(Array.isArray(v))v.forEach(x=>walk(x,next));else if(v&&typeof v==='object')walk(v,next);}}
     walk(ast);let updated=original;for(const [a,z]of ranges.sort((a,b)=>b[0]-a[0]))updated=updated.slice(0,a)+updated.slice(z);
     const trash=safe(`.manager-trash/${Date.now()}-${crypto.randomUUID()}`);fs.mkdirSync(trash,{recursive:true});
@@ -84,12 +104,29 @@ function features(root){
     try{
       for(const relative of plan.paths){const from=safe(relative),to=path.join(trash,'files',relative);fs.mkdirSync(path.dirname(to),{recursive:true});fs.renameSync(from,to);moved.push({from,to});}
       fs.writeFileSync(reg,updated);
-      if(b.kind==='series'){const index=read(safe('series/catalog.json'));index.series=index.series.filter(x=>x.id!==b.id);write(safe('series/catalog.json'),index);}
-      else{const data=read(s.file);data.projects=data.projects.filter(p=>p.id!==b.id);write(s.file,data);}
+      const data=read(s.file);data.projects=data.projects.filter(p=>p.id!==b.id);write(s.file,data);
       validate(load(root));
     }catch(e){for(const m of moved.reverse())fs.renameSync(m.to,m.from);for(const x of snapshots)fs.writeFileSync(x.file,x.text);throw e;}
     return {deleted:true,trash:path.relative(root,trash)};
   }
-  return {media,exportsFor,newBook,sources,upload,deletion,remove};
+  // Edit only the book's title and authors in place; every other field of book.json stays as it is.
+  function updateBook(b){
+    const file=safe(path.relative(root,path.join(bookFolder(b.series,b.id),'book.json')));
+    if(!fs.existsSync(file))throw Error('Book not found');if(fs.lstatSync(file).isSymbolicLink())throw Error('Invalid book path');
+    const before=fs.readFileSync(file,'utf8'),conflict=()=>Object.assign(Error('Hồ sơ sách vừa được sửa ở nơi khác. Hãy tải lại trang.'),{status:409});
+    if(digest(before)!==b.revision)throw conflict();
+    const title=typeof b.title==='string'?b.title.trim():'';
+    const authors=(Array.isArray(b.authors)?b.authors:String(b.authors||'').split(',')).map(a=>String(a).trim()).filter(Boolean);
+    if(!title||title.length>300)throw Error('Tên sách cần từ 1 đến 300 ký tự');
+    if(authors.length>10||authors.some(a=>a.length>120))throw Error('Tối đa 10 tác giả, mỗi tên dưới 120 ký tự');
+    const data=JSON.parse(before);data.title=title;data.authors=authors;
+    const text=JSON.stringify(data,null,2)+'\n';if(text===before)return {revision:digest(text),title,authors};
+    const folder=path.dirname(file),history=path.join(folder,'.manager-history');fs.mkdirSync(history,{recursive:true});
+    fs.writeFileSync(path.join(history,`book-${Date.now()}-${crypto.randomBytes(4).toString('hex')}.json`),before,{flag:'wx'});
+    const temp=path.join(folder,`.book-${crypto.randomBytes(8).toString('hex')}.tmp`);fs.writeFileSync(temp,text,{flag:'wx'});
+    if(digest(fs.readFileSync(file,'utf8'))!==b.revision){fs.unlinkSync(temp);throw conflict();}
+    fs.renameSync(temp,file);return {revision:digest(text),title,authors};
+  }
+  return {bookCover,uploadCover,media,exportsFor,newBook,updateBook,sources,upload,deletion,remove};
 }
 module.exports={features};

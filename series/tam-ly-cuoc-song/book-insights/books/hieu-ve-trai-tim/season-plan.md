@@ -1,6 +1,6 @@
 # Hiểu về trái tim — kế hoạch nghiên cứu
 
-Trạng thái: chờ tài liệu; chưa duyệt kịch bản, thời lượng hoặc danh sách tập. Không có composition/giọng/ảnh sản xuất.
+Trạng thái (2026-10-30): đã có PDF, đã nạp cache, đã xác minh và lập bản đồ 50 chương (bước 1 xong). Đã đọc đủ 50/50 chương và phần đầu, cuối sách, ghi chú ở research.md (bước 2 xong). Bước 3: đã tạo tập `book-hvtt-001-overview` (dài 10–15 phút theo yêu cầu người dùng, mục tiêu 12,5 phút), dàn ý đề xuất trong brief, chờ duyệt. Chưa duyệt kịch bản, thời lượng hoặc danh sách tập. Không có composition/giọng/ảnh sản xuất.
 
 1. Nhận đúng PDF/ấn bản người dùng cung cấp; inspect, ingest, lập chapter map và kiểm dấu tiếng Việt theo workflow PDF.
 2. Đọc bao quát từng chương, ghi coverage và source/page references. Chưa gọi là tóm tắt toàn sách nếu thiếu chương.

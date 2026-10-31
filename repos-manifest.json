@@ -128,5 +128,20 @@
     "repo": "vercel-labs/web-interface-guidelines",
     "path": "repos/vercel-labs--web-interface-guidelines",
     "commit": "434b7f91364665f2f733b310ec54809bf8f37937"
+  },
+  {
+    "repo": "devmindtan/multi-agent-system",
+    "path": "repos/devmindtan--multi-agent-system",
+    "commit": "4ac3558151c6378dd654c0c1a03f4cb608d636f6"
+  },
+  {
+    "repo": "safishamsi/graphify",
+    "path": "repos/safishamsi--graphify",
+    "commit": "86c57be8204673c2a1b9849a3292a7dd3ab373d8"
+  },
+  {
+    "repo": "debpalash/VoiceStudio",
+    "path": "repos/debpalash--VoiceStudio",
+    "commit": "4d4cb0badf99c7518e3f4c69487df6e8bfeff43f"
   }
 ]

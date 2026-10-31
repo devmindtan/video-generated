@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
 const {load, registrations, validate, slug, inside} = require('../../scripts/catalog/catalog.cjs');
-const {createProject, createSeries} = require('../../scripts/catalog/projects.cjs');
+const {createProject} = require('../../scripts/catalog/projects.cjs');
 
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const json = file => JSON.parse(fs.readFileSync(file, 'utf8'));
@@ -21,7 +21,7 @@ function checkedId(value) {
 }
 function createStore(root) {
   const workspaceRoot=fs.realpathSync(root);
-  const extra=require('./features.cjs').features(root);
+  const extra={...require('./features.cjs').features(root),...require('./workflow.cjs').createWorkflow(root),...require('./library.cjs').createLibrary(root)};
   function location(relative) {
     const target=inside(root,relative);
     if (exists(target)&&!fs.realpathSync(target).startsWith(workspaceRoot+path.sep)) throw new Error('Folder escapes workspace');
@@ -77,9 +77,9 @@ function createStore(root) {
     return fs.readdirSync(folder,{withFileTypes:true}).filter(d=>d.isDirectory()&&slug(d.name)).flatMap(d=>{
       const file = path.join(folder,d.name,'book.json');
       if (!exists(file)) return [];
-      const book = json(secureFile(folder,file));
-      return [{id:d.name,title:book.title,authors:book.authors||[],status:book.status,series:series.id,channel:series.channel,
-        hasSource:Boolean(book.sourceSha256)||extra.sources(series.id,d.name).length>0,sources:extra.sources(series.id,d.name),note:book.note||'',
+      const text = fs.readFileSync(secureFile(folder,file),'utf8'), book = JSON.parse(text);
+      return [{id:d.name,revision:hash(text),title:book.title,authors:book.authors||[],status:book.status,series:series.id,channel:series.channel,
+        cover:extra.bookCover(series.id,d.name)?.revision||null,hasSource:Boolean(book.sourceSha256)||extra.sources(series.id,d.name).length>0,sources:extra.sources(series.id,d.name),note:book.note||'',
         documents:['book.json','research.md','chapters.json','season-plan.md'].filter(f=>exists(path.join(folder,d.name,f)))}];
     });
   }
@@ -164,10 +164,6 @@ function createStore(root) {
     if (body.book) options['--book']=body.book;
     return createProject(catalog,options);
   }
-  function newSeries(body) {
-    const catalog=load(root);validate(catalog);
-    return createSeries(catalog,{'--channel':body.channel,'--id':body.id,'--title':body.title,'--formats':body.formats});
-  }
-  return {...extra,list,detail,document,bookDocument,saveNotes,folder,create,newSeries,preview:id=>preview(context(id).project)};
+  return {...extra,list,detail,document,bookDocument,saveNotes,folder,create,preview:id=>preview(context(id).project)};
 }
 module.exports={createStore,hash};
