@@ -1,17 +1,18 @@
-// Production gates in the manager: show each human-approval gate of a project (state, files bound, what changed)
-// and let the user record an approval from the page. The write goes through the same hash-bound
-// `approvals.approve` as `npm run automation -- approve`; only a click by the user (token + explicit confirm +
-// the revision they reviewed) records it. Never called by workers, never --allow-missing, never export.
+// Production review in the manager (docs/architecture/review-workflow.md): the initial lock of five items,
+// patches the user accepts or returns, per-scene clips with notes, and the final hash-bound review-preview gate.
+// Every write needs the user's click (token + explicit confirm + the revision they reviewed). Never called by
+// workers, never --allow-missing, never export or render.
 const crypto = require('node:crypto');
 const fs = require('node:fs');
 const path = require('node:path');
 const {execFileSync} = require('node:child_process');
 const cli = require('../production-automation/cli.cjs');
 const approvals = require('../production-automation/approvals.cjs');
+const review = require('../production-automation/review.cjs');
 const {load} = require('../../scripts/catalog/catalog.cjs');
 
 const FILE_NAMES = {'script.md': 'Kịch bản', 'brief.md': 'Brief: mục tiêu, dàn ý, quyết định sản xuất', 'sources.md': 'Nguồn và trích dẫn', 'script-review.md': 'Phản biện kịch bản',
-  'production-spec.md': 'Kế hoạch dựng', 'image-prompts.md': 'Prompt hình ảnh', 'voice-audition.md': 'Nghe thử giọng', 'audition.json': 'Lời đọc nghe thử', 'qa.json': 'Kiểm tra QA', 'description.md': 'Mô tả đăng bài'};
+  'production-spec.md': 'Thông tin đã chốt', 'music.json': 'Nhạc nền', 'outro-music.json': 'Nhạc outro', 'voice.json': 'Giọng đọc đã chọn', 'image-prompts.md': 'Prompt hình ảnh', 'voice-audition.md': 'Nghe thử giọng', 'audition.json': 'Lời đọc nghe thử', 'qa.json': 'Kiểm tra QA', 'description.md': 'Mô tả đăng bài'};
 const TEXT = /\.(md|json|txt|srt|tsx?|cjs|js)$/i;
 
 // Line diff (LCS) with word-level marks for replaced lines. Small documents only (a few thousand lines).
@@ -50,7 +51,8 @@ function diff(oldText, newText) {
   return {added, removed, rows};
 }
 
-const NAMES = {'approve-script': 'Duyệt kịch bản', 'approve-voice': 'Duyệt giọng đọc', 'approve-assets': 'Duyệt hình ảnh', 'review-preview': 'Duyệt bản xem trước'};
+const NAMES = {'approve-script': 'Duyệt kịch bản', 'approve-voice': 'Duyệt giọng đọc', 'approve-assets': 'Duyệt hình ảnh', 'review-preview': 'Xem bản dựng', 'initial-lock': 'Chốt ban đầu', 'scene-review': 'Duyệt từng cảnh'};
+const AUDIO = /\.(wav|mp3|m4a|ogg|flac)$/i;
 
 function createApprovals(root) {
   function view(id) {
@@ -145,6 +147,91 @@ function createApprovals(root) {
     files.sort((x, y) => order[x.status] - order[y.status]);
     return {gate: g, media: media(id, gate), previous: entry && entry.decision === 'approved' ? {at: entry.approvedAt, by: entry.approvedBy, note: entry.note || ''} : null, files};
   }
-  return {approvalsView: view, approveGate, gateReview, projectMedia};
+  const userName = () => {let by = 'unknown';try {by = execFileSync('git', ['-C', root, 'config', 'user.name'], {encoding: 'utf8'}).trim() || by;} catch {}return `${by} (trang quản lý)`;};
+  const nameOf = rel => FILE_NAMES[path.basename(rel)] || path.basename(rel);
+  // What to listen to inside an item: the music track(s) and the voice sample, files under public/ only.
+  function audioOf(id, item) {
+    const plan = cli.plan(root, id), out = [];
+    const add = (name, rel) => {if (typeof rel === 'string' && AUDIO.test(rel) && !rel.includes('..') && fs.existsSync(path.join(root, 'public', rel))) out.push({name, key: rel, kind: item.id});};
+    for (const f of item.files) {
+      let data;try {data = JSON.parse(fs.readFileSync(path.join(root, f.path || f), 'utf8'));} catch {continue;}
+      if (item.id === 'music') add(`${data.credit?.title || path.basename(data.file || '')}${data.credit?.artists ? ' — ' + data.credit.artists.join(', ') : ''} (${nameOf(f.path || f)})`, data.file);
+      if (item.id === 'voice') add(`Đoạn mẫu: ${data.name || data.voice || ''}`, data.sample || Object.values(data.segments || {})[0]?.file);
+    }
+    return out;
+  }
+  function reviewView(id) {
+    let plan;try {plan = cli.plan(root, id);} catch (e) {return {available: false, reason: e.message};}
+    const r = review.summary(root, plan), preview = view(id).gates.find(g => g.id === 'review-preview') || null;
+    const revision = crypto.createHash('sha256').update(JSON.stringify([r.items.map(i => i.files.map(f => f.sha256)), r.version, r.pending?.id || null])).digest('hex');
+    return {available: true, state: r.state, version: r.version, lockedAt: r.lockedAt, lockedBy: r.lockedBy, revision,
+      items: r.items.map(i => ({id: i.id, title: i.title, guide: i.guide, files: i.files.map(f => ({path: f.path, name: nameOf(f.path), exists: f.exists, changed: f.changed}))})),
+      missing: r.missing.map(rel => ({path: rel, name: nameOf(rel)})), drift: r.drift.map(rel => ({path: rel, name: nameOf(rel)})),
+      pending: r.pending && {id: r.pending.id, reason: r.pending.reason, createdAt: r.pending.createdAt, files: Object.keys(r.pending.changed).map(nameOf)},
+      patches: r.patches.map(p => ({id: p.id, reason: p.reason, status: p.status, createdAt: p.createdAt, decidedAt: p.decidedAt, note: p.note, files: Object.keys(p.changed).map(nameOf)})),
+      scenes: r.scenes.map(s => ({id: s.id, title: s.title, status: s.status, clips: s.clips.map((c, i) => ({index: i, renderedAt: c.renderedAt, lockVersion: c.lockVersion, status: c.status, note: c.note, decidedAt: c.decidedAt}))})),
+      final: r.final, preview};
+  }
+  // Lock: every item in full (text, music and voice sample). Patch: per changed file, the diff against the lock.
+  function reviewDetail(id, mode, patchId) {
+    const plan = cli.plan(root, id), r = review.summary(root, plan), v = reviewView(id);
+    const text = rel => fs.readFileSync(path.join(root, rel), 'utf8').slice(0, 300000);
+    if (mode === 'lock') {
+      const lockFiles = review.load(root, id).locks.at(-1)?.files || {};
+      return {mode, revision: v.revision, state: r.state, items: r.items.map(i => ({key: i.id, title: i.title, guide: i.guide, audio: audioOf(id, i),
+        files: i.files.map(f => {
+          if (!f.exists) return {path: f.path, name: nameOf(f.path), status: 'missing'};
+          if (!TEXT.test(f.path)) return {path: f.path, name: nameOf(f.path), status: 'binary'};
+          const locked = lockFiles[f.path] && lockFiles[f.path] !== f.sha256 ? approvals.approvedContent(root, lockFiles[f.path]) : null;
+          return locked ? {path: f.path, name: nameOf(f.path), status: 'changed', ...diff(locked.toString('utf8'), text(f.path))} : {path: f.path, name: nameOf(f.path), status: 'text', text: text(f.path)};
+        })}))};
+    }
+    const patch = review.load(root, id).patches.find(p => p.id === patchId);
+    if (!patch) throw new Error('Không có bản vá này');
+    const itemOf = rel => r.items.find(i => i.files.some(f => f.path === rel));
+    return {mode: 'patch', revision: v.revision, patch: {id: patch.id, reason: patch.reason, status: patch.status, createdAt: patch.createdAt, baseVersion: patch.baseVersion, note: patch.note},
+      items: Object.entries(patch.changed).map(([rel, c], k) => {
+        const item = itemOf(rel), before = approvals.approvedContent(root, c.before), after = approvals.approvedContent(root, c.after);
+        const file = {path: rel, name: nameOf(rel)};
+        if (!c.after) Object.assign(file, {status: 'missing'});
+        else if (!TEXT.test(rel) || !after) Object.assign(file, {status: 'binary'});
+        else if (!before) Object.assign(file, {status: 'text', text: after.toString('utf8').slice(0, 300000)});
+        else Object.assign(file, {status: 'changed', ...diff(before.toString('utf8'), after.toString('utf8'))});
+        return {key: 'p' + k, title: !item || nameOf(rel) === item.title ? nameOf(rel) : `${item.title}: ${nameOf(rel)}`, guide: item?.guide || '', audio: item ? audioOf(id, {id: item.id, files: [rel]}) : [], files: [file]};
+      })};
+  }
+  function checked(id, revision) {
+    const v = reviewView(id);
+    if (!v.available) throw new Error(v.reason);
+    if (v.revision !== revision) throw Object.assign(new Error('Nội dung vừa thay đổi sau khi bạn mở. Tải lại để xem bản mới.'), {status: 409});
+    return v;
+  }
+  function lockProject({id, note = '', revision, confirm}) {
+    if (confirm !== true) throw new Error('Cần xác nhận đã xem hết các mục trước khi chốt');
+    if (typeof note !== 'string' || note.length > 1000) throw new Error('Ghi chú tối đa 1000 ký tự');
+    checked(id, revision);
+    return review.lock(root, cli.plan(root, id), {by: userName(), note: note.trim()});
+  }
+  function decidePatch({id, patch, decision, note = '', revision}) {
+    if (typeof note !== 'string' || note.length > 2000) throw new Error('Ghi chú tối đa 2000 ký tự');
+    if (decision === 'returned' && !note.trim()) throw new Error('Ghi chú lý do trả lại để agent biết cần sửa gì');
+    checked(id, revision);
+    return review.decidePatch(root, cli.plan(root, id), patch, {decision, note: note.trim(), by: userName()});
+  }
+  function reviewScene({id, scene, clip, decision, note = ''}) {
+    if (typeof note !== 'string' || note.length > 4000) throw new Error('Ghi chú tối đa 4000 ký tự');
+    return review.reviewScene(root, cli.plan(root, id), scene, clip, {decision, note, by: userName()});
+  }
+  // Streams only what the review lists: an item's audio under public/, or a recorded scene clip.
+  function reviewMedia(id, kind, key) {
+    const plan = cli.plan(root, id);
+    if (kind === 'clip') {
+      const [scene, index] = String(key).split(':'), clip = review.load(root, id).scenes[scene]?.clips?.[Number(index)];
+      return clip && clip.file.startsWith(`projects/${id}/review/`) && !clip.file.includes('..') ? path.join(root, clip.file) : null;
+    }
+    const item = review.items(root, plan).find(i => i.id === kind);
+    return item && audioOf(id, item).some(a => a.key === key) ? path.join(root, 'public', key) : null;
+  }
+  return {approvalsView: view, approveGate, gateReview, projectMedia, reviewView, reviewDetail, lockProject, decidePatch, reviewScene, reviewMedia};
 }
 module.exports = {createApprovals};

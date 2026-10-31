@@ -169,7 +169,7 @@ test('book covers stay scoped to book records, preserve old images and reject no
 test('series workflow shows automation stages; only per-stage rules and notes are writable, with conflict check and history',async t=>{
  const f=await fixture(t),file=path.join(f.root,'series/tam-ly-cuoc-song/demo/workflow.json');
  const flow=await (await fetch(f.base+'/api/workflow?series=demo')).json();
- assert.equal(flow.profile,'philosophy');assert.equal(flow.stages[0].id,'brief');assert.equal(flow.stages.find(s=>s.id==='approve-script').automation.mode,'gate');
+ assert.equal(flow.profile,'philosophy');assert.equal(flow.stages[0].id,'brief');assert.equal(flow.stages.find(s=>s.id==='initial-lock').automation.mode,'gate');
  assert.ok(flow.phases.flatMap(p=>p.stages).length===flow.stages.length);assert.equal(fs.existsSync(file),false);
  assert.equal((await f.post('/api/workflow',{series:'demo',stage:'script',rules:['Mở đầu bằng một tình huống cụ thể'],notes:'Tránh giọng giảng giải.',revision:'stale'})).status,409);
  assert.equal((await f.post('/api/workflow',{series:'demo',stage:'render-now',rules:[],notes:'x',revision:flow.revision})).status,400);

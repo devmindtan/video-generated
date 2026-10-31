@@ -21,13 +21,13 @@ const {chromium}=require('playwright-core'),{createManager}=require('./server.cj
  try{
   await page.goto(base,{waitUntil:'networkidle'});assert.ok(await page.locator('#workflow').isHidden());mark('Overview has no series workflow');
   await page.locator('[data-series="self-help-shorts"]').click();await page.locator('.workflow-step').first().waitFor();
-  assert.equal(await page.locator('.workflow-step').count(),13);assert.equal(await page.locator('.workflow-phase h3').count(),5);
-  // Pictures follow the approved voice, so voice and visual plan are sequential; QA and metadata still run side by side.
-  assert.doesNotMatch(await page.locator('[data-workflow-stage="voice-audition"]').innerText(),/song song/);
-  assert.match(await page.locator('[data-workflow-stage="metadata"]').innerText(),/song song với bước 10/);
-  await overflow();await shot('series-desktop');mark('Philosophy series shows 13 numbered steps in 5 phases with parallel hints');
+  assert.equal(await page.locator('.workflow-step').count(),15);assert.equal(await page.locator('.workflow-phase h3').count(),4);
+  // Music, voice choice and per-scene prompts are prepared side by side for the initial lock; so are QA and metadata.
+  assert.match(await page.locator('[data-workflow-stage="voice-audition"]').innerText(),/song song với bước 4/);
+  assert.match(await page.locator('[data-workflow-stage="metadata"]').innerText(),/song song với bước 11/);
+  await overflow();await shot('series-desktop');mark('Philosophy series shows 15 numbered steps in 4 phases with parallel hints');
   await page.locator('[data-workflow-stage="script"]').click();await page.locator('#drawer:not([hidden]) #workflow-rules').waitFor();
-  assert.match(await page.locator('#drawer-eyebrow').innerText(),/BƯỚC 2\/13/);assert.match(await page.locator('#drawer-breadcrumb').innerText(),/Quy trình: Kịch bản/);
+  assert.match(await page.locator('#drawer-eyebrow').innerText(),/BƯỚC 2\/15/);assert.match(await page.locator('#drawer-breadcrumb').innerText(),/Quy trình: Kịch bản/);
   await page.locator('#workflow-rules').fill('Mở đầu bằng một tình huống cụ thể\n\nKhông dùng câu hỏi tu từ ở câu đầu');
   await page.locator('#workflow-notes').fill('Giọng kể như đang nói với một người bạn.');
   page.once('dialog',d=>d.dismiss());await page.locator('#close-drawer').click();
@@ -49,12 +49,12 @@ const {chromium}=require('playwright-core'),{createManager}=require('./server.cj
   await page.locator('#toast:not([hidden])').filter({hasText:'sửa ở nơi khác'}).waitFor();
   assert.deepEqual(JSON.parse(fs.readFileSync(notesFile,'utf8')).stages.brief.rules,['Sửa từ IDE']);
   await page.locator('#workflow-notes').fill('');page.once('dialog',d=>d.accept());await page.locator('#close-drawer').click();mark('External edit is preserved; stale save is refused');
-  await page.goto(base+'/?channel=tam-ly-cuoc-song&series=self-help-shorts#workflow/self-help-shorts/approve-script',{waitUntil:'networkidle'});
-  await page.locator('#drawer:not([hidden]) .workflow-command').waitFor();assert.match(await page.locator('.workflow-command').innerText(),/approve <slug> approve-script/);
+  await page.goto(base+'/?channel=tam-ly-cuoc-song&series=self-help-shorts#workflow/self-help-shorts/initial-lock',{waitUntil:'networkidle'});
+  await page.locator('#drawer:not([hidden]) .workflow-command').waitFor();assert.match(await page.locator('.workflow-command').innerText(),/patch <slug> --reason/);
   await page.locator('#drawer [data-back]').click();await page.locator('#drawer').waitFor({state:'hidden'});
   assert.equal(new URL(page.url()).searchParams.get('series'),'self-help-shorts');mark('Direct step link opens, Back returns to the series');
   await page.locator('[data-series="book-insights"]').click();await page.locator('[data-workflow-stage="sources"]').waitFor();
-  assert.equal(await page.locator('.workflow-step').count(),14);mark('Book series adds the source step');
+  assert.equal(await page.locator('.workflow-step').count(),16);mark('Book series adds the source step');
   await page.goto(base+'/?channel=kids&series=tiny-dino',{waitUntil:'networkidle'});await page.locator('[data-workflow-stage="visual-plan"]').click();
   assert.match(await page.locator('#drawer-content').innerText(),/footage chuyển động/i);await page.keyboard.press('Escape');mark('Kids series shows its own visual rule');
   await page.goto(base+'/?channel=client-work&series=product-videos',{waitUntil:'networkidle'});

@@ -50,6 +50,9 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
         if(route==='/api/voicestudio/stop')return send(200,await voiceControl.stop());
         if(route==='/api/books')return send(201,store.newBook(body));
         if(route==='/api/approve')return send(200,store.approveGate(body));
+        if(route==='/api/review/lock')return send(200,store.lockProject(body));
+        if(route==='/api/review/patch')return send(200,store.decidePatch(body));
+        if(route==='/api/review/scene')return send(200,store.reviewScene(body));
         if(route==='/api/voice-reference-clip')return send(201,await store.cutVoiceReference(body));
         if(route==='/api/voice-reference-meta')return send(200,store.updateVoiceReference(body));
         if(route==='/api/book-meta')return send(200,store.updateBook(body));
@@ -71,12 +74,14 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
       if(route==='/api/voices')return send(200,store.voices());
       if(route==='/api/music')return send(200,store.music());
       if(route==='/api/voice-references')return send(200,store.voiceReferences());
-      if(route==='/api/approvals')return send(200,store.approvalsView(url.searchParams.get('id')));
+      if(route==='/api/approvals')return send(200,store.reviewView(url.searchParams.get('id')));
+      if(route==='/api/review-detail')return send(200,store.reviewDetail(url.searchParams.get('id'),url.searchParams.get('mode'),url.searchParams.get('patch')));
       if(route==='/api/approval-review')return send(200,store.gateReview(url.searchParams.get('id'),url.searchParams.get('gate')));
       if(route==='/api/document')return send(200,store.document(url.searchParams.get('id'),url.searchParams.get('file')));
       if(route==='/api/book-document')return send(200,store.bookDocument(url.searchParams.get('series'),url.searchParams.get('book'),url.searchParams.get('file')));
       let file;
       if(route==='/api/book-cover'){const cover=store.bookCover(url.searchParams.get('series'),url.searchParams.get('book'));if(!cover)return send(404,{error:'Chưa có ảnh bìa'});file=cover.file;
+      } else if(route==='/api/review/media'){const file=store.reviewMedia(url.searchParams.get('id'),url.searchParams.get('kind'),url.searchParams.get('key'));if(!file||!fs.existsSync(file))return send(404,{error:'Không có file này'});return serveRange(file);
       } else if(route==='/api/project-media'){const file=store.projectMedia(url.searchParams.get('id'),url.searchParams.get('kind'),url.searchParams.get('file'));if(!file)return send(404,{error:'Không có file này'});return serveRange(file);
       } else if(route==='/api/playback'){const state=store.videoPlayback(url.searchParams.get('id'));if(!state)return send(404,{error:'Chưa có video'});return send(200,{ready:Boolean(state.file),preparing:Boolean(state.preparing),failed:Boolean(state.failed),converted:Boolean(state.converted),codec:state.codec||null});
       } else if(route==='/api/media'&&url.searchParams.get('kind')==='video'){const state=store.videoPlayback(url.searchParams.get('id'));if(!state?.file)return send(state?202:404,{error:state?'Đang chuẩn bị bản xem':'Chưa có bản xuất'});return serveRange(state.file);

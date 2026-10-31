@@ -17,8 +17,8 @@ test('profiles preserve human gates and valid dependencies; planning does not wr
   const p=plan(root,id),seen=new Set();
   assert.equal(p.runtimeCompatible,false);assert.equal(p.policy.automaticExecution,false);
   for(const stage of p.stages){assert.ok(stage.dependencies.every(d=>seen.has(d)));assert.ok(!seen.has(stage.id));seen.add(stage.id);assert.equal(stage.status,'not-started');}
-  assert.equal(p.stages.find(s=>s.id==='approve-script').kind,'human-approval');
-  assert.ok(p.stages.find(s=>s.id==='assembly').dependencies.includes('approve-voice'));
+  assert.equal(p.stages.find(s=>s.id==='initial-lock').kind,'human-approval');
+  assert.deepEqual(p.stages.find(s=>s.id==='assembly').dependencies,['narration','visuals']);
   assert.equal(p.stages.some(s=>s.id==='sources'),p.profile==='book');
  }
  assert.deepEqual(fs.readdirSync(root,{recursive:true}),before);
@@ -36,7 +36,7 @@ test('scopes avoid denied paths, gates bind upstream outputs and invalidate down
    for(const w of s.writeScope)assert.ok(Object.values(p.paths).some(b=>w.startsWith(b+'/')),w);
    if(s.kind==='human-approval')assert.ok(s.writeScope.length===0&&s.bindsArtifacts.length>0);
   }
-  const gate=p.stages.find(s=>s.id==='approve-script');
+  const gate=p.stages.find(s=>s.id==='initial-lock');
   assert.ok(gate.bindsArtifacts.includes(`docs/projects/${id}/script.md`));
   assert.ok(p.stages.find(s=>s.id==='script').invalidates.includes('assembly'));
   assert.equal(p.stages.find(s=>s.id==='voice-audition').kind,'operator-task');
@@ -61,15 +61,19 @@ const approvals=require('./approvals.cjs'),runner=require('./runner.cjs');
 const {execFileSync}=require('node:child_process');
 const put=(root,rel,text)=>{fs.mkdirSync(path.dirname(path.join(root,rel)),{recursive:true});fs.writeFileSync(path.join(root,rel),text);};
 test('approvals bind hashes, require earlier gates and go stale on edits',()=>fixture(root=>{
- const id='self-help-shorts',p=plan(root,id),D=`docs/projects/${id}`;
- assert.throws(()=>approvals.approve(root,p,'approve-script',{by:'t'}),/missing artifacts/);
- put(root,`${D}/brief.md`,'b');put(root,`${D}/script.md`,'s');put(root,`${D}/script-review.md`,'r');
- approvals.approve(root,p,'approve-script',{by:'t'});
- assert.equal(approvals.gateState(root,p,'approve-script').state,'approved');
- assert.throws(()=>approvals.approve(root,p,'review-preview',{by:'t',allowMissing:true}),/Approve earlier gates first/);
+ const review=require('./review.cjs'),id='self-help-shorts',p=plan(root,id),D=`docs/projects/${id}`,X=`scripts/projects/${id}`;
+ for(const g of ['initial-lock','scene-review'])assert.throws(()=>approvals.approve(root,p,g,{by:'t'}),/recorded in the manager/);
+ assert.throws(()=>approvals.approve(root,p,'review-preview',{by:'t',allowMissing:true}),/Approve earlier gates first: initial-lock \(missing\), scene-review \(missing\)/);
+ put(root,`${D}/script.md`,'s');put(root,`src/projects/${id}/music.json`,'{}');put(root,`${X}/voice.json`,'{}');put(root,`${D}/production-spec.md`,'p');put(root,`${D}/image-prompts.md`,'i');
+ review.lock(root,p,{by:'u'});
+ put(root,'src/projects/registry.tsx',`import {V} from './${id}/Video';\nexport const P=()=> <Folder name="a"><Folder name="b"><Folder name="${id}"><Composition id="S" component={V} durationInFrames={30} fps={30} width={1} height={1}/></Folder></Folder></Folder>;`);
+ put(root,`${X}/story.json`,JSON.stringify([{id:'01',start:0,duration:1}]));put(root,`projects/${id}/review/01.mp4`,'c');
+ review.addClip(root,p,'01',`projects/${id}/review/01.mp4`);review.reviewScene(root,p,'01',0,{decision:'approved',by:'u'});
+ approvals.approve(root,p,'review-preview',{by:'t',allowMissing:true});
+ assert.equal(approvals.gateState(root,p,'review-preview').state,'approved');
  put(root,`${D}/script.md`,'edited');
- const g=approvals.gateState(root,p,'approve-script');
- assert.equal(g.state,'stale');assert.deepEqual(g.changed,[`${D}/script.md`]);
+ const g=approvals.gateState(root,p,'review-preview');
+ assert.equal(g.state,'stale');assert.ok(g.changed.includes(`${D}/script.md`));
  assert.ok(denied(`${D}/approvals.json`));
  assert.throws(()=>approvals.approve(root,p,'export',{by:'t'}),/manual render/);
 }));
@@ -78,7 +82,7 @@ test('prepare stages only readable files and refuses blocked, ungated or existin
  put(root,`${D}/script.md`,'Kịch bản');put(root,`${D}/approvals.json`,'{"history":[]}');put(root,'docs/projects/other/script.md','Tập khác');
  put(root,`${D}/.manager-history/1.md`,'old');put(root,'.env','SECRET');put(root,`${D}/bin.md`,Buffer.from([0,1,2]));
  assert.throws(()=>runner.prepare(root,id,'assembly',{skipRuntimeCheck:true}),/not automated/);
- assert.throws(()=>runner.prepare(root,id,'visual-plan',{skipRuntimeCheck:true}),/Approve first: approve-script/);
+ assert.throws(()=>runner.prepare(root,id,'metadata',{skipRuntimeCheck:true}),/Approve first: initial-lock/);
  const run=runner.prepare(root,id,'editorial-review',{skipRuntimeCheck:true,now:new Date('2026-10-30T01:02:03Z')});
  assert.equal(run.runId,`${id}--editorial-review--20261030-010203`);
  assert.deepEqual(Object.keys(run.inputs),['docs/projects/other/script.md',`${D}/script.md`]);
@@ -169,20 +173,47 @@ test('models use the GPU machine through a loopback tunnel when it is on, else t
   assert.deepEqual(calls,['start','release','start','release','start','release']);
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
-test('pictures are planned on the approved voice, and changed scripts need redone voice and visuals before re-approval',()=>fixture(root=>{
- for(const id of ['self-help-shorts','book-insights'])assert.deepEqual(plan(root,id).stages.find(s=>s.id==='visual-plan').dependencies,['approve-voice']);
- assert.deepEqual(plan(root,'tiny-dino').stages.find(s=>s.id==='visual-plan').dependencies,['approve-script']); // kids: footage first
- const id='self-help-shorts',p=plan(root,id),D=`docs/projects/${id}`,X=`scripts/projects/${id}`;
- put(root,`${D}/brief.md`,'b');put(root,`${D}/script.md`,'s1');put(root,`${D}/script-review.md`,'r');
- put(root,`${X}/audition.json`,'{}');put(root,`${D}/voice-audition.md`,'take 1');
- put(root,`${D}/production-spec.md`,'spec 1');put(root,`${D}/image-prompts.md`,'images 1');
- assert.throws(()=>approvals.approve(root,p,'approve-assets',{by:'t'}),/Approve earlier gates first: approve-script/);
- for(const g of ['approve-script','approve-voice','approve-assets'])approvals.approve(root,p,g,{by:'t'});
- put(root,`${D}/script.md`,'s2 with a new part');approvals.approve(root,p,'approve-script',{by:'t'});
- assert.throws(()=>approvals.approve(root,p,'approve-voice',{by:'t'}),/Cannot re-approve approve-voice[\s\S]*script\.md[\s\S]*own step was not redone/);
- put(root,`${D}/voice-audition.md`,'take 2 covers the new part');approvals.approve(root,p,'approve-voice',{by:'t'});
- assert.throws(()=>approvals.approve(root,p,'approve-assets',{by:'t'}),/Cannot re-approve approve-assets[\s\S]*voice-audition\.md/);
- put(root,`${D}/image-prompts.md`,'images 2 for the new part');approvals.approve(root,p,'approve-assets',{by:'t'});
- assert.equal(approvals.gateState(root,p,'approve-assets').state,'approved');
- approvals.approve(root,p,'approve-voice',{by:'t'}); // nothing upstream changed: plain re-approval still works
+test('initial lock of five items, patches accepted or returned one by one, then per-scene clips with notes',()=>fixture(root=>{
+ const review=require('./review.cjs'),id='self-help-shorts',p=plan(root,id),D=`docs/projects/${id}`,X=`scripts/projects/${id}`,S=`src/projects/${id}`;
+ assert.deepEqual(p.stages.find(s=>s.id==='initial-lock').dependencies,['music','voice-audition','visual-plan']);
+ assert.deepEqual(p.stages.find(s=>s.id==='review-preview').dependencies,['scene-review','qa','metadata']);
+ assert.throws(()=>approvals.approve(root,p,'initial-lock',{by:'t'}),/recorded in the manager/);
+ assert.throws(()=>review.lock(root,p,{by:'u'}),/Thiếu file/);
+ put(root,`${D}/script.md`,'s1');put(root,`${S}/music.json`,'{"file":"m.mp3"}');put(root,`${X}/voice.json`,'{"voice":"Hải Đăng"}');
+ put(root,`${D}/production-spec.md`,'45 ± 5 giây');put(root,`${D}/image-prompts.md`,'cảnh 1: ngọn nến');
+ assert.equal(review.summary(root,p).state,'unlocked');assert.equal(approvals.gateState(root,p,'initial-lock').state,'missing');
+ review.lock(root,p,{by:'u',note:'ok'});
+ assert.throws(()=>review.lock(root,p,{by:'u'}),/bản vá/);
+ assert.equal(approvals.gateState(root,p,'initial-lock').state,'approved');
+ assert.throws(()=>review.createPatch(root,p,{reason:'x',by:'a'}),/Không có thay đổi/);
+ put(root,`${D}/script.md`,'s2');
+ assert.deepEqual(review.summary(root,p).drift,[`${D}/script.md`]);                 // edited but not proposed yet
+ const p1=review.createPatch(root,p,{reason:'Sửa câu mở',by:'a'});
+ assert.deepEqual([p1.id,Object.keys(p1.changed),review.summary(root,p).state,review.summary(root,p).drift],['p1',[`${D}/script.md`],'patch-pending',[]]);
+ review.decidePatch(root,p,'p1',{decision:'returned',note:'Câu mở còn dài',by:'u'});
+ assert.equal(review.summary(root,p).drift.length,1);                                // returned: still not part of the lock
+ put(root,`${D}/script.md`,'s3');const p2=review.createPatch(root,p,{reason:'Rút gọn câu mở',by:'a'});
+ put(root,`${D}/script.md`,'s4');
+ assert.throws(()=>review.decidePatch(root,p,p2.id,{decision:'accepted',by:'u'}),/File đổi sau khi tạo bản vá/);
+ const p3=review.createPatch(root,p,{reason:'Bản cuối',by:'a'});
+ assert.equal(review.load(root,id).patches.find(x=>x.id===p2.id).status,'superseded');
+ assert.equal(review.decidePatch(root,p,p3.id,{decision:'accepted',note:'Được',by:'u'}).version,2);
+ const s=review.summary(root,p);assert.deepEqual([s.state,s.version,s.drift],['locked',2,[]]);
+ // Scenes from story.json on the project's composition; clips are reviewed with notes.
+ put(root,'src/projects/registry.tsx',`import {V} from './${id}/Video';\nexport const P=()=> <Folder name="a"><Folder name="b"><Folder name="${id}"><Composition id="Shorts" component={V} durationInFrames={1350} fps={30} width={1080} height={1920}/></Folder></Folder></Folder>;`);
+ put(root,`${X}/story.json`,JSON.stringify([{id:'01-mo',start:0,duration:5},{id:'02-ket',start:5,duration:4}]));
+ assert.deepEqual(review.sceneDefs(root,p),[{id:'01-mo',title:'01-mo',composition:'Shorts',frames:[0,149]},{id:'02-ket',title:'02-ket',composition:'Shorts',frames:[150,269]}]);
+ put(root,`projects/${id}/review/01-mo-a.mp4`,'clip a');review.addClip(root,p,'01-mo',`projects/${id}/review/01-mo-a.mp4`);
+ assert.throws(()=>review.reviewScene(root,p,'01-mo',0,{decision:'needs-changes',note:' ',by:'u'}),/Ghi chú/);
+ review.reviewScene(root,p,'01-mo',0,{decision:'needs-changes',note:'Ảnh nến quá tối',by:'u'});
+ put(root,`projects/${id}/review/01-mo-b.mp4`,'clip b');review.addClip(root,p,'01-mo',`projects/${id}/review/01-mo-b.mp4`);
+ assert.throws(()=>review.reviewScene(root,p,'01-mo',0,{decision:'approved',by:'u'}),/clip mới hơn/);
+ review.reviewScene(root,p,'01-mo',1,{decision:'approved',by:'u'});
+ assert.equal(approvals.gateState(root,p,'scene-review').state,'missing');
+ put(root,`projects/${id}/review/02-ket-a.mp4`,'clip c');review.addClip(root,p,'02-ket',`projects/${id}/review/02-ket-a.mp4`);
+ review.reviewScene(root,p,'02-ket',0,{decision:'approved',by:'u'});
+ const done=review.summary(root,p);
+ assert.equal(approvals.gateState(root,p,'scene-review').state,'approved');assert.deepEqual(done.final,{ready:true,blockers:[]});
+ assert.equal(done.scenes[0].clips[0].note,'Ảnh nến quá tối');
+ assert.equal(JSON.parse(fs.readFileSync(path.join(root,`${D}/approvals.json`),'utf8')).schemaVersion,2);
 }));

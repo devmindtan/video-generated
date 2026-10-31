@@ -9,6 +9,7 @@ const policy = require('./policy.json');
 const approvals = require('./approvals.cjs');
 const runner = require('./runner.cjs');
 const seriesNotes = require('./series-notes.cjs');
+const review = require('./review.cjs');
 // AUTOMATION_ROOT exists for fixture tests of the CLI process itself.
 const ROOT = path.resolve(process.env.AUTOMATION_ROOT || path.join(__dirname, '../..'));
 
@@ -48,30 +49,39 @@ function buildStages(profile,seriesDir,{source:S,scripts:X,docs:D,assets:P}){
   add('editorial-review','reviewer','Phản biện kịch bản','Độ rõ, mô-típ lặp với tập khác, cảm xúc, luận điểm cần kiểm tra, nhịp đọc 1×.',
     'Clarity, repetition, emotional tone, factual claims and natural 1x narration timing.',['script'],
     {upstreamKind:'review',reads:[`${D}/**`,'docs/projects/*/script.md'],writes:[`${D}/script-review.md`]});
-  gate('approve-script','Duyệt kịch bản','Bạn duyệt đúng bản kịch bản, thời lượng và các lựa chọn sản xuất.',
-    'Approve script hash, duration and production choices.',['editorial-review']);
-  add('voice-audition','voice-editor','Thử giọng',profile==='kids'?'Giữ giọng B Trúc Ly đã chọn; giữ nguyên take gốc.':
-    'Theo lựa chọn giọng ghi trong brief: 1 (mặc định) giọng VieNeu có sẵn, ưu tiên playlist; 2 clone trong VoiceStudio từ bản ghi được phép. Giữ take cũ.',
-    profile==='kids'?'Keep accepted Trúc Ly B; preserve original takes.':
-    'Use approved voice if present; otherwise audition preferred playlist locally, preserve prior takes.',['approve-script'],
+  // Initial lock (docs/architecture/review-workflow.md): script, music, voice choice + sample, locked specs and
+  // per-scene prompts are approved together once; later edits become patches the user accepts one by one.
+  add('music','editor','Nhạc nền','Chọn bài có tên và tác giả; giữ fade theo cạnh clip, ducking dưới giọng, start/end chỉnh được trong Studio.',
+    'Pick a credited track; keep edge fades, speech ducking and Studio-editable start/end.',['editorial-review'],
+    {kind:'operator-task',reads:[`${D}/script.md`,'scripts/shared/audio-library.json'],writes:[`${S}/music.json`]});
+  add('voice-audition','voice-editor','Chọn giọng',profile==='kids'?'Giữ giọng B Trúc Ly đã chọn; ghi voice.json kèm một đoạn nghe mẫu.':
+    'Theo lựa chọn giọng trong brief (1: VieNeu có sẵn, ưu tiên playlist; 2: clone từ bản ghi được phép); ghi voice.json kèm một đoạn nghe mẫu. Lời đọc đầy đủ làm sau khi chốt.',
+    profile==='kids'?'Keep accepted Trúc Ly B; record voice.json with a short sample.':
+    'Choose the voice per the brief and record voice.json with a short sample; full narration comes after the lock.',['editorial-review'],
     {kind:'operator-task',reads:[`${D}/script.md`,'scripts/shared/voice-playlists.json'],
-      writes:[`${P}/audio/**`,`${X}/audition.json`,`${D}/voice-audition.md`],outputs:[`${X}/audition.json`,`${D}/voice-audition.md`],
+      writes:[`${P}/audio/**`,`${P}/voice-auditions/**`,`${X}/voice.json`,`${D}/voice-audition.md`],outputs:[`${X}/voice.json`,`${D}/voice-audition.md`],
       operations:profile==='kids'?['voice-audition']:['voice-audition','voice-clone']});
-  gate('approve-voice','Duyệt giọng','Nghe nhịp và thanh điệu tiếng Việt, chọn take cụ thể.',
-    'Listen for pacing and Vietnamese tones, select take by hash.',['voice-audition']);
-  add('visual-plan','visual-editor','Kế hoạch hình ảnh',profile==='kids'?'Footage chuyển động liên tục; dùng lại asset phù hợp, thiếu thì handoff Gemini thủ công.':
-    'Storyboard ảnh tĩnh, chủ thể không lộ mặt, typography Stoic cho phụ đề và thumbnail. Không Gemini/Veo.',
-    profile==='kids'?'Plan continuous true-motion footage; reuse suitable assets and manual Gemini handoff.':
-    'Still-image storyboard, faceless subjects, Stoic caption and thumbnail typography; no Gemini/Veo.',
-    // Pictures follow the narration, so stills are planned on the approved voice; kids footage comes first instead.
-    profile==='kids'?['approve-script']:['approve-voice'],
+  add('visual-plan','visual-editor',profile==='kids'?'Kế hoạch footage':'Prompt từng cảnh',profile==='kids'?'Footage chuyển động liên tục cho từng cảnh; dùng lại asset phù hợp, thiếu thì handoff Gemini thủ công.':
+    'Thông tin chốt (thời lượng ± dao động, định dạng, quy tắc) và prompt hình/animation cho từng cảnh; chủ thể không lộ mặt. Chưa làm ảnh. Không Gemini/Veo.',
+    profile==='kids'?'Plan continuous true-motion footage per scene; reuse suitable assets and manual Gemini handoff.':
+    'Locked specs (duration and tolerance, format, rules) and per-scene still/animation prompts; faceless subjects; no images yet; no Gemini/Veo.',['editorial-review'],
     {upstreamKind:'design',reads:[`${D}/script.md`,`${D}/brief.md`],writes:[`${D}/production-spec.md`,`${D}/image-prompts.md`]});
-  gate('approve-assets','Duyệt hình ảnh',profile==='kids'?'Xem hình và tính liên tục. Thiếu footage chuyển động thì dừng sản xuất.':'Xem hình thật và tính liên tục giữa các cảnh.',
-    'Review actual visuals and continuity. Missing motion assets block kids production.',['visual-plan']);
-  add('assembly','assembler','Dựng video','Dùng đường dẫn chuẩn và engine sẵn có; nhạc trim tự do, có ducking và fade theo cạnh clip. Không render.',
-    'Use canonical project paths, existing engines, editable music trim, ducking and edge fades; no render.',['approve-voice','approve-assets'],
+  gate('initial-lock','Chốt ban đầu','Bạn xem và chốt một lần: kịch bản, nhạc nền, giọng (đoạn mẫu), thông tin đã chốt, prompt từng cảnh. Sửa sau đó đi qua bản vá.',
+    'User locks script, music, voice choice, specs and prompts once; later edits are patches.',['music','voice-audition','visual-plan']);
+  add('narration','voice-editor','Lời đọc đầy đủ','Tạo giọng cho toàn bộ kịch bản đã chốt bằng giọng đã chọn; giữ take cũ, nghe lại thanh điệu.',
+    'Narrate the locked script with the locked voice; keep previous takes.',['initial-lock'],
+    {kind:'operator-task',reads:[`${D}/script.md`,`${X}/voice.json`],writes:[`${P}/audio/**`,`${P}/voice-auditions/**`],outputs:[],
+      operations:profile==='kids'?['voice-audition']:['voice-audition','voice-clone']});
+  add('visuals','visual-editor',profile==='kids'?'Footage':'Hình ảnh / animation',profile==='kids'?'Footage chuyển động theo kế hoạch đã chốt; thiếu thì báo, không thay bằng ảnh tĩnh.':
+    'Làm ảnh/animation theo prompt đã chốt; đổi prompt thì tạo bản vá.',
+    'Produce visuals from the locked prompts; prompt changes go through a patch.',['initial-lock'],
+    {kind:'operator-task',reads:[`${D}/image-prompts.md`],writes:[`${P}/images/**`],outputs:[]});
+  add('assembly','assembler','Dựng video','Dùng đường dẫn chuẩn và engine sẵn có; nhạc trim tự do, có ducking và fade theo cạnh clip. Không render cả video.',
+    'Use canonical project paths, existing engines, editable music trim, ducking and edge fades; no full render.',['narration','visuals'],
     {upstreamKind:'implement',reads:[`${D}/**`,`${P}/**`,'src/shared/**'],writes:[`${S}/**`,`${X}/**`],
-      outputs:[`${S}/Video.tsx`,`${S}/Thumbnail.tsx`,`${S}/captions.json`,`${S}/music.json`]});
+      outputs:[`${S}/Video.tsx`,`${S}/Thumbnail.tsx`,`${S}/captions.json`]});
+  gate('scene-review','Duyệt từng cảnh','Cảnh nào xong thì có clip riêng (đã có giọng); bạn xem, bấm Đạt hoặc ghi chú chỗ chưa đạt.',
+    'Per-scene review clips with notes; every scene must pass.',['assembly']);
   add('qa','verifier','Kiểm tra kỹ thuật','Kiểm tra riêng của tập, khớp phụ đề với giọng, typography, media. Đạt kỹ thuật không có nghĩa đã nghe duyệt.',
     'Project-specific checks, captions/voice alignment, typography and media availability; technical pass is not listening approval.',['assembly'],
     {kind:'check',upstreamKind:'test',reads:[`${S}/**`,`${X}/**`,`${D}/**`],writes:[`${D}/qa.json`],
@@ -80,7 +90,7 @@ function buildStages(profile,seriesDir,{source:S,scripts:X,docs:D,assets:P}){
     'Draft title/description with music title AND artist; validate source and attribution.',['assembly'],
     {upstreamKind:'design',reads:[`${D}/**`,`${S}/music.json`],writes:[`${D}/description.md`]});
   gate('review-preview','Xem bản dựng','Bạn xem Studio và nghe thử; giữ nguyên chỉnh sửa trong Studio.',
-    'Review Studio/audio manually; preserve edits.',['qa','metadata']);
+    'Review Studio/audio manually; preserve edits.',['scene-review','qa','metadata']);
   gate('export','Xuất video','Render thủ công khi bạn yêu cầu rõ ràng; không tự đăng tải.',
     'Manual render only on explicit request; no automatic upload.',['review-preview']);
   const byId=Object.fromEntries(stages.map(s=>[s.id,s]));
@@ -89,9 +99,6 @@ function buildStages(profile,seriesDir,{source:S,scripts:X,docs:D,assets:P}){
     s.invalidates=stages.filter(t=>ancestors(t).includes(s.id)).map(t=>t.id);
     if(s.kind==='human-approval') s.bindsArtifacts=[...new Set(ancestors(s).flatMap(a=>byId[a].outputs))];
   }
-  // Voice and visuals cannot be re-approved after the script/voice changed unless their own step was redone.
-  for(const id of ['approve-voice','approve-assets'])
-    byId[id].reworkOutputs=byId[id].dependencies.flatMap(d=>byId[d].outputs);
   return stages;
 }
 // Series-level view for the manager: same stages with a <slug> placeholder instead of a project.
@@ -208,17 +215,22 @@ const USAGE=`Usage: npm run automation -- <command>
   apply <run-id>                      apply a finished run's patch (checks your edits first)
   reject <run-id> [note]              discard a run's patch
   approve <slug> <gate> [--allow-missing] [--note text]
-                                      record your approval of the gate's artifacts by hash`;
+                                      record your approval of the gate's artifacts by hash
+  review <slug>                       initial lock, patches, scene clips and your notes (read-only)
+  patch <slug> --reason text          propose the edits made since the latest lock as a patch
+  scene-clip <slug> <scene>           render one finished scene as a review clip (projects/<slug>/review/)
+  Lock, patch decisions and scene reviews are yours: Duyệt sản xuất in the manager.`;
 
 function printEvent(e){
   const d=Object.entries(e.data).filter(([,v])=>v!==''&&v!==null).map(([k,v])=>`${k}=${typeof v==='string'?v:JSON.stringify(v)}`).join(' ');
   console.log(`${e.timestamp.slice(11,19)}  ${e.source.padEnd(18)} ${e.type.padEnd(22)} ${d}`.trimEnd());
 }
 async function main(argv){
-  const flags=new Set(argv.filter(a=>a.startsWith('--')&&a!=='--note'));
+  const valued=['--note','--reason'],flags=new Set(argv.filter(a=>a.startsWith('--')&&!valued.includes(a)));
   const machine={gpu:flags.has('--gpu'),local:flags.has('--local')};
-  const noteAt=argv.indexOf('--note'),note=noteAt>=0?argv[noteAt+1]||'':'';
-  const args=argv.filter((a,i)=>!a.startsWith('--')&&!(noteAt>=0&&i===noteAt+1));
+  const valueOf=name=>{const at=argv.indexOf(name);return at>=0?argv[at+1]||'':'';};
+  const note=valueOf('--note'),reason=valueOf('--reason');
+  const args=argv.filter((a,i)=>!a.startsWith('--')&&!valued.includes(argv[i-1]));
   const [command,a,b,...extra]=args;
   const json=v=>console.log(JSON.stringify(v,null,2));
   switch(command){
@@ -248,6 +260,19 @@ async function main(argv){
     case 'apply': if(!a)break; {const r=runner.apply(ROOT,a);
       return console.log(`Applied ${r.appliedFiles.join(', ')}. This is not an approval; review the file, then:\n  npm run automation -- status ${r.projectId}`);}
     case 'reject': if(!a)break; return json(runner.reject(ROOT,a,[b,...extra].filter(Boolean).join(' ')));
+    case 'review': if(!a)break; return json(review.summary(ROOT,plan(ROOT,a)));
+    case 'patch': if(!a)break; return json(review.createPatch(ROOT,plan(ROOT,a),{reason,by:'agent (automation patch)'}));
+    case 'scene-clip': {
+      if(!a||!b)break;
+      const p=plan(ROOT,a),scene=review.sceneDefs(ROOT,p).find(s=>s.id===b);
+      if(!scene) throw new Error(`Unknown scene ${b}; scenes: ${review.sceneDefs(ROOT,p).map(s=>s.id).join(', ')||'none (add scripts/projects/<slug>/scenes.json)'}`);
+      // The user allows rendering review clips of finished scenes (2026-10-31); full-video export stays manual.
+      const rel=`projects/${a}/review/${b}-${new Date().toISOString().replace(/[-:]/g,'').slice(0,15)}.mp4`;
+      fs.mkdirSync(path.dirname(path.join(ROOT,rel)),{recursive:true});
+      execFileSync(path.join(ROOT,'node_modules/.bin/remotion'),['render','src/index.tsx',scene.composition,rel,
+        ...(scene.frames?[`--frames=${scene.frames[0]}-${scene.frames[1]}`]:[])],{cwd:ROOT,stdio:'inherit'});
+      return json(review.addClip(ROOT,p,b,rel));
+    }
     case 'approve': {
       if(!a||!b)break;
       const entry=approvals.approve(ROOT,plan(ROOT,a),b,{allowMissing:flags.has('--allow-missing'),note});

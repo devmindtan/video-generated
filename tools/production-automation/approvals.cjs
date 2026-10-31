@@ -36,9 +36,16 @@ function latest(store,stageId){
   return [...store.history].reverse().find(e=>e.stageId===stageId)||null;
 }
 // approved: every bound file still has the recorded hash (null = recorded as missing).
+// Initial lock and per-scene review live in review.cjs (lock + patches, scene clips), not in hash-bound gates.
+const REVIEW_GATES=new Set(['initial-lock','scene-review']);
 function gateState(root,plan,stageId){
   const stage=plan.stages.find(s=>s.id===stageId);
   if(!stage||stage.kind!=='human-approval') throw new Error(`Not an approval stage: ${stageId}`);
+  if(REVIEW_GATES.has(stageId)){
+    const r=require('./review.cjs').summary(root,plan);
+    const ok=stageId==='initial-lock'?r.version>0:r.scenesApproved;
+    return {stageId,state:ok?'approved':'missing',changed:[],entry:null,review:r};
+  }
   const entry=latest(load(root,plan.projectId),stageId);
   if(!entry||entry.decision!=='approved') return {stageId,state:entry?entry.decision:'missing',entry};
   const changed=stage.bindsArtifacts.filter(rel=>(entry.artifactSha256[rel]??null)!==sha256(root,rel));
@@ -48,21 +55,12 @@ function approve(root,plan,stageId,{allowMissing=false,note='',by=null,decision=
   const stage=plan.stages.find(s=>s.id===stageId);
   if(!stage||stage.kind!=='human-approval') throw new Error(`Not an approval stage: ${stageId}`);
   if(stageId==='export') throw new Error('export is a manual render decision, not recorded here');
+  if(REVIEW_GATES.has(stageId)) throw new Error(`${stageId} is recorded in the manager (Duyệt sản xuất), not with approve`);
   const hashes=Object.fromEntries(stage.bindsArtifacts.map(rel=>[rel,sha256(root,rel)]));
   const missing=Object.keys(hashes).filter(rel=>hashes[rel]===null);
   if(decision==='approved'&&missing.length&&!allowMissing)
     throw new Error(`Cannot approve ${stageId}; missing artifacts:\n  ${missing.join('\n  ')}\n`+
       'Create them, or pass --allow-missing to record them explicitly as absent.');
-  // Re-approval after upstream edits (script, voice) needs this step's own outputs to have been redone:
-  // otherwise new script parts would be "approved" with no voice or pictures for them.
-  const previous=[...load(root,plan.projectId).history].reverse().find(e=>e.stageId===stageId&&e.decision==='approved');
-  if(decision==='approved'&&stage.reworkOutputs&&previous){
-    const before=rel=>previous.artifactSha256[rel]??null,own=new Set(stage.reworkOutputs);
-    const upstream=Object.keys(hashes).filter(rel=>!own.has(rel)&&before(rel)!==hashes[rel]);
-    if(upstream.length&&![...own].some(rel=>before(rel)!==hashes[rel]))
-      throw new Error(`Cannot re-approve ${stageId}: these changed since its last approval\n  ${upstream.join('\n  ')}\n`+
-        `but its own step was not redone (${[...own].join(', ')}). Redo it for the changed parts first.`);
-  }
   const blocking=plan.stages.filter(s=>s.kind==='human-approval'&&s.invalidates.includes(stageId))
     .map(s=>gateState(root,plan,s.id)).filter(g=>g.state!=='approved');
   if(decision==='approved'&&blocking.length)
