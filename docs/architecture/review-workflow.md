@@ -26,17 +26,19 @@ Một màn hình, năm mục; nút **Chốt** chỉ bật khi đã xem hết t�
 
 Bấm Chốt ghi **bản chốt v1**: hash + bản sao của mọi file trong gói, người chốt, thời điểm, ghi chú.
 
-**Chưa đạt, trả lại** (người dùng 2026-11-01): gói chưa đạt thì người dùng ghi chú (chung hoặc ở từng mục) rồi bấm nút này
-thay vì Chốt. Lần trả lại được ghi vào `lockReturns` của approvals.json (ghi chú, ghi chú từng mục, hash file lúc trả); agent
+**Trả lại cho agent sửa** (người dùng 2026-11-01): có mục Chưa đạt thì nút chính chuyển thành
+“Trả lại cho agent sửa”. Lần trả lại được ghi vào `lockReturns` của approvals.json (ghi chú, ghi chú từng mục, hash file lúc trả); agent
 đọc ở `npm run automation -- review <slug>` → `returned`, sửa các file trong gói (chưa chốt nên sửa thẳng, không cần bản vá).
 Lần xem sau, mục đã sửa được so với bản đã trả lại và ghi chú cũ hiện ở đầu mục; trả lại bao nhiêu lần cũng được trước khi chốt.
 
 Mỗi mục hiện dạng dễ đọc (nhạc nền và giọng đọc: tên bài, tác giả, âm lượng %, fade, cách chọn giọng, sự đồng ý,
-cao độ, tốc độ, kèm trình nghe; JSON gốc gập lại). Dưới mỗi mục có ô **ghi chú cho mục này**: tự lưu khi gõ,
-còn nguyên khi quay lại mục đó, rail đánh dấu "có ghi chú". Ghi chú là bản nháp agent đọc được ngay qua
-`automation review <slug>` (trường `notes`, kể cả khi chưa chốt; `changedSince` = file của mục đã đổi sau ghi
-chú). Khi chốt, ghi chú vào bản chốt (`itemNotes`); agent xử lý chúng qua bản vá. Bản vá cũng có ghi chú từng
-file; trả lại chỉ cần ghi chú chung hoặc ghi chú ở một mục.
+cao độ, tốc độ, kèm trình nghe; JSON gốc gập lại). Mỗi mục có hai nút **Đạt** / **Chưa đạt** (người dùng 2026-11-01).
+Đạt thì không cần ghi chú. Chưa đạt thì ô **chỗ chưa đạt** mới hiện và bắt buộc ghi; ô tự lưu khi gõ, còn nguyên khi
+quay lại mục đó. Ghi chú là bản nháp agent đọc được ngay qua `automation review <slug>` (trường `notes`; `changedSince` =
+file của mục đã đổi sau ghi chú); đổi một mục sang Đạt thì ghi chú của mục đó bị xóa. Chân hộp thoại: tất cả Đạt thì nút
+chính là **Chốt ban đầu**; có mục Chưa đạt thì nút chính là **Trả lại cho agent sửa** (ô ghi chú chung, không bắt buộc,
+chỉ hiện lúc này). Agent sửa tới khi mọi mục đạt. Bản vá dùng cùng cách: tất cả Đạt thì Chấp nhận, có mục Chưa đạt thì
+Trả lại kèm ghi chú của mục đó.
 
 ## 2. Bản vá (chỉnh sửa trong quá trình làm)
 

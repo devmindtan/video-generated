@@ -487,3 +487,11 @@ body.has-player .drawer.detail-page{padding-bottom:120px}
 .preview-clips video{width:100%;aspect-ratio:9/16;background:#000;border-radius:8px;object-fit:contain}
 .caption-view{padding:4px 18px 8px}.caption-view h4{margin:14px 0 6px;font-size:14px;color:var(--ink)}
 .caption-view td{padding:6px 10px;font-size:15px;vertical-align:top}.caption-view .caption-time{white-space:nowrap;color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px;width:1%}
+/* Lock/patch review: each item is marked Đạt or Chưa đạt; only Chưa đạt asks for a note. */
+.decide-buttons{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.decide-buttons .button{min-width:96px}
+.button.is-pass-on{background:var(--forest);border-color:var(--forest);color:#fff}
+.button.is-fail-on{background:#fdf2ea;border:1px solid #c4774e;color:#8f3f1d}
+.rail-item.is-fail .rail-check{background:#fdf2ea;border-color:#c4774e;color:#8f3f1d}
+.rail-item.is-fail small{color:#a14a26}
+.panel-foot .item-note span{color:#8f3f1d}

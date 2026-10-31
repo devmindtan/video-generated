@@ -26,6 +26,7 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
  const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
  const base=`http://127.0.0.1:${server.address().port}`,mark=s=>console.log('✓ '+s),store=()=>JSON.parse(fs.readFileSync(path.join(root,D,'approvals.json'),'utf8'));
  const plan=cli.plan(root,id),dialog=page.locator('#review-dialog'),next=page.locator('.gate-next'),open=async()=>{await page.reload({waitUntil:'networkidle'});await page.locator('.gate-step').first().waitFor();};
+ const passAll=async()=>{for(let k=0;k<12;k++){if(!await dialog.locator('.rail-item:not(.is-seen):not(.is-fail)').count())break;await dialog.locator('[data-item-pass]').click();}};
  const seenAll=async()=>{for(let k=0;k<12&&await dialog.locator('[data-review-seen]').count();k++){if(await dialog.locator('#review-form button[type=submit]').isEnabled())break;await dialog.locator('[data-review-seen]').click();}};
  try{
   await page.goto(base+`/#project/${id}`,{waitUntil:'networkidle'});await page.locator('#document-view').waitFor();
@@ -46,23 +47,31 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   assert.equal(await page.locator('.review-stepper .gate-step').count(),3,'patches are not a stage');assert.match(await page.locator('.patch-panel').innerText(),/Sau khi chốt, mọi chỉnh sửa/);
   await next.locator('[data-review-open="lock"]').click();await dialog.locator('.rail-item').first().waitFor();
   assert.deepEqual(await dialog.locator('.rail-name').evaluateAll(n=>n.map(x=>x.firstChild.textContent)),['Kịch bản','Nhạc nền','Giọng đọc','Thông tin đã chốt','Prompt hình / animation từng cảnh']);
-  assert.equal(await dialog.locator('#review-form button[type=submit]').isDisabled(),true,'lock stays off until all five items are seen');
+  assert.equal(await dialog.locator('#review-form button[type=submit]').isDisabled(),true,'lock stays off until every item is marked');
+  assert.equal(await dialog.locator('.item-note').count(),0,'no note box until an item is marked Chưa đạt');
+  await dialog.locator('[data-item-fail]').click();assert.equal(await dialog.locator('.item-note textarea').count(),1);
   await dialog.locator('.item-note textarea').fill('Câu 3 hơi dài');await page.waitForFunction(()=>/Đã lưu/.test(document.querySelector('.note-state')?.textContent||''));
-  assert.equal(store().notes.lock.script.text,'Câu 3 hơi dài');assert.match(await dialog.locator('.rail-item').first().innerText(),/có ghi chú/);
+  assert.equal(store().notes.lock.script.text,'Câu 3 hơi dài');assert.match(await dialog.locator('.rail-item').first().innerText(),/Chưa đạt/);
   assert.equal(review.summary(root,plan).notes.lock.script.changedSince,false,'agents read notes before the lock');
   await dialog.locator('.rail-item',{hasText:'Nhạc nền'}).click();assert.match(await dialog.locator('.voice-takes').innerText(),/Enlivening — Pufino/);
   const music=await dialog.locator('.setting-list').first().innerText();assert.match(music,/Bài\s*Enlivening/);assert.match(music,/Tác giả\s*Pufino/);assert.match(music,/Âm lượng khi có lời\s*30%/);
-  assert.equal(await dialog.locator('.setting-raw').isVisible(),false,'raw JSON stays folded');assert.equal(await dialog.locator('.item-note textarea').inputValue(),'');
+  assert.equal(await dialog.locator('.setting-raw').isVisible(),false,'raw JSON stays folded');assert.equal(await dialog.locator('.item-note').count(),0);
   assert.equal(await dialog.locator('audio').first().evaluate(a=>fetch(a.src).then(r=>r.status)),200);
-  await dialog.locator('.rail-item',{hasText:'Giọng đọc'}).click();assert.match(await dialog.locator('.voice-takes').innerText(),/Đoạn mẫu đề xuất: Quốc Tuấn[\s\S]*Đoạn mẫu khác 1/);
+  await dialog.locator('[data-item-fail]').click();await dialog.locator('.item-note textarea').fill('Nhạc hơi to');await page.waitForFunction(()=>/Đã lưu/.test(document.querySelector('.note-state')?.textContent||''));
+  await dialog.locator('[data-item-pass]').click();await page.waitForFunction(()=>/Giọng đọc/.test(document.querySelector('#panel-title')?.textContent||''));
+  for(let k=0;k<30&&store().notes?.lock?.music;k++)await page.waitForTimeout(100);assert.equal(store().notes.lock.music,undefined,'Đạt drops the note of that item');
+  assert.match(await dialog.locator('.voice-takes').innerText(),/Đoạn mẫu đề xuất: Quốc Tuấn[\s\S]*Đoạn mẫu khác 1/);
   assert.match(await dialog.locator('.setting-list').first().innerText(),/Cách chọn giọng\s*Cách 1: giọng có sẵn/);
   assert.equal(await dialog.locator('audio').first().evaluate(a=>fetch(a.src).then(r=>r.status)),200);
   await page.screenshot({path:path.join(out,'lock-1440.png')});
-  await dialog.locator('.rail-item').first().click();assert.equal(await dialog.locator('.item-note textarea').inputValue(),'Câu 3 hơi dài','notes come back when you return to an item');
-  await dialog.locator('.item-note textarea').fill('Câu 3 hơi dài, câu 7 lặp ý');await seenAll();assert.match(await dialog.locator('.foot-progress').innerText(),/Đã xem hết/);
-  // Chưa đạt: send the package back with the notes; the agent fixes it; the next look compares with what was sent back.
-  await dialog.locator('[data-lock-return]').click();await page.waitForFunction(()=>!document.querySelector('#review-dialog').open);
-  assert.equal(store().lockReturns[0].itemNotes.script.text,'Câu 3 hơi dài, câu 7 lặp ý');assert.equal((store().locks||[]).length,0,'nothing is locked');
+  await passAll();await dialog.locator('.rail-item').first().click();assert.equal(await dialog.locator('.item-note textarea').inputValue(),'Câu 3 hơi dài','notes come back when you return to an item');
+  await dialog.locator('.item-note textarea').fill('Câu 3 hơi dài, câu 7 lặp ý');await page.waitForFunction(()=>/Đã lưu/.test(document.querySelector('.note-state')?.textContent||''));
+  assert.match(await dialog.locator('.foot-progress').innerText(),/Đã xem 5\/5 · 1 chưa đạt/);assert.equal(await dialog.locator('#review-form [name=note]').count(),1,'general note only when something is not ok');
+  assert.match(await dialog.locator('#review-form button[type=submit]').innerText(),/Trả lại cho agent sửa/);
+  await page.screenshot({path:path.join(out,'lock-fail-1440.png')});
+  // Chưa đạt: back to the agent with the notes; the agent fixes it; the next look compares with what was sent back.
+  await dialog.locator('#review-form button[type=submit]').click();await page.waitForFunction(()=>!document.querySelector('#review-dialog').open);
+  assert.equal(store().lockReturns[0].itemNotes.script.text,'Câu 3 hơi dài, câu 7 lặp ý');assert.equal(store().lockReturns[0].itemNotes.music,undefined);assert.equal((store().locks||[]).length,0,'nothing is locked');
   assert.match(await next.innerText(),/Đã trả lại gói chốt; agent đang sửa[\s\S]*có ghi chú ở: Kịch bản/);
   const scriptPath=path.join(root,D,'script.md');fs.writeFileSync(scriptPath,fs.readFileSync(scriptPath,'utf8').replace('Câu 7 của kịch bản.','Câu bảy, viết gọn lại.'));
   await open();assert.match(await next.innerText(),/Gói chốt đã sửa theo ghi chú của bạn[\s\S]*Mục đã sửa: Kịch bản/);
@@ -71,14 +80,14 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   assert.match(await dialog.locator('.review-hint',{hasText:'So với bản bạn đã trả lại'}).innerText(),/So với bản bạn đã trả lại/);
   assert.match(await dialog.locator('.note-recorded').innerText(),/khi trả lại[\s\S]*câu 7 lặp ý/);
   await page.screenshot({path:path.join(out,'lock-returned-1440.png')});
-  assert.equal(await dialog.locator('.item-note textarea').inputValue(),'','a new look starts with empty drafts');
-  await dialog.locator('.item-note textarea').fill('Câu 3 hơi dài, câu 7 lặp ý');await page.waitForFunction(()=>/Đã lưu/.test(document.querySelector('.note-state')?.textContent||''));await seenAll();
-  mark('Chưa đạt sends the package back with notes; the next look shows what changed since and the earlier notes');
-  await dialog.locator('#review-form [name=note]').fill('Chốt bản đầu');await dialog.locator('#review-form button[type=submit]').click();
+  assert.equal(await dialog.locator('.item-note').count(),0,'a new look starts unmarked');
+  await passAll();assert.match(await dialog.locator('.foot-progress').innerText(),/tất cả đạt/);assert.equal(await dialog.locator('#review-form [name=note]').count(),0);
+  mark('Each item is Đạt or Chưa đạt; only Chưa đạt asks for a note; any Chưa đạt sends the package back, the next look shows changes and earlier notes');
+  assert.match(await dialog.locator('#review-form button[type=submit]').innerText(),/Chốt ban đầu/);await dialog.locator('#review-form button[type=submit]').click();
   await page.waitForFunction(()=>/Bản chốt v1/.test(document.querySelector('.lock-chip')?.textContent||''));
-  const lock=store().locks[0];assert.equal(lock.version,1);assert.match(lock.by,/trang quản lý/);assert.equal(lock.note,'Chốt bản đầu');assert.equal(Object.keys(lock.files).length,5);
-  assert.equal(lock.itemNotes.script.text,'Câu 3 hơi dài, câu 7 lặp ý','the edited note was saved before locking');assert.equal(store().notes.lock,undefined);
-  mark('Initial lock: readable music/voice settings, samples play, per-item notes saved as you type, kept on return and recorded with the lock');
+  const lock=store().locks[0];assert.equal(lock.version,1);assert.match(lock.by,/trang quản lý/);assert.equal(Object.keys(lock.files).length,5);
+  assert.deepEqual(lock.itemNotes,{},'all items Đạt: no notes');assert.equal(store().notes.lock,undefined);
+  mark('Initial lock: readable music/voice settings, samples play; all Đạt locks v1');
   const scriptFile=path.join(root,D,'script.md'),edit=(a,b)=>fs.writeFileSync(scriptFile,fs.readFileSync(scriptFile,'utf8').replace(a,b));
   // No reload from here: the page follows file changes through live events.
   const live=async(pattern,selector='#gates')=>page.waitForFunction(([p,s])=>new RegExp(p).test(document.querySelector(s)?.textContent||''),[pattern.source,selector],{timeout:8000});
@@ -90,12 +99,15 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   await next.locator('[data-review-open="patch"]').click();await dialog.locator('.rail-item').first().waitFor();
   assert.equal(await dialog.locator('.rail-item').count(),1);assert.equal(await dialog.locator('.d-del mark').innerText(),'thử.');assert.equal(await dialog.locator('.d-add mark').first().innerText(),'đã sửa lại.');
   await page.screenshot({path:path.join(out,'patch-1440.png')});
-  await dialog.locator('[data-patch-return]').click();assert.match(await dialog.locator('.review-status').innerText(),/lý do trả lại/);
-  await dialog.locator('.item-note textarea').fill('Câu mở còn dài');await dialog.locator('[data-patch-return]').click();
+  await dialog.locator('[data-item-fail]').click();assert.equal(await dialog.locator('#review-form button[type=submit]').isDisabled(),true,'Chưa đạt needs its note');
+  assert.match(await dialog.locator('.review-status').innerText(),/Ghi chỗ chưa đạt ở: Kịch bản/);
+  await dialog.locator('.item-note textarea').fill('Câu mở còn dài');
+  await page.waitForFunction(()=>!document.querySelector('#review-form button[type=submit]').disabled);assert.match(await dialog.locator('#review-form button[type=submit]').innerText(),/Trả lại cho agent sửa/);
+  await dialog.locator('#review-form button[type=submit]').click();
   await page.waitForFunction(()=>!document.querySelector('#review-dialog').open);
-  assert.deepEqual([store().patches[0].status,store().patches[0].itemNotes[`${D}/script.md`].text],['returned','Câu mở còn dài']);mark('A patch shows its diff; returning needs a note, an item note is enough');
+  assert.deepEqual([store().patches[0].status,store().patches[0].itemNotes[`${D}/script.md`].text],['returned','Câu mở còn dài']);mark('A patch shows its diff; Chưa đạt with a note returns it');
   edit('Nội dung đã sửa lại.','Nội dung ngắn.');review.createPatch(root,plan,{reason:'Rút gọn câu mở',by:'agent'});await open();
-  await next.locator('[data-review-open="patch"]').click();await dialog.locator('.rail-item').first().waitFor();await seenAll();
+  await next.locator('[data-review-open="patch"]').click();await dialog.locator('.rail-item').first().waitFor();await passAll();assert.match(await dialog.locator('#review-form button[type=submit]').innerText(),/Chấp nhận/);
   await dialog.locator('#review-form button[type=submit]').click();await page.waitForFunction(()=>/Bản chốt v2/.test(document.querySelector('.lock-chip')?.textContent||''));
   assert.deepEqual(store().locks.map(l=>l.version),[1,2]);assert.equal(store().locks[1].fromPatch,'p2');
   assert.equal(await page.locator('.patch-panel .patch-item').count(),2);assert.match(await page.locator('.patch-panel').innerText(),/p1[\s\S]*Đã trả lại[\s\S]*Câu mở còn dài/);mark('Accepting a patch makes the next locked version; the patch panel lists both with notes');
@@ -133,7 +145,7 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   for(const width of [768,390]){await page.setViewportSize({width,height:900});await open();
    assert.ok(await page.locator('#drawer').evaluate(d=>d.scrollWidth<=d.clientWidth+1),'page fits at '+width);const panel=await page.locator('.patch-panel').boundingBox(),scenes=await page.locator('.review-scenes').boundingBox();assert.ok(panel&&panel.y>=scenes.y+scenes.height-1,'patch panel stacks under the scenes at '+width);
    await page.locator('.patch-panel').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(out,`gates-${width}.png`)});
-   await page.locator('[data-review-open="lock"]').first().click();await dialog.locator('.rail-item').first().waitFor();assert.match(await dialog.locator('.note-recorded').innerText(),/câu 7 lặp ý/);
+   await page.locator('[data-review-open="lock"]').first().click();await dialog.locator('.rail-item').first().waitFor();assert.equal(await dialog.locator('[data-item-pass]').count(),0,'a locked package is view-only');
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no page overflow at '+width);await page.screenshot({path:path.join(out,`lock-${width}.png`)});await page.keyboard.press('Escape');
    await page.locator('.scene-row').first().locator('[data-scene-open]').click();await dialog.locator('.scene-video').waitFor();
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'scene dialog fits at '+width);await page.screenshot({path:path.join(out,`scene-${width}.png`)});await page.keyboard.press('Escape');}
