@@ -15,13 +15,20 @@
         "Tập dài kết thúc bằng đúng lời người dùng: \"Đến đây là kết thúc rồi, các bạn thấy thế nào? Nếu hay thì hãy bình luận vào bên dưới video và cho mình một lượt đăng ký kênh để mình có động lực để có thể làm thêm nhiều những video thế này hơn nữa nhé. Hẹn gặp lại cả nhà.\" Không tự viết lại câu chữ; chỉ đổi khi người dùng sửa.",
         "Phần ý kiến cá nhân do người dùng đưa khi video đã dựng gần xong, không phải lúc viết kịch bản. Không chờ phần này để duyệt kịch bản hay dựng các phần khác; để chỗ trống có đánh dấu (trong kịch bản và trên timeline, ngay trước câu nhận xét chung), không tự viết thay. Khi người dùng đưa ý kiến: thêm vào kịch bản, tạo giọng và dựng riêng đoạn đó, rồi người dùng duyệt lại kịch bản.",
         "Tập trung vào nội dung chính của sách; không bắt lỗi chi tiết từng chỗ sai (thuốc, số liệu…). Những chỗ chưa hay chỉ gói trong một câu nhận xét chung ở cuối, trước lời kết, theo ý người dùng: \"Mặc dù cuốn sách này còn nhiều những chỗ chưa hay, nhưng tổng quan đây là một cuốn sách hay. Nếu bạn có thời gian, có thể đọc qua để hiểu hơn.\" Vẫn không đưa nội dung sai hoặc nhạy cảm của sách vào lời đọc.",
-        "Cập nhật 2026-10-31 (người dùng): tập tổng quan một cuốn sách có thêm phần \"Những điểm chưa đạt\" của sách và phần \"Tổng kết\", đặt sau nội dung chính và trước ý kiến cá nhân. Điểm chưa đạt nói ở mức tổng quát (lặp ý, nhận định khoa học/số liệu không nguồn, niềm tin trình bày như sự thật…), không bắt lỗi từng chỗ và không nhắc lại nội dung sai hoặc nhạy cảm; câu nhận xét chung của người dùng vẫn giữ trước lời kết."
+        "Cập nhật 2026-10-31 (người dùng): tập tổng quan một cuốn sách có thêm phần \"Những điểm chưa đạt\" của sách và phần \"Tổng kết\", đặt sau nội dung chính và trước ý kiến cá nhân. Điểm chưa đạt nói ở mức tổng quát (lặp ý, nhận định khoa học/số liệu không nguồn, niềm tin trình bày như sự thật…), không bắt lỗi từng chỗ và không nhắc lại nội dung sai hoặc nhạy cảm; câu nhận xét chung của người dùng vẫn giữ trước lời kết.",
+        "Giọng người kể (người dùng 2026-10-31, trả lại gói chốt tập 1): cân bằng giữa người kể chuyện và nhập vai; không nhập vai quá mà quên mình là người kể. Người kể là \"mình\", nói với \"cả nhà / các bạn\"; nội dung sách kể ở ngôi thứ ba và gắn với tác giả (\"tác giả kể…\", \"theo tác giả…\", \"tác giả khuyên…\"); chuyện trong sách có câu dẫn của người kể, ví dụ của kênh nói rõ là ví dụ. Không viết trống không: câu có chủ ngữ, không dùng câu cụt một hai chữ đứng riêng, không ra lệnh kiểu \"Hãy…/Đừng…\" mà không có chủ thể (\"tác giả khuyên mình nên…\"). Câu nối tự nhiên như đang kể cho người nghe."
       ],
       "notes": ""
     },
     "assembly": {
       "rules": [
         "Dựng intro và 30 giây đầu sau intro (không tính intro) trước, chờ người dùng duyệt rồi mới dựng tiếp (từng phần hoặc toàn bộ theo lựa chọn của họ)."
+      ],
+      "notes": ""
+    },
+    "visual-plan": {
+      "rules": [
+        "Hình (người dùng 2026-10-31): minh họa vẽ bằng code được vẽ người (dáng, cử chỉ, nhân vật trong chuyện như người bà, đứa cháu); quy tắc không lộ mặt người chỉ áp dụng khi tạo ảnh mới (ảnh tạo bằng AI hoặc ảnh chụp). Animation minh họa phải đủ chi tiết và đi theo lời thoại một cách mượt mà: mỗi câu hoặc vế có hình/chuyển động riêng xuất hiện đúng lúc đọc tới, không để một hình đứng yên suốt cả đoạn, chuyển cảnh mượt."
       ],
       "notes": ""
     }
