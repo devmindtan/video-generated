@@ -78,6 +78,7 @@ import {ListenFirstVideo} from './listen-first/Video';
 import {ListenFirstThumbnail} from './listen-first/Thumbnail';
 import {SkinCareNhuyVideo} from './skin-care-nhuy/Video';
 import {MerzyGlamTintVideo} from './merzy-glam-tint/Video';
+import {FlowerKnowsPowderVideo} from './flower-knows-powder/Video';
 
 import {StartBeforeReadyVideo} from './start-before-ready/Video';
 import {StartBeforeReadyThumbnail} from './start-before-ready/Thumbnail';
@@ -275,6 +276,9 @@ export const ProjectCompositions: FC = () => (
         </Folder>
         <Folder name="merzy-glam-tint">
           <Composition id="MerzyGlamTintAdam" calculateMetadata={renderTo('merzy-glam-tint')} component={MerzyGlamTintVideo} durationInFrames={1571} fps={60} width={720} height={1280} />
+        </Folder>
+        <Folder name="flower-knows-powder">
+          <Composition id="FlowerKnowsPowderAdam" calculateMetadata={renderTo('flower-knows-powder')} component={FlowerKnowsPowderVideo} durationInFrames={958} fps={30} width={1080} height={1440} />
         </Folder>
       </Folder>
     </Folder>
