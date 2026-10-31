@@ -50,16 +50,16 @@
   [
     {
       "text": "Quẹt phát lên màu đỏ gạch.",
-      "startMs": 0,
-      "endMs": 1700,
-      "timestampMs": 0,
+      "startMs": 1900,
+      "endMs": 3630,
+      "timestampMs": 1900,
       "confidence": null
     },
     {
       "text": "Tên bookmark, đánh dấu luôn tay chồng.",
-      "startMs": 1820,
-      "endMs": 3796,
-      "timestampMs": 1820,
+      "startMs": 3810,
+      "endMs": 5774,
+      "timestampMs": 3810,
       "confidence": null
     }
   ],

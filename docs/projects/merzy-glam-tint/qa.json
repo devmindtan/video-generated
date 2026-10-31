@@ -1,15 +1,15 @@
 {
-  "durationSeconds": 26.233333,
+  "durationSeconds": 26.183333,
   "dimensions": [
     720,
     1280
   ],
-  "fps": 30,
+  "fps": 60,
   "sourceAudioMuted": true,
   "captionsShown": false,
   "voice": "Adam bựa",
   "voiceProvider": "VieNeu-TTS v3 Turbo 3.8.3 (local CPU)",
-  "maximumTempo": 1.04,
+  "maximumTempo": 1.0522,
   "wordMatchRatios": [
     1.0,
     1.0,

@@ -253,7 +253,7 @@ export const ProjectCompositions: FC = () => (
           <Composition id="SkinCareNhuyAdam" calculateMetadata={renderTo('skin-care-nhuy')} component={SkinCareNhuyVideo} durationInFrames={904} fps={30} width={368} height={654} />
         </Folder>
         <Folder name="merzy-glam-tint">
-          <Composition id="MerzyGlamTintAdam" calculateMetadata={renderTo('merzy-glam-tint')} component={MerzyGlamTintVideo} durationInFrames={787} fps={30} width={720} height={1280} />
+          <Composition id="MerzyGlamTintAdam" calculateMetadata={renderTo('merzy-glam-tint')} component={MerzyGlamTintVideo} durationInFrames={1571} fps={60} width={720} height={1280} />
         </Folder>
       </Folder>
     </Folder>

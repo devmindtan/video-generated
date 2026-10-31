@@ -3,6 +3,9 @@ import {Audio, Video} from '@remotion/media';
 import {AbsoluteFill, Track, staticFile} from 'remotion';
 import audio from './audio.json';
 
+// 60 fps keeps every frame of the customer's variable-rate footage (up to ~39 fps); 30 fps dropped them.
+const FPS = 60;
+
 const voiceCues = [
   ['01-greeting-voice-full.wav', 0, 4],
   ['02-ribbon-voice-full.wav', 4, 5],
@@ -18,7 +21,7 @@ export const MerzyGlamTintVideo: FC = () => (
       name="Hình gốc · Audio đã tắt"
       src={staticFile('merzy-glam-tint/video/source.mp4')}
       muted
-      durationInFrames={787}
+      durationInFrames={1571}
       style={{width: '100%', height: '100%', objectFit: 'contain'}}
     />
     <Track name="Adam bựa · VieNeu local">
@@ -26,8 +29,8 @@ export const MerzyGlamTintVideo: FC = () => (
         <Audio
           key={file}
           name={file.replace('-voice-full.wav', '')}
-          from={at * 30}
-          durationInFrames={duration * 30}
+          from={at * FPS}
+          durationInFrames={duration * FPS}
           src={staticFile(`merzy-glam-tint/audio/${file}`)}
           volume={audio.voiceVolume}
         />

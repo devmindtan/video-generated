@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[3]
 PUBLIC = ROOT / 'public/merzy-glam-tint'
 SRC = ROOT / 'src/projects/merzy-glam-tint'
 SR = 24000
-DURATION = 787 / 30
+DURATION = 1571 / 60
 
 
 def db(value):
@@ -37,7 +37,7 @@ def main():
     report = {
         'durationSeconds': round(DURATION, 6),
         'dimensions': [720, 1280],
-        'fps': 30,
+        'fps': 60,
         'sourceAudioMuted': True,
         'captionsShown': False,
         'voice': 'Adam bựa',
