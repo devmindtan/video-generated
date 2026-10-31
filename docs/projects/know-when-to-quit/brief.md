@@ -25,9 +25,9 @@
 
 ## Giọng đọc
 
-- Lựa chọn: **Option 2, clone giọng** (người dùng yêu cầu 2026-10-31: "giọng của Musashi").
-- **Đang chặn:** chưa có file giọng tham chiếu và chưa xác nhận giọng của ai / đã có đồng ý của chủ giọng chưa. Chỉ clone giọng của người dùng hoặc của người đã đồng ý; không clone giọng lấy từ video của kênh/người khác.
-- Khi đã có file và xác nhận: clone thử cảnh 1 trên máy GPU, người dùng nghe chọn, rồi mới clone toàn bộ.
+- Giọng: **lựa chọn 2 — clone giọng `mushashi`** (consent: permission, theo `library/voice-references/mushashi/reference.json`), người dùng chọn ngày 2026-10-31.
+- Bản mẫu: `library/voice-references/mushashi/clips/002288-15s.wav` (15 giây, từ giây 228,8 của bản ghi gốc).
+- Clone thử cảnh 1 trước (máy GPU nếu bật); người dùng nghe chọn rồi mới clone `--all`. Không ghép take vào video khi chưa được chọn.
 
 ## Nguồn và kiểm chứng
 
