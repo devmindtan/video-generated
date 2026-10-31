@@ -9,13 +9,14 @@ async function fixture(t, {fail = false} = {}) {
   const write = (p, v) => {fs.mkdirSync(path.dirname(path.join(root, p)), {recursive: true});fs.writeFileSync(path.join(root, p), v);};
   write('scripts/projects/demo/audition.json', JSON.stringify({sentences: [{scene: 1, text: 'Câu một.'}, {scene: 1, text: 'Câu hai.'}, {scene: 2, text: 'Cảnh hai.'}]}));
   write('my-voice.wav', 'RIFF-reference-bytes');fs.mkdirSync(path.join(root, '.voicestudio/data'), {recursive: true});
-  const requests = [];
+  const requests = [], deleted = [];
   const server = http.createServer((req, res) => {
     const chunks = [];req.on('data', c => chunks.push(c));
     req.on('end', () => {
+      if (req.method === 'DELETE') {deleted.push(req.url);res.writeHead(200, {'Content-Type': 'application/json'});return res.end('{"deleted":true}');}
       const body = Buffer.concat(chunks).toString('latin1');requests.push(body);
       if (fail && requests.length === 2) {res.writeHead(500);return res.end('engine crashed');}
-      res.writeHead(200, {'Content-Type': 'audio/wav', 'x-seed': String(requests.length), 'x-gen-time': '1.5', 'x-audio-duration': '2.0', 'x-omnivoice-backend': '0.5.7'});
+      res.writeHead(200, {'Content-Type': 'audio/wav', 'x-seed': String(requests.length), 'x-audio-id': 'take' + requests.length, 'x-gen-time': '1.5', 'x-audio-duration': '2.0', 'x-omnivoice-backend': '0.5.7'});
       res.end('RIFF-fake-' + requests.length);
     });
   });
@@ -23,7 +24,7 @@ async function fixture(t, {fail = false} = {}) {
   t.after(() => {server.close();fs.rmSync(root, {recursive: true, force: true});});
   const calls = {ensure: 0, stop: 0};
   const deps = (running = false) => ({base: `http://127.0.0.1:${server.address().port}/`, ensure: async () => {calls.ensure++;}, probe: async () => ({state: running ? 'ready' : 'off'}), stop: async () => {calls.stop++;}, log: () => {}});
-  return {root, requests, calls, deps};
+  return {root, requests, deleted, calls, deps};
 }
 const base = {project: 'demo', take: 'clone-v1', ref: 'my-voice.wav', consent: 'self'};
 
@@ -64,4 +65,35 @@ test('text sources, keeps a VoiceStudio the user had open, and leaves a partial 
   assert.equal(partial.files.length, 1);assert.equal(g.calls.stop, 1, 'stopped even after a failure');
   assert.deepEqual(parseArgs(['--project', 'x', '--all', '--consent', 'permission']), {project: 'x', all: true, consent: 'permission'});
   assert.throws(() => parseArgs(['--bogus']), /không hiểu/);
+});
+
+test('GPU machine: --gpu flag, remote.json validation and a tunnel port distinct from local VoiceStudio', t => {
+  const remote = require('./remote.cjs');
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'voice-remote-'));t.after(() => fs.rmSync(root, {recursive: true, force: true}));
+  assert.deepEqual(parseArgs(['--gpu', '--scene', '1']), {gpu: true, scene: '1'});
+  assert.throws(() => remote.config(root), /remote\.json/);
+  const write = c => {fs.mkdirSync(path.join(root, '.voicestudio'), {recursive: true});fs.writeFileSync(path.join(root, '.voicestudio/remote.json'), JSON.stringify(c));};
+  write({host: 'gpu; rm -rf /', dir: '~/voicestudio-gpu'});assert.throws(() => remote.config(root), /host/);
+  write({host: 'desktop-kndgm60', dir: '~/x" & calc'});assert.throws(() => remote.config(root), /dir/);
+  write({host: 'desktop-kndgm60', dir: '~/voicestudio-gpu', localPort: 3900});assert.throws(() => remote.config(root), /localPort/);
+  write({host: 'desktop-kndgm60', dir: '~/voicestudio-gpu'});
+  assert.equal(remote.config(root).url, 'http://127.0.0.1:3901/');
+});
+
+test('machine choice: GPU when it answers, local only when it is off; flags force one side', () => {
+  const {pickMachine} = require('./remote.cjs'), up = () => true, down = () => false;
+  assert.equal(pickMachine('/x', {}, up), 'gpu');
+  assert.equal(pickMachine('/x', {}, down), 'local');
+  assert.equal(pickMachine('/x', {local: true}, up), 'local');
+  assert.equal(pickMachine('/x', {gpu: true}, down), 'gpu', '--gpu fails loudly instead of falling back');
+  assert.throws(() => pickMachine('/x', {gpu: true, local: true}), /một trong/);
+});
+
+test('on the GPU machine each take is deleted there after it is saved here; locally nothing is deleted', async t => {
+  const f = await fixture(t);
+  const r = await clone(f.root, {...base, all: true, gpu: true}, f.deps());
+  assert.equal(r.manifest.machine, 'gpu');assert.deepEqual(f.deleted, ['/history/take1', '/history/take2']);
+  assert.equal(r.manifest.files.length, 2, 'files are kept on the laptop');
+  await clone(f.root, {...base, take: 'clone-local', scene: '1'}, f.deps());
+  assert.equal(f.deleted.length, 2);
 });

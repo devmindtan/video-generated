@@ -116,7 +116,7 @@ Mỗi video mới chọn một trong hai cách và ghi vào `brief.md` của t�
 | Nguồn giọng | 25 preset; ưu tiên playlist trong `scripts/shared/voice-playlists.json`; kids giữ Trúc Ly giọng B | Bản ghi mẫu người dùng cung cấp; hoặc thiết kế giọng bằng mô tả |
 | Điều kiện | Không | Bản ghi là giọng của người dùng hoặc người đã đồng ý cho clone. Không clone người nổi tiếng, người sáng tạo khác hay giọng lấy từ video khi chưa có sự đồng ý |
 | Bản ghi mẫu | — | 10–30 giây, một người nói, rõ, không nhạc nền hay tiếng vang; VoxCPM2 chỉ dùng 30 giây đầu. Lưu trong VoiceStudio (`.voicestudio/data`, ngoài Git), không đưa vào `public/` |
-| Tốc độ trên máy này | Nhanh | Chậm: câu 4 giây mất khoảng 100 giây trên CPU, dùng khoảng 6–7 GB RAM; tắt VoiceStudio khi xong |
+| Tốc độ trên máy này | Nhanh | Chậm: câu 4 giây mất khoảng 100 giây trên CPU, dùng khoảng 6–7 GB RAM; tắt VoiceStudio khi xong. Dùng `--gpu` (máy GPU qua Tailscale) để nhanh hơn ~10 lần |
 
 Cả hai đều tạo take thử: nghe chọn, giữ take cũ, ghi take đã chọn vào metadata của tập. Agent không tự chuyển sang lựa chọn 2.
 
@@ -137,3 +137,20 @@ Nếu người dùng đã thêm bản ghi trên trang quản lý (Giọng đọc
 5. **Không tự áp dụng** take vào `Video.tsx`/captions/timing. Việc ghép take đã chọn là bước dựng riêng, sau khi người dùng chọn take.
 
 Lệnh tự bật VoiceStudio nếu đang tắt và tự tắt khi xong (trừ khi nó đã mở sẵn hoặc có `--keep-running`), kể cả khi lỗi giữa chừng. Bản ghi mẫu được chép theo SHA vào `.voicestudio/data/references/` (ngoài Git, không vào `public/`); `manifest.json` của take ghi SHA, tên file gốc, sự đồng ý, engine/model, seed, thời gian tạo và trạng thái "chờ nghe chọn". Mã: `tools/voicestudio/clone.cjs`; kiểm tra: `npm run test:voicestudio` (VoiceStudio giả, workspace tạm).
+
+### Máy GPU qua Tailscale (cài 2026-10-31)
+
+Clone trên CPU của laptop chậm, nên có thêm một bản VoiceStudio chạy trên máy GPU `desktop-kndgm60` (Windows 10, WSL2 Ubuntu 24.04, GTX 1660 SUPER 6 GB, driver 560.94). **Quy tắc của người dùng (2026-10-31): clone qua máy GPU; chỉ chạy local khi máy GPU không bật.** Lệnh clone tự làm theo: không có cờ thì kiểm tra máy GPU qua SSH (dưới 1 giây), kết nối được thì dùng GPU, không được thì báo và chạy CPU local. `--gpu` bắt buộc dùng GPU (lỗi nếu máy tắt, không tự chuyển), `--local` bắt buộc chạy local. Mọi quy tắc ở trên (consent, take mới, nghe chọn, không tự áp dụng) giữ nguyên:
+
+```sh
+npm run voicestudio -- clone --project <slug> --take clone-v1 --ref <file> --consent self --scene 1   # tự chọn GPU/local
+npm run voicestudio -- gpu start|status|stop   # bật/xem/tắt thủ công; mở giao diện qua http://127.0.0.1:3901/
+```
+
+- **Kết nối:** VoiceStudio trên máy GPU chỉ bind `127.0.0.1:3900` trong WSL (API không có khóa, không mở ra tailnet). `gpu start` mở một tiến trình SSH vừa chạy `~/voicestudio-gpu/run.sh` ở foreground vừa chuyển cổng về `127.0.0.1:3901` của laptop (3900 vẫn dành cho bản local). `gpu stop`/kết thúc clone chạy `~/voicestudio-gpu/stop.sh` (dừng server và sidecar theo thư mục làm việc, trả VRAM) rồi đóng tunnel. Cấu hình: `.voicestudio/remote.json` (`host`, `dir`, `localPort`; ngoài Git). Log: `.voicestudio/remote.log` ở laptop, `~/voicestudio-gpu/server.log` trên máy GPU.
+- **SSH:** đăng nhập bằng key `~/.ssh/id_ed25519_gpu` (mục `Host desktop-kndgm60` trong `~/.ssh/config`); khóa công khai nằm trong `C:\ProgramData\ssh\administrators_authorized_keys` vì tài khoản là admin. Không lưu mật khẩu trong repo hay script. Gỡ quyền: xóa dòng đó trên máy GPU.
+- **Cài đặt trên máy GPU:** `~/voicestudio-gpu/` trong WSL: `bin/` (uv 0.13.6, bun 1.4.2 từ GitHub release), `app/` (checkout cùng commit `4d4cb0b`, PyTorch `2.8.0+cu128`, có sm_75), `data/` (model, sidecar VoxCPM2 torch 2.11.0+cu128, cache HF). Không đụng Python của Windows. Gỡ: `gpu stop` rồi xóa `~/voicestudio-gpu`.
+- **Dữ liệu:** bản ghi mẫu được gửi qua tunnel tới máy GPU trong mỗi request tạo giọng (không thấy VoiceStudio lưu nó thành file). WAV kết quả, `manifest.json` (`machine: "gpu"`) và bản sao bản ghi mẫu theo SHA ở laptop như chế độ local. **Người dùng không giữ bản sao trên máy GPU (2026-10-31):** sau khi lưu mỗi WAV về laptop, lệnh gọi `DELETE /history/<X-Audio-Id>` để xóa dòng lịch sử và WAV trong `~/voicestudio-gpu/data/outputs/`; xóa lỗi thì chỉ cảnh báo, không mất file ở laptop. Chế độ local không xóa gì.
+- **Tốc độ đo 2026-10-31** (cùng bản ghi mẫu, cùng câu): câu 3 giây 11 giây (CPU laptop 159 giây); câu 75 ký tự ~5 giây âm thanh 23 giây (CPU 220 giây), tức nhanh khoảng 9–14 lần. Mỗi lần chạy mất thêm ~40 giây bật server và nạp model, nên gộp nhiều cảnh vào một lần chạy (`--all`) thay vì gọi lẻ từng cảnh. VRAM dùng ~5,9/6 GB, không có lỗi hết bộ nhớ trong log.
+- **Giới hạn:** VoxCPM2 4,6 GB (bf16) trên card 6 GB là sát; Turing không có bf16 phần cứng. Không chạy song song game/stream (Sunshine) nặng GPU khi clone.
+

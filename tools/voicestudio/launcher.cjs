@@ -14,9 +14,9 @@ function paths(root) {
     web: path.join(base, 'app/frontend/dist/index.html'), log: path.join(base, 'server.log')};
 }
 // What VoiceStudio is running on the port: off, starting, ready, or another app.
-function probe() {
+function probe(base = URL) {
   return new Promise(resolve => {
-    const req = http.get(`http://${HOST}:${PORT}/health`, res => {
+    const req = http.get(new globalThis.URL('/health', base), res => {
       let text = '';
       res.on('data', c => {if (text.length < 20000) text += c;});
       res.on('end', () => {
@@ -118,10 +118,23 @@ if (require.main === module) {
     if (command === 'start') {const r = await voiceStudioLauncher(root)();console.log(`VoiceStudio ${r.version} sẵn sàng tại ${r.url} (${r.device || 'cpu'}). Log: .voicestudio/server.log`);}
     else if (command === 'stop') {const s = await stop(root);console.log(s.stopped ? `Đã dừng ${s.stopped} tiến trình VoiceStudio${s.forced ? ` (${s.forced} phải buộc dừng)` : ''}.` : 'VoiceStudio không chạy.');}
     else if (command === 'status') console.log(JSON.stringify(await status(root), null, 2));
+    else if (command === 'gpu') {
+      const remote = require('./remote.cjs'), [sub = 'status'] = rest;
+      if (sub === 'start') {const r = await remote.start(root);console.log(`VoiceStudio ${r.version} trên máy GPU sẵn sàng tại ${r.url} (${r.device || '?'}).`);}
+      else if (sub === 'stop') {const r = await remote.stop(root);console.log(r.remote || 'Đã dừng.');}
+      else if (sub === 'status') console.log(JSON.stringify(await remote.status(root), null, 2));
+      else throw Error('Usage: npm run voicestudio -- gpu start|status|stop');
+    }
     else if (command === 'clone') {
-      const {clone, parseArgs} = require('./clone.cjs'), r = await clone(root, parseArgs(rest));
+      const {clone, parseArgs} = require('./clone.cjs'), remote = require('./remote.cjs'), o = parseArgs(rest);
+      const machine = remote.pickMachine(root, o);o.gpu = machine === 'gpu';
+      console.log(machine === 'gpu' ? 'Clone trên máy GPU.' : o.local ? 'Clone trên máy này (--local).' : 'Máy GPU không bật hoặc không kết nối được: clone trên máy này (CPU, chậm).');
+      let deps;
+      if (o.gpu) {const c = remote.config(root);
+        deps = {base: c.url, ensure: () => remote.start(root), probe: () => probe(c.url), stop: () => remote.stop(root)};}
+      const r = await clone(root, o, deps);
       console.log(`Xong: ${r.manifest.files.length} file trong ${path.relative(root, r.out)}. Mở index.html để nghe; đây là take thử, chưa thay giọng của video.`);
     }
-    else throw Error('Usage: npm run voicestudio -- start|status|stop|clone (xem docs/voice-workflow.md)');
+    else throw Error('Usage: npm run voicestudio -- start|status|stop|clone|gpu (xem docs/voice-workflow.md)');
   })().catch(e => {console.error(e.message);process.exitCode = 1;});
 }

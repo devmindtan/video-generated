@@ -63,10 +63,19 @@ function generate(base, fields, ref) {
       res.on('end', () => {
         const data = Buffer.concat(chunks);
         if (res.statusCode !== 200 || !/audio\//.test(res.headers['content-type'] || '')) return reject(Error(`VoiceStudio trả lỗi ${res.statusCode}: ${data.toString('utf8').slice(0, 300)}`));
-        resolve({audio: data, seed: res.headers['x-seed'] || null, genSeconds: Number(res.headers['x-gen-time']) || null, durationSeconds: Number(res.headers['x-audio-duration']) || null, version: res.headers['x-omnivoice-backend'] || null});
+        resolve({audio: data, audioId: res.headers['x-audio-id'] || null, seed: res.headers['x-seed'] || null, genSeconds: Number(res.headers['x-gen-time']) || null, durationSeconds: Number(res.headers['x-audio-duration']) || null, version: res.headers['x-omnivoice-backend'] || null});
       });
     });
     req.on('error', reject);req.end(body);
+  });
+}
+// Delete VoiceStudio's own history row and WAV for one take (used on the GPU machine: the user keeps no copy there).
+function forget(base, id) {
+  return new Promise((resolve, reject) => {
+    const req = http.request(new URL(`/history/${encodeURIComponent(id)}`, base), {method: 'DELETE'}, res => {
+      res.resume();res.on('end', () => res.statusCode === 200 ? resolve() : reject(Error(`HTTP ${res.statusCode}`)));
+    });
+    req.setTimeout(15000, () => req.destroy(Error('timeout')));req.on('error', reject);req.end();
   });
 }
 function page(manifest) {
@@ -83,14 +92,18 @@ async function clone(root, o, {base = launcher.URL, ensure = launcher.voiceStudi
   const reference = storeReference(root, ref);
   fs.mkdirSync(out, {recursive: true});
   const manifest = {schemaVersion: 1, voiceOption: 2, project: o.project, take: o.take, createdAt: new Date().toISOString(),
-    engine: 'voxcpm2', model: 'openbmb/VoxCPM2', language: 'vi', instruct: o.instruct || null,
+    engine: 'voxcpm2', model: 'openbmb/VoxCPM2', language: 'vi', machine: o.gpu ? 'gpu' : 'local', instruct: o.instruct || null,
     reference: {sha256: reference.hash, originalName: reference.name, storedAt: path.relative(root, reference.kept), transcriptProvided: Boolean(o.refText), consent: o.consent},
     status: 'audition — chờ người dùng nghe chọn; chưa áp dụng vào video', files: []};
   try {
     for (const [i, s] of list.entries()) {
-      log(`[${i + 1}/${list.length}] ${s.label}: đang tạo (CPU, có thể mất vài phút)…`);
+      log(`[${i + 1}/${list.length}] ${s.label}: đang tạo (${o.gpu ? 'máy GPU' : 'CPU, có thể mất vài phút'})…`);
       const r = await generate(base, {text: s.text, language: 'vi', engine: 'voxcpm2', ref_text: o.refText, instruct: o.instruct, seed: o.seed, wav_bits: '24'}, reference);
       const file = `${s.id}-clone.wav`;fs.writeFileSync(path.join(out, file), r.audio, {flag: 'wx'});
+      if (o.gpu) {
+        if (!r.audioId) log('    ! máy GPU không trả mã bản tạo; bản sao trên đó chưa xóa.');
+        else await forget(base, r.audioId).catch(e => log(`    ! chưa xóa được bản sao trên máy GPU (${e.message}).`));
+      }
       manifest.voiceStudioVersion = r.version;
       manifest.files.push({file, label: s.label, text: s.text, sha256: sha256(r.audio), seed: r.seed, genSeconds: r.genSeconds, durationSeconds: r.durationSeconds});
       fs.writeFileSync(path.join(out, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
@@ -98,13 +111,13 @@ async function clone(root, o, {base = launcher.URL, ensure = launcher.voiceStudi
     }
     fs.writeFileSync(path.join(out, 'index.html'), page(manifest));
   } finally {
-    // Free the ~6 GB the model holds, unless VoiceStudio was already open for the user.
+    // Free the memory the model holds (RAM here, VRAM on the GPU machine), unless VoiceStudio was already open.
     if (!wasRunning && !o.keepRunning) await stop();
   }
   return {out, manifest};
 }
 function parseArgs(argv) {
-  const o = {}, flags = {'--all': 'all', '--keep-running': 'keepRunning'}, keys = {'--project': 'project', '--take': 'take', '--ref': 'ref', '--ref-text': 'refText', '--consent': 'consent', '--scene': 'scene', '--text': 'text', '--text-file': 'textFile', '--instruct': 'instruct', '--seed': 'seed'};
+  const o = {}, flags = {'--all': 'all', '--keep-running': 'keepRunning', '--gpu': 'gpu', '--local': 'local'}, keys = {'--project': 'project', '--take': 'take', '--ref': 'ref', '--ref-text': 'refText', '--consent': 'consent', '--scene': 'scene', '--text': 'text', '--text-file': 'textFile', '--instruct': 'instruct', '--seed': 'seed'};
   for (let i = 0; i < argv.length; i++) {
     if (flags[argv[i]]) o[flags[argv[i]]] = true;
     else if (keys[argv[i]] && i + 1 < argv.length) o[keys[argv[i]]] = argv[++i];
