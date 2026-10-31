@@ -188,6 +188,7 @@ function createApprovals(root) {
     const r = review.summary(root, plan), preview = view(id).gates.find(g => g.id === 'review-preview') || null;
     const revision = crypto.createHash('sha256').update(JSON.stringify([r.items.map(i => i.files.map(f => f.sha256)), r.version, r.pending?.id || null])).digest('hex');
     return {available: true, state: r.state, version: r.version, lockedAt: r.lockedAt, lockedBy: r.lockedBy, revision,
+      returned: r.returned && {...r.returned, revisedTitles: r.items.filter(i => r.returned.revisedItems.includes(i.id)).map(i => i.title), notedTitles: r.items.filter(i => r.returned.itemNotes[i.id]).map(i => i.title)},
       items: r.items.map(i => ({id: i.id, title: i.title, guide: i.guide, files: i.files.map(f => ({path: f.path, name: nameOf(f.path), exists: f.exists, changed: f.changed}))})),
       missing: r.missing.map(rel => ({path: rel, name: nameOf(rel)})), drift: r.drift.map(rel => ({path: rel, name: nameOf(rel)})),
       pending: r.pending && {id: r.pending.id, reason: r.pending.reason, createdAt: r.pending.createdAt, files: Object.keys(r.pending.changed).map(nameOf)},
@@ -200,9 +201,12 @@ function createApprovals(root) {
     const plan = cli.plan(root, id), r = review.summary(root, plan), v = reviewView(id);
     const text = rel => fs.readFileSync(path.join(root, rel), 'utf8').slice(0, 300000);
     if (mode === 'lock') {
-      const lockFiles = review.load(root, id).locks.at(-1)?.files || {};
-      const lockEntry = review.load(root, id).locks[0] || null;
-      return {mode, revision: v.revision, state: r.state, notes: r.notes.lock || {}, lockedNotes: lockEntry?.itemNotes || {}, lockNote: lockEntry?.note || '', items: r.items.map(i => ({key: i.id, kind: i.id, title: i.title, guide: i.guide, audio: audioOf(id, i),
+      // Before the lock, after a "Chưa đạt": compare with what was sent back and show those notes; after it, with the lock.
+      const store = review.load(root, id), back = r.state === 'unlocked' ? store.lockReturns.at(-1) || null : null;
+      const lockFiles = back ? back.files : store.locks.at(-1)?.files || {};
+      const lockEntry = store.locks[0] || null;
+      return {mode, revision: v.revision, state: r.state, notes: r.notes.lock || {}, lockedNotes: back ? back.itemNotes : lockEntry?.itemNotes || {}, lockNote: back ? back.note : lockEntry?.note || '',
+        returned: back && {at: back.at, note: back.note, revisedItems: r.returned.revisedItems}, items: r.items.map(i => ({key: i.id, kind: i.id, title: i.title, guide: i.guide, audio: audioOf(id, i),
         files: i.files.map(f => {
           if (!f.exists) return {path: f.path, name: nameOf(f.path), status: 'missing'};
           if (!TEXT.test(f.path)) return {path: f.path, name: nameOf(f.path), status: 'binary'};
@@ -235,6 +239,11 @@ function createApprovals(root) {
     if (typeof note !== 'string' || note.length > 1000) throw new Error('Ghi chú tối đa 1000 ký tự');
     checked(id, revision);
     return review.lock(root, cli.plan(root, id), {by: userName(), note: note.trim()});
+  }
+  function returnLock({id, note = '', revision}) {
+    if (typeof note !== 'string' || note.length > 2000) throw new Error('Ghi chú tối đa 2000 ký tự');
+    checked(id, revision);
+    return review.returnLock(root, cli.plan(root, id), {by: userName(), note: note.trim()});
   }
   function decidePatch({id, patch, decision, note = '', revision}) {
     if (typeof note !== 'string' || note.length > 2000) throw new Error('Ghi chú tối đa 2000 ký tự');
@@ -273,6 +282,6 @@ function createApprovals(root) {
     try {const p = progress.view(root, id);return p.plan ? {overall: p.overall, running: p.counts.running, interrupted: p.counts.interrupted, failed: p.counts.failed, total: p.counts.total, done: p.counts.done} : null;}
     catch {return null;}
   }
-  return {approvalsView: view, approveGate, gateReview, projectMedia, reviewView, reviewDetail, lockProject, decidePatch, reviewNote, reviewScene, reviewMedia, progressView, progressSummary};
+  return {approvalsView: view, approveGate, gateReview, projectMedia, reviewView, reviewDetail, lockProject, returnLock, decidePatch, reviewNote, reviewScene, reviewMedia, progressView, progressSummary};
 }
 module.exports = {createApprovals};

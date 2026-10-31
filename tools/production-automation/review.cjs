@@ -25,7 +25,7 @@ function items(root, plan) {
 
 function load(root, id) {
   const store = approvals.load(root, id);
-  return {...store, locks: store.locks || [], patches: store.patches || [], scenes: store.scenes || {}, notes: store.notes || {}};
+  return {...store, locks: store.locks || [], patches: store.patches || [], scenes: store.scenes || {}, notes: store.notes || {}, lockReturns: store.lockReturns || []};
 }
 function save(root, id, store) {
   const file = approvals.storePath(root, id), tmp = `${file}.${process.pid}.tmp`;
@@ -69,7 +69,11 @@ function summary(root, plan) {
   const notApproved = scenes.filter(s => s.status !== 'approved');
   if (!scenes.length) blockers.push('Chưa có danh sách cảnh để duyệt');
   else if (notApproved.length) blockers.push(`Cảnh chưa đạt hoặc chưa có clip: ${notApproved.map(s => s.title).join(', ')}`);
-  return {state: !lock ? 'unlocked' : pending ? 'patch-pending' : 'locked', version: lock?.version || 0,
+  // The latest "Chưa đạt" on the initial package, while still unlocked: what was asked and which items changed since.
+  const back = !lock ? store.lockReturns.at(-1) || null : null;
+  const returned = back && {at: back.at, by: back.by, note: back.note, itemNotes: back.itemNotes,
+    revisedItems: list.filter(i => i.files.some(f => (back.files[f.path] ?? null) !== f.sha256)).map(i => i.id)};
+  return {state: !lock ? 'unlocked' : pending ? 'patch-pending' : 'locked', version: lock?.version || 0, returned,
     lockedAt: lock?.at || null, lockedBy: lock?.by || null, items: list, missing: files.filter(f => !f.exists).map(f => f.path),
     drift, pending, patches: [...store.patches].reverse(), notes: openNotes(root, plan, store, pending), scenes, scenesApproved: scenes.length > 0 && !notApproved.length,
     final: {ready: !blockers.length, blockers}};
@@ -112,6 +116,18 @@ function takeNotes(store, context) {
   return Object.fromEntries(Object.entries(notes).map(([item, n]) => [item, {text: n.text, at: n.at}]));
 }
 
+// "Chưa đạt" on the initial package: the user sends it back with notes (overall and/or per item). The files are
+// kept as they were, so the next look shows exactly what the agent changed since.
+function returnLock(root, plan, {by, note = ''}) {
+  const store = load(root, plan.projectId);
+  if (latestLock(store)) throw new Error('Đã chốt ban đầu; chỉnh sửa sau đó đi qua bản vá');
+  if (!note.trim() && !Object.keys(store.notes.lock || {}).length) throw new Error('Ghi chú chỗ chưa đạt (chung hoặc ở từng mục) để agent biết cần sửa gì');
+  const files = Object.fromEntries(items(root, plan).flatMap(i => i.files).map(rel => [rel, approvals.sha256(root, rel)]));
+  for (const [rel, hash] of Object.entries(files)) approvals.snapshot(root, rel, hash);
+  const entry = {at: now(), by, note: note.trim(), itemNotes: takeNotes(store, 'lock'), files};
+  store.lockReturns.push(entry);save(root, plan.projectId, store);
+  return entry;
+}
 function lock(root, plan, {by, note = ''}) {
   const store = load(root, plan.projectId);
   if (latestLock(store)) throw new Error('Đã chốt ban đầu; thay đổi sau đó đi qua bản vá');
@@ -184,4 +200,4 @@ function reviewScene(root, plan, sceneId, clipIndex, {decision, note = '', by}) 
   return clip;
 }
 
-module.exports = {items, summary, lock, createPatch, decidePatch, sceneDefs, addClip, reviewScene, setNote, load};
+module.exports = {returnLock, items, summary, lock, createPatch, decidePatch, sceneDefs, addClip, reviewScene, setNote, load};

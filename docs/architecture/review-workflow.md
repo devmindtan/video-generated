@@ -26,6 +26,11 @@ Một màn hình, năm mục; nút **Chốt** chỉ bật khi đã xem hết t�
 
 Bấm Chốt ghi **bản chốt v1**: hash + bản sao của mọi file trong gói, người chốt, thời điểm, ghi chú.
 
+**Chưa đạt, trả lại** (người dùng 2026-11-01): gói chưa đạt thì người dùng ghi chú (chung hoặc ở từng mục) rồi bấm nút này
+thay vì Chốt. Lần trả lại được ghi vào `lockReturns` của approvals.json (ghi chú, ghi chú từng mục, hash file lúc trả); agent
+đọc ở `npm run automation -- review <slug>` → `returned`, sửa các file trong gói (chưa chốt nên sửa thẳng, không cần bản vá).
+Lần xem sau, mục đã sửa được so với bản đã trả lại và ghi chú cũ hiện ở đầu mục; trả lại bao nhiêu lần cũng được trước khi chốt.
+
 Mỗi mục hiện dạng dễ đọc (nhạc nền và giọng đọc: tên bài, tác giả, âm lượng %, fade, cách chọn giọng, sự đồng ý,
 cao độ, tốc độ, kèm trình nghe; JSON gốc gập lại). Dưới mỗi mục có ô **ghi chú cho mục này**: tự lưu khi gõ,
 còn nguyên khi quay lại mục đó, rail đánh dấu "có ghi chú". Ghi chú là bản nháp agent đọc được ngay qua

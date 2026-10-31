@@ -272,3 +272,19 @@ test('live progress: agent plan after the lock, weighted percent, re-plans keep 
  progress.log(root,id,'Đang đợi máy GPU bật');assert.equal(progress.view(root,id).events[0].message,'Đang đợi máy GPU bật');
  assert.ok(fs.existsSync(path.join(root,'.automation/progress',`${id}.json`)));assert.ok(denied(`.automation/progress/${id}.json`));
 }));
+test('initial package can be sent back (Chưa đạt) with notes; the next look knows what changed since',()=>fixture(root=>{
+ const review=require('./review.cjs'),id='self-help-shorts',p=plan(root,id),D=`docs/projects/${id}`,X=`scripts/projects/${id}`;
+ put(root,`${D}/script.md`,'s1');put(root,`src/projects/${id}/music.json`,'{}');put(root,`${X}/voice.json`,'{}');put(root,`${D}/production-spec.md`,'p');put(root,`${D}/image-prompts.md`,'i');
+ assert.throws(()=>review.returnLock(root,p,{by:'u'}),/Ghi chú chỗ chưa đạt/);
+ review.setNote(root,p,{context:'lock',item:'script',text:'Thiếu phần chưa đạt của sách',by:'u'});
+ const back=review.returnLock(root,p,{by:'u',note:'Xem lại kịch bản'});
+ assert.deepEqual([back.note,back.itemNotes.script.text],['Xem lại kịch bản','Thiếu phần chưa đạt của sách']);
+ let s=review.summary(root,p);
+ assert.deepEqual([s.state,s.version,s.returned.revisedItems,s.notes],['unlocked',0,[],{}]);   // drafts moved into the return record
+ put(root,`${D}/script.md`,'s2 with 3E');
+ s=review.summary(root,p);assert.deepEqual(s.returned.revisedItems,['script']);
+ review.lock(root,p,{by:'u'});
+ assert.equal(review.summary(root,p).returned,null);
+ assert.throws(()=>review.returnLock(root,p,{by:'u',note:'x'}),/bản vá/);
+ assert.equal(review.load(root,id).lockReturns.length,1);
+}));

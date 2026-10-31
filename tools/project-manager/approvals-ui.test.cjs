@@ -60,6 +60,20 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   await page.screenshot({path:path.join(out,'lock-1440.png')});
   await dialog.locator('.rail-item').first().click();assert.equal(await dialog.locator('.item-note textarea').inputValue(),'Câu 3 hơi dài','notes come back when you return to an item');
   await dialog.locator('.item-note textarea').fill('Câu 3 hơi dài, câu 7 lặp ý');await seenAll();assert.match(await dialog.locator('.foot-progress').innerText(),/Đã xem hết/);
+  // Chưa đạt: send the package back with the notes; the agent fixes it; the next look compares with what was sent back.
+  await dialog.locator('[data-lock-return]').click();await page.waitForFunction(()=>!document.querySelector('#review-dialog').open);
+  assert.equal(store().lockReturns[0].itemNotes.script.text,'Câu 3 hơi dài, câu 7 lặp ý');assert.equal((store().locks||[]).length,0,'nothing is locked');
+  assert.match(await next.innerText(),/Đã trả lại gói chốt; agent đang sửa[\s\S]*có ghi chú ở: Kịch bản/);
+  const scriptPath=path.join(root,D,'script.md');fs.writeFileSync(scriptPath,fs.readFileSync(scriptPath,'utf8').replace('Câu 7 của kịch bản.','Câu bảy, viết gọn lại.'));
+  await open();assert.match(await next.innerText(),/Gói chốt đã sửa theo ghi chú của bạn[\s\S]*Mục đã sửa: Kịch bản/);
+  await next.locator('[data-review-open="lock"]').click();await dialog.locator('.rail-item').first().waitFor();
+  assert.match(await dialog.locator('.review-head').innerText(),/Bạn đã trả lại gói lúc/);
+  assert.match(await dialog.locator('.review-hint',{hasText:'So với bản bạn đã trả lại'}).innerText(),/So với bản bạn đã trả lại/);
+  assert.match(await dialog.locator('.note-recorded').innerText(),/khi trả lại[\s\S]*câu 7 lặp ý/);
+  await page.screenshot({path:path.join(out,'lock-returned-1440.png')});
+  assert.equal(await dialog.locator('.item-note textarea').inputValue(),'','a new look starts with empty drafts');
+  await dialog.locator('.item-note textarea').fill('Câu 3 hơi dài, câu 7 lặp ý');await page.waitForFunction(()=>/Đã lưu/.test(document.querySelector('.note-state')?.textContent||''));await seenAll();
+  mark('Chưa đạt sends the package back with notes; the next look shows what changed since and the earlier notes');
   await dialog.locator('#review-form [name=note]').fill('Chốt bản đầu');await dialog.locator('#review-form button[type=submit]').click();
   await page.waitForFunction(()=>/Bản chốt v1/.test(document.querySelector('.lock-chip')?.textContent||''));
   const lock=store().locks[0];assert.equal(lock.version,1);assert.match(lock.by,/trang quản lý/);assert.equal(lock.note,'Chốt bản đầu');assert.equal(Object.keys(lock.files).length,5);
