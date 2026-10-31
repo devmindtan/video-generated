@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "projectId": "book-hvtt-001-overview",
   "history": [
     {
@@ -163,6 +163,42 @@
       "approvedBy": "devmindtan (trang quản lý)",
       "approvedAt": "2026-10-31T11:02:00.753Z",
       "note": "Tôi thấy phần này chưa được ý vì để duyệt được hình ảnh thì các phần trước đã có vì ảnh là sẽ đi theo lời mà lời chưa có thì sao có hình mà xem cần xem lại quy trình của phần này"
+    }
+  ],
+  "locks": [],
+  "patches": [],
+  "scenes": {},
+  "notes": {
+    "lock": {
+      "script": {
+        "text": "Tôi thấy phong cách viết văn của bạn chưa được bạn phải trung lập cân bằng giữa người kể và nhập vai vào câu chuyện bạn lạm dụng nhập vai quá mà quên mât mình là người kể chuyện nên nhiều chỗ bạn viết trống không đọc rất là khó chịu hãy tiến hành bổ sung vào rule để những lần sau thực hiện đúng",
+        "at": "2026-10-31T17:30:42.199Z",
+        "by": "devmindtan (trang quản lý)",
+        "files": {
+          "docs/projects/book-hvtt-001-overview/script.md": "ee3d49b4ae5005dfb6d0d4c033f6dbef6d07a26771f402f30277729ab7a75002"
+        }
+      }
+    }
+  },
+  "lockReturns": [
+    {
+      "at": "2026-10-31T17:30:22.918Z",
+      "by": "devmindtan (trang quản lý)",
+      "note": "Phần phong cách vẽ hình thì nếu đã vẽ thì vẫn có thể vẽ người chỉ là khi tạo ảnh mới không để mặt người thôi, nhớ là animation minh họa phải đủ chi tiết đi theo lời thoại một cách mượt mà",
+      "itemNotes": {
+        "script": {
+          "text": "Tôi thấy phong cách viết văn của bạn chưa được bạn phải trung lập cân bằng giữa người kể và nhập vai vào câu chuyện bạn lạm dụng nhập vai quá mà quên mât mình là người kể chuyện nên nhiều chỗ bạn viết trống không đọc rất là khó chịu hãy tiến hành bổ sung vào rule để những lần sau thực hiện đúng",
+          "at": "2026-10-31T17:27:57.514Z"
+        }
+      },
+      "files": {
+        "docs/projects/book-hvtt-001-overview/script.md": "ee3d49b4ae5005dfb6d0d4c033f6dbef6d07a26771f402f30277729ab7a75002",
+        "src/projects/book-hvtt-001-overview/music.json": "f43063403b941d5d3735c435de0a901f3dcfe41055fd131c85b7a5ac0e60da9a",
+        "src/projects/book-hvtt-001-overview/outro-music.json": "6cfa505e3d723741d1e6a1a23a78fae07882a225a2166ebfccfd0c69b4052362",
+        "scripts/projects/book-hvtt-001-overview/voice.json": "df58777d0aed133b8c5f459fd7afaecf166299a67f4c527436a77378976f9582",
+        "docs/projects/book-hvtt-001-overview/production-spec.md": "d50a61edf27b554dc7f4be983c7ede18eeb6f6029a66f9e0443720ea0c5fabff",
+        "docs/projects/book-hvtt-001-overview/image-prompts.md": "56fa4e9b3b53f49d43561e2c6190b930762ffe19c6e5712f5f59c15e501a014e"
+      }
     }
   ]
 }
