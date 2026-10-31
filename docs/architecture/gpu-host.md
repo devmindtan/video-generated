@@ -17,6 +17,13 @@ Laptop không có card đồ họa. Hai việc nặng chạy trên máy GPU `des
 - Cấu hình: `.gpu/host.json` (`{"host": "desktop-kndgm60"}`, tùy chọn `services.<id>.dir/localPort`), ngoài Git. Log tunnel: `.gpu/<dịch vụ>.log`; log server: `<dir>/server.log` trên máy GPU. Mã: `tools/gpu-host/gpu-host.cjs`; kiểm tra: `npm run test:voicestudio`, `npm run test:automation` (không SSH).
 - `run.json` của mỗi run automation ghi `machine` (`gpu`/`local`) và lý do; manifest clone ghi `machine`.
 
+## Đo 2026-10-31
+
+- Ollama, cùng prompt tiếng Việt ~120 chữ, `num_predict` 200: `qwen3:8b` GPU 16,3 token/giây sinh, 65 token/giây đọc prompt, 13 giây tổng; laptop 3,9 và 21 token/giây, 49 giây (nhanh ~4 lần). `qwen2.5-coder:7b-instruct` GPU 27,8 token/giây. Bật Ollama qua tunnel 3,5 giây, nạp model ~5 giây.
+- Card không chứa trọn model: Windows giữ ~1 GB, còn ~5 GB trống; `qwen3:8b` 27/37 tầng lên GPU, `qwen2.5-coder:7b` 25/29, phần còn lại chạy CPU máy GPU. Context mặc định 4096 (Ollama tự chọn theo VRAM).
+- Gateway runtime nhận `http://127.0.0.1:11435` cho planner/executor/reviewer và vẫn từ chối địa chỉ tailnet trực tiếp (`100.x`, tên máy).
+- VoiceStudio: xem `docs/voice-workflow.md` (nhanh ~9–14 lần so với CPU laptop).
+
 ## SSH và cài đặt
 
 - Đăng nhập bằng key `~/.ssh/id_ed25519_gpu` (mục `Host desktop-kndgm60` trong `~/.ssh/config`); khóa công khai nằm trong `C:\ProgramData\ssh\administrators_authorized_keys` vì tài khoản là admin. Không lưu mật khẩu trong repo hay script. Thu hồi: xóa dòng đó.
