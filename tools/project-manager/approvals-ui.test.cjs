@@ -43,6 +43,7 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   mark('Review has its own tab and URL; Back returns to Hồ sơ; arrow keys switch tabs; pending work is flagged on the tab');
   assert.match(await page.locator('.lock-chip').innerText(),/Chưa chốt/);assert.match(await next.innerText(),/Việc của bạn[\s\S]*Chốt ban đầu/i);
   assert.equal(await page.locator('.scene-row').count(),2);
+  assert.equal(await page.locator('.review-stepper .gate-step').count(),3,'patches are not a stage');assert.match(await page.locator('.patch-panel').innerText(),/Sau khi chốt, mọi chỉnh sửa/);
   await next.locator('[data-review-open="lock"]').click();await dialog.locator('.rail-item').first().waitFor();
   assert.deepEqual(await dialog.locator('.rail-name').evaluateAll(n=>n.map(x=>x.firstChild.textContent)),['Kịch bản','Nhạc nền','Giọng đọc','Thông tin đã chốt','Prompt hình / animation từng cảnh']);
   assert.equal(await dialog.locator('#review-form button[type=submit]').isDisabled(),true,'lock stays off until all five items are seen');
@@ -53,14 +54,15 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   await page.screenshot({path:path.join(out,'lock-1440.png')});
   await dialog.locator('.rail-item').first().click();await seenAll();assert.match(await dialog.locator('.foot-progress').innerText(),/Đã xem hết/);
   await dialog.locator('#review-form [name=note]').fill('Chốt bản đầu');await dialog.locator('#review-form button[type=submit]').click();
-  await page.waitForFunction(()=>/Đã chốt v1/.test(document.querySelector('.lock-chip')?.textContent||''));
+  await page.waitForFunction(()=>/Bản chốt v1/.test(document.querySelector('.lock-chip')?.textContent||''));
   const lock=store().locks[0];assert.equal(lock.version,1);assert.match(lock.by,/trang quản lý/);assert.equal(lock.note,'Chốt bản đầu');assert.equal(Object.keys(lock.files).length,5);
   mark('Initial lock: five items one at a time, music and voice sample play, lock recorded with the note');
   const scriptFile=path.join(root,D,'script.md'),edit=(a,b)=>fs.writeFileSync(scriptFile,fs.readFileSync(scriptFile,'utf8').replace(a,b));
   edit('Nội dung thử.','Nội dung đã sửa lại.');await open();
   assert.match(await page.locator('#gates .warn').innerText(),/chưa vào bản vá: Kịch bản/);mark('An edit after the lock without a patch is flagged, not silently approved');
   review.createPatch(root,plan,{reason:'Sửa câu mở đầu',by:'agent'});await open();
-  assert.match(await page.locator('.lock-chip').innerText(),/có bản vá chờ duyệt/);assert.match(await next.innerText(),/Bản vá p1: Sửa câu mở đầu/);
+  assert.match(await page.locator('.patch-pending').innerText(),/Chờ bạn duyệt[\s\S]*p1: Sửa câu mở đầu/i);assert.match(await next.innerText(),/Bản vá p1: Sửa câu mở đầu/);
+  await page.screenshot({path:path.join(out,'review-pending-1440.png'),fullPage:true});
   await next.locator('[data-review-open="patch"]').click();await dialog.locator('.rail-item').first().waitFor();
   assert.equal(await dialog.locator('.rail-item').count(),1);assert.equal(await dialog.locator('.d-del mark').innerText(),'thử.');assert.equal(await dialog.locator('.d-add mark').first().innerText(),'đã sửa lại.');
   await page.screenshot({path:path.join(out,'patch-1440.png')});
@@ -70,9 +72,9 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   assert.deepEqual([store().patches[0].status,store().patches[0].note],['returned','Câu mở còn dài']);mark('A patch shows its diff; returning needs a note');
   edit('Nội dung đã sửa lại.','Nội dung ngắn.');review.createPatch(root,plan,{reason:'Rút gọn câu mở',by:'agent'});await open();
   await next.locator('[data-review-open="patch"]').click();await dialog.locator('.rail-item').first().waitFor();await seenAll();
-  await dialog.locator('#review-form button[type=submit]').click();await page.waitForFunction(()=>/Đã chốt v2/.test(document.querySelector('.lock-chip')?.textContent||''));
+  await dialog.locator('#review-form button[type=submit]').click();await page.waitForFunction(()=>/Bản chốt v2/.test(document.querySelector('.lock-chip')?.textContent||''));
   assert.deepEqual(store().locks.map(l=>l.version),[1,2]);assert.equal(store().locks[1].fromPatch,'p2');
-  assert.match(await page.locator('.gate-history').innerText(),/Lịch sử bản vá \(2\)/);mark('Accepting a patch makes the next locked version; history lists both patches');
+  assert.equal(await page.locator('.patch-panel .patch-item').count(),2);assert.match(await page.locator('.patch-panel').innerText(),/p1[\s\S]*Đã trả lại[\s\S]*Câu mở còn dài/);mark('Accepting a patch makes the next locked version; the patch panel lists both with notes');
   const clip=(scene,name)=>{write(`projects/${id}/review/${name}`,Buffer.from('clip '+name));review.addClip(root,plan,scene,`projects/${id}/review/${name}`);};
   clip('02-mo-chuyen','a.mp4');await open();assert.match(await next.innerText(),/Xem clip cảnh “Mở chuyện”/);
   await next.locator('[data-scene-open]').click();await dialog.locator('.scene-video').waitFor();
@@ -82,6 +84,7 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   await dialog.locator('#review-form [name=note]').fill('Ảnh ngạch cửa hơi tối, giọng vào sớm');await dialog.locator('[data-scene-decision]').click();
   await page.waitForFunction(()=>/Chưa đạt/.test(document.querySelector('.scene-row')?.textContent||''));
   assert.match(await page.locator('.scene-row').first().innerText(),/Ảnh ngạch cửa hơi tối/);
+  await page.screenshot({path:path.join(out,'review-scenes-1440.png'),fullPage:true});
   clip('02-mo-chuyen','b.mp4');clip('09-ket','c.mp4');await open();
   await page.locator('.scene-row').first().locator('[data-scene-open]').click();await dialog.locator('.scene-video').waitFor();
   assert.match(await dialog.locator('.scene-clips summary').innerText(),/Các clip trước \(1\)/);
@@ -90,7 +93,8 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   await page.waitForFunction(()=>/2\/2 cảnh đạt/.test(document.querySelector('#gates')?.textContent||''));
   assert.match(await next.innerText(),/Xem bản dựng/);mark('Scene clips: note required for Chưa đạt, earlier clips kept, all scenes Đạt opens the final review');
   for(const width of [768,390]){await page.setViewportSize({width,height:900});await open();
-   assert.ok(await page.locator('#drawer').evaluate(d=>d.scrollWidth<=d.clientWidth+1),'page fits at '+width);await page.locator('#gates').screenshot({path:path.join(out,`gates-${width}.png`)});
+   assert.ok(await page.locator('#drawer').evaluate(d=>d.scrollWidth<=d.clientWidth+1),'page fits at '+width);const panel=await page.locator('.patch-panel').boundingBox(),scenes=await page.locator('.review-scenes').boundingBox();assert.ok(panel&&panel.y>=scenes.y+scenes.height-1,'patch panel stacks under the scenes at '+width);
+   await page.locator('.patch-panel').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(out,`gates-${width}.png`)});
    await page.locator('[data-review-open="lock"]').first().click();await dialog.locator('.rail-item').first().waitFor();
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no page overflow at '+width);await page.screenshot({path:path.join(out,`lock-${width}.png`)});await page.keyboard.press('Escape');
    await page.locator('.scene-row').first().locator('[data-scene-open]').click();await dialog.locator('.scene-video').waitFor();

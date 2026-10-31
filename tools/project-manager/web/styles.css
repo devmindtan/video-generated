@@ -365,21 +365,12 @@ body.has-player .drawer.detail-page{padding-bottom:120px}
 .media-unplayable{padding:28px 20px;text-align:center;background:#f3f6ef;border-radius:10px}.media-unplayable p{margin:0 0 14px;font-size:15px;color:#3e5a31}
 .temp-name{display:inline-block;margin-left:8px;font-size:11px;font-weight:700;color:#795a1d;background:#f8f0dc;border-radius:4px;padding:1px 6px;vertical-align:1px}
 .media-preparing{box-sizing:border-box;width:100%;margin:0;padding:28px 20px;text-align:center;font-size:15px;color:#3e5a31;background:#f3f6ef;border-radius:10px}
-/* Production review: lock chip, scene list, lock/patch details and scene clip dialog. */
-.lock-chip{margin-left:auto;font-size:12px;font-weight:700;padding:4px 9px;border-radius:999px;background:#edf3e4;color:#426035;white-space:nowrap}
-.lock-chip.state-unlocked{background:#f8f0dc;color:#795a1d}.lock-chip.state-patch-pending{background:#fdf2ea;color:#a14a26}
-.scene-heading{margin:18px 0 6px;font-size:14px;color:var(--ink)}
-.scene-list{list-style:none;padding:0;margin:0;border-top:1px solid #edf1ea}
-.scene-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #edf1ea}
-.scene-row strong{display:block;font-size:14px;color:var(--ink)}.scene-row small{display:block;font-size:13px;color:var(--muted);margin-top:2px;overflow-wrap:anywhere}
-.scene-badge{display:inline-block;font-size:12px;font-weight:700;padding:1px 7px;border-radius:4px;background:#eef1ec;color:#4f6157}
-.status-approved .scene-badge{background:#edf3e4;color:#426035}.status-needs-changes .scene-badge{background:#fdf2ea;color:#a14a26}.status-pending .scene-badge{background:#f8f0dc;color:#795a1d}
+/* Production review: dialogs (lock/patch details, scene clip). */
 .detail-file{margin-top:16px}.detail-file>h4,.detail-file>p{padding:0 18px}.detail-file h4{margin:0 0 8px;font-size:14px;color:var(--ink);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}.detail-file h4 code{font-size:12px;color:var(--muted);font-weight:400;overflow-wrap:anywhere}
 .scene-body{padding:4px 0 8px;display:grid;gap:12px;justify-items:center;overflow:auto;max-height:62dvh}
 .scene-video{width:100%;max-width:900px;max-height:56dvh;background:#000;border-radius:8px}
 .scene-clips{justify-self:stretch;font-size:14px;color:var(--muted)}.scene-clips ul{margin:8px 0 0;padding-left:18px}
 .scene-foot{align-items:flex-end}.scene-note{flex:1 1 320px}.scene-note textarea{width:100%;font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;resize:vertical}
-@media(max-width:760px){.gates-head{flex-wrap:wrap}.lock-chip{margin-left:0}.scene-row{flex-wrap:wrap}.scene-row .button{min-height:44px}}
 /* Project page areas: Hồ sơ and Duyệt sản xuất. */
 .project-tabs{display:flex;gap:4px;margin:18px 0 4px;border-bottom:1px solid var(--line);overflow-x:auto}
 .project-tabs button{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 16px;border:0;border-bottom:3px solid transparent;background:none;font:inherit;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;white-space:nowrap}
@@ -387,5 +378,45 @@ body.has-player .drawer.detail-page{padding-bottom:120px}
 .project-tabs button[aria-selected="true"]{color:var(--forest);border-bottom-color:var(--forest)}
 .project-tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 .tab-flag{font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px;background:#f8f0dc;color:#795a1d}
-.review-page{max-width:880px}
+/* Review tab: summary + three-stage stepper, next action, scenes grid beside the always-visible patch panel. */
 .review-page #gates{margin-top:20px}
+.review-top{display:grid;gap:14px}
+.review-summary{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-size:14px;color:var(--muted)}
+.lock-chip{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:#edf3e4;color:#426035;white-space:nowrap}
+.lock-chip.state-unlocked{background:#f8f0dc;color:#795a1d}.lock-chip.state-patch-pending{background:#fdf2ea;color:#a14a26}
+.review-stepper{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.review-stepper .gate-step{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:var(--white);border-top:1px solid var(--line)}
+.review-stepper .gate-step:first-child{border-top:1px solid var(--line)}
+.review-stepper .gate-dot{flex:0 0 28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;border:2px solid #c8d3c6;color:var(--muted);background:var(--white)}
+.review-stepper .is-done .gate-dot{background:var(--forest);border-color:var(--forest);color:#fff}
+.review-stepper .is-current{border-color:#b9cfa9;background:#f6faf1}.review-stepper .is-current .gate-dot{border-color:var(--forest);color:var(--forest)}
+.review-stepper .is-later{background:#fafbf9}
+.review-stepper .gate-main{display:grid;gap:3px;min-width:0}.review-stepper strong{font-size:15px;color:var(--ink)}.review-stepper small{font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+.review-stepper .link-button{justify-self:start;font-size:13px;margin-top:2px}
+.review-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,360px);gap:28px;align-items:start;margin-top:22px}
+.block-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:8px}.block-head h4{margin:0;font-size:16px;color:var(--ink)}.block-head .count{font-size:13px;font-weight:700;color:var(--muted)}
+.scene-progress{height:6px;border-radius:999px;background:#e7ede5;overflow:hidden;margin-bottom:14px}.scene-progress span{display:block;height:100%;background:var(--forest)}
+.scene-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.scene-row{display:flex;flex-direction:column;gap:6px;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--white);min-height:112px}
+.scene-row.status-pending{border-color:#e6cf9c;background:#fffbf1}.scene-row.status-needs-changes{border-color:#ecc9b2;background:#fff8f3}
+.scene-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}.scene-card-head strong{font-size:14px;color:var(--ink);overflow-wrap:anywhere}
+.scene-badge{flex:none;font-size:12px;font-weight:700;padding:2px 8px;border-radius:4px;background:#eef1ec;color:#4f6157}
+.status-approved .scene-badge{background:#edf3e4;color:#426035}.status-needs-changes .scene-badge{background:#fdf2ea;color:#a14a26}.status-pending .scene-badge{background:#f8f0dc;color:#795a1d}
+.scene-meta{font-size:13px;color:var(--muted)}
+.scene-note-text{margin:0;font-size:13px;color:#7a4a2e;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.scene-open{margin-top:auto;align-self:flex-start;min-height:40px}
+.patch-panel{position:sticky;top:16px;padding:16px;border:1px solid var(--line);border-radius:12px;background:#fafbf9}
+.patch-intro{margin:0 0 12px;font-size:13px;color:var(--muted)}
+.patch-drift{margin:0 0 12px;font-size:13px}
+.patch-pending{display:grid;gap:4px;padding:12px;margin-bottom:12px;border:1px solid #ecc9b2;border-radius:10px;background:#fdf2ea}
+.patch-pending span{font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:#a14a26}.patch-pending strong{font-size:14px;color:var(--ink)}.patch-pending small{font-size:13px;color:var(--muted)}.patch-pending .button{justify-self:start;margin-top:6px}
+.patch-list{list-style:none;margin:0;padding:0;display:grid;gap:0;max-height:60vh;overflow:auto}
+.patch-item{padding:10px 0;border-top:1px solid #e7ede5}.patch-item:first-child{border-top:0}
+.patch-item-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.patch-item-head time{margin-left:auto;font-size:12px;color:var(--muted)}
+.patch-badge{font-size:12px;font-weight:700;padding:1px 7px;border-radius:4px;background:#eef1ec;color:#4f6157}
+.status-accepted .patch-badge{background:#edf3e4;color:#426035}.status-returned .patch-badge{background:#fdf2ea;color:#a14a26}
+.patch-item p{margin:4px 0 2px;font-size:14px;color:var(--ink)}.patch-item small{display:block;font-size:13px;color:var(--muted);overflow-wrap:anywhere}.patch-note{color:#7a4a2e!important}
+.empty-block{margin:0;padding:14px;border:1px dashed var(--line);border-radius:10px;font-size:14px;color:var(--muted)}
+@media(max-width:1100px){.review-grid{grid-template-columns:1fr}.patch-panel{position:static}}
+@media(max-width:760px){.review-stepper{grid-template-columns:1fr}.review-stepper .gate-step{padding:12px}.scene-grid{grid-template-columns:1fr}.scene-open{min-height:44px}}
+
