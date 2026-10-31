@@ -1,8 +1,9 @@
 """Offline QA for know-when-to-quit: timeline vs narration files, captions vs script, duration window, music config.
 Reads files only; renders nothing. Passing is technical, not a listening approval.
-Usage: .venv/bin/python scripts/projects/know-when-to-quit/check.py
+Usage: .venv/bin/python scripts/projects/know-when-to-quit/check.py [--write]   (--write records docs/projects/know-when-to-quit/qa.json)
 """
-import json
+import json, sys
+import numpy as np
 from pathlib import Path
 import soundfile as sf
 
@@ -39,6 +40,23 @@ def main():
         assert isinstance(music[key], (int, float)), f'music.json keeps {key}'
     assert (ROOT / 'public' / music['file']).exists()
     flagged = [m['scene'] for m in meta if m['accentFreeWordMatch'] < 0.98]
+    if '--write' in sys.argv:
+        peaks = [float(np.max(np.abs(sf.read(ROOT / 'public' / x['audio'])[0]))) for x in s]
+        approvals = read(f'docs/projects/{SLUG}/approvals.json')
+        clips = {k: v['clips'][-1] for k, v in approvals.get('scenes', {}).items() if v.get('clips')}
+        qa = {'durationSeconds': timeline['totalSeconds'], 'allowedSeconds': [42, 48], 'dimensions': [1080, 1920], 'fps': timeline['fps'],
+              'voice': 'Clone mushashi (VoxCPM2, máy GPU desktop-kndgm60) +1 bán cung, giữ thời lượng', 'narrationTempo': 1,
+              'sceneSeconds': [x['duration'] for x in s], 'sceneTailSeconds': [round(x['duration'] - x['audioSeconds'], 3) for x in s],
+              'voicePeakDbFS': round(20 * np.log10(max(peaks)), 2), 'accentFreeWordMatch': {m['scene']: m['accentFreeWordMatch'] for m in meta},
+              'asrToneFlags': 'tiếc→tiết (1), giếng→diễn (3), xẻng→sẻng, rảnh→dành (5): ASR only, user heard the clips',
+              'captionPages': sum(map(len, captions)), 'captionsKeepScriptWords': True,
+              'music': {'file': music['file'], 'title': music['credit']['title'], 'artists': music['credit']['artists'], 'speechVolume': music['speechVolume'],
+                        'pauseVolume': music['pauseVolume'], 'fadeInSeconds': music['fadeInSeconds'], 'fadeOutSeconds': music['fadeOutSeconds'], 'playbackRate': 1},
+              'sfxEnabled': False, 'images': 'code-drawn SVG illustrations (5), no AI images', 'geminiVeoCalls': 0,
+              'sceneReview': {k: {'status': v['status'], 'decidedAt': v.get('decidedAt')} for k, v in clips.items()},
+              'compositionRendered': False, 'reviewClipsRendered': sum(len(v['clips']) for v in approvals.get('scenes', {}).values()),
+              'listeningReview': 'User marked every scene clip Đạt (voice, pictures, captions); the full composition is still to be watched in Studio (review-preview)'}
+        (ROOT / f'docs/projects/{SLUG}/qa.json').write_text(json.dumps(qa, ensure_ascii=False, indent=2) + '\n')
     print(f"OK: {timeline['totalSeconds']} s, 5 cảnh, {sum(map(len, captions))} trang phụ đề. "
           f"Chưa nghe duyệt; cần nghe kỹ thanh điệu: {', '.join(flagged) or 'không có'}.")
 

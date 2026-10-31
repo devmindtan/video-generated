@@ -1,0 +1,80 @@
+{
+  "durationSeconds": 47.309,
+  "allowedSeconds": [
+    42,
+    48
+  ],
+  "dimensions": [
+    1080,
+    1920
+  ],
+  "fps": 30,
+  "voice": "Clone mushashi (VoxCPM2, máy GPU desktop-kndgm60) +1 bán cung, giữ thời lượng",
+  "narrationTempo": 1,
+  "sceneSeconds": [
+    4.561,
+    12.552,
+    9.652,
+    10.075,
+    10.22
+  ],
+  "sceneTailSeconds": [
+    0.75,
+    0.75,
+    0.75,
+    0.75,
+    1.7
+  ],
+  "voicePeakDbFS": -1.93,
+  "accentFreeWordMatch": {
+    "01-ledger": 0.929,
+    "02-hourglass": 0.93,
+    "03-dry-well": 0.962,
+    "04-fork": 1.0,
+    "05-valley": 0.92
+  },
+  "asrToneFlags": "tiếc→tiết (1), giếng→diễn (3), xẻng→sẻng, rảnh→dành (5): ASR only, user heard the clips",
+  "captionPages": 24,
+  "captionsKeepScriptWords": true,
+  "music": {
+    "file": "own-timeline/audio/snowfall.mp3",
+    "title": "snowfall",
+    "artists": [
+      "Øneheart",
+      "reidenshi"
+    ],
+    "speechVolume": 0.35,
+    "pauseVolume": 0.4,
+    "fadeInSeconds": 1.2,
+    "fadeOutSeconds": 2,
+    "playbackRate": 1
+  },
+  "sfxEnabled": false,
+  "images": "code-drawn SVG illustrations (5), no AI images",
+  "geminiVeoCalls": 0,
+  "sceneReview": {
+    "01-ledger": {
+      "status": "approved",
+      "decidedAt": "2026-10-31T14:33:08.182Z"
+    },
+    "02-hourglass": {
+      "status": "approved",
+      "decidedAt": "2026-10-31T14:33:25.653Z"
+    },
+    "03-dry-well": {
+      "status": "approved",
+      "decidedAt": "2026-10-31T14:33:43.183Z"
+    },
+    "04-fork": {
+      "status": "approved",
+      "decidedAt": "2026-10-31T14:33:56.818Z"
+    },
+    "05-valley": {
+      "status": "approved",
+      "decidedAt": "2026-10-31T14:34:10.164Z"
+    }
+  },
+  "compositionRendered": false,
+  "reviewClipsRendered": 10,
+  "listeningReview": "User marked every scene clip Đạt (voice, pictures, captions); the full composition is still to be watched in Studio (review-preview)"
+}
