@@ -1,0 +1,57 @@
+[
+  {
+    "id": "00-intro",
+    "title": "Lời chào",
+    "composition": "BookHvttIntro"
+  },
+  {
+    "id": "01-gioi-thieu-tap",
+    "title": "Giới thiệu tập",
+    "composition": "BookHvttEpisodeCard"
+  },
+  {
+    "id": "02-mo-chuyen",
+    "title": "Mở chuyện",
+    "composition": "BookHvttMoChuyen"
+  },
+  {
+    "id": "03-cuon-sach",
+    "title": "Cuốn sách là gì",
+    "composition": "BookHvttCuonSach"
+  },
+  {
+    "id": "04-soi-chi",
+    "title": "Sợi chỉ xuyên suốt",
+    "composition": "BookHvttSoiChi"
+  },
+  {
+    "id": "05-nhom-3a",
+    "title": "3A. Những cơn sóng trong lòng",
+    "composition": "BookHvttNhom3A"
+  },
+  {
+    "id": "06-nhom-3b",
+    "title": "3B. Thương và được thương",
+    "composition": "BookHvttNhom3B"
+  },
+  {
+    "id": "07-nhom-3c",
+    "title": "3C. Đi qua thăng trầm",
+    "composition": "BookHvttNhom3C"
+  },
+  {
+    "id": "08-nhom-3d",
+    "title": "3D. Sống giữa mọi người",
+    "composition": "BookHvttNhom3D"
+  },
+  {
+    "id": "09-nhan-xet",
+    "title": "Nhận xét chung",
+    "composition": "BookHvttNhanXet"
+  },
+  {
+    "id": "99-outro",
+    "title": "Kết",
+    "composition": "BookHvttOutro"
+  }
+]
