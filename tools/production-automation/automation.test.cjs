@@ -169,3 +169,20 @@ test('models use the GPU machine through a loopback tunnel when it is on, else t
   assert.deepEqual(calls,['start','release','start','release','start','release']);
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
+test('pictures are planned on the approved voice, and changed scripts need redone voice and visuals before re-approval',()=>fixture(root=>{
+ for(const id of ['self-help-shorts','book-insights'])assert.deepEqual(plan(root,id).stages.find(s=>s.id==='visual-plan').dependencies,['approve-voice']);
+ assert.deepEqual(plan(root,'tiny-dino').stages.find(s=>s.id==='visual-plan').dependencies,['approve-script']); // kids: footage first
+ const id='self-help-shorts',p=plan(root,id),D=`docs/projects/${id}`,X=`scripts/projects/${id}`;
+ put(root,`${D}/brief.md`,'b');put(root,`${D}/script.md`,'s1');put(root,`${D}/script-review.md`,'r');
+ put(root,`${X}/audition.json`,'{}');put(root,`${D}/voice-audition.md`,'take 1');
+ put(root,`${D}/production-spec.md`,'spec 1');put(root,`${D}/image-prompts.md`,'images 1');
+ assert.throws(()=>approvals.approve(root,p,'approve-assets',{by:'t'}),/Approve earlier gates first: approve-script/);
+ for(const g of ['approve-script','approve-voice','approve-assets'])approvals.approve(root,p,g,{by:'t'});
+ put(root,`${D}/script.md`,'s2 with a new part');approvals.approve(root,p,'approve-script',{by:'t'});
+ assert.throws(()=>approvals.approve(root,p,'approve-voice',{by:'t'}),/Cannot re-approve approve-voice[\s\S]*script\.md[\s\S]*own step was not redone/);
+ put(root,`${D}/voice-audition.md`,'take 2 covers the new part');approvals.approve(root,p,'approve-voice',{by:'t'});
+ assert.throws(()=>approvals.approve(root,p,'approve-assets',{by:'t'}),/Cannot re-approve approve-assets[\s\S]*voice-audition\.md/);
+ put(root,`${D}/image-prompts.md`,'images 2 for the new part');approvals.approve(root,p,'approve-assets',{by:'t'});
+ assert.equal(approvals.gateState(root,p,'approve-assets').state,'approved');
+ approvals.approve(root,p,'approve-voice',{by:'t'}); // nothing upstream changed: plain re-approval still works
+}));

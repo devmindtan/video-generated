@@ -50,11 +50,6 @@ function buildStages(profile,seriesDir,{source:S,scripts:X,docs:D,assets:P}){
     {upstreamKind:'review',reads:[`${D}/**`,'docs/projects/*/script.md'],writes:[`${D}/script-review.md`]});
   gate('approve-script','Duyệt kịch bản','Bạn duyệt đúng bản kịch bản, thời lượng và các lựa chọn sản xuất.',
     'Approve script hash, duration and production choices.',['editorial-review']);
-  add('visual-plan','visual-editor','Kế hoạch hình ảnh',profile==='kids'?'Footage chuyển động liên tục; dùng lại asset phù hợp, thiếu thì handoff Gemini thủ công.':
-    'Storyboard ảnh tĩnh, chủ thể không lộ mặt, typography Stoic cho phụ đề và thumbnail. Không Gemini/Veo.',
-    profile==='kids'?'Plan continuous true-motion footage; reuse suitable assets and manual Gemini handoff.':
-    'Still-image storyboard, faceless subjects, Stoic caption and thumbnail typography; no Gemini/Veo.',['approve-script'],
-    {upstreamKind:'design',reads:[`${D}/script.md`,`${D}/brief.md`],writes:[`${D}/production-spec.md`,`${D}/image-prompts.md`]});
   add('voice-audition','voice-editor','Thử giọng',profile==='kids'?'Giữ giọng B Trúc Ly đã chọn; giữ nguyên take gốc.':
     'Theo lựa chọn giọng ghi trong brief: 1 (mặc định) giọng VieNeu có sẵn, ưu tiên playlist; 2 clone trong VoiceStudio từ bản ghi được phép. Giữ take cũ.',
     profile==='kids'?'Keep accepted Trúc Ly B; preserve original takes.':
@@ -64,6 +59,13 @@ function buildStages(profile,seriesDir,{source:S,scripts:X,docs:D,assets:P}){
       operations:profile==='kids'?['voice-audition']:['voice-audition','voice-clone']});
   gate('approve-voice','Duyệt giọng','Nghe nhịp và thanh điệu tiếng Việt, chọn take cụ thể.',
     'Listen for pacing and Vietnamese tones, select take by hash.',['voice-audition']);
+  add('visual-plan','visual-editor','Kế hoạch hình ảnh',profile==='kids'?'Footage chuyển động liên tục; dùng lại asset phù hợp, thiếu thì handoff Gemini thủ công.':
+    'Storyboard ảnh tĩnh, chủ thể không lộ mặt, typography Stoic cho phụ đề và thumbnail. Không Gemini/Veo.',
+    profile==='kids'?'Plan continuous true-motion footage; reuse suitable assets and manual Gemini handoff.':
+    'Still-image storyboard, faceless subjects, Stoic caption and thumbnail typography; no Gemini/Veo.',
+    // Pictures follow the narration, so stills are planned on the approved voice; kids footage comes first instead.
+    profile==='kids'?['approve-script']:['approve-voice'],
+    {upstreamKind:'design',reads:[`${D}/script.md`,`${D}/brief.md`],writes:[`${D}/production-spec.md`,`${D}/image-prompts.md`]});
   gate('approve-assets','Duyệt hình ảnh',profile==='kids'?'Xem hình và tính liên tục. Thiếu footage chuyển động thì dừng sản xuất.':'Xem hình thật và tính liên tục giữa các cảnh.',
     'Review actual visuals and continuity. Missing motion assets block kids production.',['visual-plan']);
   add('assembly','assembler','Dựng video','Dùng đường dẫn chuẩn và engine sẵn có; nhạc trim tự do, có ducking và fade theo cạnh clip. Không render.',
@@ -87,6 +89,9 @@ function buildStages(profile,seriesDir,{source:S,scripts:X,docs:D,assets:P}){
     s.invalidates=stages.filter(t=>ancestors(t).includes(s.id)).map(t=>t.id);
     if(s.kind==='human-approval') s.bindsArtifacts=[...new Set(ancestors(s).flatMap(a=>byId[a].outputs))];
   }
+  // Voice and visuals cannot be re-approved after the script/voice changed unless their own step was redone.
+  for(const id of ['approve-voice','approve-assets'])
+    byId[id].reworkOutputs=byId[id].dependencies.flatMap(d=>byId[d].outputs);
   return stages;
 }
 // Series-level view for the manager: same stages with a <slug> placeholder instead of a project.

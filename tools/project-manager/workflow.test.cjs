@@ -22,7 +22,9 @@ const {chromium}=require('playwright-core'),{createManager}=require('./server.cj
   await page.goto(base,{waitUntil:'networkidle'});assert.ok(await page.locator('#workflow').isHidden());mark('Overview has no series workflow');
   await page.locator('[data-series="self-help-shorts"]').click();await page.locator('.workflow-step').first().waitFor();
   assert.equal(await page.locator('.workflow-step').count(),13);assert.equal(await page.locator('.workflow-phase h3').count(),5);
-  assert.match(await page.locator('[data-workflow-stage="voice-audition"]').innerText(),/song song với bước 5/);
+  // Pictures follow the approved voice, so voice and visual plan are sequential; QA and metadata still run side by side.
+  assert.doesNotMatch(await page.locator('[data-workflow-stage="voice-audition"]').innerText(),/song song/);
+  assert.match(await page.locator('[data-workflow-stage="metadata"]').innerText(),/song song với bước 10/);
   await overflow();await shot('series-desktop');mark('Philosophy series shows 13 numbered steps in 5 phases with parallel hints');
   await page.locator('[data-workflow-stage="script"]').click();await page.locator('#drawer:not([hidden]) #workflow-rules').waitFor();
   assert.match(await page.locator('#drawer-eyebrow').innerText(),/BƯỚC 2\/13/);assert.match(await page.locator('#drawer-breadcrumb').innerText(),/Quy trình: Kịch bản/);
