@@ -57,7 +57,7 @@ def main():
         'dimensions': [1080, 1440],
         'fps': 30,
         'sourceAudioMuted': False,
-        'sourceAudio': 'Customer audio kept (music bed, whooshes, lid clicks, sparkle); dips to sourceSpeechVolume under narration',
+        'sourceAudio': 'Customer music bed (0-3.05 s), sparkle chime (3.08-4.10 s) and whoosh (22.55-23.06 s) kept from source-effects.wav; phone-mic hiss and handling clicks removed; dips to sourceSpeechVolume under narration',
         'sourceVolumes': {key: config[key] for key in ('sourcePauseVolume', 'sourceSpeechVolume')},
         'captionsShown': False,
         'voice': 'Adam bựa',

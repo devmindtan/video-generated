@@ -19,7 +19,7 @@ const voiceCues = [
   ['07-outro-voice-full.wav', 27.6, 4.3],
 ] as const;
 
-// The customer's own sound (music bed, whooshes, lid clicks, sparkle) stays; it dips only under Adam's lines.
+// The customer's music bed, chime and whoosh (hiss removed, see make-source-effects.py) dip only under Adam's lines.
 export const sourceAudioVolume = (frame: number): number => {
   const seconds = frame / FPS;
   const voiceActivity = Math.max(0, ...captionsData.flatMap((group, sceneIndex) => group.map((caption) => {
@@ -42,7 +42,7 @@ export const FlowerKnowsPowderVideo: FC = () => (
       style={{width: '100%', height: '100%', objectFit: 'contain'}}
     />
     <Audio
-      name="Âm thanh gốc · hiệu ứng của khách"
+      name="Nhạc + hiệu ứng của khách · đã bỏ tiếng rè"
       src={staticFile(audio.sourceFile)}
       durationInFrames={DURATION_FRAMES}
       volume={sourceAudioVolume}

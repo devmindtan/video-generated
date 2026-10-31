@@ -6,7 +6,7 @@
   ],
   "fps": 30,
   "sourceAudioMuted": false,
-  "sourceAudio": "Customer audio kept (music bed, whooshes, lid clicks, sparkle); dips to sourceSpeechVolume under narration",
+  "sourceAudio": "Customer music bed (0-3.05 s), sparkle chime (3.08-4.10 s) and whoosh (22.55-23.06 s) kept from source-effects.wav; phone-mic hiss and handling clicks removed; dips to sourceSpeechVolume under narration",
   "sourceVolumes": {
     "sourcePauseVolume": 1,
     "sourceSpeechVolume": 0.5
