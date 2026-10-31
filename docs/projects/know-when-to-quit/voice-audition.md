@@ -16,3 +16,10 @@ ASR khớp không xác nhận thanh điệu; **chưa ai nghe duyệt**. Khi nghe
 ## Chờ người dùng
 
 - Nghe và chọn take mẫu (v1, v2 hoặc yêu cầu thử lại) trong màn Chốt ban đầu.
+
+## Lời đọc đầy đủ sau chốt v1 (2026-10-31)
+
+- Clone 5 cảnh trên **máy GPU `desktop-kndgm60`** bằng cài đặt của đoạn mẫu v2 (bản mẫu + lời bản mẫu), take `clone-mushashi-v3-full`. Cảnh 2 dùng take làm lại `clone-mushashi-v3-s2-seed7` (bản đầu có tiếng thừa "Ước ạ" và "Ba năm" bị nghe thành "bà nằm"). Cảnh 3 làm lại seed 7 không khác, giữ bản đầu.
+- Ghi chú khi chốt "tăng cao độ vài bậc": cả video +2 bán cung, giữ thời lượng. Mẫu so sánh cảnh 1: `public/know-when-to-quit/voice-auditions/pitch-samples/scene-01-sang{1,2,3}.wav`.
+- File dùng trong video: `public/know-when-to-quit/audio/0N-*-voice-full.wav` (dựng bằng `npm run voice:know-when-to-quit`). Tổng video 43,2 giây.
+- ASR cần nghe kỹ (không phải duyệt thanh điệu): cảnh 1 "tiếc" → "tiết"; cảnh 3 "giếng" → "diễn" (cả hai take); cảnh 5 "xẻng" → "sẻng", "rảnh" → "dành". **Chưa ai nghe duyệt.**

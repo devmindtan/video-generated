@@ -709,7 +709,7 @@
     {
       "id": "know-when-to-quit",
       "title": "Biết dừng cũng là dũng cảm",
-      "status": "planning",
+      "status": "production",
       "format": "short",
       "durationSeconds": 45,
       "paths": {
@@ -718,7 +718,16 @@
         "docs": "docs/projects/know-when-to-quit",
         "assets": "public/know-when-to-quit"
       },
-      "registrations": []
+      "registrations": [
+        {
+          "id": "StoicKnowWhenToQuit",
+          "kind": "Composition"
+        },
+        {
+          "id": "KnowWhenToQuitThumbnail",
+          "kind": "Still"
+        }
+      ]
     }
   ]
 }

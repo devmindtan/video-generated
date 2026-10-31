@@ -7,22 +7,17 @@
   "sentences": [
     {
       "scene": 1,
-      "text": "Ba năm. Bốn mươi triệu.",
-      "pauseAfter": 0.45
-    },
-    {
-      "scene": 1,
-      "text": "Và tối nào cũng tự nhủ: lỡ rồi, cố thêm chút nữa.",
-      "pauseAfter": 0.65
+      "text": "Ở lại chỉ vì tiếc công đã bỏ ra, không phải là kiên trì.",
+      "pauseAfter": 0.6
     },
     {
       "scene": 2,
-      "text": "Nhiều khi ta ở lại không phải vì còn tin. Mà vì sợ ba năm kia thành vô ích.",
-      "pauseAfter": 0.3
+      "text": "Ba năm, bốn mươi triệu, rồi tối nào cũng tự nhủ: lỡ rồi, cố thêm chút nữa.",
+      "pauseAfter": 0.35
     },
     {
       "scene": 2,
-      "text": "Nhưng thời gian đã qua thì không lấy lại được, dù ở thêm bao lâu.",
+      "text": "Nhưng thời gian đã qua thì không lấy lại được, dù bạn ở thêm bao lâu.",
       "pauseAfter": 0.65
     },
     {

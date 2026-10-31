@@ -16,6 +16,8 @@ import {LettingGoThumbnail} from './letting-go/Thumbnail';
 import {LettingGoVideo} from './letting-go/Video';
 import {OwnTimelineVideo} from './own-timeline/Video';
 import {OwnTimelineThumbnail} from './own-timeline/Thumbnail';
+import {KnowWhenToQuitVideo, knowWhenToQuitMetadata} from './know-when-to-quit/Video';
+import {KnowWhenToQuitThumbnail} from './know-when-to-quit/Thumbnail';
 import {ProvocationControlVideo} from './provocation-control/Video';
 import {ReciprocityTrapThumbnail} from './reciprocity-trap/Thumbnail';
 import {ReciprocityTrapVideo} from './reciprocity-trap/Video';
@@ -207,6 +209,10 @@ export const ProjectCompositions: FC = () => (
         <Folder name="own-timeline">
           <Composition id="StoicOwnTimeline" calculateMetadata={renderTo('own-timeline')} component={OwnTimelineVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
           <Still id="OwnTimelineThumbnail" calculateMetadata={renderTo('own-timeline')} component={OwnTimelineThumbnail} width={1080} height={1920} />
+        </Folder>
+        <Folder name="know-when-to-quit">
+          <Composition id="StoicKnowWhenToQuit" calculateMetadata={renderTo('know-when-to-quit', knowWhenToQuitMetadata)} component={KnowWhenToQuitVideo} durationInFrames={1295} fps={30} width={1080} height={1920} />
+          <Still id="KnowWhenToQuitThumbnail" calculateMetadata={renderTo('know-when-to-quit')} component={KnowWhenToQuitThumbnail} width={1080} height={1920} />
         </Folder>
       </Folder>
       <Folder name="Book-Insights">

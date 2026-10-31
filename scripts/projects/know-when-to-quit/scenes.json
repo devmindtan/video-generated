@@ -1,0 +1,47 @@
+[
+  {
+    "id": "01-ledger",
+    "title": "Cảnh 1: Sổ chi tiêu",
+    "composition": "StoicKnowWhenToQuit",
+    "frames": [
+      10,
+      160
+    ]
+  },
+  {
+    "id": "02-hourglass",
+    "title": "Cảnh 2: Đồng hồ cát",
+    "composition": "StoicKnowWhenToQuit",
+    "frames": [
+      161,
+      479
+    ]
+  },
+  {
+    "id": "03-dry-well",
+    "title": "Cảnh 3: Giếng khô",
+    "composition": "StoicKnowWhenToQuit",
+    "frames": [
+      480,
+      739
+    ]
+  },
+  {
+    "id": "04-fork",
+    "title": "Cảnh 4: Ngã ba",
+    "composition": "StoicKnowWhenToQuit",
+    "frames": [
+      740,
+      1044
+    ]
+  },
+  {
+    "id": "05-valley",
+    "title": "Cảnh 5: Đặt xẻng xuống",
+    "composition": "StoicKnowWhenToQuit",
+    "frames": [
+      1045,
+      1294
+    ]
+  }
+]

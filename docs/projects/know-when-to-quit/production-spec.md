@@ -3,22 +3,21 @@
 - Project: `know-when-to-quit` · Series: Self-help và lời nhắc cuộc sống · Kênh: Tâm lý cuộc sống.
 - Định dạng: Short dọc **1080×1920, 30 fps**.
 - Thời lượng mục tiêu: **45 giây, dao động cho phép 42–48 giây.** Quá dao động thì rút chữ (bản vá kịch bản), không tăng tốc hay kéo chậm giọng, không kéo video lên 55–60 giây.
-- Cảnh: 5 cảnh theo [script.md](script.md). Mốc giờ trong kịch bản chỉ là ước tính; timing thật lấy từ dữ liệu giọng và phụ đề, không cố định số giây.
+- Cảnh: 5 cảnh theo [script.md](script.md). Mốc giờ trong kịch bản chỉ là ước tính; timing thật lấy từ dữ liệu giọng và phụ đề (`src/projects/know-when-to-quit/timeline.json`), không cố định số giây.
 - Composition dự kiến: `KnowWhenToQuit` (video) và `KnowWhenToQuitThumbnail` (Still), đặt cạnh nhau trong Studio: Tam-Ly-Cuoc-Song → Self-Help-Shorts → know-when-to-quit, kèm `renderTo('know-when-to-quit')`.
 
 ## Giọng
 
 - Lựa chọn 2, clone giọng `mushashi` (VoxCPM2 qua VoiceStudio, máy GPU `desktop-kndgm60`; laptop khi máy GPU tắt). Consent: permission theo `library/voice-references/mushashi/reference.json`.
-- Tốc độ gốc 1×, không đổi cao độ. Một giọng, một cách xử lý cho cả video. Chi tiết và đoạn mẫu: [voice-audition.md](voice-audition.md).
+- Tốc độ gốc 1×, **+2 bán cung** giữ thời lượng (ghi chú khi chốt v1: bớt trầm; mẫu +1/+3 để so). Một giọng, một cách xử lý cho cả video. Chi tiết và đoạn mẫu: [voice-audition.md](voice-audition.md).
 - Lời đọc đầy đủ làm sau khi chốt ban đầu; giữ mọi take cũ; nghe lại thanh điệu, không coi điểm ASR là duyệt phát âm.
 
 ## Hình và chuyển động
 
-- Ảnh tĩnh + chuyển động khung trong Remotion (theo frame). Không Gemini app/API, Veo hay Vertex.
-- Chủ thể: đồ vật, thiên nhiên, công cụ; chỉ có bàn tay ở cảnh 5, không lộ mặt (kể cả qua phản chiếu).
-- Tông: đất khô, nâu đất và hổ phách lúc chạng vạng ở cảnh 1–3, chuyển dần sang ánh sáng sáng sớm, xanh nhạt ở cảnh 4–5. Nền tối, tương phản cao, nửa dưới khung yên tĩnh để đặt phụ đề.
-- Khung ổn định; không zoom/pan đều đặn mọi cảnh. Chỉ dùng chuyển động có lý do: ánh đèn chập chờn nhẹ (cảnh 1), cát rơi trong đồng hồ cát được vẽ bằng lớp hạt theo frame (cảnh 2), bụi đất bay (cảnh 3), sương trôi (cảnh 4), nắng lên (cảnh 5). Chuyển cảnh mờ chéo ngắn.
-- Prompt từng cảnh: [image-prompts.md](image-prompts.md).
+- **Bản vá sau chốt v1:** tranh minh họa điện ảnh vẽ bằng SVG trong Remotion (nhiều lớp, ánh sáng có hướng, chất liệu bằng gradient và nhiễu), vì phiên này không có imagegen. Không ảnh AI, không Gemini/Veo/Vertex. Chi tiết: [image-prompts.md](image-prompts.md).
+- Không có người hay mặt người; cảnh 5 dùng xẻng đã đặt xuống cạnh đôi găng tay, không vẽ tay.
+- Tông: nâu đất, hổ phách, cam chạng vạng ở cảnh 1–3; xám xanh bình minh ở cảnh 4; xanh lá và nắng sớm ở cảnh 5. Nền tối, tương phản cao, nửa dưới khung tối để đặt chữ.
+- Chuyển động theo frame, có lý do: đèn chập chờn và bụi trong chóp sáng (cảnh 1), cát rơi (cảnh 2), bụi đất bay (cảnh 3), sương trôi (cảnh 4), nắng lên (cảnh 5). Không zoom/pan đều đặn. Chuyển cảnh mờ chéo ngắn.
 
 ## Chữ (nhận diện Stoic)
 

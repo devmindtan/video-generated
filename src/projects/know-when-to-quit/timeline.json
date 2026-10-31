@@ -1,0 +1,56 @@
+{
+  "fps": 30,
+  "totalSeconds": 43.173,
+  "scenes": [
+    {
+      "id": "01-ledger",
+      "scene": 1,
+      "start": 0.35,
+      "duration": 5.011,
+      "audio": "know-when-to-quit/audio/01-ledger-voice-full.wav",
+      "audioSeconds": 3.811,
+      "speechStart": 0.0,
+      "speechEnd": 3.68
+    },
+    {
+      "id": "02-hourglass",
+      "scene": 2,
+      "start": 5.361,
+      "duration": 10.631,
+      "audio": "know-when-to-quit/audio/02-hourglass-voice-full.wav",
+      "audioSeconds": 9.431,
+      "speechStart": 0.02,
+      "speechEnd": 9.34
+    },
+    {
+      "id": "03-dry-well",
+      "scene": 3,
+      "start": 15.992,
+      "duration": 8.671,
+      "audio": "know-when-to-quit/audio/03-dry-well-voice-full.wav",
+      "audioSeconds": 7.471,
+      "speechStart": 0.02,
+      "speechEnd": 7.41
+    },
+    {
+      "id": "04-fork",
+      "scene": 4,
+      "start": 24.662,
+      "duration": 10.16,
+      "audio": "know-when-to-quit/audio/04-fork-voice-full.wav",
+      "audioSeconds": 8.96,
+      "speechStart": 0.0,
+      "speechEnd": 8.93
+    },
+    {
+      "id": "05-valley",
+      "scene": 5,
+      "start": 34.822,
+      "duration": 8.351,
+      "audio": "know-when-to-quit/audio/05-valley-voice-full.wav",
+      "audioSeconds": 6.151,
+      "speechStart": 0.0,
+      "speechEnd": 6.1
+    }
+  ]
+}

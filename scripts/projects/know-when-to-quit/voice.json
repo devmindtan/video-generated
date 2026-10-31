@@ -1,21 +1,49 @@
 {
-  "voice": "Clone giọng mushashi",
-  "name": "Clone giọng mushashi",
+  "voice": "Clone giọng mushashi +2 bán cung",
+  "name": "Clone giọng mushashi +2 bán cung",
   "option": 2,
   "engine": "VoxCPM2 qua VoiceStudio (máy GPU desktop-kndgm60; laptop khi máy GPU tắt)",
   "reference": "library/voice-references/mushashi/clips/002288-15s.wav",
   "referenceText": "tảng đá mà họ không cần phải mang theo. Yamamoto nhìn thẳng vào Takeshi, nhưng những lời ông nói dường như vang vọng xuyên qua thời gian. Những ai khám phá ra Jokudo, những người học cách bước đi trên con đường của riêng mình, không bị gánh nặng bởi những thứ vô ích.",
   "referenceTextSource": "faster-whisper medium cục bộ trên đoạn mẫu, sửa \"vụ ích\" → \"vô ích\"; tên riêng chưa kiểm",
   "consent": "permission",
-  "pitchSemitones": 0,
+  "pitchSemitones": 2,
   "speed": 1,
-  "processing": "clone từng cảnh theo audition.json, tốc độ gốc 1×, không đổi cao độ; một giọng cho cả video",
+  "processing": "clone từng cảnh theo audition.json (máy GPU), tốc độ gốc 1×; +2 bán cung giữ thời lượng (soxr + atempo, cùng cách voice B); một giọng cho cả video; build-voice.py",
   "sample": {
-    "proposed": "know-when-to-quit/voice-auditions/clone-mushashi-v2-reftext/scene-01-clone.wav",
+    "proposed": "know-when-to-quit/voice-auditions/pitch-samples/scene-01-sang2.wav",
     "alternatives": [
-      "know-when-to-quit/voice-auditions/clone-mushashi-v1/scene-01-clone.wav"
+      "know-when-to-quit/voice-auditions/pitch-samples/scene-01-sang1.wav",
+      "know-when-to-quit/voice-auditions/pitch-samples/scene-01-sang3.wav"
     ],
-    "status": "chờ người dùng nghe chọn khi chốt ban đầu"
+    "status": "bản vá 1: chờ người dùng nghe chọn cao độ"
   },
-  "segments": {}
+  "segments": {
+    "01-ledger": {
+      "file": "know-when-to-quit/audio/01-ledger-voice-full.wav",
+      "sha256": "9860e74e89394776e9a628b1b2aa09db41c5e202029991de43043e24735bccdc",
+      "sourceTake": "voice-auditions/clone-mushashi-v3-full/scene-01-clone.wav"
+    },
+    "02-hourglass": {
+      "file": "know-when-to-quit/audio/02-hourglass-voice-full.wav",
+      "sha256": "32b4d28782512df4ba31c73b907656db6bac98f3e40bd2a53768078f3d866c34",
+      "sourceTake": "voice-auditions/clone-mushashi-v3-s2-seed7/scene-02-clone.wav"
+    },
+    "03-dry-well": {
+      "file": "know-when-to-quit/audio/03-dry-well-voice-full.wav",
+      "sha256": "96f95ccf8d1c520da72a3223b3d70f090d328b8f25c540ed043d4fcc694df7a3",
+      "sourceTake": "voice-auditions/clone-mushashi-v3-full/scene-03-clone.wav"
+    },
+    "04-fork": {
+      "file": "know-when-to-quit/audio/04-fork-voice-full.wav",
+      "sha256": "11e352bc87c4e58c6a449c610c3605978234bc105e202dafe5ab3be4f127e9ac",
+      "sourceTake": "voice-auditions/clone-mushashi-v3-full/scene-04-clone.wav"
+    },
+    "05-valley": {
+      "file": "know-when-to-quit/audio/05-valley-voice-full.wav",
+      "sha256": "778ddcc16bd767651b7e0c47ac3dfd2bb5e18d3448aa9e670a3ee1acc1ef3a52",
+      "sourceTake": "voice-auditions/clone-mushashi-v3-full/scene-05-clone.wav"
+    }
+  },
+  "selection": "Bản chốt v1 chọn đoạn mẫu v2 (có lời bản mẫu); ghi chú khi chốt: tăng cao độ vài bậc để bớt trầm → đề xuất +2 bán cung (nghe so +1/+3)"
 }
