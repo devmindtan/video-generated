@@ -26,6 +26,7 @@ function createStore(root) {
   const workspaceRoot=fs.realpathSync(root);
   const extra={...require('./features.cjs').features(root),...require('./workflow.cjs').createWorkflow(root),...require('./library.cjs').createLibrary(root),...require('./voice-references.cjs').createVoiceReferences(root)};
   const posters=require('./video-poster.cjs').createPosters(root);
+  const playback=require('./video-playback.cjs').createPlayback(root);
   function location(relative) {
     const target=inside(root,relative);
     if (exists(target)&&!fs.realpathSync(target).startsWith(workspaceRoot+path.sep)) throw new Error('Folder escapes workspace');
@@ -82,6 +83,10 @@ function createStore(root) {
       return null;
     })();
     return video ? {video,type:'video-frame'} : null;
+  }
+  function originalPlayback(id) {
+    const original = extra.media(id,'original');
+    return original ? playback.playable(original.file) : null;
   }
   function servedPreview(id) {
     const image = preview(context(id).project);
@@ -204,6 +209,6 @@ function createStore(root) {
     }catch(error){await handle.close().catch(()=>{});if(dest&&fs.existsSync(dest))fs.unlinkSync(dest);throw error;}
     finally{if(fs.existsSync(temp))fs.unlinkSync(temp);try{if(fs.existsSync(staging)&&!fs.readdirSync(staging).length)fs.rmdirSync(staging);}catch{}}
   }
-  return {...extra,list,detail,document,bookDocument,saveNotes,folder,create,createWithVideo,preview:servedPreview};
+  return {...extra,list,detail,document,bookDocument,saveNotes,folder,create,createWithVideo,preview:servedPreview,originalPlayback};
 }
 module.exports={createStore,hash};

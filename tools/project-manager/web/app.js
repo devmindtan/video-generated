@@ -539,10 +539,23 @@ async function watch(id,kind){
   // The edited cut is only shown once exported; until then it lives in Studio (never rendered from here).
   if(original?!p.importedVideo:!(kind==='video'?p.renderedVideo:p.renderedThumbnail))return original?toast('Dự án chưa có video gốc.'):launchStudio(id,selectedMedia.composition);
   $('#media-title').textContent=p.title+(original?' · Video gốc':kind==='video'&&p.importedVideo?' · Bản edit':'');$('#media-status').textContent=original?'Video gốc khách gửi, đã import vào workspace; file bên ngoài không bị thay đổi.':'Bản đã xuất trên máy; các chỉnh sửa mới trong Studio có thể chưa có trong bản này.';$('#media-studio').hidden=!selectedMedia.composition;
+  if(original&&!(await preparePlayback(id)))return;
   const media=document.createElement(kind==='thumbnail'?'img':'video');media.src=`/api/media?id=${encodeURIComponent(id)}&kind=${kind}`;
   if(kind!=='thumbnail'){media.controls=true;media.playsInline=true;media.preload='metadata';if(p.renderedThumbnail)media.poster=`/api/media?id=${encodeURIComponent(id)}&kind=thumbnail`;}else media.alt='Thumbnail đã xuất — '+p.title;
   media.addEventListener('error',()=>$('#media-status').textContent=!original&&selectedMedia.composition?'Không đọc được bản xuất. Bạn có thể mở Studio bằng nút bên dưới.':'Không đọc được video đã import. Hãy kiểm tra lại định dạng MP4/WebM.');
-  $('#media-content').replaceChildren(media);$('#media-dialog').showModal();
+  $('#media-content').replaceChildren(media);if(!$('#media-dialog').open)$('#media-dialog').showModal();
+}
+async function preparePlayback(id){
+  // HEVC/ProRes originals get a one-time H.264 copy on the server; the imported file stays untouched.
+  for(let shown=false;;){
+    let state;try{state=await (await fetch(`/api/playback?id=${encodeURIComponent(id)}`)).json();}catch{state={failed:true};}
+    if(state.ready)return true;
+    if(!shown){$('#media-content').replaceChildren(Object.assign(document.createElement('p'),{className:'media-preparing'}));$('#media-dialog').showModal();shown=true;}
+    const note=$('#media-content .media-preparing');if(!note||!$('#media-dialog').open)return false;
+    if(state.failed||state.error){note.textContent='Không tạo được bản xem cho video này. File gốc vẫn nằm trong thư mục dự án.';return false;}
+    note.textContent=`Trình duyệt không phát được codec ${(state.codec||'này').toUpperCase()} của video gốc. Đang tạo bản xem H.264 (chỉ làm một lần, file gốc giữ nguyên)…`;
+    await new Promise(resolve=>setTimeout(resolve,2000));
+  }
 }
 $('#close-media').onclick=()=>$('#media-dialog').close();
 $('#media-dialog').addEventListener('close',()=>$('#media-content').replaceChildren());

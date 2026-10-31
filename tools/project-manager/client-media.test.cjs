@@ -47,3 +47,21 @@ test('a client video can be imported without a name and gets a temporary one',as
   const plain=await fetch(f.base+'/api/projects',{method:'POST',headers:{Origin:f.base,'Content-Type':'application/json','X-Workspace-Token':f.token},body:JSON.stringify({series:'product-videos',id:'',title:'',format:'long',duration:''})});
   assert.equal(plain.status,201);assert.equal((await plain.json()).id,'chua-dat-ten-2');
 });
+
+test('originals the browser cannot decode get a cached H.264 copy, the import stays untouched',async t=>{
+  const {createPlayback}=require('./video-playback.cjs'),{execFileSync}=require('node:child_process');
+  const root=fs.mkdtempSync(path.join(os.tmpdir(),'manager-playback-')),bin=path.join(root,'bin'),real=path.join(__dirname,'../../node_modules/@remotion/compositor-linux-x64-gnu');
+  t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
+  fs.mkdirSync(bin);fs.symlinkSync(path.join(real,'ffmpeg'),path.join(bin,'ffmpeg'));
+  fs.writeFileSync(path.join(bin,'ffprobe'),'#!/bin/sh\necho hevc\n',{mode:0o755}); // pretend the import is HEVC
+  const zlib=require('node:zlib'),chunk=(type,data)=>{const body=Buffer.concat([Buffer.from(type),data]),size=Buffer.alloc(4),crc=Buffer.alloc(4);size.writeUInt32BE(data.length);crc.writeUInt32BE(zlib.crc32(body));return Buffer.concat([size,body,crc]);};
+  const header=Buffer.alloc(13);header.writeUInt32BE(32,0);header.writeUInt32BE(32,4);header.set([8,0,0,0,0],8);
+  const png=Buffer.concat([Buffer.from([0x89,0x50,0x4e,0x47,0x0d,0x0a,0x1a,0x0a]),chunk('IHDR',header),chunk('IDAT',zlib.deflateSync(Buffer.alloc(32*33,90))),chunk('IEND',Buffer.alloc(0))]);
+  const video=path.join(root,'imported-video.mov');
+  execFileSync(path.join(real,'ffmpeg'),['-v','error','-f','image2pipe','-framerate','10','-c:v','png','-i','pipe:','-c:v','libx264','-pix_fmt','yuv420p','-f','mov',video],{input:Buffer.concat(Array(5).fill(png))});
+  const before=fs.readFileSync(video),playback=createPlayback(root,{bin});
+  assert.deepEqual(playback.playable(video),{preparing:true,codec:'hevc'});
+  let state;for(let i=0;i<100&&!(state=playback.playable(video)).file;i++)await new Promise(r=>setTimeout(r,100));
+  assert.equal(state.converted,true);assert.ok(state.file.startsWith(path.join(root,'.cache/manager-playback')));
+  assert.equal(fs.readFileSync(state.file).toString('ascii',4,8),'ftyp');assert.deepEqual(fs.readFileSync(video),before);
+});
