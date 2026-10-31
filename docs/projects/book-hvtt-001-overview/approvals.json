@@ -165,21 +165,27 @@
       "note": "Tôi thấy phần này chưa được ý vì để duyệt được hình ảnh thì các phần trước đã có vì ảnh là sẽ đi theo lời mà lời chưa có thì sao có hình mà xem cần xem lại quy trình của phần này"
     }
   ],
-  "locks": [],
+  "locks": [
+    {
+      "version": 1,
+      "files": {
+        "docs/projects/book-hvtt-001-overview/script.md": "4241317b4e843e2cd62323b4fc1e9e5dc59507c948e33fd533e30b96cce3d83e",
+        "src/projects/book-hvtt-001-overview/music.json": "f43063403b941d5d3735c435de0a901f3dcfe41055fd131c85b7a5ac0e60da9a",
+        "src/projects/book-hvtt-001-overview/outro-music.json": "6cfa505e3d723741d1e6a1a23a78fae07882a225a2166ebfccfd0c69b4052362",
+        "scripts/projects/book-hvtt-001-overview/voice.json": "df58777d0aed133b8c5f459fd7afaecf166299a67f4c527436a77378976f9582",
+        "docs/projects/book-hvtt-001-overview/production-spec.md": "0fe9a2b0658bd0bd804e486421675de09ca65c4617d1bdaa180236cf377cf3d5",
+        "docs/projects/book-hvtt-001-overview/image-prompts.md": "622321f3e80bdc886e26926e708c08db2affa425ecfe70b59bcc8d8e52cc44d4"
+      },
+      "by": "devmindtan (trang quản lý)",
+      "at": "2026-10-31T17:49:01.780Z",
+      "note": "",
+      "itemNotes": {},
+      "fromPatch": null
+    }
+  ],
   "patches": [],
   "scenes": {},
-  "notes": {
-    "lock": {
-      "script": {
-        "text": "Tôi thấy phong cách viết văn của bạn chưa được bạn phải trung lập cân bằng giữa người kể và nhập vai vào câu chuyện bạn lạm dụng nhập vai quá mà quên mât mình là người kể chuyện nên nhiều chỗ bạn viết trống không đọc rất là khó chịu hãy tiến hành bổ sung vào rule để những lần sau thực hiện đúng",
-        "at": "2026-10-31T17:30:42.199Z",
-        "by": "devmindtan (trang quản lý)",
-        "files": {
-          "docs/projects/book-hvtt-001-overview/script.md": "ee3d49b4ae5005dfb6d0d4c033f6dbef6d07a26771f402f30277729ab7a75002"
-        }
-      }
-    }
-  },
+  "notes": {},
   "lockReturns": [
     {
       "at": "2026-10-31T17:30:22.918Z",
