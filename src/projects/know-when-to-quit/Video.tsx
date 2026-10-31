@@ -1,3 +1,4 @@
+import React from 'react';
 import type {FC, ReactNode} from 'react';
 import type {Caption} from '@remotion/captions';
 import {Audio} from '@remotion/media';

@@ -1,3 +1,4 @@
+import React from 'react';
 import type {FC} from 'react';
 import {interpolate} from 'remotion';
 import {Canvas, Grain, seeded, W, H, type ArtProps} from './common';

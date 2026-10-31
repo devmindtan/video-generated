@@ -1,3 +1,4 @@
+import React from 'react';
 import type {FC} from 'react';
 import {AbsoluteFill} from 'remotion';
 import '../../shared/stoic-fonts';
