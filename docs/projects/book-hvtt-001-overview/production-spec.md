@@ -13,7 +13,8 @@
   - Lời chào, câu chúc, câu chuyển, câu nhận xét chung và lời kết giữ nguyên chữ người dùng.
   - Phần ý kiến cá nhân người dùng đưa khi video gần xong; để chỗ trống có đánh dấu ngay trước nhận xét chung.
   - "Những điểm chưa đạt" nói ở mức tổng quát, không bắt lỗi từng chỗ, không nhắc lại nội dung sai hoặc nhạy cảm của sách.
-  - Hình vẽ bằng code, không mặt người, không ảnh AI/Gemini/Veo; chữ Stoic Sans Bold 700; không hiệu ứng âm thanh.
+  - Giọng người kể: "mình" kể cho "cả nhà / các bạn", nội dung sách gắn với tác giả, không nhập vai quá, không viết trống không.
+  - Hình vẽ bằng code, được vẽ người (không lộ mặt chỉ áp dụng cho ảnh tạo mới); không ảnh AI/Gemini/Veo; animation đủ chi tiết, bám từng câu thoại, chuyển mượt; chữ Stoic Sans Bold 700; không hiệu ứng âm thanh.
 
 ## Cấu trúc composition
 
@@ -29,9 +30,9 @@
 
 ## Phong cách hình (người dùng chọn cách B)
 
-- Minh họa **nét vàng vẽ bằng code** (SVG trong Remotion), không ảnh chụp, không ảnh tạo bằng AI, không Gemini/Veo. Không mặt người; người chỉ xuất hiện qua đồ vật hoặc bàn tay.
+- Minh họa **nét vàng vẽ bằng code** (SVG trong Remotion), không ảnh chụp, không ảnh tạo bằng AI, không Gemini/Veo. Được vẽ người: dáng, cử chỉ, nhân vật trong chuyện (người bà, đứa cháu, cô gái bên hồ…) theo nét vẽ tối giản (người dùng 2026-10-31); quy tắc không lộ mặt chỉ dành cho ảnh tạo mới.
 - Nền chung với intro/outro: mực tối `#0d1411`, ánh sáng xuyên chéo, bụi vàng, vân giấy (ảnh nhiễu tĩnh dời theo frame), khung vàng đôi đã vẽ sẵn.
-- Nét vẽ tự hiện ra (stroke draw) khi cảnh bắt đầu; mỗi cảnh một ý, đổi cảnh bằng mờ chéo ~0,5 giây. Hình sáng nhẹ theo mức to nhỏ của giọng đọc. Không zoom/pan đều đặn mọi cảnh.
+- Nét vẽ tự hiện ra (stroke draw); **mỗi câu hoặc vế có hình/chuyển động riêng** xuất hiện đúng lúc đọc tới (không để một hình đứng yên cả đoạn), đổi cảnh bằng mờ chéo ~0,5 giây. Hình sáng nhẹ theo mức to nhỏ của giọng đọc. Không zoom/pan đều đặn mọi cảnh.
 - Mỗi cảnh canh theo câu đọc (phraseRanges của giọng), không đặt mốc giờ cứng.
 
 ## Chữ
