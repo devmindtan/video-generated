@@ -74,7 +74,7 @@ function createStore(root) {
       try {return {file:secureFile(base,path.join(images,name),imageTypes),type:'scene'};} catch {}
     }
     // No thumbnail or scene image: show a frame of the exported/imported video, else the composition's source footage.
-    const video = (extra.media(project.id,'video')||extra.media(project.id,'original'))?.file || (()=>{
+    const video = extra.media(project.id,'video')?.file || (()=>{
       const folder = path.join(base,'video');
       if (!exists(folder)) return null;
       for (const name of fs.readdirSync(folder).sort()) {
@@ -84,9 +84,10 @@ function createStore(root) {
     })();
     return video ? {video,type:'video-frame'} : null;
   }
-  function originalPlayback(id) {
-    const original = extra.media(id,'original');
-    return original ? playback.playable(original.file) : null;
+  function videoPlayback(id) {
+    // Imported customer videos may need a browser copy (HEVC MOV…); exports are served as rendered.
+    const item = extra.media(id,'video');
+    return !item ? null : item.imported ? playback.playable(item.file) : {file:item.file,converted:false};
   }
   function servedPreview(id) {
     const image = preview(context(id).project);
@@ -111,7 +112,7 @@ function createStore(root) {
     const projects = catalog.series.flatMap(series=>series.projects.map(project=>{
       const node = nodes.find(n=>n.project===project.id&&n.kind==='Composition');
       const image = preview(project);
-      const renderedVideo=extra.media(project.id,'video'),originalVideo=extra.media(project.id,'original'),renderedThumbnail=extra.media(project.id,'thumbnail');
+      const renderedVideo=extra.media(project.id,'video'),renderedThumbnail=extra.media(project.id,'thumbnail');
       const video = project.registrations.find(r=>r.kind==='Composition');
       const thumbnail = project.registrations.find(r=>r.kind==='Still');
       const source = path.join(location(project.paths.source),'Video.tsx');
@@ -119,7 +120,7 @@ function createStore(root) {
       const updatedAt = exists(source)?fs.statSync(source).mtime.toISOString():exists(brief)?fs.statSync(brief).mtime.toISOString():null;
       return {id:project.id,title:project.title,status:project.status,format:project.format,series:series.id,channel:series.channel,
         seriesTitle:series.title,durationSeconds:node?.fps&&node.durationFrames?node.durationFrames/node.fps:project.durationSeconds??null,
-        renderedVideo:Boolean(renderedVideo),renderedThumbnail:Boolean(renderedThumbnail),importedVideo:Boolean(originalVideo),videoId:video?.id||null,thumbnailId:thumbnail?.id||null,previewType:image?.type||null,updatedAt,book:project.book||null,
+        renderedVideo:Boolean(renderedVideo),renderedThumbnail:Boolean(renderedThumbnail),importedVideo:Boolean(renderedVideo?.imported),videoId:video?.id||null,thumbnailId:thumbnail?.id||null,previewType:image?.type||null,updatedAt,book:project.book||null,
         hasScript:exists(path.join(location(project.paths.docs),'script.md')),
         hasDescription:exists(path.join(location(project.paths.docs),'description.md')),autoNamed:Boolean(project.autoNamed)};
     }));
@@ -209,6 +210,6 @@ function createStore(root) {
     }catch(error){await handle.close().catch(()=>{});if(dest&&fs.existsSync(dest))fs.unlinkSync(dest);throw error;}
     finally{if(fs.existsSync(temp))fs.unlinkSync(temp);try{if(fs.existsSync(staging)&&!fs.readdirSync(staging).length)fs.rmdirSync(staging);}catch{}}
   }
-  return {...extra,list,detail,document,bookDocument,saveNotes,folder,create,createWithVideo,preview:servedPreview,originalPlayback};
+  return {...extra,list,detail,document,bookDocument,saveNotes,folder,create,createWithVideo,preview:servedPreview,videoPlayback};
 }
 module.exports={createStore,hash};

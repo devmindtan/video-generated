@@ -26,15 +26,14 @@ export const Projects=()=> <Folder name="Client-Work"><Folder name="Product-Vide
   return {root,write,base,workspace,token};
 }
 
-test('client projects keep the original video apart from the edited export',async t=>{
+test('client projects have one video: the import until an export exists',async t=>{
   const f=await fixture(t),project=async()=>(await f.workspace()).projects.find(p=>p.id==='edited');
-  assert.deepEqual(await project().then(p=>[p.importedVideo,p.renderedVideo,p.videoId]),[true,false,'EditedCut']);
-  assert.equal(await (await fetch(f.base+'/api/media?id=edited&kind=original')).text().then(x=>x.slice(12)),'ORIGINAL');
-  assert.equal((await fetch(f.base+'/api/media?id=edited&kind=video')).status,404,'no edit is exported yet: the edit opens in Studio');
-  f.write('out/EditedCut.mp4',mp4('EDITED'));
-  assert.deepEqual(await project().then(p=>[p.importedVideo,p.renderedVideo]),[true,true]);
+  assert.deepEqual(await project().then(p=>[p.importedVideo,p.renderedVideo,p.videoId]),[true,true,'EditedCut']);
+  assert.equal(await (await fetch(f.base+'/api/media?id=edited&kind=video')).text().then(x=>x.slice(12)),'ORIGINAL');
+  const later=Date.now()/1000+5;f.write('out/EditedCut.mp4',mp4('EDITED'));fs.utimesSync(path.join(f.root,'out/EditedCut.mp4'),later,later);
+  assert.deepEqual(await project().then(p=>[p.importedVideo,p.renderedVideo]),[false,true]);
   assert.equal(await (await fetch(f.base+'/api/media?id=edited&kind=video')).text().then(x=>x.slice(12)),'EDITED');
-  assert.equal(await (await fetch(f.base+'/api/media?id=edited&kind=original')).text().then(x=>x.slice(12)),'ORIGINAL');
+  assert.equal((await fetch(f.base+'/api/media?id=edited&kind=original')).status,404);
 });
 
 test('a client video can be imported without a name and gets a temporary one',async t=>{
