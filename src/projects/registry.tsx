@@ -69,7 +69,7 @@ import {ApologyChangeThumbnail} from './apology-change/Thumbnail';
 import {ListenFirstVideo} from './listen-first/Video';
 import {ListenFirstThumbnail} from './listen-first/Thumbnail';
 import {SkinCareNhuyVideo} from './skin-care-nhuy/Video';
-import {ChuaDatTenVideo} from './chua-dat-ten/Video';
+import {MerzyGlamTintVideo} from './merzy-glam-tint/Video';
 
 import {StartBeforeReadyVideo} from './start-before-ready/Video';
 import {StartBeforeReadyThumbnail} from './start-before-ready/Thumbnail';
@@ -251,8 +251,8 @@ export const ProjectCompositions: FC = () => (
         <Folder name="skin-care-nhuy">
           <Composition id="SkinCareNhuyAdam" component={SkinCareNhuyVideo} durationInFrames={904} fps={30} width={368} height={654} />
         </Folder>
-        <Folder name="chua-dat-ten">
-          <Composition id="ChuaDatTenAdam" component={ChuaDatTenVideo} durationInFrames={787} fps={30} width={720} height={1280} />
+        <Folder name="merzy-glam-tint">
+          <Composition id="MerzyGlamTintAdam" component={MerzyGlamTintVideo} durationInFrames={787} fps={30} width={720} height={1280} />
         </Folder>
       </Folder>
     </Folder>

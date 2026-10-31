@@ -30,20 +30,20 @@
       ]
     },
     {
-      "id": "chua-dat-ten",
-      "title": "Chưa đặt tên",
+      "id": "merzy-glam-tint",
+      "title": "Merzy The Glam Mellow Tint — Adam bựa",
       "status": "existing",
       "format": "short",
       "durationSeconds": 26.2,
       "paths": {
-        "source": "src/projects/chua-dat-ten",
-        "scripts": "scripts/projects/chua-dat-ten",
-        "docs": "docs/projects/chua-dat-ten",
-        "assets": "public/chua-dat-ten"
+        "source": "src/projects/merzy-glam-tint",
+        "scripts": "scripts/projects/merzy-glam-tint",
+        "docs": "docs/projects/merzy-glam-tint",
+        "assets": "public/merzy-glam-tint"
       },
       "registrations": [
         {
-          "id": "ChuaDatTenAdam",
+          "id": "MerzyGlamTintAdam",
           "kind": "Composition"
         }
       ]

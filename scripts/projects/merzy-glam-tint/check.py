@@ -7,8 +7,8 @@ import numpy as np
 import soundfile as sf
 
 ROOT = Path(__file__).resolve().parents[3]
-PUBLIC = ROOT / 'public/chua-dat-ten'
-SRC = ROOT / 'src/projects/chua-dat-ten'
+PUBLIC = ROOT / 'public/merzy-glam-tint'
+SRC = ROOT / 'src/projects/merzy-glam-tint'
 SR = 24000
 DURATION = 787 / 30
 
@@ -18,7 +18,7 @@ def db(value):
 
 
 def main():
-    story = json.loads((ROOT / 'scripts/projects/chua-dat-ten/story.json').read_text())
+    story = json.loads((ROOT / 'scripts/projects/merzy-glam-tint/story.json').read_text())
     metadata = json.loads((PUBLIC / 'audio/voice-metadata.json').read_text())
     config = json.loads((SRC / 'audio.json').read_text())
     assert sum(scene['duration'] for scene in story) <= DURATION
@@ -55,7 +55,7 @@ def main():
         'rendered': False,
         'listeningReview': 'Pending user audition in Studio; ASR word-match does not validate Vietnamese tones.',
     }
-    (ROOT / 'docs/projects/chua-dat-ten/qa.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
+    (ROOT / 'docs/projects/merzy-glam-tint/qa.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps(report, ensure_ascii=False, indent=2))
 
 

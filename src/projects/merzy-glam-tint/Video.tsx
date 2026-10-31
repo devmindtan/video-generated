@@ -12,11 +12,11 @@ const voiceCues = [
   ['06-outro-voice-full.wav', 22, 4],
 ] as const;
 
-export const ChuaDatTenVideo: FC = () => (
+export const MerzyGlamTintVideo: FC = () => (
   <AbsoluteFill style={{backgroundColor: '#000'}}>
     <Video
       name="Hình gốc · Audio đã tắt"
-      src={staticFile('chua-dat-ten/video/source.mp4')}
+      src={staticFile('merzy-glam-tint/video/source.mp4')}
       muted
       durationInFrames={787}
       style={{width: '100%', height: '100%', objectFit: 'contain'}}
@@ -28,7 +28,7 @@ export const ChuaDatTenVideo: FC = () => (
           name={file.replace('-voice-full.wav', '')}
           from={at * 30}
           durationInFrames={duration * 30}
-          src={staticFile(`chua-dat-ten/audio/${file}`)}
+          src={staticFile(`merzy-glam-tint/audio/${file}`)}
           volume={audio.voiceVolume}
         />
       ))}

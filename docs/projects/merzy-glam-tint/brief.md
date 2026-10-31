@@ -1,8 +1,8 @@
-# Chưa đặt tên
+# Merzy The Glam Mellow Tint — Adam bựa
 
 - Kênh: client-work
 - Series: product-videos
-- Project ID: chua-dat-ten
+- Project ID: merzy-glam-tint
 - Định dạng: short
 - Thời lượng: chưa duyệt
 - Trạng thái: planning, chưa có composition/asset/giọng.
