@@ -48,6 +48,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
         if(route==='/api/voicestudio/stop')return send(200,await voiceControl.stop());
         if(route==='/api/books')return send(201,store.newBook(body));
         if(route==='/api/voice-reference-clip')return send(201,await store.cutVoiceReference(body));
+        if(route==='/api/voice-reference-meta')return send(200,store.updateVoiceReference(body));
         if(route==='/api/book-meta')return send(200,store.updateBook(body));
         if(route==='/api/audio-meta')return send(200,store.updateAudioMeta(body));
         if(route==='/api/delete-preview')return send(200,store.deletion(body.kind,body.id));

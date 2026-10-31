@@ -48,7 +48,8 @@ function createVoiceReferences(root, {ffmpeg = path.join(root, 'node_modules/@re
     if (!safeFile(folder, 'reference.json')) throw new Error('Không tìm thấy bản ghi');
     return folder;
   };
-  const readMeta = folder => JSON.parse(fs.readFileSync(safeFile(folder, 'reference.json') || (() => {throw new Error('Metadata bản ghi không an toàn');})(), 'utf8'));
+  const readMetaText = folder => fs.readFileSync(safeFile(folder, 'reference.json') || (() => {throw new Error('Metadata bản ghi không an toàn');})(), 'utf8');
+  const readMeta = folder => JSON.parse(readMetaText(folder));
   const writeMeta = (folder, meta) => {
     const temp = path.join(folder, `.reference-${crypto.randomBytes(6).toString('hex')}.tmp`);
     fs.writeFileSync(temp, JSON.stringify(meta, null, 2) + '\n', {flag: 'wx'});fs.renameSync(temp, path.join(folder, 'reference.json'));
@@ -96,8 +97,8 @@ function createVoiceReferences(root, {ffmpeg = path.join(root, 'node_modules/@re
     const realBase = safeDir(base, root);
     const usage = cloneUsage();
     const references = fs.readdirSync(realBase).filter(n => /^[a-z0-9-]+$/.test(n)).map(n => {
-      const folder = folderOf(n), meta = readMeta(folder), hasSource = Boolean(meta.file) && Boolean(safeFile(folder, meta.file));
-      return {...meta, hasSource, consentLabel: CONSENT[meta.consent], clips: (meta.clips || []).filter(c => safeFile(folder, c.file, 'clips'))
+      const folder = folderOf(n), text = readMetaText(folder), meta = JSON.parse(text), hasSource = Boolean(meta.file) && Boolean(safeFile(folder, meta.file));
+      return {...meta, revision: sha(text), hasSource, consentLabel: CONSENT[meta.consent], clips: (meta.clips || []).filter(c => safeFile(folder, c.file, 'clips'))
         .map(c => ({...c, path: `${DIR}/${n}/clips/${c.file}`, usedBy: usage.get(c.sha256) || []}))};
     });
     references.sort((a, b) => String(b.addedAt).localeCompare(String(a.addedAt)));
@@ -146,6 +147,43 @@ function createVoiceReferences(root, {ffmpeg = path.join(root, 'node_modules/@re
     writeMeta(folder, fresh);if (original) fs.rmSync(original, {force: true});
     return {...clip, path: `${DIR}/${id}/clips/${name}`, sourceDeleted: true};
   }
+  // Edit human-readable metadata and the private clip filename. The folder id and audio bytes stay stable;
+  // a revision binds the form to the reference.json version the user opened.
+  function update({id, title, speaker, consent, clipFile, fileName, revision}) {
+    const folder = folderOf(id), before = readMetaText(folder), conflict = () => Object.assign(new Error('Bản ghi vừa được sửa ở nơi khác. Hãy tải lại trang.'), {status: 409});
+    if (sha(before) !== revision) throw conflict();
+    const meta = JSON.parse(before), cleanTitle = String(title || '').trim(), cleanSpeaker = String(speaker || '').trim();
+    if (!cleanTitle || cleanTitle.length > 160) throw new Error('Tên bản ghi cần từ 1 đến 160 ký tự');
+    if (!cleanSpeaker || cleanSpeaker.length > 120) throw new Error('Tên người nói cần từ 1 đến 120 ký tự');
+    if (!CONSENT[consent]) throw new Error('Chọn xác nhận quyền sử dụng giọng');
+    let oldPath = null, newPath = null;
+    if (clipFile != null || fileName != null) {
+      const clip = (meta.clips || []).find(c => c.file === clipFile);
+      if (!clip || !safeFile(folder, clip.file, 'clips')) throw new Error('Không tìm thấy đoạn mẫu cần đổi tên');
+      const next = String(fileName || '').trim();
+      if (!/^[A-Za-z0-9][A-Za-z0-9._-]{0,119}\.wav$/.test(next)) throw new Error('Tên file dùng chữ, số, dấu chấm, gạch ngang hoặc gạch dưới và kết thúc bằng .wav');
+      if (next !== clip.file) {
+        const clips = safeDir(path.join(folder, 'clips'), folder);oldPath = safeFile(folder, clip.file, 'clips');newPath = path.join(clips, next);
+        if (fs.existsSync(newPath)) throw new Error('Tên file này đã tồn tại trong bản ghi');
+        clip.file = next;
+      }
+    }
+    meta.title = cleanTitle;meta.speaker = cleanSpeaker;meta.consent = consent;meta.updatedAt = new Date().toISOString();
+    const text = JSON.stringify(meta, null, 2) + '\n', temp = path.join(folder, `.reference-${crypto.randomBytes(6).toString('hex')}.tmp`);
+    fs.writeFileSync(temp, text, {flag: 'wx'});
+    if (sha(readMetaText(folder)) !== revision) {fs.unlinkSync(temp);throw conflict();}
+    const history = safeDir(path.join(folder, '.manager-history'), folder, true);
+    fs.writeFileSync(path.join(history, `reference-${Date.now()}-${crypto.randomBytes(4).toString('hex')}.json`), before, {flag: 'wx'});
+    try {
+      if (oldPath) fs.renameSync(oldPath, newPath);
+      fs.renameSync(temp, path.join(folder, 'reference.json'));
+    } catch (error) {
+      if (oldPath && fs.existsSync(newPath) && !fs.existsSync(oldPath)) fs.renameSync(newPath, oldPath);
+      if (fs.existsSync(temp)) fs.unlinkSync(temp);
+      throw error;
+    }
+    return {id, title: cleanTitle, speaker: cleanSpeaker, consent, consentLabel: CONSENT[consent], fileName: fileName || null, revision: sha(text)};
+  }
   // Stream only a listed recording or clip.
   function audio(kind, key) {
     try {
@@ -154,6 +192,6 @@ function createVoiceReferences(root, {ffmpeg = path.join(root, 'node_modules/@re
     } catch {return null;}
     return null;
   }
-  return {voiceReferences: list, addVoiceReference: add, cutVoiceReference: cut, referenceAudio: audio};
+  return {voiceReferences: list, addVoiceReference: add, cutVoiceReference: cut, updateVoiceReference: update, referenceAudio: audio};
 }
 module.exports = {createVoiceReferences, CONSENT};

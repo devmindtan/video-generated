@@ -42,7 +42,15 @@ test('adds a recording with consent, suggests a clean 15 s window and cuts reusa
   const listed = refs.voiceReferences().references[0];
   assert.equal(listed.clips.length, 1);assert.equal(listed.consentLabel, 'Giọng của tôi');
   assert.deepEqual(listed.clips[0].usedBy, ['demo-ep']);assert.equal(listed.hasSource, false);
-  assert.equal(refs.referenceAudio('reference', r.id), null);assert.ok(refs.referenceAudio('reference-clip', `${r.id}/${clip.file}`));
+  assert.match(listed.revision, /^[a-f0-9]{64}$/);
+  const updated = refs.updateVoiceReference({id:r.id,title:'Giọng kể buổi tối',speaker:'Minh Hiếu',consent:'permission',clipFile:clip.file,fileName:'giong-ke-buoi-toi.wav',revision:listed.revision});
+  assert.equal(updated.title, 'Giọng kể buổi tối');assert.equal(updated.consentLabel, 'Người trong bản ghi đã đồng ý cho clone');
+  const edited = refs.voiceReferences().references[0], renamed = path.join(root, edited.clips[0].path);
+  assert.equal(edited.speaker, 'Minh Hiếu');assert.equal(edited.clips[0].file, 'giong-ke-buoi-toi.wav');assert.deepEqual(edited.clips[0].usedBy, ['demo-ep']);
+  assert.ok(fs.existsSync(renamed));assert.ok(!fs.existsSync(file));assert.ok(fs.readdirSync(path.join(root,'library/voice-references',r.id,'.manager-history')).length);
+  assert.throws(()=>refs.updateVoiceReference({id:r.id,title:'Bản cũ',speaker:'Hiếu',consent:'self',revision:listed.revision}),e=>e.status===409);
+  assert.equal(refs.referenceAudio('reference', r.id), null);assert.ok(refs.referenceAudio('reference-clip', `${r.id}/giong-ke-buoi-toi.wav`));
+  assert.equal(refs.referenceAudio('reference-clip', `${r.id}/${clip.file}`), null);
   assert.equal(refs.referenceAudio('reference-clip', `${r.id}/../reference.json`), null);
 });
 

@@ -696,7 +696,11 @@ function refRow(r){
   const clipState=r.clips.length?`<span class="ref-chip ref-chip-ready">${r.clips.length} đoạn mẫu</span>`:'<span class="ref-chip ref-chip-warn">Chưa cắt đoạn mẫu</span>';
   const usage=used.length?`<span class="ref-usage">Dùng trong ${used.map(esc).join(', ')}</span>`:'<span class="ref-usage muted">Chưa dùng trong tập nào</span>';
   return `<li class="resource-row ref-row${open?' open':''}" data-ref="${esc(r.id)}">${play}<div class="row-title ref-identity"><strong>${esc(r.title)}</strong><small class="ref-meta"><span class="ref-speaker">${esc(r.speaker)}</span><span class="ref-consent">${esc(r.consentLabel)}</span>${clipState}${usage}</small></div><button class="button quiet expand-button ref-toggle" data-ref-toggle aria-expanded="${open}"><span>${open?'Thu gọn':r.hasSource?'Chọn đoạn mẫu':'Chi tiết'}</span><i aria-hidden="true"></i></button>
-${open?`<div class="ref-panel">${r.hasSource?refEditor(r):''}${r.clips.length?refClips(r):''}${!r.hasSource&&!r.clips.length?'<p class="muted">Không còn file gốc và chưa có đoạn mẫu.</p>':''}</div>`:''}</li>`;
+${open?`<div class="ref-panel">${state.refEdit===r.id?refMetaForm(r):'<div class="ref-panel-toolbar"><button class="button quiet" data-ref-edit>Sửa thông tin</button></div>'}${r.hasSource?refEditor(r):''}${r.clips.length?refClips(r):''}${!r.hasSource&&!r.clips.length?'<p class="muted">Không còn file gốc và chưa có đoạn mẫu.</p>':''}</div>`:''}</li>`;
+}
+function refMetaForm(r){
+  const clip=r.clips[r.clips.length-1];
+  return `<form class="ref-meta-form" data-revision="${esc(r.revision)}"><div class="ref-edit-head"><div><strong>Chỉnh sửa thông tin bản ghi</strong><p>Mã thư mục <code>${esc(r.id)}</code> được giữ nguyên để không làm hỏng liên kết.</p></div></div><div class="ref-edit-grid"><label class="field"><span>Tên bản ghi</span><input name="title" value="${esc(r.title)}" maxlength="160" required autocomplete="off"></label><label class="field"><span>Người nói</span><input name="speaker" value="${esc(r.speaker)}" maxlength="120" required autocomplete="off"></label><label class="field"><span>Xác nhận</span><select name="consent" required><option value="self" ${r.consent==='self'?'selected':''}>Đây là giọng của tôi</option><option value="permission" ${r.consent==='permission'?'selected':''}>Đã được người nói đồng ý</option></select></label>${clip?`<label class="field ref-file-field"><span>Tên file đoạn mẫu</span><input name="fileName" class="ref-file-name" value="${esc(clip.file)}" data-clip-file="${esc(clip.file)}" maxlength="124" pattern="[A-Za-z0-9](?:[A-Za-z0-9._]|-){0,119}[.]wav" required autocomplete="off" spellcheck="false"><small>Dùng chữ không dấu, số, dấu chấm, gạch ngang hoặc gạch dưới; kết thúc bằng .wav.</small></label>`:''}</div><div class="ref-edit-actions"><p class="ref-edit-status" role="status"></p><button type="button" class="button quiet" data-ref-edit-cancel>Hủy</button><button type="submit" class="button primary">Lưu thay đổi</button></div></form>`;
 }
 function refEditor(r){
   const sel=state.refSel[r.id];
@@ -749,13 +753,24 @@ async function submitRef(event){
     document.querySelector(`[data-ref="${CSS.escape(result.id)}"] .ref-wave`)?.focus();
   }catch(error){status.textContent=error.message;button.disabled=false;}
 }
+async function saveRefMeta(form){
+  const card=form.closest('[data-ref]'),id=card.dataset.ref,status=form.querySelector('.ref-edit-status'),buttons=form.querySelectorAll('button'),file=form.querySelector('.ref-file-name');
+  buttons.forEach(b=>b.disabled=true);status.textContent='Đang lưu…';stopRefPreview();if(!player.paused)player.pause();
+  try{
+    await api('/api/voice-reference-meta',{id,title:form.elements.title.value,speaker:form.elements.speaker.value,consent:form.elements.consent.value,revision:form.dataset.revision,clipFile:file?.dataset.clipFile,fileName:file?.value});
+    state.refEdit=null;await loadVoiceRefs();toast('Đã cập nhật thông tin bản ghi và tên file.');document.querySelector(`[data-ref="${CSS.escape(id)}"] [data-ref-edit]`)?.focus();
+  }catch(error){status.textContent=error.message;buttons.forEach(b=>b.disabled=false);}
+}
 $('#resource-view').addEventListener('click',event=>{
-  const t=event.target;const toggle=t.closest('[data-ref-toggle]');if(toggle){const id=toggle.closest('[data-ref]').dataset.ref;stopRefPreview();state.refOpen=state.refOpen===id?null:id;renderVoiceRefs();document.querySelector(`[data-ref="${CSS.escape(id)}"] [data-ref-toggle]`)?.focus();return;}
+  const t=event.target;const toggle=t.closest('[data-ref-toggle]');if(toggle){const id=toggle.closest('[data-ref]').dataset.ref;stopRefPreview();state.refOpen=state.refOpen===id?null:id;if(state.refOpen!==id)state.refEdit=null;renderVoiceRefs();document.querySelector(`[data-ref="${CSS.escape(id)}"] [data-ref-toggle]`)?.focus();return;}
+  const edit=t.closest('[data-ref-edit]');if(edit){const id=edit.closest('[data-ref]').dataset.ref;state.refEdit=id;renderVoiceRefs();document.querySelector(`[data-ref="${CSS.escape(id)}"] .ref-meta-form [name="title"]`)?.focus();return;}
+  const cancel=t.closest('[data-ref-edit-cancel]');if(cancel){const id=cancel.closest('[data-ref]').dataset.ref;state.refEdit=null;renderVoiceRefs();document.querySelector(`[data-ref="${CSS.escape(id)}"] [data-ref-edit]`)?.focus();return;}
   if(t.closest('[data-add-ref]')){state.addRefOpen=!state.addRefOpen;renderVoiceRefs();(state.addRefOpen?$('#ref-file'):$('[data-add-ref]'))?.focus();return;}
   const action=t.closest('[data-ref-suggest],[data-ref-preview],[data-ref-cut]');if(action){refAction(action);return;}
   const wave=t.closest('[data-ref-wave]');if(wave){const id=wave.dataset.refWave,r=state.voiceRefs.find(x=>x.id===id),box=wave.getBoundingClientRect();state.refSel[id].start=Math.round((event.clientX-box.left)/box.width*r.durationSeconds*10)/10;updateRefCard(id);document.querySelector(`[data-ref="${CSS.escape(id)}"] .ref-wave`)?.focus();}
 });
 $('#resource-view').addEventListener('keydown',event=>{
+  if(event.key==='Escape'&&event.target.closest?.('.ref-meta-form')){event.preventDefault();const id=event.target.closest('[data-ref]').dataset.ref;state.refEdit=null;renderVoiceRefs();document.querySelector(`[data-ref="${CSS.escape(id)}"] [data-ref-edit]`)?.focus();return;}
   const wave=event.target.closest?.('[data-ref-wave]');if(!wave||!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();
   const id=wave.dataset.refWave,r=state.voiceRefs.find(x=>x.id===id),sel=state.refSel[id],step=event.shiftKey?5:1;
   sel.start=event.key==='Home'?0:event.key==='End'?r.durationSeconds-sel.len:sel.start+(event.key==='ArrowRight'?step:-step);updateRefCard(id);document.querySelector(`[data-ref="${CSS.escape(id)}"] .ref-wave`)?.focus();
@@ -765,7 +780,7 @@ $('#resource-view').addEventListener('change',event=>{
   if(event.target.matches('.ref-start')){const v=parseClock(event.target.value);if(Number.isFinite(v))sel.start=v;updateRefCard(id);}
   if(event.target.matches('.ref-len')){sel.len=Number(event.target.value);updateRefCard(id);}
 });
-$('#resource-view').addEventListener('submit',event=>{if(event.target.id==='add-ref-form')submitRef(event);});
+$('#resource-view').addEventListener('submit',event=>{if(event.target.id==='add-ref-form')submitRef(event);else if(event.target.matches('.ref-meta-form')){event.preventDefault();saveRefMeta(event.target);}});
 function voiceCard(v){
   const used=v.usedBy.length?`<details class="usage"><summary>Dùng trong ${v.usedBy.length} tập</summary>${usageList(v.usedBy)}</details>`:'<p class="usage-none">Chưa tập nào dùng</p>';
   return `<article class="voice-card${v.preferred?' is-chosen':''}">${v.sample?playButton('voice',v.id,v.name,`Giọng mẫu số ${v.number}, ${v.gender}, ${v.region}`):''}<div class="voice-main"><h3>${esc(v.name)} <small>số ${v.number}</small></h3><p>${esc(v.gender)}, giọng ${esc(v.region)}${v.durationSeconds?`, mẫu ${Math.round(v.durationSeconds)} giây`:''}</p>${v.name==='Trúc Ly'?'<div class="tags"><span class="tag">Gốc của giọng B thiếu nhi</span></div>':''}</div><button class="button pick-button ${v.preferred?'quiet':'secondary'}" data-pick-voice="${esc(v.name)}" aria-pressed="${v.preferred}">${v.preferred?'Bỏ chọn':`${icon('plus')} Chọn giọng`}</button>${used}</article>`;
