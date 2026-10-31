@@ -176,11 +176,114 @@ async function openProject(id,record=true){
     if(record)recordRoute(location.pathname+location.search+'#project/'+encodeURIComponent(id),true);
     $('#drawer-eyebrow').textContent='HỒ SƠ DỰ ÁN';
     const metadata=state.data.projects.find(p=>p.id===id),video=detail.registrations.find(r=>r.kind==='Composition'),thumb=detail.registrations.find(r=>r.kind==='Still'),projectStatus=metadata?.importedVideo?'Đã import video':statusNames[detail.status];
-    $('#drawer-content').innerHTML=`<header class="project-page-head"><h2 id="drawer-title" tabindex="-1">${esc(detail.title)}</h2><div class="drawer-meta"><span>${esc(detail.seriesTitle)}</span><span>·</span><span>${metadata?.format==='short'?'Short':'Video dài'} · ${duration(metadata?.durationSeconds)}</span><span class="status ${esc(metadata?.importedVideo?'existing':detail.status)}">${esc(projectStatus)}</span></div><div class="drawer-actions">${video||metadata?.renderedVideo?`<button class="button primary" data-watch="video" data-id="${esc(id)}">${icon("play")} Xem video</button>`:''}${video?`<button class="button studio-button" data-studio="${esc(video.id)}" data-id="${esc(id)}">${icon("arrow")} Mở Studio</button>`:''}${thumb?`<a class="button secondary" data-watch="thumbnail" data-id="${esc(id)}" href="${studio(thumb.id)}" target="_blank" rel="noopener">${icon("image")} Xem thumbnail</a>`:''}</div></header><div class="project-page-layout"><div class="project-page-main"><section class="drawer-section"><h3>Tài liệu của tập</h3><div class="document-tabs" id="document-tabs">${detail.documents.map(d=>`<button data-document="${esc(d.id)}">${esc(d.name)}</button>`).join('')}</div><div id="document-view" class="document-view">Đang mở tài liệu…</div></section><section class="drawer-section"><h3>Ghi chú của bạn</h3><textarea id="notes-text" class="notes-input" maxlength="40000" placeholder="Ý tưởng cần bổ sung, điều cần sửa, việc cần làm…" aria-label="Ghi chú dự án">${esc(detail.notes)}</textarea><div class="notes-footer"><small id="notes-status">Lưu thành file riêng trong thư mục tài liệu.</small><button class="button primary" id="save-notes">Lưu ghi chú</button></div></section></div><aside class="project-page-aside"><section class="drawer-section"><h3>Đi đến thư mục</h3><div class="folder-list">${Object.entries(detail.paths).map(([kind,folder])=>`<button class="folder-button" data-folder="${esc(kind)}">${icon("folder")} ${esc({source:'Bản dựng',scripts:'Công cụ của tập',docs:'Tài liệu',assets:'Ảnh & âm thanh'}[kind]||kind)}<small>${esc(folder)}</small></button>`).join('')}${metadata?.videoFolder?`<button class="folder-button" data-folder="video">${icon("play")} ${metadata.importedVideo?'Video khách hàng':'Video đã xuất'}<small>${esc(metadata.videoFolder)}</small></button>`:''}</div></section><section class="drawer-section project-danger"><h3>Quản lý dự án</h3><button class="button danger" data-delete-project>Xóa dự án</button></section></aside></div>`;
+    $('#drawer-content').innerHTML=`<header class="project-page-head"><h2 id="drawer-title" tabindex="-1">${esc(detail.title)}</h2><div class="drawer-meta"><span>${esc(detail.seriesTitle)}</span><span>·</span><span>${metadata?.format==='short'?'Short':'Video dài'} · ${duration(metadata?.durationSeconds)}</span><span class="status ${esc(metadata?.importedVideo?'existing':detail.status)}">${esc(projectStatus)}</span></div><div class="drawer-actions">${video||metadata?.renderedVideo?`<button class="button primary" data-watch="video" data-id="${esc(id)}">${icon("play")} Xem video</button>`:''}${video?`<button class="button studio-button" data-studio="${esc(video.id)}" data-id="${esc(id)}">${icon("arrow")} Mở Studio</button>`:''}${thumb?`<a class="button secondary" data-watch="thumbnail" data-id="${esc(id)}" href="${studio(thumb.id)}" target="_blank" rel="noopener">${icon("image")} Xem thumbnail</a>`:''}</div></header><div class="project-page-layout"><div class="project-page-main"><section class="drawer-section" id="gates" aria-labelledby="gates-title"><h3 id="gates-title">Duyệt sản xuất</h3><p class="muted">Đang đọc trạng thái duyệt…</p></section><section class="drawer-section"><h3>Tài liệu của tập</h3><div class="document-tabs" id="document-tabs">${detail.documents.map(d=>`<button data-document="${esc(d.id)}">${esc(d.name)}</button>`).join('')}</div><div id="document-view" class="document-view">Đang mở tài liệu…</div></section><section class="drawer-section"><h3>Ghi chú của bạn</h3><textarea id="notes-text" class="notes-input" maxlength="40000" placeholder="Ý tưởng cần bổ sung, điều cần sửa, việc cần làm…" aria-label="Ghi chú dự án">${esc(detail.notes)}</textarea><div class="notes-footer"><small id="notes-status">Lưu thành file riêng trong thư mục tài liệu.</small><button class="button primary" id="save-notes">Lưu ghi chú</button></div></section></div><aside class="project-page-aside"><section class="drawer-section"><h3>Đi đến thư mục</h3><div class="folder-list">${Object.entries(detail.paths).map(([kind,folder])=>`<button class="folder-button" data-folder="${esc(kind)}">${icon("folder")} ${esc({source:'Bản dựng',scripts:'Công cụ của tập',docs:'Tài liệu',assets:'Ảnh & âm thanh'}[kind]||kind)}<small>${esc(folder)}</small></button>`).join('')}${metadata?.videoFolder?`<button class="folder-button" data-folder="video">${icon("play")} ${metadata.importedVideo?'Video khách hàng':'Video đã xuất'}<small>${esc(metadata.videoFolder)}</small></button>`:''}</div></section><section class="drawer-section project-danger"><h3>Quản lý dự án</h3><button class="button danger" data-delete-project>Xóa dự án</button></section></aside></div>`;
     showDrawer('project');
+    loadGates(id);
     if(detail.documents.length)openDocument(detail.documents[0].id);else $('#document-view').innerHTML='<p class="empty-document">Chưa có tài liệu. Hãy bắt đầu bằng ghi chú của bạn.</p>';
   }catch(error){toast(error.message);}
 }
+// Production gates. Four plain states per step (done / needs re-approval / your turn / not yet) and one
+// "next action" line on top. Reviewing is a checklist: only what needs your eyes, one item at a time.
+const when=iso=>iso?new Date(iso).toLocaleString('vi-VN',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):'';
+const gatePhase=g=>g.state==='approved'?'done':g.state==='stale'?'redo':g.blockedBy.length||g.missing.length?'locked':'turn';
+const phaseText={done:'Đã duyệt',redo:'Cần duyệt lại',turn:'Đến lượt duyệt',locked:'Chưa tới lượt'};
+async function loadGates(id){
+  const box=$('#gates');if(!box)return;
+  try{const data=await api('/api/approvals?id='+encodeURIComponent(id));if(state.drawer?.id!==id)return;state.gates=data;renderGates();}
+  catch(error){box.innerHTML=`<h3 id="gates-title">Duyệt sản xuất</h3><p class="warn">Không đọc được trạng thái duyệt: ${esc(error.message)}</p>`;}
+}
+function gateRow(g,n){
+  const phase=gatePhase(g);
+  const line=phase==='done'?`Duyệt ${when(g.approvedAt)}${g.note?` · ${esc(g.note)}`:''}`
+    :phase==='redo'?`Đã sửa sau lần duyệt: ${esc(g.changedNames.join(', '))}`
+    :phase==='turn'?'Mọi thứ đã sẵn sàng để bạn xem'
+    :g.blockedBy.length?`Sau khi ${esc(g.blockedBy.join(', ').toLowerCase())}`:`Còn chờ: ${esc(g.missingInfo.map(m=>m.by||m.name).filter((x,i,a)=>a.indexOf(x)===i).join(', '))}`;
+  // The one primary button lives in the "Việc của bạn" callout; rows keep a quiet link.
+  const action=`<button class="button quiet" data-gate-review="${esc(g.id)}">${phase==='done'?'Xem lại':phase==='redo'?'Xem phần đổi':phase==='turn'?'Mở':'Xem'}</button>`;
+  return `<li class="gate-step phase-${phase}"><span class="gate-dot" aria-hidden="true">${phase==='done'?'✓':phase==='redo'?'!':phase==='locked'?'·':n}</span><div class="gate-main"><span class="gate-badge">${phaseText[phase]}</span><strong>${esc(g.title)}</strong><small>${line}</small></div>${action}</li>`;
+}
+function renderGates(){
+  const box=$('#gates'),d=state.gates;if(!box||!d)return;
+  if(!d.available){box.innerHTML=`<h3 id="gates-title">Duyệt sản xuất</h3><p class="muted">Tập này chưa có quy trình duyệt.</p>`;return;}
+  const done=d.gates.filter(g=>gatePhase(g)==='done').length,next=d.gates.find(g=>['redo','turn'].includes(gatePhase(g))),waiting=d.gates.find(g=>gatePhase(g)==='locked');
+  const callout=next?`<div class="gate-next is-${gatePhase(next)}"><div><span>Việc của bạn</span><strong>${esc(next.title)}${gatePhase(next)==='redo'?' (duyệt lại phần đã sửa)':''}</strong></div><button class="button primary" data-gate-review="${esc(next.id)}">${gatePhase(next)==='redo'?'Xem phần đổi':'Bắt đầu duyệt'}</button></div>`
+    :`<div class="gate-next is-idle"><div><span>Việc của bạn</span><strong>${done===d.gates.length?'Đã duyệt xong mọi bước':'Chưa có gì cần duyệt'}</strong>${waiting&&done<d.gates.length?`<small>Bước sau (${esc(waiting.title.toLowerCase())}) mở khi phần dựng sẵn sàng.</small>`:''}</div></div>`;
+  box.innerHTML=`<div class="gates-head"><h3 id="gates-title">Duyệt sản xuất</h3><span class="gate-progress" aria-label="${done} trên ${d.gates.length} bước đã duyệt"><span data-width="${Math.round(done/d.gates.length*100)}"></span></span><span class="count">${done}/${d.gates.length}</span></div>${callout}<ol class="gate-steps">${d.gates.map((g,i)=>gateRow(g,i+1)).join('')}</ol>${d.history.length?`<details class="gate-history"><summary>Lịch sử duyệt</summary><ul>${d.history.map(h=>`<li>${esc(h.gate)} · ${esc(h.decision==='approved'?'đã duyệt':h.decision)} · ${when(h.at)} · ${esc(h.by)}${h.note?` · ${esc(h.note)}`:''}</li>`).join('')}</ul></details>`:''}`;
+  box.querySelectorAll('[data-width]').forEach(n=>{n.style.width=n.dataset.width+'%';});
+}
+// Review dialog: per file, what changed since the last approval (lines and words), or the whole text the first time.
+const statusText={earlier:'Đã duyệt ở bước trước',changed:'Đã sửa',unchanged:'Không đổi',new:'Mới',missing:'Chưa có','no-baseline':'Đã sửa',binary:'Đã sửa'};
+const diffText=row=>row.parts?row.parts.map(([c,x])=>c?`<mark>${esc(x)}</mark>`:esc(x)).join(''):esc(row.text)||'&nbsp;';
+function diffRows(rows,key){
+  const out=[];let k=0;
+  const line=r=>`<tr><td class="d-no">${r.o}</td><td class="d-no">${r.n}</td><td class="d-sign"></td><td class="d-text">${diffText(r)}</td></tr>`;
+  while(k<rows.length){
+    if(rows[k].t!==' '){const r=rows[k++];out.push(`<tr class="d-${r.t==='+'?'add':'del'}"><td class="d-no">${r.o??''}</td><td class="d-no">${r.n??''}</td><td class="d-sign">${r.t==='+'?'+':'−'}</td><td class="d-text">${diffText(r)}</td></tr>`);continue;}
+    let e=k;while(e<rows.length&&rows[e].t===' ')e++;
+    const run=rows.slice(k,e),keepHead=k===0?0:3,keepTail=e===rows.length?0:3;
+    if(run.length>keepHead+keepTail+2&&!state.reviewExpanded?.[`${key}:${k}`])
+      out.push(...run.slice(0,keepHead).map(line),`<tr class="d-fold"><td colspan="4"><button class="link-button" data-unfold="${esc(key)}:${k}">Hiện ${run.length-keepHead-keepTail} dòng không đổi</button></td></tr>`,...run.slice(run.length-keepTail).map(line));
+    else out.push(...run.map(line));
+    k=e;
+  }
+  return `<div class="diff-wrap"><table class="diff"><tbody>${out.join('')}</tbody></table></div>`;
+}
+// Checklist items: media first (listen / look), then each document that is new, edited or missing.
+function reviewItems(r){
+  const items=[],m=r.media||{};
+  if(m.voices)items.push({key:'media',name:'Nghe giọng đọc',status:'media',detail:`${m.voices.length} đoạn`});
+  if(m.images)items.push({key:'media',name:'Xem hình ảnh',status:'media',detail:`${(m.compositions||[]).length} composition${m.images.length?` · ${m.images.length} ảnh`:''}`});
+  r.files.forEach((f,i)=>{if(!['earlier','unchanged'].includes(f.status))items.push({key:'f'+i,file:f,name:f.name,status:f.status,detail:f.status==='changed'?`+${f.added} −${f.removed} dòng`:statusText[f.status]});});
+  return items;
+}
+function mediaPanel(r){
+  const id=encodeURIComponent(state.drawer.id),m=r.media||{};
+  if(m.voices)return m.voices.length?`<p class="review-hint">Nghe hết các đoạn: đúng giọng, rõ chữ, đúng thanh điệu, không vấp.</p><ul class="voice-takes">${m.voices.map(v=>`<li><strong>${esc(v.name)}</strong><span>${v.durationSeconds?`${Math.round(v.durationSeconds*10)/10} giây`:''}</span><audio controls preload="none" src="/api/project-media?id=${id}&kind=voice&file=${encodeURIComponent(v.file)}"></audio></li>`).join('')}</ul>`:'<p class="warn">Chưa có file giọng nào trong thư mục audio của tập.</p>';
+  const comps=m.compositions||[];
+  return `<p class="review-hint">Hình vẽ bằng code nằm trong các composition. Mở trong Studio để xem chuyển động, rồi quay lại đây đánh dấu đã xem.</p>${comps.length?`<ul class="studio-links">${comps.map(c=>`<li><a class="button secondary" href="${studio(c)}" target="_blank" rel="noopener">Mở ${esc(c)}</a></li>`).join('')}</ul>`:''}${m.images.length?`<div class="image-grid">${m.images.map(f=>`<figure><img loading="lazy" alt="" src="/api/project-media?id=${id}&kind=image&file=${encodeURIComponent(f)}"><figcaption>${esc(f)}</figcaption></figure>`).join('')}</div>`:''}`;
+}
+function filePanel(f,key){
+  if(f.status==='changed')return `<p class="review-hint">So với bản đã duyệt: dòng <span class="d-plus">thêm</span> nền xanh, dòng <span class="d-minus">bỏ</span> nền đỏ, chữ đổi được tô đậm.</p>${f.tooLarge?'<p class="muted">Tài liệu quá dài để so từng dòng.</p>':diffRows(f.rows,key)}`;
+  if(f.status==='new'||f.status==='no-baseline')return `<p class="review-hint">${f.status==='new'?'Tài liệu mới của bước này: đọc toàn bộ.':'Lần duyệt trước chưa lưu nội dung, nên chỉ xem được bản hiện tại.'}</p><div class="review-doc document-view"></div>`;
+  if(f.status==='missing'){const info=(state.review.gate.missingInfo||[]).find(m=>m.path===f.path);return `<p class="warn">Chưa có tài liệu này${info?.by?`. Nó được tạo ở bước “${esc(info.by)}”`:''}.</p>`;}
+  return '<p class="muted">Tài liệu đã đổi nhưng không xem được dạng chữ.</p>';
+}
+function renderReview(){
+  const r=state.review;if(!r)return;const g=r.gate,phase=gatePhase(g),items=reviewItems(r),prior=r.files.filter(f=>['earlier','unchanged'].includes(f.status));
+  const canApprove=phase==='turn'||phase==='redo',seen=state.reviewSeen,current=items[state.reviewIndex]||items[0],done=items.filter(i=>seen.has(i.key)).length;
+  const rail=`<aside class="review-rail" aria-label="Danh sách cần xem"><p class="rail-title">${canApprove?'Cần bạn xem':'Nội dung'} <span>${done}/${items.length}</span></p><ol>${items.map((it,i)=>`<li><button class="rail-item${it===current?' is-current':''}${seen.has(it.key)?' is-seen':''}" data-review-item="${i}" aria-current="${it===current}"><span class="rail-check" aria-hidden="true">${seen.has(it.key)?'✓':i+1}</span><span class="rail-name">${esc(it.name)}<small>${esc(it.detail||'')}</small></span></button></li>`).join('')||'<li class="rail-empty">Không có gì mới cần xem.</li>'}</ol>${prior.length?`<details class="rail-prior"><summary>Đã duyệt trước, không đổi (${prior.length})</summary><ul>${prior.map(f=>`<li>${esc(f.name)}</li>`).join('')}</ul></details>`:''}</aside>`;
+  const panel=current?`<section class="review-panel" aria-labelledby="panel-title"><header><span class="tag ${current.status==='missing'?'tag-warn':''}">${esc(current.status==='media'?'Nghe / xem':statusText[current.status])}</span><h3 id="panel-title">${esc(current.name)}</h3>${current.file?`<code>${esc(current.file.path)}</code>`:''}</header><div class="panel-body">${current.status==='media'?mediaPanel(r):filePanel(current.file,current.key)}</div>${canApprove?`<div class="panel-actions">${state.reviewIndex>0?'<button class="button quiet" data-review-prev>Mục trước</button>':'<span></span>'}<button class="button ${seen.has(current.key)?'secondary':'primary'}" data-review-seen>${seen.has(current.key)?(state.reviewIndex<items.length-1?'Mục tiếp theo':'Đã xem mục này'):state.reviewIndex<items.length-1?'Đã xem, sang mục tiếp':'Đã xem mục này'}</button></div>`:''}</section>`
+    :'<section class="review-panel"><p class="muted">Không có gì mới cần xem ở bước này.</p></section>';
+  const ready=done===items.length;
+  const foot=!canApprove?`<footer class="review-foot"><p>${phase==='done'?`Đã duyệt ${when(g.approvedAt)}.`:g.blockedBy.length?`Chưa tới lượt: cần ${esc(g.blockedBy.join(', ').toLowerCase())} trước.`:`Chưa tới lượt: còn chờ ${esc(g.missingInfo.map(m=>m.by||m.name).filter((x,i,a)=>a.indexOf(x)===i).join(', '))}.`}</p><div class="review-actions"><button class="button secondary" data-review-close>Đóng</button></div></footer>`
+    :`<form class="review-foot" id="review-form"><span class="foot-progress${ready?' is-ready':''}">${ready?'✓ Đã xem hết':`Đã xem ${done}/${items.length}`}</span><label class="review-note"><span>Ghi chú</span><input name="note" maxlength="1000" autocomplete="off" placeholder="Không bắt buộc"></label><p class="review-status" role="status"></p><div class="review-actions"><button type="button" class="button quiet" data-review-close>Để sau</button><button type="submit" class="button primary"${ready?'':' disabled'}>${esc(g.title)}</button></div></form>`;
+  const note=$('#review-form input[name=note]')?.value||'';
+  $('#review-content').innerHTML=`<header class="review-head"><div><span class="gate-badge phase-${phase}">${phaseText[phase]}</span><h2 id="review-title">${esc(g.title)}</h2><p>${r.previous?`Lần duyệt trước: ${when(r.previous.at)}. Chỉ hiện phần đã đổi từ lúc đó.`:'Lần duyệt đầu cho bước này.'}${prior.length?` ${prior.length} tài liệu đã duyệt ở bước trước được ẩn.`:''}</p></div><button class="icon-button" data-review-close aria-label="Đóng">${icon('close')}</button></header><div class="review-layout">${rail}<div class="review-body">${panel}</div></div>${foot}`;
+  if($('#review-form input[name=note]'))$('#review-form input[name=note]').value=note;
+  const box=$('#review-dialog .review-doc');if(box&&current?.file)box.append(current.file.path.endsWith('.md')?renderMarkdown(current.file.text):Object.assign(document.createElement('pre'),{textContent:current.file.text}));
+}
+async function openReview(gate){
+  try{state.review=await api(`/api/approval-review?id=${encodeURIComponent(state.drawer.id)}&gate=${encodeURIComponent(gate)}`);state.reviewExpanded={};state.reviewSeen=new Set();state.reviewIndex=0;renderReview();$('#review-dialog').showModal();$('#review-dialog .rail-item')?.focus();}
+  catch(error){toast(error.message);}
+}
+function showItem(i){document.querySelectorAll('#review-dialog audio').forEach(a=>a.pause());state.reviewIndex=i;renderReview();$('#review-dialog .review-body').scrollTop=0;$('#review-dialog .rail-item.is-current')?.focus();}
+$('#drawer-content').addEventListener('click',event=>{const t=event.target.closest('[data-gate-review]');if(t)openReview(t.dataset.gateReview);});
+$('#review-dialog').addEventListener('click',event=>{
+  if(event.target===event.currentTarget||event.target.closest('[data-review-close]')){$('#review-dialog').close();return;}
+  const item=event.target.closest('[data-review-item]');if(item){showItem(Number(item.dataset.reviewItem));return;}
+  if(event.target.closest('[data-review-prev]')){showItem(Math.max(0,state.reviewIndex-1));return;}
+  if(event.target.closest('[data-review-seen]')){const items=reviewItems(state.review);state.reviewSeen.add((items[state.reviewIndex]||items[0]).key);const next=items.findIndex((it,i)=>i>state.reviewIndex&&!state.reviewSeen.has(it.key));showItem(next>=0?next:Math.min(state.reviewIndex+1,items.length-1));return;}
+  const fold=event.target.closest('[data-unfold]');if(fold){state.reviewExpanded[fold.dataset.unfold]=true;const top=$('#review-dialog .review-body').scrollTop;renderReview();$('#review-dialog .review-body').scrollTop=top;}
+});
+$('#review-dialog').addEventListener('close',()=>document.querySelectorAll('#review-dialog audio').forEach(a=>a.pause()));
+$('#review-dialog').addEventListener('play',event=>document.querySelectorAll('#review-dialog audio').forEach(a=>{if(a!==event.target)a.pause();}),true);
+$('#review-dialog').addEventListener('submit',async event=>{
+  event.preventDefault();const form=event.target,g=state.review.gate,status=form.querySelector('.review-status'),button=form.querySelector('button[type=submit]');
+  const items=reviewItems(state.review);if(items.some(it=>!state.reviewSeen.has(it.key))){status.textContent='Hãy xem hết các mục trong danh sách trước khi duyệt.';return;}
+  button.disabled=true;
+  try{await api('/api/approve',{id:state.drawer.id,gate:g.id,note:form.elements.note.value,revision:g.revision,confirm:true});$('#review-dialog').close();await loadGates(state.drawer.id);toast(`Đã ghi nhận: ${g.title}.`);}
+  catch(error){status.textContent=error.message;button.disabled=false;}
+});
 async function openDocument(key){
   if(!state.drawer)return;const id=state.drawer.id,request=++state.documentRequest;
   document.querySelectorAll('[data-document]').forEach(b=>b.classList.toggle('active',b.dataset.document===key));
@@ -424,7 +527,7 @@ function showCreate(mode='project',book=null){
     $('#create-fields').innerHTML=`<label class="field"><span>Series</span><select name="series">${state.data.series.filter(s=>s.id==='book-insights').map(s=>`<option value="${esc(s.id)}" ${s.id===(state.series||'book-insights')?'selected':''}>${esc(s.title)}</option>`).join('')}</select></label>${field('title','Tên sách')}${field('id','Mã sách')}${field('authors','Tác giả (phân cách bằng dấu phẩy)')}`;
   }else{
     const selected=book?.series||state.series||state.data.series.find(s=>s.channel===state.channel)?.id||state.data.series[0].id;
-    $('#create-fields').innerHTML=`<label class="field"><span>Series</span><select name="series" id="create-series">${state.data.series.map(s=>`<option value="${esc(s.id)}" ${s.id===selected?'selected':''}>${esc(state.data.channels.find(c=>c.id===s.channel)?.title)} / ${esc(s.title)}</option>`).join('')}</select></label>${field('title','Tên dự án (không bắt buộc)','text','','Để trống thì hệ thống đặt tên tạm “Chưa đặt tên N”; tên sẽ được đổi cho hợp nội dung khi bắt đầu làm.')}${field('id','Mã dự án (không bắt buộc)','text','','Tự tạo theo tên. Để trống cùng tên để nhận mã tạm chua-dat-ten-N.')}<div class="field-row"><label class="field"><span>Định dạng</span><select name="format" id="create-format"></select></label>${field('duration','Thời lượng (giây)','number','','Để trống nếu chưa chốt video dài.')}</div><label class="field" id="create-book-field"><span>Gắn với sách</span><select name="book" id="create-book"><option value="">Chưa gắn sách</option></select></label><section class="create-import" id="create-import" hidden><label class="create-import-choice"><input type="checkbox" id="create-import-toggle"><span><strong>Import video có sẵn của khách hàng</strong><small>Tùy chọn · chép một bản vào workspace, không thay đổi file gốc.</small></span></label><label class="field create-video-field" id="create-video-field" hidden><span>Video MP4 hoặc WebM (tối đa 8 GB)</span><input id="create-video-file" name="projectVideo" type="file" accept=".mp4,.webm,video/mp4,video/webm" autocomplete="off"><small>Video được lưu tại <code>public/&lt;mã-dự-án&gt;/</code> và có thể xem trực tiếp trong hồ sơ.</small></label></section>`;
+    $('#create-fields').innerHTML=`<label class="field"><span>Series</span><select name="series" id="create-series">${state.data.series.map(s=>`<option value="${esc(s.id)}" ${s.id===selected?'selected':''}>${esc(state.data.channels.find(c=>c.id===s.channel)?.title)} / ${esc(s.title)}</option>`).join('')}</select></label>${field('title','Tên dự án (không bắt buộc)','text','','Để trống thì hệ thống đặt tên tạm “Chưa đặt tên N”; tên sẽ được đổi cho hợp nội dung khi bắt đầu làm.')}${field('id','Mã dự án (không bắt buộc)','text','','Tự tạo theo tên. Để trống cùng tên để nhận mã tạm chua-dat-ten-N.')}<div class="field-row"><label class="field"><span>Định dạng</span><select name="format" id="create-format"></select></label>${field('duration','Thời lượng (giây)','number','','Để trống nếu chưa chốt video dài.')}</div><label class="field" id="create-book-field"><span>Gắn với sách</span><select name="book" id="create-book"><option value="">Chưa gắn sách</option></select></label><section class="create-import" id="create-import" hidden><label class="create-import-choice"><input type="checkbox" id="create-import-toggle"><span><strong>Import video có sẵn của khách hàng</strong><small>Tùy chọn · chép một bản vào workspace, không thay đổi file gốc.</small></span></label><label class="field create-video-field" id="create-video-field" hidden><span>Video ${esc(state.data.videoFormats?.label||'MP4, WebM')} (tối đa 8 GB)</span><input id="create-video-file" name="projectVideo" type="file" accept="${esc((state.data.videoFormats?.extensions||['.mp4','.webm']).join(','))},video/*" autocomplete="off"><small>Video được lưu tại <code>public/&lt;mã-dự-án&gt;/</code> . MP4, MOV, M4V, WebM, MKV xem được ngay trong hồ sơ; định dạng khác (AVI, WMV, MPG, TS…) vẫn lưu được và mở bằng thư mục.</small></label></section>`;
     for(const name of ['title','id'])$(`#create-fields input[name="${name}"]`).required=false;
     updateCreateSeries(book);
   }
@@ -485,7 +588,7 @@ $('#sort-filter').addEventListener('change',event=>{state.sort=event.target.valu
 $('#grid-view').addEventListener('click',()=>{state.layout='grid';updateUrl();$('#grid-view').classList.add('active');$('#list-view').classList.remove('active');renderCards();});
 $('#list-view').addEventListener('click',()=>{state.layout='list';updateUrl();$('#grid-view').classList.remove('active');$('#list-view').classList.add('active');renderCards();});
 $('#drawer-content').addEventListener('submit',event=>{if(event.target.id==='book-identity-form')saveBookIdentity(event);});
-$('#drawer-content').addEventListener('keydown',event=>{if(event.key==='Escape'&&event.target.closest('#book-identity-form')){event.stopPropagation();editBook(false);}});
+$('#drawer-content').addEventListener('keydown',event=>{if(event.key!=='Escape')return;if(event.target.closest('#book-identity-form')){event.stopPropagation();editBook(false);}});
 $('#drawer-content').addEventListener('click',event=>{if(event.target.closest('[data-edit-book]'))editBook(true);if(event.target.closest('[data-cancel-book]'))editBook(false);if(event.target.closest('#save-notes'))saveNotes();if(event.target.closest('#save-workflow'))saveWorkflowStage();});
 $('#close-drawer').addEventListener('click',closeDrawer);$('#drawer-backdrop').addEventListener('click',closeDrawer);
 $('#help-button').addEventListener('click',()=>$('#help-dialog').showModal());$('#close-help').addEventListener('click',()=>$('#help-dialog').close());
@@ -503,9 +606,9 @@ $('#create-form').addEventListener('submit',async event=>{event.preventDefault()
 $('#create-dialog').addEventListener('cancel',event=>{if($('#create-form').hasAttribute('aria-busy'))event.preventDefault();});
 document.addEventListener('keydown',event=>{
   const typing=['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName);
-  if(event.key==='/'&&!typing&&!$('#create-dialog').open&&!$('#help-dialog').open&&!$('#media-dialog').open&&!$('#delete-dialog').open){event.preventDefault();(resourceViews[state.view]?$('#resource-search'):$('#search'))?.focus();}
-  if(event.key==='Escape'&&!$('#create-dialog').open&&!$('#help-dialog').open&&!$('#media-dialog').open&&!$('#delete-dialog').open){if(!$('#drawer').hidden)closeDrawer();setMenu(false);}
-  if(event.key==='Tab'&&!$('#drawer').hidden&&!$('#drawer').classList.contains('book-page')&&!$('#create-dialog').open&&!$('#help-dialog').open&&!$('#media-dialog').open&&!$('#delete-dialog').open){const nodes=[...$('#drawer').querySelectorAll('button,a,textarea,select,input')].filter(n=>!n.disabled&&n.offsetParent!==null);const first=nodes[0],last=nodes[nodes.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}
+  if(event.key==='/'&&!typing&&!$('#create-dialog').open&&!$('#help-dialog').open&&!$('#media-dialog').open&&!$('#delete-dialog').open&&!$('#review-dialog').open){event.preventDefault();(resourceViews[state.view]?$('#resource-search'):$('#search'))?.focus();}
+  if(event.key==='Escape'&&!$('#create-dialog').open&&!$('#help-dialog').open&&!$('#media-dialog').open&&!$('#delete-dialog').open&&!$('#review-dialog').open){if(!$('#drawer').hidden)closeDrawer();setMenu(false);}
+  if(event.key==='Tab'&&!$('#drawer').hidden&&!$('#drawer').classList.contains('detail-page')&&!$('#create-dialog').open&&!$('#help-dialog').open&&!$('#media-dialog').open&&!$('#delete-dialog').open&&!$('#review-dialog').open){const nodes=[...$('#drawer').querySelectorAll('button,a,textarea,select,input')].filter(n=>!n.disabled&&n.offsetParent!==null);const first=nodes[0],last=nodes[nodes.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}
 });
 window.addEventListener('beforeunload',event=>{if(dirtyNotes()){event.preventDefault();event.returnValue='';}});
 window.addEventListener('focus',()=>{if(state.data)refresh();});
@@ -539,10 +642,13 @@ async function watch(id,kind){
   if(!(kind==='video'?p.renderedVideo:p.renderedThumbnail))return launchStudio(id,selectedMedia.composition);
   $('#media-folder').textContent=kind==='video'?'Mở thư mục video':'Mở thư mục thumbnail';
   $('#media-title').textContent=p.title;$('#media-status').textContent=p.importedVideo?'Video khách hàng đã import vào workspace; file gốc bên ngoài không bị thay đổi.':'Bản đã xuất trên máy; các chỉnh sửa mới trong Studio có thể chưa có trong bản này.';$('#media-studio').hidden=!selectedMedia.composition;
+  // Formats Chrome cannot play inline (AVI, WMV, MPG, TS…): say so and offer the folder instead of a broken player.
+  if(kind==='video'&&p.importedVideo&&!p.videoInline){const note=document.createElement('div');note.className='media-unplayable';note.append(Object.assign(document.createElement('p'),{textContent:`Trình duyệt không phát trực tiếp được định dạng ${(p.videoFile||'').split('.').pop().toUpperCase()}. Video đã được lưu trong thư mục của dự án.`}),Object.assign(document.createElement('button'),{className:'button secondary',textContent:'Mở thư mục video',onclick:()=>api('/api/open-folder',{id,group:'assets'}).catch(e=>toast(e.message))}));
+    $('#media-title').textContent=p.title;$('#media-status').textContent='Video khách hàng đã import vào workspace; file gốc bên ngoài không bị thay đổi.';$('#media-studio').hidden=true;$('#media-content').replaceChildren(note);$('#media-dialog').showModal();return;}
   if(kind==='video'&&p.importedVideo&&!(await preparePlayback(id)))return;
   const media=document.createElement(kind==='video'?'video':'img');media.src=`/api/media?id=${encodeURIComponent(id)}&kind=${kind}`;
   if(kind==='video'){media.controls=true;media.playsInline=true;media.preload='metadata';if(p.renderedThumbnail)media.poster=`/api/media?id=${encodeURIComponent(id)}&kind=thumbnail`;}else media.alt='Thumbnail đã xuất — '+p.title;
-  media.addEventListener('error',()=>$('#media-status').textContent=selectedMedia.composition?'Không đọc được bản xuất. Bạn có thể mở Studio bằng nút bên dưới.':'Không đọc được video đã import. Hãy kiểm tra lại định dạng MP4/WebM.');
+  media.addEventListener('error',()=>$('#media-status').textContent=selectedMedia.composition?'Không đọc được bản xuất. Bạn có thể mở Studio bằng nút bên dưới.':'Trình duyệt không phát được video này (có thể do codec, ví dụ MOV ProRes). Video vẫn được lưu trong thư mục của dự án.');
   $('#media-content').replaceChildren(media);if(!$('#media-dialog').open)$('#media-dialog').showModal();
 }
 async function preparePlayback(id){

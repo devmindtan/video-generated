@@ -1,0 +1,70 @@
+/* "Duyệt sản xuất" in the project drawer, against a temporary workspace: approve, stale after an edit,
+   refuse a stale page, blocked later gates. Never touches the real approvals.json. */
+const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),assert=require('node:assert/strict');
+const {chromium}=require('playwright-core'),{createManager}=require('./server.cjs');
+(async()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'approvals-ui-')),out=path.resolve('.cache/project-manager/approvals');fs.mkdirSync(out,{recursive:true});
+ const write=(p,v)=>{const f=path.join(root,p);fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,typeof v==='string'?v:JSON.stringify(v,null,2));};
+ const paths={source:'src/projects/demo-book',scripts:'scripts/projects/demo-book',docs:'docs/projects/demo-book',assets:'public/demo-book'};
+ write('series/catalog.json',{schemaVersion:1,channels:[{id:'tam-ly-cuoc-song',title:'Tâm lý cuộc sống',studioFolder:'Tam-Ly'}],series:[{id:'book-insights',channel:'tam-ly-cuoc-song',path:'series/tam-ly-cuoc-song/book-insights/series.json'}]});
+ write('series/tam-ly-cuoc-song/book-insights/series.json',{schemaVersion:1,id:'book-insights',channel:'tam-ly-cuoc-song',title:'Đọc sách, hiểu mình',studioFolder:'Book-Insights',formats:['long'],projects:[{id:'demo-book',title:'Tập thử có tên khá dài để kiểm tra bố cục phần duyệt',status:'planning',format:'long',paths,registrations:[]}]});
+ for(const f of ['brief.md','sources.md','script.md','script-review.md'])write(`docs/projects/demo-book/${f}`,`# ${f}\nNội dung thử.\n`+(f==='brief.md'?Array.from({length:60},(_,i)=>`- Dòng ${i+1} của brief.`).join('\n')+'\n':''));
+ write('scripts/projects/demo-book/audition.json',{sentences:[{scene:1,text:'Xin chào.'}]});write('docs/projects/demo-book/voice-audition.md','# Nghe thử\nĐã chọn giọng.\n');
+ const wav=Buffer.concat([Buffer.from('RIFF'),Buffer.alloc(4),Buffer.from('WAVEfmt '),Buffer.alloc(200)]);write('public/demo-book/audio/00-intro-voice-full.wav',wav);
+ write('public/demo-book/audio/voice-metadata.json',[{scene:'00-intro',file:'00-intro-voice-full.wav',durationSeconds:3.2,voice:'Giọng thử'}]);
+ for(const d of Object.values(paths))fs.mkdirSync(path.join(root,d),{recursive:true});
+ write('src/projects/registry.tsx','export const Projects=()=> <></>;');write('package.json',{name:'fixture',scripts:{}});
+ fs.mkdirSync(path.join(root,'public/stoic/fonts'),{recursive:true});for(const name of ['NotoSans-Regular.ttf','NotoSans-Bold.ttf'])fs.copyFileSync(path.resolve('public/stoic/fonts',name),path.join(root,'public/stoic/fonts',name));
+ const server=createManager({root});await new Promise(r=>server.listen(0,'127.0.0.1',r));
+ const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH||'/usr/bin/google-chrome'});
+ const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+ const base=`http://127.0.0.1:${server.address().port}`,mark=s=>console.log('✓ '+s),store=path.join(root,'docs/projects/demo-book/approvals.json');
+ const row=id=>page.locator(`[data-gate="${id}"]`);
+ try{
+  await page.goto(base+'/#project/demo-book',{waitUntil:'networkidle'});await page.locator('.gate-step').first().waitFor();
+  const step=n=>page.locator('.gate-step').nth(n),dialog=page.locator('#review-dialog'),seenAll=async()=>{for(let k=0;k<12&&await dialog.locator('[data-review-seen]').count();k++){if(await dialog.locator('#review-form button[type=submit]').isEnabled())break;await dialog.locator('[data-review-seen]').click();}};
+  assert.match(await step(0).innerText(),/Đến lượt duyệt/i);assert.match(await step(1).innerText(),/Chưa tới lượt/i);
+  assert.match(await page.locator('.gate-next').innerText(),/Việc của bạn[\s\S]*Duyệt kịch bản/i);
+  await step(1).locator('[data-gate-review]').click();await dialog.locator('.review-foot').waitFor();
+  assert.equal(await page.locator('#review-form').count(),0,'a locked gate can be viewed but not approved');assert.match(await dialog.locator('.review-foot').innerText(),/Chưa tới lượt: cần duyệt kịch bản trước/);
+  await page.keyboard.press('Escape');mark('Steps show one clear state each; next action on top; locked gates are view-only');
+  await page.locator('.gate-next [data-gate-review]').click();await dialog.locator('.rail-item').first().waitFor();
+  assert.equal(await dialog.locator('.rail-item').count(),4);assert.equal(await dialog.locator('.review-panel').count(),1,'one item at a time');
+  assert.equal(await dialog.locator('#review-form button[type=submit]').isDisabled(),true,'approve stays off until everything is seen');
+  await dialog.locator('.rail-item',{hasText:'Brief'}).click();const doc=dialog.locator('.review-doc'),box=await doc.boundingBox();
+  await page.mouse.move(box.x+box.width/2,box.y+Math.min(40,box.height/2));await page.mouse.wheel(0,600);await page.waitForTimeout(400);
+  assert.ok(await dialog.locator('.review-body').evaluate(b=>b.scrollTop)>100,'wheel over the document scrolls');
+  await page.screenshot({path:path.join(out,'review-first-1440.png')});mark('Review is a checklist with one document at a time; wheel scrolls; approve disabled until seen');
+  await dialog.locator('.rail-item').first().click();await seenAll();
+  assert.match(await dialog.locator('.foot-progress').innerText(),/Đã xem hết/);assert.ok(!fs.existsSync(store));
+  await dialog.locator('#review-form input[name=note]').fill('Duyệt bản thử');await dialog.locator('#review-form button[type=submit]').click();
+  await page.waitForFunction(()=>/Đã duyệt/i.test(document.querySelector('.gate-step')?.textContent||''));
+  const entry=JSON.parse(fs.readFileSync(store,'utf8')).history[0];
+  assert.equal(entry.stageId,'approve-script');assert.match(entry.approvedBy,/trang quản lý/);assert.equal(entry.note,'Duyệt bản thử');
+  assert.ok(fs.existsSync(path.join(root,'.automation/approved-files',entry.artifactSha256['docs/projects/demo-book/script.md'])),'approved content kept for later diffs');
+  assert.match(await page.locator('.gate-next').innerText(),/Duyệt giọng đọc/i);mark('Approval recorded hash-bound with the note; next action moves on');
+  await page.locator('.gate-next [data-gate-review]').click();await dialog.locator('.rail-item').first().waitFor();
+  assert.match(await dialog.locator('.rail-item').first().innerText(),/Nghe giọng đọc/);assert.equal(await dialog.locator('.voice-takes audio').count(),1);
+  assert.match(await dialog.locator('.rail-prior summary').innerText(),/Đã duyệt trước, không đổi \(4\)/);
+  assert.equal(await dialog.locator('audio').first().evaluate(a=>fetch(a.src).then(r=>r.status)),200);
+  await page.screenshot({path:path.join(out,'review-voice-1440.png')});await page.keyboard.press('Escape');
+  mark('Voice review starts with the players; documents approved earlier fold into one line');
+  const scriptFile=path.join(root,'docs/projects/demo-book/script.md');fs.writeFileSync(scriptFile,fs.readFileSync(scriptFile,'utf8').replace('Nội dung thử.','Nội dung đã sửa lại.')+'Thêm một dòng mới.\n');
+  await page.reload({waitUntil:'networkidle'});await page.locator('.gate-step').first().waitFor();
+  assert.match(await step(0).innerText(),/Cần duyệt lại/i);assert.match(await step(0).innerText(),/Kịch bản/);assert.match(await page.locator('.gate-next').innerText(),/duyệt lại/i);
+  await page.locator('.gate-next [data-gate-review]').click();await dialog.locator('.rail-item').first().waitFor();
+  assert.equal(await dialog.locator('.rail-item').count(),1,'only the edited document needs a look');assert.match(await dialog.locator('.rail-item').innerText(),/\+2 −1/);
+  assert.equal(await dialog.locator('.d-del mark').innerText(),'thử.');assert.equal(await dialog.locator('.d-add mark').first().innerText(),'đã sửa lại.');
+  await page.screenshot({path:path.join(out,'review-diff-1440.png')});mark('Re-approval lists only what changed, with lines and words highlighted');
+  fs.appendFileSync(scriptFile,'Sửa lần nữa trong lúc đang duyệt.\n');await seenAll();await dialog.locator('#review-form button[type=submit]').click();
+  await page.waitForFunction(()=>/vừa thay đổi/.test(document.querySelector('.review-status')?.textContent||''));
+  assert.equal(JSON.parse(fs.readFileSync(store,'utf8')).history.length,1);mark('A file changed while reviewing: approval refused, nothing written');
+  await page.keyboard.press('Escape');
+  for(const width of [768,390]){await page.setViewportSize({width,height:900});await page.reload({waitUntil:'networkidle'});await page.locator('.gate-step').first().waitFor();
+   assert.ok(await page.locator('#drawer').evaluate(d=>d.scrollWidth<=d.clientWidth+1),'drawer fits at '+width);await page.locator('#gates').screenshot({path:path.join(out,`gates-${width}.png`)});
+   await page.locator('.gate-next [data-gate-review]').click();await dialog.locator('.rail-item').first().waitFor();
+   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no page overflow at '+width);await page.screenshot({path:path.join(out,`review-${width}.png`)});await page.keyboard.press('Escape');}
+  mark('Tablet and mobile fit without horizontal overflow');
+  assert.deepEqual(errors.filter(e=>!/409|400|Failed to load resource/.test(e)),[]);mark('No browser errors; fixture workspace only');
+ }finally{await browser.close();server.close();fs.rmSync(root,{recursive:true,force:true});}
+})().catch(e=>{console.error(e);process.exitCode=1;});

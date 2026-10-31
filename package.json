@@ -181,7 +181,8 @@
     "test:manager:inline-edit": "node tools/project-manager/inline-edit.test.cjs",
     "test:manager:voice-refs": "node --test tools/project-manager/voice-references.test.cjs && node tools/project-manager/voice-refs-ui.test.cjs",
     "test:manager:posters": "node --test tools/project-manager/video-poster.test.cjs",
-    "test:manager:client-media": "node --test tools/project-manager/client-media.test.cjs"
+    "test:manager:client-media": "node --test tools/project-manager/client-media.test.cjs",
+    "test:manager:approvals": "node tools/project-manager/approvals-ui.test.cjs"
   },
   "dependencies": {
     "@lottiefiles/dotlottie-web": "0.81.0",

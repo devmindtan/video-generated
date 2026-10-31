@@ -11,7 +11,7 @@ const textTypes = new Set(['.md','.txt','.json','.tsx','.ts','.py','.cjs','.mjs'
 const imageTypes = new Set(['.png','.jpg','.jpeg','.webp']);
 const posterVideoTypes = new Set(['.mp4','.webm','.mov','.mkv','.m4v']);
 const contentChannels = new Set(['tam-ly-cuoc-song','kids']);
-const videoTypes = new Set(['.mp4','.webm']);
+const {VIDEO_FORMATS,videoLabel} = require('./video-formats.cjs');
 
 function secureFile(root, file, extensions = textTypes) {
   const base = fs.realpathSync(root), real = fs.realpathSync(file);
@@ -24,7 +24,7 @@ function checkedId(value) {
 }
 function createStore(root) {
   const workspaceRoot=fs.realpathSync(root);
-  const extra={...require('./features.cjs').features(root),...require('./workflow.cjs').createWorkflow(root),...require('./library.cjs').createLibrary(root),...require('./voice-references.cjs').createVoiceReferences(root)};
+  const extra={...require('./features.cjs').features(root),...require('./workflow.cjs').createWorkflow(root),...require('./library.cjs').createLibrary(root),...require('./voice-references.cjs').createVoiceReferences(root),...require('./approvals-view.cjs').createApprovals(root)};
   const posters=require('./video-poster.cjs').createPosters(root);
   const playback=require('./video-playback.cjs').createPlayback(root);
   function location(relative) {
@@ -120,7 +120,7 @@ function createStore(root) {
       const updatedAt = exists(source)?fs.statSync(source).mtime.toISOString():exists(brief)?fs.statSync(brief).mtime.toISOString():null;
       return {id:project.id,title:project.title,status:project.status,format:project.format,series:series.id,channel:series.channel,
         seriesTitle:series.title,durationSeconds:node?.fps&&node.durationFrames?node.durationFrames/node.fps:project.durationSeconds??null,
-        renderedVideo:Boolean(renderedVideo),renderedThumbnail:Boolean(renderedThumbnail),importedVideo:Boolean(renderedVideo?.imported),videoId:video?.id||null,thumbnailId:thumbnail?.id||null,previewType:image?.type||null,updatedAt,book:project.book||null,
+        renderedVideo:Boolean(renderedVideo),renderedThumbnail:Boolean(renderedThumbnail),importedVideo:Boolean(renderedVideo?.imported),videoInline:renderedVideo?.inline!==false,videoFile:renderedVideo?.name||null,videoId:video?.id||null,thumbnailId:thumbnail?.id||null,previewType:image?.type||null,updatedAt,book:project.book||null,
         hasScript:exists(path.join(location(project.paths.docs),'script.md')),
         hasDescription:exists(path.join(location(project.paths.docs),'description.md')),autoNamed:Boolean(project.autoNamed),
         videoFolder:renderedVideo?path.relative(root,path.dirname(renderedVideo.file)):null};
@@ -197,14 +197,14 @@ function createStore(root) {
     const catalog=load(root);validate(catalog);const series=catalog.series.find(s=>s.id===body.series),id=body.id?checkedId(body.id):null,ext=path.extname(String(name||'')).toLowerCase();
     if(!series||contentChannels.has(series.channel))throw new Error('Chỉ import video có sẵn cho dự án thuộc kênh ngoài');
     if(typeof body.title!=='string'||!series.formats.includes(body.format))throw new Error('Tên dự án và định dạng không hợp lệ');
-    if(typeof name!=='string'||name!==path.basename(name)||name.length>180||/[\x00-\x1f\\/]/.test(name)||!videoTypes.has(ext))throw new Error('Chỉ nhận video MP4 hoặc WebM có tên hợp lệ');
+    if(typeof name!=='string'||name!==path.basename(name)||name.length>180||/[\x00-\x1f\\/]/.test(name)||!VIDEO_FORMATS[ext])throw new Error(`Chỉ nhận video ${videoLabel} có tên hợp lệ`);
     if(id&&catalog.series.some(s=>s.projects.some(p=>p.id===id)))throw new Error(`Project slug already exists: ${id}`);
     const staging=location('.manager-staging');fs.mkdirSync(staging,{recursive:true});const temp=path.join(staging,`.project-video-${crypto.randomUUID()}`),handle=await fs.promises.open(temp,'wx'),hash=crypto.createHash('sha256');
     let bytes=0,head=Buffer.alloc(0),created=null,dest=null;
     try{
       for await(const chunk of request){bytes+=chunk.length;if(bytes>8*1024*1024*1024){const error=new Error('Video tối đa 8 GB');error.status=413;throw error;}if(head.length<16)head=Buffer.concat([head,chunk]).subarray(0,16);hash.update(chunk);await handle.write(chunk);}
       await handle.close();
-      const valid=ext==='.mp4'?head.length>=12&&head.toString('ascii',4,8)==='ftyp':head.length>=4&&head.subarray(0,4).equals(Buffer.from([0x1a,0x45,0xdf,0xa3]));
+      const valid=VIDEO_FORMATS[ext].check(head);
       if(!bytes||!valid)throw new Error(`Nội dung file không phải ${ext.slice(1).toUpperCase()} hợp lệ`);
       created=create(body);const assets=location(created.paths.assets);fs.mkdirSync(assets,{recursive:true});if(fs.lstatSync(assets).isSymbolicLink())throw new Error('Thư mục video không an toàn');
       dest=path.join(assets,'imported-video'+ext);if(fs.existsSync(dest))throw new Error('Dự án đã có video import');fs.linkSync(temp,dest);fs.unlinkSync(temp);

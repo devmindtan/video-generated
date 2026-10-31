@@ -85,6 +85,21 @@ test('external client projects can import an existing video without a fake Compo
   const media=await fetch(f.base+'/api/media?id=customer-cut&kind=video',{headers:{Range:'bytes=4-7'}});assert.equal(media.status,206);assert.equal(await media.text(),'ftyp');
   const blocked=new URLSearchParams({series:'demo',id:'wrong-channel',title:'Sai kênh',format:'short',name:'clip.mp4'}),rejected=await fetch(f.base+'/api/projects/import?'+blocked,{method:'POST',headers:{Origin:f.base,'Content-Type':'application/octet-stream','X-Workspace-Token':f.workspace.token},body:mp4});assert.equal(rejected.status,400);assert.ok(!fs.existsSync(path.join(f.root,'docs/projects/wrong-channel')));
 });
+test('client projects import MOV, AVI and other containers; renamed non-video files are refused',async t=>{
+  const f=await fixture(t),catalog=JSON.parse(fs.readFileSync(path.join(f.root,'series/catalog.json'),'utf8'));
+  catalog.channels.push({id:'client-work',title:'Video khách hàng',studioFolder:'Client-Work'});catalog.series.push({id:'product-videos',channel:'client-work',path:'series/client-work/product-videos/series.json'});f.write('series/catalog.json',catalog);
+  f.write('series/client-work/product-videos/series.json',{schemaVersion:1,id:'product-videos',channel:'client-work',title:'Video sản phẩm',studioFolder:'Product-Videos',formats:['short','long'],defaultDurationSeconds:null,projects:[]});
+  const upload=(id,name,body)=>fetch(f.base+'/api/projects/import?'+new URLSearchParams({series:'product-videos',id,title:'Video '+id,format:'long',duration:'',name}),{method:'POST',headers:{Origin:f.base,'Content-Type':'application/octet-stream','X-Workspace-Token':f.workspace.token},body});
+  const mov=Buffer.concat([Buffer.from([0,0,0,20]),Buffer.from('ftypqt  '),Buffer.alloc(24)]),avi=Buffer.concat([Buffer.from('RIFF'),Buffer.alloc(4),Buffer.from('AVI LIST'),Buffer.alloc(24)]);
+  assert.equal((await upload('quay-iphone','IMG_0001.MOV',mov)).status,201);assert.ok(fs.existsSync(path.join(f.root,'public/quay-iphone/imported-video.mov')));
+  assert.equal((await upload('may-cu','clip.avi',avi)).status,201);
+  const workspace=await (await fetch(f.base+'/api/workspace')).json(),byId=id=>workspace.projects.find(p=>p.id===id);
+  assert.deepEqual([byId('quay-iphone').importedVideo,byId('quay-iphone').videoInline],[true,true]);assert.deepEqual([byId('may-cu').importedVideo,byId('may-cu').videoInline],[true,false]);
+  assert.ok(workspace.videoFormats.extensions.includes('.mov')&&workspace.videoFormats.extensions.includes('.mkv'));
+  const media=await fetch(f.base+'/api/media?id=quay-iphone&kind=video',{headers:{Range:'bytes=4-7'}});assert.equal(media.status,206);assert.equal(await media.text(),'ftyp');
+  const fake=await upload('gia-mao','video.mov',Buffer.from('this is only text, not a video file'));assert.equal(fake.status,400);assert.match((await fake.json()).error,/không phải MOV/);assert.ok(!fs.existsSync(path.join(f.root,'docs/projects/gia-mao')));
+  const unknown=await upload('la-lung','video.xyz',mov);assert.equal(unknown.status,400);assert.match((await unknown.json()).error,/MOV/);
+});
 test('folder opening is limited to known project directories and series cannot be created from the manager',async t=>{
   const f=await fixture(t);
   assert.equal((await f.post('/api/open-folder',{id:'old',group:'docs'})).status,200);

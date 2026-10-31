@@ -7,7 +7,8 @@ const {ROOT}=require('../../scripts/catalog/catalog.cjs');
 const {createStore}=require('./store.cjs');
 
 const WEB=path.join(__dirname,'web');
-const contentTypes={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8',
+const {VIDEO_FORMATS}=require('./video-formats.cjs');
+const contentTypes={...Object.fromEntries(Object.entries(VIDEO_FORMATS).map(([e,f])=>[e,f.type])),'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8',
   '.mp4':'video/mp4','.webm':'video/webm','.wav':'audio/wav','.mp3':'audio/mpeg','.m4a':'audio/mp4','.ogg':'audio/ogg','.flac':'audio/flac','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.ttf':'font/ttf','.svg':'image/svg+xml'};
 
 function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voiceStudio=null,openFolder=directory=>new Promise((resolve,reject)=>execFile('xdg-open',[directory],{timeout:10000},error=>error?reject(error):resolve()))}={}) {
@@ -48,6 +49,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
         if(route==='/api/voicestudio')return send(200,await startVoiceStudio());
         if(route==='/api/voicestudio/stop')return send(200,await voiceControl.stop());
         if(route==='/api/books')return send(201,store.newBook(body));
+        if(route==='/api/approve')return send(200,store.approveGate(body));
         if(route==='/api/voice-reference-clip')return send(201,await store.cutVoiceReference(body));
         if(route==='/api/voice-reference-meta')return send(200,store.updateVoiceReference(body));
         if(route==='/api/book-meta')return send(200,store.updateBook(body));
@@ -62,17 +64,20 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
         return send(404,{error:'Unknown action'});
       }
       if(req.method!=='GET')return send(405,{error:'Method not allowed'});
-      if(route==='/api/workspace')return send(200,{...store.list(),token});
+      if(route==='/api/workspace')return send(200,{...store.list(),token,videoFormats:{extensions:Object.keys(VIDEO_FORMATS),label:require('./video-formats.cjs').videoLabel}});
       if(route==='/api/project')return send(200,store.detail(url.searchParams.get('id')));
       if(route==='/api/workflow')return send(200,store.workflow(url.searchParams.get('series')));
       if(route==='/api/voicestudio')return send(200,await voiceControl.status());
       if(route==='/api/voices')return send(200,store.voices());
       if(route==='/api/music')return send(200,store.music());
       if(route==='/api/voice-references')return send(200,store.voiceReferences());
+      if(route==='/api/approvals')return send(200,store.approvalsView(url.searchParams.get('id')));
+      if(route==='/api/approval-review')return send(200,store.gateReview(url.searchParams.get('id'),url.searchParams.get('gate')));
       if(route==='/api/document')return send(200,store.document(url.searchParams.get('id'),url.searchParams.get('file')));
       if(route==='/api/book-document')return send(200,store.bookDocument(url.searchParams.get('series'),url.searchParams.get('book'),url.searchParams.get('file')));
       let file;
       if(route==='/api/book-cover'){const cover=store.bookCover(url.searchParams.get('series'),url.searchParams.get('book'));if(!cover)return send(404,{error:'Chưa có ảnh bìa'});file=cover.file;
+      } else if(route==='/api/project-media'){const file=store.projectMedia(url.searchParams.get('id'),url.searchParams.get('kind'),url.searchParams.get('file'));if(!file)return send(404,{error:'Không có file này'});return serveRange(file);
       } else if(route==='/api/playback'){const state=store.videoPlayback(url.searchParams.get('id'));if(!state)return send(404,{error:'Chưa có video'});return send(200,{ready:Boolean(state.file),preparing:Boolean(state.preparing),failed:Boolean(state.failed),converted:Boolean(state.converted),codec:state.codec||null});
       } else if(route==='/api/media'&&url.searchParams.get('kind')==='video'){const state=store.videoPlayback(url.searchParams.get('id'));if(!state?.file)return send(state?202:404,{error:state?'Đang chuẩn bị bản xem':'Chưa có bản xuất'});return serveRange(state.file);
       } else if(route==='/api/media'){const item=store.media(url.searchParams.get('id'),url.searchParams.get('kind'));if(!item)return send(404,{error:'Chưa có bản xuất'});return serveRange(item.file);

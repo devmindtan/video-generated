@@ -6,6 +6,18 @@ const crypto = require('node:crypto');
 const {execFileSync} = require('node:child_process');
 
 const storePath=(root,id)=>path.join(root,`docs/projects/${id}/approvals.json`);
+// Content-addressed copies of approved files, so a later review can show exactly what changed since then.
+// Inside .automation/ (Git-ignored, denied to workers); never overwritten.
+const snapshotPath=(root,hash)=>path.join(root,'.automation/approved-files',hash);
+function snapshot(root,rel,hash){
+  if(!hash)return;
+  const file=snapshotPath(root,hash);if(fs.existsSync(file))return;
+  const data=fs.readFileSync(path.join(root,rel));
+  if(crypto.createHash('sha256').update(data).digest('hex')!==hash)return; // changed meanwhile: keep only the hash
+  fs.mkdirSync(path.dirname(file),{recursive:true});
+  const tmp=`${file}.${process.pid}.tmp`;fs.writeFileSync(tmp,data);fs.renameSync(tmp,file);
+}
+function approvedContent(root,hash){try{return hash?fs.readFileSync(snapshotPath(root,hash)):null;}catch{return null;}}
 function sha256(root,rel){
   try{
     const st=fs.lstatSync(path.join(root,rel));
@@ -60,6 +72,7 @@ function approve(root,plan,stageId,{allowMissing=false,note='',by=null,decision=
   const store=load(root,plan.projectId);
   const entry={projectId:plan.projectId,stageId,decision,artifactSha256:hashes,missing,
     approvedBy:approvedBy||'unknown',approvedAt:now.toISOString(),note};
+  if(decision==='approved')for(const [rel,hash] of Object.entries(hashes))snapshot(root,rel,hash);
   store.history.push(entry);
   fs.mkdirSync(path.dirname(storePath(root,plan.projectId)),{recursive:true});
   const file=storePath(root,plan.projectId),tmp=`${file}.${process.pid}.tmp`;
@@ -67,4 +80,4 @@ function approve(root,plan,stageId,{allowMissing=false,note='',by=null,decision=
   fs.renameSync(tmp,file);
   return entry;
 }
-module.exports={approve,gateState,load,sha256,storePath};
+module.exports={approve,gateState,load,sha256,storePath,snapshot,snapshotPath,approvedContent};

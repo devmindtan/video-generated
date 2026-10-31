@@ -1,6 +1,7 @@
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {parse}=require('@babel/parser');
 const {load,validate,slug}=require('../../scripts/catalog/catalog.cjs');
+const {VIDEO_FORMATS,videoExtensions}=require('./video-formats.cjs');
 const digest=x=>crypto.createHash('sha256').update(x).digest('hex');
 const read=f=>JSON.parse(fs.readFileSync(f,'utf8'));
 const write=(f,v)=>{fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,JSON.stringify(v,null,2)+'\n');};
@@ -12,12 +13,12 @@ function features(root){
   function exportsFor(p){
     const files=new Map();
     const imported=safe(p.paths.assets);
-    if(fs.existsSync(imported)&&!fs.lstatSync(imported).isSymbolicLink())for(const name of ['imported-video.mp4','imported-video.webm']){
+    if(fs.existsSync(imported)&&!fs.lstatSync(imported).isSymbolicLink())for(const name of videoExtensions.map(e=>'imported-video'+e)){
       const file=safe(path.join(p.paths.assets,name));if(!fs.existsSync(file)||fs.lstatSync(file).isSymbolicLink()||!fs.statSync(file).isFile())continue;
-      const st=fs.statSync(file);files.set(file,{file,name,kind:'video',size:st.size,modified:st.mtimeMs,imported:true});
+      const st=fs.statSync(file);files.set(file,{file,name,kind:'video',size:st.size,modified:st.mtimeMs,imported:true,inline:VIDEO_FORMATS[path.extname(name)].inline});
     }
     for(const r of p.registrations){
-      const extensions=r.kind==='Composition'?['.mp4','.webm']:['.png','.jpg','.jpeg','.webp'];
+      const extensions=r.kind==='Composition'?['.mp4','.webm','.mov','.mkv','.m4v']:['.png','.jpg','.jpeg','.webp'];
       const dirs=['out',`out/${p.id}`,`projects/${p.id}`,`public/${p.id}`,...p.registrations.map(x=>`projects/${x.id}`)];
       for(const dir of new Set(dirs)){
         const folder=safe(dir);if(!fs.existsSync(folder))continue;
