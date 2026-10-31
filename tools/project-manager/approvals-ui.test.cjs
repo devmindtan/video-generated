@@ -28,7 +28,19 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
  const plan=cli.plan(root,id),dialog=page.locator('#review-dialog'),next=page.locator('.gate-next'),open=async()=>{await page.reload({waitUntil:'networkidle'});await page.locator('.gate-step').first().waitFor();};
  const seenAll=async()=>{for(let k=0;k<12&&await dialog.locator('[data-review-seen]').count();k++){if(await dialog.locator('#review-form button[type=submit]').isEnabled())break;await dialog.locator('[data-review-seen]').click();}};
  try{
-  await page.goto(base+`/#project/${id}`,{waitUntil:'networkidle'});await page.locator('.gate-step').first().waitFor();
+  await page.goto(base+`/#project/${id}`,{waitUntil:'networkidle'});await page.locator('#document-view').waitFor();
+  assert.equal(await page.locator('#panel-review').isHidden(),true,'review lives in its own tab, not under the documents');
+  assert.equal(await page.locator('#tab-docs').getAttribute('aria-selected'),'true');
+  await page.locator('#tab-review').waitFor();await page.waitForFunction(()=>!document.querySelector('#tab-review .tab-flag').hidden);
+  assert.match(await page.locator('#tab-review').innerText(),/Duyệt sản xuất\s*Cần bạn/);
+  await page.locator('#tab-review').click();await page.locator('.gate-step').first().waitFor();
+  assert.ok(page.url().endsWith(`#project/${id}/duyet`));assert.equal(await page.locator('#panel-docs').isHidden(),true);
+  await page.screenshot({path:path.join(out,'tab-review-1440.png')});
+  await page.goBack();await page.locator('#document-view').waitFor();assert.equal(await page.locator('#panel-review').isHidden(),true);
+  await page.locator('#tab-docs').focus();await page.keyboard.press('ArrowRight');await page.locator('.gate-step').first().waitFor();
+  assert.equal(await page.evaluate(()=>document.activeElement.id),'tab-review');
+  await page.goto(base+`/#project/${id}/duyet`,{waitUntil:'networkidle'});await page.locator('.gate-step').first().waitFor();
+  mark('Review has its own tab and URL; Back returns to Hồ sơ; arrow keys switch tabs; pending work is flagged on the tab');
   assert.match(await page.locator('.lock-chip').innerText(),/Chưa chốt/);assert.match(await next.innerText(),/Việc của bạn[\s\S]*Chốt ban đầu/i);
   assert.equal(await page.locator('.scene-row').count(),2);
   await next.locator('[data-review-open="lock"]').click();await dialog.locator('.rail-item').first().waitFor();

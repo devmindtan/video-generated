@@ -380,3 +380,12 @@ body.has-player .drawer.detail-page{padding-bottom:120px}
 .scene-clips{justify-self:stretch;font-size:14px;color:var(--muted)}.scene-clips ul{margin:8px 0 0;padding-left:18px}
 .scene-foot{align-items:flex-end}.scene-note{flex:1 1 320px}.scene-note textarea{width:100%;font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;resize:vertical}
 @media(max-width:760px){.gates-head{flex-wrap:wrap}.lock-chip{margin-left:0}.scene-row{flex-wrap:wrap}.scene-row .button{min-height:44px}}
+/* Project page areas: Hồ sơ and Duyệt sản xuất. */
+.project-tabs{display:flex;gap:4px;margin:18px 0 4px;border-bottom:1px solid var(--line);overflow-x:auto}
+.project-tabs button{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 16px;border:0;border-bottom:3px solid transparent;background:none;font:inherit;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;white-space:nowrap}
+.project-tabs button:hover{color:var(--ink)}
+.project-tabs button[aria-selected="true"]{color:var(--forest);border-bottom-color:var(--forest)}
+.project-tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.tab-flag{font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px;background:#f8f0dc;color:#795a1d}
+.review-page{max-width:880px}
+.review-page #gates{margin-top:20px}
