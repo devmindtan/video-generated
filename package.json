@@ -162,7 +162,7 @@
     "test:catalog": "node scripts/catalog/catalog.test.cjs",
     "manager": "node tools/project-manager/server.cjs",
     "voicestudio": "node tools/voicestudio/launcher.cjs",
-    "test:voicestudio": "node --test tools/voicestudio/clone.test.cjs",
+    "test:voicestudio": "node --test tools/voicestudio/clone.test.cjs tools/gpu-host/gpu-host.test.cjs",
     "test:manager": "node tools/project-manager/manager.test.cjs",
     "test:manager:browser": "node tools/project-manager/browser.test.cjs",
     "test:manager:navigation": "node tools/project-manager/navigation.test.cjs",

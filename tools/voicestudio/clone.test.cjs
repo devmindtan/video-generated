@@ -67,33 +67,20 @@ test('text sources, keeps a VoiceStudio the user had open, and leaves a partial 
   assert.throws(() => parseArgs(['--bogus']), /không hiểu/);
 });
 
-test('GPU machine: --gpu flag, remote.json validation and a tunnel port distinct from local VoiceStudio', t => {
-  const remote = require('./remote.cjs');
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'voice-remote-'));t.after(() => fs.rmSync(root, {recursive: true, force: true}));
-  assert.deepEqual(parseArgs(['--gpu', '--scene', '1']), {gpu: true, scene: '1'});
-  assert.throws(() => remote.config(root), /remote\.json/);
-  const write = c => {fs.mkdirSync(path.join(root, '.voicestudio'), {recursive: true});fs.writeFileSync(path.join(root, '.voicestudio/remote.json'), JSON.stringify(c));};
-  write({host: 'gpu; rm -rf /', dir: '~/voicestudio-gpu'});assert.throws(() => remote.config(root), /host/);
-  write({host: 'desktop-kndgm60', dir: '~/x" & calc'});assert.throws(() => remote.config(root), /dir/);
-  write({host: 'desktop-kndgm60', dir: '~/voicestudio-gpu', localPort: 3900});assert.throws(() => remote.config(root), /localPort/);
-  write({host: 'desktop-kndgm60', dir: '~/voicestudio-gpu'});
-  assert.equal(remote.config(root).url, 'http://127.0.0.1:3901/');
-});
-
-test('machine choice: GPU when it answers, local only when it is off; flags force one side', () => {
-  const {pickMachine} = require('./remote.cjs'), up = () => true, down = () => false;
-  assert.equal(pickMachine('/x', {}, up), 'gpu');
-  assert.equal(pickMachine('/x', {}, down), 'local');
-  assert.equal(pickMachine('/x', {local: true}, up), 'local');
-  assert.equal(pickMachine('/x', {gpu: true}, down), 'gpu', '--gpu fails loudly instead of falling back');
-  assert.throws(() => pickMachine('/x', {gpu: true, local: true}), /một trong/);
-});
-
 test('on the GPU machine each take is deleted there after it is saved here; locally nothing is deleted', async t => {
   const f = await fixture(t);
   const r = await clone(f.root, {...base, all: true, gpu: true}, f.deps());
   assert.equal(r.manifest.machine, 'gpu');assert.deepEqual(f.deleted, ['/history/take1', '/history/take2']);
   assert.equal(r.manifest.files.length, 2, 'files are kept on the laptop');
+  assert.deepEqual(parseArgs(['--gpu', '--local', '--scene', '1']), {gpu: true, local: true, scene: '1'});
   await clone(f.root, {...base, take: 'clone-local', scene: '1'}, f.deps());
   assert.equal(f.deleted.length, 2);
+});
+
+test('GPU machine: the lease holder releases instead of stopping, keeping it when --keep-running', async t => {
+  const f = await fixture(t), released = [];
+  const deps = {...f.deps(), release: async keep => {released.push(keep);}};
+  await clone(f.root, {...base, scene: '1', gpu: true}, deps);
+  await clone(f.root, {...base, take: 'clone-keep', scene: '1', gpu: true, keepRunning: true}, deps);
+  assert.deepEqual(released, [false, true]);assert.equal(f.calls.stop, 0, 'never stops the machine directly');
 });

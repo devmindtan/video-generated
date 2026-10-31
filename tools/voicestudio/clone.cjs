@@ -84,7 +84,7 @@ function page(manifest) {
 <style>body{font:15px/1.6 system-ui,sans-serif;max-width:760px;margin:32px auto;padding:0 16px;color:#20362d}section{border:1px solid #dce4dc;border-radius:10px;padding:14px 16px;margin:12px 0}audio{width:100%}small{color:#5d7053}</style>
 <h1>Clone giọng · ${esc(manifest.project)} · ${esc(manifest.take)}</h1><p>Lựa chọn 2 (clone). Bản thử để nghe chọn; chưa thay giọng của video. ${esc(CONSENT[manifest.reference.consent])}.</p>${cards}</html>\n`;
 }
-async function clone(root, o, {base = launcher.URL, ensure = launcher.voiceStudioLauncher(root), probe = launcher.probe, stop = () => launcher.stop(root), log = console.log} = {}) {
+async function clone(root, o, {base = launcher.URL, ensure = launcher.voiceStudioLauncher(root), probe = launcher.probe, stop = () => launcher.stop(root), release = null, log = console.log} = {}) {
   const {ref, out} = validate(root, o), list = segments(root, o);
   if (!list.length || list.some(s => !s.text)) throw Error('Không có lời đọc để tạo.');
   const wasRunning = (await probe()).state === 'ready';
@@ -111,8 +111,10 @@ async function clone(root, o, {base = launcher.URL, ensure = launcher.voiceStudi
     }
     fs.writeFileSync(path.join(out, 'index.html'), page(manifest));
   } finally {
-    // Free the memory the model holds (RAM here, VRAM on the GPU machine), unless VoiceStudio was already open.
-    if (!wasRunning && !o.keepRunning) await stop();
+    // Free the memory the model holds. GPU machine: drop this command's lease, the last holder stops it.
+    // Here: stop only what this command started.
+    if (release) await release(Boolean(o.keepRunning));
+    else if (!wasRunning && !o.keepRunning) await stop();
   }
   return {out, manifest};
 }

@@ -127,14 +127,37 @@ function prepare(root, id, stageId, {revise = false, now = new Date(), skipRunti
   return run;
 }
 
-function execute(root, runId, {verbose = true, out = process.stdout} = {}) {
+// Models run on the GPU machine when it is on (user rule 2026-10-31), else on this laptop's Ollama. Either way the
+// runtime only sees a loopback api_base: the GPU machine's Ollama is reached through an SSH tunnel on 127.0.0.1.
+async function chooseModels(root, dir, {gpu = require('../gpu-host/gpu-host.cjs'), machine = {}, out}) {
+  const local = reason => ({machine: 'local', reason, settings: path.join(dir, 'settings.json')});
+  let choice;try {choice = gpu.pick(root, 'ollama', machine);} catch (e) {if (machine.gpu) throw e;return local(e.message);}
+  if (choice.machine === 'local') return local(choice.reason);
+  try {
+    const s = await gpu.start(root, 'ollama');
+    const settings = JSON.parse(fs.readFileSync(path.join(dir, 'settings.json'), 'utf8'));
+    for (const m of Object.values(settings.models)) m.api_base = `http://127.0.0.1:${new URL(s.url).port}`;
+    fs.writeFileSync(path.join(dir, 'settings-gpu.json'), JSON.stringify(settings, null, 2));
+    return {machine: 'gpu', reason: choice.reason, settings: path.join(dir, 'settings-gpu.json'), release: () => gpu.release(root, 'ollama')};
+  } catch (e) {
+    // Backup: the machine answered but its Ollama did not come up.
+    await gpu.release(root, 'ollama').catch(() => {});
+    if (machine.gpu) throw e;
+    return local(`không bật được Ollama trên máy GPU (${e.message})`);
+  }
+}
+
+async function execute(root, runId, {verbose = true, out = process.stdout, gpu, machine = {}} = {}) {
   const run = readRun(root, runId), dir = runDir(root, runId);
   if (run.status !== 'prepared') throw new Error(`Run ${runId} is ${run.status}; prepare a new run instead`);
   const runtime = runtimeCheck(root);
   if (!runtime.ready) throw new Error(`Hardened runtime not ready: ${runtime.missingFeatures.join(', ')}`);
+  const models = await chooseModels(root, dir, {gpu, machine, out});
+  out.write(models.machine === 'gpu' ? 'Model chạy trên máy GPU.\n' : `Model chạy trên máy này: ${models.reason}.\n`);
+  run.machine = models.machine;run.machineReason = models.reason;
   const args = [path.join(runtime.dir, 'main.py'), '--project-dir', path.join(dir, 'staging'),
     '--task', `${run.stageId} for ${run.projectId}`, '--plan-file', path.join(dir, 'plan.json'),
-    '--settings', path.join(dir, 'settings.json'), '--tools-config', path.join(dir, 'tools.json'),
+    '--settings', models.settings, '--tools-config', path.join(dir, 'tools.json'),
     '--event-db', path.join(dir, 'events.db'), '--run-id', runId, ...(verbose ? ['--verbose'] : [])];
   // Minimal environment: no API keys or cloud credentials reach the model loop.
   const env = {PATH: process.env.PATH, HOME: process.env.HOME, LANG: 'C.UTF-8', PYTHONUNBUFFERED: '1',
@@ -151,9 +174,10 @@ function execute(root, runId, {verbose = true, out = process.stdout} = {}) {
     process.once('SIGINT', onSignal); process.once('SIGTERM', onSignal);
     const timer = setTimeout(stop('timed-out'), R.maxRunMinutes * 60000);
     for (const stream of [child.stdout, child.stderr]) stream.on('data', chunk => { log.write(chunk); out.write(chunk); });
-    child.on('close', code => {
+    child.on('close', async code => {
       clearTimeout(timer); process.off('SIGINT', onSignal); process.off('SIGTERM', onSignal);
       log.end();
+      if (models.release) await models.release().catch(e => out.write(`Chưa tắt được Ollama trên máy GPU: ${e.message}\n`));
       const types = events(root, runId).map(e => e.type);
       run.status = stopReason || (types.includes('run.awaiting_approval') ? 'awaiting-approval'
         : types.includes('run.completed') ? 'completed-no-changes' : 'failed');
@@ -215,4 +239,4 @@ function reject(root, runId, note = '') {
   return run;
 }
 
-module.exports = {prepare, execute, events, list, apply, reject, runtimeCheck, readRun, gatesBefore};
+module.exports = {prepare, execute, chooseModels, events, list, apply, reject, runtimeCheck, readRun, gatesBefore};

@@ -39,3 +39,4 @@ graphify-out/
 
 # VoiceStudio runtime (source checkout, Python env, models, generated voices)
 .voicestudio/
+.gpu/

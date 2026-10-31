@@ -119,21 +119,30 @@ if (require.main === module) {
     else if (command === 'stop') {const s = await stop(root);console.log(s.stopped ? `Đã dừng ${s.stopped} tiến trình VoiceStudio${s.forced ? ` (${s.forced} phải buộc dừng)` : ''}.` : 'VoiceStudio không chạy.');}
     else if (command === 'status') console.log(JSON.stringify(await status(root), null, 2));
     else if (command === 'gpu') {
-      const remote = require('./remote.cjs'), [sub = 'status'] = rest;
-      if (sub === 'start') {const r = await remote.start(root);console.log(`VoiceStudio ${r.version} trên máy GPU sẵn sàng tại ${r.url} (${r.device || '?'}).`);}
-      else if (sub === 'stop') {const r = await remote.stop(root);console.log(r.remote || 'Đã dừng.');}
-      else if (sub === 'status') console.log(JSON.stringify(await remote.status(root), null, 2));
+      const gpu = require('../gpu-host/gpu-host.cjs'), [sub = 'status'] = rest;
+      if (sub === 'start') {const r = await gpu.start(root, 'voicestudio', {lease: 'manual'});console.log(`VoiceStudio ${r.version} trên máy GPU sẵn sàng tại ${r.url} (${r.device || '?'}). Tắt bằng: npm run voicestudio -- gpu stop`);}
+      else if (sub === 'stop') {const r = await gpu.stop(root, 'voicestudio');console.log(r.remote || 'Đã dừng.');}
+      else if (sub === 'status') console.log(JSON.stringify((await gpu.status(root)).voicestudio, null, 2));
       else throw Error('Usage: npm run voicestudio -- gpu start|status|stop');
     }
     else if (command === 'clone') {
-      const {clone, parseArgs} = require('./clone.cjs'), remote = require('./remote.cjs'), o = parseArgs(rest);
-      const machine = remote.pickMachine(root, o);o.gpu = machine === 'gpu';
-      console.log(machine === 'gpu' ? 'Clone trên máy GPU.' : o.local ? 'Clone trên máy này (--local).' : 'Máy GPU không bật hoặc không kết nối được: clone trên máy này (CPU, chậm).');
-      let deps;
-      if (o.gpu) {const c = remote.config(root);
-        deps = {base: c.url, ensure: () => remote.start(root), probe: () => probe(c.url), stop: () => remote.stop(root)};}
-      const r = await clone(root, o, deps);
-      console.log(`Xong: ${r.manifest.files.length} file trong ${path.relative(root, r.out)}. Mở index.html để nghe; đây là take thử, chưa thay giọng của video.`);
+      const {clone, parseArgs} = require('./clone.cjs'), gpu = require('../gpu-host/gpu-host.cjs'), o = parseArgs(rest);
+      const done = r => console.log(`Xong: ${r.manifest.files.length} file trong ${path.relative(root, r.out)}. Mở index.html để nghe; đây là take thử, chưa thay giọng của video.`);
+      const local = reason => {console.log(`Clone trên máy này (CPU, chậm): ${reason}.`);return clone(root, {...o, gpu: false});};
+      const choice = gpu.pick(root, 'voicestudio', o);
+      if (choice.machine === 'local') return done(await local(choice.reason));
+      console.log('Clone trên máy GPU.');
+      const s = gpu.service(root, 'voicestudio');
+      let started = false;
+      const deps = {base: s.url, probe: () => gpu.probe(s), release: keep => gpu.release(root, 'voicestudio', {keep}),
+        ensure: async () => {await gpu.start(root, 'voicestudio');started = true;}};
+      try {done(await clone(root, {...o, gpu: true}, deps));}
+      catch (e) {
+        // Backup: the GPU machine answered but VoiceStudio did not come up there; nothing was written yet.
+        if (started || o.gpu) throw e;
+        await gpu.release(root, 'voicestudio').catch(() => {});
+        done(await local(`không bật được VoiceStudio trên máy GPU (${e.message})`));
+      }
     }
     else throw Error('Usage: npm run voicestudio -- start|status|stop|clone|gpu (xem docs/voice-workflow.md)');
   })().catch(e => {console.error(e.message);process.exitCode = 1;});

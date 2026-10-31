@@ -16,7 +16,7 @@ npm run test:automation
 
 Vòng làm việc của một chặng:
 
-1. `run <slug> <stage>`: chỉ cho các chặng soạn tài liệu (`brief`, `script`, `editorial-review`, `visual-plan`, `metadata`). Runner kiểm các cổng duyệt phía trước còn hợp lệ, chép **chỉ** các file trong `readScope` (bỏ `deniedPaths`, file nhị phân, quá lớn) vào `.automation/runs/<run-id>/staging`, khởi tạo Git trong đó rồi chạy model local (Ollama, `qwen2.5-coder:7b-instruct`, 1 worker). Output đã có thì phải thêm `--revise`. `--prepare-only` chỉ dựng staging; chạy sau bằng `run-prepared <run-id>`.
+1. `run <slug> <stage>`: chỉ cho các chặng soạn tài liệu (`brief`, `script`, `editorial-review`, `visual-plan`, `metadata`). Runner kiểm các cổng duyệt phía trước còn hợp lệ, chép **chỉ** các file trong `readScope` (bỏ `deniedPaths`, file nhị phân, quá lớn) vào `.automation/runs/<run-id>/staging`, khởi tạo Git trong đó rồi chạy model local (Ollama, `qwen2.5-coder:7b-instruct`, 1 worker). Model chạy trên máy GPU qua tunnel loopback khi máy đó bật, ngược lại trên Ollama của laptop (`--gpu`/`--local` để ép; xem `docs/architecture/gpu-host.md`). Output đã có thì phải thêm `--revise`. `--prepare-only` chỉ dựng staging; chạy sau bằng `run-prepared <run-id>`.
 2. Worker chỉ có `read_file`, `list_files`, `write_file`, `patch_file`; mọi lần đọc/ghi qua `PathPolicy`. Không có lệnh shell (`commands.mode: operations`, danh sách thao tác rỗng). Model loop chạy với môi trường tối thiểu, không có khóa API.
 3. Kết thúc: patch ở `.automation/runs/<run-id>/artifacts/<run-id>.patch`, trạng thái `awaiting-approval`. Repo chưa bị đổi.
 4. `apply <run-id>`: kiểm patch chỉ chạm `writeScope`, file đích **không đổi** kể từ lúc chuẩn bị (sửa tay của bạn thắng, runner từ chối), rồi `git apply`. Apply không phải duyệt.

@@ -149,3 +149,23 @@ test('a run whose worker process is gone is reported as interrupted',()=>fixture
  fs.writeFileSync(file,JSON.stringify({...run,status:'running',pid:process.pid}));
  assert.equal(runner.readRun(root,run.runId).status,'running');
 }));
+test('models use the GPU machine through a loopback tunnel when it is on, else this laptop',async()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'run-models-'));
+ try{
+  const R=require('./policy.json').runner;fs.writeFileSync(path.join(dir,'settings.json'),JSON.stringify(R.settings));
+  const calls=[],fake=(pick,start=async()=>({url:'http://127.0.0.1:11435/'}))=>({pick:()=>{if(pick instanceof Error)throw pick;return pick;},start:async(...a)=>{calls.push('start');return start(...a);},release:async()=>{calls.push('release');}});
+  const on={machine:'gpu',reason:'máy GPU đang bật'},off={machine:'local',reason:'không kết nối được h'};
+  const g=await runner.chooseModels('/x',dir,{gpu:fake(on)});
+  assert.equal(g.machine,'gpu');
+  const s=JSON.parse(fs.readFileSync(g.settings,'utf8'));
+  for(const m of Object.values(s.models))assert.equal(m.api_base,'http://127.0.0.1:11435','still loopback for the runtime gateway');
+  assert.equal(JSON.parse(fs.readFileSync(path.join(dir,'settings.json'),'utf8')).models.executor.api_base,'http://127.0.0.1:11434','laptop settings untouched');
+  await g.release();
+  const l=await runner.chooseModels('/x',dir,{gpu:fake(off)});
+  assert.equal(l.machine,'local');assert.equal(path.basename(l.settings),'settings.json');assert.match(l.reason,/không kết nối/);
+  const b=await runner.chooseModels('/x',dir,{gpu:fake(on,async()=>{throw new Error('timeout');})});
+  assert.equal(b.machine,'local');assert.match(b.reason,/không bật được Ollama/);
+  await assert.rejects(runner.chooseModels('/x',dir,{gpu:fake(on,async()=>{throw new Error('timeout');}),machine:{gpu:true}}),/timeout/);
+  assert.deepEqual(calls,['start','release','start','release','start','release']);
+ }finally{fs.rmSync(dir,{recursive:true,force:true});}
+});

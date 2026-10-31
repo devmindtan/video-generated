@@ -195,8 +195,9 @@ const USAGE=`Usage: npm run automation -- <command>
   doctor                              runtime, sandbox and graph readiness
   plan <slug>                         stage manifest (read-only)
   status <slug>                       artifacts, gates and runs (read-only)
-  run <slug> <stage> [--revise] [--prepare-only]
+  run <slug> <stage> [--revise] [--prepare-only] [--gpu|--local]
                                       draft one document with the local model in a staging copy
+                                      (model on the GPU machine when it is on, else this laptop)
   runs [slug]                         list runs
   events <run-id> [--follow]          event timeline of a run
   apply <run-id>                      apply a finished run's patch (checks your edits first)
@@ -210,6 +211,7 @@ function printEvent(e){
 }
 async function main(argv){
   const flags=new Set(argv.filter(a=>a.startsWith('--')&&a!=='--note'));
+  const machine={gpu:flags.has('--gpu'),local:flags.has('--local')};
   const noteAt=argv.indexOf('--note'),note=noteAt>=0?argv[noteAt+1]||'':'';
   const args=argv.filter((a,i)=>!a.startsWith('--')&&!(noteAt>=0&&i===noteAt+1));
   const [command,a,b,...extra]=args;
@@ -234,10 +236,10 @@ async function main(argv){
       const run=runner.prepare(ROOT,a,b,{revise:flags.has('--revise')});
       console.log(`Prepared ${run.runId}: ${Object.keys(run.inputs).length} files copied to staging, writes ${run.writeScope.join(', ')}`);
       if(flags.has('--prepare-only')) return console.log(`Start later: npm run automation -- run-prepared ${run.runId}`);
-      const done=await runner.execute(ROOT,run.runId);
+      const done=await runner.execute(ROOT,run.runId,{machine});
       return finish(done);
     }
-    case 'run-prepared': if(!a)break; return finish(await runner.execute(ROOT,a));
+    case 'run-prepared': if(!a)break; return finish(await runner.execute(ROOT,a,{machine}));
     case 'apply': if(!a)break; {const r=runner.apply(ROOT,a);
       return console.log(`Applied ${r.appliedFiles.join(', ')}. This is not an approval; review the file, then:\n  npm run automation -- status ${r.projectId}`);}
     case 'reject': if(!a)break; return json(runner.reject(ROOT,a,[b,...extra].filter(Boolean).join(' ')));
