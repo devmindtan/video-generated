@@ -214,8 +214,9 @@ const USAGE=`Usage: npm run automation -- <command>
   events <run-id> [--follow]          event timeline of a run
   apply <run-id>                      apply a finished run's patch (checks your edits first)
   reject <run-id> [note]              discard a run's patch
-  approve <slug> <gate> [--allow-missing] [--note text]
-                                      record your approval of the gate's artifacts by hash
+  approve <slug> review-preview [--allow-missing] [--note text]
+                                      record your approval of the final preview by hash
+                                      (initial lock, patches, scenes: in the manager)
   review <slug>                       initial lock, patches, scene clips and your notes (read-only)
   patch <slug> --reason text          propose the edits made since the latest lock as a patch
   scene-clip <slug> <scene>           render one finished scene as a review clip (projects/<slug>/review/)
