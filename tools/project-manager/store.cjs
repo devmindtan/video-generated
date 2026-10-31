@@ -9,6 +9,7 @@ const json = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const exists = file => fs.existsSync(file);
 const textTypes = new Set(['.md','.txt','.json','.tsx','.ts','.py','.cjs','.mjs']);
 const imageTypes = new Set(['.png','.jpg','.jpeg','.webp']);
+const posterVideoTypes = new Set(['.mp4','.webm','.mov','.mkv','.m4v']);
 const contentChannels = new Set(['tam-ly-cuoc-song','kids']);
 const videoTypes = new Set(['.mp4','.webm']);
 
@@ -24,6 +25,7 @@ function checkedId(value) {
 function createStore(root) {
   const workspaceRoot=fs.realpathSync(root);
   const extra={...require('./features.cjs').features(root),...require('./workflow.cjs').createWorkflow(root),...require('./library.cjs').createLibrary(root),...require('./voice-references.cjs').createVoiceReferences(root)};
+  const posters=require('./video-poster.cjs').createPosters(root);
   function location(relative) {
     const target=inside(root,relative);
     if (exists(target)&&!fs.realpathSync(target).startsWith(workspaceRoot+path.sep)) throw new Error('Folder escapes workspace');
@@ -67,11 +69,25 @@ function createStore(root) {
       }
     }
     const images = path.join(base,'images');
-    if (!exists(images)) return null;
-    for (const name of fs.readdirSync(images).sort()) {
+    if (exists(images)) for (const name of fs.readdirSync(images).sort()) {
       try {return {file:secureFile(base,path.join(images,name),imageTypes),type:'scene'};} catch {}
     }
-    return null;
+    // No thumbnail or scene image: show a frame of the exported/imported video, else the composition's source footage.
+    const video = extra.media(project.id,'video')?.file || (()=>{
+      const folder = path.join(base,'video');
+      if (!exists(folder)) return null;
+      for (const name of fs.readdirSync(folder).sort()) {
+        try {return secureFile(base,path.join(folder,name),posterVideoTypes);} catch {}
+      }
+      return null;
+    })();
+    return video ? {video,type:'video-frame'} : null;
+  }
+  function servedPreview(id) {
+    const image = preview(context(id).project);
+    if (!image?.video) return image;
+    const file = posters.posterFor(image.video);
+    return file ? {file,type:image.type} : null;
   }
   function books(series) {
     const folder = path.join(path.dirname(series.file),'books');
@@ -188,6 +204,6 @@ function createStore(root) {
     }catch(error){await handle.close().catch(()=>{});if(dest&&fs.existsSync(dest))fs.unlinkSync(dest);throw error;}
     finally{if(fs.existsSync(temp))fs.unlinkSync(temp);try{if(fs.existsSync(staging)&&!fs.readdirSync(staging).length)fs.rmdirSync(staging);}catch{}}
   }
-  return {...extra,list,detail,document,bookDocument,saveNotes,folder,create,createWithVideo,preview:id=>preview(context(id).project)};
+  return {...extra,list,detail,document,bookDocument,saveNotes,folder,create,createWithVideo,preview:servedPreview};
 }
 module.exports={createStore,hash};
