@@ -279,8 +279,10 @@ def main():
         (ROOT/args.srt).write_text('\n'.join(srt))
     gender_label={'female':'nữ','male':'nam'}.get(args.gender,args.gender)
     lines=[f'# Kịch bản đầy đủ — {args.title}','',f'{sum(scene["duration"] for scene in scenes)} giây · {args.width}×{args.height} · giọng {gender_label} {args.voice} · {args.project_style}.','',args.delivery_note,'']
+    # Picture-cut scene bounds can be fractional (e.g. 11.5 s); whole seconds keep the 00–04 style.
+    seconds=lambda value:f'{round(value):02d}' if abs(value-round(value))<1e-9 else f'{value:04.1f}'.replace('.',',')
     for index,scene in enumerate(scenes):
-        lines.extend([f"## Cảnh {index+1} · {scene['start']:02d}–{scene['start']+scene['duration']:02d} giây",'',scene['text'],''])
+        lines.extend([f"## Cảnh {index+1} · {seconds(scene['start'])}–{seconds(scene['start']+scene['duration'])} giây",'',scene['text'],''])
     (ROOT/args.docs).write_text('\n'.join(lines))
     print('Published full narration, checked content and word-aligned captions.',flush=True)
 

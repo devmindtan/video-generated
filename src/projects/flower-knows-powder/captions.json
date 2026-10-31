@@ -1,0 +1,135 @@
+[
+  [
+    {
+      "text": "Xin chào các con vợ của chồng...",
+      "startMs": 0,
+      "endMs": 1960,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Hộp phấn gì mà sang ghê.",
+      "startMs": 2180,
+      "endMs": 3320,
+      "timestampMs": 2180,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Phấn phủ Flower Knows.",
+      "startMs": 0,
+      "endMs": 1700,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Nắp thiên nga, hoa tuyết nổi hẳn lên.",
+      "startMs": 1700,
+      "endMs": 3460,
+      "timestampMs": 1700,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Vuốt nhẹ thôi, thiên nga chứ có",
+      "startMs": 0,
+      "endMs": 2040,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "phải con mèo đâu.",
+      "startMs": 2040,
+      "endMs": 2840,
+      "timestampMs": 2040,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Viền bạc chạm hoa văn, xoay góc",
+      "startMs": 0,
+      "endMs": 1860,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "nào cũng lấp lánh.",
+      "startMs": 1860,
+      "endMs": 3100,
+      "timestampMs": 1860,
+      "confidence": null
+    },
+    {
+      "text": "Cầm thế này, tưởng đang đi đấu",
+      "startMs": 3280,
+      "endMs": 4880,
+      "timestampMs": 3280,
+      "confidence": null
+    },
+    {
+      "text": "giá đồ cổ.",
+      "startMs": 4880,
+      "endMs": 5540,
+      "timestampMs": 4880,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Mở ra xem bên trong nào.",
+      "startMs": 200,
+      "endMs": 1680,
+      "timestampMs": 200,
+      "confidence": null
+    },
+    {
+      "text": "Bông phấn hồng, êm như gối.",
+      "startMs": 2500,
+      "endMs": 3940,
+      "timestampMs": 2500,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Mặt phấn in hoa tuyết.",
+      "startMs": 0,
+      "endMs": 1460,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Dặm mỏng thôi, kẻo mặt thành bánh bao.",
+      "startMs": 1660,
+      "endMs": 3580,
+      "timestampMs": 1660,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Đẹp từ nắp tới lõi.",
+      "startMs": 0,
+      "endMs": 1540,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Hết phim...",
+      "startMs": 1680,
+      "endMs": 2060,
+      "timestampMs": 1680,
+      "confidence": null
+    },
+    {
+      "text": "giải tán, các con vợ!",
+      "startMs": 2060,
+      "endMs": 3080,
+      "timestampMs": 2060,
+      "confidence": null
+    }
+  ]
+]

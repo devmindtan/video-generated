@@ -1,0 +1,99 @@
+[
+  {
+    "id": "01-greeting",
+    "start": 0,
+    "duration": 4,
+    "leadIn": 0.12,
+    "tail": 0.16,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.58,
+    "text": "Xin chào các con vợ của chồng... Hộp phấn gì mà sang ghê.",
+    "sentences": [
+      {"text": "Xin chào các con vợ của chồng...", "pauseAfter": 0.24, "gainDb": 0.35},
+      {"text": "Hộp phấn gì mà sang ghê.", "pauseAfter": 0, "gainDb": 0.3}
+    ]
+  },
+  {
+    "id": "02-swan-lid",
+    "start": 4,
+    "duration": 4,
+    "leadIn": 0.08,
+    "tail": 0.12,
+    "minWordMatchRatio": 0.7,
+    "temperature": 0.54,
+    "text": "Phấn phủ Flower Knows. Nắp thiên nga, hoa tuyết nổi hẳn lên.",
+    "sentences": [
+      {"text": "Phấn phủ Flower Knows.", "pauseAfter": 0.18, "gainDb": 0.2},
+      {"text": "Nắp thiên nga, hoa tuyết nổi hẳn lên.", "pauseAfter": 0, "gainDb": 0.2}
+    ]
+  },
+  {
+    "id": "03-stroke",
+    "start": 8,
+    "duration": 3.5,
+    "leadIn": 0.1,
+    "tail": 0.12,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.58,
+    "text": "Vuốt nhẹ thôi, thiên nga chứ có phải con mèo đâu.",
+    "sentences": [
+      {"text": "Vuốt nhẹ thôi, thiên nga chứ có phải con mèo đâu.", "pauseAfter": 0, "gainDb": 0.4}
+    ]
+  },
+  {
+    "id": "04-silver-rim",
+    "start": 11.5,
+    "duration": 7.3,
+    "leadIn": 0.2,
+    "tail": 0.14,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.56,
+    "text": "Viền bạc chạm hoa văn, xoay góc nào cũng lấp lánh. Cầm thế này, tưởng đang đi đấu giá đồ cổ.",
+    "sentences": [
+      {"text": "Viền bạc chạm hoa văn, xoay góc nào cũng lấp lánh.", "pauseAfter": 0.36, "gainDb": 0.2},
+      {"text": "Cầm thế này, tưởng đang đi đấu giá đồ cổ.", "pauseAfter": 0, "gainDb": 0.45}
+    ]
+  },
+  {
+    "id": "05-puff",
+    "start": 18.8,
+    "duration": 4.6,
+    "leadIn": 0.2,
+    "tail": 0.12,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.56,
+    "text": "Mở ra xem bên trong nào. Bông phấn hồng, êm như gối.",
+    "sentences": [
+      {"text": "Mở ra xem bên trong nào.", "at": 0.2, "gainDb": 0.2},
+      {"text": "Bông phấn hồng, êm như gối.", "at": 2.4, "gainDb": 0.3}
+    ]
+  },
+  {
+    "id": "06-snowflake",
+    "start": 23.4,
+    "duration": 4.2,
+    "leadIn": 0.08,
+    "tail": 0.12,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.56,
+    "text": "Mặt phấn in hoa tuyết. Dặm mỏng thôi, kẻo mặt thành bánh bao.",
+    "sentences": [
+      {"text": "Mặt phấn in hoa tuyết.", "pauseAfter": 0.2, "gainDb": 0.2},
+      {"text": "Dặm mỏng thôi, kẻo mặt thành bánh bao.", "pauseAfter": 0, "gainDb": 0.45}
+    ]
+  },
+  {
+    "id": "07-outro",
+    "start": 27.6,
+    "duration": 4.3,
+    "leadIn": 0.1,
+    "tail": 0.12,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.6,
+    "text": "Đẹp từ nắp tới lõi. Hết phim... giải tán, các con vợ!",
+    "sentences": [
+      {"text": "Đẹp từ nắp tới lõi.", "pauseAfter": 0.22, "gainDb": 0.2},
+      {"text": "Hết phim... giải tán, các con vợ!", "pauseAfter": 0, "gainDb": 0.5}
+    ]
+  }
+]
