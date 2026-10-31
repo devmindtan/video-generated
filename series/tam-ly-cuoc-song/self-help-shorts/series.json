@@ -705,6 +705,20 @@
           "kind": "Still"
         }
       ]
+    },
+    {
+      "id": "know-when-to-quit",
+      "title": "Biết dừng cũng là dũng cảm",
+      "status": "planning",
+      "format": "short",
+      "durationSeconds": 45,
+      "paths": {
+        "source": "src/projects/know-when-to-quit",
+        "scripts": "scripts/projects/know-when-to-quit",
+        "docs": "docs/projects/know-when-to-quit",
+        "assets": "public/know-when-to-quit"
+      },
+      "registrations": []
     }
   ]
 }
