@@ -1,3 +1,7 @@
 {
-  "voiceVolume": 1
+  "voiceVolume": 0.9,
+  "sourceFile": "flower-knows-powder/audio/source-audio.wav",
+  "sourcePauseVolume": 1,
+  "sourceSpeechVolume": 0.5,
+  "sourceEdgeFadeSeconds": 0.25
 }

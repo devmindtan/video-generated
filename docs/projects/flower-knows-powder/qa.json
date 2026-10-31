@@ -5,7 +5,12 @@
     1440
   ],
   "fps": 30,
-  "sourceAudioMuted": true,
+  "sourceAudioMuted": false,
+  "sourceAudio": "Customer audio kept (music bed, whooshes, lid clicks, sparkle); dips to sourceSpeechVolume under narration",
+  "sourceVolumes": {
+    "sourcePauseVolume": 1,
+    "sourceSpeechVolume": 0.5
+  },
   "captionsShown": false,
   "voice": "Adam bựa",
   "voiceProvider": "VieNeu-TTS v3 Turbo 3.8.3 (local CPU)",
@@ -19,7 +24,8 @@
     1.0,
     1.0
   ],
-  "voicePeakDbFS": -2.38,
+  "voicePeakDbFS": -3.3,
+  "mixPeakDbFS": -0.81,
   "asrFlags": [
     "02-swan-lid: \"Flower Knows\" nghe thành \"Flower Nose\"; \"hoa tuyết\" nghe thành \"hóa tuyết\"",
     "03-stroke: \"chứ\" nghe thành \"chưa\"",

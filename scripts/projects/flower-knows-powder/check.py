@@ -34,17 +34,38 @@ def main():
         voice[offset:offset + len(values)] += values
     peak = float(np.max(np.abs(voice * config['voiceVolume'])))
     assert peak < 1, f'Voice clips at {db(peak)} dBFS'
+
+    # Mirror sourceAudioVolume() in Video.tsx: caption-driven dip, short tail fade.
+    source, source_rate = sf.read(ROOT / 'public' / config['sourceFile'], dtype='float32', always_2d=True)
+    assert abs(len(source) / source_rate - DURATION) < 0.01
+    t = np.arange(len(voice)) / SR
+    activity = np.zeros_like(t)
+    captions = json.loads((SRC / 'captions.json').read_text())
+    for scene, group in zip(story, captions):
+        for caption in group:
+            start = scene['start'] + caption['startMs'] / 1000
+            end = scene['start'] + caption['endMs'] / 1000
+            activity = np.maximum(activity, np.interp(t, [start - 0.12, start + 0.12, end - 0.12, end + 0.12], [0, 1, 1, 0], left=0, right=0))
+    gain = config['sourcePauseVolume'] - (config['sourcePauseVolume'] - config['sourceSpeechVolume']) * activity
+    gain *= np.interp(t, [DURATION - config['sourceEdgeFadeSeconds'], DURATION], [1, 0], left=1, right=0)
+    source_at_voice_rate = np.stack([np.interp(t, np.arange(len(source)) / source_rate, source[:, ch]) for ch in range(source.shape[1])], 1)
+    mix = source_at_voice_rate * gain[:, None] + (voice * config['voiceVolume'])[:, None]
+    mix_peak = float(np.max(np.abs(mix)))
+    assert mix_peak < 1, f'Voice + source mix clips at {db(mix_peak)} dBFS'
     report = {
         'durationSeconds': round(DURATION, 6),
         'dimensions': [1080, 1440],
         'fps': 30,
-        'sourceAudioMuted': True,
+        'sourceAudioMuted': False,
+        'sourceAudio': 'Customer audio kept (music bed, whooshes, lid clicks, sparkle); dips to sourceSpeechVolume under narration',
+        'sourceVolumes': {key: config[key] for key in ('sourcePauseVolume', 'sourceSpeechVolume')},
         'captionsShown': False,
         'voice': 'Adam bựa',
         'voiceProvider': metadata[0]['provider'],
         'maximumTempo': max(item['speed'] for item in metadata),
         'wordMatchRatios': [item['wordMatchRatio'] for item in metadata],
         'voicePeakDbFS': db(peak),
+        'mixPeakDbFS': db(mix_peak),
         'asrFlags': [
             '02-swan-lid: "Flower Knows" nghe thành "Flower Nose"; "hoa tuyết" nghe thành "hóa tuyết"',
             '03-stroke: "chứ" nghe thành "chưa"',
