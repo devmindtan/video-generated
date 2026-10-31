@@ -13,7 +13,7 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
  write(`${D}/script.md`,'# Kịch bản\n\nNội dung thử.\n'+Array.from({length:40},(_,i)=>`Câu ${i+1} của kịch bản.`).join('\n')+'\n');
  write(`${D}/production-spec.md`,'# Thông tin đã chốt\n\n- Thời lượng: 12 phút ± 1 phút\n');write(`${D}/image-prompts.md`,'# Prompt\n\n1. Mở chuyện: ngạch cửa gỗ nhà cũ.\n');
  const wav=Buffer.concat([Buffer.from('RIFF'),Buffer.alloc(4),Buffer.from('WAVEfmt '),Buffer.alloc(200)]);
- write('public/audio-library/music/track.wav',wav);write(`public/${id}/audio/sample.wav`,wav);write(`public/${id}/voice-auditions/take-b/sample.wav`,wav);
+ write('public/audio-library/music/track.wav',wav);write(`public/${id}/audio/sample.wav`,wav);write(`public/${id}/voice-auditions/take-b/sample.wav`,wav);write(`public/${id}/audio/02-mo-chuyen-voice-full.wav`,wav);write(`public/${id}/audio/voice-metadata.json`,[{scene:'02-mo-chuyen',file:'02-mo-chuyen-voice-full.wav',durationSeconds:4.2}]);
  write(`src/projects/${id}/music.json`,{file:'audio-library/music/track.wav',credit:{title:'Enlivening',artists:['Pufino'],source:'freetouse.com'},speechVolume:.3});
  write(`scripts/projects/${id}/voice.json`,{name:'Quốc Tuấn',option:1,sample:{proposed:`${id}/audio/sample.wav`,alternatives:[`${id}/voice-auditions/take-b/sample.wav`]}});
  write(`scripts/projects/${id}/scenes.json`,[{id:'02-mo-chuyen',title:'Mở chuyện',composition:'DemoMoChuyen'},{id:'09-ket',title:'Kết',composition:'DemoKet'}]);
@@ -107,8 +107,15 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   await page.waitForFunction(()=>/2\/2 cảnh đạt/.test(document.querySelector('#gates')?.textContent||''));
   assert.match(await next.innerText(),/Xem bản dựng/);mark('Scene clips: note required for Chưa đạt, earlier clips kept, all scenes Đạt opens the final review');
   await next.locator('[data-gate-review="review-preview"]').click();await dialog.locator('.rail-item').first().waitFor();
-  assert.match(await dialog.locator('.rail-prior summary').innerText(),/Đã duyệt trước/,'locked files count as reviewed by the lock');await page.keyboard.press('Escape');
-  mark('Final review opens after a manager lock (no hash entry for initial-lock)');
+  assert.match(await dialog.locator('.rail-prior summary').first().innerText(),/Đã duyệt trước/,'locked files count as reviewed by the lock');
+  const names=await dialog.locator('.rail-name').evaluateAll(n=>n.map(x=>x.firstChild.textContent));
+  assert.deepEqual(names.slice(0,2),['Xem video','Nghe lời đọc và nhạc']);assert.ok(!names.some(n=>/\.tsx$/.test(n)),'code is folded, not a review item');
+  assert.match(await dialog.locator('.rail-prior').last().innerText(),/Mã dựng, không cần đọc/);
+  assert.equal(await dialog.locator('.preview-clips video').count(),2);assert.equal(await dialog.locator('.preview-clips video').first().evaluate(v=>fetch(v.src).then(r=>r.status)),200);
+  await dialog.locator('.rail-item',{hasText:'Nghe lời đọc'}).click();assert.match(await dialog.locator('.voice-takes').innerText(),/Mở chuyện[\s\S]*Nhạc nền: Enlivening — Pufino/);
+  assert.equal(await dialog.locator('audio').last().evaluate(a=>fetch(a.src).then(r=>r.status)),200);
+  await page.keyboard.press('Escape');
+  mark('Final review: watch scene clips, listen to narration and music; code folded away; opens after a manager lock');
   for(const width of [768,390]){await page.setViewportSize({width,height:900});await open();
    assert.ok(await page.locator('#drawer').evaluate(d=>d.scrollWidth<=d.clientWidth+1),'page fits at '+width);const panel=await page.locator('.patch-panel').boundingBox(),scenes=await page.locator('.review-scenes').boundingBox();assert.ok(panel&&panel.y>=scenes.y+scenes.height-1,'patch panel stacks under the scenes at '+width);
    await page.locator('.patch-panel').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(out,`gates-${width}.png`)});

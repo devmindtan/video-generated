@@ -14,8 +14,10 @@ const runner = require('../production-automation/runner.cjs');
 const {load} = require('../../scripts/catalog/catalog.cjs');
 
 const FILE_NAMES = {'script.md': 'Kịch bản', 'brief.md': 'Brief: mục tiêu, dàn ý, quyết định sản xuất', 'sources.md': 'Nguồn và trích dẫn', 'script-review.md': 'Phản biện kịch bản',
-  'production-spec.md': 'Thông tin đã chốt', 'music.json': 'Nhạc nền', 'outro-music.json': 'Nhạc outro', 'voice.json': 'Giọng đọc đã chọn', 'image-prompts.md': 'Prompt hình ảnh', 'voice-audition.md': 'Nghe thử giọng', 'audition.json': 'Lời đọc nghe thử', 'qa.json': 'Kiểm tra QA', 'description.md': 'Mô tả đăng bài'};
+  'production-spec.md': 'Thông tin đã chốt', 'music.json': 'Nhạc nền', 'outro-music.json': 'Nhạc outro', 'voice.json': 'Giọng đọc đã chọn', 'image-prompts.md': 'Prompt hình ảnh', 'voice-audition.md': 'Ghi chép nghe thử giọng', 'audition.json': 'Lời đọc nghe thử', 'qa.json': 'Kiểm tra QA', 'captions.json': 'Phụ đề', 'description.md': 'Mô tả đăng bài'};
 const TEXT = /\.(md|json|txt|srt|tsx?|cjs|js)$/i;
+// Source code is hash-bound like every artifact but not something to read when reviewing: the page folds it away.
+const CODE = /\.(tsx?|jsx?|cjs|mjs|py)$/i;
 
 // Line diff (LCS) with word-level marks for replaced lines. Small documents only (a few thousand lines).
 function lcs(a, b, eq = (x, y) => x === y) {
@@ -103,6 +105,15 @@ function createApprovals(root) {
       return {voices: (Array.isArray(meta) ? meta : []).filter(m => typeof m.file === 'string' && fs.existsSync(path.join(root, project, 'audio', m.file)))
         .map(m => ({name: m.scene || m.file, file: m.file, durationSeconds: m.durationSeconds ?? null, voice: m.voice || ''}))};
     }
+    if (gate === 'review-preview') {
+      // The finished piece to look at and listen to: latest clip of every scene, the narration, the music; Studio links.
+      const entry = load(root).series.flatMap(s => s.projects).find(p => p.id === id), store = review.load(root, id);
+      const clips = review.sceneDefs(root, cli.plan(root, id)).map(def => {const list = store.scenes[def.id]?.clips || [];return list.length ? {scene: def.id, title: def.title, key: `${def.id}:${list.length - 1}`} : null;}).filter(Boolean);
+      let music = null;try {const m = JSON.parse(fs.readFileSync(path.join(root, 'src/projects', id, 'music.json'), 'utf8'));if (typeof m.file === 'string' && !m.file.includes('..') && fs.existsSync(path.join(root, 'public', m.file))) music = {title: [m.credit?.title, m.credit?.artists?.join(', ')].filter(Boolean).join(' — ') || path.basename(m.file), file: m.file};} catch {}
+      const titles = Object.fromEntries(review.sceneDefs(root, cli.plan(root, id)).map(d => [d.id, d.title]));
+      const voices = media(id, 'approve-voice').voices.map(v => ({...v, name: titles[v.name] || v.name}));
+      return {watch: {clips, compositions: (entry?.registrations || []).map(r => r.id)}, voices, music};
+    }
     if (gate === 'approve-assets') {
       // Pictures may be image files or drawings in code: list both, compositions open in Studio.
       const dir = path.join(root, project, 'images');
@@ -114,6 +125,7 @@ function createApprovals(root) {
   }
   // Stream a listed voice segment or image of a project's assets folder only.
   function projectMedia(id, kind, file) {
+    if (kind === 'music') {let m;try {m = media(id, 'review-preview');} catch {return null;}return m.music && m.music.file === file ? path.join(root, 'public', file) : null;}
     let m;try {m = media(id, kind === 'voice' ? 'approve-voice' : 'approve-assets');} catch {return null;}
     const ok = kind === 'voice' ? (m.voices || []).some(v => v.file === file) : (m.images || []).includes(file);
     return ok ? path.join(root, cli.plan(root, id).paths.assets, kind === 'voice' ? 'audio' : 'images', file) : null;
@@ -131,7 +143,7 @@ function createApprovals(root) {
       if (st.state === 'approved') for (const [rel, hash] of Object.entries(hashes)) earlier.set(rel, {hash, gate: NAMES[s.id] || s.id});
     }
     const files = g.files.map(f => {
-      const name = FILE_NAMES[path.basename(f.path)] || path.basename(f.path), base = {path: f.path, name, own: !inherited.has(f.path)};
+      const name = FILE_NAMES[path.basename(f.path)] || path.basename(f.path), base = {path: f.path, name, own: !inherited.has(f.path), code: CODE.test(f.path)};
       if (!f.exists) return {...base, status: 'missing'};
       const prior = earlier.get(f.path);
       if (prior && prior.hash === approvals.sha256(root, f.path)) return {...base, status: 'earlier', earlierGate: prior.gate};

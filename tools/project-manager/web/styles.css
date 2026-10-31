@@ -481,3 +481,9 @@ body.has-player .drawer.detail-page{padding-bottom:120px}
 @media(max-width:1100px){.progress-grid{grid-template-columns:1fr}.progress-timeline{position:static}}
 @media(max-width:760px){.progress-hero{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;padding:14px}.progress-big{min-width:0}.progress-big strong{font-size:28px}.progress-hero-main{grid-column:1/-1}.live-dot{grid-column:2;grid-row:1;justify-self:end}.progress-now ul{grid-template-columns:1fr}.progress-timeline li{grid-template-columns:1fr}.project-tabs{gap:0}.project-tabs button{flex:1;justify-content:center;padding:10px 8px;font-size:14px}}
 @media(max-width:480px){.project-tabs .tab-flag{font-size:0;width:8px;height:8px;padding:0}}
+/* Final review: scene clips side by side (portrait), captions as a timed table per scene. */
+.preview-clips{list-style:none;margin:6px 0 16px;padding:0 18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px}
+.preview-clips li{display:grid;gap:6px;min-width:0}.preview-clips strong{font-size:14px;color:var(--ink);overflow-wrap:anywhere}
+.preview-clips video{width:100%;aspect-ratio:9/16;background:#000;border-radius:8px;object-fit:contain}
+.caption-view{padding:4px 18px 8px}.caption-view h4{margin:14px 0 6px;font-size:14px;color:var(--ink)}
+.caption-view td{padding:6px 10px;font-size:15px;vertical-align:top}.caption-view .caption-time{white-space:nowrap;color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px;width:1%}
