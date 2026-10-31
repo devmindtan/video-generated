@@ -184,7 +184,32 @@
     }
   ],
   "patches": [],
-  "scenes": {},
+  "scenes": {
+    "02-mo-chuyen": {
+      "clips": [
+        {
+          "file": "projects/book-hvtt-001-overview/review/02-mo-chuyen-20261031T175648.mp4",
+          "sha256": "d08b3048d80245b474f7034fab6ef8d9f2dca8f686415d4a6d52668daa69da0f",
+          "renderedAt": "2026-10-31T17:58:33.013Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        },
+        {
+          "file": "projects/book-hvtt-001-overview/review/02-mo-chuyen-20261031T180019.mp4",
+          "sha256": "a57ab5bf6773b7a2ca0a6ff60b822d67c075e830107f7a58532923f4f4a1acfd",
+          "renderedAt": "2026-10-31T18:02:28.671Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        }
+      ]
+    }
+  },
   "notes": {},
   "lockReturns": [
     {
