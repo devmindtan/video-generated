@@ -85,6 +85,16 @@ Bạn thêm quy tắc và ghi chú vào `series/<channel>/<series>/workflow.json
 
 Agent đọc `general` và mục của bước đang làm trước khi làm; runner chèn chúng vào `project_context.md`. Quy tắc/ghi chú chỉ bổ sung hướng dẫn, không đổi bước, cổng duyệt, và không mở khóa render, đăng tải hay sinh nội dung trả phí. Lưu từ web kiểm tra phiên bản (sửa ngoài trang thì web từ chối ghi đè) và giữ bản cũ trong `.manager-history/`.
 
+## Dự án chưa đặt tên
+
+Để trống tên khi tạo (trang quản lý hoặc `npm run projects -- create --series <series> --title '' --format short`) thì dự án nhận tên tạm `Chưa đặt tên N`, mã `chua-dat-ten-N` và `autoNamed: true`. Khi bắt đầu làm, agent đổi sang tên hợp nội dung:
+
+```sh
+npm run projects -- rename chua-dat-ten-1 --id ten-mo-ta --title 'Tên phù hợp'
+```
+
+Lệnh chuyển bốn thư mục của dự án, thay mã và dạng PascalCase (ID Studio, tên component, đường dẫn `staticFile`/script) trong file của dự án, `registry.tsx`, `package.json`, đổi tiêu đề brief và bỏ `autoNamed`; không ghi vào `approvals.json`. Chỉ dự án tên tạm mới đổi được; dự án đã có tên giữ nguyên mã, đường dẫn và ID.
+
 ## Thêm series
 
 ```sh

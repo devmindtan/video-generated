@@ -14,7 +14,7 @@ function features(root){
     const imported=safe(p.paths.assets);
     if(fs.existsSync(imported)&&!fs.lstatSync(imported).isSymbolicLink())for(const name of ['imported-video.mp4','imported-video.webm']){
       const file=safe(path.join(p.paths.assets,name));if(!fs.existsSync(file)||fs.lstatSync(file).isSymbolicLink()||!fs.statSync(file).isFile())continue;
-      const st=fs.statSync(file);files.set(file,{file,name,kind:'video',size:st.size,modified:st.mtimeMs,imported:true});
+      const st=fs.statSync(file);files.set(file,{file,name,kind:'original',size:st.size,modified:st.mtimeMs,imported:true});
     }
     for(const r of p.registrations){
       const extensions=r.kind==='Composition'?['.mp4','.webm']:['.png','.jpg','.jpeg','.webp'];

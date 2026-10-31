@@ -73,7 +73,7 @@ function createStore(root) {
       try {return {file:secureFile(base,path.join(images,name),imageTypes),type:'scene'};} catch {}
     }
     // No thumbnail or scene image: show a frame of the exported/imported video, else the composition's source footage.
-    const video = extra.media(project.id,'video')?.file || (()=>{
+    const video = (extra.media(project.id,'video')||extra.media(project.id,'original'))?.file || (()=>{
       const folder = path.join(base,'video');
       if (!exists(folder)) return null;
       for (const name of fs.readdirSync(folder).sort()) {
@@ -106,7 +106,7 @@ function createStore(root) {
     const projects = catalog.series.flatMap(series=>series.projects.map(project=>{
       const node = nodes.find(n=>n.project===project.id&&n.kind==='Composition');
       const image = preview(project);
-      const renderedVideo=extra.media(project.id,'video'),renderedThumbnail=extra.media(project.id,'thumbnail');
+      const renderedVideo=extra.media(project.id,'video'),originalVideo=extra.media(project.id,'original'),renderedThumbnail=extra.media(project.id,'thumbnail');
       const video = project.registrations.find(r=>r.kind==='Composition');
       const thumbnail = project.registrations.find(r=>r.kind==='Still');
       const source = path.join(location(project.paths.source),'Video.tsx');
@@ -114,9 +114,9 @@ function createStore(root) {
       const updatedAt = exists(source)?fs.statSync(source).mtime.toISOString():exists(brief)?fs.statSync(brief).mtime.toISOString():null;
       return {id:project.id,title:project.title,status:project.status,format:project.format,series:series.id,channel:series.channel,
         seriesTitle:series.title,durationSeconds:node?.fps&&node.durationFrames?node.durationFrames/node.fps:project.durationSeconds??null,
-        renderedVideo:Boolean(renderedVideo),renderedThumbnail:Boolean(renderedThumbnail),importedVideo:Boolean(renderedVideo?.imported),videoId:video?.id||null,thumbnailId:thumbnail?.id||null,previewType:image?.type||null,updatedAt,book:project.book||null,
+        renderedVideo:Boolean(renderedVideo),renderedThumbnail:Boolean(renderedThumbnail),importedVideo:Boolean(originalVideo),videoId:video?.id||null,thumbnailId:thumbnail?.id||null,previewType:image?.type||null,updatedAt,book:project.book||null,
         hasScript:exists(path.join(location(project.paths.docs),'script.md')),
-        hasDescription:exists(path.join(location(project.paths.docs),'description.md'))};
+        hasDescription:exists(path.join(location(project.paths.docs),'description.md')),autoNamed:Boolean(project.autoNamed)};
     }));
     return {channels:catalog.channels,series:catalog.series.map(s=>({id:s.id,title:s.title,channel:s.channel,summary:s.summary,
       formats:s.formats,projectCount:s.projects.length})),projects,books:catalog.series.flatMap(books),
@@ -184,11 +184,11 @@ function createStore(root) {
     return createProject(catalog,options);
   }
   async function createWithVideo(body,name,request) {
-    const catalog=load(root);validate(catalog);const series=catalog.series.find(s=>s.id===body.series),id=checkedId(body.id),ext=path.extname(String(name||'')).toLowerCase();
+    const catalog=load(root);validate(catalog);const series=catalog.series.find(s=>s.id===body.series),id=body.id?checkedId(body.id):null,ext=path.extname(String(name||'')).toLowerCase();
     if(!series||contentChannels.has(series.channel))throw new Error('Chỉ import video có sẵn cho dự án thuộc kênh ngoài');
-    if(typeof body.title!=='string'||!body.title.trim()||!series.formats.includes(body.format))throw new Error('Tên dự án và định dạng không hợp lệ');
+    if(typeof body.title!=='string'||!series.formats.includes(body.format))throw new Error('Tên dự án và định dạng không hợp lệ');
     if(typeof name!=='string'||name!==path.basename(name)||name.length>180||/[\x00-\x1f\\/]/.test(name)||!videoTypes.has(ext))throw new Error('Chỉ nhận video MP4 hoặc WebM có tên hợp lệ');
-    if(catalog.series.some(s=>s.projects.some(p=>p.id===id)))throw new Error(`Project slug already exists: ${id}`);
+    if(id&&catalog.series.some(s=>s.projects.some(p=>p.id===id)))throw new Error(`Project slug already exists: ${id}`);
     const staging=location('.manager-staging');fs.mkdirSync(staging,{recursive:true});const temp=path.join(staging,`.project-video-${crypto.randomUUID()}`),handle=await fs.promises.open(temp,'wx'),hash=crypto.createHash('sha256');
     let bytes=0,head=Buffer.alloc(0),created=null,dest=null;
     try{

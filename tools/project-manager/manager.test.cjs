@@ -80,9 +80,9 @@ test('external client projects can import an existing video without a fake Compo
   const upload=await fetch(f.base+'/api/projects/import?'+params,{method:'POST',headers:{Origin:f.base,'Content-Type':'application/octet-stream','X-Workspace-Token':f.workspace.token},body:mp4});assert.equal(upload.status,201,await upload.clone().text());
   const created=await upload.json();assert.equal(created.registrations.length,0);assert.equal(created.importedVideo.originalName,'ban-giao.mp4');
   const file=path.join(f.root,'public/customer-cut/imported-video.mp4'),meta=JSON.parse(fs.readFileSync(path.join(f.root,'docs/projects/customer-cut/imported-video.json'),'utf8'));assert.deepEqual(fs.readFileSync(file),mp4);assert.equal(meta.sha256,created.importedVideo.sha256);
-  const workspace=await (await fetch(f.base+'/api/workspace')).json(),project=workspace.projects.find(p=>p.id==='customer-cut');assert.equal(project.renderedVideo,true);assert.equal(project.importedVideo,true);assert.equal(project.videoId,null);
+  const workspace=await (await fetch(f.base+'/api/workspace')).json(),project=workspace.projects.find(p=>p.id==='customer-cut');assert.equal(project.renderedVideo,false);assert.equal(project.importedVideo,true);assert.equal(project.videoId,null);
   const detail=await (await fetch(f.base+'/api/project?id=customer-cut')).json();assert.ok(detail.documents.some(d=>d.name==='Video đã import'));
-  const media=await fetch(f.base+'/api/media?id=customer-cut&kind=video',{headers:{Range:'bytes=4-7'}});assert.equal(media.status,206);assert.equal(await media.text(),'ftyp');
+  const media=await fetch(f.base+'/api/media?id=customer-cut&kind=original',{headers:{Range:'bytes=4-7'}});assert.equal(media.status,206);assert.equal(await media.text(),'ftyp');
   const blocked=new URLSearchParams({series:'demo',id:'wrong-channel',title:'Sai kênh',format:'short',name:'clip.mp4'}),rejected=await fetch(f.base+'/api/projects/import?'+blocked,{method:'POST',headers:{Origin:f.base,'Content-Type':'application/octet-stream','X-Workspace-Token':f.workspace.token},body:mp4});assert.equal(rejected.status,400);assert.ok(!fs.existsSync(path.join(f.root,'docs/projects/wrong-channel')));
 });
 test('folder opening is limited to known project directories and series cannot be created from the manager',async t=>{
