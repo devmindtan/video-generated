@@ -47,6 +47,20 @@
           "kind": "Composition"
         }
       ]
+    },
+    {
+      "id": "flower-knows-powder",
+      "title": "Phấn phủ Flower Knows — Adam bựa",
+      "status": "planning",
+      "format": "short",
+      "durationSeconds": null,
+      "paths": {
+        "source": "src/projects/flower-knows-powder",
+        "scripts": "scripts/projects/flower-knows-powder",
+        "docs": "docs/projects/flower-knows-powder",
+        "assets": "public/flower-knows-powder"
+      },
+      "registrations": []
     }
   ]
 }
