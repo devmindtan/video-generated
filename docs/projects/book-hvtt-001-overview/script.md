@@ -3,7 +3,7 @@
 - Project: book-hvtt-001-overview · Series: Đọc sách, hiểu mình · Mục tiêu 10–15 phút.
 - Trạng thái: **nháp v2, chưa duyệt**. Phần 4 (ý kiến cá nhân) để trống chờ người dùng.
 - Định hướng v2 (người dùng 2026-10-30): tập trung vào nội dung chính của sách, không bắt lỗi chi tiết (thuốc, số liệu…); những chỗ chưa hay chỉ gói trong một câu nhận xét chung ở cuối, theo lời người dùng.
-- Sửa v3 (người dùng 2026-10-31): viết lại cuối phần 0b và đầu phần 1 cho tự nhiên; thêm 3E (những điểm chưa đạt, nói ở mức tổng quát, không bắt lỗi từng chỗ) và 3F (tổng kết) trước phần 4 ý kiến cá nhân. Hai phần mới và hai đoạn sửa chưa có giọng; cần duyệt lại kịch bản.
+- Sửa v3 (người dùng 2026-10-31): viết lại cuối phần 0b và đầu phần 1 cho tự nhiên; thêm 3E (những điểm chưa đạt, nói ở mức tổng quát, không bắt lỗi từng chỗ) và 3F (tổng kết) trước phần 4 ý kiến cá nhân. Hai phần mới và hai đoạn sửa chưa có giọng; cần duyệt lại kịch bản. Theo ghi chú duyệt 2026-10-31: đổi câu kết 0b, bỏ câu năm ký/bản tái bản ở phần 1.
 - Nguồn: hồ sơ nghiên cứu sách (source SHA `3e6d6ca9…`), trích dẫn trong [sources.md](sources.md). Câu trong ngoặc kép là nguyên văn đã đối chiếu; còn lại là lời kể của kênh. Các chương có nội dung nhạy cảm hoặc sai thông tin (26, 34, 40 phần loạn thần, số liệu ch49) không được dùng làm nội dung.
 - Độ dài nháp: ≈ 1.790 tiếng lời đọc ≈ 10 phút ở nhịp 1× có nghỉ, chưa tính phần 4 và thẻ chuyển nhóm; ước tổng 11–12 phút. Mốc thời gian là ước tính, chốt sau khi nghe thử giọng.
 - Ký hiệu: `[nghỉ]` quãng nghỉ có chủ ý; `{nguồn}` chỉ để duyệt, không đọc.
@@ -26,7 +26,7 @@ Chúc cả nhà một ngày tràn đầy niềm vui và hạnh phúc. [nghỉ]
 
 Hồi nhỏ, chắc ai cũng từng chạy nhảy rồi vấp phải cái ngạch cửa, ngã nhào và khóc ré lên. Bà chạy tới. Việc đầu tiên bà làm không phải là la cháu, mà là mắng cái ngạch cửa: sao dám làm cháu bà đau. Đợi cháu nín rồi, bà mới dặn: lần sau đi đứng cẩn thận nghe con. [nghỉ]
 
-Lúc đó, đứa nhỏ chỉ thấy hả dạ vì cái ngạch cửa bị la. Lớn lên mới hiểu, bà đâu có giận gì cái ngạch cửa. Bà dỗ cái đau của cháu trước, rồi mới dạy sau. [nghỉ] Thấy được người kia đang đau, rồi mới nói điều phải. Cả cuốn sách hôm nay, nói gọn lại, là tập làm như bà: với người khác, và với chính mình.
+Lúc đó, đứa nhỏ chỉ thấy hả dạ vì cái ngạch cửa bị la. Lớn lên mới hiểu, bà đâu có giận gì cái ngạch cửa. Bà dỗ cái đau của cháu trước, rồi mới dạy sau. [nghỉ] Thấy được người kia đang đau, rồi mới nói điều phải. Bà làm được vậy mà chẳng cần ai dạy. Còn người lớn chúng ta, nhiều khi phải học lại từ đầu. Và cuốn sách hôm nay giúp mình học lại chuyện đó.
 
 {Ch50, PDF 273 — kể lại bằng lời kênh}
 
@@ -34,7 +34,7 @@ Lúc đó, đứa nhỏ chỉ thấy hả dạ vì cái ngạch cửa bị la. L
 
 Mở cuốn sách ra, thứ làm mình chú ý đầu tiên là mục lục. Năm mươi chương, chương nào cũng chỉ mang tên một trạng thái của lòng người: khổ đau, tức giận, ghen tuông, cô đơn, lo lắng; rồi tha thứ, lắng nghe, biết đủ, bình yên. Đọc lướt qua thôi đã thấy như đang gọi tên những ngày vui buồn của chính mình. [nghỉ]
 
-Các chương khá độc lập với nhau. Hôm nào đang lo thì mở chương Lo Lắng, hôm nào đang giận thì mở chương Tức Giận, không cần đọc theo thứ tự. Lời tác giả ở cuối sách ký từ năm 2010, còn bản mình đọc là bản tái bản đã được chỉnh lý. [nghỉ]
+Các chương khá độc lập với nhau. Hôm nào đang lo thì mở chương Lo Lắng, hôm nào đang giận thì mở chương Tức Giận, không cần đọc theo thứ tự. [nghỉ]
 
 Chất liệu của sách đến từ đạo Phật, từ văn hóa Việt và từ trải nghiệm riêng của tác giả. Chính tác giả cũng viết rằng đây "không hẳn là một cuốn sách tâm lý học". Nên hãy đọc nó như lời tâm tình của một người đi trước, hơn là một giáo trình.
 
