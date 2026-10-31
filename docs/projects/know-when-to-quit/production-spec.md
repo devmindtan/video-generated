@@ -9,7 +9,7 @@
 ## Giọng
 
 - Lựa chọn 2, clone giọng `mushashi` (VoxCPM2 qua VoiceStudio, máy GPU `desktop-kndgm60`; laptop khi máy GPU tắt). Consent: permission theo `library/voice-references/mushashi/reference.json`.
-- Tốc độ gốc 1×, **+2 bán cung** giữ thời lượng (ghi chú khi chốt v1: bớt trầm; mẫu +1/+3 để so). Một giọng, một cách xử lý cho cả video. Chi tiết và đoạn mẫu: [voice-audition.md](voice-audition.md).
+- Tốc độ gốc 1×, **+1 bán cung** giữ thời lượng (người dùng chọn khi duyệt bản vá p1). Một giọng, một cách xử lý cho cả video. Chi tiết và đoạn mẫu: [voice-audition.md](voice-audition.md).
 - Lời đọc đầy đủ làm sau khi chốt ban đầu; giữ mọi take cũ; nghe lại thanh điệu, không coi điểm ASR là duyệt phát âm.
 
 ## Hình và chuyển động

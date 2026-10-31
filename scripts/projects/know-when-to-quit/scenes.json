@@ -4,8 +4,8 @@
     "title": "Cảnh 1: Sổ chi tiêu",
     "composition": "StoicKnowWhenToQuit",
     "frames": [
-      10,
-      160
+      8,
+      143
     ]
   },
   {
@@ -13,8 +13,8 @@
     "title": "Cảnh 2: Đồng hồ cát",
     "composition": "StoicKnowWhenToQuit",
     "frames": [
-      161,
-      479
+      144,
+      520
     ]
   },
   {
@@ -22,8 +22,8 @@
     "title": "Cảnh 3: Giếng khô",
     "composition": "StoicKnowWhenToQuit",
     "frames": [
-      480,
-      739
+      521,
+      809
     ]
   },
   {
@@ -31,8 +31,8 @@
     "title": "Cảnh 4: Ngã ba",
     "composition": "StoicKnowWhenToQuit",
     "frames": [
-      740,
-      1044
+      810,
+      1112
     ]
   },
   {
@@ -40,8 +40,8 @@
     "title": "Cảnh 5: Đặt xẻng xuống",
     "composition": "StoicKnowWhenToQuit",
     "frames": [
-      1045,
-      1294
+      1113,
+      1418
     ]
   }
 ]

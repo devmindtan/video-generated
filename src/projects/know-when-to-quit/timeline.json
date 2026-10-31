@@ -1,56 +1,56 @@
 {
   "fps": 30,
-  "totalSeconds": 43.173,
+  "totalSeconds": 47.309,
   "scenes": [
     {
       "id": "01-ledger",
       "scene": 1,
-      "start": 0.35,
-      "duration": 5.011,
+      "start": 0.25,
+      "duration": 4.561,
       "audio": "know-when-to-quit/audio/01-ledger-voice-full.wav",
       "audioSeconds": 3.811,
       "speechStart": 0.0,
-      "speechEnd": 3.68
+      "speechEnd": 3.69
     },
     {
       "id": "02-hourglass",
       "scene": 2,
-      "start": 5.361,
-      "duration": 10.631,
+      "start": 4.811,
+      "duration": 12.552,
       "audio": "know-when-to-quit/audio/02-hourglass-voice-full.wav",
-      "audioSeconds": 9.431,
-      "speechStart": 0.02,
-      "speechEnd": 9.34
+      "audioSeconds": 11.802,
+      "speechStart": 0.0,
+      "speechEnd": 11.7
     },
     {
       "id": "03-dry-well",
       "scene": 3,
-      "start": 15.992,
-      "duration": 8.671,
+      "start": 17.363,
+      "duration": 9.652,
       "audio": "know-when-to-quit/audio/03-dry-well-voice-full.wav",
-      "audioSeconds": 7.471,
-      "speechStart": 0.02,
-      "speechEnd": 7.41
+      "audioSeconds": 8.902,
+      "speechStart": 0.0,
+      "speechEnd": 8.78
     },
     {
       "id": "04-fork",
       "scene": 4,
-      "start": 24.662,
-      "duration": 10.16,
+      "start": 27.014,
+      "duration": 10.075,
       "audio": "know-when-to-quit/audio/04-fork-voice-full.wav",
-      "audioSeconds": 8.96,
-      "speechStart": 0.0,
-      "speechEnd": 8.93
+      "audioSeconds": 9.325,
+      "speechStart": 0.01,
+      "speechEnd": 9.16
     },
     {
       "id": "05-valley",
       "scene": 5,
-      "start": 34.822,
-      "duration": 8.351,
+      "start": 37.089,
+      "duration": 10.22,
       "audio": "know-when-to-quit/audio/05-valley-voice-full.wav",
-      "audioSeconds": 6.151,
-      "speechStart": 0.0,
-      "speechEnd": 6.1
+      "audioSeconds": 8.52,
+      "speechStart": 0.01,
+      "speechEnd": 8.43
     }
   ]
 }

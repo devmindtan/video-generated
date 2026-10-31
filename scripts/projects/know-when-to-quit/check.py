@@ -27,7 +27,7 @@ def main():
         t += scene['duration']
         info = sf.info(ROOT / 'public' / scene['audio'])
         assert abs(info.duration - scene['audioSeconds']) < 0.01 and scene['audioSeconds'] < scene['duration'], scene['id']
-        assert m['pitchSemitones'] == 2 and m['durationPreserved'], 'one voice for the whole video'
+        assert m['pitchSemitones'] == 1 and m['durationPreserved'], 'one voice for the whole video'
         text = ' '.join(x['text'] for x in audition['sentences'] if x['scene'] == scene['scene'])
         assert ' '.join(p['text'] for p in pages) == text, f"{scene['id']}: captions must keep the script's words"
         assert all(0 <= p['startMs'] < p['endMs'] <= scene['duration'] * 1000 for p in pages), scene['id']

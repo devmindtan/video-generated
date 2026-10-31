@@ -41,7 +41,7 @@ const SCENES: {Art: FC<ArtProps>; shift: number; label: string; headline: ReactN
   {Art: LedgerArt, shift: -170, label: 'KIÊN TRÌ HAY TIẾC CÔNG?', headline: <>Tiếc công<br /><span style={{color: GOLD}}>không phải kiên trì.</span></>},
   {Art: HourglassArt, shift: -30, label: 'THỜI GIAN KHÔNG QUAY LẠI', headline: <>Đã bỏ ra.<br /><span style={{color: GOLD}}>Không lấy lại.</span></>},
   {Art: DryWellArt, shift: -90, label: 'ĐÚNG SỨC, SAI CHỖ', headline: <>Đào sâu hơn<br /><span style={{color: GOLD}}>vẫn không ra nước.</span></>},
-  {Art: ForkArt, shift: -10, label: 'MỘT CÂU HỎI', headline: <>Bắt đầu lại hôm nay,<br /><span style={{color: GOLD}}>bạn có chọn nó?</span></>},
+  {Art: ForkArt, shift: -10, label: 'MỘT CÂU HỎI', headline: <>Chọn lại từ đầu,<br /><span style={{color: GOLD}}>bạn còn chọn nó?</span></>},
   {Art: ValleyArt, shift: -200, label: 'BIẾT DỪNG CŨNG LÀ DŨNG CẢM', headline: <>Đặt xẻng xuống.<br /><span style={{color: GOLD}}>Đi tìm chỗ khác.</span></>},
 ];
 
@@ -51,7 +51,7 @@ const Scene: FC<{index: number; duration: number}> = ({index, duration}) => {
   const {Art, shift, label, headline} = SCENES[index];
   const last = index === SCENES.length - 1;
   const page = captions[index]?.find((c) => frame * 1000 / fps >= c.startMs && frame * 1000 / fps < c.endMs);
-  const captionParts = page?.text.split(/(tiếc công|kiên trì|lỡ rồi|không lấy lại|sai chỗ|không ra nước|thêm mệt|bắt đầu|thông tin|thất bại|nhìn rõ|cái xẻng|chỗ khác)/gi) ?? [];
+  const captionParts = page?.text.split(/(tiếc công|kiên trì|quán ăn lỗ|lỡ rồi|không lấy lại|sai chỗ|không ra nước|thêm mệt|bắt đầu|thông tin|thất bại|nhìn rõ|cái xẻng|chỗ khác)/gi) ?? [];
   const fadeIn = index === 0 ? 1 : interpolate(frame, [0, FADE * fps], [0, 1], clamp);
   const fadeOut = last ? interpolate(frame, [duration - 1.2 * fps, duration - 1], [1, 0], clamp) : 1;
   const copyIn = interpolate(frame, [0.2 * fps, 0.8 * fps], [0, 1], clamp);
@@ -81,7 +81,7 @@ export const KnowWhenToQuitVideo: FC = () => {
       const from = Math.round(s.start * fps), length = Math.round(s.duration * fps) + (i < timeline.scenes.length - 1 ? Math.round(FADE * fps) : 0);
       return <Sequence key={s.id} name={`${s.id} · cảnh ${s.scene}`} from={from} durationInFrames={Math.min(length, durationInFrames - from)}><Scene index={i} duration={length} /></Sequence>;
     })}
-    <Track name="Clone mushashi +2 bán cung · tốc độ gốc 1×">
+    <Track name="Clone mushashi +1 bán cung · tốc độ gốc 1×">
       {timeline.scenes.map((s) => <Audio key={s.id} name={s.id} from={Math.round(s.start * fps)} src={staticFile(s.audio)} volume={1} />)}
     </Track>
     <Track name="snowfall · Chỉnh đầu/cuối trong Edit">

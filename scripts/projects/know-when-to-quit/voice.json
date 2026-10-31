@@ -1,22 +1,18 @@
 {
-  "voice": "Clone giọng mushashi +2 bán cung",
-  "name": "Clone giọng mushashi +2 bán cung",
+  "voice": "Clone giọng mushashi +1 bán cung",
+  "name": "Clone giọng mushashi +1 bán cung",
   "option": 2,
   "engine": "VoxCPM2 qua VoiceStudio (máy GPU desktop-kndgm60; laptop khi máy GPU tắt)",
   "reference": "library/voice-references/mushashi/clips/002288-15s.wav",
   "referenceText": "tảng đá mà họ không cần phải mang theo. Yamamoto nhìn thẳng vào Takeshi, nhưng những lời ông nói dường như vang vọng xuyên qua thời gian. Những ai khám phá ra Jokudo, những người học cách bước đi trên con đường của riêng mình, không bị gánh nặng bởi những thứ vô ích.",
   "referenceTextSource": "faster-whisper medium cục bộ trên đoạn mẫu, sửa \"vụ ích\" → \"vô ích\"; tên riêng chưa kiểm",
   "consent": "permission",
-  "pitchSemitones": 2,
+  "pitchSemitones": 1,
   "speed": 1,
-  "processing": "clone từng cảnh theo audition.json (máy GPU), tốc độ gốc 1×; +2 bán cung giữ thời lượng (soxr + atempo, cùng cách voice B); một giọng cho cả video; build-voice.py",
+  "processing": "clone trên máy GPU, tốc độ gốc 1×; cảnh 1 một take, cảnh 2–5 clone từng câu rồi ghép với khoảng nghỉ của audition.json; +1 bán cung giữ thời lượng (soxr + atempo); một giọng cho cả video; build-voice.py",
   "sample": {
-    "proposed": "know-when-to-quit/voice-auditions/pitch-samples/scene-01-sang2.wav",
-    "alternatives": [
-      "know-when-to-quit/voice-auditions/pitch-samples/scene-01-sang1.wav",
-      "know-when-to-quit/voice-auditions/pitch-samples/scene-01-sang3.wav"
-    ],
-    "status": "bản vá 1: chờ người dùng nghe chọn cao độ"
+    "proposed": "know-when-to-quit/voice-auditions/pitch-samples/scene-01-sang1.wav",
+    "status": "người dùng đã chọn +1 bán cung khi duyệt bản vá p1"
   },
   "segments": {
     "01-ledger": {
@@ -45,5 +41,5 @@
       "sourceTake": "voice-auditions/clone-mushashi-v3-full/scene-05-clone.wav"
     }
   },
-  "selection": "Bản chốt v1 chọn đoạn mẫu v2 (có lời bản mẫu); ghi chú khi chốt: tăng cao độ vài bậc để bớt trầm → đề xuất +2 bán cung (nghe so +1/+3)"
+  "selection": "Bản chốt v1 chọn đoạn mẫu v2; bản vá p1 người dùng chọn mẫu +1 bán cung (2026-10-31)"
 }

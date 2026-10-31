@@ -3,7 +3,7 @@
 Takes stay untouched in public/know-when-to-quit/voice-auditions/; this writes pitch-shifted copies (duration
 preserved, same method as book-hvtt voice B) to public/know-when-to-quit/audio/, caption pages aligned to the
 script's own words (ASR only supplies timing), and src/projects/know-when-to-quit/timeline.json, which drives
-every scene start and the composition length. Also writes the +1/+2/+3 pitch samples of scene 1 for review.
+every scene start and the composition length, plus scripts/projects/know-when-to-quit/scenes.json for review clips.
 Usage: HF_HUB_OFFLINE=1 .venv/bin/python scripts/projects/know-when-to-quit/build-voice.py
 """
 import difflib, hashlib, importlib.util, json, re, unicodedata
@@ -16,16 +16,12 @@ SLUG = 'know-when-to-quit'
 TAKES = ROOT / 'public' / SLUG / 'voice-auditions'
 AUDIO = ROOT / 'public' / SLUG / 'audio'
 SRC = ROOT / 'src/projects' / SLUG
-PITCH = 2  # user note on the lock (2026-10-31): a little higher, less deep
-LEAD, GAP, TAIL = 0.35, 1.2, 2.2  # seconds: before scene 1, between scenes, after the last line
-# scene -> (take folder, file); scene 2 uses the seed-7 retake (no stray syllable, "Ba năm" heard right).
-PICKED = {
-    1: ('clone-mushashi-v3-full', 'scene-01-clone.wav'),
-    2: ('clone-mushashi-v3-s2-seed7', 'scene-02-clone.wav'),
-    3: ('clone-mushashi-v3-full', 'scene-03-clone.wav'),
-    4: ('clone-mushashi-v3-full', 'scene-04-clone.wav'),
-    5: ('clone-mushashi-v3-full', 'scene-05-clone.wav'),
-}
+PITCH = 1  # user pick on patch p1 (2026-10-31): the +1 semitone sample
+LEAD, GAP, TAIL = 0.25, 0.75, 1.7  # seconds: before scene 1, between scenes, after the last line
+# Scene 1 (approved clip): one take. Scenes 2–5 (scene notes: pacing, clipped "mệt", rewritten lines): one clone
+# per sentence from lines-v4.txt, joined with each sentence's pauseAfter from audition.json.
+SINGLE = {1: ('clone-mushashi-v3-full', 'scene-01-clone.wav')}
+LINES_TAKE = 'clone-mushashi-v4-lines'
 NAMES = {1: '01-ledger', 2: '02-hourglass', 3: '03-dry-well', 4: '04-fork', 5: '05-valley'}
 
 spec = importlib.util.spec_from_file_location('variants', ROOT / 'scripts/projects/book-hvtt-001-overview/voice-variants.py')
@@ -44,6 +40,38 @@ def speech_span(data, sr):
     frames = level[: len(level) // 480 * 480].reshape(-1, 480).max(1)
     on = np.where(frames > frames.max() * 0.06)[0]
     return on[0] * 480 / sr, (on[-1] + 1) * 480 / sr
+
+
+def trimmed(data, sr):
+    """One sentence without the clone's leading/trailing silence; a generous tail keeps soft word endings."""
+    level = np.abs(data if data.ndim == 1 else data.mean(1))
+    on = np.where(level > level.max() * 0.025)[0]
+    a, b = max(0, on[0] - int(0.04 * sr)), min(len(data), on[-1] + int(0.22 * sr))
+    out = data[a:b].copy()
+    ramp = int(0.015 * sr)
+    out[:ramp] *= np.linspace(0, 1, ramp)[:, None] if out.ndim > 1 else np.linspace(0, 1, ramp)
+    out[-ramp:] *= np.linspace(1, 0, ramp)[:, None] if out.ndim > 1 else np.linspace(1, 0, ramp)
+    return out
+
+
+def scene_audio(n, sentences):
+    """(audio, sample rate, source takes) for a scene: the single take, or its sentences joined with authored pauses."""
+    if n in SINGLE:
+        take, name = SINGLE[n]
+        data, sr = sf.read(TAKES / take / name, always_2d=False)
+        return data, sr, [f'voice-auditions/{take}/{name}']
+    # Sentence files are found by their text in the take's manifest, so dropping a line never shifts the others.
+    files = {f['text']: f['file'] for f in json.loads((TAKES / LINES_TAKE / 'manifest.json').read_text())['files']}
+    parts, sources, sr = [], [], None
+    mine = [x for x in sentences if x['scene'] == n]
+    for k, x in enumerate(mine):
+        name = files[x['text']]
+        data, sr = sf.read(TAKES / LINES_TAKE / name, always_2d=False)
+        parts.append(trimmed(data, sr))
+        if k < len(mine) - 1:
+            parts.append(np.zeros((int(x['pauseAfter'] * sr),) + data.shape[1:]))
+        sources.append(f'voice-auditions/{LINES_TAKE}/{name}')
+    return np.concatenate(parts), sr, sources
 
 
 def captions_for(text, words):
@@ -101,8 +129,8 @@ def main():
     audition = json.loads((ROOT / 'scripts/projects' / SLUG / 'audition.json').read_text())
     AUDIO.mkdir(parents=True, exist_ok=True)
     scenes, captions, meta, t = [], [], [], LEAD
-    for n, (take, name) in PICKED.items():
-        data, sr = sf.read(TAKES / take / name, always_2d=False)
+    for n in NAMES:
+        data, sr, sources = scene_audio(n, audition['sentences'])
         shifted = variants.shift(data, sr, PITCH)
         wav = AUDIO / f'{NAMES[n]}-voice-full.wav'
         sf.write(wav, shifted, sr, subtype='PCM_24')
@@ -115,13 +143,13 @@ def main():
         heard = ' '.join(s.text.strip() for s in segs)
         dur = len(mono) / sr
         s0, s1 = speech_span(shifted, sr)
-        length = dur + (TAIL if n == len(PICKED) else GAP)
+        length = dur + (TAIL if n == len(NAMES) else GAP)
         scenes.append({'id': NAMES[n], 'scene': n, 'start': round(t, 3), 'duration': round(length, 3), 'audio': f'{SLUG}/audio/{wav.name}',
                        'audioSeconds': round(dur, 3), 'speechStart': round(s0, 3), 'speechEnd': round(s1, 3)})
         captions.append(captions_for(text, words))
         ratio = difflib.SequenceMatcher(a=[norm(w) for w in text.split()], b=[norm(w.word) for w in words]).ratio()
         meta.append({'scene': NAMES[n], 'file': wav.name, 'sha256': sha(wav), 'durationSeconds': round(dur, 3), 'pitchSemitones': PITCH,
-                     'durationPreserved': True, 'sourceTake': f'voice-auditions/{take}/{name}', 'text': text, 'asrTranscript': heard,
+                     'durationPreserved': True, 'sourceTakes': sources, 'text': text, 'asrTranscript': heard,
                      'accentFreeWordMatch': round(ratio, 3), 'listeningReview': 'chưa nghe duyệt'})
         print(f'{NAMES[n]}: {dur:.2f}s, khớp chữ (bỏ dấu) {ratio:.2f} | ASR: {heard}')
         t += length
@@ -133,12 +161,6 @@ def main():
         'frames': [round(s['start'] * 30), round((s['start'] + s['duration']) * 30) - 1]} for s in scenes], ensure_ascii=False, indent=2) + '\n')
     (SRC / 'captions.json').write_text(json.dumps(captions, ensure_ascii=False, indent=2) + '\n')
     (AUDIO / 'voice-metadata.json').write_text(json.dumps(meta, ensure_ascii=False, indent=2) + '\n')
-    # Pitch samples of scene 1 for the patch: +1, +2 (used), +3.
-    sample_dir = TAKES / 'pitch-samples'
-    sample_dir.mkdir(exist_ok=True)
-    data, sr = sf.read(TAKES / PICKED[1][0] / PICKED[1][1], always_2d=False)
-    for st in (1, 2, 3):
-        sf.write(sample_dir / f'scene-01-sang{st}.wav', variants.shift(data, sr, st), sr, subtype='PCM_24')
     print(f'Tổng {total}s (dao động cho phép 42–48s)')
 
 

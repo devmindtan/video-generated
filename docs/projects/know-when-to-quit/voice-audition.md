@@ -23,3 +23,11 @@ ASR khớp không xác nhận thanh điệu; **chưa ai nghe duyệt**. Khi nghe
 - Ghi chú khi chốt "tăng cao độ vài bậc": cả video +2 bán cung, giữ thời lượng. Mẫu so sánh cảnh 1: `public/know-when-to-quit/voice-auditions/pitch-samples/scene-01-sang{1,2,3}.wav`.
 - File dùng trong video: `public/know-when-to-quit/audio/0N-*-voice-full.wav` (dựng bằng `npm run voice:know-when-to-quit`). Tổng video 43,2 giây.
 - ASR cần nghe kỹ (không phải duyệt thanh điệu): cảnh 1 "tiếc" → "tiết"; cảnh 3 "giếng" → "diễn" (cả hai take); cảnh 5 "xẻng" → "sẻng", "rảnh" → "dành". **Chưa ai nghe duyệt.**
+
+## Sau duyệt cảnh (2026-10-31, tối)
+
+- Bản vá p1: người dùng chọn mẫu **+1 bán cung** → cả video dùng +1.
+- Ghi chú cảnh: 2 khó hiểu "3 năm, 40 triệu"; 3 chữ "mệt" bị ngắt nhanh; 4 khó hiểu; 5 nhịp nhanh, ngắt chưa đúng chỗ.
+- Cảnh 2 và 4 viết lại; cảnh 2–5 clone **từng câu** trên máy GPU (`clone-mushashi-v4-lines`), ghép với khoảng nghỉ của `audition.json`, chừa 0,22 giây đuôi mỗi câu để không mất hơi cuối chữ. Cảnh 1 giữ take đã đạt, chỉ đổi cao độ.
+- Bỏ câu "Thử hỏi mình một câu." để giữ tổng trong 42–48 giây (47,3 giây).
+- ASR vẫn cần nghe kỹ: "tiếc" → "tiết" (1), "giếng" → "diễn" (3), "xẻng" → "sẻng", "rảnh" → "dành" (5). Chưa ai nghe duyệt.
