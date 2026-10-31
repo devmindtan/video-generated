@@ -1,0 +1,31 @@
+{
+  "durationSeconds": 26.233333,
+  "dimensions": [
+    720,
+    1280
+  ],
+  "fps": 30,
+  "sourceAudioMuted": true,
+  "captionsShown": false,
+  "voice": "Adam bựa",
+  "voiceProvider": "VieNeu-TTS v3 Turbo 3.8.3 (local CPU)",
+  "maximumTempo": 1.04,
+  "wordMatchRatios": [
+    1.0,
+    1.0,
+    0.625,
+    0.9231,
+    0.8889,
+    0.9167
+  ],
+  "voicePeakDbFS": -2.38,
+  "asrFlags": [
+    "01-greeting: \"quà\" nghe thành \"qua\"",
+    "03-product: tên tiếng Anh \"The Glam … Tint\" nghe thành \"thật là … Thin\"",
+    "04-swatch: \"chồng\" nghe thành \"trồng\"",
+    "05-korea: \"Xuất xứ\" nghe thành \"Xoát xứ\"",
+    "06-outro: \"Xinh … làm quà\" nghe thành \"sinh … lam qua\""
+  ],
+  "rendered": false,
+  "listeningReview": "Pending user audition in Studio; ASR word-match does not validate Vietnamese tones."
+}

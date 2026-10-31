@@ -1,0 +1,105 @@
+[
+  [
+    {
+      "text": "Xin chào các con vợ của chồng...",
+      "startMs": 0,
+      "endMs": 1920,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Quà gì mà gói kỹ ghê.",
+      "startMs": 2160,
+      "endMs": 3360,
+      "timestampMs": 2160,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Gỡ nơ từ từ thôi.",
+      "startMs": 0,
+      "endMs": 1400,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Giật mạnh là mất hết không khí lãng mạn.",
+      "startMs": 1700,
+      "endMs": 3520,
+      "timestampMs": 1700,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Merzy The Glam Mellow Tint.",
+      "startMs": 0,
+      "endMs": 2200,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Màu Leather Bookmark.",
+      "startMs": 2200,
+      "endMs": 3120,
+      "timestampMs": 2200,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Quẹt phát lên màu đỏ gạch.",
+      "startMs": 0,
+      "endMs": 1700,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Tên bookmark, đánh dấu luôn tay chồng.",
+      "startMs": 1820,
+      "endMs": 3796,
+      "timestampMs": 1820,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Xuất xứ Hàn Quốc.",
+      "startMs": 180,
+      "endMs": 1220,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "Môi khô thì dưỡng trước.",
+      "startMs": 1420,
+      "endMs": 2480,
+      "timestampMs": 1420,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Xinh, sang, hợp làm quà.",
+      "startMs": 180,
+      "endMs": 1680,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "Hết phim...",
+      "startMs": 1980,
+      "endMs": 2340,
+      "timestampMs": 1980,
+      "confidence": null
+    },
+    {
+      "text": "giải tán, các con vợ!",
+      "startMs": 2340,
+      "endMs": 3360,
+      "timestampMs": 2340,
+      "confidence": null
+    }
+  ]
+]

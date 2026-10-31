@@ -1,0 +1,86 @@
+[
+  {
+    "id": "01-greeting",
+    "start": 0,
+    "duration": 4,
+    "leadIn": 0.12,
+    "tail": 0.16,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.58,
+    "text": "Xin chào các con vợ của chồng... Quà gì mà gói kỹ ghê.",
+    "sentences": [
+      {"text": "Xin chào các con vợ của chồng...", "pauseAfter": 0.24, "gainDb": 0.35},
+      {"text": "Quà gì mà gói kỹ ghê.", "pauseAfter": 0, "gainDb": 0.3}
+    ]
+  },
+  {
+    "id": "02-ribbon",
+    "start": 4,
+    "duration": 5,
+    "leadIn": 0.1,
+    "tail": 0.14,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.56,
+    "text": "Gỡ nơ từ từ thôi. Giật mạnh là mất hết không khí lãng mạn.",
+    "sentences": [
+      {"text": "Gỡ nơ từ từ thôi.", "pauseAfter": 0.2, "gainDb": 0.15},
+      {"text": "Giật mạnh là mất hết không khí lãng mạn.", "pauseAfter": 0, "gainDb": 0.4}
+    ]
+  },
+  {
+    "id": "03-product",
+    "start": 9,
+    "duration": 4,
+    "leadIn": 0.08,
+    "tail": 0.12,
+    "minWordMatchRatio": 0.6,
+    "temperature": 0.52,
+    "text": "Merzy The Glam Mellow Tint. Màu Leather Bookmark.",
+    "sentences": [
+      {"text": "Merzy The Glam Mellow Tint.", "pauseAfter": 0.2, "gainDb": 0.2},
+      {"text": "Màu Leather Bookmark.", "pauseAfter": 0, "gainDb": 0.2}
+    ]
+  },
+  {
+    "id": "04-swatch",
+    "start": 13,
+    "duration": 6,
+    "leadIn": 0.1,
+    "tail": 0.14,
+    "minWordMatchRatio": 0.78,
+    "temperature": 0.56,
+    "text": "Quẹt phát lên màu đỏ gạch. Tên bookmark, đánh dấu luôn tay chồng.",
+    "sentences": [
+      {"text": "Quẹt phát lên màu đỏ gạch.", "pauseAfter": 0.28, "gainDb": 0.2},
+      {"text": "Tên bookmark, đánh dấu luôn tay chồng.", "pauseAfter": 0, "gainDb": 0.45}
+    ]
+  },
+  {
+    "id": "05-korea",
+    "start": 19,
+    "duration": 3,
+    "leadIn": 0.06,
+    "tail": 0.1,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.52,
+    "text": "Xuất xứ Hàn Quốc. Môi khô thì dưỡng trước.",
+    "sentences": [
+      {"text": "Xuất xứ Hàn Quốc.", "pauseAfter": 0.14, "gainDb": 0.2},
+      {"text": "Môi khô thì dưỡng trước.", "pauseAfter": 0, "gainDb": 0.1}
+    ]
+  },
+  {
+    "id": "06-outro",
+    "start": 22,
+    "duration": 4,
+    "leadIn": 0.06,
+    "tail": 0.1,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.6,
+    "text": "Xinh, sang, hợp làm quà. Hết phim... giải tán, các con vợ!",
+    "sentences": [
+      {"text": "Xinh, sang, hợp làm quà.", "pauseAfter": 0.18, "gainDb": 0.2},
+      {"text": "Hết phim... giải tán, các con vợ!", "pauseAfter": 0, "gainDb": 0.5}
+    ]
+  }
+]

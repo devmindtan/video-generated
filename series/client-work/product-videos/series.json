@@ -28,6 +28,25 @@
           "kind": "Composition"
         }
       ]
+    },
+    {
+      "id": "chua-dat-ten",
+      "title": "Chưa đặt tên",
+      "status": "existing",
+      "format": "short",
+      "durationSeconds": 26.2,
+      "paths": {
+        "source": "src/projects/chua-dat-ten",
+        "scripts": "scripts/projects/chua-dat-ten",
+        "docs": "docs/projects/chua-dat-ten",
+        "assets": "public/chua-dat-ten"
+      },
+      "registrations": [
+        {
+          "id": "ChuaDatTenAdam",
+          "kind": "Composition"
+        }
+      ]
     }
   ]
 }
