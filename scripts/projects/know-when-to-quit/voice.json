@@ -11,8 +11,10 @@
   "speed": 1,
   "processing": "clone từng cảnh theo audition.json, tốc độ gốc 1×, không đổi cao độ; một giọng cho cả video",
   "sample": {
-    "proposed": "voice-auditions/clone-mushashi-v2-reftext/scene-01-clone.wav",
-    "alternatives": ["voice-auditions/clone-mushashi-v1/scene-01-clone.wav"],
+    "proposed": "know-when-to-quit/voice-auditions/clone-mushashi-v2-reftext/scene-01-clone.wav",
+    "alternatives": [
+      "know-when-to-quit/voice-auditions/clone-mushashi-v1/scene-01-clone.wav"
+    ],
     "status": "chờ người dùng nghe chọn khi chốt ban đầu"
   },
   "segments": {}
