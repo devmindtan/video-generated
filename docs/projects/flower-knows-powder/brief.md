@@ -4,12 +4,13 @@
 - Series: product-videos
 - Project ID: flower-knows-powder
 - Định dạng: short
-- Thời lượng: chưa duyệt
-- Trạng thái: planning, chưa có composition/asset/giọng.
+- Thời lượng: 31,9 giây (video khách, bỏ logo CapCut)
+- Trạng thái: đã có composition `FlowerKnowsPowderAdam` và giọng; chờ nghe duyệt.
+- Giọng: lựa chọn 1 — preset VieNeu **Adam bựa** (không clone).
 
 ## Nội dung
 
-Chưa viết; cần duyệt mục tiêu, dàn ý và kịch bản trước sản xuất.
+Lồng giọng hài review hộp phấn phủ Flower Knows (nắp thiên nga, viền bạc, mặt phấn in hoa tuyết). Kịch bản: [script.md](script.md); thông số: [production-spec.md](production-spec.md).
 
 ## Nguồn và kiểm chứng
 

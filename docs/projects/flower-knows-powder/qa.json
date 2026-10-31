@@ -1,0 +1,31 @@
+{
+  "durationSeconds": 31.933333,
+  "dimensions": [
+    1080,
+    1440
+  ],
+  "fps": 30,
+  "sourceAudioMuted": true,
+  "captionsShown": false,
+  "voice": "Adam bựa",
+  "voiceProvider": "VieNeu-TTS v3 Turbo 3.8.3 (local CPU)",
+  "maximumTempo": 1.04,
+  "wordMatchRatios": [
+    1.0,
+    0.9167,
+    0.9091,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "voicePeakDbFS": -2.38,
+  "asrFlags": [
+    "02-swan-lid: \"Flower Knows\" nghe thành \"Flower Nose\"; \"hoa tuyết\" nghe thành \"hóa tuyết\"",
+    "03-stroke: \"chứ\" nghe thành \"chưa\"",
+    "04-silver-rim: \"Viền\" nghe thành \"Viên\"",
+    "06-snowflake: \"Dặm … kẻo\" nghe thành \"dạm … kèo\""
+  ],
+  "rendered": false,
+  "listeningReview": "Pending user audition in Studio; ASR word-match does not validate Vietnamese tones."
+}
