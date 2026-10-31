@@ -3,6 +3,7 @@
 - Project: book-hvtt-001-overview · Series: Đọc sách, hiểu mình · Mục tiêu 10–15 phút.
 - Trạng thái: **nháp v2, chưa duyệt**. Phần 4 (ý kiến cá nhân) để trống chờ người dùng.
 - Định hướng v2 (người dùng 2026-10-30): tập trung vào nội dung chính của sách, không bắt lỗi chi tiết (thuốc, số liệu…); những chỗ chưa hay chỉ gói trong một câu nhận xét chung ở cuối, theo lời người dùng.
+- Sửa v3 (người dùng 2026-10-31): viết lại cuối phần 0b và đầu phần 1 cho tự nhiên; thêm 3E (những điểm chưa đạt, nói ở mức tổng quát, không bắt lỗi từng chỗ) và 3F (tổng kết) trước phần 4 ý kiến cá nhân. Hai phần mới và hai đoạn sửa chưa có giọng; cần duyệt lại kịch bản.
 - Nguồn: hồ sơ nghiên cứu sách (source SHA `3e6d6ca9…`), trích dẫn trong [sources.md](sources.md). Câu trong ngoặc kép là nguyên văn đã đối chiếu; còn lại là lời kể của kênh. Các chương có nội dung nhạy cảm hoặc sai thông tin (26, 34, 40 phần loạn thần, số liệu ch49) không được dùng làm nội dung.
 - Độ dài nháp: ≈ 1.790 tiếng lời đọc ≈ 10 phút ở nhịp 1× có nghỉ, chưa tính phần 4 và thẻ chuyển nhóm; ước tổng 11–12 phút. Mốc thời gian là ước tính, chốt sau khi nghe thử giọng.
 - Ký hiệu: `[nghỉ]` quãng nghỉ có chủ ý; `{nguồn}` chỉ để duyệt, không đọc.
@@ -25,15 +26,15 @@ Chúc cả nhà một ngày tràn đầy niềm vui và hạnh phúc. [nghỉ]
 
 Hồi nhỏ, chắc ai cũng từng chạy nhảy rồi vấp phải cái ngạch cửa, ngã nhào và khóc ré lên. Bà chạy tới. Việc đầu tiên bà làm không phải là la cháu, mà là mắng cái ngạch cửa: sao dám làm cháu bà đau. Đợi cháu nín rồi, bà mới dặn: lần sau đi đứng cẩn thận nghe con. [nghỉ]
 
-Người bà ấy không học tâm lý ở đâu cả. Bà chỉ hiểu đứa cháu đang đau và đang sợ. Cuốn sách hôm nay nói về đúng điều đó: hiểu lòng mình, và hiểu lòng người.
+Lúc đó, đứa nhỏ chỉ thấy hả dạ vì cái ngạch cửa bị la. Lớn lên mới hiểu, bà đâu có giận gì cái ngạch cửa. Bà dỗ cái đau của cháu trước, rồi mới dạy sau. [nghỉ] Thấy được người kia đang đau, rồi mới nói điều phải. Cả cuốn sách hôm nay, nói gọn lại, là tập làm như bà: với người khác, và với chính mình.
 
 {Ch50, PDF 273 — kể lại bằng lời kênh}
 
 ## 1. Cuốn sách là gì (≈ 1:05–1:50)
 
-Cuốn sách là Hiểu về trái tim, của tác giả Minh Niệm. Lời tác giả ở cuối sách ký năm 2010, và bản mình đọc là bản tái bản có chỉnh lý.
+Mở cuốn sách ra, thứ làm mình chú ý đầu tiên là mục lục. Năm mươi chương, chương nào cũng chỉ mang tên một trạng thái của lòng người: khổ đau, tức giận, ghen tuông, cô đơn, lo lắng; rồi tha thứ, lắng nghe, biết đủ, bình yên. Đọc lướt qua thôi đã thấy như đang gọi tên những ngày vui buồn của chính mình. [nghỉ]
 
-Sách có năm mươi chương ngắn. Mỗi chương mang tên một trạng thái của lòng người: khổ đau, tức giận, ghen tuông, cô đơn, lo lắng; rồi tha thứ, lắng nghe, biết đủ, bình yên. Bạn có thể mở bất kỳ chương nào mà không cần đọc chương trước. [nghỉ]
+Các chương khá độc lập với nhau. Hôm nào đang lo thì mở chương Lo Lắng, hôm nào đang giận thì mở chương Tức Giận, không cần đọc theo thứ tự. Lời tác giả ở cuối sách ký từ năm 2010, còn bản mình đọc là bản tái bản đã được chỉnh lý. [nghỉ]
 
 Chất liệu của sách đến từ đạo Phật, từ văn hóa Việt và từ trải nghiệm riêng của tác giả. Chính tác giả cũng viết rằng đây "không hẳn là một cuốn sách tâm lý học". Nên hãy đọc nó như lời tâm tình của một người đi trước, hơn là một giáo trình.
 
@@ -130,6 +131,26 @@ Năm mươi chương còn lại, mình xin gom thành bốn nhóm để cả nh�
 **Nâng đỡ.** Chương cuối kể chuyện một con cò bị chiếc túi nylon đầy nước trùm lên đầu. Một cô gái sốt ruột lội ào xuống hồ, con cò hoảng sợ bay đi. Tác giả bước tới thật chậm, thật bình thản, và lần này con cò đứng yên cho gỡ túi. [nghỉ] Muốn giúp ai, phải biết đặt mình vào chỗ của họ; người đang gặp nạn vẫn cần được tôn trọng. Và người bà mắng cái ngạch cửa lúc đầu cũng nằm trong chương này. Bà hiểu cháu, vì bà cũng từng là một đứa trẻ.
 
 {Ch50 PDF 271–273 — kể lại bằng lời kênh}
+
+## 3E. Những điểm chưa đạt
+
+[nghỉ] Nói cho công bằng, cuốn sách cũng có những chỗ mình thấy chưa đạt.
+
+Thứ nhất, đọc liền một mạch thì dễ thấy lặp. Năm mươi chương, nhưng nhiều chương quay về cùng một lời khuyên: dừng lại, nhìn vào lòng mình, hiểu rồi mới thương. Mỗi ngày đọc vài chương sẽ thấm hơn là đọc một lèo cho xong.
+
+Thứ hai, một số đoạn tác giả nói về y khoa, khoa học hay đưa ra số liệu mà không ghi nguồn, và vài chỗ đến nay không còn đúng nữa. Những đoạn đó nên đọc như ý kiến riêng của tác giả. Còn chuyện sức khỏe, nhất là sức khỏe tinh thần, thì vẫn nên hỏi bác sĩ.
+
+Thứ ba, vài niềm tin tôn giáo và quan điểm đạo đức của tác giả được viết như điều hiển nhiên, chẳng hạn chuyện nợ cảm xúc phải trả qua nhiều đời. Nếu không cùng niềm tin ấy, bạn vẫn có thể giữ lại phần thực hành, và để phần niềm tin sang một bên.
+
+{Nhận xét của kênh ở mức tổng quát, theo yêu cầu người dùng 2026-10-31; không nhắc lại nội dung sai hoặc nhạy cảm. Căn cứ trong research.md: lặp ý là nhận xét của kênh; y khoa/số liệu không nguồn hoặc sai: Ch34 PDF 178–179, Ch42, Ch49, Ch12; niềm tin trình bày như sự thật: Ch11 PDF 55–60 (nợ cảm xúc qua nhiều thế hệ), Ch18, Ch12. Tác giả cũng tự nói sách "không hẳn là một cuốn sách tâm lý học" (PDF 277).}
+
+## 3F. Tổng kết
+
+[nghỉ] Tóm lại, Hiểu về trái tim xoay quanh một ý: nỗi khổ phần nhiều nằm ở cách lòng ta phản ứng, và muốn thương thì phải hiểu trước. Từ ý đó, sách đi qua bốn mảng: những cơn giận, sợ, lo trong lòng mình; chuyện thương và được thương; cách đi qua những lúc thất bại, mất mát; và sợi dây nối ta với mọi người. [nghỉ]
+
+Đây không phải cuốn sách để đọc một lần cho xong. Nó hợp để mỗi tối mở ra một chương, đúng với tâm trạng của ngày hôm đó. Nếu bạn đang hay giận, hay lo, hay thấy mình cô đơn giữa đông người, nhiều khả năng sẽ có một chương nói đúng chuyện của bạn.
+
+{Tổng kết theo yêu cầu người dùng 2026-10-31, trước ý kiến cá nhân; tóm lại phần 2 và bốn nhóm ở phần 3.}
 
 ## 4. Ý kiến cá nhân
 
