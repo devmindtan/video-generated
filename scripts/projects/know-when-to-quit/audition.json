@@ -5,15 +5,55 @@
   "tail": 0.8,
   "maxDurationSeconds": 60,
   "sentences": [
-    {"scene": 1, "text": "Ba năm. Bốn mươi triệu.", "pauseAfter": 0.45},
-    {"scene": 1, "text": "Và tối nào cũng tự nhủ: lỡ rồi, cố thêm chút nữa.", "pauseAfter": 0.65},
-    {"scene": 2, "text": "Nhiều khi ta ở lại không phải vì còn tin. Mà vì sợ ba năm kia thành vô ích.", "pauseAfter": 0.3},
-    {"scene": 2, "text": "Nhưng thời gian đã qua thì không lấy lại được, dù ở thêm bao lâu.", "pauseAfter": 0.65},
-    {"scene": 3, "text": "Đào giếng sai chỗ, đào sâu thêm cũng không ra nước.", "pauseAfter": 0.35},
-    {"scene": 3, "text": "Chịu khó là tốt. Nhưng chịu khó ở nơi không có mạch nước, thì chỉ là mệt thêm.", "pauseAfter": 0.65},
-    {"scene": 4, "text": "Thử hỏi mình: nếu hôm nay mới bắt đầu, biết hết những gì đang biết, mình có còn chọn việc này không?", "pauseAfter": 0.4},
-    {"scene": 4, "text": "Nếu là không, đó là thông tin, không phải thất bại.", "pauseAfter": 0.65},
-    {"scene": 5, "text": "Bỏ cuộc vì sợ khác với dừng lại vì đã nhìn rõ.", "pauseAfter": 0.4},
-    {"scene": 5, "text": "Đặt cái xẻng xuống. Để hai tay rảnh mà đi tìm chỗ khác.", "pauseAfter": 0}
+    {
+      "scene": 1,
+      "text": "Ba năm. Bốn mươi triệu.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Và tối nào cũng tự nhủ: lỡ rồi, cố thêm chút nữa.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 2,
+      "text": "Nhiều khi ta ở lại không phải vì còn tin. Mà vì sợ ba năm kia thành vô ích.",
+      "pauseAfter": 0.3
+    },
+    {
+      "scene": 2,
+      "text": "Nhưng thời gian đã qua thì không lấy lại được, dù ở thêm bao lâu.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 3,
+      "text": "Đào giếng sai chỗ, đào sâu thêm cũng không ra nước.",
+      "pauseAfter": 0.35
+    },
+    {
+      "scene": 3,
+      "text": "Chịu khó là tốt. Nhưng ở nơi không có nước, chịu khó chỉ thêm mệt.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 4,
+      "text": "Thử hỏi mình: nếu hôm nay mới bắt đầu, biết hết những gì đang biết, mình có còn chọn việc này không?",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 4,
+      "text": "Nếu là không, đó là thông tin, không phải thất bại.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 5,
+      "text": "Bỏ cuộc vì sợ khác với dừng lại vì đã nhìn rõ.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 5,
+      "text": "Đặt cái xẻng xuống. Để hai tay rảnh mà đi tìm chỗ khác.",
+      "pauseAfter": 0
+    }
   ]
 }

@@ -1,0 +1,19 @@
+{
+  "voice": "Clone giọng mushashi",
+  "name": "Clone giọng mushashi",
+  "option": 2,
+  "engine": "VoxCPM2 qua VoiceStudio (máy GPU desktop-kndgm60; laptop khi máy GPU tắt)",
+  "reference": "library/voice-references/mushashi/clips/002288-15s.wav",
+  "referenceText": "tảng đá mà họ không cần phải mang theo. Yamamoto nhìn thẳng vào Takeshi, nhưng những lời ông nói dường như vang vọng xuyên qua thời gian. Những ai khám phá ra Jokudo, những người học cách bước đi trên con đường của riêng mình, không bị gánh nặng bởi những thứ vô ích.",
+  "referenceTextSource": "faster-whisper medium cục bộ trên đoạn mẫu, sửa \"vụ ích\" → \"vô ích\"; tên riêng chưa kiểm",
+  "consent": "permission",
+  "pitchSemitones": 0,
+  "speed": 1,
+  "processing": "clone từng cảnh theo audition.json, tốc độ gốc 1×, không đổi cao độ; một giọng cho cả video",
+  "sample": {
+    "proposed": "voice-auditions/clone-mushashi-v2-reftext/scene-01-clone.wav",
+    "alternatives": ["voice-auditions/clone-mushashi-v1/scene-01-clone.wav"],
+    "status": "chờ người dùng nghe chọn khi chốt ban đầu"
+  },
+  "segments": {}
+}

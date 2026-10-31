@@ -1,8 +1,8 @@
-# Kịch bản nháp — Biết dừng cũng là dũng cảm
+# Kịch bản — Biết dừng cũng là dũng cảm
 
-45 giây · 1080×1920 · giọng clone (chờ file tham chiếu) · phong cách Stoicism điện ảnh.
+45 giây · 1080×1920 · giọng clone `mushashi` · phong cách Stoicism điện ảnh.
 
-Trạng thái: **nháp, chưa duyệt.** Lời đọc theo cụm ý liền mạch, tốc độ 1×; ngắt rõ sau từng con số ở cảnh 1; phụ đề căn theo bản thu.
+Trạng thái: **chờ chốt ban đầu** (đã qua phản biện: [script-review.md](script-review.md)). Lời đọc theo cụm ý liền mạch, tốc độ 1×; ngắt rõ sau từng con số ở cảnh 1; phụ đề căn theo bản thu.
 
 ## Cảnh 1 · 00–07 giây
 
@@ -14,7 +14,7 @@ Nhiều khi ta ở lại không phải vì còn tin. Mà vì sợ ba năm kia th
 
 ## Cảnh 3 · 17–27 giây
 
-Đào giếng sai chỗ, đào sâu thêm cũng không ra nước. Chịu khó là tốt. Nhưng chịu khó ở nơi không có mạch nước, thì chỉ là mệt thêm.
+Đào giếng sai chỗ, đào sâu thêm cũng không ra nước. Chịu khó là tốt. Nhưng ở nơi không có nước, chịu khó chỉ thêm mệt.
 
 ## Cảnh 4 · 27–37 giây
 
