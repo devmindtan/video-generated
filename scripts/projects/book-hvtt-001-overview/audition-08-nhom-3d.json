@@ -1,0 +1,109 @@
+{
+  "title": "Đọc sách, hiểu mình — tập 1 — 08-nhom-3d",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Nhóm cuối cùng nói về sợi dây nối ta với những người xung quanh.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Cô đơn.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Có người sống giữa gia đình, bạn bè mà vẫn thấy một mình, vì một bức tường vô hình: sự phòng thủ, tự ái, hay chính ta không chịu tin ai.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Lời khuyên của tác giả rất giản dị: \"Muốn có một người bạn tốt thì ta hãy là người bạn tốt trước đã.\"",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Và sau một lần đổ vỡ, đừng vội tìm người mới; hãy cho mình thời gian lành lại.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Biết ơn.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Trái cam trên tay ta là kết quả của hạt giống, của nước, gió, nắng và người trồng.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả nhắc rằng lời cảm ơn nên đến từ lòng biết ơn thật, chứ không chỉ là phép lịch sự.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Ta làm từ những thứ không phải ta.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Đây là hình ảnh mình nhớ nhất.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "\"Khi nấu được một tô canh chua, ta phải biết rằng cả tổ tiên đã cùng nấu với ta.\"",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Vì nếu không có những người đi trước, ta đâu biết nấu, thậm chí đâu có cái tên canh chua.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Thấy được như vậy thì khó mà kiêu ngạo, và khó mà sống chỉ cho riêng mình.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Nâng đỡ.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Chương cuối kể chuyện một con cò bị chiếc túi nylon đầy nước trùm lên đầu.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Một cô gái sốt ruột lội ào xuống hồ, con cò hoảng sợ bay đi.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả bước tới thật chậm, thật bình thản, và lần này con cò đứng yên cho gỡ túi.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Muốn giúp ai, phải biết đặt mình vào chỗ của họ; người đang gặp nạn vẫn cần được tôn trọng.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Và người bà mắng cái ngạch cửa lúc đầu cũng nằm trong chương này.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Bà hiểu cháu, vì bà cũng từng là một đứa trẻ.",
+      "pauseAfter": 0
+    }
+  ]
+}

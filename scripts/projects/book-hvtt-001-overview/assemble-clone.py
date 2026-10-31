@@ -28,15 +28,18 @@ def main():
     parser.add_argument('--id', default='clone-ban')
     parser.add_argument('--config', default='audition.json', help='Sentence/pause config in this folder')
     parser.add_argument('--out', required=True)
+    parser.add_argument('--choice', help='JSON {sentence text: clone take} overriding "last take wins" (build-body.py)')
     args = parser.parse_args()
     project = ROOT / 'scripts/projects/book-hvtt-001-overview'
     cfg = json.loads((project / args.config).read_text())
+    choice = json.loads(Path(args.choice).read_text()) if args.choice else {}
     parts = {}
     for take in args.clone:
         folder = ROOT / 'public/book-hvtt-001-overview/voice-auditions' / take
         clone = json.loads((folder / 'manifest.json').read_text())
         for f in clone['files']:
-            parts[f['text'].strip()] = (folder, f)
+            if choice.get(f['text'].strip(), take) == take:
+                parts[f['text'].strip()] = (folder, f)
     missing = [s['text'] for s in cfg['sentences'] if s['text'].strip() not in parts]
     if missing:
         raise RuntimeError(f'No clone for: {missing}')

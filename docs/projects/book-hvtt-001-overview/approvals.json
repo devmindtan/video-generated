@@ -16,6 +16,153 @@
       "approvedBy": "devmindtan",
       "approvedAt": "2026-10-30T14:52:19.071Z",
       "note": ""
+    },
+    {
+      "projectId": "book-hvtt-001-overview",
+      "stageId": "approve-script",
+      "decision": "approved",
+      "artifactSha256": {
+        "docs/projects/book-hvtt-001-overview/script-review.md": "df68cf5afe6a3fe5f84c6cdc80b5ad537a22035e9a4fad00a8689a276c606204",
+        "docs/projects/book-hvtt-001-overview/script.md": "b2ea5e787495f04f0594efbd45a3f5766e74f73dfba0779547acd0285c5401af",
+        "docs/projects/book-hvtt-001-overview/sources.md": "8c384181beec8d42fc0f45282189d0d0d47300012b0cf4bef1917341f70c25aa",
+        "docs/projects/book-hvtt-001-overview/brief.md": "27275c805cb9b3a21c53384915e33a04461d88ab27fe43d9400da34d94ce0a9b"
+      },
+      "missing": [],
+      "approvedBy": "devmindtan (trang quản lý)",
+      "approvedAt": "2026-10-31T02:17:09.913Z",
+      "note": ""
+    },
+    {
+      "projectId": "book-hvtt-001-overview",
+      "stageId": "approve-voice",
+      "decision": "approved",
+      "artifactSha256": {
+        "scripts/projects/book-hvtt-001-overview/audition.json": "a30f9eae004724b9821da215f1908d4f6327172664f1558470ff24126b84b97a",
+        "docs/projects/book-hvtt-001-overview/voice-audition.md": "9a9d20347afc22bc011ea72bba58b841d5316ff5365b54eed892b56dc9426582",
+        "docs/projects/book-hvtt-001-overview/script-review.md": "df68cf5afe6a3fe5f84c6cdc80b5ad537a22035e9a4fad00a8689a276c606204",
+        "docs/projects/book-hvtt-001-overview/script.md": "b2ea5e787495f04f0594efbd45a3f5766e74f73dfba0779547acd0285c5401af",
+        "docs/projects/book-hvtt-001-overview/sources.md": "8c384181beec8d42fc0f45282189d0d0d47300012b0cf4bef1917341f70c25aa",
+        "docs/projects/book-hvtt-001-overview/brief.md": "27275c805cb9b3a21c53384915e33a04461d88ab27fe43d9400da34d94ce0a9b"
+      },
+      "missing": [],
+      "approvedBy": "devmindtan (trang quản lý)",
+      "approvedAt": "2026-10-31T02:24:51.242Z",
+      "note": ""
+    },
+    {
+      "projectId": "book-hvtt-001-overview",
+      "stageId": "approve-script",
+      "decision": "approved",
+      "artifactSha256": {
+        "docs/projects/book-hvtt-001-overview/script-review.md": "df68cf5afe6a3fe5f84c6cdc80b5ad537a22035e9a4fad00a8689a276c606204",
+        "docs/projects/book-hvtt-001-overview/script.md": "b2ea5e787495f04f0594efbd45a3f5766e74f73dfba0779547acd0285c5401af",
+        "docs/projects/book-hvtt-001-overview/sources.md": "8c384181beec8d42fc0f45282189d0d0d47300012b0cf4bef1917341f70c25aa",
+        "docs/projects/book-hvtt-001-overview/brief.md": "979f288bf4a95ec5d34858eebf32f7ef4aec8b8599b2d0852208aaa070011262"
+      },
+      "missing": [],
+      "approvedBy": "devmindtan (trang quản lý)",
+      "approvedAt": "2026-10-31T03:35:30.932Z",
+      "note": ""
+    },
+    {
+      "projectId": "book-hvtt-001-overview",
+      "stageId": "approve-voice",
+      "decision": "approved",
+      "artifactSha256": {
+        "scripts/projects/book-hvtt-001-overview/audition.json": "a30f9eae004724b9821da215f1908d4f6327172664f1558470ff24126b84b97a",
+        "docs/projects/book-hvtt-001-overview/voice-audition.md": "61b47316bbcafbbf1dddf2741fd669de53242cd6a160f4026a33b849b0290caa",
+        "docs/projects/book-hvtt-001-overview/script-review.md": "df68cf5afe6a3fe5f84c6cdc80b5ad537a22035e9a4fad00a8689a276c606204",
+        "docs/projects/book-hvtt-001-overview/script.md": "b2ea5e787495f04f0594efbd45a3f5766e74f73dfba0779547acd0285c5401af",
+        "docs/projects/book-hvtt-001-overview/sources.md": "8c384181beec8d42fc0f45282189d0d0d47300012b0cf4bef1917341f70c25aa",
+        "docs/projects/book-hvtt-001-overview/brief.md": "979f288bf4a95ec5d34858eebf32f7ef4aec8b8599b2d0852208aaa070011262"
+      },
+      "missing": [],
+      "approvedBy": "devmindtan (trang quản lý)",
+      "approvedAt": "2026-10-31T03:36:00.332Z",
+      "note": ""
+    },
+    {
+      "projectId": "book-hvtt-001-overview",
+      "stageId": "approve-assets",
+      "decision": "approved",
+      "artifactSha256": {
+        "docs/projects/book-hvtt-001-overview/production-spec.md": "8c86a24909e2bec085c5f378280baeeb1f49e5729c546ab86fafe45a75763956",
+        "docs/projects/book-hvtt-001-overview/image-prompts.md": "20ca781bda1d997df30bd02e957f25b801ef1dc1353674a83144e8739dd4a55a",
+        "docs/projects/book-hvtt-001-overview/script-review.md": "df68cf5afe6a3fe5f84c6cdc80b5ad537a22035e9a4fad00a8689a276c606204",
+        "docs/projects/book-hvtt-001-overview/script.md": "b2ea5e787495f04f0594efbd45a3f5766e74f73dfba0779547acd0285c5401af",
+        "docs/projects/book-hvtt-001-overview/sources.md": "8c384181beec8d42fc0f45282189d0d0d47300012b0cf4bef1917341f70c25aa",
+        "docs/projects/book-hvtt-001-overview/brief.md": "979f288bf4a95ec5d34858eebf32f7ef4aec8b8599b2d0852208aaa070011262"
+      },
+      "missing": [],
+      "approvedBy": "devmindtan (trang quản lý)",
+      "approvedAt": "2026-10-31T04:47:19.097Z",
+      "note": ""
+    },
+    {
+      "projectId": "book-hvtt-001-overview",
+      "stageId": "approve-voice",
+      "decision": "approved",
+      "artifactSha256": {
+        "scripts/projects/book-hvtt-001-overview/audition.json": "a30f9eae004724b9821da215f1908d4f6327172664f1558470ff24126b84b97a",
+        "docs/projects/book-hvtt-001-overview/voice-audition.md": "f7eb5cbc0e35da41c0e7d43c521b775bf906a9d7828700cbe09786d21e089a42",
+        "docs/projects/book-hvtt-001-overview/script-review.md": "df68cf5afe6a3fe5f84c6cdc80b5ad537a22035e9a4fad00a8689a276c606204",
+        "docs/projects/book-hvtt-001-overview/script.md": "b2ea5e787495f04f0594efbd45a3f5766e74f73dfba0779547acd0285c5401af",
+        "docs/projects/book-hvtt-001-overview/sources.md": "8c384181beec8d42fc0f45282189d0d0d47300012b0cf4bef1917341f70c25aa",
+        "docs/projects/book-hvtt-001-overview/brief.md": "979f288bf4a95ec5d34858eebf32f7ef4aec8b8599b2d0852208aaa070011262"
+      },
+      "missing": [],
+      "approvedBy": "devmindtan (trang quản lý)",
+      "approvedAt": "2026-10-31T09:53:53.171Z",
+      "note": ""
+    },
+    {
+      "projectId": "book-hvtt-001-overview",
+      "stageId": "approve-script",
+      "decision": "approved",
+      "artifactSha256": {
+        "docs/projects/book-hvtt-001-overview/script-review.md": "df68cf5afe6a3fe5f84c6cdc80b5ad537a22035e9a4fad00a8689a276c606204",
+        "docs/projects/book-hvtt-001-overview/script.md": "9c62e542478463bd16440c2f512a9388d134a9f472bcd3f337daf83dcc235f02",
+        "docs/projects/book-hvtt-001-overview/sources.md": "8c384181beec8d42fc0f45282189d0d0d47300012b0cf4bef1917341f70c25aa",
+        "docs/projects/book-hvtt-001-overview/brief.md": "979f288bf4a95ec5d34858eebf32f7ef4aec8b8599b2d0852208aaa070011262"
+      },
+      "missing": [],
+      "approvedBy": "devmindtan (trang quản lý)",
+      "approvedAt": "2026-10-31T10:59:35.506Z",
+      "note": "Cả cuốn sách hôm nay, nói gọn lại, là tập làm như bà: với người khác, và với chính mình. -> Chỗ này chưa hay, Lời tác giả ở cuối sách ký từ năm 2010, còn bản mình đọc là bản tái bản đã được chỉnh lý. không cần đoạn này,"
+    },
+    {
+      "projectId": "book-hvtt-001-overview",
+      "stageId": "approve-voice",
+      "decision": "approved",
+      "artifactSha256": {
+        "scripts/projects/book-hvtt-001-overview/audition.json": "a30f9eae004724b9821da215f1908d4f6327172664f1558470ff24126b84b97a",
+        "docs/projects/book-hvtt-001-overview/voice-audition.md": "f7eb5cbc0e35da41c0e7d43c521b775bf906a9d7828700cbe09786d21e089a42",
+        "docs/projects/book-hvtt-001-overview/script-review.md": "df68cf5afe6a3fe5f84c6cdc80b5ad537a22035e9a4fad00a8689a276c606204",
+        "docs/projects/book-hvtt-001-overview/script.md": "9c62e542478463bd16440c2f512a9388d134a9f472bcd3f337daf83dcc235f02",
+        "docs/projects/book-hvtt-001-overview/sources.md": "8c384181beec8d42fc0f45282189d0d0d47300012b0cf4bef1917341f70c25aa",
+        "docs/projects/book-hvtt-001-overview/brief.md": "979f288bf4a95ec5d34858eebf32f7ef4aec8b8599b2d0852208aaa070011262"
+      },
+      "missing": [],
+      "approvedBy": "devmindtan (trang quản lý)",
+      "approvedAt": "2026-10-31T10:59:45.133Z",
+      "note": "Cả cuốn sách hôm nay, nói gọn lại, là tập làm như bà: với người khác, và với chính mình. -> Chỗ này chưa hay, Lời tác giả ở cuối sách ký từ năm 2010, còn bản mình đọc là bản tái bản đã được chỉnh lý. không cần đoạn này,"
+    },
+    {
+      "projectId": "book-hvtt-001-overview",
+      "stageId": "approve-assets",
+      "decision": "approved",
+      "artifactSha256": {
+        "docs/projects/book-hvtt-001-overview/production-spec.md": "8c86a24909e2bec085c5f378280baeeb1f49e5729c546ab86fafe45a75763956",
+        "docs/projects/book-hvtt-001-overview/image-prompts.md": "20ca781bda1d997df30bd02e957f25b801ef1dc1353674a83144e8739dd4a55a",
+        "docs/projects/book-hvtt-001-overview/script-review.md": "df68cf5afe6a3fe5f84c6cdc80b5ad537a22035e9a4fad00a8689a276c606204",
+        "docs/projects/book-hvtt-001-overview/script.md": "9c62e542478463bd16440c2f512a9388d134a9f472bcd3f337daf83dcc235f02",
+        "docs/projects/book-hvtt-001-overview/sources.md": "8c384181beec8d42fc0f45282189d0d0d47300012b0cf4bef1917341f70c25aa",
+        "docs/projects/book-hvtt-001-overview/brief.md": "979f288bf4a95ec5d34858eebf32f7ef4aec8b8599b2d0852208aaa070011262"
+      },
+      "missing": [],
+      "approvedBy": "devmindtan (trang quản lý)",
+      "approvedAt": "2026-10-31T11:02:00.753Z",
+      "note": "Tôi thấy phần này chưa được ý vì để duyệt được hình ảnh thì các phần trước đã có vì ảnh là sẽ đi theo lời mà lời chưa có thì sao có hình mà xem cần xem lại quy trình của phần này"
     }
   ]
 }

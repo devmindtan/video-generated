@@ -25,11 +25,51 @@
       },
       "registrations": [
         {
+          "id": "BookHvttTap01",
+          "kind": "Composition"
+        },
+        {
           "id": "BookHvttIntro",
           "kind": "Composition"
         },
         {
+          "id": "BookHvttEpisodeCard",
+          "kind": "Composition"
+        },
+        {
           "id": "BookHvttOutro",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookHvttMoChuyen",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookHvttCuonSach",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookHvttSoiChi",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookHvttNhom3A",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookHvttNhom3B",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookHvttNhom3C",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookHvttNhom3D",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookHvttNhanXet",
           "kind": "Composition"
         }
       ],

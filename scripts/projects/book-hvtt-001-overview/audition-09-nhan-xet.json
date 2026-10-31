@@ -1,0 +1,19 @@
+{
+  "title": "Đọc sách, hiểu mình — tập 1 — 09-nhan-xet",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Mặc dù cuốn sách này còn nhiều những chỗ chưa hay, nhưng tổng quan đây là một cuốn sách hay.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Nếu bạn có thời gian, có thể đọc qua để hiểu hơn.",
+      "pauseAfter": 0
+    }
+  ]
+}

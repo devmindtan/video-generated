@@ -1,0 +1,44 @@
+{
+  "title": "Đọc sách, hiểu mình — tập 1 — 02-mo-chuyen",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Hồi nhỏ, chắc ai cũng từng chạy nhảy rồi vấp phải cái ngạch cửa, ngã nhào và khóc ré lên.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Bà chạy tới.",
+      "pauseAfter": 0.3
+    },
+    {
+      "scene": 1,
+      "text": "Việc đầu tiên bà làm không phải là la cháu, mà là mắng cái ngạch cửa: sao dám làm cháu bà đau.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Đợi cháu nín rồi, bà mới dặn: lần sau đi đứng cẩn thận nghe con.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Người bà ấy không học tâm lý ở đâu cả.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Bà chỉ hiểu đứa cháu đang đau và đang sợ.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Cuốn sách hôm nay nói về đúng điều đó: hiểu lòng mình, và hiểu lòng người.",
+      "pauseAfter": 0
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import type {FC} from 'react';
 import type {Caption} from '@remotion/captions';
 import {Audio} from '@remotion/media';
-import {AbsoluteFill, Track, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Easing, Track, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import type {CalculateMetadataFunction} from 'remotion';
 import '../../shared/stoic-fonts';
 import {MusicFade} from '../../shared/MusicFade';
@@ -12,16 +12,15 @@ import takes from './outro-takes.json';
 
 // Series outro for "Đọc sách, hiểu mình", same book-plate look as the intro. The comment and subscribe
 // cards light up when the narration says "bình luận" / "đăng ký" (caption timing), then "Hẹn gặp lại".
-export type BookOutroProps = {voice: string; channelLabel: string};
+export type BookOutroProps = {voice: string; channelLabel: string; withMusic?: boolean};
 
 const voices = (takes as unknown as {voices: Voice[]}).voices;
 const TAIL_SECONDS = 1.6;
 const highlight = /(bình luận|đăng ký kênh|động lực|Hẹn gặp lại)/gi;
 const voiceOf = (id: string) => voices.find((v) => v.id === id) ?? voices[0];
 
-export const bookOutroMetadata: CalculateMetadataFunction<BookOutroProps> = ({props}) => ({
-  durationInFrames: Math.ceil(((voiceOf(props.voice)?.durationSeconds ?? 15) + TAIL_SECONDS) * 30),
-});
+export const outroFrames = (voice: string, fps = 30) => Math.ceil(((voiceOf(voice)?.durationSeconds ?? 15) + TAIL_SECONDS) * fps);
+export const bookOutroMetadata: CalculateMetadataFunction<BookOutroProps> = ({props}) => ({durationInFrames: outroFrames(props.voice)});
 
 // Moment (ms) a word is spoken: start of the caption page that contains it.
 const spokenAt = (captions: Caption[], word: RegExp) => captions.find((c) => word.test(c.text))?.startMs ?? Infinity;
@@ -29,7 +28,9 @@ const spokenAt = (captions: Caption[], word: RegExp) => captions.find((c) => wor
 const musicVolume = (captions: Caption[], frame: number, fps: number) => {
   const ms = frame * 1000 / fps;
   const activity = Math.max(0, ...captions.map((c) => interpolate(ms, [c.startMs - 120, c.startMs, c.endMs, c.endMs + 250], [0, 1, 1, 0], clamp)));
-  return music.pauseVolume - (music.pauseVolume - music.speechVolume) * activity;
+  const base = music.pauseVolume - (music.pauseVolume - music.speechVolume) * activity;
+  // Louder opening, then a glide down to the quiet bed (outro-music.json lowerFrom/Over/ToVolume), like the intro.
+  return Math.min(base, interpolate(frame, [music.lowerFromSeconds * fps, (music.lowerFromSeconds + music.lowerOverSeconds) * fps], [base, music.lowerToVolume], {...clamp, easing: Easing.inOut(Easing.sin)}));
 };
 
 const BubbleIcon: FC = () => <svg width={44} height={44} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round"><path d="M4 5h16v11H9l-5 4z" /><path d="M8 9.5h8M8 12.5h5" /></svg>;
@@ -44,7 +45,8 @@ const CallCard: FC<{icon: FC; label: string; lit: number}> = ({icon: Icon, label
   <Icon /><span style={{fontSize: 38, fontWeight: 700, letterSpacing: 1}}>{label}</span>
 </div>;
 
-export const BookInsightsOutro: FC<BookOutroProps> = ({voice: voiceId, channelLabel}) => {
+// Music fades follow this composition's edges, which inside the episode's Sequence are the outro's own edges.
+export const BookInsightsOutro: FC<BookOutroProps> = ({voice: voiceId, channelLabel, withMusic = true}) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
   const voice = voiceOf(voiceId);
@@ -98,7 +100,7 @@ export const BookInsightsOutro: FC<BookOutroProps> = ({voice: voiceId, channelLa
     {voice ? <Track name={`Giọng · ${voice.name}`}>
       <Audio src={staticFile(voice.file)} from={0} />
     </Track> : null}
-    <Track name="Nhạc outro · Pufino – Enlivening · chỉnh đầu/cuối trong Edit">
+    {withMusic ? <Track name="Nhạc outro · Pufino – Enlivening · chỉnh đầu/cuối trong Edit">
       <MusicFade fadeInSeconds={music.fadeInSeconds} fadeOutSeconds={music.fadeOutSeconds}>
         <Audio
           name="Pufino – Enlivening (freetouse.com)"
@@ -109,6 +111,6 @@ export const BookInsightsOutro: FC<BookOutroProps> = ({voice: voiceId, channelLa
           playbackRate={0.85}
         />
       </MusicFade>
-    </Track>
+    </Track> : null}
   </AbsoluteFill>;
 };

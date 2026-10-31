@@ -1,7 +1,7 @@
 import type {FC} from 'react';
 import type {Caption} from '@remotion/captions';
 import {Audio} from '@remotion/media';
-import {AbsoluteFill, Easing, Sequence, Track, interpolate, random, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Easing, Track, interpolate, random, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import type {CalculateMetadataFunction} from 'remotion';
 import '../../shared/stoic-fonts';
 import {MusicFade} from '../../shared/MusicFade';
@@ -13,10 +13,11 @@ import takes from './intro-takes.json';
 // scripts/projects/book-hvtt-001-overview/intro-bands.py). Voice is an audition take until the user picks one.
 
 export type Voice = {id: string; name: string; file: string; durationSeconds: number; frames: number; captions: Caption[]; bands: number[][]; level: number[]};
-export type BookIntroProps = {voice: string; channelLabel: string; episodeLabel: string; bookTitle: string; bookAuthor: string};
+// Series intro: identical for every episode. The per-episode book card lives in EpisodeCard.tsx (user 2026-10-31).
+export type BookIntroProps = {voice: string; channelLabel: string; withMusic?: boolean};
 
 const voices = (takes as unknown as {voices: Voice[]}).voices;
-const OUTRO_SECONDS = 3.2;
+const TAIL_SECONDS = 1.6;
 export const INK = '#0d1411';
 export const GOLD = '#d9b56f';
 export const IVORY = '#f2ede3';
@@ -25,10 +26,11 @@ export const ease = Easing.bezier(.16, 1, .3, 1);
 const emphasis = /(Đọc sách, hiểu mình|không có nhiều thời gian|dành cho bạn|niềm vui|hạnh phúc|bắt đầu)/gi;
 
 const voiceOf = (id: string) => voices.find((v) => v.id === id) ?? voices[0];
+const toOutroOf = (frame: number, speechEnd: number, fps: number) => interpolate(frame, [speechEnd - .2 * fps, speechEnd + .6 * fps], [1, 0], {...clamp, easing: ease});
 
 // Caption-driven ducking: the score sits at pauseVolume between sentences and dips to speechVolume under speech.
 // For the intro the user wants a steady bed (2026-10-30): both values are equal in music.json, so no dips.
-const musicVolume = (captions: Caption[], frame: number, fps: number) => {
+export const musicVolume = (captions: Caption[], frame: number, fps: number) => {
   const ms = frame * 1000 / fps;
   const activity = Math.max(0, ...captions.map((c) => interpolate(ms, [c.startMs - 120, c.startMs, c.endMs, c.endMs + 250], [0, 1, 1, 0], clamp)));
   const base = music.pauseVolume - (music.pauseVolume - music.speechVolume) * activity;
@@ -37,10 +39,18 @@ const musicVolume = (captions: Caption[], frame: number, fps: number) => {
   return Math.min(base, lowered);
 };
 
-export const bookIntroMetadata: CalculateMetadataFunction<BookIntroProps> = ({props}) => {
-  const voice = voiceOf(props.voice);
-  return {durationInFrames: Math.ceil(((voice?.durationSeconds ?? 30) + OUTRO_SECONDS) * 30)};
-};
+export const introFrames = (voice: string, fps = 30) => Math.ceil(((voiceOf(voice)?.durationSeconds ?? 30) + TAIL_SECONDS) * fps);
+export const introCaptions = (voice: string) => voiceOf(voice)?.captions ?? [];
+export const bookIntroMetadata: CalculateMetadataFunction<BookIntroProps> = ({props}) => ({durationInFrames: introFrames(props.voice)});
+
+// Background shared by the intro, the episode card and the outro.
+export const Backdrop: FC<{frame: number; fps: number; durationInFrames: number; drawFrame?: boolean}> = ({frame, fps, durationInFrames, drawFrame = true}) => <>
+  <AbsoluteFill style={{background: `radial-gradient(ellipse 70% 60% at 50% 42%, #22302a 0%, ${INK} 62%, #070b09 100%)`}} />
+  <AbsoluteFill style={{background: 'linear-gradient(115deg, transparent 30%, rgba(217,181,111,.07) 48%, transparent 62%)', translate: `${interpolate(frame, [0, durationInFrames], [-700, 700])}px 0`}} />
+  <Dust frame={frame} />
+  <Grain frame={frame} />
+  <Frame frame={drawFrame ? frame : 10 * fps} fps={fps} />
+</>;
 
 // Film grain from one static noise tile, shifted every 3 frames. No per-frame SVG filter: Studio preview
 // repainted feTurbulence only around moving text, which showed up as grey patches.
@@ -110,28 +120,24 @@ export const Captions: FC<{captions: Caption[]; ms: number; highlight?: RegExp}>
   </div>;
 };
 
-export const BookInsightsIntro: FC<BookIntroProps> = ({voice: voiceId, channelLabel, episodeLabel, bookTitle, bookAuthor}) => {
+// Music fades follow this composition's edges, which inside the episode's Sequence are the intro's own edges.
+export const BookInsightsIntro: FC<BookIntroProps> = ({voice: voiceId, channelLabel, withMusic = true}) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
   const voice = voiceOf(voiceId);
-  const speechEnd = voice ? voice.frames : durationInFrames - OUTRO_SECONDS * fps;
+  const speechEnd = voice ? voice.frames : durationInFrames - TAIL_SECONDS * fps;
   const i = Math.min(frame, (voice?.frames ?? 1) - 1);
   const bands = voice && frame < voice.frames ? voice.bands[i] : new Array(32).fill(0);
   const level = voice && frame < voice.frames ? voice.level[i] / 100 : 0;
   const ms = frame * 1000 / fps;
   const titleIn = interpolate(frame, [1.1 * fps, 2.6 * fps], [0, 1], {...clamp, easing: ease});
-  const toOutro = interpolate(frame, [speechEnd - .2 * fps, speechEnd + .6 * fps], [1, 0], {...clamp, easing: ease});
-  const outro = interpolate(frame, [speechEnd + .3 * fps, speechEnd + 1.2 * fps], [0, 1], {...clamp, easing: ease});
-  const fadeOut = interpolate(frame, [durationInFrames - .7 * fps, durationInFrames], [1, 0], clamp);
+  const lowerOpacity = toOutroOf(frame, speechEnd, fps);
+  const fadeOut = interpolate(frame, [durationInFrames - .9 * fps, durationInFrames], [1, 0], clamp);
   return <AbsoluteFill style={{background: INK, fontFamily: 'Stoic Sans, sans-serif', overflow: 'hidden'}}>
     <AbsoluteFill style={{opacity: fadeOut}}>
-      <AbsoluteFill style={{background: `radial-gradient(ellipse 70% 60% at 50% 42%, #22302a 0%, ${INK} 62%, #070b09 100%)`}} />
-      <AbsoluteFill style={{background: 'linear-gradient(115deg, transparent 30%, rgba(217,181,111,.07) 48%, transparent 62%)', translate: `${interpolate(frame, [0, durationInFrames], [-700, 700])}px 0`}} />
-      <Dust frame={frame} />
-      <Grain frame={frame} />
-      <Frame frame={frame} fps={fps} />
+      <Backdrop frame={frame} fps={fps} durationInFrames={durationInFrames} />
       <div style={{position: 'absolute', top: 104, left: 0, right: 0, textAlign: 'center', color: GOLD, fontSize: 22, fontWeight: 700, letterSpacing: 8, opacity: interpolate(frame, [.8 * fps, 1.8 * fps], [0, 1], clamp)}}>{channelLabel}</div>
-      <div style={{position: 'absolute', top: 170, left: 0, right: 0, opacity: toOutro}}>
+      <div style={{position: 'absolute', top: 170, left: 0, right: 0}}>
         <OpenBook frame={frame} fps={fps} glow={level} />
         <div style={{marginTop: 26, textAlign: 'center', color: IVORY, fontSize: 104, fontWeight: 700, letterSpacing: interpolate(titleIn, [0, 1], [26, 8]), opacity: titleIn, clipPath: `inset(0 ${(1 - titleIn) * 50}% 0 ${(1 - titleIn) * 50}%)`, textShadow: '0 6px 30px rgba(0,0,0,.6)'}}>ĐỌC SÁCH, HIỂU MÌNH</div>
         <div style={{margin: '22px auto 0', width: 560, display: 'flex', alignItems: 'center', gap: 18, opacity: titleIn}}>
@@ -141,24 +147,16 @@ export const BookInsightsIntro: FC<BookIntroProps> = ({voice: voiceId, channelLa
         </div>
         <div style={{marginTop: 22, textAlign: 'center', color: IVORY, fontSize: 30, fontWeight: 400, letterSpacing: 3, opacity: interpolate(frame, [2.4 * fps, 3.2 * fps], [0, .78], clamp)}}>Đọc trọn một cuốn sách · Giữ lại điều đáng giữ</div>
       </div>
-      <div style={{opacity: toOutro}}>
+      <div style={{opacity: lowerOpacity}}>
         <Visualizer bands={bands} level={level} appear={interpolate(frame, [.6 * fps, 1.4 * fps], [0, 1], clamp)} />
         {voice ? <Captions captions={voice.captions} ms={ms} /> : null}
       </div>
-      <Sequence name="Thẻ sách của tập" from={Math.round(speechEnd)} layout="none">
-        <div style={{position: 'absolute', top: 330, left: 0, right: 0, textAlign: 'center', opacity: outro, translate: `0 ${(1 - outro) * 18}px`}}>
-          <div style={{color: GOLD, fontSize: 26, fontWeight: 700, letterSpacing: 10}}>{episodeLabel}</div>
-          <div style={{marginTop: 26, color: IVORY, fontSize: 112, fontWeight: 700, letterSpacing: 1}}>{bookTitle}</div>
-          <div style={{margin: '26px auto', width: 120, height: 2, background: GOLD}} />
-          <div style={{color: IVORY, fontSize: 38, fontWeight: 400, letterSpacing: 4, opacity: .85}}>{bookAuthor}</div>
-        </div>
-      </Sequence>
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%)', pointerEvents: 'none'}} />
     </AbsoluteFill>
     {voice ? <Track name={`Giọng · ${voice.name}`}>
       <Audio src={staticFile(voice.file)} from={0} />
     </Track> : null}
-    <Track name="Nhạc intro · Pufino – Enlivening · chỉnh đầu/cuối trong Edit">
+    {withMusic ? <Track name="Nhạc intro · Pufino – Enlivening · chỉnh đầu/cuối trong Edit">
       <MusicFade fadeInSeconds={music.fadeInSeconds} fadeOutSeconds={music.fadeOutSeconds}>
         <Audio
           name="Pufino – Enlivening (freetouse.com)"
@@ -169,6 +167,6 @@ export const BookInsightsIntro: FC<BookIntroProps> = ({voice: voiceId, channelLa
           playbackRate={0.85}
         />
       </MusicFade>
-    </Track>
+    </Track> : null}
   </AbsoluteFill>;
 };

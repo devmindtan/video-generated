@@ -1,0 +1,134 @@
+{
+  "title": "Đọc sách, hiểu mình — tập 1 — 06-nhom-3b",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Nhóm thứ hai nói về tình yêu và những người ở gần ta nhất.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Ghen tuông.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Ca dao có câu: mình với ta tuy hai mà một.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả nhắc thêm vế sau: tuy một mà hai.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Yêu là hòa hợp, chứ không biến người kia thành cái bóng của mình.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Họ vẫn có bạn bè, sở thích, khoảng trời riêng.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Khi ghen, điều ta thương thật ra nhiều khi là cảm giác bị bỏ rơi của chính mình.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả khuyên một điều đơn giản mà khó: nhận là mình đang ghen, và nhờ người kia giúp mình.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Nhàm chán.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "\"Thương nhau củ ấu cũng tròn\".",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Lúc đang yêu, lòng ta tự phóng to mọi điều tốt của người kia.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Cảm xúc rồi sẽ lắng xuống, và những điều chưa tốt lộ ra.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Theo tác giả, tình cảm chỉ bền khi đi từ cảm xúc sang hiểu nhau và có trách nhiệm với nhau; nghĩa là có cả tình lẫn nghĩa.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Và một lời khuyên rất thực tế: lúc đang chán, đừng quyết định điều gì vội vàng.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Tha thứ.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả có một hình ảnh dễ nhớ: trái tim rộng một gang rưỡi thì chứa được nỗi khó một gang.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Lỗi của người kia lớn hơn, thì phải nới lòng mình rộng thêm.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Mà \"càng vị kỷ thì càng không thể vị tha\".",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Nếu chưa đủ sức, ta có thể nói thật với người kia rằng lòng mình mới mở được đến đây.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Người kia vẫn nhận ra tấm lòng ấy.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Lắng nghe và phán xét.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Ta hay nhìn một người qua đúng một lần họ làm ta khó chịu, rồi đóng khung họ luôn.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả nhắc một câu ngắn: \"Thấy vậy chứ không phải vậy\".",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Trước khi kết luận về ai, hãy hỏi lại mình: có chắc không?",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Còn lắng nghe, theo sách, bắt đầu từ chữ lắng: để lòng mình lắng xuống trước, rồi mới nghe ra người kia đang nói gì.",
+      "pauseAfter": 0
+    }
+  ]
+}

@@ -22,6 +22,12 @@ Chúc cả nhà một ngày tràn đầy niềm vui và hạnh phúc. [nghỉ]
 
 {Câu "chào mừng… series Đọc sách, hiểu mình. Ở series này mình sẽ…", câu "không có nhiều thời gian… dành cho bạn", câu chúc và câu chuyển theo lời người dùng 2026-10-30}
 
+## 0a. Giới thiệu tập (≈ 8 giây, trên thẻ "TẬP 01 · Hiểu về trái tim · Minh Niệm" cuối intro)
+
+Tập đầu tiên, mình chọn cuốn Hiểu về trái tim của tác giả Minh Niệm, một cuốn sách viết về những cảm xúc rất đời thường của mỗi người.
+
+{Người dùng yêu cầu 2026-10-31: 5–10 giây giới thiệu tập 1 làm về cuốn sách gì. Câu nháp của kênh, chờ người dùng sửa/duyệt.}
+
 ## 0b. Mở chuyện (≈ 0:35–1:05)
 
 Hồi nhỏ, chắc ai cũng từng chạy nhảy rồi vấp phải cái ngạch cửa, ngã nhào và khóc ré lên. Bà chạy tới. Việc đầu tiên bà làm không phải là la cháu, mà là mắng cái ngạch cửa: sao dám làm cháu bà đau. Đợi cháu nín rồi, bà mới dặn: lần sau đi đứng cẩn thận nghe con. [nghỉ]

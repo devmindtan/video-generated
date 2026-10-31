@@ -1,10 +1,10 @@
 {
   "file": "audio-library/music/Pufino - Enlivening (freetouse.com).mp3",
-  "speechVolume": 0.4,
-  "pauseVolume": 0.4,
+  "speechVolume": 0.6,
+  "pauseVolume": 0.6,
   "fadeInSeconds": 1.0,
   "fadeOutSeconds": 1.6,
-  "editingNote": "User 2026-10-30: intro uses Pufino – Enlivening (freetouse.com) from the shared audio library (152.8 s full source, trim/move in Studio Edit). Starts at speechVolume = pauseVolume (no rise/fall with speech), then from lowerFromSeconds glides down over lowerOverSeconds to lowerToVolume and stays there (user 2026-10-30: giảm dần từ giây thứ 3); 0.4 keeps the music about 7 dB under the clone voice, matching the earlier 'a little louder' level for this louder track. No sound effects. Edge fade-in/out kept. The earlier original score (intro-score.wav) is kept unused.",
+  "editingNote": "User 2026-10-30: intro uses Pufino – Enlivening (freetouse.com) from the shared audio library (152.8 s full source, trim/move in Studio Edit). Starts at speechVolume = pauseVolume (0.6, user 2026-10-31) (no rise/fall with speech), then from lowerFromSeconds glides down over lowerOverSeconds to lowerToVolume (0.25) and stays there (user 2026-10-30: giảm dần từ giây thứ 3); 0.4 keeps the music about 7 dB under the clone voice, matching the earlier 'a little louder' level for this louder track. No sound effects. Edge fade-in/out kept. The earlier original score (intro-score.wav) is kept unused.",
   "credit": {
     "title": "Enlivening",
     "artists": [
@@ -14,5 +14,5 @@
   },
   "lowerFromSeconds": 3,
   "lowerOverSeconds": 3,
-  "lowerToVolume": 0.18
+  "lowerToVolume": 0.25
 }

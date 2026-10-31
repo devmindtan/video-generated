@@ -14,14 +14,14 @@ SLUG = 'book-hvtt-001-overview'
 AUDIO = ROOT / 'public' / SLUG / 'audio'
 # segment id -> (audition take folder under public/voice-auditions, voice id in that take)
 SELECTED = {
-    '00-intro': ('book-hvtt-intro-clone-v4a-sang1', 'clone-ban-v4a-sang1'),
-    # The published take still says "comment". audition-outro.json contains the desired "bình luận" wording,
-    # but do not point this publisher at a replacement until that take exists and the user has listened to it.
-    '99-outro': ('book-hvtt-outro-clone-v1-sang1', 'outro-ban-sang1'),
+    # User 2026-10-31: +2 semitones for the whole episode; outro says "bình luận" (listened and confirmed).
+    '00-intro': ('book-hvtt-intro-clone-v4a-sang2', 'clone-ban-v4a-sang2'),
+    '01-gioi-thieu-tap': ('book-hvtt-episode-clone-v1-sang2', 'tap-ban-sang2'),  # per-episode line, approved 2026-10-31
+    '99-outro': ('book-hvtt-outro-clone-v2-sang2', 'outro-ban-v2-sang2'),
 }
-VOICE = {'name': 'Giọng người dùng (clone) +1 bán cung', 'option': 2, 'engine': 'VoxCPM2 qua VoiceStudio (CPU, local)',
-         'reference': '.voicestudio/data/references/f78fa36e61f957c5.wav', 'consent': 'self', 'pitchSemitones': 1,
-         'processing': 'clone từng câu; ghép bằng assemble-clone.py; +1 bán cung giữ thời lượng (voice-variants.py)'}
+VOICE = {'name': 'Giọng người dùng (clone) +2 bán cung', 'option': 2, 'engine': 'VoxCPM2 qua VoiceStudio (CPU, local)',
+         'reference': 'library/voice-references/tam-nhin-cho-cuoc-song/clips/006130-15s.wav', 'consent': 'self', 'pitchSemitones': 2,
+         'processing': 'clone từng câu; ghép bằng assemble-clone.py; +2 bán cung giữ thời lượng (voice-variants.py)'}
 
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 
@@ -53,8 +53,7 @@ def main():
     # Catalog-shaped manifest so intro-bands.py can read the selected segments like an audition take.
     (AUDIO / 'manifest.json').write_text(json.dumps({'title': f'{SLUG} — giọng đã chọn', 'config': {'title': 'giọng đã chọn'}, 'voices': catalog},
                                                     ensure_ascii=False, indent=2) + '\n')
-    (ROOT / 'scripts/projects' / SLUG / 'voice.json').write_text(json.dumps({'voice': VOICE['name'], **VOICE, 'selection': 'Người dùng chọn 2026-10-31: clone giọng của mình, +1 bán cung; dùng cho mọi đoạn của tập',
-        'pending': 'Outro hiện vẫn nói “comment”; script đích đã đổi thành “bình luận”. Chỉ thay take sau khi người dùng nghe duyệt.',
+    (ROOT / 'scripts/projects' / SLUG / 'voice.json').write_text(json.dumps({'voice': VOICE['name'], **VOICE, 'selection': 'Người dùng chọn 2026-10-31: clone giọng của mình, +2 bán cung; dùng cho mọi đoạn của tập; outro đọc "bình luận"',
         'segments': {s['scene']: {'file': f"{SLUG}/audio/{s['file']}", 'sha256': s['sha256'], 'sourceTake': s['sourceTake']} for s in segments}},
         ensure_ascii=False, indent=2) + '\n')
     print('\n'.join(f"{s['scene']}: {s['file']} ({s['durationSeconds']} s)" for s in segments))

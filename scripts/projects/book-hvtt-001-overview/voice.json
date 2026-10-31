@@ -1,24 +1,28 @@
 {
-  "voice": "Giọng người dùng (clone) +1 bán cung",
-  "name": "Giọng người dùng (clone) +1 bán cung",
+  "voice": "Giọng người dùng (clone) +2 bán cung",
+  "name": "Giọng người dùng (clone) +2 bán cung",
   "option": 2,
   "engine": "VoxCPM2 qua VoiceStudio (CPU, local)",
-  "reference": ".voicestudio/data/references/f78fa36e61f957c5.wav",
+  "reference": "library/voice-references/tam-nhin-cho-cuoc-song/clips/006130-15s.wav",
   "consent": "self",
-  "pitchSemitones": 1,
-  "processing": "clone từng câu; ghép bằng assemble-clone.py; +1 bán cung giữ thời lượng (voice-variants.py)",
-  "selection": "Người dùng chọn 2026-10-31: clone giọng của mình, +1 bán cung; dùng cho mọi đoạn của tập",
-  "pending": "Outro hiện vẫn nói “comment”; script đích đã đổi thành “bình luận”. Chỉ thay take sau khi người dùng nghe duyệt.",
+  "pitchSemitones": 2,
+  "processing": "clone từng câu; ghép bằng assemble-clone.py; +2 bán cung giữ thời lượng (voice-variants.py)",
+  "selection": "Người dùng chọn 2026-10-31: clone giọng của mình, +2 bán cung; dùng cho mọi đoạn của tập; outro đọc \"bình luận\"",
   "segments": {
     "00-intro": {
       "file": "book-hvtt-001-overview/audio/00-intro-voice-full.wav",
-      "sha256": "e75a1c51109f22d220427a4e965cc96a2db80ea83ff2a208cc719af1235a9af1",
-      "sourceTake": "voice-auditions/book-hvtt-intro-clone-v4a-sang1/clone-ban-v4a-sang1.wav"
+      "sha256": "632fd3c1a09e84cb0227cb7b32a1563ef869e8969bc89b6c85352df2e4eb0a46",
+      "sourceTake": "voice-auditions/book-hvtt-intro-clone-v4a-sang2/clone-ban-v4a-sang2.wav"
+    },
+    "01-gioi-thieu-tap": {
+      "file": "book-hvtt-001-overview/audio/01-gioi-thieu-tap-voice-full.wav",
+      "sha256": "f502b6db1443b3660527dcb46d951bc63a56ab99fa3670593fa2fa370cec62a8",
+      "sourceTake": "voice-auditions/book-hvtt-episode-clone-v1-sang2/tap-ban-sang2.wav"
     },
     "99-outro": {
       "file": "book-hvtt-001-overview/audio/99-outro-voice-full.wav",
-      "sha256": "bf9582827d7dee12e8630ca79dfb58355b268e1350e62195771082d76786a30a",
-      "sourceTake": "voice-auditions/book-hvtt-outro-clone-v1-sang1/outro-ban-sang1.wav"
+      "sha256": "851c617fb62cdaae8749aec580b315ab428079c8b4b090a407d1c606a69d57d8",
+      "sourceTake": "voice-auditions/book-hvtt-outro-clone-v2-sang2/outro-ban-v2-sang2.wav"
     }
   }
 }

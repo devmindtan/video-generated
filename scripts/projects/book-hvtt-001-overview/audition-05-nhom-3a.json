@@ -1,0 +1,99 @@
+{
+  "title": "Đọc sách, hiểu mình — tập 1 — 05-nhom-3a",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Nhóm thứ nhất là những cảm xúc làm ta chao đảo: giận, sợ, lo.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Cơn giận.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Theo tác giả, cơn giận không tự nhiên bùng lên.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Nó được nuôi từ rất nhiều bực bội nhỏ mà ta cho qua, không nhìn lại.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Lúc đang giận, hãy rời khỏi chỗ đó và quay về với hơi thở.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Khi đã bình tĩnh, mới nhìn xem cơn giận được nuôi từ đâu.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Và chỗ chuyển hóa sau cùng là hiểu được người kia, vì \"tình thương chính là khắc tinh của cơn giận\".",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Trí tưởng tượng.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Người thân về trễ, gọi mãi không nghe máy.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Chưa tới mười phút, trong đầu ta đã dựng xong cả một tai nạn.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả viết: \"Hoàn cảnh chỉ có thể làm cho ta đau, nhưng chính trí tưởng tượng sai lầm mới là thủ phạm giết ta chết.\"",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Trước khi khổ vì một chuyện, hãy hỏi xem chuyện ấy đã thật sự xảy ra chưa.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Lo lắng.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả mượn hình ảnh một cốc nước.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Giơ lên vài phút thì không sao, giơ một giờ thì tay tê, giơ cả ngày thì tay rã rời.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Nỗi lo cũng vậy: không nặng ở chỗ nó lớn, mà ở chỗ ta cầm nó quá lâu.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Cách tác giả gợi ý rất cụ thể: viết ra điều mình đang lo, chấp nhận trước kết quả xấu nhất, việc gì làm được thì làm ngay, việc gì ngoài sức mình thì đặt xuống.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Vì \"Sống sâu sắc với hôm nay chính là bớt lo lắng cho ngày mai.\"",
+      "pauseAfter": 0
+    }
+  ]
+}
