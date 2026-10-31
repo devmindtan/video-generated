@@ -303,8 +303,10 @@ function renderGateReview(){
   if($('#review-form input[name=note]'))$('#review-form input[name=note]').value=note;
   const box=$('#review-dialog .review-doc');if(box&&current?.file)box.append(current.file.path.endsWith('.md')?renderMarkdown(current.file.text):Object.assign(document.createElement('pre'),{textContent:current.file.text}));
 }
+// A newly opened review starts empty: render functions keep typed notes only across re-renders of the same item.
+const freshDialog=()=>{$('#review-content').innerHTML='';};
 async function openReview(gate){
-  try{state.reviewMode='gate';state.review=await api(`/api/approval-review?id=${encodeURIComponent(state.drawer.id)}&gate=${encodeURIComponent(gate)}`);state.reviewExpanded={};state.reviewSeen=new Set();state.reviewIndex=0;renderReview();$('#review-dialog').showModal();$('#review-dialog .rail-item')?.focus();}
+  try{freshDialog();state.reviewMode='gate';state.review=await api(`/api/approval-review?id=${encodeURIComponent(state.drawer.id)}&gate=${encodeURIComponent(gate)}`);state.reviewExpanded={};state.reviewSeen=new Set();state.reviewIndex=0;renderReview();$('#review-dialog').showModal();$('#review-dialog .rail-item')?.focus();}
   catch(error){toast(error.message);}
 }
 function showItem(i){document.querySelectorAll('#review-dialog audio').forEach(a=>a.pause());if(state.reviewMode==='detail')flushNotes();state.reviewIndex=i;renderReview();$('#review-dialog .review-body').scrollTop=0;$('#review-dialog .rail-item.is-current')?.focus();}
@@ -410,7 +412,7 @@ function renderDetail(){
 }
 async function openDetail(mode,patch){
   try{state.review=await api(`/api/review-detail?id=${encodeURIComponent(state.drawer.id)}&mode=${mode}${patch?`&patch=${encodeURIComponent(patch)}`:''}`);
-    state.reviewMode='detail';state.reviewExpanded={};state.reviewSeen=new Set();state.reviewIndex=0;
+    freshDialog();state.reviewMode='detail';state.reviewExpanded={};state.reviewSeen=new Set();state.reviewIndex=0;
     state.reviewNotes={...state.review.notes};state.reviewLockedNotes=state.review.lockedNotes||{};state.noteDrafts={};state.noteTimers={};renderReview();$('#review-dialog').showModal();$('#review-dialog .rail-item')?.focus();}
   catch(error){toast(error.message);}
 }
@@ -426,7 +428,7 @@ function renderScene(){
   $('#review-content').innerHTML=`<header class="review-head"><div><span class="gate-badge phase-${shown.status==='approved'?'done':shown.status==='needs-changes'?'redo':'turn'}">${esc(sceneText[shown.status]||shown.status)}</span><h2 id="review-title">Cảnh: ${esc(s.title)}</h2><p>Clip ${shown.index+1}/${s.clips.length} · xuất ${when(shown.renderedAt)}${shown.lockVersion?` theo bản chốt v${shown.lockVersion}`:''}${shown.note?` · Ghi chú: ${esc(shown.note)}`:''}</p></div><button class="icon-button" data-review-close aria-label="Đóng">${icon('close')}</button></header><div class="scene-body"><video class="scene-video" controls playsinline preload="metadata" src="${src(shown)}"></video>${earlier}</div>${foot}`;
   if($('#review-form [name=note]'))$('#review-form [name=note]').value=note??(shown.status==='needs-changes'?shown.note:'');
 }
-function openScene(sceneId){state.reviewMode='scene';state.reviewScene=sceneId;state.reviewClip=null;renderReview();$('#review-dialog').showModal();}
+function openScene(sceneId){freshDialog();state.reviewMode='scene';state.reviewScene=sceneId;state.reviewClip=null;renderReview();$('#review-dialog').showModal();}
 async function decideScene(decision){
   const form=$('#review-form'),status=form.querySelector('.review-status'),s=state.gates.scenes.find(x=>x.id===state.reviewScene),last=s.clips[s.clips.length-1];
   if(decision==='needs-changes'&&!form.elements.note.value.trim()){status.textContent='Ghi chú chỗ chưa đạt để agent biết cần sửa gì.';form.elements.note.focus();return;}

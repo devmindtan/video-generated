@@ -97,7 +97,11 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   await page.locator('.scene-row').first().locator('[data-scene-open]').click();await dialog.locator('.scene-video').waitFor();
   assert.match(await dialog.locator('.scene-clips summary').innerText(),/Các clip trước \(1\)/);
   await dialog.locator('#review-form button[type=submit]').click();await page.waitForFunction(()=>/Đạt/.test(document.querySelector('.scene-row .scene-badge')?.textContent||''));
-  await page.locator('.scene-row').nth(1).locator('[data-scene-open]').click();await dialog.locator('.scene-video').waitFor();await dialog.locator('#review-form button[type=submit]').click();
+  await page.locator('.scene-row').nth(1).locator('[data-scene-open]').click();await dialog.locator('.scene-video').waitFor();
+  await dialog.locator('#review-form [name=note]').fill('Ghi chú cảnh Kết');await page.keyboard.press('Escape');
+  await page.locator('.scene-row').first().locator('[data-scene-open]').click();await dialog.locator('.scene-video').waitFor();
+  assert.equal(await dialog.locator('#review-form [name=note]').inputValue(),'','a note typed on one scene never carries into another');await page.keyboard.press('Escape');
+  await page.locator('.scene-row').nth(1).locator('[data-scene-open]').click();await dialog.locator('.scene-video').waitFor();await dialog.locator('#review-form [name=note]').fill('');await dialog.locator('#review-form button[type=submit]').click();
   await page.waitForFunction(()=>/2\/2 cảnh đạt/.test(document.querySelector('#gates')?.textContent||''));
   assert.match(await next.innerText(),/Xem bản dựng/);mark('Scene clips: note required for Chưa đạt, earlier clips kept, all scenes Đạt opens the final review');
   for(const width of [768,390]){await page.setViewportSize({width,height:900});await open();
