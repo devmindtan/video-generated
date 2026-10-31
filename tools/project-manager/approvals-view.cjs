@@ -9,6 +9,8 @@ const {execFileSync} = require('node:child_process');
 const cli = require('../production-automation/cli.cjs');
 const approvals = require('../production-automation/approvals.cjs');
 const review = require('../production-automation/review.cjs');
+const progress = require('../production-automation/progress.cjs');
+const runner = require('../production-automation/runner.cjs');
 const {load} = require('../../scripts/catalog/catalog.cjs');
 
 const FILE_NAMES = {'script.md': 'Kịch bản', 'brief.md': 'Brief: mục tiêu, dàn ý, quyết định sản xuất', 'sources.md': 'Nguồn và trích dẫn', 'script-review.md': 'Phản biện kịch bản',
@@ -232,6 +234,17 @@ function createApprovals(root) {
     const item = review.items(root, plan).find(i => i.id === kind);
     return item && audioOf(id, item).some(a => a.key === key) ? path.join(root, 'public', key) : null;
   }
-  return {approvalsView: view, approveGate, gateReview, projectMedia, reviewView, reviewDetail, lockProject, decidePatch, reviewScene, reviewMedia};
+  // Read-only: what the agent planned after the lock and is doing now, plus local model runs of this project.
+  function progressView(id) {
+    let plan;try {plan = cli.plan(root, id);} catch (e) {return {available: false, reason: e.message};}
+    const p = progress.view(root, id), r = review.summary(root, plan);
+    const runs = runner.list(root, id).slice(-10).reverse().map(x => ({runId: x.runId, stage: plan.stages.find(s => s.id === x.stageId)?.title || x.stageId, status: x.status, createdAt: x.createdAt}));
+    return {available: true, locked: r.version > 0, lockVersion: r.version, ...p, runs};
+  }
+  function progressSummary(id) {
+    try {const p = progress.view(root, id);return p.plan ? {overall: p.overall, running: p.counts.running, interrupted: p.counts.interrupted, failed: p.counts.failed, total: p.counts.total, done: p.counts.done} : null;}
+    catch {return null;}
+  }
+  return {approvalsView: view, approveGate, gateReview, projectMedia, reviewView, reviewDetail, lockProject, decidePatch, reviewScene, reviewMedia, progressView, progressSummary};
 }
 module.exports = {createApprovals};

@@ -70,3 +70,16 @@ video vẫn thủ công theo yêu cầu.
 - Dự án đang dở (`book-hvtt-001-overview`): lịch sử cũ giữ nguyên; trang quản lý mở màn Chốt ban đầu với các
   file hiện tại để người dùng chốt v1.
 - Bốn cổng cũ bỏ khỏi quy trình; `run`/`apply` của runner kiểm "đã chốt" thay cho từng cổng.
+
+## Theo dõi tiến trình (người dùng 2026-10-31)
+
+Tab **Tiến trình** của mỗi dự án cho người dùng theo dõi trực tiếp việc agent đang làm; chỉ hiển thị, không thay đổi quy trình.
+
+- Ngay sau khi chốt, agent phân tích gói chốt và lập kế hoạch thực hiện: `npm run automation -- progress <slug> plan --file plan.json`
+  (`{summary, tasks:[{id, title, kind, weight, steps}]}`; `kind` là voice, visuals, music, assembly, clip, check hoặc other).
+- Khi làm: `progress <slug> start|update|done|fail|block <việc> [--percent N | --steps 3/10] [--note "…"]`, `progress <slug> log --note "…"`.
+  `scene-clip` tự báo việc "Xuất clip duyệt cảnh …". Lập lại kế hoạch giữ tiến độ của các việc cùng mã.
+- % tổng = trung bình có trọng số (`weight`) của % từng việc. Mỗi thay đổi lưu ngay vào `.automation/progress/<slug>.json` (Git bỏ qua).
+- Bị ngắt: việc "đang làm" mà tiến trình báo cáo đã chết, hoặc 20 phút không cập nhật, hiện là **Bị ngắt** kèm % và ghi chú cuối cùng; file không bị sửa.
+- Trang tự làm mới 4 giây một lần khi tab đang mở; thẻ dự án ngoài danh sách hiện "Đang làm / Bị ngắt · x%".
+

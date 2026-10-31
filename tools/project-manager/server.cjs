@@ -75,6 +75,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
       if(route==='/api/music')return send(200,store.music());
       if(route==='/api/voice-references')return send(200,store.voiceReferences());
       if(route==='/api/approvals')return send(200,store.reviewView(url.searchParams.get('id')));
+      if(route==='/api/progress')return send(200,store.progressView(url.searchParams.get('id')));
       if(route==='/api/review-detail')return send(200,store.reviewDetail(url.searchParams.get('id'),url.searchParams.get('mode'),url.searchParams.get('patch')));
       if(route==='/api/approval-review')return send(200,store.gateReview(url.searchParams.get('id'),url.searchParams.get('gate')));
       if(route==='/api/document')return send(200,store.document(url.searchParams.get('id'),url.searchParams.get('file')));

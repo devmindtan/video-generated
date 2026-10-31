@@ -10,6 +10,7 @@ const approvals = require('./approvals.cjs');
 const runner = require('./runner.cjs');
 const seriesNotes = require('./series-notes.cjs');
 const review = require('./review.cjs');
+const progress = require('./progress.cjs');
 // AUTOMATION_ROOT exists for fixture tests of the CLI process itself.
 const ROOT = path.resolve(process.env.AUTOMATION_ROOT || path.join(__dirname, '../..'));
 
@@ -220,6 +221,10 @@ const USAGE=`Usage: npm run automation -- <command>
   review <slug>                       initial lock, patches, scene clips and your notes (read-only)
   patch <slug> --reason text          propose the edits made since the latest lock as a patch
   scene-clip <slug> <scene>           render one finished scene as a review clip (projects/<slug>/review/)
+  progress <slug>                     live task plan and status shown on the project's Tiến trình tab
+  progress <slug> plan --file plan.json        agent's task plan after the lock ({summary, tasks:[{id,title,kind,weight,steps}]})
+  progress <slug> start|update|done|fail|block <task> [--percent N|--steps 3/10] [--note text]
+  progress <slug> log --note text [task]       add a line to the activity timeline
   Lock, patch decisions and scene reviews are yours: Duyệt sản xuất in the manager.`;
 
 function printEvent(e){
@@ -227,10 +232,10 @@ function printEvent(e){
   console.log(`${e.timestamp.slice(11,19)}  ${e.source.padEnd(18)} ${e.type.padEnd(22)} ${d}`.trimEnd());
 }
 async function main(argv){
-  const valued=['--note','--reason'],flags=new Set(argv.filter(a=>a.startsWith('--')&&!valued.includes(a)));
+  const valued=['--note','--reason','--percent','--steps','--file'],flags=new Set(argv.filter(a=>a.startsWith('--')&&!valued.includes(a)));
   const machine={gpu:flags.has('--gpu'),local:flags.has('--local')};
   const valueOf=name=>{const at=argv.indexOf(name);return at>=0?argv[at+1]||'':'';};
-  const note=valueOf('--note'),reason=valueOf('--reason');
+  const note=valueOf('--note'),reason=valueOf('--reason'),hasFlag=name=>argv.includes(name);
   const args=argv.filter((a,i)=>!a.startsWith('--')&&!valued.includes(argv[i-1]));
   const [command,a,b,...extra]=args;
   const json=v=>console.log(JSON.stringify(v,null,2));
@@ -268,11 +273,33 @@ async function main(argv){
       const p=plan(ROOT,a),scene=review.sceneDefs(ROOT,p).find(s=>s.id===b);
       if(!scene) throw new Error(`Unknown scene ${b}; scenes: ${review.sceneDefs(ROOT,p).map(s=>s.id).join(', ')||'none (add scripts/projects/<slug>/scenes.json)'}`);
       // The user allows rendering review clips of finished scenes (2026-10-31); full-video export stays manual.
-      const rel=`projects/${a}/review/${b}-${new Date().toISOString().replace(/[-:]/g,'').slice(0,15)}.mp4`;
+      const rel=`projects/${a}/review/${b}-${new Date().toISOString().replace(/[-:]/g,'').slice(0,15)}.mp4`,task=`clip-${b}`;
       fs.mkdirSync(path.dirname(path.join(ROOT,rel)),{recursive:true});
-      execFileSync(path.join(ROOT,'node_modules/.bin/remotion'),['render','src/index.tsx',scene.composition,rel,
-        ...(scene.frames?[`--frames=${scene.frames[0]}-${scene.frames[1]}`]:[])],{cwd:ROOT,stdio:'inherit'});
-      return json(review.addClip(ROOT,p,b,rel));
+      // Reported live on the project's Tiến trình tab; a killed render shows as interrupted (pid gone).
+      progress.ensureTask(ROOT,a,{id:task,title:`Xuất clip duyệt cảnh ${scene.title}`,kind:'clip'});
+      progress.update(ROOT,a,task,{status:'running',percent:0,note:rel,pid:process.pid});
+      try{execFileSync(path.join(ROOT,'node_modules/.bin/remotion'),['render','src/index.tsx',scene.composition,rel,
+        ...(scene.frames?[`--frames=${scene.frames[0]}-${scene.frames[1]}`]:[])],{cwd:ROOT,stdio:'inherit'});}
+      catch(e){progress.update(ROOT,a,task,{status:'failed',note:`Render lỗi: ${e.message.split('\n')[0]}`});throw e;}
+      const clip=review.addClip(ROOT,p,b,rel);progress.update(ROOT,a,task,{status:'done',note:'Clip sẵn sàng để bạn duyệt'});
+      return json(clip);
+    }
+    case 'progress': {
+      if(!a)break;
+      const p=plan(ROOT,a),[task]=extra,percent=valueOf('--percent'),steps=valueOf('--steps');
+      const changes={...(percent!==''&&hasFlag('--percent')?{percent:Number(percent)}:{}),
+        ...(steps?(()=>{const m=steps.match(/^(\d+)\/(\d+)$/);if(!m)throw new Error('--steps dạng done/total, ví dụ 3/10');return {steps:{done:+m[1],total:+m[2]}};})():{}),
+        ...(hasFlag('--note')?{note}:{})};
+      if(!b)return json(progress.view(ROOT,a));
+      if(b==='plan'){
+        const r=review.summary(ROOT,p);if(!r.version)throw new Error('Chưa chốt ban đầu: kế hoạch thực hiện lập sau khi bạn chốt');
+        const data=JSON.parse(fs.readFileSync(path.resolve(ROOT,valueOf('--file')||'-'),'utf8'));
+        return json(progress.setPlan(ROOT,a,{tasks:data.tasks,summary:data.summary||'',by:'agent',lockVersion:r.version}));
+      }
+      if(b==='log'){progress.log(ROOT,a,note,task||null);return json(progress.view(ROOT,a).events[0]);}
+      const status={start:'running',update:undefined,done:'done',fail:'failed',block:'blocked',reset:'pending'}[b];
+      if(!(b in {start:1,update:1,done:1,fail:1,block:1,reset:1})||!task)break;
+      return json(progress.update(ROOT,a,task,{...changes,...(status?{status}:{})}));
     }
     case 'approve': {
       if(!a||!b)break;

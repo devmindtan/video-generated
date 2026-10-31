@@ -217,3 +217,30 @@ test('initial lock of five items, patches accepted or returned one by one, then 
  assert.equal(done.scenes[0].clips[0].note,'Ảnh nến quá tối');
  assert.equal(JSON.parse(fs.readFileSync(path.join(root,`${D}/approvals.json`),'utf8')).schemaVersion,2);
 }));
+test('live progress: agent plan after the lock, weighted percent, re-plans keep work, interruptions keep the last state',()=>fixture(root=>{
+ const progress=require('./progress.cjs'),id='self-help-shorts';
+ assert.throws(()=>progress.setPlan(root,id,{tasks:[]}),/ít nhất một việc/);
+ assert.throws(()=>progress.setPlan(root,id,{tasks:[{id:'A b',title:'x'}]}),/Mã việc/);
+ progress.setPlan(root,id,{summary:'Sau chốt v1',lockVersion:1,tasks:[{id:'voice',title:'Clone giọng toàn bộ',kind:'voice',weight:2,steps:10},{id:'img-01',title:'Ảnh cảnh 1',kind:'visuals'},{id:'music',title:'Cắt nhạc',kind:'music'}]});
+ progress.update(root,id,'voice',{status:'running',steps:{done:5,total:10},note:'Câu 5/10',pid:process.pid});
+ progress.update(root,id,'img-01',{status:'done'});
+ let v=progress.view(root,id);
+ assert.deepEqual(v.tasks.map(t=>[t.id,t.display,t.percent]),[['voice','running',50],['img-01','done',100],['music','pending',0]]);
+ assert.equal(v.overall,50);                                                      // (2×50 + 100 + 0) / 4
+ assert.deepEqual([v.counts.running,v.counts.done,v.counts.total],[1,1,3]);
+ assert.throws(()=>progress.update(root,id,'music',{status:'failed'}),/lý do lỗi/);
+ assert.throws(()=>progress.update(root,id,'nope',{status:'done'}),/Không có việc/);
+ // Re-planning keeps finished and running work of tasks that stay.
+ progress.setPlan(root,id,{summary:'Thêm cảnh 2',lockVersion:2,tasks:[{id:'voice',title:'Clone giọng toàn bộ',kind:'voice',weight:2,steps:10},{id:'img-01',title:'Ảnh cảnh 1',kind:'visuals'},{id:'img-02',title:'Ảnh cảnh 2',kind:'visuals'}]});
+ v=progress.view(root,id);assert.deepEqual(v.tasks.map(t=>t.percent),[50,100,0]);assert.equal(v.events[0].type,'replan');
+ // Interrupted: the reporting process is gone, or no update for a long time. Stored state is untouched.
+ progress.update(root,id,'voice',{pid:999999999});
+ assert.equal(progress.view(root,id).tasks[0].display,'interrupted');
+ progress.update(root,id,'voice',{pid:null});
+ assert.equal(progress.view(root,id,{at:Date.now()+21*60*1000}).tasks[0].display,'interrupted');
+ assert.equal(progress.load(root,id).tasks[0].status,'running');assert.equal(progress.view(root,id).tasks[0].percent,50);
+ progress.ensureTask(root,id,{id:'clip-01',title:'Xuất clip cảnh 1',kind:'clip'});progress.ensureTask(root,id,{id:'clip-01',title:'x'});
+ assert.equal(progress.view(root,id).tasks.filter(t=>t.id==='clip-01').length,1);
+ progress.log(root,id,'Đang đợi máy GPU bật');assert.equal(progress.view(root,id).events[0].message,'Đang đợi máy GPU bật');
+ assert.ok(fs.existsSync(path.join(root,'.automation/progress',`${id}.json`)));assert.ok(denied(`.automation/progress/${id}.json`));
+}));

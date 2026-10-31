@@ -67,7 +67,8 @@ function summary(root, plan) {
   if (pending) blockers.push('Còn bản vá chờ duyệt');
   if (drift.length) blockers.push('Có thay đổi chưa vào bản vá');
   const notApproved = scenes.filter(s => s.status !== 'approved');
-  if (notApproved.length) blockers.push(`Cảnh chưa đạt hoặc chưa có clip: ${notApproved.map(s => s.title).join(', ')}`);
+  if (!scenes.length) blockers.push('Chưa có danh sách cảnh để duyệt');
+  else if (notApproved.length) blockers.push(`Cảnh chưa đạt hoặc chưa có clip: ${notApproved.map(s => s.title).join(', ')}`);
   return {state: !lock ? 'unlocked' : pending ? 'patch-pending' : 'locked', version: lock?.version || 0,
     lockedAt: lock?.at || null, lockedBy: lock?.by || null, items: list, missing: files.filter(f => !f.exists).map(f => f.path),
     drift, pending, patches: [...store.patches].reverse(), scenes, scenesApproved: scenes.length > 0 && !notApproved.length,

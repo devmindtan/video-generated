@@ -420,3 +420,46 @@ body.has-player .drawer.detail-page{padding-bottom:120px}
 @media(max-width:1100px){.review-grid{grid-template-columns:1fr}.patch-panel{position:static}}
 @media(max-width:760px){.review-stepper{grid-template-columns:1fr}.review-stepper .gate-step{padding:12px}.scene-grid{grid-template-columns:1fr}.scene-open{min-height:44px}}
 
+/* Tiến trình tab: overall progress, what is running now, task plan by kind beside the activity timeline. */
+.pbar{display:block;height:6px;border-radius:999px;background:#e7ede5;overflow:hidden}.pbar>span{display:block;height:100%;background:var(--forest);transition:width .4s}
+.pbar.is-big{height:10px}
+.progress-page #progress{margin-top:20px}
+.progress-hero{display:flex;align-items:center;gap:20px;padding:18px 20px;border:1px solid var(--line);border-radius:12px;background:var(--white)}
+.progress-big{display:grid;justify-items:center;min-width:96px}.progress-big strong{font-size:34px;line-height:1;color:var(--forest);font-variant-numeric:tabular-nums}.progress-big span{font-size:12px;color:var(--muted);margin-top:4px}
+.progress-hero-main{flex:1;min-width:0;display:grid;gap:6px}.progress-hero-main p{margin:0;font-size:15px;color:var(--ink)}.progress-hero-main small{font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+.t-warn{color:#a14a26}
+.live-dot{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--muted);white-space:nowrap}.live-dot:before{content:'';width:8px;height:8px;border-radius:50%;background:#b9c4b8}
+.live-dot.is-on{color:#3f6a2e}.live-dot.is-on:before{background:#5f8a4c;animation:live-pulse 1.6s ease-in-out infinite}
+@keyframes live-pulse{50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.live-dot.is-on:before{animation:none}.pbar>span{transition:none}}
+.progress-warn{margin:14px 0 0}
+.progress-now{margin-top:22px}.progress-now h4,.progress-tasks h4,.progress-timeline h4{margin:0 0 10px;font-size:16px;color:var(--ink)}
+.progress-now ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.now-card{display:grid;gap:6px;padding:14px;border:1px solid #b9cfa9;border-radius:10px;background:#f6faf1}
+.now-card.status-interrupted,.now-card.status-failed{border-color:#ecc9b2;background:#fff8f3}
+.now-head{display:flex;justify-content:space-between;gap:8px;align-items:center}.now-head small{font-size:12px;color:var(--muted)}
+.now-card strong{font-size:15px;color:var(--ink);overflow-wrap:anywhere}.now-card p{margin:0;font-size:13px;color:var(--muted)}.now-card p b{color:var(--ink)}
+.task-badge{flex:none;font-size:12px;font-weight:700;padding:1px 7px;border-radius:4px;background:#eef1ec;color:#4f6157}
+.status-running .task-badge{background:#e3efd8;color:#3f6a2e}.status-done .task-badge{background:#edf3e4;color:#426035}.status-interrupted .task-badge,.status-failed .task-badge{background:#fdf2ea;color:#a14a26}.status-blocked .task-badge{background:#f8f0dc;color:#795a1d}
+.task-note{font-size:13px;color:#4f6157;overflow-wrap:anywhere}
+.progress-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,360px);gap:28px;align-items:start;margin-top:24px}
+.task-group{margin-bottom:16px;border:1px solid var(--line);border-radius:10px;background:var(--white);overflow:hidden}
+.task-group-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:10px 14px;background:#f6f8f5;border-bottom:1px solid var(--line)}.task-group-head span{font-size:14px;font-weight:700;color:var(--ink)}.task-group-head small{font-size:13px;color:var(--muted)}
+.task-group ul{list-style:none;margin:0;padding:0}
+.task-row{display:grid;grid-template-columns:22px minmax(0,1fr) 48px;gap:10px;align-items:center;padding:10px 14px;border-top:1px solid #edf1ea}.task-row:first-child{border-top:0}
+.task-icon{font-size:13px;font-weight:700;color:#9aa69c;text-align:center}.status-done .task-icon{color:var(--forest)}.status-running .task-icon{color:#5f8a4c}.status-interrupted .task-icon,.status-failed .task-icon{color:#a14a26}
+.task-main{display:grid;gap:5px;min-width:0}.task-line{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.task-line strong{font-size:14px;color:var(--ink);overflow-wrap:anywhere}.task-main small{font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+.task-pct{font-size:13px;font-weight:700;color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
+.progress-timeline{position:sticky;top:16px;padding:16px;border:1px solid var(--line);border-radius:12px;background:#fafbf9}
+.progress-timeline ol{list-style:none;margin:0;padding:0;max-height:60vh;overflow:auto}
+.progress-timeline li{display:grid;grid-template-columns:86px minmax(0,1fr);gap:8px;padding:8px 0;border-top:1px solid #e7ede5;font-size:13px}.progress-timeline li:first-child{border-top:0}
+.progress-timeline time{color:var(--muted)}.progress-timeline span{color:var(--ink);overflow-wrap:anywhere}.progress-timeline span small{display:block;color:var(--muted);margin-top:2px}
+.progress-timeline .ev-failed b,.progress-timeline .ev-blocked b{color:#a14a26}.progress-timeline .ev-done b{color:#426035}
+.runs-title{margin-top:16px!important}.runs{list-style:none;margin:0;padding:0;font-size:13px}.runs li{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px solid #e7ede5}.runs small{color:var(--muted)}
+.progress-empty strong{display:block;color:var(--ink);font-size:15px;margin-bottom:6px}.progress-empty p{margin:0}
+.tab-flag.is-warn{background:#fdf2ea;color:#a14a26}
+.card-progress{display:flex;align-items:center;gap:8px;margin:-4px 0 10px}.card-progress .pbar{flex:1}.card-progress small{font-size:12px;font-weight:700;color:#3f6a2e;white-space:nowrap}
+.card-progress.is-warn small{color:#a14a26}.card-progress.is-warn .pbar>span{background:#c4774e}
+@media(max-width:1100px){.progress-grid{grid-template-columns:1fr}.progress-timeline{position:static}}
+@media(max-width:760px){.progress-hero{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;padding:14px}.progress-big{min-width:0}.progress-big strong{font-size:28px}.progress-hero-main{grid-column:1/-1}.live-dot{grid-column:2;grid-row:1;justify-self:end}.progress-now ul{grid-template-columns:1fr}.progress-timeline li{grid-template-columns:1fr}.project-tabs{gap:0}.project-tabs button{flex:1;justify-content:center;padding:10px 8px;font-size:14px}}
+@media(max-width:480px){.project-tabs .tab-flag{font-size:0;width:8px;height:8px;padding:0}}
