@@ -17,7 +17,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
   const startVoiceStudio=ensureVoiceStudio||voice.voiceStudioLauncher(root);
   // Status/stop are injectable so tests never touch a real VoiceStudio.
   const voiceControl=voiceStudio||{status:()=>voice.status(root),stop:()=>voice.stop(root)};
-  const store=createStore(root),token=crypto.randomBytes(32).toString('hex');
+  const store=createStore(root),token=crypto.randomBytes(32).toString('hex'),live=require('./live.cjs').createLive(root);
   const server=http.createServer(async(req,res)=>{
     const authority=`127.0.0.1:${server.address().port}`;
     const allowedHosts=[authority,`localhost:${server.address().port}`];
@@ -77,6 +77,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
       if(route==='/api/voice-references')return send(200,store.voiceReferences());
       if(route==='/api/approvals')return send(200,store.reviewView(url.searchParams.get('id')));
       if(route==='/api/progress')return send(200,store.progressView(url.searchParams.get('id')));
+      if(route==='/api/events')return live.subscribe(req,res);
       if(route==='/api/review-detail')return send(200,store.reviewDetail(url.searchParams.get('id'),url.searchParams.get('mode'),url.searchParams.get('patch')));
       if(route==='/api/approval-review')return send(200,store.gateReview(url.searchParams.get('id'),url.searchParams.get('gate')));
       if(route==='/api/document')return send(200,store.document(url.searchParams.get('id'),url.searchParams.get('file')));
@@ -108,6 +109,8 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
       const stream=fs.createReadStream(file);stream.on('error',()=>res.destroy());stream.pipe(res);
     }catch(error){if(!res.headersSent)send(error.status||400,{error:error.message});else res.destroy();}
   });
+  // Open event streams would otherwise keep close() waiting.
+  const close=server.close.bind(server);server.close=cb=>{live.close();return close(cb);};
   return server;
 }
 

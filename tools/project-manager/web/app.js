@@ -336,8 +336,9 @@ function renderProgress(){
   box.innerHTML=hero+(c.interrupted?`<p class="warn progress-warn">Có việc bị ngắt giữa chừng; trạng thái cuối cùng được giữ nguyên bên dưới để biết đang làm tới đâu.</p>`:'')+nowBlock+`<div class="progress-grid">${tasks}${timeline}</div>`;
   box.querySelectorAll('[data-width]').forEach(n=>{n.style.width=n.dataset.width+'%';});
 }
-// One timer for the open project: refresh only while Tiến trình is visible.
-setInterval(()=>{if(state.drawer&&state.projectTab==='progress'&&!$('#drawer').hidden&&document.visibilityState==='visible')loadProgress(state.drawer.id,true);},4000);
+// Live events refresh Tiến trình as it changes; this slow timer is only a fallback (and turns "running" into
+// "interrupted" when an agent process is gone, which writes no file).
+setInterval(()=>{if(state.drawer&&state.projectTab==='progress'&&!$('#drawer').hidden&&document.visibilityState==='visible')loadProgress(state.drawer.id,true);},15000);
 // Music and voice settings in words: the choices you check first, other parameters folded, the raw file last.
 const vnNum=v=>String(+(+v).toFixed(2)).replace('.',','),pct=v=>`${Math.round(v*100)}%`,sec=v=>`${vnNum(v)} giây`,rate=v=>`${vnNum(v)}×`,listOf=v=>Array.isArray(v)?v.join(', '):v;
 const pick=(o,k)=>k.split('.').reduce((a,p)=>a?.[p],o);
@@ -460,7 +461,7 @@ $('#review-dialog').addEventListener('click',event=>{
   if(event.target.closest('[data-review-seen]')){const items=reviewList();state.reviewSeen.add((items[state.reviewIndex]||items[0]).key);const next=items.findIndex((it,i)=>i>state.reviewIndex&&!state.reviewSeen.has(it.key));showItem(next>=0?next:Math.min(state.reviewIndex+1,items.length-1));return;}
   const fold=event.target.closest('[data-unfold]');if(fold){state.reviewExpanded[fold.dataset.unfold]=true;const top=$('#review-dialog .review-body').scrollTop;renderReview();$('#review-dialog .review-body').scrollTop=top;}
 });
-$('#review-dialog').addEventListener('close',()=>{document.querySelectorAll('#review-dialog audio,#review-dialog video').forEach(a=>a.pause());if(state.reviewMode==='detail')flushNotes().then(()=>state.drawer&&loadGates(state.drawer.id));});
+$('#review-dialog').addEventListener('close',()=>{document.querySelectorAll('#review-dialog audio,#review-dialog video').forEach(a=>a.pause());if(state.reviewMode==='detail')flushNotes().then(()=>state.drawer&&loadGates(state.drawer.id));else if(state.liveMissed&&state.drawer)loadGates(state.drawer.id);state.liveMissed=false;});
 $('#review-dialog').addEventListener('input',event=>{
   const box=event.target.closest('#item-note');if(!box)return;const key=box.dataset.key;state.noteDrafts[key]=box.value;
   clearTimeout(state.noteTimers[key]);state.noteTimers[key]=setTimeout(()=>saveNote(key),700);$('#review-dialog .note-state').textContent='Đang lưu…';
@@ -485,11 +486,12 @@ $('#review-dialog').addEventListener('submit',async event=>{
   try{await api('/api/approve',{id:state.drawer.id,gate:g.id,note:form.elements.note.value,revision:g.revision,confirm:true});$('#review-dialog').close();await loadGates(state.drawer.id);toast(`Đã ghi nhận: ${g.title}.`);}
   catch(error){status.textContent=error.message;button.disabled=false;}
 });
-async function openDocument(key){
-  if(!state.drawer)return;const id=state.drawer.id,request=++state.documentRequest;
+async function openDocument(key,quiet=false){
+  if(!state.drawer)return;const id=state.drawer.id,request=++state.documentRequest;state.documentKey=key;
   document.querySelectorAll('[data-document]').forEach(b=>b.classList.toggle('active',b.dataset.document===key));
-  $('#document-view').textContent='Đang mở…';
-  try{const doc=await api(`/api/document?id=${encodeURIComponent(id)}&file=${encodeURIComponent(key)}`);if(request!==state.documentRequest)return;renderDocument(doc);}
+  // A live refresh keeps the current text and scroll position until the new version arrives.
+  const view=$('#document-view'),top=view.scrollTop;if(!quiet)view.textContent='Đang mở…';
+  try{const doc=await api(`/api/document?id=${encodeURIComponent(id)}&file=${encodeURIComponent(key)}`);if(request!==state.documentRequest)return;renderDocument(doc);if(quiet)view.scrollTop=top;}
   catch(error){if(request===state.documentRequest)$('#document-view').textContent=error.message;}
 }
 // Documents are shown in a readable form per file type; "Xem file gốc" shows the exact text.
@@ -818,6 +820,23 @@ $('#status-filter').value=state.status;$('#sort-filter').value=state.sort;
 $('#grid-view').classList.toggle('active',state.layout==='grid');$('#list-view').classList.toggle('active',state.layout==='list');
 window.addEventListener('popstate',restoreRoute);
 refresh(true);
+// Live updates (tools/project-manager/live.cjs): the server says which projects changed; the page re-fetches only
+// what is on screen. An open review dialog is left alone and caught up when it closes; the notes box is never touched.
+function liveUpdate(event){
+  const ids=new Set(event.projects||[]),open=state.drawer&&!state.drawer.book&&!$('#drawer').hidden?state.drawer.id:null;
+  if(event.catalog||ids.size)refresh();
+  if(!open||!ids.has(open))return;
+  if($('#review-dialog').open)state.liveMissed=true;else loadGates(open);
+  loadProgress(open,true);
+  if(state.documentKey&&$('#document-view'))openDocument(state.documentKey,true);
+}
+if(window.EventSource){
+  let dropped=false;const events=new EventSource('/api/events');
+  events.onmessage=message=>{try{liveUpdate(JSON.parse(message.data));}catch{}};
+  // After a lost connection (server restart, sleep) catch up on everything that may have changed meanwhile.
+  events.onerror=()=>{dropped=true;$('#connection').classList.add('offline');$('#connection').lastChild.textContent='Mất kết nối, đang thử lại…';};
+  events.onopen=()=>{if(dropped){dropped=false;refresh();if(state.drawer&&!state.drawer.book&&!$('#drawer').hidden)liveUpdate({projects:[state.drawer.id]});}};
+}
 
 let selectedMedia=null,deletePlan=null;
 // VoiceStudio runs locally on 127.0.0.1:3900; the first start loads its backend (about a minute on CPU).

@@ -9,6 +9,7 @@ Mở **http://127.0.0.1:4310**. Website chỉ bind loopback, không cần tài k
 ## Chức năng
 
 - Đọc trực tiếp danh bạ kênh/series/tập hiện có. Tìm tiếng Việt không dấu, lọc và đổi chế độ lưới/danh sách.
+- **Tự cập nhật, không cần tải lại trang:** server theo dõi `series/`, `docs|scripts|src/projects/`, `projects/` và `.automation/progress/` (bỏ qua `.manager-history`) rồi báo trang qua `/api/events` (SSE) tập nào vừa đổi. Trang đọc lại danh sách, Duyệt sản xuất, Tiến trình và tài liệu đang mở; hộp thoại duyệt đang mở được giữ nguyên và cập nhật khi đóng; ô ghi chú không bị ghi đè. Mất kết nối thì tự nối lại và đồng bộ. Kiểm tra: `npm run test:manager:live`.
 - Xem trực tiếp video/thumbnail đã xuất trong player; tua video bằng điều khiển gốc. Chọn bản mới nhất tìm được trong `projects/<composition-id>/`, `projects/<slug>/`, `out/` hoặc `public/<slug>/`. Không nhầm ảnh cảnh với thumbnail đã xuất.
 - Nếu chưa có bản xuất, nút xem kiểm tra và tự bật Remotion Studio ở cổng 3000. Có nút mở Studio riêng khi muốn sửa. Không tự render. Log khởi động tại `.cache/project-manager/studio.log`.
 - Xem kịch bản, mô tả, tài liệu dựng và config theo tập. File nguồn hiển thị chỉ đọc.

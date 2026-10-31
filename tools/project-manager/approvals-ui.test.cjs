@@ -66,9 +66,11 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   assert.equal(lock.itemNotes.script.text,'Câu 3 hơi dài, câu 7 lặp ý','the edited note was saved before locking');assert.equal(store().notes.lock,undefined);
   mark('Initial lock: readable music/voice settings, samples play, per-item notes saved as you type, kept on return and recorded with the lock');
   const scriptFile=path.join(root,D,'script.md'),edit=(a,b)=>fs.writeFileSync(scriptFile,fs.readFileSync(scriptFile,'utf8').replace(a,b));
-  edit('Nội dung thử.','Nội dung đã sửa lại.');await open();
+  // No reload from here: the page follows file changes through live events.
+  const live=async(pattern,selector='#gates')=>page.waitForFunction(([p,s])=>new RegExp(p).test(document.querySelector(s)?.textContent||''),[pattern.source,selector],{timeout:8000});
+  edit('Nội dung thử.','Nội dung đã sửa lại.');await live(/chưa vào bản vá: Kịch bản/);
   assert.match(await page.locator('#gates .warn').innerText(),/chưa vào bản vá: Kịch bản/);mark('An edit after the lock without a patch is flagged, not silently approved');
-  review.createPatch(root,plan,{reason:'Sửa câu mở đầu',by:'agent'});await open();
+  review.createPatch(root,plan,{reason:'Sửa câu mở đầu',by:'agent'});await live(/Sửa câu mở đầu/,'.gate-next');mark('Live: the edit and the new patch appear without reloading the page');
   assert.match(await page.locator('.patch-pending').innerText(),/Chờ bạn duyệt[\s\S]*p1: Sửa câu mở đầu/i);assert.match(await next.innerText(),/Bản vá p1: Sửa câu mở đầu/);
   await page.screenshot({path:path.join(out,'review-pending-1440.png'),fullPage:true});
   await next.locator('[data-review-open="patch"]').click();await dialog.locator('.rail-item').first().waitFor();
