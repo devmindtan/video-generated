@@ -3,7 +3,7 @@
   "general": {
     "rules": [
       "Video dài: khi bắt tay dựng thật (ảnh, giọng, nhạc, caption, composition), làm intro (lời chào) và chỉ 30 giây đầu tiên SAU intro (không tính intro) trước, rồi mở Studio cho người dùng duyệt. Chỉ làm tiếp sau khi người dùng duyệt, theo lựa chọn của họ: từng phần tiếp theo hoặc toàn bộ phần còn lại. Không render/export để duyệt.",
-      "Một giọng cho cả tập: intro, nội dung, outro cùng nguồn giọng và cùng xử lý (tập hvtt-001: clone giọng người dùng +1 bán cung). Giọng đã chọn chép vào public/<slug>/audio/ theo tên NN-đoạn-voice-full.wav (00-intro, 01-…, 99-outro) kèm NN-đoạn-captions.json và voice-metadata.json; ghi scripts/projects/<slug>/voice.json. Bản nghe thử giữ nguyên trong voice-auditions."
+      "Một giọng cho cả tập: intro, nội dung, outro cùng nguồn giọng và cùng xử lý (tập hvtt-001: clone giọng người dùng +2 bán cung). Giọng đã chọn chép vào public/<slug>/audio/ theo tên NN-đoạn-voice-full.wav (00-intro, 01-…, 99-outro) kèm NN-đoạn-captions.json và voice-metadata.json; ghi scripts/projects/<slug>/voice.json. Bản nghe thử giữ nguyên trong voice-auditions."
     ],
     "notes": ""
   },
