@@ -7,18 +7,18 @@
   "sentences": [
     {
       "scene": 1,
-      "text": "Hồi nhỏ, chắc ai cũng từng chạy nhảy rồi vấp phải cái ngạch cửa, ngã nhào và khóc ré lên.",
-      "pauseAfter": 0.45
+      "text": "Ở chương cuối, tác giả kể một chuyện mà chắc nhiều người từng gặp lúc nhỏ.",
+      "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Bà chạy tới.",
-      "pauseAfter": 0.3
+      "text": "Một đứa bé đang chạy nhảy thì vấp phải cái ngạch cửa, ngã nhào và khóc ré lên.",
+      "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Việc đầu tiên bà làm không phải là la cháu, mà là mắng cái ngạch cửa: sao dám làm cháu bà đau.",
-      "pauseAfter": 0.45
+      "text": "Người bà chạy tới, và việc đầu tiên bà làm không phải là la cháu, mà là mắng cái ngạch cửa sao dám làm cháu bà đau.",
+      "pauseAfter": 0.4
     },
     {
       "scene": 1,
@@ -27,17 +27,27 @@
     },
     {
       "scene": 1,
-      "text": "Người bà ấy không học tâm lý ở đâu cả.",
+      "text": "Lúc đó, đứa bé chỉ thấy hả dạ vì cái ngạch cửa bị la.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Bà chỉ hiểu đứa cháu đang đau và đang sợ.",
+      "text": "Phải lớn lên, chúng ta mới hiểu bà đâu có giận gì cái ngạch cửa.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Cuốn sách hôm nay nói về đúng điều đó: hiểu lòng mình, và hiểu lòng người.",
+      "text": "Bà dỗ cái đau của cháu trước, rồi mới dạy sau.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Thấy được người kia đang đau rồi mới nói điều phải, bà làm được vậy mà chẳng cần ai dạy.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Còn người lớn chúng ta nhiều khi phải học lại từ đầu, và cuốn sách hôm nay giúp mình học lại chuyện đó.",
       "pauseAfter": 0
     }
   ]

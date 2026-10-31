@@ -1,0 +1,44 @@
+{
+  "title": "Đọc sách, hiểu mình — tập 1 — 08e-diem-chua-dat",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Nói cho công bằng, cuốn sách cũng có những chỗ mình thấy chưa đạt.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Thứ nhất, đọc liền một mạch thì dễ thấy lặp: năm mươi chương, nhưng nhiều chương quay về cùng một lời khuyên là dừng lại, nhìn vào lòng mình, hiểu rồi mới thương.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Theo mình, mỗi ngày đọc vài chương sẽ thấm hơn đọc một lèo.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Thứ hai, một số đoạn tác giả nói về y khoa, khoa học hay đưa số liệu mà không ghi nguồn, và vài chỗ nay không còn đúng.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Mình nghĩ những đoạn đó nên đọc như ý kiến riêng của tác giả; còn chuyện sức khỏe, nhất là sức khỏe tinh thần, thì chúng ta vẫn nên hỏi bác sĩ.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Thứ ba, vài niềm tin tôn giáo và quan điểm đạo đức của tác giả được viết như điều hiển nhiên, như chuyện nợ cảm xúc phải trả qua nhiều đời.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Nếu không cùng niềm tin ấy, các bạn vẫn có thể giữ phần thực hành và để phần niềm tin sang một bên.",
+      "pauseAfter": 0
+    }
+  ]
+}

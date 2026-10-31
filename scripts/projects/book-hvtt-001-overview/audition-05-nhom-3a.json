@@ -7,7 +7,7 @@
   "sentences": [
     {
       "scene": 1,
-      "text": "Nhóm thứ nhất là những cảm xúc làm ta chao đảo: giận, sợ, lo.",
+      "text": "Nhóm thứ nhất nói về những cảm xúc làm chúng ta chao đảo: giận, sợ và lo.",
       "pauseAfter": 0.65
     },
     {
@@ -17,27 +17,17 @@
     },
     {
       "scene": 1,
-      "text": "Theo tác giả, cơn giận không tự nhiên bùng lên.",
+      "text": "Theo tác giả, cơn giận không tự nhiên bùng lên, mà được nuôi từ rất nhiều bực bội nhỏ mình cho qua và không nhìn lại.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Nó được nuôi từ rất nhiều bực bội nhỏ mà ta cho qua, không nhìn lại.",
+      "text": "Tác giả khuyên lúc đang giận thì tạm rời khỏi chỗ đó, quay về với hơi thở; bình tĩnh rồi mới nhìn xem cơn giận được nuôi từ đâu.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Lúc đang giận, hãy rời khỏi chỗ đó và quay về với hơi thở.",
-      "pauseAfter": 0.4
-    },
-    {
-      "scene": 1,
-      "text": "Khi đã bình tĩnh, mới nhìn xem cơn giận được nuôi từ đâu.",
-      "pauseAfter": 0.4
-    },
-    {
-      "scene": 1,
-      "text": "Và chỗ chuyển hóa sau cùng là hiểu được người kia, vì \"tình thương chính là khắc tinh của cơn giận\".",
+      "text": "Chỗ chuyển hóa sau cùng là hiểu được người kia, vì \"tình thương chính là khắc tinh của cơn giận\".",
       "pauseAfter": 0.65
     },
     {
@@ -47,12 +37,7 @@
     },
     {
       "scene": 1,
-      "text": "Người thân về trễ, gọi mãi không nghe máy.",
-      "pauseAfter": 0.4
-    },
-    {
-      "scene": 1,
-      "text": "Chưa tới mười phút, trong đầu ta đã dựng xong cả một tai nạn.",
+      "text": "Mình lấy một ví dụ quen thuộc: người thân về trễ, mình gọi mãi không ai nghe máy, và chưa tới mười phút đã tưởng tượng xong cả một vụ tai nạn.",
       "pauseAfter": 0.4
     },
     {
@@ -62,7 +47,7 @@
     },
     {
       "scene": 1,
-      "text": "Trước khi khổ vì một chuyện, hãy hỏi xem chuyện ấy đã thật sự xảy ra chưa.",
+      "text": "Nên trước khi khổ vì một chuyện, tác giả khuyên mình hỏi lại xem chuyện ấy đã thật sự xảy ra chưa.",
       "pauseAfter": 0.65
     },
     {
@@ -72,22 +57,17 @@
     },
     {
       "scene": 1,
-      "text": "Tác giả mượn hình ảnh một cốc nước.",
+      "text": "Tác giả mượn hình ảnh một cốc nước: giơ lên vài phút thì không sao, giơ một giờ thì tay tê, giơ cả ngày thì tay rã rời.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Giơ lên vài phút thì không sao, giơ một giờ thì tay tê, giơ cả ngày thì tay rã rời.",
+      "text": "Nỗi lo cũng vậy, không nặng vì nó lớn mà vì mình cầm nó quá lâu.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Nỗi lo cũng vậy: không nặng ở chỗ nó lớn, mà ở chỗ ta cầm nó quá lâu.",
-      "pauseAfter": 0.4
-    },
-    {
-      "scene": 1,
-      "text": "Cách tác giả gợi ý rất cụ thể: viết ra điều mình đang lo, chấp nhận trước kết quả xấu nhất, việc gì làm được thì làm ngay, việc gì ngoài sức mình thì đặt xuống.",
+      "text": "Tác giả gợi ý rất cụ thể: viết ra điều mình đang lo, chấp nhận trước kết quả xấu nhất, việc gì làm được thì làm ngay, việc gì ngoài sức mình thì đặt xuống.",
       "pauseAfter": 0.4
     },
     {

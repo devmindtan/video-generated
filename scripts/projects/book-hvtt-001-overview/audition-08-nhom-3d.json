@@ -7,7 +7,7 @@
   "sentences": [
     {
       "scene": 1,
-      "text": "Nhóm cuối cùng nói về sợi dây nối ta với những người xung quanh.",
+      "text": "Nhóm cuối cùng nói về sợi dây nối chúng ta với những người xung quanh.",
       "pauseAfter": 0.65
     },
     {
@@ -17,7 +17,7 @@
     },
     {
       "scene": 1,
-      "text": "Có người sống giữa gia đình, bạn bè mà vẫn thấy một mình, vì một bức tường vô hình: sự phòng thủ, tự ái, hay chính ta không chịu tin ai.",
+      "text": "Theo tác giả, nhiều người sống giữa gia đình, bạn bè mà vẫn thấy một mình, vì một bức tường vô hình: sự phòng thủ, tự ái, hay chính mình không chịu tin ai.",
       "pauseAfter": 0.4
     },
     {
@@ -27,7 +27,7 @@
     },
     {
       "scene": 1,
-      "text": "Và sau một lần đổ vỡ, đừng vội tìm người mới; hãy cho mình thời gian lành lại.",
+      "text": "Và sau một lần đổ vỡ, tác giả khuyên đừng vội tìm người mới, mà cho mình thời gian lành lại.",
       "pauseAfter": 0.65
     },
     {
@@ -37,12 +37,12 @@
     },
     {
       "scene": 1,
-      "text": "Trái cam trên tay ta là kết quả của hạt giống, của nước, gió, nắng và người trồng.",
+      "text": "Tác giả lấy ví dụ trái cam trên tay mình: nó là kết quả của hạt giống, của nước, gió, nắng và người trồng.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Tác giả nhắc rằng lời cảm ơn nên đến từ lòng biết ơn thật, chứ không chỉ là phép lịch sự.",
+      "text": "Vì vậy, theo tác giả, lời cảm ơn nên đến từ lòng biết ơn thật, chứ không chỉ là phép lịch sự.",
       "pauseAfter": 0.65
     },
     {
@@ -52,22 +52,22 @@
     },
     {
       "scene": 1,
-      "text": "Đây là hình ảnh mình nhớ nhất.",
+      "text": "Đây là hình ảnh mình nhớ nhất trong sách.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "\"Khi nấu được một tô canh chua, ta phải biết rằng cả tổ tiên đã cùng nấu với ta.\"",
+      "text": "Tác giả viết: \"Khi nấu được một tô canh chua, ta phải biết rằng cả tổ tiên đã cùng nấu với ta.\"",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Vì nếu không có những người đi trước, ta đâu biết nấu, thậm chí đâu có cái tên canh chua.",
+      "text": "Không có những người đi trước, mình đâu biết nấu, thậm chí đâu có cái tên canh chua.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Thấy được như vậy thì khó mà kiêu ngạo, và khó mà sống chỉ cho riêng mình.",
+      "text": "Thấy được như vậy, mình khó mà kiêu ngạo, và khó mà sống chỉ cho riêng mình.",
       "pauseAfter": 0.65
     },
     {
@@ -87,22 +87,17 @@
     },
     {
       "scene": 1,
-      "text": "Tác giả bước tới thật chậm, thật bình thản, và lần này con cò đứng yên cho gỡ túi.",
+      "text": "Tác giả bước tới thật chậm, thật bình thản, và lần này con cò đứng yên cho tác giả gỡ túi.",
       "pauseAfter": 0.9
     },
     {
       "scene": 1,
-      "text": "Muốn giúp ai, phải biết đặt mình vào chỗ của họ; người đang gặp nạn vẫn cần được tôn trọng.",
+      "text": "Theo tác giả, muốn giúp ai thì phải biết đặt mình vào chỗ của họ, vì người đang gặp nạn vẫn cần được tôn trọng.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Và người bà mắng cái ngạch cửa lúc đầu cũng nằm trong chương này.",
-      "pauseAfter": 0.4
-    },
-    {
-      "scene": 1,
-      "text": "Bà hiểu cháu, vì bà cũng từng là một đứa trẻ.",
+      "text": "Chuyện người bà và cái ngạch cửa mình kể lúc đầu cũng nằm trong chương này: bà hiểu cháu, vì bà cũng từng là một đứa trẻ.",
       "pauseAfter": 0
     }
   ]

@@ -17,27 +17,17 @@
     },
     {
       "scene": 1,
-      "text": "Tác giả tách chữ nhẫn nhục ra: \"Chịu có nghĩa là đồng ý chấp nhận; đựng có nghĩa là cái khả năng dung chứa.\"",
+      "text": "Tác giả giải thích: \"Chịu có nghĩa là đồng ý chấp nhận; đựng có nghĩa là cái khả năng dung chứa.\"",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Hình ảnh đi kèm, tác giả mượn từ kinh Phật, là một vốc muối.",
+      "text": "Tác giả còn mượn từ kinh Phật hình ảnh một vốc muối: bỏ vào tô nước thì mặn chát, không uống nổi; thả xuống dòng sông thì nước sông vẫn uống được như thường.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Bỏ vào tô nước thì mặn chát, không uống nổi.",
-      "pauseAfter": 0.4
-    },
-    {
-      "scene": 1,
-      "text": "Thả xuống dòng sông thì nước sông vẫn uống được như thường.",
-      "pauseAfter": 0.4
-    },
-    {
-      "scene": 1,
-      "text": "Nỗi khổ không nhỏ đi; chỉ có lòng ta rộng ra.",
+      "text": "Nỗi khổ không nhỏ đi, chỉ là lòng mình rộng ra.",
       "pauseAfter": 0.65
     },
     {
@@ -47,12 +37,7 @@
     },
     {
       "scene": 1,
-      "text": "Tác giả đề nghị một cách gọi khác: \"ta nên tập gọi là \"chưa thành công\" thay vì gọi là thất bại\".",
-      "pauseAfter": 0.4
-    },
-    {
-      "scene": 1,
-      "text": "Vì những gì mình đã xây vẫn còn đó, chỉ là điều kiện chưa đủ.",
+      "text": "Tác giả đề nghị đổi cách gọi: \"ta nên tập gọi là \"chưa thành công\" thay vì gọi là thất bại\", vì những gì mình đã xây vẫn còn đó, chỉ là điều kiện chưa đủ.",
       "pauseAfter": 0.4
     },
     {
@@ -62,7 +47,7 @@
     },
     {
       "scene": 1,
-      "text": "Hãy cho mình thời gian nhìn lại trước đã.",
+      "text": "Tác giả khuyên mình cho bản thân thời gian nhìn lại trước đã.",
       "pauseAfter": 0.65
     },
     {
@@ -72,7 +57,7 @@
     },
     {
       "scene": 1,
-      "text": "Có một câu chuyện trong sách: một bác nông dân chạy ngang, hỏi có ai thấy mười hai con bò của bác đâu không.",
+      "text": "Tác giả kể một câu chuyện: một bác nông dân chạy ngang, hỏi có ai thấy mười hai con bò của bác đâu không.",
       "pauseAfter": 0.4
     },
     {
@@ -82,12 +67,7 @@
     },
     {
       "scene": 1,
-      "text": "Tác giả nói ta không chỉ giữ của cải, mà còn giữ cả lời khen, sự công nhận.",
-      "pauseAfter": 0.4
-    },
-    {
-      "scene": 1,
-      "text": "Mỗi thứ ta ôm là một con bò có thể lạc mất.",
+      "text": "Theo tác giả, mình không chỉ giữ của cải mà còn giữ cả lời khen, sự công nhận, và mỗi thứ mình ôm là một con bò có thể lạc mất.",
       "pauseAfter": 0.4
     },
     {
@@ -102,12 +82,7 @@
     },
     {
       "scene": 1,
-      "text": "\"Ủa, mùa thu đến rồi à? Tôi bận quá.\"",
-      "pauseAfter": 0.4
-    },
-    {
-      "scene": 1,
-      "text": "Đó là câu tác giả dùng để tả nhịp sống hôm nay.",
+      "text": "Tác giả tả nhịp sống hôm nay bằng một câu: \"Ủa, mùa thu đến rồi à? Tôi bận quá.\"",
       "pauseAfter": 0.4
     },
     {
@@ -117,17 +92,12 @@
     },
     {
       "scene": 1,
-      "text": "Ta hay hẹn thảnh thơi tới lúc đủ tiền, tới lúc về hưu.",
+      "text": "Mình hay hẹn thảnh thơi tới lúc đủ tiền, tới lúc về hưu, nhưng theo tác giả, \"không có con đường nào đưa tới sự thảnh thơi mà bản thân nó không phải là thảnh thơi\".",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Nhưng theo tác giả, \"không có con đường nào đưa tới sự thảnh thơi mà bản thân nó không phải là thảnh thơi\".",
-      "pauseAfter": 0.4
-    },
-    {
-      "scene": 1,
-      "text": "Đi là để mà đi, chứ không chỉ để mà tới.",
+      "text": "Tức là mình đi để mà đi, chứ không chỉ để mà tới.",
       "pauseAfter": 0
     }
   ]

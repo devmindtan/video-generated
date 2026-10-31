@@ -7,12 +7,12 @@
   "sentences": [
     {
       "scene": 1,
-      "text": "Nếu phải gom năm mươi chương lại thành một ý, thì đó là: phần lớn nỗi khổ của ta không nằm hết ở chuyện đã xảy ra, mà ở cách lòng ta phản ứng với chuyện đó.",
+      "text": "Nếu gom năm mươi chương lại thành một ý, mình sẽ tóm thế này: phần lớn nỗi khổ của chúng ta không nằm hết ở chuyện đã xảy ra, mà ở cách lòng mình phản ứng với chuyện đó.",
       "pauseAfter": 0.65
     },
     {
       "scene": 1,
-      "text": "Ngay chương đầu, tác giả tách hai chữ mà ta vẫn hay dùng chung.",
+      "text": "Ngay chương đầu, tác giả tách hai chữ mà chúng ta hay dùng chung.",
       "pauseAfter": 0.4
     },
     {
@@ -22,47 +22,27 @@
     },
     {
       "scene": 1,
-      "text": "Đau là điều xảy đến.",
-      "pauseAfter": 0.4
-    },
-    {
-      "scene": 1,
-      "text": "Khổ là khi ta không chịu chấp nhận nó, cứ chống lại, cứ nghĩ đi nghĩ lại mãi.",
+      "text": "Đau là điều xảy đến, còn khổ là khi mình không chịu chấp nhận nó, cứ chống lại và nghĩ đi nghĩ lại mãi.",
       "pauseAfter": 0.9
     },
     {
       "scene": 1,
-      "text": "Từ đó, sách chia hạnh phúc làm ba tầng.",
-      "pauseAfter": 0.4
-    },
-    {
-      "scene": 1,
-      "text": "Tầng thứ nhất là thỏa mãn cảm xúc: một món ngon, một lời khen, đến nhanh và đi cũng nhanh.",
-      "pauseAfter": 0.4
-    },
-    {
-      "scene": 1,
-      "text": "Tầng thứ hai là thỏa mãn ý chí: đạt được điều mình đã cố gắng.",
-      "pauseAfter": 0.4
-    },
-    {
-      "scene": 1,
-      "text": "Tầng thứ ba, tác giả gọi là hạnh phúc chân thật, đến từ một tâm bình yên.",
+      "text": "Từ đó, tác giả chia hạnh phúc thành ba tầng: thỏa mãn cảm xúc, như một món ngon hay một lời khen, đến nhanh và đi cũng nhanh; thỏa mãn ý chí, khi đạt được điều mình đã cố gắng; và tầng thứ ba, tác giả gọi là hạnh phúc chân thật, đến từ một tâm bình yên.",
       "pauseAfter": 0.65
     },
     {
       "scene": 1,
-      "text": "Và để đi tới đó, sách nhắc đi nhắc lại một điều: phải hiểu thì mới thương được.",
+      "text": "Để tới được đó, sách nhắc đi nhắc lại một điều: phải hiểu thì mới thương được.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "\"Lòng phải hiểu được lòng mới là tình thương chân thật.\"",
+      "text": "Như tác giả viết: \"Lòng phải hiểu được lòng mới là tình thương chân thật.\"",
       "pauseAfter": 0.65
     },
     {
       "scene": 1,
-      "text": "Năm mươi chương còn lại, mình xin gom thành bốn nhóm để cả nhà dễ theo dõi.",
+      "text": "Phần còn lại của cuốn sách, mình xin gom thành bốn nhóm để cả nhà dễ theo dõi.",
       "pauseAfter": 0
     }
   ]
