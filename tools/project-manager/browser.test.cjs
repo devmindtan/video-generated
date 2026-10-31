@@ -37,8 +37,8 @@ async function run(){
     await screenshot('rendered-thumbnail');await page.locator('#close-media').click();mark('Rendered thumbnail opens directly; Studio action remains available');
     await page.locator('.card-title').click();await page.waitForSelector('#drawer:not([hidden])');
     await page.waitForFunction(()=>document.querySelector('#document-view h1'));
-    assert.ok(await page.locator('.workspace').evaluate(n=>n.inert));
-    await noOverflow();await screenshot('project-detail');mark('Detail opens script and locks background focus/scroll');
+    assert.ok(await page.locator('.workspace').evaluate(n=>n.inert));assert.ok(await page.locator('#drawer').evaluate(n=>n.classList.contains('detail-page')&&n.classList.contains('project-page')&&n.getAttribute('role')==='region'));assert.ok(await page.locator('#sidebar').evaluate(n=>!n.inert));
+    await noOverflow();await screenshot('project-detail');mark('Project opens as a full page with script, notes and usable sidebar');
     await page.locator('[data-delete-project]').click();await page.locator('#delete-dialog[open]').waitFor();
     assert.match(await page.locator('#delete-summary').innerText(),/bản dựng\/thumbnail/);
     await screenshot('delete-confirmation');await page.locator('#cancel-delete').click();mark('Production deletion shows inventory and cancels without mutation');
