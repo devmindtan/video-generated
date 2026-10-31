@@ -3,7 +3,8 @@
   "general": {
     "rules": [
       "Video dài: khi bắt tay dựng thật (ảnh, giọng, nhạc, caption, composition), làm intro (lời chào) và chỉ 30 giây đầu tiên SAU intro (không tính intro) trước, rồi mở Studio cho người dùng duyệt. Chỉ làm tiếp sau khi người dùng duyệt, theo lựa chọn của họ: từng phần tiếp theo hoặc toàn bộ phần còn lại. Không render/export để duyệt.",
-      "Một giọng cho cả tập: intro, nội dung, outro cùng nguồn giọng và cùng xử lý (tập hvtt-001: clone giọng người dùng +2 bán cung). Giọng đã chọn chép vào public/<slug>/audio/ theo tên NN-đoạn-voice-full.wav (00-intro, 01-…, 99-outro) kèm NN-đoạn-captions.json và voice-metadata.json; ghi scripts/projects/<slug>/voice.json. Bản nghe thử giữ nguyên trong voice-auditions."
+      "Một giọng cho cả tập: intro, nội dung, outro cùng nguồn giọng và cùng xử lý (tập hvtt-001: clone giọng người dùng +2 bán cung). Giọng đã chọn chép vào public/<slug>/audio/ theo tên NN-đoạn-voice-full.wav (00-intro, 01-…, 99-outro) kèm NN-đoạn-captions.json và voice-metadata.json; ghi scripts/projects/<slug>/voice.json. Bản nghe thử giữ nguyên trong voice-auditions.",
+      "Video dài clone giọng: sau bản clone thử một đoạn ngắn, dựng toàn bộ video bằng giọng tạm Quốc Tuấn (VieNeu). Chỉ khi kịch bản đã chốt (kể cả phần ý kiến cá nhân) mới clone tất cả một lượt trên máy GPU; người dùng nghe chọn rồi mới ghép, cân lại timing/caption/ducking nhạc theo độ dài mới và duyệt lại. Giọng tạm không phải giọng cuối; đoạn sửa sau đó clone lại riêng thành take mới."
     ],
     "notes": ""
   },
