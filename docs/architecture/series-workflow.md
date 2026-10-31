@@ -85,6 +85,10 @@ Bạn thêm quy tắc và ghi chú vào `series/<channel>/<series>/workflow.json
 
 Agent đọc `general` và mục của bước đang làm trước khi làm; runner chèn chúng vào `project_context.md`. Quy tắc/ghi chú chỉ bổ sung hướng dẫn, không đổi bước, cổng duyệt, và không mở khóa render, đăng tải hay sinh nội dung trả phí. Lưu từ web kiểm tra phiên bản (sửa ngoài trang thì web từ chối ghi đè) và giữ bản cũ trong `.manager-history/`.
 
+## Nơi lưu bản render
+
+Mỗi Composition/Still trong `registry.tsx` có `calculateMetadata={renderTo('<mã-dự-án>')}` (bọc hàm sẵn có: `renderTo('<mã>', hamCu)`). Kèm `remotion.config.ts` (chỉ áp dụng khi chạy Studio), hộp thoại Render của Studio đề xuất `projects/<mã-dự-án>/<ID>.mp4` hoặc `.png` thay vì `out/`. Thư mục `projects/` bị Git bỏ qua; trang quản lý tự tìm bản xuất ở đó. `npm run projects:check` báo lỗi nếu registration thiếu hoặc ghi sai mã dự án. Bản render cũ trong `out/` vẫn được nhận ra, không tự di chuyển.
+
 ## Dự án chưa đặt tên
 
 Để trống tên khi tạo (trang quản lý hoặc `npm run projects -- create --series <series> --title '' --format short`) thì dự án nhận tên tạm `Chưa đặt tên N`, mã `chua-dat-ten-N` và `autoNamed: true`. Khi bắt đầu làm, agent đổi sang tên hợp nội dung:

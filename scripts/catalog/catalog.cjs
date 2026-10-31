@@ -50,8 +50,9 @@ function registrations(root = ROOT) {
         const component = attrs.component?.expression?.name;
         const project = imports.get(component)?.match(/^\.\/([^/]+)\//)?.[1];
         if (!project) throw new Error(`Cannot locate component for ${attrs.id.value}`);
-        const raw = source.slice(node.start, node.end);
-        records.push({id: attrs.id.value, kind: name, project, folders,
+        const raw = source.slice(node.start, node.end), calc = attrs.calculateMetadata?.expression;
+        const renderTo = calc?.type === 'CallExpression' && calc.callee.name === 'renderTo' && calc.arguments[0]?.type === 'StringLiteral' ? calc.arguments[0].value : null;
+        records.push({id: attrs.id.value, kind: name, project, folders, renderTo,
           durationFrames: attrs.durationInFrames?.expression?.value ?? null,
           fps: attrs.fps?.expression?.value ?? null, width: attrs.width?.expression?.value,
           height: attrs.height?.expression?.value, jsxSha256: hash(raw)});
@@ -133,4 +134,11 @@ function auditMigration(root = ROOT) {
     note:'One-time migration audit; legitimate future episode edits need not match this baseline.'};
 }
 
-module.exports = {ROOT, load, validate, registrations, auditMigration, inside, slug, read};
+// Studio's default render path is projects/<project>/<ID> only when each registration says so.
+function checkRenderOutputs(root = ROOT) {
+  const records = registrations(root);
+  for (const record of records) if (record.renderTo !== record.project)
+    throw new Error(`${record.id}: add calculateMetadata={renderTo('${record.project}')} (wrap an existing calculateMetadata) so Studio renders to projects/${record.project}/, not out/`);
+  return {renderOutputs: records.length};
+}
+module.exports = {ROOT, load, validate, registrations, checkRenderOutputs, auditMigration, inside, slug, read};

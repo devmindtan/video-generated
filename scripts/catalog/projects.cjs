@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const {ROOT, load, validate, auditMigration, inside, slug} = require('./catalog.cjs');
+const {ROOT, load, validate, checkRenderOutputs, auditMigration, inside, slug} = require('./catalog.cjs');
 
 function flags(argv) {
   const values = {};
@@ -138,7 +138,7 @@ function main(argv = process.argv.slice(2)) {
     validate(catalog); const result = renameProject(catalog, rest[0], flags(rest.slice(1))); validate(load()); return result;
   }
   const options = flags(rest);
-  if (command === 'check') { allowed(options,[]); return validate(catalog); }
+  if (command === 'check') { allowed(options,[]); return {...validate(catalog), ...checkRenderOutputs(catalog.root)}; }
   if (command === 'audit-migration') { allowed(options,[]); return auditMigration(); }
   if (command === 'create') { validate(catalog); return createProject(catalog,options); }
   if (command === 'create-series') { validate(catalog); return createSeries(catalog,options); }

@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const os = require('node:os');
-const {load,validate} = require('./catalog.cjs');
+const {load,validate,checkRenderOutputs} = require('./catalog.cjs');
 const {createProject,renameProject,createSeries} = require('./projects.cjs');
 
 function fixture(t) {
@@ -104,4 +104,12 @@ test('an empty title gets a temporary name that only the rename command replaces
   assert.equal(fs.readFileSync(path.join(root,'docs/projects/son-merzy/approvals.json'),'utf8'),'{"path":"docs/projects/chua-dat-ten-2"}');
   assert.equal(fs.readFileSync(path.join(root,'package.json'),'utf8'),'{"scripts":{"voice:son-merzy":"x --story scripts/projects/son-merzy/story.json","voice:chua-dat-ten-20":"keep"}}');
   assert.throws(()=>renameProject(load(root),'son-merzy',{'--id':'again','--title':'Lần nữa'}),/real name/);
+});
+test('every registration renders into its own project folder, not out/',t=>{
+  const {root,write}=fixture(t),registry=path.join(root,'src/projects/registry.tsx'),source=fs.readFileSync(registry,'utf8');
+  assert.throws(()=>checkRenderOutputs(root),/Old: add calculateMetadata=\{renderTo\('old'\)\}/);
+  write('src/projects/registry.tsx',source.replace('<Composition id="Old"',`<Composition id="Old" calculateMetadata={renderTo('old')}`).replace('<Still id="OldThumb"',`<Still id="OldThumb" calculateMetadata={renderTo('other', thumbMetadata)}`));
+  assert.throws(()=>checkRenderOutputs(root),/OldThumb: add calculateMetadata=\{renderTo\('old'\)\}/);
+  write('src/projects/registry.tsx',source.replace('<Composition id="Old"',`<Composition id="Old" calculateMetadata={renderTo('old')}`).replace('<Still id="OldThumb"',`<Still id="OldThumb" calculateMetadata={renderTo('old', thumbMetadata)}`));
+  assert.deepEqual(checkRenderOutputs(root),{renderOutputs:2});validate(load(root));
 });

@@ -1,3 +1,4 @@
+import {renderTo} from './render-output';
 import type {FC} from 'react';
 import {Composition, Folder, Still} from 'remotion';
 import {BoundariesThumbnail} from './boundaries/Thumbnail';
@@ -82,177 +83,177 @@ export const ProjectCompositions: FC = () => (
     <Folder name="Tam-Ly-Cuoc-Song">
       <Folder name="Self-Help-Shorts">
         <Folder name="one-bad-day">
-          <Composition id="StoicOneBadDay" component={OneBadDayVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
-          <Still id="OneBadDayThumbnail" component={OneBadDayThumbnail} width={1080} height={1920} />
+          <Composition id="StoicOneBadDay" calculateMetadata={renderTo('one-bad-day')} component={OneBadDayVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
+          <Still id="OneBadDayThumbnail" calculateMetadata={renderTo('one-bad-day')} component={OneBadDayThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="start-before-ready">
-          <Composition id="StoicStartBeforeReady" component={StartBeforeReadyVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
-          <Still id="StartBeforeReadyThumbnail" component={StartBeforeReadyThumbnail} width={1080} height={1920} />
+          <Composition id="StoicStartBeforeReady" calculateMetadata={renderTo('start-before-ready')} component={StartBeforeReadyVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
+          <Still id="StartBeforeReadyThumbnail" calculateMetadata={renderTo('start-before-ready')} component={StartBeforeReadyThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="stoic">
-          <Composition id="StoicControl" component={StoicVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
-          <Still id="StoicThumbnail" component={StoicThumbnail} width={1080} height={1920} />
+          <Composition id="StoicControl" calculateMetadata={renderTo('stoic')} component={StoicVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
+          <Still id="StoicThumbnail" calculateMetadata={renderTo('stoic')} component={StoicThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="past-self">
-          <Composition id="StoicPastSelf" component={PastSelfVideo} durationInFrames={1500} fps={30} width={1080} height={1920} />
-          <Still id="PastSelfThumbnail" component={PastSelfThumbnail} width={1080} height={1920} />
+          <Composition id="StoicPastSelf" calculateMetadata={renderTo('past-self')} component={PastSelfVideo} durationInFrames={1500} fps={30} width={1080} height={1920} />
+          <Still id="PastSelfThumbnail" calculateMetadata={renderTo('past-self')} component={PastSelfThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="let-it-settle">
-          <Composition id="StoicLetItSettle" component={LetItSettleVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
-          <Still id="LetItSettleThumbnail" component={LetItSettleThumbnail} width={1080} height={1920} />
+          <Composition id="StoicLetItSettle" calculateMetadata={renderTo('let-it-settle')} component={LetItSettleVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
+          <Still id="LetItSettleThumbnail" calculateMetadata={renderTo('let-it-settle')} component={LetItSettleThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="single-task">
-          <Composition id="StoicSingleTask" component={SingleTaskVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
-          <Still id="SingleTaskThumbnail" component={SingleTaskThumbnail} width={1080} height={1920} />
+          <Composition id="StoicSingleTask" calculateMetadata={renderTo('single-task')} component={SingleTaskVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
+          <Still id="SingleTaskThumbnail" calculateMetadata={renderTo('single-task')} component={SingleTaskThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="discipline-purpose">
-          <Composition id="StoicDisciplinePurpose" component={DisciplinePurposeVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
-          <Still id="DisciplinePurposeThumbnail" component={DisciplinePurposeThumbnail} width={1080} height={1920} />
+          <Composition id="StoicDisciplinePurpose" calculateMetadata={renderTo('discipline-purpose')} component={DisciplinePurposeVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
+          <Still id="DisciplinePurposeThumbnail" calculateMetadata={renderTo('discipline-purpose')} component={DisciplinePurposeThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="right-advice">
-          <Composition id="StoicRightAdvice" component={RightAdviceVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
-          <Still id="RightAdviceThumbnail" component={RightAdviceThumbnail} width={1080} height={1920} />
+          <Composition id="StoicRightAdvice" calculateMetadata={renderTo('right-advice')} component={RightAdviceVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
+          <Still id="RightAdviceThumbnail" calculateMetadata={renderTo('right-advice')} component={RightAdviceThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="people-pleasing">
-          <Composition id="StoicPeoplePleasing" component={PeoplePleasingVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
-          <Still id="PeoplePleasingThumbnail" component={PeoplePleasingThumbnail} width={1080} height={1920} />
+          <Composition id="StoicPeoplePleasing" calculateMetadata={renderTo('people-pleasing')} component={PeoplePleasingVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
+          <Still id="PeoplePleasingThumbnail" calculateMetadata={renderTo('people-pleasing')} component={PeoplePleasingThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="never-tried">
-          <Composition id="StoicNeverTried" component={NeverTriedVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
-          <Still id="NeverTriedThumbnail" component={NeverTriedThumbnail} width={1080} height={1920} />
+          <Composition id="StoicNeverTried" calculateMetadata={renderTo('never-tried')} component={NeverTriedVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
+          <Still id="NeverTriedThumbnail" calculateMetadata={renderTo('never-tried')} component={NeverTriedThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="take-stock">
-          <Composition id="StoicTakeStock" component={TakeStockVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
-          <Still id="TakeStockThumbnail" component={TakeStockThumbnail} width={1080} height={1920} />
+          <Composition id="StoicTakeStock" calculateMetadata={renderTo('take-stock')} component={TakeStockVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
+          <Still id="TakeStockThumbnail" calculateMetadata={renderTo('take-stock')} component={TakeStockThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="get-back-up">
-          <Composition id="StoicGetBackUp" component={GetBackUpVideo} durationInFrames={1230} fps={30} width={1080} height={1920} />
-          <Still id="GetBackUpThumbnail" component={GetBackUpThumbnail} width={1080} height={1920} />
+          <Composition id="StoicGetBackUp" calculateMetadata={renderTo('get-back-up')} component={GetBackUpVideo} durationInFrames={1230} fps={30} width={1080} height={1920} />
+          <Still id="GetBackUpThumbnail" calculateMetadata={renderTo('get-back-up')} component={GetBackUpThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="dream-trap">
-          <Composition id="StoicDreamTrap" component={DreamTrapVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
-          <Still id="DreamTrapThumbnail" component={DreamTrapThumbnail} width={1080} height={1920} />
+          <Composition id="StoicDreamTrap" calculateMetadata={renderTo('dream-trap')} component={DreamTrapVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
+          <Still id="DreamTrapThumbnail" calculateMetadata={renderTo('dream-trap')} component={DreamTrapThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="call-back">
-          <Composition id="StoicCallBack" component={CallBackVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
-          <Still id="CallBackThumbnail" component={CallBackThumbnail} width={1080} height={1920} />
+          <Composition id="StoicCallBack" calculateMetadata={renderTo('call-back')} component={CallBackVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
+          <Still id="CallBackThumbnail" calculateMetadata={renderTo('call-back')} component={CallBackThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="time-and-gold">
-          <Composition id="StoicTimeAndGold" component={TimeAndGoldVideo} durationInFrames={1500} fps={30} width={1080} height={1920} />
-          <Still id="TimeAndGoldThumbnail" component={TimeAndGoldThumbnail} width={1080} height={1920} />
+          <Composition id="StoicTimeAndGold" calculateMetadata={renderTo('time-and-gold')} component={TimeAndGoldVideo} durationInFrames={1500} fps={30} width={1080} height={1920} />
+          <Still id="TimeAndGoldThumbnail" calculateMetadata={renderTo('time-and-gold')} component={TimeAndGoldThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="less-judgment">
-          <Composition id="StoicLessJudgment" component={LessJudgmentVideo} durationInFrames={1500} fps={30} width={1080} height={1920} />
-          <Still id="LessJudgmentThumbnail" component={LessJudgmentThumbnail} width={1080} height={1920} />
+          <Composition id="StoicLessJudgment" calculateMetadata={renderTo('less-judgment')} component={LessJudgmentVideo} durationInFrames={1500} fps={30} width={1080} height={1920} />
+          <Still id="LessJudgmentThumbnail" calculateMetadata={renderTo('less-judgment')} component={LessJudgmentThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="small-mistakes">
-          <Composition id="StoicSmallMistakes" component={SmallMistakesVideo} durationInFrames={1500} fps={30} width={1080} height={1920} />
-          <Still id="SmallMistakesThumbnail" component={SmallMistakesThumbnail} width={1080} height={1920} />
+          <Composition id="StoicSmallMistakes" calculateMetadata={renderTo('small-mistakes')} component={SmallMistakesVideo} durationInFrames={1500} fps={30} width={1080} height={1920} />
+          <Still id="SmallMistakesThumbnail" calculateMetadata={renderTo('small-mistakes')} component={SmallMistakesThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="anger-at-home">
-          <Composition id="StoicAngerAtHome" component={AngerAtHomeVideo} durationInFrames={1800} fps={30} width={1080} height={1920} />
-          <Still id="AngerAtHomeThumbnail" component={AngerAtHomeThumbnail} width={1080} height={1920} />
+          <Composition id="StoicAngerAtHome" calculateMetadata={renderTo('anger-at-home')} component={AngerAtHomeVideo} durationInFrames={1800} fps={30} width={1080} height={1920} />
+          <Still id="AngerAtHomeThumbnail" calculateMetadata={renderTo('anger-at-home')} component={AngerAtHomeThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="cherish-today">
-          <Composition id="StoicCherishToday" component={CherishTodayVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
-          <Still id="CherishTodayThumbnail" component={CherishTodayThumbnail} width={1080} height={1920} />
+          <Composition id="StoicCherishToday" calculateMetadata={renderTo('cherish-today')} component={CherishTodayVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
+          <Still id="CherishTodayThumbnail" calculateMetadata={renderTo('cherish-today')} component={CherishTodayThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="rest-day">
-          <Composition id="StoicRestDay" component={RestDayVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
-          <Still id="RestDayThumbnail" component={RestDayThumbnail} width={1080} height={1920} />
+          <Composition id="StoicRestDay" calculateMetadata={renderTo('rest-day')} component={RestDayVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
+          <Still id="RestDayThumbnail" calculateMetadata={renderTo('rest-day')} component={RestDayThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="apology-change">
-          <Composition id="StoicApologyChange" component={ApologyChangeVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
-          <Still id="ApologyChangeThumbnail" component={ApologyChangeThumbnail} width={1080} height={1920} />
+          <Composition id="StoicApologyChange" calculateMetadata={renderTo('apology-change')} component={ApologyChangeVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
+          <Still id="ApologyChangeThumbnail" calculateMetadata={renderTo('apology-change')} component={ApologyChangeThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="listen-first">
-          <Composition id="StoicListenFirst" component={ListenFirstVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
-          <Still id="ListenFirstThumbnail" component={ListenFirstThumbnail} width={1080} height={1920} />
+          <Composition id="StoicListenFirst" calculateMetadata={renderTo('listen-first')} component={ListenFirstVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
+          <Still id="ListenFirstThumbnail" calculateMetadata={renderTo('listen-first')} component={ListenFirstThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="exhausted">
-          <Composition id="StoicExhausted" component={ExhaustedVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
-          <Still id="ExhaustedThumbnail" component={ExhaustedThumbnail} width={1080} height={1920} />
+          <Composition id="StoicExhausted" calculateMetadata={renderTo('exhausted')} component={ExhaustedVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
+          <Still id="ExhaustedThumbnail" calculateMetadata={renderTo('exhausted')} component={ExhaustedThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="solitude">
-          <Composition id="StoicSolitude" component={SolitudeVideo} durationInFrames={1560} fps={30} width={1080} height={1920} />
-          <Still id="SolitudeThumbnail" component={SolitudeThumbnail} width={1080} height={1920} />
+          <Composition id="StoicSolitude" calculateMetadata={renderTo('solitude')} component={SolitudeVideo} durationInFrames={1560} fps={30} width={1080} height={1920} />
+          <Still id="SolitudeThumbnail" calculateMetadata={renderTo('solitude')} component={SolitudeThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="forgiveness">
-          <Composition id="StoicForgiveness" component={ForgivenessVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
-          <Still id="ForgivenessThumbnail" component={ForgivenessThumbnail} width={1080} height={1920} />
+          <Composition id="StoicForgiveness" calculateMetadata={renderTo('forgiveness')} component={ForgivenessVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
+          <Still id="ForgivenessThumbnail" calculateMetadata={renderTo('forgiveness')} component={ForgivenessThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="letting-go">
-          <Composition id="StoicLettingGo" component={LettingGoVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
-          <Still id="LettingGoThumbnail" component={LettingGoThumbnail} width={1080} height={1920} />
+          <Composition id="StoicLettingGo" calculateMetadata={renderTo('letting-go')} component={LettingGoVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
+          <Still id="LettingGoThumbnail" calculateMetadata={renderTo('letting-go')} component={LettingGoThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="boundaries">
-          <Composition id="StoicBoundaries" component={BoundariesVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
-          <Still id="BoundariesThumbnail" component={BoundariesThumbnail} width={1080} height={1920} />
+          <Composition id="StoicBoundaries" calculateMetadata={renderTo('boundaries')} component={BoundariesVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
+          <Still id="BoundariesThumbnail" calculateMetadata={renderTo('boundaries')} component={BoundariesThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="crab-mentality">
-          <Composition id="StoicCrabMentality" component={CrabMentalityVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
-          <Still id="CrabMentalityThumbnail" component={CrabMentalityThumbnail} width={1080} height={1920} />
+          <Composition id="StoicCrabMentality" calculateMetadata={renderTo('crab-mentality')} component={CrabMentalityVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
+          <Still id="CrabMentalityThumbnail" calculateMetadata={renderTo('crab-mentality')} component={CrabMentalityThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="reciprocity-trap">
-          <Composition id="StoicReciprocityTrap" component={ReciprocityTrapVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
-          <Still id="ReciprocityTrapThumbnail" component={ReciprocityTrapThumbnail} width={1080} height={1920} />
+          <Composition id="StoicReciprocityTrap" calculateMetadata={renderTo('reciprocity-trap')} component={ReciprocityTrapVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
+          <Still id="ReciprocityTrapThumbnail" calculateMetadata={renderTo('reciprocity-trap')} component={ReciprocityTrapThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="provocation-control">
-          <Composition id="StoicProvocationControl" component={ProvocationControlVideo} durationInFrames={1470} fps={30} width={1080} height={1920} />
+          <Composition id="StoicProvocationControl" calculateMetadata={renderTo('provocation-control')} component={ProvocationControlVideo} durationInFrames={1470} fps={30} width={1080} height={1920} />
         </Folder>
         <Folder name="hidden-intentions">
-          <Composition id="StoicHiddenIntentions" component={HiddenIntentionsVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
+          <Composition id="StoicHiddenIntentions" calculateMetadata={renderTo('hidden-intentions')} component={HiddenIntentionsVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
         </Folder>
         <Folder name="own-timeline">
-          <Composition id="StoicOwnTimeline" component={OwnTimelineVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
-          <Still id="OwnTimelineThumbnail" component={OwnTimelineThumbnail} width={1080} height={1920} />
+          <Composition id="StoicOwnTimeline" calculateMetadata={renderTo('own-timeline')} component={OwnTimelineVideo} durationInFrames={1350} fps={30} width={1080} height={1920} />
+          <Still id="OwnTimelineThumbnail" calculateMetadata={renderTo('own-timeline')} component={OwnTimelineThumbnail} width={1080} height={1920} />
         </Folder>
       </Folder>
       <Folder name="Book-Insights">
         <Folder name="book-hvtt-001-overview">
-          <Composition id="BookHvttIntro" component={BookInsightsIntro} calculateMetadata={bookIntroMetadata} durationInFrames={1050} fps={30} width={1920} height={1080} defaultProps={{
+          <Composition id="BookHvttIntro" component={BookInsightsIntro} calculateMetadata={renderTo('book-hvtt-001-overview', bookIntroMetadata)} durationInFrames={1050} fps={30} width={1920} height={1080} defaultProps={{
             voice: '00-intro',
             channelLabel: 'TÂM LÝ CUỘC SỐNG',
             episodeLabel: 'TẬP 01',
             bookTitle: 'Hiểu về trái tim',
             bookAuthor: 'Minh Niệm',
           }} />
-          <Composition id="BookHvttOutro" component={BookInsightsOutro} calculateMetadata={bookOutroMetadata} durationInFrames={540} fps={30} width={1920} height={1080} defaultProps={{voice: '99-outro', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
+          <Composition id="BookHvttOutro" component={BookInsightsOutro} calculateMetadata={renderTo('book-hvtt-001-overview', bookOutroMetadata)} durationInFrames={540} fps={30} width={1920} height={1080} defaultProps={{voice: '99-outro', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
         </Folder>
       </Folder>
       <Folder name="Stoic-Stories">
         <Folder name="fouquet-power">
-          <Composition id="StoicFouquetPower" component={FouquetPowerVideo} durationInFrames={8790} fps={30} width={1920} height={1080} />
-          <Still id="FouquetPowerThumbnail" component={FouquetPowerThumbnail} width={1920} height={1080} />
+          <Composition id="StoicFouquetPower" calculateMetadata={renderTo('fouquet-power')} component={FouquetPowerVideo} durationInFrames={8790} fps={30} width={1920} height={1080} />
+          <Still id="FouquetPowerThumbnail" calculateMetadata={renderTo('fouquet-power')} component={FouquetPowerThumbnail} width={1920} height={1080} />
         </Folder>
       </Folder>
     </Folder>
     <Folder name="Kids">
       <Folder name="Tiny-Dino">
         <Folder name="tiny-dino-adventure">
-          <Composition id="TinyDinoAdventure" component={TinyDinoAdventureVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
-          <Composition id="TinyDinoAdventureChildVoice" component={TinyDinoAdventureVideo} durationInFrames={1440} fps={30} width={1080} height={1920} defaultProps={{voiceVariant: 'childlike'}} />
-          <Still id="TinyDinoAdventureThumbnail" component={TinyDinoAdventureThumbnail} width={1080} height={1920} />
+          <Composition id="TinyDinoAdventure" calculateMetadata={renderTo('tiny-dino-adventure')} component={TinyDinoAdventureVideo} durationInFrames={1440} fps={30} width={1080} height={1920} />
+          <Composition id="TinyDinoAdventureChildVoice" calculateMetadata={renderTo('tiny-dino-adventure')} component={TinyDinoAdventureVideo} durationInFrames={1440} fps={30} width={1080} height={1920} defaultProps={{voiceVariant: 'childlike'}} />
+          <Still id="TinyDinoAdventureThumbnail" calculateMetadata={renderTo('tiny-dino-adventure')} component={TinyDinoAdventureThumbnail} width={1080} height={1920} />
         </Folder>
         <Folder name="tiny-dino-homecoming">
-          <Composition id="TinyDinoHomecoming" component={TinyDinoHomecomingVideo} durationInFrames={5400} fps={30} width={1920} height={1080} />
-          <Still id="TinyDinoHomecomingThumbnail" component={TinyDinoHomecomingThumbnail} width={1920} height={1080} />
+          <Composition id="TinyDinoHomecoming" calculateMetadata={renderTo('tiny-dino-homecoming')} component={TinyDinoHomecomingVideo} durationInFrames={5400} fps={30} width={1920} height={1080} />
+          <Still id="TinyDinoHomecomingThumbnail" calculateMetadata={renderTo('tiny-dino-homecoming')} component={TinyDinoHomecomingThumbnail} width={1920} height={1080} />
         </Folder>
       </Folder>
       <Folder name="Ocean-Stories">
         <Folder name="glowing-whale">
-          <Composition id="GlowingWhale" component={GlowingWhaleVideo} durationInFrames={1800} fps={30} width={1080} height={1920} />
-          <Still id="GlowingWhaleThumbnail" component={GlowingWhaleThumbnail} width={1080} height={1920} />
+          <Composition id="GlowingWhale" calculateMetadata={renderTo('glowing-whale')} component={GlowingWhaleVideo} durationInFrames={1800} fps={30} width={1080} height={1920} />
+          <Still id="GlowingWhaleThumbnail" calculateMetadata={renderTo('glowing-whale')} component={GlowingWhaleThumbnail} width={1080} height={1920} />
         </Folder>
       </Folder>
     </Folder>
     <Folder name="Client-Work">
       <Folder name="Product-Videos">
         <Folder name="skin-care-nhuy">
-          <Composition id="SkinCareNhuyAdam" component={SkinCareNhuyVideo} durationInFrames={904} fps={30} width={368} height={654} />
+          <Composition id="SkinCareNhuyAdam" calculateMetadata={renderTo('skin-care-nhuy')} component={SkinCareNhuyVideo} durationInFrames={904} fps={30} width={368} height={654} />
         </Folder>
         <Folder name="merzy-glam-tint">
-          <Composition id="MerzyGlamTintAdam" component={MerzyGlamTintVideo} durationInFrames={787} fps={30} width={720} height={1280} />
+          <Composition id="MerzyGlamTintAdam" calculateMetadata={renderTo('merzy-glam-tint')} component={MerzyGlamTintVideo} durationInFrames={787} fps={30} width={720} height={1280} />
         </Folder>
       </Folder>
     </Folder>
