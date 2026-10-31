@@ -16,7 +16,7 @@ Tập này **không dùng ảnh tạo bằng AI hay ảnh chụp** (người dù
 
 | Phần | Hình dự kiến |
 |---|---|
-| 0b đoạn 2 | Cửa nhà khép hờ, ánh đèn hắt ra; nét vẽ hai trái tim nhỏ lồng nhau mờ dần ("hiểu lòng mình, hiểu lòng người") |
+| 0b đoạn 2 | "Đứa nhỏ hả dạ…": chiếc gậy của bà dựa vào ngạch cửa. "Bà dỗ cái đau của cháu trước, rồi mới dạy sau": bàn tay người già xoa nhẹ lên đầu gối nhỏ (chỉ thấy hai bàn tay). "Người lớn chúng ta… học lại từ đầu": nét vẽ chuyển sang bàn tay người lớn đặt lên một cuốn sách đang mở, ánh đèn ấm hắt ra từ cửa |
 | 1 | Cuốn sách mở, các trang lật nhẹ; 50 dấu gạch nhỏ quanh sách thành vòng tròn (50 chương) |
 | 2 | Hai chữ "đau" và "khổ" tách ra hai bên; ba bậc thang (ba tầng hạnh phúc) |
 | 3A Cơn giận | Ấm nước trên bếp, hơi bốc lên từng đợt nhỏ rồi trào; ngọn lửa dịu xuống |
@@ -34,6 +34,12 @@ Tập này **không dùng ảnh tạo bằng AI hay ảnh chụp** (người dù
 | 3D Biết ơn | Trái cam, rễ cây, nắng, mưa, bàn tay người trồng |
 | 3D Ta làm từ những thứ không phải ta | Tô canh chua bốc khói trên bàn bếp |
 | 3D Nâng đỡ | Con cò bên hồ, chiếc túi được gỡ ra |
+| 3E Lặp ý | Năm mươi trang mở ra liên tiếp nhưng cùng một nét vẽ trái tim lặp lại; mũi tên vòng tròn quay về chỗ cũ |
+| 3E Y khoa, số liệu không nguồn | Một trang sách có ô chú thích nguồn bỏ trống; dấu hỏi nhỏ nét vàng bên lề; một ống nghe bác sĩ đặt cạnh sách ("hỏi bác sĩ") |
+| 3E Niềm tin viết như điều hiển nhiên | Hai cuốn sổ trên bàn: bàn tay cầm bút chép sang cuốn sổ nhỏ những dòng "thực hành", cuốn còn lại khép hờ đặt sang một bên |
+| 3F Tổng kết | Bốn hình nhỏ của bốn nhóm (cơn sóng, hai chiếc ghế, vốc muối và dòng sông, tô canh chua) xếp quanh cuốn sách rồi thu về giữa |
+| 3F Mỗi tối một chương | Đèn ngủ đầu giường, cuốn sách mở ở một chương; ngoài cửa sổ trời tối dần |
+| 4 Ý kiến cá nhân | Chờ người dùng đưa lời; hình chọn sau theo nội dung |
 | 5 Nhận xét chung | Cuốn sách khép lại, ánh sáng dịu |
 
 Khi dựng từng phần, bản mô tả này được cập nhật theo hình thật trong Studio.

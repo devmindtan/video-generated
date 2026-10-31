@@ -1,8 +1,19 @@
 # Kế hoạch dựng — Hiểu về trái tim: tổng quan
 
-- Project: book-hvtt-001-overview · Series: Đọc sách, hiểu mình · 1920×1080, 30 fps · ước 11–12 phút.
-- Dựa trên script.md đã duyệt (2026-10-31) và brief.md. Không render/export tự động; người dùng xem trong Studio.
-- Cổng làm việc: intro + 30 giây đầu sau intro đã dựng để duyệt (`BookHvttTap01`); phần sau làm tiếp từng đoạn hoặc toàn bộ theo lựa chọn của người dùng.
+- Project: book-hvtt-001-overview · Series: Đọc sách, hiểu mình · video dài 1920×1080, 30 fps.
+- Dựa trên script.md (bản v3 có 3E/3F, sửa theo ghi chú duyệt 2026-10-31) và brief.md. Không render/export cả video tự động; người dùng xem trong Studio.
+
+## Thông tin chốt
+
+- **Thời lượng:** mục tiêu 12,5 phút (750 giây); cho phép dao động **10–15 phút** (±2,5 phút) theo brief. Kịch bản hiện ≈ 2.080 tiếng lời đọc ≈ 12–13 phút ở nhịp 1× có nghỉ, chưa tính phần ý kiến cá nhân (1–2 phút). Không tăng tốc giọng để vừa thời lượng; dài quá thì rút câu.
+- **Duyệt:** chốt ban đầu 5 mục → bản vá cho mọi chỉnh sửa sau đó → clip duyệt từng cảnh (đã có giọng) → xem bản dựng (`docs/architecture/review-workflow.md`). Sau khi chốt, agent lập kế hoạch ở tab Tiến trình.
+- **Quy tắc đang áp dụng** (series `workflow.json` + AGENTS.md):
+  - Một giọng cho cả tập: clone giọng người dùng, +2 bán cung (lựa chọn 2). Trong lúc dựng dùng giọng tạm Quốc Tuấn; sau khi chốt kịch bản thì clone toàn bộ một lượt trên máy GPU, người dùng nghe chọn rồi mới ghép.
+  - Video dài: dựng intro + 30 giây đầu sau intro trước, chờ người dùng xem rồi mới làm tiếp.
+  - Lời chào, câu chúc, câu chuyển, câu nhận xét chung và lời kết giữ nguyên chữ người dùng.
+  - Phần ý kiến cá nhân người dùng đưa khi video gần xong; để chỗ trống có đánh dấu ngay trước nhận xét chung.
+  - "Những điểm chưa đạt" nói ở mức tổng quát, không bắt lỗi từng chỗ, không nhắc lại nội dung sai hoặc nhạy cảm của sách.
+  - Hình vẽ bằng code, không mặt người, không ảnh AI/Gemini/Veo; chữ Stoic Sans Bold 700; không hiệu ứng âm thanh.
 
 ## Cấu trúc composition
 
@@ -11,7 +22,9 @@
 | `BookHvttTap01` | Cả tập ghép theo thứ tự: intro → thẻ tập → các phần nội dung → (ý kiến cá nhân) → nhận xét chung → outro | Một lớp nhạc nền chạy liền; mỗi phần là một `Sequence` riêng, dài theo giọng đọc |
 | `BookHvttIntro` | Lời chào series | Giữ nguyên mọi tập |
 | `BookHvttEpisodeCard` | Thẻ "TẬP 01 · Hiểu về trái tim · Minh Niệm" + câu giới thiệu tập | Đổi theo tập |
-| `BookHvttMoChuyen` | Phần 0b, đoạn 1 (người bà và ngạch cửa) | Đã dựng; các phần sau thêm composition tương tự |
+| `BookHvttMoChuyen` | Phần 0b (người bà và ngạch cửa) | Đã dựng đoạn 1 |
+| `BookHvttCuonSach`, `BookHvttSoiChi`, `BookHvttNhom3A`–`3D`, `BookHvttNhanXet` | Các phần 1, 2, 3A–3D, 5 | Có composition; hình từng ý dựng sau khi chốt |
+| (mới) 3E, 3F | Những điểm chưa đạt, Tổng kết | Thêm composition và cảnh khi dựng |
 | `BookHvttOutro` | Lời kết, thẻ bình luận/đăng ký, "HẸN GẶP LẠI" | Giữ nguyên mọi tập |
 
 ## Phong cách hình (người dùng chọn cách B)
@@ -29,7 +42,7 @@
 ## Âm thanh
 
 - Giọng: clone giọng người dùng, +2 bán cung, một giọng cho cả tập. File chính thức `public/book-hvtt-001-overview/audio/NN-đoạn-voice-full.wav`.
-- Nhạc: Pufino – Enlivening (freetouse.com), to ở đầu rồi giảm dần từ giây 3, giữ đều phía dưới giọng; có fade đầu/cuối. Nhạc cho phần nội dung chính: chờ người dùng quyết (giữ Pufino hay bản khác).
+- Nhạc: Pufino – Enlivening (freetouse.com), to ở đầu rồi giảm dần từ giây 3, giữ đều phía dưới giọng; có fade đầu/cuối. **Đề xuất cho phần nội dung chính:** giữ Pufino chạy liền cả tập (một lớp nhạc trong `BookHvttTap01`); người dùng chốt hoặc đổi ở mục Nhạc nền khi chốt ban đầu.
 - Không hiệu ứng âm thanh.
 
 ## Danh sách cảnh
@@ -41,10 +54,12 @@ Chi tiết từng minh họa: [image-prompts.md](image-prompts.md). Trạng thá
 | 0 | Intro series | đã dựng |
 | 0a | Thẻ tập | đã dựng |
 | 0b | Người bà và ngạch cửa (đoạn 1) | đã dựng |
-| 0b | "Người bà ấy không học tâm lý…" (đoạn 2) | dự kiến |
+| 0b | "Lúc đó, đứa nhỏ chỉ thấy hả dạ…" (đoạn 2) | dự kiến |
 | 1 | Cuốn sách là gì | dự kiến |
 | 2 | Sợi chỉ xuyên suốt | dự kiến |
 | 3A–3D | 16 ý, mỗi ý một minh họa | dự kiến |
+| 3E | Những điểm chưa đạt (3 ý) | dự kiến |
+| 3F | Tổng kết | dự kiến |
 | 4 | Ý kiến cá nhân | chờ người dùng |
 | 5–6 | Nhận xét chung, outro | outro đã dựng |
 
