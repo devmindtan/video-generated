@@ -11,6 +11,11 @@ function features(root){
   function project(id){for(const s of load(root).series){const p=s.projects.find(p=>p.id===id);if(p)return p;}throw Error('Project not found');}
   function exportsFor(p){
     const files=new Map();
+    const imported=safe(p.paths.assets);
+    if(fs.existsSync(imported)&&!fs.lstatSync(imported).isSymbolicLink())for(const name of ['imported-video.mp4','imported-video.webm']){
+      const file=safe(path.join(p.paths.assets,name));if(!fs.existsSync(file)||fs.lstatSync(file).isSymbolicLink()||!fs.statSync(file).isFile())continue;
+      const st=fs.statSync(file);files.set(file,{file,name,kind:'video',size:st.size,modified:st.mtimeMs,imported:true});
+    }
     for(const r of p.registrations){
       const extensions=r.kind==='Composition'?['.mp4','.webm']:['.png','.jpg','.jpeg','.webp'];
       const dirs=['out',`out/${p.id}`,`projects/${p.id}`,`public/${p.id}`,...p.registrations.map(x=>`projects/${x.id}`)];

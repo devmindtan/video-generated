@@ -9,6 +9,8 @@ const json = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const exists = file => fs.existsSync(file);
 const textTypes = new Set(['.md','.txt','.json','.tsx','.ts','.py','.cjs','.mjs']);
 const imageTypes = new Set(['.png','.jpg','.jpeg','.webp']);
+const contentChannels = new Set(['tam-ly-cuoc-song','kids']);
+const videoTypes = new Set(['.mp4','.webm']);
 
 function secureFile(root, file, extensions = textTypes) {
   const base = fs.realpathSync(root), real = fs.realpathSync(file);
@@ -39,7 +41,7 @@ function createStore(root) {
   function documents(project) {
     const result = [];
     const labels = {'script.md':'Kịch bản','description.md':'Tiêu đề & mô tả','production-spec.md':'Ghi chú dựng',
-      'brief.md':'Đề bài','manager-notes.md':'Ghi chú của bạn','qa.json':'Kiểm tra kỹ thuật',
+      'brief.md':'Đề bài','manager-notes.md':'Ghi chú của bạn','imported-video.json':'Video đã import','qa.json':'Kiểm tra kỹ thuật',
       'music.json':'Cài đặt nhạc','captions.json':'Phụ đề','Video.tsx':'Video.tsx','Thumbnail.tsx':'Thumbnail.tsx'};
     for (const group of ['docs','source']) {
       const base = location(project.paths[group]);
@@ -88,6 +90,7 @@ function createStore(root) {
     const projects = catalog.series.flatMap(series=>series.projects.map(project=>{
       const node = nodes.find(n=>n.project===project.id&&n.kind==='Composition');
       const image = preview(project);
+      const renderedVideo=extra.media(project.id,'video'),renderedThumbnail=extra.media(project.id,'thumbnail');
       const video = project.registrations.find(r=>r.kind==='Composition');
       const thumbnail = project.registrations.find(r=>r.kind==='Still');
       const source = path.join(location(project.paths.source),'Video.tsx');
@@ -95,7 +98,7 @@ function createStore(root) {
       const updatedAt = exists(source)?fs.statSync(source).mtime.toISOString():exists(brief)?fs.statSync(brief).mtime.toISOString():null;
       return {id:project.id,title:project.title,status:project.status,format:project.format,series:series.id,channel:series.channel,
         seriesTitle:series.title,durationSeconds:node?.fps&&node.durationFrames?node.durationFrames/node.fps:project.durationSeconds??null,
-        renderedVideo:Boolean(extra.media(project.id,'video')),renderedThumbnail:Boolean(extra.media(project.id,'thumbnail')),videoId:video?.id||null,thumbnailId:thumbnail?.id||null,previewType:image?.type||null,updatedAt,book:project.book||null,
+        renderedVideo:Boolean(renderedVideo),renderedThumbnail:Boolean(renderedThumbnail),importedVideo:Boolean(renderedVideo?.imported),videoId:video?.id||null,thumbnailId:thumbnail?.id||null,previewType:image?.type||null,updatedAt,book:project.book||null,
         hasScript:exists(path.join(location(project.paths.docs),'script.md')),
         hasDescription:exists(path.join(location(project.paths.docs),'description.md'))};
     }));
@@ -164,6 +167,27 @@ function createStore(root) {
     if (body.book) options['--book']=body.book;
     return createProject(catalog,options);
   }
-  return {...extra,list,detail,document,bookDocument,saveNotes,folder,create,preview:id=>preview(context(id).project)};
+  async function createWithVideo(body,name,request) {
+    const catalog=load(root);validate(catalog);const series=catalog.series.find(s=>s.id===body.series),id=checkedId(body.id),ext=path.extname(String(name||'')).toLowerCase();
+    if(!series||contentChannels.has(series.channel))throw new Error('Chỉ import video có sẵn cho dự án thuộc kênh ngoài');
+    if(typeof body.title!=='string'||!body.title.trim()||!series.formats.includes(body.format))throw new Error('Tên dự án và định dạng không hợp lệ');
+    if(typeof name!=='string'||name!==path.basename(name)||name.length>180||/[\x00-\x1f\\/]/.test(name)||!videoTypes.has(ext))throw new Error('Chỉ nhận video MP4 hoặc WebM có tên hợp lệ');
+    if(catalog.series.some(s=>s.projects.some(p=>p.id===id)))throw new Error(`Project slug already exists: ${id}`);
+    const staging=location('.manager-staging');fs.mkdirSync(staging,{recursive:true});const temp=path.join(staging,`.project-video-${crypto.randomUUID()}`),handle=await fs.promises.open(temp,'wx'),hash=crypto.createHash('sha256');
+    let bytes=0,head=Buffer.alloc(0),created=null,dest=null;
+    try{
+      for await(const chunk of request){bytes+=chunk.length;if(bytes>8*1024*1024*1024){const error=new Error('Video tối đa 8 GB');error.status=413;throw error;}if(head.length<16)head=Buffer.concat([head,chunk]).subarray(0,16);hash.update(chunk);await handle.write(chunk);}
+      await handle.close();
+      const valid=ext==='.mp4'?head.length>=12&&head.toString('ascii',4,8)==='ftyp':head.length>=4&&head.subarray(0,4).equals(Buffer.from([0x1a,0x45,0xdf,0xa3]));
+      if(!bytes||!valid)throw new Error(`Nội dung file không phải ${ext.slice(1).toUpperCase()} hợp lệ`);
+      created=create(body);const assets=location(created.paths.assets);fs.mkdirSync(assets,{recursive:true});if(fs.lstatSync(assets).isSymbolicLink())throw new Error('Thư mục video không an toàn');
+      dest=path.join(assets,'imported-video'+ext);if(fs.existsSync(dest))throw new Error('Dự án đã có video import');fs.linkSync(temp,dest);fs.unlinkSync(temp);
+      const meta={originalName:name,file:path.relative(root,dest),bytes,sha256:hash.digest('hex'),importedAt:new Date().toISOString(),source:'customer-supplied'};
+      fs.writeFileSync(path.join(location(created.paths.docs),'imported-video.json'),JSON.stringify(meta,null,2)+'\n',{flag:'wx'});
+      return {...created,importedVideo:meta};
+    }catch(error){await handle.close().catch(()=>{});if(dest&&fs.existsSync(dest))fs.unlinkSync(dest);throw error;}
+    finally{if(fs.existsSync(temp))fs.unlinkSync(temp);try{if(fs.existsSync(staging)&&!fs.readdirSync(staging).length)fs.rmdirSync(staging);}catch{}}
+  }
+  return {...extra,list,detail,document,bookDocument,saveNotes,folder,create,createWithVideo,preview:id=>preview(context(id).project)};
 }
 module.exports={createStore,hash};

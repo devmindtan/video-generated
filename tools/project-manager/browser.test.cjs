@@ -59,7 +59,10 @@ async function run(){
     await page.locator('input[name="title"]').fill('Một cuốn sách khác');assert.equal(await page.locator('input[name="id"]').inputValue(),'mot-cuon-sach-khac');
     await screenshot('book-form');await page.locator('#cancel-create').click();mark('Additional book form supports independent title, author and source record; no submit');
     await page.locator('#new-project-button').click();await page.locator('#create-dialog[open]').waitFor();
+    await page.locator('#create-series').selectOption('product-videos');assert.ok(await page.locator('#create-import').isVisible());await page.locator('#create-import-toggle').check();assert.ok(await page.locator('#create-video-file').isVisible());assert.equal(await page.locator('#submit-create').innerText(),'Tạo và import video');
+    await page.locator('#create-video-file').setInputFiles({name:'video-khach-hang.mp4',mimeType:'video/mp4',buffer:Buffer.concat([Buffer.from([0,0,0,24]),Buffer.from('ftypisom'),Buffer.alloc(24)])});await screenshot('project-import-form');await page.setViewportSize({width:390,height:844});await noOverflow();await screenshot('project-import-form-mobile');await page.setViewportSize({width:1440,height:1000});mark('External channel offers optional customer video import on desktop/mobile; no submit');
     await page.locator('#create-series').selectOption('book-insights');
+    assert.ok(await page.locator('#create-import').isHidden());
     await page.locator('#create-fields input[name="title"]').fill('Tập thử trên trình duyệt');
     assert.match(await page.locator('#create-fields input[name="id"]').inputValue(),/^tap-thu/);
     assert.equal(await page.locator('#create-format').inputValue(),'long');

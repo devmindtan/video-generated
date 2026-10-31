@@ -24,6 +24,7 @@ docs/projects/*/.manager-history/
 
 # Recoverable local manager deletions (may include private media)
 .manager-trash/
+.manager-staging/
 
 # Local credentials; only the documented template is versioned
 .env

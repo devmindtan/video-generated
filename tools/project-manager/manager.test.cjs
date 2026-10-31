@@ -72,6 +72,19 @@ test('mutations require origin and session token; planning creates no render or 
   assert.equal((await f.post('/api/projects',body)).status,400);
   assert.equal((await f.post('/api/render',{})).status,404);
 });
+test('external client projects can import an existing video without a fake Composition',async t=>{
+  const f=await fixture(t),catalog=JSON.parse(fs.readFileSync(path.join(f.root,'series/catalog.json'),'utf8'));
+  catalog.channels.push({id:'client-work',title:'Video khách hàng',studioFolder:'Client-Work'});catalog.series.push({id:'product-videos',channel:'client-work',path:'series/client-work/product-videos/series.json'});f.write('series/catalog.json',catalog);
+  f.write('series/client-work/product-videos/series.json',{schemaVersion:1,id:'product-videos',channel:'client-work',title:'Video sản phẩm',studioFolder:'Product-Videos',formats:['short','long'],defaultDurationSeconds:null,projects:[]});
+  const mp4=Buffer.concat([Buffer.from([0,0,0,24]),Buffer.from('ftypisom'),Buffer.alloc(24)]),params=new URLSearchParams({series:'product-videos',id:'customer-cut',title:'Video khách hàng',format:'long',duration:'',name:'ban-giao.mp4'});
+  const upload=await fetch(f.base+'/api/projects/import?'+params,{method:'POST',headers:{Origin:f.base,'Content-Type':'application/octet-stream','X-Workspace-Token':f.workspace.token},body:mp4});assert.equal(upload.status,201,await upload.clone().text());
+  const created=await upload.json();assert.equal(created.registrations.length,0);assert.equal(created.importedVideo.originalName,'ban-giao.mp4');
+  const file=path.join(f.root,'public/customer-cut/imported-video.mp4'),meta=JSON.parse(fs.readFileSync(path.join(f.root,'docs/projects/customer-cut/imported-video.json'),'utf8'));assert.deepEqual(fs.readFileSync(file),mp4);assert.equal(meta.sha256,created.importedVideo.sha256);
+  const workspace=await (await fetch(f.base+'/api/workspace')).json(),project=workspace.projects.find(p=>p.id==='customer-cut');assert.equal(project.renderedVideo,true);assert.equal(project.importedVideo,true);assert.equal(project.videoId,null);
+  const detail=await (await fetch(f.base+'/api/project?id=customer-cut')).json();assert.ok(detail.documents.some(d=>d.name==='Video đã import'));
+  const media=await fetch(f.base+'/api/media?id=customer-cut&kind=video',{headers:{Range:'bytes=4-7'}});assert.equal(media.status,206);assert.equal(await media.text(),'ftyp');
+  const blocked=new URLSearchParams({series:'demo',id:'wrong-channel',title:'Sai kênh',format:'short',name:'clip.mp4'}),rejected=await fetch(f.base+'/api/projects/import?'+blocked,{method:'POST',headers:{Origin:f.base,'Content-Type':'application/octet-stream','X-Workspace-Token':f.workspace.token},body:mp4});assert.equal(rejected.status,400);assert.ok(!fs.existsSync(path.join(f.root,'docs/projects/wrong-channel')));
+});
 test('folder opening is limited to known project directories and series cannot be created from the manager',async t=>{
   const f=await fixture(t);
   assert.equal((await f.post('/api/open-folder',{id:'old',group:'docs'})).status,200);
