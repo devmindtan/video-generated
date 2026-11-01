@@ -6,7 +6,7 @@ import {BookInsightsEpisodeCard, cardFrames} from './EpisodeCard';
 import {BookHvttMoChuyen, moChuyenFrames} from './MoChuyen';
 import {BookInsightsOutro, outroFrames} from './Outro';
 import {CuonSach, DiemChuaDat, Nhom3A, Nhom3B, Nhom3C, Nhom3D, NhanXet, SoiChi, TongKet} from './Sections';
-import {sectionFrames, takeOf} from './scene-kit';
+import {takeOf} from './scene-kit';
 
 // The episode as it grows: series intro → episode card → body sections → closing remark → series outro.
 // A body section joins only once its narration take exists (cloning runs section by section). Background music
@@ -30,7 +30,7 @@ const parts = (p: EpisodeProps, fps: number) => {
   ];
   for (const [seg, name, Section] of BODY) {
     const voice = voiceFor(seg);
-    if (voice) list.push({name, frames: sectionFrames(voice, fps), node: <Section voice={voice} channelLabel={p.channelLabel} />});
+    if (voice) list.push({name, frames: Section.frames(voice, fps), node: <Section voice={voice} channelLabel={p.channelLabel} />});
   }
   list.push({name: 'Outro series', frames: outroFrames(p.outroVoice, fps), node: <BookInsightsOutro voice={p.outroVoice} channelLabel={p.channelLabel} />});
   return list;

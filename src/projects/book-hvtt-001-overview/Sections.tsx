@@ -1,12 +1,10 @@
-import type {FC} from 'react';
 import {interpolate} from 'remotion';
 import {GOLD, IVORY, clamp, ease} from './Intro';
-import {Draw, Figure, Glow, NarratedSection, Word, appear, within} from './scene-kit';
+import {Draw, Figure, Glow, Word, appear, section, within} from './scene-kit';
 import type {Beat, Ctx} from './scene-kit';
 
 // Body sections 1–3F and the closing remark of book-hvtt-001 (image-prompts.md). Each beat names the sentence
 // (0-based, from scripts/projects/book-hvtt-001-overview/lines-<segment>.txt) where its drawing starts.
-export type SectionProps = {voice: string; channelLabel: string};
 const D = (c: Ctx, d: string, delay = 0, len = 28, width = 2.4, opacity = 1) => <Draw key={`${d}${delay}`} d={d} frame={c.frame} from={c.start + delay} to={c.start + delay + len} width={width} opacity={opacity} />;
 const At = (c: Ctx, sentence: number, d: string, len = 24, width = 2.4, opacity = 1) => <Draw key={`${d}${sentence}`} d={d} frame={c.frame} from={c.at(sentence)} to={c.at(sentence) + len} width={width} opacity={opacity} />;
 
@@ -22,7 +20,7 @@ const table = (c: Ctx, delay = 0) => D(c, 'M440 700 L1480 700 M500 700 L470 820 
 // ---- 03 Cuốn sách là gì (lines-03-cuon-sach.txt, script v4) -------------------------------------------------
 const CHAPTERS = ['KHỔ ĐAU', 'TỨC GIẬN', 'GHEN TUÔNG', 'CÔ ĐƠN', 'LO LẮNG', 'THA THỨ', 'LẮNG NGHE', 'BIẾT ĐỦ', 'BÌNH YÊN'];
 const teapot = (c: Ctx, delay = 0) => D(c, 'M900 690 C880 650 900 610 960 610 C1020 610 1040 650 1020 690 Z M930 610 C930 594 990 594 990 610 M1020 640 C1050 636 1064 620 1072 600 M900 650 C880 650 872 670 884 684', delay, 26, 2.4);
-export const CuonSach: FC<SectionProps> = (p) => <NarratedSection {...p} track="03 cuốn sách" highlight={/(mục lục|năm mươi chương|vui buồn|không cần đọc theo thứ tự|đạo Phật|văn hóa Việt|tâm tình)/gi} beats={[
+export const CuonSach = section("03 cuốn sách", /(mục lục|năm mươi chương|vui buồn|không cần đọc theo thứ tự|đạo Phật|văn hóa Việt|tâm tình)/gi, [
   // 0 a hand opens the cover onto the table of contents
   {at: 0, draw: (c) => {const t = interpolate(c.frame, [c.start + 26, c.start + 50], [1, -1], {...clamp, easing: ease});return <g>{book(c)}
     {Math.abs(t) < .999 ? <path transform={`translate(960 0) scale(${t} 1) translate(-960 0)`} d="M960 370 C1060 330 1200 330 1320 360 L1320 660 C1200 630 1060 630 960 670 Z" fill="#0d1411" stroke={GOLD} strokeWidth={2.6} /> : null}
@@ -66,11 +64,11 @@ export const CuonSach: FC<SectionProps> = (p) => <NarratedSection {...p} track="
     <Figure frame={c.frame} from={c.start + 10} x={1280} y={790} s={1.1} pose="sit" facing={-1} />
     {[0, 1, 2].map((k) => <path key={k} d={`M${940 + k * 18} 596 C${930 + k * 18 + Math.sin((c.frame + k * 20) / 16) * 8} 570 ${950 + k * 18} 550 ${940 + k * 18} 524`} fill="none" stroke={IVORY} strokeWidth={2} strokeLinecap="round" opacity={appear(c.frame, c.start + 30, 12) * .7} />)}
   </g>},
-]} />;
+]);
 
 // ---- 04 Sợi chỉ xuyên suốt (lines-04-soi-chi.txt) -------------------------------------------------------------
 const threadY = (x: number) => 520 - Math.sin((x - 300) / 160 * Math.PI) * 40;
-export const SoiChi: FC<SectionProps> = (p) => <NarratedSection {...p} track="04 sợi chỉ" highlight={/(một ý|cách lòng mình phản ứng|đau và khổ|ba tầng|hạnh phúc chân thật|phải hiểu thì mới thương|bốn nhóm)/gi} beats={[
+export const SoiChi = section("04 sợi chỉ", /(một ý|cách lòng mình phản ứng|đau và khổ|ba tầng|hạnh phúc chân thật|phải hiểu thì mới thương|bốn nhóm)/gi, [
   // 0 fifty beads gather on one thread · then a pebble drops in a pond and its rings spread (the heart's reaction)
   {at: 0, draw: (c) => {const pond = appear(c.frame, within(c, 0, .5), 18);return <g>
     <g opacity={1 - pond}>{D(c, 'M' + Array.from({length: 67}, (_, i) => `${300 + i * 20} ${threadY(300 + i * 20)}`).join(' L'), 0, 50, 2.4)}
@@ -127,7 +125,7 @@ export const SoiChi: FC<SectionProps> = (p) => <NarratedSection {...p} track="04
     <Glow x={960} y={500} r={200} opacity={join * .8} /></g>;}},
   // 7 four groups, one card each
   {at: 7, draw: (c) => <g>{[0, 1, 2, 3].map((k) => {const x = 470 + k * 260;return <g key={k} opacity={appear(c.frame, c.start + k * 6, 10)}><rect x={x} y={420} width={200} height={240} rx={14} fill="none" stroke={GOLD} strokeWidth={2.2} /><Word x={x + 100} y={570} size={90} text={String(k + 1)} opacity={1} /></g>;})}</g>},
-]} />;
+]);
 
 // ---- 05 Nhóm 3A (lines-05-nhom-3a.txt) ----------------------------------------------------------------------
 const kettle = (c: Ctx) => <g>
@@ -138,7 +136,7 @@ const flame = (c: Ctx, from: number, to: number) => {const k = interpolate(c.fra
 // the hand holding a glass (one outline: wrist, fingers up the glass's left side, palm under it, thumb up the right)
 const glassHand = (c: Ctx, from: number) => D(c, 'M936 720 L932 530 C924 500 900 488 890 462 C884 444 884 410 888 396 C890 386 902 384 904 396 L906 432 C920 438 1000 438 1012 432 L1018 404 C1020 392 1032 390 1034 402 C1038 426 1036 452 1022 474 C1010 494 1002 506 1000 530 L1004 720', from - c.start, 34, 2.6);
 const glass = (c: Ctx, from: number) => D(c, 'M900 300 L912 420 L1008 420 L1020 300 Z M906 340 L1014 340', from - c.start, 24, 2.6);
-export const Nhom3A: FC<SectionProps> = (p) => <NarratedSection {...p} track="05 nhóm 3A" highlight={/(giận, sợ và lo|bực bội nhỏ|hơi thở|hiểu được người kia|tình thương chính là khắc tinh của cơn giận|tai nạn|đã thật sự xảy ra chưa|cốc nước|quá lâu|viết ra|bớt lo lắng)/gi} beats={[
+export const Nhom3A = section("05 nhóm 3A", /(giận, sợ và lo|bực bội nhỏ|hơi thở|hiểu được người kia|tình thương chính là khắc tinh của cơn giận|tai nạn|đã thật sự xảy ra chưa|cốc nước|quá lâu|viết ra|bớt lo lắng)/gi, [
   {at: 0, card: {kicker: 'NHÓM 1', title: 'Hiểu những cơn sóng trong lòng mình'}},
   // 1–2 a kettle; small bubbles pile up one by one ("rất nhiều bực bội nhỏ")
   {at: 1, label: 'Cơn giận', draw: (c) => <g>{kettle(c)}{flame(c, 1e9, 1e9 + 1)}
@@ -203,7 +201,7 @@ export const Nhom3A: FC<SectionProps> = (p) => <NarratedSection {...p} track="05
     <g transform={`translate(0 ${down * 280})`}>{glass(c, c.start - 40)}</g>
     <g opacity={1 - down}>{glassHand(c, c.start - 40)}</g>
     <Glow x={960} y={640} r={120} opacity={down * .7} /></g>;}},
-]} />;
+]);
 
 // ---- 06 Nhóm 3B (lines-06-nhom-3b.txt) ----------------------------------------------------------------------
 // Front view of a chair standing on y: backrest, seat, four legs.
@@ -212,7 +210,7 @@ const caltrop = (c: Ctx, horns: number) => <g>
   <path d="M960 380 C1080 380 1160 450 1160 520 C1160 600 1080 650 960 650 C840 650 760 600 760 520 C760 450 840 380 960 380 Z" fill="none" stroke={GOLD} strokeWidth={2.6} opacity={appear(c.frame, c.start, 16)} />
   {[-1, 1].map((k) => {const bx = 960 + k * 196, tx = 960 + k * (200 + 190 * horns), ty = 520 + 70 * horns;return <path key={k} d={`M${bx} 486 C${bx + k * 90} ${470 - 50 * horns} ${tx} ${ty - 110 * horns} ${tx} ${ty} C${tx - k * 30} ${ty - 70 * horns} ${bx + k * 60} 520 ${bx - k * 4} 556`} fill="none" stroke={GOLD} strokeWidth={2.6} strokeLinejoin="round" opacity={horns} />;})}
 </g>;
-export const Nhom3B: FC<SectionProps> = (p) => <NarratedSection {...p} track="06 nhóm 3B" highlight={/(tuy hai mà một|tuy một mà hai|cái bóng|bị bỏ rơi|nhờ người kia giúp|củ ấu|tình lẫn nghĩa|đừng vội quyết định|một gang rưỡi|vị tha|nói thật|thấy vậy chứ không phải vậy|lắng xuống)/gi} beats={[
+export const Nhom3B = section("06 nhóm 3B", /(tuy hai mà một|tuy một mà hai|cái bóng|bị bỏ rơi|nhờ người kia giúp|củ ấu|tình lẫn nghĩa|đừng vội quyết định|một gang rưỡi|vị tha|nói thật|thấy vậy chứ không phải vậy|lắng xuống)/gi, [
   {at: 0, card: {kicker: 'NHÓM 2', title: 'Thương và được thương'}},
   // 1–3 two people side by side; the folk verse, two circles as one, then the second half and the circles part
   {at: 1, label: 'Ghen tuông', draw: (c) => {const sep = interpolate(c.frame, [within(c, 3, .4), within(c, 3, .9)], [0, 1], {...clamp, easing: ease});return <g>
@@ -287,7 +285,7 @@ export const Nhom3B: FC<SectionProps> = (p) => <NarratedSection {...p} track="06
       <Figure frame={c.frame} from={within(c, 18, .5)} x={760} y={700} s={.9} pose="sit" arm="reach" />
       <g transform="rotate(-8 1160 600)"><Figure frame={c.frame} from={within(c, 18, .55)} x={1160} y={700} s={.9} pose="sit" facing={-1} /></g>
     </g></g>;}},
-]} />;
+]);
 
 // ---- 07 Nhóm 3C (lines-07-nhom-3c.txt) ----------------------------------------------------------------------
 const salt = (c: Ctx, x: number, y: number, from: number, spread = 1) => Array.from({length: 14}, (_, i) => {
@@ -302,7 +300,7 @@ const cow = (x: number, y: number, s: number) => {
     + ` M${P(92, -72)} L${P(88, -82)} M${P(100, -71)} L${P(104, -81)} M${P(0, -56)} C${P(-10, -52)} ${P(-12, -38)} ${P(-8, -30)}`;
 };
 const wall = (c: Ctx, delay = 0) => <g>{[0, 1, 2, 3, 4].map((row) => Array.from({length: 6 - row}, (_, i) => {const x = 640 + i * 110 + (row % 2) * 55, y = 700 - row * 56;return <rect key={`${row}-${i}`} x={x} y={y} width={100} height={48} rx={4} fill="none" stroke={GOLD} strokeWidth={2.2} opacity={appear(c.frame, c.start + delay + row * 8 + i * 2, 8)} />;}))}</g>;
-export const Nhom3C: FC<SectionProps> = (p) => <NarratedSection {...p} track="07 nhóm 3C" highlight={/(chịu|đựng|vốc muối|dòng sông|lòng mình rộng ra|chưa thành công|nhìn lại|con bò|sợ bị chê|mùa thu|thảnh thơi|để mà đi)/gi} beats={[
+export const Nhom3C = section("07 nhóm 3C", /(chịu|đựng|vốc muối|dòng sông|lòng mình rộng ra|chưa thành công|nhìn lại|con bò|sợ bị chê|mùa thu|thảnh thơi|để mà đi)/gi, [
   {at: 0, card: {kicker: 'NHÓM 3', title: 'Đi qua những lúc thăng trầm'}},
   // 1–2 the two words, each with its meaning, with the quote
   {at: 1, label: 'Chịu đựng', quote: true, draw: (c) => <g>
@@ -370,7 +368,7 @@ export const Nhom3C: FC<SectionProps> = (p) => <NarratedSection {...p} track="07
     <Figure frame={c.frame} from={c.start + 10} x={720 + t * 300} y={810 - t * 200} s={.8 - t * .25} pose="walk" />
     {[0, 1, 2, 3, 4].map((k) => <ellipse key={k} cx={760 + k * 50} cy={800 - k * 36} rx={8} ry={14} fill={GOLD} opacity={appear(c.frame, c.at(18) + k * 8, 8) * .8} />)}
   </g>;}},
-]} />;
+]);
 
 // ---- 08 Nhóm 3D (lines-08-nhom-3d.txt) ----------------------------------------------------------------------
 // A grey heron standing in the pond, facing right; legs down to the water surface (y 700).
@@ -390,7 +388,7 @@ const brickWall = (c: Ctx, open: number) => <g>
   <Glow x={960} y={485} r={140} opacity={open} />
   <path d={`M850 390 L${850 + 110 * (1 - open)} ${390 + 14 * open} L${850 + 110 * (1 - open)} ${580 - 14 * open} L850 580 M1070 390 L${1070 - 110 * (1 - open)} ${390 + 14 * open} L${1070 - 110 * (1 - open)} ${580 - 14 * open} L1070 580`} fill="none" stroke={IVORY} strokeWidth={2} />
 </g>;
-export const Nhom3D: FC<SectionProps> = (p) => <NarratedSection {...p} track="08 nhóm 3D" highlight={/(bức tường vô hình|người bạn tốt|lành lại|trái cam|biết ơn thật|tô canh chua|tổ tiên|kiêu ngạo|đặt mình vào chỗ của họ|tôn trọng|từng là một đứa trẻ)/gi} beats={[
+export const Nhom3D = section("08 nhóm 3D", /(bức tường vô hình|người bạn tốt|lành lại|trái cam|biết ơn thật|tô canh chua|tổ tiên|kiêu ngạo|đặt mình vào chỗ của họ|tôn trọng|từng là một đứa trẻ)/gi, [
   {at: 0, card: {kicker: 'NHÓM 4', title: 'Sống giữa mọi người'}},
   // 1 a full dinner table, one person a little apart; 2 a wall builds between them and the rest
   {at: 1, label: 'Cô đơn', draw: (c) => {const w = appear(c.frame, c.at(2), 30);return <g>{table(c)}
@@ -459,7 +457,7 @@ export const Nhom3D: FC<SectionProps> = (p) => <NarratedSection {...p} track="08
     <Figure frame={c.frame} from={c.start + 6} x={900} y={800} s={1} pose="kneel" arm="reach" />
     <Figure frame={c.frame} from={c.start + 10} x={1060} y={800} s={.6} facing={-1} />
   </g>},
-]} />;
+]);
 
 // ---- 08e Những điểm chưa đạt (lines-08e-diem-chua-dat.txt) ------------------------------------------------------
 // A page seen flat, with a small heart sketch and text lines; used for flipping pages and the unsourced page.
@@ -468,7 +466,7 @@ const notebook = (c: Ctx, x: number, from: number, shut = 0) => <g transform={`t
   {D(c, `M-150 ${420 + shut * 30} L150 ${420 + shut * 30} L150 680 L-150 680 Z`, from - c.start, 22, 2.6)}
   {D(c, 'M-150 680 L150 680 L170 700 L-130 700 Z', from - c.start + 8, 14, 2.2, .8)}
 </g>;
-export const DiemChuaDat: FC<SectionProps> = (p) => <NarratedSection {...p} track="08e điểm chưa đạt" highlight={/(chưa đạt|dễ thấy lặp|vài chương|không ghi nguồn|hỏi bác sĩ|điều hiển nhiên|phần thực hành)/gi} beats={[
+export const DiemChuaDat = section("08e điểm chưa đạt", /(chưa đạt|dễ thấy lặp|vài chương|không ghi nguồn|hỏi bác sĩ|điều hiển nhiên|phần thực hành)/gi, [
   {at: 0, card: {kicker: 'NÓI CHO CÔNG BẰNG', title: 'Những điểm chưa đạt'}},
   // 1 pages flip one after another, the same heart sketch on each; a circular arrow returns to its start
   {at: 1, label: 'Lặp ý', draw: (c) => {const flips = Math.max(0, Math.floor((c.frame - c.start) / 22)), t = ((c.frame - c.start) % 22) / 22, arrow = appear(c.frame, within(c, 1, .55), 30);return <g>
@@ -510,7 +508,7 @@ export const DiemChuaDat: FC<SectionProps> = (p) => <NarratedSection {...p} trac
     <g opacity={appear(c.frame, c.at(6), 12)} transform={`translate(${1060 + 240 * Math.min(1, write * 3 % 1.0001)} ${470 + 50 * Math.min(2, Math.floor(write * 3))})`}>
       <path d="M0 0 L60 -90 L80 -80 L20 10 Z M60 -90 C70 -110 100 -100 80 -80" fill="none" stroke={GOLD} strokeWidth={2.4} strokeLinejoin="round" /></g>
   </g>;}},
-]} />;
+]);
 
 // ---- 08f Tổng kết (lines-08f-tong-ket.txt) ------------------------------------------------------------------
 const MOTIFS: {x: number; y: number; d: string}[] = [
@@ -519,7 +517,7 @@ const MOTIFS: {x: number; y: number; d: string}[] = [
   {x: 560, y: 720, d: 'M-90 20 C-50 0 -20 30 20 10 C50 -6 80 20 100 10 M-90 50 C-50 30 -20 60 20 40 C50 24 80 50 100 40 M-10 -60 L-10 -30 M10 -70 L10 -40'},
   {x: 1360, y: 720, d: 'M-80 -10 L80 -10 C74 40 40 60 0 60 C-40 60 -74 40 -80 -10 Z M-30 -30 C-40 -50 -20 -60 -30 -80 M10 -30 C0 -50 20 -60 10 -80'},
 ];
-export const TongKet: FC<SectionProps> = (p) => <NarratedSection {...p} track="08f tổng kết" highlight={/(tóm lại|cách lòng mình phản ứng|phải hiểu trước|bốn mảng|mỗi tối mở ra một chương|nói đúng chuyện của mình)/gi} beats={[
+export const TongKet = section("08f tổng kết", /(tóm lại|cách lòng mình phản ứng|phải hiểu trước|bốn mảng|mỗi tối mở ra một chương|nói đúng chuyện của mình)/gi, [
   // 0 the gold thread of part 2 returns and ties two hearts
   {at: 0, label: 'Tóm lại', draw: (c) => <g>
     <path d={heart(700, 520, 1.1)} fill="none" stroke={IVORY} strokeWidth={2.6} opacity={appear(c.frame, c.start, 14)} />
@@ -550,14 +548,14 @@ export const TongKet: FC<SectionProps> = (p) => <NarratedSection {...p} track="0
     <Word x={0} y={-90} size={36} text={name} opacity={1} />
     {[0, 1, 2, 3].map((l) => <path key={l} d={`M-110 ${-20 + l * 40} L${110 - (l % 2) * 50} ${-20 + l * 40}`} stroke={IVORY} strokeWidth={2} opacity={.6} />)}
   </g>;})}</g>},
-]} />;
+]);
 
 // ---- 09 Nhận xét chung -----------------------------------------------------------------------------------
-export const NhanXet: FC<SectionProps> = (p) => <NarratedSection {...p} track="09 nhận xét chung" highlight={/(cuốn sách hay|đọc qua)/gi} beats={[
+export const NhanXet = section("09 nhận xét chung", /(cuốn sách hay|đọc qua)/gi, [
   {at: 0, draw: (c) => <g>
     <Glow x={960} y={520} r={320} opacity={appear(c.frame, c.start + 10, 30)} />
     {D(c, 'M640 640 L1280 640 L1300 600 L660 600 Z M640 640 L640 690 L1280 690 L1280 640 M1300 600 L1300 650 L1280 690', 0, 34, 2.6)}
     {D(c, 'M680 620 L1260 620', 16, 20, 2, .75)}
     {[0, 1, 2, 3, 4].map((k) => {const a = -Math.PI / 2 + (k - 2) * .35;return <path key={k} d={`M${960 + Math.cos(a) * 120} ${560 + Math.sin(a) * 120} L${960 + Math.cos(a) * 260} ${560 + Math.sin(a) * 260}`} stroke={GOLD} strokeWidth={2.6} strokeLinecap="round" opacity={appear(c.frame, c.start + 24 + k * 4, 12) * .9} />;})}
   </g>},
-]} />;
+]);

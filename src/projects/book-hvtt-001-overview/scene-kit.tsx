@@ -1,6 +1,6 @@
 import type {FC, ReactNode} from 'react';
 import {Audio} from '@remotion/media';
-import {AbsoluteFill, Track, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Sequence, Track, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import type {CalculateMetadataFunction} from 'remotion';
 import '../../shared/stoic-fonts';
 import {Backdrop, Captions, GOLD, INK, IVORY, clamp, ease} from './Intro';
@@ -16,15 +16,67 @@ export type Beat = {at: number; label?: string; card?: {kicker: string; title: s
 
 const voices = (takes as unknown as {voices: Take[]}).voices;
 export const takeOf = (id: string) => voices.find((v) => v.id === id);
-const TAIL_SECONDS = .8;
-export const sectionFrames = (voice: string, fps = 30) => Math.ceil(((takeOf(voice)?.durationSeconds ?? 5) + TAIL_SECONDS) * fps);
-export const sectionMetadata: CalculateMetadataFunction<{voice: string; channelLabel: string}> = ({props}) => ({durationInFrames: sectionFrames(props.voice)});
 
-// Stroke that draws itself between two frames. Line style for every drawing: width ≥ 2 and opacity ≥ .7 so lines
-// stay crisp at 1080p, a small glow only (a wide drop-shadow blurs thin lines), width unaffected by scale().
-export const Draw: FC<{d: string; from: number; to: number; frame: number; width?: number; opacity?: number; color?: string}> = ({d, from, to, frame, width = 2.4, opacity = 1, color = GOLD}) =>
-  <path d={d} fill="none" stroke={color} strokeWidth={width} strokeLinecap="round" strokeLinejoin="round" opacity={opacity} pathLength={1} strokeDasharray={1} vectorEffect="non-scaling-stroke"
-    strokeDashoffset={interpolate(frame, [from, to], [1, 0], {...clamp, easing: ease})} />;
+// Natural pacing (user 2026-11-01: "diễn giải tự nhiên, đừng quá bó buộc vào thời gian"): the narration is cut in
+// the silence between sentences and played with added rests, a breath after every sentence and a longer rest
+// where a new idea (a new drawing) starts, so each drawing finishes before the next one and the last one holds.
+// Pictures, captions and the voice level all follow the paced timeline; the take itself is not changed.
+export const BREATH_SECONDS = .3, IDEA_SECONDS = .9, CARD_SECONDS = .5, TAIL_SECONDS = 1.6;
+export type Pacing = {
+  at: (sentence: number) => number; // frame where a sentence starts (one past the last = end of narration)
+  end: (sentence: number) => number; // frame where a sentence's speech ends
+  segments: {from: number; trimBefore: number; trimAfter: number}[];
+  voiceFrame: (frame: number) => number | null; // take frame heard at this frame, null during a rest
+  frames: number;
+};
+export const pace = (take: Take | undefined, ideaStarts: number[], fps: number, extra: Record<number, number> = {}): Pacing => {
+  const ranges = take?.phraseRanges ?? [];
+  if (!take || !ranges.length) return {at: (i) => i * 3 * fps, end: (i) => (i * 3 + 2.5) * fps, segments: [], voiceFrame: () => null, frames: 5 * fps};
+  const n = ranges.length, F = (sec: number) => Math.round(sec * fps);
+  const rest = ranges.map((_, i) => (i < n - 1 ? F(BREATH_SECONDS + (ideaStarts.includes(i + 1) ? IDEA_SECONDS : 0) + (extra[i] ?? 0)) : 0));
+  const added = rest.reduce<number[]>((acc, r, i) => [...acc, acc[i] + r], [0]); // rest frames before sentence i
+  const cut = ranges.map((r, i) => (i === 0 ? 0 : F((ranges[i - 1].endSeconds + r.startSeconds) / 2))).concat(F(take.durationSeconds));
+  const segments = ranges.map((_, i) => ({from: cut[i] + added[i], trimBefore: cut[i], trimAfter: cut[i + 1]}));
+  const voiceFrame = (frame: number) => {
+    const s = segments.find((g) => frame >= g.from && frame < g.from + g.trimAfter - g.trimBefore);
+    return s ? s.trimBefore + frame - s.from : null;
+  };
+  return {
+    at: (i) => (i >= n ? F(take.durationSeconds) + added[n - 1] : F(ranges[Math.max(0, i)].startSeconds) + added[Math.max(0, i)]),
+    end: (i) => F(ranges[Math.min(i, n - 1)].endSeconds) + added[Math.min(i, n - 1)],
+    segments, voiceFrame, frames: F(take.durationSeconds) + added[n - 1] + F(TAIL_SECONDS),
+  };
+};
+// The take played piece by piece on the paced timeline.
+export const PacedVoice: FC<{take: Take; pacing: Pacing; track: string}> = ({take, pacing, track}) => <Track name={`Giọng · ${track} · ${take.name}`}>
+  {pacing.segments.map((g, i) => <Sequence key={i} from={g.from} durationInFrames={g.trimAfter - g.trimBefore} layout="none" name={`câu ${i + 1}`}>
+    <Audio src={staticFile(take.file)} trimBefore={g.trimBefore} trimAfter={g.trimAfter} />
+  </Sequence>)}
+</Track>;
+// Caption time (take milliseconds) for a paced frame; during a rest it stays at the end of the sentence before.
+export const captionMs = (pacing: Pacing, frame: number, fps: number) => {
+  const v = pacing.voiceFrame(frame);
+  if (v !== null) return v * 1000 / fps;
+  const before = [...pacing.segments].reverse().find((g) => g.from <= frame);
+  return before ? before.trimAfter * 1000 / fps : 0;
+};
+export const voiceLevel = (take: Take | undefined, pacing: Pacing, frame: number) => {
+  const v = pacing.voiceFrame(frame);
+  return take && v !== null && v < take.frames ? take.level[Math.max(0, v)] / 100 : 0;
+};
+const ideaStartsOf = (beats: Beat[]) => beats.map((b) => b.at).filter((a) => a > 0);
+const cardRestOf = (beats: Beat[]) => Object.fromEntries(beats.filter((b) => b.card).map((b) => [b.at, CARD_SECONDS]));
+export const sectionPacing = (voice: string, beats: Beat[], fps = 30) => pace(takeOf(voice), ideaStartsOf(beats), fps, cardRestOf(beats));
+
+// Stroke that draws itself between two frames: a dash that grows along the path (pathLength 1), nothing at all
+// before it starts. Line style for every drawing: width ≥ 2 and opacity ≥ .7 so lines stay crisp at 1080p, a small
+// glow only. Inside a scale(k) group pass scale={k} so the line keeps its width on screen (non-scaling-stroke is
+// not used: with pathLength it splits strokes into dashes inside scaled groups — the broken lines of review 1).
+export const Draw: FC<{d: string; from: number; to: number; frame: number; width?: number; opacity?: number; color?: string; scale?: number}> = ({d, from, to, frame, width = 2.4, opacity = 1, color = GOLD, scale = 1}) => {
+  const p = interpolate(frame, [from, to], [0, 1], {...clamp, easing: ease});
+  return p <= 0 ? null : <path d={d} fill="none" stroke={color} strokeWidth={width / Math.abs(scale)} strokeLinecap="round" strokeLinejoin="round" opacity={opacity} pathLength={1}
+    strokeDasharray={p >= 1 ? undefined : `${p} 2`} />;
+};
 export const Glow: FC<{x: number; y: number; r: number; opacity: number}> = ({x, y, r, opacity}) =>
   <circle cx={x} cy={y} r={r} fill="url(#kit-glow)" opacity={opacity} />;
 // Large gold outline text drawn as part of the illustration (Stoic Sans 700).
@@ -36,12 +88,12 @@ export const NarratedSection: FC<{voice: string; channelLabel: string; beats: Be
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
   const voice = takeOf(voiceId);
-  const ranges = voice?.phraseRanges ?? [];
-  // One past the last sentence is the end of the narration, so within(c, last, share) has a real span.
-  const at = (i: number) => Math.round((i >= ranges.length && voice && ranges.length ? voice.durationSeconds : ranges[Math.min(i, ranges.length - 1)]?.startSeconds ?? i * 3) * fps);
-  const level = voice && frame < voice.frames ? voice.level[Math.min(frame, voice.frames - 1)] / 100 : 0;
-  const starts = beats.map((b, i) => (i === 0 ? 0 : at(b.at) - 6));
-  const opacityOf = (i: number) => interpolate(frame, [starts[i] - 8, starts[i] + 8, (starts[i + 1] ?? 1e9) - 8, (starts[i + 1] ?? 1e9) + 8], [i === 0 ? 1 : 0, 1, 1, 0], clamp);
+  const pacing = sectionPacing(voiceId, beats, fps);
+  const at = pacing.at;
+  const level = voiceLevel(voice, pacing, frame);
+  // A drawing starts in the rest before its sentence; the one before has faded out by then (no overlap).
+  const starts = beats.map((b, i) => (i === 0 ? 0 : at(b.at) - 12));
+  const opacityOf = (i: number) => interpolate(frame, [starts[i], starts[i] + 12, (starts[i + 1] ?? 1e9) - 12, starts[i + 1] ?? 1e9], [i === 0 ? 1 : 0, 1, 1, 0], clamp);
   const current = starts.reduce((n, s, i) => (frame >= s ? i : n), 0);
   // Item label of the current beat, or of the last beat before it that set one.
   const label = [...beats.slice(0, current + 1)].reverse().find((b) => b.label !== undefined)?.label;
@@ -67,12 +119,10 @@ export const NarratedSection: FC<{voice: string; channelLabel: string; beats: Be
         </div> : null;
       })}
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%)', pointerEvents: 'none'}} />
-      {voice ? <Captions captions={voice.captions} ms={frame * 1000 / fps} highlight={highlight} /> : null}
+      {voice ? <Captions captions={voice.captions} ms={captionMs(pacing, frame, fps)} highlight={highlight} /> : null}
       {beats[current]?.quote ? <div style={{position: 'absolute', top: 852, left: 0, right: 0, textAlign: 'center', color: GOLD, fontSize: 24, fontWeight: 700, letterSpacing: 2, opacity: opacityOf(current) * .85}}>— Hiểu về trái tim, Minh Niệm</div> : null}
     </AbsoluteFill>
-    {voice ? <Track name={`Giọng · ${track} · ${voice.name}`}>
-      <Audio src={staticFile(voice.file)} from={0} />
-    </Track> : null}
+    {voice ? <PacedVoice take={voice} pacing={pacing} track={track} /> : null}
   </AbsoluteFill>;
 };
 
@@ -84,7 +134,7 @@ export const Figure: FC<{frame: number; from: number; x: number; y: number; s?: 
   const swing = pose === 'walk' ? Math.sin(frame * .4) * 22 : 0;
   const seated = pose === 'sit' || pose === 'headHold', hip = seated ? -90 : pose === 'kneel' ? -70 : -130;
   const sh = hip - 120, head = sh - 34;
-  const L = (d: string, k: number, w = 2.4) => <Draw frame={frame} from={from + k} to={from + k + 14} d={d} width={w} color={color} />;
+  const L = (d: string, k: number, w = 2.4) => <Draw frame={frame} from={from + k} to={from + k + 14} d={d} width={w} color={color} scale={s} />;
   const armPath = pose === 'headHold' ? `M0 ${sh + 6} C30 ${sh + 30} 40 ${head + 20} 18 ${head + 4} M0 ${sh + 6} C-26 ${sh + 30} -34 ${head + 20} -16 ${head + 4}`
     : arm === 'reach' ? `M0 ${sh + 6} L60 ${sh + 40} L110 ${sh + 44}`
     : arm === 'point' ? `M0 ${sh + 6} L70 ${sh + 10} L130 ${sh - 4}`
@@ -106,3 +156,12 @@ export const Figure: FC<{frame: number; from: number; x: number; y: number; s?: 
 };
 // Moment inside a sentence: share 0 = its start, 1 = the next sentence's start.
 export const within = (c: Ctx, sentence: number, share: number) => Math.round(c.at(sentence) + (c.at(sentence + 1) - c.at(sentence)) * share);
+
+// A body section: its component plus the frame count of its paced timeline (registry metadata and the episode).
+export type SectionProps = {voice: string; channelLabel: string};
+export type Section = FC<SectionProps> & {frames: (voice: string, fps?: number) => number; metadata: CalculateMetadataFunction<SectionProps>};
+export const section = (track: string, highlight: RegExp, beats: Beat[]): Section => {
+  const C: FC<SectionProps> = (p) => <NarratedSection {...p} track={track} highlight={highlight} beats={beats} />;
+  const frames = (voice: string, fps = 30) => sectionPacing(voice, beats, fps).frames;
+  return Object.assign(C, {frames, metadata: (({props}) => ({durationInFrames: frames(props.voice)})) as CalculateMetadataFunction<SectionProps>});
+};

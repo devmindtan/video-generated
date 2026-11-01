@@ -1,23 +1,18 @@
 import type {FC, ReactNode} from 'react';
-import {Audio} from '@remotion/media';
-import {AbsoluteFill, Easing, Track, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import type {CalculateMetadataFunction} from 'remotion';
 import '../../shared/stoic-fonts';
 import {Backdrop, Captions, GOLD, INK, IVORY, clamp} from './Intro';
-import type {Voice} from './Intro';
-import {Draw} from './scene-kit';
-import takes from './body-takes.json';
+import {Draw, PacedVoice, captionMs, pace, takeOf, voiceLevel} from './scene-kit';
 
 // Section 0b "Mở chuyện" (script v4, lock v1): the grandmother and the door threshold, told by the narrator.
 // Gold line drawings in code (option B); people may be drawn (user 2026-10-31). One beat per spoken sentence,
 // started from the narration's phrase ranges, with small motion inside every beat (image-prompts.md, 0b).
 export type MoChuyenProps = {voice: string; channelLabel: string};
-type Take = Voice & {phraseRanges?: {startSeconds: number; endSeconds: number}[]};
-
-const voices = (takes as unknown as {voices: Take[]}).voices;
-const TAIL_SECONDS = .8;
-const voiceOf = (id: string) => voices.find((v) => v.id === id) ?? voices[0];
-export const moChuyenFrames = (voice: string, fps = 30) => Math.ceil(((voiceOf(voice)?.durationSeconds ?? 20) + TAIL_SECONDS) * fps);
+// Paced like the body sections (scene-kit pace): a longer rest before each new scene's sentence (review 1: "hơi nhanh").
+const SCENE_SENTENCES = [1, 2, 3, 5, 6, 8];
+const pacingOf = (voice: string, fps: number) => pace(takeOf(voice), SCENE_SENTENCES, fps);
+export const moChuyenFrames = (voice: string, fps = 30) => pacingOf(voice, fps).frames;
 export const moChuyenMetadata: CalculateMetadataFunction<MoChuyenProps> = ({props}) => ({durationInFrames: moChuyenFrames(props.voice)});
 
 const ring = (cx: number, cy: number, r: number) => `M${cx - r} ${cy} a${r} ${r} 0 1 0 ${2 * r} 0 a${r} ${r} 0 1 0 ${-2 * r} 0`;
@@ -193,25 +188,25 @@ const Desk: FC<{frame: number; start: number}> = ({frame, start: s}) => {
 export const BookHvttMoChuyen: FC<MoChuyenProps> = ({voice: voiceId, channelLabel}) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
-  const voice = voiceOf(voiceId);
-  const ranges = voice?.phraseRanges ?? [];
-  const at = (i: number, fallback: number) => Math.round((ranges[i]?.startSeconds ?? fallback) * fps);
-  const end = (i: number, fallback: number) => Math.round((ranges[i]?.endSeconds ?? fallback) * fps);
-  const within = (i: number, share: number) => at(i, i * 4) + Math.round((end(i, i * 4 + 4) - at(i, i * 4)) * share);
-  // Scene windows (each starts a few frames before its sentence): book · doorway (child, grandmother) · cane ·
+  const voice = takeOf(voiceId);
+  const pacing = pacingOf(voiceId, fps);
+  const at = pacing.at;
+  const within = (i: number, share: number) => pacing.at(i) + Math.round((pacing.end(i) - pacing.at(i)) * share);
+  // Scene windows (each starts in the rest before its sentence): book · doorway (child, grandmother) · cane ·
   // doorway again (sitting, looking up) · growth marks · hands · desk.
-  const sBook = 0, sDoor = at(1, 4) - 8, sCane = within(2, .42) - 6, sSit = at(3, 15) - 8, sGrow = at(5, 24) - 8, sHands = at(6, 28) - 8, sDesk = at(8, 34) - 8;
+  const sBook = 0, sDoor = at(1) - 14, sCane = within(2, .42) - 6, sSit = at(3) - 14, sGrow = at(5) - 14, sHands = at(6) - 14, sDesk = at(8) - 14;
   const cuts = [sBook, sDoor, sCane, sSit, sGrow, sHands, sDesk, 1e9];
-  const show = (k: number) => interpolate(frame, [cuts[k] - 8, cuts[k] + 8, cuts[k + 1] - 8, cuts[k + 1] + 8], [k === 0 ? 1 : 0, 1, 1, 0], clamp);
+  // One scene fades out before the next fades in (no overlap, review 1).
+  const show = (k: number) => interpolate(frame, [cuts[k], cuts[k] + 12, cuts[k + 1] - 12, cuts[k + 1]], [k === 0 ? 1 : 0, 1, 1, 0], clamp);
   const fall = within(1, .58), runIn = interpolate(frame, [sDoor + 10, fall], [0, 1], clamp);
   const tumble = interpolate(frame, [fall - 4, fall + 10], [0, 1], {...clamp, easing: Easing.out(Easing.back(1.6))});
   const cry = frame > fall + 10 && frame < sCane ? (Math.sin(frame * .6) + 1) / 2 : 0;
-  const granIn = interpolate(frame, [at(2, 9), within(2, .4)], [0, 1], {...clamp, easing: Easing.out(Easing.cubic)});
+  const granIn = interpolate(frame, [at(2), within(2, .4)], [0, 1], {...clamp, easing: Easing.out(Easing.cubic)});
   const taps = [0, 1, 2].map((k) => within(2, .55) + Math.round(k * .8 * fps));
-  const lookUp = interpolate(frame, [at(4, 20), at(4, 20) + 18], [0, 1], clamp);
+  const lookUp = interpolate(frame, [at(4), at(4) + 18], [0, 1], clamp);
   const point = interpolate(frame, [within(6, .55), within(6, .55) + 14], [0, 1], clamp);
-  const hold = interpolate(frame, [at(7, 31) - 6, at(7, 31) + 10], [0, 1], clamp);
-  const level = voice && frame < voice.frames ? voice.level[Math.min(frame, voice.frames - 1)] / 100 : 0;
+  const hold = interpolate(frame, [at(7) - 6, at(7) + 10], [0, 1], clamp);
+  const level = voiceLevel(voice, pacing, frame);
   const fadeOut = interpolate(frame, [durationInFrames - .6 * fps, durationInFrames], [1, 0], clamp);
   return <AbsoluteFill style={{background: INK, fontFamily: 'Stoic Sans, sans-serif', overflow: 'hidden'}}>
     <AbsoluteFill style={{opacity: fadeOut}}>
@@ -229,7 +224,7 @@ export const BookHvttMoChuyen: FC<MoChuyenProps> = ({voice: voiceId, channelLabe
             <g opacity={tumble}><Sandal x={980 - tumble * 160} y={826} rotate={-70 + tumble * 92} frame={frame} from={fall - 4} /></g>
             <g opacity={cry} transform="translate(960 640)"><path d="M-30 -40 L-52 -62 M0 -50 L0 -78 M30 -40 L52 -62" stroke={IVORY} strokeWidth={3} strokeLinecap="round" /></g>
             {/* the grandmother hurries in from the left */}
-            <g opacity={granIn} transform={`translate(${260 + granIn * 330} 812) scale(1.5)`}><Grandma frame={frame} from={at(2, 9)} walk={granIn < 1 ? 1 : 0} /></g>
+            <g opacity={granIn} transform={`translate(${260 + granIn * 330} 812) scale(1.5)`}><Grandma frame={frame} from={at(2)} walk={granIn < 1 ? 1 : 0} /></g>
           </Fade>
           <Fade opacity={show(2)}><CaneTap frame={frame} start={sCane} taps={taps} /></Fade>
           <Fade opacity={show(3)}>
@@ -239,7 +234,7 @@ export const BookHvttMoChuyen: FC<MoChuyenProps> = ({voice: voiceId, channelLabe
             <Sandal x={1150} y={834} rotate={-90} scale={.86} frame={frame} from={sSit + 12} />
             <Sandal x={1220} y={834} rotate={-90} scale={.86} frame={frame} from={sSit + 18} />
             {/* "lúc đó, đứa bé chỉ thấy hả dạ": the stick now rests against the door post */}
-            <g opacity={lookUp}><Draw frame={frame} from={at(4, 20)} to={at(4, 20) + 16} d="M1250 740 L1210 470 M1210 470 C1204 452 1222 446 1228 458" width={3} /></g>
+            <g opacity={lookUp}><Draw frame={frame} from={at(4)} to={at(4) + 16} d="M1250 740 L1210 470 M1210 470 C1204 452 1222 446 1228 458" width={3} /></g>
           </Fade>
           <Fade opacity={show(4)}><GrowthMarks frame={frame} start={sGrow} /></Fade>
           <Fade opacity={show(5)}><Hands frame={frame} start={sHands} point={point} hold={hold} /></Fade>
@@ -247,10 +242,8 @@ export const BookHvttMoChuyen: FC<MoChuyenProps> = ({voice: voiceId, channelLabe
         </g>
       </svg>
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%)', pointerEvents: 'none'}} />
-      {voice ? <Captions captions={voice.captions} ms={frame * 1000 / fps} highlight={/(chương cuối|ngạch cửa|người bà|cẩn thận|hả dạ|lớn lên|dỗ cái đau|điều phải|học lại)/gi} /> : null}
+      {voice ? <Captions captions={voice.captions} ms={captionMs(pacing, frame, fps)} highlight={/(chương cuối|ngạch cửa|người bà|cẩn thận|hả dạ|lớn lên|dỗ cái đau|điều phải|học lại)/gi} /> : null}
     </AbsoluteFill>
-    {voice ? <Track name={`Giọng · 02 mở chuyện · ${voice.name}`}>
-      <Audio src={staticFile(voice.file)} from={0} />
-    </Track> : null}
+    {voice ? <PacedVoice take={voice} pacing={pacing} track="02 mở chuyện" /> : null}
   </AbsoluteFill>;
 };
