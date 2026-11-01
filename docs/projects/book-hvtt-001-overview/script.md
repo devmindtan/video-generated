@@ -33,9 +33,9 @@ Tập đầu tiên, mình chọn cuốn Hiểu về trái tim của tác giả M
 
 Ở chương cuối, tác giả kể một chuyện mà chắc nhiều người từng gặp lúc nhỏ. Một đứa bé đang chạy nhảy thì vấp phải cái ngạch cửa, ngã nhào và khóc ré lên. Người bà chạy tới, và việc đầu tiên bà làm không phải là la cháu, mà là mắng cái ngạch cửa sao dám làm cháu bà đau. Đợi cháu nín rồi, bà mới dặn: lần sau đi đứng cẩn thận nghe con. [nghỉ]
 
-Lúc đó, đứa bé chỉ thấy hả dạ vì cái ngạch cửa bị la. Phải lớn lên, chúng ta mới hiểu bà đâu có giận gì cái ngạch cửa. Bà dỗ cái đau của cháu trước, rồi mới dạy sau. [nghỉ] Theo tác giả, bà hiểu được cháu vì bà cũng từng là một đứa trẻ, lại đã chăm con cháu suốt nhiều năm. Tác giả nói cái hiểu ấy phải học và trải nghiệm rất nhiều mới có, và cuốn sách hôm nay là một cách để mình học.
+Lúc đó, đứa bé chỉ thấy hả dạ vì cái ngạch cửa bị la. Lớn lên rồi mới biết, bà đâu có giận gì cái ngạch cửa. Bà biết cháu đang đau và đang sợ, nên dỗ cho cháu yên trước, rồi mới dặn sau. [nghỉ] Đặt mình vào chỗ người kia rồi mới nói điều phải, nghe thì nhỏ, nhưng cả cuốn sách hôm nay xoay quanh điều đó. Theo tác giả, muốn thương ai thì trước hết phải hiểu được người ấy.
 
-{Ch50, PDF 273 — kể lại bằng lời kênh. Sửa 2026-11-01 theo ghi chú duyệt clip ("bà là người già nhất mà còn người lớn là thế nào? Sách ghi vậy à"): câu cũ "bà làm được vậy mà chẳng cần ai dạy… người lớn chúng ta phải học lại" là lời kênh và ngược ý sách; sách viết bà hiểu cháu vì "đã từng là bé thơ và lại có rất nhiều kinh nghiệm chăm sóc bé thơ", và điều này "ta phải học tập và trải nghiệm rất nhiều".}
+{Ch50, PDF 273 — kể lại bằng lời kênh (bà "đặt mình vào tâm trạng đang đau đớn và sợ hãi của cháu"). Sửa 2026-11-01 theo ghi chú duyệt clip và bản vá p1 bị trả lại ("rất bất hợp lí và chưa hay"): bỏ phép so sánh bà với "người lớn chúng ta" và phần giải thích vì sao bà hiểu cháu; nối thẳng vào ý xuyên suốt của sách ở phần 2 ("phải hiểu thì mới thương được", Ch4 PDF 26).}
 
 ## 1. Cuốn sách là gì (≈ 1:05–1:50)
 

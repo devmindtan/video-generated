@@ -200,6 +200,37 @@
       "reason": "Duyệt clip Mở chuyện 2026-11-01: câu 'bà làm được vậy mà chẳng cần ai dạy… người lớn chúng ta phải học lại' là lời kênh và ngược ý sách (PDF 273: bà hiểu cháu vì từng là bé thơ và có nhiều kinh nghiệm chăm trẻ; điều này phải học và trải nghiệm) — sửa hai câu cuối 0b theo sách, thêm cảnh bà và bóng ký ức. Thêm phần 4 Ý kiến cá nhân theo yêu cầu: bản nháp của kênh để người dùng sửa, kèm mô tả hình cho phần 4.",
       "by": "agent (automation patch)",
       "createdAt": "2026-11-01T06:54:37.160Z",
+      "status": "returned",
+      "decidedAt": "2026-11-01T07:18:48.901Z",
+      "decidedBy": "devmindtan (trang quản lý)",
+      "note": "",
+      "itemNotes": {
+        "docs/projects/book-hvtt-001-overview/script.md": {
+          "text": "Lúc đó, đứa bé chỉ thấy hả dạ vì cái ngạch cửa bị la. Phải lớn lên, chúng ta mới hiểu bà đâu có giận gì cái ngạch cửa. Bà dỗ cái đau của cháu trước, rồi mới dạy sau. [nghỉ] Theo tác giả, bà hiểu được cháu vì bà cũng từng là một đứa trẻ, lại đã chăm con cháu suốt nhiều năm. Tác giả nói cái hiểu ấy phải học và trải nghiệm rất nhiều mới có, và cuốn sách hôm nay là một cách để mình học. -> Chô này thấy nó rất bất hợp lí và chưa hay",
+          "at": "2026-11-01T07:17:45.495Z"
+        },
+        "docs/projects/book-hvtt-001-overview/image-prompts.md": {
+          "text": "Xem phần ghi chú của kịch bản",
+          "at": "2026-11-01T07:18:43.377Z"
+        }
+      }
+    },
+    {
+      "id": "p2",
+      "baseVersion": 1,
+      "changed": {
+        "docs/projects/book-hvtt-001-overview/script.md": {
+          "before": "4241317b4e843e2cd62323b4fc1e9e5dc59507c948e33fd533e30b96cce3d83e",
+          "after": "882cc2016fdb8d2c82600576ea3254e91138cfeb3e900a1dd2889b2e4c1f5a10"
+        },
+        "docs/projects/book-hvtt-001-overview/image-prompts.md": {
+          "before": "622321f3e80bdc886e26926e708c08db2affa425ecfe70b59bcc8d8e52cc44d4",
+          "after": "90ae82fa9809981f93f9e8626f3e5765bfdf86c242b47cd6945bdc8b516b06f4"
+        }
+      },
+      "reason": "Thay bản vá p1 bị trả lại ('rất bất hợp lí và chưa hay'): viết lại đoạn cuối Mở chuyện, bỏ so sánh bà với 'người lớn chúng ta' và phần giải thích vì sao bà hiểu cháu; nối thẳng vào ý xuyên suốt của sách (đặt mình vào chỗ người kia; muốn thương phải hiểu trước). Hình: bà ngồi thụp ngang tầm cháu, trái tim nhỏ trên trang sách. Phần 4 Ý kiến cá nhân giữ bản nháp như p1.",
+      "by": "agent (automation patch)",
+      "createdAt": "2026-11-01T07:25:46.037Z",
       "status": "pending",
       "decidedAt": null,
       "decidedBy": null,
@@ -243,6 +274,26 @@
           "file": "projects/book-hvtt-001-overview/review/02-mo-chuyen-20261101T065637.mp4",
           "sha256": "ef0c0e9209c1b8b5dea6cb882f2ccc1d047d5cf0566a1acf90efd1d7dbf513fe",
           "renderedAt": "2026-11-01T06:58:37.168Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        },
+        {
+          "file": "projects/book-hvtt-001-overview/review/02-mo-chuyen-20261101T072103.mp4",
+          "sha256": "a13b878d16ed54c906db67fa17e21daf0e8aa62ba712d53600e8bd3f8a89045f",
+          "renderedAt": "2026-11-01T07:23:01.528Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        },
+        {
+          "file": "projects/book-hvtt-001-overview/review/02-mo-chuyen-20261101T072332.mp4",
+          "sha256": "e18e9c7586452e97efb0cf475981196fa2f85a21314e5fda6a29690856535804",
+          "renderedAt": "2026-11-01T07:25:29.270Z",
           "lockVersion": 1,
           "status": "pending",
           "note": "",

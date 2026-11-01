@@ -21,9 +21,9 @@ vẽ bằng code trong Remotion, nên không có prompt tạo ảnh; mỗi mục
 | "Người bà chạy tới… mắng cái ngạch cửa sao dám làm cháu bà đau." | Dáng người bà lom khom bước nhanh vào; cảnh gần: cây gậy của bà gõ xuống thanh ngạch cửa ba nhịp, vệt "cộc" nhỏ ở mỗi nhịp |
 | "Đợi cháu nín rồi, bà mới dặn: lần sau đi đứng cẩn thận nghe con." | Bà ngồi xuống cạnh cháu, tay đặt lên vai bé; đôi dép nhỏ được xếp lại ngay ngắn trước ngạch cửa; ánh sáng trong nhà ấm dần |
 | "Lúc đó, đứa bé chỉ thấy hả dạ…" | Đứa bé ngẩng lên nhìn cái ngạch cửa, dáng ngồi thẳng lại; gậy của bà dựa vào khung cửa |
-| "Bà dỗ cái đau của cháu trước, rồi mới dạy sau." | Cảnh gần hai bàn tay: tay bà xoa nhẹ đầu gối nhỏ, rồi một ngón tay khẽ chỉ về phía ngạch cửa |
-| "Theo tác giả, bà hiểu được cháu vì bà cũng từng là một đứa trẻ, lại đã chăm con cháu suốt nhiều năm." | Bà đứng cạnh cháu đang ngồi; phía trên bà hiện một bong bóng ký ức, trong đó một đứa trẻ nhỏ đang chạy; rồi ba vạch chiều cao lớn dần hiện bên phải (những năm chăm con cháu) |
-| "Tác giả nói cái hiểu ấy phải học và trải nghiệm… một cách để mình học." | Bóng dáng người lớn ngồi bên bàn dưới đèn, đặt tay lên cuốn sách mở; ánh đèn ấm hắt ra từ cửa |
+| "Bà biết cháu đang đau và đang sợ, nên dỗ cho cháu yên trước, rồi mới dặn sau." | Cảnh gần hai bàn tay: tay bà xoa nhẹ đầu gối nhỏ, rồi một ngón tay khẽ chỉ về phía ngạch cửa |
+| "Đặt mình vào chỗ người kia rồi mới nói điều phải… cả cuốn sách hôm nay xoay quanh điều đó." | Bà ngồi thụp xuống ngang tầm cháu; một đường nét đứt nối hai ánh mắt cùng độ cao, ánh sáng ấm lan ra quanh hai bà cháu |
+| "Theo tác giả, muốn thương ai thì trước hết phải hiểu được người ấy." | Bóng dáng người lớn ngồi bên bàn dưới đèn, đặt tay lên cuốn sách mở; một trái tim nhỏ hiện trên trang sách |
 
 ## 1 · Cuốn sách là gì
 
