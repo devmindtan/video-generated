@@ -37,7 +37,8 @@ export const NarratedSection: FC<{voice: string; channelLabel: string; beats: Be
   const {fps, durationInFrames} = useVideoConfig();
   const voice = takeOf(voiceId);
   const ranges = voice?.phraseRanges ?? [];
-  const at = (i: number) => Math.round((ranges[Math.min(i, ranges.length - 1)]?.startSeconds ?? i * 3) * fps);
+  // One past the last sentence is the end of the narration, so within(c, last, share) has a real span.
+  const at = (i: number) => Math.round((i >= ranges.length && voice && ranges.length ? voice.durationSeconds : ranges[Math.min(i, ranges.length - 1)]?.startSeconds ?? i * 3) * fps);
   const level = voice && frame < voice.frames ? voice.level[Math.min(frame, voice.frames - 1)] / 100 : 0;
   const starts = beats.map((b, i) => (i === 0 ? 0 : at(b.at) - 6));
   const opacityOf = (i: number) => interpolate(frame, [starts[i] - 8, starts[i] + 8, (starts[i + 1] ?? 1e9) - 8, (starts[i + 1] ?? 1e9) + 8], [i === 0 ? 1 : 0, 1, 1, 0], clamp);

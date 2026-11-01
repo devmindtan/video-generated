@@ -322,10 +322,10 @@ export const Nhom3C: FC<SectionProps> = (p) => <NarratedSection {...p} track="07
   {at: 5, label: 'Thất bại', draw: (c) => wall(c)},
   // 6 "thất bại" is crossed out, "chưa thành công" written in, with the quote
   {at: 6, quote: true, draw: (c) => {const cross = appear(c.frame, within(c, 6, .45), 12);return <g>
-    <g transform="translate(0 -60) scale(1 .8)" opacity={.5}>{wall(c, -60)}</g>
-    <Word x={960} y={380} size={70} text="THẤT BẠI" opacity={appear(c.frame, c.start, 10) * (1 - cross * .5)} />
-    <path d="M760 360 L1160 360" stroke={IVORY} strokeWidth={4} strokeLinecap="round" opacity={cross} />
-    <Word x={960} y={480} size={70} text="CHƯA THÀNH CÔNG" opacity={appear(c.frame, within(c, 6, .55), 12)} /></g>;}},
+    <g transform="translate(480 330) scale(.5)" opacity={.6}>{wall(c, -60)}</g>
+    <Word x={960} y={330} size={70} text="THẤT BẠI" opacity={appear(c.frame, c.start, 10) * (1 - cross * .5)} />
+    <path d="M760 310 L1160 310" stroke={IVORY} strokeWidth={4} strokeLinecap="round" opacity={cross} />
+    <Word x={960} y={430} size={70} text="CHƯA THÀNH CÔNG" opacity={appear(c.frame, within(c, 6, .55), 12)} /></g>;}},
   // 7 someone hurries from one door to the next
   {at: 7, draw: (c) => {const t = interpolate(c.frame, [c.start, c.at(8)], [0, 1], clamp);return <g>
     {D(c, 'M420 800 L1500 800 M500 800 L500 440 L640 440 L640 800 M1280 800 L1280 440 L1420 440 L1420 800', 0, 26, 2.4)}
@@ -352,7 +352,7 @@ export const Nhom3C: FC<SectionProps> = (p) => <NarratedSection {...p} track="07
   // 12 praise and things tied to a hand like balloons; 13 they slip away, a small cloud of criticism comes
   {at: 12, draw: (c) => {const go = appear(c.frame, within(c, 13, .2), 40);return <g>
     <Figure frame={c.frame} from={c.start} x={960} y={820} s={1.1} arm="raise" />
-    {[0, 1, 2, 3].map((k) => {const bx = 840 + k * 80, by = 260 + (k % 2) * 50 - go * 200;return <g key={k} opacity={appear(c.frame, within(c, 12, .2 + k * .15), 10) * (1 - go * .8)}>
+    {[0, 1, 2, 3].map((k) => {const bx = 840 + k * 80, by = 260 + (k % 2) * 50 - go * 200;return <g key={k} opacity={appear(c.frame, within(c, 12, .2 + k * .15), 10) * (1 - go)}>
       <ellipse cx={bx} cy={by} rx={34} ry={42} fill="none" stroke={k % 2 ? IVORY : GOLD} strokeWidth={2.4} /><path d={`M${bx} ${by + 42} C${bx + 10} ${by + 120} 1000 ${400 + go * 0} 1010 ${470}`} fill="none" stroke={GOLD} strokeWidth={1.6} opacity={(1 - go) * .8} /></g>;})}
     <path d="M1240 380 C1220 340 1260 310 1300 330 C1320 300 1380 310 1380 350 C1420 360 1410 410 1370 410 L1260 410 C1220 410 1220 380 1240 380 Z" fill="none" stroke={IVORY} strokeWidth={2.4} opacity={appear(c.frame, within(c, 13, .5), 14)} />
   </g>;}},
@@ -396,12 +396,12 @@ export const Nhom3D: FC<SectionProps> = (p) => <NarratedSection {...p} track="08
   {at: 1, label: 'Cô đơn', draw: (c) => {const w = appear(c.frame, c.at(2), 30);return <g>{table(c)}
     {[0, 1, 2].map((k) => <Figure key={k} frame={c.frame} from={c.start + k * 4} x={600 + k * 170} y={790} s={.85} pose="sit" />)}
     <Figure frame={c.frame} from={c.start + 14} x={1340} y={790} s={.85} pose="headHold" facing={-1} />
-    <g opacity={w}>{[0, 1, 2, 3, 4].map((row) => Array.from({length: 2}, (_, i) => <rect key={`${row}-${i}`} x={1130 + i * 60 + (row % 2) * 30} y={440 + row * 56} width={54} height={48} rx={3} fill="none" stroke={GOLD} strokeWidth={2.2} opacity={appear(c.frame, c.at(2) + row * 6 + i * 3, 8)} />))}</g>
+    <g opacity={w}>{[0, 1, 2, 3, 4].map((row) => Array.from({length: 2}, (_, i) => <rect key={`${row}-${i}`} x={1050 + i * 60 + (row % 2) * 30} y={440 + row * 56} width={54} height={48} rx={3} fill="none" stroke={GOLD} strokeWidth={2.2} opacity={appear(c.frame, c.at(2) + row * 6 + i * 3, 8)} />))}</g>
   </g>;}},
   // 3 a window opens in the wall, with the quote; 4 someone sits quietly by it in the morning light
   {at: 3, quote: true, draw: (c) => {const open = appear(c.frame, within(c, 3, .3), 24), sit = appear(c.frame, c.at(4), 20);return <g>{brickWall(c, open)}
-    <g opacity={sit}><Figure frame={c.frame} from={c.at(4)} x={960} y={800} s={.9} pose="sit" /></g>
-    {D(c, 'M760 800 L1160 800', c.at(4) - c.start, 16, 2.2, .8)}</g>;}},
+    <g opacity={sit}><Figure frame={c.frame} from={c.at(4)} x={1520} y={760} s={.9} pose="sit" facing={-1} /></g>
+    {D(c, 'M1420 760 L1660 760', c.at(4) - c.start, 16, 2.2, .8)}</g>;}},
   // 5–6 an orange; seed, water, wind and sun appear around it as they are named
   {at: 5, label: 'Biết ơn', draw: (c) => <g>
     {D(c, 'M960 520 m-110 0 a110 110 0 1 0 220 0 a110 110 0 1 0 -220 0 M960 410 C956 392 962 380 972 372 M966 392 C990 370 1024 376 1036 396 C1012 408 984 404 966 392 Z', 0, 30, 2.6)}
@@ -414,8 +414,9 @@ export const Nhom3D: FC<SectionProps> = (p) => <NarratedSection {...p} track="08
   </g>},
   // 7 two hands pressed together
   {at: 7, draw: (c) => <g>
-    {D(c, 'M960 300 C930 340 910 420 916 520 L930 700 M960 300 C990 340 1010 420 1004 520 L990 700 M930 700 C900 740 1020 740 990 700', 0, 34, 2.6)}
-    {D(c, 'M916 520 C900 560 880 600 860 700 M1004 520 C1020 560 1040 600 1060 700', 14, 26, 2.2, .85)}
+    {/* two palms pressed together: fingertips meet at the top, finger grooves on the outer edges, thumbs, wrists and forearms apart */}
+    {D(c, 'M960 290 C930 296 906 330 898 380 C890 430 888 480 896 540 C900 566 906 584 912 600 L800 800 M960 290 C990 296 1014 330 1022 380 C1030 430 1032 480 1024 540 C1020 566 1014 584 1008 600 L1120 800 M960 290 L960 600', 0, 36, 2.6)}
+    {D(c, 'M900 360 L928 356 M894 410 L926 404 M892 460 L926 452 M1020 360 L992 356 M1026 410 L994 404 M1028 460 L994 452 M926 500 C912 530 920 570 950 590 M994 500 C1008 530 1000 570 970 590 M960 600 L880 800 M960 600 L1040 800', 16, 26, 2.2, .85)}
     <Glow x={960} y={460} r={160} opacity={appear(c.frame, c.start + 30, 20)} />
   </g>},
   // 8–9 a bowl of sour soup steaming on the kitchen table; 10–11 generations appear behind it (quote); 12 someone bows
