@@ -202,6 +202,212 @@
           "sha256": "a57ab5bf6773b7a2ca0a6ff60b822d67c075e830107f7a58532923f4f4a1acfd",
           "renderedAt": "2026-10-31T18:02:28.671Z",
           "lockVersion": 1,
+          "status": "needs-changes",
+          "note": "Hơi nhanh",
+          "decidedAt": "2026-11-01T04:08:14.573Z",
+          "decidedBy": "devmindtan (trang quản lý)"
+        }
+      ]
+    },
+    "03-cuon-sach": {
+      "clips": [
+        {
+          "file": "projects/book-hvtt-001-overview/review/03-cuon-sach-20261101T041144.mp4",
+          "sha256": "f9e2bbbf8d309bb765eafa782d92792e2fa8bfc460d1a2154008bc99d2020d25",
+          "renderedAt": "2026-11-01T04:14:26.473Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        },
+        {
+          "file": "projects/book-hvtt-001-overview/review/03-cuon-sach-20261101T043847.mp4",
+          "sha256": "15aee846c48c7102db20e0b7a0dbeeae08144020b2c01c02b23f60803c21145f",
+          "renderedAt": "2026-11-01T04:40:49.355Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        },
+        {
+          "file": "projects/book-hvtt-001-overview/review/03-cuon-sach-20261101T045055.mp4",
+          "sha256": "3f210b1d2520f17442159e8bf6c2ef1e94ad713b2b4cd599c3c0d8b0e795e0eb",
+          "renderedAt": "2026-11-01T04:52:18.728Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        }
+      ]
+    },
+    "04-soi-chi": {
+      "clips": [
+        {
+          "file": "projects/book-hvtt-001-overview/review/04-soi-chi-20261101T041426.mp4",
+          "sha256": "1fb721b7f28e1342dc3fb4bf021d2ce975e5a4a9fb508611210c4144a585def5",
+          "renderedAt": "2026-11-01T04:19:14.052Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        },
+        {
+          "file": "projects/book-hvtt-001-overview/review/04-soi-chi-20261101T045219.mp4",
+          "sha256": "fd0637916dcad1f911d2d4248d18d8832fa2d5654826314556b209dda5252ab7",
+          "renderedAt": "2026-11-01T04:54:31.858Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        }
+      ]
+    },
+    "05-nhom-3a": {
+      "clips": [
+        {
+          "file": "projects/book-hvtt-001-overview/review/05-nhom-3a-20261101T041914.mp4",
+          "sha256": "ba8c141b76c1818671c54f6819d30fad315378599a55ef6d91bb6cca7c6ad030",
+          "renderedAt": "2026-11-01T04:23:50.401Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        },
+        {
+          "file": "projects/book-hvtt-001-overview/review/05-nhom-3a-20261101T045432.mp4",
+          "sha256": "f6244771ee9233db76e79d8d274503a03e49854c85e3f2384bc49b3eebb7b872",
+          "renderedAt": "2026-11-01T04:56:58.430Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        }
+      ]
+    },
+    "06-nhom-3b": {
+      "clips": [
+        {
+          "file": "projects/book-hvtt-001-overview/review/06-nhom-3b-20261101T042350.mp4",
+          "sha256": "c67ea123a2ad604adede62115a1e2f13a6ab3c52043892857868d79bf7f9e1bd",
+          "renderedAt": "2026-11-01T04:28:24.600Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        },
+        {
+          "file": "projects/book-hvtt-001-overview/review/06-nhom-3b-20261101T045658.mp4",
+          "sha256": "e24bd4813c9e6563840428039937c64809c12b8e0118451c08d2fa9c2a94dda2",
+          "renderedAt": "2026-11-01T05:00:17.590Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        }
+      ]
+    },
+    "07-nhom-3c": {
+      "clips": [
+        {
+          "file": "projects/book-hvtt-001-overview/review/07-nhom-3c-20261101T042946.mp4",
+          "sha256": "38fa2a82233426b05b1d4aceee0bac3cdacadcaa48810672497b01f73c7fc8b0",
+          "renderedAt": "2026-11-01T04:32:56.718Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        },
+        {
+          "file": "projects/book-hvtt-001-overview/review/07-nhom-3c-20261101T044340.mp4",
+          "sha256": "664ba95c2e8cd7cb5545abdddd6263fea4fd73600dce1974eec105c7f1a92547",
+          "renderedAt": "2026-11-01T04:46:51.033Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        }
+      ]
+    },
+    "08-nhom-3d": {
+      "clips": [
+        {
+          "file": "projects/book-hvtt-001-overview/review/08-nhom-3d-20261101T043257.mp4",
+          "sha256": "cef928d3425a8438060cdc851dff08ac0c4111c8dd1cff11b99d7ff501ecbf92",
+          "renderedAt": "2026-11-01T04:35:56.175Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        },
+        {
+          "file": "projects/book-hvtt-001-overview/review/08-nhom-3d-20261101T044651.mp4",
+          "sha256": "47605433cb3ad8cdf41614468434f556292eafa5ffc2a30ad98234c77cf5b774",
+          "renderedAt": "2026-11-01T04:49:50.128Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        }
+      ]
+    },
+    "08f-tong-ket": {
+      "clips": [
+        {
+          "file": "projects/book-hvtt-001-overview/review/08f-tong-ket-20261101T043708.mp4",
+          "sha256": "75d671616d6c4b7dba4006a6faf30a94755affad4f12ef792a23d328d06da5fc",
+          "renderedAt": "2026-11-01T04:38:24.326Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        },
+        {
+          "file": "projects/book-hvtt-001-overview/review/08f-tong-ket-20261101T044950.mp4",
+          "sha256": "2999a4ab719e9590b38a0d5a63d9a719f65766e0477914e36c91b7d153d46abf",
+          "renderedAt": "2026-11-01T04:50:55.701Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        }
+      ]
+    },
+    "09-nhan-xet": {
+      "clips": [
+        {
+          "file": "projects/book-hvtt-001-overview/review/09-nhan-xet-20261101T043824.mp4",
+          "sha256": "39266a79d32eb7058d42f23fc778739c899b7aafbba046e45b131f6d4024ac94",
+          "renderedAt": "2026-11-01T04:38:46.911Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        }
+      ]
+    },
+    "08e-diem-chua-dat": {
+      "clips": [
+        {
+          "file": "projects/book-hvtt-001-overview/review/08e-diem-chua-dat-20261101T044206.mp4",
+          "sha256": "19e99634c1fbe94a1e919be874461137f773ee64f03e6d8c57012ca9436e715b",
+          "renderedAt": "2026-11-01T04:43:39.892Z",
+          "lockVersion": 1,
           "status": "pending",
           "note": "",
           "decidedAt": null,
