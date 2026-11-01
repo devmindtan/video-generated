@@ -223,6 +223,7 @@ export const ProjectCompositions: FC = () => (
       <Folder name="Book-Insights">
         <Folder name="book-hvtt-001-overview">
           <Composition id="BookHvttTap01" component={BookHvttEpisode} calculateMetadata={renderTo('book-hvtt-001-overview', episodeMetadata)} durationInFrames={1800} fps={30} width={1920} height={1080} defaultProps={{introVoice: 'clone-ban-v4a-sang2', cardVoice: '01-gioi-thieu-tap', bodyVoice: '25-quoc-tuan-02c', outroVoice: 'outro-ban-v2-sang2', channelLabel: 'TÂM LÝ CUỘC SỐNG', episodeLabel: 'TẬP 01', bookTitle: 'Hiểu về trái tim', bookAuthor: 'Minh Niệm'}} />
+          <Composition id="BookHvttTap01Clone" component={BookHvttEpisode} calculateMetadata={renderTo('book-hvtt-001-overview', episodeMetadata)} durationInFrames={1800} fps={30} width={1920} height={1080} defaultProps={{introVoice: 'clone-ban-v4a-sang2', cardVoice: '01-gioi-thieu-tap', bodyVoice: '02-mo-chuyen-sang2', outroVoice: 'outro-ban-v2-sang2', channelLabel: 'TÂM LÝ CUỘC SỐNG', episodeLabel: 'TẬP 01', bookTitle: 'Hiểu về trái tim', bookAuthor: 'Minh Niệm', cloneVoice: true}} />
           <Composition id="BookHvttIntro" component={BookInsightsIntro} calculateMetadata={renderTo('book-hvtt-001-overview', bookIntroMetadata)} durationInFrames={1050} fps={30} width={1920} height={1080} defaultProps={{
             voice: 'clone-ban-v4a-sang2',
             channelLabel: 'TÂM LÝ CUỘC SỐNG',

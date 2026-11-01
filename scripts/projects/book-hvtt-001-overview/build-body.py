@@ -66,7 +66,11 @@ def main():
         stamp.write_text(json.dumps(choice, ensure_ascii=False, indent=1) + '\n')
         built.append(f'book-hvtt-{seg}-clone-sang2'); print(f'{seg}: đã ghép từ {", ".join(used)}')
     if built:
-        subprocess.run([py, str(HERE / 'intro-bands.py'), '--take', *built, '--out', 'src/projects/book-hvtt-001-overview/body-takes.json'], check=True)
+        # Keep the other takes already listed (placeholder voices) so their voice ids stay available.
+        listed = ROOT / 'src/projects/book-hvtt-001-overview/body-takes.json'
+        old = json.loads(listed.read_text())['takes'] if listed.exists() else []
+        takes_out = old + [t for t in built if t not in old]
+        subprocess.run([py, str(HERE / 'intro-bands.py'), '--take', *takes_out, '--out', 'src/projects/book-hvtt-001-overview/body-takes.json'], check=True)
 
 
 if __name__ == '__main__':
