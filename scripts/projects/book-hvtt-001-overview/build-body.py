@@ -1,6 +1,6 @@
 """Build the body narration takes from every clone take that exists, then refresh body-takes.json.
 
-For each segment (02–09): the sentences come from audition-<seg>.json; each sentence is taken from the newest
+For each segment (02–09, with 08e–08g): the sentences come from audition-<seg>.json; each sentence is taken from the newest
 clone take that has exactly that text and passed check-tones.py (else simply the newest one), so repair
 candidates can be cloned several times and the clean one wins; a pick in voice-picks.json (user listening) wins over both; assembled with the segment's pauses, raised +2
 semitones (episode voice, duration preserved). Missing sentences are skipped until their take exists.
@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 HERE = Path(__file__).resolve().parent
 AUD = ROOT / 'public/book-hvtt-001-overview/voice-auditions'
-SEGMENTS = ['02-mo-chuyen', '03-cuon-sach', '04-soi-chi', '05-nhom-3a', '06-nhom-3b', '07-nhom-3c', '08-nhom-3d', '08e-diem-chua-dat', '08f-tong-ket', '09-nhan-xet']
+SEGMENTS = ['02-mo-chuyen', '03-cuon-sach', '04-soi-chi', '05-nhom-3a', '06-nhom-3b', '07-nhom-3c', '08-nhom-3d', '08e-diem-chua-dat', '08f-tong-ket', '08g-y-kien', '09-nhan-xet']
 py = str(ROOT / '.venv/bin/python')
 
 
