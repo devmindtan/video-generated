@@ -10,7 +10,7 @@ import {Draw, PacedVoice, captionMs, pace, takeOf, voiceLevel} from './scene-kit
 // started from the narration's phrase ranges, with small motion inside every beat (image-prompts.md, 0b).
 export type MoChuyenProps = {voice: string; channelLabel: string};
 // Paced like the body sections (scene-kit pace): a longer rest before each new scene's sentence (review 1: "hơi nhanh").
-const SCENE_SENTENCES = [1, 2, 3, 5, 6, 8];
+const SCENE_SENTENCES = [1, 2, 3, 5, 6, 7, 8];
 const pacingOf = (voice: string, fps: number) => pace(takeOf(voice), SCENE_SENTENCES, fps);
 export const moChuyenFrames = (voice: string, fps = 30) => pacingOf(voice, fps).frames;
 export const moChuyenMetadata: CalculateMetadataFunction<MoChuyenProps> = ({props}) => ({durationInFrames: moChuyenFrames(props.voice)});
@@ -134,8 +134,7 @@ const GrowthMarks: FC<{frame: number; start: number}> = ({frame, start: s}) => <
   <Draw frame={frame} from={s + 44} to={s + 64} d="M1160 812 C1160 770 1190 756 1230 760 L1300 772 C1330 778 1332 812 1300 814 Z M1240 812 C1240 776 1270 762 1310 766 L1380 778 C1410 784 1412 812 1380 816 Z" width={2.4} />
 </g>;
 
-// Sentences 6–7 · close view of hands: an old hand rubs a child's bent knee, lifts and points to the threshold;
-// then a large hand holds a small one.
+// Sentence 6 · close view of hands: an old hand rubs a child's bent knee, lifts and points to the threshold.
 const OldHand: FC<{frame: number; from: number}> = ({frame, from}) => <g>
   <Draw frame={frame} from={from} to={from + 16} d="M0 0 C30 -30 90 -40 130 -20 C150 -8 150 20 130 34 C90 54 30 50 0 30 Z" width={2.6} />
   <Draw frame={frame} from={from + 6} to={from + 20} d="M0 4 C-30 0 -60 8 -80 22 M2 14 C-28 14 -56 24 -74 40 M4 24 C-22 28 -46 40 -62 56 M8 32 C-12 40 -30 54 -42 70 M40 -26 C30 -50 10 -60 -12 -58" width={2.4} />
@@ -147,25 +146,37 @@ const PointingHand: FC<{frame: number; from: number}> = ({frame, from}) => <g>
   <Draw frame={frame} from={from + 4} to={from + 16} d="M100 -8 L196 -34 C206 -36 210 -22 200 -18 L104 10" width={2.4} />
   <Draw frame={frame} from={from + 6} to={from + 18} d="M60 36 C64 50 60 60 50 64 M36 38 C40 52 36 62 26 66 M0 6 L-110 -40 M2 22 L-104 -16" width={2.2} />
 </g>;
-const Hands: FC<{frame: number; start: number; point: number; hold: number}> = ({frame, start: s, point, hold}) => {
+const Hands: FC<{frame: number; start: number; point: number}> = ({frame, start: s, point}) => {
   const rub = Math.sin(frame * .35) * 22 * (1 - point);
   return <g>
-    <g opacity={1 - hold}>
-      {/* the child's bent leg in profile: thigh up to the knee, shin down to a small foot */}
-      <Draw frame={frame} from={s} to={s + 22} d="M360 820 C480 740 600 650 700 610 C720 604 736 612 742 628 C760 700 790 790 810 840 L880 846" width={3} />
-      <Draw frame={frame} from={s + 6} to={s + 26} d="M380 860 C500 790 620 700 712 664 C760 740 786 820 800 880" width={2.4} opacity={.8} />
-      <g transform={`translate(${640 + rub} ${560})`} opacity={1 - point}><OldHand frame={frame} from={s + 10} /></g>
-      {/* lifted to point at the threshold beam on the right */}
-      <g opacity={point} transform={`translate(1000 ${480 - point * 20})`}><PointingHand frame={frame} from={s} /></g>
-      <g opacity={point}><Draw frame={frame} from={s} to={s + 1} d="M1260 520 L1720 520 L1720 590 L1260 590 Z M1280 545 C1400 538 1560 552 1700 544" width={2.6} /></g>
+    {/* the child's bent leg in profile: thigh up to the knee, shin down to a small foot */}
+    <Draw frame={frame} from={s} to={s + 22} d="M360 820 C480 740 600 650 700 610 C720 604 736 612 742 628 C760 700 790 790 810 840 L880 846" width={3} />
+    <Draw frame={frame} from={s + 6} to={s + 26} d="M380 860 C500 790 620 700 712 664 C760 740 786 820 800 880" width={2.4} opacity={.8} />
+    <g transform={`translate(${640 + rub} ${560})`} opacity={1 - point}><OldHand frame={frame} from={s + 10} /></g>
+    {/* lifted to point at the threshold beam on the right */}
+    <g opacity={point} transform={`translate(1000 ${480 - point * 20})`}><PointingHand frame={frame} from={s} /></g>
+    <g opacity={point}><Draw frame={frame} from={s} to={s + 1} d="M1260 520 L1720 520 L1720 590 L1260 590 Z M1280 545 C1400 538 1560 552 1700 544" width={2.6} /></g>
+  </g>;
+};
+
+// Sentence 7 · "bà cũng từng là một đứa trẻ, lại đã chăm con cháu suốt nhiều năm" (book: she was once a small child
+// and has cared for many): the grandmother beside the child, a memory bubble above her where a small child runs,
+// then three marks of growing heights for the years of caring.
+const Memory: FC<{frame: number; start: number; years: number}> = ({frame, start: s, years}) => {
+  const bubble = interpolate(frame, [s + 30, s + 46], [0, 1], clamp);
+  return <g>
+    <Draw frame={frame} from={s} to={s + 22} d="M420 742 L1500 742" width={2.6} opacity={.8} />
+    <g transform="translate(700 742) scale(1.5)"><Grandma frame={frame} from={s + 4} /></g>
+    <g transform="translate(960 742) scale(1.4)"><Child frame={frame} from={s + 10} sit lookUp={1} /></g>
+    <g opacity={bubble}>
+      <circle cx={760} cy={330} r={10} fill="none" stroke={IVORY} strokeWidth={2.4} />
+      <circle cx={800} cy={280} r={16} fill="none" stroke={IVORY} strokeWidth={2.4} />
+      <ellipse cx={1000} cy={190} rx={190} ry={110} fill="none" stroke={IVORY} strokeWidth={2.4} />
+      <g transform={`translate(${1060 - ((frame - s) % 90) / 90 * 120} 270) scale(.8)`}><Child frame={frame} from={s + 40} run={1} /></g>
     </g>
-    <g opacity={hold}>
-      <circle cx={960} cy={560} r={190 + Math.sin(frame * .1) * 6} fill="url(#hold-glow)" />
-      <defs><radialGradient id="hold-glow"><stop offset="0%" stopColor="#e8c27a" stopOpacity={.26} /><stop offset="100%" stopColor="#e8c27a" stopOpacity={0} /></radialGradient></defs>
-      {/* a large hand from the left, palm up, holding a small hand that comes from the right */}
-      <g transform="translate(820 600) scale(-1.3 1.3)"><OldHand frame={frame} from={s} /></g>
-      <g transform="translate(1010 586) scale(.72)"><OldHand frame={frame} from={s} /></g>
-    </g>
+    {[0, 1, 2].map((k) => <g key={k} opacity={interpolate(frame, [years + k * 14, years + k * 14 + 10], [0, 1], clamp)}>
+      <path d={`M${1330 + k * 70} 742 L${1330 + k * 70} ${640 - k * 70} M${1310 + k * 70} ${640 - k * 70} L${1350 + k * 70} ${640 - k * 70}`} stroke={GOLD} strokeWidth={2.6} strokeLinecap="round" fill="none" />
+    </g>)}
   </g>;
 };
 
@@ -193,9 +204,9 @@ export const BookHvttMoChuyen: FC<MoChuyenProps> = ({voice: voiceId, channelLabe
   const at = pacing.at;
   const within = (i: number, share: number) => pacing.at(i) + Math.round((pacing.end(i) - pacing.at(i)) * share);
   // Scene windows (each starts in the rest before its sentence): book · doorway (child, grandmother) · cane ·
-  // doorway again (sitting, looking up) · growth marks · hands · desk.
-  const sBook = 0, sDoor = at(1) - 14, sCane = within(2, .42) - 6, sSit = at(3) - 14, sGrow = at(5) - 14, sHands = at(6) - 14, sDesk = at(8) - 14;
-  const cuts = [sBook, sDoor, sCane, sSit, sGrow, sHands, sDesk, 1e9];
+  // doorway again (sitting, looking up) · growth marks · hands · memory · desk.
+  const sBook = 0, sDoor = at(1) - 14, sCane = within(2, .42) - 6, sSit = at(3) - 14, sGrow = at(5) - 14, sHands = at(6) - 14, sMem = at(7) - 14, sDesk = at(8) - 14;
+  const cuts = [sBook, sDoor, sCane, sSit, sGrow, sHands, sMem, sDesk, 1e9];
   // One scene fades out before the next fades in (no overlap, review 1).
   const show = (k: number) => interpolate(frame, [cuts[k], cuts[k] + 12, cuts[k + 1] - 12, cuts[k + 1]], [k === 0 ? 1 : 0, 1, 1, 0], clamp);
   const fall = within(1, .58), runIn = interpolate(frame, [sDoor + 10, fall], [0, 1], clamp);
@@ -205,7 +216,6 @@ export const BookHvttMoChuyen: FC<MoChuyenProps> = ({voice: voiceId, channelLabe
   const taps = [0, 1, 2].map((k) => within(2, .55) + Math.round(k * .8 * fps));
   const lookUp = interpolate(frame, [at(4), at(4) + 18], [0, 1], clamp);
   const point = interpolate(frame, [within(6, .55), within(6, .55) + 14], [0, 1], clamp);
-  const hold = interpolate(frame, [at(7) - 6, at(7) + 10], [0, 1], clamp);
   const level = voiceLevel(voice, pacing, frame);
   const fadeOut = interpolate(frame, [durationInFrames - .6 * fps, durationInFrames], [1, 0], clamp);
   return <AbsoluteFill style={{background: INK, fontFamily: 'Stoic Sans, sans-serif', overflow: 'hidden'}}>
@@ -237,12 +247,13 @@ export const BookHvttMoChuyen: FC<MoChuyenProps> = ({voice: voiceId, channelLabe
             <g opacity={lookUp}><Draw frame={frame} from={at(4)} to={at(4) + 16} d="M1250 740 L1210 470 M1210 470 C1204 452 1222 446 1228 458" width={3} /></g>
           </Fade>
           <Fade opacity={show(4)}><GrowthMarks frame={frame} start={sGrow} /></Fade>
-          <Fade opacity={show(5)}><Hands frame={frame} start={sHands} point={point} hold={hold} /></Fade>
-          <Fade opacity={show(6)}><Desk frame={frame} start={sDesk} /></Fade>
+          <Fade opacity={show(5)}><Hands frame={frame} start={sHands} point={point} /></Fade>
+          <Fade opacity={show(6)}><Memory frame={frame} start={sMem} years={within(7, .62)} /></Fade>
+          <Fade opacity={show(7)}><Desk frame={frame} start={sDesk} /></Fade>
         </g>
       </svg>
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%)', pointerEvents: 'none'}} />
-      {voice ? <Captions captions={voice.captions} ms={captionMs(pacing, frame, fps)} highlight={/(chương cuối|ngạch cửa|người bà|cẩn thận|hả dạ|lớn lên|dỗ cái đau|điều phải|học lại)/gi} /> : null}
+      {voice ? <Captions captions={voice.captions} ms={captionMs(pacing, frame, fps)} highlight={/(chương cuối|ngạch cửa|người bà|cẩn thận|hả dạ|lớn lên|dỗ cái đau|từng là một đứa trẻ|trải nghiệm)/gi} /> : null}
     </AbsoluteFill>
     {voice ? <PacedVoice take={voice} pacing={pacing} track="02 mở chuyện" /> : null}
   </AbsoluteFill>;

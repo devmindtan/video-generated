@@ -1,7 +1,7 @@
 # Kịch bản nháp — Hiểu về trái tim: tổng quan
 
 - Project: book-hvtt-001-overview · Series: Đọc sách, hiểu mình · Mục tiêu 10–15 phút.
-- Trạng thái: **nháp v2, chưa duyệt**. Phần 4 (ý kiến cá nhân) để trống chờ người dùng.
+- Trạng thái: **nháp v2, chưa duyệt**. Phần 4 (ý kiến cá nhân): nháp của kênh theo yêu cầu 2026-11-01, chờ người dùng sửa.
 - Định hướng v2 (người dùng 2026-10-30): tập trung vào nội dung chính của sách, không bắt lỗi chi tiết (thuốc, số liệu…); những chỗ chưa hay chỉ gói trong một câu nhận xét chung ở cuối, theo lời người dùng.
 - Sửa v3 (người dùng 2026-10-31): viết lại cuối phần 0b và đầu phần 1 cho tự nhiên; thêm 3E (những điểm chưa đạt, nói ở mức tổng quát, không bắt lỗi từng chỗ) và 3F (tổng kết) trước phần 4 ý kiến cá nhân. Hai phần mới và hai đoạn sửa chưa có giọng; cần duyệt lại kịch bản. Theo ghi chú duyệt 2026-10-31: đổi câu kết 0b, bỏ câu năm ký/bản tái bản ở phần 1.
 - Sửa v4 (trả lại gói chốt 2026-10-31): giọng người kể cân bằng: "mình" kể cho "cả nhà/các bạn", nội dung sách gắn với tác giả, chuyện có câu dẫn, không câu cụt hay mệnh lệnh trống không. Trích dẫn và lời cố định của người dùng giữ nguyên.
@@ -33,9 +33,9 @@ Tập đầu tiên, mình chọn cuốn Hiểu về trái tim của tác giả M
 
 Ở chương cuối, tác giả kể một chuyện mà chắc nhiều người từng gặp lúc nhỏ. Một đứa bé đang chạy nhảy thì vấp phải cái ngạch cửa, ngã nhào và khóc ré lên. Người bà chạy tới, và việc đầu tiên bà làm không phải là la cháu, mà là mắng cái ngạch cửa sao dám làm cháu bà đau. Đợi cháu nín rồi, bà mới dặn: lần sau đi đứng cẩn thận nghe con. [nghỉ]
 
-Lúc đó, đứa bé chỉ thấy hả dạ vì cái ngạch cửa bị la. Phải lớn lên, chúng ta mới hiểu bà đâu có giận gì cái ngạch cửa. Bà dỗ cái đau của cháu trước, rồi mới dạy sau. [nghỉ] Thấy được người kia đang đau rồi mới nói điều phải, bà làm được vậy mà chẳng cần ai dạy. Còn người lớn chúng ta nhiều khi phải học lại từ đầu, và cuốn sách hôm nay giúp mình học lại chuyện đó.
+Lúc đó, đứa bé chỉ thấy hả dạ vì cái ngạch cửa bị la. Phải lớn lên, chúng ta mới hiểu bà đâu có giận gì cái ngạch cửa. Bà dỗ cái đau của cháu trước, rồi mới dạy sau. [nghỉ] Theo tác giả, bà hiểu được cháu vì bà cũng từng là một đứa trẻ, lại đã chăm con cháu suốt nhiều năm. Tác giả nói cái hiểu ấy phải học và trải nghiệm rất nhiều mới có, và cuốn sách hôm nay là một cách để mình học.
 
-{Ch50, PDF 273 — kể lại bằng lời kênh}
+{Ch50, PDF 273 — kể lại bằng lời kênh. Sửa 2026-11-01 theo ghi chú duyệt clip ("bà là người già nhất mà còn người lớn là thế nào? Sách ghi vậy à"): câu cũ "bà làm được vậy mà chẳng cần ai dạy… người lớn chúng ta phải học lại" là lời kênh và ngược ý sách; sách viết bà hiểu cháu vì "đã từng là bé thơ và lại có rất nhiều kinh nghiệm chăm sóc bé thơ", và điều này "ta phải học tập và trải nghiệm rất nhiều".}
 
 ## 1. Cuốn sách là gì (≈ 1:05–1:50)
 
@@ -161,7 +161,17 @@ Theo mình, đây không phải cuốn sách để đọc một lần cho xong, 
 
 ## 4. Ý kiến cá nhân
 
-> **CHỜ NGƯỜI DÙNG.** Người dùng đưa ý kiến khi video đã dựng gần xong (quyết định 2026-10-30). Không viết thay; không chờ phần này để duyệt và dựng các phần khác. Trên timeline để một khoảng trống có đánh dấu ngay trước phần 5.
+[nghỉ] Còn với riêng mình, điều mình quý nhất ở cuốn sách này là nó không đòi mình phải thành một người khác. Tác giả không bảo đừng giận, đừng buồn, mà chỉ bảo khi giận thì nhìn xem cơn giận đến từ đâu, khi lo thì xem mình đã cầm nỗi lo ấy bao lâu. [nghỉ]
+
+Cái mình giữ lại nhiều nhất là cách tách đau với khổ. Chuyện xảy ra thì mình không chọn được, nhưng nghĩ đi nghĩ lại về nó bao nhiêu lần thì phần nào mình chọn được. Hiểu vậy chưa làm hết khổ, nhưng ít ra mình biết nên bắt đầu từ đâu.
+
+Hình ảnh mình thích nhất vẫn là tô canh chua. Lần tới ngồi ăn một bữa cơm nhà, chắc mình sẽ nhớ là trong đó có công của rất nhiều người, kể cả những người mình chưa bao giờ gặp. [nghỉ]
+
+Như mình đã nói, sách có chỗ lặp lại. Nhưng nghĩ kỹ thì chính vì vậy mà mở chương nào ra cũng gặp lại cùng một lời nhắc: dừng lại, hiểu rồi mới thương. Với mình, đó là lời nhắc đáng nghe nhiều lần.
+
+Nếu chỉ chọn một chương để bắt đầu, mình gợi ý chương Lo Lắng với hình ảnh cốc nước. Chương ngắn, dễ hiểu, và các bạn có thể thử ngay tối nay: viết ra điều mình đang lo, rồi xem việc nào làm được, việc nào nên đặt xuống.
+
+{Nháp của kênh theo yêu cầu người dùng 2026-11-01 ("bổ sung thêm cảnh ý kiến cá nhân nghĩ thế nào về nội dung"); thay cho quyết định 2026-10-30 chờ người dùng tự đưa lời. Đây là ý kiến đứng tên người dùng: người dùng sửa, thêm trải nghiệm thật của mình hoặc viết lại tùy ý; không bịa chuyện đời tư. Chỉ dựa trên nội dung đã kể ở phần 2, 3A, 3D, 3E: đau/khổ Ch1, cốc nước Ch44, canh chua Ch48.}
 
 ## 5. Nhận xét chung (theo lời người dùng)
 

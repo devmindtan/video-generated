@@ -22,7 +22,8 @@ vẽ bằng code trong Remotion, nên không có prompt tạo ảnh; mỗi mục
 | "Đợi cháu nín rồi, bà mới dặn: lần sau đi đứng cẩn thận nghe con." | Bà ngồi xuống cạnh cháu, tay đặt lên vai bé; đôi dép nhỏ được xếp lại ngay ngắn trước ngạch cửa; ánh sáng trong nhà ấm dần |
 | "Lúc đó, đứa bé chỉ thấy hả dạ…" | Đứa bé ngẩng lên nhìn cái ngạch cửa, dáng ngồi thẳng lại; gậy của bà dựa vào khung cửa |
 | "Bà dỗ cái đau của cháu trước, rồi mới dạy sau." | Cảnh gần hai bàn tay: tay bà xoa nhẹ đầu gối nhỏ, rồi một ngón tay khẽ chỉ về phía ngạch cửa |
-| "Còn người lớn chúng ta… học lại chuyện đó." | Bóng dáng người lớn ngồi bên bàn dưới đèn, đặt tay lên cuốn sách mở; ánh đèn ấm hắt ra từ cửa |
+| "Theo tác giả, bà hiểu được cháu vì bà cũng từng là một đứa trẻ, lại đã chăm con cháu suốt nhiều năm." | Bà đứng cạnh cháu đang ngồi; phía trên bà hiện một bong bóng ký ức, trong đó một đứa trẻ nhỏ đang chạy; rồi ba vạch chiều cao lớn dần hiện bên phải (những năm chăm con cháu) |
+| "Tác giả nói cái hiểu ấy phải học và trải nghiệm… một cách để mình học." | Bóng dáng người lớn ngồi bên bàn dưới đèn, đặt tay lên cuốn sách mở; ánh đèn ấm hắt ra từ cửa |
 
 ## 1 · Cuốn sách là gì
 
@@ -102,7 +103,18 @@ vẽ bằng code trong Remotion, nên không có prompt tạo ảnh; mỗi mục
 
 | Phần | Hình |
 |---|---|
-| 4 Ý kiến cá nhân | Chờ người dùng đưa lời; hình chọn sau theo nội dung |
+| 4 Ý kiến cá nhân | Xem bảng phần 4 bên dưới (nháp theo lời nháp 2026-11-01) |
 | 5 Nhận xét chung | Cuốn sách khép lại, ánh sáng dịu |
+
+### 4 · Ý kiến cá nhân (`Sections.tsx` YKien; theo lời nháp, đổi khi người dùng sửa lời)
+
+| Câu đọc | Hình và chuyển động |
+|---|---|
+| "Còn với riêng mình… không đòi mình phải thành một người khác." | Một dáng người đứng yên; bên cạnh một đường viền nét đứt của "một người khác" hiện ra rồi mờ đi, dáng người vẫn nguyên |
+| "Tác giả không bảo đừng giận, đừng buồn…" | Ấm nước trên bếp lửa nhỏ bên trái, tay cầm cốc nước bên phải (gợi lại nhóm 1) |
+| "Cái mình giữ lại nhiều nhất là cách tách đau với khổ…" | Chữ ĐAU và KHỔ hai bên một vạch ngăn; quanh chữ KHỔ một vòng xoắn nét vẽ quấn dần (nghĩ đi nghĩ lại); câu "biết nên bắt đầu từ đâu": một chấm vàng sáng lên dưới chữ ĐAU |
+| "Hình ảnh mình thích nhất vẫn là tô canh chua…" | Tô canh bốc khói trên bàn cơm; vài dáng người mờ hiện phía sau (những người mình chưa gặp) |
+| "Như mình đã nói, sách có chỗ lặp lại…" | Cuốn sách mở; lần lượt ba chữ DỪNG LẠI · HIỂU · THƯƠNG hiện theo câu đọc, ánh sáng dịu ở cuối |
+| "Nếu chỉ chọn một chương… việc nào nên đặt xuống." | Trang chương LO LẮNG với cốc nước; một trang giấy, ba dòng hiện lần lượt: Điều đang lo · Việc làm được · Việc đặt xuống |
 
 Khi dựng từng phần, bản mô tả này được cập nhật theo hình thật trong Studio.

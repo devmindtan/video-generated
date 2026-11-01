@@ -183,7 +183,29 @@
       "fromPatch": null
     }
   ],
-  "patches": [],
+  "patches": [
+    {
+      "id": "p1",
+      "baseVersion": 1,
+      "changed": {
+        "docs/projects/book-hvtt-001-overview/script.md": {
+          "before": "4241317b4e843e2cd62323b4fc1e9e5dc59507c948e33fd533e30b96cce3d83e",
+          "after": "1df913d70f982f0e56f90f6dead20677fd80e83a0722d2f1d22751e34e957236"
+        },
+        "docs/projects/book-hvtt-001-overview/image-prompts.md": {
+          "before": "622321f3e80bdc886e26926e708c08db2affa425ecfe70b59bcc8d8e52cc44d4",
+          "after": "cc68cefa0062e5488e471670c63596c318a23f20713fb7ca65504350d00529f7"
+        }
+      },
+      "reason": "Duyệt clip Mở chuyện 2026-11-01: câu 'bà làm được vậy mà chẳng cần ai dạy… người lớn chúng ta phải học lại' là lời kênh và ngược ý sách (PDF 273: bà hiểu cháu vì từng là bé thơ và có nhiều kinh nghiệm chăm trẻ; điều này phải học và trải nghiệm) — sửa hai câu cuối 0b theo sách, thêm cảnh bà và bóng ký ức. Thêm phần 4 Ý kiến cá nhân theo yêu cầu: bản nháp của kênh để người dùng sửa, kèm mô tả hình cho phần 4.",
+      "by": "agent (automation patch)",
+      "createdAt": "2026-11-01T06:54:37.160Z",
+      "status": "pending",
+      "decidedAt": null,
+      "decidedBy": null,
+      "note": ""
+    }
+  ],
   "scenes": {
     "02-mo-chuyen": {
       "clips": [
@@ -211,6 +233,16 @@
           "file": "projects/book-hvtt-001-overview/review/02-mo-chuyen-20261101T052814.mp4",
           "sha256": "ebe811945bcde3e42b962f6d8937e402ad57d4806400990fd96ccd0b8de14e1a",
           "renderedAt": "2026-11-01T05:30:26.176Z",
+          "lockVersion": 1,
+          "status": "needs-changes",
+          "note": "Không hợp lí bà là người già nhất mà còn người lớn là thế nào? Sách ghi vậy à",
+          "decidedAt": "2026-11-01T06:46:13.978Z",
+          "decidedBy": "devmindtan (trang quản lý)"
+        },
+        {
+          "file": "projects/book-hvtt-001-overview/review/02-mo-chuyen-20261101T065637.mp4",
+          "sha256": "ef0c0e9209c1b8b5dea6cb882f2ccc1d047d5cf0566a1acf90efd1d7dbf513fe",
+          "renderedAt": "2026-11-01T06:58:37.168Z",
           "lockVersion": 1,
           "status": "pending",
           "note": "",
@@ -507,6 +539,30 @@
           "file": "projects/book-hvtt-001-overview/review/08e-diem-chua-dat-20261101T054523.mp4",
           "sha256": "6ff6ff4d75c036722a6cc705dd7523b2be278a8423658c2685869898f89f5a3a",
           "renderedAt": "2026-11-01T05:47:06.581Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        }
+      ]
+    },
+    "08g-y-kien": {
+      "clips": [
+        {
+          "file": "projects/book-hvtt-001-overview/review/08g-y-kien-20261101T065837.mp4",
+          "sha256": "d3fd39bfd78d1bcac8f2379c5519632a550581425bde17bed1b23974a2d690d1",
+          "renderedAt": "2026-11-01T07:01:21.968Z",
+          "lockVersion": 1,
+          "status": "pending",
+          "note": "",
+          "decidedAt": null,
+          "decidedBy": null
+        },
+        {
+          "file": "projects/book-hvtt-001-overview/review/08g-y-kien-20261101T070759.mp4",
+          "sha256": "24f69f54e11fd68bdd881a1dc455906174c86eafc3ef163ca53bbc3d20e4fc2f",
+          "renderedAt": "2026-11-01T07:10:27.075Z",
           "lockVersion": 1,
           "status": "pending",
           "note": "",

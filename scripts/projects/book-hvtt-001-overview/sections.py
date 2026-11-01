@@ -1,7 +1,7 @@
 """Split the approved script into narration segments for cloning: one audition config + one lines file per segment.
 
 Segments follow the channel naming (NN-đoạn): 02 mở chuyện, 03 cuốn sách, 04 sợi chỉ, 05–08 nhóm 3A–3D,
-08e điểm chưa đạt, 08f tổng kết, 09 nhận xét chung. Item titles in bold ("Cơn giận.") are spoken as a short lead sentence; "[nghỉ]" becomes a
+08e điểm chưa đạt, 08f tổng kết, 08g ý kiến cá nhân, 09 nhận xét chung. Item titles in bold ("Cơn giận.") are spoken as a short lead sentence; "[nghỉ]" becomes a
 longer pause; {…} notes, > quotes and ### headings are not spoken. Long sentences stay whole (natural prosody);
 paragraphs are split at sentence ends outside quotation marks.
 Usage: .venv/bin/python scripts/projects/book-hvtt-001-overview/sections.py
@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[3]
 HERE = Path(__file__).resolve().parent
 SCRIPT = ROOT / 'docs/projects/book-hvtt-001-overview/script.md'
 SEGMENTS = {'0b': '02-mo-chuyen', '1': '03-cuon-sach', '2': '04-soi-chi', '3A': '05-nhom-3a', '3B': '06-nhom-3b',
-            '3C': '07-nhom-3c', '3D': '08-nhom-3d', '3E': '08e-diem-chua-dat', '3F': '08f-tong-ket', '5': '09-nhan-xet'}
+            '3C': '07-nhom-3c', '3D': '08-nhom-3d', '3E': '08e-diem-chua-dat', '3F': '08f-tong-ket', '4': '08g-y-kien', '5': '09-nhan-xet'}
 
 
 def sentences(paragraph):

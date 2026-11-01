@@ -1,0 +1,69 @@
+{
+  "title": "Đọc sách, hiểu mình — tập 1 — 08g-y-kien",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Còn với riêng mình, điều mình quý nhất ở cuốn sách này là nó không đòi mình phải thành một người khác.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả không bảo đừng giận, đừng buồn, mà chỉ bảo khi giận thì nhìn xem cơn giận đến từ đâu, khi lo thì xem mình đã cầm nỗi lo ấy bao lâu.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Cái mình giữ lại nhiều nhất là cách tách đau với khổ.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Chuyện xảy ra thì mình không chọn được, nhưng nghĩ đi nghĩ lại về nó bao nhiêu lần thì phần nào mình chọn được.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Hiểu vậy chưa làm hết khổ, nhưng ít ra mình biết nên bắt đầu từ đâu.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Hình ảnh mình thích nhất vẫn là tô canh chua.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Lần tới ngồi ăn một bữa cơm nhà, chắc mình sẽ nhớ là trong đó có công của rất nhiều người, kể cả những người mình chưa bao giờ gặp.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Như mình đã nói, sách có chỗ lặp lại.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Nhưng nghĩ kỹ thì chính vì vậy mà mở chương nào ra cũng gặp lại cùng một lời nhắc: dừng lại, hiểu rồi mới thương.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Với mình, đó là lời nhắc đáng nghe nhiều lần.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Nếu chỉ chọn một chương để bắt đầu, mình gợi ý chương Lo Lắng với hình ảnh cốc nước.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Chương ngắn, dễ hiểu, và các bạn có thể thử ngay tối nay: viết ra điều mình đang lo, rồi xem việc nào làm được, việc nào nên đặt xuống.",
+      "pauseAfter": 0
+    }
+  ]
+}

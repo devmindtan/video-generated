@@ -550,6 +550,53 @@ export const TongKet = section("08f tổng kết", /(tóm lại|cách lòng mìn
   </g>;})}</g>},
 ]);
 
+// ---- 08g Ý kiến cá nhân (lines-08g-y-kien.txt; channel draft 2026-11-01, follows the user's wording when it changes) --
+export const YKien = section("08g ý kiến cá nhân", /(riêng mình|một người khác|tách đau với khổ|bắt đầu từ đâu|tô canh chua|chưa bao giờ gặp|lặp lại|hiểu rồi mới thương|chương Lo Lắng|đặt xuống)/gi, [
+  // 0 a figure stands still; a dashed outline of "someone else" appears beside it, then fades
+  {at: 0, label: 'Ý kiến của mình', draw: (c) => {const ghost = interpolate(c.frame, [within(c, 0, .45), within(c, 0, .6), within(c, 0, .85), within(c, 0, 1)], [0, .6, .6, 0], clamp);return <g>
+    <Figure frame={c.frame} from={c.start} x={860} y={800} s={1.2} />
+    <g opacity={ghost} transform="translate(1100 800) scale(1.2)"><path d="M0 -300 m-28 0 a28 28 0 1 0 56 0 a28 28 0 1 0 -56 0 M0 -270 L0 -130 M0 -240 L-50 -150 M0 -240 L50 -150 M0 -130 L-30 0 M0 -130 L30 0" fill="none" stroke={IVORY} strokeWidth={2.2} strokeDasharray="10 12" strokeLinecap="round" vectorEffect="non-scaling-stroke" /></g>
+    <Glow x={860} y={600} r={180} opacity={appear(c.frame, within(c, 0, .9), 20) * .6} />
+  </g>;}},
+  // 1 the kettle on a small flame (anger) on the left, a hand holding a glass (worry) on the right
+  {at: 1, draw: (c) => <g>
+    <g transform="translate(-380 60)">{kettle(c)}{flame(c, 1e9, 1e9 + 1)}</g>
+    <g transform="translate(420 40)">{glass(c, c.at(1) + 30)}{glassHand(c, c.at(1) + 38)}</g>
+  </g>},
+  // 2 ĐAU | KHỔ on either side of a line; 3 a coil winds round KHỔ (thinking it over); 4 a gold dot lights under ĐAU
+  {at: 2, label: 'Đau và khổ', draw: (c) => {const coil = interpolate(c.frame, [within(c, 3, .35), within(c, 3, .95)], [0, 1], clamp);return <g>
+    <Word x={640} y={560} size={110} text="ĐAU" opacity={appear(c.frame, c.start + 6, 14)} />
+    <Word x={1280} y={560} size={110} text="KHỔ" opacity={appear(c.frame, c.start + 16, 14)} />
+    {D(c, 'M960 320 L960 760', 24, 24, 2.4, .8)}
+    {coil > 0 ? <path d={Array.from({length: 61}, (_, i) => {const a = i / 60 * Math.PI * 6, r = 130 + i * 1.4;return `${i ? 'L' : 'M'}${(1280 + Math.cos(a) * r).toFixed(1)} ${(525 + Math.sin(a) * r * .55).toFixed(1)}`;}).join(' ')} fill="none" stroke={GOLD} strokeWidth={2.2} strokeLinecap="round" pathLength={1} strokeDasharray={`${coil} 2`} opacity={.85} /> : null}
+    <circle cx={640} cy={660} r={12} fill={GOLD} opacity={appear(c.frame, within(c, 4, .55), 12)} />
+    <Glow x={640} y={660} r={90} opacity={appear(c.frame, within(c, 4, .6), 20) * .8} />
+  </g>;}},
+  // 5 a bowl of sour soup steaming on the table; 6 faint figures appear behind it, the people never met
+  {at: 5, label: 'Tô canh chua', draw: (c) => <g>{table(c)}
+    {D(c, 'M760 560 L1160 560 C1150 650 1080 700 960 700 C840 700 770 650 760 560 Z M780 600 L1140 600', 4, 30, 2.6)}
+    {[0, 1, 2].map((k) => <path key={k} d={`M${880 + k * 80} 540 C${860 + k * 80 + Math.sin((c.frame + k * 20) / 18) * 12} 500 ${910 + k * 80 - Math.sin((c.frame + k * 20) / 22) * 12} 470 ${885 + k * 80 + Math.sin((c.frame + k * 20) / 15) * 10} 430`} fill="none" stroke={IVORY} strokeWidth={2.4} strokeLinecap="round" opacity={appear(c.frame, c.start + 20 + k * 6, 12) * .85} />)}
+    {[440, 620, 1300, 1480].map((x, k) => <g key={x} opacity={appear(c.frame, within(c, 6, .3 + k * .12), 14) * .4}><Figure frame={c.frame} from={within(c, 6, .3 + k * .12)} x={x} y={640} s={.6} facing={k < 2 ? 1 : -1} /></g>)}
+    <Glow x={960} y={600} r={220} opacity={appear(c.frame, within(c, 6, .8), 20) * .7} />
+  </g>},
+  // 7 the open book; 8 DỪNG LẠI · HIỂU · THƯƠNG appear as they are read; 9 soft light
+  {at: 7, label: 'Lời nhắc', draw: (c) => <g>{book(c, 420)}
+    {['DỪNG LẠI', 'HIỂU', 'THƯƠNG'].map((t, k) => <Word key={t} x={560 + k * 400} y={330} size={56} text={t} opacity={appear(c.frame, within(c, 8, .5 + k * .14), 12)} />)}
+    <Glow x={960} y={560} r={300} opacity={appear(c.frame, c.at(9), 24) * .7} />
+  </g>},
+  // 10 the chapter page LO LẮNG with the glass; 11 a sheet, three lines written one after another
+  {at: 10, label: 'Bắt đầu từ chương Lo Lắng', draw: (c) => {const sheet = appear(c.frame, c.at(11), 16);return <g>
+    <g opacity={1 - sheet * .7}>
+      {D(c, page(560, 260, 380, 500), 0, 24, 2.6)}
+      <Word x={750} y={340} size={40} text="LO LẮNG" opacity={appear(c.frame, c.start + 14, 12)} />
+      <g transform="translate(-210 120)">{glass(c, c.start + 24)}</g>
+    </g>
+    {D(c, page(1040, 300, 440, 440), c.at(11) - c.start, 22, 2.6)}
+    {['Điều đang lo', 'Việc làm được', 'Việc đặt xuống'].map((t, k) => <g key={t} opacity={appear(c.frame, within(c, 11, .35 + k * .18), 10)}>
+      <circle cx={1090} cy={400 + k * 110} r={8} fill={GOLD} /><text x={1120} y={412 + k * 110} fill={IVORY} fontSize={36} fontWeight={700}>{t}</text></g>)}
+  </g>;}},
+]);
+
 // ---- 09 Nhận xét chung -----------------------------------------------------------------------------------
 export const NhanXet = section("09 nhận xét chung", /(cuốn sách hay|đọc qua)/gi, [
   {at: 0, draw: (c) => <g>

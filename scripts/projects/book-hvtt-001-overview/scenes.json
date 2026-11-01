@@ -55,6 +55,11 @@
     "composition": "BookHvttTongKet"
   },
   {
+    "id": "08g-y-kien",
+    "title": "Ý kiến cá nhân",
+    "composition": "BookHvttYKien"
+  },
+  {
     "id": "09-nhan-xet",
     "title": "Nhận xét chung",
     "composition": "BookHvttNhanXet"

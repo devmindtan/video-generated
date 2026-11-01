@@ -5,7 +5,7 @@ import {BookInsightsIntro, introFrames} from './Intro';
 import {BookInsightsEpisodeCard, cardFrames} from './EpisodeCard';
 import {BookHvttMoChuyen, moChuyenFrames} from './MoChuyen';
 import {BookInsightsOutro, outroFrames} from './Outro';
-import {CuonSach, DiemChuaDat, Nhom3A, Nhom3B, Nhom3C, Nhom3D, NhanXet, SoiChi, TongKet} from './Sections';
+import {CuonSach, DiemChuaDat, Nhom3A, Nhom3B, Nhom3C, Nhom3D, NhanXet, SoiChi, TongKet, YKien} from './Sections';
 import {takeOf} from './scene-kit';
 
 // The episode as it grows: series intro → episode card → body sections → closing remark → series outro.
@@ -14,10 +14,9 @@ import {takeOf} from './scene-kit';
 // the body runs on narration alone.
 export type EpisodeProps = {introVoice: string; cardVoice: string; bodyVoice: string; outroVoice: string; channelLabel: string; episodeLabel: string; bookTitle: string; bookAuthor: string};
 
-// Section 4 (ý kiến cá nhân) is added when the user gives it, between 08f and 09.
 const BODY = [['03-cuon-sach', 'Phần 1 · Cuốn sách là gì', CuonSach], ['04-soi-chi', 'Phần 2 · Sợi chỉ xuyên suốt', SoiChi], ['05-nhom-3a', 'Nhóm 1 · Cơn sóng trong lòng', Nhom3A],
   ['06-nhom-3b', 'Nhóm 2 · Thương và được thương', Nhom3B], ['07-nhom-3c', 'Nhóm 3 · Thăng trầm', Nhom3C], ['08-nhom-3d', 'Nhóm 4 · Sống giữa mọi người', Nhom3D],
-  ['08e-diem-chua-dat', 'Phần 3E · Điểm chưa đạt', DiemChuaDat], ['08f-tong-ket', 'Phần 3F · Tổng kết', TongKet], ['09-nhan-xet', 'Phần 5 · Nhận xét chung', NhanXet]] as const;
+  ['08e-diem-chua-dat', 'Phần 3E · Điểm chưa đạt', DiemChuaDat], ['08f-tong-ket', 'Phần 3F · Tổng kết', TongKet], ['08g-y-kien', 'Phần 4 · Ý kiến cá nhân', YKien], ['09-nhan-xet', 'Phần 5 · Nhận xét chung', NhanXet]] as const;
 // Placeholder phase (long video, cloned voice): the Quốc Tuấn take of a segment (25-quoc-tuan-<nn>) wins until the
 // clone batch replaces it; then remove the first candidate.
 const voiceFor = (seg: string) => [`25-quoc-tuan-${seg.split('-')[0]}`, seg, `${seg}-sang2`].find((id) => takeOf(id));
