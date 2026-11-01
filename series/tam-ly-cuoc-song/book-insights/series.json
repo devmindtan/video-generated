@@ -69,6 +69,14 @@
           "kind": "Composition"
         },
         {
+          "id": "BookHvttDiemChuaDat",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookHvttTongKet",
+          "kind": "Composition"
+        },
+        {
           "id": "BookHvttNhanXet",
           "kind": "Composition"
         }

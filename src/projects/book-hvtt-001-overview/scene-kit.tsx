@@ -74,3 +74,34 @@ export const NarratedSection: FC<{voice: string; channelLabel: string; beats: Be
     </Track> : null}
   </AbsoluteFill>;
 };
+
+// A grown-up drawn in the same gold line (people may be drawn, user 2026-10-31), feet at (x, y), about 300 units
+// tall at s = 1. Poses: stand, walk (legs swing with the frame), sit (on a seat at feet level − 90), headHold
+// (sitting, hands to the head), kneel. arm: down, reach (toward facing), point, raise. facing: 1 right, −1 left.
+export type Pose = 'stand' | 'walk' | 'sit' | 'headHold' | 'kneel';
+export const Figure: FC<{frame: number; from: number; x: number; y: number; s?: number; pose?: Pose; arm?: 'down' | 'reach' | 'point' | 'raise'; facing?: 1 | -1; color?: string}> = ({frame, from, x, y, s = 1, pose = 'stand', arm = 'down', facing = 1, color = GOLD}) => {
+  const swing = pose === 'walk' ? Math.sin(frame * .4) * 22 : 0;
+  const seated = pose === 'sit' || pose === 'headHold', hip = seated ? -90 : pose === 'kneel' ? -70 : -130;
+  const sh = hip - 120, head = sh - 34;
+  const L = (d: string, k: number, w = 2.4) => <Draw frame={frame} from={from + k} to={from + k + 14} d={d} width={w} color={color} />;
+  const armPath = pose === 'headHold' ? `M0 ${sh + 6} C30 ${sh + 30} 40 ${head + 20} 18 ${head + 4} M0 ${sh + 6} C-26 ${sh + 30} -34 ${head + 20} -16 ${head + 4}`
+    : arm === 'reach' ? `M0 ${sh + 6} L60 ${sh + 40} L110 ${sh + 44}`
+    : arm === 'point' ? `M0 ${sh + 6} L70 ${sh + 10} L130 ${sh - 4}`
+    : arm === 'raise' ? `M0 ${sh + 6} L40 ${sh - 50} L50 ${sh - 100}`
+    : `M0 ${sh + 6} L12 ${sh + 70} L14 ${hip + 14}`;
+  const legs = seated ? `M-10 ${hip} L60 ${hip} L64 0 M10 ${hip} L76 ${hip + 4} L84 0`
+    : pose === 'kneel' ? `M-6 ${hip} L-8 -6 L40 0 M10 ${hip} L60 -40 L70 0`
+    : null;
+  return <g transform={`translate(${x} ${y}) scale(${s * facing} ${s})`}>
+    {L(`M-22 ${head} a22 22 0 1 0 44 0 a22 22 0 1 0 -44 0`, 0, 2.6)}
+    {L(`M0 ${head + 22} L0 ${sh} M-34 ${sh + 6} C-30 ${sh - 6} 30 ${sh - 6} 34 ${sh + 6} C30 ${sh + 50} 26 ${hip - 20} 20 ${hip} L-20 ${hip} C-26 ${hip - 20} -30 ${sh + 50} -34 ${sh + 6} Z`, 4, 2.4)}
+    {L(armPath, 8)}
+    {pose !== 'headHold' && arm !== 'down' ? L(`M0 ${sh + 6} L-12 ${sh + 70} L-14 ${hip + 14}`, 8) : null}
+    {legs ? L(legs, 10) : <>
+      <g transform={`rotate(${swing} -10 ${hip})`}>{L(`M-10 ${hip} L-14 -4 L-30 0`, 10)}</g>
+      <g transform={`rotate(${-swing} 10 ${hip})`}>{L(`M10 ${hip} L14 -4 L30 0`, 10)}</g>
+    </>}
+  </g>;
+};
+// Moment inside a sentence: share 0 = its start, 1 = the next sentence's start.
+export const within = (c: Ctx, sentence: number, share: number) => Math.round(c.at(sentence) + (c.at(sentence + 1) - c.at(sentence)) * share);

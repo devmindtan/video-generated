@@ -46,7 +46,7 @@ import {BookInsightsOutro, bookOutroMetadata} from './book-hvtt-001-overview/Out
 import {BookInsightsEpisodeCard, episodeCardMetadata} from './book-hvtt-001-overview/EpisodeCard';
 import {BookHvttMoChuyen, moChuyenMetadata} from './book-hvtt-001-overview/MoChuyen';
 import {BookHvttEpisode, episodeMetadata} from './book-hvtt-001-overview/Episode';
-import {CuonSach, SoiChi, Nhom3A, Nhom3B, Nhom3C, Nhom3D, NhanXet} from './book-hvtt-001-overview/Sections';
+import {CuonSach, SoiChi, Nhom3A, Nhom3B, Nhom3C, Nhom3D, DiemChuaDat, TongKet, NhanXet} from './book-hvtt-001-overview/Sections';
 import {sectionMetadata} from './book-hvtt-001-overview/scene-kit';
 import {PeoplePleasingVideo} from './people-pleasing/Video';
 import {PeoplePleasingThumbnail} from './people-pleasing/Thumbnail';
@@ -230,13 +230,15 @@ export const ProjectCompositions: FC = () => (
           }} />
           <Composition id="BookHvttEpisodeCard" component={BookInsightsEpisodeCard} calculateMetadata={renderTo('book-hvtt-001-overview', episodeCardMetadata)} durationInFrames={300} fps={30} width={1920} height={1080} defaultProps={{voice: '01-gioi-thieu-tap', channelLabel: 'TÂM LÝ CUỘC SỐNG', episodeLabel: 'TẬP 01', bookTitle: 'Hiểu về trái tim', bookAuthor: 'Minh Niệm'}} />
           <Composition id="BookHvttMoChuyen" component={BookHvttMoChuyen} calculateMetadata={renderTo('book-hvtt-001-overview', moChuyenMetadata)} durationInFrames={630} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan-02', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
-          <Composition id="BookHvttCuonSach" component={CuonSach} calculateMetadata={renderTo('book-hvtt-001-overview', sectionMetadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '03-cuon-sach-sang2', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
-          <Composition id="BookHvttSoiChi" component={SoiChi} calculateMetadata={renderTo('book-hvtt-001-overview', sectionMetadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '04-soi-chi-sang2', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
-          <Composition id="BookHvttNhom3A" component={Nhom3A} calculateMetadata={renderTo('book-hvtt-001-overview', sectionMetadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '05-nhom-3a-sang2', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
-          <Composition id="BookHvttNhom3B" component={Nhom3B} calculateMetadata={renderTo('book-hvtt-001-overview', sectionMetadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '06-nhom-3b-sang2', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
-          <Composition id="BookHvttNhom3C" component={Nhom3C} calculateMetadata={renderTo('book-hvtt-001-overview', sectionMetadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '07-nhom-3c-sang2', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
-          <Composition id="BookHvttNhom3D" component={Nhom3D} calculateMetadata={renderTo('book-hvtt-001-overview', sectionMetadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '08-nhom-3d-sang2', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
-          <Composition id="BookHvttNhanXet" component={NhanXet} calculateMetadata={renderTo('book-hvtt-001-overview', sectionMetadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '09-nhan-xet-sang2', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
+          <Composition id="BookHvttCuonSach" component={CuonSach} calculateMetadata={renderTo('book-hvtt-001-overview', sectionMetadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan-03', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
+          <Composition id="BookHvttSoiChi" component={SoiChi} calculateMetadata={renderTo('book-hvtt-001-overview', sectionMetadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan-04', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
+          <Composition id="BookHvttNhom3A" component={Nhom3A} calculateMetadata={renderTo('book-hvtt-001-overview', sectionMetadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan-05', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
+          <Composition id="BookHvttNhom3B" component={Nhom3B} calculateMetadata={renderTo('book-hvtt-001-overview', sectionMetadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan-06', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
+          <Composition id="BookHvttNhom3C" component={Nhom3C} calculateMetadata={renderTo('book-hvtt-001-overview', sectionMetadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan-07', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
+          <Composition id="BookHvttNhom3D" component={Nhom3D} calculateMetadata={renderTo('book-hvtt-001-overview', sectionMetadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan-08', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
+          <Composition id="BookHvttDiemChuaDat" component={DiemChuaDat} calculateMetadata={renderTo('book-hvtt-001-overview', sectionMetadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan-08e', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
+          <Composition id="BookHvttTongKet" component={TongKet} calculateMetadata={renderTo('book-hvtt-001-overview', sectionMetadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan-08f', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
+          <Composition id="BookHvttNhanXet" component={NhanXet} calculateMetadata={renderTo('book-hvtt-001-overview', sectionMetadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan-09', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
           <Composition id="BookHvttOutro" component={BookInsightsOutro} calculateMetadata={renderTo('book-hvtt-001-overview', bookOutroMetadata)} durationInFrames={540} fps={30} width={1920} height={1080} defaultProps={{
             voice: 'outro-ban-v2-sang2',
             channelLabel: 'TÂM LÝ CUỘC SỐNG',

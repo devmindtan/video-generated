@@ -45,6 +45,16 @@
     "composition": "BookHvttNhom3D"
   },
   {
+    "id": "08e-diem-chua-dat",
+    "title": "Những điểm chưa đạt",
+    "composition": "BookHvttDiemChuaDat"
+  },
+  {
+    "id": "08f-tong-ket",
+    "title": "Tổng kết",
+    "composition": "BookHvttTongKet"
+  },
+  {
     "id": "09-nhan-xet",
     "title": "Nhận xét chung",
     "composition": "BookHvttNhanXet"
