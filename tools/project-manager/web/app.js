@@ -841,6 +841,7 @@ document.addEventListener('click',async event=>{
   else if(target.hasAttribute('data-add-audio')){state.addAudioOpen=!state.addAudioOpen;state.resourceKey='';renderResources().then(()=>{if(state.addAudioOpen)$('#audio-files')?.focus();else $('[data-add-audio]')?.focus();});}
   else if(target.dataset.musicTab){state.musicTab=target.dataset.musicTab;state.resourceFilter='';state.expanded='';state.resourceKey='';renderResources();}
   else if(target.dataset.resourceFilter!==undefined&&target.closest('#resource-view')){state.resourceFilter=target.dataset.resourceFilter;$('#resource-filter').value=state.resourceFilter;renderResourceList();}
+  else if(target.hasAttribute('data-workflow-toggle'))toggleWorkflow();
   else if(target.dataset.workflowStage)openWorkflowStage(state.series,target.dataset.workflowStage);
   else if(target.dataset.project)openProject(target.dataset.project);
   else if(target.dataset.book)openBook(target.dataset.bookSeries,target.dataset.book);
@@ -996,22 +997,33 @@ async function loadWorkflow(series){
   catch(error){if(state.series===series){state.workflow={series,error:error.message};renderWorkflow();}return null;}
 }
 function stepCount(config){return config.rules.length+(config.notes.trim()?1:0);}
+// The flow chart can fold to one summary line; the choice is a per-browser convenience.
+function workflowOpen(){try{return localStorage.getItem('pm.workflowOpen')==='1';}catch{return false;}}
+function toggleWorkflow(){const open=!workflowOpen();try{localStorage.setItem('pm.workflowOpen',open?'1':'0');}catch{}renderWorkflow();$('#workflow-toggle')?.focus();}
+// Column of each stage = longest dependency chain before it, so parallel steps stack in one column.
+function workflowLevels(stages){const byId=Object.fromEntries(stages.map(s=>[s.id,s])),level={};const of=id=>level[id]??=byId[id].dependencies.reduce((m,d)=>Math.max(m,of(d)+1),0);stages.forEach(s=>of(s.id));return level;}
 function renderWorkflow(){
   const box=$('#workflow'),show=Boolean(state.series)&&state.view==='projects';box.hidden=!show;if(!show)return;
   const flow=state.workflow;
   if(!flow||flow.series!==state.series||state.workflowStale){loadWorkflow(state.series);if(!flow||flow.series!==state.series){box.innerHTML='<p class="workflow-empty">Đang đọc quy trình của series…</p>';return;}}
   if(flow.error){box.innerHTML=`<p class="workflow-empty">Không đọc được quy trình: ${esc(flow.error)}</p>`;return;}
-  const general=stepCount(flow.general),byId=Object.fromEntries(flow.stages.map(s=>[s.id,s]));
-  const heading=`<div class="workflow-heading"><div><h2 id="workflow-title">Quy trình sản xuất</h2><p>${flow.profileTitle?`${esc(flow.profileTitle)} · ${flow.stages.length} bước. `:''}Bấm một bước để xem việc cần làm, thêm quy tắc hoặc ghi chú cho agent.</p></div><button class="button secondary" data-workflow-stage="general">Quy tắc chung${general?` <span class="workflow-count">${general}</span>`:''}</button></div>`;
+  const general=stepCount(flow.general),byId=Object.fromEntries(flow.stages.map(s=>[s.id,s])),open=workflowOpen()&&flow.stages.length>0;
+  const total=flow.stages.reduce((n,s)=>n+stepCount(s.config),0);
+  const summary=flow.stages.length?`${flow.profileTitle?esc(flow.profileTitle)+' · ':''}${flow.stages.length} bước${total?` · ${total} quy tắc/ghi chú theo bước`:''}`:'Chưa có quy trình được duyệt';
+  const toggle=flow.stages.length?`<button class="button secondary" id="workflow-toggle" data-workflow-toggle aria-expanded="${open}" aria-controls="workflow-chart">${open?'Ẩn sơ đồ':'Hiện sơ đồ'}</button>`:'';
+  const heading=`<div class="workflow-heading"><div><h2 id="workflow-title">Quy trình sản xuất</h2><p>${summary}</p></div><div class="workflow-actions">${toggle}<button class="button secondary" data-workflow-stage="general">Quy tắc chung${general?` <span class="workflow-count">${general}</span>`:''}</button></div></div>`;
   if(!flow.stages.length){box.innerHTML=heading+'<p class="workflow-empty">Series này chưa có quy trình sản xuất được duyệt. Bạn vẫn có thể ghi quy tắc chung cho series.</p>';return;}
-  const step=s=>{
-    const deps=s.dependencies.map(d=>byId[d].number),sequential=deps.length===1&&deps[0]===s.number-1;
-    const parallel=flow.stages.filter(o=>o.id!==s.id&&o.dependencies.join()===s.dependencies.join()).map(o=>o.number);
-    const count=stepCount(s.config);
-    return `<li><button class="workflow-step mode-${esc(s.automation.mode)}" data-workflow-stage="${esc(s.id)}" aria-label="Bước ${s.number}: ${esc(s.title)}, ${esc(stepModes[s.automation.mode])}${count?`, ${count} quy tắc hoặc ghi chú`:''}"><span class="step-number">${s.number}</span><span class="step-body"><strong>${esc(s.title)}</strong><small class="step-mode">${esc(stepModes[s.automation.mode])}</small>${deps.length&&!sequential?`<small>Sau bước ${deps.join(', ')}${parallel.length?`, song song với bước ${parallel.join(', ')}`:''}</small>`:''}</span>${count?`<span class="step-notes" title="Quy tắc và ghi chú đã thêm">${count}</span>`:''}</button></li>`;
+  if(!open){box.innerHTML=heading+`<ol class="workflow-strip" aria-label="Các giai đoạn">${flow.phases.map(p=>`<li>${esc(p.title)} <span>${p.stages.length}</span></li>`).join('')}</ol>`;return;}
+  const level=workflowLevels(flow.stages),first=Math.min(...Object.values(level)),last=Math.max(...Object.values(level));
+  const node=s=>{
+    const deps=s.dependencies.map(d=>byId[d].number),parallel=flow.stages.filter(o=>o.id!==s.id&&o.dependencies.join()===s.dependencies.join()).map(o=>o.number);
+    const count=stepCount(s.config),order=deps.length?`Sau bước ${deps.join(', ')}${parallel.length?`, song song với bước ${parallel.join(', ')}`:''}`:'Bước đầu tiên';
+    return `<li><button class="workflow-step mode-${esc(s.automation.mode)}" data-workflow-stage="${esc(s.id)}" title="${esc(stepModes[s.automation.mode])} · ${order}" aria-label="Bước ${s.number}: ${esc(s.title)}, ${esc(stepModes[s.automation.mode])}. ${order}${count?`. ${count} quy tắc hoặc ghi chú`:''}"><span class="step-number">${s.number}</span><strong>${esc(s.title)}</strong>${count?`<span class="step-notes" title="Quy tắc và ghi chú đã thêm">${count}</span>`:''}</button></li>`;
   };
+  const columns=p=>{const groups=[];for(const s of p.stages.map(id=>byId[id]).sort((a,b)=>a.number-b.number)){const g=groups.find(g=>g.level===level[s.id]);if(g)g.stages.push(s);else groups.push({level:level[s.id],stages:[s]});}
+    return groups.sort((a,b)=>a.level-b.level).map(g=>`<ol class="flow-column${g.level===first?' flow-start':''}${g.level===last?' flow-end':''}${g.stages.length>1?' flow-fork':''}">${g.stages.map(node).join('')}</ol>`).join('');};
   const legend=[...new Set(flow.stages.map(s=>s.automation.mode))].map(m=>`<li class="mode-${esc(m)}">${esc(stepModes[m])}</li>`).join('');
-  box.innerHTML=heading+`<ul class="workflow-legend" aria-label="Chú thích">${legend}</ul><div class="workflow-phases">${flow.phases.map(p=>`<section class="workflow-phase"><h3>${esc(p.title)}</h3><ol>${p.stages.map(id=>byId[id]).sort((a,b)=>a.number-b.number).map(step).join('')}</ol></section>`).join('')}</div>`;
+  box.innerHTML=heading+`<div class="workflow-chart" id="workflow-chart"><ul class="workflow-legend" aria-label="Chú thích">${legend}<li class="legend-hint">Bấm một bước để xem việc cần làm và thêm quy tắc, ghi chú cho agent.</li></ul><div class="workflow-flow">${flow.phases.map(p=>`<section class="workflow-phase" aria-label="${esc(p.title)}"><h3>${esc(p.title)}</h3><div class="flow-columns">${columns(p)}</div></section>`).join('')}</div></div>`;
 }
 async function openWorkflowStage(series,key,record=true){
   if(!canLeaveNotes())return;

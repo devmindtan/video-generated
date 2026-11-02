@@ -20,12 +20,24 @@ const {chromium}=require('playwright-core'),{createManager}=require('./server.cj
  const overflow=async()=>assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Unexpected horizontal overflow');
  try{
   await page.goto(base,{waitUntil:'networkidle'});assert.ok(await page.locator('#workflow').isHidden());mark('Overview has no series workflow');
-  await page.locator('[data-series="self-help-shorts"]').click();await page.locator('.workflow-step').first().waitFor();
+  await page.locator('[data-series="self-help-shorts"]').click();await page.locator('.workflow-strip').waitFor();
+  // Folded by default: one summary line of the four phases, no step buttons taking space.
+  assert.equal(await page.locator('.workflow-step').count(),0);assert.equal(await page.locator('#workflow-toggle').getAttribute('aria-expanded'),'false');
+  assert.match(await page.locator('.workflow-strip').innerText(),/Chuẩn bị\s*1[\s\S]*Chốt ban đầu\s*6[\s\S]*Hoàn thiện\s*2/);
+  assert.ok((await page.locator('#workflow').boundingBox()).height<160);await shot('series-folded');mark('Workflow starts folded to a one-line phase summary');
+  await page.locator('#workflow-toggle').click();await page.locator('.workflow-step').first().waitFor();
+  assert.equal(await page.locator('#workflow-toggle').getAttribute('aria-expanded'),'true');assert.equal(await page.evaluate(()=>document.activeElement.id),'workflow-toggle');
   assert.equal(await page.locator('.workflow-step').count(),15);assert.equal(await page.locator('.workflow-phase h3').count(),4);
   // Music, voice choice and per-scene prompts are prepared side by side for the initial lock; so are QA and metadata.
-  assert.match(await page.locator('[data-workflow-stage="voice-audition"]').innerText(),/song song với bước 4/);
-  assert.match(await page.locator('[data-workflow-stage="metadata"]').innerText(),/song song với bước 11/);
-  await overflow();await shot('series-desktop');mark('Philosophy series shows 15 numbered steps in 4 phases with parallel hints');
+  const column=id=>page.locator(`.flow-column:has([data-workflow-stage="${id}"]) .workflow-step`).count();
+  assert.equal(await column('voice-audition'),3);assert.equal(await column('metadata'),3);assert.equal(await column('initial-lock'),1);
+  assert.match(await page.locator('[data-workflow-stage="voice-audition"]').getAttribute('aria-label'),/song song với bước 4/);
+  assert.match(await page.locator('[data-workflow-stage="metadata"]').getAttribute('aria-label'),/song song với bước 11/);
+  // Steps of one row read left to right in order.
+  const x=id=>page.locator(`[data-workflow-stage="${id}"]`).boundingBox().then(b=>b.x);
+  assert.ok(await x('script')<await x('editorial-review')&&await x('editorial-review')<await x('music')&&await x('music')<await x('initial-lock'));
+  await overflow();await shot('series-desktop');mark('Unfolded chart shows 15 steps in 4 phases, parallel steps stacked in one column');
+  await page.reload({waitUntil:'networkidle'});await page.locator('.workflow-step').first().waitFor();mark('Unfolded choice is remembered');
   await page.locator('[data-workflow-stage="script"]').click();await page.locator('#drawer:not([hidden]) #workflow-rules').waitFor();
   assert.match(await page.locator('#drawer-eyebrow').innerText(),/BƯỚC 2\/15/);assert.match(await page.locator('#drawer-breadcrumb').innerText(),/Quy trình: Kịch bản/);
   await page.locator('#workflow-rules').fill('Mở đầu bằng một tình huống cụ thể\n\nKhông dùng câu hỏi tu từ ở câu đầu');
@@ -53,7 +65,7 @@ const {chromium}=require('playwright-core'),{createManager}=require('./server.cj
   await page.locator('#drawer:not([hidden]) .workflow-command').waitFor();assert.match(await page.locator('.workflow-command').innerText(),/patch <slug> --reason/);
   await page.locator('#drawer [data-back]').click();await page.locator('#drawer').waitFor({state:'hidden'});
   assert.equal(new URL(page.url()).searchParams.get('series'),'self-help-shorts');mark('Direct step link opens, Back returns to the series');
-  await page.locator('[data-series="book-insights"]').click();await page.locator('[data-workflow-stage="sources"]').waitFor();
+  await page.locator('[data-series="book-insights"]').click();await page.locator('[data-workflow-stage="sources"]').waitFor();await shot('series-book');
   assert.equal(await page.locator('.workflow-step').count(),16);mark('Book series adds the source step');
   await page.goto(base+'/?channel=kids&series=tiny-dino',{waitUntil:'networkidle'});await page.locator('[data-workflow-stage="visual-plan"]').click();
   assert.match(await page.locator('#drawer-content').innerText(),/footage chuyển động/i);await page.keyboard.press('Escape');mark('Kids series shows its own visual rule');
@@ -63,8 +75,10 @@ const {chromium}=require('playwright-core'),{createManager}=require('./server.cj
   await page.locator('[data-workflow-stage="script"]').focus();await page.keyboard.press('Enter');await page.locator('#drawer:not([hidden])').waitFor();
   assert.equal(await page.evaluate(()=>document.activeElement.id),'close-drawer');await page.keyboard.press('Escape');
   assert.equal(await page.evaluate(()=>document.activeElement.dataset.workflowStage),'script');mark('Keyboard opens a step and focus returns to it');
-  for(const [w,h,name] of [[768,1000,'tablet'],[390,844,'mobile']]){await page.setViewportSize({width:w,height:h});await overflow();await page.locator('#workflow').scrollIntoViewIfNeeded();await shot('series-'+name);}
+  for(const [w,h,name] of [[1024,900,'laptop'],[768,1000,'tablet'],[390,844,'mobile']]){await page.setViewportSize({width:w,height:h});await overflow();await page.locator('#workflow').scrollIntoViewIfNeeded();await shot('series-'+name);}
   await page.locator('[data-workflow-stage="assembly"]').click();await page.locator('#drawer:not([hidden])').waitFor();await overflow();await shot('step-mobile');mark('Tablet and mobile fit without horizontal overflow');
+  await page.keyboard.press('Escape');await page.locator('#drawer').waitFor({state:'hidden'});
+  await page.locator('#workflow-toggle').click();await page.locator('.workflow-strip').waitFor();assert.equal(await page.locator('.workflow-step').count(),0);mark('Chart folds again');
   assert.deepEqual(errors,[]);mark('No browser JavaScript or console errors; fixture only');
  }finally{await browser.close();server.closeAllConnections();await new Promise(r=>server.close(r));fs.rmSync(root,{recursive:true,force:true});}
 })().catch(e=>{console.error(e);process.exitCode=1;});
