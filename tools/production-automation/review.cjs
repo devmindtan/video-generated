@@ -90,6 +90,8 @@ function noteFiles(root, plan, store, context, item) {
   if (!patch) return null;
   const media = /^media:(\d+)$/.exec(item);
   if (media) return patch.media?.[Number(media[1])] ? [patch.media[Number(media[1])].file] : null;
+  const change = /^change:(\d+)$/.exec(item);
+  if (change) return patch.changes?.[Number(change[1])] ? [] : null;
   return patch.changed[item] ? [item] : null;
 }
 function setNote(root, plan, {context, item, text, by}) {
@@ -166,7 +168,17 @@ function sceneClip(root, plan, sceneId) {
   return {file: clip.file, title: `Video cảnh: ${def.title}`, scene: sceneId};
 }
 
-function createPatch(root, plan, {reason, by, media = []}) {
+// Edits outside the package files (drawings, audio processing, captions, pacing) described in words: what changed,
+// where, why, optionally before/after. Each becomes an item the user marks, without exporting a clip for it.
+const CHANGE_AREAS = ['visual', 'audio', 'caption', 'timing', 'other'];
+function changeEntry(c) {
+  const text = (v, max) => {if (v === undefined || v === null) return '';if (typeof v !== 'string' || v.length > max) throw new Error(`Mô tả thay đổi tối đa ${max} ký tự`);return v.trim();};
+  const entry = {area: CHANGE_AREAS.includes(c?.area) ? c.area : 'other', where: text(c?.where, 200), what: text(c?.what, 2000), why: text(c?.why, 2000), before: text(c?.before, 2000), after: text(c?.after, 2000)};
+  if (!entry.what) throw new Error('Mỗi thay đổi cần ghi đã sửa gì (what)');
+  return Object.fromEntries(Object.entries(entry).filter(([, v]) => v));
+}
+
+function createPatch(root, plan, {reason, by, media = [], changes = []}) {
   const store = load(root, plan.projectId), base = latestLock(store);
   if (!base) throw new Error('Chưa chốt ban đầu: chưa có gì để vá');
   if (typeof reason !== 'string' || !reason.trim()) throw new Error('Cần ghi lý do của bản vá (--reason)');
@@ -176,11 +188,12 @@ function createPatch(root, plan, {reason, by, media = []}) {
     if (after !== before) {changed[rel] = {before, after};approvals.snapshot(root, rel, after);}
   }
   const attached = media.map(m => mediaEntry(root, plan, m)).filter((m, i, all) => all.findIndex(x => x.file === m.file) === i);
-  if (!Object.keys(changed).length && !attached.length) throw new Error('Không có thay đổi nào so với bản chốt v' + base.version + ' và không có video/âm thanh nào để xem');
+  const described = (Array.isArray(changes) ? changes : []).map(changeEntry);
+  if (!Object.keys(changed).length && !attached.length && !described.length) throw new Error('Không có thay đổi nào so với bản chốt v' + base.version + ', không có mô tả thay đổi hay video/âm thanh nào để xem');
   // A newer patch replaces one still waiting: the user only ever decides on the latest proposal.
   // Notes on the replaced proposal carry over: they are about the same files.
   for (const p of store.patches) if (p.status === 'pending') {p.status = 'superseded';p.decidedAt = now();if (store.notes[p.id]) store.notes[`p${store.patches.length + 1}`] = store.notes[p.id];delete store.notes[p.id];}
-  const patch = {id: `p${store.patches.length + 1}`, baseVersion: base.version, changed, media: attached, reason: reason.trim(), by, createdAt: now(),
+  const patch = {id: `p${store.patches.length + 1}`, baseVersion: base.version, changed, changes: described, media: attached, reason: reason.trim(), by, createdAt: now(),
     status: 'pending', decidedAt: null, decidedBy: null, note: ''};
   store.patches.push(patch);save(root, plan.projectId, store);
   return patch;

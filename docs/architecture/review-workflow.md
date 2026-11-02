@@ -47,14 +47,19 @@ Người dùng 2026-11-02: gộp "bản vá" và "duyệt từng cảnh" làm m�
 
 - **Một bản vá gom mọi thứ cần xem của một lượt làm**: chữ đã sửa trong gói chốt (so với bản chốt) và/hoặc kết quả
   để xem, nghe (video cảnh, đoạn giọng đọc, nhạc…). Lệnh:
-  `npm run automation -- patch <slug> --reason "<đã làm gì, vì sao>" [--clip <cảnh>]... [--media <file>[|tiêu đề]]...`
+  `npm run automation -- patch <slug> --reason "<đã làm gì, vì sao>" [--changes <file.json>] [--clip <cảnh>]... [--media <file>[|tiêu đề]]...`
+  - `--changes`: sửa ngoài tài liệu chốt (hình vẽ, xử lý âm thanh, phụ đề, nhịp) mô tả bằng lời, không cần xuất clip
+    (người dùng 2026-11-02): `[{"area": "visual|audio|caption|timing|other", "where": "cảnh/phần", "what": "sửa gì", "why": "vì sao", "before": "…", "after": "…"}]`.
+    Mỗi mục là một mục duyệt (khóa ghi chú `change:<n>`).
   - Lệnh so mọi file trong gói với bản chốt mới nhất (diff) và đính kèm các file kết quả.
   - `--clip <cảnh>` lấy clip mới nhất của cảnh đó: xuất trước bằng `scene-clip <slug> <cảnh> [--voice <id>]`
     (`--voice` để xuất với một take giọng khác mặc định, ví dụ take clone đang chờ chọn).
   - `--media` nhận video (mp4/webm/mov) hoặc âm thanh (wav/mp3/m4a/ogg/flac), chỉ trong `projects/<slug>/` hoặc `public/`.
   - Bản vá chỉ có kết quả (không sửa chữ) vẫn hợp lệ.
 - **Trên trang quản lý**: bản vá chờ duyệt hiện đầu tiên, kèm tóm tắt bên trong có gì (“Chữ: Kịch bản · 3 video · 2 âm thanh”).
-  Mở ra là danh sách mục bên trái: mỗi file chữ đã sửa, mỗi video, mỗi file âm thanh là một mục. Mỗi mục **Đạt** /
+  Mở ra là danh sách mục bên trái: mỗi file chữ đã sửa, mỗi mô tả thay đổi, mỗi video, mỗi file âm thanh là một mục.
+  Chữ đã sửa hiện theo từng đoạn, dưới tên phần của nó, dạng “Trước / Sau” dễ đọc (chữ thêm tô xanh, chữ bỏ gạch đỏ);
+  bản so từng dòng gập lại bên dưới. Mỗi mục **Đạt** /
   **Chưa đạt** (chưa đạt thì ghi chỗ cần sửa, tự lưu). Tất cả đạt thì **Chấp nhận**; có mục chưa đạt thì
   **Trả lại cho agent sửa**.
 - Chấp nhận bản vá có sửa chữ thì thành bản chốt mới (v1 → v2…). Bản vá chỉ có kết quả thì giữ nguyên bản chốt.

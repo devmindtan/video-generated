@@ -213,9 +213,14 @@ test('initial lock of five items, then patches of edits and results (clips, take
  assert.throws(()=>review.sceneClip(root,p,'02-ket'),/chưa có clip/);
  const p4=review.createPatch(root,p,{reason:'Clip cảnh mở và câu sửa',by:'a',media:[review.sceneClip(root,p,'01-mo'),{file:`public/${id}/voice-auditions/t1/part-01.wav`,title:'Câu 3 đọc lại'}]});
  assert.deepEqual([Object.keys(p4.changed),p4.media.map(m=>[m.kind,m.title])],[[],[['video','Video cảnh: 01-mo'],['audio','Câu 3 đọc lại']]]);
+ assert.throws(()=>review.createPatch(root,p,{reason:'x',by:'a',changes:[{area:'visual',why:'thiếu what'}]}),/đã sửa gì/);
+ const pc=review.createPatch(root,p,{reason:'Sửa hình',by:'a',changes:[{area:'visual',where:'Cảnh mở',what:'Nến sáng hơn',why:'Tối quá',extra:'x'}]});
+ assert.deepEqual(pc.changes,[{area:'visual',where:'Cảnh mở',what:'Nến sáng hơn',why:'Tối quá'}]);
+ assert.equal(review.load(root,id).patches.find(x=>x.id===p4.id).status,'superseded');
+ const p4b=review.createPatch(root,p,{reason:'Clip cảnh mở và câu sửa',by:'a',media:[review.sceneClip(root,p,'01-mo'),{file:`public/${id}/voice-auditions/t1/part-01.wav`,title:'Câu 3 đọc lại'}]});
  assert.equal(approvals.gateState(root,p,'scene-review').state,'missing');             // pending patch: not reviewed yet
- review.setNote(root,p,{context:p4.id,item:'media:0',text:'Ảnh nến quá tối',by:'u'});
- review.decidePatch(root,p,p4.id,{decision:'returned',by:'u'});
+ review.setNote(root,p,{context:p4b.id,item:'media:0',text:'Ảnh nến quá tối',by:'u'});
+ review.decidePatch(root,p,p4b.id,{decision:'returned',by:'u'});
  assert.deepEqual([review.load(root,id).scenes['01-mo'].clips[0].status,review.load(root,id).scenes['01-mo'].clips[0].note],['needs-changes','Ảnh nến quá tối']);
  put(root,`projects/${id}/review/01-mo-b.mp4`,'clip b');review.addClip(root,p,'01-mo',`projects/${id}/review/01-mo-b.mp4`);
  const p5=review.createPatch(root,p,{reason:'Clip cảnh mở sáng hơn',by:'a',media:[review.sceneClip(root,p,'01-mo')]});

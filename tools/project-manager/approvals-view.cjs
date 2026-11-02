@@ -198,8 +198,14 @@ function createApprovals(root) {
       scenes: r.scenes.map(s => ({id: s.id, title: s.title, status: s.status, clips: s.clips.map((c, i) => ({index: i, renderedAt: c.renderedAt, lockVersion: c.lockVersion, status: c.status, note: c.note, decidedAt: c.decidedAt}))})),
       final: r.final, preview};
   }
-  const mediaCount = p => ({videos: (p.media || []).filter(m => m.kind === 'video').length, audios: (p.media || []).filter(m => m.kind === 'audio').length});
-  const itemName = (p, key) => {const m = /^media:(\d+)$/.exec(key);return m ? p.media?.[Number(m[1])]?.title || key : nameOf(key);};
+  const AREA = {visual: 'Hình ảnh', audio: 'Âm thanh', caption: 'Phụ đề', timing: 'Nhịp', other: 'Khác'};
+  const changeTitle = c => `${AREA[c.area] || 'Khác'}${c.where ? `: ${c.where}` : ''}`;
+  const mediaCount = p => ({videos: (p.media || []).filter(m => m.kind === 'video').length, audios: (p.media || []).filter(m => m.kind === 'audio').length,
+    changes: Object.entries((p.changes || []).reduce((n, c) => ({...n, [AREA[c.area] || 'Khác']: (n[AREA[c.area] || 'Khác'] || 0) + 1}), {})).map(([area, count]) => ({area, count}))});
+  const itemName = (p, key) => {
+    const m = /^media:(\d+)$/.exec(key), c = /^change:(\d+)$/.exec(key);
+    return m ? p.media?.[Number(m[1])]?.title || key : c ? (p.changes?.[Number(c[1])] ? changeTitle(p.changes[Number(c[1])]) : key) : nameOf(key);
+  };
   // Lock: every item in full (text, music and voice sample). Patch: per changed file, the diff against the lock,
   // then each attached result (video or audio) to watch or listen to.
   function reviewDetail(id, mode, patchId) {
@@ -231,7 +237,8 @@ function createApprovals(root) {
         else if (!before) Object.assign(file, {status: 'text', text: after.toString('utf8').slice(0, 300000)});
         else Object.assign(file, {status: 'changed', ...diff(before.toString('utf8'), after.toString('utf8'))});
         return {key: rel, kind: item?.id || '', type: 'text', title: !item || nameOf(rel) === item.title ? nameOf(rel) : `${item.title}: ${nameOf(rel)}`, guide: item?.guide || '', audio: item ? audioOf(id, {id: item.id, files: [rel]}) : [], files: [file]};
-      }).concat((patch.media || []).map((m, i) => ({key: `media:${i}`, kind: m.kind, type: m.kind, title: m.title, files: [],
+      }).concat((patch.changes || []).map((c, i) => ({key: `change:${i}`, kind: 'change', type: 'change', area: AREA[c.area] || 'Khác', title: changeTitle(c), files: [],
+        guide: 'Agent sửa phần này ngoài các tài liệu chốt. Đọc sửa gì và vì sao; xem lại trong Studio nếu cần.', change: c}))).concat((patch.media || []).map((m, i) => ({key: `media:${i}`, kind: m.kind, type: m.kind, title: m.title, files: [],
         guide: m.kind === 'video' ? 'Xem hết video: hình, chữ, giọng, nhịp, nhạc.' : 'Nghe hết: đúng chữ, đúng thanh điệu, rõ, không vấp.',
         media: {kind: m.kind, src: `${patch.id}:${i}`, path: m.file, changedSince: approvals.sha256(root, m.file) !== m.sha256}})))};
   }

@@ -215,7 +215,7 @@ const phaseText={done:'Đã duyệt',redo:'Cần duyệt lại',turn:'Đến lư
 const patchText={pending:'Chờ duyệt',accepted:'Đã chấp nhận',returned:'Đã trả lại',superseded:'Đã thay bằng bản mới'};
 const names=list=>list.map(f=>f.name||f).filter((x,i,a)=>a.indexOf(x)===i).join(', ');
 // What a patch holds, in words: the text documents changed, then how many videos and audio files to check.
-const patchContents=p=>[p.files.length?`Chữ: ${p.files.join(', ')}`:'',p.videos?`${p.videos} video`:'',p.audios?`${p.audios} âm thanh`:''].filter(Boolean);
+const patchContents=p=>[p.files.length?`Chữ: ${p.files.join(', ')}`:'',...(p.changes||[]).map(c=>`${c.count} sửa ${c.area.toLowerCase()}`),p.videos?`${p.videos} video`:'',p.audios?`${p.audios} âm thanh`:''].filter(Boolean);
 async function loadGates(id){
   const box=$('#gates');if(!box)return;
   try{const data=await api('/api/approvals?id='+encodeURIComponent(id));if(state.drawer?.id!==id)return;state.gates=data;renderGates();}
@@ -256,6 +256,40 @@ function renderGates(){
 // Review dialog: per file, what changed since the last approval (lines and words), or the whole text the first time.
 const statusText={earlier:'Đã duyệt ở bước trước',changed:'Đã sửa',unchanged:'Không đổi',new:'Mới',missing:'Chưa có','no-baseline':'Đã sửa',binary:'Đã sửa'};
 const diffText=row=>row.parts?row.parts.map(([c,x])=>c?`<mark>${esc(x)}</mark>`:esc(x)).join(''):esc(row.text)||'&nbsp;';
+// Readable changes of a document: each changed passage under its section heading, "Trước" and "Sau" as prose
+// (markdown marks, pauses, notes and table rows shown as text, changed words highlighted), unchanged text hidden.
+function richText(text,parts,mark){
+  const chars=[],flags=[];
+  if(parts)for(const [c,str] of parts)for(const ch of str){chars.push(ch);flags.push(c);}else for(const ch of text){chars.push(ch);flags.push(0);}
+  let out='',bold=false,open=false,i=0;const close=()=>{if(open){out+='</mark>';open=false;}};
+  if(chars[0]==='{'){chars.shift();flags.shift();if(chars.at(-1)==='}'){chars.pop();flags.pop();}}
+  const at=(str)=>chars.slice(i,i+str.length).join('')===str;
+  while(i<chars.length){
+    if(at('**')){close();out+=bold?'</strong>':'<strong>';bold=!bold;i+=2;continue;}
+    if(at('[nghỉ]')){close();out+='<span class="pd-pause">nghỉ</span>';i+=6;continue;}
+    if(chars[i]==='|'){close();if(i>0&&i<chars.length-1)out+='<span class="pd-sep" aria-hidden="true"></span>';i++;continue;}
+    if(i===0&&chars[0]==='#'){while(chars[i]==='#'||chars[i]===' ')i++;continue;}
+    if(flags[i]&&!open){out+=`<mark class="${mark}">`;open=true;}else if(!flags[i]&&open)close();
+    out+=esc(chars[i]);i++;
+  }
+  close();if(bold)out+='</strong>';return out;
+}
+const proseLine=(r,mark)=>{const t=r.text.trim();if(!t||/^\|[\s:|-]+\|?$/.test(t))return '';
+  const cls=t.startsWith('{')?'pd-note':t.startsWith('#')?'pd-head':t.startsWith('|')?'pd-row':t.startsWith('>')?'pd-quote':'pd-text';
+  return `<p class="${cls}">${cls==='pd-note'?'<span class="pd-note-label">Ghi chú</span> ':''}${richText(r.text,r.parts,mark)}</p>`;};
+function proseDiff(rows){
+  const hunks=[];let heading='',cur=null;
+  for(const r of rows){
+    if(r.t===' '||r.t==='+'){if(/^#{1,4}\s/.test(r.text.trim()))heading=r.text.replace(/^#+\s*/,'').replace(/\s*\((≈|trên|trước)[^)]*\)\s*$/,'');}
+    if(r.t===' '){cur=null;continue;}
+    if(!r.text.trim()&&!cur)continue;
+    if(!cur){cur={heading,del:[],add:[]};hunks.push(cur);}
+    (r.t==='-'?cur.del:cur.add).push(r);
+  }
+  const block=(list,side)=>list.map(r=>proseLine(r,side==='del'?'pd-del':'pd-add')).join('');
+  return hunks.filter(h=>block(h.del,'del')||block(h.add,'add')).map((h,n)=>{const del=block(h.del,'del'),add=block(h.add,'add');
+    return `<article class="pd-hunk"><header><span class="pd-num">${n+1}</span><strong>${esc(h.heading||'Đầu tài liệu')}</strong><span class="pd-kind">${del&&add?'Sửa':add?'Thêm mới':'Bỏ đi'}</span></header>${del?`<div class="pd-side is-before"><span class="pd-label">${add?'Trước':'Đã bỏ'}</span>${del}</div>`:''}${add?`<div class="pd-side is-after"><span class="pd-label">${del?'Sau':'Thêm'}</span>${add}</div>`:''}</article>`;}).join('')||'<p class="muted">Chỉ đổi khoảng trắng.</p>';
+}
 function diffRows(rows,key){
   const out=[];let k=0;
   const line=r=>`<tr><td class="d-no">${r.o}</td><td class="d-no">${r.n}</td><td class="d-sign"></td><td class="d-text">${diffText(r)}</td></tr>`;
@@ -389,11 +423,13 @@ function settingsView(kind,text){
 // Lock and patch: the same checklist layout (items on the left, one at a time on the right, "seen" before deciding).
 function detailPanel(item){
   const id=encodeURIComponent(state.drawer.id);
+  if(item.change){const c=item.change;return `<p class="review-hint">${esc(item.guide)}</p><dl class="change-card"><div><dt>Sửa gì</dt><dd>${esc(c.what)}</dd></div>${c.why?`<div><dt>Vì sao</dt><dd>${esc(c.why)}</dd></div>`:''}${c.before?`<div class="is-before"><dt>Trước</dt><dd>${esc(c.before)}</dd></div>`:''}${c.after?`<div class="is-after"><dt>Sau</dt><dd>${esc(c.after)}</dd></div>`:''}</dl>`;}
   if(item.media){const src=`/api/review/media?id=${id}&kind=patch&key=${encodeURIComponent(item.media.src)}`;
     return `<p class="review-hint">${esc(item.guide)}</p>${item.media.changedSince?'<p class="warn">File này đã đổi sau khi agent gửi bản vá; agent cần gửi bản vá mới.</p>':''}${item.media.kind==='video'?`<video class="patch-video" controls playsinline preload="metadata" src="${src}"></video>`:`<audio class="patch-audio" controls preload="metadata" src="${src}"></audio>`}<p class="media-path"><code>${esc(item.media.path)}</code></p>`;}
   const audio=item.audio.length?`<ul class="voice-takes is-pair">${item.audio.map(a=>`<li><strong>${esc(a.name)}</strong><audio controls preload="none" src="/api/review/media?id=${id}&kind=${encodeURIComponent(a.kind)}&key=${encodeURIComponent(a.key)}"></audio></li>`).join('')}</ul>`:'';
   const files=item.files.map((f,i)=>`<section class="detail-file"><h4>${esc(f.name)} <code>${esc(f.path)}</code></h4>${
-    f.status==='changed'?`<p class="review-hint">${state.review?.returned?'So với bản bạn đã trả lại':'So với bản chốt'}: dòng <span class="d-plus">thêm</span> nền xanh, dòng <span class="d-minus">bỏ</span> nền đỏ, chữ đổi được tô đậm.</p>${f.tooLarge?'<p class="muted">Tài liệu quá dài để so từng dòng.</p>':diffRows(f.rows,`${item.key}-${i}`)}`
+    f.status==='changed'&&/\.md$/i.test(f.path)&&!f.tooLarge?`<p class="review-hint">${state.review?.returned?'So với bản bạn đã trả lại':'So với bản chốt'}: chỉ hiện đoạn đã đổi, theo từng phần. Chữ <mark class="pd-add">thêm</mark>, chữ <mark class="pd-del">bỏ</mark>.</p><div class="prose-diff">${proseDiff(f.rows)}</div><details class="diff-raw"><summary>Xem so từng dòng (bản gốc)</summary>${diffRows(f.rows,`${item.key}-${i}`)}</details>`
+    :f.status==='changed'?`<p class="review-hint">${state.review?.returned?'So với bản bạn đã trả lại':'So với bản chốt'}: dòng <span class="d-plus">thêm</span> nền xanh, dòng <span class="d-minus">bỏ</span> nền đỏ, chữ đổi được tô đậm.</p>${f.tooLarge?'<p class="muted">Tài liệu quá dài để so từng dòng.</p>':diffRows(f.rows,`${item.key}-${i}`)}`
     :f.status==='text'&&SETTINGS[item.kind]&&f.path.endsWith('.json')&&settingsView(item.kind,f.text)?settingsView(item.kind,f.text)
     :f.status==='text'?`<div class="review-doc document-view" data-doc="${i}"></div>`
     :f.status==='missing'?'<p class="warn">Chưa có file này.</p>':'<p class="muted">Không xem được dạng chữ.</p>'}</section>`).join('');
@@ -401,7 +437,7 @@ function detailPanel(item){
 }
 // Per-item notes: typed under the item, saved as you go (agents read them even before the lock), editable on return.
 const noteContext=()=>state.review.mode==='lock'?'lock':state.review.patch.id;
-const railSmall=it=>{const d=state.reviewDecisions?.[it.key];return [it.type==='video'?'Video':it.type==='audio'?'Âm thanh':it.type==='text'?'Chữ':'',d==='pass'?'Đạt':d==='fail'?'Chưa đạt':'',...it.files.map(f=>f.status==='changed'?'đã sửa':f.status==='missing'?'chưa có':'')].filter(Boolean).join(' · ');};
+const railSmall=it=>{const d=state.reviewDecisions?.[it.key];return [it.type==='video'?'Video':it.type==='audio'?'Âm thanh':it.type==='text'?'Chữ':it.type==='change'?'Mô tả thay đổi':'',d==='pass'?'Đạt':d==='fail'?'Chưa đạt':'',...it.files.map(f=>f.status==='changed'?'đã sửa':f.status==='missing'?'chưa có':'')].filter(Boolean).join(' · ');};
 function noteStateText(key){
   const n=state.reviewNotes[key];if(state.noteTimers[key])return 'Đang lưu…';
   return n?`Đã lưu ${when(n.at)}${n.changedSince?' · nội dung đã sửa sau ghi chú này':''}`:'Tự lưu khi bạn gõ. Agent đọc được ngay, kể cả khi bạn chưa chốt.';

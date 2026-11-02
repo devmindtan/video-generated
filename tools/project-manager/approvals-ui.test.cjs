@@ -97,7 +97,8 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   assert.match(await page.locator('.patch-pending').innerText(),/Chờ bạn xem[\s\S]*Bản vá p1[\s\S]*Sửa câu mở đầu[\s\S]*Chữ: Kịch bản/);assert.match(await next.innerText(),/Bản vá p1: Sửa câu mở đầu[\s\S]*Cần bạn xem và góp ý · Chữ: Kịch bản/);
   await page.screenshot({path:path.join(out,'review-pending-1440.png'),fullPage:true});
   await next.locator('[data-review-open="patch"]').click();await dialog.locator('.rail-item').first().waitFor();
-  assert.equal(await dialog.locator('.rail-item').count(),1);assert.equal(await dialog.locator('.d-del mark').innerText(),'thử.');assert.equal(await dialog.locator('.d-add mark').first().innerText(),'đã sửa lại.');
+  assert.equal(await dialog.locator('.rail-item').count(),1);assert.equal(await dialog.locator('.pd-hunk').count(),1);assert.match(await dialog.locator('.pd-hunk header').innerText(),/Kịch bản[\s\S]*Sửa/);
+  assert.equal(await dialog.locator('.prose-diff mark.pd-del').innerText(),'thử.');assert.equal(await dialog.locator('.prose-diff mark.pd-add').first().innerText(),'đã sửa lại.');assert.equal(await dialog.locator('.diff-raw').evaluate(d=>d.open),false,'line diff stays folded');
   await page.screenshot({path:path.join(out,'patch-1440.png')});
   await dialog.locator('[data-item-fail]').click();assert.equal(await dialog.locator('#review-form button[type=submit]').isDisabled(),true,'Chưa đạt needs its note');
   assert.match(await dialog.locator('.review-status').innerText(),/Ghi chỗ chưa đạt ở: Kịch bản/);
@@ -114,11 +115,13 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   // Results come as patches too: a scene video and an audio take, each its own item with Đạt / Chưa đạt.
   const clip=(scene,name)=>{write(`projects/${id}/review/${name}`,Buffer.from('clip '+name));review.addClip(root,plan,scene,`projects/${id}/review/${name}`);};
   clip('02-mo-chuyen','a.mp4');write(`public/${id}/voice-auditions/take-c/part-01.wav`,wav);
-  review.createPatch(root,plan,{reason:'Video cảnh mở chuyện và câu 3 đọc lại',by:'agent',media:[review.sceneClip(root,plan,'02-mo-chuyen'),{file:`public/${id}/voice-auditions/take-c/part-01.wav`,title:'Câu 3 đọc lại'}]});
-  await live(/Video cảnh mở chuyện/,'.gate-next');assert.match(await next.innerText(),/Bản vá p3: Video cảnh mở chuyện[\s\S]*1 video · 1 âm thanh/);
+  review.createPatch(root,plan,{reason:'Video cảnh mở chuyện và câu 3 đọc lại',by:'agent',media:[review.sceneClip(root,plan,'02-mo-chuyen'),{file:`public/${id}/voice-auditions/take-c/part-01.wav`,title:'Câu 3 đọc lại'}],
+    changes:[{area:'visual',where:'Mở chuyện',what:'Bà ngồi xuống ngang tầm mắt cháu thay vì đứng',why:'Cho thấy bà đặt mình vào chỗ cháu',before:'Bà đứng nhìn xuống',after:'Bà ngồi xổm, mắt ngang mắt cháu'}]});
+  await live(/Video cảnh mở chuyện/,'.gate-next');assert.match(await next.innerText(),/Bản vá p3: Video cảnh mở chuyện[\s\S]*1 sửa hình ảnh · 1 video · 1 âm thanh/);
   await page.screenshot({path:path.join(out,'review-media-pending-1440.png'),fullPage:true});
   await next.locator('[data-review-open="patch"]').click();await dialog.locator('.rail-item').first().waitFor();
-  assert.deepEqual(await dialog.locator('.rail-item small').allInnerTexts(),['Video','Âm thanh']);
+  assert.deepEqual(await dialog.locator('.rail-item small').allInnerTexts(),['Mô tả thay đổi','Video','Âm thanh']);assert.match(await dialog.locator('.rail-name').first().innerText(),/Hình ảnh: Mở chuyện/);
+  assert.match(await dialog.locator('.change-card').innerText(),/Sửa gì[\s\S]*ngang tầm mắt[\s\S]*Vì sao[\s\S]*Trước[\s\S]*Sau/);await page.screenshot({path:path.join(out,'patch-change-1440.png')});await dialog.locator('[data-item-pass]').click();
   assert.equal(await dialog.locator('.patch-video').evaluate(v=>fetch(v.src).then(r=>r.status)),200);
   await page.screenshot({path:path.join(out,'patch-video-1440.png')});
   await dialog.locator('[data-item-fail]').click();await dialog.locator('.item-note textarea').fill('Ảnh ngạch cửa hơi tối, giọng vào sớm');

@@ -386,6 +386,31 @@ body.has-player .drawer.detail-page{padding-bottom:120px}
 .patch-video{display:block;width:100%;max-height:58dvh;background:#000;border-radius:8px}
 .patch-audio{display:block;width:100%;margin:6px 0}
 .media-path{margin:8px 0 0;font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+/* Patch: changed passages as readable prose (Trước / Sau per section), described edits as a small card. */
+.prose-diff{display:grid;gap:14px;margin-top:4px}
+.pd-hunk{border:1px solid var(--line);border-radius:10px;background:var(--white);overflow:hidden}
+.pd-hunk header{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);background:#fafbf9}
+.pd-hunk header strong{font-size:15px;color:var(--ink);min-width:0;overflow-wrap:anywhere}
+.pd-num{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;background:var(--forest);color:#fff}
+.pd-kind{margin-left:auto;flex:none;font-size:12px;font-weight:700;padding:2px 8px;border-radius:4px;background:#eef1ec;color:#4f6157}
+.pd-side{padding:12px 16px 14px;display:grid;gap:8px}
+.pd-side.is-before{background:#fdf7f4;color:#5f4a40}.pd-side.is-after{background:#f6faf1}
+.pd-side+.pd-side{border-top:1px dashed var(--line)}
+.pd-label{font-size:12px;font-weight:700;color:var(--muted)}
+.pd-side p{margin:0;font-size:16px;line-height:1.7;max-width:72ch}
+.pd-side.is-before p{font-size:15px}
+.pd-head{font-weight:700}
+.pd-note{font-size:13px!important;color:var(--muted)}.pd-note-label{font-weight:700}
+.pd-quote{font-style:italic;padding-left:12px;border-left:3px solid var(--accent)}
+.pd-row{display:flex;flex-wrap:wrap;gap:4px 0}.pd-sep{display:inline-block;width:1px;height:1em;margin:0 10px;vertical-align:-2px;background:#b9c6bc}
+.pd-pause{display:inline-block;font-size:12px;font-weight:700;padding:0 7px;margin:0 4px;border-radius:999px;background:#eef1ec;color:var(--muted);vertical-align:1px}
+mark.pd-add{background:#d6ecc8;color:inherit;border-radius:3px;padding:0 1px}
+mark.pd-del{background:#f6d5c8;color:inherit;text-decoration:line-through;text-decoration-color:#a14a26;border-radius:3px;padding:0 1px}
+.diff-raw{margin-top:12px;font-size:14px}.diff-raw summary{cursor:pointer;color:var(--muted)}
+.change-card{margin:0;display:grid;gap:10px}
+.change-card div{padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--white)}
+.change-card div.is-before{background:#fdf7f4}.change-card div.is-after{background:#f6faf1}
+.change-card dt{font-size:12px;font-weight:700;color:var(--muted);margin-bottom:4px}.change-card dd{margin:0;font-size:16px;line-height:1.65;max-width:72ch}
 .detail-file{margin-top:16px}.detail-file>h4,.detail-file>p{padding:0 18px}.detail-file h4{margin:0 0 8px;font-size:14px;color:var(--ink);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}.detail-file h4 code{font-size:12px;color:var(--muted);font-weight:400;overflow-wrap:anywhere}
 /* Project page areas: Hồ sơ and Duyệt sản xuất. */
 .project-tabs{display:flex;gap:4px;margin:18px 0 4px;border-bottom:1px solid var(--line);overflow-x:auto}
