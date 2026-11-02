@@ -73,7 +73,7 @@ Phần còn lại của cuốn sách, mình xin gom thành bốn nhóm để c�
 
 [nghỉ] Nhóm thứ nhất nói về những cảm xúc làm chúng ta chao đảo: giận, sợ và lo.
 
-**Cơn giận.** Theo tác giả, cơn giận không tự nhiên bùng lên, mà được nuôi từ rất nhiều bực bội nhỏ mình cho qua và không nhìn lại. Tác giả khuyên lúc đang giận thì tạm rời khỏi chỗ đó, quay về với hơi thở; bình tĩnh rồi mới nhìn xem cơn giận được nuôi từ đâu. Chỗ chuyển hóa sau cùng là hiểu được người kia, vì "tình thương chính là khắc tinh của cơn giận".
+**Cơn giận.** Theo tác giả, cơn giận không tự nhiên bùng lên, mà được nuôi từ rất nhiều bực bội nhỏ mà mình đã cho qua và không nhìn lại. Tác giả khuyên lúc đang giận thì tạm rời khỏi chỗ đó, quay về với hơi thở; bình tĩnh rồi mới nhìn xem cơn giận được nuôi từ đâu. Chỗ chuyển hóa sau cùng là hiểu được người kia, vì "tình thương chính là khắc tinh của cơn giận".
 
 {Ch5 PDF 28–32; trích PDF 32}
 
