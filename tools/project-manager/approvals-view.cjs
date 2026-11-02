@@ -186,20 +186,24 @@ function createApprovals(root) {
   }
   function reviewView(id) {
     let plan;try {plan = cli.plan(root, id);} catch (e) {return {available: false, reason: e.message};}
-    const r = review.summary(root, plan), preview = view(id).gates.find(g => g.id === 'review-preview') || null;
+    const r = review.summary(root, plan), store = review.load(root, id), preview = view(id).gates.find(g => g.id === 'review-preview') || null;
     const revision = crypto.createHash('sha256').update(JSON.stringify([r.items.map(i => i.files.map(f => f.sha256)), r.version, r.pending?.id || null])).digest('hex');
     return {available: true, state: r.state, version: r.version, lockedAt: r.lockedAt, lockedBy: r.lockedBy, revision,
       returned: r.returned && {...r.returned, revisedTitles: r.items.filter(i => r.returned.revisedItems.includes(i.id)).map(i => i.title), notedTitles: r.items.filter(i => r.returned.itemNotes[i.id]).map(i => i.title)},
       items: r.items.map(i => ({id: i.id, title: i.title, guide: i.guide, files: i.files.map(f => ({path: f.path, name: nameOf(f.path), exists: f.exists, changed: f.changed}))})),
       missing: r.missing.map(rel => ({path: rel, name: nameOf(rel)})), drift: r.drift.map(rel => ({path: rel, name: nameOf(rel)})),
-      pending: r.pending && {id: r.pending.id, reason: r.pending.reason, createdAt: r.pending.createdAt, files: Object.keys(r.pending.changed).map(nameOf), ...mediaCount(r.pending)},
-      patches: r.patches.map(p => ({id: p.id, reason: p.reason, status: p.status, createdAt: p.createdAt, decidedAt: p.decidedAt, note: p.note, files: Object.keys(p.changed).map(nameOf), ...mediaCount(p),
+      pending: r.pending && {id: r.pending.id, reason: r.pending.reason, createdAt: r.pending.createdAt, files: newFiles(store, r.pending), ...mediaCount(r.pending)},
+      patches: r.patches.map(p => ({id: p.id, reason: p.reason, status: p.status, createdAt: p.createdAt, decidedAt: p.decidedAt, note: p.note, files: newFiles(store, p), ...mediaCount(p),
         itemNotes: Object.entries(p.itemNotes || {}).map(([key, n]) => ({name: itemName(p, key), text: n.text}))})),
       scenes: r.scenes.map(s => ({id: s.id, title: s.title, status: s.status, clips: s.clips.map((c, i) => ({index: i, renderedAt: c.renderedAt, lockVersion: c.lockVersion, status: c.status, note: c.note, decidedAt: c.decidedAt}))})),
       final: r.final, preview};
   }
   const AREA = {visual: 'Hình ảnh', audio: 'Âm thanh', caption: 'Phụ đề', timing: 'Nhịp', other: 'Khác'};
   const changeTitle = c => `${AREA[c.area] || 'Khác'}${c.where ? `: ${c.where}` : ''}`;
+  // The latest earlier patch on the same lock that you sent back (or that a newer proposal replaced).
+  const previousPatch = (store, patch) => [...store.patches.slice(0, store.patches.indexOf(patch))].reverse()
+    .find(x => x.baseVersion === patch.baseVersion && ['returned', 'superseded'].includes(x.status)) || null;
+  const newFiles = (store, p) => {const prev = previousPatch(store, p);return Object.keys(p.changed).filter(rel => prev?.changed[rel]?.after !== p.changed[rel].after).map(nameOf);};
   const mediaCount = p => ({videos: (p.media || []).filter(m => m.kind === 'video').length, audios: (p.media || []).filter(m => m.kind === 'audio').length,
     changes: Object.entries((p.changes || []).reduce((n, c) => ({...n, [AREA[c.area] || 'Khác']: (n[AREA[c.area] || 'Khác'] || 0) + 1}), {})).map(([area, count]) => ({area, count}))});
   const itemName = (p, key) => {
@@ -225,13 +229,18 @@ function createApprovals(root) {
           return locked ? {path: f.path, name: nameOf(f.path), status: 'changed', ...diff(locked.toString('utf8'), text(f.path))} : {path: f.path, name: nameOf(f.path), status: 'text', text: text(f.path)};
         })}))};
     }
-    const patch = review.load(root, id).patches.find(p => p.id === patchId);
+    const store = review.load(root, id), patch = store.patches.find(p => p.id === patchId);
     if (!patch) throw new Error('Không có bản vá này');
     const itemOf = rel => r.items.find(i => i.files.some(f => f.path === rel));
-    return {mode: 'patch', revision: v.revision, notes: r.notes[patch.id] || {}, lockedNotes: patch.itemNotes || {}, patch: {id: patch.id, reason: patch.reason, status: patch.status, createdAt: patch.createdAt, baseVersion: patch.baseVersion, note: patch.note},
-      items: Object.entries(patch.changed).map(([rel, c]) => {
-        const item = itemOf(rel), before = approvals.approvedContent(root, c.before), after = approvals.approvedContent(root, c.after);
-        const file = {path: rel, name: nameOf(rel)};
+    // Each patch shows only what is new since the one before it that you sent back (user 2026-11-02): text is compared
+    // with that patch, and a file it already had unchanged is folded away. Accepting still applies everything since the lock.
+    const prev = previousPatch(store, patch), seen = Object.keys(patch.changed).filter(rel => prev?.changed[rel]?.after === patch.changed[rel].after);
+    return {mode: 'patch', revision: v.revision, notes: r.notes[patch.id] || {}, lockedNotes: patch.itemNotes || {}, patch: {id: patch.id, reason: patch.reason, status: patch.status, createdAt: patch.createdAt, baseVersion: patch.baseVersion, note: patch.note,
+      previous: prev ? {id: prev.id, status: prev.status, unchanged: seen.map(nameOf)} : null},
+      items: Object.entries(patch.changed).filter(([rel]) => !seen.includes(rel)).map(([rel, c]) => {
+        const since = prev?.changed[rel]?.after ? approvals.approvedContent(root, prev.changed[rel].after) : null;
+        const item = itemOf(rel), before = since || approvals.approvedContent(root, c.before), after = approvals.approvedContent(root, c.after);
+        const file = {path: rel, name: nameOf(rel), base: since ? prev.id : 'lock'};
         if (!c.after) Object.assign(file, {status: 'missing'});
         else if (!TEXT.test(rel) || !after) Object.assign(file, {status: 'binary'});
         else if (!before) Object.assign(file, {status: 'text', text: after.toString('utf8').slice(0, 300000)});

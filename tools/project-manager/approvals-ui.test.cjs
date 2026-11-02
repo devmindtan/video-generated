@@ -108,7 +108,10 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   await page.waitForFunction(()=>!document.querySelector('#review-dialog').open);
   assert.deepEqual([store().patches[0].status,store().patches[0].itemNotes[`${D}/script.md`].text],['returned','Câu mở còn dài']);mark('A patch shows its diff; Chưa đạt with a note returns it');
   edit('Nội dung đã sửa lại.','Nội dung ngắn.');review.createPatch(root,plan,{reason:'Rút gọn câu mở',by:'agent'});await open();
-  await next.locator('[data-review-open="patch"]').click();await dialog.locator('.rail-item').first().waitFor();await passAll();assert.match(await dialog.locator('#review-form button[type=submit]').innerText(),/Chấp nhận/);
+  await next.locator('[data-review-open="patch"]').click();await dialog.locator('.rail-item').first().waitFor();
+  assert.match(await dialog.locator('.review-prev').innerText(),/Chỉ hiện phần mới so với bản vá p1/);assert.match(await dialog.locator('.review-hint',{hasText:'Chỉ phần mới'}).innerText(),/so với bản vá p1/);
+  assert.equal(await dialog.locator('.prose-diff mark.pd-del').innerText(),'đã sửa lại.','compared with the returned patch, not the lock');mark('A new patch shows only what changed since the one you sent back');
+  await passAll();assert.match(await dialog.locator('#review-form button[type=submit]').innerText(),/Chấp nhận/);
   await dialog.locator('#review-form button[type=submit]').click();await page.waitForFunction(()=>/Bản chốt v2/.test(document.querySelector('.lock-chip')?.textContent||''));
   assert.deepEqual(store().locks.map(l=>l.version),[1,2]);assert.equal(store().locks[1].fromPatch,'p2');
   assert.equal(await page.locator('.patch-panel .patch-item').count(),2);assert.match(await page.locator('.patch-panel').innerText(),/p1[\s\S]*Đã trả lại[\s\S]*Câu mở còn dài/);mark('Accepting a patch makes the next locked version; the patch panel lists both with notes');
