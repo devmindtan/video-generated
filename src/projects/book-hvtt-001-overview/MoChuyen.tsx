@@ -11,7 +11,8 @@ import {CornerVoice, Draw, PacedVoice, captionMs, pace, takeOf, voiceLevel} from
 export type MoChuyenProps = {voice: string; channelLabel: string};
 // Paced like the body sections (scene-kit pace): a longer rest before each new scene's sentence (review 1: "hơi nhanh").
 const SCENE_SENTENCES = [1, 2, 3, 5, 6, 7, 8];
-const pacingOf = (voice: string, fps: number) => pace(takeOf(voice), SCENE_SENTENCES, fps);
+const paced = new Map<string, ReturnType<typeof pace>>();
+const pacingOf = (voice: string, fps: number) => {const key = `${voice}@${fps}`;if (!paced.has(key)) paced.set(key, pace(takeOf(voice), SCENE_SENTENCES, fps));return paced.get(key)!;};
 export const moChuyenFrames = (voice: string, fps = 30) => pacingOf(voice, fps).frames;
 // Whether the narration is heard at a frame of this part (the episode's body music dips under speech).
 export const moChuyenSpeaking = (voice: string, frame: number, fps = 30) => pacingOf(voice, fps).voiceFrame(frame) !== null;

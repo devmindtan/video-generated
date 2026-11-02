@@ -1,3 +1,4 @@
+import {useMemo} from 'react';
 import type {FC, ReactElement} from 'react';
 import {Audio} from '@remotion/media';
 import {AbsoluteFill, Sequence, Track, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
@@ -62,17 +63,25 @@ const Progress: FC<{starts: number[]; total: number}> = ({starts, total}) => {
 // whichever part is playing, averaged over ±8 frames so it never jumps at a sentence edge.
 const BodyMusic: FC<{list: ReturnType<typeof parts>; starts: number[]}> = ({list, starts}) => {
   const body = list.map((x, i) => ({...x, start: starts[i]})).filter((x) => x.speaking);
+  const from = body.length ? body[0].start : 0, to = body.length ? body[body.length - 1].start + body[body.length - 1].frames : 0;
+  // Volume per frame of the clip, computed once: narration on/off, then a ±8-frame moving average.
+  const key = body.map((b) => `${b.name}:${b.start}:${b.frames}`).join('|');
+  const volumes = useMemo(() => {
+    const n = Math.max(0, to - from), on = new Float32Array(n);
+    for (const b of body) for (let f = 0; f < b.frames; f++) if (b.speaking?.(f)) on[b.start - from + f] = 1;
+    const out = new Float32Array(n);let sum = 0;
+    for (let i = -8; i < n; i++) {
+      if (i + 8 < n) sum += on[i + 8];
+      if (i - 9 >= 0) sum -= on[i - 9];
+      if (i >= 0) out[i] = bodyMusic.pauseVolume - (bodyMusic.pauseVolume - bodyMusic.speechVolume) * (sum / 17);
+    }
+    return out;
+  }, [key]); // eslint-disable-line react-hooks/exhaustive-deps
   if (!body.length) return null;
-  const from = body[0].start, to = body[body.length - 1].start + body[body.length - 1].frames;
-  const speechAt = (frame: number) => {const x = body.find((b) => frame >= b.start && frame < b.start + b.frames);return x?.speaking?.(frame - x.start) ? 1 : 0;};
-  const volume = (local: number) => {
-    let sum = 0;for (let d = -8; d <= 8; d += 2) sum += speechAt(from + local + d);
-    const activity = sum / 9;
-    return bodyMusic.pauseVolume - (bodyMusic.pauseVolume - bodyMusic.speechVolume) * activity;
-  };
   return <Track name="Nhạc nền nội dung · Pufino – Enlivening · rất nhỏ, chỉnh đầu/cuối trong Edit">
     <MusicFade fadeInSeconds={bodyMusic.fadeInSeconds} fadeOutSeconds={bodyMusic.fadeOutSeconds}>
-      <Audio name="Pufino – Enlivening (nhạc nền nội dung)" src={staticFile(bodyMusic.file)} from={from} durationInFrames={to - from} volume={volume} playbackRate={bodyMusic.playbackRate} loop />
+      <Audio name="Pufino – Enlivening (nhạc nền nội dung)" src={staticFile(bodyMusic.file)} from={from} durationInFrames={to - from}
+        volume={(f: number) => volumes[Math.min(volumes.length - 1, Math.max(0, f))] ?? bodyMusic.pauseVolume} playbackRate={bodyMusic.playbackRate} loop />
     </MusicFade>
   </Track>;
 };

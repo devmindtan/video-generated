@@ -81,7 +81,15 @@ export const CornerVoice: FC<{take: Take | undefined; pacing: Pacing; frame: num
 };
 const ideaStartsOf = (beats: Beat[]) => beats.map((b) => b.at).filter((a) => a > 0);
 const cardRestOf = (beats: Beat[]) => Object.fromEntries(beats.filter((b) => b.card).map((b) => [b.at, CARD_SECONDS]));
-export const sectionPacing = (voice: string, beats: Beat[], fps = 30) => pace(takeOf(voice), ideaStartsOf(beats), fps, cardRestOf(beats));
+// Pacing is pure for a (voice, beats, fps): cached, since the body music asks it for every frame of the episode.
+const paceCache = new WeakMap<Beat[], Map<string, Pacing>>();
+export const sectionPacing = (voice: string, beats: Beat[], fps = 30) => {
+  const byKey = paceCache.get(beats) ?? new Map<string, Pacing>();paceCache.set(beats, byKey);
+  const key = `${voice}@${fps}`, hit = byKey.get(key);
+  if (hit) return hit;
+  const made = pace(takeOf(voice), ideaStartsOf(beats), fps, cardRestOf(beats));byKey.set(key, made);
+  return made;
+};
 
 // Stroke that draws itself between two frames: a dash that grows along the path (pathLength 1), nothing at all
 // before it starts. Line style for every drawing: width ≥ 2 and opacity ≥ .7 so lines stay crisp at 1080p, a small
