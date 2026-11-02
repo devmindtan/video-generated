@@ -1,7 +1,7 @@
 import type {FC, ReactElement} from 'react';
-import {AbsoluteFill, Sequence, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Sequence, useCurrentFrame, useVideoConfig} from 'remotion';
 import type {CalculateMetadataFunction} from 'remotion';
-import {BookInsightsIntro, introFrames} from './Intro';
+import {BookInsightsIntro, GOLD, introFrames} from './Intro';
 import {BookInsightsEpisodeCard, cardFrames} from './EpisodeCard';
 import {BookHvttMoChuyen, moChuyenFrames} from './MoChuyen';
 import {BookInsightsOutro, outroFrames} from './Outro';
@@ -41,18 +41,30 @@ const parts = (p: EpisodeProps, fps: number) => {
 };
 export const episodeMetadata: CalculateMetadataFunction<EpisodeProps> = ({props}) => ({durationInFrames: parts(props, 30).reduce((n, x) => n + x.frames, 0)});
 
+// Progress of the whole episode along the bottom edge (user 2026-11-02): a thin gold line with a tick at every
+// part boundary. Drawn outside the zoomed stage so the zoom never crops it.
+const Progress: FC<{starts: number[]; total: number}> = ({starts, total}) => {
+  const frame = useCurrentFrame();
+  return <AbsoluteFill style={{pointerEvents: 'none'}}>
+    <div style={{position: 'absolute', left: 0, right: 0, bottom: 0, height: 5, background: 'rgba(241,231,210,.14)'}}>
+      <div style={{height: '100%', width: `${Math.min(1, frame / total) * 100}%`, background: GOLD}} />
+      {starts.slice(1).map((s) => <div key={s} style={{position: 'absolute', left: `${s / total * 100}%`, bottom: 0, width: 2, height: 11, translate: '-1px 0', background: frame >= s ? GOLD : 'rgba(241,231,210,.45)'}} />)}
+    </div>
+  </AbsoluteFill>;
+};
+
 export const BookHvttEpisode: FC<EpisodeProps> = (p) => {
   const {fps} = useVideoConfig();
-  let from = 0;
-  return <AbsoluteFill
-    style={{
-      background: '#0d1411',
-      scale: 1.045
-    }}
-  >
-    {parts(p, fps).map((part) => {
-      const at = from;from += part.frames;
-      return <Sequence key={part.name} name={part.name} from={at} durationInFrames={part.frames}>{part.node}</Sequence>;
-    })}
+  const list = parts(p, fps), starts = list.reduce<number[]>((acc, x) => [...acc, acc[acc.length - 1] + x.frames], [0]);
+  return <AbsoluteFill>
+    <AbsoluteFill
+      style={{
+        background: '#0d1411',
+        scale: 1.045
+      }}
+    >
+      {list.map((part, i) => <Sequence key={part.name} name={part.name} from={starts[i]} durationInFrames={part.frames}>{part.node}</Sequence>)}
+    </AbsoluteFill>
+    <Progress starts={starts.slice(0, -1)} total={starts[starts.length - 1]} />
   </AbsoluteFill>;
 };

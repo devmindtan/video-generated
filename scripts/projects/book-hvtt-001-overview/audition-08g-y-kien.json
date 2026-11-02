@@ -57,6 +57,16 @@
     },
     {
       "scene": 1,
+      "text": "Còn một điều mình muốn nhắc: những ví dụ và bài học trong sách chỉ là một góc nhìn, từ trải nghiệm và niềm tin của tác giả, chưa bao quát hết mọi hoàn cảnh.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Vì vậy khi đọc, các bạn nên đặt vào chuyện của chính mình, đừng biến một lời khuyên thành quy tắc phải làm theo, như chuyện buông xả đâu có nghĩa là bỏ hết mọi thứ.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
       "text": "Nếu chỉ chọn một chương để bắt đầu, mình gợi ý chương Lo Lắng với hình ảnh cốc nước.",
       "pauseAfter": 0.4
     },

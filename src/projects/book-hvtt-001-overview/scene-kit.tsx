@@ -66,6 +66,18 @@ export const voiceLevel = (take: Take | undefined, pacing: Pacing, frame: number
   const v = pacing.voiceFrame(frame);
   return take && v !== null && v < take.frames ? take.level[Math.max(0, v)] / 100 : 0;
 };
+// Small voice meter in the top-right corner of narrated sections (user 2026-11-02; the intro and outro keep their
+// large visualizer): bars follow the voice's frequency bands on the paced timeline and settle during rests.
+const METER_BANDS = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24];
+export const CornerVoice: FC<{take: Take | undefined; pacing: Pacing; frame: number}> = ({take, pacing, frame}) => {
+  const v = pacing.voiceFrame(frame), bands = take && v !== null && v < take.frames ? take.bands[Math.max(0, v)] : null;
+  return <div style={{position: 'absolute', right: 130, top: 88, height: 64, display: 'flex', alignItems: 'center', gap: 6, opacity: .95}}>
+    {METER_BANDS.map((b, i) => {
+      const edge = 1 - Math.abs(i - (METER_BANDS.length - 1) / 2) / (METER_BANDS.length / 2);
+      return <div key={b} style={{width: 7, height: 6 + (bands ? bands[b] / 100 : 0) * 58 * (.5 + edge * .5), borderRadius: 4, background: GOLD, opacity: .45 + (bands ? bands[b] / 100 : 0) * .55}} />;
+    })}
+  </div>;
+};
 const ideaStartsOf = (beats: Beat[]) => beats.map((b) => b.at).filter((a) => a > 0);
 const cardRestOf = (beats: Beat[]) => Object.fromEntries(beats.filter((b) => b.card).map((b) => [b.at, CARD_SECONDS]));
 export const sectionPacing = (voice: string, beats: Beat[], fps = 30) => pace(takeOf(voice), ideaStartsOf(beats), fps, cardRestOf(beats));
@@ -122,6 +134,7 @@ export const NarratedSection: FC<{voice: string; channelLabel: string; beats: Be
       })}
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%)', pointerEvents: 'none'}} />
       {voice ? <Captions captions={voice.captions} ms={captionMs(pacing, frame, fps)} highlight={highlight} /> : null}
+      <CornerVoice take={voice} pacing={pacing} frame={frame} />
       {beats[current]?.quote ? <div style={{position: 'absolute', top: 852, left: 0, right: 0, textAlign: 'center', color: GOLD, fontSize: 24, fontWeight: 700, letterSpacing: 2, opacity: opacityOf(current) * .85}}>— Hiểu về trái tim, Minh Niệm</div> : null}
     </AbsoluteFill>
     {voice ? <PacedVoice take={voice} pacing={pacing} track={track} /> : null}

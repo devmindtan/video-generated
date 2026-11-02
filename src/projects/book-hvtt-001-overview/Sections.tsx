@@ -585,7 +585,7 @@ export const TongKet = section("08f tổng kết", /(tóm lại|cách lòng mìn
 ]);
 
 // ---- 08g Ý kiến cá nhân (lines-08g-y-kien.txt; channel draft 2026-11-01, follows the user's wording when it changes) --
-export const YKien = section("08g ý kiến cá nhân", /(riêng mình|một người khác|tách đau với khổ|bắt đầu từ đâu|tô canh chua|chưa bao giờ gặp|lặp lại|hiểu rồi mới thương|chương Lo Lắng|đặt xuống)/gi, [
+export const YKien = section("08g ý kiến cá nhân", /(riêng mình|một người khác|tách đau với khổ|bắt đầu từ đâu|tô canh chua|chưa bao giờ gặp|lặp lại|hiểu rồi mới thương|một góc nhìn|chuyện của chính mình|chương Lo Lắng|đặt xuống)/gi, [
   // 0 a figure stands still; a dashed outline of "someone else" appears beside it, then fades
   {at: 0, label: 'Ý kiến của mình', draw: (c) => {const ghost = interpolate(c.frame, [within(c, 0, .45), within(c, 0, .6), within(c, 0, .85), within(c, 0, 1)], [0, .6, .6, 0], clamp);return <g>
     <Figure frame={c.frame} from={c.start} x={860} y={800} s={1.2} />
@@ -619,14 +619,26 @@ export const YKien = section("08g ý kiến cá nhân", /(riêng mình|một ng�
     <Glow x={960} y={560} r={300} opacity={appear(c.frame, c.at(9), 24) * .7} />
   </g>},
   // 10 the chapter page LO LẮNG with the glass; 11 a sheet, three lines written one after another
-  {at: 10, label: 'Bắt đầu từ chương Lo Lắng', draw: (c) => {const sheet = appear(c.frame, c.at(11), 16);return <g>
+  // 10 a large faint circle (the whole of life) with a flashlight lighting only one slice of it; 11 in the same
+  // scene a reader holds the open book and looks across at a small house (their own situation)
+  {at: 10, label: 'Một góc nhìn', draw: (c) => {const beam = appear(c.frame, within(c, 10, .3), 20), own = appear(c.frame, c.at(11), 20);return <g>
+    <circle cx={1060} cy={560} r={230} fill="none" stroke={IVORY} strokeWidth={2} strokeDasharray="4 10" opacity={appear(c.frame, c.start + 6, 18) * .6 * (1 - own * .5)} />
+    <path d="M1060 560 L1290 560 A230 230 0 0 0 1222 397 Z" fill="rgba(217,181,111,.14)" stroke={GOLD} strokeWidth={2.4} opacity={beam * (1 - own * .6)} />
+    <g opacity={beam * (1 - own)}>{D(c, 'M600 540 L700 540 L700 580 L600 580 Z M700 534 L730 522 L730 598 L700 586 Z', within(c, 10, .2) - c.start, 18, 2.4)}
+      {D(c, 'M730 524 L1222 397 M730 596 L1290 560', within(c, 10, .3) - c.start, 22, 2, .7)}</g>
+    <g opacity={own}><Figure frame={c.frame} from={c.at(11)} x={560} y={800} s={1} arm="reach" />
+      <path d="M1440 760 L1440 640 L1520 580 L1600 640 L1600 760 Z M1500 760 L1500 700 L1540 700 L1540 760" fill="none" stroke={GOLD} strokeWidth={2.4} strokeLinejoin="round" />
+      <path d="M640 600 C900 520 1200 560 1420 660" fill="none" stroke={GOLD} strokeWidth={2} strokeDasharray="5 12" opacity={appear(c.frame, within(c, 11, .3), 20) * .8} />
+      <Glow x={1520} y={680} r={140} opacity={appear(c.frame, within(c, 11, .5), 20) * .7} /></g>
+  </g>;}},
+  {at: 12, label: 'Bắt đầu từ chương Lo Lắng', draw: (c) => {const sheet = appear(c.frame, c.at(13), 16);return <g>
     <g opacity={1 - sheet * .7}>
       {D(c, page(560, 260, 380, 500), 0, 24, 2.6)}
       <Word x={750} y={340} size={40} text="LO LẮNG" opacity={appear(c.frame, c.start + 14, 12)} />
       <g transform="translate(-210 120)">{glass(c, c.start + 24)}</g>
     </g>
-    {D(c, page(1040, 300, 440, 440), c.at(11) - c.start, 22, 2.6)}
-    {['Điều đang lo', 'Việc làm được', 'Việc đặt xuống'].map((t, k) => <g key={t} opacity={appear(c.frame, within(c, 11, .35 + k * .18), 10)}>
+    {D(c, page(1040, 300, 440, 440), c.at(13) - c.start, 22, 2.6)}
+    {['Điều đang lo', 'Việc làm được', 'Việc đặt xuống'].map((t, k) => <g key={t} opacity={appear(c.frame, within(c, 13, .35 + k * .18), 10)}>
       <circle cx={1090} cy={400 + k * 110} r={8} fill={GOLD} /><text x={1120} y={412 + k * 110} fill={IVORY} fontSize={36} fontWeight={700}>{t}</text></g>)}
   </g>;}},
 ]);

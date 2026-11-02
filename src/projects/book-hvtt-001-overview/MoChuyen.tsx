@@ -3,7 +3,7 @@ import {AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig} from
 import type {CalculateMetadataFunction} from 'remotion';
 import '../../shared/stoic-fonts';
 import {Backdrop, Captions, GOLD, INK, IVORY, clamp} from './Intro';
-import {Draw, PacedVoice, captionMs, pace, takeOf, voiceLevel} from './scene-kit';
+import {CornerVoice, Draw, PacedVoice, captionMs, pace, takeOf, voiceLevel} from './scene-kit';
 
 // Section 0b "Mở chuyện" (script v4, lock v1): the grandmother and the door threshold, told by the narrator.
 // Gold line drawings in code (option B); people may be drawn (user 2026-10-31). One beat per spoken sentence,
@@ -245,6 +245,7 @@ export const BookHvttMoChuyen: FC<MoChuyenProps> = ({voice: voiceId, channelLabe
       </svg>
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%)', pointerEvents: 'none'}} />
       {voice ? <Captions captions={voice.captions} ms={captionMs(pacing, frame, fps)} highlight={/(chương cuối|ngạch cửa|người bà|cẩn thận|hả dạ|lớn lên|dỗ cho cháu yên|đặt mình vào chỗ người kia|phải hiểu)/gi} /> : null}
+      <CornerVoice take={voice} pacing={pacing} frame={frame} />
     </AbsoluteFill>
     {voice ? <PacedVoice take={voice} pacing={pacing} track="02 mở chuyện" /> : null}
   </AbsoluteFill>;

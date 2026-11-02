@@ -123,6 +123,7 @@ vẽ bằng code trong Remotion, nên không có prompt tạo ảnh; mỗi mục
 | "Cái mình giữ lại nhiều nhất là cách tách đau với khổ…" | Chữ ĐAU và KHỔ hai bên một vạch ngăn; quanh chữ KHỔ một vòng xoắn nét vẽ quấn dần (nghĩ đi nghĩ lại); câu "biết nên bắt đầu từ đâu": một chấm vàng sáng lên dưới chữ ĐAU |
 | "Hình ảnh mình thích nhất vẫn là tô canh chua…" | Tô canh bốc khói trên bàn cơm; vài dáng người mờ hiện phía sau (những người mình chưa gặp) |
 | "Như mình đã nói, sách có chỗ lặp lại…" | Cuốn sách mở; lần lượt ba chữ DỪNG LẠI · HIỂU · THƯƠNG hiện theo câu đọc, ánh sáng dịu ở cuối |
+| "Còn một điều mình muốn nhắc… bỏ hết mọi thứ." | Một vòng tròn lớn nét đứt (toàn bộ cuộc sống); một chiếc đèn pin chỉ rọi sáng một góc nhỏ của vòng tròn (một góc nhìn); câu sau: đèn mờ đi, một người đọc hiện bên trái, đường nét đứt nối sang một ngôi nhà nhỏ sáng lên (chuyện của chính mình) |
 | "Nếu chỉ chọn một chương… việc nào nên đặt xuống." | Trang chương LO LẮNG với cốc nước; một trang giấy, ba dòng hiện lần lượt: Điều đang lo · Việc làm được · Việc đặt xuống |
 
 Khi dựng từng phần, bản mô tả này được cập nhật theo hình thật trong Studio.

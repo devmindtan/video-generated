@@ -175,9 +175,11 @@ Hình ảnh mình thích nhất vẫn là tô canh chua. Lần tới ngồi ăn 
 
 Như mình đã nói, sách có chỗ lặp lại. Nhưng nghĩ kỹ thì chính vì vậy mà mở chương nào ra cũng gặp lại cùng một lời nhắc: dừng lại, hiểu rồi mới thương. Với mình, đó là lời nhắc đáng nghe nhiều lần.
 
+Còn một điều mình muốn nhắc: những ví dụ và bài học trong sách chỉ là một góc nhìn, từ trải nghiệm và niềm tin của tác giả, chưa bao quát hết mọi hoàn cảnh. Vì vậy khi đọc, các bạn nên đặt vào chuyện của chính mình, đừng biến một lời khuyên thành quy tắc phải làm theo, như chuyện buông xả đâu có nghĩa là bỏ hết mọi thứ.
+
 Nếu chỉ chọn một chương để bắt đầu, mình gợi ý chương Lo Lắng với hình ảnh cốc nước. Chương ngắn, dễ hiểu, và các bạn có thể thử ngay tối nay: viết ra điều mình đang lo, rồi xem việc nào làm được, việc nào nên đặt xuống.
 
-{Nháp của kênh theo yêu cầu người dùng 2026-11-01 ("bổ sung thêm cảnh ý kiến cá nhân nghĩ thế nào về nội dung"); thay cho quyết định 2026-10-30 chờ người dùng tự đưa lời. Đây là ý kiến đứng tên người dùng: người dùng sửa, thêm trải nghiệm thật của mình hoặc viết lại tùy ý; không bịa chuyện đời tư. Chỉ dựa trên nội dung đã kể ở phần 2, 3A, 3D, 3E: đau/khổ Ch1, cốc nước Ch44, canh chua Ch48.}
+{Nháp của kênh theo yêu cầu người dùng 2026-11-01 ("bổ sung thêm cảnh ý kiến cá nhân nghĩ thế nào về nội dung"); thay cho quyết định 2026-10-30 chờ người dùng tự đưa lời. Đây là ý kiến đứng tên người dùng: người dùng sửa, thêm trải nghiệm thật của mình hoặc viết lại tùy ý; không bịa chuyện đời tư. Chỉ dựa trên nội dung đã kể ở phần 2, 3A, 3D, 3E: đau/khổ Ch1, cốc nước Ch44, canh chua Ch48. Bổ sung 2026-11-02 theo yêu cầu người dùng: ví dụ và bài học trong sách chỉ là một góc, chưa bao quát hết, đọc để tránh hiểu nhầm (ví dụ Buông xả, Ch39).}
 
 ## 5. Nhận xét chung (theo lời người dùng)
 
