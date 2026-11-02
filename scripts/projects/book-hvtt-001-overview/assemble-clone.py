@@ -22,12 +22,32 @@ from voice_quality import normalize_gain  # noqa: E402
 SR = 48000
 
 
+def squeeze_pauses(audio, longest):
+    # Shorten silent gaps inside a sentence (clone breaths at commas) to `longest` seconds; speech and tempo untouched.
+    hop = SR // 50
+    energy = np.array([np.sqrt(np.mean(audio[i:i + hop] ** 2)) for i in range(0, len(audio) - hop + 1, hop)])
+    quiet = energy < energy.max() * .03
+    keep, n = [], 0
+    while n < len(quiet):
+        m = n
+        while m < len(quiet) and quiet[m] == quiet[n]: m += 1
+        a, b = n * hop, m * hop if m < len(quiet) else len(audio)
+        if quiet[n] and (m - n) * hop > longest * SR + hop and n > 0 and m < len(quiet):
+            half = round(longest * SR / 2)
+            keep += [audio[a:a + half], audio[b - half:b]]
+        else:
+            keep.append(audio[a:b])
+        n = m
+    return np.concatenate(keep)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--clone', nargs='+', required=True)
     parser.add_argument('--id', default='clone-ban')
     parser.add_argument('--config', default='audition.json', help='Sentence/pause config in this folder')
     parser.add_argument('--out', required=True)
+    parser.add_argument('--max-pause', type=float, help='Shorten silences inside each sentence to this many seconds')
     parser.add_argument('--choice', help='JSON {sentence text: clone take} overriding "last take wins" (build-body.py)')
     args = parser.parse_args()
     project = ROOT / 'scripts/projects/book-hvtt-001-overview'
@@ -59,6 +79,7 @@ def main():
         audio = audio.mean(axis=1) if audio.ndim > 1 else audio
         audio = soxr.resample(audio, rate, SR) if rate != SR else audio
         audio = normalize_gain(shared['trim_silence'](audio, SR))
+        if args.max_pause: audio = squeeze_pauses(audio, args.max_pause)
         edge = min(240, len(audio) // 2)
         audio[:edge] *= np.linspace(0, 1, edge)
         audio[-edge:] *= np.linspace(1, 0, edge)

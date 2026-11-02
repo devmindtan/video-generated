@@ -15,6 +15,7 @@ HERE = Path(__file__).resolve().parent
 AUD = ROOT / 'public/book-hvtt-001-overview/voice-auditions'
 SEGMENTS = ['02-mo-chuyen', '03-cuon-sach', '04-soi-chi', '05-nhom-3a', '06-nhom-3b', '07-nhom-3c', '08-nhom-3d', '08e-diem-chua-dat', '08f-tong-ket', '08g-y-kien', '09-nhan-xet']
 py = str(ROOT / '.venv/bin/python')
+MAX_PAUSE = .25  # pauses inside a sentence (user 2026-11-02: "chậm chậm, khoảng nghỉ lâu")
 
 
 def clone_takes():
@@ -52,6 +53,7 @@ def main():
             print(f'{seg}: chờ {sum(t not in texts for t in need)}/{len(need)} câu'); continue
         used = sorted({texts[t] for t in need}, key=takes.index)
         choice = {t: texts[t] for t in need}
+        choice['__maxPause'] = MAX_PAUSE  # part of the stamp, so a new setting rebuilds
         out = ROOT / 'public/voice-auditions' / f'book-hvtt-{seg}-clone'  # 'clone' in the name keeps voice ids unsuffixed
         stamp = out / 'sources.json'
         if stamp.exists() and json.loads(stamp.read_text()) == choice:
@@ -59,8 +61,8 @@ def main():
         for d in [out, ROOT / 'public/voice-auditions' / f'book-hvtt-{seg}-clone-sang2']:
             if d.exists(): shutil.rmtree(d)  # derived audio only; clone takes stay untouched
         pick = AUD.parent / f'.choice-{seg}.json'
-        pick.write_text(json.dumps(choice, ensure_ascii=False))
-        subprocess.run([py, str(HERE / 'assemble-clone.py'), '--config', f'audition-{seg}.json', '--clone', *used, '--choice', str(pick), '--out', out.name, '--id', seg], check=True)
+        pick.write_text(json.dumps({k: v for k, v in choice.items() if k != '__maxPause'}, ensure_ascii=False))
+        subprocess.run([py, str(HERE / 'assemble-clone.py'), '--config', f'audition-{seg}.json', '--clone', *used, '--choice', str(pick), '--out', out.name, '--id', seg, '--max-pause', str(MAX_PAUSE)], check=True)
         pick.unlink()
         subprocess.run([py, str(HERE / 'voice-variants.py'), '--source', out.name, '--semitones', '2'], check=True)
         stamp.write_text(json.dumps(choice, ensure_ascii=False, indent=1) + '\n')

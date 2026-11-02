@@ -20,8 +20,10 @@ export const takeOf = (id: string) => voices.find((v) => v.id === id);
 // Natural pacing (user 2026-11-01: "diễn giải tự nhiên, đừng quá bó buộc vào thời gian"): the narration is cut in
 // the silence between sentences and played with added rests, a breath after every sentence and a longer rest
 // where a new idea (a new drawing) starts, so each drawing finishes before the next one and the last one holds.
+// User 2026-11-02 ("chậm chậm, khoảng nghỉ lâu"): the take already keeps ~0.5 s between sentences, so no extra
+// breath is added there; only new ideas, cards and the section end get a short rest.
 // Pictures, captions and the voice level all follow the paced timeline; the take itself is not changed.
-export const BREATH_SECONDS = .3, IDEA_SECONDS = .9, CARD_SECONDS = .5, TAIL_SECONDS = 1.6;
+export const BREATH_SECONDS = 0, IDEA_SECONDS = .5, CARD_SECONDS = .3, TAIL_SECONDS = 1;
 export type Pacing = {
   at: (sentence: number) => number; // frame where a sentence starts (one past the last = end of narration)
   end: (sentence: number) => number; // frame where a sentence's speech ends
