@@ -434,7 +434,7 @@ mark.pd-del{background:#f6d5c8;color:inherit;text-decoration:line-through;text-d
 .review-stepper .is-later{background:#fafbf9}
 .review-stepper .gate-main{display:grid;gap:3px;min-width:0}.review-stepper strong{font-size:15px;color:var(--ink)}.review-stepper small{font-size:13px;color:var(--muted);overflow-wrap:anywhere}
 .review-stepper .link-button{justify-self:start;font-size:13px;margin-top:2px}
-.review-grid{margin-top:22px;max-width:920px}
+.review-grid{margin-top:22px}
 .block-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:8px}.block-head h4{margin:0;font-size:16px;color:var(--ink)}.block-head .count{font-size:13px;font-weight:700;color:var(--muted)}
 .patch-panel{padding:18px 20px;border:1px solid var(--line);border-radius:12px;background:#fafbf9}
 .patch-intro{margin:0 0 12px;font-size:13px;color:var(--muted)}
