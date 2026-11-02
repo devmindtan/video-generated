@@ -48,7 +48,7 @@ export const PeoplePleasingVideo: FC = () => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   return <AbsoluteFill style={{background: '#07080e', fontFamily: 'Stoic Sans, sans-serif'}}>
-    {/* Stable stills with short overlaps. No Gemini/Veo or fabricated action. */}
+    {/* Stable stills with short overlaps. No paid generation or fabricated action. */}
     <Sequence name="01 · Miệng đồng ý, lòng từ chối" from={0} durationInFrames={Math.round(8.2 * fps)}><Scene index={0} image="01-mask" label="ĐÃ QUÁ SỨC, VẪN NHẬN LỜI">Miệng nói “được”.<br /><span style={{color: ACCENT}}>Trong lòng “không”.</span></Scene></Sequence>
     <Sequence name="02 · Sợ làm người khác thất vọng" from={8 * fps} durationInFrames={Math.round(10.2 * fps)}><Scene index={1} image="02-collar" label="ĐỒNG Ý VÌ MUỐN — HAY VÌ SỢ?">Một lời khen.<br /><span style={{color: ACCENT}}>Đổi cả buổi tối.</span></Scene></Sequence>
     <Sequence name="03 · Nói rõ giới hạn" from={18 * fps} durationInFrames={Math.round(10.2 * fps)}><Scene index={2} image="03-silk" label="GIỚI HẠN KHÔNG TỰ ĐƯỢC HIỂU">Bạn im lặng.<br /><span style={{color: ACCENT}}>Họ tưởng bạn ổn.</span></Scene></Sequence>

@@ -31,9 +31,7 @@ Kịch bản mới 370 từ, giọng B giữ nguyên. Mỗi câu có `at` (giây
 ## Dữ liệu và lệnh
 
 - `src/projects/tiny-dino-homecoming/cuts-v3.json`: phần clip giữ lại, thời gian xuất hiện, thời lượng, tốc độ và thứ tự.
-- `scripts/projects/tiny-dino-homecoming/veo-continuity.json`: mô tả hành động mới, frame nối và ràng buộc nhận diện/camera.
 - `scripts/projects/tiny-dino-homecoming/continuity-plan.json`: kế hoạch nguồn, phải khớp cuts-v3.
-- `make-continuity.py` mặc định chỉ poll, `--max-new-jobs 5` mới cho phép gửi tối đa năm tác vụ. Không tự gửi lại trạng thái uncertain.
 - `edit.json` → `continuityV3`: chỉ bật khi đủ clip được chọn và đã kiểm tra. Stem SFX phải tạo lại từ chính lịch cắt này.
 - Backup: `public/tiny-dino-homecoming/backups/before-continuity-v3/` có nguồn, script, caption và audio bản trước.
 
@@ -43,6 +41,6 @@ Kiểm tra kỹ thuật chỉ xác nhận tài nguyên/timing/mức âm thanh; k
 
 `edit.json` đã bật v3 sau khi đủ 27 clip được chọn và stem `homecoming-continuity-sfx-v3.wav` tạo thành công. Chọn `TinyDinoHomecoming` trong Studio; không có composition mới cần đổi tên.
 
-Kiểm tra: đủ 180 giây, 27 clip duy nhất, nguồn không bị vượt thời lượng, tốc độ 0.93–1×, không loop/zoom bằng CSS. Lời kể 370 từ, đối chiếu nhận dạng 91.67–100%; phụ đề không xuất hiện trước mốc câu đã đặt. Mix peak −1.95 dBFS, nhạc thấp hơn lời khoảng 21.45 dB; không clipping. Tám kiểm thử dựng và 14 kiểm thử Veo đạt. Đã giải mã/quét native audio toàn bộ phần nguồn được giữ; track ốc sên có kết quả ASR đáng ngờ đã bị tắt trong stem thực tế.
+Kiểm tra: đủ 180 giây, 27 clip duy nhất, nguồn không bị vượt thời lượng, tốc độ 0.93–1×, không loop/zoom bằng CSS. Lời kể 370 từ, đối chiếu nhận dạng 91.67–100%; phụ đề không xuất hiện trước mốc câu đã đặt. Mix peak −1.95 dBFS, nhạc thấp hơn lời khoảng 21.45 dB; không clipping. Tám kiểm thử dựng đạt. Đã giải mã/quét native audio toàn bộ phần nguồn được giữ; track ốc sên có kết quả ASR đáng ngờ đã bị tắt trong stem thực tế.
 
 Có kiểm tra khung nguồn nhưng chưa xem/nghe toàn tập như người duyệt, chưa render composition, still hay MP4. Không cam kết tạo hình AI giống tuyệt đối từng pixel; các đoạn mới dựa vào frame nối và các lỗi nhân đôi lớn đã phát hiện đều bị loại khỏi lựa chọn.

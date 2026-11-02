@@ -2,9 +2,9 @@
 
 ## Chỉnh sửa
 
-Bản native Veo cũ chủ yếu là ambience, không bảo đảm có đủ tiếng nhấn hành động. Bản v2 giữ native, thêm 21 cue foley ngắn: vỏ trứng nứt/rung, bước chân mềm, cánh bướm/lấp lánh, trượt lá, chạm thảm cánh hoa, nấm nảy và đáp chân. Thêm hai lớp suối/mưa nối liên tục, tổng 23 cue/lớp. Không bật lại stem SFX cũ vì các cue của nó theo cấu trúc tập trước.
+Bản native cũ của clip chủ yếu là ambience, không bảo đảm có đủ tiếng nhấn hành động. Bản v2 giữ native, thêm 21 cue foley ngắn: vỏ trứng nứt/rung, bước chân mềm, cánh bướm/lấp lánh, trượt lá, chạm thảm cánh hoa, nấm nảy và đáp chân. Thêm hai lớp suối/mưa nối liên tục, tổng 23 cue/lớp. Không bật lại stem SFX cũ vì các cue của nó theo cấu trúc tập trước.
 
-Các tiếng bổ sung được tổng hợp cục bộ, không giả định là sample thu thật; tránh meme, tiếng sấm giật mình và hiệu ứng quá chói. Giữ giọng B, lời thoại và nhạc gốc; không gọi thêm Veo.
+Các tiếng bổ sung được tổng hợp cục bộ, không giả định là sample thu thật; tránh meme, tiếng sấm giật mình và hiệu ứng quá chói. Giữ giọng B, lời thoại và nhạc gốc; không tạo thêm clip.
 
 - Cue: `scripts/projects/tiny-dino-homecoming/foley.json`. `sourceSecond` là giây trong clip gốc, được đổi sang thời gian dựng bằng tốc độ shot mới, không gán cứng theo lời kể.
 - Config: `src/projects/tiny-dino-homecoming/edit.json`.

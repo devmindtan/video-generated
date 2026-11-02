@@ -62,10 +62,10 @@ function buildStages(profile,seriesDir,{source:S,scripts:X,docs:D,assets:P}){
     {kind:'operator-task',reads:[`${D}/script.md`,'scripts/shared/voice-playlists.json'],
       writes:[`${P}/audio/**`,`${P}/voice-auditions/**`,`${X}/voice.json`,`${D}/voice-audition.md`],outputs:[`${X}/voice.json`,`${D}/voice-audition.md`],
       operations:profile==='kids'?['voice-audition']:['voice-audition','voice-clone']});
-  add('visual-plan','visual-editor',profile==='kids'?'Kế hoạch footage':'Prompt từng cảnh',profile==='kids'?'Footage chuyển động liên tục cho từng cảnh; dùng lại asset phù hợp, thiếu thì handoff Gemini thủ công.':
-    'Thông tin chốt (thời lượng ± dao động, định dạng, quy tắc) và prompt hình/animation cho từng cảnh; chủ thể không lộ mặt. Chưa làm ảnh. Không Gemini/Veo.',
-    profile==='kids'?'Plan continuous true-motion footage per scene; reuse suitable assets and manual Gemini handoff.':
-    'Locked specs (duration and tolerance, format, rules) and per-scene still/animation prompts; faceless subjects; no images yet; no Gemini/Veo.',['editorial-review'],
+  add('visual-plan','visual-editor',profile==='kids'?'Kế hoạch footage':'Prompt từng cảnh',profile==='kids'?'Footage chuyển động liên tục cho từng cảnh; dùng lại asset phù hợp, thiếu thì báo thiếu footage.':
+    'Thông tin chốt (thời lượng ± dao động, định dạng, quy tắc) và prompt hình/animation cho từng cảnh; chủ thể không lộ mặt. Chưa làm ảnh. Không dùng dịch vụ trả phí.',
+    profile==='kids'?'Plan continuous true-motion footage per scene; reuse suitable assets and report missing footage.':
+    'Locked specs (duration and tolerance, format, rules) and per-scene still/animation prompts; faceless subjects; no images yet; no paid services.',['editorial-review'],
     {upstreamKind:'design',reads:[`${D}/script.md`,`${D}/brief.md`],writes:[`${D}/production-spec.md`,`${D}/image-prompts.md`]});
   gate('initial-lock','Chốt ban đầu','Bạn xem và chốt một lần: kịch bản, nhạc nền, giọng (đoạn mẫu), thông tin đã chốt, prompt từng cảnh. Sửa sau đó đi qua bản vá.',
     'User locks script, music, voice choice, specs and prompts once; later edits are patches.',['music','voice-audition','visual-plan']);

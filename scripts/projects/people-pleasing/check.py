@@ -89,7 +89,7 @@ def main():
         'mixPeakDbFS': round(float(20 * np.log10(peak)), 2), 'musicBelowVoiceDuringSpeechDb': round(margin, 2),
         'musicEdit': edit, 'speechVolume': cfg['speechVolume'], 'pauseVolume': cfg['pauseVolume'],
         'fadeInSeconds': cfg['fadeInSeconds'], 'fadeOutSeconds': cfg['fadeOutSeconds'],
-        'sfxEnabled': False, 'imagesChecked': 5, 'geminiVeoCalls': 0, 'compositionRendered': False,
+        'sfxEnabled': False, 'imagesChecked': 5, 'paidServiceCalls': 0, 'compositionRendered': False,
         'listeningReview': 'Pending user audition in Studio; numerical checks do not establish perceived quality'
     }
     (ROOT / 'docs/projects/people-pleasing/qa.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')

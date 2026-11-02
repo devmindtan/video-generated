@@ -63,19 +63,8 @@ class EditTests(unittest.TestCase):
             self.assertAlmostEqual(float(first[-1]),0)
             self.assertLessEqual(np.max(np.abs(first)),1.000001)
 
-    def test_continuations_reference_the_actual_preceding_cut(self):
+    def test_continuity_cut_selects_each_shot_once(self):
         cuts=json.loads((SRC/'cuts-v3.json').read_text())
-        config=json.loads((SCRIPTS/'veo-continuity.json').read_text())
-        specs={s['scene']:s for s in config['shots']}
-        for chapter in cuts:
-            for previous,current in zip(chapter['shots'],chapter['shots'][1:]):
-                if current['key']=='07-rain-close':
-                    continue  # Deliberate empathy insert, not an AI continuation.
-                shot=specs[current['key']]
-                self.assertEqual(shot['previous'],previous['key'])
-                self.assertAlmostEqual(shot['previousSourceEnd'],min(8,previous['rate']*previous['duration']))
-                self.assertIn('Camera LOCKED',shot['promptSuffix'])
-                self.assertIn('/continuity/',shot['image'])
         selected=[s['key'] for c in cuts for s in c['shots']]
         self.assertEqual(len(selected),len(set(selected)))
         self.assertEqual(len(selected),27)

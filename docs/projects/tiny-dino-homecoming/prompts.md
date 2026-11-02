@@ -1,6 +1,6 @@
 # Prompt sản xuất
 
-Bản dựng hiện tại dùng [chuỗi nối tiếp v3](continuity-v3.md) và `scripts/projects/tiny-dino-homecoming/veo-continuity.json`. Bộ hai góc wide/close bên dưới là lịch sử, không phải mô-típ mặc định cho bản mới. Camera mới khóa ổn định, góc gần chỉ dùng có chủ đích.
+Bản dựng hiện tại dùng [chuỗi nối tiếp v3](continuity-v3.md). Bộ hai góc wide/close bên dưới là lịch sử, không phải mô-típ mặc định cho bản mới. Camera mới khóa ổn định, góc gần chỉ dùng có chủ đích.
 
 Dùng imagegen tích hợp cho ảnh, không dùng CLI hay SVG giả ảnh. Ảnh đầu vào là tham chiếu nhận diện từ Short; không sửa/xóa ảnh Short gốc. Ảnh dự án nằm ở `public/tiny-dino-homecoming/images/`.
 
@@ -17,11 +17,11 @@ Bốn ảnh còn lại tái sử dụng tài nguyên ngang đã có: 02-mushroom
 
 ## Bộ prompt chuyển động
 
-Nguồn chính xác, đầy đủ và có thể chạy lại: `scripts/projects/tiny-dino-homecoming/veo.json` (16 prompt, mỗi prompt có first-frame image, thời lượng timeline, model override nếu cần). Không sao chép các prompt cũ 5 cảnh của bản phần tiếp theo vào bản đầy đủ.
+Không sao chép các prompt cũ 5 cảnh của bản phần tiếp theo vào bản đầy đủ.
 
 Mỗi chặng có wide và close, giữ nguyên sinh vật và môi trường, yêu cầu chuyển động cơ thể thực tế. Âm thanh chỉ SFX và thiên nhiên; không lời nói, hát hay nhạc, vì sẽ ghép giọng B và nhạc riêng. Chỉ điền manifest sau khi kết quả tải thành công. Xem lại anatomy, hành động, pose ở điểm cắt và âm thanh trước khi tự xuất.
 
-Góc cận Ốc Sên dùng phiên bản `06-snail-close-v2`: bản đầu bị Veo kéo dài râu thành vật trong tay Tí Hon, nên không dùng trong timeline. Prompt mới giữ hai tay bé ở bụng, râu giữ nguyên độ dài, không chạm vào Ốc Sên. Clip cũ vẫn được giữ để đối chiếu.
+Góc cận Ốc Sên dùng phiên bản `06-snail-close-v2`: bản đầu bị kéo dài râu thành vật trong tay Tí Hon, nên không dùng trong timeline. Prompt mới giữ hai tay bé ở bụng, râu giữ nguyên độ dài, không chạm vào Ốc Sên. Clip cũ vẫn được giữ để đối chiếu.
 
 Góc cận trượt lá dùng `04-slide-close-v2`, khóa đúng Tí Hon và Bướm Xanh, không để Ốc Sên xuất hiện trước cảnh gặp gỡ. Góc cận đoàn tụ dùng `08-nest-close-v2`, khóa đúng bốn nhân vật đã có, không tự thêm Ốc Sên thứ hai ở tiền cảnh. Các bản đầu vẫn lưu nhưng không được timeline tham chiếu.
 

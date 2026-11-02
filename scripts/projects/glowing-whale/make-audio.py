@@ -1,6 +1,6 @@
 """Original score and source-timed underwater SFX from licensed water recordings.
 
-No native Veo dialogue, MP4 exports or composition rendering.
+No native clip dialogue, MP4 exports or composition rendering.
 """
 import argparse
 import json

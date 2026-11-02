@@ -51,7 +51,7 @@
   },
   "sfxEnabled": false,
   "images": "code-drawn SVG illustrations (5), no AI images",
-  "geminiVeoCalls": 0,
+  "paidServiceCalls": 0,
   "sceneReview": {
     "01-ledger": {
       "status": "approved",

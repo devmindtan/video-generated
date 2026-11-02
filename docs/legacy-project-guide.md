@@ -14,10 +14,6 @@ npm ci
 
 ## Xem trước
 
-**Khóa chi phí Veo:** các lệnh `veo:<project>` hiện chỉ chạy thử offline. Vertex AI bị chặn, tạo clip mới/retry mặc định bị khóa. Xem [Gemini API và an toàn chi phí](../docs/gemini-api-safety.md). Gemini API Veo không phải dịch vụ tạo video miễn phí.
-
-**Hai nguồn video:** ưu tiên [gói Gemini thủ công + Gemini API](../docs/flow-and-gemini.md). `npm run gemini:pack:glowing-whale` chuẩn bị ảnh/prompt offline; người dùng tạo/tải clip trong ứng dụng rồi nhập lại. API có [trần tổng 20.000₫ cho mỗi Short](../budgets/README.md), giữ chỗ cộng dồn cả các lần thử; không tự trừ hạn mức gói hoặc gọi API thay thế.
-
 ```sh
 npm run dev
 ```
@@ -50,8 +46,8 @@ Nhạc nền phải là một clip Audio độc lập trong Edit, dùng nguồn 
 
 Quy tắc theo nội dung:
 
-- **Triết lý / Stoic / lời nhắc bản thân:** giữ cách làm cũ — ảnh tĩnh, chuyển động dựng bằng Remotion, lời đọc và nhạc. Không dùng Gemini (cả ứng dụng lẫn API) hoặc Veo.
-- **Video trẻ em:** phải có footage chuyển động thật; zoom/pan ảnh tĩnh không thay thế được. Ưu tiên clip sẵn có, tiếp đến gói Gemini thao tác thủ công; chỉ dùng API khi được duyệt chi phí, trong trần tổng 20.000₫/Short. Nếu thiếu clip thì báo thiếu, không tự chuyển sang ảnh hoặc vượt ngân sách.
+- **Triết lý / Stoic / lời nhắc bản thân:** giữ cách làm cũ — ảnh tĩnh, chuyển động dựng bằng Remotion, lời đọc và nhạc. Không dùng dịch vụ tạo ảnh/video trả phí.
+- **Video trẻ em:** phải có footage chuyển động thật; zoom/pan ảnh tĩnh không thay thế được. Dùng clip sẵn có; nếu thiếu clip thì báo thiếu, không tự chuyển sang ảnh.
 
 1. Tạo hoặc chỉnh sửa project trong `src/projects/<slug>/`.
 2. Đăng ký component bằng `<Composition>` trong `src/projects/registry.tsx`, khai báo `id`, kích thước, `fps` và `durationInFrames`. Với ảnh tĩnh, dùng `<Still>`.
@@ -111,7 +107,7 @@ Quy tắc phân ranh giới và checklist thêm project nằm trong [`docs/archi
 
 ### Đứng dậy sau vấp ngã — đã chọn Quốc Tuấn
 
-`StoicGetBackUp` — **41 giây**, 1080×1920; cover `GetBackUpThumbnail`. Giữ nguyên [lời đã chốt](../docs/projects/get-back-up/script.md) và PCM take Quốc Tuấn, thêm 4,61s nghỉ; giữ edit người dùng 0,99×/gain1,2, không làm chậm thêm. [Cấu hình giọng](../scripts/projects/get-back-up/voice.json). Năm ảnh bậc đá/bình minh, caption và thumbnail Bold 700 nhấn vàng. Nhạc người dùng đổi sang Past Lives, giữ full source, Edit tự do, ducking/fade-in/out và volume đã chỉnh. QA hiện cảnh báo clipping với mức mix đang giữ; cần cân trước khi xuất. Không SFX, không Gemini, không tự render. [Thiết kế/QA](../docs/projects/get-back-up/production-spec.md), [prompt và ảnh](../docs/projects/get-back-up/image-prompts.md), [mô tả/credit nhạc](../docs/projects/get-back-up/description.md). `npm run check:get-back-up` kiểm tra.
+`StoicGetBackUp` — **41 giây**, 1080×1920; cover `GetBackUpThumbnail`. Giữ nguyên [lời đã chốt](../docs/projects/get-back-up/script.md) và PCM take Quốc Tuấn, thêm 4,61s nghỉ; giữ edit người dùng 0,99×/gain1,2, không làm chậm thêm. [Cấu hình giọng](../scripts/projects/get-back-up/voice.json). Năm ảnh bậc đá/bình minh, caption và thumbnail Bold 700 nhấn vàng. Nhạc người dùng đổi sang Past Lives, giữ full source, Edit tự do, ducking/fade-in/out và volume đã chỉnh. QA hiện cảnh báo clipping với mức mix đang giữ; cần cân trước khi xuất. Không SFX, không tự render. [Thiết kế/QA](../docs/projects/get-back-up/production-spec.md), [prompt và ảnh](../docs/projects/get-back-up/image-prompts.md), [mô tả/credit nhạc](../docs/projects/get-back-up/description.md). `npm run check:get-back-up` kiểm tra.
 
 ### Cải thiện giọng VieNeu và nghe A/B/C
 
@@ -123,49 +119,49 @@ Nghe toàn bộ preset: `npm run voice:catalog -- --take <ten-take-moi>` tạo W
 
 ### Đừng đợi mất đi mới biết trân trọng
 
-`StoicTakeStock` — 48 giây, 1080×1920; cover `TakeStockThumbnail`. Bản lời đã duyệt xoay quanh câu “Tôi đã khóc khi không có giày để đi… cho đến khi tôi thấy một người không có chân để đi giày.” Giọng Hải Đăng 1×, Snowfall giảm tốc 0,85×; caption/thumbnail Bold 700 và nhấn vàng. Nhạc giữ Edit tự do, fade-in/out và volume/ducking trong JSON. Bản cũ giữ trong backups. Không SFX, không Gemini, không tự render.
+`StoicTakeStock` — 48 giây, 1080×1920; cover `TakeStockThumbnail`. Bản lời đã duyệt xoay quanh câu “Tôi đã khóc khi không có giày để đi… cho đến khi tôi thấy một người không có chân để đi giày.” Giọng Hải Đăng 1×, Snowfall giảm tốc 0,85×; caption/thumbnail Bold 700 và nhấn vàng. Nhạc giữ Edit tự do, fade-in/out và volume/ducking trong JSON. Bản cũ giữ trong backups. Không SFX, không tự render.
 
 Xem [thiết kế](../docs/projects/take-stock/production-spec.md), [script](../docs/projects/take-stock/script.md), [prompt và ảnh](../docs/projects/take-stock/image-prompts.md), [mô tả có nghệ sĩ nhạc](../docs/projects/take-stock/description.md). `npm run voice:take-stock` tạo giọng/phụ đề cục bộ; `npm run check:take-stock` kiểm tra typography, asset và mix theo Audio JSX.
 
 ### Chưa thua, hay chưa thử?
 
-`StoicNeverTried` — 48 giây, 1080×1920; cover `NeverTriedThumbnail`. Năm ảnh mới, Hải Đăng native 1×, Snowfall giữ kiểu giảm tốc của tập trước. Caption/thumbnail Bold 700 và nhấn vàng; nhạc giữ Edit tự do, fade-in/out, volume/ducking trong JSON. Không SFX, không Gemini, không tự render.
+`StoicNeverTried` — 48 giây, 1080×1920; cover `NeverTriedThumbnail`. Năm ảnh mới, Hải Đăng native 1×, Snowfall giữ kiểu giảm tốc của tập trước. Caption/thumbnail Bold 700 và nhấn vàng; nhạc giữ Edit tự do, fade-in/out, volume/ducking trong JSON. Không SFX, không tự render.
 
 Xem [thiết kế](../docs/projects/never-tried/production-spec.md), [script](../docs/projects/never-tried/script.md), [prompt và ảnh](../docs/projects/never-tried/image-prompts.md), [mô tả có credit nhạc](../docs/projects/never-tried/description.md). `npm run voice:never-tried` tạo giọng/phụ đề cục bộ; `npm run check:never-tried` kiểm tra typography, asset và mix với timing/gain đọc từ Audio JSX.
 
 ### Tử tế, đừng quên giới hạn
 
-`StoicPeoplePleasing` — 48 giây, 1080×1920; cover `PeoplePleasingThumbnail`. Năm ảnh mới tông xanh tím, giọng Hải Đăng native 1×. Nhạc Snowfall đầy đủ, đầu/cuối chỉnh trong Edit, fade-in/out theo mép clip; volume/ducking giữ trong `music.json`. Không SFX, không Gemini, không tự render.
+`StoicPeoplePleasing` — 48 giây, 1080×1920; cover `PeoplePleasingThumbnail`. Năm ảnh mới tông xanh tím, giọng Hải Đăng native 1×. Nhạc Snowfall đầy đủ, đầu/cuối chỉnh trong Edit, fade-in/out theo mép clip; volume/ducking giữ trong `music.json`. Không SFX, không tự render.
 
 Xem [thiết kế](../docs/projects/people-pleasing/production-spec.md), [script](../docs/projects/people-pleasing/script.md), [prompt và ảnh](../docs/projects/people-pleasing/image-prompts.md), [mô tả kèm nhạc](../docs/projects/people-pleasing/description.md). `npm run voice:people-pleasing` tạo giọng/phụ đề cục bộ; `npm run check:people-pleasing` kiểm tra asset và mix offline.
 
 ### Lời khuyên đúng còn tùy hoàn cảnh
 
-`StoicRightAdvice` — 48 giây, 1080×1920; cover `RightAdviceThumbnail`. Năm ảnh mới, giọng Hải Đăng 1×, nhạc Experience reverb có fade-in/out theo mép clip. Theo lựa chọn mới của người dùng, toàn bộ SFX đã tắt; [sound design v2](../docs/projects/right-advice/sound-v2.md) và bản cũ chỉ giữ làm lịch sử thử nghiệm. Không Gemini, không tự render.
+`StoicRightAdvice` — 48 giây, 1080×1920; cover `RightAdviceThumbnail`. Năm ảnh mới, giọng Hải Đăng 1×, nhạc Experience reverb có fade-in/out theo mép clip. Theo lựa chọn mới của người dùng, toàn bộ SFX đã tắt; [sound design v2](../docs/projects/right-advice/sound-v2.md) và bản cũ chỉ giữ làm lịch sử thử nghiệm. Không tự render.
 
 Xem [thiết kế](../docs/projects/right-advice/production-spec.md), [script](../docs/projects/right-advice/script.md), [prompt và asset](../docs/projects/right-advice/image-prompts.md), [mô tả](../docs/projects/right-advice/description.md). `npm run check:right-advice` kiểm tra offline; đầu/cuối nhạc chỉnh trong Edit, mức âm và độ dài fade trong `music.json`.
 
 ### Kỷ luật cần một lý do
 
-`StoicDisciplinePurpose` — 48 giây, 1080×1920; cover `DisciplinePurposeThumbnail`. Giọng Hải Đăng 1×, nhạc Experience reverb nguồn đầy đủ, SFX ma sát kim loại và động cơ tổng hợp cục bộ. Năm ảnh mới, không Gemini, không tự render.
+`StoicDisciplinePurpose` — 48 giây, 1080×1920; cover `DisciplinePurposeThumbnail`. Giọng Hải Đăng 1×, nhạc Experience reverb nguồn đầy đủ, SFX ma sát kim loại và động cơ tổng hợp cục bộ. Năm ảnh mới, không tự render.
 
 Xem [thiết kế](../docs/projects/discipline-purpose/production-spec.md), [script](../docs/projects/discipline-purpose/script.md), [prompt và asset](../docs/projects/discipline-purpose/image-prompts.md), [mô tả](../docs/projects/discipline-purpose/description.md). Kiểm tra bằng `npm run check:discipline-purpose`; đầu/cuối nhạc chỉnh trong Edit, âm lượng giữ trong `music.json`.
 
 ### Một việc. Không tab thứ hai.
 
-`StoicSingleTask` — 45 giây, 1080×1920; cover `SingleTaskThumbnail`. Project `single-task` dùng nhịp cắt thẳng, giọng Hải Đăng 1× và năm ảnh tạo bằng imagegen tích hợp, không Gemini. Nhạc Experience được xử lý reverb cục bộ từ file có sẵn, giữ bản gốc; không coi đây là bản remix bên thứ ba đã xác minh.
+`StoicSingleTask` — 45 giây, 1080×1920; cover `SingleTaskThumbnail`. Project `single-task` dùng nhịp cắt thẳng, giọng Hải Đăng 1× và năm ảnh tạo bằng imagegen tích hợp. Nhạc Experience được xử lý reverb cục bộ từ file có sẵn, giữ bản gốc; không coi đây là bản remix bên thứ ba đã xác minh.
 
 Xem [thiết kế](../docs/projects/single-task/production-spec.md), [script](../docs/projects/single-task/script.md), [prompt và asset](../docs/projects/single-task/image-prompts.md), [mô tả](../docs/projects/single-task/description.md). Dùng `npm run check:single-task`, `npm run voice:single-task`, `npm run music:single-task`; không tự render.
 
 ### Để mọi thứ lắng xuống
 
-`StoicLetItSettle` — 48 giây, 1080×1920; cover `LetItSettleThumbnail`. Project riêng `let-it-settle`: hình ảnh hũ nước từ đục đến trong tạo bằng imagegen tích hợp, giọng Hải Đăng giữ tốc độ 1×, nhạc Snowfall 0,8×, CTA chỉ bằng chữ. Không Gemini và không tự render.
+`StoicLetItSettle` — 48 giây, 1080×1920; cover `LetItSettleThumbnail`. Project riêng `let-it-settle`: hình ảnh hũ nước từ đục đến trong tạo bằng imagegen tích hợp, giọng Hải Đăng giữ tốc độ 1×, nhạc Snowfall 0,8×, CTA chỉ bằng chữ. Không tự render.
 
 Xem [thiết kế sản xuất](../docs/projects/let-it-settle/production-spec.md), [script](../docs/projects/let-it-settle/script.md), [prompt và đường dẫn ảnh](../docs/projects/let-it-settle/image-prompts.md), [mô tả đăng video](../docs/projects/let-it-settle/description.md). Kiểm tra bằng `npm run check:let-it-settle`, tạo lại giọng/phụ đề bằng `npm run voice:let-it-settle`.
 
 ### Tha thứ cho chính mình trong quá khứ
 
-`StoicPastSelf` — 50 giây, 1080×1920; `PastSelfThumbnail` là cover chỉnh được trong Studio, chưa xuất ảnh. Project `past-self` độc lập với `forgiveness` cũ. Dùng năm ảnh mới tạo bằng imagegen tích hợp, chuyển động trang trí theo frame, giọng Hải Đăng của Stoic Control giữ tốc độ gốc 1× và nhạc Snowfall theo yêu cầu; không gọi Gemini.
+`StoicPastSelf` — 50 giây, 1080×1920; `PastSelfThumbnail` là cover chỉnh được trong Studio, chưa xuất ảnh. Project `past-self` độc lập với `forgiveness` cũ. Dùng năm ảnh mới tạo bằng imagegen tích hợp, chuyển động trang trí theo frame, giọng Hải Đăng của Stoic Control giữ tốc độ gốc 1× và nhạc Snowfall theo yêu cầu.
 
 Xem [thiết kế sản xuất](../docs/projects/past-self/production-spec.md), [lời thoại](../docs/projects/past-self/script.md), [prompt và đường dẫn ảnh](../docs/projects/past-self/image-prompts.md), [mô tả đăng video](../docs/projects/past-self/description.md). `npm run check:past-self` kiểm tra asset và âm thanh offline; `npm run voice:past-self` tạo lại lời đọc và phụ đề cục bộ. Không tự render.
 
@@ -179,7 +175,7 @@ Xem và nghe bằng `npm run dev`, chọn composition trong Studio. **Không t�
 
 ### Bọt Biển: Bé Cá Voi Phát Sáng
 
-Short `GlowingWhale` (60 giây, 1080×1920, 7 cảnh), still `GlowingWhaleThumbnail`. Giữ giọng B, bản gốc A và cấu trúc asset riêng; không thay đổi các tập Tí Hon. Nhạc và SFX đại dương gốc, nguồn Veo muted, góc máy chủ yếu cố định.
+Short `GlowingWhale` (60 giây, 1080×1920, 7 cảnh), still `GlowingWhaleThumbnail`. Giữ giọng B, bản gốc A và cấu trúc asset riêng; không thay đổi các tập Tí Hon. Nhạc và SFX đại dương gốc, âm thanh gốc của clip muted, góc máy chủ yếu cố định.
 
 Xem [thiết kế sản xuất](../docs/projects/glowing-whale/production-spec.md), [bộ prompt hình](../docs/projects/glowing-whale/image-prompts.md), [mô tả đăng video](../docs/projects/glowing-whale/description.md). Kiểm tra bằng `npm run test:glowing-whale` và `npm run check:glowing-whale`. Không tự render.
 

@@ -1,4 +1,4 @@
-"""Build the 180s native Veo SFX stem, following the exact wide/close edit."""
+"""Build the 180s native clip SFX stem, following the exact wide/close edit."""
 import io
 import json
 from pathlib import Path
@@ -87,9 +87,9 @@ def main():
     output=ROOT/'public/tiny-dino-homecoming/audio'
     sf.write(ROOT/'public'/edit['sfxFile'],combined,SR,subtype='PCM_16')
     sf.write(output/('homecoming-foley-v3.wav' if edit.get('continuityV3') else 'homecoming-foley-v2.wav'),foley*headroom_gain,SR,subtype='PCM_16')
-    (output/('sfx-v3-check.json' if edit.get('continuityV3') else 'sfx-v2-check.json')).write_text(json.dumps({'source':'Native Veo ambience with equal-power audio overlaps + original action foley','durationSeconds':180,'peakDbFS':round(20*np.log10(max(np.max(np.abs(combined)),1e-9)),2),'headroomGain':headroom_gain,'shots':report,'events':events},ensure_ascii=False,indent=2)+'\n')
+    (output/('sfx-v3-check.json' if edit.get('continuityV3') else 'sfx-v2-check.json')).write_text(json.dumps({'source':'Native clip ambience with equal-power audio overlaps + original action foley','durationSeconds':180,'peakDbFS':round(20*np.log10(max(np.max(np.abs(combined)),1e-9)),2),'headroomGain':headroom_gain,'shots':report,'events':events},ensure_ascii=False,indent=2)+'\n')
     credits=json.loads((output/'credits.json').read_text()) if (output/'credits.json').exists() else {}
-    credits.update(sfx='Native generated clip audio plus original locally synthesized action foley; equal-power overlaps and narration ducking',runtimeSfx=edit['sfxFile'],legacySfx='homecoming-veo-sfx.wav and homecoming-sfx.wav retained; not used by the composition')
+    credits.update(sfx='Native generated clip audio plus original locally synthesized action foley; equal-power overlaps and narration ducking',runtimeSfx=edit['sfxFile'],legacySfx='homecoming-native-sfx.wav and homecoming-sfx.wav retained; not used by the composition')
     (output/'credits.json').write_text(json.dumps(credits,ensure_ascii=False,indent=2)+'\n')
     print(f'{len(plan)} native tracks crossfaded; {len(events)} action/ambience cues; 180s SFX ready.')
 

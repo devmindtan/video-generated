@@ -52,7 +52,7 @@ def main():
               'captionPages': sum(map(len, captions)), 'captionsKeepScriptWords': True,
               'music': {'file': music['file'], 'title': music['credit']['title'], 'artists': music['credit']['artists'], 'speechVolume': music['speechVolume'],
                         'pauseVolume': music['pauseVolume'], 'fadeInSeconds': music['fadeInSeconds'], 'fadeOutSeconds': music['fadeOutSeconds'], 'playbackRate': 1},
-              'sfxEnabled': False, 'images': 'code-drawn SVG illustrations (5), no AI images', 'geminiVeoCalls': 0,
+              'sfxEnabled': False, 'images': 'code-drawn SVG illustrations (5), no AI images', 'paidServiceCalls': 0,
               'sceneReview': {k: {'status': v['status'], 'decidedAt': v.get('decidedAt')} for k, v in clips.items()},
               'compositionRendered': False, 'reviewClipsRendered': sum(len(v['clips']) for v in approvals.get('scenes', {}).values()),
               'listeningReview': 'User marked every scene clip Đạt (voice, pictures, captions); the full composition is still to be watched in Studio (review-preview)'}

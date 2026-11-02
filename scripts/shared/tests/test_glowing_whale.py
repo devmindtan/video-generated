@@ -22,7 +22,6 @@ class WhaleEditTest(unittest.TestCase):
 
     def test_visual_handles_cover_all_frames_without_loop_or_zoom(self):
         scenes = load(SRC/'scenes.json')
-        config = load(PRODUCTION/'veo.json')
         source = (SRC/'Video.tsx').read_text()
         self.assertNotIn('scale:', source)
         self.assertNotIn('translate:', source)
@@ -31,10 +30,8 @@ class WhaleEditTest(unittest.TestCase):
         self.assertEqual(source.count('<Sequence name='),7)
         for frame in range(1800):
             self.assertTrue(any(s['start']*30 <= frame < round((s['start']+s['duration']+(.3 if i<6 else 0))*30) for i,s in enumerate(scenes)))
-        for i,(s,shot) in enumerate(zip(scenes,config['shots'])):
-            self.assertEqual(s['id'],shot['scene'])
-            self.assertAlmostEqual(shot['timelineSeconds'],s['duration']+(.3 if i<6 else 0))
-            self.assertGreaterEqual(min(1,8/shot['timelineSeconds']),.85)
+        for i,s in enumerate(scenes):
+            self.assertGreaterEqual(min(1,8/(s['duration']+(.3 if i<6 else 0))),.85)
 
     def test_captions_match_authored_voice_and_stay_on_their_scene_clock(self):
         captions = load(SRC/'captions.json')
@@ -50,8 +47,8 @@ class WhaleEditTest(unittest.TestCase):
                 previous = p['endMs']
 
     def test_foley_uses_source_seconds_inside_selected_footage(self):
-        config = load(PRODUCTION/'veo.json')
-        durations = {s['scene']: min(8,s['timelineSeconds']) for s in config['shots']}
+        scenes = load(SRC/'scenes.json')
+        durations = {s['id']: min(8,s['duration']+(.3 if i<6 else 0)) for i,s in enumerate(scenes)}
         for cue in load(PRODUCTION/'foley.json'):
             self.assertTrue(0 <= cue['sourceSecond'] < durations[cue['scene']])
             self.assertLessEqual(cue['gain'],.5)
@@ -65,8 +62,7 @@ class WhaleEditTest(unittest.TestCase):
     def test_rejected_morphing_ending_is_not_selected(self):
         takes = load(SRC/'takes.json')
         self.assertEqual(takes['07-shine'],'07-shine-v2')
-        config = load(PRODUCTION/'veo-ending-v2.json')
-        self.assertEqual(config['shots'][0]['scene'],takes['07-shine'])
+        self.assertIn(takes['07-shine'],load(SRC/'footage.json'))
 
 
 if __name__ == '__main__':

@@ -7,7 +7,6 @@ repos/
 library/
 public/
 out/
-budgets/
 .manager-trash/
 **/.manager-history/
 graphify-out/

@@ -25,14 +25,13 @@ def main():
     parser.add_argument('--allow-missing',action='store_true',help='Incremental inspection only; final checks must run without this flag')
     parser.add_argument('--continuity',action='store_true',help='Inspect the staged continuity edit before activating it')
     args=parser.parse_args()
-    probe=runpy.run_path(str(ROOT/'scripts/shared/make-veo.py'))['probe']
+    probe=runpy.run_path(str(ROOT/'scripts/shared/media_probe.py'))['probe']
     chapters=json.loads((SRC/'chapters.json').read_text())
     clips=json.loads((SRC/'footage.json').read_text())
     edit=json.loads((SRC/'edit.json').read_text())
     if args.continuity:edit['continuityV3']=True
     cuts=json.loads((SRC/'cuts-v3.json').read_text())
     selected={s['key']:s for c in cuts for s in c['shots']}
-    specs={s['scene']:s for s in json.loads((ROOT/'scripts/projects/tiny-dino-homecoming/veo-continuity.json').read_text())['shots']}
     recognizer=None
     if args.speech:
         from faster_whisper import WhisperModel
@@ -60,9 +59,6 @@ def main():
             item={'shot':key,**info,'frameChangeMean':list(map(lambda x:round(x,3),delta)),'playbackRate':clip['playbackRate']}
             if edit.get('continuityV3'):
                 item.update(playbackRate=selected[key]['rate'],selectedSourceSeconds=source_end)
-                if key in specs:
-                    reference=np.asarray(Image.open(ROOT/'public'/specs[key]['image']).convert('RGB'),dtype=np.float32)
-                    item['firstFrameReferenceMeanDifference']=round(float(np.mean(np.abs(reference-frame(path,0)))),3)
             if recognizer:
                 encoded=subprocess.check_output([str(FF),'-v','error','-i',str(path),'-t',str(source_end),'-vn','-ar','16000','-ac','1','-f','wav','-'])
                 audio,_=sf.read(io.BytesIO(encoded),dtype='float32')

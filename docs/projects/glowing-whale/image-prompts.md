@@ -22,7 +22,7 @@ NO WHALE in this image. Exactly FIVE tiny adorable orange clownfish with white s
 
 Bọt Biển alone just beneath the surface with his head near the waterline, facing down toward the rounded blue rocky passage at lower right. Determined but kind expression, oval belly emits warm gold light at moderate intensity before brightening. Visible open path down into blue water and bubbles, no fish yet. Stable medium-wide portrait framing, natural underwater perspective and anatomy.
 
-Ảnh kết quả đặt Bọt Biển dưới mặt nước khá xa, nên motion/thoại cuối đã bỏ ý hít thở, chỉ giữ quyết định bơi xuống. Xem kịch bản và `veo.json` hiện hành, không dùng lại beat thở cũ.
+Ảnh kết quả đặt Bọt Biển dưới mặt nước khá xa, nên motion/thoại cuối đã bỏ ý hít thở, chỉ giữ quyết định bơi xuống. Xem kịch bản hiện hành, không dùng lại beat thở cũ.
 
 ## 05-guide
 
@@ -40,7 +40,7 @@ At a peach-gold ocean sunset, Bọt Biển is just beginning a playful little br
 
 ## Đường dẫn
 
-Toàn bộ ảnh đã copy vào `public/glowing-whale/images/01-shy.png` đến `07-shine.png`, thêm bản kết chọn `07-shine-v2.png`. Prompt chuyển động nằm trong `scripts/projects/glowing-whale/veo.json`, bản kết hiện hành trong `veo-ending-v2.json`; `src/projects/glowing-whale/takes.json` chọn take cho runtime.
+Toàn bộ ảnh đã copy vào `public/glowing-whale/images/01-shy.png` đến `07-shine.png`, thêm bản kết chọn `07-shine-v2.png`. `src/projects/glowing-whale/takes.json` chọn take cho runtime.
 
 ## 07-shine-v2 — bản kết đang chọn
 

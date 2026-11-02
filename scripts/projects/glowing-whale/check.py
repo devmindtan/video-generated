@@ -19,9 +19,9 @@ def load(path):
 
 
 def main():
-    spec = importlib.util.spec_from_file_location('veo', ROOT/'scripts/shared/make-veo.py')
-    veo = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(veo)
+    spec = importlib.util.spec_from_file_location('media_probe', ROOT/'scripts/shared/media_probe.py')
+    media = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(media)
     scenes = load(SRC/'scenes.json')
     story = load(ROOT/'scripts/projects/glowing-whale/story.json')
     clips = load(SRC/'footage.json')
@@ -47,7 +47,7 @@ def main():
         clip = clips.get(take)
         assert clip, f"Missing real-motion footage: {scene['id']}"
         path = ROOT/'public'/clip['src']
-        probe = veo.probe(path)
+        probe = media.probe(path)
         handle = .3 if index < 6 else 0
         assert (scene['duration']+handle)*clip['playbackRate'] <= probe['durationSeconds']+.001
         assert .85 <= clip['playbackRate'] <= 1
@@ -55,7 +55,7 @@ def main():
         # Decode original source frames only; never render composition stills.
         frames = []
         for second in [1, 4, 6.8]:
-            png = subprocess.check_output([str(veo.FFMPEG), '-v', 'error', '-ss', str(second), '-i', str(path), '-frames:v', '1', '-f', 'image2pipe', '-vcodec', 'png', '-'])
+            png = subprocess.check_output([str(media.FFMPEG), '-v', 'error', '-ss', str(second), '-i', str(path), '-frames:v', '1', '-f', 'image2pipe', '-vcodec', 'png', '-'])
             with Image.open(io.BytesIO(png)) as frame:
                 frames.append(np.asarray(frame.resize((180,320)).convert('RGB'),dtype=np.float32))
         delta = [float(np.mean(np.abs(a-b))) for a,b in zip(frames,frames[1:])]
@@ -101,7 +101,7 @@ def main():
         level=float(20*np.log10(max(np.sqrt(np.mean(chunk**2)),1e-9)))
         assert level > -38, f'Underwater ambience inaudible in {scene["id"]}: {level:.2f}dBFS'
         bed_levels.append(round(level,2))
-    report = {'durationSeconds':60,'compositionSize':[1080,1920],'footage':probes,'voice':'B — Trúc Ly +2.5 semitones','minimumWordMatch':min(m['wordMatchRatio'] for m in metadata),'estimatedMixPeakDbfs':round(20*np.log10(peak),2),'musicBelowVoiceDb':round(margin,2),'sfxBelowVoiceDb':round(sfx_margin,2),'underwaterBedRmsDbfsByScene':bed_levels,'sfxCues':len(load(ROOT/'public'/sfx_config['timingFile'])),'nativeVeoAudioMuted':True,'compositionRendered':False}
+    report = {'durationSeconds':60,'compositionSize':[1080,1920],'footage':probes,'voice':'B — Trúc Ly +2.5 semitones','minimumWordMatch':min(m['wordMatchRatio'] for m in metadata),'estimatedMixPeakDbfs':round(20*np.log10(peak),2),'musicBelowVoiceDb':round(margin,2),'sfxBelowVoiceDb':round(sfx_margin,2),'underwaterBedRmsDbfsByScene':bed_levels,'sfxCues':len(load(ROOT/'public'/sfx_config['timingFile'])),'nativeClipAudioMuted':True,'compositionRendered':False}
     (PUBLIC/'audio/check.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(report,ensure_ascii=False,indent=2))
 

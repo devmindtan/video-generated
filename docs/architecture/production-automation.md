@@ -40,7 +40,7 @@ Không tự động: assembly (cần mount asset chỉ-đọc và kiểm Remotio
 | Trường | Ý nghĩa |
 |---|---|
 | `kind` | `draft-task` (worker LLM tương lai), `operator-task` (công cụ local nặng do người dùng/host chạy: thử giọng, truy xuất PDF), `check` (thao tác cố định chỉ đọc), `human-approval`. |
-| `readScope` / `writeScope` | Allowlist theo chặng. Ghi chỉ trong 4 đường dẫn canonical của project; mọi scope bị đối chiếu với `deniedPaths` (`.env*`, `library/`, `budgets/`, `backups/`, `.manager-history/`, `repos/`, `*.mp4`, `veo-safety.json`…). Tương ứng `write_scope` của `TaskSpec` upstream, nhưng phải được runner kiểm **trước** mỗi lần đọc/ghi. |
+| `readScope` / `writeScope` | Allowlist theo chặng. Ghi chỉ trong 4 đường dẫn canonical của project; mọi scope bị đối chiếu với `deniedPaths` (`.env*`, `library/`, `backups/`, `.manager-history/`, `repos/`, `*.mp4`…). Tương ứng `write_scope` của `TaskSpec` upstream, nhưng phải được runner kiểm **trước** mỗi lần đọc/ghi. |
 | `outputs` | File cụ thể được băm cho approval. |
 | `bindsArtifacts` | Ở cổng duyệt: toàn bộ output của các chặng phía trước. Approval tương lai lưu SHA256 của tập này. |
 | `invalidates` | Các chặng phía sau phải kiểm lại khi output chặng này đổi (ví dụ đổi `script.md` làm mất hiệu lực duyệt giọng, assets, assembly, QA). |
@@ -58,7 +58,7 @@ Worker tương lai (và agent hiện tại) lấy ngữ cảnh code qua `npm run
 3. Viết và phản biện kịch bản: câu tự nhiên, tránh lặp mô-típ, kiểm tra luận điểm và nhịp đọc 1×.
 4. Người dùng duyệt kịch bản và duration. Approval tương lai gắn SHA256 bản cụ thể; script đổi thì các sản phẩm phụ thuộc cần kiểm tra lại.
 5. Có thể lên storyboard và thử giọng song song sau bước 4. Ban đầu chạy một worker để đo hiệu năng. Chọn giọng bằng nghe thật, không suy từ điểm ASR; giữ take cũ.
-6. Triết lý: ảnh tĩnh + animation theo frame, typography Stoic, không Gemini/Veo. Kids: footage chuyển động thật, ưu tiên tái sử dụng rồi handoff Gemini thủ công. Thiếu footage phải báo thiếu.
+6. Triết lý: ảnh tĩnh + animation theo frame, typography Stoic, không dùng dịch vụ trả phí. Kids: footage chuyển động thật, tái sử dụng asset phù hợp. Thiếu footage phải báo thiếu.
 7. Duyệt giọng và visual; assembler mới đưa vào source chuẩn. Nhạc giữ trim tự do, ducking và fade theo cạnh clip; không thêm SFX hình thức.
 8. QA kỹ thuật và metadata có thể tách nhau. Mô tả phải có tên nhạc và tác giả. QA không tự suy ra nghe duyệt.
 9. Người dùng xem Studio/nghe; render và đăng tải vẫn là thao tác riêng theo yêu cầu rõ ràng.

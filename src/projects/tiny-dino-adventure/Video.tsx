@@ -26,12 +26,12 @@ const INK = '#183449';
 const YELLOW = '#ffd64d';
 const CORAL = '#ff755f';
 
-type Clip = {src: string; sourceDurationSeconds: number; playbackRate: number; model: string};
+type Clip = {src: string; sourceDurationSeconds: number; playbackRate: number};
 const footage = footageConfig as Record<string, Clip | null>;
 const SceneFootage: FC<{scene: string; children: ReactNode}> = ({scene, children}) => {
   const clip = footage[scene];
   if (!clip) return <>{children}</>;
-  return <Video name={`Veo · ${scene}`} src={staticFile(clip.src)} muted playbackRate={clip.playbackRate} style={{width: '100%', height: '100%', objectFit: 'cover'}} />;
+  return <Video name={`Footage · ${scene}`} src={staticFile(clip.src)} muted playbackRate={clip.playbackRate} style={{width: '100%', height: '100%', objectFit: 'cover'}} />;
 };
 
 const Scene: FC<{readonly seconds: number; readonly children: ReactNode; readonly tint?: string}> = ({seconds, children, tint = 'rgba(19,86,77,.12)'}) => {
@@ -175,7 +175,7 @@ export const TinyDinoAdventureVideo: FC<{voiceVariant?: 'original' | 'childlike'
       <Audio from={30 * fps} durationInFrames={12 * fps} src={staticFile(`${voiceRoot}/04-slide-voice-full.wav`)} />
       <Audio from={42 * fps} durationInFrames={6 * fps} src={staticFile(`${voiceRoot}/05-goodbye-voice-full.wav`)} />
     </Track>
-    <Audio name="SFX Veo · Khớp chuyển động · Hạ dưới lời kể" src={staticFile(sfxConfig.file)} durationInFrames={48 * fps} volume={sfxConfig.volume} />
+    <Audio name="SFX gốc clip · Khớp chuyển động · Hạ dưới lời kể" src={staticFile(sfxConfig.file)} durationInFrames={48 * fps} volume={sfxConfig.volume} />
     <Audio name="Nhạc gốc · Marimba và xylophone vui nhộn" src={staticFile(musicConfig.file)} durationInFrames={48 * fps} volume={tinyDinoMusicVolume(frame, fps)} />
   </AbsoluteFill>;
 };

@@ -9,7 +9,6 @@ public/
 .cache/
 *.mp4
 .env.local
-budgets/shorts/*.lock
 
 .venv-pdf/
 

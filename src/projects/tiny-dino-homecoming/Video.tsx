@@ -12,7 +12,7 @@ import cuts from './cuts-v3.json';
 
 const clamp = {extrapolateLeft:'clamp', extrapolateRight:'clamp'} as const;
 const starts = chapters.map(chapter => chapter.start);
-type Clip = {src:string; sourceDurationSeconds:number; playbackRate:number; model:string};
+type Clip = {src:string; sourceDurationSeconds:number; playbackRate:number};
 const clips = footage as Record<string, Clip | null>;
 const groups = captions as Caption[][];
 const titles = chapters.map(chapter => chapter.title);

@@ -20,7 +20,7 @@ docs/projects/<project-id>/         # brief/script/description/QA của một t�
 public/<project-id>/                # asset phát trong video, ignored trong Git
 
 src/shared/                        # code dùng chung: font, MusicFade, envelope...
-scripts/shared/                    # engine/workflow voice, PDF, budget và test chung
+scripts/shared/                    # engine/workflow voice, PDF và test chung
 scripts/catalog/                   # quản lý danh bạ, kiểm tra, scaffold
 library/books/                     # PDF/OCR/cache riêng tư, ignored, không public
 repos/                             # upstream reference-only
@@ -111,12 +111,12 @@ Lệnh chỉ tạo hồ sơ series và cập nhật danh bạ. Chốt đối tư
 
 | Phạm vi | Ví dụ | Nguyên tắc |
 |---|---|---|
-| Toàn workspace | engine local TTS, PDF CLI, budget lock | Một implementation chung; không nhân bản theo tập |
+| Toàn workspace | engine local TTS, PDF CLI | Một implementation chung; không nhân bản theo tập |
 | Kênh/series | Stoic typography, format biên tập, mẫu credit | Ghi policy ở hồ sơ series; component thật dùng `src/shared` khi đã ổn định |
 | Sách | source SHA, chapter map, coverage, ghi chú tác giả | Một hồ sơ cho cả sách; không đưa PDF vào public/Git |
 | Tập | script, captions, take đã chọn, music trim, thumbnail | Cô lập theo project ID, giữ phiên bản/backups và user edits |
 | Tài nguyên chung | font, nhạc nguồn đang dùng, voice catalog | Tham chiếu bản nguồn hiện có; không copy file nhạc vào mỗi tập |
-| Lịch sử | metadata/take cũ, budget audit | Giữ tại đường dẫn cũ; không chạy lại để “đồng bộ” |
+| Lịch sử | metadata/take cũ | Giữ tại đường dẫn cũ; không chạy lại để “đồng bộ” |
 
 ## Kiểm tra kiến trúc
 

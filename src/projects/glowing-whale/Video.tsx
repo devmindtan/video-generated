@@ -11,7 +11,7 @@ import sfx from './sfx.json';
 import takesData from './takes.json';
 
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
-type Clip = {src: string; sourceDurationSeconds: number; playbackRate: number; model: string};
+type Clip = {src: string; sourceDurationSeconds: number; playbackRate: number};
 const footage = footageData as Record<string, Clip | null>;
 const captions = captionsData as Caption[][];
 const takes = takesData as Record<string, string>;
@@ -22,12 +22,12 @@ const WhaleScene: FC<{index: number}> = ({index}) => {
   const scene = scenes[index];
   const take = takes[scene.id] ?? scene.id;
   const clip = footage[take];
-  // Captions follow the authored narration clock, not muted native Veo audio.
+  // Captions follow the authored narration clock, not muted native clip audio.
   const now = frame / fps * 1000;
   const page = captions[index]?.find((c) => now >= c.startMs && now < c.endMs);
   return <AbsoluteFill style={{background: '#062e4a', overflow: 'hidden', opacity: index === 0 ? 1 : interpolate(frame, [0, .3 * fps], [0, 1], clamp)}}>
     {clip
-      ? <Video name={`Veo · ${scene.id}`} src={staticFile(clip.src)} muted playbackRate={clip.playbackRate} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+      ? <Video name={`Footage · ${scene.id}`} src={staticFile(clip.src)} muted playbackRate={clip.playbackRate} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
       : <CanvasImage src={staticFile(`glowing-whale/images/${take}.png`)} style={{width: '100%', height: '100%', objectFit: 'cover'}} />}
     <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(3,25,53,.68), transparent 31%, transparent 65%, rgba(3,25,53,.7))'}} />
     <div style={{position: 'absolute', top: 145, left: 90, right: 120, textAlign: 'center', color: '#fff', textShadow: '0 5px 20px #032640', opacity: interpolate(frame, [0, .28 * fps, 3.4 * fps, 4 * fps], [0, 1, 1, 0], clamp)}}>

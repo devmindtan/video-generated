@@ -46,7 +46,7 @@
   "mixPeakDbFS": 1.23,
   "musicBelowVoiceDuringSpeechDb": 4.52,
   "sfxEnabled": false,
-  "geminiVeoCalls": 0,
+  "paidServiceCalls": 0,
   "compositionRendered": false,
   "mixWarnings": [
     "Mix exceeds0dBFS with current user gain/music settings; reduce levels before export",

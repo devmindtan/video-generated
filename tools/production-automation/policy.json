@@ -32,12 +32,10 @@
     "node_modules/**",
     "repos/**",
     "library/**",
-    "budgets/**",
     "out/**",
     ".manager-trash/**",
     "**/.manager-history/**",
     "public/*/backups/**",
-    "scripts/veo-safety.json",
     "**/*.mp4",
     "docs/projects/*/approvals.json",
     ".automation/**",
@@ -242,7 +240,7 @@
       ],
       "philosophy": [
         "Shorts triết lý mới mặc định 45 giây, đọc tốc độ 1× có khoảng lặng; tập cũ giữ thời lượng hiện có.",
-        "Hình ảnh: ảnh tĩnh + animation theo frame; ưu tiên đồ vật, thiên nhiên, kiến trúc, tượng; người thì không lộ mặt. Không dùng Gemini/Veo.",
+        "Hình ảnh: ảnh tĩnh + animation theo frame; ưu tiên đồ vật, thiên nhiên, kiến trúc, tượng; người thì không lộ mặt. Không dùng dịch vụ tạo ảnh/video trả phí.",
         "Typography Stoic: Stoic Sans Bold 700, phụ đề màu ngà, nhấn từ khóa màu vàng."
       ],
       "kids": [

@@ -135,7 +135,7 @@ def main():
         'speechVolume':music_cfg['speechVolume'],'pauseVolume':music_cfg['pauseVolume'],
         'fadeInSeconds':music_cfg['fadeInSeconds'],'fadeOutSeconds':music_cfg['fadeOutSeconds'],
         'mixPeakDbFS':round(float(20*np.log10(peak)),2),'musicBelowVoiceDuringSpeechDb':round(margin,2),
-        'sfxEnabled':False,'geminiVeoCalls':0,'compositionRendered':False,
+        'sfxEnabled':False,'paidServiceCalls':0,'compositionRendered':False,
         'mixWarnings':warnings,
         'listeningReview':'Original voice selected; new pauses and final music mix pending user review'}
     (ROOT/'docs/projects/get-back-up/qa.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')

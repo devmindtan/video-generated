@@ -1,4 +1,4 @@
-"""Synchronize native Veo SFX, duck around narration and export a checked mix."""
+"""Synchronize native clip SFX, duck around narration and export a checked mix."""
 import json
 import argparse
 import subprocess
@@ -41,7 +41,7 @@ def main():
             music_activity=np.maximum(music_activity,np.interp(t,[a-.1,a+.08,b-.08,b+.18],[0,1,1,0]))
     sfx=np.zeros((len(t),2));voice=np.zeros_like(sfx);scenes=[]
     for i,(scene,clip) in enumerate(clips.items()):
-        assert clip,'Native SFX requires a real Veo clip for every scene'
+        assert clip,'Native SFX requires a real motion clip for every scene'
         path=cache/f'{scene}-retimed.wav'
         subprocess.run([str(FF),'-v','error','-y','-i',str(ROOT/'public'/clip['src']),'-vn','-af',f'atempo={clip["playbackRate"]}','-ar',str(SR),'-ac','2',str(path)],check=True)
         audio=read(path)[:DURATIONS[i]*SR]
@@ -68,7 +68,7 @@ def main():
     assert peak<1,f'Mix clips at {peak}'
     mix_name='tiny-dino-voice-b-childlike.wav' if args.childlike else 'tiny-dino-audio-sfx-v2.wav'
     sf.write(ROOT/'out'/mix_name,mix,SR,subtype='PCM_24')
-    report={'durationSeconds':48,'source':'Native Veo audio, retimed with pitch-preserving atempo to match each clip','speechCheck':'No recognizable speech detected by local Whisper/VAD in five native tracks','peakDbFS':round(20*np.log10(peak),2),'clipping':False,'scenes':scenes}
+    report={'durationSeconds':48,'source':'Native clip audio, retimed with pitch-preserving atempo to match each clip','speechCheck':'No recognizable speech detected by local Whisper/VAD in five native tracks','peakDbFS':round(20*np.log10(peak),2),'clipping':False,'scenes':scenes}
     (target.parent/'sfx-v2-check.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(report,ensure_ascii=False,indent=2))
 

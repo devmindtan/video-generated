@@ -72,7 +72,7 @@
   "fadeOutSeconds": 2,
   "sfxEnabled": false,
   "imagesChecked": 5,
-  "geminiVeoCalls": 0,
+  "paidServiceCalls": 0,
   "compositionRendered": false,
   "listeningReview": "Pending user audition in Studio; numerical checks do not establish perceived quality"
 }

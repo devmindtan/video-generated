@@ -48,7 +48,7 @@ npm run typecheck
 - Thiếu nhi: footage chuyển động thật, giọng B đã chọn; không thay bằng zoom ảnh tĩnh.
 - Chỉ timing/trim nhạc chỉnh độc lập trong Studio Edit; giữ volume/ducking và fade-in/out.
 - Không render/export tự động. Không tự tái tạo take hoặc thay user edits để “đồng bộ”.
-- Gemini API/Veo đang tạm dừng, Vertex không sử dụng. Kids có workflow Gemini thủ công; API chỉ khi có phê duyệt mới và kiểm tra chi phí. [An toàn chi phí](docs/gemini-api-safety.md), [workflow thủ công](docs/flow-and-gemini.md).
+- Không dùng dịch vụ tính tiền: mọi bước chạy cục bộ. Kids dùng footage sẵn có; thiếu thì báo thiếu.
 
 ## Thư mục
 

@@ -4,7 +4,7 @@ A: Trúc Ly gốc, giữ nguyên để đối chiếu. B: cùng giọng nền đ
 
 Backup trước thay đổi: `public/tiny-dino-adventure/backups/truc-ly-before-long-cta/`, gồm WAV gốc, metadata, caption, SRT và story gốc. Video SFX v2 trước đó vẫn được giữ trong out. Các file lớn trong public/out đang gitignore, cần sao lưu riêng khi chuyển máy.
 
-Giọng B ở `public/tiny-dino-adventure/audio/childlike-preview/`. Hai bản dùng chung hình, câu chữ, thời lượng và SFX để dễ so sánh. Tốc độ/cao độ được xử lý cục bộ, không phát sinh yêu cầu Veo mới. Thời gian câu giữ theo bản A, xử lý atempo có thể làm onset lệch nhẹ; cần nghe duyệt B để quyết định.
+Giọng B ở `public/tiny-dino-adventure/audio/childlike-preview/`. Hai bản dùng chung hình, câu chữ, thời lượng và SFX để dễ so sánh. Tốc độ/cao độ được xử lý cục bộ, không tạo clip mới. Thời gian câu giữ theo bản A, xử lý atempo có thể làm onset lệch nhẹ; cần nghe duyệt B để quyết định.
 
 Composition mặc định B: `TinyDinoAdventure`; alias nghe thử B: `TinyDinoAdventureChildVoice`. Để nghe A, dùng prop `voiceVariant: 'original'`. WAV gốc vẫn ở thư mục audio ban đầu.
 
