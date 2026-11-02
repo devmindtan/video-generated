@@ -58,7 +58,7 @@ const Progress: FC<{starts: number[]; total: number}> = ({starts, total}) => {
   </AbsoluteFill>;
 };
 
-// Very quiet music under the body (user 2026-11-02), from the first part after the series intro to the end of the
+// Very quiet music under the body (user 2026-11-02; track in body-music.json), from the first part after the series intro to the end of the
 // last body part; body-music.json holds the volumes (speech / rests) and fades. Volume follows the narration of
 // whichever part is playing, averaged over ±8 frames so it never jumps at a sentence edge.
 const BodyMusic: FC<{list: ReturnType<typeof parts>; starts: number[]}> = ({list, starts}) => {
@@ -78,9 +78,9 @@ const BodyMusic: FC<{list: ReturnType<typeof parts>; starts: number[]}> = ({list
     return out;
   }, [key]); // eslint-disable-line react-hooks/exhaustive-deps
   if (!body.length) return null;
-  return <Track name="Nhạc nền nội dung · Pufino – Enlivening · rất nhỏ, chỉnh đầu/cuối trong Edit">
+  return <Track name={`Nhạc nền nội dung · ${bodyMusic.credit.artists.join(", ")} – ${bodyMusic.credit.title} · rất nhỏ, chỉnh đầu/cuối trong Edit`}>
     <MusicFade fadeInSeconds={bodyMusic.fadeInSeconds} fadeOutSeconds={bodyMusic.fadeOutSeconds}>
-      <Audio name="Pufino – Enlivening (nhạc nền nội dung)" src={staticFile(bodyMusic.file)} from={from} durationInFrames={to - from}
+      <Audio name={`${bodyMusic.credit.artists.join(", ")} – ${bodyMusic.credit.title} (nhạc nền nội dung)`} src={staticFile(bodyMusic.file)} from={from} durationInFrames={to - from}
         volume={(f: number) => volumes[Math.min(volumes.length - 1, Math.max(0, f))] ?? bodyMusic.pauseVolume} playbackRate={bodyMusic.playbackRate} loop />
     </MusicFade>
   </Track>;

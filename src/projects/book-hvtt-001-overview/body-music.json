@@ -1,15 +1,15 @@
 {
-  "file": "audio-library/music/Pufino - Enlivening (freetouse.com).mp3",
+  "file": "audio-library/music/Moavii - Butterflies (freetouse.com).mp3",
   "speechVolume": 0.05,
   "pauseVolume": 0.09,
   "fadeInSeconds": 2.5,
   "fadeOutSeconds": 3,
-  "playbackRate": 0.85,
-  "editingNote": "User 2026-11-02 (after p9): very quiet background music under the body only (from 'Cách làm của tập' to the end of 'Nhận xét chung'; the intro and outro keep their own music). Same track as the intro/outro for one identity; loops over the full source. speechVolume while the narration is heard, pauseVolume in rests, smoothed over about half a second. Fade-in/out follow the clip's edges; move or trim the clip in Studio Edit.",
+  "playbackRate": 1,
+  "editingNote": "User 2026-11-02 (after p9): very quiet background music under the body only (from 'Cách làm của tập' to the end of 'Nhận xét chung'; the intro and outro keep their own music). User 2026-11-02: the intro/outro track (Enlivening) did not fit the body; Moavii – Butterflies (softest, least bright of the local library) at its own speed, looping over the full source (141.2 s). speechVolume while the narration is heard, pauseVolume in rests, smoothed over about half a second. Fade-in/out follow the clip's edges; move or trim the clip in Studio Edit.",
   "credit": {
-    "title": "Enlivening",
+    "title": "Butterflies",
     "artists": [
-      "Pufino"
+      "Moavii"
     ],
     "source": "freetouse.com"
   }
