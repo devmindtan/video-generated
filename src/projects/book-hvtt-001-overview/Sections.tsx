@@ -339,7 +339,7 @@ export const Nhom3C = section("07 nhóm 3C", /(chịu|đựng|vốc muối|dòng
       const row = Math.floor(i / 6), s = (row ? 1.15 : .95) * (1 - away * .45), x = (row ? 700 : 775) + (i % 6) * 150 + away * (280 + i * 12), y = (row ? 760 : 640) - away * 90;
       return <path key={i} d={cow(x, y, s)} fill="none" stroke={GOLD} strokeWidth={2.4} strokeLinejoin="round" opacity={appear(c.frame, c.start + 6 + i * 2, 8) * (1 - away * .7)} />;
     })}
-    <g opacity={appear(c.frame, c.at(11), 10) * (1 - appear(c.frame, c.at(13) - 22, 10))}><Figure frame={c.frame} from={c.at(11)} x={300 + run * 600} y={760} s={1} pose="walk" arm="point" /></g>
+    <g opacity={appear(c.frame, c.at(11), 10) * (1 - appear(c.frame, c.at(13) - 22, 10))}><Figure frame={c.frame} from={c.at(11)} x={110 + run * 140} y={760} s={1} pose="walk" arm="point" /></g>
   </g>;}},
   // 13 a teacher and students sit under a tree, with the quote
   {at: 13, quote: true, draw: (c) => <g>

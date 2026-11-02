@@ -83,7 +83,7 @@ Phần còn lại của cuốn sách, mình xin gom thành bốn nhóm để c�
 
 [nghỉ] Nhóm thứ hai nói về tình yêu và những người gần chúng ta nhất.
 
-**Ghen tuông.** Ca dao có câu: mình với ta tuy hai mà một. Tác giả nhắc thêm vế sau: tuy một mà hai. Theo tác giả, yêu là hòa hợp chứ không biến người kia thành cái bóng của mình; họ vẫn có bạn bè, sở thích và khoảng trời riêng. Khi ghen, điều mình xót nhiều khi là cảm giác bị bỏ rơi của chính mình. Vì vậy tác giả khuyên một điều đơn giản mà khó: thừa nhận là mình đang ghen, và nhờ người kia giúp mình.
+**Ghen tuông.** Trong ca dao có câu: mình với ta tuy hai mà một. Tác giả nhắc thêm vế sau: tuy một mà hai. Theo tác giả, yêu là hòa hợp chứ không biến người kia thành cái bóng của mình; họ vẫn có bạn bè, sở thích và khoảng trời riêng. Khi ghen, điều mình xót nhiều khi là cảm giác bị bỏ rơi của chính mình. Vì vậy tác giả khuyên một điều đơn giản mà khó: thừa nhận là mình đang ghen, và nhờ người kia giúp mình.
 
 {Ch7 PDF 37–40}
 

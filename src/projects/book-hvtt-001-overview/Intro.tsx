@@ -110,21 +110,56 @@ export const Visualizer: FC<{bands: number[]; level: number; appear: number}> = 
   </div>;
 };
 
-// User 2026-11-02 ("chữ thưa thớt, ngắt ngắt"): the aligner cuts a page at every comma, so neighbouring pages
-// of one sentence are joined into fuller lines (two lines at most), a page stays up through a short pause until
-// the next one, and only the first page after a real silence fades in.
+// User 2026-11-02 ("chữ thưa thớt, ngắt ngắt"): the aligner cuts a page at every comma, so the pages of one
+// sentence are joined and re-split into balanced pages of at most two lines, cut after a comma where possible
+// (times shared out by character position); a page stays up through a short pause until the next one, and only
+// the first page after a real silence fades in.
 const MAX_CHARS = 84, HOLD_MS = 1200;
 const merged = new WeakMap<Caption[], Caption[]>();
+const splitSentence = (pieces: Caption[]): Caption[] => {
+  const text = pieces.map((p) => p.text.trim()).join(' ');
+  // Time at a character offset, linear inside the aligner page that holds it.
+  const timeAt = (offset: number) => {
+    let pos = 0;
+    for (const p of pieces) {
+      const len = p.text.trim().length + 1;
+      if (offset <= pos + len) return p.startMs + (p.endMs - p.startMs) * Math.min(1, (offset - pos) / len);
+      pos += len;
+    }
+    return pieces[pieces.length - 1].endMs;
+  };
+  // An aligner page can run across a sentence end: cut there first, then split long sentences.
+  const bounds = [0, ...[...text.matchAll(/[.?!…]["”]?(?= )/g)].map((m) => (m.index ?? 0) + m[0].length + 1), text.length + 1];
+  const cuts: number[] = [];
+  for (let b = 0; b < bounds.length - 1; b++) {
+    const from = bounds[b], to = bounds[b + 1] - 1, len = to - from, count = Math.ceil(len / MAX_CHARS);
+    cuts.push(from);
+    for (let k = 1; k < count; k++) {
+      const ideal = from + (len * k) / count, prev = cuts[cuts.length - 1];
+      let best = -1, score = Infinity;
+      for (let i = prev + 10; i < to - 10; i++) {
+        if (text[i] !== ' ' || i - prev > MAX_CHARS) continue;
+        const s = Math.abs(i - ideal) - (/[,;:]$/.test(text.slice(0, i)) ? 18 : 0);
+        if (s < score) {score = s; best = i;}
+      }
+      if (best > 0) cuts.push(best + 1);
+    }
+  }
+  cuts.push(text.length + 1);
+  return cuts.slice(0, -1).map((from, k) => ({...pieces[0], text: text.slice(from, cuts[k + 1] - 1).trim(), startMs: timeAt(from), endMs: k === cuts.length - 2 ? pieces[pieces.length - 1].endMs : timeAt(cuts[k + 1] - 1), timestampMs: timeAt(from)})).filter((p) => p.text);
+};
 const mergeCaptions = (captions: Caption[]) => {
   const cached = merged.get(captions);
   if (cached) return cached;
   const out: Caption[] = [];
+  let group: Caption[] = [];
+  const flush = () => {if (group.length) out.push(...splitSentence(group)); group = [];};
   for (const c of captions) {
-    const last = out[out.length - 1];
-    if (last && !/[.?!…]["”]?$/.test(last.text.trim()) && last.text.length + 1 + c.text.length <= MAX_CHARS && c.startMs - last.endMs < HOLD_MS) {
-      out[out.length - 1] = {...last, text: `${last.text} ${c.text}`, endMs: c.endMs};
-    } else out.push({...c});
+    const last = group[group.length - 1];
+    if (last && (/[.?!…]["”]?$/.test(last.text.trim()) || c.startMs - last.endMs >= HOLD_MS)) flush();
+    group.push(c);
   }
+  flush();
   merged.set(captions, out);
   return out;
 };
