@@ -30,8 +30,7 @@ vẽ bằng code trong Remotion, nên không có prompt tạo ảnh; mỗi mục
 | "Đợi cháu nín rồi, bà mới dặn: lần sau đi đứng cẩn thận nghe con." | Bà ngồi xuống cạnh cháu, tay đặt lên vai bé; đôi dép nhỏ được xếp lại ngay ngắn trước ngạch cửa; ánh sáng trong nhà ấm dần |
 | "Lúc đó, đứa bé chỉ thấy hả dạ…" | Đứa bé ngẩng lên nhìn cái ngạch cửa, dáng ngồi thẳng lại; gậy của bà dựa vào khung cửa |
 | "Bà biết cháu đang đau và đang sợ, nên dỗ cho cháu yên trước, rồi mới dặn sau." | Cảnh gần hai bàn tay: tay bà xoa nhẹ đầu gối nhỏ, rồi một ngón tay khẽ chỉ về phía ngạch cửa |
-| "Đặt mình vào chỗ người kia rồi mới nói điều phải… cả cuốn sách hôm nay xoay quanh điều đó." | Bà ngồi thụp xuống ngang tầm cháu; một đường nét đứt nối hai ánh mắt cùng độ cao, ánh sáng ấm lan ra quanh hai bà cháu |
-| "Theo tác giả, muốn thương ai thì trước hết phải hiểu được người ấy." | Bóng dáng người lớn ngồi bên bàn dưới đèn, đặt tay lên cuốn sách mở; một trái tim nhỏ hiện trên trang sách |
+| "Và đó cũng là điều tác giả nhắc đi nhắc lại trong cả cuốn sách: muốn thương ai, trước hết phải hiểu được người ấy." | Bóng dáng người lớn ngồi bên bàn dưới đèn, đặt tay lên cuốn sách mở; một trái tim nhỏ hiện trên trang sách ở vế "muốn thương ai" |
 
 ## 1 · Cuốn sách là gì
 
