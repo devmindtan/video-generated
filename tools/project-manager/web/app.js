@@ -6,7 +6,7 @@ const iconPaths={back:'M19 12H5 M11 6l-6 6 6 6',grid:'M3 3h7v7H3z M14 3h7v7h-7z 
 function icon(name){return `<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="${iconPaths[name]||iconPaths.folder}"/></svg>`;}
 function dirtyNotes(){
   if(!state.drawer||$('#drawer').hidden)return false;
-  if(state.drawer.workflow)return Boolean($('#workflow-rules'))&&($('#workflow-rules').value!==state.drawer.rulesText||$('#workflow-notes').value!==state.drawer.notes);
+  if(state.drawer.workflow)return Boolean(state.drawer.editing&&$('#workflow-rules'))&&(workflowRules().join('\n')!==state.drawer.rulesText||$('#workflow-notes').value.replace(/\s+$/,'')!==state.drawer.notes);
   return Boolean(!state.drawer.book&&$('#notes-text')&&state.drawer.notes!==$('#notes-text').value);
 }
 function canLeaveNotes(){return !dirtyNotes()||confirm('Ghi chú chưa được lưu. Bạn có muốn rời hồ sơ này?');}
@@ -1026,13 +1026,31 @@ function renderWorkflow(){
     return groups.sort((a,b)=>a.level-b.level).map(g=>`<ol class="flow-column${g.level===first?' flow-start':''}${g.level===last?' flow-end':''}${g.stages.length>1?' flow-fork':''}">${g.stages.map(node).join('')}</ol>`).join('');};
   const legend=[...new Set(flow.stages.map(s=>s.automation.mode))].map(m=>`<li class="mode-${esc(m)}">${esc(stepModes[m])}</li>`).join('');
   box.innerHTML=heading+`<div class="workflow-chart" id="workflow-chart"><ul class="workflow-legend" aria-label="Chú thích">${legend}<li class="legend-hint">Bấm một bước để xem việc cần làm và thêm quy tắc, ghi chú cho agent.</li></ul><div class="workflow-flow">${flow.phases.map(p=>`<section class="workflow-phase" aria-label="${esc(p.title)}"><h3>${esc(p.title)}</h3><div class="flow-columns">${columns(p)}</div></section>`).join('')}</div></div>`;
+  linkWorkflowRows();
+}
+// Phases wrap onto new rows; a drawn link turns down from the end of one row into the start of the next.
+const workflowResize=new ResizeObserver(()=>requestAnimationFrame(linkWorkflowRows));
+function linkWorkflowRows(){
+  const flowBox=$('#workflow .workflow-flow');if(!flowBox)return;workflowResize.observe(flowBox);
+  flowBox.querySelector('.flow-wrap')?.remove();flowBox.querySelectorAll('.row-start,.row-end').forEach(e=>e.classList.remove('row-start','row-end'));
+  if(getComputedStyle(flowBox).display!=='flex')return;
+  const phases=[...flowBox.querySelectorAll('.workflow-phase')],base=flowBox.getBoundingClientRect(),paths=[];
+  const rel=el=>{const r=el.getBoundingClientRect();return {l:r.left-base.left+flowBox.scrollLeft,r:r.right-base.left+flowBox.scrollLeft,t:r.top-base.top,b:r.bottom-base.top,m:(r.top+r.bottom)/2-base.top};};
+  for(let i=1;i<phases.length;i++){
+    const prev=phases[i-1],next=phases[i];if(next.offsetTop<=prev.offsetTop)continue;
+    prev.classList.add('row-end');next.classList.add('row-start');
+    const from=rel([...prev.querySelectorAll('.flow-column')].pop()),to=rel(next.querySelector('.flow-column')),gap=rel(next).t-6;
+    paths.push(`M${from.r} ${from.m}H${from.r+8}V${gap}H${to.l-8}V${to.m}H${to.l}`);
+  }
+  if(!paths.length)return;
+  flowBox.insertAdjacentHTML('beforeend',`<svg class="flow-wrap" width="${flowBox.scrollWidth}" height="${flowBox.scrollHeight}" aria-hidden="true">${paths.map(d=>`<path d="${d}"/>`).join('')}</svg>`);
 }
 async function openWorkflowStage(series,key,record=true){
   if(!canLeaveNotes())return;
   const flow=state.workflow?.series===series&&!state.workflow.error?state.workflow:await loadWorkflow(series);if(!flow)return toast('Không đọc được quy trình của series.');
   const stage=key==='general'?null:flow.stages.find(s=>s.id===key);if(key!=='general'&&!stage)return toast('Không tìm thấy bước này.');
   const config=stage?stage.config:flow.general,title=stage?stage.title:'Quy tắc chung';
-  state.drawer={workflow:true,id:key,series,title:'Quy trình: '+title,revision:flow.revision,rulesText:config.rules.join('\n'),notes:config.notes};state.documentRequest++;
+  state.drawer={workflow:true,id:key,series,title:'Quy trình: '+title,revision:flow.revision,rulesText:config.rules.join('\n'),notes:config.notes,file:flow.file,general:!stage,editing:false};state.documentRequest++;
   if(record)recordRoute(location.pathname+location.search+'#workflow/'+encodeURIComponent(series)+'/'+encodeURIComponent(key),true);
   $('#drawer-eyebrow').textContent=stage?`QUY TRÌNH · BƯỚC ${stage.number}/${flow.stages.length}`:'QUY TRÌNH · CẢ SERIES';
   const list=items=>`<ul class="workflow-list">${items.map(i=>`<li>${esc(i)}</li>`).join('')}</ul>`,paths=items=>`<ul class="workflow-paths">${items.map(i=>`<li><code>${esc(i)}</code></li>`).join('')}</ul>`;
@@ -1046,21 +1064,57 @@ async function openWorkflowStage(series,key,record=true){
 ${stage.reads.length||stage.writes.length?`<section class="drawer-section"><h3>Đầu vào và đầu ra</h3>${stage.reads.length?`<p class="workflow-label">Đọc</p>${paths(stage.reads)}`:''}${stage.writes.length?`<p class="workflow-label">Ghi</p>${paths(stage.writes)}`:''}${stage.invalidates.length?`<p class="workflow-aside">Khi kết quả bước này thay đổi, cần kiểm lại: ${esc(stage.invalidates.map(name).join(', '))}.</p>`:''}</section>`:''}`;
   }else body=`<div class="drawer-meta"><span>${esc(flow.title)}</span></div><section class="drawer-section"><h3>Quy tắc sẵn có</h3>${flow.builtInRules.length?`<p class="workflow-aside">Luôn áp dụng cho các bước agent soạn trong series này.</p>${list(flow.builtInRules)}`:'<p>Series này chưa có quy trình sản xuất được duyệt, nên chưa có quy tắc sẵn.</p>'}</section>`;
   $('#drawer-content').innerHTML=`<h2 id="drawer-title">${esc(title)}</h2>${body}
-<section class="drawer-section workflow-form"><h3>${stage?'Quy tắc và ghi chú của bạn':'Quy tắc chung của bạn'}</h3>
-<label class="field"><span>Quy tắc bổ sung</span><textarea id="workflow-rules" class="notes-input workflow-input" rows="5" maxlength="16000" placeholder="Mỗi dòng một quy tắc agent phải tuân theo">${esc(state.drawer.rulesText)}</textarea><small>Mỗi dòng là một quy tắc${stage?' cho bước này':' cho mọi bước của series'}.</small></label>
-<label class="field"><span>Ghi chú cho agent</span><textarea id="workflow-notes" class="notes-input workflow-input" rows="6" maxlength="10000" placeholder="Bối cảnh, ví dụ nên theo, điều cần tránh…">${esc(config.notes)}</textarea></label>
-<div class="notes-footer"><small id="workflow-status">Lưu vào <code>${esc(flow.file)}</code>. Không mở khóa render, đăng tải hay sinh nội dung trả phí.</small><button class="button primary" id="save-workflow">Lưu quy tắc và ghi chú</button></div></section>`;
+<section class="drawer-section workflow-form" id="workflow-own"></section>`;
+  renderWorkflowRules();
   showDrawer();
 }
+// The user's own rules read as a numbered list; editing gives each rule its own growing field.
+function renderWorkflowRules(focus){
+  const d=state.drawer,box=$('#workflow-own');if(!d?.workflow||!box)return;
+  const rules=d.rulesText?d.rulesText.split('\n'):[],scope=d.general?'mọi bước của series':'bước này';
+  const heading=`<h3>${d.general?'Quy tắc chung của bạn':'Quy tắc và ghi chú của bạn'}</h3>`;
+  if(!d.editing){
+    box.innerHTML=heading+(rules.length||d.notes?`${rules.length?`<p class="workflow-label">Quy tắc bổ sung</p><ol class="rule-list">${rules.map(r=>`<li>${esc(r)}</li>`).join('')}</ol>`:''}${d.notes?`<p class="workflow-label">Ghi chú cho agent</p><p class="rule-notes">${esc(d.notes)}</p>`:''}`
+      :`<p class="workflow-aside">Chưa có quy tắc hay ghi chú riêng cho ${scope}.</p>`)
+      +`<div class="notes-footer"><small id="workflow-status">Lưu trong <code>${esc(d.file)}</code>.</small><button class="button secondary" id="edit-workflow" data-edit-workflow>${rules.length||d.notes?'Sửa quy tắc và ghi chú':'Thêm quy tắc hoặc ghi chú'}</button></div>`;
+    if(focus)$('#edit-workflow').focus();return;
+  }
+  box.innerHTML=heading+`<p class="workflow-label" id="rules-label">Quy tắc bổ sung</p><p class="workflow-aside rules-hint">Mỗi ô một quy tắc agent phải theo ở ${scope}. Enter để thêm ô mới.</p>
+<ol class="rule-editor" id="workflow-rules" aria-labelledby="rules-label"></ol><button class="button quiet add-rule" data-add-rule>+ Thêm quy tắc</button>
+<label class="field"><span>Ghi chú cho agent</span><textarea id="workflow-notes" class="notes-input workflow-input" rows="4" maxlength="10000" placeholder="Bối cảnh, ví dụ nên theo, điều cần tránh…">${esc(d.notes)}</textarea></label>
+<div class="notes-footer"><small id="workflow-status">Lưu vào <code>${esc(d.file)}</code>. Không mở khóa render, đăng tải hay sinh nội dung trả phí.</small><div class="workflow-actions"><button class="button secondary" data-cancel-workflow>Hủy</button><button class="button primary" id="save-workflow">Lưu</button></div></div>`;
+  (rules.length?rules:['']).forEach(r=>addRuleField(r));
+  if(focus)$('#workflow-rules .rule-input')?.focus();
+}
+function addRuleField(text='',after=null){
+  const li=document.createElement('li');
+  li.innerHTML=`<textarea class="rule-input" rows="1" maxlength="500" aria-label="Quy tắc" placeholder="Ví dụ: Mở đầu bằng một tình huống cụ thể">${esc(text)}</textarea><button class="button quiet rule-remove" data-remove-rule aria-label="Xóa quy tắc này">Xóa</button>`;
+  const list=$('#workflow-rules');after?after.after(li):list.append(li);requestAnimationFrame(()=>growRule(li.firstChild));return li.firstChild;
+}
+function growRule(el){el.style.height='auto';el.style.height=el.scrollHeight+2+'px';}
+function workflowRules(){return [...document.querySelectorAll('#workflow-rules .rule-input')].flatMap(el=>el.value.split('\n')).map(r=>r.trim()).filter(Boolean);}
+function editWorkflow(on){const d=state.drawer;if(!d?.workflow)return;if(!on&&dirtyNotes()&&!confirm('Bỏ các thay đổi chưa lưu?'))return;d.editing=on;renderWorkflowRules(true);}
 async function saveWorkflowStage(){
-  const drawer=state.drawer;if(!drawer?.workflow)return;const button=$('#save-workflow'),rulesText=$('#workflow-rules').value,notes=$('#workflow-notes').value;button.disabled=true;
+  const drawer=state.drawer;if(!drawer?.workflow)return;const button=$('#save-workflow'),rules=workflowRules(),notes=$('#workflow-notes').value;button.disabled=true;
   try{
-    const rules=rulesText.split('\n').map(r=>r.trim()).filter(Boolean);
     const result=await api('/api/workflow',{series:drawer.series,stage:drawer.id,rules,notes,revision:drawer.revision});
-    if(state.drawer===drawer){Object.assign(drawer,{revision:result.revision,rulesText:rules.join('\n'),notes:notes.replace(/\s+$/,'')});$('#workflow-rules').value=drawer.rulesText;$('#workflow-notes').value=drawer.notes;$('#workflow-status').textContent='Đã lưu · '+new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'});}
+    if(state.drawer===drawer){Object.assign(drawer,{revision:result.revision,rulesText:rules.join('\n'),notes:notes.replace(/\s+$/,''),editing:false});renderWorkflowRules(true);$('#workflow-status').textContent='Đã lưu · '+new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'});}
     toast('Đã lưu quy tắc và ghi chú.');if(state.series===drawer.series)await loadWorkflow(drawer.series);
   }catch(error){toast(error.message);}finally{button.disabled=false;}
 }
+$('#drawer-content').addEventListener('click',event=>{
+  const t=event.target.closest('button');if(!t)return;
+  if(t.hasAttribute('data-edit-workflow'))editWorkflow(true);
+  else if(t.hasAttribute('data-cancel-workflow'))editWorkflow(false);
+  else if(t.hasAttribute('data-add-rule'))addRuleField().focus();
+  else if(t.hasAttribute('data-remove-rule')){const li=t.closest('li'),next=li.nextElementSibling||li.previousElementSibling;li.remove();if(!$('#workflow-rules li'))addRuleField();(next?.querySelector('.rule-input')||$('#workflow-rules .rule-input')).focus();}
+});
+$('#drawer-content').addEventListener('input',event=>{if(event.target.classList?.contains('rule-input'))growRule(event.target);});
+$('#drawer-content').addEventListener('keydown',event=>{
+  const el=event.target;if(!el.classList?.contains('rule-input'))return;
+  if(event.key==='Enter'&&!event.shiftKey&&!event.isComposing){event.preventDefault();addRuleField('',el.closest('li')).focus();}
+  else if(event.key==='Backspace'&&!el.value&&$('#workflow-rules').children.length>1){event.preventDefault();const prev=el.closest('li').previousElementSibling||el.closest('li').nextElementSibling;el.closest('li').remove();const p=prev.querySelector('.rule-input');p.focus();p.setSelectionRange(p.value.length,p.value.length);}
+});
 
 // Voice and music library. One shared player at the bottom plays voice samples, music and SFX and keeps
 // playing while you browse; the only write here is choosing voices for the preferred playlist.
