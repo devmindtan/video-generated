@@ -77,12 +77,22 @@
     },
     {
       "scene": 1,
-      "text": "Ý tác giả là mình càng ôm nhiều thứ thì càng có nhiều thứ để sợ mất.",
+      "text": "Tác giả không bảo mình phải bỏ hết mọi thứ.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Mà thứ mình ôm đâu chỉ là của cải, còn có lời khen, sự công nhận.",
+      "text": "Sách ví đời mình như một con thuyền chở quá nặng: muốn đi tiếp thì phải can đảm bỏ bớt vài thùng hàng, dù là hàng quý.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Có mười hai con bò thì có mười hai nỗi lo, chỉ một con thì chỉ một nỗi lo.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Mà thứ khó buông nhất lại không phải của cải, mà là lời khen, sự công nhận.",
       "pauseAfter": 0.4
     },
     {

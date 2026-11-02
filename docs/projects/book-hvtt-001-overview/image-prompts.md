@@ -12,6 +12,14 @@ vẽ bằng code trong Remotion, nên không có prompt tạo ảnh; mỗi mục
   có chuyển động nhỏ (nét đang vẽ, vật đang dịch, ánh sáng đổi). Chuyển cảnh mờ chéo ~0,5 giây, không zoom/pan lặp lại.
 - Câu trích nguyên văn hiện thành chữ trên hình, kèm "Hiểu về trái tim, Minh Niệm".
 
+## 0p · Cách làm của tập (`Sections.tsx` CachLam; trước thẻ giới thiệu tập)
+
+| Câu | Hình |
+|---|---|
+| Nói rõ cách làm | Người kể đứng cạnh cuốn sách đóng "HIỂU VỀ TRÁI TIM" |
+| Chỉ là người kể lại | Cuốn sách mở, các dòng chữ chảy thành nét đứt sang người kể đang quay về phía sách |
+| Chưa đạt, ý kiến riêng ở cuối | Một thanh dài "KỂ LẠI CUỐN SÁCH" (vàng), cuối thanh một đoạn ngắn màu ngà "chưa đạt · ý kiến riêng · ở cuối video" |
+
 ## 0b · Mở chuyện (`MoChuyen.tsx`; đoạn 1 đã dựng, cập nhật theo lời mới)
 
 | Câu đọc | Hình và chuyển động |
@@ -70,7 +78,7 @@ vẽ bằng code trong Remotion, nên không có prompt tạo ảnh; mỗi mục
 |---|---|
 | Chịu đựng | (1) Câu trích chịu/đựng; (2) bàn tay thả vốc muối vào tô nước, nước đổi màu đục; (3) vốc muối thả xuống dòng sông, dòng nước vẫn trong và chảy; (4) dòng sông mở rộng ra |
 | Thất bại | (1) Bức tường gạch xếp dở; (2) chữ "thất bại" gạch đi thành "chưa thành công"; (3) dáng người vội chạy từ cửa này sang cửa khác; (4) người ấy ngồi xuống bậc thềm, nhìn lại bức tường |
-| Buông xả | (1) Cánh đồng có hàng rào và mười hai con bò nét vẽ (câu dẫn); (2) bác nông dân chạy vào, tay chỉ hỏi; (3) đàn bò đi xa dần, bác rời đi (mất mùa, mất bò); (4) thầy và học trò ngồi dưới gốc cây, câu trích; (5) bong bóng buộc dây vào tay một người (của cải, rồi lời khen) và tuột dần, một đám mây chê xuất hiện |
+| Buông xả | (1) Cánh đồng có hàng rào và mười hai con bò nét vẽ (câu dẫn); (2) bác nông dân chạy vào, tay chỉ hỏi; (3) đàn bò đi xa dần, bác rời đi (mất mùa, mất bò); (4) thầy và học trò ngồi dưới gốc cây, câu trích; (5) con thuyền chở đầy thùng hàng nằm thấp, vài thùng rơi xuống nước và thuyền nổi lên (bỏ bớt, không bỏ hết); (6) mười hai con bò, rồi chỉ còn một (mười hai nỗi lo, một nỗi lo); (7) bong bóng buộc dây vào tay một người (lời khen) rồi tuột dần, một đám mây chê xuất hiện |
 | Biết đủ, thảnh thơi | (1) Lá thu rơi trên bàn làm việc đầy giấy, câu "Ủa, mùa thu đến rồi à?"; (2) chồng tiền nhỏ dần thành một chiếc ghế êm; (3) con đường quanh co, dáng người thong thả bước; (4) bước chân để lại dấu trên đường, không có vạch đích |
 
 ## 3D · Sống giữa mọi người

@@ -46,7 +46,7 @@ import {BookInsightsOutro, bookOutroMetadata} from './book-hvtt-001-overview/Out
 import {BookInsightsEpisodeCard, episodeCardMetadata} from './book-hvtt-001-overview/EpisodeCard';
 import {BookHvttMoChuyen, moChuyenMetadata} from './book-hvtt-001-overview/MoChuyen';
 import {BookHvttEpisode, episodeMetadata} from './book-hvtt-001-overview/Episode';
-import {CuonSach, SoiChi, Nhom3A, Nhom3B, Nhom3C, Nhom3D, DiemChuaDat, TongKet, YKien, NhanXet} from './book-hvtt-001-overview/Sections';
+import {CachLam, CuonSach, SoiChi, Nhom3A, Nhom3B, Nhom3C, Nhom3D, DiemChuaDat, TongKet, YKien, NhanXet} from './book-hvtt-001-overview/Sections';
 import {PeoplePleasingVideo} from './people-pleasing/Video';
 import {PeoplePleasingThumbnail} from './people-pleasing/Thumbnail';
 import {NeverTriedVideo} from './never-tried/Video';
@@ -228,6 +228,7 @@ export const ProjectCompositions: FC = () => (
             voice: 'clone-ban-v4a-sang2',
             channelLabel: 'TÂM LÝ CUỘC SỐNG',
           }} />
+          <Composition id="BookHvttCachLam" component={CachLam} calculateMetadata={renderTo('book-hvtt-001-overview', CachLam.metadata)} durationInFrames={600} fps={30} width={1920} height={1080} defaultProps={{voice: '01b-cach-lam-sang2', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
           <Composition id="BookHvttEpisodeCard" component={BookInsightsEpisodeCard} calculateMetadata={renderTo('book-hvtt-001-overview', episodeCardMetadata)} durationInFrames={300} fps={30} width={1920} height={1080} defaultProps={{voice: '01-gioi-thieu-tap', channelLabel: 'TÂM LÝ CUỘC SỐNG', episodeLabel: 'TẬP 01', bookTitle: 'Hiểu về trái tim', bookAuthor: 'Minh Niệm'}} />
           <Composition id="BookHvttMoChuyen" component={BookHvttMoChuyen} calculateMetadata={renderTo('book-hvtt-001-overview', moChuyenMetadata)} durationInFrames={630} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan-02c', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
           <Composition id="BookHvttCuonSach" component={CuonSach} calculateMetadata={renderTo('book-hvtt-001-overview', CuonSach.metadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan-03', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />

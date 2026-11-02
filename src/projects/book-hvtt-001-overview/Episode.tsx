@@ -5,10 +5,10 @@ import {BookInsightsIntro, introFrames} from './Intro';
 import {BookInsightsEpisodeCard, cardFrames} from './EpisodeCard';
 import {BookHvttMoChuyen, moChuyenFrames} from './MoChuyen';
 import {BookInsightsOutro, outroFrames} from './Outro';
-import {CuonSach, DiemChuaDat, Nhom3A, Nhom3B, Nhom3C, Nhom3D, NhanXet, SoiChi, TongKet, YKien} from './Sections';
+import {CachLam, CuonSach, DiemChuaDat, Nhom3A, Nhom3B, Nhom3C, Nhom3D, NhanXet, SoiChi, TongKet, YKien} from './Sections';
 import {takeOf} from './scene-kit';
 
-// The episode as it grows: series intro → episode card → body sections → closing remark → series outro.
+// The episode as it grows: series intro → how this episode works → episode card → body sections → closing remark → series outro.
 // A body section joins only once its narration take exists (cloning runs section by section). Background music
 // plays only under the series intro and outro (user decision 2026-10-31), each with its own fades and glide;
 // the body runs on narration alone.
@@ -24,9 +24,14 @@ const voiceFor = (seg: string, clone?: boolean) => [...(clone ? [] : [`25-quoc-t
 const parts = (p: EpisodeProps, fps: number) => {
   const list: {name: string; frames: number; node: ReactElement}[] = [
     {name: 'Intro series', frames: introFrames(p.introVoice, fps), node: <BookInsightsIntro voice={p.introVoice} channelLabel={p.channelLabel} />},
+  ];
+  // How this episode works (user 2026-11-02), between the series intro and the episode card, once its take exists.
+  const howVoice = voiceFor('01b-cach-lam', p.cloneVoice);
+  if (howVoice) list.push({name: 'Cách làm của tập', frames: CachLam.frames(howVoice, fps), node: <CachLam voice={howVoice} channelLabel={p.channelLabel} />});
+  list.push(
     {name: 'Thẻ tập', frames: cardFrames(p.cardVoice, fps), node: <BookInsightsEpisodeCard voice={p.cardVoice} channelLabel={p.channelLabel} episodeLabel={p.episodeLabel} bookTitle={p.bookTitle} bookAuthor={p.bookAuthor} />},
     {name: 'Mở chuyện', frames: moChuyenFrames(p.bodyVoice, fps), node: <BookHvttMoChuyen voice={p.bodyVoice} channelLabel={p.channelLabel} />},
-  ];
+  );
   for (const [seg, name, Section] of BODY) {
     const voice = voiceFor(seg, p.cloneVoice);
     if (voice) list.push({name, frames: Section.frames(voice, fps), node: <Section voice={voice} channelLabel={p.channelLabel} />});

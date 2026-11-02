@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 HERE = Path(__file__).resolve().parent
 AUD = ROOT / 'public/book-hvtt-001-overview/voice-auditions'
-SEGMENTS = ['02-mo-chuyen', '03-cuon-sach', '04-soi-chi', '05-nhom-3a', '06-nhom-3b', '07-nhom-3c', '08-nhom-3d', '08e-diem-chua-dat', '08f-tong-ket', '08g-y-kien', '09-nhan-xet']
+SEGMENTS = ['01b-cach-lam', '02-mo-chuyen', '03-cuon-sach', '04-soi-chi', '05-nhom-3a', '06-nhom-3b', '07-nhom-3c', '08-nhom-3d', '08e-diem-chua-dat', '08f-tong-ket', '08g-y-kien', '09-nhan-xet']
 py = str(ROOT / '.venv/bin/python')
 MAX_PAUSE = .25  # pauses inside a sentence (user 2026-11-02: "chậm chậm, khoảng nghỉ lâu")
 

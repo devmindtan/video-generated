@@ -23,6 +23,12 @@ Chúc cả nhà một ngày tràn đầy niềm vui và hạnh phúc. [nghỉ]
 
 {Câu "chào mừng… series Đọc sách, hiểu mình. Ở series này mình sẽ…", câu "không có nhiều thời gian… dành cho bạn", câu chúc và câu chuyển theo lời người dùng 2026-10-30}
 
+## 0p. Cách làm của tập (trước thẻ giới thiệu tập)
+
+Trước khi vào sách, mình nói rõ cách làm của tập này. Phần chính của video, mình chỉ đứng ở vị trí người kể lại: kể đúng điều tác giả viết, kể cả những chỗ mình chưa chắc đồng tình. Những chỗ mình thấy chưa đạt và ý kiến riêng của mình sẽ nằm ở các phần cuối, tách riêng ra.
+
+{Theo yêu cầu người dùng 2026-11-02: nói rõ trước giới thiệu tập rằng phần chính chỉ kể lại sách (ví dụ chương Buông Xả nghiêng về lối sống ít hưởng thụ của bậc tu hành là ý tác giả), điểm chưa đạt (3E) và ý kiến riêng (4, 5) ở cuối.}
+
 ## 0a. Giới thiệu tập (≈ 8 giây, trên thẻ "TẬP 01 · Hiểu về trái tim · Minh Niệm" cuối intro)
 
 Tập đầu tiên, mình chọn cuốn Hiểu về trái tim của tác giả Minh Niệm, một cuốn sách viết về những cảm xúc rất đời thường của mỗi người.
@@ -111,9 +117,9 @@ Phần còn lại của cuốn sách, mình xin gom thành bốn nhóm để c�
 
 {Ch30 PDF 156–160; trích PDF 158}
 
-**Buông xả.** Chương này mở bằng một câu chuyện. Đức Phật đang ngồi trong rừng với các học trò thì một bác nông dân hớt hải chạy tới, hỏi có thấy đàn bò mười hai con của bác đi ngang qua không. Bác vừa mất mùa, giờ lại mất luôn đàn bò, nên vừa đi vừa than khóc. Đợi bác đi khuất, Đức Phật quay sang học trò: "Chúng ta đâu có con bò nào để mất, phải không?" [nghỉ] Ý tác giả là mình càng ôm nhiều thứ thì càng có nhiều thứ để sợ mất. Mà thứ mình ôm đâu chỉ là của cải, còn có lời khen, sự công nhận. Thích được khen bao nhiêu thì cũng sợ bị chê bấy nhiêu.
+**Buông xả.** Chương này mở bằng một câu chuyện. Đức Phật đang ngồi trong rừng với các học trò thì một bác nông dân hớt hải chạy tới, hỏi có thấy đàn bò mười hai con của bác đi ngang qua không. Bác vừa mất mùa, giờ lại mất luôn đàn bò, nên vừa đi vừa than khóc. Đợi bác đi khuất, Đức Phật quay sang học trò: "Chúng ta đâu có con bò nào để mất, phải không?" [nghỉ] Tác giả không bảo mình phải bỏ hết mọi thứ. Sách ví đời mình như một con thuyền chở quá nặng: muốn đi tiếp thì phải can đảm bỏ bớt vài thùng hàng, dù là hàng quý. Có mười hai con bò thì có mười hai nỗi lo, chỉ một con thì chỉ một nỗi lo. Mà thứ khó buông nhất lại không phải của cải, mà là lời khen, sự công nhận. Thích được khen bao nhiêu thì cũng sợ bị chê bấy nhiêu.
 
-{Ch39 PDF 205–209; trích PDF 205; khen/công nhận PDF 207. Viết lại 2026-11-02: người dùng thấy ví dụ con bò "rất khó hiểu", kể đủ bối cảnh (ngồi trong rừng, bác mất mùa rồi mất bò) trước câu của Đức Phật.}
+{Ch39 PDF 205–209; trích PDF 205; khen/công nhận PDF 207. Viết lại 2026-11-02: người dùng thấy ví dụ con bò "rất khó hiểu", kể đủ bối cảnh (ngồi trong rừng, bác mất mùa rồi mất bò) trước câu của Đức Phật. Sửa tiếp 2026-11-02: người dùng thấy nghe như "phải bỏ hết mọi thứ"; sách nói bỏ bớt: con thuyền đầy khẳm, "bỏ bớt vài thùng hàng" PDF 206; mười hai con bò mười hai nỗi lo PDF 209; buông tiện nghi tinh thần khó hơn gấp bội PDF 208.}
 
 **Biết đủ và thảnh thơi.** Tác giả tả nhịp sống hôm nay bằng một câu: "Ủa, mùa thu đến rồi à? Tôi bận quá." Sách nhắc rằng của cải chỉ làm đời dễ chịu hơn, "nó không phải là lý do lớn nhất để ta sống." Mình hay hẹn thảnh thơi tới lúc đủ tiền, tới lúc về hưu, nhưng theo tác giả, "không có con đường nào đưa tới sự thảnh thơi mà bản thân nó không phải là thảnh thơi". Tức là mình đi để mà đi, chứ không chỉ để mà tới.
 

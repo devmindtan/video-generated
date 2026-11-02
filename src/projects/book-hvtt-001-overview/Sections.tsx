@@ -18,6 +18,29 @@ const heart = (cx: number, cy: number, s: number) => `M${cx} ${cy + 60 * s} C${c
 const table = (c: Ctx, delay = 0) => D(c, 'M440 700 L1480 700 M500 700 L470 820 M1420 700 L1450 820', delay, 26, 2.4, .9);
 
 // ---- 03 Cuốn sách là gì (lines-03-cuon-sach.txt, script v4) -------------------------------------------------
+// 0p how this episode works (before the episode card): 0 a narrator beside a closed book; 1 the book open, its
+// lines flowing to the narrator who retells them; 2 the running order as one bar: retelling the book, then the
+// separate closing parts (what falls short, personal opinion)
+export const CachLam = section("01b cách làm của tập", /(cách làm của tập này|người kể lại|đúng điều tác giả viết|chưa đạt|ý kiến riêng|tách riêng)/gi, [
+  {at: 0, draw: (c) => <g>
+    {D(c, 'M820 400 L1180 400 L1180 700 L820 700 Z M840 400 L840 700', 0, 30, 2.6)}
+    <Word x={1000} y={560} size={34} text="HIỂU VỀ TRÁI TIM" opacity={appear(c.frame, c.start + 26, 14) * .9} />
+    <g opacity={appear(c.frame, c.start + 14, 14)}><Figure frame={c.frame} from={c.start + 14} x={600} y={760} s={1} /></g>
+  </g>},
+  {at: 1, quote: true, draw: (c) => {const flow = interpolate(c.frame, [within(c, 1, .2), within(c, 1, .7)], [0, 1], clamp);return <g>
+    <g transform="translate(-180 0) scale(1)">{book(c)}</g>
+    {[0, 1, 2].map((k) => <path key={k} d={`M1150 ${430 + k * 50} C1260 ${410 + k * 50} 1320 ${470 + k * 40} 1400 ${470 + k * 30}`} fill="none" stroke={GOLD} strokeWidth={2} strokeDasharray="6 12" strokeDashoffset={-c.frame * 1.5} opacity={flow * .8} />)}
+    <g opacity={appear(c.frame, c.start + 10, 14)}><Figure frame={c.frame} from={c.start + 10} x={1480} y={780} s={1} facing={-1} /></g>
+  </g>;}},
+  {at: 2, draw: (c) => {const tail = appear(c.frame, within(c, 2, .45), 18);return <g>
+    {D(c, 'M360 560 L1300 560', 0, 30, 10, .9)}
+    <Word x={830} y={520} size={32} text="KỂ LẠI CUỐN SÁCH" opacity={appear(c.frame, c.start + 20, 14)} />
+    <path d="M1340 560 L1560 560" stroke={IVORY} strokeWidth={10} strokeLinecap="round" opacity={tail} />
+    <text x={1450} y={620} textAnchor="middle" fill={IVORY} fontSize={28} fontWeight={700} opacity={tail}>chưa đạt · ý kiến riêng</text>
+    <text x={1450} y={660} textAnchor="middle" fill={GOLD} fontSize={24} fontWeight={700} opacity={tail * .9}>ở cuối video</text>
+  </g>;}},
+]);
+
 const CHAPTERS = ['KHỔ ĐAU', 'TỨC GIẬN', 'GHEN TUÔNG', 'CÔ ĐƠN', 'LO LẮNG', 'THA THỨ', 'LẮNG NGHE', 'BIẾT ĐỦ', 'BÌNH YÊN'];
 const teapot = (c: Ctx, delay = 0) => D(c, 'M900 690 C880 650 900 610 960 610 C1020 610 1040 650 1020 690 Z M930 610 C930 594 990 594 990 610 M1020 640 C1050 636 1064 620 1072 600 M900 650 C880 650 872 670 884 684', delay, 26, 2.4);
 export const CuonSach = section("03 cuốn sách", /(mục lục|năm mươi chương|vui buồn|không cần đọc theo thứ tự|đạo Phật|văn hóa Việt|tâm tình)/gi, [
@@ -300,7 +323,7 @@ const cow = (x: number, y: number, s: number) => {
     + ` M${P(92, -72)} L${P(88, -82)} M${P(100, -71)} L${P(104, -81)} M${P(0, -56)} C${P(-10, -52)} ${P(-12, -38)} ${P(-8, -30)}`;
 };
 const wall = (c: Ctx, delay = 0) => <g>{[0, 1, 2, 3, 4].map((row) => Array.from({length: 6 - row}, (_, i) => {const x = 640 + i * 110 + (row % 2) * 55, y = 700 - row * 56;return <rect key={`${row}-${i}`} x={x} y={y} width={100} height={48} rx={4} fill="none" stroke={GOLD} strokeWidth={2.2} opacity={appear(c.frame, c.start + delay + row * 8 + i * 2, 8)} />;}))}</g>;
-export const Nhom3C = section("07 nhóm 3C", /(chịu|đựng|vốc muối|dòng sông|lòng mình rộng ra|chưa thành công|nhìn lại|con bò|sợ mất|sợ bị chê|mùa thu|thảnh thơi|để mà đi)/gi, [
+export const Nhom3C = section("07 nhóm 3C", /(chịu|đựng|vốc muối|dòng sông|lòng mình rộng ra|chưa thành công|nhìn lại|con bò|bỏ hết mọi thứ|bỏ bớt vài thùng hàng|nỗi lo|khó buông nhất|sợ bị chê|mùa thu|thảnh thơi|để mà đi)/gi, [
   {at: 0, card: {kicker: 'NHÓM 3', title: 'Đi qua những lúc thăng trầm'}},
   // 1–2 the two words, each with its meaning, with the quote
   {at: 1, label: 'Chịu đựng', quote: true, draw: (c) => <g>
@@ -347,26 +370,41 @@ export const Nhom3C = section("07 nhóm 3C", /(chịu|đựng|vốc muối|dòng
     <Figure frame={c.frame} from={c.start + 6} x={1100} y={790} s={1} pose="sit" facing={-1} />
     {[0, 1, 2].map((k) => <Figure key={k} frame={c.frame} from={c.start + 10 + k * 4} x={560 + k * 150} y={790} s={.8} pose="sit" />)}
   </g>},
-  // 14 things held like balloons, 15 praise among them; 16 they slip away, a small cloud of criticism comes
-  {at: 14, draw: (c) => {const go = appear(c.frame, within(c, 16, .2), 40);return <g>
-    <Figure frame={c.frame} from={c.start} x={960} y={820} s={1.1} arm="raise" />
-    {[0, 1, 2, 3].map((k) => {const bx = 840 + k * 80, by = 260 + (k % 2) * 50 - go * 200;return <g key={k} opacity={appear(c.frame, within(c, k < 2 ? 14 : 15, .2 + (k % 2) * .35), 10) * (1 - go)}>
-      <ellipse cx={bx} cy={by} rx={34} ry={42} fill="none" stroke={k % 2 ? IVORY : GOLD} strokeWidth={2.4} /><path d={`M${bx} ${by + 42} C${bx + 10} ${by + 120} 1000 ${400 + go * 0} 1010 ${470}`} fill="none" stroke={GOLD} strokeWidth={1.6} opacity={(1 - go) * .8} /></g>;})}
-    <path d="M1240 380 C1220 340 1260 310 1300 330 C1320 300 1380 310 1380 350 C1420 360 1410 410 1370 410 L1260 410 C1220 410 1220 380 1240 380 Z" fill="none" stroke={IVORY} strokeWidth={2.4} opacity={appear(c.frame, within(c, 16, .5), 14)} />
+  // 14–15 a boat loaded with crates sits low; two crates go overboard and it rides higher (lighten, not empty)
+  {at: 14, draw: (c) => {const drop = interpolate(c.frame, [within(c, 15, .6), within(c, 15, .95)], [0, 1], {...clamp, easing: ease}), lift = 24 * drop;return <g>
+    {D(c, 'M300 690 C520 670 760 710 960 690 C1160 670 1400 710 1620 690', 0, 30, 2.2, .7)}
+    <g transform={`translate(0 ${-lift})`}>
+      {D(c, 'M700 640 L1220 640 L1150 720 L770 720 Z', 6, 26, 2.6)}
+      {[[760, 0], [850, 0], [940, 0], [1030, 0], [1120, 0], [805, 1], [895, 1], [985, 1], [1075, 1]].map(([x, row], k) => {const off = k === 7 || k === 8;const fall = off ? drop : 0;
+        return <rect key={k} x={x + fall * (k === 8 ? 260 : 180)} y={640 - 64 * (row + 1) + fall * (150 + lift)} width={80} height={60} rx={3} fill="none" stroke={off ? IVORY : GOLD} strokeWidth={2.2}
+          opacity={appear(c.frame, c.start + 16 + k * 3, 8) * (1 - fall * .8)} transform={off ? `rotate(${fall * 40} ${x + 40} ${640 - 64 * (row + 1) + 30})` : undefined} />;})}
+    </g>
   </g>;}},
-  // 17 a desk covered in papers, 18 autumn leaves fall on it (with the quote)
-  {at: 17, label: 'Biết đủ và thảnh thơi', quote: true, draw: (c) => <g>{table(c)}{D(c, 'M800 700 L1120 700 L1096 680 L824 680 Z M846 680 L866 540 L1054 540 L1074 680 M884 560 L1036 560 L1052 664 L868 664 Z', 4, 26, 2.4)}
-    {[0, 1, 2, 3].map((k) => {const fall = ((c.frame - c.at(18) + k * 40) % 160) / 160;return c.frame < c.at(18) ? null : <path key={k} d="M0 0 C16 -26 42 -28 48 0 C42 22 16 26 0 0 Z M0 0 L-12 10 M4 0 L40 0" transform={`translate(${[540, 680, 1240, 1380][k] + Math.sin(fall * 6 + k) * 30} ${260 + fall * 360}) rotate(${fall * 220})`} fill="none" stroke={GOLD} strokeWidth={2.4} opacity={interpolate(fall, [0, .1, .8, 1], [0, 1, 1, 0])} />;})}
+  // 16 twelve cows, then all but one fade: twelve worries, one worry
+  {at: 16, draw: (c) => {const fade = interpolate(c.frame, [within(c, 16, .5), within(c, 16, .85)], [0, 1], clamp);return <g>
+    {Array.from({length: 12}, (_, i) => {const row = Math.floor(i / 6), x = 610 + (i % 6) * 130, y = row ? 700 : 560;
+      return <path key={i} d={cow(x, y, 1)} fill="none" stroke={i === 0 ? IVORY : GOLD} strokeWidth={2.4} strokeLinejoin="round" opacity={appear(c.frame, c.start + 4 + i * 2, 8) * (i === 0 ? 1 : 1 - fade * .9)} />;})}
+  </g>;}},
+  // 17 things held like balloons (praise among them); 18 they slip away, a small cloud of criticism comes
+  {at: 17, draw: (c) => {const go = appear(c.frame, within(c, 18, .2), 40);return <g>
+    <Figure frame={c.frame} from={c.start} x={960} y={820} s={1.1} arm="raise" />
+    {[0, 1, 2, 3].map((k) => {const bx = 840 + k * 80, by = 260 + (k % 2) * 50 - go * 200;return <g key={k} opacity={appear(c.frame, within(c, 17, .15 + k * .15), 10) * (1 - go)}>
+      <ellipse cx={bx} cy={by} rx={34} ry={42} fill="none" stroke={k % 2 ? IVORY : GOLD} strokeWidth={2.4} /><path d={`M${bx} ${by + 42} C${bx + 10} ${by + 120} 1000 ${400 + go * 0} 1010 ${470}`} fill="none" stroke={GOLD} strokeWidth={1.6} opacity={(1 - go) * .8} /></g>;})}
+    <path d="M1240 380 C1220 340 1260 310 1300 330 C1320 300 1380 310 1380 350 C1420 360 1410 410 1370 410 L1260 410 C1220 410 1220 380 1240 380 Z" fill="none" stroke={IVORY} strokeWidth={2.4} opacity={appear(c.frame, within(c, 18, .5), 14)} />
+  </g>;}},
+  // 19 a desk covered in papers, 20 autumn leaves fall on it (with the quote)
+  {at: 19, label: 'Biết đủ và thảnh thơi', quote: true, draw: (c) => <g>{table(c)}{D(c, 'M800 700 L1120 700 L1096 680 L824 680 Z M846 680 L866 540 L1054 540 L1074 680 M884 560 L1036 560 L1052 664 L868 664 Z', 4, 26, 2.4)}
+    {[0, 1, 2, 3].map((k) => {const fall = ((c.frame - c.at(20) + k * 40) % 160) / 160;return c.frame < c.at(20) ? null : <path key={k} d="M0 0 C16 -26 42 -28 48 0 C42 22 16 26 0 0 Z M0 0 L-12 10 M4 0 L40 0" transform={`translate(${[540, 680, 1240, 1380][k] + Math.sin(fall * 6 + k) * 30} ${260 + fall * 360}) rotate(${fall * 220})`} fill="none" stroke={GOLD} strokeWidth={2.4} opacity={interpolate(fall, [0, .1, .8, 1], [0, 1, 1, 0])} />;})}
   </g>},
-  // 19 a stack of coins turns into a comfortable chair, with the quote
-  {at: 19, quote: true, draw: (c) => {const turn = appear(c.frame, within(c, 19, .45), 24);return <g>
+  // 21 a stack of coins turns into a comfortable chair, with the quote
+  {at: 21, quote: true, draw: (c) => {const turn = appear(c.frame, within(c, 21, .45), 24);return <g>
     <g opacity={1 - turn}>{[0, 1, 2, 3, 4, 5].map((k) => <ellipse key={k} cx={960} cy={700 - k * 34} rx={110} ry={26} fill="#0d1411" stroke={GOLD} strokeWidth={2.4} opacity={appear(c.frame, c.start + k * 4, 8)} />)}</g>
     <path d={chair(960, 780)} fill="none" stroke={IVORY} strokeWidth={2.6} opacity={turn} /></g>;}},
-  // 20 a winding road and someone walking it at ease; 21 footprints, no finish line
-  {at: 20, draw: (c) => {const t = interpolate(c.frame, [c.start, c.at(21) + 60], [0, 1], clamp);return <g>
+  // 22 a winding road and someone walking it at ease; 23 footprints, no finish line
+  {at: 22, draw: (c) => {const t = interpolate(c.frame, [c.start, c.at(23) + 60], [0, 1], clamp);return <g>
     <path d="M700 820 C860 760 760 660 940 600 C1100 548 1040 460 1200 400 C1300 360 1340 300 1320 260" fill="none" stroke={IVORY} strokeWidth={3.4} strokeLinecap="round" strokeDasharray="2 14" opacity={appear(c.frame, c.start, 18)} />
     <Figure frame={c.frame} from={c.start + 10} x={720 + t * 300} y={810 - t * 200} s={.8 - t * .25} pose="walk" />
-    {[0, 1, 2, 3, 4].map((k) => <ellipse key={k} cx={760 + k * 50} cy={800 - k * 36} rx={8} ry={14} fill={GOLD} opacity={appear(c.frame, c.at(21) + k * 8, 8) * .8} />)}
+    {[0, 1, 2, 3, 4].map((k) => <ellipse key={k} cx={760 + k * 50} cy={800 - k * 36} rx={8} ry={14} fill={GOLD} opacity={appear(c.frame, c.at(23) + k * 8, 8) * .8} />)}
   </g>;}},
 ]);
 

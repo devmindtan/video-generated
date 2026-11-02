@@ -1,0 +1,24 @@
+{
+  "title": "Đọc sách, hiểu mình — tập 1 — 01b-cach-lam",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Trước khi vào sách, mình nói rõ cách làm của tập này.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Phần chính của video, mình chỉ đứng ở vị trí người kể lại: kể đúng điều tác giả viết, kể cả những chỗ mình chưa chắc đồng tình.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Những chỗ mình thấy chưa đạt và ý kiến riêng của mình sẽ nằm ở các phần cuối, tách riêng ra.",
+      "pauseAfter": 0
+    }
+  ]
+}

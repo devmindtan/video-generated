@@ -5,6 +5,11 @@
     "composition": "BookHvttIntro"
   },
   {
+    "id": "01b-cach-lam",
+    "title": "Cách làm của tập",
+    "composition": "BookHvttCachLam"
+  },
+  {
     "id": "01-gioi-thieu-tap",
     "title": "Giới thiệu tập",
     "composition": "BookHvttEpisodeCard"

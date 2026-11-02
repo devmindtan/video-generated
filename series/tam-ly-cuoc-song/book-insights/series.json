@@ -37,6 +37,10 @@
           "kind": "Composition"
         },
         {
+          "id": "BookHvttCachLam",
+          "kind": "Composition"
+        },
+        {
           "id": "BookHvttEpisodeCard",
           "kind": "Composition"
         },
