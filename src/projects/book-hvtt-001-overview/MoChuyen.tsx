@@ -10,7 +10,7 @@ import {CornerVoice, Draw, PacedVoice, captionMs, pace, takeOf, voiceLevel} from
 // started from the narration's phrase ranges, with small motion inside every beat (image-prompts.md, 0b).
 export type MoChuyenProps = {voice: string; channelLabel: string};
 // Paced like the body sections (scene-kit pace): a longer rest before each new scene's sentence (review 1: "hơi nhanh").
-const SCENE_SENTENCES = [1, 2, 3, 5, 6, 7, 8];
+const SCENE_SENTENCES = [1, 2, 3, 5, 6, 7];
 const paced = new Map<string, ReturnType<typeof pace>>();
 const pacingOf = (voice: string, fps: number) => {const key = `${voice}@${fps}`;if (!paced.has(key)) paced.set(key, pace(takeOf(voice), SCENE_SENTENCES, fps));return paced.get(key)!;};
 export const moChuyenFrames = (voice: string, fps = 30) => pacingOf(voice, fps).frames;
@@ -162,18 +162,8 @@ const Hands: FC<{frame: number; start: number; point: number}> = ({frame, start:
   </g>;
 };
 
-// Sentence 7 · "đặt mình vào chỗ người kia": the grandmother crouches to the child's height; a dashed line joins
-// their eyes at the same level and warm light spreads round them.
-const EyeLevel: FC<{frame: number; start: number}> = ({frame, start: s}) => <g>
-  <circle cx={940} cy={600} r={230} fill="url(#hold-glow)" opacity={interpolate(frame, [s + 40, s + 70], [0, 1], clamp)} />
-  <defs><radialGradient id="hold-glow"><stop offset="0%" stopColor="#e8c27a" stopOpacity={.26} /><stop offset="100%" stopColor="#e8c27a" stopOpacity={0} /></radialGradient></defs>
-  <Draw frame={frame} from={s} to={s + 22} d="M480 742 L1400 742" width={2.6} opacity={.8} />
-  <g transform="translate(820 682) scale(1.5)"><Grandma frame={frame} from={s + 4} crouch reach={1} /></g>
-  <g transform="translate(1040 742) scale(1.4)"><Child frame={frame} from={s + 10} sit lookUp={1} /></g>
-  <path d="M880 520 L1010 520" stroke={IVORY} strokeWidth={2.2} strokeDasharray="6 10" strokeLinecap="round" opacity={interpolate(frame, [s + 34, s + 46], [0, .8], clamp)} />
-</g>;
-
-// Sentence 8 · a grown-up at a desk under a lamp, a hand on an open book; a small heart appears on the page.
+// Sentence 7 · a grown-up at a desk under a lamp, a hand on an open book; a small heart appears on the page
+// ("muốn thương ai, trước hết phải hiểu").
 const Desk: FC<{frame: number; start: number; heart: number}> = ({frame, start: s, heart}) => {
   const lamp = interpolate(frame, [s + 20, s + 40], [0, 1], clamp);
   return <g>
@@ -198,9 +188,9 @@ export const BookHvttMoChuyen: FC<MoChuyenProps> = ({voice: voiceId, channelLabe
   const at = pacing.at;
   const within = (i: number, share: number) => pacing.at(i) + Math.round((pacing.end(i) - pacing.at(i)) * share);
   // Scene windows (each starts in the rest before its sentence): book · doorway (child, grandmother) · cane ·
-  // doorway again (sitting, looking up) · growth marks · hands · eye level · desk.
-  const sBook = 0, sDoor = at(1) - 14, sCane = within(2, .42) - 6, sSit = at(3) - 14, sGrow = at(5) - 14, sHands = at(6) - 14, sEye = at(7) - 14, sDesk = at(8) - 14;
-  const cuts = [sBook, sDoor, sCane, sSit, sGrow, sHands, sEye, sDesk, 1e9];
+  // doorway again (sitting, looking up) · growth marks · hands · desk.
+  const sBook = 0, sDoor = at(1) - 14, sCane = within(2, .42) - 6, sSit = at(3) - 14, sGrow = at(5) - 14, sHands = at(6) - 14, sDesk = at(7) - 14;
+  const cuts = [sBook, sDoor, sCane, sSit, sGrow, sHands, sDesk, 1e9];
   // One scene fades out before the next fades in (no overlap, review 1).
   const show = (k: number) => interpolate(frame, [cuts[k], cuts[k] + 12, cuts[k + 1] - 12, cuts[k + 1]], [k === 0 ? 1 : 0, 1, 1, 0], clamp);
   const fall = within(1, .58), runIn = interpolate(frame, [sDoor + 10, fall], [0, 1], clamp);
@@ -242,12 +232,11 @@ export const BookHvttMoChuyen: FC<MoChuyenProps> = ({voice: voiceId, channelLabe
           </Fade>
           <Fade opacity={show(4)}><GrowthMarks frame={frame} start={sGrow} /></Fade>
           <Fade opacity={show(5)}><Hands frame={frame} start={sHands} point={point} /></Fade>
-          <Fade opacity={show(6)}><EyeLevel frame={frame} start={sEye} /></Fade>
-          <Fade opacity={show(7)}><Desk frame={frame} start={sDesk} heart={within(8, .55)} /></Fade>
+          <Fade opacity={show(6)}><Desk frame={frame} start={sDesk} heart={within(7, .6)} /></Fade>
         </g>
       </svg>
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%)', pointerEvents: 'none'}} />
-      {voice ? <Captions captions={voice.captions} ms={captionMs(pacing, frame, fps)} highlight={/(chương cuối|ngạch cửa|người bà|cẩn thận|hả dạ|lớn lên|dỗ cho cháu yên|đặt mình vào chỗ người kia|phải hiểu)/gi} /> : null}
+      {voice ? <Captions captions={voice.captions} ms={captionMs(pacing, frame, fps)} highlight={/(chương cuối|ngạch cửa|người bà|cẩn thận|hả dạ|lớn lên|dỗ cho cháu yên|nhắc đi nhắc lại|phải hiểu)/gi} /> : null}
       <CornerVoice take={voice} pacing={pacing} frame={frame} />
     </AbsoluteFill>
     {voice ? <PacedVoice take={voice} pacing={pacing} track="02 mở chuyện" /> : null}

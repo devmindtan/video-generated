@@ -42,12 +42,7 @@
     },
     {
       "scene": 1,
-      "text": "Đặt mình vào chỗ người kia rồi mới nói điều phải, nghe thì nhỏ, nhưng cả cuốn sách hôm nay xoay quanh điều đó.",
-      "pauseAfter": 0.4
-    },
-    {
-      "scene": 1,
-      "text": "Theo tác giả, muốn thương ai thì trước hết phải hiểu được người ấy.",
+      "text": "Và đó cũng là điều tác giả nhắc đi nhắc lại trong cả cuốn sách: muốn thương ai, trước hết phải hiểu được người ấy.",
       "pauseAfter": 0
     }
   ]
