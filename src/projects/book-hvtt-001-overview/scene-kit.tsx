@@ -23,7 +23,8 @@ export const takeOf = (id: string) => voices.find((v) => v.id === id);
 // User 2026-11-02 ("chậm chậm, khoảng nghỉ lâu"): the take already keeps ~0.5 s between sentences, so no extra
 // breath is added there; only new ideas, cards and the section end get a short rest.
 // Pictures, captions and the voice level all follow the paced timeline; the take itself is not changed.
-export const BREATH_SECONDS = 0, IDEA_SECONDS = .5, CARD_SECONDS = .3, TAIL_SECONDS = 1;
+// After p9 ("nghe không xem hình… chưa liền mạch"): shorter still; the takes' own pauses are scaled down too (build-body).
+export const BREATH_SECONDS = 0, IDEA_SECONDS = .25, CARD_SECONDS = .2, TAIL_SECONDS = .6;
 export type Pacing = {
   at: (sentence: number) => number; // frame where a sentence starts (one past the last = end of narration)
   end: (sentence: number) => number; // frame where a sentence's speech ends
@@ -174,9 +175,10 @@ export const within = (c: Ctx, sentence: number, share: number) => Math.round(c.
 
 // A body section: its component plus the frame count of its paced timeline (registry metadata and the episode).
 export type SectionProps = {voice: string; channelLabel: string};
-export type Section = FC<SectionProps> & {frames: (voice: string, fps?: number) => number; metadata: CalculateMetadataFunction<SectionProps>};
+export type Section = FC<SectionProps> & {frames: (voice: string, fps?: number) => number; speaking: (voice: string, frame: number, fps?: number) => boolean; metadata: CalculateMetadataFunction<SectionProps>};
 export const section = (track: string, highlight: RegExp, beats: Beat[]): Section => {
   const C: FC<SectionProps> = (p) => <NarratedSection {...p} track={track} highlight={highlight} beats={beats} />;
   const frames = (voice: string, fps = 30) => sectionPacing(voice, beats, fps).frames;
-  return Object.assign(C, {frames, metadata: (({props}) => ({durationInFrames: frames(props.voice)})) as CalculateMetadataFunction<SectionProps>});
+  const speaking = (voice: string, frame: number, fps = 30) => sectionPacing(voice, beats, fps).voiceFrame(frame) !== null;
+  return Object.assign(C, {frames, speaking, metadata: (({props}) => ({durationInFrames: frames(props.voice)})) as CalculateMetadataFunction<SectionProps>});
 };

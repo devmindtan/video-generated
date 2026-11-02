@@ -13,6 +13,8 @@ export type MoChuyenProps = {voice: string; channelLabel: string};
 const SCENE_SENTENCES = [1, 2, 3, 5, 6, 7, 8];
 const pacingOf = (voice: string, fps: number) => pace(takeOf(voice), SCENE_SENTENCES, fps);
 export const moChuyenFrames = (voice: string, fps = 30) => pacingOf(voice, fps).frames;
+// Whether the narration is heard at a frame of this part (the episode's body music dips under speech).
+export const moChuyenSpeaking = (voice: string, frame: number, fps = 30) => pacingOf(voice, fps).voiceFrame(frame) !== null;
 export const moChuyenMetadata: CalculateMetadataFunction<MoChuyenProps> = ({props}) => ({durationInFrames: moChuyenFrames(props.voice)});
 
 const ring = (cx: number, cy: number, r: number) => `M${cx - r} ${cy} a${r} ${r} 0 1 0 ${2 * r} 0 a${r} ${r} 0 1 0 ${-2 * r} 0`;

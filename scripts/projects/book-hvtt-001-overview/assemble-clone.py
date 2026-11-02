@@ -48,6 +48,7 @@ def main():
     parser.add_argument('--config', default='audition.json', help='Sentence/pause config in this folder')
     parser.add_argument('--out', required=True)
     parser.add_argument('--max-pause', type=float, help='Shorten silences inside each sentence to this many seconds')
+    parser.add_argument('--pause-scale', type=float, default=1.0, help='Scale the config lead-in, pauses between sentences and tail')
     parser.add_argument('--choice', help='JSON {sentence text: clone take} overriding "last take wins" (build-body.py)')
     args = parser.parse_args()
     project = ROOT / 'scripts/projects/book-hvtt-001-overview'
@@ -70,7 +71,8 @@ def main():
     shared = runpy.run_path(str(ROOT / 'scripts/shared/make-voice.py'))
     shared['align_captions'].__globals__['CACHE'] = out / 'recognition'
     (out / 'recognition').mkdir()
-    chunks, ranges = [np.zeros(round(cfg['leadIn'] * SR))], []
+    k = args.pause_scale
+    chunks, ranges = [np.zeros(round(cfg['leadIn'] * k * SR))], []
     used = []
     for sentence in cfg['sentences']:
         source, part = parts[sentence['text'].strip()]
@@ -87,9 +89,9 @@ def main():
         chunks.append(audio)
         ranges.append({'text': sentence['text'], 'startSeconds': round(at, 4), 'endSeconds': round(at + len(audio) / SR, 4)})
         if sentence['pauseAfter']:
-            chunks.append(np.zeros(round(sentence['pauseAfter'] * SR)))
+            chunks.append(np.zeros(round(sentence['pauseAfter'] * k * SR)))
     speech_end = sum(len(c) for c in chunks) / SR
-    chunks.append(np.zeros(round(cfg['tail'] * SR)))
+    chunks.append(np.zeros(round(cfg['tail'] * k * SR)))
     audio = np.concatenate(chunks)
     record = {'id': args.id, 'name': 'Giọng bạn (clone)', 'label': 'Lựa chọn 2 · clone giọng người dùng (consent: self)',
               'file': f'{args.id}.wav', 'status': 'ready', 'durationSeconds': round(len(audio) / SR, 3), 'phraseRanges': ranges,

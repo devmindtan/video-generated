@@ -12,7 +12,7 @@ import takes from './episode-takes.json';
 export type EpisodeCardProps = {voice: string; channelLabel: string; episodeLabel: string; bookTitle: string; bookAuthor: string};
 
 const voices = (takes as unknown as {voices: Voice[]}).voices;
-const LEAD_SECONDS = .5, TAIL_SECONDS = 1.4;
+const LEAD_SECONDS = .3, TAIL_SECONDS = .8;
 const voiceOf = (id: string) => voices.find((v) => v.id === id) ?? voices[0];
 
 export const cardFrames = (voice: string, fps = 30) => Math.ceil((LEAD_SECONDS + (voiceOf(voice)?.durationSeconds ?? 8) + TAIL_SECONDS) * fps);
