@@ -56,7 +56,7 @@ class WhaleEditTest(unittest.TestCase):
 
     def test_only_new_project_is_registered(self):
         registry = (ROOT/'src/projects/registry.tsx').read_text()
-        self.assertIn('id="GlowingWhale" component={GlowingWhaleVideo} durationInFrames={1800} fps={30} width={1080} height={1920}',registry)
+        self.assertIn('id="GlowingWhale" calculateMetadata={renderTo(\'glowing-whale\')} component={GlowingWhaleVideo} durationInFrames={1800} fps={30} width={1080} height={1920}',registry)
         self.assertIn('id="GlowingWhaleThumbnail"',registry)
 
     def test_rejected_morphing_ending_is_not_selected(self):
