@@ -25,7 +25,7 @@ def main():
     source = ROOT/'src/projects/rest-day/Video.tsx'
     markup = source.read_text()
     registry = (ROOT/'src/projects/registry.tsx').read_text()
-    assert f'id="StoicRestDay" component={{RestDayVideo}} durationInFrames={{{SECONDS*FPS}}} fps={{30}} width={{1080}} height={{1920}}' in registry
+    assert f'id="StoicRestDay" calculateMetadata={{renderTo(\'rest-day\')}} component={{RestDayVideo}} durationInFrames={{{SECONDS*FPS}}} fps={{30}} width={{1080}} height={{1920}}' in registry
     assert 'scale:' not in markup and 'translate:' not in markup
     assert len(re.findall(r'<Audio\b', markup)) == 2
     assert ' '.join(p['text'] for p in pages) == ' '.join(s['text'] for s in cfg['sentences'])
