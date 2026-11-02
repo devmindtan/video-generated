@@ -18,19 +18,15 @@ const heart = (cx: number, cy: number, s: number) => `M${cx} ${cy + 60 * s} C${c
 const table = (c: Ctx, delay = 0) => D(c, 'M440 700 L1480 700 M500 700 L470 820 M1420 700 L1450 820', delay, 26, 2.4, .9);
 
 // ---- 03 Cuốn sách là gì (lines-03-cuon-sach.txt, script v4) -------------------------------------------------
-// 0p how this episode works (before the episode card): 0 a narrator beside a closed book; 1 the book open, its
-// lines flowing to the narrator who retells them; 2 the running order as one bar: retelling the book, then the
-// separate closing parts (what falls short, personal opinion)
+// 0p how this episode works (before the episode card, so no book title yet): 0–1 a narrator beside a closed
+// book, which opens as they start retelling, its lines flowing to them; 2 the running order as one bar: retelling
+// the book, then the closing parts (what falls short, personal opinion)
 export const CachLam = section("01b cách làm của tập", /(cách làm của tập này|người kể lại|đúng điều tác giả viết|chưa đạt|ý kiến riêng|các phần cuối)/gi, [
-  {at: 0, draw: (c) => <g>
-    {D(c, 'M820 400 L1180 400 L1180 700 L820 700 Z M840 400 L840 700', 0, 30, 2.6)}
-    <Word x={1000} y={560} size={34} text="HIỂU VỀ TRÁI TIM" opacity={appear(c.frame, c.start + 26, 14) * .9} />
-    <g opacity={appear(c.frame, c.start + 14, 14)}><Figure frame={c.frame} from={c.start + 14} x={600} y={760} s={1} /></g>
-  </g>},
-  {at: 1, quote: true, draw: (c) => {const flow = interpolate(c.frame, [within(c, 1, .2), within(c, 1, .7)], [0, 1], clamp);return <g>
-    <g transform="translate(-180 0) scale(1)">{book(c)}</g>
-    {[0, 1, 2].map((k) => <path key={k} d={`M1150 ${430 + k * 50} C1260 ${410 + k * 50} 1320 ${470 + k * 40} 1400 ${470 + k * 30}`} fill="none" stroke={GOLD} strokeWidth={2} strokeDasharray="6 12" strokeDashoffset={-c.frame * 1.5} opacity={flow * .8} />)}
-    <g opacity={appear(c.frame, c.start + 10, 14)}><Figure frame={c.frame} from={c.start + 10} x={1480} y={780} s={1} facing={-1} /></g>
+  {at: 0, draw: (c) => {const open = appear(c.frame, c.at(1), 24), flow = interpolate(c.frame, [c.at(1) + 20, within(c, 1, .6)], [0, 1], clamp);return <g>
+    <g opacity={1 - open}>{D(c, 'M860 400 L1160 400 L1160 700 L860 700 Z M880 400 L880 700', 0, 30, 2.6)}</g>
+    <g opacity={open}>{book(c)}</g>
+    {[0, 1, 2].map((k) => <path key={k} d={`M1330 ${430 + k * 50} C1400 ${420 + k * 50} 1440 ${470 + k * 40} 1490 ${480 + k * 30}`} fill="none" stroke={GOLD} strokeWidth={2} strokeDasharray="6 12" strokeDashoffset={-c.frame * 1.5} opacity={flow * .8} />)}
+    <g opacity={appear(c.frame, c.start + 14, 14)}><Figure frame={c.frame} from={c.start + 14} x={1560} y={780} s={1} facing={-1} /></g>
   </g>;}},
   {at: 2, draw: (c) => {const tail = appear(c.frame, within(c, 2, .45), 18);return <g>
     {D(c, 'M360 560 L1300 560', 0, 30, 10, .9)}
@@ -637,7 +633,7 @@ export const YKien = section("08g ý kiến cá nhân", /(riêng mình|một ng�
 
 // ---- 09 Nhận xét chung -----------------------------------------------------------------------------------
 // 0 an open book with rays; 1 a scale with the book tipping against a heavier textbook; 2 a tangled line that
-// smooths out; 3 a bedside lamp, the moon and a thin book; 4 a figure in a glow that spreads to people around
+// smooths out, 3 then a lamp lights up beside it with a thin book and the moon; 4 a glow spreading to people around
 export const NhanXet = section("09 nhận xét chung", /(cuốn sách hay|chưa đủ|lòng dịu xuống|trước khi ngủ|đọc qua|hiểu mình trước|những người quanh mình)/gi, [
   {at: 0, draw: (c) => <g>
     <Glow x={960} y={520} r={320} opacity={appear(c.frame, c.start + 10, 30)} />
@@ -657,14 +653,15 @@ export const NhanXet = section("09 nhận xét chung", /(cuốn sách hay|chưa 
   </g>;}},
   {at: 2, draw: (c) => {const calm = interpolate(c.frame, [within(c, 2, .55), c.at(3) - 14], [0, 1], {...clamp, easing: ease});
     const d = Array.from({length: 61}, (_, i) => {const x = 520 + i * 15, y = 560 + (1 - calm) * (Math.sin(i * .9) * 70 + Math.sin(i * 2.3) * 40);return `${i ? 'L' : 'M'}${x} ${y.toFixed(1)}`;}).join(' ');
-    return <g><path d={d} fill="none" stroke={calm > .9 ? GOLD : IVORY} strokeWidth={2.6} strokeLinejoin="round" opacity={appear(c.frame, c.start, 16)} /><Glow x={960} y={560} r={260} opacity={calm * .8} /></g>;}},
-  {at: 3, draw: (c) => <g>
-    {table(c)}
-    {D(c, 'M600 700 L600 520 M560 520 L640 520 L620 440 L580 440 Z', 6, 22, 2.4)}
-    <Glow x={600} y={540} r={220} opacity={appear(c.frame, c.start + 24, 20)} />
-    {D(c, 'M860 690 L960 670 L1060 690 M960 670 L960 690 M860 690 L960 690 L1060 690', 14, 20, 2.4)}
-    {D(c, 'M1420 260 C1360 280 1350 360 1400 400 C1340 400 1310 320 1350 280 C1370 262 1400 258 1420 260 Z', within(c, 3, .5) - c.start, 18, 2.2, .85)}
-  </g>},
+    // 3 the calm line becomes a bedside table: a lamp lights up, a thin book, the moon outside
+    const night = appear(c.frame, c.at(3), 24);
+    return <g><path d={d} fill="none" stroke={calm > .9 ? GOLD : IVORY} strokeWidth={2.6} strokeLinejoin="round" opacity={appear(c.frame, c.start, 16)} /><Glow x={960} y={560} r={260} opacity={calm * .8 * (1 - night * .6)} />
+      <g opacity={night}>
+        <path d="M640 560 L640 380 M600 380 L680 380 L660 300 L620 300 Z" fill="none" stroke={GOLD} strokeWidth={2.4} strokeLinejoin="round" />
+        <Glow x={640} y={400} r={200} opacity={night * .9} />
+        <path d="M860 550 L960 530 L1060 550 M960 530 L960 550" fill="none" stroke={IVORY} strokeWidth={2.4} strokeLinejoin="round" />
+        <path d="M1420 260 C1360 280 1350 360 1400 400 C1340 400 1310 320 1350 280 C1370 262 1400 258 1420 260 Z" fill="none" stroke={GOLD} strokeWidth={2.2} opacity={.85} />
+      </g></g>;}},
   {at: 4, draw: (c) => {const spread = interpolate(c.frame, [within(c, 4, .5), c.at(5) + 20], [0, 1], {...clamp, easing: ease});return <g>
     <Glow x={960} y={600} r={140 + spread * 520} opacity={appear(c.frame, c.start + 10, 20) * .9} />
     <Figure frame={c.frame} from={c.start + 6} x={960} y={780} s={1} />

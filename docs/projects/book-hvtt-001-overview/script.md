@@ -181,9 +181,9 @@ Nếu chỉ chọn một chương để bắt đầu, mình gợi ý chương Lo
 
 ## 5. Nhận xét chung (theo lời người dùng)
 
-Mặc dù cuốn sách này còn nhiều những chỗ chưa hay, nhưng tổng quan đây là một cuốn sách hay. Ý tưởng không mới, có chỗ lặp lại, và sách nhìn mọi chuyện qua lăng kính đạo Phật, nên ai cần một cuốn tâm lý học bài bản có thể thấy chưa đủ. [nghỉ]
+Mặc dù cuốn sách này còn nhiều những chỗ chưa hay, nhưng tổng quan đây là một cuốn sách hay. Ý tưởng không mới, có chỗ lặp lại, và sách nhìn mọi chuyện qua lăng kính đạo Phật, nên ai cần một cuốn tâm lý học bài bản có thể thấy chưa đủ.
 
-Nhưng nếu các bạn đang rối trong lòng, đang giận một người, hay đang lo một chuyện chưa tới, thì đọc chậm vài trang sẽ thấy lòng dịu xuống. Mỗi chương chỉ vài trang, đọc một chương trước khi ngủ là vừa. [nghỉ]
+Nhưng nếu các bạn đang rối trong lòng, đang giận một người, hay đang lo một chuyện chưa tới, thì đọc chậm vài trang sẽ thấy lòng dịu xuống. Mỗi chương chỉ vài trang, đọc một chương trước khi ngủ là vừa.
 
 Nếu bạn có thời gian, có thể đọc qua để hiểu hơn: hiểu mình trước, rồi hiểu những người quanh mình.
 
