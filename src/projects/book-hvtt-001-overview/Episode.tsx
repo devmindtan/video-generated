@@ -64,7 +64,10 @@ const Progress: FC<{starts: number[]; total: number}> = ({starts, total}) => {
 const BodyMusic: FC<{list: ReturnType<typeof parts>; starts: number[]}> = ({list, starts}) => {
   const body = list.map((x, i) => ({...x, start: starts[i]})).filter((x) => x.speaking);
   const from = body.length ? body[0].start : 0, to = body.length ? body[body.length - 1].start + body[body.length - 1].frames : 0;
-  // Volume per frame of the clip, computed once: narration on/off, then a ±8-frame moving average.
+  // Volume per frame of the clip, computed once: narration on/off, then a ±8-frame moving average. Passed as a number
+  // for the current frame, like the intro: a volume function is a new prop on every render and sent the Studio
+  // player into "Maximum update depth exceeded".
+  const frame = useCurrentFrame();
   const key = body.map((b) => `${b.name}:${b.start}:${b.frames}`).join('|');
   const volumes = useMemo(() => {
     const n = Math.max(0, to - from), on = new Float32Array(n);
@@ -81,7 +84,7 @@ const BodyMusic: FC<{list: ReturnType<typeof parts>; starts: number[]}> = ({list
   return <Track name={`Nhạc nền nội dung · ${bodyMusic.credit.artists.join(", ")} – ${bodyMusic.credit.title} · rất nhỏ, chỉnh đầu/cuối trong Edit`}>
     <MusicFade fadeInSeconds={bodyMusic.fadeInSeconds} fadeOutSeconds={bodyMusic.fadeOutSeconds}>
       <Audio name={`${bodyMusic.credit.artists.join(", ")} – ${bodyMusic.credit.title} (nhạc nền nội dung)`} src={staticFile(bodyMusic.file)} from={from} durationInFrames={to - from}
-        volume={(f: number) => volumes[Math.min(volumes.length - 1, Math.max(0, f))] ?? bodyMusic.pauseVolume} playbackRate={bodyMusic.playbackRate} loop />
+        volume={volumes[Math.min(volumes.length - 1, Math.max(0, frame - from))] ?? bodyMusic.pauseVolume} playbackRate={bodyMusic.playbackRate} loop />
     </MusicFade>
   </Track>;
 };

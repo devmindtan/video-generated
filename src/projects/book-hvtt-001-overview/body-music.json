@@ -1,11 +1,11 @@
 {
   "file": "audio-library/music/Moavii - Butterflies (freetouse.com).mp3",
-  "speechVolume": 0.025,
-  "pauseVolume": 0.045,
+  "speechVolume": 0.015,
+  "pauseVolume": 0.028,
   "fadeInSeconds": 2.5,
   "fadeOutSeconds": 3,
-  "playbackRate": 1,
-  "editingNote": "User 2026-11-02 (after p9): very quiet background music under the body only (from 'Cách làm của tập' to the end of 'Nhận xét chung'; the intro and outro keep their own music). User 2026-11-02: the intro/outro track (Enlivening) did not fit the body; Moavii – Butterflies (softest, least bright of the local library) at its own speed, looping over the full source (141.2 s). speechVolume while the narration is heard, pauseVolume in rests, smoothed over about half a second. Fade-in/out follow the clip's edges; move or trim the clip in Studio Edit. User 2026-11-02 'nhạc hơi to': halved (about −6 dB) to 0.025 under speech, 0.045 in rests.",
+  "playbackRate": 0.85,
+  "editingNote": "User 2026-11-02 (after p9): very quiet background music under the body only (from 'Cách làm của tập' to the end of 'Nhận xét chung'; the intro and outro keep their own music). User 2026-11-02: the intro/outro track (Enlivening) did not fit the body; Moavii – Butterflies (softest, least bright of the local library) at its own speed, looping over the full source (141.2 s). speechVolume while the narration is heard, pauseVolume in rests, smoothed over about half a second. Fade-in/out follow the clip's edges; move or trim the clip in Studio Edit. User 2026-11-02 'nhạc hơi to': halved (about −6 dB) to 0.025 under speech, 0.045 in rests. Then 'vẫn to', 'tốc độ 0.85': 0.015 / 0.028 and playbackRate 0.85.",
   "credit": {
     "title": "Butterflies",
     "artists": [
