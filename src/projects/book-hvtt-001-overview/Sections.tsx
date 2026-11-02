@@ -21,7 +21,7 @@ const table = (c: Ctx, delay = 0) => D(c, 'M440 700 L1480 700 M500 700 L470 820 
 // 0p how this episode works (before the episode card): 0 a narrator beside a closed book; 1 the book open, its
 // lines flowing to the narrator who retells them; 2 the running order as one bar: retelling the book, then the
 // separate closing parts (what falls short, personal opinion)
-export const CachLam = section("01b cách làm của tập", /(cách làm của tập này|người kể lại|đúng điều tác giả viết|chưa đạt|ý kiến riêng|tách riêng)/gi, [
+export const CachLam = section("01b cách làm của tập", /(cách làm của tập này|người kể lại|đúng điều tác giả viết|chưa đạt|ý kiến riêng|các phần cuối)/gi, [
   {at: 0, draw: (c) => <g>
     {D(c, 'M820 400 L1180 400 L1180 700 L820 700 Z M840 400 L840 700', 0, 30, 2.6)}
     <Word x={1000} y={560} size={34} text="HIỂU VỀ TRÁI TIM" opacity={appear(c.frame, c.start + 26, 14) * .9} />

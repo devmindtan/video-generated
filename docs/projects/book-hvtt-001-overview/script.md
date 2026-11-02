@@ -25,7 +25,7 @@ Chúc cả nhà một ngày tràn đầy niềm vui và hạnh phúc. [nghỉ]
 
 ## 0p. Cách làm của tập (trước thẻ giới thiệu tập)
 
-Trước khi vào sách, mình nói rõ cách làm của tập này. Phần chính của video, mình chỉ đứng ở vị trí người kể lại: kể đúng điều tác giả viết, kể cả những chỗ mình chưa chắc đồng tình. Những chỗ mình thấy chưa đạt và ý kiến riêng của mình sẽ nằm ở các phần cuối, tách riêng ra.
+Trước khi vào sách, mình nói rõ cách làm của tập này. Phần chính của video, mình chỉ đứng ở vị trí người kể lại: kể đúng điều tác giả viết, kể cả những chỗ mình chưa chắc đồng tình. Những chỗ mình thấy chưa đạt và ý kiến riêng của mình sẽ nằm ở các phần cuối.
 
 {Theo yêu cầu người dùng 2026-11-02: nói rõ trước giới thiệu tập rằng phần chính chỉ kể lại sách (ví dụ chương Buông Xả nghiêng về lối sống ít hưởng thụ của bậc tu hành là ý tác giả), điểm chưa đạt (3E) và ý kiến riêng (4, 5) ở cuối.}
 
