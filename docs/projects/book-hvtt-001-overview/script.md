@@ -111,9 +111,9 @@ Phần còn lại của cuốn sách, mình xin gom thành bốn nhóm để c�
 
 {Ch30 PDF 156–160; trích PDF 158}
 
-**Buông xả.** Tác giả kể một câu chuyện: một bác nông dân chạy ngang, hỏi có ai thấy mười hai con bò của bác đâu không. Bác đi rồi, Đức Phật quay sang các học trò: "Chúng ta đâu có con bò nào để mất, phải không?" [nghỉ] Theo tác giả, mình không chỉ giữ của cải mà còn giữ cả lời khen, sự công nhận, và mỗi thứ mình ôm là một con bò có thể lạc mất. Thích được khen thì cũng sẽ sợ bị chê.
+**Buông xả.** Chương này mở bằng một câu chuyện. Đức Phật đang ngồi trong rừng với các học trò thì một bác nông dân hớt hải chạy tới, hỏi có thấy đàn bò mười hai con của bác đi ngang qua không. Bác vừa mất mùa, giờ lại mất luôn đàn bò, nên vừa đi vừa than khóc. Đợi bác đi khuất, Đức Phật quay sang học trò: "Chúng ta đâu có con bò nào để mất, phải không?" [nghỉ] Ý tác giả là mình càng ôm nhiều thứ thì càng có nhiều thứ để sợ mất. Mà thứ mình ôm đâu chỉ là của cải, còn có lời khen, sự công nhận. Thích được khen bao nhiêu thì cũng sợ bị chê bấy nhiêu.
 
-{Ch39 PDF 205–209; trích PDF 205}
+{Ch39 PDF 205–209; trích PDF 205; khen/công nhận PDF 207. Viết lại 2026-11-02: người dùng thấy ví dụ con bò "rất khó hiểu", kể đủ bối cảnh (ngồi trong rừng, bác mất mùa rồi mất bò) trước câu của Đức Phật.}
 
 **Biết đủ và thảnh thơi.** Tác giả tả nhịp sống hôm nay bằng một câu: "Ủa, mùa thu đến rồi à? Tôi bận quá." Sách nhắc rằng của cải chỉ làm đời dễ chịu hơn, "nó không phải là lý do lớn nhất để ta sống." Mình hay hẹn thảnh thơi tới lúc đủ tiền, tới lúc về hưu, nhưng theo tác giả, "không có con đường nào đưa tới sự thảnh thơi mà bản thân nó không phải là thảnh thơi". Tức là mình đi để mà đi, chứ không chỉ để mà tới.
 
@@ -175,9 +175,13 @@ Nếu chỉ chọn một chương để bắt đầu, mình gợi ý chương Lo
 
 ## 5. Nhận xét chung (theo lời người dùng)
 
-Mặc dù cuốn sách này còn nhiều những chỗ chưa hay, nhưng tổng quan đây là một cuốn sách hay. Nếu bạn có thời gian, có thể đọc qua để hiểu hơn.
+Mặc dù cuốn sách này còn nhiều những chỗ chưa hay, nhưng tổng quan đây là một cuốn sách hay. Ý tưởng không mới, có chỗ lặp lại, và sách nhìn mọi chuyện qua lăng kính đạo Phật, nên ai cần một cuốn tâm lý học bài bản có thể thấy chưa đủ. [nghỉ]
 
-{Lời người dùng 2026-10-30; chỉ thêm dấu câu}
+Nhưng nếu các bạn đang rối trong lòng, đang giận một người, hay đang lo một chuyện chưa tới, thì đọc chậm vài trang sẽ thấy lòng dịu xuống. Mỗi chương chỉ vài trang, đọc một chương trước khi ngủ là vừa. [nghỉ]
+
+Nếu bạn có thời gian, có thể đọc qua để hiểu hơn: hiểu mình trước, rồi hiểu những người quanh mình.
+
+{Lời người dùng 2026-10-30 (câu đầu và câu cuối, chỉ thêm dấu câu). Bổ sung 2026-11-02 theo yêu cầu người dùng ("bổ sung một số ý để tránh bị cụt ngủn"): câu 2 tóm lại 3E, câu 3–4 nói sách hợp với ai và cách đọc (phần 1, 3F), đuôi câu cuối nối với ý "hiểu rồi mới thương". Không thêm trải nghiệm riêng.}
 
 ## 6. Kết
 

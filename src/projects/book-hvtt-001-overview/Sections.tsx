@@ -300,7 +300,7 @@ const cow = (x: number, y: number, s: number) => {
     + ` M${P(92, -72)} L${P(88, -82)} M${P(100, -71)} L${P(104, -81)} M${P(0, -56)} C${P(-10, -52)} ${P(-12, -38)} ${P(-8, -30)}`;
 };
 const wall = (c: Ctx, delay = 0) => <g>{[0, 1, 2, 3, 4].map((row) => Array.from({length: 6 - row}, (_, i) => {const x = 640 + i * 110 + (row % 2) * 55, y = 700 - row * 56;return <rect key={`${row}-${i}`} x={x} y={y} width={100} height={48} rx={4} fill="none" stroke={GOLD} strokeWidth={2.2} opacity={appear(c.frame, c.start + delay + row * 8 + i * 2, 8)} />;}))}</g>;
-export const Nhom3C = section("07 nhóm 3C", /(chịu|đựng|vốc muối|dòng sông|lòng mình rộng ra|chưa thành công|nhìn lại|con bò|sợ bị chê|mùa thu|thảnh thơi|để mà đi)/gi, [
+export const Nhom3C = section("07 nhóm 3C", /(chịu|đựng|vốc muối|dòng sông|lòng mình rộng ra|chưa thành công|nhìn lại|con bò|sợ mất|sợ bị chê|mùa thu|thảnh thơi|để mà đi)/gi, [
   {at: 0, card: {kicker: 'NHÓM 3', title: 'Đi qua những lúc thăng trầm'}},
   // 1–2 the two words, each with its meaning, with the quote
   {at: 1, label: 'Chịu đựng', quote: true, draw: (c) => <g>
@@ -332,41 +332,41 @@ export const Nhom3C = section("07 nhóm 3C", /(chịu|đựng|vốc muối|dòng
   {at: 8, draw: (c) => <g>{wall(c, -60)}
     {D(c, 'M1180 800 L1520 800 L1520 760 L1180 760', 0, 20, 2.4)}
     <Figure frame={c.frame} from={c.start} x={1300} y={760} s={1} pose="sit" facing={-1} /></g>},
-  // 9–10 a field and an empty fence; a farmer runs by pointing; twelve cows wander off
-  {at: 9, label: 'Buông xả', draw: (c) => {const away = interpolate(c.frame, [within(c, 10, .3), c.at(11) + 30], [0, 1], clamp), run = interpolate(c.frame, [c.at(10), within(c, 10, .8)], [0, 1], clamp);return <g>
+  // 9–10 a field with twelve cows by a fence; 11 the farmer runs in pointing; 12 the cows wander off and he goes
+  {at: 9, label: 'Buông xả', draw: (c) => {const away = interpolate(c.frame, [within(c, 12, .1), c.at(13) - 10], [0, 1], clamp), run = interpolate(c.frame, [c.at(11), within(c, 11, .8)], [0, 1], clamp);return <g>
     {D(c, 'M300 760 L1620 760 M360 760 L360 620 M480 760 L480 620 M600 760 L600 620 M300 660 L640 660 M300 710 L640 710', 0, 30, 2.4)}
     {Array.from({length: 12}, (_, i) => {
       const row = Math.floor(i / 6), s = (row ? 1.15 : .95) * (1 - away * .45), x = (row ? 700 : 775) + (i % 6) * 150 + away * (280 + i * 12), y = (row ? 760 : 640) - away * 90;
       return <path key={i} d={cow(x, y, s)} fill="none" stroke={GOLD} strokeWidth={2.4} strokeLinejoin="round" opacity={appear(c.frame, c.start + 6 + i * 2, 8) * (1 - away * .7)} />;
     })}
-    <g opacity={appear(c.frame, c.at(10), 10) * (1 - appear(c.frame, c.at(11) - 6, 10))}><Figure frame={c.frame} from={c.at(10)} x={300 + run * 600} y={760} s={1} pose="walk" arm="point" /></g>
+    <g opacity={appear(c.frame, c.at(11), 10) * (1 - appear(c.frame, c.at(13) - 22, 10))}><Figure frame={c.frame} from={c.at(11)} x={300 + run * 600} y={760} s={1} pose="walk" arm="point" /></g>
   </g>;}},
-  // 11 a teacher and students sit under a tree, with the quote
-  {at: 11, quote: true, draw: (c) => <g>
+  // 13 a teacher and students sit under a tree, with the quote
+  {at: 13, quote: true, draw: (c) => <g>
     {D(c, 'M1300 780 L1300 520 M1300 560 C1200 520 1180 420 1260 380 C1300 300 1420 320 1430 400 C1500 440 1480 540 1400 560 C1360 570 1320 560 1300 560', 0, 30, 2.6)}
     <Figure frame={c.frame} from={c.start + 6} x={1100} y={790} s={1} pose="sit" facing={-1} />
     {[0, 1, 2].map((k) => <Figure key={k} frame={c.frame} from={c.start + 10 + k * 4} x={560 + k * 150} y={790} s={.8} pose="sit" />)}
   </g>},
-  // 12 praise and things tied to a hand like balloons; 13 they slip away, a small cloud of criticism comes
-  {at: 12, draw: (c) => {const go = appear(c.frame, within(c, 13, .2), 40);return <g>
+  // 14 things held like balloons, 15 praise among them; 16 they slip away, a small cloud of criticism comes
+  {at: 14, draw: (c) => {const go = appear(c.frame, within(c, 16, .2), 40);return <g>
     <Figure frame={c.frame} from={c.start} x={960} y={820} s={1.1} arm="raise" />
-    {[0, 1, 2, 3].map((k) => {const bx = 840 + k * 80, by = 260 + (k % 2) * 50 - go * 200;return <g key={k} opacity={appear(c.frame, within(c, 12, .2 + k * .15), 10) * (1 - go)}>
+    {[0, 1, 2, 3].map((k) => {const bx = 840 + k * 80, by = 260 + (k % 2) * 50 - go * 200;return <g key={k} opacity={appear(c.frame, within(c, k < 2 ? 14 : 15, .2 + (k % 2) * .35), 10) * (1 - go)}>
       <ellipse cx={bx} cy={by} rx={34} ry={42} fill="none" stroke={k % 2 ? IVORY : GOLD} strokeWidth={2.4} /><path d={`M${bx} ${by + 42} C${bx + 10} ${by + 120} 1000 ${400 + go * 0} 1010 ${470}`} fill="none" stroke={GOLD} strokeWidth={1.6} opacity={(1 - go) * .8} /></g>;})}
-    <path d="M1240 380 C1220 340 1260 310 1300 330 C1320 300 1380 310 1380 350 C1420 360 1410 410 1370 410 L1260 410 C1220 410 1220 380 1240 380 Z" fill="none" stroke={IVORY} strokeWidth={2.4} opacity={appear(c.frame, within(c, 13, .5), 14)} />
+    <path d="M1240 380 C1220 340 1260 310 1300 330 C1320 300 1380 310 1380 350 C1420 360 1410 410 1370 410 L1260 410 C1220 410 1220 380 1240 380 Z" fill="none" stroke={IVORY} strokeWidth={2.4} opacity={appear(c.frame, within(c, 16, .5), 14)} />
   </g>;}},
-  // 14 a desk covered in papers, 15 autumn leaves fall on it (with the quote)
-  {at: 14, label: 'Biết đủ và thảnh thơi', quote: true, draw: (c) => <g>{table(c)}{D(c, 'M800 700 L1120 700 L1096 680 L824 680 Z M846 680 L866 540 L1054 540 L1074 680 M884 560 L1036 560 L1052 664 L868 664 Z', 4, 26, 2.4)}
-    {[0, 1, 2, 3].map((k) => {const fall = ((c.frame - c.at(15) + k * 40) % 160) / 160;return c.frame < c.at(15) ? null : <path key={k} d="M0 0 C16 -26 42 -28 48 0 C42 22 16 26 0 0 Z M0 0 L-12 10 M4 0 L40 0" transform={`translate(${[540, 680, 1240, 1380][k] + Math.sin(fall * 6 + k) * 30} ${260 + fall * 360}) rotate(${fall * 220})`} fill="none" stroke={GOLD} strokeWidth={2.4} opacity={interpolate(fall, [0, .1, .8, 1], [0, 1, 1, 0])} />;})}
+  // 17 a desk covered in papers, 18 autumn leaves fall on it (with the quote)
+  {at: 17, label: 'Biết đủ và thảnh thơi', quote: true, draw: (c) => <g>{table(c)}{D(c, 'M800 700 L1120 700 L1096 680 L824 680 Z M846 680 L866 540 L1054 540 L1074 680 M884 560 L1036 560 L1052 664 L868 664 Z', 4, 26, 2.4)}
+    {[0, 1, 2, 3].map((k) => {const fall = ((c.frame - c.at(18) + k * 40) % 160) / 160;return c.frame < c.at(18) ? null : <path key={k} d="M0 0 C16 -26 42 -28 48 0 C42 22 16 26 0 0 Z M0 0 L-12 10 M4 0 L40 0" transform={`translate(${[540, 680, 1240, 1380][k] + Math.sin(fall * 6 + k) * 30} ${260 + fall * 360}) rotate(${fall * 220})`} fill="none" stroke={GOLD} strokeWidth={2.4} opacity={interpolate(fall, [0, .1, .8, 1], [0, 1, 1, 0])} />;})}
   </g>},
-  // 16 a stack of coins turns into a comfortable chair, with the quote
-  {at: 16, quote: true, draw: (c) => {const turn = appear(c.frame, within(c, 16, .45), 24);return <g>
+  // 19 a stack of coins turns into a comfortable chair, with the quote
+  {at: 19, quote: true, draw: (c) => {const turn = appear(c.frame, within(c, 19, .45), 24);return <g>
     <g opacity={1 - turn}>{[0, 1, 2, 3, 4, 5].map((k) => <ellipse key={k} cx={960} cy={700 - k * 34} rx={110} ry={26} fill="#0d1411" stroke={GOLD} strokeWidth={2.4} opacity={appear(c.frame, c.start + k * 4, 8)} />)}</g>
     <path d={chair(960, 780)} fill="none" stroke={IVORY} strokeWidth={2.6} opacity={turn} /></g>;}},
-  // 17 a winding road and someone walking it at ease; 18 footprints, no finish line
-  {at: 17, draw: (c) => {const t = interpolate(c.frame, [c.start, c.at(18) + 60], [0, 1], clamp);return <g>
+  // 20 a winding road and someone walking it at ease; 21 footprints, no finish line
+  {at: 20, draw: (c) => {const t = interpolate(c.frame, [c.start, c.at(21) + 60], [0, 1], clamp);return <g>
     <path d="M700 820 C860 760 760 660 940 600 C1100 548 1040 460 1200 400 C1300 360 1340 300 1320 260" fill="none" stroke={IVORY} strokeWidth={3.4} strokeLinecap="round" strokeDasharray="2 14" opacity={appear(c.frame, c.start, 18)} />
     <Figure frame={c.frame} from={c.start + 10} x={720 + t * 300} y={810 - t * 200} s={.8 - t * .25} pose="walk" />
-    {[0, 1, 2, 3, 4].map((k) => <ellipse key={k} cx={760 + k * 50} cy={800 - k * 36} rx={8} ry={14} fill={GOLD} opacity={appear(c.frame, c.at(18) + k * 8, 8) * .8} />)}
+    {[0, 1, 2, 3, 4].map((k) => <ellipse key={k} cx={760 + k * 50} cy={800 - k * 36} rx={8} ry={14} fill={GOLD} opacity={appear(c.frame, c.at(21) + k * 8, 8) * .8} />)}
   </g>;}},
 ]);
 
@@ -598,11 +598,38 @@ export const YKien = section("08g ý kiến cá nhân", /(riêng mình|một ng�
 ]);
 
 // ---- 09 Nhận xét chung -----------------------------------------------------------------------------------
-export const NhanXet = section("09 nhận xét chung", /(cuốn sách hay|đọc qua)/gi, [
+// 0 an open book with rays; 1 a scale with the book tipping against a heavier textbook; 2 a tangled line that
+// smooths out; 3 a bedside lamp, the moon and a thin book; 4 a figure in a glow that spreads to people around
+export const NhanXet = section("09 nhận xét chung", /(cuốn sách hay|chưa đủ|lòng dịu xuống|trước khi ngủ|đọc qua|hiểu mình trước|những người quanh mình)/gi, [
   {at: 0, draw: (c) => <g>
     <Glow x={960} y={520} r={320} opacity={appear(c.frame, c.start + 10, 30)} />
     {D(c, 'M640 640 L1280 640 L1300 600 L660 600 Z M640 640 L640 690 L1280 690 L1280 640 M1300 600 L1300 650 L1280 690', 0, 34, 2.6)}
     {D(c, 'M680 620 L1260 620', 16, 20, 2, .75)}
     {[0, 1, 2, 3, 4].map((k) => {const a = -Math.PI / 2 + (k - 2) * .35;return <path key={k} d={`M${960 + Math.cos(a) * 120} ${560 + Math.sin(a) * 120} L${960 + Math.cos(a) * 260} ${560 + Math.sin(a) * 260}`} stroke={GOLD} strokeWidth={2.6} strokeLinecap="round" opacity={appear(c.frame, c.start + 24 + k * 4, 12) * .9} />;})}
   </g>},
+  {at: 1, draw: (c) => {const tip = interpolate(c.frame, [within(c, 1, .55), within(c, 1, .8)], [0, 1], {...clamp, easing: ease}), a = -8 * tip;return <g>
+    {D(c, 'M960 820 L960 440 M900 820 L1020 820', 0, 22, 2.6)}
+    <g transform={`rotate(${a} 960 440)`}>
+      {D(c, 'M700 440 L1220 440', 10, 20, 2.6)}
+      <g transform={`rotate(${-a} 700 440)`}>{D(c, 'M700 440 L640 560 M700 440 L760 560 M610 560 L790 560 C780 600 620 600 610 560', 18, 22, 2.2)}
+        {D(c, 'M650 548 L700 520 L750 548 M700 520 L700 548', 30, 14, 2.4)}</g>
+      <g transform={`rotate(${-a} 1220 440)`}>{D(c, 'M1220 440 L1160 560 M1220 440 L1280 560 M1130 560 L1310 560 C1300 600 1140 600 1130 560', 18, 22, 2.2, .7)}
+        <g opacity={appear(c.frame, within(c, 1, .45), 14)}>{[0, 1, 2].map((k) => <rect key={k} x={1170} y={530 - k * 22} width={100} height={20} rx={2} fill="none" stroke={IVORY} strokeWidth={2} />)}</g></g>
+    </g>
+  </g>;}},
+  {at: 2, draw: (c) => {const calm = interpolate(c.frame, [within(c, 2, .55), c.at(3) - 14], [0, 1], {...clamp, easing: ease});
+    const d = Array.from({length: 61}, (_, i) => {const x = 520 + i * 15, y = 560 + (1 - calm) * (Math.sin(i * .9) * 70 + Math.sin(i * 2.3) * 40);return `${i ? 'L' : 'M'}${x} ${y.toFixed(1)}`;}).join(' ');
+    return <g><path d={d} fill="none" stroke={calm > .9 ? GOLD : IVORY} strokeWidth={2.6} strokeLinejoin="round" opacity={appear(c.frame, c.start, 16)} /><Glow x={960} y={560} r={260} opacity={calm * .8} /></g>;}},
+  {at: 3, draw: (c) => <g>
+    {table(c)}
+    {D(c, 'M600 700 L600 520 M560 520 L640 520 L620 440 L580 440 Z', 6, 22, 2.4)}
+    <Glow x={600} y={540} r={220} opacity={appear(c.frame, c.start + 24, 20)} />
+    {D(c, 'M860 690 L960 670 L1060 690 M960 670 L960 690 M860 690 L960 690 L1060 690', 14, 20, 2.4)}
+    {D(c, 'M1420 260 C1360 280 1350 360 1400 400 C1340 400 1310 320 1350 280 C1370 262 1400 258 1420 260 Z', within(c, 3, .5) - c.start, 18, 2.2, .85)}
+  </g>},
+  {at: 4, draw: (c) => {const spread = interpolate(c.frame, [within(c, 4, .5), c.at(5) + 20], [0, 1], {...clamp, easing: ease});return <g>
+    <Glow x={960} y={600} r={140 + spread * 520} opacity={appear(c.frame, c.start + 10, 20) * .9} />
+    <Figure frame={c.frame} from={c.start + 6} x={960} y={780} s={1} />
+    {[[520, .8, 1], [720, .85, 1], [1200, .85, -1], [1400, .8, -1]].map(([x, s, f], k) => <g key={k} opacity={appear(c.frame, within(c, 4, .55) + k * 6, 14) * .85}><Figure frame={c.frame} from={within(c, 4, .55)} x={x} y={780} s={s} facing={f as 1 | -1} color={IVORY} /></g>)}
+  </g>;}},
 ]);

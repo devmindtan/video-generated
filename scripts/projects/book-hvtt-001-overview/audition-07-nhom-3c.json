@@ -57,22 +57,37 @@
     },
     {
       "scene": 1,
-      "text": "Tác giả kể một câu chuyện: một bác nông dân chạy ngang, hỏi có ai thấy mười hai con bò của bác đâu không.",
+      "text": "Chương này mở bằng một câu chuyện.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Bác đi rồi, Đức Phật quay sang các học trò: \"Chúng ta đâu có con bò nào để mất, phải không?\"",
+      "text": "Đức Phật đang ngồi trong rừng với các học trò thì một bác nông dân hớt hải chạy tới, hỏi có thấy đàn bò mười hai con của bác đi ngang qua không.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Bác vừa mất mùa, giờ lại mất luôn đàn bò, nên vừa đi vừa than khóc.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Đợi bác đi khuất, Đức Phật quay sang học trò: \"Chúng ta đâu có con bò nào để mất, phải không?\"",
       "pauseAfter": 0.9
     },
     {
       "scene": 1,
-      "text": "Theo tác giả, mình không chỉ giữ của cải mà còn giữ cả lời khen, sự công nhận, và mỗi thứ mình ôm là một con bò có thể lạc mất.",
+      "text": "Ý tác giả là mình càng ôm nhiều thứ thì càng có nhiều thứ để sợ mất.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Thích được khen thì cũng sẽ sợ bị chê.",
+      "text": "Mà thứ mình ôm đâu chỉ là của cải, còn có lời khen, sự công nhận.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Thích được khen bao nhiêu thì cũng sợ bị chê bấy nhiêu.",
       "pauseAfter": 0.65
     },
     {
