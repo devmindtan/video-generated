@@ -1,5 +1,6 @@
 // Production review in the manager (docs/architecture/review-workflow.md): the initial lock of five items,
-// patches the user accepts or returns, per-scene clips with notes, and the final hash-bound review-preview gate.
+// patches the user reviews (changed text plus the clips and takes to watch and listen to) and accepts or returns,
+// and the final hash-bound review-preview gate.
 // Every write needs the user's click (token + explicit confirm + the revision they reviewed). Never called by
 // workers, never --allow-missing, never export or render.
 const crypto = require('node:crypto');
@@ -55,7 +56,7 @@ function diff(oldText, newText) {
   return {added, removed, rows};
 }
 
-const NAMES = {'approve-script': 'Duyệt kịch bản', 'approve-voice': 'Duyệt giọng đọc', 'approve-assets': 'Duyệt hình ảnh', 'review-preview': 'Xem bản dựng', 'initial-lock': 'Chốt ban đầu', 'scene-review': 'Duyệt từng cảnh'};
+const NAMES = {'approve-script': 'Duyệt kịch bản', 'approve-voice': 'Duyệt giọng đọc', 'approve-assets': 'Duyệt hình ảnh', 'review-preview': 'Xem bản dựng', 'initial-lock': 'Chốt ban đầu', 'scene-review': 'Bản vá'};
 const AUDIO = /\.(wav|mp3|m4a|ogg|flac)$/i;
 
 function createApprovals(root) {
@@ -191,12 +192,16 @@ function createApprovals(root) {
       returned: r.returned && {...r.returned, revisedTitles: r.items.filter(i => r.returned.revisedItems.includes(i.id)).map(i => i.title), notedTitles: r.items.filter(i => r.returned.itemNotes[i.id]).map(i => i.title)},
       items: r.items.map(i => ({id: i.id, title: i.title, guide: i.guide, files: i.files.map(f => ({path: f.path, name: nameOf(f.path), exists: f.exists, changed: f.changed}))})),
       missing: r.missing.map(rel => ({path: rel, name: nameOf(rel)})), drift: r.drift.map(rel => ({path: rel, name: nameOf(rel)})),
-      pending: r.pending && {id: r.pending.id, reason: r.pending.reason, createdAt: r.pending.createdAt, files: Object.keys(r.pending.changed).map(nameOf)},
-      patches: r.patches.map(p => ({id: p.id, reason: p.reason, status: p.status, createdAt: p.createdAt, decidedAt: p.decidedAt, note: p.note, files: Object.keys(p.changed).map(nameOf), itemNotes: Object.entries(p.itemNotes || {}).map(([rel, n]) => ({name: nameOf(rel), text: n.text}))})),
+      pending: r.pending && {id: r.pending.id, reason: r.pending.reason, createdAt: r.pending.createdAt, files: Object.keys(r.pending.changed).map(nameOf), ...mediaCount(r.pending)},
+      patches: r.patches.map(p => ({id: p.id, reason: p.reason, status: p.status, createdAt: p.createdAt, decidedAt: p.decidedAt, note: p.note, files: Object.keys(p.changed).map(nameOf), ...mediaCount(p),
+        itemNotes: Object.entries(p.itemNotes || {}).map(([key, n]) => ({name: itemName(p, key), text: n.text}))})),
       scenes: r.scenes.map(s => ({id: s.id, title: s.title, status: s.status, clips: s.clips.map((c, i) => ({index: i, renderedAt: c.renderedAt, lockVersion: c.lockVersion, status: c.status, note: c.note, decidedAt: c.decidedAt}))})),
       final: r.final, preview};
   }
-  // Lock: every item in full (text, music and voice sample). Patch: per changed file, the diff against the lock.
+  const mediaCount = p => ({videos: (p.media || []).filter(m => m.kind === 'video').length, audios: (p.media || []).filter(m => m.kind === 'audio').length});
+  const itemName = (p, key) => {const m = /^media:(\d+)$/.exec(key);return m ? p.media?.[Number(m[1])]?.title || key : nameOf(key);};
+  // Lock: every item in full (text, music and voice sample). Patch: per changed file, the diff against the lock,
+  // then each attached result (video or audio) to watch or listen to.
   function reviewDetail(id, mode, patchId) {
     const plan = cli.plan(root, id), r = review.summary(root, plan), v = reviewView(id);
     const text = rel => fs.readFileSync(path.join(root, rel), 'utf8').slice(0, 300000);
@@ -225,8 +230,10 @@ function createApprovals(root) {
         else if (!TEXT.test(rel) || !after) Object.assign(file, {status: 'binary'});
         else if (!before) Object.assign(file, {status: 'text', text: after.toString('utf8').slice(0, 300000)});
         else Object.assign(file, {status: 'changed', ...diff(before.toString('utf8'), after.toString('utf8'))});
-        return {key: rel, kind: item?.id || '', title: !item || nameOf(rel) === item.title ? nameOf(rel) : `${item.title}: ${nameOf(rel)}`, guide: item?.guide || '', audio: item ? audioOf(id, {id: item.id, files: [rel]}) : [], files: [file]};
-      })};
+        return {key: rel, kind: item?.id || '', type: 'text', title: !item || nameOf(rel) === item.title ? nameOf(rel) : `${item.title}: ${nameOf(rel)}`, guide: item?.guide || '', audio: item ? audioOf(id, {id: item.id, files: [rel]}) : [], files: [file]};
+      }).concat((patch.media || []).map((m, i) => ({key: `media:${i}`, kind: m.kind, type: m.kind, title: m.title, files: [],
+        guide: m.kind === 'video' ? 'Xem hết video: hình, chữ, giọng, nhịp, nhạc.' : 'Nghe hết: đúng chữ, đúng thanh điệu, rõ, không vấp.',
+        media: {kind: m.kind, src: `${patch.id}:${i}`, path: m.file, changedSince: approvals.sha256(root, m.file) !== m.sha256}})))};
   }
   function checked(id, revision) {
     const v = reviewView(id);
@@ -264,6 +271,11 @@ function createApprovals(root) {
   // Streams only what the review lists: an item's audio under public/, or a recorded scene clip.
   function reviewMedia(id, kind, key) {
     const plan = cli.plan(root, id);
+    if (kind === 'patch') {
+      const [patchId, index] = String(key).split(':'), m = review.load(root, id).patches.find(p => p.id === patchId)?.media?.[Number(index)];
+      if (!m || m.file.includes('..') || !(m.file.startsWith(`projects/${id}/`) || m.file.startsWith('public/'))) return null;
+      return path.join(root, m.file);
+    }
     if (kind === 'clip') {
       const [scene, index] = String(key).split(':'), clip = review.load(root, id).scenes[scene]?.clips?.[Number(index)];
       return clip && clip.file.startsWith(`projects/${id}/review/`) && !clip.file.includes('..') ? path.join(root, clip.file) : null;

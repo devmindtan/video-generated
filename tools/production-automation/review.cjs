@@ -1,7 +1,9 @@
 // Production review (docs/architecture/review-workflow.md): one initial lock of five items, then patches the
-// user accepts or returns one by one, then per-scene review clips with notes. Stored next to the old gate
-// history in docs/projects/<slug>/approvals.json (schema 2). Only the user locks, accepts or reviews (manager);
-// agents may only create patches and record rendered scene clips.
+// user reviews one by one. A patch is everything the agent wants the user to look at: changed package files
+// (text diffs) and/or results to watch and listen to (scene clips, narration takes); the user marks each item
+// Đạt / Chưa đạt with notes and accepts or returns the patch (user 2026-11-02: one place to see results and give
+// feedback, no separate per-scene review). Stored next to the old gate history in docs/projects/<slug>/approvals.json
+// (schema 2). Only the user locks or decides (manager); agents create patches and record rendered clips.
 const fs = require('node:fs');
 const path = require('node:path');
 const approvals = require('./approvals.cjs');
@@ -66,16 +68,16 @@ function summary(root, plan) {
   if (!lock) blockers.push('Chưa chốt ban đầu');
   if (pending) blockers.push('Còn bản vá chờ duyệt');
   if (drift.length) blockers.push('Có thay đổi chưa vào bản vá');
-  const notApproved = scenes.filter(s => s.status !== 'approved');
-  if (!scenes.length) blockers.push('Chưa có danh sách cảnh để duyệt');
-  else if (notApproved.length) blockers.push(`Cảnh chưa đạt hoặc chưa có clip: ${notApproved.map(s => s.title).join(', ')}`);
+  // Results are reviewed inside patches: the build is ready for the final look once a patch was accepted after the lock.
+  const reviewed = store.patches.some(p => p.status === 'accepted');
+  if (lock && !reviewed) blockers.push('Chưa có bản vá nào được chấp nhận sau khi chốt');
   // The latest "Chưa đạt" on the initial package, while still unlocked: what was asked and which items changed since.
   const back = !lock ? store.lockReturns.at(-1) || null : null;
   const returned = back && {at: back.at, by: back.by, note: back.note, itemNotes: back.itemNotes,
     revisedItems: list.filter(i => i.files.some(f => (back.files[f.path] ?? null) !== f.sha256)).map(i => i.id)};
   return {state: !lock ? 'unlocked' : pending ? 'patch-pending' : 'locked', version: lock?.version || 0, returned,
     lockedAt: lock?.at || null, lockedBy: lock?.by || null, items: list, missing: files.filter(f => !f.exists).map(f => f.path),
-    drift, pending, patches: [...store.patches].reverse(), notes: openNotes(root, plan, store, pending), scenes, scenesApproved: scenes.length > 0 && !notApproved.length,
+    drift, pending, patches: [...store.patches].reverse(), notes: openNotes(root, plan, store, pending), scenes, scenesApproved: Boolean(lock) && reviewed && !pending && !drift.length,
     final: {ready: !blockers.length, blockers}};
 }
 
@@ -85,7 +87,10 @@ function summary(root, plan) {
 function noteFiles(root, plan, store, context, item) {
   if (context === 'lock') return items(root, plan).find(i => i.id === item)?.files || null;
   const patch = store.patches.find(p => p.id === context);
-  return patch && patch.changed[item] ? [item] : null;
+  if (!patch) return null;
+  const media = /^media:(\d+)$/.exec(item);
+  if (media) return patch.media?.[Number(media[1])] ? [patch.media[Number(media[1])].file] : null;
+  return patch.changed[item] ? [item] : null;
 }
 function setNote(root, plan, {context, item, text, by}) {
   if (typeof text !== 'string' || text.length > 4000) throw new Error('Ghi chú tối đa 4000 ký tự');
@@ -140,7 +145,28 @@ function lock(root, plan, {by, note = ''}) {
   return entry;
 }
 
-function createPatch(root, plan, {reason, by}) {
+// Results attached to a patch: files the user watches or listens to, only from the project's render folder or public/.
+const MEDIA_KIND = rel => /\.(mp4|webm|mov)$/i.test(rel) ? 'video' : /\.(wav|mp3|m4a|ogg|flac)$/i.test(rel) ? 'audio' : null;
+function mediaEntry(root, plan, {file, title, scene}) {
+  const rel = path.normalize(String(file || '')).replace(/\\/g, '/');
+  if (rel.startsWith('..') || path.isAbsolute(rel) || !(rel.startsWith(`projects/${plan.projectId}/`) || rel.startsWith('public/')))
+    throw new Error(`File kết quả phải nằm trong projects/${plan.projectId}/ hoặc public/: ${file}`);
+  const kind = MEDIA_KIND(rel);
+  if (!kind) throw new Error(`Chỉ đính kèm video (mp4/webm/mov) hoặc âm thanh (wav/mp3/m4a/ogg/flac): ${file}`);
+  const sha256 = approvals.sha256(root, rel);
+  if (!sha256) throw new Error(`Không thấy file ${rel}`);
+  return {kind, file: rel, title: String(title || '').trim() || path.basename(rel), sha256, ...(scene ? {scene} : {})};
+}
+// The latest recorded clip of a scene, as a patch attachment.
+function sceneClip(root, plan, sceneId) {
+  const def = sceneDefs(root, plan).find(s => s.id === sceneId);
+  if (!def) throw new Error(`Không có cảnh ${sceneId}`);
+  const clip = load(root, plan.projectId).scenes[sceneId]?.clips?.at(-1);
+  if (!clip) throw new Error(`Cảnh ${sceneId} chưa có clip; chạy scene-clip trước`);
+  return {file: clip.file, title: `Video cảnh: ${def.title}`, scene: sceneId};
+}
+
+function createPatch(root, plan, {reason, by, media = []}) {
   const store = load(root, plan.projectId), base = latestLock(store);
   if (!base) throw new Error('Chưa chốt ban đầu: chưa có gì để vá');
   if (typeof reason !== 'string' || !reason.trim()) throw new Error('Cần ghi lý do của bản vá (--reason)');
@@ -149,11 +175,12 @@ function createPatch(root, plan, {reason, by}) {
     const after = approvals.sha256(root, rel), before = base.files[rel] ?? null;
     if (after !== before) {changed[rel] = {before, after};approvals.snapshot(root, rel, after);}
   }
-  if (!Object.keys(changed).length) throw new Error('Không có thay đổi nào so với bản chốt v' + base.version);
+  const attached = media.map(m => mediaEntry(root, plan, m)).filter((m, i, all) => all.findIndex(x => x.file === m.file) === i);
+  if (!Object.keys(changed).length && !attached.length) throw new Error('Không có thay đổi nào so với bản chốt v' + base.version + ' và không có video/âm thanh nào để xem');
   // A newer patch replaces one still waiting: the user only ever decides on the latest proposal.
   // Notes on the replaced proposal carry over: they are about the same files.
   for (const p of store.patches) if (p.status === 'pending') {p.status = 'superseded';p.decidedAt = now();if (store.notes[p.id]) store.notes[`p${store.patches.length + 1}`] = store.notes[p.id];delete store.notes[p.id];}
-  const patch = {id: `p${store.patches.length + 1}`, baseVersion: base.version, changed, reason: reason.trim(), by, createdAt: now(),
+  const patch = {id: `p${store.patches.length + 1}`, baseVersion: base.version, changed, media: attached, reason: reason.trim(), by, createdAt: now(),
     status: 'pending', decidedAt: null, decidedBy: null, note: ''};
   store.patches.push(patch);save(root, plan.projectId, store);
   return patch;
@@ -166,13 +193,24 @@ function decidePatch(root, plan, patchId, {decision, note = '', by}) {
   const base = latestLock(store);
   if (patch.baseVersion !== base.version) throw new Error('Bản chốt đã đổi sau khi tạo bản vá; tạo bản vá mới');
   if (decision === 'accepted') {
-    const moved = Object.entries(patch.changed).filter(([rel, c]) => approvals.sha256(root, rel) !== c.after).map(([rel]) => rel);
+    const moved = [...Object.entries(patch.changed).filter(([rel, c]) => approvals.sha256(root, rel) !== c.after).map(([rel]) => rel),
+      ...(patch.media || []).filter(m => approvals.sha256(root, m.file) !== m.sha256).map(m => m.file)];
     if (moved.length) throw Object.assign(new Error(`File đổi sau khi tạo bản vá: ${moved.join(', ')}. Tạo bản vá mới rồi duyệt.`), {status: 409});
-    const files = {...base.files};
-    for (const [rel, c] of Object.entries(patch.changed)) files[rel] = c.after;
-    store.locks.push({version: base.version + 1, files, by, at: now(), note, fromPatch: patch.id});
+    // Only package edits make a new lock version; a patch of results alone (clips, takes) leaves the lock as it is.
+    if (Object.keys(patch.changed).length) {
+      const files = {...base.files};
+      for (const [rel, c] of Object.entries(patch.changed)) files[rel] = c.after;
+      store.locks.push({version: base.version + 1, files, by, at: now(), note, fromPatch: patch.id});
+    }
   }
-  Object.assign(patch, {status: decision, decidedAt: now(), decidedBy: by, note, itemNotes: takeNotes(store, patch.id)});
+  const itemNotes = takeNotes(store, patch.id);
+  // Scene clips in the patch take the decision (and the note written on that clip), for the scene's history.
+  for (const [i, m] of (patch.media || []).entries()) {
+    const clip = m.scene && store.scenes[m.scene]?.clips?.find(c => c.file === m.file);
+    if (clip) Object.assign(clip, {status: decision === 'accepted' ? 'approved' : itemNotes[`media:${i}`] ? 'needs-changes' : clip.status,
+      note: itemNotes[`media:${i}`]?.text || '', decidedAt: now(), decidedBy: by, patch: patch.id});
+  }
+  Object.assign(patch, {status: decision, decidedAt: now(), decidedBy: by, note, itemNotes});
   save(root, plan.projectId, store);
   return {patch, version: latestLock(store).version};
 }
@@ -200,4 +238,4 @@ function reviewScene(root, plan, sceneId, clipIndex, {decision, note = '', by}) 
   return clip;
 }
 
-module.exports = {returnLock, items, summary, lock, createPatch, decidePatch, sceneDefs, addClip, reviewScene, setNote, load};
+module.exports = {returnLock, items, summary, lock, createPatch, decidePatch, sceneDefs, sceneClip, addClip, reviewScene, setNote, load};

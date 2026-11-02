@@ -81,8 +81,8 @@ function buildStages(profile,seriesDir,{source:S,scripts:X,docs:D,assets:P}){
     'Use canonical project paths, existing engines, editable music trim, ducking and edge fades; no full render.',['narration','visuals'],
     {upstreamKind:'implement',reads:[`${D}/**`,`${P}/**`,'src/shared/**'],writes:[`${S}/**`,`${X}/**`],
       outputs:[`${S}/Video.tsx`,`${S}/Thumbnail.tsx`,`${S}/captions.json`]});
-  gate('scene-review','Duyệt từng cảnh','Cảnh nào xong thì có clip riêng (đã có giọng); bạn xem, bấm Đạt hoặc ghi chú chỗ chưa đạt.',
-    'Per-scene review clips with notes; every scene must pass.',['assembly']);
+  gate('scene-review','Bản vá: xem kết quả và góp ý','Mỗi bản vá gom những gì agent đã làm hoặc sửa (chữ, video, âm thanh); bạn xem từng mục, bấm Đạt hoặc ghi chỗ chưa đạt, rồi chấp nhận hoặc trả lại.',
+    'Each patch bundles what changed or was produced (text diffs, scene clips, narration takes); the user marks items and accepts or returns it.',['assembly']);
   add('qa','verifier','Kiểm tra kỹ thuật','Kiểm tra riêng của tập, khớp phụ đề với giọng, typography, media. Đạt kỹ thuật không có nghĩa đã nghe duyệt.',
     'Project-specific checks, captions/voice alignment, typography and media availability; technical pass is not listening approval.',['assembly'],
     {kind:'check',upstreamKind:'test',reads:[`${S}/**`,`${X}/**`,`${D}/**`],writes:[`${D}/qa.json`],
@@ -219,8 +219,10 @@ const USAGE=`Usage: npm run automation -- <command>
                                       record your approval of the final preview by hash
                                       (initial lock, patches, scenes: in the manager)
   review <slug>                       initial lock, patches, scene clips and your notes (read-only)
-  patch <slug> --reason text          propose the edits made since the latest lock as a patch
-  scene-clip <slug> <scene>           render one finished scene as a review clip (projects/<slug>/review/)
+  patch <slug> --reason text [--clip <scene>]... [--media <file>[|title]]...
+                                      propose the edits since the latest lock plus results to watch/listen to
+  scene-clip <slug> <scene> [--voice <id>]
+                                      render one finished scene as a review clip (projects/<slug>/review/), then attach it with patch --clip
   progress <slug>                     live task plan and status shown on the project's Tiến trình tab
   progress <slug> plan --file plan.json        agent's task plan after the lock ({summary, tasks:[{id,title,kind,weight,steps}]})
   progress <slug> start|update|done|fail|block <task> [--percent N|--steps 3/10] [--note text]
@@ -232,9 +234,10 @@ function printEvent(e){
   console.log(`${e.timestamp.slice(11,19)}  ${e.source.padEnd(18)} ${e.type.padEnd(22)} ${d}`.trimEnd());
 }
 async function main(argv){
-  const valued=['--note','--reason','--percent','--steps','--file'],flags=new Set(argv.filter(a=>a.startsWith('--')&&!valued.includes(a)));
+  const valued=['--note','--reason','--percent','--steps','--file','--clip','--media','--voice'],flags=new Set(argv.filter(a=>a.startsWith('--')&&!valued.includes(a)));
   const machine={gpu:flags.has('--gpu'),local:flags.has('--local')};
   const valueOf=name=>{const at=argv.indexOf(name);return at>=0?argv[at+1]||'':'';};
+  const valuesOf=name=>argv.flatMap((x,i)=>x===name&&argv[i+1]?[argv[i+1]]:[]);
   const note=valueOf('--note'),reason=valueOf('--reason'),hasFlag=name=>argv.includes(name);
   const args=argv.filter((a,i)=>!a.startsWith('--')&&!valued.includes(argv[i-1]));
   const [command,a,b,...extra]=args;
@@ -267,7 +270,13 @@ async function main(argv){
       return console.log(`Applied ${r.appliedFiles.join(', ')}. This is not an approval; review the file, then:\n  npm run automation -- status ${r.projectId}`);}
     case 'reject': if(!a)break; return json(runner.reject(ROOT,a,[b,...extra].filter(Boolean).join(' ')));
     case 'review': if(!a)break; return json(review.summary(ROOT,plan(ROOT,a)));
-    case 'patch': if(!a)break; return json(review.createPatch(ROOT,plan(ROOT,a),{reason,by:'agent (automation patch)'}));
+    case 'patch': {
+      if(!a)break;
+      // Results to watch/listen to: --clip <scene> (its latest review clip), --media <file>[|title] (video or audio).
+      const p=plan(ROOT,a),media=[...valuesOf('--clip').map(sc=>review.sceneClip(ROOT,p,sc)),
+        ...valuesOf('--media').map(v=>{const [file,...title]=v.split('|');return {file,title:title.join('|')};})];
+      return json(review.createPatch(ROOT,p,{reason,by:'agent (automation patch)',media}));
+    }
     case 'scene-clip': {
       if(!a||!b)break;
       const p=plan(ROOT,a),scene=review.sceneDefs(ROOT,p).find(s=>s.id===b);
@@ -278,10 +287,12 @@ async function main(argv){
       // Reported live on the project's Tiến trình tab; a killed render shows as interrupted (pid gone).
       progress.ensureTask(ROOT,a,{id:task,title:`Xuất clip duyệt cảnh ${scene.title}`,kind:'clip'});
       progress.update(ROOT,a,task,{status:'running',percent:0,note:rel,pid:process.pid});
+      // --voice <id>: render with another narration take than the composition's default (e.g. a clone take to review).
+      const voice=valueOf('--voice');
       try{execFileSync(path.join(ROOT,'node_modules/.bin/remotion'),['render','src/index.tsx',scene.composition,rel,
-        ...(scene.frames?[`--frames=${scene.frames[0]}-${scene.frames[1]}`]:[])],{cwd:ROOT,stdio:'inherit'});}
+        ...(scene.frames?[`--frames=${scene.frames[0]}-${scene.frames[1]}`]:[]),...(voice?[`--props=${JSON.stringify({voice})}`]:[])],{cwd:ROOT,stdio:'inherit'});}
       catch(e){progress.update(ROOT,a,task,{status:'failed',note:`Render lỗi: ${e.message.split('\n')[0]}`});throw e;}
-      const clip=review.addClip(ROOT,p,b,rel);progress.update(ROOT,a,task,{status:'done',note:'Clip sẵn sàng để bạn duyệt'});
+      const clip=review.addClip(ROOT,p,b,rel);progress.update(ROOT,a,task,{status:'done',note:'Clip sẵn sàng; đính kèm vào bản vá để bạn xem'});
       return json(clip);
     }
     case 'progress': {

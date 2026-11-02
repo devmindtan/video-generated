@@ -24,7 +24,7 @@ const blocked = {
 function automation(stage) {
   if (stage.id === 'export') return {mode: 'manual', text: 'Render thủ công khi bạn yêu cầu; không tự đăng tải.'};
   if (stage.id === 'initial-lock') return {mode: 'gate', text: 'Bạn chốt một lần trên trang quản lý (Duyệt sản xuất); sửa sau đó agent tạo bản vá để bạn duyệt.', command: 'npm run automation -- patch <slug> --reason "…"'};
-  if (stage.id === 'scene-review') return {mode: 'gate', text: 'Agent xuất clip từng cảnh đã xong; bạn xem, bấm Đạt hoặc ghi chú trên trang quản lý.', command: 'npm run automation -- scene-clip <slug> <cảnh>'};
+  if (stage.id === 'scene-review') return {mode: 'gate', text: 'Agent gom phần đã sửa và kết quả (chữ, video cảnh, âm thanh) vào bản vá; bạn xem, bấm Đạt hoặc ghi chú rồi chấp nhận hoặc trả lại trên trang quản lý.', command: 'npm run automation -- patch <slug> --reason "…" --clip <cảnh> --media <file>'};
   if (stage.kind === 'human-approval') return {mode: 'gate', text: 'Chỉ bạn ghi duyệt, gắn với mã hash của file.', command: `npm run automation -- approve <slug> ${stage.id}`};
   if (blocked[stage.id]) return {mode: stage.kind === 'draft-task' ? 'manual' : stage.kind, text: blocked[stage.id]};
   if (policy.runner.runnableStages.includes(stage.id)) return {mode: 'agent', text: 'Agent local soạn bản nháp trong bản sao riêng; bạn xem diff rồi apply.', command: `npm run automation -- run <slug> ${stage.id}`};

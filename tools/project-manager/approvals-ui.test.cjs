@@ -1,5 +1,6 @@
 /* "Duyệt sản xuất" in the project page, against a temporary workspace: initial lock of five items, a returned
-   and an accepted patch, per-scene clips with notes. Never touches the real approvals.json. */
+   and an accepted patch of text, then patches of results (a scene video and an audio take) reviewed item by item.
+   Never touches the real approvals.json. */
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),assert=require('node:assert/strict');
 const {chromium}=require('playwright-core'),{createManager}=require('./server.cjs');
 const cli=require('../production-automation/cli.cjs'),review=require('../production-automation/review.cjs');
@@ -43,8 +44,7 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   await page.goto(base+`/#project/${id}/duyet`,{waitUntil:'networkidle'});await page.locator('.gate-step').first().waitFor();
   mark('Review has its own tab and URL; Back returns to Hồ sơ; arrow keys switch tabs; pending work is flagged on the tab');
   assert.match(await page.locator('.lock-chip').innerText(),/Chưa chốt/);assert.match(await next.innerText(),/Việc của bạn[\s\S]*Chốt ban đầu/i);
-  assert.equal(await page.locator('.scene-row').count(),2);
-  assert.equal(await page.locator('.review-stepper .gate-step').count(),3,'patches are not a stage');assert.match(await page.locator('.patch-panel').innerText(),/Sau khi chốt, mọi chỉnh sửa/);
+  assert.equal(await page.locator('.review-stepper .gate-step').count(),3,'patches are not a stage');assert.match(await page.locator('.patch-panel').innerText(),/Sau khi chốt, mọi kết quả và chỉnh sửa/);
   await next.locator('[data-review-open="lock"]').click();await dialog.locator('.rail-item').first().waitFor();
   assert.deepEqual(await dialog.locator('.rail-name').evaluateAll(n=>n.map(x=>x.firstChild.textContent)),['Kịch bản','Nhạc nền','Giọng đọc','Thông tin đã chốt','Prompt hình / animation từng cảnh']);
   assert.equal(await dialog.locator('#review-form button[type=submit]').isDisabled(),true,'lock stays off until every item is marked');
@@ -94,7 +94,7 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   edit('Nội dung thử.','Nội dung đã sửa lại.');await live(/chưa vào bản vá: Kịch bản/);
   assert.match(await page.locator('#gates .warn').innerText(),/chưa vào bản vá: Kịch bản/);mark('An edit after the lock without a patch is flagged, not silently approved');
   review.createPatch(root,plan,{reason:'Sửa câu mở đầu',by:'agent'});await live(/Sửa câu mở đầu/,'.gate-next');mark('Live: the edit and the new patch appear without reloading the page');
-  assert.match(await page.locator('.patch-pending').innerText(),/Chờ bạn duyệt[\s\S]*p1: Sửa câu mở đầu/i);assert.match(await next.innerText(),/Bản vá p1: Sửa câu mở đầu/);
+  assert.match(await page.locator('.patch-pending').innerText(),/Chờ bạn xem[\s\S]*Bản vá p1[\s\S]*Sửa câu mở đầu[\s\S]*Chữ: Kịch bản/);assert.match(await next.innerText(),/Bản vá p1: Sửa câu mở đầu[\s\S]*Cần bạn xem và góp ý · Chữ: Kịch bản/);
   await page.screenshot({path:path.join(out,'review-pending-1440.png'),fullPage:true});
   await next.locator('[data-review-open="patch"]').click();await dialog.locator('.rail-item').first().waitFor();
   assert.equal(await dialog.locator('.rail-item').count(),1);assert.equal(await dialog.locator('.d-del mark').innerText(),'thử.');assert.equal(await dialog.locator('.d-add mark').first().innerText(),'đã sửa lại.');
@@ -111,44 +111,50 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   await dialog.locator('#review-form button[type=submit]').click();await page.waitForFunction(()=>/Bản chốt v2/.test(document.querySelector('.lock-chip')?.textContent||''));
   assert.deepEqual(store().locks.map(l=>l.version),[1,2]);assert.equal(store().locks[1].fromPatch,'p2');
   assert.equal(await page.locator('.patch-panel .patch-item').count(),2);assert.match(await page.locator('.patch-panel').innerText(),/p1[\s\S]*Đã trả lại[\s\S]*Câu mở còn dài/);mark('Accepting a patch makes the next locked version; the patch panel lists both with notes');
+  // Results come as patches too: a scene video and an audio take, each its own item with Đạt / Chưa đạt.
   const clip=(scene,name)=>{write(`projects/${id}/review/${name}`,Buffer.from('clip '+name));review.addClip(root,plan,scene,`projects/${id}/review/${name}`);};
-  clip('02-mo-chuyen','a.mp4');await open();assert.match(await next.innerText(),/Xem clip cảnh “Mở chuyện”/);
-  await next.locator('[data-scene-open]').click();await dialog.locator('.scene-video').waitFor();
-  assert.equal(await dialog.locator('.scene-video').evaluate(v=>fetch(v.src).then(r=>r.status)),200);
-  await page.screenshot({path:path.join(out,'scene-1440.png')});
-  await dialog.locator('[data-scene-decision]').click();assert.match(await dialog.locator('.review-status').innerText(),/Ghi chú chỗ chưa đạt/);
-  await dialog.locator('#review-form [name=note]').fill('Ảnh ngạch cửa hơi tối, giọng vào sớm');await dialog.locator('[data-scene-decision]').click();
-  await page.waitForFunction(()=>/Chưa đạt/.test(document.querySelector('.scene-row')?.textContent||''));
-  assert.match(await page.locator('.scene-row').first().innerText(),/Ảnh ngạch cửa hơi tối/);
-  await page.screenshot({path:path.join(out,'review-scenes-1440.png'),fullPage:true});
-  clip('02-mo-chuyen','b.mp4');clip('09-ket','c.mp4');await open();
-  await page.locator('.scene-row').first().locator('[data-scene-open]').click();await dialog.locator('.scene-video').waitFor();
-  assert.match(await dialog.locator('.scene-clips summary').innerText(),/Các clip trước \(1\)/);
-  await dialog.locator('#review-form button[type=submit]').click();await page.waitForFunction(()=>/Đạt/.test(document.querySelector('.scene-row .scene-badge')?.textContent||''));
-  await page.locator('.scene-row').nth(1).locator('[data-scene-open]').click();await dialog.locator('.scene-video').waitFor();
-  await dialog.locator('#review-form [name=note]').fill('Ghi chú cảnh Kết');await page.keyboard.press('Escape');
-  await page.locator('.scene-row').first().locator('[data-scene-open]').click();await dialog.locator('.scene-video').waitFor();
-  assert.equal(await dialog.locator('#review-form [name=note]').inputValue(),'','a note typed on one scene never carries into another');await page.keyboard.press('Escape');
-  await page.locator('.scene-row').nth(1).locator('[data-scene-open]').click();await dialog.locator('.scene-video').waitFor();await dialog.locator('#review-form [name=note]').fill('');await dialog.locator('#review-form button[type=submit]').click();
-  await page.waitForFunction(()=>/2\/2 cảnh đạt/.test(document.querySelector('#gates')?.textContent||''));
-  assert.match(await next.innerText(),/Xem bản dựng/);mark('Scene clips: note required for Chưa đạt, earlier clips kept, all scenes Đạt opens the final review');
+  clip('02-mo-chuyen','a.mp4');write(`public/${id}/voice-auditions/take-c/part-01.wav`,wav);
+  review.createPatch(root,plan,{reason:'Video cảnh mở chuyện và câu 3 đọc lại',by:'agent',media:[review.sceneClip(root,plan,'02-mo-chuyen'),{file:`public/${id}/voice-auditions/take-c/part-01.wav`,title:'Câu 3 đọc lại'}]});
+  await live(/Video cảnh mở chuyện/,'.gate-next');assert.match(await next.innerText(),/Bản vá p3: Video cảnh mở chuyện[\s\S]*1 video · 1 âm thanh/);
+  await page.screenshot({path:path.join(out,'review-media-pending-1440.png'),fullPage:true});
+  await next.locator('[data-review-open="patch"]').click();await dialog.locator('.rail-item').first().waitFor();
+  assert.deepEqual(await dialog.locator('.rail-item small').allInnerTexts(),['Video','Âm thanh']);
+  assert.equal(await dialog.locator('.patch-video').evaluate(v=>fetch(v.src).then(r=>r.status)),200);
+  await page.screenshot({path:path.join(out,'patch-video-1440.png')});
+  await dialog.locator('[data-item-fail]').click();await dialog.locator('.item-note textarea').fill('Ảnh ngạch cửa hơi tối, giọng vào sớm');
+  await page.waitForFunction(()=>/Đã lưu/.test(document.querySelector('.note-state')?.textContent||''));
+  await dialog.locator('.rail-item',{hasText:'Câu 3 đọc lại'}).click();assert.equal(await dialog.locator('.patch-audio').evaluate(a=>fetch(a.src).then(r=>r.status)),200);
+  await dialog.locator('[data-item-pass]').click();assert.match(await dialog.locator('#review-form button[type=submit]').innerText(),/Trả lại cho agent sửa/);
+  await page.screenshot({path:path.join(out,'patch-audio-1440.png')});
+  await dialog.locator('#review-form button[type=submit]').click();await page.waitForFunction(()=>!document.querySelector('#review-dialog').open);
+  assert.deepEqual([store().patches[2].status,store().patches[2].itemNotes['media:0'].text,store().scenes['02-mo-chuyen'].clips[0].status],['returned','Ảnh ngạch cửa hơi tối, giọng vào sớm','needs-changes']);
+  assert.match(await page.locator('.patch-panel').innerText(),/Video cảnh: Mở chuyện: Ảnh ngạch cửa hơi tối/);
+  assert.equal(store().locks.length,2,'a patch of results only never makes a new lock version');
+  mark('A patch of results: video and audio items play, Chưa đạt on the video returns it with the note on that clip');
+  clip('02-mo-chuyen','b.mp4');review.createPatch(root,plan,{reason:'Cảnh mở chuyện sáng hơn',by:'agent',media:[review.sceneClip(root,plan,'02-mo-chuyen')]});
+  await live(/sáng hơn/,'.gate-next');await next.locator('[data-review-open="patch"]').click();await dialog.locator('.rail-item').first().waitFor();
+  await passAll();assert.match(await dialog.locator('#review-form button[type=submit]').innerText(),/Chấp nhận/);await dialog.locator('#review-form button[type=submit]').click();
+  await page.waitForFunction(()=>/Xem bản dựng/.test(document.querySelector('.gate-next')?.textContent||''));
+  assert.equal(store().scenes['02-mo-chuyen'].clips[1].status,'approved');assert.equal(await page.locator('.patch-panel .patch-item').count(),4);
+  await page.screenshot({path:path.join(out,'review-history-1440.png'),fullPage:true});
+  mark('Accepting the next patch of results opens the final review; the history lists every patch with its contents');
   await next.locator('[data-gate-review="review-preview"]').click();await dialog.locator('.rail-item').first().waitFor();
   assert.match(await dialog.locator('.rail-prior summary').first().innerText(),/Đã duyệt trước/,'locked files count as reviewed by the lock');
   const names=await dialog.locator('.rail-name').evaluateAll(n=>n.map(x=>x.firstChild.textContent));
   assert.deepEqual(names.slice(0,2),['Xem video','Nghe lời đọc và nhạc']);assert.ok(!names.some(n=>/\.tsx$/.test(n)),'code is folded, not a review item');
   assert.match(await dialog.locator('.rail-prior').last().innerText(),/Mã dựng, không cần đọc/);
-  assert.equal(await dialog.locator('.preview-clips video').count(),2);assert.equal(await dialog.locator('.preview-clips video').first().evaluate(v=>fetch(v.src).then(r=>r.status)),200);
+  assert.equal(await dialog.locator('.preview-clips video').count(),1);assert.equal(await dialog.locator('.preview-clips video').first().evaluate(v=>fetch(v.src).then(r=>r.status)),200);
   await dialog.locator('.rail-item',{hasText:'Nghe lời đọc'}).click();assert.match(await dialog.locator('.voice-takes').innerText(),/Mở chuyện[\s\S]*Nhạc nền: Enlivening — Pufino/);
   assert.equal(await dialog.locator('audio').last().evaluate(a=>fetch(a.src).then(r=>r.status)),200);
   await page.keyboard.press('Escape');
   mark('Final review: watch scene clips, listen to narration and music; code folded away; opens after a manager lock');
   for(const width of [768,390]){await page.setViewportSize({width,height:900});await open();
-   assert.ok(await page.locator('#drawer').evaluate(d=>d.scrollWidth<=d.clientWidth+1),'page fits at '+width);const panel=await page.locator('.patch-panel').boundingBox(),scenes=await page.locator('.review-scenes').boundingBox();assert.ok(panel&&panel.y>=scenes.y+scenes.height-1,'patch panel stacks under the scenes at '+width);
+   assert.ok(await page.locator('#drawer').evaluate(d=>d.scrollWidth<=d.clientWidth+1),'page fits at '+width);
    await page.locator('.patch-panel').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(out,`gates-${width}.png`)});
    await page.locator('[data-review-open="lock"]').first().click();await dialog.locator('.rail-item').first().waitFor();assert.equal(await dialog.locator('[data-item-pass]').count(),0,'a locked package is view-only');
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no page overflow at '+width);await page.screenshot({path:path.join(out,`lock-${width}.png`)});await page.keyboard.press('Escape');
-   await page.locator('.scene-row').first().locator('[data-scene-open]').click();await dialog.locator('.scene-video').waitFor();
-   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'scene dialog fits at '+width);await page.screenshot({path:path.join(out,`scene-${width}.png`)});await page.keyboard.press('Escape');}
+   await page.locator('.patch-item [data-review-open="patch"]').first().click();await dialog.locator('.patch-video').waitFor();
+   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'patch dialog fits at '+width);await page.screenshot({path:path.join(out,`patch-video-${width}.png`)});await page.keyboard.press('Escape');}
   mark('Tablet and mobile fit without horizontal overflow');
   assert.deepEqual(errors.filter(e=>!/409|400|Failed to load resource/.test(e)),[]);mark('No browser errors; fixture workspace only');
  }finally{await browser.close();server.close();fs.rmSync(root,{recursive:true,force:true});}

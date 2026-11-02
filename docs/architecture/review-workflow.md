@@ -1,4 +1,4 @@
-# Duyệt sản xuất: Chốt ban đầu + Bản vá + Duyệt từng cảnh
+# Duyệt sản xuất: Chốt ban đầu + Bản vá
 
 Thiết kế theo yêu cầu người dùng 2026-10-31, áp dụng cho mọi series. Thay cho bốn cổng nối tiếp
 (`approve-script` → `approve-voice` → `approve-assets` → `review-preview`), vốn khóa cứng theo hash: sửa một
@@ -40,28 +40,39 @@ chính là **Chốt ban đầu**; có mục Chưa đạt thì nút chính là **
 chỉ hiện lúc này). Agent sửa tới khi mọi mục đạt. Bản vá dùng cùng cách: tất cả Đạt thì Chấp nhận, có mục Chưa đạt thì
 Trả lại kèm ghi chú của mục đó.
 
-## 2. Bản vá (chỉnh sửa trong quá trình làm)
+## 2. Bản vá: xem kết quả và góp ý
 
-- Sau khi chốt, agent sửa một mục rồi tạo bản vá: `npm run automation -- patch <slug> --reason "<lý do>"`.
-  Lệnh so mọi file trong gói với bản chốt mới nhất, ghi mục nào đổi (diff), trạng thái **chờ duyệt**.
-- Người dùng mở bản vá trên trang quản lý, xem so sánh với bản chốt, rồi **Chấp nhận** (thành bản chốt mới:
-  v1 → v2…) hoặc **Trả lại** kèm ghi chú (agent sửa tiếp, tạo bản vá mới).
-- Sửa file mà chưa tạo bản vá: trang quản lý báo "có thay đổi chưa vào bản vá", không âm thầm coi là đã duyệt.
-- Không chặn cả chuỗi như trước: các phần khác vẫn làm tiếp. Bản xem cuối cần không còn bản vá chờ duyệt.
+Người dùng 2026-11-02: gộp "bản vá" và "duyệt từng cảnh" làm một. Bước 2 là nơi duy nhất người dùng xem agent
+đã làm gì, góp ý và quyết định; không còn màn duyệt riêng từng cảnh.
 
-## 3. Duyệt từng cảnh
+- **Một bản vá gom mọi thứ cần xem của một lượt làm**: chữ đã sửa trong gói chốt (so với bản chốt) và/hoặc kết quả
+  để xem, nghe (video cảnh, đoạn giọng đọc, nhạc…). Lệnh:
+  `npm run automation -- patch <slug> --reason "<đã làm gì, vì sao>" [--clip <cảnh>]... [--media <file>[|tiêu đề]]...`
+  - Lệnh so mọi file trong gói với bản chốt mới nhất (diff) và đính kèm các file kết quả.
+  - `--clip <cảnh>` lấy clip mới nhất của cảnh đó: xuất trước bằng `scene-clip <slug> <cảnh> [--voice <id>]`
+    (`--voice` để xuất với một take giọng khác mặc định, ví dụ take clone đang chờ chọn).
+  - `--media` nhận video (mp4/webm/mov) hoặc âm thanh (wav/mp3/m4a/ogg/flac), chỉ trong `projects/<slug>/` hoặc `public/`.
+  - Bản vá chỉ có kết quả (không sửa chữ) vẫn hợp lệ.
+- **Trên trang quản lý**: bản vá chờ duyệt hiện đầu tiên, kèm tóm tắt bên trong có gì (“Chữ: Kịch bản · 3 video · 2 âm thanh”).
+  Mở ra là danh sách mục bên trái: mỗi file chữ đã sửa, mỗi video, mỗi file âm thanh là một mục. Mỗi mục **Đạt** /
+  **Chưa đạt** (chưa đạt thì ghi chỗ cần sửa, tự lưu). Tất cả đạt thì **Chấp nhận**; có mục chưa đạt thì
+  **Trả lại cho agent sửa**.
+- Chấp nhận bản vá có sửa chữ thì thành bản chốt mới (v1 → v2…). Bản vá chỉ có kết quả thì giữ nguyên bản chốt.
+  Clip cảnh trong bản vá nhận theo quyết định (đạt / chưa đạt kèm ghi chú của mục đó) để lưu lịch sử của cảnh.
+- Agent đọc ghi chú ở `npm run automation -- review <slug>` (trường `notes`, khóa `media:<n>` là mục kết quả thứ n),
+  sửa, rồi gửi bản vá mới. Bản vá mới thay bản còn chờ (người dùng chỉ quyết bản mới nhất; ghi chú cũ đi theo).
+- Sửa file trong gói mà chưa tạo bản vá: trang báo "có thay đổi chưa vào bản vá", không âm thầm coi là đã duyệt.
+  File kết quả đổi sau khi gửi thì không chấp nhận được; agent gửi bản vá mới.
 
-- **Cảnh** = một phần có giọng đọc riêng: video dài sách là các composition phần (`BookHvttMoChuyen`,
-  `BookHvttCuonSach`, …); Short là các cảnh trong `story.json`.
-- Cảnh nào xong (ảnh/animation + giọng) thì agent **xuất video riêng của cảnh đó** để duyệt:
-  `npm run automation -- scene-clip <slug> <cảnh>` → `projects/<slug>/review/<cảnh>.mp4`. Người dùng cho phép
-  render clip duyệt từng cảnh; render cả video vẫn chỉ làm khi người dùng yêu cầu.
-- Trang quản lý hiện từng clip, mỗi cảnh có ô ghi chú và hai nút **Đạt** / **Chưa đạt**. Agent đọc ghi chú
-  (`automation status`), sửa, xuất lại clip; clip cũ giữ lại để so sánh. Clip hết hiệu lực khi cảnh đó đổi.
+## 3. (Bỏ) Duyệt từng cảnh
+
+Màn duyệt riêng từng cảnh không còn. Clip từng cảnh vẫn được xuất bằng `scene-clip` (người dùng cho phép render clip
+duyệt từng cảnh; render cả video vẫn chỉ khi người dùng yêu cầu), nhưng được gửi trong bản vá. Bước nội bộ vẫn mang mã
+`scene-review` để giữ lịch sử; nó đạt khi đã chốt, có ít nhất một bản vá được chấp nhận và không còn bản vá chờ.
 
 ## 4. Xem bản dựng và xuất
 
-`review-preview` mở khi mọi cảnh **Đạt** và không còn bản vá chờ duyệt: xem toàn bộ trong Studio. Render cả
+`review-preview` mở khi đã có bản vá được chấp nhận và không còn bản vá chờ duyệt: xem toàn bộ trong Studio. Render cả
 video vẫn thủ công theo yêu cầu.
 
 ## Dữ liệu
@@ -72,6 +83,7 @@ video vẫn thủ công theo yêu cầu.
 {"schemaVersion": 2, "projectId": "…",
  "locks":   [{"version": 1, "files": {"<rel>": "<sha256>"}, "by": "…", "at": "…", "note": "…", "fromPatch": null}],
  "patches": [{"id": "p1", "baseVersion": 1, "changed": {"<rel>": {"before": "…", "after": "…"}}, "reason": "…",
+              "media": [{"kind": "video|audio", "file": "…", "title": "…", "sha256": "…", "scene": "<cảnh, nếu là clip>"}],
               "status": "pending|accepted|returned", "createdAt": "…", "decidedAt": "…", "note": "…"}],
  "scenes":  {"<cảnh>": {"clips": [{"file": "…", "sha256": "…", "renderedAt": "…", "status": "pending|approved|needs-changes", "note": "…"}]}},
  "notes":   {"lock|<patch id>": {"<mục hoặc file>": {"text": "…", "at": "…", "by": "…", "files": {"<rel>": "<sha256>"}}}},

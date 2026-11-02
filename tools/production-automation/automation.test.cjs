@@ -68,7 +68,8 @@ test('approvals bind hashes, require earlier gates and go stale on edits',()=>fi
  review.lock(root,p,{by:'u'});
  put(root,'src/projects/registry.tsx',`import {V} from './${id}/Video';\nexport const P=()=> <Folder name="a"><Folder name="b"><Folder name="${id}"><Composition id="S" component={V} durationInFrames={30} fps={30} width={1} height={1}/></Folder></Folder></Folder>;`);
  put(root,`${X}/story.json`,JSON.stringify([{id:'01',start:0,duration:1}]));put(root,`projects/${id}/review/01.mp4`,'c');
- review.addClip(root,p,'01',`projects/${id}/review/01.mp4`);review.reviewScene(root,p,'01',0,{decision:'approved',by:'u'});
+ review.addClip(root,p,'01',`projects/${id}/review/01.mp4`);
+ const clipPatch=review.createPatch(root,p,{reason:'Clip cảnh 01',by:'a',media:[review.sceneClip(root,p,'01')]});review.decidePatch(root,p,clipPatch.id,{decision:'accepted',by:'u'});
  approvals.approve(root,p,'review-preview',{by:'t',allowMissing:true});
  assert.equal(approvals.gateState(root,p,'review-preview').state,'approved');
  put(root,`${D}/script.md`,'edited');
@@ -173,7 +174,7 @@ test('models use the GPU machine through a loopback tunnel when it is on, else t
   assert.deepEqual(calls,['start','release','start','release','start','release']);
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
-test('initial lock of five items, patches accepted or returned one by one, then per-scene clips with notes',()=>fixture(root=>{
+test('initial lock of five items, then patches of edits and results (clips, takes) accepted or returned one by one',()=>fixture(root=>{
  const review=require('./review.cjs'),id='self-help-shorts',p=plan(root,id),D=`docs/projects/${id}`,X=`scripts/projects/${id}`,S=`src/projects/${id}`;
  assert.deepEqual(p.stages.find(s=>s.id==='initial-lock').dependencies,['music','voice-audition','visual-plan']);
  assert.deepEqual(p.stages.find(s=>s.id==='review-preview').dependencies,['scene-review','qa','metadata']);
@@ -203,18 +204,28 @@ test('initial lock of five items, patches accepted or returned one by one, then 
  put(root,'src/projects/registry.tsx',`import {V} from './${id}/Video';\nexport const P=()=> <Folder name="a"><Folder name="b"><Folder name="${id}"><Composition id="Shorts" component={V} durationInFrames={1350} fps={30} width={1080} height={1920}/></Folder></Folder></Folder>;`);
  put(root,`${X}/story.json`,JSON.stringify([{id:'01-mo',start:0,duration:5},{id:'02-ket',start:5,duration:4}]));
  assert.deepEqual(review.sceneDefs(root,p),[{id:'01-mo',title:'01-mo',composition:'Shorts',frames:[0,149]},{id:'02-ket',title:'02-ket',composition:'Shorts',frames:[150,269]}]);
+ // Results go into a patch with the edits: a scene's latest clip and a narration take, each reviewed as an item.
+ assert.equal(approvals.gateState(root,p,'scene-review').state,'approved');            // a patch was accepted, none pending
  put(root,`projects/${id}/review/01-mo-a.mp4`,'clip a');review.addClip(root,p,'01-mo',`projects/${id}/review/01-mo-a.mp4`);
- assert.throws(()=>review.reviewScene(root,p,'01-mo',0,{decision:'needs-changes',note:' ',by:'u'}),/Ghi chú/);
- review.reviewScene(root,p,'01-mo',0,{decision:'needs-changes',note:'Ảnh nến quá tối',by:'u'});
+ put(root,`public/${id}/voice-auditions/t1/part-01.wav`,'wav');
+ assert.throws(()=>review.createPatch(root,p,{reason:'x',by:'a',media:[{file:'../secret.mp4'}]}),/phải nằm trong/);
+ assert.throws(()=>review.createPatch(root,p,{reason:'x',by:'a',media:[{file:`projects/${id}/review/notes.txt`}]}),/Chỉ đính kèm/);
+ assert.throws(()=>review.sceneClip(root,p,'02-ket'),/chưa có clip/);
+ const p4=review.createPatch(root,p,{reason:'Clip cảnh mở và câu sửa',by:'a',media:[review.sceneClip(root,p,'01-mo'),{file:`public/${id}/voice-auditions/t1/part-01.wav`,title:'Câu 3 đọc lại'}]});
+ assert.deepEqual([Object.keys(p4.changed),p4.media.map(m=>[m.kind,m.title])],[[],[['video','Video cảnh: 01-mo'],['audio','Câu 3 đọc lại']]]);
+ assert.equal(approvals.gateState(root,p,'scene-review').state,'missing');             // pending patch: not reviewed yet
+ review.setNote(root,p,{context:p4.id,item:'media:0',text:'Ảnh nến quá tối',by:'u'});
+ review.decidePatch(root,p,p4.id,{decision:'returned',by:'u'});
+ assert.deepEqual([review.load(root,id).scenes['01-mo'].clips[0].status,review.load(root,id).scenes['01-mo'].clips[0].note],['needs-changes','Ảnh nến quá tối']);
  put(root,`projects/${id}/review/01-mo-b.mp4`,'clip b');review.addClip(root,p,'01-mo',`projects/${id}/review/01-mo-b.mp4`);
- assert.throws(()=>review.reviewScene(root,p,'01-mo',0,{decision:'approved',by:'u'}),/clip mới hơn/);
- review.reviewScene(root,p,'01-mo',1,{decision:'approved',by:'u'});
- assert.equal(approvals.gateState(root,p,'scene-review').state,'missing');
- put(root,`projects/${id}/review/02-ket-a.mp4`,'clip c');review.addClip(root,p,'02-ket',`projects/${id}/review/02-ket-a.mp4`);
- review.reviewScene(root,p,'02-ket',0,{decision:'approved',by:'u'});
+ const p5=review.createPatch(root,p,{reason:'Clip cảnh mở sáng hơn',by:'a',media:[review.sceneClip(root,p,'01-mo')]});
+ put(root,`projects/${id}/review/01-mo-b.mp4`,'clip b2');
+ assert.throws(()=>review.decidePatch(root,p,p5.id,{decision:'accepted',by:'u'}),/File đổi sau khi tạo bản vá/);
+ put(root,`projects/${id}/review/01-mo-b.mp4`,'clip b');
+ assert.equal(review.decidePatch(root,p,p5.id,{decision:'accepted',by:'u'}).version,2);      // results only: the lock stays v2
  const done=review.summary(root,p);
  assert.equal(approvals.gateState(root,p,'scene-review').state,'approved');assert.deepEqual(done.final,{ready:true,blockers:[]});
- assert.equal(done.scenes[0].clips[0].note,'Ảnh nến quá tối');
+ assert.equal(review.load(root,id).scenes['01-mo'].clips[1].status,'approved');
  assert.equal(JSON.parse(fs.readFileSync(path.join(root,`${D}/approvals.json`),'utf8')).schemaVersion,2);
 }));
 test('per-item review notes: drafts agents can read, "changed since" after an edit, taken by the lock or the patch decision',()=>fixture(root=>{
