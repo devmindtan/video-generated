@@ -110,10 +110,31 @@ export const Visualizer: FC<{bands: number[]; level: number; appear: number}> = 
   </div>;
 };
 
-export const Captions: FC<{captions: Caption[]; ms: number; highlight?: RegExp}> = ({captions, ms, highlight = emphasis}) => {
-  const page = captions.find((c) => ms >= c.startMs && ms < c.endMs + 250);
-  if (!page) return null;
-  const fade = interpolate(ms, [page.startMs - 60, page.startMs + 140], [0, 1], clamp);
+// User 2026-11-02 ("chữ thưa thớt, ngắt ngắt"): the aligner cuts a page at every comma, so neighbouring pages
+// of one sentence are joined into fuller lines (two lines at most), a page stays up through a short pause until
+// the next one, and only the first page after a real silence fades in.
+const MAX_CHARS = 84, HOLD_MS = 1200;
+const merged = new WeakMap<Caption[], Caption[]>();
+const mergeCaptions = (captions: Caption[]) => {
+  const cached = merged.get(captions);
+  if (cached) return cached;
+  const out: Caption[] = [];
+  for (const c of captions) {
+    const last = out[out.length - 1];
+    if (last && !/[.?!…]["”]?$/.test(last.text.trim()) && last.text.length + 1 + c.text.length <= MAX_CHARS && c.startMs - last.endMs < HOLD_MS) {
+      out[out.length - 1] = {...last, text: `${last.text} ${c.text}`, endMs: c.endMs};
+    } else out.push({...c});
+  }
+  merged.set(captions, out);
+  return out;
+};
+export const Captions: FC<{captions: Caption[]; ms: number; highlight?: RegExp}> = ({captions: raw, ms, highlight = emphasis}) => {
+  const captions = mergeCaptions(raw);
+  const n = captions.findIndex((c, i) => ms >= c.startMs && ms < Math.max(c.endMs + 250, captions[i + 1] && captions[i + 1].startMs - c.endMs < HOLD_MS ? captions[i + 1].startMs : 0));
+  if (n < 0) return null;
+  const page = captions[n];
+  const follows = n > 0 && page.startMs - captions[n - 1].endMs < HOLD_MS;
+  const fade = follows ? 1 : interpolate(ms, [page.startMs - 60, page.startMs + 140], [0, 1], clamp);
   const parts = page.text.split(highlight);
   return <div data-testid="book-intro-caption" style={{position: 'absolute', left: 260, right: 260, top: 880, minHeight: 120, display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', color: IVORY, fontSize: 44, fontWeight: 700, lineHeight: 1.4, textShadow: '0 3px 14px #000', opacity: fade, translate: `0 ${(1 - fade) * 8}px`}}>
     <div>{parts.map((p, i) => <span key={i} style={{color: i % 2 === 1 ? GOLD : undefined}}>{p}</span>)}</div>
