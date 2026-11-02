@@ -139,7 +139,8 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   mark('A patch of results: video and audio items play, Chưa đạt on the video returns it with the note on that clip');
   review.createPatch(root,plan,{reason:'Bản vá chờ',by:'agent',changes:[{area:'caption',what:'Phụ đề to hơn'}]});
   clip('02-mo-chuyen','b.mp4');review.createPatch(root,plan,{reason:'Cảnh mở chuyện sáng hơn',by:'agent',media:[review.sceneClip(root,plan,'02-mo-chuyen')],requests:['Cảnh mở chuyện còn tối'],requestedBy:'Hieu'});
-  await live(/sáng hơn/,'.gate-next');assert.match(await page.locator('.patch-pending .patch-requests').innerText(),/Đã xử lý theo góp ý của bạn trong chat[\s\S]*Cảnh mở chuyện còn tối/);
+  await live(/sáng hơn/,'.gate-next');assert.match(await page.locator('.patch-pending .patch-requests summary').innerText(),/Đã xử lý 1 góp ý của bạn trong chat/);assert.equal(await page.locator('.patch-pending .patch-requests').evaluate(d=>d.open),false,'folded by default');
+  await page.locator('.patch-pending .patch-requests summary').click();assert.match(await page.locator('.patch-pending .patch-requests').innerText(),/Cảnh mở chuyện còn tối/);
   assert.match(await page.locator('.patch-item',{hasText:'Bản vá chờ'}).innerText(),/Đã trả lại \(qua chat\)[\s\S]*Bạn góp ý qua chat: Cảnh mở chuyện còn tối/);mark('Feedback given in chat returns the waiting patch with your words; the new one lists them as handled');
   await live(/sáng hơn/,'.gate-next');await next.locator('[data-review-open="patch"]').click();await dialog.locator('.rail-item').first().waitFor();
   await passAll();assert.match(await dialog.locator('#review-form button[type=submit]').innerText(),/Chấp nhận/);await dialog.locator('#review-form button[type=submit]').click();
