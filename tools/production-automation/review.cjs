@@ -178,7 +178,7 @@ function changeEntry(c) {
   return Object.fromEntries(Object.entries(entry).filter(([, v]) => v));
 }
 
-function createPatch(root, plan, {reason, by, media = [], changes = []}) {
+function createPatch(root, plan, {reason, by, media = [], changes = [], requests = [], requestedBy = 'người dùng'}) {
   const store = load(root, plan.projectId), base = latestLock(store);
   if (!base) throw new Error('Chưa chốt ban đầu: chưa có gì để vá');
   if (typeof reason !== 'string' || !reason.trim()) throw new Error('Cần ghi lý do của bản vá (--reason)');
@@ -190,10 +190,17 @@ function createPatch(root, plan, {reason, by, media = [], changes = []}) {
   const attached = media.map(m => mediaEntry(root, plan, m)).filter((m, i, all) => all.findIndex(x => x.file === m.file) === i);
   const described = (Array.isArray(changes) ? changes : []).map(changeEntry);
   if (!Object.keys(changed).length && !attached.length && !described.length) throw new Error('Không có thay đổi nào so với bản chốt v' + base.version + ', không có mô tả thay đổi hay video/âm thanh nào để xem');
+  // Change requests the user made in chat instead of in the manager (user 2026-11-02): the waiting patch is recorded
+  // as returned with those words (never accepted), and the new patch lists them as handled.
+  const asked = (Array.isArray(requests) ? requests : []).map(r => String(r).trim()).filter(Boolean);
+  if (asked.some(r => r.length > 2000)) throw new Error('Mỗi yêu cầu tối đa 2000 ký tự');
   // A newer patch replaces one still waiting: the user only ever decides on the latest proposal.
   // Notes on the replaced proposal carry over: they are about the same files.
-  for (const p of store.patches) if (p.status === 'pending') {p.status = 'superseded';p.decidedAt = now();if (store.notes[p.id]) store.notes[`p${store.patches.length + 1}`] = store.notes[p.id];delete store.notes[p.id];}
-  const patch = {id: `p${store.patches.length + 1}`, baseVersion: base.version, changed, changes: described, media: attached, reason: reason.trim(), by, createdAt: now(),
+  for (const p of store.patches) if (p.status === 'pending') {
+    if (asked.length) Object.assign(p, {status: 'returned', decidedAt: now(), decidedBy: `${requestedBy} (góp ý qua chat)`, via: 'chat', note: asked.join(' · '), itemNotes: takeNotes(store, p.id)});
+    else {p.status = 'superseded';p.decidedAt = now();if (store.notes[p.id]) store.notes[`p${store.patches.length + 1}`] = store.notes[p.id];delete store.notes[p.id];}
+  }
+  const patch = {id: `p${store.patches.length + 1}`, baseVersion: base.version, changed, changes: described, media: attached, ...(asked.length ? {requests: asked.map(text => ({text, via: 'chat'}))} : {}), reason: reason.trim(), by, createdAt: now(),
     status: 'pending', decidedAt: null, decidedBy: null, note: ''};
   store.patches.push(patch);save(root, plan.projectId, store);
   return patch;

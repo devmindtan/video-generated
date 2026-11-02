@@ -219,7 +219,7 @@ const USAGE=`Usage: npm run automation -- <command>
                                       record your approval of the final preview by hash
                                       (initial lock, patches, scenes: in the manager)
   review <slug>                       initial lock, patches, scene clips and your notes (read-only)
-  patch <slug> --reason text [--changes file.json] [--clip <scene>]... [--media <file>[|title]]...
+  patch <slug> --reason text [--from-chat text]... [--changes file.json] [--clip <scene>]... [--media <file>[|title]]...
                                       propose the edits since the latest lock, described edits (drawings, audio, captions)
                                       and results to watch/listen to
   scene-clip <slug> <scene> [--voice <id>]
@@ -235,7 +235,7 @@ function printEvent(e){
   console.log(`${e.timestamp.slice(11,19)}  ${e.source.padEnd(18)} ${e.type.padEnd(22)} ${d}`.trimEnd());
 }
 async function main(argv){
-  const valued=['--note','--reason','--percent','--steps','--file','--clip','--media','--voice','--changes'],flags=new Set(argv.filter(a=>a.startsWith('--')&&!valued.includes(a)));
+  const valued=['--note','--reason','--percent','--steps','--file','--clip','--media','--voice','--changes','--from-chat'],flags=new Set(argv.filter(a=>a.startsWith('--')&&!valued.includes(a)));
   const machine={gpu:flags.has('--gpu'),local:flags.has('--local')};
   const valueOf=name=>{const at=argv.indexOf(name);return at>=0?argv[at+1]||'':'';};
   const valuesOf=name=>argv.flatMap((x,i)=>x===name&&argv[i+1]?[argv[i+1]]:[]);
@@ -278,7 +278,9 @@ async function main(argv){
         ...valuesOf('--media').map(v=>{const [file,...title]=v.split('|');return {file,title:title.join('|')};})];
       // --changes <file.json>: [{area: visual|audio|caption|timing|other, where, what, why, before?, after?}] for edits outside the package.
       const changes=valueOf('--changes')?JSON.parse(fs.readFileSync(path.resolve(ROOT,valueOf('--changes')),'utf8')):[];
-      return json(review.createPatch(ROOT,p,{reason,by:'agent (automation patch)',media,changes}));
+      // --from-chat "<the user's words>": changes the user asked for in chat; the waiting patch is recorded as returned with them.
+      let requestedBy='người dùng';try{requestedBy=execFileSync('git',['-C',ROOT,'config','user.name'],{encoding:'utf8'}).trim()||requestedBy;}catch{}
+      return json(review.createPatch(ROOT,p,{reason,by:'agent (automation patch)',media,changes,requests:valuesOf('--from-chat'),requestedBy}));
     }
     case 'scene-clip': {
       if(!a||!b)break;

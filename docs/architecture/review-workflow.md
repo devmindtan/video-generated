@@ -64,6 +64,12 @@ Người dùng 2026-11-02: gộp "bản vá" và "duyệt từng cảnh" làm m�
   **Trả lại cho agent sửa**.
 - Chấp nhận bản vá có sửa chữ thì thành bản chốt mới (v1 → v2…). Bản vá chỉ có kết quả thì giữ nguyên bản chốt.
   Clip cảnh trong bản vá nhận theo quyết định (đạt / chưa đạt kèm ghi chú của mục đó) để lưu lịch sử của cảnh.
+- **Góp ý qua chat** (người dùng 2026-11-02): khi người dùng yêu cầu sửa trong chat thay vì bấm trên trang quản lý, agent sửa
+  rồi tạo bản vá mới với `--from-chat "<lời người dùng>"` (mỗi yêu cầu một lần). Bản vá đang chờ được ghi là **Đã trả lại
+  (qua chat)** kèm đúng lời đó, bản vá mới hiện các yêu cầu ở đầu dưới dạng “Đã xử lý theo góp ý của bạn trong chat”.
+  Cách này chỉ ghi được Trả lại; Chấp nhận luôn do người dùng bấm.
+- Mỗi bản vá chỉ hiện phần mới so với bản vá vừa bị trả lại hoặc bị thay (chữ so với bản đó, file không đổi được gập lại);
+  `--changes` chỉ ghi các sửa mới. Chấp nhận vẫn nhận toàn bộ thay đổi từ bản chốt.
 - Agent đọc ghi chú ở `npm run automation -- review <slug>` (trường `notes`, khóa `media:<n>` là mục kết quả thứ n),
   sửa, rồi gửi bản vá mới. Bản vá mới thay bản còn chờ (người dùng chỉ quyết bản mới nhất; ghi chú cũ đi theo).
 - Sửa file trong gói mà chưa tạo bản vá: trang báo "có thay đổi chưa vào bản vá", không âm thầm coi là đã duyệt.

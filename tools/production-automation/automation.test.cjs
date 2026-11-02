@@ -217,6 +217,11 @@ test('initial lock of five items, then patches of edits and results (clips, take
  const pc=review.createPatch(root,p,{reason:'Sửa hình',by:'a',changes:[{area:'visual',where:'Cảnh mở',what:'Nến sáng hơn',why:'Tối quá',extra:'x'}]});
  assert.deepEqual(pc.changes,[{area:'visual',where:'Cảnh mở',what:'Nến sáng hơn',why:'Tối quá'}]);
  assert.equal(review.load(root,id).patches.find(x=>x.id===p4.id).status,'superseded');
+ // Asked in chat instead of the manager: the waiting patch is recorded as returned with those words, never accepted.
+ const pchat=review.createPatch(root,p,{reason:'Theo góp ý',by:'a',changes:[{area:'visual',what:'Nến sáng hơn nữa'}],requests:['  nến còn tối ','  '],requestedBy:'Hieu'});
+ const replaced=review.load(root,id).patches.find(x=>x.id===pc.id);
+ assert.deepEqual([replaced.status,replaced.via,replaced.note,replaced.decidedBy],['returned','chat','nến còn tối','Hieu (góp ý qua chat)']);
+ assert.deepEqual(pchat.requests,[{text:'nến còn tối',via:'chat'}]);
  const p4b=review.createPatch(root,p,{reason:'Clip cảnh mở và câu sửa',by:'a',media:[review.sceneClip(root,p,'01-mo'),{file:`public/${id}/voice-auditions/t1/part-01.wav`,title:'Câu 3 đọc lại'}]});
  assert.equal(approvals.gateState(root,p,'scene-review').state,'missing');             // pending patch: not reviewed yet
  review.setNote(root,p,{context:p4b.id,item:'media:0',text:'Ảnh nến quá tối',by:'u'});
