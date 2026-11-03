@@ -1,0 +1,21 @@
+{
+  "voice": "Giọng người dùng (clone) +2 bán cung",
+  "name": "Giọng người dùng (clone) +2 bán cung",
+  "option": 2,
+  "engine": "VoxCPM2 qua VoiceStudio, máy GPU desktop-kndgm60",
+  "reference": "library/voice-references/tam-nhin-cho-cuoc-song/clips/006130-15s.wav",
+  "consent": "self",
+  "pitchSemitones": 2,
+  "processing": "đoạn trích: dùng nguyên take clone đã đăng của tập 1; câu mở và lời mời: clone mới từng câu, +2 bán cung giữ thời lượng (voice-variants.py) như tập 1",
+  "selection": "Một giọng cho cả series (như tập 1). Người dùng nghe chọn câu mở và lời mời rồi mới ghép.",
+  "excerpts": {
+    "short-1": {"take": "07-nhom-3c-sang2", "fromSeconds": 4.48, "toSeconds": 21.12},
+    "short-2": {"take": "04-soi-chi-sang2", "fromSeconds": 0, "toSeconds": 24.16},
+    "short-3": {"take": "05-nhom-3a-sang2", "fromSeconds": 26.84, "toSeconds": 45.30}
+  },
+  "sample": {
+    "proposed": "book-hvtt-001-overview/audio/07-nhom-3c-voice-full.wav",
+    "alternatives": ["book-hvtt-001-overview/audio/00-intro-voice-full.wav"]
+  },
+  "segments": {}
+}
