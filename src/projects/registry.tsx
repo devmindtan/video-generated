@@ -45,7 +45,8 @@ import {BookInsightsIntro, bookIntroMetadata} from './book-hvtt-001-overview/Int
 import {BookInsightsOutro, bookOutroMetadata} from './book-hvtt-001-overview/Outro';
 import {BookInsightsEpisodeCard, episodeCardMetadata} from './book-hvtt-001-overview/EpisodeCard';
 import {BookHvttMoChuyen, moChuyenMetadata} from './book-hvtt-001-overview/MoChuyen';
-import {BookHvttEpisode, episodeMetadata} from './book-hvtt-001-overview/Episode';
+import {BookHvttVideo as BookHvttEpisode, episodeMetadata} from './book-hvtt-001-overview/Video';
+import {BookHvttThumbnail} from './book-hvtt-001-overview/Thumbnail';
 import {CachLam, CuonSach, SoiChi, Nhom3A, Nhom3B, Nhom3C, Nhom3D, DiemChuaDat, TongKet, YKien, NhanXet} from './book-hvtt-001-overview/Sections';
 import {PeoplePleasingVideo} from './people-pleasing/Video';
 import {PeoplePleasingThumbnail} from './people-pleasing/Thumbnail';
@@ -223,6 +224,7 @@ export const ProjectCompositions: FC = () => (
       <Folder name="Book-Insights">
         <Folder name="book-hvtt-001-overview">
           <Composition id="BookHvttTap01" component={BookHvttEpisode} calculateMetadata={renderTo('book-hvtt-001-overview', episodeMetadata)} durationInFrames={1800} fps={30} width={1920} height={1080} defaultProps={{introVoice: 'clone-ban-v4a-sang2', cardVoice: '01-gioi-thieu-tap', bodyVoice: '02-mo-chuyen-sang2', outroVoice: 'outro-ban-v2-sang2', channelLabel: 'TÂM LÝ CUỘC SỐNG', episodeLabel: 'TẬP 01', bookTitle: 'Hiểu về trái tim', bookAuthor: 'Minh Niệm'}} />
+          <Still id="BookHvttThumbnail" calculateMetadata={renderTo('book-hvtt-001-overview')} component={BookHvttThumbnail} width={1280} height={720} />
           <Composition id="BookHvttIntro" component={BookInsightsIntro} calculateMetadata={renderTo('book-hvtt-001-overview', bookIntroMetadata)} durationInFrames={1050} fps={30} width={1920} height={1080} defaultProps={{
             voice: 'clone-ban-v4a-sang2',
             channelLabel: 'TÂM LÝ CUỘC SỐNG',

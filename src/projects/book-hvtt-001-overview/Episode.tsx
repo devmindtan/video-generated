@@ -5,12 +5,13 @@ import {AbsoluteFill, Sequence, Track, staticFile, useCurrentFrame, useVideoConf
 import {MusicFade} from '../../shared/MusicFade';
 import bodyMusic from './body-music.json';
 import type {CalculateMetadataFunction} from 'remotion';
-import {BookInsightsIntro, GOLD, introFrames} from './Intro';
-import {BookInsightsEpisodeCard, cardFrames} from './EpisodeCard';
-import {BookHvttMoChuyen, moChuyenFrames, moChuyenSpeaking} from './MoChuyen';
-import {BookInsightsOutro, outroFrames} from './Outro';
+import {BookInsightsIntro, GOLD, introCaptions, introFrames, mergeCaptions} from './Intro';
+import {BookInsightsEpisodeCard, cardCaptions, cardFrames} from './EpisodeCard';
+import {BookHvttMoChuyen, moChuyenFrames, moChuyenPacing, moChuyenSpeaking} from './MoChuyen';
+import {BookInsightsOutro, outroCaptions, outroFrames} from './Outro';
 import {CachLam, CuonSach, DiemChuaDat, Nhom3A, Nhom3B, Nhom3C, Nhom3D, NhanXet, SoiChi, TongKet, YKien} from './Sections';
-import {takeOf} from './scene-kit';
+import {pacedMs, takeOf} from './scene-kit';
+import type {Pacing} from './scene-kit';
 
 // The episode as it grows: series intro → how this episode works → episode card → body sections → closing remark → series outro.
 // A body section joins only once its narration take exists (cloning runs section by section). Background music
@@ -27,23 +28,38 @@ const voiceFor = (seg: string) => [`${seg}-sang2`, seg].find((id) => takeOf(id))
 
 const parts = (p: EpisodeProps, fps: number) => {
   // speaking: whether narration is heard at a local frame of the part (body music dips under it); unset = intro/outro.
-  const list: {name: string; frames: number; node: ReactElement; speaking?: (frame: number) => boolean}[] = [
-    {name: 'Intro series', frames: introFrames(p.introVoice, fps), node: <BookInsightsIntro voice={p.introVoice} channelLabel={p.channelLabel} />},
+  // captions: the part's caption pages in its own milliseconds (for the episode caption file).
+  const list: {name: string; frames: number; node: ReactElement; speaking?: (frame: number) => boolean; captions?: () => Page[]}[] = [
+    {name: 'Intro series', frames: introFrames(p.introVoice, fps), node: <BookInsightsIntro voice={p.introVoice} channelLabel={p.channelLabel} />, captions: () => mergeCaptions(introCaptions(p.introVoice))},
   ];
   // How this episode works (user 2026-11-02), between the series intro and the episode card, once its take exists.
   const howVoice = voiceFor('01b-cach-lam');
-  if (howVoice) list.push({name: 'Cách làm của tập', frames: CachLam.frames(howVoice, fps), node: <CachLam voice={howVoice} channelLabel={p.channelLabel} />, speaking: (f) => CachLam.speaking(howVoice, f, fps)});
+  if (howVoice) list.push({name: 'Cách làm của tập', frames: CachLam.frames(howVoice, fps), node: <CachLam voice={howVoice} channelLabel={p.channelLabel} />, speaking: (f) => CachLam.speaking(howVoice, f, fps), captions: () => pacedPages(howVoice, CachLam.pacing(howVoice, fps), fps)});
   list.push(
-    {name: 'Thẻ tập', frames: cardFrames(p.cardVoice, fps), node: <BookInsightsEpisodeCard voice={p.cardVoice} channelLabel={p.channelLabel} episodeLabel={p.episodeLabel} bookTitle={p.bookTitle} bookAuthor={p.bookAuthor} />, speaking: () => true},
-    {name: 'Mở chuyện', frames: moChuyenFrames(p.bodyVoice, fps), node: <BookHvttMoChuyen voice={p.bodyVoice} channelLabel={p.channelLabel} />, speaking: (f) => moChuyenSpeaking(p.bodyVoice, f, fps)},
+    {name: 'Thẻ tập', frames: cardFrames(p.cardVoice, fps), node: <BookInsightsEpisodeCard voice={p.cardVoice} channelLabel={p.channelLabel} episodeLabel={p.episodeLabel} bookTitle={p.bookTitle} bookAuthor={p.bookAuthor} />, speaking: () => true, captions: () => mergeCaptions(cardCaptions(p.cardVoice))},
+    {name: 'Mở chuyện', frames: moChuyenFrames(p.bodyVoice, fps), node: <BookHvttMoChuyen voice={p.bodyVoice} channelLabel={p.channelLabel} />, speaking: (f) => moChuyenSpeaking(p.bodyVoice, f, fps), captions: () => pacedPages(p.bodyVoice, moChuyenPacing(p.bodyVoice, fps), fps)},
   );
   for (const [seg, name, Section] of BODY) {
     const voice = voiceFor(seg);
-    if (voice) list.push({name, frames: Section.frames(voice, fps), node: <Section voice={voice} channelLabel={p.channelLabel} />, speaking: (f) => Section.speaking(voice, f, fps)});
+    if (voice) list.push({name, frames: Section.frames(voice, fps), node: <Section voice={voice} channelLabel={p.channelLabel} />, speaking: (f) => Section.speaking(voice, f, fps), captions: () => pacedPages(voice, Section.pacing(voice, fps), fps)});
   }
-  list.push({name: 'Outro series', frames: outroFrames(p.outroVoice, fps), node: <BookInsightsOutro voice={p.outroVoice} channelLabel={p.channelLabel} />});
+  list.push({name: 'Outro series', frames: outroFrames(p.outroVoice, fps), node: <BookInsightsOutro voice={p.outroVoice} channelLabel={p.channelLabel} />, captions: () => mergeCaptions(outroCaptions(p.outroVoice))});
   return list;
 };
+type Page = {text: string; startMs: number; endMs: number};
+// A narrated part's caption pages (as shown on screen) moved from take time to its paced timeline.
+const pacedPages = (voice: string, pacing: Pacing, fps: number): Page[] => mergeCaptions(takeOf(voice)?.captions ?? [])
+  .map((c) => ({text: c.text, startMs: pacedMs(pacing, c.startMs, fps), endMs: pacedMs(pacing, c.endMs, fps)}));
+// Every caption page of the episode on its own timeline (src/projects/<slug>/captions.json and the .srt for upload).
+export const episodeCaptions = (p: EpisodeProps, fps = 30) => {
+  let at = 0;
+  return parts(p, fps).flatMap((part) => {
+    const start = at * 1000 / fps;at += part.frames;
+    return (part.captions?.() ?? []).map((c) => ({part: part.name, text: c.text, startMs: Math.round(start + c.startMs), endMs: Math.round(start + c.endMs)}));
+  });
+};
+// Parts in order with their length (chapters in description.md, QA).
+export const episodeTimeline = (p: EpisodeProps, fps = 30) => parts(p, fps).map(({name, frames}) => ({name, frames}));
 export const episodeMetadata: CalculateMetadataFunction<EpisodeProps> = ({props}) => ({durationInFrames: parts(props, 30).reduce((n, x) => n + x.frames, 0)});
 
 // Progress of the whole episode along the bottom edge (user 2026-11-02): a thin gold line with a tick at every

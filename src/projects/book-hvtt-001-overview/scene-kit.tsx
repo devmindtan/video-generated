@@ -56,6 +56,11 @@ export const PacedVoice: FC<{take: Take; pacing: Pacing; track: string}> = ({tak
     <Audio src={staticFile(take.file)} trimBefore={g.trimBefore} trimAfter={g.trimAfter} />
   </Sequence>)}
 </Track>;
+// Inverse of captionMs: where a moment of the take (ms) is heard on the paced timeline (ms), for caption files.
+export const pacedMs = (pacing: Pacing, takeMs: number, fps: number) => {
+  const f = takeMs * fps / 1000, g = pacing.segments.find((s) => f >= s.trimBefore && f <= s.trimAfter) ?? pacing.segments.find((s) => f < s.trimBefore);
+  return g ? (g.from + Math.max(0, f - g.trimBefore)) * 1000 / fps : takeMs;
+};
 // Caption time (take milliseconds) for a paced frame; during a rest it stays at the end of the sentence before.
 export const captionMs = (pacing: Pacing, frame: number, fps: number) => {
   const v = pacing.voiceFrame(frame);
@@ -183,10 +188,11 @@ export const within = (c: Ctx, sentence: number, share: number) => Math.round(c.
 
 // A body section: its component plus the frame count of its paced timeline (registry metadata and the episode).
 export type SectionProps = {voice: string; channelLabel: string};
-export type Section = FC<SectionProps> & {frames: (voice: string, fps?: number) => number; speaking: (voice: string, frame: number, fps?: number) => boolean; metadata: CalculateMetadataFunction<SectionProps>};
+export type Section = FC<SectionProps> & {frames: (voice: string, fps?: number) => number; pacing: (voice: string, fps?: number) => Pacing; speaking: (voice: string, frame: number, fps?: number) => boolean; metadata: CalculateMetadataFunction<SectionProps>};
 export const section = (track: string, highlight: RegExp, beats: Beat[]): Section => {
   const C: FC<SectionProps> = (p) => <NarratedSection {...p} track={track} highlight={highlight} beats={beats} />;
   const frames = (voice: string, fps = 30) => sectionPacing(voice, beats, fps).frames;
   const speaking = (voice: string, frame: number, fps = 30) => sectionPacing(voice, beats, fps).voiceFrame(frame) !== null;
-  return Object.assign(C, {frames, speaking, metadata: (({props}) => ({durationInFrames: frames(props.voice)})) as CalculateMetadataFunction<SectionProps>});
+  const pacing = (voice: string, fps = 30) => sectionPacing(voice, beats, fps);
+  return Object.assign(C, {frames, pacing, speaking, metadata: (({props}) => ({durationInFrames: frames(props.voice)})) as CalculateMetadataFunction<SectionProps>});
 };

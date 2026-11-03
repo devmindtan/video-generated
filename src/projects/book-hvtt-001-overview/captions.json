@@ -1,0 +1,1404 @@
+{
+  "source": "Episode.tsx episodeCaptions, BookHvttTap01 defaultProps",
+  "fps": 30,
+  "totalFrames": 23598,
+  "parts": [
+    {
+      "name": "Intro series",
+      "frames": 844,
+      "startFrame": 0
+    },
+    {
+      "name": "Cách làm của tập",
+      "frames": 469,
+      "startFrame": 844
+    },
+    {
+      "name": "Thẻ tập",
+      "frames": 275,
+      "startFrame": 1313
+    },
+    {
+      "name": "Mở chuyện",
+      "frames": 1279,
+      "startFrame": 1588
+    },
+    {
+      "name": "Phần 1 · Cuốn sách là gì",
+      "frames": 1273,
+      "startFrame": 2867
+    },
+    {
+      "name": "Phần 2 · Sợi chỉ xuyên suốt",
+      "frames": 1616,
+      "startFrame": 4140
+    },
+    {
+      "name": "Nhóm 1 · Cơn sóng trong lòng",
+      "frames": 2191,
+      "startFrame": 5756
+    },
+    {
+      "name": "Nhóm 2 · Thương và được thương",
+      "frames": 2853,
+      "startFrame": 7947
+    },
+    {
+      "name": "Nhóm 3 · Thăng trầm",
+      "frames": 3541,
+      "startFrame": 10800
+    },
+    {
+      "name": "Nhóm 4 · Sống giữa mọi người",
+      "frames": 2677,
+      "startFrame": 14341
+    },
+    {
+      "name": "Phần 3E · Điểm chưa đạt",
+      "frames": 1416,
+      "startFrame": 17018
+    },
+    {
+      "name": "Phần 3F · Tổng kết",
+      "frames": 964,
+      "startFrame": 18434
+    },
+    {
+      "name": "Phần 4 · Ý kiến cá nhân",
+      "frames": 2762,
+      "startFrame": 19398
+    },
+    {
+      "name": "Phần 5 · Nhận xét chung",
+      "frames": 943,
+      "startFrame": 22160
+    },
+    {
+      "name": "Outro series",
+      "frames": 495,
+      "startFrame": 23103
+    }
+  ],
+  "pages": [
+    {
+      "part": "Intro series",
+      "text": "Xin chào cả nhà.",
+      "startMs": 0,
+      "endMs": 1940
+    },
+    {
+      "part": "Intro series",
+      "text": "Chào mừng mọi người đã đến với series Đọc sách, hiểu mình.",
+      "startMs": 2260,
+      "endMs": 6100
+    },
+    {
+      "part": "Intro series",
+      "text": "Ở series này, mình sẽ đọc trọn từng cuốn sách,",
+      "startMs": 6100,
+      "endMs": 8967
+    },
+    {
+      "part": "Intro series",
+      "text": "rồi kể lại những nội dung chính và những điều đáng giữ trong mỗi cuốn.",
+      "startMs": 9022,
+      "endMs": 12980
+    },
+    {
+      "part": "Intro series",
+      "text": "Nếu bạn là người không có nhiều thời gian và cần đọc",
+      "startMs": 12980,
+      "endMs": 15333
+    },
+    {
+      "part": "Intro series",
+      "text": "sách để có thêm kiến thức, thì đây là dành cho bạn.",
+      "startMs": 15383,
+      "endMs": 18680
+    },
+    {
+      "part": "Intro series",
+      "text": "Chúc cả nhà một ngày tràn đầy niềm vui và hạnh phúc.",
+      "startMs": 18680,
+      "endMs": 22800
+    },
+    {
+      "part": "Intro series",
+      "text": "Để không làm mất thời gian của mọi người, chúng ta hãy cùng nhau bắt đầu.",
+      "startMs": 22800,
+      "endMs": 26080
+    },
+    {
+      "part": "Cách làm của tập",
+      "text": "Trước khi vào sách, mình nói rõ cách làm của tập này.",
+      "startMs": 28133,
+      "endMs": 31973
+    },
+    {
+      "part": "Cách làm của tập",
+      "text": "Phần chính của video, mình chỉ đứng ở vị trí người kể lại:",
+      "startMs": 32153,
+      "endMs": 35003
+    },
+    {
+      "part": "Cách làm của tập",
+      "text": "kể đúng điều tác giả viết, kể cả những chỗ mình chưa chắc đồng tình.",
+      "startMs": 35060,
+      "endMs": 38740
+    },
+    {
+      "part": "Cách làm của tập",
+      "text": "Những chỗ mình thấy chưa đạt và ý kiến riêng của mình sẽ nằm ở các phần cuối.",
+      "startMs": 39220,
+      "endMs": 42720
+    },
+    {
+      "part": "Thẻ tập",
+      "text": "Tập đầu tiên, mình chọn cuốn Hiểu về trái tim của tác giả Minh Niệm,",
+      "startMs": 44067,
+      "endMs": 48128
+    },
+    {
+      "part": "Thẻ tập",
+      "text": "một cuốn sách viết về những cảm xúc rất đời thường của mỗi người.",
+      "startMs": 48181,
+      "endMs": 51487
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Ở chương cuối, tác giả kể một chuyện mà chắc nhiều người từng gặp lúc nhỏ.",
+      "startMs": 52933,
+      "endMs": 59260
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Một đứa bé đang chạy nhảy thì vấp phải cái ngạch cửa, ngã nhào và khóc ré lên.",
+      "startMs": 59420,
+      "endMs": 63960
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Người bà chạy tới, và việc đầu tiên bà làm không phải là la cháu,",
+      "startMs": 64647,
+      "endMs": 68540
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "mà là mắng cái ngạch cửa sao dám làm cháu bà đau.",
+      "startMs": 68599,
+      "endMs": 71793
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Đợi cháu nín rồi, bà mới dặn: lần sau đi đứng cẩn thận nghe con.",
+      "startMs": 72313,
+      "endMs": 75873
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Lúc đó, đứa bé chỉ thấy hả dạ vì cái ngạch cửa bị la.",
+      "startMs": 76553,
+      "endMs": 80153
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Lớn lên rồi mới biết, bà đâu có giận gì cái ngạch cửa.",
+      "startMs": 80153,
+      "endMs": 84127
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Bà biết cháu đang đau và đang sợ, nên dỗ cho cháu yên trước, rồi mới dặn sau.",
+      "startMs": 84327,
+      "endMs": 88993
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Và đó cũng là điều tác giả nhắc đi nhắc lại trong cả cuốn sách:",
+      "startMs": 89433,
+      "endMs": 92427
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "muốn thương ai, trước hết phải hiểu được người ấy.",
+      "startMs": 92470,
+      "endMs": 94513
+    },
+    {
+      "part": "Phần 1 · Cuốn sách là gì",
+      "text": "Mở cuốn sách ra, điều mình chú ý đầu tiên là mục lục.",
+      "startMs": 96267,
+      "endMs": 100503
+    },
+    {
+      "part": "Phần 1 · Cuốn sách là gì",
+      "text": "Năm mươi chương, chương nào cũng mang tên một trạng thái của lòng người: khổ đau,",
+      "startMs": 100503,
+      "endMs": 104779
+    },
+    {
+      "part": "Phần 1 · Cuốn sách là gì",
+      "text": "tức giận, ghen tuông, cô đơn, lo lắng, rồi tha thứ, lắng nghe, biết đủ, bình yên.",
+      "startMs": 104847,
+      "endMs": 110720
+    },
+    {
+      "part": "Phần 1 · Cuốn sách là gì",
+      "text": "Đọc lướt thôi, mình đã thấy như đang gọi tên những ngày vui buồn của chính mình.",
+      "startMs": 110940,
+      "endMs": 114300
+    },
+    {
+      "part": "Phần 1 · Cuốn sách là gì",
+      "text": "Các chương khá độc lập, nên các bạn không cần đọc theo thứ tự:",
+      "startMs": 115627,
+      "endMs": 118361
+    },
+    {
+      "part": "Phần 1 · Cuốn sách là gì",
+      "text": "hôm nào đang lo thì mở chương Lo Lắng, hôm nào đang giận thì mở chương Tức Giận.",
+      "startMs": 118407,
+      "endMs": 123913
+    },
+    {
+      "part": "Phần 1 · Cuốn sách là gì",
+      "text": "Theo tác giả, chất liệu của sách đến từ đạo Phật, văn hóa Việt và trải",
+      "startMs": 123913,
+      "endMs": 127615
+    },
+    {
+      "part": "Phần 1 · Cuốn sách là gì",
+      "text": "nghiệm riêng của tác giả, và đây \"không hẳn là một cuốn sách tâm lý học\".",
+      "startMs": 127664,
+      "endMs": 131820
+    },
+    {
+      "part": "Phần 1 · Cuốn sách là gì",
+      "text": "Vì vậy, mình nghĩ nên đọc nó như lời tâm tình",
+      "startMs": 132480,
+      "endMs": 134942
+    },
+    {
+      "part": "Phần 1 · Cuốn sách là gì",
+      "text": "của một người đi trước, hơn là một giáo trình.",
+      "startMs": 134986,
+      "endMs": 137000
+    },
+    {
+      "part": "Phần 2 · Sợi chỉ xuyên suốt",
+      "text": "Nếu gom năm mươi chương lại thành một ý, mình sẽ tóm thế này:",
+      "startMs": 138000,
+      "endMs": 141259
+    },
+    {
+      "part": "Phần 2 · Sợi chỉ xuyên suốt",
+      "text": "phần lớn nỗi khổ của chúng ta không nằm hết ở chuyện đã xảy ra,",
+      "startMs": 141320,
+      "endMs": 144626
+    },
+    {
+      "part": "Phần 2 · Sợi chỉ xuyên suốt",
+      "text": "mà ở cách lòng mình phản ứng với chuyện đó.",
+      "startMs": 144681,
+      "endMs": 146860
+    },
+    {
+      "part": "Phần 2 · Sợi chỉ xuyên suốt",
+      "text": "Ngay chương đầu, tác giả tách hai chữ mà chúng ta hay dùng chung.",
+      "startMs": 147587,
+      "endMs": 151773
+    },
+    {
+      "part": "Phần 2 · Sợi chỉ xuyên suốt",
+      "text": "Theo tác giả, \"đau và khổ là hai cung bậc cảm xúc rất khác nhau\".",
+      "startMs": 151873,
+      "endMs": 156740
+    },
+    {
+      "part": "Phần 2 · Sợi chỉ xuyên suốt",
+      "text": "Đau là điều xảy đến, còn khổ là khi mình không chịu chấp nhận nó,",
+      "startMs": 156940,
+      "endMs": 160071
+    },
+    {
+      "part": "Phần 2 · Sợi chỉ xuyên suốt",
+      "text": "cứ chống lại và nghĩ đi nghĩ lại mãi.",
+      "startMs": 160134,
+      "endMs": 163227
+    },
+    {
+      "part": "Phần 2 · Sợi chỉ xuyên suốt",
+      "text": "Từ đó, tác giả chia hạnh phúc thành ba tầng: thỏa mãn cảm xúc,",
+      "startMs": 163227,
+      "endMs": 166947
+    },
+    {
+      "part": "Phần 2 · Sợi chỉ xuyên suốt",
+      "text": "như một món ngon hay một lời khen, đến nhanh và đi cũng nhanh;",
+      "startMs": 167007,
+      "endMs": 170255
+    },
+    {
+      "part": "Phần 2 · Sợi chỉ xuyên suốt",
+      "text": "thỏa mãn ý chí, khi đạt được điều mình đã cố gắng; và tầng thứ ba,",
+      "startMs": 170307,
+      "endMs": 173852
+    },
+    {
+      "part": "Phần 2 · Sợi chỉ xuyên suốt",
+      "text": "tác giả gọi là hạnh phúc chân thật, đến từ một tâm bình yên.",
+      "startMs": 173907,
+      "endMs": 177693
+    },
+    {
+      "part": "Phần 2 · Sợi chỉ xuyên suốt",
+      "text": "Để tới được đó, sách nhắc đi nhắc lại một điều: phải hiểu thì mới thương được.",
+      "startMs": 177973,
+      "endMs": 181693
+    },
+    {
+      "part": "Phần 2 · Sợi chỉ xuyên suốt",
+      "text": "Như tác giả viết: \"Lòng phải hiểu được lòng mới là tình thương chân thật.\"",
+      "startMs": 182580,
+      "endMs": 185857
+    },
+    {
+      "part": "Phần 2 · Sợi chỉ xuyên suốt",
+      "text": "Phần còn lại của cuốn sách, mình xin gom thành bốn nhóm để cả nhà dễ theo dõi.",
+      "startMs": 185920,
+      "endMs": 190927
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "Nhóm thứ nhất nói về những cảm xúc làm chúng ta chao đảo: giận, sợ và lo.",
+      "startMs": 191867,
+      "endMs": 197173
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "Cơn giận.",
+      "startMs": 197173,
+      "endMs": 198633
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "Theo tác giả, cơn giận không tự nhiên bùng lên,",
+      "startMs": 198633,
+      "endMs": 201055
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "mà được nuôi từ rất nhiều bực bội nhỏ mà mình đã cho qua và không nhìn lại.",
+      "startMs": 201103,
+      "endMs": 205320
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "Tác giả khuyên lúc đang giận thì tạm rời khỏi chỗ đó, quay về với hơi thở;",
+      "startMs": 205320,
+      "endMs": 209735
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "bình tĩnh rồi mới nhìn xem cơn giận được nuôi từ đâu.",
+      "startMs": 209797,
+      "endMs": 213267
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "Chỗ chuyển hóa sau cùng là hiểu được người kia,",
+      "startMs": 213267,
+      "endMs": 215473
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "vì \"tình thương chính là khắc tinh của cơn giận\".",
+      "startMs": 215521,
+      "endMs": 218613
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "Trí tưởng tượng.",
+      "startMs": 218613,
+      "endMs": 220240
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "Mình lấy một ví dụ quen thuộc: người thân về trễ, mình gọi mãi không ai nghe máy,",
+      "startMs": 220240,
+      "endMs": 224608
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "và chưa tới mười phút đã tưởng tượng xong cả một vụ tai nạn.",
+      "startMs": 224655,
+      "endMs": 227640
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "Tác giả viết: \"Hoàn cảnh chỉ có thể làm cho ta đau,",
+      "startMs": 227860,
+      "endMs": 230274
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "nhưng chính trí tưởng tượng sai lầm mới là thủ phạm giết ta chết.\"",
+      "startMs": 230323,
+      "endMs": 233778
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "Nên trước khi khổ vì một chuyện,",
+      "startMs": 233831,
+      "endMs": 235552
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "tác giả khuyên mình hỏi lại xem chuyện ấy đã thật sự xảy ra chưa.",
+      "startMs": 235606,
+      "endMs": 238700
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "Lo lắng.",
+      "startMs": 240067,
+      "endMs": 240867
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "Tác giả mượn hình ảnh một cốc nước: giơ lên vài phút thì không sao,",
+      "startMs": 240867,
+      "endMs": 244309
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "giơ một giờ thì tay tê, giơ cả ngày thì tay rã rời.",
+      "startMs": 244370,
+      "endMs": 247973
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "Nỗi lo cũng vậy, không nặng vì nó lớn mà vì mình cầm nó quá lâu.",
+      "startMs": 247973,
+      "endMs": 252200
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "Tác giả gợi ý rất cụ thể: viết ra điều mình đang lo, chấp nhận trước kết quả",
+      "startMs": 252420,
+      "endMs": 256496
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "xấu nhất, việc gì làm được thì làm ngay, việc gì ngoài sức mình thì đặt xuống.",
+      "startMs": 256543,
+      "endMs": 260827
+    },
+    {
+      "part": "Nhóm 1 · Cơn sóng trong lòng",
+      "text": "Vì \"Sống sâu sắc với hôm nay chính là bớt lo lắng cho ngày mai.\"",
+      "startMs": 261067,
+      "endMs": 263847
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Nhóm thứ hai nói về tình yêu và những người gần chúng ta nhất.",
+      "startMs": 264900,
+      "endMs": 269427
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Ghen tuông.",
+      "startMs": 269427,
+      "endMs": 270587
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Trong ca dao có câu: mình với ta tuy hai mà một.",
+      "startMs": 270587,
+      "endMs": 273447
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Tác giả nhắc thêm vế sau: tuy một mà hai.",
+      "startMs": 273747,
+      "endMs": 276493
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Theo tác giả, yêu là hòa hợp chứ không biến người kia thành cái bóng của mình;",
+      "startMs": 276913,
+      "endMs": 280957
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "họ vẫn có bạn bè, sở thích và khoảng trời riêng.",
+      "startMs": 281010,
+      "endMs": 284620
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Khi ghen, điều mình xót nhiều khi là cảm giác bị bỏ rơi của chính mình.",
+      "startMs": 284680,
+      "endMs": 289067
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Vì vậy tác giả khuyên một điều đơn giản mà khó:",
+      "startMs": 289747,
+      "endMs": 292277
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "thừa nhận là mình đang ghen, và nhờ người kia giúp mình.",
+      "startMs": 292338,
+      "endMs": 295207
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Nhàm chán.",
+      "startMs": 296773,
+      "endMs": 297573
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "\"Thương nhau củ ấu cũng tròn\": theo tác giả, lúc đang yêu, lòng mình tự phóng to",
+      "startMs": 297573,
+      "endMs": 301607
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "mọi điều tốt của người kia; khi cảm xúc lắng xuống, những điều chưa tốt mới lộ ra.",
+      "startMs": 301657,
+      "endMs": 306033
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Tình cảm chỉ bền khi đi từ cảm xúc sang hiểu nhau và",
+      "startMs": 306840,
+      "endMs": 309543
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "có trách nhiệm với nhau, tức là có cả tình lẫn nghĩa.",
+      "startMs": 309602,
+      "endMs": 311920
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Tác giả cũng khuyên rất thực tế: lúc đang chán thì đừng vội quyết định điều gì.",
+      "startMs": 312747,
+      "endMs": 316927
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Tha thứ.",
+      "startMs": 316927,
+      "endMs": 318753
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Tác giả có một hình ảnh dễ nhớ: trái tim rộng một gang rưỡi thì chứa được nỗi",
+      "startMs": 318753,
+      "endMs": 323520
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "khó một gang; lỗi của người kia lớn hơn thì mình phải nới lòng rộng thêm.",
+      "startMs": 323566,
+      "endMs": 327800
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Mà \"càng vị kỷ thì càng không thể vị tha\".",
+      "startMs": 327940,
+      "endMs": 330960
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Theo tác giả, nếu chưa đủ sức, mình có thể nói thật với người kia rằng",
+      "startMs": 332107,
+      "endMs": 335554
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "lòng mình mới mở được đến đây, và người kia vẫn nhận ra tấm lòng ấy.",
+      "startMs": 335605,
+      "endMs": 339307
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Lắng nghe và phán xét.",
+      "startMs": 340093,
+      "endMs": 341613
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Nhiều khi chúng ta nhìn một người qua đúng một",
+      "startMs": 342053,
+      "endMs": 343860
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "lần họ làm mình khó chịu, rồi đóng khung họ luôn.",
+      "startMs": 343905,
+      "endMs": 346373
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Tác giả nhắc: \"Thấy vậy chứ không phải vậy\",",
+      "startMs": 346373,
+      "endMs": 348840
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "nên trước khi kết luận về ai, mình nên hỏi lại xem mình có chắc không.",
+      "startMs": 348885,
+      "endMs": 352653
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "Còn lắng nghe, theo sách, bắt đầu từ chữ lắng:",
+      "startMs": 353420,
+      "endMs": 355752
+    },
+    {
+      "part": "Nhóm 2 · Thương và được thương",
+      "text": "để lòng mình lắng xuống trước, rồi mới nghe ra người kia đang nói gì.",
+      "startMs": 355803,
+      "endMs": 358900
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Nhóm thứ ba dành cho những lúc đời không như ý.",
+      "startMs": 360000,
+      "endMs": 363947
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Chịu đựng.",
+      "startMs": 363947,
+      "endMs": 364947
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Tác giả giải thích: \"Chịu có nghĩa là đồng ý chấp nhận;",
+      "startMs": 364947,
+      "endMs": 367728
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "đựng có nghĩa là cái khả năng dung chứa.\"",
+      "startMs": 367790,
+      "endMs": 370233
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Tác giả còn mượn từ kinh Phật hình ảnh một vốc muối: bỏ vào tô nước thì mặn chát,",
+      "startMs": 370233,
+      "endMs": 374588
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "không uống nổi; thả xuống dòng sông thì nước sông vẫn uống được như thường.",
+      "startMs": 374640,
+      "endMs": 379073
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Nỗi khổ không nhỏ đi, chỉ là lòng mình rộng ra.",
+      "startMs": 379073,
+      "endMs": 381853
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Thất bại.",
+      "startMs": 381853,
+      "endMs": 383547
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Tác giả đề nghị đổi cách gọi: \"ta nên tập gọi là \"chưa thành công\" thay vì gọi",
+      "startMs": 383547,
+      "endMs": 387979
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "là thất bại\", vì những gì mình đã xây vẫn còn đó, chỉ là điều kiện chưa đủ.",
+      "startMs": 388032,
+      "endMs": 393173
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Sách cũng nhắc một phản xạ rất quen: vừa mất việc là lao ngay vào việc khác,",
+      "startMs": 393413,
+      "endMs": 397298
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "vừa chia tay là tìm ngay người mới, nhiều khi chỉ để xoa vết thương.",
+      "startMs": 397348,
+      "endMs": 401320
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Tác giả khuyên mình cho bản thân thời gian nhìn lại trước đã.",
+      "startMs": 401560,
+      "endMs": 404380
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Buông xả.",
+      "startMs": 404380,
+      "endMs": 406107
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Chương này mở bằng một câu chuyện.",
+      "startMs": 406107,
+      "endMs": 408467
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Đức Phật đang ngồi trong rừng với các học trò thì một bác nông dân hớt hải chạy tới,",
+      "startMs": 408587,
+      "endMs": 412627
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "hỏi có thấy đàn bò mười hai con của bác đi ngang qua không.",
+      "startMs": 412687,
+      "endMs": 415487
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Bác vừa mất mùa, giờ lại mất luôn đàn bò, nên vừa đi vừa than khóc.",
+      "startMs": 416067,
+      "endMs": 420593
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Đợi bác đi khuất, Đức Phật quay sang học trò:",
+      "startMs": 421033,
+      "endMs": 423134
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "\"Chúng ta đâu có con bò nào để mất, phải không?\"",
+      "startMs": 423182,
+      "endMs": 425673
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Tác giả không bảo mình phải bỏ hết mọi thứ.",
+      "startMs": 426680,
+      "endMs": 429440
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Sách ví đời mình như một con thuyền chở quá nặng:",
+      "startMs": 429960,
+      "endMs": 432116
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "muốn đi tiếp thì phải can đảm bỏ bớt vài thùng hàng, dù là hàng quý.",
+      "startMs": 432165,
+      "endMs": 436087
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Có mười hai con bò thì có mười hai nỗi lo, chỉ một con thì chỉ một nỗi lo.",
+      "startMs": 436567,
+      "endMs": 440947
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Tác giả còn nói, lời khen hay sự công nhận cũng là những con bò,",
+      "startMs": 440947,
+      "endMs": 445105
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "chỉ là mình không nhìn thấy, nên dễ tưởng mình chẳng ôm giữ gì.",
+      "startMs": 445158,
+      "endMs": 449133
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Thích được khen bao nhiêu thì cũng sợ bị chê bấy nhiêu.",
+      "startMs": 449413,
+      "endMs": 452780
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Biết đủ và thảnh thơi.",
+      "startMs": 452960,
+      "endMs": 454720
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Tác giả tả nhịp sống hôm nay bằng một câu: \"Ủa, mùa thu đến rồi à?",
+      "startMs": 454820,
+      "endMs": 459000
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Tôi bận quá.\"",
+      "startMs": 459120,
+      "endMs": 460198
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Sách nhắc rằng của cải chỉ làm đời dễ chịu hơn,",
+      "startMs": 460261,
+      "endMs": 462760
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "\"nó không phải là lý do lớn nhất để ta sống.\"",
+      "startMs": 462807,
+      "endMs": 465563
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Mình hay hẹn thảnh thơi tới lúc đủ tiền, tới lúc về hưu, nhưng theo tác giả, \"không",
+      "startMs": 465629,
+      "endMs": 470058
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "có con đường nào đưa tới sự thảnh thơi mà bản thân nó không phải là thảnh thơi\".",
+      "startMs": 470106,
+      "endMs": 474193
+    },
+    {
+      "part": "Nhóm 3 · Thăng trầm",
+      "text": "Tức là mình đi để mà đi, chứ không chỉ để mà tới.",
+      "startMs": 474373,
+      "endMs": 476993
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Nhóm cuối cùng nói về sợi dây nối chúng ta với những người xung quanh.",
+      "startMs": 478033,
+      "endMs": 483000
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Cô đơn.",
+      "startMs": 483000,
+      "endMs": 483980
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Theo tác giả, nhiều người sống giữa gia đình, bạn bè mà vẫn thấy một mình,",
+      "startMs": 483980,
+      "endMs": 487666
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "vì một bức tường vô hình: sự phòng thủ, tự ái, hay chính mình không chịu tin ai.",
+      "startMs": 487720,
+      "endMs": 492120
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Lời khuyên của tác giả rất giản dị:",
+      "startMs": 492120,
+      "endMs": 494508
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "\"Muốn có một người bạn tốt thì ta hãy là người bạn tốt trước đã.\"",
+      "startMs": 494555,
+      "endMs": 498205
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Và sau một lần đổ vỡ, tác giả khuyên đừng vội tìm người mới,",
+      "startMs": 498298,
+      "endMs": 502447
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "mà cho mình thời gian lành lại.",
+      "startMs": 502507,
+      "endMs": 504693
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Biết ơn.",
+      "startMs": 504693,
+      "endMs": 506113
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Tác giả lấy ví dụ trái cam trên tay mình:",
+      "startMs": 506113,
+      "endMs": 508359
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "nó là kết quả của hạt giống, của nước, gió, nắng và người trồng.",
+      "startMs": 508408,
+      "endMs": 512580
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Vì vậy, theo tác giả, lời cảm ơn nên đến từ lòng biết ơn thật,",
+      "startMs": 512660,
+      "endMs": 516126
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "chứ không chỉ là phép lịch sự.",
+      "startMs": 516175,
+      "endMs": 517967
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Ta làm từ những thứ không phải ta.",
+      "startMs": 518227,
+      "endMs": 519847
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Đây là hình ảnh mình nhớ nhất trong sách.",
+      "startMs": 520267,
+      "endMs": 522067
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Tác giả viết: \"Khi nấu được một tô canh chua,",
+      "startMs": 522227,
+      "endMs": 524305
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "ta phải biết rằng cả tổ tiên đã cùng nấu với ta.\"",
+      "startMs": 524355,
+      "endMs": 526984
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Không có những người đi trước, mình đâu biết nấu, thậm chí đâu có cái tên canh chua.",
+      "startMs": 527034,
+      "endMs": 531487
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Thấy được như vậy, mình khó mà kiêu ngạo, và khó mà sống chỉ cho riêng mình.",
+      "startMs": 531487,
+      "endMs": 536127
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Nâng đỡ.",
+      "startMs": 536127,
+      "endMs": 537853
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Chương cuối kể chuyện một con cò bị chiếc túi nylon đầy nước trùm lên đầu.",
+      "startMs": 537853,
+      "endMs": 542493
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Một cô gái sốt ruột lội ào xuống hồ, con cò hoảng sợ bay đi.",
+      "startMs": 543013,
+      "endMs": 546213
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Tác giả bước tới thật chậm, thật bình thản,",
+      "startMs": 547053,
+      "endMs": 549046
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "và lần này con cò đứng yên cho tác giả gỡ túi.",
+      "startMs": 549103,
+      "endMs": 552600
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Theo tác giả, muốn giúp ai thì phải biết đặt mình vào chỗ của họ,",
+      "startMs": 552980,
+      "endMs": 556360
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "vì người đang gặp nạn vẫn cần được tôn trọng.",
+      "startMs": 556420,
+      "endMs": 560027
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "Chuyện người bà và cái ngạch cửa mình kể lúc đầu cũng nằm trong chương này:",
+      "startMs": 560027,
+      "endMs": 563927
+    },
+    {
+      "part": "Nhóm 4 · Sống giữa mọi người",
+      "text": "bà hiểu cháu, vì bà cũng từng là một đứa trẻ.",
+      "startMs": 563987,
+      "endMs": 566267
+    },
+    {
+      "part": "Phần 3E · Điểm chưa đạt",
+      "text": "Nói cho công bằng, cuốn sách cũng có những chỗ mình thấy chưa đạt.",
+      "startMs": 567767,
+      "endMs": 572113
+    },
+    {
+      "part": "Phần 3E · Điểm chưa đạt",
+      "text": "Thứ nhất, đọc liền một mạch thì dễ thấy lặp: năm mươi chương, nhưng nhiều chương",
+      "startMs": 572313,
+      "endMs": 576037
+    },
+    {
+      "part": "Phần 3E · Điểm chưa đạt",
+      "text": "quay về cùng một lời khuyên là dừng lại, nhìn vào lòng mình, hiểu rồi mới thương.",
+      "startMs": 576082,
+      "endMs": 580820
+    },
+    {
+      "part": "Phần 3E · Điểm chưa đạt",
+      "text": "Theo mình, mỗi ngày đọc vài chương sẽ thấm hơn đọc một lèo.",
+      "startMs": 580940,
+      "endMs": 585127
+    },
+    {
+      "part": "Phần 3E · Điểm chưa đạt",
+      "text": "Thứ hai, một số đoạn tác giả nói về y khoa,",
+      "startMs": 585227,
+      "endMs": 587517
+    },
+    {
+      "part": "Phần 3E · Điểm chưa đạt",
+      "text": "khoa học hay đưa số liệu mà không ghi nguồn, và vài chỗ nay không còn đúng.",
+      "startMs": 587576,
+      "endMs": 591367
+    },
+    {
+      "part": "Phần 3E · Điểm chưa đạt",
+      "text": "Mình nghĩ những đoạn đó nên đọc như ý kiến riêng của tác giả;",
+      "startMs": 591367,
+      "endMs": 594983
+    },
+    {
+      "part": "Phần 3E · Điểm chưa đạt",
+      "text": "còn chuyện sức khỏe, nhất là sức khỏe tinh thần, thì chúng ta vẫn nên hỏi bác sĩ.",
+      "startMs": 595033,
+      "endMs": 600240
+    },
+    {
+      "part": "Phần 3E · Điểm chưa đạt",
+      "text": "Thứ ba, vài niềm tin tôn giáo và quan điểm đạo đức của tác giả được",
+      "startMs": 600240,
+      "endMs": 604462
+    },
+    {
+      "part": "Phần 3E · Điểm chưa đạt",
+      "text": "viết như điều hiển nhiên, như chuyện nợ cảm xúc phải trả qua nhiều đời.",
+      "startMs": 604513,
+      "endMs": 608660
+    },
+    {
+      "part": "Phần 3E · Điểm chưa đạt",
+      "text": "Nếu không cùng niềm tin ấy, các bạn vẫn có thể giữ",
+      "startMs": 608860,
+      "endMs": 611085
+    },
+    {
+      "part": "Phần 3E · Điểm chưa đạt",
+      "text": "phần thực hành và để phần niềm tin sang một bên.",
+      "startMs": 611126,
+      "endMs": 613400
+    },
+    {
+      "part": "Phần 3F · Tổng kết",
+      "text": "Tóm lại, Hiểu về trái tim xoay quanh một ý: nỗi khổ phần nhiều nằm",
+      "startMs": 614467,
+      "endMs": 618620
+    },
+    {
+      "part": "Phần 3F · Tổng kết",
+      "text": "ở cách lòng mình phản ứng, và muốn thương thì phải hiểu trước.",
+      "startMs": 618665,
+      "endMs": 622113
+    },
+    {
+      "part": "Phần 3F · Tổng kết",
+      "text": "Từ đó, sách đi qua bốn mảng: những cơn giận, sợ, lo trong lòng; chuyện thương và",
+      "startMs": 622533,
+      "endMs": 627666
+    },
+    {
+      "part": "Phần 3F · Tổng kết",
+      "text": "được thương; cách đi qua thất bại, mất mát; và sợi dây nối chúng ta với mọi người.",
+      "startMs": 627712,
+      "endMs": 632093
+    },
+    {
+      "part": "Phần 3F · Tổng kết",
+      "text": "Theo mình, đây không phải cuốn sách để đọc một lần cho xong,",
+      "startMs": 632960,
+      "endMs": 635654
+    },
+    {
+      "part": "Phần 3F · Tổng kết",
+      "text": "mà hợp để mỗi tối mở ra một chương đúng với tâm trạng hôm đó.",
+      "startMs": 635706,
+      "endMs": 639220
+    },
+    {
+      "part": "Phần 3F · Tổng kết",
+      "text": "Nếu các bạn đang hay giận, hay lo, hay thấy cô đơn giữa đông người,",
+      "startMs": 639220,
+      "endMs": 643105
+    },
+    {
+      "part": "Phần 3F · Tổng kết",
+      "text": "nhiều khả năng sẽ có một chương nói đúng chuyện của mình.",
+      "startMs": 643159,
+      "endMs": 645587
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "Còn với riêng mình, điều mình quý nhất ở cuốn sách",
+      "startMs": 646600,
+      "endMs": 649461
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "này là nó không đòi mình phải thành một người khác.",
+      "startMs": 649517,
+      "endMs": 652347
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "Tác giả không bảo đừng giận, đừng buồn, mà chỉ bảo khi giận thì nhìn",
+      "startMs": 652887,
+      "endMs": 656261
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "xem cơn giận đến từ đâu, khi lo thì xem mình đã cầm nỗi lo ấy bao lâu.",
+      "startMs": 656310,
+      "endMs": 660913
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "Cái mình giữ lại nhiều nhất là cách tách đau với khổ.",
+      "startMs": 661113,
+      "endMs": 664353
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "Chuyện xảy ra thì mình không chọn được,",
+      "startMs": 664493,
+      "endMs": 666141
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "nhưng nghĩ đi nghĩ lại về nó bao nhiêu lần thì phần nào mình chọn được.",
+      "startMs": 666187,
+      "endMs": 669713
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "Hiểu vậy chưa làm hết khổ, nhưng ít ra mình biết nên bắt đầu từ đâu.",
+      "startMs": 670133,
+      "endMs": 673513
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "Hình ảnh mình thích nhất vẫn là tô canh chua.",
+      "startMs": 674740,
+      "endMs": 676560
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "Lần tới ngồi ăn một bữa cơm nhà, chắc mình sẽ nhớ là trong đó có",
+      "startMs": 676560,
+      "endMs": 680381
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "công của rất nhiều người, kể cả những người mình chưa bao giờ gặp.",
+      "startMs": 680429,
+      "endMs": 684027
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "Nhiều ví dụ và câu chuyện trong sách nghe qua thì rất bình thường,",
+      "startMs": 684227,
+      "endMs": 687996
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "như chuyện người bà dỗ cháu hay một tô canh chua.",
+      "startMs": 688047,
+      "endMs": 691167
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "Nhưng nếu ai đã thật sự trải qua, hoặc chịu ngồi xuống ngẫm lại,",
+      "startMs": 691807,
+      "endMs": 695051
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "sẽ thấy nó không chỉ đơn giản dừng lại ở đó.",
+      "startMs": 695107,
+      "endMs": 697187
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "Như mình đã nói, sách có chỗ lặp lại.",
+      "startMs": 698133,
+      "endMs": 700213
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "Nhưng nghĩ kỹ thì chính vì vậy mà mở chương nào ra cũng",
+      "startMs": 700513,
+      "endMs": 703317
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "gặp lại cùng một lời nhắc: dừng lại, hiểu rồi mới thương.",
+      "startMs": 703373,
+      "endMs": 706493
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "Với mình, đó là lời nhắc đáng nghe nhiều lần.",
+      "startMs": 706493,
+      "endMs": 709213
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "Còn một điều mình muốn nhắc: những ví dụ và bài học trong sách chỉ là một góc nhìn,",
+      "startMs": 710180,
+      "endMs": 714136
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "từ trải nghiệm và niềm tin của tác giả, chưa bao quát hết mọi hoàn cảnh.",
+      "startMs": 714190,
+      "endMs": 718200
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "Vì vậy khi đọc, các bạn nên đặt vào chuyện của chính mình, đừng biến một lời khuyên",
+      "startMs": 718340,
+      "endMs": 721798
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "thành quy tắc phải làm theo, như chuyện buông xả đâu có nghĩa là bỏ hết mọi thứ.",
+      "startMs": 721836,
+      "endMs": 725440
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "Nếu chỉ chọn một chương để bắt đầu, mình gợi ý chương Lo Lắng với hình ảnh cốc nước.",
+      "startMs": 726567,
+      "endMs": 730567
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "Chương ngắn, dễ hiểu, và các bạn có thể thử ngay tối nay:",
+      "startMs": 730867,
+      "endMs": 733907
+    },
+    {
+      "part": "Phần 4 · Ý kiến cá nhân",
+      "text": "viết ra điều mình đang lo, rồi xem việc nào làm được, việc nào nên đặt xuống.",
+      "startMs": 733957,
+      "endMs": 737687
+    },
+    {
+      "part": "Phần 5 · Nhận xét chung",
+      "text": "Mặc dù cuốn sách này còn nhiều những chỗ chưa hay,",
+      "startMs": 738667,
+      "endMs": 741781
+    },
+    {
+      "part": "Phần 5 · Nhận xét chung",
+      "text": "nhưng tổng quan đây là một cuốn sách hay.",
+      "startMs": 741824,
+      "endMs": 744133
+    },
+    {
+      "part": "Phần 5 · Nhận xét chung",
+      "text": "Ý tưởng không mới, có chỗ lặp lại, và sách nhìn mọi chuyện qua lăng kính đạo Phật,",
+      "startMs": 744333,
+      "endMs": 748636
+    },
+    {
+      "part": "Phần 5 · Nhận xét chung",
+      "text": "nên ai cần một cuốn tâm lý học bài bản có thể thấy chưa đủ.",
+      "startMs": 748682,
+      "endMs": 752200
+    },
+    {
+      "part": "Phần 5 · Nhận xét chung",
+      "text": "Nhưng nếu các bạn đang rối trong lòng, đang giận một người,",
+      "startMs": 752380,
+      "endMs": 755367
+    },
+    {
+      "part": "Phần 5 · Nhận xét chung",
+      "text": "hay đang lo một chuyện chưa tới, thì đọc chậm vài trang sẽ thấy lòng dịu xuống.",
+      "startMs": 755420,
+      "endMs": 759920
+    },
+    {
+      "part": "Phần 5 · Nhận xét chung",
+      "text": "Mỗi chương chỉ vài trang, đọc một chương trước khi ngủ là vừa.",
+      "startMs": 760100,
+      "endMs": 763787
+    },
+    {
+      "part": "Phần 5 · Nhận xét chung",
+      "text": "Nếu bạn có thời gian, có thể đọc qua để hiểu hơn:",
+      "startMs": 764187,
+      "endMs": 766832
+    },
+    {
+      "part": "Phần 5 · Nhận xét chung",
+      "text": "hiểu mình trước, rồi hiểu những người quanh mình.",
+      "startMs": 766894,
+      "endMs": 769127
+    },
+    {
+      "part": "Outro series",
+      "text": "Đến đây là kết thúc rồi, các bạn thấy thế nào?",
+      "startMs": 770740,
+      "endMs": 773700
+    },
+    {
+      "part": "Outro series",
+      "text": "Nếu hay thì hãy bình luận vào bên dưới video và cho mình một lượt đăng ký kênh",
+      "startMs": 774440,
+      "endMs": 778658
+    },
+    {
+      "part": "Outro series",
+      "text": "để mình có động lực để có thể làm thêm nhiều những video thế này hơn nữa nhé.",
+      "startMs": 778713,
+      "endMs": 783240
+    },
+    {
+      "part": "Outro series",
+      "text": "Hẹn gặp lại cả nhà.",
+      "startMs": 783460,
+      "endMs": 784260
+    }
+  ]
+}

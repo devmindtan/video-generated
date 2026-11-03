@@ -19,6 +19,7 @@ const TAIL_SECONDS = 1.6;
 const highlight = /(bình luận|đăng ký kênh|động lực|Hẹn gặp lại)/gi;
 const voiceOf = (id: string) => voices.find((v) => v.id === id) ?? voices[0];
 
+export const outroCaptions = (voice: string) => voiceOf(voice)?.captions ?? [];
 export const outroFrames = (voice: string, fps = 30) => Math.ceil(((voiceOf(voice)?.durationSeconds ?? 15) + TAIL_SECONDS) * fps);
 export const bookOutroMetadata: CalculateMetadataFunction<BookOutroProps> = ({props}) => ({durationInFrames: outroFrames(props.voice)});
 

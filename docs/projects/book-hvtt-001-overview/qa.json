@@ -1,0 +1,1043 @@
+{
+  "project": "book-hvtt-001-overview",
+  "checkedAt": "2026-11-03T13:50:32+07:00",
+  "durationSeconds": 786.6,
+  "parts": [
+    {
+      "name": "Intro series",
+      "start": 0.0,
+      "seconds": 28.13
+    },
+    {
+      "name": "Cách làm của tập",
+      "start": 28.13,
+      "seconds": 15.63
+    },
+    {
+      "name": "Thẻ tập",
+      "start": 43.77,
+      "seconds": 9.17
+    },
+    {
+      "name": "Mở chuyện",
+      "start": 52.93,
+      "seconds": 42.63
+    },
+    {
+      "name": "Phần 1 · Cuốn sách là gì",
+      "start": 95.57,
+      "seconds": 42.43
+    },
+    {
+      "name": "Phần 2 · Sợi chỉ xuyên suốt",
+      "start": 138.0,
+      "seconds": 53.87
+    },
+    {
+      "name": "Nhóm 1 · Cơn sóng trong lòng",
+      "start": 191.87,
+      "seconds": 73.03
+    },
+    {
+      "name": "Nhóm 2 · Thương và được thương",
+      "start": 264.9,
+      "seconds": 95.1
+    },
+    {
+      "name": "Nhóm 3 · Thăng trầm",
+      "start": 360.0,
+      "seconds": 118.03
+    },
+    {
+      "name": "Nhóm 4 · Sống giữa mọi người",
+      "start": 478.03,
+      "seconds": 89.23
+    },
+    {
+      "name": "Phần 3E · Điểm chưa đạt",
+      "start": 567.27,
+      "seconds": 47.2
+    },
+    {
+      "name": "Phần 3F · Tổng kết",
+      "start": 614.47,
+      "seconds": 32.13
+    },
+    {
+      "name": "Phần 4 · Ý kiến cá nhân",
+      "start": 646.6,
+      "seconds": 92.07
+    },
+    {
+      "name": "Phần 5 · Nhận xét chung",
+      "start": 738.67,
+      "seconds": 31.43
+    },
+    {
+      "name": "Outro series",
+      "start": 770.1,
+      "seconds": 16.5
+    }
+  ],
+  "technicalPass": true,
+  "checks": [
+    {
+      "id": "files",
+      "title": "Đủ file cho bước Xem bản dựng",
+      "ok": true,
+      "detail": "đủ"
+    },
+    {
+      "id": "captionText",
+      "title": "Chữ phụ đề khớp kịch bản đã chốt",
+      "ok": true,
+      "detail": "133 câu khớp"
+    },
+    {
+      "id": "captionTime",
+      "title": "Phụ đề đúng thứ tự, không chồng, đủ lâu, tối đa 2 dòng",
+      "ok": true,
+      "detail": "220 trang"
+    },
+    {
+      "id": "captionStyle",
+      "title": "Kiểu chữ phụ đề đúng chuẩn kênh",
+      "ok": true,
+      "detail": {
+        "Stoic Sans": true,
+        "fontWeight 700": true,
+        "chữ ngà": true,
+        "từ khóa vàng": true
+      }
+    },
+    {
+      "id": "voice",
+      "title": "Giọng không vỡ tiếng, các đoạn to nhỏ đồng đều",
+      "ok": true,
+      "detail": {
+        "đoạn": 15,
+        "chênhLệchDb": 1.0,
+        "đỉnhCaoNhấtDb": -2.3,
+        "vỡTiếng": []
+      }
+    },
+    {
+      "id": "music",
+      "title": "Nhạc nền nội dung nằm dưới giọng",
+      "ok": true,
+      "detail": {
+        "thấpHơnGiọngKhiCóLờiDb": 27.8,
+        "thấpHơnGiọngLúcNghỉDb": 22.3,
+        "bài": "Butterflies"
+      }
+    },
+    {
+      "id": "build",
+      "title": "Typecheck và kiểm tra đăng ký dự án",
+      "ok": true,
+      "detail": {
+        "typecheck": true,
+        "projects:check": true
+      }
+    }
+  ],
+  "voiceLevels": {
+    "00-intro": {
+      "rmsDb": -20.4,
+      "peakDb": -2.4
+    },
+    "01-gioi-thieu-tap": {
+      "rmsDb": -19.9,
+      "peakDb": -2.7
+    },
+    "01b-cach-lam": {
+      "rmsDb": -20.4,
+      "peakDb": -2.5
+    },
+    "02-mo-chuyen": {
+      "rmsDb": -20.4,
+      "peakDb": -2.4
+    },
+    "03-cuon-sach": {
+      "rmsDb": -20.4,
+      "peakDb": -2.5
+    },
+    "04-soi-chi": {
+      "rmsDb": -20.4,
+      "peakDb": -2.5
+    },
+    "05-nhom-3a": {
+      "rmsDb": -20.3,
+      "peakDb": -2.5
+    },
+    "06-nhom-3b": {
+      "rmsDb": -20.1,
+      "peakDb": -2.4
+    },
+    "07-nhom-3c": {
+      "rmsDb": -20.1,
+      "peakDb": -2.5
+    },
+    "08-nhom-3d": {
+      "rmsDb": -20.3,
+      "peakDb": -2.3
+    },
+    "08e-diem-chua-dat": {
+      "rmsDb": -20.2,
+      "peakDb": -2.4
+    },
+    "08f-tong-ket": {
+      "rmsDb": -20.5,
+      "peakDb": -2.5
+    },
+    "08g-y-kien": {
+      "rmsDb": -20.4,
+      "peakDb": -2.4
+    },
+    "09-nhan-xet": {
+      "rmsDb": -20.4,
+      "peakDb": -2.5
+    },
+    "99-outro": {
+      "rmsDb": -19.5,
+      "peakDb": -2.5
+    }
+  },
+  "toneFlags": [
+    {
+      "segment": "02-mo-chuyen",
+      "text": "Ở chương cuối, tác giả kể một chuyện mà chắc nhiều người từng gặp lúc nhỏ.",
+      "heard": "Ở chân cuối, tác giả kể một chuyện mà chắc nhiều người từng gặp lúc nhỏ.",
+      "tone": [],
+      "words": [
+        [
+          "chương",
+          "chân"
+        ]
+      ]
+    },
+    {
+      "segment": "02-mo-chuyen",
+      "text": "Người bà chạy tới, và việc đầu tiên bà làm không phải là la cháu, mà là mắng cái ngạch cửa sao dám làm cháu bà đau.",
+      "heard": "Người bà chạy tới và việc đầu tiên bà làm không phải là la cháu, mà làm mắn cái ngạch cửa sao dám làm cháu bà đau.",
+      "tone": [],
+      "words": [
+        [
+          "là mắng",
+          "làm mắn"
+        ]
+      ]
+    },
+    {
+      "segment": "02-mo-chuyen",
+      "text": "Lúc đó, đứa bé chỉ thấy hả dạ vì cái ngạch cửa bị la.",
+      "heard": "Lúc đó đứa bé chỉ thấy hạ già vì ngạch cửa bị la",
+      "tone": [
+        [
+          "hả",
+          "hạ"
+        ]
+      ],
+      "words": [
+        [
+          "dạ",
+          "già"
+        ],
+        [
+          "cái",
+          ""
+        ]
+      ]
+    },
+    {
+      "segment": "02-mo-chuyen",
+      "text": "Lớn lên rồi mới biết, bà đâu có giận gì cái ngạch cửa.",
+      "heard": "lớn lên rồi mới biết, bà đâu có giận vì cái ngạch cửa",
+      "tone": [],
+      "words": [
+        [
+          "gì",
+          "vì"
+        ]
+      ]
+    },
+    {
+      "segment": "03-cuon-sach",
+      "text": "Mở cuốn sách ra, điều mình chú ý đầu tiên là mục lục.",
+      "heard": "Mở cuốn sách ra, điều mình chú ý đầu tiên là một lục",
+      "tone": [],
+      "words": [
+        [
+          "mục",
+          "một"
+        ]
+      ]
+    },
+    {
+      "segment": "03-cuon-sach",
+      "text": "Năm mươi chương, chương nào cũng mang tên một trạng thái của lòng người: khổ đau, tức giận, ghen tuông, cô đơn, lo lắng, rồi tha thứ, lắng nghe, biết đủ, bình yên.",
+      "heard": "50 chương chương nào cũng mang tên một trạng thái của lòng người, khổ đau, tức giận, ghen tuôn, cô đơn, lo lắng, rồi tha thứ, lắng nghe, biết đủ, bình yên.",
+      "tone": [],
+      "words": [
+        [
+          "năm mươi",
+          "50"
+        ],
+        [
+          "tuông",
+          "tuôn"
+        ]
+      ]
+    },
+    {
+      "segment": "03-cuon-sach",
+      "text": "Các chương khá độc lập, nên các bạn không cần đọc theo thứ tự: hôm nào đang lo thì mở chương Lo Lắng, hôm nào đang giận thì mở chương Tức Giận.",
+      "heard": "Các chương khá độc lật nên các bạn không cần đọc theo thứ tự, hôm nào đang lo thì mở chương lo lắng, hôm nào đang giận thì mở chương tức giận.",
+      "tone": [],
+      "words": [
+        [
+          "lập",
+          "lật"
+        ]
+      ]
+    },
+    {
+      "segment": "04-soi-chi",
+      "text": "Ngay chương đầu, tác giả tách hai chữ mà chúng ta hay dùng chung.",
+      "heard": "ngay chân đầu, tác giả tách hai chữ mà chúng ta hay dùng chung",
+      "tone": [],
+      "words": [
+        [
+          "chương",
+          "chân"
+        ]
+      ]
+    },
+    {
+      "segment": "04-soi-chi",
+      "text": "Theo tác giả, \"đau và khổ là hai cung bậc cảm xúc rất khác nhau\".",
+      "heard": "Theo tác giả, đau và khổ là hai cung bật cảm xúc rất khác nhau.",
+      "tone": [],
+      "words": [
+        [
+          "bậc",
+          "bật"
+        ]
+      ]
+    },
+    {
+      "segment": "05-nhom-3a",
+      "text": "Nhóm thứ nhất nói về những cảm xúc làm chúng ta chao đảo: giận, sợ và lo.",
+      "heard": "Nhóm thứ nhất nói về những cảm xúc làm chúng ta cao đảo, giận, sợ và lo.",
+      "tone": [],
+      "words": [
+        [
+          "chao",
+          "cao"
+        ]
+      ]
+    },
+    {
+      "segment": "05-nhom-3a",
+      "text": "Chỗ chuyển hóa sau cùng là hiểu được người kia, vì \"tình thương chính là khắc tinh của cơn giận\".",
+      "heard": "Chỗ chuyển hóa sau cùng là hiểu được người kia, vì tình thương chính là khắc tin của cơn giận.",
+      "tone": [],
+      "words": [
+        [
+          "tinh",
+          "tin"
+        ]
+      ]
+    },
+    {
+      "segment": "05-nhom-3a",
+      "text": "Nên trước khi khổ vì một chuyện, tác giả khuyên mình hỏi lại xem chuyện ấy đã thật sự xảy ra chưa.",
+      "heard": "Nên trước khi khổ vì một chuyện, các giả khuyên mình hỏi lại xem chuyện ấy đã thật sự xảy ra chưa?",
+      "tone": [],
+      "words": [
+        [
+          "tác",
+          "các"
+        ]
+      ]
+    },
+    {
+      "segment": "05-nhom-3a",
+      "text": "Lo lắng.",
+      "heard": "Lò lắng",
+      "tone": [
+        [
+          "lo",
+          "lò"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "05-nhom-3a",
+      "text": "Tác giả mượn hình ảnh một cốc nước: giơ lên vài phút thì không sao, giơ một giờ thì tay tê, giơ cả ngày thì tay rã rời.",
+      "heard": "Tác giả mượn hình ảnh một góc nước, dơ lên vài phút thì không sao, dơ một giờ thì tay tê, dơ cả ngày thì tay rã rời.",
+      "tone": [],
+      "words": [
+        [
+          "cốc",
+          "góc"
+        ],
+        [
+          "giơ",
+          "dơ"
+        ],
+        [
+          "giơ",
+          "dơ"
+        ],
+        [
+          "giơ",
+          "dơ"
+        ]
+      ]
+    },
+    {
+      "segment": "05-nhom-3a",
+      "text": "Tác giả gợi ý rất cụ thể: viết ra điều mình đang lo, chấp nhận trước kết quả xấu nhất, việc gì làm được thì làm ngay, việc gì ngoài sức mình thì đặt xuống.",
+      "heard": "Tác giả gợi ý rất cụ thể, biết ra điều mình đang lo, chấp nhận trước kết quả xấu nhất, việc gì làm được thì làm ngay, việc gì ngoại sức mình thì đặt xuống.",
+      "tone": [
+        [
+          "ngoài",
+          "ngoại"
+        ]
+      ],
+      "words": [
+        [
+          "viết",
+          "biết"
+        ]
+      ]
+    },
+    {
+      "segment": "06-nhom-3b",
+      "text": "Nhóm thứ hai nói về tình yêu và những người gần chúng ta nhất.",
+      "heard": "nhóm thứ hai nói về tình yêu và những người gần chúng ta nhắc",
+      "tone": [],
+      "words": [
+        [
+          "nhất",
+          "nhắc"
+        ]
+      ]
+    },
+    {
+      "segment": "06-nhom-3b",
+      "text": "Ghen tuông.",
+      "heard": "Cảm ơn.",
+      "tone": [],
+      "words": [
+        [
+          "ghen tuông",
+          "cảm ơn"
+        ]
+      ]
+    },
+    {
+      "segment": "06-nhom-3b",
+      "text": "Tác giả nhắc thêm vế sau: tuy một mà hai.",
+      "heard": "Tắc giả nhắc thêm vế sau, tùy 1 mà 2.",
+      "tone": [
+        [
+          "tác",
+          "tắc"
+        ],
+        [
+          "tuy",
+          "tùy"
+        ]
+      ],
+      "words": [
+        [
+          "một",
+          "1"
+        ],
+        [
+          "hai",
+          "2"
+        ]
+      ]
+    },
+    {
+      "segment": "06-nhom-3b",
+      "text": "Khi ghen, điều mình xót nhiều khi là cảm giác bị bỏ rơi của chính mình.",
+      "heard": "khi ghen, điều mình sót, nhiều khi là cảm giác bị bỏ rơi của chính mình.",
+      "tone": [],
+      "words": [
+        [
+          "xót",
+          "sót"
+        ]
+      ]
+    },
+    {
+      "segment": "06-nhom-3b",
+      "text": "Vì vậy tác giả khuyên một điều đơn giản mà khó: thừa nhận là mình đang ghen, và nhờ người kia giúp mình.",
+      "heard": "Vì vậy, tác giả khuyên một điều đơn giản mà khó, thừa nhận là mình đang ghen và nhờ người ký giúp mình.",
+      "tone": [],
+      "words": [
+        [
+          "kia",
+          "ký"
+        ]
+      ]
+    },
+    {
+      "segment": "06-nhom-3b",
+      "text": "\"Thương nhau củ ấu cũng tròn\": theo tác giả, lúc đang yêu, lòng mình tự phóng to mọi điều tốt của người kia; khi cảm xúc lắng xuống, những điều chưa tốt mới lộ ra.",
+      "heard": "Thương nhau của ấu cũng tròn, theo tác giả, lúc đang yêu, lòng mình tự phóng to mọi điều tốt của người kia. Khi cảm xúc lắng xuống, những điều chưa tốt mới lộ ra.",
+      "tone": [],
+      "words": [
+        [
+          "củ",
+          "của"
+        ]
+      ]
+    },
+    {
+      "segment": "06-nhom-3b",
+      "text": "Tình cảm chỉ bền khi đi từ cảm xúc sang hiểu nhau và có trách nhiệm với nhau, tức là có cả tình lẫn nghĩa.",
+      "heard": "Tình cảm chỉ bình khi đi từ cảm xúc sang hiểu nhau và có trách nhiệm với nhau, tức là có ca tình lẫn nghĩa.",
+      "tone": [
+        [
+          "cả",
+          "ca"
+        ]
+      ],
+      "words": [
+        [
+          "bền",
+          "bình"
+        ]
+      ]
+    },
+    {
+      "segment": "06-nhom-3b",
+      "text": "Tha thứ.",
+      "heard": "Thả thứ",
+      "tone": [
+        [
+          "tha",
+          "thả"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "06-nhom-3b",
+      "text": "Tác giả có một hình ảnh dễ nhớ: trái tim rộng một gang rưỡi thì chứa được nỗi khó một gang; lỗi của người kia lớn hơn thì mình phải nới lòng rộng thêm.",
+      "heard": "Tác giả có một hình ảnh dễ nhớ, trái tim rộng 1 can rưỡi thì chứa được nổi khó 1 can, lỗi của người kia lớn hơn thì mình phải nới lòng rộng thêm.",
+      "tone": [
+        [
+          "nỗi",
+          "nổi"
+        ]
+      ],
+      "words": [
+        [
+          "một gang",
+          "1 can"
+        ],
+        [
+          "một gang",
+          "1 can"
+        ]
+      ]
+    },
+    {
+      "segment": "06-nhom-3b",
+      "text": "Mà \"càng vị kỷ thì càng không thể vị tha\".",
+      "heard": "mà càng vị kỹ thì càng không thể vị tha.",
+      "tone": [
+        [
+          "kỷ",
+          "kỹ"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "06-nhom-3b",
+      "text": "Nhiều khi chúng ta nhìn một người qua đúng một lần họ làm mình khó chịu, rồi đóng khung họ luôn.",
+      "heard": "Nhiều khi chúng ta nhìn một người quá đúng một lần họ làm mình khó chịu, rồi đóng khung họ luôn.",
+      "tone": [
+        [
+          "qua",
+          "quá"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "07-nhom-3c",
+      "text": "Chịu đựng.",
+      "heard": "Kiều đựng",
+      "tone": [],
+      "words": [
+        [
+          "chịu",
+          "kiều"
+        ]
+      ]
+    },
+    {
+      "segment": "07-nhom-3c",
+      "text": "Tác giả giải thích: \"Chịu có nghĩa là đồng ý chấp nhận; đựng có nghĩa là cái khả năng dung chứa.\"",
+      "heard": "Tắc giả giải thích, chịu có nghĩa là đồng ý chấp nhận, đừng có nghĩa là cái khả năng dung chứa.",
+      "tone": [
+        [
+          "tác",
+          "tắc"
+        ],
+        [
+          "đựng",
+          "đừng"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "07-nhom-3c",
+      "text": "Tác giả còn mượn từ kinh Phật hình ảnh một vốc muối: bỏ vào tô nước thì mặn chát, không uống nổi; thả xuống dòng sông thì nước sông vẫn uống được như thường.",
+      "heard": "Tác giả còn mượn từ kinh Phật hình ảnh một bốc muối, bỏ vào tô nước thì mặn chát, không uống nổi, thả xuống dòng sông, thì nước sông vẫn uống được như thường.",
+      "tone": [],
+      "words": [
+        [
+          "vốc",
+          "bốc"
+        ]
+      ]
+    },
+    {
+      "segment": "07-nhom-3c",
+      "text": "Tác giả đề nghị đổi cách gọi: \"ta nên tập gọi là \"chưa thành công\" thay vì gọi là thất bại\", vì những gì mình đã xây vẫn còn đó, chỉ là điều kiện chưa đủ.",
+      "heard": "Thác giả đề nghị đội cách gọi, ta nên tập gọi là chưa thành công, thay vì gọi là thất bại, vì những gì mình đã xây vẫn còn đó, chỉ là điều kiện chưa đủ.",
+      "tone": [
+        [
+          "đổi",
+          "đội"
+        ]
+      ],
+      "words": [
+        [
+          "tác",
+          "thác"
+        ]
+      ]
+    },
+    {
+      "segment": "07-nhom-3c",
+      "text": "Sách cũng nhắc một phản xạ rất quen: vừa mất việc là lao ngay vào việc khác, vừa chia tay là tìm ngay người mới, nhiều khi chỉ để xoa vết thương.",
+      "heard": "Sách cũng nhắc một phản xạ rất quen, vừa mất việc là lau ngay vào việc khác, vừa chia tay là tìm ngay người mới, nhiều khi chỉ để xoa vết thương.",
+      "tone": [],
+      "words": [
+        [
+          "lao",
+          "lau"
+        ]
+      ]
+    },
+    {
+      "segment": "07-nhom-3c",
+      "text": "Buông xả.",
+      "heard": "bông xả",
+      "tone": [],
+      "words": [
+        [
+          "buông",
+          "bông"
+        ]
+      ]
+    },
+    {
+      "segment": "07-nhom-3c",
+      "text": "Đợi bác đi khuất, Đức Phật quay sang học trò: \"Chúng ta đâu có con bò nào để mất, phải không?\"",
+      "heard": "Đời bác đi khuất, Đức Phật quay sang học trò. Chúng ta đâu có con bò nào để mất, phải không?",
+      "tone": [
+        [
+          "đợi",
+          "đời"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "07-nhom-3c",
+      "text": "Tác giả không bảo mình phải bỏ hết mọi thứ.",
+      "heard": "Tắc giả không bảo mình phải bỏ hết mọi thứ.",
+      "tone": [
+        [
+          "tác",
+          "tắc"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "07-nhom-3c",
+      "text": "Sách ví đời mình như một con thuyền chở quá nặng: muốn đi tiếp thì phải can đảm bỏ bớt vài thùng hàng, dù là hàng quý.",
+      "heard": "Sách ví đời mình như một con thuyền chờ quá nặng, muốn đi tiếp thì phải can đảm bỏ bớt vài thùng hàng, dù là hàng quý.",
+      "tone": [
+        [
+          "chở",
+          "chờ"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "07-nhom-3c",
+      "text": "Thích được khen bao nhiêu thì cũng sợ bị chê bấy nhiêu.",
+      "heard": "thích được khen bao nhiêu thì cũng sợ bị che bấy nhiêu",
+      "tone": [
+        [
+          "chê",
+          "che"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "07-nhom-3c",
+      "text": "Tác giả tả nhịp sống hôm nay bằng một câu: \"Ủa, mùa thu đến rồi à? Tôi bận quá.\"",
+      "heard": "Tắc giả tả nhịp sống hôm nay bằng một câu Ủa mùa thu đến rồi à, tôi bận quá",
+      "tone": [
+        [
+          "tác",
+          "tắc"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "07-nhom-3c",
+      "text": "Sách nhắc rằng của cải chỉ làm đời dễ chịu hơn, \"nó không phải là lý do lớn nhất để ta sống.\"",
+      "heard": "Sách nhắc rằng cổ cãi chỉ làm đời dễ chịu hơn, nó không phải là lý do lớn nhất để ta sống.",
+      "tone": [
+        [
+          "cải",
+          "cãi"
+        ]
+      ],
+      "words": [
+        [
+          "của",
+          "cổ"
+        ]
+      ]
+    },
+    {
+      "segment": "08-nhom-3d",
+      "text": "Cô đơn.",
+      "heard": "Của đơn",
+      "tone": [],
+      "words": [
+        [
+          "cô",
+          "của"
+        ]
+      ]
+    },
+    {
+      "segment": "08-nhom-3d",
+      "text": "Lời khuyên của tác giả rất giản dị: \"Muốn có một người bạn tốt thì ta hãy là người bạn tốt trước đã.\"",
+      "heard": "Lời khuyên của tác giả rất giãn dị Muốn có một người bạn tốt thì ta hãy là người bạn tốt trước đã",
+      "tone": [
+        [
+          "giản",
+          "giãn"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "08-nhom-3d",
+      "text": "Và sau một lần đổ vỡ, tác giả khuyên đừng vội tìm người mới, mà cho mình thời gian lành lại.",
+      "heard": "Và sau một lần đổ vỡ, tác giả khuyên đừng vội tìm người mới, mà cho mình thời gian lạnh lại.",
+      "tone": [
+        [
+          "lành",
+          "lạnh"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "08-nhom-3d",
+      "text": "Tác giả lấy ví dụ trái cam trên tay mình: nó là kết quả của hạt giống, của nước, gió, nắng và người trồng.",
+      "heard": "Tác dạ lấy ví dụ trái cam trên tay mình, đó là kết quả của hạt giống của nước, gió, nắng và người trồng.",
+      "tone": [],
+      "words": [
+        [
+          "giả",
+          "dạ"
+        ],
+        [
+          "nó",
+          "đó"
+        ]
+      ]
+    },
+    {
+      "segment": "08-nhom-3d",
+      "text": "Thấy được như vậy, mình khó mà kiêu ngạo, và khó mà sống chỉ cho riêng mình.",
+      "heard": "Thấy được như vậy, mình khó mà kêu ngạo và khó mà sống chỉ cho riêng mình.",
+      "tone": [],
+      "words": [
+        [
+          "kiêu",
+          "kêu"
+        ]
+      ]
+    },
+    {
+      "segment": "08-nhom-3d",
+      "text": "Chương cuối kể chuyện một con cò bị chiếc túi nylon đầy nước trùm lên đầu.",
+      "heard": "Chuyện cuối kể chuyện, một con cỏ bị chiếc túi nylon đầy nước trùm lên đầu.",
+      "tone": [
+        [
+          "cò",
+          "cỏ"
+        ]
+      ],
+      "words": [
+        [
+          "chương",
+          "chuyện"
+        ]
+      ]
+    },
+    {
+      "segment": "08-nhom-3d",
+      "text": "Một cô gái sốt ruột lội ào xuống hồ, con cò hoảng sợ bay đi.",
+      "heard": "Một cô gái sốc ruột lội ảo xuống hồ, con cò hoảng sợ bay đi.",
+      "tone": [
+        [
+          "ào",
+          "ảo"
+        ]
+      ],
+      "words": [
+        [
+          "sốt",
+          "sốc"
+        ]
+      ]
+    },
+    {
+      "segment": "08-nhom-3d",
+      "text": "Tác giả bước tới thật chậm, thật bình thản, và lần này con cò đứng yên cho tác giả gỡ túi.",
+      "heard": "tác giả bước tới thật chậm, thật bình thẳng và lần này con còn đứng yên cho tác giả gỡ túi.",
+      "tone": [],
+      "words": [
+        [
+          "thản",
+          "thẳng"
+        ],
+        [
+          "cò",
+          "còn"
+        ]
+      ]
+    },
+    {
+      "segment": "08-nhom-3d",
+      "text": "Theo tác giả, muốn giúp ai thì phải biết đặt mình vào chỗ của họ, vì người đang gặp nạn vẫn cần được tôn trọng.",
+      "heard": "Theo thác giả, muốn giúp ai thì phải biết đặt mình vào chỗ của họ, vì người đang gặp nạn vẫn cần được tôn trọng.",
+      "tone": [],
+      "words": [
+        [
+          "tác",
+          "thác"
+        ]
+      ]
+    },
+    {
+      "segment": "08e-diem-chua-dat",
+      "text": "Thứ nhất, đọc liền một mạch thì dễ thấy lặp: năm mươi chương, nhưng nhiều chương quay về cùng một lời khuyên là dừng lại, nhìn vào lòng mình, hiểu rồi mới thương.",
+      "heard": "Thứ nhất, đọc liền một mạch thì dễ thấy lập, 50 chương, nhưng nhiều chương quay về cùng một lời khuyên là dừng lại, nhìn vào lòng mình, hiểu rồi mới thương.",
+      "tone": [
+        [
+          "lặp",
+          "lập"
+        ]
+      ],
+      "words": [
+        [
+          "năm mươi",
+          "50"
+        ]
+      ]
+    },
+    {
+      "segment": "08e-diem-chua-dat",
+      "text": "Theo mình, mỗi ngày đọc vài chương sẽ thấm hơn đọc một lèo.",
+      "heard": "Theo mình, mỗi ngày đọc vài chương sẽ thấm hơn đọc một lẹo.",
+      "tone": [
+        [
+          "lèo",
+          "lẹo"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "08e-diem-chua-dat",
+      "text": "Thứ hai, một số đoạn tác giả nói về y khoa, khoa học hay đưa số liệu mà không ghi nguồn, và vài chỗ nay không còn đúng.",
+      "heard": "Thứ hai, một số đàn tác giả nói về ý khoa, khoa học, hay đưa số liệu mà không ghi nguồn, và vài chỗ này không còn đúng.",
+      "tone": [
+        [
+          "y",
+          "ý"
+        ],
+        [
+          "nay",
+          "này"
+        ]
+      ],
+      "words": [
+        [
+          "đoạn",
+          "đàn"
+        ]
+      ]
+    },
+    {
+      "segment": "08e-diem-chua-dat",
+      "text": "Thứ ba, vài niềm tin tôn giáo và quan điểm đạo đức của tác giả được viết như điều hiển nhiên, như chuyện nợ cảm xúc phải trả qua nhiều đời.",
+      "heard": "3. Vài niềm tin tôn giáo và quan điểm đạo đức của tác giả được viết như điều hiện nhiên, như truyền nợ cảm xúc phải trả qua nhiều đời.",
+      "tone": [
+        [
+          "hiển",
+          "hiện"
+        ]
+      ],
+      "words": [
+        [
+          "thứ ba",
+          "3"
+        ],
+        [
+          "chuyện",
+          "truyền"
+        ]
+      ]
+    },
+    {
+      "segment": "08f-tong-ket",
+      "text": "Tóm lại, Hiểu về trái tim xoay quanh một ý: nỗi khổ phần nhiều nằm ở cách lòng mình phản ứng, và muốn thương thì phải hiểu trước.",
+      "heard": "Tóm lại, hiểu về cái tim xoay quanh một ý, nỗi khổ phần nhiều nằm ở cách lòng mình phản ứng, và muốn thương thì phải hiểu trước.",
+      "tone": [],
+      "words": [
+        [
+          "trái",
+          "cái"
+        ]
+      ]
+    },
+    {
+      "segment": "08f-tong-ket",
+      "text": "Từ đó, sách đi qua bốn mảng: những cơn giận, sợ, lo trong lòng; chuyện thương và được thương; cách đi qua thất bại, mất mát; và sợi dây nối chúng ta với mọi người.",
+      "heard": "Từ đó, sách đi qua bố mảng, những cơn giận, sợ, lo trong lòng, chuyện thương và được thương, cách đi qua thất bại, mất mát và sợi dây nối chúng ta với mọi người.",
+      "tone": [],
+      "words": [
+        [
+          "bốn",
+          "bố"
+        ]
+      ]
+    },
+    {
+      "segment": "08g-y-kien",
+      "text": "Tác giả không bảo đừng giận, đừng buồn, mà chỉ bảo khi giận thì nhìn xem cơn giận đến từ đâu, khi lo thì xem mình đã cầm nỗi lo ấy bao lâu.",
+      "heard": "Tắc giả không bảo đừng giận, đừng buồn, mà chỉ bảo khi giận thì nhìn xem cơn giận đến từ đâu, khi lo thì xem mình đã cầm nỗi lo ấy bao lâu.",
+      "tone": [
+        [
+          "tác",
+          "tắc"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "08g-y-kien",
+      "text": "Nhưng nếu ai đã thật sự trải qua, hoặc chịu ngồi xuống ngẫm lại, sẽ thấy nó không chỉ đơn giản dừng lại ở đó.",
+      "heard": "nhưng nếu ai đã thực sự trải qua, hoặc chịu ngồi xuống ngẩm lại, sẽ thấy nó không chỉ đơn giản dừng lại ở đó.",
+      "tone": [
+        [
+          "ngẫm",
+          "ngẩm"
+        ]
+      ],
+      "words": [
+        [
+          "thật",
+          "thực"
+        ]
+      ]
+    },
+    {
+      "segment": "08g-y-kien",
+      "text": "Nhưng nghĩ kỹ thì chính vì vậy mà mở chương nào ra cũng gặp lại cùng một lời nhắc: dừng lại, hiểu rồi mới thương.",
+      "heard": "Nhưng nghĩ kỹ, thì chính vì vậy mà mở chân nào ra, cũng gặp lại có một lời nhắc, dừng lại, hiểu rồi, mới thương.",
+      "tone": [],
+      "words": [
+        [
+          "chương",
+          "chân"
+        ],
+        [
+          "cùng",
+          "có"
+        ]
+      ]
+    },
+    {
+      "segment": "08g-y-kien",
+      "text": "Nếu chỉ chọn một chương để bắt đầu, mình gợi ý chương Lo Lắng với hình ảnh cốc nước.",
+      "heard": "Nếu chỉ chọn một chương để bắt đầu, mình gửi ý chương lo lắng với hình ảnh cốc nước.",
+      "tone": [],
+      "words": [
+        [
+          "gợi",
+          "gửi"
+        ]
+      ]
+    },
+    {
+      "segment": "08g-y-kien",
+      "text": "Chương ngắn, dễ hiểu, và các bạn có thể thử ngay tối nay: viết ra điều mình đang lo, rồi xem việc nào làm được, việc nào nên đặt xuống.",
+      "heard": "chân ngắn, dễ hiểu, và các bạn có thể thử ngay tối nay viết ra điều mình đang lo, rồi xem việc nào làm được, việc nào nên đặt xuống",
+      "tone": [],
+      "words": [
+        [
+          "chương",
+          "chân"
+        ]
+      ]
+    },
+    {
+      "segment": "09-nhan-xet",
+      "text": "Ý tưởng không mới, có chỗ lặp lại, và sách nhìn mọi chuyện qua lăng kính đạo Phật, nên ai cần một cuốn tâm lý học bài bản có thể thấy chưa đủ.",
+      "heard": "ý tưởng không mới, có chỗ lập lại và sách nhìn mọi chuyện qua lăn kính đạo Phật nên ai cần một cuốn tâm lý học bài bản có thể thấy chưa đủ.",
+      "tone": [
+        [
+          "lặp",
+          "lập"
+        ]
+      ],
+      "words": [
+        [
+          "lăng",
+          "lăn"
+        ]
+      ]
+    }
+  ],
+  "listening": "Chưa nghe duyệt: kiểm tra kỹ thuật đạt không có nghĩa là phát âm đã được duyệt; các câu ở toneFlags cần người dùng nghe."
+}

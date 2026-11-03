@@ -15,6 +15,8 @@ const voices = (takes as unknown as {voices: Voice[]}).voices;
 const LEAD_SECONDS = .3, TAIL_SECONDS = .8;
 const voiceOf = (id: string) => voices.find((v) => v.id === id) ?? voices[0];
 
+// Caption pages of the card in its own time (speech starts after the lead-in), for the episode caption file.
+export const cardCaptions = (voice: string) => (voiceOf(voice)?.captions ?? []).map((c) => ({...c, startMs: c.startMs + LEAD_SECONDS * 1000, endMs: c.endMs + LEAD_SECONDS * 1000}));
 export const cardFrames = (voice: string, fps = 30) => Math.ceil((LEAD_SECONDS + (voiceOf(voice)?.durationSeconds ?? 8) + TAIL_SECONDS) * fps);
 export const episodeCardMetadata: CalculateMetadataFunction<EpisodeCardProps> = ({props}) => ({durationInFrames: cardFrames(props.voice)});
 

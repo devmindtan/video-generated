@@ -138,7 +138,8 @@ const splitSentence = (pieces: Caption[]): Caption[] => {
       const ideal = from + (len * k) / count, prev = cuts[cuts.length - 1];
       let best = -1, score = Infinity;
       for (let i = prev + 10; i < to - 10; i++) {
-        if (text[i] !== ' ' || i - prev > MAX_CHARS) continue;
+        // Every page fits: this one, and what is left for the remaining pages of the sentence.
+        if (text[i] !== ' ' || i - prev > MAX_CHARS || to - i > MAX_CHARS * (count - k)) continue;
         const s = Math.abs(i - ideal) - (/[,;:]$/.test(text.slice(0, i)) ? 18 : 0);
         if (s < score) {score = s; best = i;}
       }
@@ -148,7 +149,7 @@ const splitSentence = (pieces: Caption[]): Caption[] => {
   cuts.push(text.length + 1);
   return cuts.slice(0, -1).map((from, k) => ({...pieces[0], text: text.slice(from, cuts[k + 1] - 1).trim(), startMs: timeAt(from), endMs: k === cuts.length - 2 ? pieces[pieces.length - 1].endMs : timeAt(cuts[k + 1] - 1), timestampMs: timeAt(from)})).filter((p) => p.text);
 };
-const mergeCaptions = (captions: Caption[]) => {
+export const mergeCaptions = (captions: Caption[]) => {
   const cached = merged.get(captions);
   if (cached) return cached;
   const out: Caption[] = [];

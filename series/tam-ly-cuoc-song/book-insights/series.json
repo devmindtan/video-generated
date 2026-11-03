@@ -29,6 +29,10 @@
           "kind": "Composition"
         },
         {
+          "id": "BookHvttThumbnail",
+          "kind": "Still"
+        },
+        {
           "id": "BookHvttIntro",
           "kind": "Composition"
         },

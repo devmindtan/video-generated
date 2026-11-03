@@ -75,4 +75,6 @@ tóm tắt sách, hiểu về trái tim, minh niệm, hiểu về trái tim minh
   chép đúng dòng ghi nguồn họ yêu cầu (dòng "Music track … Source …" ở trên theo mẫu thường gặp của họ).
 - Sách: bản PDF dùng để đọc không có trang thông tin xuất bản, nên mô tả chỉ ghi tên sách và tác giả, không ghi nhà
   xuất bản/năm in.
-- Thumbnail: component chuẩn bị riêng, không tự xuất.
+- Phụ đề: tải `docs/projects/book-hvtt-001-overview/captions.srt` lên YouTube (Phụ đề → Tải tệp lên → Có thời gian) để người xem bật/tắt
+  phụ đề, máy tìm kiếm đọc được lời; tạo lại bằng `node scripts/projects/book-hvtt-001-overview/export-captions.mjs` nếu giọng hay nhịp đổi.
+- Thumbnail: `BookHvttThumbnail` (1280×720) trong Studio, chuẩn bị sẵn, không tự xuất; bạn xuất bằng nút Render khi cần.
