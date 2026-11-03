@@ -38,6 +38,16 @@
     {
       "scene": 1,
       "text": "Lần tới ngồi ăn một bữa cơm nhà, chắc mình sẽ nhớ là trong đó có công của rất nhiều người, kể cả những người mình chưa bao giờ gặp.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Nhiều ví dụ và câu chuyện trong sách nghe qua thì rất bình thường, như chuyện người bà dỗ cháu hay một tô canh chua.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Nhưng nếu ai đã thật sự trải qua, hoặc chịu ngồi xuống ngẫm lại, sẽ thấy nó không chỉ đơn giản dừng lại ở đó.",
       "pauseAfter": 0.9
     },
     {

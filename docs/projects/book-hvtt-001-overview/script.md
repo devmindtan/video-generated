@@ -171,7 +171,9 @@ Theo mình, đây không phải cuốn sách để đọc một lần cho xong, 
 
 Cái mình giữ lại nhiều nhất là cách tách đau với khổ. Chuyện xảy ra thì mình không chọn được, nhưng nghĩ đi nghĩ lại về nó bao nhiêu lần thì phần nào mình chọn được. Hiểu vậy chưa làm hết khổ, nhưng ít ra mình biết nên bắt đầu từ đâu.
 
-Hình ảnh mình thích nhất vẫn là tô canh chua. Lần tới ngồi ăn một bữa cơm nhà, chắc mình sẽ nhớ là trong đó có công của rất nhiều người, kể cả những người mình chưa bao giờ gặp. [nghỉ]
+Hình ảnh mình thích nhất vẫn là tô canh chua. Lần tới ngồi ăn một bữa cơm nhà, chắc mình sẽ nhớ là trong đó có công của rất nhiều người, kể cả những người mình chưa bao giờ gặp.
+
+Nhiều ví dụ và câu chuyện trong sách nghe qua thì rất bình thường, như chuyện người bà dỗ cháu hay một tô canh chua. Nhưng nếu ai đã thật sự trải qua, hoặc chịu ngồi xuống ngẫm lại, sẽ thấy nó không chỉ đơn giản dừng lại ở đó. [nghỉ]
 
 Như mình đã nói, sách có chỗ lặp lại. Nhưng nghĩ kỹ thì chính vì vậy mà mở chương nào ra cũng gặp lại cùng một lời nhắc: dừng lại, hiểu rồi mới thương. Với mình, đó là lời nhắc đáng nghe nhiều lần.
 
@@ -179,7 +181,7 @@ Còn một điều mình muốn nhắc: những ví dụ và bài học trong s�
 
 Nếu chỉ chọn một chương để bắt đầu, mình gợi ý chương Lo Lắng với hình ảnh cốc nước. Chương ngắn, dễ hiểu, và các bạn có thể thử ngay tối nay: viết ra điều mình đang lo, rồi xem việc nào làm được, việc nào nên đặt xuống.
 
-{Nháp của kênh theo yêu cầu người dùng 2026-11-01 ("bổ sung thêm cảnh ý kiến cá nhân nghĩ thế nào về nội dung"); thay cho quyết định 2026-10-30 chờ người dùng tự đưa lời. Đây là ý kiến đứng tên người dùng: người dùng sửa, thêm trải nghiệm thật của mình hoặc viết lại tùy ý; không bịa chuyện đời tư. Chỉ dựa trên nội dung đã kể ở phần 2, 3A, 3D, 3E: đau/khổ Ch1, cốc nước Ch44, canh chua Ch48. Bổ sung 2026-11-02 theo yêu cầu người dùng: ví dụ và bài học trong sách chỉ là một góc, chưa bao quát hết, đọc để tránh hiểu nhầm (ví dụ Buông xả, Ch39).}
+{Nháp của kênh theo yêu cầu người dùng 2026-11-01 ("bổ sung thêm cảnh ý kiến cá nhân nghĩ thế nào về nội dung"); thay cho quyết định 2026-10-30 chờ người dùng tự đưa lời. Đây là ý kiến đứng tên người dùng: người dùng sửa, thêm trải nghiệm thật của mình hoặc viết lại tùy ý; không bịa chuyện đời tư. Chỉ dựa trên nội dung đã kể ở phần 2, 3A, 3D, 3E: đau/khổ Ch1, cốc nước Ch44, canh chua Ch48. Bổ sung 2026-11-02 theo yêu cầu người dùng: ví dụ và bài học trong sách chỉ là một góc, chưa bao quát hết, đọc để tránh hiểu nhầm (ví dụ Buông xả, Ch39). Bổ sung 2026-11-03 theo yêu cầu người dùng: ví dụ, câu chuyện nghe bình thường nhưng ai trải qua hoặc ngẫm lại sẽ thấy không chỉ dừng ở đó.}
 
 ## 5. Nhận xét chung (theo lời người dùng)
 
