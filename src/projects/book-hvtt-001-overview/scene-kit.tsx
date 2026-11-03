@@ -14,8 +14,10 @@ export type Take = Voice & {phraseRanges?: {startSeconds: number; endSeconds: nu
 export type Ctx = {frame: number; start: number; at: (sentence: number) => number; level: number};
 export type Beat = {at: number; label?: string; card?: {kicker: string; title: string}; quote?: boolean; draw?: (c: Ctx) => ReactNode};
 
-const voices = (takes as unknown as {voices: Take[]}).voices;
-export const takeOf = (id: string) => voices.find((v) => v.id === id);
+// Each episode passes its own narration takes (voice ids repeat across episodes); episode 1's are the default.
+export const takesOf = (json: unknown) => (json as {voices: Take[]}).voices;
+const voices = takesOf(takes);
+export const takeOf = (id: string, list: Take[] = voices) => list.find((v) => v.id === id);
 
 // Natural pacing (user 2026-11-01: "diễn giải tự nhiên, đừng quá bó buộc vào thời gian"): the narration is cut in
 // the silence between sentences and played with added rests, a breath after every sentence and a longer rest
@@ -88,11 +90,11 @@ const ideaStartsOf = (beats: Beat[]) => beats.map((b) => b.at).filter((a) => a >
 const cardRestOf = (beats: Beat[]) => Object.fromEntries(beats.filter((b) => b.card).map((b) => [b.at, CARD_SECONDS]));
 // Pacing is pure for a (voice, beats, fps): cached, since the body music asks it for every frame of the episode.
 const paceCache = new WeakMap<Beat[], Map<string, Pacing>>();
-export const sectionPacing = (voice: string, beats: Beat[], fps = 30) => {
+export const sectionPacing = (voice: string, beats: Beat[], fps = 30, list: Take[] = voices) => {
   const byKey = paceCache.get(beats) ?? new Map<string, Pacing>();paceCache.set(beats, byKey);
   const key = `${voice}@${fps}`, hit = byKey.get(key);
   if (hit) return hit;
-  const made = pace(takeOf(voice), ideaStartsOf(beats), fps, cardRestOf(beats));byKey.set(key, made);
+  const made = pace(takeOf(voice, list), ideaStartsOf(beats), fps, cardRestOf(beats));byKey.set(key, made);
   return made;
 };
 
@@ -112,11 +114,11 @@ export const Word: FC<{x: number; y: number; size: number; text: string; opacity
   <text x={x} y={y} fontSize={size} fontWeight={700} textAnchor={anchor} fill={IVORY} opacity={opacity} style={{letterSpacing: size * .06}}>{text}</text>;
 export const appear = (frame: number, from: number, len = 12) => interpolate(frame, [from, from + len], [0, 1], {...clamp, easing: ease});
 
-export const NarratedSection: FC<{voice: string; channelLabel: string; beats: Beat[]; highlight?: RegExp; track: string}> = ({voice: voiceId, channelLabel, beats, highlight, track}) => {
+export const NarratedSection: FC<{voice: string; channelLabel: string; beats: Beat[]; highlight?: RegExp; track: string; takes?: Take[]; quoteSource?: string}> = ({voice: voiceId, channelLabel, beats, highlight, track, takes: list = voices, quoteSource = 'Hiểu về trái tim, Minh Niệm'}) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
-  const voice = takeOf(voiceId);
-  const pacing = sectionPacing(voiceId, beats, fps);
+  const voice = takeOf(voiceId, list);
+  const pacing = sectionPacing(voiceId, beats, fps, list);
   const at = pacing.at;
   const level = voiceLevel(voice, pacing, frame);
   // A drawing starts in the rest before its sentence; the one before has faded out by then (no overlap).
@@ -149,7 +151,7 @@ export const NarratedSection: FC<{voice: string; channelLabel: string; beats: Be
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%)', pointerEvents: 'none'}} />
       {voice ? <Captions captions={voice.captions} ms={captionMs(pacing, frame, fps)} highlight={highlight} /> : null}
       <CornerVoice take={voice} pacing={pacing} frame={frame} />
-      {beats[current]?.quote ? <div style={{position: 'absolute', top: 852, left: 0, right: 0, textAlign: 'center', color: GOLD, fontSize: 24, fontWeight: 700, letterSpacing: 2, opacity: opacityOf(current) * .85}}>— Hiểu về trái tim, Minh Niệm</div> : null}
+      {beats[current]?.quote ? <div style={{position: 'absolute', top: 852, left: 0, right: 0, textAlign: 'center', color: GOLD, fontSize: 24, fontWeight: 700, letterSpacing: 2, opacity: opacityOf(current) * .85}}>— {quoteSource}</div> : null}
     </AbsoluteFill>
     {voice ? <PacedVoice take={voice} pacing={pacing} track={track} /> : null}
   </AbsoluteFill>;
@@ -189,10 +191,12 @@ export const within = (c: Ctx, sentence: number, share: number) => Math.round(c.
 // A body section: its component plus the frame count of its paced timeline (registry metadata and the episode).
 export type SectionProps = {voice: string; channelLabel: string};
 export type Section = FC<SectionProps> & {frames: (voice: string, fps?: number) => number; pacing: (voice: string, fps?: number) => Pacing; speaking: (voice: string, frame: number, fps?: number) => boolean; metadata: CalculateMetadataFunction<SectionProps>};
-export const section = (track: string, highlight: RegExp, beats: Beat[]): Section => {
-  const C: FC<SectionProps> = (p) => <NarratedSection {...p} track={track} highlight={highlight} beats={beats} />;
-  const frames = (voice: string, fps = 30) => sectionPacing(voice, beats, fps).frames;
-  const speaking = (voice: string, frame: number, fps = 30) => sectionPacing(voice, beats, fps).voiceFrame(frame) !== null;
-  const pacing = (voice: string, fps = 30) => sectionPacing(voice, beats, fps);
+// takes/quoteSource: the episode's narration and the book named under on-screen quotes (episode 1 by default).
+export const section = (track: string, highlight: RegExp, beats: Beat[], options: {takes?: Take[]; quoteSource?: string} = {}): Section => {
+  const list = options.takes ?? voices;
+  const C: FC<SectionProps> = (p) => <NarratedSection {...p} track={track} highlight={highlight} beats={beats} takes={list} quoteSource={options.quoteSource} />;
+  const frames = (voice: string, fps = 30) => sectionPacing(voice, beats, fps, list).frames;
+  const speaking = (voice: string, frame: number, fps = 30) => sectionPacing(voice, beats, fps, list).voiceFrame(frame) !== null;
+  const pacing = (voice: string, fps = 30) => sectionPacing(voice, beats, fps, list);
   return Object.assign(C, {frames, pacing, speaking, metadata: (({props}) => ({durationInFrames: frames(props.voice)})) as CalculateMetadataFunction<SectionProps>});
 };

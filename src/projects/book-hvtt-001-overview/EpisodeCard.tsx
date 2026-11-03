@@ -9,21 +9,22 @@ import takes from './episode-takes.json';
 
 // Per-episode card that follows the series intro: "TẬP NN · book · author" while the narration says which
 // book this episode reads. The series intro and outro stay the same for every episode (user 2026-10-31).
-export type EpisodeCardProps = {voice: string; channelLabel: string; episodeLabel: string; bookTitle: string; bookAuthor: string};
+// takes: the episode's card narration (each episode has its own; episode 1's file by default).
+export type EpisodeCardProps = {voice: string; channelLabel: string; episodeLabel: string; bookTitle: string; bookAuthor: string; takes?: Voice[]};
 
 const voices = (takes as unknown as {voices: Voice[]}).voices;
 const LEAD_SECONDS = .3, TAIL_SECONDS = .8;
-const voiceOf = (id: string) => voices.find((v) => v.id === id) ?? voices[0];
+const voiceOf = (id: string, list: Voice[] = voices) => list.find((v) => v.id === id) ?? list[0];
 
 // Caption pages of the card in its own time (speech starts after the lead-in), for the episode caption file.
-export const cardCaptions = (voice: string) => (voiceOf(voice)?.captions ?? []).map((c) => ({...c, startMs: c.startMs + LEAD_SECONDS * 1000, endMs: c.endMs + LEAD_SECONDS * 1000}));
-export const cardFrames = (voice: string, fps = 30) => Math.ceil((LEAD_SECONDS + (voiceOf(voice)?.durationSeconds ?? 8) + TAIL_SECONDS) * fps);
-export const episodeCardMetadata: CalculateMetadataFunction<EpisodeCardProps> = ({props}) => ({durationInFrames: cardFrames(props.voice)});
+export const cardCaptions = (voice: string, list?: Voice[]) => (voiceOf(voice, list)?.captions ?? []).map((c) => ({...c, startMs: c.startMs + LEAD_SECONDS * 1000, endMs: c.endMs + LEAD_SECONDS * 1000}));
+export const cardFrames = (voice: string, fps = 30, list?: Voice[]) => Math.ceil((LEAD_SECONDS + (voiceOf(voice, list)?.durationSeconds ?? 8) + TAIL_SECONDS) * fps);
+export const episodeCardMetadata: CalculateMetadataFunction<EpisodeCardProps> = ({props}) => ({durationInFrames: cardFrames(props.voice, 30, props.takes)});
 
-export const BookInsightsEpisodeCard: FC<EpisodeCardProps> = ({voice: voiceId, channelLabel, episodeLabel, bookTitle, bookAuthor}) => {
+export const BookInsightsEpisodeCard: FC<EpisodeCardProps> = ({voice: voiceId, channelLabel, episodeLabel, bookTitle, bookAuthor, takes: list}) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
-  const voice = voiceOf(voiceId);
+  const voice = voiceOf(voiceId, list);
   const start = Math.round(LEAD_SECONDS * fps), local = frame - start, end = start + (voice?.frames ?? 0);
   const speaking = Boolean(voice) && local >= 0 && local < voice!.frames;
   const bands = speaking ? voice!.bands[local] : new Array(32).fill(0);
