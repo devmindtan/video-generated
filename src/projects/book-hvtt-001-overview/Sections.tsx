@@ -319,7 +319,7 @@ const cow = (x: number, y: number, s: number) => {
     + ` M${P(92, -72)} L${P(88, -82)} M${P(100, -71)} L${P(104, -81)} M${P(0, -56)} C${P(-10, -52)} ${P(-12, -38)} ${P(-8, -30)}`;
 };
 const wall = (c: Ctx, delay = 0) => <g>{[0, 1, 2, 3, 4].map((row) => Array.from({length: 6 - row}, (_, i) => {const x = 640 + i * 110 + (row % 2) * 55, y = 700 - row * 56;return <rect key={`${row}-${i}`} x={x} y={y} width={100} height={48} rx={4} fill="none" stroke={GOLD} strokeWidth={2.2} opacity={appear(c.frame, c.start + delay + row * 8 + i * 2, 8)} />;}))}</g>;
-export const Nhom3C = section("07 nhóm 3C", /(chịu|đựng|vốc muối|dòng sông|lòng mình rộng ra|chưa thành công|nhìn lại|con bò|bỏ hết mọi thứ|bỏ bớt vài thùng hàng|nỗi lo|khó buông nhất|sợ bị chê|mùa thu|thảnh thơi|để mà đi)/gi, [
+export const Nhom3C = section("07 nhóm 3C", /(chịu|đựng|vốc muối|dòng sông|lòng mình rộng ra|chưa thành công|nhìn lại|con bò|bỏ hết mọi thứ|bỏ bớt vài thùng hàng|nỗi lo|không nhìn thấy|sợ bị chê|mùa thu|thảnh thơi|để mà đi)/gi, [
   {at: 0, card: {kicker: 'NHÓM 3', title: 'Đi qua những lúc thăng trầm'}},
   // 1–2 the two words, each with its meaning, with the quote
   {at: 1, label: 'Chịu đựng', quote: true, draw: (c) => <g>
@@ -376,17 +376,19 @@ export const Nhom3C = section("07 nhóm 3C", /(chịu|đựng|vốc muối|dòng
           opacity={appear(c.frame, c.start + 16 + k * 3, 8) * (1 - fall * .8)} transform={off ? `rotate(${fall * 40} ${x + 40} ${640 - 64 * (row + 1) + 30})` : undefined} />;})}
     </g>
   </g>;}},
-  // 16 twelve cows, then all but one fade: twelve worries, one worry
-  {at: 16, draw: (c) => {const fade = interpolate(c.frame, [within(c, 16, .5), within(c, 16, .85)], [0, 1], clamp);return <g>
+  // 16 twelve cows, then all but one fade: twelve worries, one worry; 17 the faded ones come back as dashed outlines,
+  // cows you cannot see (praise, recognition: the book's "con bò không có hình tướng")
+  {at: 16, draw: (c) => {const fade = interpolate(c.frame, [within(c, 16, .5), within(c, 16, .85)], [0, 1], clamp), ghost = appear(c.frame, within(c, 17, .25), 24);return <g>
     {Array.from({length: 12}, (_, i) => {const row = Math.floor(i / 6), x = 610 + (i % 6) * 130, y = row ? 700 : 560;
-      return <path key={i} d={cow(x, y, 1)} fill="none" stroke={i === 0 ? IVORY : GOLD} strokeWidth={2.4} strokeLinejoin="round" opacity={appear(c.frame, c.start + 4 + i * 2, 8) * (i === 0 ? 1 : 1 - fade * .9)} />;})}
+      return <path key={i} d={cow(x, y, 1)} fill="none" stroke={i === 0 ? IVORY : GOLD} strokeWidth={2.4} strokeLinejoin="round" strokeDasharray={i && ghost > 0 ? '5 9' : undefined}
+        opacity={appear(c.frame, c.start + 4 + i * 2, 8) * (i === 0 ? 1 : 1 - fade * .9 + ghost * .55)} />;})}
   </g>;}},
-  // 17 things held like balloons (praise among them); 18 they slip away, a small cloud of criticism comes
-  {at: 17, draw: (c) => {const go = appear(c.frame, within(c, 18, .2), 40);return <g>
+  // 18 praise held like balloons; they slip away and a small cloud of criticism comes
+  {at: 18, draw: (c) => {const go = appear(c.frame, within(c, 18, .55), 30);return <g>
     <Figure frame={c.frame} from={c.start} x={960} y={820} s={1.1} arm="raise" />
-    {[0, 1, 2, 3].map((k) => {const bx = 840 + k * 80, by = 260 + (k % 2) * 50 - go * 200;return <g key={k} opacity={appear(c.frame, within(c, 17, .15 + k * .15), 10) * (1 - go)}>
+    {[0, 1, 2, 3].map((k) => {const bx = 840 + k * 80, by = 260 + (k % 2) * 50 - go * 200;return <g key={k} opacity={appear(c.frame, c.start + 8 + k * 6, 10) * (1 - go)}>
       <ellipse cx={bx} cy={by} rx={34} ry={42} fill="none" stroke={k % 2 ? IVORY : GOLD} strokeWidth={2.4} /><path d={`M${bx} ${by + 42} C${bx + 10} ${by + 120} 1000 ${400 + go * 0} 1010 ${470}`} fill="none" stroke={GOLD} strokeWidth={1.6} opacity={(1 - go) * .8} /></g>;})}
-    <path d="M1240 380 C1220 340 1260 310 1300 330 C1320 300 1380 310 1380 350 C1420 360 1410 410 1370 410 L1260 410 C1220 410 1220 380 1240 380 Z" fill="none" stroke={IVORY} strokeWidth={2.4} opacity={appear(c.frame, within(c, 18, .5), 14)} />
+    <path d="M1240 380 C1220 340 1260 310 1300 330 C1320 300 1380 310 1380 350 C1420 360 1410 410 1370 410 L1260 410 C1220 410 1220 380 1240 380 Z" fill="none" stroke={IVORY} strokeWidth={2.4} opacity={appear(c.frame, within(c, 18, .7), 14)} />
   </g>;}},
   // 19 a desk covered in papers, 20 autumn leaves fall on it (with the quote)
   {at: 19, label: 'Biết đủ và thảnh thơi', quote: true, draw: (c) => <g>{table(c)}{D(c, 'M800 700 L1120 700 L1096 680 L824 680 Z M846 680 L866 540 L1054 540 L1074 680 M884 560 L1036 560 L1052 664 L868 664 Z', 4, 26, 2.4)}
