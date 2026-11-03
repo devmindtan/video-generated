@@ -63,3 +63,17 @@ test('renames a shared track in place with revision check and history; project f
   assert.throws(() => lib.updateAudioMeta({path: 'demo/audio/a.wav', title: 'X', revision: lib.music().metaRevision}), /thư viện dùng chung/);
   assert.throws(() => lib.updateAudioMeta({path: rel, title: '  ', revision: lib.music().metaRevision}), /Tên bài/);
 });
+
+test('a long episode\'s part configs (body-music.json, outro-music.json) count as use, with their credit', async t => {
+  const {root, lib} = workspace(t);
+  const m = await lib.addAudio({kind: 'music', name: 'than.wav'}, body(wav()));
+  const write = (p, v) => {fs.mkdirSync(path.dirname(path.join(root, p)), {recursive: true});fs.writeFileSync(path.join(root, p), JSON.stringify(v));};
+  write('series/catalog.json', {schemaVersion: 1, channels: [{id: 'c', title: 'Kênh', studioFolder: 'C'}], series: [{id: 's', channel: 'c', path: 'series/c/s/series.json'}]});
+  write('series/c/s/series.json', {schemaVersion: 1, id: 's', channel: 'c', title: 'Series', studioFolder: 'S', formats: ['long'],
+    projects: [{id: 'tap-1', title: 'Tập 1', status: 'planning', format: 'long', paths: {source: 'src/projects/tap-1', scripts: 'scripts/projects/tap-1', docs: 'docs/projects/tap-1', assets: 'public/tap-1'}, registrations: []}]});
+  write('src/projects/tap-1/body-music.json', {file: m.path, credit: {title: 'Thân bài', artists: ['Tác giả C']}});
+  write('src/projects/tap-1/outro-music.json', {file: m.path, credit: {title: 'Thân bài', artists: ['Tác giả C']}});
+  const track = lib.music().tracks.find(x => x.path === m.path);
+  assert.deepEqual(track.usedBy.map(u => [u.id, u.credited]), [['tap-1', true]]);
+  assert.deepEqual(track.artists, ['Tác giả C'], 'credit fills the artist the library entry lacks');
+});

@@ -86,11 +86,16 @@ function createLibrary(root) {
       return tracks.get(rel);
     };
     for (const p of projects()) {
-      const config = readJson(path.join(root, 'src/projects', p.id, 'music.json'));
-      if (typeof config?.file === 'string') {
+      // music.json, plus part configs of long episodes (body-music.json, outro-music.json…).
+      const dir = path.join(root, 'src/projects', p.id);
+      const configs = fs.existsSync(dir) ? fs.readdirSync(dir).filter(n => /(^|-)music\.json$/.test(n)).sort((a, b) => (a !== 'music.json') - (b !== 'music.json') || a.localeCompare(b)) : [];
+      for (const name of configs) {
+        const config = readJson(path.join(dir, name));
+        if (typeof config?.file !== 'string') continue;
         const t = track(config.file), credit = config.credit;
         if (!t.title && typeof credit?.title === 'string') t.title = credit.title;
         if (!t.artists.length && Array.isArray(credit?.artists)) t.artists = credit.artists.filter(a => typeof a === 'string');
+        if (t.usedBy.some(u => u.id === p.id)) continue;
         t.usedBy.push({...p, credited: Boolean(credit?.title && credit?.artists?.length), speechVolume: config.speechVolume ?? null, pauseVolume: config.pauseVolume ?? null});
       }
       const sfx = readJson(path.join(root, 'src/projects', p.id, 'sfx.json'));
