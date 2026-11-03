@@ -11,9 +11,13 @@ export type ShortCoverProps = {art: 'salt' | 'pond' | 'phone'; headline: string;
 const G = (d: string, w = 5, color = GOLD) => <path d={d} fill="none" stroke={color} strokeWidth={w} strokeLinecap="round" strokeLinejoin="round" />;
 // Salt pouring from a tilted spoon into a wide river that flows across the frame, reeds on its banks.
 const Salt: FC = () => <g>
-  <ellipse cx={500} cy={470} rx={84} ry={38} transform="rotate(22 500 470)" fill="rgba(13,20,17,.6)" stroke={GOLD} strokeWidth={5} />
-  {G('M572 440 L800 330')}
-  {Array.from({length: 18}, (_, i) => <circle key={i} cx={448 + Math.sin(i * 2.1) * 22 + i * 2} cy={540 + i * 26} r={8} fill={IVORY} opacity={1 - i * .035} />)}
+  {/* One spoon in one outline: bowl, neck and a handle with thickness, tipped so the salt runs off its left lip. */}
+  <g transform="translate(520 460) rotate(-24)">
+    <path d="M-86 0 C-86 -32 -44 -48 0 -48 C40 -48 72 -28 88 -10 L340 -12 C356 -12 356 12 340 12 L88 10 C72 28 40 48 0 48 C-44 48 -86 32 -86 0 Z" fill="rgba(13,20,17,.65)" stroke={GOLD} strokeWidth={5} strokeLinejoin="round" />
+    <path d="M-64 -6 C-52 -30 28 -34 62 -12" fill="none" stroke={GOLD} strokeWidth={3} strokeLinecap="round" opacity={.8} />
+    <path d="M-70 14 C-52 -12 -6 -18 30 -2 C46 6 54 14 56 20 C20 30 -40 30 -70 14 Z" fill={IVORY} opacity={.92} />
+  </g>
+  {Array.from({length: 18}, (_, i) => <circle key={i} cx={448 + Math.sin(i * 2.1) * 14 + i * 1.5} cy={540 + i * 26} r={8} fill={IVORY} opacity={1 - i * .035} />)}
   {G('M40 1000 C240 930 420 1060 640 990 C800 940 920 960 1040 990 M40 1240 C260 1180 440 1300 660 1230 C820 1180 930 1200 1040 1230', 6)}
   {[[150, 1090], [420, 1140], [690, 1080], [880, 1120], [300, 1190], [600, 1180]].map(([x, y], k) => G(`M${x} ${y} c25 -12 50 12 75 0 c25 -12 50 12 75 0`, 3.4, IVORY))}
   {[[110, 990], [150, 975], [930, 975], [970, 985]].map(([x, y], k) => G(`M${x} ${y} C${x - 6} ${y - 50} ${x + 10} ${y - 90} ${x + 4} ${y - 120}`, 3.6))}
