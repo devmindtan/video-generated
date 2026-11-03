@@ -1,0 +1,91 @@
+[
+  [
+    {
+      "text": "Xin chào các con vợ của chồng...",
+      "startMs": 0,
+      "endMs": 2000,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Lại Flower Knows, lần này là son.",
+      "startMs": 2260,
+      "endMs": 4180,
+      "timestampMs": 2260,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Vỏ xanh, khóa bạc hoa tuyết.",
+      "startMs": 0,
+      "endMs": 1860,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Cầm mà tưởng cầm vương trượng.",
+      "startMs": 2080,
+      "endMs": 3100,
+      "timestampMs": 2080,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Một cây hai đầu.",
+      "startMs": 0,
+      "endMs": 1280,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Mua một, được hai.",
+      "startMs": 1640,
+      "endMs": 2520,
+      "timestampMs": 1640,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Đầu màu trước.",
+      "startMs": 100,
+      "endMs": 920,
+      "timestampMs": 100,
+      "confidence": null
+    },
+    {
+      "text": "Quẹt ra hồng đất, trầm mà không già.",
+      "startMs": 1480,
+      "endMs": 3060,
+      "timestampMs": 1480,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Đầu kia: son bóng trong veo.",
+      "startMs": 0,
+      "endMs": 1700,
+      "timestampMs": 0,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Bóng như sàn mới lau.",
+      "startMs": 0,
+      "endMs": 1640,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Giải tán, các con vợ!",
+      "startMs": 1760,
+      "endMs": 2760,
+      "timestampMs": 1760,
+      "confidence": null
+    }
+  ]
+]

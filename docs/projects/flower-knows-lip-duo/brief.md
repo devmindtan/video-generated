@@ -4,12 +4,13 @@
 - Series: product-videos
 - Project ID: flower-knows-lip-duo
 - Định dạng: short
-- Thời lượng: chưa duyệt
-- Trạng thái: planning, chưa có composition/asset/giọng.
+- Thời lượng: 21,3 giây (theo video khách)
+- Trạng thái: đã có composition `FlowerKnowsLipDuoAdam` và giọng; chờ nghe duyệt.
+- Giọng: lựa chọn 1 — preset VieNeu **Adam bựa** (không clone). Âm thanh gốc giữ nguyên.
 
 ## Nội dung
 
-Chưa viết; cần duyệt mục tiêu, dàn ý và kịch bản trước sản xuất.
+Lồng giọng hài review son hai đầu Flower Knows (đầu son màu hồng đất + đầu son bóng). Kịch bản: [script.md](script.md); thông số: [production-spec.md](production-spec.md).
 
 ## Nguồn và kiểm chứng
 

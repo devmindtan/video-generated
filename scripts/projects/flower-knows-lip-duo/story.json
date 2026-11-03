@@ -1,0 +1,129 @@
+[
+  {
+    "id": "01-greeting",
+    "start": 0,
+    "duration": 4.5,
+    "leadIn": 0.12,
+    "tail": 0.16,
+    "minWordMatchRatio": 0.75,
+    "temperature": 0.58,
+    "text": "Xin chào các con vợ của chồng... Lại Flower Knows, lần này là son.",
+    "sentences": [
+      {
+        "text": "Xin chào các con vợ của chồng...",
+        "pauseAfter": 0.24,
+        "gainDb": 0.35
+      },
+      {
+        "text": "Lại Flower Knows, lần này là son.",
+        "pauseAfter": 0,
+        "gainDb": 0.3
+      }
+    ]
+  },
+  {
+    "id": "02-case",
+    "start": 5.6,
+    "duration": 3.6,
+    "leadIn": 0.08,
+    "tail": 0.12,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.5,
+    "text": "Vỏ xanh, khóa bạc hoa tuyết. Cầm mà tưởng cầm vương trượng.",
+    "sentences": [
+      {
+        "text": "Vỏ xanh, khóa bạc hoa tuyết.",
+        "pauseAfter": 0.16,
+        "gainDb": 0.2
+      },
+      {
+        "text": "Cầm mà tưởng cầm vương trượng.",
+        "pauseAfter": 0,
+        "gainDb": 0.4
+      }
+    ]
+  },
+  {
+    "id": "03-two-ends",
+    "start": 9.2,
+    "duration": 3.3,
+    "leadIn": 0.2,
+    "tail": 0.14,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.56,
+    "text": "Một cây hai đầu. Mua một, được hai.",
+    "sentences": [
+      {
+        "text": "Một cây hai đầu.",
+        "pauseAfter": 0.3,
+        "gainDb": 0.2
+      },
+      {
+        "text": "Mua một, được hai.",
+        "pauseAfter": 0,
+        "gainDb": 0.45
+      }
+    ]
+  },
+  {
+    "id": "04-tint",
+    "start": 12.5,
+    "duration": 3.6,
+    "leadIn": 0.1,
+    "tail": 0.12,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.56,
+    "text": "Đầu màu trước. Quẹt ra hồng đất, trầm mà không già.",
+    "sentences": [
+      {
+        "text": "Đầu màu trước.",
+        "at": 0.1,
+        "gainDb": 0.2
+      },
+      {
+        "text": "Quẹt ra hồng đất, trầm mà không già.",
+        "at": 1.35,
+        "gainDb": 0.4
+      }
+    ]
+  },
+  {
+    "id": "05-gloss-end",
+    "start": 16.1,
+    "duration": 2.2,
+    "leadIn": 0.1,
+    "tail": 0.1,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.56,
+    "text": "Đầu kia: son bóng trong veo.",
+    "sentences": [
+      {
+        "text": "Đầu kia: son bóng trong veo.",
+        "pauseAfter": 0,
+        "gainDb": 0.3
+      }
+    ]
+  },
+  {
+    "id": "06-outro",
+    "start": 18.3,
+    "duration": 2.9,
+    "leadIn": 0.1,
+    "tail": 0.08,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.6,
+    "text": "Bóng như sàn mới lau. Giải tán, các con vợ!",
+    "sentences": [
+      {
+        "text": "Bóng như sàn mới lau.",
+        "pauseAfter": 0.16,
+        "gainDb": 0.3
+      },
+      {
+        "text": "Giải tán, các con vợ!",
+        "pauseAfter": 0,
+        "gainDb": 0.5
+      }
+    ]
+  }
+]
