@@ -271,11 +271,11 @@ dialog{width:550px;max-width:calc(100vw - 28px);max-height:calc(100dvh - 40px);o
 .books-grid .card-footer{margin-top:12px;padding:0;border:0;justify-content:flex-start}
 .book-facts{display:grid;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line,#e2e8df)}
 .book-reading{display:grid;gap:5px}.book-reading .pbar{height:5px}.book-reading small{font-size:12px;font-weight:700;color:#3f6a2e;white-space:nowrap}
-.book-reading.is-empty small,.book-episodes.is-empty span{font-weight:400;color:var(--muted)}
-.book-episodes{display:flex;flex-direction:column;gap:2px;font-size:12px;line-height:1.5;color:inherit;text-decoration:none;min-width:0}
-.book-episodes strong{font-weight:700}.book-episodes span{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-a.book-episodes:hover span,a.book-episodes:focus-visible span{text-decoration:underline;text-underline-offset:3px;color:var(--forest)}
+.book-reading.is-empty small{font-weight:400;color:var(--muted)}
 .books-grid .book-facts+.card-footer{margin-top:auto;padding-top:10px}
+.book-episode-list ul{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:8px}.book-episode-list li{display:flex;flex-direction:column;align-items:flex-start;gap:5px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.book-episode-list a{font-weight:700;color:var(--forest);text-decoration:none;line-height:1.5;overflow-wrap:anywhere}.book-episode-list a:hover,.book-episode-list a:focus-visible{text-decoration:underline;text-underline-offset:3px}
+.book-episode-list .count-pill{font-size:12px;font-weight:700;color:#3f6a2e;background:#e6efe0;border-radius:999px;padding:1px 8px;margin-left:4px}
 .books-grid .status{font-size:12px;white-space:normal;padding:3px 10px;border-radius:999px;line-height:1.6;gap:7px}
 .project-grid.books-grid.list .card-body{display:flex;padding:16px 20px}
 @media(max-width:420px){.project-grid.books-grid:not(.list){grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px}.books-grid .card-body{padding:12px 12px 14px}.books-grid .status{border-radius:10px;padding:3px 8px}.books-grid .card-title{font-size:14px}.books-grid .book-card .card-cover{padding:16px 8px}}
@@ -291,12 +291,12 @@ a.book-episodes:hover span,a.book-episodes:focus-visible span{text-decoration:un
 .project-page-head h2,.book-page-head h2{font-size:30px;margin-top:0}.project-page-head h2:focus-visible,.book-page-head h2:focus-visible{outline:3px solid #7f9f86;outline-offset:4px}
 .project-page-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:40px;align-items:start}.project-page-main{min-width:0}.project-page-main>.drawer-section:first-child,.project-page-aside>.drawer-section:first-child{margin-top:0}.project-page-aside{position:sticky;top:0}.project-page-aside .folder-list{grid-template-columns:1fr}.project-page-aside .drawer-section{margin-bottom:24px}.project-danger{padding-top:22px;border-top:1px solid var(--line)}
 .book-page-layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:40px;align-items:start}
-.book-page-aside{position:sticky;top:0;display:flex;flex-direction:column;gap:18px}.book-page-aside .drawer-section{margin:6px 0 0}
+.book-page-aside{position:sticky;top:0;display:flex;flex-direction:column;gap:18px;max-height:calc(100dvh - 24px);overflow-y:auto;scrollbar-width:thin;padding-bottom:12px}.book-page-aside .drawer-section{margin:6px 0 0}
 .book-page-aside .book-cover-editor{grid-template-columns:1fr;gap:12px}.book-page-aside .book-cover-preview{height:280px}
 .book-page-main{min-width:0}.book-page-main>.drawer-section:first-child{margin-top:0}.book-page-head .book-notice{margin-bottom:28px}
 .drawer.detail-page .document-view{max-height:none;overflow:visible;padding:28px 34px;font-size:16px}
 body.has-player .drawer.detail-page{padding-bottom:120px}
-@media(max-width:1100px){.project-page-layout,.book-page-layout{grid-template-columns:1fr;gap:24px}.project-page-aside{position:static;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.project-page-aside .drawer-section{margin:0}.book-page-main{order:-1}.book-page-aside{position:static;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}.book-page-aside .book-cover-editor{grid-template-columns:150px minmax(0,1fr)}.book-page-aside .book-cover-preview{height:224px}.book-page-aside [data-project-from-book]{order:3;grid-column:1/-1;justify-self:start}}
+@media(max-width:1100px){.project-page-layout,.book-page-layout{grid-template-columns:1fr;gap:24px}.project-page-aside{position:static;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.project-page-aside .drawer-section{margin:0}.book-page-main{order:-1}.book-page-aside{position:static;max-height:none;overflow:visible;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}.book-page-aside .book-cover-editor{grid-template-columns:150px minmax(0,1fr)}.book-page-aside .book-cover-preview{height:224px}.book-page-aside [data-project-from-book]{order:3;grid-column:1/-1;justify-self:start}}
 @media(max-width:760px){.drawer.detail-page{left:0;padding:17px 17px max(35px,env(safe-area-inset-bottom))}.project-page-aside,.book-page-aside{display:flex;flex-direction:column}.project-page-head h2,.book-page-head h2{font-size:24px}.drawer.detail-page .document-view{padding:18px;font-size:15px}.book-page-aside [data-project-from-book]{justify-self:stretch}}
 /* Add music or SFX to the shared library: copied from a file the user picks. */
 .add-audio{border:1px solid #d4dfcc;border-radius:10px;background:#fff;padding:16px 18px;margin:0 0 18px}
