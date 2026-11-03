@@ -154,7 +154,7 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   assert.deepEqual(names.slice(0,2),['Xem video','Nghe lời đọc và nhạc']);assert.ok(!names.some(n=>/\.tsx$/.test(n)),'code is folded, not a review item');
   assert.match(await dialog.locator('.rail-prior').last().innerText(),/Mã dựng, không cần đọc/);
   assert.equal(await dialog.locator('.preview-clips video').count(),1);assert.equal(await dialog.locator('.preview-clips video').first().evaluate(v=>fetch(v.src).then(r=>r.status)),200);
-  await dialog.locator('.rail-item',{hasText:'Nghe lời đọc'}).click();assert.match(await dialog.locator('.voice-takes').innerText(),/Mở chuyện[\s\S]*Nhạc nền: Enlivening — Pufino/);
+  await dialog.locator('.rail-item',{hasText:'Nghe lời đọc'}).click();assert.match(await dialog.locator('.voice-takes').innerText(),/Mở chuyện[\s\S]*Nhạc: Enlivening — Pufino \(music.json\)/);
   assert.equal(await dialog.locator('audio').last().evaluate(a=>fetch(a.src).then(r=>r.status)),200);
   await page.keyboard.press('Escape');
   mark('Final review: watch scene clips, listen to narration and music; code folded away; opens after a manager lock');

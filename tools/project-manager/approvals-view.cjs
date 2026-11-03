@@ -109,11 +109,20 @@ function createApprovals(root) {
     if (gate === 'review-preview') {
       // The finished piece to look at and listen to: latest clip of every scene, the narration, the music; Studio links.
       const entry = load(root).series.flatMap(s => s.projects).find(p => p.id === id), store = review.load(root, id);
-      const clips = review.sceneDefs(root, cli.plan(root, id)).map(def => {const list = store.scenes[def.id]?.clips || [];return list.length ? {scene: def.id, title: def.title, key: `${def.id}:${list.length - 1}`} : null;}).filter(Boolean);
-      let music = null;try {const m = JSON.parse(fs.readFileSync(path.join(root, 'src/projects', id, 'music.json'), 'utf8'));if (typeof m.file === 'string' && !m.file.includes('..') && fs.existsSync(path.join(root, 'public', m.file))) music = {title: [m.credit?.title, m.credit?.artists?.join(', ')].filter(Boolean).join(' — ') || path.basename(m.file), file: m.file};} catch {}
+      // Only clips rendered after the latest lock show the current build; older ones are counted, not shown.
+      const lockedAt = store.locks.at(-1)?.at || '';
+      const latest = review.sceneDefs(root, cli.plan(root, id)).map(def => {const list = store.scenes[def.id]?.clips || [];return list.length ? {scene: def.id, title: def.title, key: `${def.id}:${list.length - 1}`, renderedAt: list.at(-1).renderedAt} : null;}).filter(Boolean);
+      const clips = latest.filter(c => c.renderedAt >= lockedAt), staleClips = latest.length - clips.length;
+      // Every music track of the project (intro, body, outro…), each from its *music.json.
+      const musicList = [];
+      for (const rel of review.items(root, cli.plan(root, id)).find(i => i.id === 'music')?.files || []) {
+        try {const m = JSON.parse(fs.readFileSync(path.join(root, rel), 'utf8'));if (typeof m.file === 'string' && !m.file.includes('..') && fs.existsSync(path.join(root, 'public', m.file)))
+          musicList.push({title: `${[m.credit?.title, m.credit?.artists?.join(', ')].filter(Boolean).join(' — ') || path.basename(m.file)} (${path.basename(rel)})`, file: m.file});} catch {}
+      }
+      const music = musicList[0] || null;
       const titles = Object.fromEntries(review.sceneDefs(root, cli.plan(root, id)).map(d => [d.id, d.title]));
       const voices = media(id, 'approve-voice').voices.map(v => ({...v, name: titles[v.name] || v.name}));
-      return {watch: {clips, compositions: (entry?.registrations || []).map(r => r.id)}, voices, music};
+      return {watch: {clips, staleClips, compositions: (entry?.registrations || []).map(r => r.id)}, voices, music, musicList};
     }
     if (gate === 'approve-assets') {
       // Pictures may be image files or drawings in code: list both, compositions open in Studio.
@@ -126,7 +135,7 @@ function createApprovals(root) {
   }
   // Stream a listed voice segment or image of a project's assets folder only.
   function projectMedia(id, kind, file) {
-    if (kind === 'music') {let m;try {m = media(id, 'review-preview');} catch {return null;}return m.music && m.music.file === file ? path.join(root, 'public', file) : null;}
+    if (kind === 'music') {let m;try {m = media(id, 'review-preview');} catch {return null;}return (m.musicList || []).some(x => x.file === file) ? path.join(root, 'public', file) : null;}
     let m;try {m = media(id, kind === 'voice' ? 'approve-voice' : 'approve-assets');} catch {return null;}
     const ok = kind === 'voice' ? (m.voices || []).some(v => v.file === file) : (m.images || []).includes(file);
     return ok ? path.join(root, cli.plan(root, id).paths.assets, kind === 'voice' ? 'audio' : 'images', file) : null;
