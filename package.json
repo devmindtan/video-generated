@@ -143,6 +143,8 @@
     "check:one-bad-day": "node scripts/projects/one-bad-day/test-caption-style.cjs && .venv/bin/python scripts/projects/one-bad-day/check.py",
     "pdf": ".venv-pdf/bin/python scripts/shared/book-pdf.py",
     "test:pdf": ".venv-pdf/bin/python -m unittest discover -s scripts/shared/tests -p test_book_pdf.py -v",
+    "stock": "python3 scripts/shared/stock-media.py",
+    "test:stock": "python3 -m unittest discover -s scripts/shared/tests -p test_stock_media.py -v",
     "projects": "node scripts/catalog/projects.cjs",
     "projects:check": "node scripts/catalog/projects.cjs check",
     "test:catalog": "node scripts/catalog/catalog.test.cjs",
