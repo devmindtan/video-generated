@@ -1,7 +1,7 @@
 {
   "source": "Episode.tsx episodeCaptions, BookAhTap02 defaultProps",
   "fps": 30,
-  "totalFrames": 22037,
+  "totalFrames": 24296,
   "parts": [
     {
       "name": "Intro series",
@@ -69,14 +69,19 @@
       "startFrame": 20084
     },
     {
+      "name": "Ý kiến cá nhân",
+      "frames": 2259,
+      "startFrame": 20905
+    },
+    {
       "name": "Nhận xét chung",
       "frames": 637,
-      "startFrame": 20905
+      "startFrame": 23164
     },
     {
       "name": "Outro series",
       "frames": 495,
-      "startFrame": 21542
+      "startFrame": 23801
     }
   ],
   "pages": [
@@ -1383,64 +1388,190 @@
       "endMs": 695580
     },
     {
+      "part": "Ý kiến cá nhân",
+      "text": "Còn ý kiến riêng của mình thì thế này.",
+      "startMs": 696833,
+      "endMs": 698913
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "Điều mình thấy đáng giá nhất ở cuốn sách là cách nó đổi câu hỏi:",
+      "startMs": 700080,
+      "endMs": 702894
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "thay vì hỏi mình muốn đạt được gì, hãy hỏi mình muốn trở thành người như thế nào.",
+      "startMs": 702948,
+      "endMs": 707080
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "Hiểu theo cách đó, một ngày làm chưa tốt không phải là thất bại,",
+      "startMs": 707887,
+      "endMs": 710880
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "nó chỉ là một lá phiếu, và ngày mai mình vẫn bỏ được lá phiếu khác.",
+      "startMs": 710927,
+      "endMs": 714627
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "Hình ảnh mình nhớ lâu nhất là cục nước đá.",
+      "startMs": 715653,
+      "endMs": 717853
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "Rất nhiều người bỏ cuộc đúng ở quãng đó, khi đã cố gắng mà chưa thấy gì thay đổi.",
+      "startMs": 718033,
+      "endMs": 722033
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "Nhiều mẹo trong sách nghe qua thì rất bình thường,",
+      "startMs": 722860,
+      "endMs": 725353
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "như đặt bát táo giữa bếp hay bày sẵn bộ đồ tập từ tối hôm trước.",
+      "startMs": 725407,
+      "endMs": 728740
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "Nhưng nếu chịu ngồi lại ngẫm, sẽ thấy điều tác giả muốn nói sâu hơn:",
+      "startMs": 729240,
+      "endMs": 732509
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "mình không thắng một thói quen bằng sức chịu đựng,",
+      "startMs": 732561,
+      "endMs": 735136
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "mà bằng cách sắp xếp để việc đúng dễ xảy ra hơn.",
+      "startMs": 735186,
+      "endMs": 737680
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "Còn một điều mình muốn nhắc: những ví dụ trong sách chỉ là một góc nhìn,",
+      "startMs": 738887,
+      "endMs": 742098
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "phần lớn từ những người đã thành công, nên chưa bao quát hết mọi hoàn cảnh.",
+      "startMs": 742150,
+      "endMs": 746307
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "Vì vậy, đừng biến các mẹo thành quy tắc phải làm theo cho bằng được.",
+      "startMs": 746427,
+      "endMs": 749527
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "Quy luật hai phút là để bắt đầu, không phải để dừng mãi ở hai phút.",
+      "startMs": 749527,
+      "endMs": 754260
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "Còn nếu việc đánh dấu lịch khiến các bạn thấy áp lực,",
+      "startMs": 754420,
+      "endMs": 756753
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "cứ bỏ nó đi, miễn là thói quen vẫn còn.",
+      "startMs": 756800,
+      "endMs": 759080
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "Nếu chỉ chọn một cách để bắt đầu, mình gợi ý xếp chồng thói quen.",
+      "startMs": 760147,
+      "endMs": 763667
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "Tối nay các bạn có thể viết ra một câu: \"Sau khi làm việc mình vẫn làm mỗi ngày,",
+      "startMs": 763967,
+      "endMs": 768012
+    },
+    {
+      "part": "Ý kiến cá nhân",
+      "text": "mình sẽ làm thêm một việc nhỏ\", rồi thử ngay sáng mai.",
+      "startMs": 768072,
+      "endMs": 770887
+    },
+    {
       "part": "Nhận xét chung",
       "text": "Mặc dù cuốn sách này còn nhiều những chỗ chưa hay,",
-      "startMs": 696833,
-      "endMs": 699551
+      "startMs": 772133,
+      "endMs": 774851
     },
     {
       "part": "Nhận xét chung",
       "text": "nhưng tổng quan đây là một cuốn sách hay.",
-      "startMs": 699598,
-      "endMs": 701533
+      "startMs": 774898,
+      "endMs": 776833
     },
     {
       "part": "Nhận xét chung",
       "text": "Nếu bạn đang muốn đổi một thói quen mà lần nào cũng bỏ dở giữa chừng, cuốn này",
-      "startMs": 702260,
-      "endMs": 705842
+      "startMs": 777560,
+      "endMs": 781142
     },
     {
       "part": "Nhận xét chung",
       "text": "cho bạn rất nhiều cách để thử lại, bắt đầu từ những việc chưa tới hai phút.",
-      "startMs": 705893,
-      "endMs": 709720
+      "startMs": 781193,
+      "endMs": 785020
     },
     {
       "part": "Nhận xét chung",
       "text": "Nếu bạn có thời gian, có thể đọc qua để hiểu hơn:",
-      "startMs": 710787,
-      "endMs": 713328
+      "startMs": 786087,
+      "endMs": 788628
     },
     {
       "part": "Nhận xét chung",
       "text": "hiểu vì sao mình hay bỏ cuộc, rồi bắt đầu lại từ một việc thật nhỏ.",
-      "startMs": 713390,
-      "endMs": 716907
+      "startMs": 788690,
+      "endMs": 792207
     },
     {
       "part": "Outro series",
       "text": "Đến đây là kết thúc rồi, các bạn thấy thế nào?",
-      "startMs": 718707,
-      "endMs": 721667
+      "startMs": 794007,
+      "endMs": 796967
     },
     {
       "part": "Outro series",
       "text": "Nếu hay thì hãy bình luận vào bên dưới video và cho mình một lượt đăng ký kênh",
-      "startMs": 722407,
-      "endMs": 726625
+      "startMs": 797707,
+      "endMs": 801925
     },
     {
       "part": "Outro series",
       "text": "để mình có động lực để có thể làm thêm nhiều những video thế này hơn nữa nhé.",
-      "startMs": 726680,
-      "endMs": 731207
+      "startMs": 801980,
+      "endMs": 806507
     },
     {
       "part": "Outro series",
       "text": "Hẹn gặp lại cả nhà.",
-      "startMs": 731427,
-      "endMs": 732227
+      "startMs": 806727,
+      "endMs": 807527
     }
   ]
 }

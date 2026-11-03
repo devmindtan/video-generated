@@ -125,7 +125,19 @@ người theo nét tối giản; mỗi ý một hình trọn vẹn, nét tự hi
 
 ## 4 · Ý kiến cá nhân
 
-Chờ lời của người dùng; hình vẽ theo lời khi có.
+Nháp của kênh (người dùng 2026-11-03 cho tự triển khai, sẽ góp ý sau).
+
+| Ý | Hình |
+|---|---|
+| Còn ý kiến riêng của mình | Thẻ "Ý KIẾN CÁ NHÂN · Góc nhìn của mình" |
+| Đổi câu hỏi | "Mình muốn đạt được gì?" bị gạch, mờ đi; "Mình muốn trở thành ai?" sáng lên bên dưới |
+| Một ngày chưa tốt chỉ là một lá phiếu | Một lá phiếu "hôm nay" nằm bên thùng phiếu, các lá phiếu vàng vẫn rơi vào; chữ "ngày mai" |
+| Cục nước đá, người bỏ cuộc | Khối đá, nhiệt kế dâng sát vạch "sắp tan"; một dáng người quay lưng bước đi |
+| Mẹo bình thường, ý sâu hơn | Tảng băng: phần nổi nhỏ "bát táo · đồ tập bày sẵn", phần chìm lớn "sắp xếp để việc đúng dễ xảy ra hơn" |
+| Một góc nhìn | Đèn pin rọi sáng một trong bốn dáng người, chữ "MỘT GÓC NHÌN" |
+| Hai phút là để bắt đầu | Đồng hồ cát, rồi "2 phút → 10 phút → 30 phút" lớn dần |
+| Bỏ đánh dấu lịch nếu áp lực | Các dấu X trên lịch mờ dần, cây non bên cạnh vẫn lớn |
+| Xếp chồng thói quen | Tấm thẻ "Sau khi …, mình sẽ …" và cây bút |
 
 ## 5 · Nhận xét chung
 

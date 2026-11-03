@@ -154,7 +154,19 @@ Theo mình, đây là cuốn sách nên đọc chậm và làm thử từng chư
 
 ## 4. Ý kiến cá nhân
 
-{CHỜ NGƯỜI DÙNG (quy tắc series: phần này là lời của người dùng, đưa khi video đã dựng gần xong; không tự viết thay). Để chỗ trống trên timeline, ngay trước Nhận xét chung. Bố cục tập 1 có thêm ý "ví dụ và bài học trong sách chỉ là một góc nhìn": người dùng quyết định có giữ cho tập này không.}
+[nghỉ] Còn ý kiến riêng của mình thì thế này.
+
+Điều mình thấy đáng giá nhất ở cuốn sách là cách nó đổi câu hỏi: thay vì hỏi mình muốn đạt được gì, hãy hỏi mình muốn trở thành người như thế nào. Hiểu theo cách đó, một ngày làm chưa tốt không phải là thất bại, nó chỉ là một lá phiếu, và ngày mai mình vẫn bỏ được lá phiếu khác.
+
+Hình ảnh mình nhớ lâu nhất là cục nước đá. Rất nhiều người bỏ cuộc đúng ở quãng đó, khi đã cố gắng mà chưa thấy gì thay đổi.
+
+Nhiều mẹo trong sách nghe qua thì rất bình thường, như đặt bát táo giữa bếp hay bày sẵn bộ đồ tập từ tối hôm trước. Nhưng nếu chịu ngồi lại ngẫm, sẽ thấy điều tác giả muốn nói sâu hơn: mình không thắng một thói quen bằng sức chịu đựng, mà bằng cách sắp xếp để việc đúng dễ xảy ra hơn. [nghỉ]
+
+Còn một điều mình muốn nhắc: những ví dụ trong sách chỉ là một góc nhìn, phần lớn từ những người đã thành công, nên chưa bao quát hết mọi hoàn cảnh. Vì vậy, đừng biến các mẹo thành quy tắc phải làm theo cho bằng được. Quy luật hai phút là để bắt đầu, không phải để dừng mãi ở hai phút. Còn nếu việc đánh dấu lịch khiến các bạn thấy áp lực, cứ bỏ nó đi, miễn là thói quen vẫn còn.
+
+Nếu chỉ chọn một cách để bắt đầu, mình gợi ý xếp chồng thói quen. Tối nay các bạn có thể viết ra một câu: "Sau khi làm việc mình vẫn làm mỗi ngày, mình sẽ làm thêm một việc nhỏ", rồi thử ngay sáng mai.
+
+{NHÁP CỦA KÊNH (người dùng 2026-11-03: "không cần đợi phần ý kiến cá nhân của tôi, bạn hãy tự triển khai rồi tôi sẽ góp ý"). Theo bố cục tập 1: điều đáng giá nhất, hình ảnh nhớ lâu, ví dụ bình thường nhưng ngẫm lại sâu hơn, nhắc ví dụ trong sách chỉ là một góc nhìn, gợi ý một chỗ để bắt đầu. Không có chuyện riêng bịa ra; chờ người dùng sửa thành lời của mình. Căn cứ theo khoảng chương đã ghi ở trên: danh tính và lá phiếu Ch2 PDF 19–26, cục nước đá Ch1 PDF 8–18, bát táo Ch6 PDF 49–57, bày sẵn đồ tập Ch12 PDF 93–101, quy luật hai phút Ch13 PDF 101–110, theo dõi thói quen Ch16 PDF 128–136, xếp chồng thói quen Ch5 PDF 40–49. Câu "Sau khi…, mình sẽ…" là cách nói của kênh, không trích nguyên văn.}
 
 ## 5. Nhận xét chung
 

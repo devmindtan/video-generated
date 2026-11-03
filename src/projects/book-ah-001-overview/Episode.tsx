@@ -11,7 +11,7 @@ import type {Section} from '../book-hvtt-001-overview/scene-kit';
 import bodyMusic from './body-music.json';
 import bodyTakes from './body-takes.json';
 import cardTakes from './card-takes.json';
-import {ChuaDat, CuonSach, MoChuyen, NhanXet, QuyLuat1, QuyLuat2, QuyLuat3, QuyLuat4, SoiChi, ThanhNep, TongKet} from './Sections';
+import {ChuaDat, CuonSach, MoChuyen, NhanXet, QuyLuat1, QuyLuat2, QuyLuat3, QuyLuat4, SoiChi, ThanhNep, TongKet, YKien} from './Sections';
 
 // Episode 2 (Thay đổi tí hon hiệu quả bất ngờ) in the series frame: reused series intro, "Cách làm" and outro, this
 // episode's card and body. Parts join as their narration exists. Placeholder phase: the Quốc Tuấn take of a segment
@@ -30,7 +30,7 @@ const voiceFor = (seg: string) => [`${seg}-sang2`, seg, placeholder(seg)].find((
 const BODY: [string, string, Section][] = [['02-mo-chuyen', 'Mở chuyện', MoChuyen], ['03-cuon-sach', 'Phần 1 · Cuốn sách là gì', CuonSach], ['04-soi-chi', 'Phần 2 · Sợi chỉ xuyên suốt', SoiChi],
   ['05-quy-luat-1', 'Quy luật 1 · Làm cho hiển nhiên', QuyLuat1], ['06-quy-luat-2', 'Quy luật 2 · Làm cho hấp dẫn', QuyLuat2], ['07-quy-luat-3', 'Quy luật 3 · Làm cho dễ dàng', QuyLuat3],
   ['08-quy-luat-4', 'Quy luật 4 · Làm cho thỏa mãn', QuyLuat4], ['08b-thanh-nep', 'Khi thói quen đã thành nếp', ThanhNep], ['08e-diem-chua-dat', 'Những điểm chưa đạt', ChuaDat],
-  ['08f-tong-ket', 'Tổng kết', TongKet], ['09-nhan-xet', 'Nhận xét chung', NhanXet]];
+  ['08f-tong-ket', 'Tổng kết', TongKet], ['08g-y-kien', 'Ý kiến cá nhân', YKien], ['09-nhan-xet', 'Nhận xét chung', NhanXet]];
 
 const parts = (p: EpisodeProps, fps: number): Part[] => {
   const list = openingParts({...p, cardTakes: cards}, fps);

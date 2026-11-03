@@ -1,0 +1,74 @@
+{
+  "title": "Đọc sách, hiểu mình — book-ah-001-overview — 08g-y-kien",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Còn ý kiến riêng của mình thì thế này.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Điều mình thấy đáng giá nhất ở cuốn sách là cách nó đổi câu hỏi: thay vì hỏi mình muốn đạt được gì, hãy hỏi mình muốn trở thành người như thế nào.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Hiểu theo cách đó, một ngày làm chưa tốt không phải là thất bại, nó chỉ là một lá phiếu, và ngày mai mình vẫn bỏ được lá phiếu khác.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Hình ảnh mình nhớ lâu nhất là cục nước đá.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Rất nhiều người bỏ cuộc đúng ở quãng đó, khi đã cố gắng mà chưa thấy gì thay đổi.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Nhiều mẹo trong sách nghe qua thì rất bình thường, như đặt bát táo giữa bếp hay bày sẵn bộ đồ tập từ tối hôm trước.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Nhưng nếu chịu ngồi lại ngẫm, sẽ thấy điều tác giả muốn nói sâu hơn: mình không thắng một thói quen bằng sức chịu đựng, mà bằng cách sắp xếp để việc đúng dễ xảy ra hơn.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Còn một điều mình muốn nhắc: những ví dụ trong sách chỉ là một góc nhìn, phần lớn từ những người đã thành công, nên chưa bao quát hết mọi hoàn cảnh.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Vì vậy, đừng biến các mẹo thành quy tắc phải làm theo cho bằng được.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Quy luật hai phút là để bắt đầu, không phải để dừng mãi ở hai phút.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Còn nếu việc đánh dấu lịch khiến các bạn thấy áp lực, cứ bỏ nó đi, miễn là thói quen vẫn còn.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Nếu chỉ chọn một cách để bắt đầu, mình gợi ý xếp chồng thói quen.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tối nay các bạn có thể viết ra một câu: \"Sau khi làm việc mình vẫn làm mỗi ngày, mình sẽ làm thêm một việc nhỏ\", rồi thử ngay sáng mai.",
+      "pauseAfter": 0
+    }
+  ]
+}
