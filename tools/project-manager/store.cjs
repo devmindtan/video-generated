@@ -88,10 +88,14 @@ function createStore(root) {
     })();
     return video ? {video,type:'video-frame'} : null;
   }
+  // An exported thumbnail of the project, the newest or the one named (only among the project's own exports).
+  function mediaFile(id, kind, name) {
+    return name ? extra.items(id,kind).find(v=>v.name===name&&v.file)||null : extra.media(id,kind);
+  }
   function videoPlayback(id, name) {
     // Imported customer videos may need a browser copy (HEVC MOV…); exports are served as rendered. name picks one of
     // several exported videos (by file name, only among the project's own exports).
-    const item = name ? extra.videos(id).find(v=>v.name===name) : extra.media(id,'video');
+    const item = name ? extra.items(id,'video').find(v=>v.name===name&&v.file) : extra.media(id,'video');
     return !item ? null : item.imported ? playback.playable(item.file) : {file:item.file,converted:false};
   }
   function servedPreview(id) {
@@ -173,7 +177,8 @@ function createStore(root) {
         hasScript:exists(path.join(location(project.paths.docs),'script.md')),
         hasDescription:exists(path.join(location(project.paths.docs),'description.md')),autoNamed:Boolean(project.autoNamed),progress,
         videoFolder:renderedVideo?path.relative(root,path.dirname(renderedVideo.file)):null,
-        videos:renderedVideo?extra.videos(project.id).map(v=>({name:v.name,number:v.number,title:v.title})):[]};
+        videos:project.registrations.filter(r=>r.kind==='Composition').length>1?extra.items(project.id,'video').map(({file,...v})=>v):[],
+        thumbnails:project.registrations.filter(r=>r.kind==='Still').length>1?extra.items(project.id,'thumbnail').map(({file,...v})=>v):[]};
     }));
     return {channels:catalog.channels,series:catalog.series.map(s=>({id:s.id,title:s.title,channel:s.channel,summary:s.summary,
       formats:s.formats,projectCount:s.projects.length})),projects,books:catalog.series.flatMap(books),
@@ -264,6 +269,6 @@ function createStore(root) {
     }catch(error){await handle.close().catch(()=>{});if(dest&&fs.existsSync(dest))fs.unlinkSync(dest);throw error;}
     finally{if(fs.existsSync(temp))fs.unlinkSync(temp);try{if(fs.existsSync(staging)&&!fs.readdirSync(staging).length)fs.rmdirSync(staging);}catch{}}
   }
-  return {...extra,list,detail,document,bookDocument,saveNotes,folder,create,createWithVideo,preview:servedPreview,videoPlayback};
+  return {...extra,list,detail,document,bookDocument,saveNotes,folder,create,createWithVideo,preview:servedPreview,videoPlayback,mediaFile};
 }
 module.exports={createStore,hash};

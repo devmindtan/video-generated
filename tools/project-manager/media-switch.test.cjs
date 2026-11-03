@@ -20,9 +20,9 @@ async function run(){
   const ids=['ShortOne','ShortTwo','ShortThree'],titles=['Short 1 · Vốc muối và dòng sông','Short 2 · Đau và khổ khác nhau','Short 3 · Gọi mãi không nghe máy'];
   write('series/catalog.json',{schemaVersion:1,channels:[{id:'tam-ly-cuoc-song',title:'Tâm lý cuộc sống',studioFolder:'Test'}],series:[{id:'demo',channel:'tam-ly-cuoc-song',path:'series/tam-ly-cuoc-song/demo/series.json'}]});
   write('series/tam-ly-cuoc-song/demo/series.json',{schemaVersion:1,id:'demo',channel:'tam-ly-cuoc-song',title:'Demo',studioFolder:'Demo',formats:['short'],projects:[{id:'shorts',title:'Short giới thiệu tập 1 · Hiểu về trái tim',status:'existing',format:'short',paths,
-    registrations:ids.map((id,i)=>({id,kind:'Composition',title:titles[i]}))}]});
+    registrations:[...ids.map((id,i)=>({id,kind:'Composition',title:titles[i]})),...ids.map((id,i)=>({id:id+'Cover',kind:'Still',title:'Bìa '+titles[i]}))]}]});
   write('src/projects/registry.tsx',`import {Video} from './shorts/Video';
-export const Projects=()=> <Folder name="Test"><Folder name="Demo"><Folder name="shorts">${ids.map(id=>`<Composition id="${id}" component={Video} durationInFrames={900} fps={30} width={1080} height={1920}/>`).join('')}</Folder></Folder></Folder>;`);
+export const Projects=()=> <Folder name="Test"><Folder name="Demo"><Folder name="shorts">${ids.map(id=>`<Composition id="${id}" component={Video} durationInFrames={900} fps={30} width={1080} height={1920}/><Still id="${id}Cover" component={Video} width={1080} height={1920}/>`).join('')}</Folder></Folder></Folder>;`);
   write('src/projects/shorts/Video.tsx','video');
   // Exported in reverse order: the dialog still lists them by registration order.
   [2,1,0].forEach(i=>{fs.mkdirSync(path.join(root,'projects/shorts'),{recursive:true});fs.copyFileSync(samples[i],path.join(root,'projects/shorts',ids[i]+'.mp4'));});
@@ -49,6 +49,16 @@ export const Projects=()=> <Folder name="Test"><Folder name="Demo"><Folder name=
       assert.ok(await page.locator('#media-dialog').evaluate(d=>d.scrollWidth<=d.clientWidth+1),'dialog overflow');
       await page.screenshot({path:path.join(output,`media-switch-${name}.png`)});
       await page.locator('#close-media').click();assert.equal(await page.locator('#media-switch').isHidden(),true);
+      // Covers not exported yet: the dialog still lists all three; Studio opens the selected one.
+      let studio=null;await page.route('**/api/studio',r=>{studio=JSON.parse(r.request().postData()||'{}');r.fulfill({status:500,body:'{"error":"test"}',contentType:'application/json'});});
+      await page.locator('[data-watch="thumbnail"]').first().click();await page.locator('#media-dialog[open] .media-unplayable').waitFor();
+      const covers=page.locator('#media-switch button');assert.equal(await covers.count(),3);
+      assert.match(await covers.nth(0).innerText(),/Bìa Short 1[\s\S]*Chưa xuất/);
+      assert.equal(await page.locator('#media-folder').isHidden(),true);
+      await covers.nth(2).click();assert.match(await page.locator('#media-content').innerText(),/Bìa Short 3 · Gọi mãi không nghe máy chưa được xuất/);
+      await page.locator('#media-studio').click();await page.waitForTimeout(300);assert.equal(studio?.composition,'ShortThreeCover');
+      if(name==='mobile')await page.screenshot({path:path.join(output,'media-switch-covers-mobile.png')});
+      await page.locator('#close-media').click();
       console.log(`✓ ${name}: three numbered videos, opens on the first, switches by click and keyboard`);
       await page.close();
     }

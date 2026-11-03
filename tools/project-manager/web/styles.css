@@ -262,6 +262,7 @@ dialog{width:550px;max-width:calc(100vw - 28px);max-height:calc(100dvh - 40px);o
 .media-switch-number{flex-shrink:0;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#e4ebe3;font-size:14px;font-weight:700}
 .media-switch-item[aria-pressed="true"] .media-switch-number{background:var(--forest);color:#fff}
 .media-switch-title{font-size:14px;font-weight:600;overflow-wrap:anywhere}
+.media-switch-state{font-size:12px;color:var(--muted);border:1px dashed #b9c8bd;border-radius:999px;padding:1px 8px;white-space:nowrap}
 #media-content{display:flex;justify-content:center;background:#101a15;border-radius:10px;margin:16px 0;overflow:hidden}
 #media-content video,#media-content img{display:block;max-width:100%;max-height:70vh;object-fit:contain}
 #media-status{margin-bottom:14px;color:var(--muted)}

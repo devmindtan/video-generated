@@ -35,13 +35,14 @@ function features(root){
     return [...files.values()].sort((a,b)=>b.modified-a.modified);
   }
   function media(id,kind){const p=project(id);return exportsFor(p).find(f=>f.kind===kind)||null;}
-  // Every exported video of a project in registration order (a project can hold several shorts), each numbered and
-  // named after its composition: series.json registrations may carry a "title" ("Short 1 · …"), else the composition id.
-  function videos(id){
-    const p=project(id),comps=p.registrations.filter(r=>r.kind==='Composition');
-    const list=exportsFor(p).filter(f=>f.kind==='video').map(f=>{const stem=path.basename(f.name,path.extname(f.name)),i=comps.findIndex(r=>stem===r.id||stem.startsWith(r.id+'-'));return {...f,order:i<0?comps.length:i,registration:comps[i]||null};});
-    list.sort((a,b)=>a.order-b.order||b.modified-a.modified);
-    return list.map((f,k)=>({file:f.file,name:f.name,number:k+1,title:f.registration?.title||f.registration?.id||f.name,composition:f.registration?.id||null,imported:Boolean(f.imported),inline:f.inline!==false}));
+  // Every video (or thumbnail) registration of a project in order, numbered and named (series.json registrations may
+  // carry a "title", else the composition id), each with its newest export if there is one (a project can hold several
+  // shorts and their covers).
+  function items(id,kind){
+    const p=project(id),regs=p.registrations.filter(r=>r.kind===(kind==='video'?'Composition':'Still'));
+    const files=exportsFor(p).filter(f=>f.kind===kind&&!f.imported);
+    return regs.map((r,k)=>{const f=files.find(f=>{const stem=path.basename(f.name,path.extname(f.name));return stem===r.id||stem.startsWith(r.id+'-');});
+      return {number:k+1,title:r.title||r.id,composition:r.id,name:f?f.name:null,file:f?f.file:null};});
   }
   function bookFolder(sid,id){if(!slug(id))throw Error('Invalid book id');const s=series(sid);return safe(path.relative(root,path.join(path.dirname(s.file),'books',id)));}
   function sources(sid,id){if(!fs.existsSync(path.join(bookFolder(sid,id),'book.json')))throw Error('Book not found');const folder=safe(`library/books/${id}/sources`);return fs.existsSync(folder)?fs.readdirSync(folder).filter(n=>n.toLowerCase().endsWith('.pdf')).map(name=>({name,size:fs.statSync(safe(`library/books/${id}/sources/${name}`)).size})):[];}
@@ -141,6 +142,6 @@ function features(root){
     if(digest(fs.readFileSync(file,'utf8'))!==b.revision){fs.unlinkSync(temp);throw conflict();}
     fs.renameSync(temp,file);return {revision:digest(text),title,authors};
   }
-  return {bookCover,uploadCover,media,videos,exportsFor,newBook,updateBook,sources,upload,deletion,remove};
+  return {bookCover,uploadCover,media,items,exportsFor,newBook,updateBook,sources,upload,deletion,remove};
 }
 module.exports={features};

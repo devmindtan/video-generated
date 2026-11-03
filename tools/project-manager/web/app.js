@@ -1003,32 +1003,47 @@ async function launchStudio(id,composition){
 }
 async function watch(id,kind){
   const p=state.data.projects.find(p=>p.id===id);if(!p)return;
+  // A project with several videos or thumbnails (three shorts and their covers) always opens the dialog with one numbered,
+  // named button each: exported ones show here, the others open the right composition in Studio.
+  const list=(kind==='video'?p.videos:p.thumbnails)||[],many=!p.importedVideo&&list.length>1;
   selectedMedia={id,kind,composition:kind==='video'?p.videoId:p.thumbnailId};
-  if(!(kind==='video'?p.renderedVideo:p.renderedThumbnail))return launchStudio(id,selectedMedia.composition);
+  if(!many&&!(kind==='video'?p.renderedVideo:p.renderedThumbnail))return launchStudio(id,selectedMedia.composition);
   $('#media-folder').textContent=kind==='video'?'Mở thư mục video':'Mở thư mục thumbnail';
-  $('#media-title').textContent=p.title;$('#media-status').textContent=p.importedVideo?'Video khách hàng đã import vào workspace; file gốc bên ngoài không bị thay đổi.':'Bản đã xuất trên máy; các chỉnh sửa mới trong Studio có thể chưa có trong bản này.';$('#media-studio').hidden=!selectedMedia.composition;
+  const exportedNote=p.importedVideo?'Video khách hàng đã import vào workspace; file gốc bên ngoài không bị thay đổi.':'Bản đã xuất trên máy; các chỉnh sửa mới trong Studio có thể chưa có trong bản này.';
+  $('#media-title').textContent=p.title;$('#media-status').textContent=exportedNote;$('#media-studio').hidden=!selectedMedia.composition;
   // Formats Chrome cannot play inline (AVI, WMV, MPG, TS…): say so and offer the folder instead of a broken player.
   if(kind==='video'&&p.importedVideo&&!p.videoInline){const note=document.createElement('div');note.className='media-unplayable';note.append(Object.assign(document.createElement('p'),{textContent:`Trình duyệt không phát trực tiếp được định dạng ${(p.videoFile||'').split('.').pop().toUpperCase()}. Video đã được lưu trong thư mục của dự án.`}),Object.assign(document.createElement('button'),{className:'button secondary',textContent:'Mở thư mục video',onclick:()=>api('/api/open-folder',{id,group:'assets'}).catch(e=>toast(e.message))}));
     $('#media-title').textContent=p.title;$('#media-status').textContent='Video khách hàng đã import vào workspace; file gốc bên ngoài không bị thay đổi.';$('#media-studio').hidden=true;$('#media-content').replaceChildren(note);$('#media-dialog').showModal();return;}
   if(kind==='video'&&p.importedVideo&&!(await preparePlayback(id)))return;
-  // A project with several exported videos (three shorts…) opens on the first and offers a numbered button for each.
-  const many=kind==='video'&&!p.importedVideo&&(p.videos||[]).length>1,status=$('#media-status').textContent;let pick=many?p.videos[0]:null;
-  const source=()=>`/api/media?id=${encodeURIComponent(id)}&kind=${kind}${pick?'&file='+encodeURIComponent(pick.name):''}`;
-  const media=document.createElement(kind==='video'?'video':'img');media.src=source();
-  if(kind==='video'){media.controls=true;media.playsInline=true;media.preload='metadata';if(p.renderedThumbnail)media.poster=`/api/media?id=${encodeURIComponent(id)}&kind=thumbnail`;}else media.alt='Thumbnail đã xuất — '+p.title;
-  media.addEventListener('error',()=>$('#media-status').textContent=selectedMedia.composition?'Không đọc được bản xuất. Bạn có thể mở Studio bằng nút bên dưới.':'Trình duyệt không phát được video này (có thể do codec, ví dụ MOV ProRes). Video vẫn được lưu trong thư mục của dự án.');
+  let pick=many?(list.find(v=>v.name)||list[0]):null;
+  const noun=kind==='video'?'Video':'Ảnh bìa';
+  const show=()=>{
+    if(pick){selectedMedia.composition=pick.composition;$('#media-studio').hidden=false;}
+    $('#media-folder').hidden=Boolean(pick&&!pick.name);
+    if(pick&&!pick.name){
+      const note=document.createElement('div');note.className='media-unplayable';
+      note.append(Object.assign(document.createElement('p'),{textContent:`${pick.title} chưa được xuất. Bấm “Mở trong Studio” để xem và xuất bản này.`}));
+      $('#media-status').textContent='';$('#media-content').replaceChildren(note);return;
+    }
+    const media=document.createElement(kind==='video'?'video':'img');
+    media.src=`/api/media?id=${encodeURIComponent(id)}&kind=${kind}${pick?'&file='+encodeURIComponent(pick.name):''}`;
+    if(kind==='video'){media.controls=true;media.playsInline=true;media.preload='metadata';if(p.renderedThumbnail&&!many)media.poster=`/api/media?id=${encodeURIComponent(id)}&kind=thumbnail`;}else media.alt='Thumbnail đã xuất — '+(pick?pick.title:p.title);
+    media.addEventListener('error',()=>$('#media-status').textContent=selectedMedia.composition?'Không đọc được bản xuất. Bạn có thể mở Studio bằng nút bên dưới.':'Trình duyệt không phát được video này (có thể do codec, ví dụ MOV ProRes). Video vẫn được lưu trong thư mục của dự án.');
+    $('#media-status').textContent=exportedNote;$('#media-content').replaceChildren(media);
+  };
   const bar=$('#media-switch');bar.hidden=!many;bar.replaceChildren();
   if(many){
-    const label=v=>`Video ${v.number}/${p.videos.length} · ${v.title}`;
-    for(const v of p.videos){
-      const button=Object.assign(document.createElement('button'),{type:'button',className:'media-switch-item',title:v.name});button.setAttribute('aria-pressed',String(v===pick));button.setAttribute('aria-label',label(v));
+    bar.setAttribute('aria-label',kind==='video'?'Chọn video của dự án':'Chọn ảnh bìa của dự án');
+    for(const v of list){
+      const button=Object.assign(document.createElement('button'),{type:'button',className:'media-switch-item'+(v.name?'':' not-exported'),title:v.name||'Chưa xuất'});
+      button.setAttribute('aria-pressed',String(v===pick));button.setAttribute('aria-label',`${noun} ${v.number}/${list.length} · ${v.title}${v.name?'':' · chưa xuất'}`);
       button.append(Object.assign(document.createElement('span'),{className:'media-switch-number',textContent:String(v.number)}),Object.assign(document.createElement('span'),{className:'media-switch-title',textContent:v.title}));
-      button.onclick=()=>{if(v===pick)return;pick=v;media.pause();media.src=source();media.load();$('#media-status').textContent=status;
-        bar.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));};
+      if(!v.name)button.append(Object.assign(document.createElement('span'),{className:'media-switch-state',textContent:'Chưa xuất'}));
+      button.onclick=()=>{if(v===pick)return;$('#media-content video')?.pause();pick=v;show();bar.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));};
       bar.append(button);
     }
   }
-  $('#media-content').replaceChildren(media);if(!$('#media-dialog').open)$('#media-dialog').showModal();
+  show();if(!$('#media-dialog').open)$('#media-dialog').showModal();
 }
 async function preparePlayback(id){
   // HEVC/ProRes imports get a one-time H.264 copy on the server; the imported file stays untouched.

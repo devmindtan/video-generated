@@ -122,11 +122,20 @@ test('a project with several exported videos lists each with number and title, a
  f.write('src/projects/registry.tsx',fs.readFileSync(path.join(f.root,'src/projects/registry.tsx'),'utf8').replace('<Still','<Composition id="OldTwo" component={Video} durationInFrames={900} fps={30} width={1080} height={1920}/><Still'));
  f.write('projects/old/OldTwo.mp4','second-video');f.write('projects/old/Old.mp4','first-video');
  const project=(await (await fetch(f.base+'/api/workspace')).json()).projects[0];
- assert.deepEqual(project.videos,[{name:'Old.mp4',number:1,title:'Short 1 · Vốc muối'},{name:'OldTwo.mp4',number:2,title:'OldTwo'}]);
+ assert.deepEqual(project.videos,[{number:1,title:'Short 1 · Vốc muối',composition:'Old',name:'Old.mp4'},{number:2,title:'OldTwo',composition:'OldTwo',name:'OldTwo.mp4'}]);
+ assert.deepEqual(project.thumbnails,[]);
  assert.equal(await (await fetch(f.base+'/api/media?id=old&kind=video&file=OldTwo.mp4')).text(),'second-video');
  assert.equal(await (await fetch(f.base+'/api/media?id=old&kind=video&file=Old.mp4')).text(),'first-video');
  assert.equal((await fetch(f.base+'/api/media?id=old&kind=video&file=..%2F..%2F.env.local')).status,404);
  assert.equal((await fetch(f.base+'/api/media?id=old&kind=video&file=OldThumb.png')).status,404);
+ // Two covers, one exported: both listed, the missing one without a file name; only the project's own exports are served.
+ series.projects[0].registrations.push({id:'OldThumbTwo',kind:'Still',title:'Bìa 2'});f.write(file,series);
+ f.write('src/projects/registry.tsx',fs.readFileSync(path.join(f.root,'src/projects/registry.tsx'),'utf8').replace('<Still','<Still id="OldThumbTwo" component={Thumbnail} width={1080} height={1920}/><Still'));
+ f.write('projects/old/OldThumb.png',Buffer.from('89504e470d0a1a0a','hex'));
+ const next=(await (await fetch(f.base+'/api/workspace')).json()).projects[0];
+ assert.deepEqual(next.thumbnails,[{number:1,title:'OldThumb',composition:'OldThumb',name:'OldThumb.png'},{number:2,title:'Bìa 2',composition:'OldThumbTwo',name:null}]);
+ assert.equal((await fetch(f.base+'/api/media?id=old&kind=thumbnail&file=OldThumb.png')).status,200);
+ assert.equal((await fetch(f.base+'/api/media?id=old&kind=thumbnail&file=Old.mp4')).status,404);
 });
 test('multiple book records accept private PDF copies without extraction, overwrites or arbitrary paths',async t=>{
  const f=await fixture(t);assert.equal((await f.post('/api/books',{series:'demo',id:'another-book',title:'Cuốn thứ hai',authors:'A, B'})).status,201);
