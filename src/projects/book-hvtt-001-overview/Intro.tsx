@@ -131,11 +131,11 @@ const splitSentence = (pieces: Caption[]): Caption[] => {
   // An aligner page can run across a sentence end: cut there first, then split long sentences.
   const bounds = [0, ...[...text.matchAll(/[.?!…]["”]?(?= )/g)].map((m) => (m.index ?? 0) + m[0].length + 1), text.length + 1];
   const cuts: number[] = [];
-  for (let b = 0; b < bounds.length - 1; b++) {
-    const from = bounds[b], to = bounds[b + 1] - 1, len = to - from, count = Math.ceil(len / MAX_CHARS);
-    cuts.push(from);
+  // Cuts of one sentence into count pages, or null when some page cannot fit.
+  const split = (from: number, to: number, count: number) => {
+    const len = to - from, out = [from];
     for (let k = 1; k < count; k++) {
-      const ideal = from + (len * k) / count, prev = cuts[cuts.length - 1];
+      const ideal = from + (len * k) / count, prev = out[out.length - 1];
       let best = -1, score = Infinity;
       for (let i = prev + 10; i < to - 10; i++) {
         // Every page fits: this one, and what is left for the remaining pages of the sentence.
@@ -143,8 +143,17 @@ const splitSentence = (pieces: Caption[]): Caption[] => {
         const s = Math.abs(i - ideal) - (/[,;:]$/.test(text.slice(0, i)) ? 18 : 0);
         if (s < score) {score = s; best = i;}
       }
-      if (best > 0) cuts.push(best + 1);
+      if (best < 0) return null;
+      out.push(best + 1);
     }
+    return out;
+  };
+  for (let b = 0; b < bounds.length - 1; b++) {
+    const from = bounds[b], to = bounds[b + 1] - 1;
+    // A sentence just under a multiple of MAX_CHARS may not split evenly at a space: one more page then.
+    let count = Math.ceil((to - from) / MAX_CHARS), got = split(from, to, count);
+    while (!got && count < 8) got = split(from, to, ++count);
+    cuts.push(...(got ?? [from]));
   }
   cuts.push(text.length + 1);
   return cuts.slice(0, -1).map((from, k) => ({...pieces[0], text: text.slice(from, cuts[k + 1] - 1).trim(), startMs: timeAt(from), endMs: k === cuts.length - 2 ? pieces[pieces.length - 1].endMs : timeAt(cuts[k + 1] - 1), timestampMs: timeAt(from)})).filter((p) => p.text);

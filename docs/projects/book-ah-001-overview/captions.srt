@@ -1,0 +1,907 @@
+1
+00:00:00,000 --> 00:00:02,259
+Xin chào cả nhà.
+
+2
+00:00:02,260 --> 00:00:06,099
+Chào mừng mọi người đã đến với series Đọc sách, hiểu mình.
+
+3
+00:00:06,100 --> 00:00:09,021
+Ở series này, mình sẽ đọc trọn từng cuốn sách,
+
+4
+00:00:09,022 --> 00:00:12,979
+rồi kể lại những nội dung chính và những điều đáng giữ trong mỗi cuốn.
+
+5
+00:00:12,980 --> 00:00:15,382
+Nếu bạn là người không có nhiều thời gian và cần đọc
+
+6
+00:00:15,383 --> 00:00:18,679
+sách để có thêm kiến thức, thì đây là dành cho bạn.
+
+7
+00:00:18,680 --> 00:00:22,799
+Chúc cả nhà một ngày tràn đầy niềm vui và hạnh phúc.
+
+8
+00:00:22,800 --> 00:00:26,080
+Để không làm mất thời gian của mọi người, chúng ta hãy cùng nhau bắt đầu.
+
+9
+00:00:28,133 --> 00:00:32,152
+Trước khi vào sách, mình nói rõ cách làm của tập này.
+
+10
+00:00:32,153 --> 00:00:35,059
+Phần chính của video, mình chỉ đứng ở vị trí người kể lại:
+
+11
+00:00:35,060 --> 00:00:39,219
+kể đúng điều tác giả viết, kể cả những chỗ mình chưa chắc đồng tình.
+
+12
+00:00:39,220 --> 00:00:42,720
+Những chỗ mình thấy chưa đạt và ý kiến riêng của mình sẽ nằm ở các phần cuối.
+
+13
+00:00:44,067 --> 00:00:47,666
+Tập thứ hai, mình chọn cuốn Thay đổi tí hon hiệu quả bất ngờ,
+
+14
+00:00:47,667 --> 00:00:50,776
+tên gốc là Atomic Habits, của tác giả James Clear,
+
+15
+00:00:50,777 --> 00:00:53,947
+một cuốn sách về cách những thói quen rất nhỏ làm nên thay đổi lớn.
+
+16
+00:00:55,333 --> 00:00:57,861
+Cuốn sách mở đầu bằng chuyện của chính tác giả,
+
+17
+00:00:57,862 --> 00:01:01,572
+câu chuyện mà ông nói đã dạy ông bài học lớn nhất về thói quen.
+
+18
+00:01:01,573 --> 00:01:03,492
+Vào ngày cuối của năm thứ hai trung học,
+
+19
+00:01:03,493 --> 00:01:08,139
+một cây gậy bóng chày tuột khỏi tay một bạn cùng lớp và đập thẳng vào mặt cậu.
+
+20
+00:01:08,140 --> 00:01:09,759
+Cậu bị gãy mũi, rạn xương sọ,
+
+21
+00:01:09,760 --> 00:01:13,919
+được đưa đi cấp cứu bằng trực thăng và hôn mê suốt đêm hôm đó.
+
+22
+00:01:13,920 --> 00:01:16,610
+Những tháng sau đó, cậu nhìn mọi thứ thành hai hình,
+
+23
+00:01:16,611 --> 00:01:19,386
+phải tám tháng sau mới lái xe lại được.
+
+24
+00:01:19,387 --> 00:01:21,506
+Điều cậu mong nhất là được quay lại sân bóng,
+
+25
+00:01:21,507 --> 00:01:24,786
+vì bóng chày là giấc mơ cậu theo đuổi từ năm bốn tuổi.
+
+26
+00:01:24,787 --> 00:01:29,286
+Nhưng khi mùa giải mới bắt đầu, cậu là người duy nhất bị loại khỏi đội chính.
+
+27
+00:01:29,287 --> 00:01:30,967
+Hôm đó, cậu ngồi trong xe và khóc.
+
+28
+00:01:32,253 --> 00:01:35,090
+Hai năm sau, lên đại học, cậu không lao ngay vào tập
+
+29
+00:01:35,091 --> 00:01:38,092
+luyện mà bắt đầu từ việc sắp xếp lại cuộc sống của mình.
+
+30
+00:01:38,093 --> 00:01:40,838
+Trong khi bạn bè thức khuya chơi game, cậu đi ngủ sớm;
+
+31
+00:01:40,839 --> 00:01:44,092
+giữa ký túc xá bừa bộn, cậu giữ cho phòng mình gọn gàng.
+
+32
+00:01:44,093 --> 00:01:46,802
+Theo tác giả, những việc ấy chẳng có gì to tát,
+
+33
+00:01:46,803 --> 00:01:50,132
+nhưng cho cậu cảm giác mình đang làm chủ lại được đời mình.
+
+34
+00:01:50,133 --> 00:01:54,459
+Sự tự tin ấy lan dần sang việc học, rồi sang cả phòng tập.
+
+35
+00:01:54,460 --> 00:01:56,219
+Sáu năm sau cái ngày bị thương,
+
+36
+00:01:56,220 --> 00:01:59,379
+cậu được chọn là vận động viên nam xuất sắc nhất trường.
+
+37
+00:01:59,380 --> 00:02:02,642
+Tác giả kể rằng không có một khoảnh khắc nào biến cậu từ một bệnh nhân hôn
+
+38
+00:02:02,643 --> 00:02:06,986
+mê thành người như thế, mà là cả một chuỗi dài những bước tiến rất nhỏ.
+
+39
+00:02:06,987 --> 00:02:11,122
+Và từ đó, ông rút ra điều mà cả cuốn sách xoay quanh: những thay đổi tưởng
+
+40
+00:02:11,123 --> 00:02:16,399
+chừng nhỏ bé lúc đầu, nếu giữ đủ lâu, sẽ thành một kết quả đáng kinh ngạc.
+
+41
+00:02:16,400 --> 00:02:19,879
+Cuốn sách có hai mươi chương, chia theo bốn quy luật của thói quen,
+
+42
+00:02:19,880 --> 00:02:24,366
+cộng thêm phần nền tảng ở đầu và phần nâng cao ở cuối.
+
+43
+00:02:24,367 --> 00:02:28,272
+Tác giả viết từ blog về thói quen mà ông duy trì nhiều năm, và nói rõ đây là
+
+44
+00:02:28,273 --> 00:02:32,026
+một "bản hướng dẫn thao tác", không phải một công trình nghiên cứu khoa học.
+
+45
+00:02:32,027 --> 00:02:34,302
+Ông gom những gì tâm lý học hành vi đã biết,
+
+46
+00:02:34,303 --> 00:02:38,246
+rồi biến thành những việc ai cũng làm thử được ngay hôm nay.
+
+47
+00:02:38,247 --> 00:02:40,957
+Vì vậy, mình nghĩ nên đọc cuốn này như một cuốn sổ tay:
+
+48
+00:02:40,958 --> 00:02:43,087
+đọc một chương, thử một việc, rồi mới đọc tiếp.
+
+49
+00:02:44,300 --> 00:02:47,779
+Nếu gom cả cuốn sách lại thành một ý, mình sẽ tóm thế này:
+
+50
+00:02:47,780 --> 00:02:52,906
+kết quả của mình phần lớn là tổng của những thói quen nhỏ lặp lại mỗi ngày.
+
+51
+00:02:52,907 --> 00:02:56,870
+Tác giả lấy phép tính một phần trăm để minh họa: mỗi ngày tốt hơn một chút,
+
+52
+00:02:56,871 --> 00:03:01,146
+sau một năm khác biệt sẽ rất lớn; mỗi ngày tệ đi một chút cũng vậy.
+
+53
+00:03:01,147 --> 00:03:05,372
+Theo tác giả, "Thói quen là lãi kép từ việc cải thiện bản thân."
+
+54
+00:03:05,373 --> 00:03:07,252
+Nhưng lãi kép thì đến muộn.
+
+55
+00:03:07,253 --> 00:03:09,628
+Tác giả ví như một cục nước đá trong phòng lạnh:
+
+56
+00:03:09,629 --> 00:03:12,732
+nhiệt độ tăng dần mà đá chưa tan, đến một mức nào đó mới tan.
+
+57
+00:03:12,733 --> 00:03:17,499
+Công sức những ngày đầu không mất đi, nó chỉ chưa hiện ra.
+
+58
+00:03:17,500 --> 00:03:20,716
+Từ đó, tác giả khuyên mình bớt nhìn vào mục tiêu mà nhìn vào hệ thống,
+
+59
+00:03:20,717 --> 00:03:23,079
+tức là những việc mình làm mỗi ngày.
+
+60
+00:03:23,080 --> 00:03:27,159
+Người thắng và người thua thường có cùng một mục tiêu; khác nhau ở hệ thống.
+
+61
+00:03:27,160 --> 00:03:29,879
+Như tác giả viết: "Bạn đừng nâng tầm các mục tiêu.
+
+62
+00:03:29,880 --> 00:03:31,662
+Hãy nâng cấp các hệ thống của bạn."
+
+63
+00:03:31,663 --> 00:03:35,446
+Sâu hơn nữa là con người mình muốn trở thành.
+
+64
+00:03:35,447 --> 00:03:38,406
+Hai người cùng được mời thuốc lá: một người nói "tôi đang cố bỏ",
+
+65
+00:03:38,407 --> 00:03:40,346
+người kia nói "tôi không hút thuốc".
+
+66
+00:03:40,347 --> 00:03:42,306
+Người thứ hai đã đổi cách nhìn về chính mình.
+
+67
+00:03:42,307 --> 00:03:45,394
+Theo tác giả, "Mỗi một hành động là một lá phiếu
+
+68
+00:03:45,395 --> 00:03:48,004
+bầu chọn cho mẫu người mà bạn mong ước trở thành."
+
+69
+00:03:48,005 --> 00:03:51,519
+Còn cách làm thì tác giả chia mỗi thói quen thành bốn bước:
+
+70
+00:03:51,520 --> 00:03:55,299
+một dấu hiệu, một sự khao khát, một hành động, và một phần thưởng.
+
+71
+00:03:55,300 --> 00:03:59,347
+Từ bốn bước đó có bốn quy luật để xây thói quen tốt: làm cho nó hiển nhiên,
+
+72
+00:03:59,348 --> 00:04:03,979
+hấp dẫn, dễ dàng và thỏa mãn; và đảo ngược lại để bỏ thói quen xấu.
+
+73
+00:04:03,980 --> 00:04:07,118
+Phần còn lại của cuốn sách, mình xin đi theo đúng bốn quy luật đó,
+
+74
+00:04:07,119 --> 00:04:11,132
+rồi thêm một phần nói về khi thói quen đã thành nếp.
+
+75
+00:04:11,133 --> 00:04:14,190
+Quy luật thứ nhất là làm cho thói quen trở nên hiển nhiên,
+
+76
+00:04:14,191 --> 00:04:17,219
+tức là để dấu hiệu của nó dễ thấy.
+
+77
+00:04:17,220 --> 00:04:19,199
+Nhận ra thói quen của mình.
+
+78
+00:04:19,200 --> 00:04:22,139
+Ở đường sắt Nhật, nhân viên vừa chỉ tay vừa nói to từng việc
+
+79
+00:04:22,140 --> 00:04:25,886
+mình đang kiểm tra, để việc tự động được đưa ra ánh sáng.
+
+80
+00:04:25,887 --> 00:04:28,699
+Tác giả gợi ý mình làm một phiếu đánh giá thói quen:
+
+81
+00:04:28,700 --> 00:04:32,077
+viết ra những việc làm mỗi ngày, rồi đánh dấu việc nào đang giúp,
+
+82
+00:04:32,078 --> 00:04:35,886
+việc nào đang cản con người mình muốn trở thành, mà không tự trách.
+
+83
+00:04:35,887 --> 00:04:40,653
+Theo tác giả, "Quá trình thay đổi hành vi luôn luôn bắt đầu với sự nhận biết."
+
+84
+00:04:40,654 --> 00:04:42,832
+Nói rõ khi nào, ở đâu.
+
+85
+00:04:42,833 --> 00:04:46,600
+Trong một nghiên cứu sách kể, những người viết sẵn câu "tôi sẽ tập vào ngày nào,
+
+86
+00:04:46,601 --> 00:04:50,532
+lúc mấy giờ, ở đâu" giữ việc tập tốt hơn hẳn những người chỉ được khích lệ.
+
+87
+00:04:50,533 --> 00:04:55,019
+Tác giả cho rằng nhiều khi mình không thiếu động lực mà thiếu sự rõ ràng.
+
+88
+00:04:55,020 --> 00:04:58,801
+Một cách khác là xếp chồng thói quen: "Sau khi làm [Thói quen hiện tại], tôi sẽ
+
+89
+00:04:58,802 --> 00:05:03,906
+làm [Thói quen mới]", như sau khi pha cà phê buổi sáng thì ngồi thiền một phút.
+
+90
+00:05:03,907 --> 00:05:05,426
+Thay đổi môi trường.
+
+91
+00:05:05,427 --> 00:05:07,866
+Ở một bệnh viện, người ta chỉ đặt thêm nước lọc ở mọi quầy,
+
+92
+00:05:07,867 --> 00:05:12,152
+không nói với ai, vậy mà lượng nước ngọt bán ra giảm hẳn.
+
+93
+00:05:12,153 --> 00:05:16,012
+Tác giả đặt táo vào một cái bát giữa bếp và từ đó ăn táo mỗi ngày.
+
+94
+00:05:16,013 --> 00:05:18,390
+Ông cũng khuyên mỗi không gian chỉ nên gắn với một việc:
+
+95
+00:05:18,391 --> 00:05:20,292
+giường để ngủ, bàn để làm việc.
+
+96
+00:05:20,293 --> 00:05:23,259
+Đảo ngược: làm cho khó thấy.
+
+97
+00:05:23,260 --> 00:05:25,763
+Theo tác giả, người có vẻ kỷ luật thật ra là người
+
+98
+00:05:25,764 --> 00:05:28,719
+sắp xếp đời sống để ít phải gồng mình chống cám dỗ.
+
+99
+00:05:28,720 --> 00:05:31,359
+Muốn bớt cầm điện thoại thì để nó ở phòng khác.
+
+100
+00:05:31,360 --> 00:05:34,520
+Như tác giả viết: "Tránh những cám dỗ dễ dàng hơn kháng cự chúng."
+
+101
+00:05:35,980 --> 00:05:41,546
+Quy luật thứ hai là làm cho thói quen trở nên hấp dẫn, để mình thật sự muốn làm nó.
+
+102
+00:05:41,547 --> 00:05:42,986
+Muốn trước khi làm.
+
+103
+00:05:42,987 --> 00:05:45,962
+Tác giả giải thích một cách đơn giản rằng điều thúc mình hành động là
+
+104
+00:05:45,963 --> 00:05:49,926
+cảm giác mong chờ phần thưởng, nhiều khi còn mạnh hơn lúc nhận được nó.
+
+105
+00:05:49,927 --> 00:05:54,232
+Ông cũng tự ghi chú rằng đây là cách nói giản lược về bộ não.
+
+106
+00:05:54,233 --> 00:05:55,692
+Gói cám dỗ.
+
+107
+00:05:55,693 --> 00:05:58,597
+Một chàng trai ở Dublin nối chiếc xe đạp tập với màn hình,
+
+108
+00:05:58,598 --> 00:06:00,952
+chỉ khi đạp đủ nhanh thì phim mới chạy.
+
+109
+00:06:00,953 --> 00:06:04,651
+Tác giả gợi ý ghép việc cần làm với việc mình thích: chỉ xem tập phim yêu
+
+110
+00:06:04,652 --> 00:06:09,299
+thích khi đang tập, hoặc chỉ đọc tin sau khi đã nói một điều mình biết ơn.
+
+111
+00:06:09,300 --> 00:06:10,579
+Người xung quanh.
+
+112
+00:06:10,580 --> 00:06:14,135
+Một người cha ở Hungary tin rằng thiên tài là do giáo dục,
+
+113
+00:06:14,136 --> 00:06:18,826
+nên nuôi ba cô con gái trong ngôi nhà ngập cờ vua; cả ba đều thành kỳ thủ hàng đầu.
+
+114
+00:06:18,827 --> 00:06:21,786
+Theo tác giả, thói quen nào là bình thường ở nơi mình sống
+
+115
+00:06:21,787 --> 00:06:24,230
+sẽ là thói quen hấp dẫn nhất, vì "Hầu hết thời gian
+
+116
+00:06:24,231 --> 00:06:26,956
+chúng ta thà sai theo đám đông còn hơn là đúng một mình."
+
+117
+00:06:26,957 --> 00:06:28,881
+Vậy nên ông khuyên mình đến với những nhóm
+
+118
+00:06:28,882 --> 00:06:31,752
+mà điều mình muốn làm là chuyện bình thường.
+
+119
+00:06:31,753 --> 00:06:33,032
+Đổi cách nói với chính mình.
+
+120
+00:06:33,033 --> 00:06:35,797
+Theo tác giả, "Thói quen là giải pháp thời
+
+121
+00:06:35,798 --> 00:06:37,832
+hiện đại cho những khát khao nguyên thủy."
+
+122
+00:06:37,833 --> 00:06:40,993
+Cùng một việc, đổi chữ "phải" thành chữ "được" thì cảm giác khác hẳn:
+
+123
+00:06:40,994 --> 00:06:44,972
+không phải "mình phải dậy sớm đi làm", mà "mình được dậy sớm đi làm".
+
+124
+00:06:44,973 --> 00:06:47,030
+Đảo ngược lại, muốn bỏ thói quen xấu thì nhìn
+
+125
+00:06:47,031 --> 00:06:48,793
+rõ nó không thật sự cho mình điều mình cần.
+
+126
+00:06:50,067 --> 00:06:53,374
+Quy luật thứ ba là làm cho thói quen trở nên dễ dàng,
+
+127
+00:06:53,375 --> 00:06:55,067
+để không có gì cản mình bắt đầu.
+
+128
+00:06:56,293 --> 00:06:57,672
+Làm nhiều hơn nghĩ.
+
+129
+00:06:57,673 --> 00:07:01,367
+Một thầy dạy nhiếp ảnh chia lớp làm hai: một nửa chấm điểm theo số lượng ảnh,
+
+130
+00:07:01,368 --> 00:07:03,852
+nửa kia chỉ cần nộp một tấm thật hoàn hảo.
+
+131
+00:07:03,853 --> 00:07:06,916
+Cuối khóa, những tấm đẹp nhất lại đến từ nhóm chụp nhiều,
+
+132
+00:07:06,917 --> 00:07:09,699
+vì họ được thực hành và sửa sai liên tục.
+
+133
+00:07:09,700 --> 00:07:11,561
+Tác giả phân biệt chuẩn bị với làm thật:
+
+134
+00:07:11,562 --> 00:07:14,379
+lên kế hoạch cho bài tập không phải là đi tập.
+
+135
+00:07:14,380 --> 00:07:16,510
+Theo tác giả, "việc hình thành thói quen dựa
+
+136
+00:07:16,511 --> 00:07:19,403
+trên tần suất chứ không phải thời gian."
+
+137
+00:07:19,404 --> 00:07:20,546
+Bớt ma sát.
+
+138
+00:07:20,547 --> 00:07:25,106
+Tác giả ví như vòi nước bị gập: thay vì vặn van mạnh hơn, hãy gỡ chỗ gập.
+
+139
+00:07:25,107 --> 00:07:28,393
+Chọn phòng tập trên đường đi làm, bày sẵn đồ tập từ tối hôm trước,
+
+140
+00:07:28,394 --> 00:07:32,532
+dọn lại căn phòng sau mỗi lần dùng để lần sau bắt đầu ngay được.
+
+141
+00:07:32,533 --> 00:07:33,932
+Quy luật hai phút.
+
+142
+00:07:33,933 --> 00:07:37,378
+Khi bắt đầu một thói quen mới, tác giả khuyên làm phiên bản chưa tới hai phút:
+
+143
+00:07:37,379 --> 00:07:42,319
+muốn đọc sách trước khi ngủ thì đọc một trang; muốn tập yoga thì trải thảm ra.
+
+144
+00:07:42,320 --> 00:07:45,836
+Một biên đạo múa kể rằng thói quen buổi sáng của bà không phải hai tiếng tập,
+
+145
+00:07:45,837 --> 00:07:48,319
+mà là bước ra đường gọi xe tới phòng tập.
+
+146
+00:07:48,320 --> 00:07:52,209
+Như tác giả viết: "Bạn phải chuẩn hóa trước khi tối ưu hóa."
+
+147
+00:07:52,210 --> 00:07:54,186
+Đảo ngược: làm cho khó.
+
+148
+00:07:54,187 --> 00:07:57,427
+Nhà văn Victor Hugo nhờ người khóa hết quần áo của mình lại,
+
+149
+00:07:57,428 --> 00:08:01,186
+chỉ chừa một tấm khăn choàng, để không thể ra ngoài và phải ngồi viết.
+
+150
+00:08:01,187 --> 00:08:03,772
+Tác giả gọi đó là thiết bị cam kết.
+
+151
+00:08:03,773 --> 00:08:07,450
+Một lần quyết định cũng có thể giữ thói quen tốt lâu dài: tắt thông báo,
+
+152
+00:08:07,451 --> 00:08:10,413
+xóa ứng dụng hay làm mình mất giờ, cài tiết kiệm tự động.
+
+153
+00:08:11,633 --> 00:08:17,559
+Quy luật thứ tư là làm cho thói quen trở nên thỏa mãn, để lần sau mình muốn làm lại.
+
+154
+00:08:17,560 --> 00:08:19,179
+Phần thưởng ngay lúc làm.
+
+155
+00:08:19,180 --> 00:08:20,760
+Ở những khu nghèo của một thành phố lớn,
+
+156
+00:08:20,761 --> 00:08:23,839
+người dân biết rửa tay là tốt nhưng không làm đều.
+
+157
+00:08:23,840 --> 00:08:27,183
+Khi có loại xà phòng thơm và nhiều bọt, rửa tay thành việc dễ chịu,
+
+158
+00:08:27,184 --> 00:08:30,366
+và nhiều nhà giữ thói quen ấy suốt nhiều năm.
+
+159
+00:08:30,367 --> 00:08:32,201
+Theo tác giả, quy tắc cốt lõi là:
+
+160
+00:08:32,202 --> 00:08:35,726
+điều được thưởng ngay thì lặp lại, điều khó chịu ngay thì tránh.
+
+161
+00:08:35,727 --> 00:08:40,732
+Thói quen tốt thường trả giá ở hiện tại, còn thói quen xấu trả giá ở tương lai.
+
+162
+00:08:40,733 --> 00:08:42,972
+Cho việc "không làm" một phần thưởng.
+
+163
+00:08:42,973 --> 00:08:44,691
+Mỗi lần nhịn một ly cà phê ngoài tiệm,
+
+164
+00:08:44,692 --> 00:08:48,812
+một người chuyển số tiền ấy vào tài khoản đặt tên là "áo khoác da".
+
+165
+00:08:48,813 --> 00:08:51,827
+Tác giả lưu ý phần thưởng phải hợp với con người mình muốn trở thành,
+
+166
+00:08:51,828 --> 00:08:54,332
+vì "Sự khích lệ có thể bắt đầu một thói quen.
+
+167
+00:08:54,333 --> 00:08:56,819
+Đặc tính duy trì một thói quen."
+
+168
+00:08:56,820 --> 00:08:58,339
+Nhìn thấy tiến bộ.
+
+169
+00:08:58,340 --> 00:09:00,883
+Một nhân viên môi giới trẻ đặt hai cái lọ trên bàn,
+
+170
+00:09:00,884 --> 00:09:04,486
+mỗi cuộc gọi xong lại chuyển một cái kẹp giấy sang lọ kia.
+
+171
+00:09:04,487 --> 00:09:06,740
+Tác giả gợi ý đánh dấu lên lịch mỗi ngày đã làm,
+
+172
+00:09:06,741 --> 00:09:09,686
+và nhắc một nguyên tắc: "Bỏ lỡ một lần là vô tình.
+
+173
+00:09:09,687 --> 00:09:12,514
+Bỏ lỡ hai lần chính là khởi đầu cho một thói quen mới."
+
+174
+00:09:12,515 --> 00:09:16,612
+Những ngày tệ mà vẫn làm một chút lại là những ngày đáng giá nhất.
+
+175
+00:09:16,613 --> 00:09:18,592
+Đảo ngược: có người cùng giữ lời.
+
+176
+00:09:18,593 --> 00:09:20,998
+Tác giả kể chuyện một người ký hợp đồng thói quen với
+
+177
+00:09:20,999 --> 00:09:24,272
+vợ và huấn luyện viên, ghi sẵn hình phạt nếu bỏ cuộc.
+
+178
+00:09:24,273 --> 00:09:27,993
+Theo tác giả, khi biết có người đang dõi theo, mình khó làm điều sai hơn.
+
+179
+00:09:29,267 --> 00:09:32,278
+Phần cuối của sách nói về lúc thói quen đã thành nếp,
+
+180
+00:09:32,279 --> 00:09:35,087
+khi điều khó không còn là bắt đầu mà là giữ cho nó đi tiếp.
+
+181
+00:09:36,353 --> 00:09:37,872
+Chọn đúng sân chơi.
+
+182
+00:09:37,873 --> 00:09:42,812
+Theo tác giả, gen không quyết định số phận, nhưng cho biết mình có lợi thế ở đâu.
+
+183
+00:09:42,813 --> 00:09:45,374
+Ông khuyên chọn thói quen hợp với bản tính của mình,
+
+184
+00:09:45,375 --> 00:09:48,300
+và "Khi bạn không thể chiến thắng bằng cách trở nên tốt hơn,
+
+185
+00:09:48,301 --> 00:09:51,639
+bạn có thể chiến thắng bằng cách trở nên khác biệt."
+
+186
+00:09:51,640 --> 00:09:53,779
+Vừa sức và chịu được nhàm chán.
+
+187
+00:09:53,780 --> 00:09:56,430
+Tác giả cho rằng mình hứng thú nhất khi việc làm vừa sức,
+
+188
+00:09:56,431 --> 00:09:58,546
+không quá dễ cũng không quá khó.
+
+189
+00:09:58,547 --> 00:10:01,219
+Nhưng theo ông, "Mối đe dọa lớn nhất với thành
+
+190
+00:10:01,220 --> 00:10:04,086
+công không phải là thất bại mà là sự buồn chán."
+
+191
+00:10:04,087 --> 00:10:08,292
+Người làm được việc lớn cũng chán như mọi người, chỉ là họ vẫn làm.
+
+192
+00:10:08,293 --> 00:10:10,432
+Xem lại và giữ mình mềm dẻo.
+
+193
+00:10:10,433 --> 00:10:14,992
+Khi một việc đã thành tự động, mình dễ làm theo quán tính mà không tiến bộ thêm.
+
+194
+00:10:14,993 --> 00:10:17,221
+Tác giả tự làm một bản tổng kết mỗi cuối năm,
+
+195
+00:10:17,222 --> 00:10:20,252
+và khuyên đừng gắn chặt mình vào một vai trò duy nhất.
+
+196
+00:10:20,253 --> 00:10:23,732
+Như tác giả viết: "Thiếu sự nhận thức bản thân là độc dược.
+
+197
+00:10:23,733 --> 00:10:26,599
+Suy xét và đánh giá là thuốc giải."
+
+198
+00:10:26,600 --> 00:10:30,639
+Nói cho công bằng, cuốn sách cũng có những chỗ mình thấy chưa đạt.
+
+199
+00:10:30,640 --> 00:10:33,887
+Thứ nhất, sách dẫn rất nhiều nghiên cứu và tỉ lệ phần trăm,
+
+200
+00:10:33,888 --> 00:10:38,319
+nhưng chính tác giả nói đây là sổ tay hướng dẫn, không phải nghiên cứu khoa học.
+
+201
+00:10:38,320 --> 00:10:40,587
+Mình nghĩ nên xem các con số ấy như minh họa,
+
+202
+00:10:40,588 --> 00:10:43,766
+còn giá trị thật của sách nằm ở cách làm.
+
+203
+00:10:43,767 --> 00:10:47,099
+Thứ hai, bản dịch tiếng Việt mình đọc có khá nhiều chỗ lệch về năm,
+
+204
+00:10:47,100 --> 00:10:50,266
+số liệu và cả nghề nghiệp của người được nhắc tới.
+
+205
+00:10:50,267 --> 00:10:54,752
+Nếu các bạn muốn dẫn lại một con số trong sách, nên đối chiếu với bản gốc.
+
+206
+00:10:54,753 --> 00:10:57,723
+Thứ ba, phần lớn ví dụ là chuyện người thành công ở Mỹ,
+
+207
+00:10:57,724 --> 00:11:01,093
+và các mẹo sắp xếp môi trường khó áp dụng khi mình đang thật sự nghiện hay
+
+208
+00:11:01,094 --> 00:11:04,812
+đang ở hoàn cảnh quá khó; chính tác giả cũng thừa nhận điều đó.
+
+209
+00:11:04,813 --> 00:11:08,073
+Những lúc như vậy, cần thêm sự giúp đỡ từ người khác hoặc từ chuyên gia.
+
+210
+00:11:09,333 --> 00:11:12,492
+Tóm lại, Thay đổi tí hon hiệu quả bất ngờ xoay quanh một ý:
+
+211
+00:11:12,493 --> 00:11:16,445
+những thói quen nhỏ, lặp lại đủ lâu, sẽ nhân lên thành kết quả lớn,
+
+212
+00:11:16,446 --> 00:11:20,419
+và thói quen bền nhất bắt đầu từ con người mình muốn trở thành.
+
+213
+00:11:20,420 --> 00:11:23,619
+Từ đó, sách đưa ra bốn quy luật: làm cho hiển nhiên, hấp dẫn,
+
+214
+00:11:23,620 --> 00:11:27,879
+dễ dàng và thỏa mãn, cùng cách đảo ngược để bỏ thói quen xấu.
+
+215
+00:11:27,880 --> 00:11:31,646
+Theo mình, đây là cuốn sách nên đọc chậm và làm thử từng chương.
+
+216
+00:11:31,647 --> 00:11:33,046
+Như tác giả viết ở cuối sách:
+
+217
+00:11:33,047 --> 00:11:35,447
+"Những thói quen nhỏ không thêm vào mà chúng hợp thành."
+
+218
+00:11:36,700 --> 00:11:39,463
+Mặc dù cuốn sách này còn nhiều những chỗ chưa hay,
+
+219
+00:11:39,464 --> 00:11:42,126
+nhưng tổng quan đây là một cuốn sách hay.
+
+220
+00:11:42,127 --> 00:11:45,758
+Nếu bạn đang muốn đổi một thói quen mà lần nào cũng bỏ dở giữa chừng, cuốn này
+
+221
+00:11:45,759 --> 00:11:50,652
+cho bạn rất nhiều cách để thử lại, bắt đầu từ những việc chưa tới hai phút.
+
+222
+00:11:50,653 --> 00:11:53,256
+Nếu bạn có thời gian, có thể đọc qua để hiểu hơn:
+
+223
+00:11:53,257 --> 00:11:56,773
+hiểu vì sao mình hay bỏ cuộc, rồi bắt đầu lại từ một việc thật nhỏ.
+
+224
+00:11:58,573 --> 00:12:02,272
+Đến đây là kết thúc rồi, các bạn thấy thế nào?
+
+225
+00:12:02,273 --> 00:12:06,545
+Nếu hay thì hãy bình luận vào bên dưới video và cho mình một lượt đăng ký kênh
+
+226
+00:12:06,546 --> 00:12:11,292
+để mình có động lực để có thể làm thêm nhiều những video thế này hơn nữa nhé.
+
+227
+00:12:11,293 --> 00:12:12,093
+Hẹn gặp lại cả nhà.

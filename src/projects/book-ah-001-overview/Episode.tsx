@@ -19,8 +19,13 @@ import {ChuaDat, CuonSach, MoChuyen, NhanXet, QuyLuat1, QuyLuat2, QuyLuat3, QuyL
 export type EpisodeProps = {introVoice: string; cardVoice: string; outroVoice: string; channelLabel: string; episodeLabel: string; bookTitle: string; bookAuthor: string};
 
 const voices = takesOf(bodyTakes), cards = (cardTakes as unknown as {voices: Voice[]}).voices;
-// The newest placeholder take of a segment is the last 25-quoc-tuan-<nn>[letter] in body-takes.json.
-const placeholder = (seg: string) => voices.filter((v) => new RegExp(`^25-quoc-tuan-${seg.split('-')[0]}[a-z]?$`).test(v.id)).at(-1)?.id;
+// The newest placeholder take of a segment: 25-quoc-tuan-<nn>, or a later retake 25-quoc-tuan-<nn><letter> whose
+// <nn><letter> is not itself another segment's number (08b, 08e, 08f are segments; 02b is a retake of 02).
+const NUMBERS = ['01', '02', '03', '04', '05', '06', '07', '08', '08b', '08e', '08f', '08g', '09'];
+const placeholder = (seg: string) => {
+  const nn = seg.split('-')[0];
+  return voices.filter((v) => {const m = /^25-quoc-tuan-(\d+[a-z]?)$/.exec(v.id);return m && (m[1] === nn || (m[1].startsWith(nn) && m[1].length === nn.length + 1 && !NUMBERS.includes(m[1])));}).at(-1)?.id;
+};
 const voiceFor = (seg: string) => [`${seg}-sang2`, seg, placeholder(seg)].find((id) => id && takeOf(id, voices));
 const BODY: [string, string, Section][] = [['02-mo-chuyen', 'Mở chuyện', MoChuyen], ['03-cuon-sach', 'Phần 1 · Cuốn sách là gì', CuonSach], ['04-soi-chi', 'Phần 2 · Sợi chỉ xuyên suốt', SoiChi],
   ['05-quy-luat-1', 'Quy luật 1 · Làm cho hiển nhiên', QuyLuat1], ['06-quy-luat-2', 'Quy luật 2 · Làm cho hấp dẫn', QuyLuat2], ['07-quy-luat-3', 'Quy luật 3 · Làm cho dễ dàng', QuyLuat3],
