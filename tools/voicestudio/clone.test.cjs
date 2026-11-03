@@ -3,6 +3,7 @@ const {test} = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs'), os = require('node:os'), path = require('node:path'), http = require('node:http');
 const {clone, parseArgs} = require('./clone.cjs');
+const progress = require('../production-automation/progress.cjs');
 
 async function fixture(t, {fail = false} = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'voice-clone-'));
@@ -52,6 +53,9 @@ test('clones every scene into a new take with manifest, page and a private refer
   assert.ok(!fs.readdirSync(out).some(n => n.includes('reference')));
   assert.match(fs.readFileSync(path.join(out, 'index.html'), 'utf8'), /chưa thay giọng của video/);
   assert.equal(f.calls.stop, 1, 'started by the command, so stopped afterwards');
+  // Reported on the project's Tiến trình tab as it goes.
+  const task = progress.view(f.root, 'demo').tasks.find(x => x.id === 'clone-clone-v1');
+  assert.equal(task.status, 'done');assert.deepEqual([task.kind, task.steps.done, task.steps.total], ['voice', 2, 2]);
 });
 
 test('text sources, keeps a VoiceStudio the user had open, and leaves a partial manifest on failure', async t => {
@@ -63,6 +67,8 @@ test('text sources, keeps a VoiceStudio the user had open, and leaves a partial 
   await assert.rejects(clone(g.root, {...base, all: true}, g.deps()), /lỗi 500/);
   const partial = JSON.parse(fs.readFileSync(path.join(g.root, 'public/demo/voice-auditions/clone-v1/manifest.json'), 'utf8'));
   assert.equal(partial.files.length, 1);assert.equal(g.calls.stop, 1, 'stopped even after a failure');
+  const failed = progress.view(g.root, 'demo').tasks.find(x => x.id === 'clone-clone-v1');
+  assert.deepEqual([failed.status, failed.steps.done], ['failed', 1]);assert.match(failed.note, /Clone lỗi/);
   assert.deepEqual(parseArgs(['--project', 'x', '--all', '--consent', 'permission']), {project: 'x', all: true, consent: 'permission'});
   assert.throws(() => parseArgs(['--bogus']), /không hiểu/);
 });

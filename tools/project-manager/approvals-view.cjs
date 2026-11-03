@@ -304,7 +304,14 @@ function createApprovals(root) {
     let plan;try {plan = cli.plan(root, id);} catch (e) {return {available: false, reason: e.message};}
     const p = progress.view(root, id), r = review.summary(root, plan);
     const runs = runner.list(root, id).slice(-10).reverse().map(x => ({runId: x.runId, stage: plan.stages.find(s => s.id === x.stageId)?.title || x.stageId, status: x.status, createdAt: x.createdAt}));
-    return {available: true, locked: r.version > 0, lockVersion: r.version, ...p, runs};
+    // Each patch is a round of agent work on your feedback: listed beside the plan and merged into the timeline,
+    // so work done outside the plan's tasks still shows. Superseded proposals add no decision line.
+    const patches = review.load(root, id).patches.map(x => ({id: x.id, status: x.status, reason: x.reason, createdAt: x.createdAt, decidedAt: x.decidedAt, via: x.via || null, note: x.note || '',
+      media: (x.media || []).length, requests: (x.requests || []).length})).reverse();
+    const events = [...p.events, ...patches.flatMap(x => [{at: x.createdAt, type: 'patch', title: `Bản vá ${x.id}`, message: x.reason},
+      ...(x.decidedAt && ['accepted', 'returned'].includes(x.status) ? [{at: x.decidedAt, type: `patch-${x.status}`, title: `Bản vá ${x.id}`, message: x.via === 'chat' ? `Qua chat: ${x.note}` : x.note}] : [])])]
+      .sort((a, b) => Date.parse(b.at) - Date.parse(a.at));
+    return {available: true, locked: r.version > 0, lockVersion: r.version, ...p, events, lastActivity: events[0]?.at || p.lastActivity, patches, runs};
   }
   function progressSummary(id) {
     try {const p = progress.view(root, id);return p.plan ? {overall: p.overall, running: p.counts.running, interrupted: p.counts.interrupted, failed: p.counts.failed, total: p.counts.total, done: p.counts.done} : null;}

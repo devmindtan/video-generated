@@ -6,6 +6,7 @@ const path = require('node:path');
 const http = require('node:http');
 const crypto = require('node:crypto');
 const launcher = require('./launcher.cjs');
+const progress = require('../production-automation/progress.cjs');
 
 const CONSENT = {self: 'Giọng của chính người dùng', permission: 'Người trong bản ghi đã đồng ý cho clone'};
 const AUDIO = new Set(['.wav', '.mp3', '.flac', '.m4a', '.ogg']);
@@ -91,6 +92,10 @@ async function clone(root, o, {base = launcher.URL, ensure = launcher.voiceStudi
   await ensure();
   const reference = storeReference(root, ref);
   fs.mkdirSync(out, {recursive: true});
+  // Shown live on the project's Tiến trình tab; a killed clone shows as interrupted (pid gone). Never blocks the clone.
+  const task = `clone-${o.take}`, track = changes => {try {progress.update(root, o.project, task, changes);} catch {}};
+  try {progress.ensureTask(root, o.project, {id: task, title: `Clone giọng: take ${o.take}`, kind: 'voice'});} catch {}
+  track({status: 'running', steps: {done: 0, total: list.length}, note: `${o.gpu ? 'Máy GPU' : 'Máy này (CPU)'}: bắt đầu ${list[0].label}`, pid: process.pid});
   const manifest = {schemaVersion: 1, voiceOption: 2, project: o.project, take: o.take, createdAt: new Date().toISOString(),
     engine: 'voxcpm2', model: 'openbmb/VoxCPM2', language: 'vi', machine: o.gpu ? 'gpu' : 'local', instruct: o.instruct || null,
     reference: {sha256: reference.hash, originalName: reference.name, storedAt: path.relative(root, reference.kept), transcriptProvided: Boolean(o.refText), consent: o.consent},
@@ -108,8 +113,13 @@ async function clone(root, o, {base = launcher.URL, ensure = launcher.voiceStudi
       manifest.files.push({file, label: s.label, text: s.text, sha256: sha256(r.audio), seed: r.seed, genSeconds: r.genSeconds, durationSeconds: r.durationSeconds});
       fs.writeFileSync(path.join(out, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
       log(`    → ${path.relative(root, path.join(out, file))} (${r.durationSeconds ?? '?'} giây, ${r.genSeconds ?? '?'} giây tạo)`);
+      track({steps: {done: i + 1, total: list.length}, note: `${o.gpu ? 'Máy GPU' : 'Máy này (CPU)'}: xong ${s.label}`});
     }
     fs.writeFileSync(path.join(out, 'index.html'), page(manifest));
+    track({status: 'done', note: `Take thử ${o.take} sẵn sàng để nghe; chưa thay giọng của video`});
+  } catch (e) {
+    track({status: 'failed', note: `Clone lỗi: ${String(e.message).split('\n')[0]}`});
+    throw e;
   } finally {
     // Free the memory the model holds. GPU machine: drop this command's lease, the last holder stops it.
     // Here: stop only what this command started.

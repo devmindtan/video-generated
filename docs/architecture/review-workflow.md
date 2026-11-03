@@ -116,7 +116,9 @@ Tab **Tiến trình** của mỗi dự án cho người dùng theo dõi trực t
 - Ngay sau khi chốt, agent phân tích gói chốt và lập kế hoạch thực hiện: `npm run automation -- progress <slug> plan --file plan.json`
   (`{summary, tasks:[{id, title, kind, weight, steps}]}`; `kind` là voice, visuals, music, assembly, clip, check hoặc other).
 - Khi làm: `progress <slug> start|update|done|fail|block <việc> [--percent N | --steps 3/10] [--note "…"]`, `progress <slug> log --note "…"`.
-  `scene-clip` tự báo việc "Xuất clip duyệt cảnh …". Lập lại kế hoạch giữ tiến độ của các việc cùng mã.
+  `scene-clip` tự báo việc "Xuất clip duyệt cảnh …", `voicestudio clone` tự báo "Clone giọng: take …" theo từng đoạn. Lập lại kế hoạch giữ tiến độ của các việc cùng mã.
+- Mỗi bản vá là một vòng việc của agent: tab tự đọc chúng từ approvals.json (chỉ đọc), hiện bản vá đang chờ ở mục **Chờ bạn**, danh sách **Vòng sửa theo góp ý** và các dòng gửi/chấp nhận/trả lại trong Hoạt động. Việc làm ngoài kế hoạch vẫn nên thêm vào kế hoạch (lập lại kế hoạch) để % phản ánh đúng.
+- Thứ tự trên trang: Chờ bạn → Đang làm → Cần chú ý (bị ngắt, lỗi, đang chờ) → Tiếp theo → Đã xong (gập sẵn) → Vòng sửa; lọc theo loại việc; Hoạt động nhóm theo ngày, xem thêm theo đợt.
 - % tổng = trung bình có trọng số (`weight`) của % từng việc. Mỗi thay đổi lưu ngay vào `.automation/progress/<slug>.json` (Git bỏ qua).
 - Bị ngắt: việc "đang làm" mà tiến trình báo cáo đã chết, hoặc 20 phút không cập nhật, hiện là **Bị ngắt** kèm % và ghi chú cuối cùng; file không bị sửa.
 - Trang tự làm mới 4 giây một lần khi tab đang mở; thẻ dự án ngoài danh sách hiện "Đang làm / Bị ngắt · x%".

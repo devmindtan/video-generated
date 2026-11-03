@@ -29,29 +29,46 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   review.lock(root,cli.plan(root,id),{by:'u'});
   run('plan','--file',planFile);run('start','voice','--steps','4/12','--note','Đang clone câu 4/12 trên máy GPU');
   run('done','music','--note','Nhạc Pufino đã cắt 0:00–12:10');run('start','img-mo-chuyen','--percent','40');run('log','--note','Đã giao việc ảnh cho 2 cảnh đầu');
-  await page.reload({waitUntil:'networkidle'});await page.locator('.progress-hero').waitFor();
+  await page.reload({waitUntil:'networkidle'});await page.locator('.progress-head').waitFor();
   // (3×33 + 2×40 + 0 + 100 + 0) / 10 = 27.9
-  assert.match(await page.locator('.progress-big strong').innerText(),/^28%$/);
-  assert.match(await page.locator('.progress-hero').innerText(),/1\/5 việc xong · 2 đang làm/);
-  assert.equal(await page.locator('.now-card').count(),2);assert.match(await page.locator('.now-card').first().innerText(),/Clone giọng[\s\S]*4\/12 phần[\s\S]*máy GPU/);
-  assert.deepEqual(await page.locator('.task-group-head span').allInnerTexts(),['Giọng đọc','Hình ảnh / animation','Nhạc nền','Dựng']);
-  assert.match(await page.locator('.progress-timeline li').first().innerText(),/Ghi chú[\s\S]*Đã giao việc ảnh/);
+  assert.match(await page.locator('.progress-figure strong').innerText(),/^28%$/);
+  assert.match(await page.locator('.progress-head').innerText(),/1\/5 việc xong · 2 đang làm · 2 chưa làm/);
+  assert.equal(await page.locator('.ps-now .task-row').count(),2);assert.match(await page.locator('.ps-now .task-row').first().innerText(),/Clone giọng[\s\S]*4\/12 phần[\s\S]*máy GPU/);
+  assert.deepEqual(await page.locator('.ps-next .task-row strong').allInnerTexts(),['Ảnh/animation cảnh Cuốn sách','Dựng các phần vào composition']);
+  // Finished work is folded so open work stays near the top.
+  assert.equal(await page.locator('.ps-done').getAttribute('open'),null);assert.equal(await page.locator('.ps-done .task-row').first().isVisible(),false);
+  await page.locator('.ps-done summary').click();assert.match(await page.locator('.ps-done .task-row').first().innerText(),/Cắt và cân nhạc nền/);
+  assert.deepEqual(await page.locator('.kind-filter button span').allInnerTexts(),['Tất cả','Giọng đọc','Hình ảnh / animation','Nhạc nền','Dựng']);
+  await page.locator('[data-progress-kind="Hình ảnh / animation"]').click();
+  assert.equal(await page.locator('[data-progress-kind="Hình ảnh / animation"]').getAttribute('aria-pressed'),'true');
+  assert.deepEqual(await page.locator('.progress-main .task-row strong').allInnerTexts(),['Ảnh/animation cảnh Mở chuyện','Ảnh/animation cảnh Cuốn sách']);
+  await page.locator('[data-progress-kind=""]').click();
+  assert.match(await page.locator('.progress-timeline li:not(.ev-day)').first().innerText(),/Ghi chú[\s\S]*Đã giao việc ảnh/);
   assert.match(await page.locator('#tab-progress').innerText(),/Tiến trình\s*28%/);
   await page.screenshot({path:path.join(out,'progress-1440.png'),fullPage:true});
-  mark('Plan from the CLI: weighted percent, running tasks on top, plan grouped by kind, activity timeline, tab shows %');
+  mark('Plan from the CLI: weighted percent, running work on top, next tasks, finished work folded, kind filter, timeline, tab shows %');
+  // A patch is a round of agent work: it shows waiting for you, in the rounds list and in the timeline.
+  review.createPatch(root,cli.plan(root,id),{reason:'Sửa nhịp đoạn Mở chuyện theo góp ý',by:'agent',changes:[{area:'timing',where:'Mở chuyện',what:'Rút khoảng nghỉ'}]});
+  await page.waitForFunction(()=>/Bản vá p1 chờ bạn duyệt/.test(document.querySelector('.ps-wait')?.textContent||''),null,{timeout:9000});
+  assert.match(await page.locator('.ps-rounds .round-row').first().innerText(),/p1[\s\S]*Sửa nhịp đoạn Mở chuyện[\s\S]*Chờ duyệt/);
+  assert.match(await page.locator('.progress-timeline li:not(.ev-day)').first().innerText(),/Gửi bản vá · Bản vá p1/);
+  await page.locator('.ps-done summary').waitFor();assert.equal(await page.locator('.ps-done').getAttribute('open'),'','the folded list keeps its state across refreshes');
+  await page.locator('[data-goto-tab="review"]').click();assert.equal(await page.locator('#tab-review').getAttribute('aria-selected'),'true');
+  await page.locator('#tab-progress').click();await page.locator('.progress-head').waitFor();
+  mark('Patches show as rounds of work, waiting-for-you on top and in the timeline; the button opens the review tab');
   progress.update(root,id,'voice',{steps:{done:9,total:12},note:'Câu 9/12'});
-  await page.waitForFunction(()=>/9\/12 phần/.test(document.querySelector('.progress-now')?.textContent||''),null,{timeout:9000});
+  await page.waitForFunction(()=>/9\/12 phần/.test(document.querySelector('.ps-now')?.textContent||''),null,{timeout:9000});
   mark('The open tab refreshes by itself while the agent works');
   progress.update(root,id,'img-mo-chuyen',{pid:999999999,note:'Đang render ảnh 3/5'});
-  await page.waitForFunction(()=>/Bị ngắt/.test(document.querySelector('.progress-now')?.textContent||''),null,{timeout:9000});
-  assert.match(await page.locator('.progress-warn').innerText(),/trạng thái cuối cùng được giữ/);assert.match(await page.locator('.now-card.status-interrupted').innerText(),/40%[\s\S]*Đang render ảnh 3\/5/);
+  await page.waitForFunction(()=>/Bị ngắt/.test(document.querySelector('.ps-stop')?.textContent||''),null,{timeout:9000});
+  assert.match(await page.locator('.progress-warn').innerText(),/trạng thái cuối cùng được giữ/);assert.match(await page.locator('.ps-stop .task-row.status-interrupted').innerText(),/40%[\s\S]*Đang render ảnh 3\/5/);
   assert.match(await page.locator('#tab-progress .tab-flag').innerText(),/Bị ngắt/);
   await page.screenshot({path:path.join(out,'progress-interrupted-1440.png'),fullPage:true});
   mark('An interrupted task shows its last saved state and percent');
   await page.goto(base+'/',{waitUntil:'networkidle'});await page.locator('.project-card').first().waitFor();
   assert.match(await page.locator('.card-progress').innerText(),/Bị ngắt · \d+%/);mark('The project card shows the agent progress line');
-  for(const width of [768,390]){await page.setViewportSize({width,height:900});await page.goto(base+`/#project/${id}/tien-trinh`,{waitUntil:'networkidle'});await page.locator('.progress-hero').waitFor();
-   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no overflow at '+width);await page.screenshot({path:path.join(out,`progress-${width}.png`),fullPage:true});}
+  for(const width of [768,390]){await page.setViewportSize({width,height:900});await page.goto(base+`/#project/${id}/tien-trinh`,{waitUntil:'networkidle'});await page.locator('.progress-head').waitFor();
+   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1&&[...document.querySelectorAll('#progress *')].every(n=>n.getBoundingClientRect().right<=innerWidth+1)),'no overflow at '+width);await page.screenshot({path:path.join(out,`progress-${width}.png`),fullPage:true});}
   mark('Tablet and mobile fit without horizontal overflow');
   assert.deepEqual(errors.filter(e=>!/Failed to load resource/.test(e)),[]);mark('No browser errors; fixture workspace only');
  }finally{await browser.close();server.close();fs.rmSync(root,{recursive:true,force:true});}

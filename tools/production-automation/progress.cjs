@@ -113,7 +113,7 @@ function view(root, id, {at = Date.now()} = {}) {
   const weight = tasks.reduce((a, t) => a + t.weight, 0);
   const overall = weight ? Math.round(tasks.reduce((a, t) => a + t.weight * t.percent, 0) / weight) : 0;
   const count = s => tasks.filter(t => t.display === s).length;
-  return {projectId: id, plan: store.plan, overall, tasks, events: [...store.events].reverse().slice(0, 80),
+  return {projectId: id, plan: store.plan, overall, tasks, events: [...store.events].reverse(),
     counts: {total: tasks.length, done: count('done'), running: count('running'), interrupted: count('interrupted'), failed: count('failed'), blocked: count('blocked'), pending: count('pending')},
     lastActivity: store.events.at(-1)?.at || null};
 }
