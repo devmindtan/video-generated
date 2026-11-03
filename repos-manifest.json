@@ -143,5 +143,10 @@
     "repo": "debpalash/VoiceStudio",
     "path": "repos/debpalash--VoiceStudio",
     "commit": "4d4cb0badf99c7518e3f4c69487df6e8bfeff43f"
+  },
+  {
+    "repo": "calesthio/OpenMontage",
+    "path": "repos/calesthio--OpenMontage",
+    "commit": "195eab24478dc9363326aec437aefc3701635ddf"
   }
 ]
