@@ -47,6 +47,9 @@ import {BookInsightsEpisodeCard, episodeCardMetadata} from './book-hvtt-001-over
 import {BookHvttMoChuyen, moChuyenMetadata} from './book-hvtt-001-overview/MoChuyen';
 import {BookHvttVideo as BookHvttEpisode, episodeMetadata} from './book-hvtt-001-overview/Video';
 import {BookHvttThumbnail} from './book-hvtt-001-overview/Thumbnail';
+import {BookAhVideo as BookAhEpisode, episodeMetadata as bookAhEpisodeMetadata} from './book-ah-001-overview/Video';
+import {BookAhEpisodeCard, bookAhCardMetadata} from './book-ah-001-overview/Episode';
+import {MoChuyen as BookAhMoChuyen} from './book-ah-001-overview/Sections';
 import {CachLam, CuonSach, SoiChi, Nhom3A, Nhom3B, Nhom3C, Nhom3D, DiemChuaDat, TongKet, YKien, NhanXet} from './book-hvtt-001-overview/Sections';
 import {PeoplePleasingVideo} from './people-pleasing/Video';
 import {PeoplePleasingThumbnail} from './people-pleasing/Thumbnail';
@@ -246,6 +249,11 @@ export const ProjectCompositions: FC = () => (
             voice: 'outro-ban-v2-sang2',
             channelLabel: 'TÂM LÝ CUỘC SỐNG',
           }} />
+        </Folder>
+        <Folder name="book-ah-001-overview">
+          <Composition id="BookAhTap02" component={BookAhEpisode} calculateMetadata={renderTo('book-ah-001-overview', bookAhEpisodeMetadata)} durationInFrames={1800} fps={30} width={1920} height={1080} defaultProps={{introVoice: 'clone-ban-v4a-sang2', cardVoice: '25-quoc-tuan', outroVoice: 'outro-ban-v2-sang2', channelLabel: 'TÂM LÝ CUỘC SỐNG', episodeLabel: 'TẬP 02', bookTitle: 'Thay đổi tí hon hiệu quả bất ngờ', bookAuthor: 'James Clear'}} />
+          <Composition id="BookAhEpisodeCard" component={BookAhEpisodeCard} calculateMetadata={renderTo('book-ah-001-overview', bookAhCardMetadata)} durationInFrames={300} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan', channelLabel: 'TÂM LÝ CUỘC SỐNG', episodeLabel: 'TẬP 02', bookTitle: 'Thay đổi tí hon hiệu quả bất ngờ', bookAuthor: 'James Clear'}} />
+          <Composition id="BookAhMoChuyen" component={BookAhMoChuyen} calculateMetadata={renderTo('book-ah-001-overview', BookAhMoChuyen.metadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan-02', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
         </Folder>
       </Folder>
       <Folder name="Stoic-Stories">

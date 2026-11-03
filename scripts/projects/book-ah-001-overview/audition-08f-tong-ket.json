@@ -1,0 +1,29 @@
+{
+  "title": "Đọc sách, hiểu mình — book-ah-001-overview — 08f-tong-ket",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Tóm lại, Thay đổi tí hon hiệu quả bất ngờ xoay quanh một ý: những thói quen nhỏ, lặp lại đủ lâu, sẽ nhân lên thành kết quả lớn, và thói quen bền nhất bắt đầu từ con người mình muốn trở thành.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Từ đó, sách đưa ra bốn quy luật: làm cho hiển nhiên, hấp dẫn, dễ dàng và thỏa mãn, cùng cách đảo ngược để bỏ thói quen xấu.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Theo mình, đây là cuốn sách nên đọc chậm và làm thử từng chương.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Như tác giả viết ở cuối sách: \"Những thói quen nhỏ không thêm vào mà chúng hợp thành.\"",
+      "pauseAfter": 0
+    }
+  ]
+}

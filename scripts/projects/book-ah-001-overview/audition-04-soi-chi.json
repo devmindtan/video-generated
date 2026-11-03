@@ -1,0 +1,89 @@
+{
+  "title": "Đọc sách, hiểu mình — book-ah-001-overview — 04-soi-chi",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Nếu gom cả cuốn sách lại thành một ý, mình sẽ tóm thế này: kết quả của mình phần lớn là tổng của những thói quen nhỏ lặp lại mỗi ngày.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả lấy phép tính một phần trăm để minh họa: mỗi ngày tốt hơn một chút, sau một năm khác biệt sẽ rất lớn; mỗi ngày tệ đi một chút cũng vậy.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Theo tác giả, \"Thói quen là lãi kép từ việc cải thiện bản thân.\"",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Nhưng lãi kép thì đến muộn.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả ví như một cục nước đá trong phòng lạnh: nhiệt độ tăng dần mà đá chưa tan, đến một mức nào đó mới tan.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Công sức những ngày đầu không mất đi, nó chỉ chưa hiện ra.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Từ đó, tác giả khuyên mình bớt nhìn vào mục tiêu mà nhìn vào hệ thống, tức là những việc mình làm mỗi ngày.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Người thắng và người thua thường có cùng một mục tiêu; khác nhau ở hệ thống.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Như tác giả viết: \"Bạn đừng nâng tầm các mục tiêu. Hãy nâng cấp các hệ thống của bạn.\"",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Sâu hơn nữa là con người mình muốn trở thành.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Hai người cùng được mời thuốc lá: một người nói \"tôi đang cố bỏ\", người kia nói \"tôi không hút thuốc\".",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Người thứ hai đã đổi cách nhìn về chính mình.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Theo tác giả, \"Mỗi một hành động là một lá phiếu bầu chọn cho mẫu người mà bạn mong ước trở thành.\"",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Còn cách làm thì tác giả chia mỗi thói quen thành bốn bước: một dấu hiệu, một sự khao khát, một hành động, và một phần thưởng.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Từ bốn bước đó có bốn quy luật để xây thói quen tốt: làm cho nó hiển nhiên, hấp dẫn, dễ dàng và thỏa mãn; và đảo ngược lại để bỏ thói quen xấu.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Phần còn lại của cuốn sách, mình xin đi theo đúng bốn quy luật đó, rồi thêm một phần nói về khi thói quen đã thành nếp.",
+      "pauseAfter": 0
+    }
+  ]
+}

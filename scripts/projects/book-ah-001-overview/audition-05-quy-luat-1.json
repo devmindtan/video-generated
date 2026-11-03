@@ -1,0 +1,89 @@
+{
+  "title": "Đọc sách, hiểu mình — book-ah-001-overview — 05-quy-luat-1",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Nhận ra thói quen của mình.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Ở đường sắt Nhật, nhân viên vừa chỉ tay vừa nói to từng việc mình đang kiểm tra, để việc tự động được đưa ra ánh sáng.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả gợi ý mình làm một phiếu đánh giá thói quen: viết ra những việc làm mỗi ngày, rồi đánh dấu việc nào đang giúp, việc nào đang cản con người mình muốn trở thành, mà không tự trách.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Theo tác giả, \"Quá trình thay đổi hành vi luôn luôn bắt đầu với sự nhận biết.\"",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Nói rõ khi nào, ở đâu.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Trong một nghiên cứu sách kể, những người viết sẵn câu \"tôi sẽ tập vào ngày nào, lúc mấy giờ, ở đâu\" giữ việc tập tốt hơn hẳn những người chỉ được khích lệ.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả cho rằng nhiều khi mình không thiếu động lực mà thiếu sự rõ ràng.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Một cách khác là xếp chồng thói quen: \"Sau khi làm [Thói quen hiện tại], tôi sẽ làm [Thói quen mới]\", như sau khi pha cà phê buổi sáng thì ngồi thiền một phút.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Thay đổi môi trường.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Ở một bệnh viện, người ta chỉ đặt thêm nước lọc ở mọi quầy, không nói với ai, vậy mà lượng nước ngọt bán ra giảm hẳn.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả đặt táo vào một cái bát giữa bếp và từ đó ăn táo mỗi ngày.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Ông cũng khuyên mỗi không gian chỉ nên gắn với một việc: giường để ngủ, bàn để làm việc.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Đảo ngược: làm cho khó thấy.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Theo tác giả, người có vẻ kỷ luật thật ra là người sắp xếp đời sống để ít phải gồng mình chống cám dỗ.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Muốn bớt cầm điện thoại thì để nó ở phòng khác.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Như tác giả viết: \"Tránh những cám dỗ dễ dàng hơn kháng cự chúng.\"",
+      "pauseAfter": 0
+    }
+  ]
+}

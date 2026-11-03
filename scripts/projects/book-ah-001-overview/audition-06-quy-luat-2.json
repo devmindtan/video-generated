@@ -1,0 +1,79 @@
+{
+  "title": "Đọc sách, hiểu mình — book-ah-001-overview — 06-quy-luat-2",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Muốn trước khi làm.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả giải thích một cách đơn giản rằng điều thúc mình hành động là cảm giác mong chờ phần thưởng, nhiều khi còn mạnh hơn lúc nhận được nó.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Ông cũng tự ghi chú rằng đây là cách nói giản lược về bộ não.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Gói cám dỗ.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Một chàng trai ở Dublin nối chiếc xe đạp tập với màn hình, chỉ khi đạp đủ nhanh thì phim mới chạy.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả gợi ý ghép việc cần làm với việc mình thích: chỉ xem tập phim yêu thích khi đang tập, hoặc chỉ đọc tin sau khi đã nói một điều mình biết ơn.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Người xung quanh.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Một người cha ở Hungary tin rằng thiên tài là do giáo dục, nên nuôi ba cô con gái trong ngôi nhà ngập cờ vua; cả ba đều thành kỳ thủ hàng đầu.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Theo tác giả, thói quen nào là bình thường ở nơi mình sống sẽ là thói quen hấp dẫn nhất, vì \"Hầu hết thời gian chúng ta thà sai theo đám đông còn hơn là đúng một mình.\"",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Vậy nên ông khuyên mình đến với những nhóm mà điều mình muốn làm là chuyện bình thường.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Đổi cách nói với chính mình.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Theo tác giả, \"Thói quen là giải pháp thời hiện đại cho những khát khao nguyên thủy.\"",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Cùng một việc, đổi chữ \"phải\" thành chữ \"được\" thì cảm giác khác hẳn: không phải \"mình phải dậy sớm đi làm\", mà \"mình được dậy sớm đi làm\".",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Đảo ngược lại, muốn bỏ thói quen xấu thì nhìn rõ nó không thật sự cho mình điều mình cần.",
+      "pauseAfter": 0
+    }
+  ]
+}

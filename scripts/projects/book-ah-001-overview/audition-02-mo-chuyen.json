@@ -1,0 +1,44 @@
+{
+  "title": "Đọc sách, hiểu mình — book-ah-001-overview — 02-mo-chuyen",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Cuốn sách mở đầu bằng chuyện của chính tác giả.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Vào ngày cuối của năm thứ hai trung học, một cây gậy bóng chày tuột khỏi tay một bạn cùng lớp và đập thẳng vào mặt cậu.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Cậu bị gãy mũi, rạn xương sọ, có lúc hôn mê và lên cơn co giật, rồi mất nhiều tháng mới hồi phục.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Hai năm sau, khi đã vào đại học, tác giả bắt đầu lại bằng những việc rất nhỏ: đi ngủ sớm, giữ phòng gọn gàng, học đều, tập tạ đều.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Không có ngày nào thay đổi hẳn, nhưng sáu năm sau cái ngày bị thương, cậu được chọn là vận động viên nam xuất sắc nhất trường.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Theo tác giả, những thay đổi nhỏ lúc đầu tưởng không đáng kể, nếu giữ đủ lâu, sẽ thành một kết quả mà chính mình cũng không ngờ.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Cả cuốn sách là cách để làm được điều đó.",
+      "pauseAfter": 0
+    }
+  ]
+}

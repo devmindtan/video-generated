@@ -1,0 +1,14 @@
+{
+  "title": "Đọc sách, hiểu mình — book-ah-001-overview — 01-gioi-thieu-tap",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Tập thứ hai, mình chọn cuốn Thay đổi tí hon hiệu quả bất ngờ, tên gốc là Atomic Habits, của tác giả James Clear, một cuốn sách về cách những thói quen rất nhỏ làm nên thay đổi lớn.",
+      "pauseAfter": 0
+    }
+  ]
+}

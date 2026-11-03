@@ -98,7 +98,7 @@
     {
       "id": "book-ah-001-overview",
       "title": "Thay đổi tí hon hiệu quả bất ngờ: tổng quan và đánh giá",
-      "status": "planning",
+      "status": "production",
       "format": "long",
       "durationSeconds": 780,
       "book": "thay-doi-ti-hon-hieu-qua-bat-ngo-atomic-habits",
@@ -108,7 +108,20 @@
         "docs": "docs/projects/book-ah-001-overview",
         "assets": "public/book-ah-001-overview"
       },
-      "registrations": []
+      "registrations": [
+        {
+          "id": "BookAhTap02",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookAhEpisodeCard",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookAhMoChuyen",
+          "kind": "Composition"
+        }
+      ]
     }
   ]
 }

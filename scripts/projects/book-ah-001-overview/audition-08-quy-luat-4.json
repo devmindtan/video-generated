@@ -1,0 +1,84 @@
+{
+  "title": "Đọc sách, hiểu mình — book-ah-001-overview — 08-quy-luat-4",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Phần thưởng ngay lúc làm.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Ở những khu nghèo của một thành phố lớn, người dân biết rửa tay là tốt nhưng không làm đều.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Khi có loại xà phòng thơm và nhiều bọt, rửa tay thành việc dễ chịu, và nhiều nhà giữ thói quen ấy suốt nhiều năm.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Theo tác giả, quy tắc cốt lõi là: điều được thưởng ngay thì lặp lại, điều khó chịu ngay thì tránh.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Thói quen tốt thường trả giá ở hiện tại, còn thói quen xấu trả giá ở tương lai.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Cho việc \"không làm\" một phần thưởng.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Mỗi lần nhịn một ly cà phê ngoài tiệm, một người chuyển số tiền ấy vào tài khoản đặt tên là \"áo khoác da\".",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả lưu ý phần thưởng phải hợp với con người mình muốn trở thành, vì \"Sự khích lệ có thể bắt đầu một thói quen. Đặc tính duy trì một thói quen.\"",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Nhìn thấy tiến bộ.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Một nhân viên môi giới trẻ đặt hai cái lọ trên bàn, mỗi cuộc gọi xong lại chuyển một cái kẹp giấy sang lọ kia.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả gợi ý đánh dấu lên lịch mỗi ngày đã làm, và nhắc một nguyên tắc: \"Bỏ lỡ một lần là vô tình. Bỏ lỡ hai lần chính là khởi đầu cho một thói quen mới.\"",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Những ngày tệ mà vẫn làm một chút lại là những ngày đáng giá nhất.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Đảo ngược: có người cùng giữ lời.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả kể chuyện một người ký hợp đồng thói quen với vợ và huấn luyện viên, ghi sẵn hình phạt nếu bỏ cuộc.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Theo tác giả, khi biết có người đang dõi theo, mình khó làm điều sai hơn.",
+      "pauseAfter": 0
+    }
+  ]
+}

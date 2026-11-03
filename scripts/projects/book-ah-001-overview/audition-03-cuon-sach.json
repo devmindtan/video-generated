@@ -1,0 +1,29 @@
+{
+  "title": "Đọc sách, hiểu mình — book-ah-001-overview — 03-cuon-sach",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Cuốn sách có hai mươi chương, chia theo bốn quy luật của thói quen, cộng thêm phần nền tảng ở đầu và phần nâng cao ở cuối.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả viết từ blog về thói quen mà ông duy trì nhiều năm, và nói rõ đây là một \"bản hướng dẫn thao tác\", không phải một công trình nghiên cứu khoa học.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Ông gom những gì tâm lý học hành vi đã biết, rồi biến thành những việc ai cũng làm thử được ngay hôm nay.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Vì vậy, mình nghĩ nên đọc cuốn này như một cuốn sổ tay: đọc một chương, thử một việc, rồi mới đọc tiếp.",
+      "pauseAfter": 0
+    }
+  ]
+}
