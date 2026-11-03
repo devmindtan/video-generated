@@ -173,7 +173,8 @@
     "test:manager:client-media": "node --test tools/project-manager/client-media.test.cjs",
     "test:manager:progress": "node tools/project-manager/progress-ui.test.cjs",
     "test:manager:live": "node --test tools/project-manager/live.test.cjs",
-    "test:manager:approvals": "node tools/project-manager/approvals-ui.test.cjs"
+    "test:manager:approvals": "node tools/project-manager/approvals-ui.test.cjs",
+    "test:manager:media-switch": "node tools/project-manager/media-switch.test.cjs"
   },
   "dependencies": {
     "@lottiefiles/dotlottie-web": "0.81.0",

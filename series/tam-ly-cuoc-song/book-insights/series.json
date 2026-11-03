@@ -182,15 +182,18 @@
       "registrations": [
         {
           "id": "BookHvttShortVocMuoi",
-          "kind": "Composition"
+          "kind": "Composition",
+          "title": "Short 1 · Vốc muối và dòng sông"
         },
         {
           "id": "BookHvttShortDauVaKho",
-          "kind": "Composition"
+          "kind": "Composition",
+          "title": "Short 2 · Đau và khổ khác nhau"
         },
         {
           "id": "BookHvttShortGoiMai",
-          "kind": "Composition"
+          "kind": "Composition",
+          "title": "Short 3 · Gọi mãi không nghe máy"
         }
       ]
     }

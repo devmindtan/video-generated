@@ -984,9 +984,23 @@ async function watch(id,kind){
   if(kind==='video'&&p.importedVideo&&!p.videoInline){const note=document.createElement('div');note.className='media-unplayable';note.append(Object.assign(document.createElement('p'),{textContent:`Trình duyệt không phát trực tiếp được định dạng ${(p.videoFile||'').split('.').pop().toUpperCase()}. Video đã được lưu trong thư mục của dự án.`}),Object.assign(document.createElement('button'),{className:'button secondary',textContent:'Mở thư mục video',onclick:()=>api('/api/open-folder',{id,group:'assets'}).catch(e=>toast(e.message))}));
     $('#media-title').textContent=p.title;$('#media-status').textContent='Video khách hàng đã import vào workspace; file gốc bên ngoài không bị thay đổi.';$('#media-studio').hidden=true;$('#media-content').replaceChildren(note);$('#media-dialog').showModal();return;}
   if(kind==='video'&&p.importedVideo&&!(await preparePlayback(id)))return;
-  const media=document.createElement(kind==='video'?'video':'img');media.src=`/api/media?id=${encodeURIComponent(id)}&kind=${kind}`;
+  // A project with several exported videos (three shorts…) opens on the first and offers a numbered button for each.
+  const many=kind==='video'&&!p.importedVideo&&(p.videos||[]).length>1,status=$('#media-status').textContent;let pick=many?p.videos[0]:null;
+  const source=()=>`/api/media?id=${encodeURIComponent(id)}&kind=${kind}${pick?'&file='+encodeURIComponent(pick.name):''}`;
+  const media=document.createElement(kind==='video'?'video':'img');media.src=source();
   if(kind==='video'){media.controls=true;media.playsInline=true;media.preload='metadata';if(p.renderedThumbnail)media.poster=`/api/media?id=${encodeURIComponent(id)}&kind=thumbnail`;}else media.alt='Thumbnail đã xuất — '+p.title;
   media.addEventListener('error',()=>$('#media-status').textContent=selectedMedia.composition?'Không đọc được bản xuất. Bạn có thể mở Studio bằng nút bên dưới.':'Trình duyệt không phát được video này (có thể do codec, ví dụ MOV ProRes). Video vẫn được lưu trong thư mục của dự án.');
+  const bar=$('#media-switch');bar.hidden=!many;bar.replaceChildren();
+  if(many){
+    const label=v=>`Video ${v.number}/${p.videos.length} · ${v.title}`;
+    for(const v of p.videos){
+      const button=Object.assign(document.createElement('button'),{type:'button',className:'media-switch-item',title:v.name});button.setAttribute('aria-pressed',String(v===pick));button.setAttribute('aria-label',label(v));
+      button.append(Object.assign(document.createElement('span'),{className:'media-switch-number',textContent:String(v.number)}),Object.assign(document.createElement('span'),{className:'media-switch-title',textContent:v.title}));
+      button.onclick=()=>{if(v===pick)return;pick=v;media.pause();media.src=source();media.load();$('#media-status').textContent=status;
+        bar.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));};
+      bar.append(button);
+    }
+  }
   $('#media-content').replaceChildren(media);if(!$('#media-dialog').open)$('#media-dialog').showModal();
 }
 async function preparePlayback(id){
@@ -1002,7 +1016,7 @@ async function preparePlayback(id){
   }
 }
 $('#close-media').onclick=()=>$('#media-dialog').close();
-$('#media-dialog').addEventListener('close',()=>$('#media-content').replaceChildren());
+$('#media-dialog').addEventListener('close',()=>{$('#media-content').replaceChildren();$('#media-switch').replaceChildren();$('#media-switch').hidden=true;});
 $('#media-studio').onclick=()=>launchStudio(selectedMedia.id,selectedMedia.composition);
 $('#media-folder').onclick=()=>api('/api/open-folder',{id:selectedMedia.id,group:selectedMedia.kind}).catch(error=>toast(error.message));
 $('#new-book-button').onclick=()=>showCreate('book');

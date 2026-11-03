@@ -35,6 +35,14 @@ function features(root){
     return [...files.values()].sort((a,b)=>b.modified-a.modified);
   }
   function media(id,kind){const p=project(id);return exportsFor(p).find(f=>f.kind===kind)||null;}
+  // Every exported video of a project in registration order (a project can hold several shorts), each numbered and
+  // named after its composition: series.json registrations may carry a "title" ("Short 1 · …"), else the composition id.
+  function videos(id){
+    const p=project(id),comps=p.registrations.filter(r=>r.kind==='Composition');
+    const list=exportsFor(p).filter(f=>f.kind==='video').map(f=>{const stem=path.basename(f.name,path.extname(f.name)),i=comps.findIndex(r=>stem===r.id||stem.startsWith(r.id+'-'));return {...f,order:i<0?comps.length:i,registration:comps[i]||null};});
+    list.sort((a,b)=>a.order-b.order||b.modified-a.modified);
+    return list.map((f,k)=>({file:f.file,name:f.name,number:k+1,title:f.registration?.title||f.registration?.id||f.name,composition:f.registration?.id||null,imported:Boolean(f.imported),inline:f.inline!==false}));
+  }
   function bookFolder(sid,id){if(!slug(id))throw Error('Invalid book id');const s=series(sid);return safe(path.relative(root,path.join(path.dirname(s.file),'books',id)));}
   function sources(sid,id){if(!fs.existsSync(path.join(bookFolder(sid,id),'book.json')))throw Error('Book not found');const folder=safe(`library/books/${id}/sources`);return fs.existsSync(folder)?fs.readdirSync(folder).filter(n=>n.toLowerCase().endsWith('.pdf')).map(name=>({name,size:fs.statSync(safe(`library/books/${id}/sources/${name}`)).size})):[];}
   function coverFolder(sid,id){const folder=bookFolder(sid,id);if(!fs.existsSync(path.join(folder,'book.json')))throw Error('Book not found');const covers=safe(path.relative(root,path.join(folder,'covers')));if(fs.realpathSync(folder)!==folder||(fs.existsSync(covers)&&fs.realpathSync(covers)!==covers))throw Error('Cover folder must not be a symlink');return covers;}
@@ -133,6 +141,6 @@ function features(root){
     if(digest(fs.readFileSync(file,'utf8'))!==b.revision){fs.unlinkSync(temp);throw conflict();}
     fs.renameSync(temp,file);return {revision:digest(text),title,authors};
   }
-  return {bookCover,uploadCover,media,exportsFor,newBook,updateBook,sources,upload,deletion,remove};
+  return {bookCover,uploadCover,media,videos,exportsFor,newBook,updateBook,sources,upload,deletion,remove};
 }
 module.exports={features};

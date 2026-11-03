@@ -115,6 +115,19 @@ test('rendered media is discovered and served with seek ranges; source images ar
  assert.equal((await fetch(f.base+'/api/media?id=old&kind=video',{headers:{Range:'bytes=20-30'}})).status,416);
  assert.equal((await fetch(f.base+'/api/media?id=old&kind=source')).status,404);
 });
+test('a project with several exported videos lists each with number and title, and serves the chosen one only',async t=>{
+ const f=await fixture(t);
+ const file='series/tam-ly-cuoc-song/demo/series.json',series=JSON.parse(fs.readFileSync(path.join(f.root,file),'utf8'));
+ series.projects[0].registrations=[{id:'Old',kind:'Composition',title:'Short 1 · Vốc muối'},{id:'OldTwo',kind:'Composition'},{id:'OldThumb',kind:'Still'}];f.write(file,series);
+ f.write('src/projects/registry.tsx',fs.readFileSync(path.join(f.root,'src/projects/registry.tsx'),'utf8').replace('<Still','<Composition id="OldTwo" component={Video} durationInFrames={900} fps={30} width={1080} height={1920}/><Still'));
+ f.write('projects/old/OldTwo.mp4','second-video');f.write('projects/old/Old.mp4','first-video');
+ const project=(await (await fetch(f.base+'/api/workspace')).json()).projects[0];
+ assert.deepEqual(project.videos,[{name:'Old.mp4',number:1,title:'Short 1 · Vốc muối'},{name:'OldTwo.mp4',number:2,title:'OldTwo'}]);
+ assert.equal(await (await fetch(f.base+'/api/media?id=old&kind=video&file=OldTwo.mp4')).text(),'second-video');
+ assert.equal(await (await fetch(f.base+'/api/media?id=old&kind=video&file=Old.mp4')).text(),'first-video');
+ assert.equal((await fetch(f.base+'/api/media?id=old&kind=video&file=..%2F..%2F.env.local')).status,404);
+ assert.equal((await fetch(f.base+'/api/media?id=old&kind=video&file=OldThumb.png')).status,404);
+});
 test('multiple book records accept private PDF copies without extraction, overwrites or arbitrary paths',async t=>{
  const f=await fixture(t);assert.equal((await f.post('/api/books',{series:'demo',id:'another-book',title:'Cuốn thứ hai',authors:'A, B'})).status,201);
  const upload=(name,bytes)=>fetch(f.base+'/api/book-source?series=demo&book=another-book&name='+encodeURIComponent(name),{method:'POST',headers:{Origin:f.base,'X-Workspace-Token':f.workspace.token,'Content-Type':'application/pdf'},body:bytes});

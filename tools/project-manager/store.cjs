@@ -88,9 +88,10 @@ function createStore(root) {
     })();
     return video ? {video,type:'video-frame'} : null;
   }
-  function videoPlayback(id) {
-    // Imported customer videos may need a browser copy (HEVC MOV…); exports are served as rendered.
-    const item = extra.media(id,'video');
+  function videoPlayback(id, name) {
+    // Imported customer videos may need a browser copy (HEVC MOV…); exports are served as rendered. name picks one of
+    // several exported videos (by file name, only among the project's own exports).
+    const item = name ? extra.videos(id).find(v=>v.name===name) : extra.media(id,'video');
     return !item ? null : item.imported ? playback.playable(item.file) : {file:item.file,converted:false};
   }
   function servedPreview(id) {
@@ -171,7 +172,8 @@ function createStore(root) {
         renderedVideo:Boolean(renderedVideo),renderedThumbnail:Boolean(renderedThumbnail),importedVideo:Boolean(renderedVideo?.imported),videoInline:renderedVideo?.inline!==false,videoFile:renderedVideo?.name||null,videoId:video?.id||null,thumbnailId:thumbnail?.id||null,previewType:image?.type||null,updatedAt,book:project.book||null,
         hasScript:exists(path.join(location(project.paths.docs),'script.md')),
         hasDescription:exists(path.join(location(project.paths.docs),'description.md')),autoNamed:Boolean(project.autoNamed),progress,
-        videoFolder:renderedVideo?path.relative(root,path.dirname(renderedVideo.file)):null};
+        videoFolder:renderedVideo?path.relative(root,path.dirname(renderedVideo.file)):null,
+        videos:renderedVideo?extra.videos(project.id).map(v=>({name:v.name,number:v.number,title:v.title})):[]};
     }));
     return {channels:catalog.channels,series:catalog.series.map(s=>({id:s.id,title:s.title,channel:s.channel,summary:s.summary,
       formats:s.formats,projectCount:s.projects.length})),projects,books:catalog.series.flatMap(books),
