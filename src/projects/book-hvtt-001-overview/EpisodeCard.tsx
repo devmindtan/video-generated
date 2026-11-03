@@ -40,7 +40,7 @@ export const BookInsightsEpisodeCard: FC<EpisodeCardProps> = ({voice: voiceId, c
       <div style={{position: 'absolute', top: 104, left: 0, right: 0, textAlign: 'center', color: GOLD, fontSize: 22, fontWeight: 700, letterSpacing: 8}}>{channelLabel}</div>
       <div style={{position: 'absolute', top: 300, left: 0, right: 0, textAlign: 'center', opacity: cardIn, translate: `0 ${(1 - cardIn) * 18}px`}}>
         <div style={{color: GOLD, fontSize: 28, fontWeight: 700, letterSpacing: 10}}>{episodeLabel}</div>
-        <div style={{marginTop: 26, color: IVORY, fontSize: 112, fontWeight: 700, letterSpacing: 1, textShadow: '0 6px 30px rgba(0,0,0,.6)'}}>{bookTitle}</div>
+        <div style={{margin: '26px auto 0', maxWidth: 1400, color: IVORY, fontSize: bookTitle.length > 22 ? 92 : 112, lineHeight: 1.12, fontWeight: 700, letterSpacing: 1, textWrap: 'balance', textShadow: '0 6px 30px rgba(0,0,0,.6)'}}>{bookTitle}</div>
         <div style={{margin: '26px auto', width: 120, height: 2, background: GOLD}} />
         <div style={{color: IVORY, fontSize: 38, fontWeight: 400, letterSpacing: 4, opacity: .85}}>{bookAuthor}</div>
       </div>

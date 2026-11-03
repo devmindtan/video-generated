@@ -4,16 +4,22 @@ Segments follow the channel naming (NN-đoạn): 01b cách làm của tập, 02 
 08e điểm chưa đạt, 08f tổng kết, 08g ý kiến cá nhân, 09 nhận xét chung. Item titles in bold ("Cơn giận.") are spoken as a short lead sentence; "[nghỉ]" becomes a
 longer pause; {…} notes, > quotes and ### headings are not spoken. Long sentences stay whole (natural prosody);
 paragraphs are split at sentence ends outside quotation marks.
-Usage: .venv/bin/python scripts/projects/book-hvtt-001-overview/sections.py
+Other episodes of the series: --project <slug>, with the segment map in scripts/projects/<slug>/segments.json
+({"<script heading>": "<segment id>"}); outputs go to that episode's scripts folder.
+Usage: .venv/bin/python scripts/projects/book-hvtt-001-overview/sections.py [--project <slug>]
 """
-import json, re
+import argparse, json, re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-HERE = Path(__file__).resolve().parent
-SCRIPT = ROOT / 'docs/projects/book-hvtt-001-overview/script.md'
+DEFAULT = 'book-hvtt-001-overview'
+_parser = argparse.ArgumentParser(); _parser.add_argument('--project', default=DEFAULT)
+PROJECT = _parser.parse_known_args()[0].project
+HERE = ROOT / 'scripts/projects' / PROJECT
+SCRIPT = ROOT / 'docs/projects' / PROJECT / 'script.md'
 SEGMENTS = {'0p': '01b-cach-lam', '0b': '02-mo-chuyen', '1': '03-cuon-sach', '2': '04-soi-chi', '3A': '05-nhom-3a', '3B': '06-nhom-3b',
             '3C': '07-nhom-3c', '3D': '08-nhom-3d', '3E': '08e-diem-chua-dat', '3F': '08f-tong-ket', '4': '08g-y-kien', '5': '09-nhan-xet'}
+if (HERE / 'segments.json').exists(): SEGMENTS = json.loads((HERE / 'segments.json').read_text())
 
 
 def sentences(paragraph):
@@ -40,7 +46,7 @@ def blocks():
     text = SCRIPT.read_text().split('---', 1)[1]
     current, sub, found = None, None, {}
     for line in text.split('\n'):
-        h2 = re.match(r'## (\w+)\.', line); h3 = re.match(r'### (3[A-D])\.', line)
+        h2 = re.match(r'## (\w+)\.', line); h3 = re.match(r'### (3[A-Z])\.', line)
         if h2: current = h2.group(1); sub = None; continue
         if h3: sub = h3.group(1); continue
         key = sub or current
@@ -72,6 +78,7 @@ def main():
                 if item[0] in kept: item[1] = kept[item[0]]
         cfg = {'title': f'Đọc sách, hiểu mình — tập 1 — {seg}', 'temperature': .5, 'leadIn': .3, 'tail': .5, 'maxDurationSeconds': 400,
                'sentences': [{'scene': 1, 'text': t, 'pauseAfter': pause} for t, pause in items]}
+        if PROJECT != DEFAULT: cfg['title'] = f'Đọc sách, hiểu mình — {PROJECT} — {seg}'
         (HERE / f'audition-{seg}.json').write_text(json.dumps(cfg, ensure_ascii=False, indent=2) + '\n')
         (HERE / f'lines-{seg}.txt').write_text('\n'.join(t for t, _ in items) + '\n')
         print(f'{seg}: {len(items)} câu')
