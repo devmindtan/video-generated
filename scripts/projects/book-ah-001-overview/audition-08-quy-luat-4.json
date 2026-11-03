@@ -7,6 +7,11 @@
   "sentences": [
     {
       "scene": 1,
+      "text": "Quy luật thứ tư là làm cho thói quen trở nên thỏa mãn, để lần sau mình muốn làm lại.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
       "text": "Phần thưởng ngay lúc làm.",
       "pauseAfter": 0.45
     },

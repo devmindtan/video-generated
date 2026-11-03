@@ -66,6 +66,8 @@ Phần còn lại của cuốn sách, mình xin đi theo đúng bốn quy luật
 
 ### 3A. Quy luật 1: Làm cho hiển nhiên
 
+Quy luật thứ nhất là làm cho thói quen trở nên hiển nhiên, tức là để dấu hiệu của nó dễ thấy.
+
 **Nhận ra thói quen của mình.** Ở đường sắt Nhật, nhân viên vừa chỉ tay vừa nói to từng việc mình đang kiểm tra, để việc tự động được đưa ra ánh sáng. Tác giả gợi ý mình làm một phiếu đánh giá thói quen: viết ra những việc làm mỗi ngày, rồi đánh dấu việc nào đang giúp, việc nào đang cản con người mình muốn trở thành, mà không tự trách. Theo tác giả, "Quá trình thay đổi hành vi luôn luôn bắt đầu với sự nhận biết."
 
 **Nói rõ khi nào, ở đâu.** Trong một nghiên cứu sách kể, những người viết sẵn câu "tôi sẽ tập vào ngày nào, lúc mấy giờ, ở đâu" giữ việc tập tốt hơn hẳn những người chỉ được khích lệ. Tác giả cho rằng nhiều khi mình không thiếu động lực mà thiếu sự rõ ràng. Một cách khác là xếp chồng thói quen: "Sau khi làm [Thói quen hiện tại], tôi sẽ làm [Thói quen mới]", như sau khi pha cà phê buổi sáng thì ngồi thiền một phút.
@@ -77,6 +79,8 @@ Phần còn lại của cuốn sách, mình xin đi theo đúng bốn quy luật
 {Ch4 PDF 36–40; Ch5 PDF 40–49; Ch6 PDF 49–57; Ch7 PDF 57–61 (không dùng ví dụ lính Mỹ). Không đọc các tỉ lệ phần trăm sách nêu. Trích PDF 40, 45, 60.}
 
 ### 3B. Quy luật 2: Làm cho hấp dẫn
+
+Quy luật thứ hai là làm cho thói quen trở nên hấp dẫn, để mình thật sự muốn làm nó.
 
 **Muốn trước khi làm.** Tác giả giải thích một cách đơn giản rằng điều thúc mình hành động là cảm giác mong chờ phần thưởng, nhiều khi còn mạnh hơn lúc nhận được nó. Ông cũng tự ghi chú rằng đây là cách nói giản lược về bộ não.
 
@@ -90,6 +94,8 @@ Phần còn lại của cuốn sách, mình xin đi theo đúng bốn quy luật
 
 ### 3C. Quy luật 3: Làm cho dễ dàng
 
+Quy luật thứ ba là làm cho thói quen trở nên dễ dàng, để không có gì cản mình bắt đầu.
+
 **Làm nhiều hơn nghĩ.** Một thầy dạy nhiếp ảnh chia lớp làm hai: một nửa chấm điểm theo số lượng ảnh, nửa kia chỉ cần nộp một tấm thật hoàn hảo. Cuối khóa, những tấm đẹp nhất lại đến từ nhóm chụp nhiều, vì họ được thực hành và sửa sai liên tục. Tác giả phân biệt chuẩn bị với làm thật: lên kế hoạch cho bài tập không phải là đi tập. Theo tác giả, "việc hình thành thói quen dựa trên tần suất chứ không phải thời gian."
 
 **Bớt ma sát.** Tác giả ví như vòi nước bị gập: thay vì vặn van mạnh hơn, hãy gỡ chỗ gập. Chọn phòng tập trên đường đi làm, bày sẵn đồ tập từ tối hôm trước, dọn lại căn phòng sau mỗi lần dùng để lần sau bắt đầu ngay được.
@@ -102,6 +108,8 @@ Phần còn lại của cuốn sách, mình xin đi theo đúng bốn quy luật
 
 ### 3D. Quy luật 4: Làm cho thỏa mãn
 
+Quy luật thứ tư là làm cho thói quen trở nên thỏa mãn, để lần sau mình muốn làm lại.
+
 **Phần thưởng ngay lúc làm.** Ở những khu nghèo của một thành phố lớn, người dân biết rửa tay là tốt nhưng không làm đều. Khi có loại xà phòng thơm và nhiều bọt, rửa tay thành việc dễ chịu, và nhiều nhà giữ thói quen ấy suốt nhiều năm. Theo tác giả, quy tắc cốt lõi là: điều được thưởng ngay thì lặp lại, điều khó chịu ngay thì tránh. Thói quen tốt thường trả giá ở hiện tại, còn thói quen xấu trả giá ở tương lai.
 
 **Cho việc "không làm" một phần thưởng.** Mỗi lần nhịn một ly cà phê ngoài tiệm, một người chuyển số tiền ấy vào tài khoản đặt tên là "áo khoác da". Tác giả lưu ý phần thưởng phải hợp với con người mình muốn trở thành, vì "Sự khích lệ có thể bắt đầu một thói quen. Đặc tính duy trì một thói quen."
@@ -113,6 +121,8 @@ Phần còn lại của cuốn sách, mình xin đi theo đúng bốn quy luật
 {Ch15 PDF 119–128 (không đọc các tỉ lệ giảm bệnh); Ch16 PDF 128–136 (không đọc số "16 triệu"); Ch17 PDF 136–143 (không dùng ví dụ mã hạt nhân). Trích PDF 127, 133.}
 
 ### 3E. Khi thói quen đã thành nếp
+
+Phần cuối của sách nói về lúc thói quen đã thành nếp, khi điều khó không còn là bắt đầu mà là giữ cho nó đi tiếp.
 
 **Chọn đúng sân chơi.** Theo tác giả, gen không quyết định số phận, nhưng cho biết mình có lợi thế ở đâu. Ông khuyên chọn thói quen hợp với bản tính của mình, và "Khi bạn không thể chiến thắng bằng cách trở nên tốt hơn, bạn có thể chiến thắng bằng cách trở nên khác biệt."
 

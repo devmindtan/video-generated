@@ -7,6 +7,11 @@
   "sentences": [
     {
       "scene": 1,
+      "text": "Quy luật thứ hai là làm cho thói quen trở nên hấp dẫn, để mình thật sự muốn làm nó.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
       "text": "Muốn trước khi làm.",
       "pauseAfter": 0.45
     },

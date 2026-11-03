@@ -8,5 +8,55 @@
     "id": "02-mo-chuyen",
     "title": "Mở chuyện",
     "composition": "BookAhMoChuyen"
+  },
+  {
+    "id": "03-cuon-sach",
+    "title": "Phần 1 · Cuốn sách là gì",
+    "composition": "BookAhCuonSach"
+  },
+  {
+    "id": "04-soi-chi",
+    "title": "Phần 2 · Sợi chỉ xuyên suốt",
+    "composition": "BookAhSoiChi"
+  },
+  {
+    "id": "05-quy-luat-1",
+    "title": "Quy luật 1",
+    "composition": "BookAhQuyLuat1"
+  },
+  {
+    "id": "06-quy-luat-2",
+    "title": "Quy luật 2",
+    "composition": "BookAhQuyLuat2"
+  },
+  {
+    "id": "07-quy-luat-3",
+    "title": "Quy luật 3",
+    "composition": "BookAhQuyLuat3"
+  },
+  {
+    "id": "08-quy-luat-4",
+    "title": "Quy luật 4",
+    "composition": "BookAhQuyLuat4"
+  },
+  {
+    "id": "08b-thanh-nep",
+    "title": "Khi thói quen đã thành nếp",
+    "composition": "BookAhThanhNep"
+  },
+  {
+    "id": "08e-diem-chua-dat",
+    "title": "Những điểm chưa đạt",
+    "composition": "BookAhChuaDat"
+  },
+  {
+    "id": "08f-tong-ket",
+    "title": "Tổng kết",
+    "composition": "BookAhTongKet"
+  },
+  {
+    "id": "09-nhan-xet",
+    "title": "Nhận xét chung",
+    "composition": "BookAhNhanXet"
   }
 ]

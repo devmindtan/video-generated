@@ -7,6 +7,11 @@
   "sentences": [
     {
       "scene": 1,
+      "text": "Phần cuối của sách nói về lúc thói quen đã thành nếp, khi điều khó không còn là bắt đầu mà là giữ cho nó đi tiếp.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
       "text": "Chọn đúng sân chơi.",
       "pauseAfter": 0.45
     },

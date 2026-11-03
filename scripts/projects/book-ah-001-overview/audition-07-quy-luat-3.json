@@ -7,6 +7,11 @@
   "sentences": [
     {
       "scene": 1,
+      "text": "Quy luật thứ ba là làm cho thói quen trở nên dễ dàng, để không có gì cản mình bắt đầu.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
       "text": "Làm nhiều hơn nghĩ.",
       "pauseAfter": 0.45
     },

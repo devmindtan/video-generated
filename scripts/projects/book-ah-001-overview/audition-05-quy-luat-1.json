@@ -7,6 +7,11 @@
   "sentences": [
     {
       "scene": 1,
+      "text": "Quy luật thứ nhất là làm cho thói quen trở nên hiển nhiên, tức là để dấu hiệu của nó dễ thấy.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
       "text": "Nhận ra thói quen của mình.",
       "pauseAfter": 0.45
     },

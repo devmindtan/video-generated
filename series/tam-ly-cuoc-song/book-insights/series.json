@@ -120,6 +120,46 @@
         {
           "id": "BookAhMoChuyen",
           "kind": "Composition"
+        },
+        {
+          "id": "BookAhCuonSach",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookAhSoiChi",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookAhQuyLuat1",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookAhQuyLuat2",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookAhQuyLuat3",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookAhQuyLuat4",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookAhThanhNep",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookAhChuaDat",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookAhTongKet",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookAhNhanXet",
+          "kind": "Composition"
         }
       ]
     }
