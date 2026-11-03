@@ -94,6 +94,21 @@
         }
       ],
       "book": "hieu-ve-trai-tim"
+    },
+    {
+      "id": "book-ah-001-overview",
+      "title": "Thay đổi tí hon hiệu quả bất ngờ: tổng quan và đánh giá",
+      "status": "planning",
+      "format": "long",
+      "durationSeconds": 780,
+      "book": "thay-doi-ti-hon-hieu-qua-bat-ngo-atomic-habits",
+      "paths": {
+        "source": "src/projects/book-ah-001-overview",
+        "scripts": "scripts/projects/book-ah-001-overview",
+        "docs": "docs/projects/book-ah-001-overview",
+        "assets": "public/book-ah-001-overview"
+      },
+      "registrations": []
     }
   ]
 }
