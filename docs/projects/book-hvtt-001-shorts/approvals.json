@@ -1,7 +1,33 @@
 {
   "schemaVersion": 2,
   "projectId": "book-hvtt-001-shorts",
-  "history": [],
+  "history": [
+    {
+      "projectId": "book-hvtt-001-shorts",
+      "stageId": "review-preview",
+      "decision": "approved",
+      "artifactSha256": {
+        "src/projects/book-hvtt-001-shorts/Video.tsx": "d002c649737e647391afbed4e9cc65688624e2667d8dc3aac92f960a66963a08",
+        "src/projects/book-hvtt-001-shorts/Thumbnail.tsx": "a0cbdcd4bcda4dd03fc9be3c6d6010383d6413ca852c809a7b0e85bc07b5c5fe",
+        "src/projects/book-hvtt-001-shorts/captions.json": "93184d1ceb7b417387f24b711829d5901c53c42206c48e2bfb0da61b11e385e5",
+        "src/projects/book-hvtt-001-shorts/music.json": "da2156c7467a919c1ebb18e0046cab5aca9b2660721f9070975f739bfc79048d",
+        "docs/projects/book-hvtt-001-shorts/script-review.md": "cdc05fb48070015a52f31ae155063809db75ab13d2627f7ed1e539429b9f2c0b",
+        "docs/projects/book-hvtt-001-shorts/script.md": "64c0f5e4739db03dbd986d5aa895bf1607a173d88f43eadeecc3be044972538b",
+        "docs/projects/book-hvtt-001-shorts/sources.md": "7cfb17e9c8eb1a416da08075123b8eff8d2afe493c02320d6b72ddb8f38c5a98",
+        "docs/projects/book-hvtt-001-shorts/brief.md": "e4201344b577a221dbdba6202983f9c709c95b8d8e76fe1a070d422036d40fd5",
+        "scripts/projects/book-hvtt-001-shorts/voice.json": "39de53c29cd3a72f5c17327a327a83652b9edf1701cd3ee93e09b289a00e42be",
+        "docs/projects/book-hvtt-001-shorts/voice-audition.md": "9c6fc5fdbf31a71c3a9b1ab54240bf76f5cf4089ae9cf1226b59dddafd3b0522",
+        "docs/projects/book-hvtt-001-shorts/production-spec.md": "e103d7945c0cefa8721aecaf50c6882a81c34b9355977087a59e102e26278719",
+        "docs/projects/book-hvtt-001-shorts/image-prompts.md": "5684547d029a1853c2451cdac5130a51433da408e7bf583727f81621ea4262cd",
+        "docs/projects/book-hvtt-001-shorts/qa.json": "d47331244c35471926d70a3c2bed68de0eb6aefa38aa8648ced9afebfa8968eb",
+        "docs/projects/book-hvtt-001-shorts/description.md": "a4785bfec5fb2fe34f2385842e0fa4e261cf005aba727ca9651d03acd4715aa9"
+      },
+      "missing": [],
+      "approvedBy": "devmindtan (trang quản lý)",
+      "approvedAt": "2026-11-03T18:06:45.851Z",
+      "note": ""
+    }
+  ],
   "locks": [
     {
       "version": 1,
@@ -214,6 +240,57 @@
       "decidedBy": "devmindtan (trang quản lý)",
       "note": "",
       "itemNotes": {}
+    },
+    {
+      "id": "p4",
+      "baseVersion": 3,
+      "changed": {},
+      "changes": [
+        {
+          "area": "other",
+          "where": "Tài liệu quy trình",
+          "what": "Thêm đủ các mục đang \"Chưa có\": Nguồn và trích dẫn (sources.md, trang PDF của các câu trích, ví dụ nào là của kênh), Phản biện kịch bản (script-review.md), Ghi chép nghe thử giọng (voice-audition.md: take nào, máy nào, vì sao chọn cta-v6), Phụ đề (captions.json và captions-1/2/3.srt để tải lên YouTube), Kiểm tra QA (qa.json: đạt 7/7 mục kỹ thuật), Video.tsx.",
+          "why": "Bạn thấy các mục cứ hiện \"Chưa có\"; lỗi này đã gặp ở tập 1 mà chưa ghi thành quy tắc."
+        },
+        {
+          "area": "visual",
+          "where": "Ảnh bìa 3 short",
+          "what": "BookHvttShortVocMuoiCover, BookHvttShortDauVaKhoCover, BookHvttShortGoiMaiCover (1080×1920): câu hỏi mở đầu chữ to, từ khóa vàng, quyển sách và tên sách bên dưới. Không xuất tự động.",
+          "why": "Bước dựng cần Thumbnail; short dùng làm ảnh bìa trên YouTube nếu bạn muốn."
+        },
+        {
+          "area": "caption",
+          "where": "Phụ đề 3 short",
+          "what": "Mỗi câu chia đều thành các trang tối đa 2 dòng, không còn trang lẻ một chữ (trước đó có trang chỉ có chữ \"ra.\" hiện chưa tới 0,6 giây ở short 1).",
+          "why": "QA phát hiện khi chạy kiểm tra."
+        },
+        {
+          "area": "other",
+          "where": "Quy tắc series",
+          "what": "Thêm quy tắc: file nào xong bước thì tạo ngay ở bước đó; trước khi báo xem bản dựng, chạy kiểm tra để không còn mục \"Chưa có\". Đã lưu cả vào trí nhớ của agent.",
+          "why": "Để không lặp lại."
+        }
+      ],
+      "media": [],
+      "requests": [
+        {
+          "text": "Sao mấy cái này cứ chưa có vậy, lúc trước làm video dài có gặp rồi mà bạn không lưu vào rule để tránh việc này à",
+          "via": "chat"
+        }
+      ],
+      "reason": "Bổ sung đủ tài liệu quy trình (nguồn, phản biện, nghe thử giọng, phụ đề, QA), ảnh bìa 3 short; sửa trang phụ đề lẻ chữ.",
+      "by": "agent (automation patch)",
+      "createdAt": "2026-11-03T17:57:23.298Z",
+      "status": "returned",
+      "decidedAt": "2026-11-03T17:58:28.496Z",
+      "decidedBy": "devmindtan (trang quản lý)",
+      "note": "",
+      "itemNotes": {
+        "change:1": {
+          "text": "Thumbnail toàn là chữ nên không được",
+          "at": "2026-11-03T17:58:27.039Z"
+        }
+      }
     }
   ],
   "scenes": {},

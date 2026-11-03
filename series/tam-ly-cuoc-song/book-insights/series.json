@@ -10,6 +10,7 @@
   ],
   "defaultDurationSeconds": null,
   "summary": "Series tóm tắt và phân tích sách; nghiên cứu theo nguồn, duyệt script trước sản xuất.",
+  "requireBook": true,
   "projects": [
     {
       "id": "book-hvtt-001-overview",
@@ -173,6 +174,8 @@
       "status": "production",
       "format": "short",
       "durationSeconds": 40,
+      "book": "hieu-ve-trai-tim",
+      "promotes": "book-hvtt-001-overview",
       "paths": {
         "source": "src/projects/book-hvtt-001-shorts",
         "scripts": "scripts/projects/book-hvtt-001-shorts",

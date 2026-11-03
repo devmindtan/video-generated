@@ -1,6 +1,7 @@
 {
  "shorts": {
   "short-1": {
+   "title": "Short 1 · Vốc muối và dòng sông",
    "composition": "BookHvttShortVocMuoi",
    "durationSeconds": 30.47,
    "pages": [
@@ -97,6 +98,7 @@
    ]
   },
   "short-2": {
+   "title": "Short 2 · Đau và khổ khác nhau",
    "composition": "BookHvttShortDauVaKho",
    "durationSeconds": 39.47,
    "pages": [
@@ -205,6 +207,7 @@
    ]
   },
   "short-3": {
+   "title": "Short 3 · Gọi mãi không nghe máy",
    "composition": "BookHvttShortGoiMai",
    "durationSeconds": 32.77,
    "pages": [

@@ -33,7 +33,7 @@ function untitledId(catalog) {
   for (let n = 1; ; n++) if (!taken(catalog, `chua-dat-ten-${n}`)) return `chua-dat-ten-${n}`;
 }
 function createProject(catalog, options) {
-  allowed(options, ['--series', '--id', '--title', '--format', '--duration', '--book']);
+  allowed(options, ['--series', '--id', '--title', '--format', '--duration', '--book', '--promotes']);
   const series = catalog.series.find(s => s.id === options['--series']);
   let id = options['--id']?.trim() || '', title = options['--title']?.trim() || '';
   const format = options['--format'], autoNamed = !title;
@@ -42,13 +42,19 @@ function createProject(catalog, options) {
   if (!series || !slug(id) || !series.formats.includes(format)) throw new Error('Require valid --series, unique --id (or an empty --title for a temporary name), --format short|long');
   if (catalog.series.some(s => s.projects.some(p => p.id === id))) throw new Error(`Project slug already exists: ${id}`);
   if (options['--book'] && (!slug(options['--book']) || !fs.existsSync(path.join(path.dirname(series.file), 'books', options['--book'], 'book.json')))) throw new Error('Unknown book in this series');
+  // A series with book records links every project to its book; a short that leads to a long episode names it.
+  if (!options['--book'] && series.requireBook === true) throw new Error('Series này nối mỗi dự án với một cuốn sách: hãy tạo tập từ trang sách (hoặc thêm --book <mã sách>).');
+  if (options['--promotes']) {
+    const target = series.projects.find(p => p.id === options['--promotes']);
+    if (!target || target.format !== 'long' || format !== 'short' || target.book !== options['--book']) throw new Error('--promotes phải là một tập dài cùng sách, cùng series (chỉ dùng cho short).');
+  }
   const duration = options['--duration'] === undefined ?
     (series.defaultDurationSeconds ?? (series.channel === 'tam-ly-cuoc-song' && format === 'short' ? 45 : null)) : Number(options['--duration']);
   if (duration !== null && (!Number.isFinite(duration) || duration <= 0)) throw new Error('Invalid duration');
   const paths = {source:`src/projects/${id}`, scripts:`scripts/projects/${id}`, docs:`docs/projects/${id}`, assets:`public/${id}`};
   for (const relative of Object.values(paths)) if (fs.existsSync(inside(catalog.root, relative))) throw new Error(`Existing directory would be reused: ${relative}`);
   const project = {id, title, status:'planning', format, durationSeconds:duration, paths, registrations:[],
-    ...(options['--book'] ? {book:options['--book']} : {}), ...(autoNamed ? {autoNamed:true} : {})};
+    ...(options['--book'] ? {book:options['--book']} : {}), ...(options['--promotes'] ? {promotes:options['--promotes']} : {}), ...(autoNamed ? {autoNamed:true} : {})};
   // Planning creates documents only: no synthetic composition, voice, image, render or API call.
   const directory = inside(catalog.root, paths.docs);
   fs.mkdirSync(directory, {recursive:true});

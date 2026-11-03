@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parents[3]
 SLUG = 'book-hvtt-001-shorts'
 SRC, DOCS, HERE = ROOT / 'src/projects' / SLUG, ROOT / 'docs/projects' / SLUG, Path(__file__).resolve().parent
 LEAD, GAP1, GAP2, TAIL, FPS = .3, .35, .5, 1.4, 30
+TITLES = {}
 IDS = {'short-1': 'BookHvttShortVocMuoi', 'short-2': 'BookHvttShortDauVaKho', 'short-3': 'BookHvttShortGoiMai'}
 F = lambda s: round(s * FPS)
 words_of = lambda t: re.findall(r'\w+', unicodedata.normalize('NFC', t.lower()))
@@ -90,10 +91,13 @@ def main():
     data = json.loads((SRC / 'shorts.json').read_text())
     music = json.loads((SRC / 'music.json').read_text())
     script = (DOCS / 'script.md').read_text()
+    series = json.loads((ROOT / 'series/tam-ly-cuoc-song/book-insights/series.json').read_text())
+    global TITLES
+    TITLES = {r['id']: r.get('title', r['id']) for p in series['projects'] if p['id'] == SLUG for r in p['registrations']}
     checks, shorts_out, all_caps = [], [], {}
     for k, s in enumerate(data['shorts']):
         caps, tl = captions(s)
-        all_caps[s['id']] = {'composition': IDS[s['id']], 'durationSeconds': round(tl['total'] / FPS, 2), 'pages': caps}
+        all_caps[s['id']] = {'title': TITLES.get(IDS[s['id']], IDS[s['id']]), 'composition': IDS[s['id']], 'durationSeconds': round(tl['total'] / FPS, 2), 'pages': caps}
         (DOCS / f'captions-{k + 1}.srt').write_text(srt(caps))
         shorts_out.append({'id': s['id'], 'composition': IDS[s['id']], 'seconds': round(tl['total'] / FPS, 2), 'pages': len(caps)})
     (SRC / 'captions.json').write_text(json.dumps({'shorts': all_caps}, ensure_ascii=False, indent=1) + '\n')

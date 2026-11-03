@@ -16,7 +16,7 @@
 - Không có nhãn trang hay số trang in: chỉ trích dẫn bằng PDF page.
 - Mục lục in (PDF pages 6-8) xếp "Nâng đỡ" sau "Sòng phẳng"; trong PDF này chương đó nằm ở trang 271-275. Bookmark khớp nội dung thật.
 - Phạm vi đã đọc / chưa đọc (2026-10-30): đã đọc đủ 50/50 chương, lời nói đầu, lời giới thiệu và lời tác giả (PDF 2–5, 9–278). Đọc theo khoảng trang giới hạn, không dùng tìm kiếm thay cho đọc; ghi chú từng chương bên dưới.
-- Mục tiêu tập: tổng quan toàn sách hoặc chủ đề cụ thể — chưa chọn.
+- Các tập làm từ sách này: xem trang sách trong quản lý (mục "Các tập từ sách này"), lấy từ liên kết "book"/"promotes" của dự án trong series.json; không liệt kê tay ở đây.
 
 ## Coverage từng chương
 

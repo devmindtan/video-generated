@@ -163,10 +163,18 @@ function bookCard(b){
    :`<div class="book-reading is-empty"><small>${b.hasSource?'Có PDF · chưa lập mục lục':'Chưa có PDF nguồn'}</small></div>`;
   return `<article class="project-card book-card"><button class="card-cover" data-book="${esc(b.id)}" data-book-series="${esc(b.series)}" aria-label="Mở hồ sơ ${esc(b.title)}">${bookArtwork(b)}</button><div class="card-body"><button class="card-title" data-book="${esc(b.id)}" data-book-series="${esc(b.series)}">${esc(b.title)}</button><div class="card-id">${esc(b.authors.join(', '))}</div><div class="book-facts">${reading}</div><div class="card-footer"><span class="status ${b.hasSource?'production':'planning'}">${esc(status)}</span></div></div></article>`;
 }
-// Episodes made from a book, listed on its detail page.
+// Episodes made from a book, listed on its detail page from series.json links only (project "book"; a short that leads
+// to a long episode names it in "promotes"): each long episode with the shorts made for it under it, then other shorts.
 function bookEpisodes(book){
-  const eps=state.data.projects.filter(p=>p.book===book.id);
-  return `<section class="drawer-section book-episode-list"><h3>Các tập từ sách này <span class="count-pill">${eps.length}</span></h3>${eps.length?`<ul>${eps.map(p=>`<li><a href="#project/${encodeURIComponent(p.id)}" data-project="${esc(p.id)}">${esc(p.title)}</a><span class="status ${esc(p.importedVideo?'existing':p.status)}">${esc(p.importedVideo?'Đã import video':statusNames[p.status]||p.status)}</span></li>`).join('')}</ul>`:'<p>Chưa có tập nào. Bấm “Lên ý tưởng một tập” để bắt đầu.</p>'}</section>`;
+  const eps=state.data.projects.filter(p=>p.book===book.id),longs=eps.filter(p=>p.format==='long'),shorts=eps.filter(p=>p.format==='short');
+  const status=p=>`<span class="status ${esc(p.importedVideo?'existing':p.status)}">${esc(p.importedVideo?'Đã import video':statusNames[p.status]||p.status)}</span>`;
+  const link=p=>`<a href="#project/${encodeURIComponent(p.id)}" data-project="${esc(p.id)}">${esc(p.title)}</a>`;
+  const shortItem=p=>`<li class="episode-short"><span class="episode-kind">${p.compositionCount>1?`${p.compositionCount} short`:'Short'}</span>${link(p)}${status(p)}</li>`;
+  const longItem=p=>{const own=shorts.filter(x=>x.promotes===p.id);
+    return `<li class="episode-long"><div class="episode-row"><span class="episode-kind">Video dài</span>${link(p)}${status(p)}</div>${own.length?`<ul class="episode-shorts" aria-label="Short giới thiệu ${esc(p.title)}">${own.map(shortItem).join('')}</ul>`:''}</li>`;};
+  const loose=shorts.filter(x=>!longs.some(l=>l.id===x.promotes));
+  const count=[longs.length?`${longs.length} video dài`:'',shorts.length?`${shorts.length} dự án short`:''].filter(Boolean).join(' · ')||'0';
+  return `<section class="drawer-section book-episode-list"><h3>Các tập từ sách này <span class="count-pill">${esc(count)}</span></h3>${eps.length?`<ul>${longs.map(longItem).join('')}${loose.map(shortItem).join('')}</ul><p class="episode-note">Danh sách lấy từ liên kết sách của từng dự án (series.json); short nằm dưới video dài mà nó giới thiệu.</p>`:'<p>Chưa có tập nào. Bấm “Lên ý tưởng một tập” để bắt đầu.</p>'}</section>`;
 }
 // A→Z ignores leading quotes and punctuation, so “Để mai” sorts under Đ.
 const sortKey=t=>String(t||'').replace(/^[^\p{L}\p{N}]+/u,''),byTitle=(a,b)=>sortKey(a.title).localeCompare(sortKey(b.title),'vi');
@@ -363,9 +371,28 @@ function renderGateReview(){
 // Review panels show files the way the Hồ sơ tab does: Markdown rendered, captions as a timed table, other JSON as
 // labelled fields; the exact text stays one click away.
 const clockMs=ms=>{const t=Math.max(0,ms)/1000,m=Math.floor(t/60);return `${m}:${(t-m*60).toFixed(1).padStart(4,'0').replace('.',',')}`;};
+// captions.json in any of the project shapes, read as a script with times: scene groups ([[page…]…]), a long episode
+// ({pages:[{part,…}]}, grouped by part) or several shorts ({shorts:{id:{title,durationSeconds,pages}}}).
+const isPage=c=>c&&typeof c.text==='string'&&Number.isFinite(c.startMs);
+function captionGroups(data){
+  if(Array.isArray(data)&&data.length&&data.every(g=>Array.isArray(g)&&g.every(isPage)))return data.map((pages,i)=>({title:`Cảnh ${i+1}`,pages}));
+  if(data&&typeof data.shorts==='object'&&!Array.isArray(data.shorts)){const list=Object.entries(data.shorts).map(([id,x],i)=>({title:x.title||`Short ${i+1}`,sub:[x.composition,Number.isFinite(x.durationSeconds)?`${String(x.durationSeconds).replace('.',',')} giây`:''].filter(Boolean).join(' · '),pages:x.pages||[]}));return list.every(g=>g.pages.every(isPage))?list:null;}
+  const pages=Array.isArray(data)?data:data&&Array.isArray(data.pages)?data.pages:null;
+  if(!pages||!pages.length||!pages.every(isPage))return null;
+  if(!pages.some(c=>c.part))return [{title:'Phụ đề',pages}];
+  const groups=[];for(const c of pages){const last=groups.at(-1);if(last&&last.title===c.part)last.pages.push(c);else groups.push({title:c.part,pages:[c]});}
+  return groups;
+}
 function captionsView(data){
-  if(!Array.isArray(data)||!data.length||!data.every(g=>Array.isArray(g)&&g.every(c=>c&&typeof c.text==='string'&&Number.isFinite(c.startMs))))return null;
-  return h('div',{class:'caption-view'},...data.map((group,i)=>h('section',{},h('h4',{},`Cảnh ${i+1}`),h('table',{class:'doc-table'},h('tbody',{},...group.map(c=>h('tr',{},h('td',{class:'caption-time'},`${clockMs(c.startMs)} – ${clockMs(c.endMs)}`),h('td',{},c.text))))))));
+  const groups=captionGroups(data);if(!groups)return null;
+  const total=groups.reduce((n,g)=>n+g.pages.length,0);
+  const rows=pages=>{let part='';return pages.map(c=>{const tag=c.part&&c.part!==part&&groups.length===1?h('span',{class:'caption-part'},c.part):null;part=c.part||part;
+    return h('li',{class:'caption-line'},h('span',{class:'caption-time'},clockMs(c.startMs)),h('span',{class:'caption-text'},tag,tag?' ':null,c.text));});};
+  // Inside a short, mark where its parts (opening, excerpt, invitation) begin.
+  const shortRows=pages=>{let part='';return pages.map(c=>{const start=c.part&&c.part!==part;part=c.part||part;
+    return h('li',{class:'caption-line'+(start?' part-start':'')},h('span',{class:'caption-time'},clockMs(c.startMs)),h('span',{class:'caption-text'},start?h('span',{class:'caption-part'},c.part):null,start?' ':null,c.text));});};
+  return h('div',{class:'caption-view'},h('p',{class:'caption-summary'},`${total} trang phụ đề · ${groups.length} ${data&&data.shorts?'short':'phần'}. Mỗi dòng là một trang hiện trên màn hình, kèm thời điểm bắt đầu.`),
+    ...groups.map(g=>h('section',{class:'caption-group'},h('h4',{},g.title,g.sub?h('small',{},g.sub):null,h('span',{class:'count'},`${g.pages.length} trang`)),h('ol',{class:'caption-lines'},...(data&&data.shorts?shortRows(g.pages):rows(g.pages))))));
 }
 function readableFile(file,text){
   if(file.endsWith('.md'))return renderMarkdown(text);
@@ -628,7 +655,7 @@ function renderDocument(doc){
   target.lastDocument=doc;
   if(ext==='.md'){target.append(renderMarkdown(doc.text));return;}
   let data;try{data=JSON.parse(doc.text);}catch{target.append(h('p',{class:'doc-note'},'File JSON không hợp lệ, hiển thị nguyên văn.'),h('pre',{class:'doc-code'},doc.text));return;}
-  target.append(doc.filename==='book.json'?bookInfoView(data):doc.filename==='chapters.json'&&state.drawer?.book?chapterMapView(data):jsonView(data));
+  target.append(doc.filename==='book.json'?bookInfoView(data):doc.filename==='chapters.json'&&state.drawer?.book?chapterMapView(data):(doc.filename==='captions.json'&&captionsView(data))||jsonView(data));
 }
 document.addEventListener('click',event=>{
   const toggle=event.target.closest('[data-raw-toggle]');if(!toggle)return;

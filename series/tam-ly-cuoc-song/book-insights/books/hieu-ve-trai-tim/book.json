@@ -17,7 +17,7 @@
   "chapterMap": "chapters.json",
   "research": "research.md",
   "seasonPlan": "season-plan.md",
-  "note": "Đã đọc đủ 50/50 chương cùng lời nói đầu, lời giới thiệu, lời tác giả; ghi chú, luận điểm có nguồn và điểm không dùng ở research.md. Chưa có dàn ý tập hay kịch bản được duyệt.",
+  "note": "Đã đọc đủ 50/50 chương cùng lời nói đầu, lời giới thiệu, lời tác giả; ghi chú, luận điểm có nguồn và điểm không dùng ở research.md. Các tập làm từ sách này: xem trang sách trong quản lý (mục \"Các tập từ sách này\"), lấy từ liên kết \"book\"/\"promotes\" của dự án trong series.json; không liệt kê tay ở đây.",
   "sourceFile": "library/books/hieu-ve-trai-tim/sources/hieu-ve-trai-tim.pdf",
   "pdfPages": 279,
   "extractedCharacters": 544203,

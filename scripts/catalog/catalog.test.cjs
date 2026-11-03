@@ -66,6 +66,20 @@ test('long episodes remain unapproved in duration; path traversal and unrelated 
   assert.throws(()=>createProject(catalog,{'--series':'demo','--id':'../../escape','--title':'Bad','--format':'short'}),/Require valid/);
   assert.throws(()=>createProject(catalog,{'--series':'demo','--id':'bad-book','--title':'Bad','--format':'short','--book':'../../escape'}),/Unknown book/);
 });
+test('in a series with book records every project names its book; a short may promote a long episode of that book',t=>{
+  const {root,write,seriesPath}=fixture(t);
+  write('series/tam-ly-cuoc-song/demo/books/sach/book.json',{id:'sach',title:'Sách',authors:[],status:'research'});
+  assert.doesNotThrow(()=>validate(load(root)));
+  const series=JSON.parse(fs.readFileSync(path.join(root,seriesPath),'utf8'));series.requireBook=true;write(seriesPath,series);
+  assert.throws(()=>validate(load(root)),/needs "book"/);
+  series.projects[0].book='sach';write(seriesPath,series);
+  assert.doesNotThrow(()=>validate(load(root)));
+  assert.throws(()=>createProject(load(root),{'--series':'demo','--id':'no-book','--title':'Không sách','--format':'long'}),/nối mỗi dự án với một cuốn sách/);
+  createProject(load(root),{'--series':'demo','--id':'tap-dai','--title':'Tập dài','--format':'long','--book':'sach'});
+  assert.throws(()=>createProject(load(root),{'--series':'demo','--id':'short-sai','--title':'Short','--format':'short','--book':'sach','--promotes':'old'}),/tập dài cùng sách/);
+  const short=createProject(load(root),{'--series':'demo','--id':'short-dung','--title':'Short','--format':'short','--book':'sach','--promotes':'tap-dai'});
+  assert.equal(short.promotes,'tap-dai');assert.equal(short.book,'sach');
+});
 test('new series belongs to a known channel and does not replace existing configuration',t=>{
   const {root}=fixture(t),catalog=load(root);
   createSeries(catalog,{'--channel':'tam-ly-cuoc-song','--id':'new-series','--title':'New','--formats':'long,short'});

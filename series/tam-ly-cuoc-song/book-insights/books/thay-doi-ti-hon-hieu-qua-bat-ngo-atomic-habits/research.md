@@ -19,7 +19,7 @@
 - Phạm vi đã đọc / chưa đọc (2026-10-30): đã đọc đủ 20/20 chương, lời nói đầu, phần giới thiệu, phần kết và phụ lục (PDF 3–178). Đọc tuần tự theo khoảng trang giới hạn, không dùng tìm kiếm thay cho đọc; ghi chú từng chương bên dưới. Chưa xem ảnh các trang chỉ có hình (ví dụ PDF 142, 156, 164).
 - Bản dịch có nhiều chỗ sai số liệu, năm và danh tính so với ý gốc: danh sách ở mục "Phần của kênh"; không đọc nguyên các con số đó vào lời thoại.
 - Phụ lục bị cắt giữa câu ở PDF 178; phần còn lại không có trong file.
-- Mục tiêu tập: tổng quan toàn sách hoặc chủ đề cụ thể — chưa chọn.
+- Các tập làm từ sách này: xem trang sách trong quản lý (mục "Các tập từ sách này"), lấy từ liên kết "book"/"promotes" của dự án trong series.json; không liệt kê tay ở đây.
 
 ## Coverage từng chương
 

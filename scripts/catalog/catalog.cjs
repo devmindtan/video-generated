@@ -117,6 +117,17 @@ function validate(catalog) {
   for (const {project} of projects.values()) {
     if (project.status !== 'planning' && !project.registrations.some(r => r.kind === 'Composition')) throw new Error(`Production project needs a video: ${project.id}`);
   }
+  // Book links live only here (user rule 2026-11-04): in a series with "requireBook" every project names its book, and a
+  // short made to lead to a long episode names that episode in "promotes" (same series, same book, a long video).
+  for (const {series, project} of projects.values()) {
+    const books = path.join(path.dirname(series.file), 'books');
+    if (project.book != null && (!slug(project.book) || !fs.existsSync(path.join(books, project.book, 'book.json')))) throw new Error(`Unknown book for ${project.id}: ${project.book}`);
+    if (project.book == null && series.requireBook === true) throw new Error(`Project in a book series needs "book": ${project.id}`);
+    if (project.promotes != null) {
+      const target = projects.get(project.promotes)?.project;
+      if (!target || projects.get(project.promotes).series !== series || target.format !== 'long' || project.format !== 'short' || target.book !== project.book) throw new Error(`Invalid "promotes" for ${project.id}: ${project.promotes}`);
+    }
+  }
   return {channels: channels.size, series: allSeries.size, projects: projects.size,
     registeredCompositionsAndStills: actual.length,
     planning: [...projects.values()].filter(x => x.project.status === 'planning').length};
