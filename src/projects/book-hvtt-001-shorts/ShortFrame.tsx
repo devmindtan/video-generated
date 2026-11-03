@@ -24,7 +24,7 @@ export type SCtx = {frame: number; start: number; t: (seconds: number) => number
 export type SBeat = {at: number; draw: (c: SCtx) => ReactNode};
 
 const shorts = (data as unknown as {shorts: ShortData[]}).shorts;
-const LEAD = .3, GAP1 = .35, GAP2 = .5, TAIL = 1.2;
+const LEAD = .3, GAP1 = .35, GAP2 = .5, TAIL = 1.4;
 const F = (s: number, fps: number) => Math.round(s * fps);
 export const shortOf = (id: string) => shorts.find((s) => s.id === id) ?? shorts[0];
 // Start frames of the three clips and the total length.
@@ -103,8 +103,10 @@ export const ShortFrame: FC<ShortProps & {beats: SBeat[]; highlight: RegExp; ser
           {W(520, 720, 92, bookTitle, 1)}
           <path d="M460 780 L580 780" stroke={GOLD} strokeWidth={2.4} />
           {W(520, 850, 44, bookAuthor, .9)}
-          {W(520, 1010, 56, 'Xem trọn tập', appear(frame, tl.cta + 20, 14), GOLD)}
-          {D(cc, 'M520 1060 L520 1280 M484 1244 L520 1280 L556 1244', 30, 24, 4)}
+          {W(520, 975, 56, 'Xem trọn tập', appear(frame, tl.cta + 20, 14), GOLD)}
+          {/* A comment bubble: the full-episode link is pinned in the comments (user 2026-11-04). */}
+          {D(cc, 'M400 1030 L640 1030 C660 1030 670 1040 670 1060 L670 1150 C670 1170 660 1180 640 1180 L500 1180 L450 1230 L455 1180 L400 1180 C380 1180 370 1170 370 1150 L370 1060 C370 1040 380 1030 400 1030 Z M420 1080 L620 1080 M420 1125 L570 1125', 30, 24, 3)}
+          {W(520, 1290, 46, 'Link ở phần bình luận', appear(frame, tl.cta + 50, 14))}
         </g>
       </svg>
       {frame < tl.excerpt ? <div style={{opacity: hookIn}}><Captions words={hookWords} ms={ms(tl.hook)} highlight={highlight} top={520} size={72} /></div>

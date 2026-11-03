@@ -9,7 +9,7 @@ trong hình ≥ 44px; mỗi câu một chuyển động đúng lúc giọng đ�
 | Cảnh | Hình (khung dọc) |
 |---|---|
 | Câu mở | Câu hỏi hiện to ở nửa trên (khoảng 72px, từ khóa vàng); bên dưới một quyển sách nét vàng mở dần |
-| Lời mời | Thẻ dọc như thẻ tập của series: "TẬP 01", "Hiểu về trái tim", "Minh Niệm", dòng "Xem trọn tập", mũi tên chỉ xuống phía nút video liên quan (trên vùng an toàn đáy) |
+| Lời mời | Thẻ dọc như thẻ tập của series: "TẬP 01", "Hiểu về trái tim", "Minh Niệm", dòng "Xem trọn tập", rồi biểu tượng khung bình luận với chữ "Link ở phần bình luận" (người dùng 2026-11-04: nói rõ link nằm ở bình luận) |
 
 ## Short 1 · Vốc muối và dòng sông
 

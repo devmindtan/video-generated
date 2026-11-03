@@ -1,8 +1,20 @@
 # Tiêu đề và mô tả đăng bài · 3 short giới thiệu tập 1
 
-Mỗi short đăng riêng trên YouTube Shorts. Khi đăng, gắn **Video liên quan** (Related video) là tập 1 "Hiểu về trái tim"
-để nút xem video dài hiện ngay dưới short (lời mời trong short nói "bấm vào video ngay bên dưới"). Dán link tập 1 vào chỗ
-`<link tập 1>`.
+Mỗi short đăng riêng trên YouTube Shorts. Lời mời trong short nói: "Mình để link video đầy đủ ở phần bình luận", nên khi
+đăng xong hãy **viết và ghim bình luận** có link tập 1 theo câu mẫu dưới đây (thêm Video liên quan là tập 1 nếu muốn). Dán
+link tập 1 vào chỗ `<link tập 1>`.
+
+## Bình luận ghim (dùng chung, chép nguyên)
+
+```
+Video đầy đủ: mình kể lại trọn cuốn Hiểu về trái tim của Minh Niệm trong 13 phút, từ cơn giận, nỗi lo đến cách thương và hiểu người bên cạnh. Xem tại đây: <link tập 1>
+```
+
+Câu ngắn hơn nếu muốn:
+
+```
+Xem trọn tập Hiểu về trái tim (Minh Niệm) ở đây: <link tập 1>
+```
 
 ## Short 1 · Vốc muối và dòng sông (BookHvttShortVocMuoi)
 

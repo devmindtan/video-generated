@@ -5,7 +5,7 @@ Mỗi short: **câu mở** (clone mới) → **đoạn trích** (nguyên văn t�
 
 ## Lời mời (chung, clone mới)
 
-Đây là một đoạn trong video mình kể lại trọn cuốn Hiểu về trái tim của Minh Niệm. Bạn bấm vào video ngay bên dưới để xem đầy đủ nhé.
+Đây là một đoạn trong video mình kể lại trọn cuốn Hiểu về trái tim của Minh Niệm. Mình để link video đầy đủ ở phần bình luận, bạn vào xem trọn tập nhé.
 
 ## Short 1 · Vốc muối và dòng sông (khoảng 32 giây)
 

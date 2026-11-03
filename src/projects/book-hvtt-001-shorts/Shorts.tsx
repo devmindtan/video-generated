@@ -114,6 +114,6 @@ const PHONE: SBeat[] = [
 ];
 
 const make = (beats: SBeat[], highlight: RegExp): FC<ShortProps> => (p) => <ShortFrame {...p} {...SERIES} beats={beats} highlight={highlight} />;
-export const ShortSalt = Object.assign(make(SALT, /(chịu đựng|chịu|đựng|vốc muối|dòng sông|lòng mình rộng ra|nhấn chìm|video ngay bên dưới|Hiểu về trái tim)/gi), {metadata: shortMetadata});
-export const ShortPain = Object.assign(make(PAIN, /(khổ mãi|một ý|cách lòng mình phản ứng|đau và khổ|chống lại|nghĩ đi nghĩ lại|video ngay bên dưới|Hiểu về trái tim)/gi), {metadata: shortMetadata});
-export const ShortPhone = Object.assign(make(PHONE, /(chưa hề xảy ra|gọi mãi|tai nạn|trí tưởng tượng sai lầm|đã thật sự xảy ra chưa|video ngay bên dưới|Hiểu về trái tim)/gi), {metadata: shortMetadata});
+export const ShortSalt = Object.assign(make(SALT, /(chịu đựng|chịu|đựng|vốc muối|dòng sông|lòng mình rộng ra|nhấn chìm|phần bình luận|Hiểu về trái tim)/gi), {metadata: shortMetadata});
+export const ShortPain = Object.assign(make(PAIN, /(khổ mãi|một ý|cách lòng mình phản ứng|đau và khổ|chống lại|nghĩ đi nghĩ lại|phần bình luận|Hiểu về trái tim)/gi), {metadata: shortMetadata});
+export const ShortPhone = Object.assign(make(PHONE, /(chưa hề xảy ra|gọi mãi|tai nạn|trí tưởng tượng sai lầm|đã thật sự xảy ra chưa|phần bình luận|Hiểu về trái tim)/gi), {metadata: shortMetadata});

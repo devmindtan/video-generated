@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 2,
+  "projectId": "book-hvtt-001-shorts",
+  "history": [],
+  "locks": [
+    {
+      "version": 1,
+      "files": {
+        "docs/projects/book-hvtt-001-shorts/script.md": "00b4c2acbb0fe23a25dfa329290e9b0f96cff7926874d530e5e72432747e0e62",
+        "src/projects/book-hvtt-001-shorts/music.json": "da2156c7467a919c1ebb18e0046cab5aca9b2660721f9070975f739bfc79048d",
+        "scripts/projects/book-hvtt-001-shorts/voice.json": "39de53c29cd3a72f5c17327a327a83652b9edf1701cd3ee93e09b289a00e42be",
+        "docs/projects/book-hvtt-001-shorts/production-spec.md": "f89b171dd0f325977de330e08f1193813cd9ff81849f406d3fbea06a8d5a0aa7",
+        "docs/projects/book-hvtt-001-shorts/image-prompts.md": "0fcc701f0fa46e03f85ed1652b0b03f755e86eff7e7e325296c214512fc4d83b"
+      },
+      "by": "devmindtan (trang quản lý)",
+      "at": "2026-11-03T17:04:41.290Z",
+      "note": "",
+      "itemNotes": {},
+      "fromPatch": null
+    },
+    {
+      "version": 2,
+      "files": {
+        "docs/projects/book-hvtt-001-shorts/script.md": "00b4c2acbb0fe23a25dfa329290e9b0f96cff7926874d530e5e72432747e0e62",
+        "src/projects/book-hvtt-001-shorts/music.json": "da2156c7467a919c1ebb18e0046cab5aca9b2660721f9070975f739bfc79048d",
+        "scripts/projects/book-hvtt-001-shorts/voice.json": "39de53c29cd3a72f5c17327a327a83652b9edf1701cd3ee93e09b289a00e42be",
+        "docs/projects/book-hvtt-001-shorts/production-spec.md": "56d041fca208e4aac6caffe3faa127d4e7e12673c2665edea7edc69efb91b02b",
+        "docs/projects/book-hvtt-001-shorts/image-prompts.md": "fa5fe42cee768b87e27eca2cf6826e5750ac55e61aeee163322d8ff6e6f671ec"
+      },
+      "by": "devmindtan (trang quản lý)",
+      "at": "2026-11-03T17:08:52.886Z",
+      "note": "",
+      "fromPatch": "p1"
+    }
+  ],
+  "patches": [
+    {
+      "id": "p1",
+      "baseVersion": 1,
+      "changed": {
+        "docs/projects/book-hvtt-001-shorts/production-spec.md": {
+          "before": "f89b171dd0f325977de330e08f1193813cd9ff81849f406d3fbea06a8d5a0aa7",
+          "after": "56d041fca208e4aac6caffe3faa127d4e7e12673c2665edea7edc69efb91b02b"
+        },
+        "docs/projects/book-hvtt-001-shorts/image-prompts.md": {
+          "before": "0fcc701f0fa46e03f85ed1652b0b03f755e86eff7e7e325296c214512fc4d83b",
+          "after": "fa5fe42cee768b87e27eca2cf6826e5750ac55e61aeee163322d8ff6e6f671ec"
+        }
+      },
+      "changes": [
+        {
+          "area": "visual",
+          "where": "Hình của cả 3 short",
+          "what": "Hình không dùng lại khung 16:9 thu nhỏ của tập 1 nữa mà vẽ lại cho khung dọc 1080×1920, nội dung từng câu giữ như tập 1: vật xếp trên dưới, hình to hơn, chữ trong hình ≥ 44px. Ví dụ: CHỊU ở trên, ĐỰNG ở dưới; dòng sông chảy từ trên xuống; sợi chỉ thả dọc; đồng hồ ở trên, điện thoại ở dưới; bong bóng ý nghĩ chiếm nửa trên (hai xe sắp chạm, không vẽ va chạm).",
+          "why": "Bạn nói short có tỉ lệ khác nên cần vẽ lại, nội dung giữ nguyên."
+        }
+      ],
+      "media": [],
+      "requests": [
+        {
+          "text": "Vì là short tỉ lệ khung ảnh sẽ khác nên cần phải vẽ lại nhưng mà nội dung vẫn giữ như vậy.",
+          "via": "chat"
+        }
+      ],
+      "reason": "Vẽ lại hình cho khung dọc, nội dung giữ như tập 1 (sửa image-prompts.md và production-spec.md).",
+      "by": "agent (automation patch)",
+      "createdAt": "2026-11-03T17:05:26.541Z",
+      "status": "accepted",
+      "decidedAt": "2026-11-03T17:08:52.886Z",
+      "decidedBy": "devmindtan (trang quản lý)",
+      "note": "",
+      "itemNotes": {}
+    },
+    {
+      "id": "p2",
+      "baseVersion": 2,
+      "changed": {},
+      "changes": [
+        {
+          "area": "audio",
+          "where": "Câu mở 3 short và lời mời",
+          "what": "Clone 4 câu bằng giọng của bạn (+2 bán cung như tập 1), trên laptop vì máy GPU đang tắt: câu mở 1 (3,1 giây), câu mở 2 (4,6 giây), câu mở 3 (3,6 giây), lời mời (7,3 giây). Nhận dạng khớp đủ chữ, riêng câu mở 2 bị nghe thành \"Cũng một chuyện\" thay vì \"Cùng một chuyện\": bạn nghe kỹ chữ đầu, nếu sai mình clone lại riêng câu đó.",
+          "why": "Bạn chọn lời mời bằng giọng clone; đây là bản nghe thử để bạn chọn."
+        },
+        {
+          "area": "visual",
+          "where": "3 short dọc trong Studio",
+          "what": "BookHvttShortVocMuoi (29 giây), BookHvttShortDauVaKho (38 giây), BookHvttShortGoiMai (32 giây). Câu mở hiện to và sáng theo giọng, dưới là quyển sách mở; đoạn trích tập 1 với hình vẽ lại cho khung dọc (CHỊU/ĐỰNG, tô nước và dòng sông; sợi chỉ, mặt ao, ĐAU/KHỔ, bàn tay xước và người ôm đầu; đồng hồ, điện thoại, bong bóng ý nghĩ, cửa mở); thẻ mời \"TẬP 01 · Hiểu về trái tim · Xem trọn tập\" với mũi tên chỉ xuống. Phụ đề chữ to, sáng theo từng chữ; nhạc Butterflies nhỏ dưới giọng. Đã soát khung hình, chừa mép phải và đáy cho nút của YouTube.",
+          "why": "Dựng theo gói đã chốt và bản vá vẽ lại khung dọc."
+        },
+        {
+          "area": "other",
+          "where": "Mô tả đăng bài",
+          "what": "description.md: tiêu đề và mô tả cho từng short, Sách/Tác giả ở đầu, dòng \"Xem trọn tập: <link tập 1>\" ngay sau; khi đăng gắn Video liên quan là tập 1.",
+          "why": "Lời mời nói \"bấm vào video ngay bên dưới\"."
+        }
+      ],
+      "media": [
+        {
+          "kind": "audio",
+          "file": "public/book-hvtt-001-shorts/voice-auditions/clone-v1-sang2/part-01-sang2.wav",
+          "title": "Câu mở short 1",
+          "sha256": "ebe6fc89e2b0a05d0c6bed2547acf5148b6a80b34da5bc00b58285da050f4c4c"
+        },
+        {
+          "kind": "audio",
+          "file": "public/book-hvtt-001-shorts/voice-auditions/clone-v1-sang2/part-02-sang2.wav",
+          "title": "Câu mở short 2 (nghe chữ \"Cùng\")",
+          "sha256": "a8c2bc1809d382c893269c5cd6daf59f420ccb112b20741de1b8fc1fbf049aa2"
+        },
+        {
+          "kind": "audio",
+          "file": "public/book-hvtt-001-shorts/voice-auditions/clone-v1-sang2/part-03-sang2.wav",
+          "title": "Câu mở short 3",
+          "sha256": "a88ff3921abd3fb652e5a72a949017624af6f1788b860dbe6fcd3ba98e8e6d6c"
+        },
+        {
+          "kind": "audio",
+          "file": "public/book-hvtt-001-shorts/voice-auditions/clone-v1-sang2/part-04-sang2.wav",
+          "title": "Lời mời (chung)",
+          "sha256": "9c1d136652403d6654511690da6dbe83c146ae7279b5789baa828920388a496a"
+        }
+      ],
+      "reason": "3 short dọc đã dựng để xem trong Studio, kèm 4 câu giọng clone mới để bạn nghe chọn.",
+      "by": "agent (automation patch)",
+      "createdAt": "2026-11-03T17:24:17.762Z",
+      "status": "returned",
+      "decidedAt": "2026-11-03T17:28:15.488Z",
+      "decidedBy": "devmindtan (trang quản lý)",
+      "note": "",
+      "itemNotes": {
+        "media:3": {
+          "text": "Bên dưới là bên dưới nào nói cụ thể là ở phần bình luận luôn đi và nhớ là cho tôi luôn cái mẫu câu để đính kèm đường link luôn",
+          "at": "2026-11-03T17:27:59.210Z"
+        }
+      }
+    }
+  ],
+  "scenes": {},
+  "notes": {},
+  "lockReturns": []
+}

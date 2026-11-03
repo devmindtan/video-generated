@@ -4,7 +4,8 @@ Opening questions and the invitation: the four sentences of a clone take (lines-
 invitation), silence trimmed, raised +2 semitones with the episode's method (voice-variants.py, duration preserved)
 into a new take <take>-sang2 (never overwritten). Excerpts: the published clone takes of episode 1, cut at the times in
 voice.json. Word times for every clip come from local faster-whisper, matched to the script's words (word-times.py).
-Usage: .venv/bin/python scripts/projects/book-hvtt-001-shorts/build-shorts.py --take clone-v1
+A re-cloned invitation comes from its own take (--cta-take, its first sentence); variants already made are reused.
+Usage: .venv/bin/python scripts/projects/book-hvtt-001-shorts/build-shorts.py --take clone-v1 [--cta-take cta-v2]
 """
 import argparse, importlib.util, json, os
 from pathlib import Path
@@ -51,24 +52,29 @@ def words_of(model, data, sr, captions):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--take', required=True)
+    parser.add_argument('--cta-take')
     args = parser.parse_args()
-    src, dst = AUD / args.take, AUD / f'{args.take}-sang2'
     lines = [l.strip() for l in (HERE / 'lines-clone.txt').read_text().splitlines() if l.strip()]
     model = WhisperModel('medium', device='cpu', compute_type='int8', cpu_threads=4, download_root=str(ROOT / '.cache/whisper'))
-    if dst.exists(): raise SystemExit(f'{dst.relative_to(ROOT)} đã có; take không bao giờ bị ghi đè')
-    dst.mkdir()
     clips = []
     for i, text in enumerate(lines):
-        data, sr = sf.read(src / f'part-{i + 1:02d}-clone.wav')
-        data = variants.shift(trim(data, sr), sr, 2)
-        name = f'part-{i + 1:02d}-sang2.wav'
-        sf.write(dst / name, data, sr, subtype='PCM_24')
+        take, part = (args.cta_take, 1) if i == 3 and args.cta_take else (args.take, i + 1)
+        dst, name = AUD / f'{take}-sang2', f'part-{part:02d}-sang2.wav'
+        dst.mkdir(exist_ok=True)
+        if (dst / name).exists():
+            data, sr = sf.read(dst / name)
+        else:
+            data, sr = sf.read(AUD / take / f'part-{part:02d}-clone.wav')
+            data = variants.shift(trim(data, sr), sr, 2)
+            sf.write(dst / name, data, sr, subtype='PCM_24')
+            manifest = dst / 'manifest.json'
+            done = json.loads(manifest.read_text())['lines'] if manifest.exists() else []
+            manifest.write_text(json.dumps({'take': dst.name, 'derivedFrom': take, 'pitchSemitones': 2, 'durationPreserved': True,
+                'status': 'audition — chờ người dùng nghe chọn', 'lines': done + [text]}, ensure_ascii=False, indent=2) + '\n')
         dur = len(data) / sr
-        print(name, f'{dur:.2f}s')
+        print(f'{dst.name}/{name}', f'{dur:.2f}s')
         clips.append({'file': f'book-hvtt-001-shorts/voice-auditions/{dst.name}/{name}', 'durationSeconds': round(dur, 3),
                       'words': words_of(model, data, sr, [{'text': text, 'startMs': 0, 'endMs': round(dur * 1000)}])})
-    (dst / 'manifest.json').write_text(json.dumps({'take': dst.name, 'derivedFrom': args.take, 'pitchSemitones': 2, 'durationPreserved': True,
-        'status': 'audition — chờ người dùng nghe chọn', 'lines': lines}, ensure_ascii=False, indent=2) + '\n')
     voice = json.loads((HERE / 'voice.json').read_text())
     ep1 = {v['id']: v for v in json.loads((ROOT / 'src/projects/book-hvtt-001-overview/body-takes.json').read_text())['voices']}
     shorts = []
@@ -83,7 +89,7 @@ def main():
         excerpt = {'file': take['file'], 'fromSeconds': a, 'toSeconds': b, 'durationSeconds': round(b - a, 3),
                    'words': words_of(model, data[int(a * sr):int(b * sr)], sr, caps)}
         shorts.append({'id': sid, 'hook': clips[k], 'excerpt': excerpt, 'cta': clips[3]})
-    OUT.write_text(json.dumps({'take': dst.name, 'shorts': shorts}, ensure_ascii=False, indent=1) + '\n')
+    OUT.write_text(json.dumps({'take': args.take, 'ctaTake': args.cta_take or args.take, 'shorts': shorts}, ensure_ascii=False, indent=1) + '\n')
     print(OUT.relative_to(ROOT))
 
 

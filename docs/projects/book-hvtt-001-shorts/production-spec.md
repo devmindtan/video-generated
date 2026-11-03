@@ -29,4 +29,6 @@
 - Series Đọc sách, hiểu mình: hình nét vàng vẽ bằng code, chữ trong hình ≥ 34px trên khung gốc, không nét đè nhau,
   không dòng tên sách dưới câu trích.
 - Đoạn trích giữ nguyên lời đã đăng, không cắt giữa câu. Câu mở mỗi short một kiểu, không lặp khuôn.
+- Lời mời nói rõ link video đầy đủ nằm ở phần bình luận (người dùng 2026-11-04); khi đăng, ghim một bình luận có link theo
+  câu mẫu trong description.md.
 - Mô tả mỗi short: dòng "Sách:" và "Tác giả:" ở đầu, link video dài ngay sau, không có dòng nói về giọng AI.
