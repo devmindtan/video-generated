@@ -22,8 +22,7 @@ export type EpisodeProps = {introVoice: string; cardVoice: string; bodyVoice: st
 const BODY = [['03-cuon-sach', 'Phần 1 · Cuốn sách là gì', CuonSach], ['04-soi-chi', 'Phần 2 · Sợi chỉ xuyên suốt', SoiChi], ['05-nhom-3a', 'Nhóm 1 · Cơn sóng trong lòng', Nhom3A],
   ['06-nhom-3b', 'Nhóm 2 · Thương và được thương', Nhom3B], ['07-nhom-3c', 'Nhóm 3 · Thăng trầm', Nhom3C], ['08-nhom-3d', 'Nhóm 4 · Sống giữa mọi người', Nhom3D],
   ['08e-diem-chua-dat', 'Phần 3E · Điểm chưa đạt', DiemChuaDat], ['08f-tong-ket', 'Phần 3F · Tổng kết', TongKet], ['08g-y-kien', 'Phần 4 · Ý kiến cá nhân', YKien], ['09-nhan-xet', 'Phần 5 · Nhận xét chung', NhanXet]] as const;
-// The user's cloned voice (+2 semitones) for every segment (picked after listening, 2026-11-03); the Quốc Tuấn
-// placeholder takes stay in body-takes.json for reference only.
+// The user's cloned voice (+2 semitones) for every segment (picked after listening, 2026-11-03).
 const voiceFor = (seg: string) => [`${seg}-sang2`, seg].find((id) => takeOf(id));
 
 const parts = (p: EpisodeProps, fps: number) => {
