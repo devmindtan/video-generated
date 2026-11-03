@@ -20,13 +20,16 @@ bị cắt trên điện thoại; tên series ở cuối để nhận ra các t�
 ## Mô tả (dán nguyên phần trong khung)
 
 ```
-Vì sao cùng một chuyện xảy ra mà có lúc mình khổ, có lúc lại không? Tập đầu tiên của Đọc sách, hiểu mình kể lại trọn cuốn Hiểu về trái tim của Minh Niệm trong khoảng 13 phút: 50 chương về giận, lo, ghen, cô đơn, thương yêu và bình yên.
+Sách: Hiểu về trái tim
+Tác giả: Minh Niệm
+
+Vì sao cùng một chuyện xảy ra mà có lúc mình khổ, có lúc lại không? Tập đầu tiên của Đọc sách, hiểu mình kể lại trọn cuốn sách trong khoảng 13 phút: 50 chương về giận, lo, ghen, cô đơn, thương yêu và bình yên.
 
 Trong video:
 • Ý xuyên suốt cuốn sách: đau và khổ khác nhau, và muốn thương ai thì trước hết phải hiểu người ấy
 • Bốn nhóm nội dung: những cơn sóng trong lòng (giận, sợ, lo) · thương và được thương · đi qua những lúc thăng trầm · sống giữa mọi người
 • Những câu chuyện trong sách: người bà và cái ngạch cửa, vốc muối thả xuống dòng sông, mười hai con bò, tô canh chua
-• Những điểm mình thấy chưa đạt, ý kiến riêng, và nên bắt đầu đọc từ chương nào
+• Những điểm mình thấy chưa đạt của cuốn sách, ý kiến riêng, và nên bắt đầu đọc từ chương nào
 
 Chương:
 0:00 Lời chào
@@ -47,10 +50,6 @@ Chương:
 Về cách làm:
 Phần chính của video chỉ kể lại điều tác giả viết, kể cả những chỗ mình chưa chắc đồng tình. Những điểm mình thấy chưa đạt và ý kiến riêng nằm ở cuối, tách khỏi phần kể. Các câu trích hiện trên màn hình là nguyên văn trong sách. Video không thay thế việc đọc sách; những đoạn sách nói về sức khỏe, y khoa nên đọc như ý kiến riêng của tác giả, còn chuyện sức khỏe tinh thần, các bạn hãy hỏi bác sĩ.
 
-Sách: Hiểu về trái tim – Minh Niệm
-
-Giọng đọc là giọng của mình, tạo bằng công cụ clone giọng (AI) từ bản ghi âm giọng thật của chính mình. Hình minh họa vẽ bằng nét vàng, có phụ đề tiếng Việt suốt video.
-
 Nhạc:
 Music track: Enlivening by Pufino
 Music track: Butterflies by Moavii
@@ -69,8 +68,8 @@ tóm tắt sách, hiểu về trái tim, minh niệm, hiểu về trái tim minh
 
 - Chương: YouTube cần mốc đầu là 0:00, ít nhất 3 mốc, mỗi chương từ 10 giây; danh sách trên đã gộp thẻ giới thiệu
   tập (9 giây) vào chương "Hiểu về trái tim · mở đầu bằng một câu chuyện".
-- Nội dung có giọng tạo bằng AI: khi đăng, YouTube hỏi về "nội dung đã thay đổi hoặc tổng hợp"; giọng nghe như người
-  thật nên chọn "Có" cho đúng (mô tả đã ghi rõ là giọng của chính bạn được clone).
+- Bố cục mô tả (người dùng 2026-11-03): tên sách và tác giả ở hai dòng đầu; không ghi dòng về giọng clone trong mô tả.
+  Phần khai báo "nội dung đã thay đổi hoặc tổng hợp" là một ô riêng khi đăng trên YouTube, bạn tự chọn ở đó.
 - Nhạc từ freetouse.com dùng miễn phí và cần ghi nguồn: trước khi đăng, mở trang của từng bài trên freetouse.com để
   chép đúng dòng ghi nguồn họ yêu cầu (dòng "Music track … Source …" ở trên theo mẫu thường gặp của họ).
 - Sách: bản PDF dùng để đọc không có trang thông tin xuất bản, nên mô tả chỉ ghi tên sách và tác giả, không ghi nhà
