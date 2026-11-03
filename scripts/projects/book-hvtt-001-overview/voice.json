@@ -19,6 +19,66 @@
       "sha256": "f502b6db1443b3660527dcb46d951bc63a56ab99fa3670593fa2fa370cec62a8",
       "sourceTake": "voice-auditions/book-hvtt-episode-clone-v1-sang2/tap-ban-sang2.wav"
     },
+    "01b-cach-lam": {
+      "file": "book-hvtt-001-overview/audio/01b-cach-lam-voice-full.wav",
+      "sha256": "69629c7e5d1e3c5ebbe6ac9d3dfdcd625dc4ce6d028885e914357afc1cf3eb92",
+      "sourceTake": "voice-auditions/book-hvtt-01b-cach-lam-clone-sang2/01b-cach-lam-sang2.wav"
+    },
+    "02-mo-chuyen": {
+      "file": "book-hvtt-001-overview/audio/02-mo-chuyen-voice-full.wav",
+      "sha256": "a72eb51f5714e09abe11d77ce029523add91b13b144a0ab66fe5649833ec5bc2",
+      "sourceTake": "voice-auditions/book-hvtt-02-mo-chuyen-clone-sang2/02-mo-chuyen-sang2.wav"
+    },
+    "03-cuon-sach": {
+      "file": "book-hvtt-001-overview/audio/03-cuon-sach-voice-full.wav",
+      "sha256": "ec93057259140cfbd847a6855f440fb0498a62cf71f76799409cd0893c866060",
+      "sourceTake": "voice-auditions/book-hvtt-03-cuon-sach-clone-sang2/03-cuon-sach-sang2.wav"
+    },
+    "04-soi-chi": {
+      "file": "book-hvtt-001-overview/audio/04-soi-chi-voice-full.wav",
+      "sha256": "6df79d078784f463ce20fb663696dbd008a9bbb6b45c8f4fd504dc22db7437f4",
+      "sourceTake": "voice-auditions/book-hvtt-04-soi-chi-clone-sang2/04-soi-chi-sang2.wav"
+    },
+    "05-nhom-3a": {
+      "file": "book-hvtt-001-overview/audio/05-nhom-3a-voice-full.wav",
+      "sha256": "ebb261155608819c5efdfcb5ba5b63d9ddaf436c7b674c5573d810549bfe9fb0",
+      "sourceTake": "voice-auditions/book-hvtt-05-nhom-3a-clone-sang2/05-nhom-3a-sang2.wav"
+    },
+    "06-nhom-3b": {
+      "file": "book-hvtt-001-overview/audio/06-nhom-3b-voice-full.wav",
+      "sha256": "32a5708f601175a0d45436fa29567ab8f7eb76327ad7a70a66df628f81ea39bc",
+      "sourceTake": "voice-auditions/book-hvtt-06-nhom-3b-clone-sang2/06-nhom-3b-sang2.wav"
+    },
+    "07-nhom-3c": {
+      "file": "book-hvtt-001-overview/audio/07-nhom-3c-voice-full.wav",
+      "sha256": "b2061916b9472ddabb99719fcf7bb65248c7eedf5c99354408a6993d815898ef",
+      "sourceTake": "voice-auditions/book-hvtt-07-nhom-3c-clone-sang2/07-nhom-3c-sang2.wav"
+    },
+    "08-nhom-3d": {
+      "file": "book-hvtt-001-overview/audio/08-nhom-3d-voice-full.wav",
+      "sha256": "4a7f2807cc8a1f3a25bbf7a2f609a2748d17475bbb6e99a9953e62ec83e4420b",
+      "sourceTake": "voice-auditions/book-hvtt-08-nhom-3d-clone-sang2/08-nhom-3d-sang2.wav"
+    },
+    "08e-diem-chua-dat": {
+      "file": "book-hvtt-001-overview/audio/08e-diem-chua-dat-voice-full.wav",
+      "sha256": "7ed97053643f6f610c06ef4d8b682885b79eaba96cec02c871c86f5fd735bc28",
+      "sourceTake": "voice-auditions/book-hvtt-08e-diem-chua-dat-clone-sang2/08e-diem-chua-dat-sang2.wav"
+    },
+    "08f-tong-ket": {
+      "file": "book-hvtt-001-overview/audio/08f-tong-ket-voice-full.wav",
+      "sha256": "8567dcecc35065452eae13ba8f12a136e070df19742a10b11991a466ebbe3fe0",
+      "sourceTake": "voice-auditions/book-hvtt-08f-tong-ket-clone-sang2/08f-tong-ket-sang2.wav"
+    },
+    "08g-y-kien": {
+      "file": "book-hvtt-001-overview/audio/08g-y-kien-voice-full.wav",
+      "sha256": "79e4a80f3dd0830b36cd7dca6cad04afbd1182d949e5d4c496e652416eba18bc",
+      "sourceTake": "voice-auditions/book-hvtt-08g-y-kien-clone-sang2/08g-y-kien-sang2.wav"
+    },
+    "09-nhan-xet": {
+      "file": "book-hvtt-001-overview/audio/09-nhan-xet-voice-full.wav",
+      "sha256": "e16f903e5d71f93698a12fd79221ca6d48b1d558fa4a822f771111096afc5e64",
+      "sourceTake": "voice-auditions/book-hvtt-09-nhan-xet-clone-sang2/09-nhan-xet-sang2.wav"
+    },
     "99-outro": {
       "file": "book-hvtt-001-overview/audio/99-outro-voice-full.wav",
       "sha256": "851c617fb62cdaae8749aec580b315ab428079c8b4b090a407d1c606a69d57d8",
