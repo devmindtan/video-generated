@@ -52,7 +52,9 @@ function registrations(root = ROOT) {
         if (!project) throw new Error(`Cannot locate component for ${attrs.id.value}`);
         const raw = source.slice(node.start, node.end), calc = attrs.calculateMetadata?.expression;
         const renderTo = calc?.type === 'CallExpression' && calc.callee.name === 'renderTo' && calc.arguments[0]?.type === 'StringLiteral' ? calc.arguments[0].value : null;
-        records.push({id: attrs.id.value, kind: name, project, folders, renderTo,
+        // renderTo('<slug>', fn): the length comes from the wrapped calculateMetadata, not from durationInFrames.
+        const calculated = Boolean(calc) && !(calc.type === 'CallExpression' && calc.callee.name === 'renderTo' && calc.arguments.length < 2);
+        records.push({id: attrs.id.value, kind: name, project, folders, renderTo, calculated,
           durationFrames: attrs.durationInFrames?.expression?.value ?? null,
           fps: attrs.fps?.expression?.value ?? null, width: attrs.width?.expression?.value,
           height: attrs.height?.expression?.value, jsxSha256: hash(raw)});

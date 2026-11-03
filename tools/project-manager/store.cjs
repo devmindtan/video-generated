@@ -59,6 +59,9 @@ function createStore(root) {
     return result.sort((a,b)=>(order.includes(a.filename)?order.indexOf(a.filename):99)-(order.includes(b.filename)?order.indexOf(b.filename):99));
   }
   function preview(project) {
+    // An exported thumbnail (projects/<slug>/…) is the truest picture of the project.
+    const exported = extra.media(project.id,'thumbnail');
+    if (exported) {try {return {file:secureFile(path.dirname(exported.file),exported.file,imageTypes),type:'thumbnail'};} catch {}}
     const base = location(project.paths.assets);
     if (!exists(base)) return null;
     const source = path.join(location(project.paths.source),'Thumbnail.tsx');
@@ -70,7 +73,8 @@ function createStore(root) {
       }
     }
     const images = path.join(base,'images');
-    if (exists(images)) for (const name of fs.readdirSync(images).sort()) {
+    // Texture overlays (film grain…) are not scene pictures.
+    if (exists(images)) for (const name of fs.readdirSync(images).sort().filter(n=>!/^(film-grain|grain|noise|texture)[-.]/i.test(n))) {
       try {return {file:secureFile(base,path.join(images,name),imageTypes),type:'scene'};} catch {}
     }
     // No thumbnail or scene image: show a frame of the exported/imported video, else the composition's source footage.
@@ -119,7 +123,7 @@ function createStore(root) {
       const brief = path.join(location(project.paths.docs),'brief.md');
       const updatedAt = exists(source)?fs.statSync(source).mtime.toISOString():exists(brief)?fs.statSync(brief).mtime.toISOString():null;
       return {id:project.id,title:project.title,status:project.status,format:project.format,series:series.id,channel:series.channel,
-        seriesTitle:series.title,durationSeconds:node?.fps&&node.durationFrames?node.durationFrames/node.fps:project.durationSeconds??null,
+        seriesTitle:series.title,durationSeconds:node?.fps&&node.durationFrames&&!(node.calculated&&project.durationSeconds)?node.durationFrames/node.fps:project.durationSeconds??null,
         renderedVideo:Boolean(renderedVideo),renderedThumbnail:Boolean(renderedThumbnail),importedVideo:Boolean(renderedVideo?.imported),videoInline:renderedVideo?.inline!==false,videoFile:renderedVideo?.name||null,videoId:video?.id||null,thumbnailId:thumbnail?.id||null,previewType:image?.type||null,updatedAt,book:project.book||null,
         hasScript:exists(path.join(location(project.paths.docs),'script.md')),
         hasDescription:exists(path.join(location(project.paths.docs),'description.md')),autoNamed:Boolean(project.autoNamed),progress:extra.progressSummary(project.id),
