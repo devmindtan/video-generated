@@ -12,21 +12,22 @@
   "voiceProvider": "VieNeu-TTS v3 Turbo 3.8.3 (local CPU)",
   "maximumTempo": 1.0499,
   "wordMatchRatios": [
-    0.9286,
-    0.9167,
+    0.9545,
+    0.9412,
     1.0,
     0.9091,
     1.0,
     1.0
   ],
-  "voicePeakDbFS": -2.38,
-  "mixPeakDbFS": 1.08,
+  "voicePeakDbFS": -3.3,
+  "mixPeakDbFS": 0.98,
   "mixSamplesOverFullScale": [
     18.9884
   ],
   "asrFlags": [
     "01-greeting: \"Flower Knows\" nghe thành \"Flower Nose\"",
     "02-case: \"hoa tuyết\" nghe thành \"khóa tuyết\" (take-1 còn mất chữ \"bạc\")",
+    "03-two-ends: \"Mua một, được hai\" ASR viết số \"Mua 1 được 2\" (khớp)",
     "04-tint: \"hồng\" nghe thành \"hông\", \"trầm\" nghe thành \"chầm\""
   ],
   "rendered": false,

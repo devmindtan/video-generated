@@ -3,15 +3,22 @@
     {
       "text": "Xin chào các con vợ của chồng...",
       "startMs": 0,
-      "endMs": 2000,
+      "endMs": 1920,
       "timestampMs": 0,
       "confidence": null
     },
     {
-      "text": "Lại Flower Knows, lần này là son.",
-      "startMs": 2260,
-      "endMs": 4180,
-      "timestampMs": 2260,
+      "text": "Lại Flower Knows, lần này là son",
+      "startMs": 2160,
+      "endMs": 4020,
+      "timestampMs": 2160,
+      "confidence": null
+    },
+    {
+      "text": "hai đầu, và cũng là lần đầu tiên.",
+      "startMs": 4020,
+      "endMs": 5820,
+      "timestampMs": 4020,
       "confidence": null
     }
   ],
@@ -19,31 +26,31 @@
     {
       "text": "Vỏ xanh, khóa bạc hoa tuyết.",
       "startMs": 0,
-      "endMs": 1860,
+      "endMs": 1840,
       "timestampMs": 0,
       "confidence": null
     },
     {
       "text": "Cầm mà tưởng cầm vương trượng.",
-      "startMs": 2080,
-      "endMs": 3100,
-      "timestampMs": 2080,
+      "startMs": 2040,
+      "endMs": 3200,
+      "timestampMs": 2040,
+      "confidence": null
+    },
+    {
+      "text": "Cầm khá là chắc tay.",
+      "startMs": 3420,
+      "endMs": 4360,
+      "timestampMs": 3420,
       "confidence": null
     }
   ],
   [
     {
-      "text": "Một cây hai đầu.",
-      "startMs": 0,
-      "endMs": 1280,
-      "timestampMs": 0,
-      "confidence": null
-    },
-    {
       "text": "Mua một, được hai.",
-      "startMs": 1640,
-      "endMs": 2520,
-      "timestampMs": 1640,
+      "startMs": 0,
+      "endMs": 1100,
+      "timestampMs": 0,
       "confidence": null
     }
   ],

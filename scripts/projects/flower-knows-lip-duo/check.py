@@ -62,6 +62,7 @@ def main():
         'asrFlags': [
             '01-greeting: "Flower Knows" nghe thành "Flower Nose"',
             '02-case: "hoa tuyết" nghe thành "khóa tuyết" (take-1 còn mất chữ "bạc")',
+            '03-two-ends: "Mua một, được hai" ASR viết số "Mua 1 được 2" (khớp)',
             '04-tint: "hồng" nghe thành "hông", "trầm" nghe thành "chầm"',
         ],
         'rendered': False,

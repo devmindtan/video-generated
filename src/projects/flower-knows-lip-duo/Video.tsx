@@ -6,11 +6,11 @@ import audio from './audio.json';
 const FPS = 30;
 const DURATION_FRAMES = 638;
 
-// Scene bounds follow the picture cuts; 4.5–5.6 s is left to the cat-paw transition sound.
+// Scene bounds follow the picture cuts; the longer greeting now runs over the cat-paw transition (4.5–5.6 s).
 const voiceCues = [
-  ['01-greeting-voice-full.wav', 0, 4.5],
-  ['02-case-voice-full.wav', 5.6, 3.6],
-  ['03-two-ends-voice-full.wav', 9.2, 3.3],
+  ['01-greeting-voice-full.wav', 0, 6],
+  ['02-case-voice-full.wav', 6, 4.9],
+  ['03-two-ends-voice-full.wav', 10.9, 1.6],
   ['04-tint-voice-full.wav', 12.5, 3.6],
   ['05-gloss-end-voice-full.wav', 16.1, 2.2],
   ['06-outro-voice-full.wav', 18.3, 2.9],

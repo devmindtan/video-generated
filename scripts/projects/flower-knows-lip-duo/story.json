@@ -2,20 +2,20 @@
   {
     "id": "01-greeting",
     "start": 0,
-    "duration": 4.5,
-    "leadIn": 0.12,
-    "tail": 0.16,
+    "duration": 6.0,
+    "leadIn": 0.1,
+    "tail": 0.12,
     "minWordMatchRatio": 0.75,
     "temperature": 0.58,
-    "text": "Xin chào các con vợ của chồng... Lại Flower Knows, lần này là son.",
+    "text": "Xin chào các con vợ của chồng... Lại Flower Knows, lần này là son hai đầu, và cũng là lần đầu tiên.",
     "sentences": [
       {
         "text": "Xin chào các con vợ của chồng...",
-        "pauseAfter": 0.24,
+        "pauseAfter": 0.2,
         "gainDb": 0.35
       },
       {
-        "text": "Lại Flower Knows, lần này là son.",
+        "text": "Lại Flower Knows, lần này là son hai đầu, và cũng là lần đầu tiên.",
         "pauseAfter": 0,
         "gainDb": 0.3
       }
@@ -23,13 +23,13 @@
   },
   {
     "id": "02-case",
-    "start": 5.6,
-    "duration": 3.6,
+    "start": 6.0,
+    "duration": 4.9,
     "leadIn": 0.08,
     "tail": 0.12,
     "minWordMatchRatio": 0.8,
     "temperature": 0.5,
-    "text": "Vỏ xanh, khóa bạc hoa tuyết. Cầm mà tưởng cầm vương trượng.",
+    "text": "Vỏ xanh, khóa bạc hoa tuyết. Cầm mà tưởng cầm vương trượng. Cầm khá là chắc tay.",
     "sentences": [
       {
         "text": "Vỏ xanh, khóa bạc hoa tuyết.",
@@ -38,26 +38,26 @@
       },
       {
         "text": "Cầm mà tưởng cầm vương trượng.",
-        "pauseAfter": 0,
+        "pauseAfter": 0.14,
         "gainDb": 0.4
+      },
+      {
+        "text": "Cầm khá là chắc tay.",
+        "pauseAfter": 0,
+        "gainDb": 0.35
       }
     ]
   },
   {
     "id": "03-two-ends",
-    "start": 9.2,
-    "duration": 3.3,
-    "leadIn": 0.2,
-    "tail": 0.14,
+    "start": 10.9,
+    "duration": 1.6,
+    "leadIn": 0.1,
+    "tail": 0.1,
     "minWordMatchRatio": 0.8,
     "temperature": 0.56,
-    "text": "Một cây hai đầu. Mua một, được hai.",
+    "text": "Mua một, được hai.",
     "sentences": [
-      {
-        "text": "Một cây hai đầu.",
-        "pauseAfter": 0.3,
-        "gainDb": 0.2
-      },
       {
         "text": "Mua một, được hai.",
         "pauseAfter": 0,
