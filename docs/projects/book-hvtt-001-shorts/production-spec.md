@@ -9,8 +9,9 @@
 ## Bố cục màn hình (vùng an toàn của YouTube Shorts)
 
 - Trên cùng (y ≈ 200–400): "ĐỌC SÁCH, HIỂU MÌNH" và tên sách "Hiểu về trái tim · Minh Niệm".
-- Giữa (y ≈ 520–1330): hình vẽ của tập 1, khung 16:9 thu về 75% và cắt giữa (giữ vùng x 240–1680 của khung gốc,
-  nơi hình được vẽ), không vẽ lại.
+- Giữa (y ≈ 460–1340, rộng 80–940): hình nét vàng vẽ lại cho khung dọc (người dùng 2026-11-04: tỉ lệ khác nên vẽ lại,
+  nội dung giữ như tập 1). Bố cục dọc: các vật xếp trên dưới thay vì trái phải, hình to và ít chi tiết hơn; chữ trong
+  hình ≥ 44px, nét ≥ 2,6, không nét đè nhau. Hình đi theo từng câu, đúng nhịp giọng của đoạn trích.
 - Phụ đề (y ≈ 1380–1560): Stoic Sans 700, ngà, từ khóa vàng, chữ to hơn tập dài (khoảng 58px), sáng theo giọng từng
   chữ (giọng clone là giọng cuối nên được làm, theo quy tắc phụ đề sáng theo giọng).
 - Chừa mép phải khoảng 140px và đáy khoảng 380px cho nút và tiêu đề của YouTube; không đặt chữ quan trọng ở đó.

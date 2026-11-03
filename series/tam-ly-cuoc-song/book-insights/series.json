@@ -170,7 +170,7 @@
     {
       "id": "book-hvtt-001-shorts",
       "title": "Short giới thiệu tập 1 · Hiểu về trái tim",
-      "status": "planning",
+      "status": "production",
       "format": "short",
       "durationSeconds": 40,
       "paths": {
@@ -179,7 +179,20 @@
         "docs": "docs/projects/book-hvtt-001-shorts",
         "assets": "public/book-hvtt-001-shorts"
       },
-      "registrations": []
+      "registrations": [
+        {
+          "id": "BookHvttShortVocMuoi",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookHvttShortDauVaKho",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookHvttShortGoiMai",
+          "kind": "Composition"
+        }
+      ]
     }
   ]
 }
