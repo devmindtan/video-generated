@@ -68,7 +68,7 @@ Phần còn lại của cuốn sách, mình xin đi theo đúng bốn quy luật
 
 Quy luật thứ nhất là làm cho thói quen trở nên hiển nhiên, tức là để dấu hiệu của nó dễ thấy.
 
-**Nhận ra thói quen của mình.** Ở đường sắt Nhật, nhân viên vừa chỉ tay vừa nói to từng việc mình đang kiểm tra, để việc tự động được đưa ra ánh sáng. Tác giả gợi ý mình làm một phiếu đánh giá thói quen: viết ra những việc làm mỗi ngày, rồi đánh dấu việc nào đang giúp, việc nào đang cản con người mình muốn trở thành, mà không tự trách. Theo tác giả, "Quá trình thay đổi hành vi luôn luôn bắt đầu với sự nhận biết."
+**Nhận ra thói quen của mình.** Ở đường sắt tại Nhật Bản, nhân viên vừa chỉ tay vừa nói to từng việc mình đang kiểm tra, để việc tự động được đưa ra ánh sáng. Tác giả gợi ý mình làm một phiếu đánh giá thói quen: viết ra những việc làm mỗi ngày, rồi đánh dấu việc nào đang giúp, việc nào đang cản con người mình muốn trở thành, mà không tự trách. Theo tác giả, "Quá trình thay đổi hành vi luôn luôn bắt đầu với sự nhận biết."
 
 **Nói rõ khi nào, ở đâu.** Trong một nghiên cứu sách kể, những người viết sẵn câu "tôi sẽ tập vào ngày nào, lúc mấy giờ, ở đâu" giữ việc tập tốt hơn hẳn những người chỉ được khích lệ. Tác giả cho rằng nhiều khi mình không thiếu động lực mà thiếu sự rõ ràng. Một cách khác là xếp chồng thói quen: "Sau khi làm [Thói quen hiện tại], tôi sẽ làm [Thói quen mới]", như sau khi pha cà phê buổi sáng thì ngồi thiền một phút.
 

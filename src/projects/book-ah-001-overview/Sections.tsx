@@ -8,7 +8,7 @@ import takes from './body-takes.json';
 // names the sentence (0-based, scripts/projects/book-ah-001-overview/lines-<segment>.txt) where its drawing starts.
 // Lessons from episode 1: one complete drawing per idea that grows inside its scene (few cuts), nothing drawn over
 // a figure, no impact shown, quotes only where the line is a verified quote.
-const options = {takes: takesOf(takes), quoteSource: 'Thay đổi tí hon hiệu quả bất ngờ, James Clear'};
+const options = {takes: takesOf(takes), quoteSource: ''};
 const D = (c: Ctx, d: string, delay = 0, len = 28, width = 2.4, opacity = 1) => <Draw key={`${d}${delay}`} d={d} frame={c.frame} from={c.start + delay} to={c.start + delay + len} width={width} opacity={opacity} />;
 
 // 0b Mở chuyện: one story in six stages, each drawing growing inside its scene.
@@ -26,8 +26,8 @@ export const MoChuyen = section('02 mở chuyện', /(bài học lớn nhất v�
     // The bat arcs high and vanishes in a flash well above and short of the boy: no contact is ever drawn.
     const bx = 600 + fly * 520, by = 520 - Math.sin(fly * Math.PI) * 200, rot = -40 + fly * 720;
     return <g>
-      {D(c, 'M960 800 L1180 650 L960 500 L740 650 Z', 0, 30, 2, .6)}
-      {D(c, 'M640 800 C700 420 1220 420 1280 800', 8, 34, 2, .45)}
+      {D(c, 'M960 800 L1180 650 L960 500 L740 650 Z', 0, 30, 2.4, .9)}
+      {D(c, 'M640 800 C700 420 1220 420 1280 800', 8, 34, 2.2, .75)}
       <g opacity={appear(c.frame, c.start + 16, 14)}><Figure frame={c.frame} from={c.start + 16} x={540} y={780} s={1} arm="raise" /></g>
       <g opacity={appear(c.frame, c.start + 22, 14)}><Figure frame={c.frame} from={c.start + 22} x={1420} y={780} s={.95} facing={-1} /></g>
       <g transform={`translate(${bx} ${by}) rotate(${rot})`} opacity={appear(c.frame, c.start + 20, 10) * (1 - flash * .9)}><path d="M-6 0 L70 -4 L74 4 L-6 6 Z" fill="none" stroke={IVORY} strokeWidth={2.4} strokeLinejoin="round" /></g>
@@ -57,18 +57,22 @@ export const MoChuyen = section('02 mở chuyện', /(bài học lớn nhất v�
       </g>
       <g opacity={row}>
         {[0, 1, 2, 3].map((k) => <Figure key={k} frame={c.frame} from={c.at(5)} x={480 + k * 130} y={760} s={.8} />)}
-        <g opacity={1 - car * .2}><Figure frame={c.frame} from={c.at(5)} x={bx} y={760} s={.8} color={IVORY} pose={car > .5 ? 'sit' : out > 0 && out < 1 ? 'walk' : 'stand'} /></g>
+        <g opacity={1 - car}><Figure frame={c.frame} from={c.at(5)} x={bx} y={760} s={.8} color={IVORY} pose={out > 0 && out < 1 ? 'walk' : 'stand'} /></g>
       </g>
+      {/* The car: body, beltline, wheels, and the boy seated behind the glass (clipped to it, nothing drawn over him). */}
       <g opacity={car}>
-        <path d={`M${bx - 150} 760 L${bx - 150} 640 C${bx - 120} 580 ${bx - 60} 560 ${bx} 560 C${bx + 70} 560 ${bx + 120} 590 ${bx + 150} 640 L${bx + 150} 760 Z`} fill="none" stroke={GOLD} strokeWidth={2.4} strokeLinejoin="round" />
-        {[0, 1, 2, 3, 4].map((k) => {const y = ((c.frame * 4 + k * 37) % 70);return <path key={k} d={`M${bx - 80 + k * 38} ${572 + y} l-6 18`} stroke={IVORY} strokeWidth={1.6} opacity={.55} />;})}
+        <defs><clipPath id="ah-car-glass"><path d={`M${bx - 160} 650 C${bx - 140} 585 ${bx - 80} 556 ${bx} 556 C${bx + 80} 556 ${bx + 140} 585 ${bx + 160} 650 Z`} /></clipPath></defs>
+        <path d={`M${bx - 200} 740 L${bx - 200} 650 C${bx - 170} 560 ${bx - 90} 520 ${bx} 520 C${bx + 90} 520 ${bx + 170} 560 ${bx + 200} 650 L${bx + 200} 740 Z M${bx - 160} 650 C${bx - 140} 585 ${bx - 80} 556 ${bx} 556 C${bx + 80} 556 ${bx + 140} 585 ${bx + 160} 650 Z`} fill="none" stroke={GOLD} strokeWidth={2.4} strokeLinejoin="round" />
+        <circle cx={bx - 120} cy={748} r={24} fill="#0d1411" stroke={GOLD} strokeWidth={2.4} /><circle cx={bx + 120} cy={748} r={24} fill="#0d1411" stroke={GOLD} strokeWidth={2.4} />
+        <g clipPath="url(#ah-car-glass)"><Figure frame={c.frame} from={c.at(6)} x={bx} y={770} s={.7} color={IVORY} pose="sit" /></g>
+        {[-130, -100, -72, 70, 98, 126].map((dx, k) => {const y = ((c.frame * 3 + k * 23) % 36);return <path key={k} d={`M${bx + dx} ${596 + y} l-4 12`} stroke={IVORY} strokeWidth={2} strokeLinecap="round" opacity={.75} />;})}
       </g>
     </g>;}},
   {at: 7, draw: (c) => {const halves = appear(c.frame, c.at(8), 16), warm = appear(c.frame, c.at(9), 30), spread = appear(c.frame, within(c, 10, .2), 24);return <g>
     {D(c, 'M520 360 L1400 360 L1400 760 L520 760 Z M960 360 L960 760', 0, 30, 2.4, .9)}
     <g opacity={halves}>
-      {[[560, 520, 640, 500], [620, 640, 700, 690], [700, 420, 780, 460], [820, 560, 900, 600], [580, 720, 660, 700], [860, 680, 920, 730]].map(([x1, y1, x2, y2], k) => <path key={k} d={`M${x1} ${y1} L${x2} ${y2}`} stroke={IVORY} strokeWidth={2} opacity={.5} />)}
-      <path d="M700 590 C700 570 790 570 790 590 L790 610 C790 630 700 630 700 610 Z M725 600 L745 600 M735 590 L735 610 M765 596 L768 596" fill="none" stroke={IVORY} strokeWidth={2} opacity={.6} />
+      {[[560, 520, 640, 500], [620, 640, 700, 690], [700, 420, 780, 460], [820, 560, 900, 600], [580, 720, 660, 700], [860, 680, 920, 730]].map(([x1, y1, x2, y2], k) => <path key={k} d={`M${x1} ${y1} L${x2} ${y2}`} stroke={IVORY} strokeWidth={2.2} strokeLinecap="round" opacity={.75} />)}
+      <path d="M700 590 C700 570 790 570 790 590 L790 610 C790 630 700 630 700 610 Z M725 600 L745 600 M735 590 L735 610 M765 596 L768 596" fill="none" stroke={IVORY} strokeWidth={2.2} opacity={.8} />
       <path d="M1040 640 L1300 640 L1300 700 L1040 700 Z M1040 640 C1040 616 1100 616 1100 640 M1040 700 L1040 730 M1300 700 L1300 730" fill="none" stroke={GOLD} strokeWidth={2.6} strokeLinejoin="round" />
       <path d="M1290 430 C1260 430 1248 460 1262 482 C1240 458 1252 420 1290 430 Z" fill="none" stroke={GOLD} strokeWidth={2.2} />
     </g>
@@ -106,7 +110,7 @@ const loop = (x: number, y: number, s: number, hi: number, grow = 1, size = 38) 
   const pts = [[0, -1], [1, 0], [0, 1], [-1, 0]].map(([a, b]) => [x + a * 300 * s, y + b * 170 * s]);
   return <g>
     {pts.map(([px, py], k) => {const on = appear(grow * 4, k, .6);const lit = hi === 4 || hi === k;return <g key={k} opacity={on}>
-      <rect x={px - 150 * s} y={py - 40 * s} width={300 * s} height={80 * s} rx={10 * s} fill={lit ? 'rgba(217,181,111,.16)' : 'none'} stroke={lit ? GOLD : IVORY} strokeWidth={lit ? 3 : 1.8} opacity={lit ? 1 : .65} />
+      <rect x={px - 175 * s} y={py - 40 * s} width={350 * s} height={80 * s} rx={10 * s} fill={lit ? 'rgba(217,181,111,.16)' : 'none'} stroke={lit ? GOLD : IVORY} strokeWidth={lit ? 3 : 1.8} opacity={lit ? 1 : .65} />
       <text x={px} y={py + 13 * s} textAnchor="middle" fill={lit ? GOLD : IVORY} fontSize={size * s} fontWeight={700} opacity={lit ? 1 : .75}>{STEPS[k]}</text>
     </g>;})}
     {pts.map(([px, py], k) => {const [nx, ny] = pts[(k + 1) % 4], on = appear(grow * 4, k + .6, .4);
@@ -116,12 +120,14 @@ const loop = (x: number, y: number, s: number, hi: number, grow = 1, size = 38) 
 };
 const openBook = (x: number, y: number, s = 1) => `M${x} ${y + 100 * s} C${x - 70 * s} ${y + 70 * s} ${x - 160 * s} ${y + 68 * s} ${x - 230 * s} ${y + 86 * s} L${x - 230 * s} ${y} C${x - 160 * s} ${y - 18 * s} ${x - 70 * s} ${y - 16 * s} ${x} ${y + 14 * s} C${x + 70 * s} ${y - 16 * s} ${x + 160 * s} ${y - 18 * s} ${x + 230 * s} ${y} L${x + 230 * s} ${y + 86 * s} C${x + 160 * s} ${y + 68 * s} ${x + 70 * s} ${y + 70 * s} ${x} ${y + 100 * s} Z M${x} ${y + 14 * s} L${x} ${y + 100 * s}`;
 const hourglass = (x: number, y: number, s = 1) => `M${x - 50 * s} ${y - 80 * s} L${x + 50 * s} ${y - 80 * s} M${x - 50 * s} ${y + 80 * s} L${x + 50 * s} ${y + 80 * s} M${x - 40 * s} ${y - 80 * s} C${x - 40 * s} ${y - 20 * s} ${x - 6 * s} ${y - 10 * s} ${x - 6 * s} ${y} C${x - 6 * s} ${y + 10 * s} ${x - 40 * s} ${y + 20 * s} ${x - 40 * s} ${y + 80 * s} M${x + 40 * s} ${y - 80 * s} C${x + 40 * s} ${y - 20 * s} ${x + 6 * s} ${y - 10 * s} ${x + 6 * s} ${y} C${x + 6 * s} ${y + 10 * s} ${x + 40 * s} ${y + 20 * s} ${x + 40 * s} ${y + 80 * s}`;
+// A running shoe seen from the side, toe to the right, sole on y.
+const shoe = (x: number, y: number) => `M${x} ${y} L${x} ${y - 46} C${x + 14} ${y - 58} ${x + 40} ${y - 58} ${x + 56} ${y - 44} C${x + 86} ${y - 30} ${x + 128} ${y - 26} ${x + 144} ${y - 12} L${x + 144} ${y} Z M${x} ${y - 12} L${x + 144} ${y - 12} M${x + 50} ${y - 46} L${x + 62} ${y - 34} M${x + 66} ${y - 38} L${x + 78} ${y - 26}`;
 const quoteLines = (c: Ctx) => D(c, 'M760 640 L1160 640 M820 680 L1100 680', 6, 20, 2, .5);
 // Law title card: the four steps in one readable row under the title, this law's step lit.
 const stepRow = (c: Ctx, hi: number) => <g>{STEPS.map((t, k) => {const x = 330 + k * 420, lit = hi === 4 || hi === k;return <g key={t} opacity={appear(c.frame, c.start + 16 + k * 5, 12)}>
   <text x={x} y={740} textAnchor="middle" fill={lit ? GOLD : IVORY} fontSize={40} fontWeight={700} opacity={lit ? 1 : .55}>{t}</text>
   {lit ? <path d={`M${x - 110} 762 L${x + 110} 762`} stroke={GOLD} strokeWidth={4} strokeLinecap="round" /> : null}
-  {k < 3 ? <path d={`M${x + 160} 728 L${x + 240} 728 M${x + 226} 718 L${x + 240} 728 L${x + 226} 738`} fill="none" stroke={IVORY} strokeWidth={2.4} opacity={.5} /> : null}
+  {k < 3 ? <path d={`M${x + 160} 728 L${x + 240} 728 M${x + 226} 718 L${x + 240} 728 L${x + 226} 738`} fill="none" stroke={IVORY} strokeWidth={2.4} opacity={.75} /> : null}
 </g>;})}</g>;
 const card = (kicker: string, title: string, hi: number) => ({card: {kicker, title}, draw: (c: Ctx) => stepRow(c, hi)});
 
@@ -130,17 +136,18 @@ const card = (kicker: string, title: string, hi: number) => ({card: {kicker, tit
 export const CuonSach = section('03 cuốn sách', /(hai mươi chương|bốn quy luật|bản hướng dẫn thao tác|tâm lý học hành vi|cuốn sổ tay|thử một việc)/gi, [
   {at: 0, draw: (c) => <g>
     {D(c, openBook(960, 560, 1.4), 0, 34, 2.6)}
-    {[0, 1, 2, 3, 4, 5].map((k) => {const main = k > 0 && k < 5, up = appear(c.frame, within(c, 0, .25 + k * .1), 14) * (main ? 100 : 56), x = 690 + k * 100;
+    <defs><clipPath id="ah-above-pages"><path d="M0 0 L1920 0 L1920 554 L1282 554 C1184 529 1058 532 960 572 C862 532 736 529 638 554 L0 554 Z" /></clipPath></defs>
+    <g clipPath="url(#ah-above-pages)">{[0, 1, 2, 3, 4, 5].map((k) => {const main = k > 0 && k < 5, up = appear(c.frame, within(c, 0, .25 + k * .1), 14) * (main ? 100 : 56), x = 690 + k * 100;
       return <g key={k} opacity={appear(c.frame, within(c, 0, .25 + k * .1), 10) * (main ? 1 : .45)}>
         <path d={`M${x} ${560} L${x} ${560 - up} L${x + 52} ${560 - up} L${x + 52} ${560} `} fill="none" stroke={main ? GOLD : IVORY} strokeWidth={2.4} />
         {main ? <text x={x + 26} y={560 - up + 40} textAnchor="middle" fill={GOLD} fontSize={34} fontWeight={700}>{k}</text> : null}
-      </g>;})}
+      </g>;})}</g>
   </g>},
   {at: 1, quote: true, draw: (c) => <g>
     {D(c, 'M720 320 L1200 320 L1200 780 L720 780 Z M760 320 L760 780', 0, 30, 2.6)}
     {[0, 1, 2, 3, 4].map((k) => <g key={k} opacity={appear(c.frame, c.start + 20 + k * 4, 10)}>
       <rect x={810} y={380 + k * 76} width={36} height={36} rx={4} fill="none" stroke={IVORY} strokeWidth={2} />
-      <path d={`M870 ${398 + k * 76} L${1120 - k * 30} ${398 + k * 76}`} stroke={IVORY} strokeWidth={2} opacity={.55} />
+      <path d={`M870 ${398 + k * 76} L${1120 - k * 30} ${398 + k * 76}`} stroke={IVORY} strokeWidth={2.2} opacity={.8} />
       <path d={`M816 ${398 + k * 76} L826 ${408 + k * 76} L842 ${386 + k * 76}`} fill="none" stroke={GOLD} strokeWidth={3} opacity={appear(c.frame, within(c, 2, .2 + k * .14), 8) * (k < 4 ? 1 : appear(c.frame, within(c, 3, .45), 8))} />
     </g>)}
     <path d="M1320 700 L1420 480 L1440 490 L1340 710 Z M1320 700 L1316 724 L1340 710" fill="none" stroke={GOLD} strokeWidth={2.4} strokeLinejoin="round" opacity={appear(c.frame, c.at(3), 14)} />
@@ -172,7 +179,7 @@ export const SoiChi = section('04 sợi chỉ', /(thói quen nhỏ lặp lại m
   {at: 6, quote: true, draw: (c) => {const fade = appear(c.frame, c.at(8), 24), run = interpolate(c.frame, [c.start + 10, c.at(8)], [0, 1], clamp);return <g>
     <g opacity={1 - fade * .7}>{D(c, 'M1500 300 L1500 760 M1500 300 L1600 330 L1500 360', 0, 20, 2.6)}</g>
     {Array.from({length: 9}, (_, i) => <rect key={i} x={460 + i * 110} y={700} width={100} height={22} rx={3} fill="none" stroke={GOLD} strokeWidth={2.2 + fade} opacity={appear(c.frame, c.start + 8 + i * 3, 8)} />)}
-    {Array.from({length: 9}, (_, i) => i % 3 === 1 ? null : <path key={i} d={`M${460 + i * 110} 560 L${545 + i * 110} 560`} stroke={IVORY} strokeWidth={2} opacity={appear(c.frame, c.start + 8 + i * 3, 8) * .6} />)}
+    {Array.from({length: 9}, (_, i) => i % 3 === 1 ? null : <path key={i} d={`M${460 + i * 110} 560 L${545 + i * 110} 560`} stroke={IVORY} strokeWidth={2.4} opacity={appear(c.frame, c.start + 8 + i * 3, 8) * .85} />)}
     <Figure frame={c.frame} from={c.start + 10} x={520 + run * 700} y={690} s={.55} pose="walk" />
     <Figure frame={c.frame} from={c.start + 10} x={520 + run * 520} y={550} s={.55} pose="walk" color={IVORY} />
     <Glow x={900} y={710} r={240} opacity={fade * .6} />
@@ -189,9 +196,11 @@ export const SoiChi = section('04 sợi chỉ', /(thói quen nhỏ lặp lại m
     <Glow x={1200} y={350} r={200} opacity={second * .6} />
   </g>;}},
   {at: 12, quote: true, draw: (c) => <g>
-    {D(c, 'M820 560 L1100 560 L1100 760 L820 760 Z M900 560 L1020 560', 0, 24, 2.6)}
+    {D(c, 'M800 620 L1080 620 L1080 790 L800 790 Z M800 620 L860 570 L1140 570 L1080 620 M1140 570 L1140 740 L1080 790', 0, 28, 2.6)}
+    {D(c, 'M920 596 L1030 596', 18, 10, 4)}
+    <text x={940} y={722} textAnchor="middle" fill={GOLD} fontSize={36} fontWeight={700} opacity={appear(c.frame, c.start + 24, 10)}>PHIẾU</text>
     {[0, 1, 2, 3].map((k) => {const fall = interpolate(c.frame, [c.start + 20 + k * 22, c.start + 44 + k * 22], [0, 1], {...clamp, easing: ease});
-      return <path key={k} d={`M${930 + (k % 2) * 30} ${330 + fall * 210} l60 0 l0 40 l-60 0 Z`} fill="none" stroke={GOLD} strokeWidth={2.2} opacity={appear(c.frame, c.start + 20 + k * 22, 6) * (1 - appear(c.frame, c.start + 44 + k * 22, 6))} />;})}
+      return <path key={k} d={`M${946 + (k % 2) * 16} ${300 + fall * 250} l50 0 l0 40 l-50 0 Z`} fill="none" stroke={GOLD} strokeWidth={2.2} opacity={appear(c.frame, c.start + 20 + k * 22, 6) * (1 - appear(c.frame, c.start + 44 + k * 22, 6))} />;})}
   </g>},
   {at: 13, draw: (c) => {const laws = appear(c.frame, c.at(14), 20);return <g>
     {loop(960, 520, 1, -1, interpolate(c.frame, [within(c, 13, .25), within(c, 13, .95)], [0, 1], clamp))}
@@ -209,7 +218,7 @@ export const QuyLuat1 = section('05 quy luật 1', /(hiển nhiên|dấu hiệu|
   {at: 0, ...card('QUY LUẬT 1', 'Làm cho hiển nhiên', 0)},
   {at: 1, label: 'Nhận ra thói quen', draw: (c) => <g>
     {D(c, 'M300 760 L1620 760 M300 800 L1620 800', 0, 30, 2.2, .7)}
-    {Array.from({length: 12}, (_, i) => <path key={i} d={`M${340 + i * 110} 750 L${360 + i * 110} 810`} stroke={GOLD} strokeWidth={2} opacity={appear(c.frame, c.start + 8 + i * 2, 6) * .6} />)}
+    {Array.from({length: 12}, (_, i) => <path key={i} d={`M${340 + i * 110} 750 L${360 + i * 110} 810`} stroke={GOLD} strokeWidth={2.2} opacity={appear(c.frame, c.start + 8 + i * 2, 6) * .85} />)}
     {D(c, 'M1380 760 L1380 420 M1350 420 L1410 420 L1410 520 L1350 520 Z', 14, 22, 2.4)}
     <circle cx={1380} cy={450} r={12} fill={GOLD} opacity={appear(c.frame, within(c, 2, .3), 10)} />
     <Figure frame={c.frame} from={c.start + 10} x={700} y={740} s={1} arm="point" />
@@ -232,11 +241,14 @@ export const QuyLuat1 = section('05 quy luật 1', /(hiển nhiên|dấu hiệu|
     </g>)}
   </g>},
   {at: 8, quote: true, draw: (c) => <g>
-    {D(c, 'M600 760 L760 760 L740 600 L620 600 Z M760 640 C810 640 810 720 750 720', 0, 26, 2.6)}
-    {[0, 1, 2].map((k) => <path key={k} d={`M${650 + k * 30} 580 c-10 -20 10 -30 0 -50`} fill="none" stroke={IVORY} strokeWidth={2} opacity={appear(c.frame, c.start + 20, 10) * .6} />)}
-    <g opacity={appear(c.frame, within(c, 8, .45), 18)}><path d="M580 470 C580 430 780 430 780 470 C780 500 580 500 580 470 Z" fill="rgba(217,181,111,.14)" stroke={GOLD} strokeWidth={2.6} /></g>
-    <text x={860} y={700} fill={IVORY} fontSize={42} fontWeight={700} opacity={appear(c.frame, within(c, 8, .2), 10)}>Sau khi pha cà phê,</text>
-    <text x={860} y={480} fill={GOLD} fontSize={42} fontWeight={700} opacity={appear(c.frame, within(c, 8, .5), 10)}>tôi ngồi thiền một phút</text>
+    {/* A mug wider at the rim, its handle joined to the side, on a saucer; the cushion of the new habit above it. */}
+    {D(c, 'M620 600 L780 600 L762 750 L638 750 Z M776 632 C846 632 846 716 766 716', 0, 26, 2.6)}
+    {D(c, 'M590 768 L810 768', 10, 14, 2.4, .85)}
+    {[0, 1, 2].map((k) => <path key={k} d={`M${670 + k * 30} 580 c-10 -18 10 -28 0 -46`} fill="none" stroke={IVORY} strokeWidth={2.2} strokeLinecap="round" opacity={appear(c.frame, c.start + 20, 10) * .75} />)}
+    <g opacity={appear(c.frame, within(c, 8, .45), 18)}><path d="M580 450 C580 400 820 400 820 450 C820 492 580 492 580 450 Z M588 452 C660 470 740 470 812 452" fill="rgba(217,181,111,.14)" stroke={GOLD} strokeWidth={2.6} strokeLinejoin="round" /></g>
+    <text x={920} y={700} fill={IVORY} fontSize={42} fontWeight={700} opacity={appear(c.frame, within(c, 8, .2), 10)}>Sau khi pha cà phê,</text>
+    <path d="M900 652 C872 600 872 540 900 488 M884 506 L900 488 L912 510" fill="none" stroke={GOLD} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" opacity={appear(c.frame, within(c, 8, .45), 14)} />
+    <text x={920} y={466} fill={GOLD} fontSize={42} fontWeight={700} opacity={appear(c.frame, within(c, 8, .5), 10)}>tôi ngồi thiền một phút</text>
   </g>},
   {at: 9, label: 'Thay đổi môi trường', draw: (c) => {const swap = appear(c.frame, within(c, 9, .45), 24);return <g>
     {D(c, 'M640 340 L1280 340 M640 480 L1280 480 M640 620 L1280 620 M640 760 L1280 760 M640 340 L640 760 M1280 340 L1280 760', 0, 30, 2.4, .9)}
@@ -257,7 +269,7 @@ export const QuyLuat1 = section('05 quy luật 1', /(hiển nhiên|dấu hiệu|
       <path d="M620 640 L880 640 L880 720 L620 720 Z M620 640 C620 610 680 610 680 640" fill="none" stroke={GOLD} strokeWidth={2.4} />
       <path d="M1040 440 L1280 440 M1080 440 L1080 520 M1240 440 L1240 520 M1140 410 L1180 410 L1180 440" fill="none" stroke={GOLD} strokeWidth={2.4} />
       <path d="M1040 660 C1040 700 1280 700 1280 660 C1280 640 1040 640 1040 660 Z M1160 690 L1160 750" fill="none" stroke={GOLD} strokeWidth={2.4} />
-      {['NGỦ', 'LÀM VIỆC', 'ĂN'].map((t, k) => <text key={t} x={[750, 1160, 1160][k]} y={[770, 390, 630][k]} textAnchor="middle" fill={IVORY} fontSize={36} fontWeight={700}>{t}</text>)}
+      {['NGỦ', 'LÀM VIỆC', 'ĂN'].map((t, k) => <text key={t} x={[750, 1160, 1160][k]} y={[620, 390, 630][k]} textAnchor="middle" fill={IVORY} fontSize={36} fontWeight={700}>{t}</text>)}
     </g>
   </g>;}},
   {at: 13, label: 'Đảo ngược: làm cho khó thấy', quote: true, draw: (c) => {const shut = interpolate(c.frame, [within(c, 14, .4), within(c, 14, .9)], [0, 1], {...clamp, easing: ease});return <g>
@@ -265,7 +277,7 @@ export const QuyLuat1 = section('05 quy luật 1', /(hiển nhiên|dấu hiệu|
     <path d={`M1020 300 L${1020 + 220 * (1 - shut)} ${320 + 0 * shut} L${1020 + 220 * (1 - shut)} ${740} L1020 760`} fill="none" stroke={GOLD} strokeWidth={2.6} strokeLinejoin="round" opacity={appear(c.frame, c.start + 16, 10)} />
     <g opacity={appear(c.frame, c.at(14), 12) * (1 - shut * .85)}><rect x={1100} y={520} width={60} height={110} rx={10} fill="none" stroke={IVORY} strokeWidth={2.4} /></g>
     <Figure frame={c.frame} from={c.start + 8} x={680} y={760} s={1} pose="sit" />
-    {D(c, 'M600 670 L760 670 M600 670 L600 760 M760 670 L760 760', 8, 16, 2.2, .7)}
+    {D(c, 'M590 676 L720 676 M594 676 L594 760 M716 676 L716 760', 8, 16, 2.4, .9)}
   </g>;}},
 ], options);
 
@@ -282,9 +294,9 @@ export const QuyLuat2 = section('06 quy luật 2', /(hấp dẫn|mong chờ|gi�
     {Array.from({length: 8}, (_, k) => {const a = k / 8 * Math.PI * 2;return <path key={k} d={`M${960 + Math.cos(a) * 200} ${560 + Math.sin(a) * 200} L${960 + Math.cos(a) * (230 + glow * 40)} ${560 + Math.sin(a) * (230 + glow * 40)}`} stroke={GOLD} strokeWidth={2.4} strokeLinecap="round" opacity={glow} />;})}
   </g>;}},
   {at: 4, label: 'Gói cám dỗ', draw: (c) => {const fast = interpolate(c.frame, [within(c, 4, .4), within(c, 4, .7)], [0, 1], clamp), spin = c.frame * (2 + fast * 10);return <g>
-    {D(c, 'M620 760 L960 760 M680 760 L740 600 L860 600 L930 700 M740 600 L720 540 M700 540 L760 540', 0, 26, 2.4)}
-    <g transform={`translate(930 700) rotate(${spin})`}><circle r={56} fill="none" stroke={GOLD} strokeWidth={2.4} />{[0, 1, 2].map((k) => <path key={k} d={`M0 0 L${Math.cos(k * 2.09) * 56} ${Math.sin(k * 2.09) * 56}`} stroke={GOLD} strokeWidth={1.8} />)}</g>
-    <Figure frame={c.frame} from={c.start + 8} x={740} y={630} s={.75} pose="sit" />
+    {D(c, 'M640 760 L980 760 M676 640 L736 640 M706 640 L724 744 L900 690 M724 744 L696 760 M724 744 L752 760 M900 740 L880 760 M900 740 L920 760 M900 690 L840 572 L796 572 M751 710 a8 8 0 1 0 16 0 a8 8 0 1 0 -16 0 M754 716 L724 744', 0, 26, 2.4)}
+    <g transform={`translate(900 690) rotate(${spin})`}><circle r={50} fill="none" stroke={GOLD} strokeWidth={2.4} />{[0, 1, 2].map((k) => <path key={k} d={`M0 0 L${Math.cos(k * 2.09) * 50} ${Math.sin(k * 2.09) * 50}`} stroke={GOLD} strokeWidth={1.8} />)}</g>
+    <Figure frame={c.frame} from={c.start + 8} x={700} y={700} s={.8} pose="sit" arm="reach" />
     {D(c, 'M1080 380 L1460 380 L1460 620 L1080 620 Z M1240 620 L1220 680 L1320 680 L1300 620', 10, 24, 2.4)}
     <rect x={1100} y={400} width={340} height={200} fill="rgba(217,181,111,.18)" opacity={fast} />
     <path d="M1240 460 L1310 500 L1240 540 Z" fill="none" stroke={GOLD} strokeWidth={2.4} opacity={fast} />
@@ -293,7 +305,7 @@ export const QuyLuat2 = section('06 quy luật 2', /(hấp dẫn|mong chờ|gi�
     {D(c, 'M640 780 L640 480 L960 300 L1280 480 L1280 780 Z', 0, 30, 2.6)}
     {D(c, 'M860 700 L1060 700 L1080 740 L840 740 Z', 12, 18, 2.4)}
     {[0, 1, 2, 3].map((k) => <path key={k} d={`M${880 + k * 40} 680 L${880 + k * 40} 700 M${876 + k * 40} 680 L${884 + k * 40} 680`} stroke={GOLD} strokeWidth={2} opacity={appear(c.frame, c.start + 26 + k * 3, 8)} />)}
-    {[0, 1, 2].map((k) => <g key={k} opacity={appear(c.frame, c.start + 20 + k * 6, 12)}><Figure frame={c.frame} from={c.start + 20 + k * 6} x={[740, 960, 1180][k]} y={780} s={.55} pose={k === 1 ? 'stand' : 'sit'} facing={k === 2 ? -1 : 1} /></g>)}
+    {[0, 1, 2].map((k) => <g key={k} opacity={appear(c.frame, c.start + 20 + k * 6, 12)}><Figure frame={c.frame} from={c.start + 20 + k * 6} x={[770, 1150, 1240][k]} y={780} s={.55} pose={k === 2 ? 'stand' : 'sit'} facing={k === 0 ? 1 : -1} /></g>)}
   </g>},
   {at: 9, quote: true, draw: (c) => {const turn = appear(c.frame, within(c, 9, .4), 18);return <g>
     {[0, 1, 2, 3, 4].map((k) => <Figure key={k} frame={c.frame} from={c.start + 6} x={560 + k * 150} y={780} s={.8} facing={1} />)}
@@ -324,16 +336,22 @@ export const QuyLuat3 = section('07 quy luật 3', /(dễ dàng|làm nhiều hơ
     <Glow x={990} y={385} r={160} opacity={rise * .7} />
   </g>;}},
   {at: 4, quote: true, draw: (c) => {const go = interpolate(c.frame, [within(c, 4, .5), c.at(5) + 30], [0, 1], {...clamp, easing: ease});return <g>
-    {D(c, 'M560 360 L900 360 L900 640 L560 640 Z M620 420 C680 400 720 480 780 460 C820 450 840 520 860 560 M640 560 L700 520', 0, 30, 2.2, .8)}
+    {D(c, 'M560 340 L900 340 L900 660 L560 660 Z', 0, 24, 2.6)}
+    <text x={730} y={398} textAnchor="middle" fill={GOLD} fontSize={36} fontWeight={700} opacity={appear(c.frame, c.start + 12, 10)}>KẾ HOẠCH</text>
+    {D(c, 'M610 610 C680 600 660 520 740 520 C810 520 790 460 850 450', 16, 24, 2.4, .9)}
+    <circle cx={610} cy={610} r={9} fill={GOLD} opacity={appear(c.frame, c.start + 16, 8)} />
+    {D(c, 'M836 436 L864 464 M864 436 L836 464', 36, 8, 2.6)}
     <g transform={`translate(${go * 380} 0)`} opacity={appear(c.frame, within(c, 4, .35), 12)}>
-      {D(c, 'M1060 720 L1060 660 C1100 650 1120 670 1160 690 L1180 720 Z M1200 720 L1200 660 C1240 650 1260 670 1300 690 L1320 720 Z', within(c, 4, .35) - c.start, 18, 2.4)}
+      {D(c, `${shoe(1000, 740)} ${shoe(1170, 740)}`, within(c, 4, .35) - c.start, 18, 2.4)}
     </g>
   </g>;}},
   {at: 6, label: 'Bớt ma sát', draw: (c) => {const fix = interpolate(c.frame, [within(c, 7, .45), within(c, 7, .85)], [0, 1], {...clamp, easing: ease}), bag = appear(c.frame, c.at(8), 16);return <g>
+    {D(c, 'M450 396 L520 396 L520 444 L450 444 Z M486 396 L486 372 M466 372 L506 372', 0, 14, 2.4)}
     <path d={`M520 420 L760 420 C${840 - fix * 40} ${420 + (1 - fix) * 120} ${840 + fix * 40} ${420 + (1 - fix) * 120} ${920 + fix * 0} 420 L1100 420`} fill="none" stroke={GOLD} strokeWidth={6} strokeLinecap="round" opacity={appear(c.frame, c.start + 6, 14)} />
-    {[0, 1, 2].map((k) => <path key={k} d={`M${1110 + k * 14} ${430 + ((c.frame * (2 + fix * 6) + k * 20) % 60)} l0 ${6 + fix * 14}`} stroke={IVORY} strokeWidth={2.4} strokeLinecap="round" opacity={appear(c.frame, c.start + 10, 10) * (.4 + fix * .6)} />)}
+    <path d="M1100 420 C1130 420 1150 460 1156 540" fill="none" stroke={IVORY} strokeWidth={3} strokeLinecap="round" opacity={fix * .85} />
+    {[0, 1, 2].map((k) => <path key={k} d={`M${1108 + k * 16} ${436 + ((c.frame * (2 + fix * 6) + k * 20) % 70)} l0 ${10 + fix * 12}`} stroke={IVORY} strokeWidth={2.4} strokeLinecap="round" opacity={appear(c.frame, c.start + 10, 10) * (.75 - fix * .4)} />)}
     <g opacity={bag}>
-      {D(c, 'M1300 360 L1460 360 L1460 760 L1300 760', c.at(8) - c.start, 18, 2.4, .8)}
+      {D(c, 'M1300 760 L1300 360 L1460 360 L1460 760', c.at(8) - c.start, 18, 2.4, .9)}
       <path d="M1180 700 L1280 700 L1270 760 L1190 760 Z M1200 700 C1200 670 1260 670 1260 700" fill="none" stroke={GOLD} strokeWidth={2.4} />
     </g>
   </g>;}},
@@ -354,8 +372,8 @@ export const QuyLuat3 = section('07 quy luật 3', /(dễ dàng|làm nhiều hơ
   {at: 13, label: 'Đảo ngược: làm cho khó', draw: (c) => {const lock = appear(c.frame, within(c, 14, .4), 12), word = appear(c.frame, c.at(15), 16);return <g>
     {D(c, 'M560 600 L860 600 L860 760 L560 760 Z M560 600 C560 540 860 540 860 600', 0, 26, 2.6)}
     <g opacity={lock}><rect x={690} y={630} width={40} height={36} rx={4} fill="none" stroke={GOLD} strokeWidth={2.4} /><path d="M698 630 C698 606 722 606 722 630" fill="none" stroke={GOLD} strokeWidth={2.4} /></g>
-    {D(c, 'M1000 760 L1000 600 L1100 600 L1100 760 M1000 680 L1100 680 M1000 520 L1000 600', 12, 20, 2.2, .8)}
-    <path d="M1010 540 C1040 600 1080 560 1100 620" fill="none" stroke={IVORY} strokeWidth={2.4} opacity={appear(c.frame, within(c, 14, .6), 12)} />
+    {D(c, 'M1110 500 L1110 760 M1000 660 L1110 660 M1004 660 L1004 760 M1080 500 L1110 500', 12, 20, 2.4, .9)}
+    <path d="M1096 504 C1136 520 1146 590 1124 646 M1110 520 C1080 560 1086 610 1100 640" fill="none" stroke={IVORY} strokeWidth={2.4} strokeLinecap="round" opacity={appear(c.frame, within(c, 14, .6), 12)} />
     {D(c, 'M1220 640 L1460 640 M1260 640 L1250 760 M1420 640 L1430 760 M1400 560 L1360 630', 16, 20, 2.4)}
     <Word x={960} y={380} size={48} text="THIẾT BỊ CAM KẾT" opacity={word} />
   </g>;}},
@@ -374,10 +392,10 @@ export const QuyLuat3 = section('07 quy luật 3', /(dễ dàng|làm nhiều hơ
 export const QuyLuat4 = section('08 quy luật 4', /(thỏa mãn|phần thưởng|xà phòng|thưởng ngay|hiện tại|tương lai|không làm|áo khoác da|duy trì một thói quen|tiến bộ|kẹp giấy|bỏ lỡ hai lần|ngày tệ|giữ lời|hợp đồng thói quen|dõi theo)/gi, [
   {at: 0, ...card('QUY LUẬT 4', 'Làm cho thỏa mãn', 3)},
   {at: 1, label: 'Phần thưởng ngay lúc làm', draw: (c) => <g>
-    {D(c, 'M860 300 L1060 300 L1060 340 M1040 340 L1040 380', 0, 20, 2.6)}
-    {[0, 1, 2].map((k) => <path key={k} d={`M1040 ${400 + ((c.frame * 4 + k * 30) % 90)} l0 14`} stroke={IVORY} strokeWidth={2} opacity={appear(c.frame, c.start + 12, 10) * .6} />)}
-    {D(c, 'M880 600 C900 520 980 500 1020 540 C1060 500 1140 520 1160 600 C1140 640 900 640 880 600 Z', 10, 26, 2.6)}
-    {Array.from({length: 7}, (_, k) => {const rise = ((c.frame - c.start - 20 - k * 9) % 80) / 80;return c.frame < c.start + 20 + k * 9 ? null : <circle key={k} cx={940 + (k * 37) % 180} cy={560 - rise * 200} r={10 + (k % 3) * 6} fill="none" stroke={GOLD} strokeWidth={2} opacity={appear(c.frame, within(c, 3, .1), 14) * (1 - rise)} />;})}
+    {D(c, 'M820 280 L820 330 M820 306 L1010 306 C1036 306 1044 320 1044 344 L1044 372 M1024 372 L1064 372', 0, 20, 2.6)}
+    {[0, 1, 2].map((k) => <path key={k} d={`M1044 ${392 + ((c.frame * 4 + k * 30) % 110)} l0 16`} stroke={IVORY} strokeWidth={2.2} strokeLinecap="round" opacity={appear(c.frame, c.start + 12, 10) * .8} />)}
+    {D(c, 'M920 540 C930 620 1000 648 1034 634 M1168 540 C1158 620 1088 648 1054 634 M920 540 C914 524 930 514 940 528 M1168 540 C1174 524 1158 514 1148 528', 10, 26, 2.6)}
+    {Array.from({length: 7}, (_, k) => {const rise = ((c.frame - c.start - 20 - k * 9) % 80) / 80;return c.frame < c.start + 20 + k * 9 ? null : <circle key={k} cx={960 + (k * 37) % 170} cy={560 - rise * 200} r={10 + (k % 3) * 6} fill="none" stroke={GOLD} strokeWidth={2} opacity={appear(c.frame, within(c, 3, .1), 14) * (1 - rise)} />;})}
   </g>},
   {at: 4, draw: (c) => {const tilt = interpolate(c.frame, [within(c, 5, .1), within(c, 5, .5), within(c, 5, .6), within(c, 5, 1)], [0, -10, -10, 10], clamp);return <g>
     {D(c, 'M960 780 L960 420 M880 780 L1040 780', 0, 22, 2.6)}
@@ -388,26 +406,29 @@ export const QuyLuat4 = section('08 quy luật 4', /(thỏa mãn|phần thưởn
     </g>
   </g>;}},
   {at: 6, label: 'Cho việc "không làm" một phần thưởng', quote: true, draw: (c) => {const coin = interpolate(c.frame, [within(c, 7, .45), within(c, 7, .8)], [0, 1], {...clamp, easing: ease});return <g>
-    <g opacity={appear(c.frame, c.start + 6, 12) * (1 - appear(c.frame, within(c, 7, .35), 16) * .8)}>{D(c, 'M620 700 L760 700 L740 560 L640 560 Z M760 600 C800 600 800 660 750 660', 0, 22, 2.4)}</g>
-    {D(c, 'M1040 620 C1040 520 1300 520 1300 620 C1300 700 1260 740 1200 740 L1100 740 C1060 740 1040 700 1040 620 Z M1090 740 L1090 770 M1250 740 L1250 770 M1300 600 L1330 590 M1150 530 L1190 530', 10, 30, 2.6)}
+    <g opacity={appear(c.frame, c.start + 6, 12) * (1 - appear(c.frame, within(c, 7, .35), 16) * .65)}>{D(c, 'M620 700 L760 700 L740 560 L640 560 Z M760 600 C800 600 800 660 750 660', 0, 22, 2.4)}</g>
+    {D(c, 'M1040 620 C1040 520 1300 520 1300 620 C1300 700 1260 740 1200 740 L1100 740 C1060 740 1040 700 1040 620 Z M1090 740 L1090 770 M1250 740 L1250 770 M1150 536 L1196 536', 10, 30, 2.6)}
+    {D(c, 'M1300 592 C1330 588 1334 628 1300 630 M1240 548 L1258 512 L1274 552 M1040 616 C1014 606 1018 584 1032 592', 24, 18, 2.4)}
+    <circle cx={1262} cy={584} r={5} fill={GOLD} opacity={appear(c.frame, c.start + 34, 8)} />
     <circle cx={1170} cy={360 + coin * 160} r={20} fill="none" stroke={GOLD} strokeWidth={2.6} opacity={appear(c.frame, within(c, 7, .45), 8) * (1 - appear(c.frame, within(c, 7, .8), 6))} />
     <g opacity={appear(c.frame, within(c, 7, .6), 14)}><path d="M1340 650 L1600 650 L1600 730 L1340 730 Z" fill="none" stroke={IVORY} strokeWidth={2} /><text x={1470} y={703} textAnchor="middle" fill={IVORY} fontSize={36} fontWeight={700}>áo khoác da</text></g>
   </g>;}},
   {at: 9, label: 'Nhìn thấy tiến bộ', draw: (c) => {const moved = Math.floor(interpolate(c.frame, [within(c, 10, .3), within(c, 10, 1)], [0, 8], clamp));return <g>
     {D(c, 'M640 460 L640 760 L880 760 L880 460 M1040 460 L1040 760 L1280 760 L1280 460', 0, 26, 2.6)}
-    {Array.from({length: 8}, (_, k) => {const right = k < moved, x = (right ? 1080 : 680) + (k % 4) * 44, y = 740 - Math.floor(k / 4) * 30;
-      return <path key={k} d={`M${x} ${y} l30 -10 l4 8 l-30 10 Z`} fill="none" stroke={right ? GOLD : IVORY} strokeWidth={2} opacity={appear(c.frame, c.start + 14, 10)} />;})}
+    {Array.from({length: 8}, (_, k) => {const right = k < moved, x = (right ? 1056 : 656) + (k % 4) * 54, y = 736 - Math.floor(k / 4) * 34;
+      // A paper clip: two nested rounded loops.
+      return <path key={k} d={`M${x} ${y} L${x + 40} ${y} A9 9 0 0 0 ${x + 40} ${y - 18} L${x + 6} ${y - 18} A6 6 0 0 0 ${x + 6} ${y - 6} L${x + 34} ${y - 6}`} fill="none" stroke={right ? GOLD : IVORY} strokeWidth={2.4} strokeLinecap="round" opacity={appear(c.frame, c.start + 14, 10)} />;})}
   </g>;}},
   {at: 11, quote: true, draw: (c) => <g>
     {D(c, 'M620 300 L1300 300 L1300 760 L620 760 Z M620 380 L1300 380', 0, 28, 2.6)}
     {Array.from({length: 21}, (_, k) => {const x = 660 + (k % 7) * 92, y = 420 + Math.floor(k / 7) * 110, gap = k === 10, show = appear(c.frame, c.start + 20 + k * 3, 6);
-      return <g key={k}><rect x={x} y={y} width={70} height={80} fill="none" stroke={IVORY} strokeWidth={1.4} opacity={.4} />
+      return <g key={k}><rect x={x} y={y} width={70} height={80} fill="none" stroke={IVORY} strokeWidth={1.8} opacity={.65} />
         {gap ? null : <path d={`M${x + 18} ${y + 22} L${x + 52} ${y + 58} M${x + 52} ${y + 22} L${x + 18} ${y + 58}`} stroke={k === 11 ? GOLD : GOLD} strokeWidth={k === 11 ? 4 : 2.6} opacity={show} />}</g>;})}
     <Glow x={1035} y={570} r={90} opacity={appear(c.frame, c.at(12), 20) * .8} />
   </g>},
   {at: 13, label: 'Đảo ngược: có người cùng giữ lời', draw: (c) => <g>
     {D(c, 'M820 300 L1100 300 L1100 660 L820 660 Z', 0, 24, 2.6)}
-    {[0, 1, 2, 3].map((k) => <path key={k} d={`M860 ${360 + k * 50} L${1060 - (k % 2) * 60} ${360 + k * 50}`} stroke={IVORY} strokeWidth={2} opacity={appear(c.frame, c.start + 14 + k * 4, 8) * .6} />)}
+    {[0, 1, 2, 3].map((k) => <path key={k} d={`M860 ${360 + k * 50} L${1060 - (k % 2) * 60} ${360 + k * 50}`} stroke={IVORY} strokeWidth={2.2} opacity={appear(c.frame, c.start + 14 + k * 4, 8) * .8} />)}
     {D(c, 'M860 610 C880 590 900 630 930 600 M990 610 C1010 580 1030 640 1060 600', within(c, 14, .5) - c.start, 20, 2.4)}
     <Figure frame={c.frame} from={c.start + 10} x={640} y={780} s={.9} />
     <Figure frame={c.frame} from={c.start + 14} x={1280} y={780} s={.9} facing={-1} />
@@ -427,7 +448,7 @@ export const ThanhNep = section('08b thành nếp', /(thành nếp|sân chơi|l�
       {D(c, 'M1060 760 L1500 760 M1060 720 L1500 720', 8, 22, 2.2, .7)}
       <Figure frame={c.frame} from={c.start + 14} x={1280} y={710} s={.8} pose="walk" />
     </g>
-    <g opacity={arrows}>{[0, 1, 2, 3, 4].map((k) => <path key={k} d={k === 4 ? 'M640 640 C900 640 1000 500 1240 380 M1220 372 L1244 378 L1232 400' : `M640 ${420 + k * 70} L1240 ${420 + k * 70} M1220 ${410 + k * 70} L1240 ${420 + k * 70} L1220 ${430 + k * 70}`} fill="none" stroke={k === 4 ? GOLD : IVORY} strokeWidth={k === 4 ? 3.4 : 2} opacity={k === 4 ? 1 : .5} />)}<Glow x={1240} y={380} r={120} opacity={arrows * .7} /></g>
+    <g opacity={arrows}>{[0, 1, 2, 3, 4].map((k) => <path key={k} d={k === 4 ? 'M640 690 L880 690 C1000 690 1080 716 1200 772 M1176 774 L1200 772 L1188 752' : `M640 ${400 + k * 70} L1240 ${400 + k * 70} M1220 ${390 + k * 70} L1240 ${400 + k * 70} L1220 ${410 + k * 70}`} fill="none" stroke={k === 4 ? GOLD : IVORY} strokeWidth={k === 4 ? 3.4 : 2.2} strokeLinecap="round" strokeLinejoin="round" opacity={k === 4 ? 1 : .75} />)}<Glow x={1200} y={772} r={120} opacity={arrows * .7} /></g>
   </g>;}},
   {at: 4, label: 'Vừa sức và chịu được nhàm chán', draw: (c) => <g>
     {D(c, 'M560 560 C760 600 1160 600 1360 560', 0, 26, 2.6)}
@@ -442,9 +463,10 @@ export const ThanhNep = section('08b thành nếp', /(thành nếp|sân chơi|l�
     {Array.from({length: 20}, (_, k) => <path key={k} d={`M${940 + (k % 10) * 46} ${560 + Math.floor(k / 10) * 90} l0 60`} stroke={k % 5 === 4 ? GOLD : IVORY} strokeWidth={2.4} opacity={appear(c.frame, c.start + 14 + k * 5, 6) * (k % 5 === 4 ? 1 : .7)} />)}
   </g>;}},
   {at: 8, label: 'Xem lại và giữ mình mềm dẻo', quote: true, draw: (c) => {const sway = Math.sin((c.frame - c.start) / 22) * 8;return <g>
-    {D(c, openBook(760, 520, .9), 0, 28, 2.6)}
-    {['Điều gì tốt?', 'Điều gì chưa tốt?', 'Mình học được gì?'].map((t, k) => <text key={t} x={760} y={260 + k * 62} textAnchor="middle" fill={GOLD} fontSize={42} fontWeight={700} opacity={appear(c.frame, within(c, 10, .3 + k * .15), 10)}>{t}</text>)}
-    <g transform={`rotate(${sway} 1300 780)`}><path d="M1300 780 C1290 680 1310 600 1360 520 M1320 650 C1360 640 1390 610 1400 580 M1340 590 C1310 570 1300 540 1300 510" fill="none" stroke={GOLD} strokeWidth={2.6} strokeLinecap="round" opacity={appear(c.frame, within(c, 10, .7), 16)} /></g>
+    {D(c, openBook(760, 580, .9), 0, 28, 2.6)}
+    {['Điều gì tốt?', 'Điều gì chưa tốt?', 'Mình học được gì?'].map((t, k) => <text key={t} x={760} y={340 + k * 62} textAnchor="middle" fill={GOLD} fontSize={42} fontWeight={700} opacity={appear(c.frame, within(c, 10, .3 + k * .15), 10)}>{t}</text>)}
+    <g transform={`rotate(${sway} 1300 780)`}><g opacity={appear(c.frame, within(c, 10, .7), 16)}><path d="M1300 780 C1290 680 1310 600 1360 520 M1318 652 C1356 640 1384 612 1398 582 M1334 594 C1306 572 1296 544 1296 514" fill="none" stroke={GOLD} strokeWidth={2.6} strokeLinecap="round" />
+      {[[1360, 520, -30], [1398, 582, 20], [1296, 514, -60], [1352, 640, 40], [1310, 700, -40]].map(([x, y, a], k) => <ellipse key={k} cx={x} cy={y} rx={22} ry={10} transform={`rotate(${a} ${x} ${y})`} fill="rgba(217,181,111,.14)" stroke={GOLD} strokeWidth={2.2} />)}</g></g>
   </g>;}},
 ], options);
 
@@ -454,16 +476,17 @@ export const ThanhNep = section('08b thành nếp', /(thành nếp|sân chơi|l�
 export const ChuaDat = section('08e điểm chưa đạt', /(chưa đạt|nghiên cứu|minh họa|cách làm|bản dịch|đối chiếu|bản gốc|hoàn cảnh quá khó|chuyên gia)/gi, [
   {at: 0, draw: (c) => {const fade = appear(c.frame, c.at(2), 30);return <g>
     {D(c, 'M820 360 L1100 360 L1100 740 L820 740 Z M850 360 L850 740', 0, 26, 2.6)}
-    {['37×', '91%', '25,8%', '85%', '2 phút', '1%'].map((t, k) => <text key={t} x={[640, 1240, 700, 1300, 660, 1260][k]} y={[400, 420, 560, 580, 700, 720][k]} textAnchor="middle" fill={IVORY} fontSize={48} fontWeight={700} opacity={appear(c.frame, within(c, 1, .2 + k * .1), 10) * (1 - fade * .85)}>{t}</text>)}
+    {['37×', '91%', '25,8%', '85%', '2 phút', '1%'].map((t, k) => <text key={t} x={[640, 1240, 700, 1300, 660, 1260][k]} y={[400, 420, 560, 580, 700, 720][k]} textAnchor="middle" fill={IVORY} fontSize={48} fontWeight={700} opacity={appear(c.frame, within(c, 1, .2 + k * .1), 10) * (1 - fade)}>{t}</text>)}
     <Glow x={960} y={550} r={200} opacity={fade * .5} />
   </g>;}},
   {at: 3, draw: (c) => <g>
     {D(c, 'M560 340 L900 340 L900 760 L560 760 Z M1020 340 L1360 340 L1360 760 L1020 760 Z', 0, 26, 2.4)}
-    {Array.from({length: 7}, (_, k) => <g key={k}><path d={`M600 ${390 + k * 50} L860 ${390 + k * 50}`} stroke={IVORY} strokeWidth={2} opacity={appear(c.frame, c.start + 12, 10) * .5} /><path d={`M1060 ${390 + k * 50} L1320 ${390 + k * 50}`} stroke={IVORY} strokeWidth={2} opacity={appear(c.frame, c.start + 12, 10) * .5} /></g>)}
+    {Array.from({length: 7}, (_, k) => <g key={k}><path d={`M600 ${390 + k * 50} L860 ${390 + k * 50}`} stroke={IVORY} strokeWidth={2.2} opacity={appear(c.frame, c.start + 12, 10) * .75} /><path d={`M1060 ${390 + k * 50} L1320 ${390 + k * 50}`} stroke={IVORY} strokeWidth={2.2} opacity={appear(c.frame, c.start + 12, 10) * .75} /></g>)}
     {[[730, 490], [1190, 490], [730, 640], [1190, 640]].map(([x, y], k) => <ellipse key={k} cx={x} cy={y} rx={150} ry={26} fill="none" stroke={GOLD} strokeWidth={2.2} strokeDasharray="6 8" opacity={appear(c.frame, within(c, 3, .4 + (k % 2) * .1 + Math.floor(k / 2) * .25), 10)} />)}
   </g>},
   {at: 5, draw: (c) => <g>
-    {D(c, 'M1020 260 L1020 780 M1020 260 L1100 260 L1100 780', 0, 26, 2.6)}
+    {D(c, 'M1000 780 L1000 300 L1400 300 L1400 780', 0, 26, 2.6)}
+    {Array.from({length: 8}, (_, r) => <path key={r} d={`M1000 ${360 + r * 60} L1400 ${360 + r * 60} ${Array.from({length: 4}, (_, k) => `M${1050 + k * 100 + (r % 2) * 50} ${300 + r * 60} L${1050 + k * 100 + (r % 2) * 50} ${360 + r * 60}`).join(' ')}`} fill="none" stroke={GOLD} strokeWidth={2} opacity={appear(c.frame, c.start + 14 + r * 3, 8) * .75} />)}
     <Figure frame={c.frame} from={c.start + 8} x={800} y={780} s={1} pose="headHold" />
     <g opacity={appear(c.frame, c.at(6), 16)}><Figure frame={c.frame} from={c.at(6)} x={560} y={780} s={.95} arm="reach" color={IVORY} /></g>
     <Glow x={680} y={560} r={150} opacity={appear(c.frame, within(c, 6, .4), 20) * .6} />
@@ -479,7 +502,7 @@ export const TongKet = section('08f tổng kết', /(tóm lại|nhân lên|con n
     {[0, 1, 2, 3].map((k) => {const show = appear(g * 4, k, .8), y = 700 - k * 70, dir = k % 2 ? 1 : -1;return <path key={k} d={`M960 ${y} C${960 + dir * 40} ${y - 30} ${960 + dir * 90} ${y - 20} ${960 + dir * 110} ${y - 50} C${960 + dir * 70} ${y - 60} ${960 + dir * 30} ${y - 40} 960 ${y}`} fill="none" stroke={GOLD} strokeWidth={2.4} opacity={show} />;})}
   </g>;}},
   {at: 1, draw: (c) => {const k = Math.floor(interpolate(c.frame, [within(c, 1, .2), within(c, 1, .9)], [0, 4], clamp)), all = appear(c.frame, c.at(2), 20);return <g>{loop(960, 520, 1, all > .5 ? 4 : Math.min(3, k))}</g>;}},
-  {at: 3, quote: true, draw: (c) => <g opacity={.5}>{loop(960, 520, 1, 4)}</g>},
+  {at: 3, quote: true, draw: (c) => <g opacity={.75}>{loop(960, 520, 1, 4)}</g>},
 ], options);
 
 // 5 Nhận xét chung. 0 the book open with rays · 1 an hourglass beside a pair of tied shoes · 2 a path of small
@@ -492,7 +515,7 @@ export const NhanXet = section('09 nhận xét chung', /(cuốn sách hay|bỏ d
   </g>},
   {at: 1, draw: (c) => <g>
     {D(c, hourglass(760, 560, 1.2), 0, 26, 2.6)}
-    {D(c, 'M1040 720 L1040 640 C1090 630 1120 660 1160 690 L1180 720 Z M1200 720 L1200 640 C1250 630 1280 660 1320 690 L1340 720 Z M1060 660 L1100 680 M1220 660 L1260 680', 12, 24, 2.4)}
+    {D(c, `${shoe(1000, 720)} ${shoe(1170, 720)}`, 12, 24, 2.4)}
   </g>},
   {at: 2, draw: (c) => <g>
     <Glow x={1400} y={420} r={220} opacity={appear(c.frame, c.start + 30, 30)} />

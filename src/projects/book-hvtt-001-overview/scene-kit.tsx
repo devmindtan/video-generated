@@ -151,7 +151,7 @@ export const NarratedSection: FC<{voice: string; channelLabel: string; beats: Be
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%)', pointerEvents: 'none'}} />
       {voice ? <Captions captions={voice.captions} ms={captionMs(pacing, frame, fps)} highlight={highlight} /> : null}
       <CornerVoice take={voice} pacing={pacing} frame={frame} />
-      {beats[current]?.quote ? <div style={{position: 'absolute', top: 852, left: 0, right: 0, textAlign: 'center', color: GOLD, fontSize: 24, fontWeight: 700, letterSpacing: 2, opacity: opacityOf(current) * .85}}>— {quoteSource}</div> : null}
+      {beats[current]?.quote && quoteSource ? <div style={{position: 'absolute', top: 852, left: 0, right: 0, textAlign: 'center', color: GOLD, fontSize: 24, fontWeight: 700, letterSpacing: 2, opacity: opacityOf(current) * .85}}>— {quoteSource}</div> : null}
     </AbsoluteFill>
     {voice ? <PacedVoice take={voice} pacing={pacing} track={track} /> : null}
   </AbsoluteFill>;
@@ -191,7 +191,8 @@ export const within = (c: Ctx, sentence: number, share: number) => Math.round(c.
 // A body section: its component plus the frame count of its paced timeline (registry metadata and the episode).
 export type SectionProps = {voice: string; channelLabel: string};
 export type Section = FC<SectionProps> & {frames: (voice: string, fps?: number) => number; pacing: (voice: string, fps?: number) => Pacing; speaking: (voice: string, frame: number, fps?: number) => boolean; metadata: CalculateMetadataFunction<SectionProps>};
-// takes/quoteSource: the episode's narration and the book named under on-screen quotes (episode 1 by default).
+// takes/quoteSource: the episode's narration and the book named under on-screen quotes (episode 1 by default; '' for
+// none: from episode 2 the user dropped it, it crowded the captions).
 export const section = (track: string, highlight: RegExp, beats: Beat[], options: {takes?: Take[]; quoteSource?: string} = {}): Section => {
   const list = options.takes ?? voices;
   const C: FC<SectionProps> = (p) => <NarratedSection {...p} track={track} highlight={highlight} beats={beats} takes={list} quoteSource={options.quoteSource} />;
