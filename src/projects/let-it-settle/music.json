@@ -6,5 +6,11 @@
   "pauseVolume": 0.30,
   "fadeInSeconds": 1.5,
   "fadeOutSeconds": 2,
-  "videoEndSeconds": 48
+  "videoEndSeconds": 48,
+  "credit": {
+    "title": "snowfall",
+    "artists": ["Øneheart", "reidenshi"],
+    "sourceUrl": "https://oneheartisok.bandcamp.com/track/snowfall",
+    "attributionSource": "Tag ID3 trong file: © 2021 Øneheart & reidenshi, độc quyền dreamscape (Kurate Music)."
+  }
 }

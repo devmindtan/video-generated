@@ -6,4 +6,6 @@ Cùng theo chân hai bạn vượt dòng suối nấm, gặp Ốc Sên Vỏ Kẹ
 
 Liệu cầu vồng có dẫn những người bạn nhỏ đến đúng ngọn đồi hoa? Cùng theo dõi câu chuyện về lòng dũng cảm, sự sẻ chia và cái ôm ấm áp của gia đình nhé!
 
+🎵 Nhạc nền: nhạc gốc tự sáng tác cho video.
+
 #TiHon #KhungLongCon #HoatHinhThieuNhi #TruyenChoBe #TinhBan #GiaDinh

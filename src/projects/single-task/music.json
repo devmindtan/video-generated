@@ -4,5 +4,11 @@
   "speechVolume": 0.30,
   "pauseVolume": 0.38,
   "editingNote": "Edit music start/end and source trim on the Audio clip in Studio Edit. Adjust speechVolume (during narration) and pauseVolume (between narration) here; ducking follows captions without locking music timing.",
-  "version": "Local reverb treatment; not a verified third-party remix"
+  "version": "Local reverb treatment; not a verified third-party remix",
+  "credit": {
+    "title": "Experience",
+    "artists": ["Ludovico Einaudi"],
+    "attributionSource": "Ludovico Einaudi, album In a Time Lapse (2013).",
+    "processing": "Bản thêm reverb cục bộ từ stoic/audio/experience.mp3, không phải bản phát hành chính thức."
+  }
 }

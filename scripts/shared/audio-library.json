@@ -45,6 +45,56 @@
       "sha256": "3238368d8933b2ebb774287fc9159a58564329585588a397f40048e2e8879a2e",
       "bytes": 5649968,
       "addedAt": "2026-10-30T17:05:41.333Z"
+    },
+    "Ludovico Einaudi - Night (Official Video).mp3": {
+      "kind": "music",
+      "title": "Night",
+      "artists": [
+        "Ludovico Einaudi"
+      ],
+      "updatedAt": "2026-11-03T06:28:46.020Z"
+    },
+    "Past Lives (Slow & Reverb).mp3": {
+      "kind": "music",
+      "title": "Past Lives (Slow & Reverb)",
+      "artists": [
+        "sapientdream",
+        "Slushii"
+      ],
+      "updatedAt": "2026-11-03T06:28:46.027Z"
+    },
+    "INTERWORLD - METAMORPHOSIS.mp3": {
+      "kind": "music",
+      "title": "METAMORPHOSIS",
+      "artists": [
+        "INTERWORLD"
+      ],
+      "updatedAt": "2026-11-03T06:28:46.032Z"
+    },
+    "Memory Reboot.mp3": {
+      "kind": "music",
+      "title": "Memory Reboot",
+      "artists": [
+        "VØJ",
+        "Narvent"
+      ],
+      "updatedAt": "2026-11-03T06:28:46.036Z"
+    },
+    "Sahara.mp3": {
+      "kind": "music",
+      "title": "Sahara",
+      "artists": [
+        "Hensonn"
+      ],
+      "updatedAt": "2026-11-03T06:28:46.040Z"
+    },
+    "single-task/audio/experience-reverb-full.wav": {
+      "kind": "music",
+      "title": "Experience (bản reverb cục bộ)",
+      "artists": [
+        "Ludovico Einaudi"
+      ],
+      "updatedAt": "2026-11-03T06:30:00.037Z"
     }
   }
 }

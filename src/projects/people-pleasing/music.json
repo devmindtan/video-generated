@@ -4,5 +4,11 @@
   "pauseVolume": 0.40,
   "fadeInSeconds": 1.2,
   "fadeOutSeconds": 2,
-  "editingNote": "Snowfall full source, reused read-only. Native Audio Start/Duration/End and source trim stay independently editable in Studio Edit. Volume/ducking and fade lengths remain here; fades follow audible clip/composition edges. Narration stays native 1x. No SFX."
+  "editingNote": "Snowfall full source, reused read-only. Native Audio Start/Duration/End and source trim stay independently editable in Studio Edit. Volume/ducking and fade lengths remain here; fades follow audible clip/composition edges. Narration stays native 1x. No SFX.",
+  "credit": {
+    "title": "snowfall",
+    "artists": ["Øneheart", "reidenshi"],
+    "sourceUrl": "https://oneheartisok.bandcamp.com/track/snowfall",
+    "attributionSource": "Tag ID3 trong file: © 2021 Øneheart & reidenshi, độc quyền dreamscape (Kurate Music)."
+  }
 }

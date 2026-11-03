@@ -8,6 +8,6 @@ Chọn một việc đang né. Đóng mạng xã hội. Dành ba mươi phút l�
 
 Bớt nghĩ lại. Làm đi.
 
-🎵 Experience — bản xử lý reverb cục bộ từ file nhạc có sẵn trong dự án.
+🎵 Nhạc nền: Experience — Ludovico Einaudi (bản thêm reverb).
 
 #TapTrung #TriHoan #KyLuatBanThan #LamViecHieuQua #Stoic #Shorts

@@ -8,4 +8,6 @@ Nếu bạn đang day dứt vì một quyết định cũ, mong lời nhắc nà
 
 Theo dõi kênh để cùng lắng nghe những lời nhắc dịu dàng.
 
+🎵 Nhạc nền: snowfall — Øneheart & reidenshi.
+
 #ThaThuChoBanThan #BuongBo #BinhYen #LoiNhacChoMinh #Stoic #Shorts

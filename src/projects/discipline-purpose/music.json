@@ -4,5 +4,11 @@
   "pauseVolume": 0.38,
   "fadeInSeconds": 2,
   "fadeOutSeconds": 2,
-  "editingNote": "Music timing/source trim are editable on the native Audio clip in Studio Edit. Keep speechVolume and pauseVolume adjustable here. Full source shared read-only with single-task; no baked video-length excerpt."
+  "editingNote": "Music timing/source trim are editable on the native Audio clip in Studio Edit. Keep speechVolume and pauseVolume adjustable here. Full source shared read-only with single-task; no baked video-length excerpt.",
+  "credit": {
+    "title": "Experience",
+    "artists": ["Ludovico Einaudi"],
+    "attributionSource": "Ludovico Einaudi, album In a Time Lapse (2013).",
+    "processing": "Bản thêm reverb cục bộ từ stoic/audio/experience.mp3, không phải bản phát hành chính thức."
+  }
 }

@@ -6,4 +6,6 @@ Cùng bé cá voi khám phá một câu chuyện nhỏ về lòng dũng cảm, s
 
 Ba mẹ hãy cùng bé theo dõi chuyến phiêu lưu dưới đại dương và đón những người bạn mới trên kênh nhé!
 
+🎵 Nhạc nền: nhạc gốc tự sáng tác cho video.
+
 #BeCaVoiPhatSang #BotBien #HoatHinhThieuNhi #PhieuLuuDaiDuong #TruyenChoBe #Shorts

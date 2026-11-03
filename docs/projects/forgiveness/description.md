@@ -6,7 +6,7 @@ Bạn không cần phải hoàn hảo để xứng đáng được yêu thương
 
 Lưu lại video này cho những ngày bạn cần bao dung với bản thân hơn.
 
-🎵 Nhạc nền: “Past Lives” – GreenBeen (Lushiie)  
+🎵 Nhạc nền: “Past Lives” – sapientdream & Slushii  
 🎙️ Nội dung và biên tập: Tâm lý cuộc sống
 
 #tamlycuocsong #chualanh #tuthuctinh #phattrienbanthan #stoic #shorts #reels #tiktok

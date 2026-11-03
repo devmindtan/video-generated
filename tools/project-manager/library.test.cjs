@@ -49,8 +49,11 @@ const fs=require('node:fs'),path=require('node:path');
   await page.locator('#resource-search').fill('snowfall');await page.waitForTimeout(200);assert.equal(await rows.count(),1);
   await page.locator('#resource-search').fill('mot ngay lam chua tot');await page.waitForTimeout(200);assert.match(await rows.first().innerText(),/Night/);
   await page.locator('#resource-search').fill('');await page.waitForTimeout(200);mark('Music search matches title and episode name');
-  await page.locator('.resource-summary [data-resource-filter="uncredited"]').click();
-  const uncredited=await rows.count();assert.ok(uncredited>0&&uncredited<total);assert.equal(await page.locator('#resource-filter').inputValue(),'uncredited');
+  // The shortcut only shows while some episode lacks a credit (none since 2026-11-03); the filter itself stays.
+  const shortcut=page.locator('.resource-summary [data-resource-filter="uncredited"]');
+  if(await shortcut.count()){await shortcut.click();const uncredited=await rows.count();assert.ok(uncredited>0&&uncredited<total);}
+  else{await page.locator('#resource-filter').selectOption('uncredited');assert.equal(await rows.count(),0);}
+  assert.equal(await page.locator('#resource-filter').inputValue(),'uncredited');
   await page.locator('#resource-filter').selectOption('unused');assert.ok(await rows.count()>=1);assert.match(await rows.first().innerText(),/Chưa dùng/);
   await page.locator('#resource-filter').selectOption('');await page.locator('#resource-sort').selectOption('title');mark('Missing-credit shortcut, filters and sort');
   await page.locator('#resource-sort').selectOption('used');

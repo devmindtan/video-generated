@@ -6,5 +6,11 @@
   "speechVolume": 0.3,
   "pauseVolume": 0.35,
   "fadeInSeconds": 1.2,
-  "fadeOutSeconds": 1.5
+  "fadeOutSeconds": 1.5,
+  "credit": {
+    "title": "Chữa lành (piano & cello, nhạc gốc)",
+    "artists": ["Tự sáng tác (tổng hợp cục bộ)"],
+    "original": true,
+    "attributionSource": "Nhạc gốc tạo cục bộ bằng scripts/projects/exhausted/make-score.py; không dùng bản ghi hay mẫu nhạc bên ngoài."
+  }
 }

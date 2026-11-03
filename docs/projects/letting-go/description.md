@@ -8,7 +8,7 @@ Buông tay không có nghĩa là yếu đuối hay phủ nhận những gì đã
 
 Thả lỏng đôi vai. Điều gì đã thuộc về quá khứ, hãy để nó được ở lại nơi ấy.
 
-🎵 Nhạc nền: “Past Lives (Slow & Reverb)” – GreenBeen (Lushiie)  
+🎵 Nhạc nền: “Past Lives (Slow & Reverb)” – sapientdream & Slushii  
 🎙️ Nội dung và biên tập: Tâm lý cuộc sống
 
 #tamlycuocsong #buongbo #binhthan #chualanh #tuthuctinh #phattrienbanthan #stoic #shorts #reels #tiktok

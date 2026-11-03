@@ -8,7 +8,8 @@
     "title": "snowfall",
     "artists": ["Øneheart", "reidenshi"],
     "sourceUrl": "https://oneheartisok.bandcamp.com/track/snowfall",
-    "processing": "Native 1x playback of the full local source."
+    "processing": "Native 1x playback of the full local source.",
+    "attributionSource": "Tag ID3 trong file: © 2021 Øneheart & reidenshi, độc quyền dreamscape (Kurate Music)."
   },
   "editingNote": "Full Snowfall source reused read-only. Native Audio Start/Duration/End, source trim and speed stay editable in Studio. Keep speechVolume/pauseVolume and caption ducking here. Fade follows audible clip edges; narration native 1x; no SFX."
 }

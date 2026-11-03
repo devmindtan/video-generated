@@ -4,5 +4,11 @@
   "pauseVolume": 0.22,
   "fadeInSeconds": 0.5,
   "fadeOutSeconds": 1.2,
-  "videoEndSeconds": 60
+  "videoEndSeconds": 60,
+  "credit": {
+    "title": "Đại dương diệu kỳ (nhạc gốc Bé Cá Voi)",
+    "artists": ["Tự sáng tác (tổng hợp cục bộ)"],
+    "original": true,
+    "attributionSource": "Nhạc gốc tạo cục bộ bằng scripts/projects/glowing-whale/make-audio.py; không dùng bản ghi hay mẫu nhạc bên ngoài."
+  }
 }

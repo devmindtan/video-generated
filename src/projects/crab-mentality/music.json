@@ -13,5 +13,10 @@
   "finalLiftStartSeconds": 45.4,
   "finalLiftPeakSeconds": 46,
   "finalLiftVolume": 0.2,
-  "fadeOutSeconds": 2
+  "fadeOutSeconds": 2,
+  "credit": {
+    "title": "Night",
+    "artists": ["Ludovico Einaudi"],
+    "attributionSource": "Ludovico Einaudi, album Elements (2015); tên file nguồn đầy đủ."
+  }
 }

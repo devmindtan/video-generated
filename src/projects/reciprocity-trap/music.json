@@ -13,5 +13,10 @@
   "finalLiftStartSeconds": 45.2,
   "finalLiftPeakSeconds": 46,
   "finalLiftVolume": 0.22,
-  "fadeOutSeconds": 2
+  "fadeOutSeconds": 2,
+  "credit": {
+    "title": "Past Lives (Slow & Reverb)",
+    "artists": ["sapientdream", "Slushii"],
+    "attributionSource": "Bài của sapientdream & Slushii (2023), bản slowed + reverb. Tag \"Dj Nestor\" trong file đến từ bản đăng trên NhacCuaTui, không phải tác giả bài."
+  }
 }

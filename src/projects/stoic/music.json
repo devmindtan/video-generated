@@ -6,5 +6,10 @@
   "baseVolume": 0.46,
   "speechVolume": 0.22,
   "fadeInSeconds": 0.8,
-  "fadeOutSeconds": 1.3
+  "fadeOutSeconds": 1.3,
+  "credit": {
+    "title": "Experience",
+    "artists": ["Ludovico Einaudi"],
+    "attributionSource": "Ludovico Einaudi, album In a Time Lapse (2013); ghi trong production-spec của các tập dùng bài."
+  }
 }

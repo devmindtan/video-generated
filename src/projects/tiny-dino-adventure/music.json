@@ -5,5 +5,11 @@
   "speechVolume": 0.2,
   "pauseVolume": 0.3,
   "fadeInSeconds": 0.5,
-  "fadeOutSeconds": 1.2
+  "fadeOutSeconds": 1.2,
+  "credit": {
+    "title": "Vui đùa (marimba & xylophone, nhạc gốc)",
+    "artists": ["Tự sáng tác (tổng hợp cục bộ)"],
+    "original": true,
+    "attributionSource": "Nhạc gốc tạo cục bộ bằng scripts/projects/tiny-dino-adventure/make-score.py; không dùng bản ghi hay mẫu nhạc bên ngoài."
+  }
 }

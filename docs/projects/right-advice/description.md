@@ -6,4 +6,6 @@ Một lời khuyên có ích với người này chưa chắc đã phù hợp v�
 
 Đừng chỉ chọn câu nghe hay. Chọn điều phù hợp với hoàn cảnh và giúp bạn biết nên làm gì.
 
+🎵 Nhạc nền: Experience — Ludovico Einaudi (bản thêm reverb).
+
 #LoiKhuyen #HieuBanThan #TuDuyPhanBien #GocNhinCuocSong #Shorts

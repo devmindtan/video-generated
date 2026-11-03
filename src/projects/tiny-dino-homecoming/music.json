@@ -3,5 +3,11 @@
   "speechVolume":0.22,
   "pauseVolume":0.38,
   "fadeInSeconds":1.5,
-  "fadeOutSeconds":3
+  "fadeOutSeconds":3,
+  "credit": {
+    "title": "Đường về tổ (nhạc gốc Tí Hon)",
+    "artists": ["Tự sáng tác (tổng hợp cục bộ)"],
+    "original": true,
+    "attributionSource": "Nhạc gốc tạo cục bộ bằng scripts/projects/tiny-dino-homecoming/make-audio.py; không dùng bản ghi hay mẫu nhạc bên ngoài."
+  }
 }

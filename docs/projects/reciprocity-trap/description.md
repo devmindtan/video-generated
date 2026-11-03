@@ -10,7 +10,7 @@ Lòng tốt thật sự sẽ luôn tôn trọng câu “không”.
 
 Theo dõi **Tâm lý cuộc sống** để cùng hiểu mình, hiểu người và học cách bảo vệ những ranh giới lành mạnh.
 
-🎵 Nhạc nền: “Night” – Ludovico Einaudi  
+🎵 Nhạc nền: “Past Lives (Slow & Reverb)” – sapientdream & Slushii  
 🎙️ Nội dung và biên tập: Tâm lý cuộc sống
 
 #tamlycuocsong #baymangon #ranhgioicanhan #tamlyhoc #chualanh #phattrienbanthan #shorts #reels #tiktok

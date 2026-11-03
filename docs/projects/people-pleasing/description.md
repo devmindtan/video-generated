@@ -6,6 +6,6 @@ Tử tế không có nghĩa là luôn sẵn sàng. Bạn có thể nói rõ gi�
 
 Giúp đỡ là một lựa chọn. Đừng biến nó thành lời hứa phải đồng ý với tất cả.
 
-🎵 Nhạc nền: Snowfall.
+🎵 Nhạc nền: snowfall — Øneheart & reidenshi.
 
 #RanhGioi #HocCachTuChoi #HieuBanThan #GocNhinCuocSong #Shorts

@@ -4,6 +4,10 @@
   "pauseVolume": 0.30,
   "fadeInSeconds": 1.2,
   "fadeOutSeconds": 2,
-  "credit": {"title": "Night", "artists": ["Ludovico Einaudi"], "attributionSource": "Full local recording filename."},
+  "credit": {
+    "title": "Night",
+    "artists": ["Ludovico Einaudi"],
+    "attributionSource": "Ludovico Einaudi, album Elements (2015); tên file nguồn đầy đủ."
+  },
   "editingNote": "Full recording; native Audio timing and source trim independently editable in Studio. Preserve caption ducking, speech/pause levels and fades at audible edges."
 }

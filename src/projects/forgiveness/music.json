@@ -10,5 +10,10 @@
   "finalLiftStartSeconds": 44,
   "finalLiftPeakSeconds": 45,
   "finalLiftVolume": 0.22,
-  "fadeOutSeconds": 3
+  "fadeOutSeconds": 3,
+  "credit": {
+    "title": "Past Lives",
+    "artists": ["sapientdream", "Slushii"],
+    "attributionSource": "Bài của sapientdream & Slushii (2023). File không có tag; xác định bằng đối chiếu giai điệu với bản Slow & Reverb (cùng giai điệu, nhanh hơn và cao hơn 2 bán cung)."
+  }
 }

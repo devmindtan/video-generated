@@ -6,4 +6,6 @@ Kỷ luật giúp bạn giữ nhịp. Nhưng bạn đang cố gắng vì điều
 
 Giữ lấy thói quen, nhưng đừng quên lý do đã khiến bạn chọn nó.
 
+🎵 Nhạc nền: Experience — Ludovico Einaudi (bản thêm reverb).
+
 #KyLuat #DongLuc #PhatTrienBanThan #GocNhinCuocSong #Shorts
