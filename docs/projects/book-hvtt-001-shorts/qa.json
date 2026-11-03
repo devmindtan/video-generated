@@ -1,0 +1,73 @@
+{
+ "project": "book-hvtt-001-shorts",
+ "checkedAt": "2026-11-04T00:55:39+07:00",
+ "shorts": [
+  {
+   "id": "short-1",
+   "composition": "BookHvttShortVocMuoi",
+   "seconds": 30.47,
+   "pages": 15
+  },
+  {
+   "id": "short-2",
+   "composition": "BookHvttShortDauVaKho",
+   "seconds": 39.47,
+   "pages": 17
+  },
+  {
+   "id": "short-3",
+   "composition": "BookHvttShortGoiMai",
+   "seconds": 32.77,
+   "pages": 16
+  }
+ ],
+ "technicalPass": true,
+ "checks": [
+  {
+   "id": "files",
+   "title": "Đủ file cho bước Xem bản dựng",
+   "ok": true,
+   "detail": "đủ"
+  },
+  {
+   "id": "duration",
+   "title": "Mỗi short dài 30–60 giây",
+   "ok": true,
+   "detail": "30.47 giây, 39.47 giây, 32.77 giây"
+  },
+  {
+   "id": "captionText",
+   "title": "Chữ phụ đề khớp kịch bản đã chốt",
+   "ok": true,
+   "detail": "khớp cả 3 short"
+  },
+  {
+   "id": "captionTime",
+   "title": "Phụ đề đúng thứ tự, không chồng, đủ lâu, tối đa 2 dòng",
+   "ok": true,
+   "detail": "48 trang"
+  },
+  {
+   "id": "voice",
+   "title": "Giọng không chạm đỉnh, ba phần đều nhau (≤ 3 dB)",
+   "ok": true,
+   "detail": "BookHvttShortVocMuoi: mở -21.6, trích -21.5, mời -21.3 dBFS; BookHvttShortDauVaKho: mở -20.5, trích -21.8, mời -21.3 dBFS; BookHvttShortGoiMai: mở -20.6, trích -21.3, mời -21.3 dBFS"
+  },
+  {
+   "id": "music",
+   "title": "Nhạc nằm dưới giọng ≥ 15 dB khi có lời",
+   "ok": true,
+   "detail": "nhạc nền -40.3 dBFS khi có lời"
+  },
+  {
+   "id": "build",
+   "title": "Typecheck và projects:check",
+   "ok": true,
+   "detail": "đạt"
+  }
+ ],
+ "listenNotes": [
+  "Câu mở short 2: nhận dạng nghe \"Cũng một chuyện\" thay vì \"Cùng một chuyện\"; người dùng nghe trong bản vá p2/p3, không báo sai."
+ ],
+ "note": "Đạt kỹ thuật không thay cho nghe duyệt; không render tự động."
+}

@@ -50,7 +50,9 @@ import {BookHvttThumbnail} from './book-hvtt-001-overview/Thumbnail';
 import {BookAhVideo as BookAhEpisode, episodeMetadata as bookAhEpisodeMetadata} from './book-ah-001-overview/Video';
 import {BookAhEpisodeCard, bookAhCardMetadata} from './book-ah-001-overview/Episode';
 import {MoChuyen as BookAhMoChuyen, CuonSach as BookAhCuonSach, SoiChi as BookAhSoiChi, QuyLuat1 as BookAhQuyLuat1, QuyLuat2 as BookAhQuyLuat2, QuyLuat3 as BookAhQuyLuat3, QuyLuat4 as BookAhQuyLuat4, ThanhNep as BookAhThanhNep, ChuaDat as BookAhChuaDat, TongKet as BookAhTongKet, YKien as BookAhYKien, NhanXet as BookAhNhanXet} from './book-ah-001-overview/Sections';
-import {ShortPain as BookHvttShortPain, ShortPhone as BookHvttShortPhone, ShortSalt as BookHvttShortSalt} from './book-hvtt-001-shorts/Shorts';
+import {ShortPain as BookHvttShortPain, ShortPhone as BookHvttShortPhone, ShortSalt as BookHvttShortSalt} from './book-hvtt-001-shorts/Video';
+import {ShortCover as BookHvttShortCover} from './book-hvtt-001-shorts/Thumbnail';
+import type {ShortCoverProps} from './book-hvtt-001-shorts/Thumbnail';
 import {CachLam, CuonSach, SoiChi, Nhom3A, Nhom3B, Nhom3C, Nhom3D, DiemChuaDat, TongKet, YKien, NhanXet} from './book-hvtt-001-overview/Sections';
 import {PeoplePleasingVideo} from './people-pleasing/Video';
 import {PeoplePleasingThumbnail} from './people-pleasing/Thumbnail';
@@ -270,8 +272,11 @@ export const ProjectCompositions: FC = () => (
         </Folder>
         <Folder name="book-hvtt-001-shorts">
           <Composition id="BookHvttShortVocMuoi" component={BookHvttShortSalt} calculateMetadata={renderTo('book-hvtt-001-shorts', BookHvttShortSalt.metadata)} durationInFrames={1200} fps={30} width={1080} height={1920} defaultProps={{short: 'short-1'}} />
+          <Still id="BookHvttShortVocMuoiCover" component={BookHvttShortCover} calculateMetadata={renderTo<ShortCoverProps>('book-hvtt-001-shorts')} width={1080} height={1920} defaultProps={{question: 'Làm sao chịu được một chuyện quá sức mà không bị nó nhấn chìm?', keywords: ['chịu được', 'nhấn chìm']}} />
           <Composition id="BookHvttShortDauVaKho" component={BookHvttShortPain} calculateMetadata={renderTo('book-hvtt-001-shorts', BookHvttShortPain.metadata)} durationInFrames={1200} fps={30} width={1080} height={1920} defaultProps={{short: 'short-2'}} />
+          <Still id="BookHvttShortDauVaKhoCover" component={BookHvttShortCover} calculateMetadata={renderTo<ShortCoverProps>('book-hvtt-001-shorts')} width={1080} height={1920} defaultProps={{question: 'Cùng một chuyện xảy ra, vì sao có người đi qua được, còn có người khổ mãi?', keywords: ['đi qua được', 'khổ mãi']}} />
           <Composition id="BookHvttShortGoiMai" component={BookHvttShortPhone} calculateMetadata={renderTo('book-hvtt-001-shorts', BookHvttShortPhone.metadata)} durationInFrames={1200} fps={30} width={1080} height={1920} defaultProps={{short: 'short-3'}} />
+          <Still id="BookHvttShortGoiMaiCover" component={BookHvttShortCover} calculateMetadata={renderTo<ShortCoverProps>('book-hvtt-001-shorts')} width={1080} height={1920} defaultProps={{question: 'Đã bao giờ bạn lo tới mức tự vẽ ra cả một chuyện chưa hề xảy ra?', keywords: ['tự vẽ ra', 'chưa hề xảy ra']}} />
         </Folder>
       </Folder>
       <Folder name="Stoic-Stories">

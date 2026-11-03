@@ -31,6 +31,20 @@
       "at": "2026-11-03T17:08:52.886Z",
       "note": "",
       "fromPatch": "p1"
+    },
+    {
+      "version": 3,
+      "files": {
+        "docs/projects/book-hvtt-001-shorts/script.md": "64c0f5e4739db03dbd986d5aa895bf1607a173d88f43eadeecc3be044972538b",
+        "src/projects/book-hvtt-001-shorts/music.json": "da2156c7467a919c1ebb18e0046cab5aca9b2660721f9070975f739bfc79048d",
+        "scripts/projects/book-hvtt-001-shorts/voice.json": "39de53c29cd3a72f5c17327a327a83652b9edf1701cd3ee93e09b289a00e42be",
+        "docs/projects/book-hvtt-001-shorts/production-spec.md": "e103d7945c0cefa8721aecaf50c6882a81c34b9355977087a59e102e26278719",
+        "docs/projects/book-hvtt-001-shorts/image-prompts.md": "5684547d029a1853c2451cdac5130a51433da408e7bf583727f81621ea4262cd"
+      },
+      "by": "devmindtan (trang quản lý)",
+      "at": "2026-11-03T17:42:40.276Z",
+      "note": "",
+      "fromPatch": "p3"
     }
   ],
   "patches": [
@@ -134,6 +148,72 @@
           "at": "2026-11-03T17:27:59.210Z"
         }
       }
+    },
+    {
+      "id": "p3",
+      "baseVersion": 2,
+      "changed": {
+        "docs/projects/book-hvtt-001-shorts/script.md": {
+          "before": "00b4c2acbb0fe23a25dfa329290e9b0f96cff7926874d530e5e72432747e0e62",
+          "after": "64c0f5e4739db03dbd986d5aa895bf1607a173d88f43eadeecc3be044972538b"
+        },
+        "docs/projects/book-hvtt-001-shorts/production-spec.md": {
+          "before": "56d041fca208e4aac6caffe3faa127d4e7e12673c2665edea7edc69efb91b02b",
+          "after": "e103d7945c0cefa8721aecaf50c6882a81c34b9355977087a59e102e26278719"
+        },
+        "docs/projects/book-hvtt-001-shorts/image-prompts.md": {
+          "before": "fa5fe42cee768b87e27eca2cf6826e5750ac55e61aeee163322d8ff6e6f671ec",
+          "after": "5684547d029a1853c2451cdac5130a51433da408e7bf583727f81621ea4262cd"
+        }
+      },
+      "changes": [
+        {
+          "area": "other",
+          "where": "Lời mời (chung cho 3 short)",
+          "what": "\"…Bạn bấm vào video ngay bên dưới để xem đầy đủ nhé.\" → \"…Mình để link video đầy đủ ở phần bình luận, bạn vào xem trọn tập nhé.\"",
+          "why": "Bạn thấy \"bên dưới\" không rõ là chỗ nào, muốn nói cụ thể là phần bình luận."
+        },
+        {
+          "area": "audio",
+          "where": "Lời mời",
+          "what": "Clone lại trên máy GPU (5 bản thử). Chọn bản cta-v6 (8,2 giây): nhận dạng đúng đủ chữ, \"trái tim\" và \"Minh Niệm\" rõ, không ngắt ở chữ \"mình\". Các bản khác bị nghe thành \"cái tim\", \"binh niệm\" hoặc ngắt sau \"mình\" nên bỏ.",
+          "why": "Lời mời mới cần giọng mới; tránh lỗi ngắt ở chữ \"mình\" như tập 1."
+        },
+        {
+          "area": "visual",
+          "where": "Thẻ mời cuối",
+          "what": "Mũi tên chỉ xuống thay bằng biểu tượng khung bình luận và dòng \"Link ở phần bình luận\"; giữ khoảng cách với phụ đề.",
+          "why": "Khớp với lời mời mới."
+        },
+        {
+          "area": "other",
+          "where": "description.md",
+          "what": "Thêm câu mẫu bình luận ghim kèm link (bản đầy đủ và bản ngắn): \"Video đầy đủ: mình kể lại trọn cuốn Hiểu về trái tim của Minh Niệm trong 13 phút… Xem tại đây: <link tập 1>\".",
+          "why": "Bạn cần mẫu câu để đính kèm đường link."
+        }
+      ],
+      "media": [
+        {
+          "kind": "audio",
+          "file": "public/book-hvtt-001-shorts/voice-auditions/cta-v6-sang2/part-01-sang2.wav",
+          "title": "Lời mời mới (cta-v6)",
+          "sha256": "35d2e55adbf0a7e787dd7c1fe00ea0e4266981c04b6a60ade239306cf5d20987"
+        }
+      ],
+      "requests": [
+        {
+          "text": "Bên dưới là bên dưới nào, nói cụ thể là ở phần bình luận luôn đi và nhớ là cho tôi luôn cái mẫu câu để đính kèm đường link luôn",
+          "via": "chat"
+        }
+      ],
+      "reason": "Lời mời nói rõ link ở phần bình luận (clone lại trên máy GPU), thẻ cuối có khung bình luận, kèm câu mẫu bình luận ghim. Xem lại 3 short trong Studio.",
+      "by": "agent (automation patch)",
+      "createdAt": "2026-11-03T17:40:56.784Z",
+      "status": "accepted",
+      "decidedAt": "2026-11-03T17:42:40.276Z",
+      "decidedBy": "devmindtan (trang quản lý)",
+      "note": "",
+      "itemNotes": {}
     }
   ],
   "scenes": {},

@@ -186,14 +186,29 @@
           "title": "Short 1 · Vốc muối và dòng sông"
         },
         {
+          "id": "BookHvttShortVocMuoiCover",
+          "kind": "Still",
+          "title": "Bìa short 1 · Vốc muối và dòng sông"
+        },
+        {
           "id": "BookHvttShortDauVaKho",
           "kind": "Composition",
           "title": "Short 2 · Đau và khổ khác nhau"
         },
         {
+          "id": "BookHvttShortDauVaKhoCover",
+          "kind": "Still",
+          "title": "Bìa short 2 · Đau và khổ khác nhau"
+        },
+        {
           "id": "BookHvttShortGoiMai",
           "kind": "Composition",
           "title": "Short 3 · Gọi mãi không nghe máy"
+        },
+        {
+          "id": "BookHvttShortGoiMaiCover",
+          "kind": "Still",
+          "title": "Bìa short 3 · Gọi mãi không nghe máy"
         }
       ]
     }

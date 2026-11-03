@@ -1,0 +1,310 @@
+{
+ "shorts": {
+  "short-1": {
+   "composition": "BookHvttShortVocMuoi",
+   "durationSeconds": 30.47,
+   "pages": [
+    {
+     "part": "Câu mở",
+     "text": "Làm sao chịu được một chuyện quá",
+     "startMs": 300,
+     "endMs": 1780
+    },
+    {
+     "part": "Câu mở",
+     "text": "sức mà không bị nó nhấn chìm?",
+     "startMs": 1780,
+     "endMs": 3660
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "Tác giả giải thích: \"Chịu có nghĩa",
+     "startMs": 3767,
+     "endMs": 5647
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "là đồng ý chấp nhận; đựng có",
+     "startMs": 5647,
+     "endMs": 7127
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "nghĩa là cái khả năng dung chứa.\"",
+     "startMs": 7127,
+     "endMs": 8787
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "Tác giả còn mượn từ kinh Phật hình ảnh",
+     "startMs": 8787,
+     "endMs": 10787
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "một vốc muối: bỏ vào tô nước thì mặn chát,",
+     "startMs": 10787,
+     "endMs": 13487
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "không uống nổi; thả xuống dòng sông",
+     "startMs": 13487,
+     "endMs": 15287
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "thì nước sông vẫn uống được như thường.",
+     "startMs": 15287,
+     "endMs": 17627
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "Nỗi khổ không nhỏ đi, chỉ",
+     "startMs": 17627,
+     "endMs": 19227
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "là lòng mình rộng ra.",
+     "startMs": 19227,
+     "endMs": 20507
+    },
+    {
+     "part": "Lời mời",
+     "text": "Đây là một đoạn trong video mình kể lại",
+     "startMs": 20900,
+     "endMs": 22860
+    },
+    {
+     "part": "Lời mời",
+     "text": "trọn cuốn Hiểu về trái tim của Minh Niệm.",
+     "startMs": 22860,
+     "endMs": 25340
+    },
+    {
+     "part": "Lời mời",
+     "text": "Mình để link video đầy đủ ở phần",
+     "startMs": 25340,
+     "endMs": 26840
+    },
+    {
+     "part": "Lời mời",
+     "text": "bình luận, bạn vào xem trọn tập nhé.",
+     "startMs": 26840,
+     "endMs": 29320
+    }
+   ]
+  },
+  "short-2": {
+   "composition": "BookHvttShortDauVaKho",
+   "durationSeconds": 39.47,
+   "pages": [
+    {
+     "part": "Câu mở",
+     "text": "Cùng một chuyện xảy ra, vì sao có người",
+     "startMs": 300,
+     "endMs": 2640
+    },
+    {
+     "part": "Câu mở",
+     "text": "đi qua được, còn có người khổ mãi?",
+     "startMs": 2640,
+     "endMs": 5160
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "Nếu gom năm mươi chương lại thành một ý,",
+     "startMs": 5233,
+     "endMs": 7613
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "mình sẽ tóm thế này: phần lớn nỗi khổ của",
+     "startMs": 7613,
+     "endMs": 9953
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "chúng ta không nằm hết ở chuyện đã xảy ra, mà",
+     "startMs": 9953,
+     "endMs": 12253
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "ở cách lòng mình phản ứng với chuyện đó.",
+     "startMs": 12253,
+     "endMs": 14553
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "Ngay chương đầu, tác giả tách hai",
+     "startMs": 14553,
+     "endMs": 16133
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "chữ mà chúng ta hay dùng chung.",
+     "startMs": 16133,
+     "endMs": 18573
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "Theo tác giả, \"đau và khổ là hai",
+     "startMs": 18573,
+     "endMs": 20893
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "cung bậc cảm xúc rất khác nhau\".",
+     "startMs": 20893,
+     "endMs": 23373
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "Đau là điều xảy đến, còn khổ là khi",
+     "startMs": 23373,
+     "endMs": 25353
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "mình không chịu chấp nhận nó, cứ",
+     "startMs": 25353,
+     "endMs": 26913
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "chống lại và nghĩ đi nghĩ lại mãi.",
+     "startMs": 26913,
+     "endMs": 29133
+    },
+    {
+     "part": "Lời mời",
+     "text": "Đây là một đoạn trong video mình kể lại",
+     "startMs": 29900,
+     "endMs": 31860
+    },
+    {
+     "part": "Lời mời",
+     "text": "trọn cuốn Hiểu về trái tim của Minh Niệm.",
+     "startMs": 31860,
+     "endMs": 34340
+    },
+    {
+     "part": "Lời mời",
+     "text": "Mình để link video đầy đủ ở phần",
+     "startMs": 34340,
+     "endMs": 35840
+    },
+    {
+     "part": "Lời mời",
+     "text": "bình luận, bạn vào xem trọn tập nhé.",
+     "startMs": 35840,
+     "endMs": 38320
+    }
+   ]
+  },
+  "short-3": {
+   "composition": "BookHvttShortGoiMai",
+   "durationSeconds": 32.77,
+   "pages": [
+    {
+     "part": "Câu mở",
+     "text": "Đã bao giờ bạn lo tới mức tự vẽ",
+     "startMs": 300,
+     "endMs": 2280
+    },
+    {
+     "part": "Câu mở",
+     "text": "ra cả một chuyện chưa hề xảy ra?",
+     "startMs": 2280,
+     "endMs": 4020
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "Mình lấy một ví dụ quen thuộc: người",
+     "startMs": 4233,
+     "endMs": 6173
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "thân về trễ, mình gọi mãi không ai",
+     "startMs": 6173,
+     "endMs": 8053
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "nghe máy, và chưa tới mười phút đã",
+     "startMs": 8053,
+     "endMs": 9853
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "tưởng tượng xong cả một vụ tai nạn.",
+     "startMs": 9853,
+     "endMs": 11853
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "Tác giả viết: \"Hoàn cảnh chỉ có thể làm",
+     "startMs": 11853,
+     "endMs": 13693
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "cho ta đau, nhưng chính trí tưởng tượng",
+     "startMs": 13693,
+     "endMs": 15473
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "sai lầm mới là thủ phạm giết ta chết.\"",
+     "startMs": 15473,
+     "endMs": 18053
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "Nên trước khi khổ vì một chuyện,",
+     "startMs": 18053,
+     "endMs": 19713
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "tác giả khuyên mình hỏi lại xem",
+     "startMs": 19713,
+     "endMs": 21033
+    },
+    {
+     "part": "Đoạn trích tập 1",
+     "text": "chuyện ấy đã thật sự xảy ra chưa.",
+     "startMs": 21033,
+     "endMs": 22833
+    },
+    {
+     "part": "Lời mời",
+     "text": "Đây là một đoạn trong video mình kể lại",
+     "startMs": 23200,
+     "endMs": 25160
+    },
+    {
+     "part": "Lời mời",
+     "text": "trọn cuốn Hiểu về trái tim của Minh Niệm.",
+     "startMs": 25160,
+     "endMs": 27640
+    },
+    {
+     "part": "Lời mời",
+     "text": "Mình để link video đầy đủ ở phần",
+     "startMs": 27640,
+     "endMs": 29140
+    },
+    {
+     "part": "Lời mời",
+     "text": "bình luận, bạn vào xem trọn tập nhé.",
+     "startMs": 29140,
+     "endMs": 31620
+    }
+   ]
+  }
+ }
+}

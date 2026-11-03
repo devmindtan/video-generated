@@ -38,16 +38,23 @@ export const D = (c: SCtx, d: string, delay = 0, len = 24, width = 2.8, opacity 
 export const W = (x: number, y: number, size: number, text: string, opacity: number, color = IVORY) =>
   <text x={x} y={y} textAnchor="middle" fill={color} fontSize={size} fontWeight={700} opacity={opacity}>{text}</text>;
 
-// Caption pages from timed words: up to two lines of about 24 characters, a new page after each sentence.
+// Caption pages from timed words: each sentence on as few pages of at most two lines (about 46 characters) as it
+// needs, cut at the word nearest an even split so no page is left with a stray last word.
+const MAX = 46;
 const pagesOf = (words: Word[]) => {
-  const pages: Word[][] = [];let cur: Word[] = [];
-  for (const w of words) {
-    const len = [...cur, w].map((x) => x.text).join(' ').length;
-    if (cur.length && len > 46) {pages.push(cur);cur = [];}
-    cur.push(w);
-    if (/[.?!…]["”]?$/.test(w.text)) {pages.push(cur);cur = [];}
+  const pages: Word[][] = [], sentences: Word[][] = [];let cur: Word[] = [];
+  for (const w of words) {cur.push(w);if (/[.?!…]["”]?$/.test(w.text)) {sentences.push(cur);cur = [];}}
+  if (cur.length) sentences.push(cur);
+  for (const ws of sentences) {
+    const ends: number[] = [];let at = -1;
+    for (const w of ws) {at += w.text.length + 1;ends.push(at);}
+    const total = ends[ends.length - 1];
+    for (let n = Math.ceil(total / MAX); ; n++) {
+      const cuts = Array.from({length: n - 1}, (_, k) => ends.reduce((best, e, i) => Math.abs(e - total * (k + 1) / n) < Math.abs(ends[best] - total * (k + 1) / n) ? i : best, 0));
+      const bounds = [-1, ...new Set(cuts)].sort((x, y) => x - y).concat(ws.length - 1), split = bounds.slice(1).map((e, i) => ws.slice(bounds[i] + 1, e + 1)).filter((p) => p.length);
+      if (split.every((p) => p.map((w) => w.text).join(' ').length <= MAX + 4) || n >= ws.length) {pages.push(...split);break;}
+    }
   }
-  if (cur.length) pages.push(cur);
   return pages;
 };
 const Captions: FC<{words: Word[]; ms: number; highlight: RegExp; top?: number; size?: number}> = ({words, ms, highlight, top = 1390, size = 58}) => {

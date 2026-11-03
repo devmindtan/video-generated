@@ -174,7 +174,8 @@
     "test:manager:progress": "node tools/project-manager/progress-ui.test.cjs",
     "test:manager:live": "node --test tools/project-manager/live.test.cjs",
     "test:manager:approvals": "node tools/project-manager/approvals-ui.test.cjs",
-    "test:manager:media-switch": "node tools/project-manager/media-switch.test.cjs"
+    "test:manager:media-switch": "node tools/project-manager/media-switch.test.cjs",
+    "check:book-hvtt-001-shorts": ".venv/bin/python scripts/projects/book-hvtt-001-shorts/qa.py"
   },
   "dependencies": {
     "@lottiefiles/dotlottie-web": "0.81.0",
