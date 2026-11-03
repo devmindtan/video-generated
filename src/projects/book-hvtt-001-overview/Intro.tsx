@@ -12,7 +12,10 @@ import takes from './intro-takes.json';
 // with a modern voice visualizer whose bars follow the narration (bands precomputed per frame by
 // scripts/projects/book-hvtt-001-overview/intro-bands.py). Voice is an audition take until the user picks one.
 
-export type Voice = {id: string; name: string; file: string; durationSeconds: number; frames: number; captions: Caption[]; bands: number[][]; level: number[]};
+// words: per-word times of the final voice (word-times.py), for captions that light up with the voice (user 2026-11-03).
+export type Word = {text: string; startMs: number; endMs: number};
+export type TimedCaption = Caption & {words?: Word[]};
+export type Voice = {id: string; name: string; file: string; durationSeconds: number; frames: number; captions: TimedCaption[]; bands: number[][]; level: number[]};
 // Series intro: identical for every episode. The per-episode book card lives in EpisodeCard.tsx (user 2026-10-31).
 export type BookIntroProps = {voice: string; channelLabel: string; withMusic?: boolean};
 
@@ -115,8 +118,9 @@ export const Visualizer: FC<{bands: number[]; level: number; appear: number}> = 
 // (times shared out by character position); a page stays up through a short pause until the next one, and only
 // the first page after a real silence fades in.
 const MAX_CHARS = 84, HOLD_MS = 1200;
-const merged = new WeakMap<Caption[], Caption[]>();
-const splitSentence = (pieces: Caption[]): Caption[] => {
+const merged = new WeakMap<Caption[], TimedCaption[]>();
+const tokens = (text: string) => text.split(/\s+/).filter(Boolean);
+const splitSentence = (pieces: TimedCaption[]): TimedCaption[] => {
   const text = pieces.map((p) => p.text.trim()).join(' ');
   // Time at a character offset, linear inside the aligner page that holds it.
   const timeAt = (offset: number) => {
@@ -156,13 +160,18 @@ const splitSentence = (pieces: Caption[]): Caption[] => {
     cuts.push(...(got ?? [from]));
   }
   cuts.push(text.length + 1);
-  return cuts.slice(0, -1).map((from, k) => ({...pieces[0], text: text.slice(from, cuts[k + 1] - 1).trim(), startMs: timeAt(from), endMs: k === cuts.length - 2 ? pieces[pieces.length - 1].endMs : timeAt(cuts[k + 1] - 1), timestampMs: timeAt(from)})).filter((p) => p.text);
+  // Word times follow the words onto their page (one entry per word of the caption text).
+  const words = pieces.every((p) => p.words?.length === tokens(p.text).length) ? pieces.flatMap((p) => p.words ?? []) : undefined;
+  return cuts.slice(0, -1).map((from, k) => {
+    const page = text.slice(from, cuts[k + 1] - 1).trim(), first = tokens(text.slice(0, from)).length;
+    return {...pieces[0], text: page, startMs: timeAt(from), endMs: k === cuts.length - 2 ? pieces[pieces.length - 1].endMs : timeAt(cuts[k + 1] - 1), timestampMs: timeAt(from), words: words?.slice(first, first + tokens(page).length)};
+  }).filter((p) => p.text);
 };
-export const mergeCaptions = (captions: Caption[]) => {
+export const mergeCaptions = (captions: TimedCaption[]) => {
   const cached = merged.get(captions);
   if (cached) return cached;
-  const out: Caption[] = [];
-  let group: Caption[] = [];
+  const out: TimedCaption[] = [];
+  let group: TimedCaption[] = [];
   const flush = () => {if (group.length) out.push(...splitSentence(group)); group = [];};
   for (const c of captions) {
     const last = group[group.length - 1];
@@ -173,16 +182,26 @@ export const mergeCaptions = (captions: Caption[]) => {
   merged.set(captions, out);
   return out;
 };
-export const Captions: FC<{captions: Caption[]; ms: number; highlight?: RegExp}> = ({captions: raw, ms, highlight = emphasis}) => {
+export const Captions: FC<{captions: TimedCaption[]; ms: number; highlight?: RegExp}> = ({captions: raw, ms, highlight = emphasis}) => {
   const captions = mergeCaptions(raw);
   const n = captions.findIndex((c, i) => ms >= c.startMs && ms < Math.max(c.endMs + 250, captions[i + 1] && captions[i + 1].startMs - c.endMs < HOLD_MS ? captions[i + 1].startMs : 0));
   if (n < 0) return null;
   const page = captions[n];
   const follows = n > 0 && page.startMs - captions[n - 1].endMs < HOLD_MS;
   const fade = follows ? 1 : interpolate(ms, [page.startMs - 60, page.startMs + 140], [0, 1], clamp);
+  // With word times the page lights up word by word with the voice: words still to come are dimmed, each brightens
+  // as it is spoken (gold keywords stay gold). Without them (placeholder voices) the page shows as before.
+  const words = page.words;
+  const gold: [number, number][] = words ? [...page.text.matchAll(new RegExp(highlight.source, highlight.flags.includes('g') ? highlight.flags : highlight.flags + 'g'))].map((m) => [m.index ?? 0, (m.index ?? 0) + m[0].length]) : [];
+  let at = 0;
+  const lit = words ? tokens(page.text).map((t, i) => {
+    const offset = page.text.indexOf(t, at);at = offset + t.length;
+    const on = interpolate(ms, [words[i].startMs - 40, words[i].startMs + 80], [.38, 1], clamp);
+    return <span key={i} style={{color: gold.some(([a, b]) => offset >= a && offset < b) ? GOLD : undefined, opacity: on}}>{t}{i < words.length - 1 ? ' ' : ''}</span>;
+  }) : null;
   const parts = page.text.split(highlight);
   return <div data-testid="book-intro-caption" style={{position: 'absolute', left: 260, right: 260, top: 880, minHeight: 120, display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', color: IVORY, fontSize: 44, fontWeight: 700, lineHeight: 1.4, textShadow: '0 3px 14px #000', opacity: fade, translate: `0 ${(1 - fade) * 8}px`}}>
-    <div>{parts.map((p, i) => <span key={i} style={{color: i % 2 === 1 ? GOLD : undefined}}>{p}</span>)}</div>
+    <div>{lit ?? parts.map((p, i) => <span key={i} style={{color: i % 2 === 1 ? GOLD : undefined}}>{p}</span>)}</div>
   </div>;
 };
 
