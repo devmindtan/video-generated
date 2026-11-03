@@ -1,0 +1,18 @@
+{
+  "voice": "Giọng người dùng (clone) +2 bán cung",
+  "name": "Giọng người dùng (clone) +2 bán cung",
+  "option": 2,
+  "engine": "VoxCPM2 qua VoiceStudio (CPU, local)",
+  "reference": "library/voice-references/tam-nhin-cho-cuoc-song/clips/006130-15s.wav",
+  "consent": "self",
+  "pitchSemitones": 2,
+  "processing": "clone từng câu; ghép bằng assemble-clone.py; +2 bán cung giữ thời lượng (voice-variants.py)",
+  "selection": "Lựa chọn 2 như tập 1 (người dùng chọn 2026-10-31: clone giọng của mình, +2 bán cung). Một giọng cho cả series: intro, đoạn Cách làm và outro dùng lại nguyên của tập 1. Dựng bằng giọng tạm Quốc Tuấn; kịch bản chốt xong mới clone một lượt trên máy GPU.",
+  "sample": {
+    "proposed": "book-hvtt-001-overview/audio/01b-cach-lam-voice-full.wav",
+    "alternatives": [
+      "book-hvtt-001-overview/audio/00-intro-voice-full.wav"
+    ]
+  },
+  "segments": {}
+}
