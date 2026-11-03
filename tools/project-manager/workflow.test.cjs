@@ -43,6 +43,10 @@ const {chromium}=require('playwright-core'),{createManager}=require('./server.cj
   const wrap=await page.locator('.flow-wrap path').getAttribute('d'),pts=wrap.match(/-?[\d.]+/g).map(Number);
   const lock=await page.locator('[data-workflow-stage="initial-lock"]').boundingBox(),narr=await page.locator('[data-workflow-stage="narration"]').boundingBox();
   assert.ok(narr.y>lock.y+lock.height&&pts.length>=7,'second row sits below the first with a turning link');mark('Wrapped rows are joined by a link that turns down');
+  // Each row fills the chart width: the last step of every row ends near the right edge.
+  const flowRight=await page.locator('.workflow-flow').evaluate(e=>e.getBoundingClientRect().right);
+  for(const id of ['initial-lock','export']){const b=await page.locator(`[data-workflow-stage="${id}"]`).boundingBox();assert.ok(flowRight-(b.x+b.width)<40,`${id} row leaves ${Math.round(flowRight-b.x-b.width)}px empty`);}
+  mark('Rows stretch to the full chart width');
   await page.locator('[data-workflow-stage="script"]').click();await page.locator('#drawer:not([hidden]) #edit-workflow').waitFor();
   assert.match(await page.locator('#drawer-eyebrow').innerText(),/BƯỚC 2\/15/);assert.match(await page.locator('#drawer-breadcrumb').innerText(),/Quy trình: Kịch bản/);
   assert.equal(await page.locator('#workflow-own textarea').count(),0);await page.locator('#edit-workflow').click();

@@ -1022,10 +1022,13 @@ function renderWorkflow(){
     const count=stepCount(s.config),order=deps.length?`Sau bước ${deps.join(', ')}${parallel.length?`, song song với bước ${parallel.join(', ')}`:''}`:'Bước đầu tiên';
     return `<li><button class="workflow-step mode-${esc(s.automation.mode)}" data-workflow-stage="${esc(s.id)}" title="${esc(stepModes[s.automation.mode])} · ${order}" aria-label="Bước ${s.number}: ${esc(s.title)}, ${esc(stepModes[s.automation.mode])}. ${order}${count?`. ${count} quy tắc hoặc ghi chú`:''}"><span class="step-number">${s.number}</span><strong>${esc(s.title)}</strong>${count?`<span class="step-notes" title="Quy tắc và ghi chú đã thêm">${count}</span>`:''}</button></li>`;
   };
+  const columnCount=p=>new Set(p.stages.map(id=>level[id])).size;
   const columns=p=>{const groups=[];for(const s of p.stages.map(id=>byId[id]).sort((a,b)=>a.number-b.number)){const g=groups.find(g=>g.level===level[s.id]);if(g)g.stages.push(s);else groups.push({level:level[s.id],stages:[s]});}
     return groups.sort((a,b)=>a.level-b.level).map(g=>`<ol class="flow-column${g.level===first?' flow-start':''}${g.level===last?' flow-end':''}${g.stages.length>1?' flow-fork':''}">${g.stages.map(node).join('')}</ol>`).join('');};
   const legend=[...new Set(flow.stages.map(s=>s.automation.mode))].map(m=>`<li class="mode-${esc(m)}">${esc(stepModes[m])}</li>`).join('');
-  box.innerHTML=heading+`<div class="workflow-chart" id="workflow-chart"><ul class="workflow-legend" aria-label="Chú thích">${legend}<li class="legend-hint">Bấm một bước để xem việc cần làm và thêm quy tắc, ghi chú cho agent.</li></ul><div class="workflow-flow">${flow.phases.map(p=>`<section class="workflow-phase" aria-label="${esc(p.title)}"><h3>${esc(p.title)}</h3><div class="flow-columns">${columns(p)}</div></section>`).join('')}</div></div>`;
+  box.innerHTML=heading+`<div class="workflow-chart" id="workflow-chart"><ul class="workflow-legend" aria-label="Chú thích">${legend}<li class="legend-hint">Bấm một bước để xem việc cần làm và thêm quy tắc, ghi chú cho agent.</li></ul><div class="workflow-flow">${flow.phases.map(p=>`<section class="workflow-phase" data-cols="${columnCount(p)}" aria-label="${esc(p.title)}"><h3>${esc(p.title)}</h3><div class="flow-columns">${columns(p)}</div></section>`).join('')}</div></div>`;
+  // The CSP forbids style attributes in markup; CSSOM sets each phase's column count.
+  box.querySelectorAll('.workflow-phase').forEach(el=>el.style.setProperty('--cols',el.dataset.cols));
   linkWorkflowRows();
 }
 // Phases wrap onto new rows; a drawn link turns down from the end of one row into the start of the next.

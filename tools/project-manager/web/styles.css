@@ -87,17 +87,18 @@ main{max-width:1600px;margin:auto;padding:32px 32px 20px;min-width:0}.page-headi
 .workflow-legend .legend-hint{margin-left:auto;color:#607057}.workflow-legend .legend-hint:before{display:none}
 .workflow-flow{position:relative;display:flex;flex-wrap:wrap;row-gap:22px;overflow-x:auto;padding:0 12px 2px}
 .flow-wrap{position:absolute;inset:0;pointer-events:none;overflow:visible}.flow-wrap path{fill:none;stroke:var(--flow-line);stroke-width:2;stroke-linejoin:round}
-.workflow-phase{display:flex;flex-direction:column;min-width:0}
+/* Phases grow by their column count, so a row fills the width and its columns stay even. */
+.workflow-phase{display:flex;flex-direction:column;min-width:0;flex:var(--cols) 1 calc(var(--cols) * (var(--node-w) + 2 * var(--link)))}
 .workflow-phase h3{font-size:12px;font-weight:700;margin:0 4px 8px;color:#3d5634;background:#f1f5ee;border-radius:5px;padding:3px 10px}
 .flow-columns{flex:1;display:flex;align-items:center}
-.flow-column{list-style:none;margin:0;padding:0 var(--link);display:flex;flex-direction:column;gap:8px;position:relative}
+.flow-column{flex:1 1 0;min-width:0;list-style:none;margin:0;padding:0 var(--link);display:flex;flex-direction:column;gap:8px;position:relative}
 .flow-column li{position:relative}
 .flow-column li:before,.flow-column li:after{content:'';position:absolute;top:calc(50% - 1px);width:var(--link);height:2px;background:var(--flow-line)}
 .flow-column li:before{left:calc(-1 * var(--link))}.flow-column li:after{right:calc(-1 * var(--link))}
 .flow-start li:before,.flow-end li:after{display:none}
 .flow-fork:before,.flow-fork:after{content:'';position:absolute;top:calc(var(--node-h) / 2 - 1px);bottom:calc(var(--node-h) / 2 - 1px);width:2px;background:var(--flow-line)}
 .flow-fork:before{left:0}.flow-fork:after{right:0}.flow-start.flow-fork:before,.flow-end.flow-fork:after{display:none}
-.workflow-step{position:relative;width:var(--node-w);height:var(--node-h);display:flex;gap:8px;align-items:center;text-align:left;background:#fafcf8;border:1px solid #dfe7da;border-left:4px solid var(--mode);border-radius:7px;padding:6px 8px;color:var(--ink)}
+.workflow-step{position:relative;width:100%;height:var(--node-h);display:flex;gap:8px;align-items:center;text-align:left;background:#fafcf8;border:1px solid #dfe7da;border-left:4px solid var(--mode);border-radius:7px;padding:6px 8px;color:var(--ink)}
 .flow-column:not(.flow-start) .workflow-step:before{content:'';position:absolute;left:-7px;top:calc(50% - 4px);border:4px solid transparent;border-left:4px solid var(--flow-line);border-right:0}
 .workflow-step:hover{background:#f0f6ec;border-color:#c9d8c0;border-left-color:var(--mode)}
 .workflow-step strong{flex:1;min-width:0;font-size:13px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
