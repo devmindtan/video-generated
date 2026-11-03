@@ -24,13 +24,15 @@ Tập thứ hai, mình chọn cuốn Thay đổi tí hon hiệu quả bất ng�
 
 ## 0b. Mở chuyện
 
-Cuốn sách mở đầu bằng chuyện của chính tác giả. Vào ngày cuối của năm thứ hai trung học, một cây gậy bóng chày tuột khỏi tay một bạn cùng lớp và đập thẳng vào mặt cậu. Cậu bị gãy mũi, rạn xương sọ, có lúc hôn mê và lên cơn co giật, rồi mất nhiều tháng mới hồi phục. [nghỉ]
+Cuốn sách mở đầu bằng chuyện của chính tác giả, câu chuyện mà ông nói đã dạy ông bài học lớn nhất về thói quen. Vào ngày cuối của năm thứ hai trung học, một cây gậy bóng chày tuột khỏi tay một bạn cùng lớp và đập thẳng vào mặt cậu. Cậu bị gãy mũi, rạn xương sọ, được đưa đi cấp cứu bằng trực thăng và hôn mê suốt đêm hôm đó. [nghỉ]
 
-Hai năm sau, khi đã vào đại học, tác giả bắt đầu lại bằng những việc rất nhỏ: đi ngủ sớm, giữ phòng gọn gàng, học đều, tập tạ đều. Không có ngày nào thay đổi hẳn, nhưng sáu năm sau cái ngày bị thương, cậu được chọn là vận động viên nam xuất sắc nhất trường. [nghỉ]
+Những tháng sau đó, cậu nhìn mọi thứ thành hai hình, phải tám tháng sau mới lái xe lại được. Điều cậu mong nhất là được quay lại sân bóng, vì bóng chày là giấc mơ cậu theo đuổi từ năm bốn tuổi. Nhưng khi mùa giải mới bắt đầu, cậu là người duy nhất bị loại khỏi đội chính. Hôm đó, cậu ngồi trong xe và khóc. [nghỉ]
 
-Theo tác giả, những thay đổi nhỏ lúc đầu tưởng không đáng kể, nếu giữ đủ lâu, sẽ thành một kết quả mà chính mình cũng không ngờ. Cả cuốn sách là cách để làm được điều đó.
+Hai năm sau, lên đại học, cậu không lao ngay vào tập luyện mà bắt đầu từ việc sắp xếp lại cuộc sống của mình. Trong khi bạn bè thức khuya chơi game, cậu đi ngủ sớm; giữa ký túc xá bừa bộn, cậu giữ cho phòng mình gọn gàng. Theo tác giả, những việc ấy chẳng có gì to tát, nhưng cho cậu cảm giác mình đang làm chủ lại được đời mình. Sự tự tin ấy lan dần sang việc học, rồi sang cả phòng tập. [nghỉ]
 
-{PDF 3–5 (đã đối chiếu: "ngày cuối cùng của năm thứ hai cao trung", gãy mũi, rạn xương sọ, hôn mê, co giật PDF 3–4; vào Denison hai năm sau tai nạn PDF 5). Chuyện ngôi thứ nhất của tác giả, kể lại như tác giả thuật; không đọc tên giải thưởng tiếng Anh.}
+Sáu năm sau cái ngày bị thương, cậu được chọn là vận động viên nam xuất sắc nhất trường. Tác giả kể rằng không có một khoảnh khắc nào biến cậu từ một bệnh nhân hôn mê thành người như thế, mà là cả một chuỗi dài những bước tiến rất nhỏ. Và từ đó, ông rút ra điều mà cả cuốn sách xoay quanh: những thay đổi tưởng chừng nhỏ bé lúc đầu, nếu giữ đủ lâu, sẽ thành một kết quả đáng kinh ngạc.
+
+{PDF 3–5, đã đối chiếu: tai nạn ngày cuối năm thứ hai cao trung, gãy mũi, rạn xương sọ, trực thăng, hôn mê (PDF 3–4); nhìn hai hình nhiều tuần, 8 tháng mới lái xe lại, chơi bóng từ năm 4 tuổi, người duy nhất bị loại khỏi đội chính, khóc trong xe (PDF 4); vào Denison hai năm sau, ngủ sớm khi bạn chơi điện tử, giữ phòng ngăn nắp, "không to tát gì nhưng… kiểm soát được cuộc sống", tự tin lan sang việc học, nâng tạ (PDF 5); 6 năm sau là nam vận động viên hàng đầu, "không thể chỉ trong một khoảnh khắc… sự cải thiện dần từng chút một", bài học thay đổi nhỏ kiên trì nhiều năm (PDF 5). Viết lại 2026-11-03 theo góp ý: bản trước rời rạc, thiếu chiều sâu.}
 
 ## 1. Cuốn sách là gì
 

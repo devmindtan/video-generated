@@ -19,7 +19,9 @@ import {MoChuyen} from './Sections';
 export type EpisodeProps = {introVoice: string; cardVoice: string; outroVoice: string; channelLabel: string; episodeLabel: string; bookTitle: string; bookAuthor: string};
 
 const voices = takesOf(bodyTakes), cards = (cardTakes as unknown as {voices: Voice[]}).voices;
-const voiceFor = (seg: string) => [`${seg}-sang2`, seg, `25-quoc-tuan-${seg.split('-')[0]}`].find((id) => takeOf(id, voices));
+// The newest placeholder take of a segment is the last 25-quoc-tuan-<nn>[letter] in body-takes.json.
+const placeholder = (seg: string) => voices.filter((v) => new RegExp(`^25-quoc-tuan-${seg.split('-')[0]}[a-z]?$`).test(v.id)).at(-1)?.id;
+const voiceFor = (seg: string) => [`${seg}-sang2`, seg, placeholder(seg)].find((id) => id && takeOf(id, voices));
 const BODY: [string, string, Section][] = [['02-mo-chuyen', 'Mở chuyện', MoChuyen]];
 
 const parts = (p: EpisodeProps, fps: number): Part[] => {

@@ -7,7 +7,7 @@
   "sentences": [
     {
       "scene": 1,
-      "text": "Cuốn sách mở đầu bằng chuyện của chính tác giả.",
+      "text": "Cuốn sách mở đầu bằng chuyện của chính tác giả, câu chuyện mà ông nói đã dạy ông bài học lớn nhất về thói quen.",
       "pauseAfter": 0.4
     },
     {
@@ -17,27 +17,62 @@
     },
     {
       "scene": 1,
-      "text": "Cậu bị gãy mũi, rạn xương sọ, có lúc hôn mê và lên cơn co giật, rồi mất nhiều tháng mới hồi phục.",
+      "text": "Cậu bị gãy mũi, rạn xương sọ, được đưa đi cấp cứu bằng trực thăng và hôn mê suốt đêm hôm đó.",
       "pauseAfter": 0.9
     },
     {
       "scene": 1,
-      "text": "Hai năm sau, khi đã vào đại học, tác giả bắt đầu lại bằng những việc rất nhỏ: đi ngủ sớm, giữ phòng gọn gàng, học đều, tập tạ đều.",
+      "text": "Những tháng sau đó, cậu nhìn mọi thứ thành hai hình, phải tám tháng sau mới lái xe lại được.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Không có ngày nào thay đổi hẳn, nhưng sáu năm sau cái ngày bị thương, cậu được chọn là vận động viên nam xuất sắc nhất trường.",
+      "text": "Điều cậu mong nhất là được quay lại sân bóng, vì bóng chày là giấc mơ cậu theo đuổi từ năm bốn tuổi.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Nhưng khi mùa giải mới bắt đầu, cậu là người duy nhất bị loại khỏi đội chính.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Hôm đó, cậu ngồi trong xe và khóc.",
       "pauseAfter": 0.9
     },
     {
       "scene": 1,
-      "text": "Theo tác giả, những thay đổi nhỏ lúc đầu tưởng không đáng kể, nếu giữ đủ lâu, sẽ thành một kết quả mà chính mình cũng không ngờ.",
+      "text": "Hai năm sau, lên đại học, cậu không lao ngay vào tập luyện mà bắt đầu từ việc sắp xếp lại cuộc sống của mình.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Cả cuốn sách là cách để làm được điều đó.",
+      "text": "Trong khi bạn bè thức khuya chơi game, cậu đi ngủ sớm; giữa ký túc xá bừa bộn, cậu giữ cho phòng mình gọn gàng.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Theo tác giả, những việc ấy chẳng có gì to tát, nhưng cho cậu cảm giác mình đang làm chủ lại được đời mình.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Sự tự tin ấy lan dần sang việc học, rồi sang cả phòng tập.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Sáu năm sau cái ngày bị thương, cậu được chọn là vận động viên nam xuất sắc nhất trường.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả kể rằng không có một khoảnh khắc nào biến cậu từ một bệnh nhân hôn mê thành người như thế, mà là cả một chuỗi dài những bước tiến rất nhỏ.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Và từ đó, ông rút ra điều mà cả cuốn sách xoay quanh: những thay đổi tưởng chừng nhỏ bé lúc đầu, nếu giữ đủ lâu, sẽ thành một kết quả đáng kinh ngạc.",
       "pauseAfter": 0
     }
   ]
