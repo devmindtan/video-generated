@@ -272,11 +272,11 @@ export const ProjectCompositions: FC = () => (
         </Folder>
         <Folder name="book-hvtt-001-shorts">
           <Composition id="BookHvttShortVocMuoi" component={BookHvttShortSalt} calculateMetadata={renderTo('book-hvtt-001-shorts', BookHvttShortSalt.metadata)} durationInFrames={1200} fps={30} width={1080} height={1920} defaultProps={{short: 'short-1'}} />
-          <Still id="BookHvttShortVocMuoiCover" component={BookHvttShortCover} calculateMetadata={renderTo<ShortCoverProps>('book-hvtt-001-shorts')} width={1080} height={1920} defaultProps={{question: 'Làm sao chịu được một chuyện quá sức mà không bị nó nhấn chìm?', keywords: ['chịu được', 'nhấn chìm']}} />
+          <Still id="BookHvttShortVocMuoiCover" component={BookHvttShortCover} calculateMetadata={renderTo<ShortCoverProps>('book-hvtt-001-shorts')} width={1080} height={1920} defaultProps={{art: 'salt', headline: 'Lòng rộng ra, nỗi khổ nhạt đi', keyword: 'Lòng rộng ra'}} />
           <Composition id="BookHvttShortDauVaKho" component={BookHvttShortPain} calculateMetadata={renderTo('book-hvtt-001-shorts', BookHvttShortPain.metadata)} durationInFrames={1200} fps={30} width={1080} height={1920} defaultProps={{short: 'short-2'}} />
-          <Still id="BookHvttShortDauVaKhoCover" component={BookHvttShortCover} calculateMetadata={renderTo<ShortCoverProps>('book-hvtt-001-shorts')} width={1080} height={1920} defaultProps={{question: 'Cùng một chuyện xảy ra, vì sao có người đi qua được, còn có người khổ mãi?', keywords: ['đi qua được', 'khổ mãi']}} />
+          <Still id="BookHvttShortDauVaKhoCover" component={BookHvttShortCover} calculateMetadata={renderTo<ShortCoverProps>('book-hvtt-001-shorts')} width={1080} height={1920} defaultProps={{art: 'pond', headline: 'Đau và khổ khác nhau', keyword: 'khổ'}} />
           <Composition id="BookHvttShortGoiMai" component={BookHvttShortPhone} calculateMetadata={renderTo('book-hvtt-001-shorts', BookHvttShortPhone.metadata)} durationInFrames={1200} fps={30} width={1080} height={1920} defaultProps={{short: 'short-3'}} />
-          <Still id="BookHvttShortGoiMaiCover" component={BookHvttShortCover} calculateMetadata={renderTo<ShortCoverProps>('book-hvtt-001-shorts')} width={1080} height={1920} defaultProps={{question: 'Đã bao giờ bạn lo tới mức tự vẽ ra cả một chuyện chưa hề xảy ra?', keywords: ['tự vẽ ra', 'chưa hề xảy ra']}} />
+          <Still id="BookHvttShortGoiMaiCover" component={BookHvttShortCover} calculateMetadata={renderTo<ShortCoverProps>('book-hvtt-001-shorts')} width={1080} height={1920} defaultProps={{art: 'phone', headline: 'Chuyện chưa hề xảy ra', keyword: 'chưa hề xảy ra'}} />
         </Folder>
       </Folder>
       <Folder name="Stoic-Stories">
