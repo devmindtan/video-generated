@@ -168,12 +168,14 @@ function bookEpisodes(book){
   const eps=state.data.projects.filter(p=>p.book===book.id);
   return `<section class="drawer-section book-episode-list"><h3>Các tập từ sách này <span class="count-pill">${eps.length}</span></h3>${eps.length?`<ul>${eps.map(p=>`<li><a href="#project/${encodeURIComponent(p.id)}" data-project="${esc(p.id)}">${esc(p.title)}</a><span class="status ${esc(p.importedVideo?'existing':p.status)}">${esc(p.importedVideo?'Đã import video':statusNames[p.status]||p.status)}</span></li>`).join('')}</ul>`:'<p>Chưa có tập nào. Bấm “Lên ý tưởng một tập” để bắt đầu.</p>'}</section>`;
 }
+// A→Z ignores leading quotes and punctuation, so “Để mai” sorts under Đ.
+const sortKey=t=>String(t||'').replace(/^[^\p{L}\p{N}]+/u,''),byTitle=(a,b)=>sortKey(a.title).localeCompare(sortKey(b.title),'vi');
 function renderCards(){
   if(!state.data)return;
   const q=fold(state.query);let items;
   if(state.view==='books')items=state.data.books.filter(b=>(!state.series||b.series===state.series)&&(!state.channel||b.channel===state.channel)&&(!q||fold(`${b.title} ${b.authors.join(' ')}`).includes(q)));
   else items=state.data.projects.filter(p=>(!state.channel||p.channel===state.channel)&&(!state.series||p.series===state.series)&&(!state.status||p.status===state.status)&&(!q||fold(`${p.title} ${p.id} ${p.seriesTitle}`).includes(q)));
-  items.sort((a,b)=>state.sort==='title'?a.title.localeCompare(b.title,'vi'):String(b.updatedAt||'').localeCompare(String(a.updatedAt||''))||a.title.localeCompare(b.title,'vi'));
+  items.sort((a,b)=>state.sort==='title'?byTitle(a,b):String(b.updatedAt||'').localeCompare(String(a.updatedAt||''))||byTitle(a,b));
   $('#project-count').textContent=items.length;
   $('#project-grid').className='project-grid'+(state.view==='books'?' books-grid':'')+(state.layout==='list'?' list':'');
   $('#project-grid').innerHTML=items.length?items.slice(0,state.limit).map(state.view==='books'?bookCard:projectCard).join(''):`<div class="empty-state"><span class="empty-icon">${state.query?'⌕':'✧'}</span><strong>${state.query?'Chưa tìm thấy dự án phù hợp':'Một câu chuyện mới bắt đầu ở đây'}</strong><p>${state.query?'Thử từ khóa khác hoặc bỏ bớt bộ lọc.':'Series này chưa có tập sản xuất. Bạn có thể thêm một ý tưởng để bắt đầu chuẩn bị.'}</p><button class="button secondary" data-empty-action>${state.query?'Xóa bộ lọc':'Thêm dự án đầu tiên'}</button></div>`;

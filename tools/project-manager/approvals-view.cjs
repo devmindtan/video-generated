@@ -323,7 +323,7 @@ function createApprovals(root) {
     return {available: true, locked: r.version > 0, lockVersion: r.version, ...p, events, lastActivity: events[0]?.at || p.lastActivity, patches, runs};
   }
   function progressSummary(id) {
-    try {const p = progress.view(root, id);return p.plan ? {overall: p.overall, running: p.counts.running, interrupted: p.counts.interrupted, failed: p.counts.failed, total: p.counts.total, done: p.counts.done} : null;}
+    try {const p = progress.view(root, id);return p.plan ? {overall: p.overall, running: p.counts.running, interrupted: p.counts.interrupted, failed: p.counts.failed, total: p.counts.total, done: p.counts.done, lastActivity: p.lastActivity} : null;}
     catch {return null;}
   }
   return {approvalsView: view, approveGate, gateReview, projectMedia, reviewView, reviewDetail, lockProject, returnLock, decidePatch, reviewNote, reviewScene, reviewMedia, progressView, progressSummary};

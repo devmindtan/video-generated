@@ -120,8 +120,39 @@ function createStore(root) {
         documents:['book.json','research.md','chapters.json','season-plan.md'].filter(f=>exists(path.join(folder,d.name,f))),chapters:chapterCoverage(path.join(folder,d.name,'chapters.json'))}];
     });
   }
+  // When each project was last really worked on: its newest commit that touched at most three projects (wider
+  // commits are sweeps such as credits or registry checks, not work on each one), uncommitted files in its folders,
+  // and its live progress log. A project only ever touched by sweeps keeps its file time, capped at its first
+  // commit (older work predates the repository; later file times come from the sweeps). Cached per HEAD and
+  // dirty-file set; null when Git is unavailable.
+  let activityCache = null;
+  function activity(catalog) {
+    const roots = new Map();
+    for (const s of catalog.series) for (const p of s.projects) for (const dir of Object.values(p.paths || {})) if (dir) roots.set(dir.replace(/\/+$/,''), p.id);
+    const owner = file => { for (let dir = path.posix.dirname(file); dir && dir !== '.'; dir = path.posix.dirname(dir)) if (roots.has(dir)) return roots.get(dir); return null; };
+    const git = args => require('node:child_process').execFileSync('git', args, {cwd: root, encoding: 'utf8', maxBuffer: 64 << 20, stdio: ['ignore','pipe','ignore']});
+    let head, dirty;
+    try { head = git(['rev-parse','HEAD']).trim(); dirty = git(['status','--porcelain','-z','--untracked-files=all','--',...roots.keys()]); } catch { return null; }
+    const key = head + hash(dirty);
+    if (activityCache?.key !== key) {
+      const last = new Map(), first = new Map();
+      let date = null, files = [];
+      const flush = () => { const ids = new Set(files.map(owner).filter(Boolean)); for (const id of ids) first.set(id, date); if (date && ids.size && ids.size <= 3) for (const id of ids) if (!last.has(id)) last.set(id, date); };
+      for (const line of git(['log','--name-only','--format=@%cI','--',...roots.keys()]).split('\n')) {
+        if (line.startsWith('@')) { flush(); date = new Date(line.slice(1)).toISOString(); files = []; } else if (line) files.push(line);
+      }
+      flush();
+      for (const entry of dirty.split('\0')) {
+        const file = entry.slice(3), id = file && owner(file);
+        if (!id) continue;
+        try { const at = fs.statSync(path.join(root, file)).mtime.toISOString(); if (!last.has(id) || at > last.get(id)) last.set(id, at); } catch {}
+      }
+      activityCache = {key, last, first};
+    }
+    return activityCache;
+  }
   function list() {
-    const catalog = load(root), nodes = registrations(root);
+    const catalog = load(root), nodes = registrations(root), worked = activity(catalog);
     const projects = catalog.series.flatMap(series=>series.projects.map(project=>{
       const node = nodes.find(n=>n.project===project.id&&n.kind==='Composition');
       const image = preview(project);
@@ -130,12 +161,16 @@ function createStore(root) {
       const thumbnail = project.registrations.find(r=>r.kind==='Still');
       const source = path.join(location(project.paths.source),'Video.tsx');
       const brief = path.join(location(project.paths.docs),'brief.md');
-      const updatedAt = exists(source)?fs.statSync(source).mtime.toISOString():exists(brief)?fs.statSync(brief).mtime.toISOString():null;
+      const progress = extra.progressSummary(project.id);
+      const fileTime = exists(source)?fs.statSync(source).mtime.toISOString():exists(brief)?fs.statSync(brief).mtime.toISOString():null;
+      const added = worked?.first.get(project.id);
+      const updatedAt = [worked?.last.get(project.id), progress?.lastActivity].filter(Boolean).sort().at(-1)
+        || (fileTime && added && fileTime > added ? added : fileTime || added || null);
       return {id:project.id,title:project.title,status:project.status,format:project.format,series:series.id,channel:series.channel,
         seriesTitle:series.title,durationSeconds:node?.fps&&node.durationFrames&&!(node.calculated&&project.durationSeconds)?node.durationFrames/node.fps:project.durationSeconds??null,
         renderedVideo:Boolean(renderedVideo),renderedThumbnail:Boolean(renderedThumbnail),importedVideo:Boolean(renderedVideo?.imported),videoInline:renderedVideo?.inline!==false,videoFile:renderedVideo?.name||null,videoId:video?.id||null,thumbnailId:thumbnail?.id||null,previewType:image?.type||null,updatedAt,book:project.book||null,
         hasScript:exists(path.join(location(project.paths.docs),'script.md')),
-        hasDescription:exists(path.join(location(project.paths.docs),'description.md')),autoNamed:Boolean(project.autoNamed),progress:extra.progressSummary(project.id),
+        hasDescription:exists(path.join(location(project.paths.docs),'description.md')),autoNamed:Boolean(project.autoNamed),progress,
         videoFolder:renderedVideo?path.relative(root,path.dirname(renderedVideo.file)):null};
     }));
     return {channels:catalog.channels,series:catalog.series.map(s=>({id:s.id,title:s.title,channel:s.channel,summary:s.summary,
