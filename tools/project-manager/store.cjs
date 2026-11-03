@@ -99,6 +99,15 @@ function createStore(root) {
     const file = posters.posterFor(image.video);
     return file ? {file,type:image.type} : null;
   }
+  // Reading coverage for the bookshelf card: chapters marked read / chapters mapped (null when not mapped yet).
+  function chapterCoverage(file) {
+    try {
+      const c = JSON.parse(fs.readFileSync(file,'utf8')), list = Array.isArray(c.chapters) ? c.chapters : [];
+      const total = c.coverage?.chaptersTotal ?? list.length;
+      if (!total) return null;
+      return {read:c.coverage?.chaptersRead ?? list.filter(x=>x.readStatus==='read').length,total};
+    } catch { return null; }
+  }
   function books(series) {
     const folder = path.join(path.dirname(series.file),'books');
     if (!exists(folder)) return [];
@@ -108,7 +117,7 @@ function createStore(root) {
       const text = fs.readFileSync(secureFile(folder,file),'utf8'), book = JSON.parse(text);
       return [{id:d.name,revision:hash(text),title:book.title,authors:book.authors||[],status:book.status,series:series.id,channel:series.channel,
         cover:extra.bookCover(series.id,d.name)?.revision||null,hasSource:Boolean(book.sourceSha256)||extra.sources(series.id,d.name).length>0,sources:extra.sources(series.id,d.name),note:book.note||'',
-        documents:['book.json','research.md','chapters.json','season-plan.md'].filter(f=>exists(path.join(folder,d.name,f)))}];
+        documents:['book.json','research.md','chapters.json','season-plan.md'].filter(f=>exists(path.join(folder,d.name,f))),chapters:chapterCoverage(path.join(folder,d.name,'chapters.json'))}];
     });
   }
   function list() {

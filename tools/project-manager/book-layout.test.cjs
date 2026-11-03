@@ -22,6 +22,15 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
    if(width===390)assert.equal(await page.locator('#project-grid').evaluate(n=>getComputedStyle(n).gridTemplateColumns.split(' ').length),2);
    await page.locator('#list-view').click();await check();console.log('✓ Real books fit grid/list at '+width+'px');
   }
+  // Each card says how far the book is read and which episodes use it; the episode link opens that project.
+  await page.setViewportSize({width:1440,height:1000});await page.goto(base+'/?view=books',{waitUntil:'networkidle'});
+  const hvtt=page.locator('.book-card').filter({hasText:'Hiểu về trái tim'});
+  assert.match(await hvtt.locator('.book-reading').innerText(),/Đã đọc \d+\/\d+ chương/);
+  assert.ok(Number(await hvtt.locator('.book-reading [data-width]').evaluate(n=>parseFloat(n.style.width)))>0);
+  await hvtt.locator('a.book-episodes').click();await page.locator('#drawer:not([hidden])').waitFor();
+  assert.match(decodeURIComponent(new URL(page.url()).hash),/^#project\/book-hvtt-/);
+  assert.ok(await page.locator('.book-card .book-facts').count()===await page.locator('.book-card').count());
+  console.log('✓ Cards show reading coverage and linked episodes');
   await page.route('**/api/workspace',async route=>{const response=await route.fetch();const data=await response.json();data.books=[{...data.books[0],id:'browser-only-fixture',cover:null,title:'TênSáchRấtDàiKhôngCóKhoảngTrắng'.repeat(12),authors:['Tên tác giả rất dài '.repeat(12)]}];await route.fulfill({response,json:data});});
   await page.goto(base+'/?view=books',{waitUntil:'networkidle'});await check();await page.locator('#list-view').click();await check();console.log('✓ Unbroken long title and long author remain contained; full title readable');
   assert.deepEqual(errors,[]);

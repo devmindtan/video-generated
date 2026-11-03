@@ -156,7 +156,16 @@ function projectCard(p,index=0){
 }
 function bookCoverUrl(book){return `/api/book-cover?series=${encodeURIComponent(book.series)}&book=${encodeURIComponent(book.id)}&v=${encodeURIComponent(book.cover||'')}`;}
 function bookArtwork(book){return book.cover?`<span class="book-image-frame"><img class="uploaded-book-cover" width="136" height="174" src="${bookCoverUrl(book)}" alt="Bìa ${esc(book.title)}" loading="lazy" data-book-cover="${esc(book.id)}" data-cover-series="${esc(book.series)}"></span>`:`<span class="book-object" aria-hidden="true"><span class="book-cover-title">${esc(book.title)}</span><small class="book-cover-author">${esc(book.authors.join(', '))}</small></span>`;}
-function bookCard(b){return `<article class="project-card book-card"><button class="card-cover" data-book="${esc(b.id)}" data-book-series="${esc(b.series)}" aria-label="Mở hồ sơ ${esc(b.title)}">${bookArtwork(b)}</button><div class="card-body"><button class="card-title" data-book="${esc(b.id)}" data-book-series="${esc(b.series)}">${esc(b.title)}</button><div class="card-id">${esc(b.authors.join(', '))}</div><div class="card-footer"><span class="status ${b.hasSource?'production':'planning'}">${esc(b.hasSource&&b.status==='awaiting-source'?'Chờ kiểm tra nguồn':bookStatusNames[b.status]||b.status)}</span></div></div></article>`;}
+function bookCard(b){
+  const status=b.hasSource&&b.status==='awaiting-source'?'Chờ kiểm tra nguồn':bookStatusNames[b.status]||b.status;
+  const episodes=state.data.projects.filter(p=>p.book===b.id),c=b.chapters,pct=c?Math.round(c.read/c.total*100):0;
+  const reading=c?`<div class="book-reading" title="Đã đọc ${c.read} trên ${c.total} chương"><small>Đã đọc ${c.read}/${c.total} chương</small><span class="pbar" role="progressbar" aria-label="Tiến độ đọc" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><span data-width="${pct}"></span></span></div>`
+   :`<div class="book-reading is-empty"><small>${b.hasSource?'Có PDF · chưa lập mục lục':'Chưa có PDF nguồn'}</small></div>`;
+  // Episode titles usually repeat the book's name ("Hiểu về trái tim: tổng quan…"); show only the part after it.
+  const base=b.title.replace(/\s*\([^)]*\)$/,''),short=t=>{const r=t.startsWith(base)?t.slice(base.length).replace(/^[\s:·–-]+/,''):t;return r?r[0].toLocaleUpperCase('vi')+r.slice(1):t;};
+  const eps=episodes.length?`<a class="book-episodes" href="#project/${encodeURIComponent(episodes[0].id)}" data-project="${esc(episodes[0].id)}" title="${esc(episodes.map(p=>p.title).join(' · '))}"><strong>${episodes.length} tập</strong><span>${esc(short(episodes[0].title))}${episodes.length>1?` +${episodes.length-1}`:''}</span></a>`:'<div class="book-episodes is-empty"><span>Chưa có tập nào</span></div>';
+  return `<article class="project-card book-card"><button class="card-cover" data-book="${esc(b.id)}" data-book-series="${esc(b.series)}" aria-label="Mở hồ sơ ${esc(b.title)}">${bookArtwork(b)}</button><div class="card-body"><button class="card-title" data-book="${esc(b.id)}" data-book-series="${esc(b.series)}">${esc(b.title)}</button><div class="card-id">${esc(b.authors.join(', '))}</div><div class="book-facts">${reading}${eps}</div><div class="card-footer"><span class="status ${b.hasSource?'production':'planning'}">${esc(status)}</span></div></div></article>`;
+}
 function renderCards(){
   if(!state.data)return;
   const q=fold(state.query);let items;
@@ -168,7 +177,7 @@ function renderCards(){
   $('#project-grid').innerHTML=items.length?items.slice(0,state.limit).map(state.view==='books'?bookCard:projectCard).join(''):`<div class="empty-state"><span class="empty-icon">${state.query?'⌕':'✧'}</span><strong>${state.query?'Chưa tìm thấy dự án phù hợp':'Một câu chuyện mới bắt đầu ở đây'}</strong><p>${state.query?'Thử từ khóa khác hoặc bỏ bớt bộ lọc.':'Series này chưa có tập sản xuất. Bạn có thể thêm một ý tưởng để bắt đầu chuẩn bị.'}</p><button class="button secondary" data-empty-action>${state.query?'Xóa bộ lọc':'Thêm dự án đầu tiên'}</button></div>`;
   $('#pagination').innerHTML=items.length?`<span>Hiển thị ${Math.min(state.limit,items.length)} / ${items.length} ${state.view==='books'?'cuốn sách':'dự án'}</span>${items.length>state.limit?'<button class="button secondary" data-more>Xem thêm ↓</button>':''}`:'';
   bindBookCoverFallbacks();
-  document.querySelectorAll('.card-progress [data-width]').forEach(n=>{n.style.width=n.dataset.width+'%';});
+  document.querySelectorAll('.card-progress [data-width],.book-reading [data-width]').forEach(n=>{n.style.width=n.dataset.width+'%';});
   document.querySelectorAll('[data-preview-image]').forEach(image=>image.addEventListener('error',()=>{image.replaceWith(Object.assign(document.createElement('span'),{className:'cover-placeholder',textContent:'✧'}));},{once:true}));
 }
 // Books and projects open as full pages beside the sidebar; short workflow-step details remain a side panel.
