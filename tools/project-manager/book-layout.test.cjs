@@ -31,6 +31,10 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
   await hvtt.locator('.card-title').click();await page.locator('#drawer:not([hidden]) .episodes-view').waitFor();
   assert.equal(await page.locator('.document-tabs [data-book-document="__episodes"]').getAttribute('class'),'active','episodes tab opens first');
   assert.ok(await page.locator('.episode-long-card').count()>=1);assert.ok(await page.locator('.episode-shorts-block .episode-short-card').count()>=1,'shorts sit under their long episode');
+  assert.equal(await page.locator('.short-tile').count(),3,'one tile per short');
+  const widths=await page.evaluate(()=>{const card=document.querySelector('.episode-short-card'),tiles=document.querySelector('.short-tiles');return [card.getBoundingClientRect().width,tiles.getBoundingClientRect().width,(b=>b.clientWidth-parseFloat(getComputedStyle(b).paddingLeft)-parseFloat(getComputedStyle(b).paddingRight))(document.querySelector('.episode-shorts-block'))];});
+  assert.ok(widths[0]>=widths[2]-2,'shorts card spans the block');
+  await page.locator('.short-tile').nth(1).click();await page.locator('#media-dialog[open]').waitFor();assert.equal(await page.locator('#media-switch button').nth(1).getAttribute('aria-pressed'),'true');await page.locator('#close-media').click();
   assert.match(await page.locator('.book-episode-summary').innerText(),/video dài/);
   for(const width of [1440,820,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(150);
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'overflow at '+width);

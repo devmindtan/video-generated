@@ -179,8 +179,13 @@ function bookEpisodesView(book){
   const status=p=>`<span class="status ${esc(p.importedVideo?'existing':p.status)}">${esc(p.importedVideo?'Đã import video':statusNames[p.status]||p.status)}</span>`;
   const preview=(p,cls)=>`<a class="episode-preview ${cls}" href="#project/${encodeURIComponent(p.id)}" data-project="${esc(p.id)}" aria-label="Mở hồ sơ ${esc(p.title)}">${p.previewType?`<img src="/api/preview/${encodeURIComponent(p.id)}" alt="" loading="lazy" decoding="async">`:'<span aria-hidden="true">✧</span>'}</a>`;
   const actions=p=>`<div class="episode-actions"><button class="button secondary" data-project="${esc(p.id)}">${icon('folder')} Mở hồ sơ</button>${p.videoId||p.renderedVideo?`<button class="button secondary" data-watch="video" data-id="${esc(p.id)}">${icon('play')} Xem video</button>`:''}</div>`;
-  const shortCard=p=>{const names=(p.videos||[]).map(v=>`<li><span class="short-number">${v.number}</span>${esc(v.title.replace(/^Short \d+ · /,''))}</li>`).join('');
-    return `<article class="episode-short-card">${preview(p,'is-vertical')}<div class="episode-body"><span class="episode-kind">${p.compositionCount>1?`${p.compositionCount} short`:'Short'}</span><a class="episode-title" href="#project/${encodeURIComponent(p.id)}" data-project="${esc(p.id)}">${esc(p.title)}</a><div class="episode-meta">${status(p)}<span>${esc(duration(p.durationSeconds))}</span></div>${names?`<ol class="episode-short-names">${names}</ol>`:''}${actions(p)}</div></article>`;};
+  // A shorts project spans the width: its header, then one tile per short with that short's own cover (an exported
+  // cover Still when there is one), number and name; a tile opens the media dialog on that short.
+  const shortCard=p=>{const vids=p.videos||[],covers=p.thumbnails||[];
+    const cover=v=>{const c=covers.find(x=>x.number===v.number&&x.name);return c?`/api/media?id=${encodeURIComponent(p.id)}&kind=thumbnail&file=${encodeURIComponent(c.name)}`:p.previewType?`/api/preview/${encodeURIComponent(p.id)}`:'';};
+    const tiles=vids.map(v=>{const src=cover(v),name=v.title.replace(/^Short \d+ · /,'');
+      return `<li><button class="short-tile" data-watch="video" data-id="${esc(p.id)}" data-number="${v.number}" aria-label="Xem short ${v.number}: ${esc(name)}${v.name?'':' (chưa xuất)'}"><span class="short-tile-cover">${src?`<img src="${src}" alt="" loading="lazy" decoding="async">`:'<span aria-hidden="true">✧</span>'}</span><span class="short-tile-text"><span class="short-number">${v.number}</span><span>${esc(name)}</span></span>${v.name?'':'<span class="short-tile-state">Chưa xuất</span>'}</button></li>`;}).join('');
+    return `<article class="episode-short-card${tiles?' has-tiles':''}">${tiles?'':preview(p,'is-vertical')}<div class="episode-body"><div class="episode-head"><div><span class="episode-kind">${p.compositionCount>1?`${p.compositionCount} short`:'Short'}</span><a class="episode-title" href="#project/${encodeURIComponent(p.id)}" data-project="${esc(p.id)}">${esc(p.title)}</a><div class="episode-meta">${status(p)}<span>${esc(duration(p.durationSeconds))}</span></div></div>${actions(p)}</div>${tiles?`<ol class="short-tiles">${tiles}</ol>`:''}</div></article>`;};
   const longCard=p=>{const own=shorts.filter(x=>x.promotes===p.id);
     return `<section class="episode-group"><article class="episode-long-card">${preview(p,'is-wide')}<div class="episode-body"><span class="episode-kind">Video dài</span><a class="episode-title" href="#project/${encodeURIComponent(p.id)}" data-project="${esc(p.id)}">${esc(p.title)}</a><div class="episode-meta">${status(p)}<span>${esc(duration(p.durationSeconds))}</span></div>${actions(p)}</div></article>
       ${own.length?`<div class="episode-shorts-block"><h4>Short giới thiệu tập này <span class="count">${own.length}</span></h4><div class="episode-short-grid">${own.map(shortCard).join('')}</div></div>`:'<p class="episode-none">Chưa có short giới thiệu cho tập này.</p>'}</section>`;};
@@ -910,7 +915,7 @@ document.addEventListener('click',async event=>{
   if(target.tagName==='A'){if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||event.button!==0)return;event.preventDefault();}
   if(target.hasAttribute('data-back'))back();
   else if(target.hasAttribute('data-route')){const p=new URL(target.href).searchParams;navigate({channel:p.get('channel')||'',series:p.get('series')||'',view:p.get('view')||'projects'});}
-  else if(target.dataset.watch){event.preventDefault();watch(target.dataset.id,target.dataset.watch);}
+  else if(target.dataset.watch){event.preventDefault();watch(target.dataset.id,target.dataset.watch,Number(target.dataset.number)||0);}
   else if(target.dataset.studio)launchStudio(target.dataset.id,target.dataset.studio);
   else if(target.hasAttribute('data-delete-project'))askDelete('project',state.drawer.id);
   else if(target.dataset.nav==='all')navigate();
@@ -1012,7 +1017,7 @@ async function launchStudio(id,composition){
   try{const result=await api('/api/studio',{id,composition});if(popup)popup.location.href=result.url;else toast('Studio đã sẵn sàng tại localhost:3000. Cho phép cửa sổ bật lên rồi bấm lại.');}
   catch(e){if(popup)popup.close();toast(e.message);}
 }
-async function watch(id,kind){
+async function watch(id,kind,number=0){
   const p=state.data.projects.find(p=>p.id===id);if(!p)return;
   // A project with several videos or thumbnails (three shorts and their covers) always opens the dialog with one numbered,
   // named button each: exported ones show here, the others open the right composition in Studio.
@@ -1026,7 +1031,7 @@ async function watch(id,kind){
   if(kind==='video'&&p.importedVideo&&!p.videoInline){const note=document.createElement('div');note.className='media-unplayable';note.append(Object.assign(document.createElement('p'),{textContent:`Trình duyệt không phát trực tiếp được định dạng ${(p.videoFile||'').split('.').pop().toUpperCase()}. Video đã được lưu trong thư mục của dự án.`}),Object.assign(document.createElement('button'),{className:'button secondary',textContent:'Mở thư mục video',onclick:()=>api('/api/open-folder',{id,group:'assets'}).catch(e=>toast(e.message))}));
     $('#media-title').textContent=p.title;$('#media-status').textContent='Video khách hàng đã import vào workspace; file gốc bên ngoài không bị thay đổi.';$('#media-studio').hidden=true;$('#media-content').replaceChildren(note);$('#media-dialog').showModal();return;}
   if(kind==='video'&&p.importedVideo&&!(await preparePlayback(id)))return;
-  let pick=many?(list.find(v=>v.name)||list[0]):null;
+  let pick=many?(list.find(v=>v.number===number)||list.find(v=>v.name)||list[0]):null;
   const noun=kind==='video'?'Video':'Ảnh bìa';
   const show=()=>{
     if(pick){selectedMedia.composition=pick.composition;$('#media-studio').hidden=false;}
