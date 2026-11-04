@@ -110,6 +110,17 @@ bản ghép dùng v7 cho câu đầu và v6 cho câu sau. Máy nghi một chữ,
 | 4:08 | Sợi chỉ | hiển → hiện (v7; v6 nghe "mãn → mạng") | Từ bốn bước đó có bốn quy luật để xây thói quen tốt: làm cho nó hiển nhiên, hấp dẫn, dễ dàng và thỏa mãn. |
 | 4:14 | Sợi chỉ | (không) | Muốn bỏ thói quen xấu thì làm ngược lại: cho nó khó thấy, kém hấp dẫn, khó làm và không thỏa mãn. |
 
+## Ý riêng thêm vào phần Ý kiến cá nhân (2026-11-04, máy GPU)
+
+Người dùng thêm ý: đã trải qua nhiều chuyện nên với mọi hướng dẫn, quy tắc trong sách cần có chính kiến, đừng mù quáng.
+Hai câu mới: câu 1 dùng `seg-08g-y-kien-v5` (sạch); câu 2 clone 4 bản (v4, v5, v6s21, v6s33), bản nào máy cũng nghe
+"quáng → quán", dùng v6s33 (chỉ còn chỗ đó; có lẽ nhận dạng không quen cụm "mù quáng").
+
+| Mốc (BookAhTap02Clone) | Phần | Máy nghe | Câu |
+| --- | --- | --- | --- |
+| 12:55 | Ý kiến cá nhân | (không) | Bản thân mình cũng đã trải qua khá nhiều chuyện trong cuộc sống, và mình thấy không có lời khuyên nào hợp với tất cả mọi người. |
+| 13:02 | Ý kiến cá nhân | quáng → quán | Nên với bất kỳ hướng dẫn hay quy tắc nào trong sách, hãy giữ chính kiến của mình: thử rồi tự xem cái nào hợp, cái nào không, chứ đừng làm theo một cách mù quáng. |
+
 ## Còn lại
 
 - Người dùng nghe BookAhTap02Clone và báo câu nào đọc sai thật: clone lại riêng câu đó thành take mới.

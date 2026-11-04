@@ -162,7 +162,7 @@ Hình ảnh mình nhớ lâu nhất là cục nước đá. Rất nhiều ngư�
 
 Nhiều mẹo trong sách nghe qua thì rất bình thường, như đặt bát táo giữa bếp hay bày sẵn bộ đồ tập từ tối hôm trước. Nhưng nếu chịu ngồi lại ngẫm, sẽ thấy điều tác giả muốn nói sâu hơn: mình không thắng một thói quen bằng sức chịu đựng, mà bằng cách sắp xếp để việc đúng dễ xảy ra hơn. [nghỉ]
 
-Còn một điều mình muốn nhắc: những ví dụ trong sách chỉ là một góc nhìn, phần lớn từ những người đã thành công, nên chưa bao quát hết mọi hoàn cảnh. Vì vậy, đừng biến các mẹo thành quy tắc phải làm theo cho bằng được. Quy luật hai phút là để bắt đầu, không phải để dừng mãi ở hai phút. Còn nếu việc đánh dấu lịch khiến các bạn thấy áp lực, cứ bỏ nó đi, miễn là thói quen vẫn còn.
+Còn một điều mình muốn nhắc: những ví dụ trong sách chỉ là một góc nhìn, phần lớn từ những người đã thành công, nên chưa bao quát hết mọi hoàn cảnh. Vì vậy, đừng biến các mẹo thành quy tắc phải làm theo cho bằng được. Bản thân mình cũng đã trải qua khá nhiều chuyện trong cuộc sống, và mình thấy không có lời khuyên nào hợp với tất cả mọi người. Nên với bất kỳ hướng dẫn hay quy tắc nào trong sách, hãy giữ chính kiến của mình: thử rồi tự xem cái nào hợp, cái nào không, chứ đừng làm theo một cách mù quáng. Quy luật hai phút là để bắt đầu, không phải để dừng mãi ở hai phút. Còn nếu việc đánh dấu lịch khiến các bạn thấy áp lực, cứ bỏ nó đi, miễn là thói quen vẫn còn.
 
 Nếu chỉ chọn một cách để bắt đầu, mình gợi ý xếp chồng thói quen. Tối nay các bạn có thể viết ra một câu: "Sau khi làm việc mình vẫn làm mỗi ngày, mình sẽ làm thêm một việc nhỏ", rồi thử ngay sáng mai.
 

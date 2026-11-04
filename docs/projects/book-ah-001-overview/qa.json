@@ -1,6 +1,6 @@
 {
   "project": "book-ah-001-overview",
-  "checkedAt": "2026-11-04T21:29:23+07:00",
+  "checkedAt": "2026-11-04T22:03:50+07:00",
   "durationSeconds": 810.13,
   "parts": [
     {
@@ -124,6 +124,14 @@
           "part": "Những điểm chưa đạt",
           "missing": [
             "cuốn sách có nhiều cách làm hay nhưng cũng có vài điểm mình chưa ưng"
+          ]
+        },
+        {
+          "segment": "08g-y-kien",
+          "part": "Ý kiến cá nhân",
+          "missing": [
+            "bản thân mình cũng đã trải qua khá nhiều chuyện trong cuộc sống và mình thấy khô",
+            "nên với bất kỳ hướng dẫn hay quy tắc nào trong sách hãy giữ chính kiến của mình "
           ]
         },
         {
@@ -760,6 +768,18 @@
         ]
       ],
       "words": []
+    },
+    {
+      "segment": "08g-y-kien",
+      "text": "Nên với bất kỳ hướng dẫn hay quy tắc nào trong sách, hãy giữ chính kiến của mình: thử rồi tự xem cái nào hợp, cái nào không, chứ đừng làm theo một cách mù quáng.",
+      "heard": "Nên với bất kỳ hướng dẫn hay quy tắc nào trong sách, hãy giữ chính kiến của mình, thử rồi, tự xem cái nào hợp, cái nào không, chứ đừng làm theo một cách mù quán.",
+      "tone": [],
+      "words": [
+        [
+          "quáng",
+          "quán"
+        ]
+      ]
     },
     {
       "segment": "08g-y-kien",

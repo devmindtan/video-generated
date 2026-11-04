@@ -52,6 +52,16 @@
     },
     {
       "scene": 1,
+      "text": "Bản thân mình cũng đã trải qua khá nhiều chuyện trong cuộc sống, và mình thấy không có lời khuyên nào hợp với tất cả mọi người.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Nên với bất kỳ hướng dẫn hay quy tắc nào trong sách, hãy giữ chính kiến của mình: thử rồi tự xem cái nào hợp, cái nào không, chứ đừng làm theo một cách mù quáng.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
       "text": "Quy luật hai phút là để bắt đầu, không phải để dừng mãi ở hai phút.",
       "pauseAfter": 0.4
     },
