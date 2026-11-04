@@ -1,7 +1,7 @@
 {
   "project": "book-ah-001-overview",
-  "checkedAt": "2026-11-04T10:47:40+07:00",
-  "durationSeconds": 809.87,
+  "checkedAt": "2026-11-04T20:38:45+07:00",
+  "durationSeconds": 810.13,
   "parts": [
     {
       "name": "Intro series",
@@ -41,46 +41,46 @@
     {
       "name": "Quy luật 2 · Làm cho hấp dẫn",
       "start": 335.93,
-      "seconds": 74.27
+      "seconds": 74.53
     },
     {
       "name": "Quy luật 3 · Làm cho dễ dàng",
-      "start": 410.2,
+      "start": 410.47,
       "seconds": 81.57
     },
     {
       "name": "Quy luật 4 · Làm cho thỏa mãn",
-      "start": 491.77,
+      "start": 492.03,
       "seconds": 77.63
     },
     {
       "name": "Khi thói quen đã thành nếp",
-      "start": 569.4,
+      "start": 569.67,
       "seconds": 57.33
     },
     {
       "name": "Những điểm chưa đạt",
-      "start": 626.73,
+      "start": 627.0,
       "seconds": 42.73
     },
     {
       "name": "Tổng kết",
-      "start": 669.47,
+      "start": 669.73,
       "seconds": 27.37
     },
     {
       "name": "Ý kiến cá nhân",
-      "start": 696.83,
+      "start": 697.1,
       "seconds": 75.3
     },
     {
       "name": "Nhận xét chung",
-      "start": 772.13,
+      "start": 772.4,
       "seconds": 21.23
     },
     {
       "name": "Outro series",
-      "start": 793.37,
+      "start": 793.63,
       "seconds": 16.5
     }
   ],
@@ -95,8 +95,45 @@
     {
       "id": "captionText",
       "title": "Chữ phụ đề khớp kịch bản đã chốt",
-      "ok": true,
-      "detail": "139 câu khớp"
+      "ok": false,
+      "detail": [
+        {
+          "segment": "02-mo-chuyen",
+          "part": "Mở chuyện",
+          "missing": [
+            "điều cậu mong nhất là được quay lại sân bóng vì bóng chày là giấc mơ mà cậu theo"
+          ]
+        },
+        {
+          "segment": "04-soi-chi",
+          "part": "Phần 2 · Sợi chỉ xuyên suốt",
+          "missing": [
+            "người thứ nhất vẫn thấy mình là người hút thuốc đang cố nhịn người thứ hai đã th",
+            "muốn bỏ thói quen xấu thì làm ngược lại cho nó khó thấy kém hấp dẫn khó làm và k"
+          ]
+        },
+        {
+          "segment": "05-quy-luat-1",
+          "part": "Quy luật 1 · Làm cho hiển nhiên",
+          "missing": [
+            "ở đường sắt tại nhật bản nhân viên vừa chỉ tay vừa nói to từng việc mình đang ki"
+          ]
+        },
+        {
+          "segment": "08e-diem-chua-dat",
+          "part": "Những điểm chưa đạt",
+          "missing": [
+            "cuốn sách có nhiều cách làm hay nhưng cũng có vài điểm mình chưa ưng"
+          ]
+        },
+        {
+          "segment": "09-nhan-xet",
+          "part": "Nhận xét chung",
+          "missing": [
+            "gấp sách lại điều mình nhớ nhất không phải một con số nào mà là thay đổi hóa ra "
+          ]
+        }
+      ]
     },
     {
       "id": "captionTime",
@@ -147,6 +184,623 @@
       "peakDb": -3.0
     }
   },
-  "toneFlags": [],
+  "toneFlags": [
+    {
+      "segment": "02-mo-chuyen",
+      "text": "Vào ngày cuối của năm thứ hai trung học, một cây gậy bóng chày tuột khỏi tay một bạn cùng lớp và đập thẳng vào mặt cậu.",
+      "heard": "vào ngày cuối của năm thứ hai trung học, một cây gậy bóng dày tuột khỏi tay một bạn cùng lớp và đập thẳng vào mặt cầu.",
+      "tone": [
+        [
+          "cậu",
+          "cầu"
+        ]
+      ],
+      "words": [
+        [
+          "chày",
+          "dày"
+        ]
+      ]
+    },
+    {
+      "segment": "02-mo-chuyen",
+      "text": "Cậu bị gãy mũi, rạn xương sọ, được đưa đi cấp cứu bằng trực thăng và hôn mê suốt đêm hôm đó.",
+      "heard": "Cầu bị gãy mỗi, ràng sương sọ, được đưa đi cấp cứu bằng trực thăng và hôn mê suốt đêm hôm đó.",
+      "tone": [
+        [
+          "cậu",
+          "cầu"
+        ]
+      ],
+      "words": [
+        [
+          "mũi rạn xương",
+          "mỗi ràng sương"
+        ]
+      ]
+    },
+    {
+      "segment": "02-mo-chuyen",
+      "text": "Điều cậu mong nhất là được quay lại sân bóng, vì bóng chày là giấc mơ mà cậu theo đuổi từ năm bốn tuổi.",
+      "heard": "Điều cầu mong nhất là được quay lại sân bóng, vì bóng chầy là giấc mơ mà cầu theo đuổi từ năm 4 tuổi.",
+      "tone": [
+        [
+          "cậu",
+          "cầu"
+        ],
+        [
+          "chày",
+          "chầy"
+        ],
+        [
+          "cậu",
+          "cầu"
+        ]
+      ],
+      "words": [
+        [
+          "bốn",
+          "4"
+        ]
+      ]
+    },
+    {
+      "segment": "02-mo-chuyen",
+      "text": "Theo tác giả, những việc ấy chẳng có gì to tát, nhưng cho cậu cảm giác mình đang làm chủ lại được đời mình.",
+      "heard": "Theo tác giả, những việc ấy chẳng có gì to tác, nhưng cho cầu cảm giác mình đang làm chủ ra được đời mình.",
+      "tone": [
+        [
+          "cậu",
+          "cầu"
+        ]
+      ],
+      "words": [
+        [
+          "tát",
+          "tác"
+        ],
+        [
+          "lại",
+          "ra"
+        ]
+      ]
+    },
+    {
+      "segment": "02-mo-chuyen",
+      "text": "Sự tự tin ấy lan dần sang việc học, rồi sang cả phòng tập.",
+      "heard": "Sự tự tính ấy lan dần sang việc học, rồi sang cả phòng tập.",
+      "tone": [],
+      "words": [
+        [
+          "tin",
+          "tính"
+        ]
+      ]
+    },
+    {
+      "segment": "02-mo-chuyen",
+      "text": "Tác giả kể rằng không có một khoảnh khắc nào biến cậu từ một bệnh nhân hôn mê thành người như thế, mà là cả một chuỗi dài những bước tiến rất nhỏ.",
+      "heard": "Tác giả kể rằng không có một khoảnh khắc nào biến cậu từ một bệnh nhân hôn mê thành người như thế, mà là cả một chuỗi dài những bước tiếng rất nhỏ.",
+      "tone": [],
+      "words": [
+        [
+          "tiến",
+          "tiếng"
+        ]
+      ]
+    },
+    {
+      "segment": "04-soi-chi",
+      "text": "Nhưng lãi kép thì đến muộn.",
+      "heard": "Nhưng lại kép thì đến muộn",
+      "tone": [
+        [
+          "lãi",
+          "lại"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "04-soi-chi",
+      "text": "Tác giả ví như một cục nước đá trong phòng lạnh: nhiệt độ tăng dần mà đá chưa tan, đến một mức nào đó mới tan.",
+      "heard": "Tắt giả ví như một cục nước đá trong phòng lạnh, nhiệt độ tăng dần mà đá chưa tan, đến một mức nào đó mới tan.",
+      "tone": [],
+      "words": [
+        [
+          "tác",
+          "tắt"
+        ]
+      ]
+    },
+    {
+      "segment": "04-soi-chi",
+      "text": "Người thứ nhất vẫn thấy mình là người hút thuốc đang cố nhịn; người thứ hai đã thấy mình là người không hút thuốc nữa.",
+      "heard": "Người thứ nhất vẫn thấy mình là người hút thuốc đang cố nhìn. Người thứ hai đã thấy mình là người không hút thuốc nữa.",
+      "tone": [
+        [
+          "nhịn",
+          "nhìn"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "04-soi-chi",
+      "text": "Từ bốn bước đó có bốn quy luật để xây thói quen tốt: làm cho nó hiển nhiên, hấp dẫn, dễ dàng và thỏa mãn.",
+      "heard": "Từ 4 bước đó có 4 quy luật để xây thói quen tốt, làm cho nó hiện nhiên, hấp dẫn, dễ dàng và thỏa mãn.",
+      "tone": [
+        [
+          "hiển",
+          "hiện"
+        ]
+      ],
+      "words": [
+        [
+          "bốn",
+          "4"
+        ],
+        [
+          "bốn",
+          "4"
+        ]
+      ]
+    },
+    {
+      "segment": "05-quy-luat-1",
+      "text": "Ông cũng khuyên mỗi không gian chỉ nên gắn với một việc: giường để ngủ, bàn để làm việc.",
+      "heard": "Ông cũng khuyên mỗi không gian chỉ nên gắn với một việc, dường để ngủ, bàn để làm việc.",
+      "tone": [],
+      "words": [
+        [
+          "giường",
+          "dường"
+        ]
+      ]
+    },
+    {
+      "segment": "05-quy-luat-1",
+      "text": "Như tác giả viết: \"Tránh những cám dỗ dễ dàng hơn kháng cự chúng.\"",
+      "heard": "Như tác giả viết, tránh những cám dỗ dễ dàng hơn kháng cự trúng.",
+      "tone": [],
+      "words": [
+        [
+          "chúng",
+          "trúng"
+        ]
+      ]
+    },
+    {
+      "segment": "06-quy-luat-2",
+      "text": "Ông cũng tự ghi chú rằng đây là cách nói giản lược về bộ não.",
+      "heard": "Ông cũng tự ghi chú rằng đây là cách nói giảng lược về bộ não.",
+      "tone": [],
+      "words": [
+        [
+          "giản",
+          "giảng"
+        ]
+      ]
+    },
+    {
+      "segment": "06-quy-luat-2",
+      "text": "Gói cám dỗ.",
+      "heard": "Gói căm dỗ",
+      "tone": [
+        [
+          "cám",
+          "căm"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "06-quy-luat-2",
+      "text": "Theo tác giả, thói quen nào là bình thường ở nơi mình sống sẽ là thói quen hấp dẫn nhất, vì \"Hầu hết thời gian chúng ta thà sai theo đám đông còn hơn là đúng một mình.\"",
+      "heard": "Theo tác giả, thói quen nào là bình thường ở nơi mình sống sẽ là thói quen hấp dẫn nhất vì hầu hết thời gian chúng ta thả sai theo đám đông còn hơn là đúng một mình.",
+      "tone": [
+        [
+          "thà",
+          "thả"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "06-quy-luat-2",
+      "text": "Theo tác giả, \"Thói quen là giải pháp thời hiện đại cho những khát khao nguyên thủy.\"",
+      "heard": "Theo tác giả, thói quen là giải pháp thời hiện đại cho những khắc khao nguyên thủy.",
+      "tone": [],
+      "words": [
+        [
+          "khát",
+          "khắc"
+        ]
+      ]
+    },
+    {
+      "segment": "06-quy-luat-2",
+      "text": "Cùng một việc, đổi chữ \"phải\" thành chữ \"được\" thì cảm giác khác hẳn: không phải \"mình phải dậy sớm đi làm\", mà \"mình được dậy sớm đi làm\".",
+      "heard": "Cùng một việc, đổi chữ phải thành chữ được thì cảm giác khác hẳn Không phải mình phải dạy sớm đi làm, mà mình được dạy sớm đi làm",
+      "tone": [
+        [
+          "dậy",
+          "dạy"
+        ],
+        [
+          "dậy",
+          "dạy"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "06-quy-luat-2",
+      "text": "Đảo ngược lại, muốn bỏ thói quen xấu thì nhìn rõ nó không thật sự cho mình điều mình cần.",
+      "heard": "Đạo ngược lại, muốn bỏ thói quen xấu thì nhìn rõ nó không thật sự cho mình điều mình cần.",
+      "tone": [
+        [
+          "đảo",
+          "đạo"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "07-quy-luat-3",
+      "text": "Làm nhiều hơn nghĩ.",
+      "heard": "Làm nhiều hơn nghỉ",
+      "tone": [
+        [
+          "nghĩ",
+          "nghỉ"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "07-quy-luat-3",
+      "text": "Một thầy dạy nhiếp ảnh chia lớp làm hai: một nửa chấm điểm theo số lượng ảnh, nửa kia chỉ cần nộp một tấm thật hoàn hảo.",
+      "heard": "Một thầy dạy nhếp ảnh chia lớp làm 2, một nửa chấm điểm theo số lượng ảnh, nửa kia chỉ cần nộp một tấm thật hoàn hảo.",
+      "tone": [],
+      "words": [
+        [
+          "nhiếp",
+          "nhếp"
+        ],
+        [
+          "hai",
+          "2"
+        ]
+      ]
+    },
+    {
+      "segment": "07-quy-luat-3",
+      "text": "Theo tác giả, \"việc hình thành thói quen dựa trên tần suất chứ không phải thời gian.\"",
+      "heard": "Theo tác giả, việc hình thành thói quen dựa trên tành xuất, chứ không phải thời gian.",
+      "tone": [],
+      "words": [
+        [
+          "tần suất",
+          "tành xuất"
+        ]
+      ]
+    },
+    {
+      "segment": "07-quy-luat-3",
+      "text": "Bớt ma sát.",
+      "heard": "Bớt mà sát",
+      "tone": [
+        [
+          "ma",
+          "mà"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "07-quy-luat-3",
+      "text": "Tác giả ví như vòi nước bị gập: thay vì vặn van mạnh hơn, hãy gỡ chỗ gập.",
+      "heard": "Tác giả ví như vòi nước bị gập, thay vì vặn văn mạnh hơn, hãy gỡ chỗ gập.",
+      "tone": [
+        [
+          "van",
+          "văn"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "07-quy-luat-3",
+      "text": "Nhà văn Victor Hugo nhờ người khóa hết quần áo của mình lại, chỉ chừa một tấm khăn choàng, để không thể ra ngoài và phải ngồi viết.",
+      "heard": "Nhà văn Victor Hugo nhờ người khóa hết quần áo của mình lại chỉ chừa một tấm khăn toàn để không thể ra ngoài và phải ngồi viết.",
+      "tone": [],
+      "words": [
+        [
+          "choàng",
+          "toàn"
+        ]
+      ]
+    },
+    {
+      "segment": "08-quy-luat-4",
+      "text": "Theo tác giả, quy tắc cốt lõi là: điều được thưởng ngay thì lặp lại, điều khó chịu ngay thì tránh.",
+      "heard": "Theo tác giả, quy tắc cốt loại là Điều được thưởng ngay thì lặp lại, điều khó chịu ngay thì tránh",
+      "tone": [],
+      "words": [
+        [
+          "lõi",
+          "loại"
+        ]
+      ]
+    },
+    {
+      "segment": "08-quy-luat-4",
+      "text": "Tác giả lưu ý phần thưởng phải hợp với con người mình muốn trở thành, vì \"Sự khích lệ có thể bắt đầu một thói quen. Đặc tính duy trì một thói quen.\"",
+      "heard": "Tác giả lưu ý phần thưởng phải hợp với con người mình muốn trở thành, vì sự khích lệ có thể bắt đầu một thói quen, nặc tính duy trì một thói quen.",
+      "tone": [],
+      "words": [
+        [
+          "đặc",
+          "nặc"
+        ]
+      ]
+    },
+    {
+      "segment": "08-quy-luat-4",
+      "text": "Một nhân viên môi giới trẻ đặt hai cái lọ trên bàn, mỗi cuộc gọi xong lại chuyển một cái kẹp giấy sang lọ kia.",
+      "heard": "Một nhân viên mô giới trẻ đặt hai cái lò trên bàn, mỗi cuộc gọi xong, lại chuyển một cái kẹp giấy sang lò kia.",
+      "tone": [
+        [
+          "lọ",
+          "lò"
+        ],
+        [
+          "lọ",
+          "lò"
+        ]
+      ],
+      "words": [
+        [
+          "môi",
+          "mô"
+        ]
+      ]
+    },
+    {
+      "segment": "08-quy-luat-4",
+      "text": "Tác giả gợi ý đánh dấu lên lịch mỗi ngày đã làm, và nhắc một nguyên tắc: \"Bỏ lỡ một lần là vô tình. Bỏ lỡ hai lần chính là khởi đầu cho một thói quen mới.\"",
+      "heard": "Tác giả gợi ý đánh dấu linh lịch mỗi ngày đã làm và nhắc một nguyên tắc Bỏ lỡ một lần là vô tình, bỏ lỡ hai lần chính là khởi đầu cho một thói quen mới",
+      "tone": [],
+      "words": [
+        [
+          "lên",
+          "linh"
+        ]
+      ]
+    },
+    {
+      "segment": "08-quy-luat-4",
+      "text": "Những ngày tệ mà vẫn làm một chút lại là những ngày đáng giá nhất.",
+      "heard": "những ngày tệ mà vẫn là một chút, lại là những ngày đáng giá nhất.",
+      "tone": [],
+      "words": [
+        [
+          "làm",
+          "là"
+        ]
+      ]
+    },
+    {
+      "segment": "08-quy-luat-4",
+      "text": "Đảo ngược: có người cùng giữ lời.",
+      "heard": "Đạo ngược, có người cùng giữ lời.",
+      "tone": [
+        [
+          "đảo",
+          "đạo"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "08-quy-luat-4",
+      "text": "Tác giả kể chuyện một người ký hợp đồng thói quen với vợ và huấn luyện viên, ghi sẵn hình phạt nếu bỏ cuộc.",
+      "heard": "Tắc giả kê chuyện một người ký hợp đồng thói quen với vợ và quấn luyện viên, ghi sẵn hình phạt nếu bỏ cuộc.",
+      "tone": [
+        [
+          "tác",
+          "tắc"
+        ],
+        [
+          "kể",
+          "kê"
+        ]
+      ],
+      "words": [
+        [
+          "huấn",
+          "quấn"
+        ]
+      ]
+    },
+    {
+      "segment": "08-quy-luat-4",
+      "text": "Theo tác giả, khi biết có người đang dõi theo, mình khó làm điều sai hơn.",
+      "heard": "Theo tác giả, khi biết có người đang giỏi theo, mình khó làm điều sai hơn.",
+      "tone": [],
+      "words": [
+        [
+          "dõi",
+          "giỏi"
+        ]
+      ]
+    },
+    {
+      "segment": "08b-thanh-nep",
+      "text": "Vừa sức và chịu được nhàm chán.",
+      "heard": "vừa sức và chịu được nhằm chán.",
+      "tone": [
+        [
+          "nhàm",
+          "nhằm"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "08b-thanh-nep",
+      "text": "Tác giả tự làm một bản tổng kết mỗi cuối năm, và khuyên đừng gắn chặt mình vào một vai trò duy nhất.",
+      "heard": "Tác giả tự làm một bản tổng kết mỗi cuối năm và khuyên đừng ngắn chặt mình vào một vai trò duy nhất.",
+      "tone": [],
+      "words": [
+        [
+          "gắn",
+          "ngắn"
+        ]
+      ]
+    },
+    {
+      "segment": "08e-diem-chua-dat",
+      "text": "Cuốn sách có nhiều cách làm hay, nhưng cũng có vài điểm mình chưa ưng.",
+      "heard": "Cũng sách có nhiều cách làm hay, nhưng cũng có vài điểm mình chưa ưng.",
+      "tone": [],
+      "words": [
+        [
+          "cuốn",
+          "cũng"
+        ]
+      ]
+    },
+    {
+      "segment": "08e-diem-chua-dat",
+      "text": "Thứ nhất, sách dẫn rất nhiều nghiên cứu và tỉ lệ phần trăm, nhưng chính tác giả nói đây là sổ tay hướng dẫn, không phải nghiên cứu khoa học.",
+      "heard": "Thứ nhất, sách dẫn rất nhiều nghiên cứu và tỷ lệ phần trăm, nhưng chính tác giả nói đây là sổ tay hướng dẫn, không phải nghiên cứu khoa học.",
+      "tone": [],
+      "words": [
+        [
+          "tỉ",
+          "tỷ"
+        ]
+      ]
+    },
+    {
+      "segment": "08e-diem-chua-dat",
+      "text": "Thứ ba, phần lớn ví dụ là chuyện người thành công ở Mỹ, và các mẹo sắp xếp môi trường khó áp dụng khi mình đang thật sự nghiện hay đang ở hoàn cảnh quá khó; chính tác giả cũng thừa nhận điều đó.",
+      "heard": "Thứ ba, phần lớn ví dụ là chuyện người thành công ở Mỹ, và các mèo sắp xếp môi trường khó áp dụng khi mình đang thật sự nghiện, hay đang ở hoàn cảnh quá khó, chính tác giả cũng thừa nhận điều đó.",
+      "tone": [
+        [
+          "mẹo",
+          "mèo"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "08f-tong-ket",
+      "text": "Tóm lại, Thay đổi tí hon, hiệu quả bất ngờ xoay quanh một ý: những thói quen nhỏ, lặp lại đủ lâu, sẽ nhân lên thành kết quả lớn, và thói quen bền nhất bắt đầu từ con người mình muốn trở thành.",
+      "heard": "Tóm lại, thay đổi tí hon, hiệu quả bất ngờ xoay quanh một ý. Những thói quen nhỏ, lặp lại đủ lâu, sẽ nhân lên thành kết quả lớn và thói quen bình nhất bắt đầu từ con người mình muốn trở thành.",
+      "tone": [],
+      "words": [
+        [
+          "bền",
+          "bình"
+        ]
+      ]
+    },
+    {
+      "segment": "08f-tong-ket",
+      "text": "Từ đó, sách đưa ra bốn quy luật: làm cho hiển nhiên, hấp dẫn, dễ dàng và thỏa mãn, cùng cách đảo ngược để bỏ thói quen xấu.",
+      "heard": "Từ đó sách đưa ra 4 quy luật, làm cho hiện nhiên, hấp dẫn, dễ dàng và thỏa mãn, cùng cách đảo ngược để bỏ thói quen xấu.",
+      "tone": [
+        [
+          "hiển",
+          "hiện"
+        ]
+      ],
+      "words": [
+        [
+          "bốn",
+          "4"
+        ]
+      ]
+    },
+    {
+      "segment": "08f-tong-ket",
+      "text": "Như tác giả viết ở cuối sách: \"Những thói quen nhỏ không thêm vào mà chúng hợp thành.\"",
+      "heard": "như tác giả viết ở cuối sách, những thói quen nhỏ không thêm vào mà chung hợp thành.",
+      "tone": [
+        [
+          "chúng",
+          "chung"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "08g-y-kien",
+      "text": "Rất nhiều người bỏ cuộc đúng ở quãng đó, khi đã cố gắng mà chưa thấy gì thay đổi.",
+      "heard": "Rất nhiều người bỏ cuộc đúng ở quảng đó khi đã cố gắng mà chưa thấy gì thay đổi.",
+      "tone": [
+        [
+          "quãng",
+          "quảng"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "08g-y-kien",
+      "text": "Nhưng nếu chịu ngồi lại ngẫm, sẽ thấy điều tác giả muốn nói sâu hơn: mình không thắng một thói quen bằng sức chịu đựng, mà bằng cách sắp xếp để việc đúng dễ xảy ra hơn.",
+      "heard": "Nhưng nếu chịu ngồi lại ngẩm, sẽ thấy điều tác giả muốn nói sâu hơn. Mình không thắng một thói quen bằng sức chịu đựng, mà bằng cách sắp xếp để việc đúng dễ xảy ra hơn.",
+      "tone": [
+        [
+          "ngẫm",
+          "ngẩm"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "08g-y-kien",
+      "text": "Nếu chỉ chọn một cách để bắt đầu, mình gợi ý xếp chồng thói quen.",
+      "heard": "Nếu chỉ chọn một cách để bắt đầu, mình gửi ý xếp chồng thói quen.",
+      "tone": [],
+      "words": [
+        [
+          "gợi",
+          "gửi"
+        ]
+      ]
+    },
+    {
+      "segment": "09-nhan-xet",
+      "text": "Gấp sách lại, điều mình nhớ nhất không phải một con số nào, mà là thay đổi hóa ra không cần bắt đầu bằng một quyết tâm lớn.",
+      "heard": "Ngấp sách lại, điều mình nhớ nhất không phải một con số nào, mà là thay đổi hóa ra, không cần bắt đầu bằng một quyết tâm lớn.",
+      "tone": [],
+      "words": [
+        [
+          "gấp",
+          "ngấp"
+        ]
+      ]
+    },
+    {
+      "segment": "09-nhan-xet",
+      "text": "Nếu bạn đang muốn đổi một thói quen mà lần nào cũng bỏ dở giữa chừng, cuốn này cho bạn rất nhiều cách để thử lại, bắt đầu từ những việc chưa tới hai phút.",
+      "heard": "Nếu bạn đang muốn đổi một thói quen mà lần nào cũng bỏ vỡ ở giữa chừng, cuốn này cho bạn rất nhiều cách để thử lại, bắt đầu từ những việc chưa tới 2 phút.",
+      "tone": [],
+      "words": [
+        [
+          "dở",
+          "vỡ ở"
+        ],
+        [
+          "hai",
+          "2"
+        ]
+      ]
+    }
+  ],
   "listening": "Chưa nghe duyệt: kiểm tra kỹ thuật đạt không có nghĩa là phát âm đã được duyệt; các câu ở toneFlags cần người dùng nghe."
 }
