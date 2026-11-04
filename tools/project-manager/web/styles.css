@@ -282,14 +282,6 @@ dialog{width:550px;max-width:calc(100vw - 28px);max-height:calc(100dvh - 40px);o
 .book-reading{display:grid;gap:5px}.book-reading .pbar{height:5px}.book-reading small{font-size:12px;font-weight:700;color:#3f6a2e;white-space:nowrap}
 .book-reading.is-empty small{font-weight:400;color:var(--muted)}
 .books-grid .book-facts+.card-footer{margin-top:auto;padding-top:10px}
-.book-episode-list ul{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:8px}.book-episode-list li{display:flex;flex-direction:column;align-items:flex-start;gap:5px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fff}
-.book-episode-list a{font-weight:700;color:var(--forest);text-decoration:none;line-height:1.5;overflow-wrap:anywhere}.book-episode-list a:hover,.book-episode-list a:focus-visible{text-decoration:underline;text-underline-offset:3px}
-.book-episode-list .count-pill{font-size:12px;font-weight:700;color:#3f6a2e;background:#e6efe0;border-radius:999px;padding:1px 8px;margin-left:4px}
-.book-episode-list .episode-row{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
-.book-episode-list .episode-kind{font-size:11.5px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;color:var(--muted)}
-.book-episode-list .episode-shorts{margin:6px 0 0;padding:0 0 0 14px;border-left:2px solid #dbe6d6;width:100%;gap:6px}
-.book-episode-list .episode-shorts li{background:#f7faf5}
-.book-episode-list .episode-note{font-size:12.5px;color:var(--muted);margin-top:8px}
 .books-grid .status{font-size:12px;white-space:normal;padding:3px 10px;border-radius:999px;line-height:1.6;gap:7px}
 .project-grid.books-grid.list .card-body{display:flex;padding:16px 20px}
 @media(max-width:420px){.project-grid.books-grid:not(.list){grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px}.books-grid .card-body{padding:12px 12px 14px}.books-grid .status{border-radius:10px;padding:3px 8px}.books-grid .card-title{font-size:14px}.books-grid .book-card .card-cover{padding:16px 8px}}
@@ -600,3 +592,37 @@ mark.pd-del{background:#f6d5c8;color:inherit;text-decoration:line-through;text-d
 .rail-item.is-fail .rail-check{background:#fdf2ea;border-color:#c4774e;color:#8f3f1d}
 .rail-item.is-fail small{color:#a14a26}
 .panel-foot .item-note span{color:#8f3f1d}
+/* Book page: one summary line in the sidebar; the "Các tập" tab lays out each long episode wide, its shorts beneath. */
+.book-episode-summary p{font-size:14px;color:var(--muted);margin:2px 0 10px}
+.tab-count{display:inline-block;min-width:20px;margin-left:4px;padding:0 6px;border-radius:999px;background:#e6efe0;color:#3f6a2e;font-size:12px;font-weight:700;line-height:18px;text-align:center}
+.episodes-view{display:grid;gap:22px;padding:4px 2px;container-type:inline-size;min-width:0}
+.episodes-summary{font-size:13.5px;color:var(--muted)}
+.episode-group{display:grid;gap:12px}
+.episode-group>h4,.episode-shorts-block h4{display:flex;align-items:center;gap:8px;margin:0;font-size:14px;color:var(--ink)}
+.episode-shorts-block h4 .count{font-size:12px;font-weight:700;color:#3f6a2e;background:#e6efe0;border-radius:999px;padding:0 8px}
+.episode-long-card{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:18px;align-items:start;padding:14px;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
+.episode-preview{display:grid;place-items:center;overflow:hidden;border-radius:9px;background:#101a15;color:#d9b56f;font-size:22px}
+.episode-preview img{width:100%;height:100%;object-fit:cover;display:block}
+.episode-preview.is-wide{aspect-ratio:16/9}
+.episode-preview.is-vertical{aspect-ratio:9/16;width:96px}
+.episode-body{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0}
+.episode-kind{font-size:11.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted)}
+.episode-title{font-size:17px;font-weight:700;line-height:1.4;color:var(--forest);overflow-wrap:anywhere}
+.episode-title:hover,.episode-title:focus-visible{text-decoration:underline;text-underline-offset:3px}
+.episode-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:13px;color:var(--muted)}
+.episode-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.episode-shorts-block{margin-left:22px;padding-left:16px;border-left:2px solid #dbe6d6;display:grid;gap:10px}
+.episode-short-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:12px}
+.episode-short-card{display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px;align-items:start;padding:12px;border:1px solid var(--line);border-radius:var(--radius);background:#f8fbf6}
+.episode-short-card .episode-title{font-size:15.5px}
+.episode-short-names{list-style:none;margin:2px 0 0;padding:0;display:grid;gap:4px;font-size:13.5px;line-height:1.45}
+.episode-short-names li{display:flex;gap:8px;align-items:baseline}
+.short-number{flex-shrink:0;width:20px;height:20px;border-radius:50%;display:inline-grid;place-items:center;background:#e4ebe3;font-size:11.5px;font-weight:700}
+.episode-none{margin-left:22px;font-size:13.5px;color:var(--muted)}
+.episodes-empty{display:grid;justify-items:start;gap:12px;padding:20px}
+@container (max-width:600px){
+  .episode-long-card{grid-template-columns:1fr}
+  .episode-shorts-block,.episode-none{margin-left:6px;padding-left:10px}
+  .episode-short-grid{grid-template-columns:1fr}
+  .episode-short-card{grid-template-columns:80px minmax(0,1fr)}.episode-preview.is-vertical{width:80px}
+}

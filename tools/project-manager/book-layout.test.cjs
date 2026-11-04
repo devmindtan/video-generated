@@ -28,9 +28,19 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
   assert.match(await hvtt.locator('.book-reading').innerText(),/Đã đọc \d+\/\d+ chương/);
   assert.ok(Number(await hvtt.locator('.book-reading [data-width]').evaluate(n=>parseFloat(n.style.width)))>0);
   assert.ok(await page.locator('.book-card .book-facts').count()===await page.locator('.book-card').count());
-  await hvtt.locator('.card-title').click();await page.locator('#drawer:not([hidden]) .book-episode-list li').first().waitFor();
-  await page.locator('.book-episode-list a').first().click();await page.waitForFunction(()=>location.hash.startsWith('#project/book-hvtt-'));
-  console.log('✓ Cards show reading coverage; the book page lists its episodes and opens them');
+  await hvtt.locator('.card-title').click();await page.locator('#drawer:not([hidden]) .episodes-view').waitFor();
+  assert.equal(await page.locator('.document-tabs [data-book-document="__episodes"]').getAttribute('class'),'active','episodes tab opens first');
+  assert.ok(await page.locator('.episode-long-card').count()>=1);assert.ok(await page.locator('.episode-shorts-block .episode-short-card').count()>=1,'shorts sit under their long episode');
+  assert.match(await page.locator('.book-episode-summary').innerText(),/video dài/);
+  for(const width of [1440,820,390]){await page.setViewportSize({width,height:1000});await page.waitForTimeout(150);
+   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'overflow at '+width);
+   assert.ok(await page.locator('.episodes-view').evaluate(n=>n.scrollWidth<=n.clientWidth+1),'episodes overflow at '+width);
+   await page.locator('.episodes-view').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(out,`episodes-${width}.png`)});}
+  await page.setViewportSize({width:1440,height:1000});
+  await page.locator('[data-book-document="research.md"]').click();await page.locator('#document-view h1, #document-view h2').first().waitFor();
+  await page.locator('.book-episode-summary [data-book-document="__episodes"]').click();await page.locator('.episodes-view').waitFor();
+  await page.locator('.episode-long-card .episode-title').first().click();await page.waitForFunction(()=>location.hash.startsWith('#project/book-hvtt-'));
+  console.log('✓ Cards show reading coverage; the book page has an Các tập tab with long episodes and their shorts, opening them');
   await page.route('**/api/workspace',async route=>{const response=await route.fetch();const data=await response.json();data.books=[{...data.books[0],id:'browser-only-fixture',cover:null,title:'TênSáchRấtDàiKhôngCóKhoảngTrắng'.repeat(12),authors:['Tên tác giả rất dài '.repeat(12)]}];await route.fulfill({response,json:data});});
   await page.goto(base+'/?view=books',{waitUntil:'networkidle'});await check();await page.locator('#list-view').click();await check();console.log('✓ Unbroken long title and long author remain contained; full title readable');
   assert.deepEqual(errors,[]);

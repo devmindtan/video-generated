@@ -51,8 +51,8 @@ async function run(){
     await page.locator('#series-filter').selectOption('tiny-dino');await page.waitForTimeout(100);
     assert.equal(await page.locator('.project-card').count(),2);mark('Series filter shows the two Tí Hon projects');
     await page.locator('[data-nav="books"]').click();await page.locator('.book-card').first().waitFor();
-    await page.locator('.book-card .card-title').filter({hasText:'Hiểu về trái tim'}).click();await page.locator('[data-book-document="season-plan.md"]').waitFor();
-    await page.waitForFunction(()=>document.querySelector('#document-view h1'));
+    await page.locator('.book-card .card-title').filter({hasText:'Hiểu về trái tim'}).click();await page.locator('.episodes-view').waitFor();
+    await page.locator('[data-book-document="season-plan.md"]').click();await page.waitForFunction(()=>document.querySelector('#document-view h1'));
     assert.equal(await page.locator('#book-upload').count(),1);
     await screenshot('book-research');await page.locator('#close-drawer').click();mark('Book library and research document are readable');
     await page.locator('#new-book-button').click();await page.locator('#create-dialog[open]').waitFor();
