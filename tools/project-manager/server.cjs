@@ -74,6 +74,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
       if(route==='/api/workflow')return send(200,store.workflow(url.searchParams.get('series')));
       if(route==='/api/voicestudio')return send(200,await voiceControl.status());
       if(route==='/api/voices')return send(200,store.voices());
+      if(route==='/api/system')return send(200,require('./system-map.cjs').systemMap(root));
       if(route==='/api/music')return send(200,store.music());
       if(route==='/api/voice-references')return send(200,store.voiceReferences());
       if(route==='/api/approvals')return send(200,store.reviewView(url.searchParams.get('id')));

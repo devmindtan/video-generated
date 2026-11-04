@@ -2,7 +2,7 @@
 const $=selector=>document.querySelector(selector);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fold=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase();
-const iconPaths={back:'M19 12H5 M11 6l-6 6 6 6',grid:'M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z',list:'M8 6h13 M8 12h13 M8 18h13 M3 6h.01 M3 12h.01 M3 18h.01',book:'M12 5C8 2 4 3 2 4v16c3-1 6-1 10 1 4-2 7-2 10-1V4c-3-1-6-1-10 1v16',play:'m9 5 10 7-10 7Z',image:'M3 3h18v18H3z M3 17l6-6 4 4 3-3 5 5 M8 7h.01',arrow:'M7 17 17 7 M7 7h10v10',plus:'M12 5v14 M5 12h14',search:'M21 21l-5-5 M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0',folder:'M3 7V4h6l2 3h10v13H3z',refresh:'M20 7A9 9 0 1 0 21 15 M20 2v6h-6',menu:'M3 6h18 M3 12h18 M3 18h18',close:'M6 6l12 12 M18 6 6 18',channel:'M4 5h16v14H4z M8 9h8 M8 13h5',spark:'m12 3 3 6 6 3-6 3-3 6-3-6-6-3 6-3z',mic:'M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z M5 11a7 7 0 0 0 14 0 M12 18v3',music:'M9 18V5l12-2v13 M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0z M21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z',pause:'M7 5h3v14H7z M14 5h3v14h-3z'};
+const iconPaths={network:'M5 5h5v5H5z M14 14h5v5h-5z M14 5h5v5h-5z M10 7.5h4 M16.5 10v4 M7.5 10v6.5h6.5',back:'M19 12H5 M11 6l-6 6 6 6',grid:'M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z',list:'M8 6h13 M8 12h13 M8 18h13 M3 6h.01 M3 12h.01 M3 18h.01',book:'M12 5C8 2 4 3 2 4v16c3-1 6-1 10 1 4-2 7-2 10-1V4c-3-1-6-1-10 1v16',play:'m9 5 10 7-10 7Z',image:'M3 3h18v18H3z M3 17l6-6 4 4 3-3 5 5 M8 7h.01',arrow:'M7 17 17 7 M7 7h10v10',plus:'M12 5v14 M5 12h14',search:'M21 21l-5-5 M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0',folder:'M3 7V4h6l2 3h10v13H3z',refresh:'M20 7A9 9 0 1 0 21 15 M20 2v6h-6',menu:'M3 6h18 M3 12h18 M3 18h18',close:'M6 6l12 12 M18 6 6 18',channel:'M4 5h16v14H4z M8 9h8 M8 13h5',spark:'m12 3 3 6 6 3-6 3-3 6-3-6-6-3 6-3z',mic:'M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z M5 11a7 7 0 0 0 14 0 M12 18v3',music:'M9 18V5l12-2v13 M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0z M21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z',pause:'M7 5h3v14H7z M14 5h3v14h-3z'};
 function icon(name){return `<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="${iconPaths[name]||iconPaths.folder}"/></svg>`;}
 function dirtyNotes(){
   if(!state.drawer||$('#drawer').hidden)return false;
@@ -12,7 +12,7 @@ function dirtyNotes(){
 function canLeaveNotes(){return !dirtyNotes()||confirm('Ghi chú chưa được lưu. Bạn có muốn rời hồ sơ này?');}
 function setMenu(open){$('#sidebar').classList.toggle('open',open);$('#menu-backdrop').hidden=!open;$('.workspace').inert=open||!$('#drawer').hidden;$('#mobile-menu').setAttribute('aria-expanded',String(open));document.body.classList.toggle('overlay-open',open||!$('#drawer').hidden);if(open)$('#close-mobile-menu').focus();}
 const params=new URLSearchParams(location.search);
-const resourceViews={voices:'Giọng đọc',music:'Nhạc nền & hiệu ứng'};
+const resourceViews={voices:'Giọng đọc',music:'Nhạc nền & hiệu ứng',system:'Bản đồ hệ thống'};
 const viewOf=value=>value==='books'||resourceViews[value]?value:'projects';
 const state={data:null,channel:params.get('channel')||'',series:params.get('series')||'',view:viewOf(params.get('view')),
   query:params.get('q')||'',status:params.get('status')||'',sort:params.get('sort')||'recent',limit:12,layout:params.get('layout')==='list'?'list':'grid',drawer:null,documentRequest:0,createMode:'project'};
@@ -98,7 +98,7 @@ function renderNav(){
     return html;
   };
   const others=channels.filter(c=>!contentChannels.includes(c.id));
-  let html=`<button class="nav-button ${!state.channel&&!state.series&&state.view==='projects'?'active':''}" data-nav="all"><span class="nav-icon">${icon("grid")}</span>Tất cả dự án<span class="nav-count">${projects.length}</span></button><button class="nav-button ${state.view==='books'?'active':''}" data-nav="books"><span class="nav-icon">${icon("book")}</span>Tủ sách nghiên cứu<span class="nav-count">${books.length}</span></button><button class="nav-button ${state.view==='voices'?'active':''}" data-nav="voices"><span class="nav-icon">${icon("mic")}</span>Giọng đọc</button><button class="nav-button ${state.view==='music'?'active':''}" data-nav="music"><span class="nav-icon">${icon("music")}</span>Nhạc nền & hiệu ứng</button><!--voicestudio--><div class="nav-divider"></div>`;
+  let html=`<button class="nav-button ${!state.channel&&!state.series&&state.view==='projects'?'active':''}" data-nav="all"><span class="nav-icon">${icon("grid")}</span>Tất cả dự án<span class="nav-count">${projects.length}</span></button><button class="nav-button ${state.view==='books'?'active':''}" data-nav="books"><span class="nav-icon">${icon("book")}</span>Tủ sách nghiên cứu<span class="nav-count">${books.length}</span></button><button class="nav-button ${state.view==='voices'?'active':''}" data-nav="voices"><span class="nav-icon">${icon("mic")}</span>Giọng đọc</button><button class="nav-button ${state.view==='music'?'active':''}" data-nav="music"><span class="nav-icon">${icon("music")}</span>Nhạc nền & hiệu ứng</button><!--voicestudio--><button class="nav-button ${state.view==='system'?'active':''}" data-nav="system"><span class="nav-icon">${icon("network")}</span>Bản đồ hệ thống</button><div class="nav-divider"></div>`;
   html+=`<div class="nav-section-title">KÊNH NỘI DUNG</div>`+channels.filter(c=>contentChannels.includes(c.id)).map(channelNav).join('');
   if(others.length)html+=`<div class="nav-section-title">NGOÀI KÊNH</div>`+others.map(channelNav).join('');
   // Navigation entries become links; the VoiceStudio action stays a real button, inserted after that rewrite.
@@ -115,6 +115,7 @@ function render(){
   if(resource){
     $('#new-book-button').hidden=true;$('#book-banner').hidden=true;$('#workflow').hidden=true;$('#new-project-button').className='button secondary';
     $('#page-title').textContent=resourceViews[state.view];renderBreadcrumbs();
+    if(state.view==='system'){$('#eyebrow').textContent='MỖI REPO LÀM GÌ, Ở BƯỚC NÀO';$('#page-description').textContent='Quy trình làm một tập, các tầng của hệ thống và vai trò thật của từng repo, đo trực tiếp trên máy.';renderSystem();return;}
     $('#eyebrow').textContent=state.view==='voices'?'NHỮNG GIỌNG KỂ CHUYỆN':'ÂM THANH CỦA TỪNG TẬP';
     $('#page-description').textContent=state.view==='voices'?'Nghe thử từng giọng VieNeu và xem tập nào đang dùng giọng nào.':'Nguồn nhạc, credit và hiệu ứng âm thanh mà các tập đang dùng.';
     renderResources();return;
@@ -1259,6 +1260,114 @@ $('#player-toggle').addEventListener('click',()=>{if(player.paused)player.play()
 $('#player-close').addEventListener('click',()=>{player.pause();player.removeAttribute('src');player.load();state.playing='';$('#player-bar').hidden=true;document.body.classList.remove('has-player');syncPlayButtons();});
 const playButton=(kind,key,title,subtitle='')=>`<button class="play-button" data-play="${kind}" data-key="${esc(key)}" data-title="${esc(title)}" data-subtitle="${esc(subtitle)}" aria-pressed="false" aria-label="Phát ${esc(title)}">${icon('play')}</button>`;
 
+// System map (Bản đồ hệ thống): workflow, architecture and repo catalog from /api/system. Read-only view.
+const sysTabs={flow:'Quy trình sản xuất',layers:'Kiến trúc',repos:'Danh mục repo'};
+const sysKinds={'draft-task':['Agent soạn nháp','agent'],'operator-task':['Chạy công cụ','tool'],check:['Kiểm tra','check'],'human-approval':['Bạn duyệt','gate']};
+Object.assign(state,{sysTab:sysTabs[params.get('sys')]?params.get('sys'):'flow',sysRepo:params.get('repo')||'',sysStatus:'',sysQuery:''});
+function sysUrl(){const u=new URL(location.href);u.searchParams.set('sys',state.sysTab);if(state.sysTab==='repos'&&state.sysRepo)u.searchParams.set('repo',state.sysRepo);else u.searchParams.delete('repo');history.replaceState(history.state,'',u);}
+const sysPill=(m,status)=>`<span class="sys-pill sys-${esc(status)}">${esc(m.statuses[status]?.title||status)}</span>`;
+const sysRepoChip=(m,r)=>`<button type="button" class="sys-chip sys-${esc(r.status)}" data-sys-repo="${esc(r.id)}" title="${esc(m.statuses[r.status]?.title||'')}">${esc(r.title)}</button>`;
+function sysUsage(r){
+  const f=r.facts;
+  if(r.status==='skill'){const n=f.skills.filter(s=>s.present).length;return n?`${n} skill trong skills/`:'Tài liệu tham chiếu';}
+  if(f.binary&&!f.binary.present)return f.usedBy.length?'Có lệnh gọi, chưa cài trên máy':'Chưa cài trên máy';
+  if(f.usedBy.length)return `${f.usedBy.length} file dùng`;
+  if(f.python?.version)return `${f.python.env} · ${f.python.version}`;
+  if(r.packages?.length)return 'Đã cài, chưa file nào dùng';
+  return f.cloned?'Chỉ có bản clone':'Chưa clone';
+}
+async function renderSystem(){
+  const box=$('#resource-view');
+  if(!state.system||state.resourceStale){
+    if(!state.system)box.innerHTML='<p class="workflow-empty">Đang đo hệ thống…</p>';
+    try{state.system=await api('/api/system');state.resourceStale=false;}
+    catch(error){if(state.view==='system')box.innerHTML=`<p class="workflow-empty">Không đọc được bản đồ hệ thống: ${esc(error.message)}</p>`;return;}
+    if(state.view!=='system')return;
+  }
+  const m=state.system,key='system'+state.sysTab+JSON.stringify(m);
+  if(state.resourceKey!==key||!box.querySelector('#sys-body')){
+    state.resourceKey=key;
+    const warn=m.warnings.length?`<div class="sys-warnings" role="status"><strong>${m.warnings.length} điểm bản đồ lệch với thực tế</strong><ul>${m.warnings.map(w=>`<li>${w.repo?`<button type="button" class="link-button" data-sys-repo="${esc(w.repo)}">${esc(w.title)}</button>`:esc(w.title)}: ${esc(w.message)}</li>`).join('')}</ul><p>Sửa mô tả trong <code>${esc(m.source)}</code>.</p></div>`:'';
+    const statusRow=`<div class="sys-statuses">${Object.entries(m.statuses).map(([k,s])=>`<button type="button" class="sys-status sys-${esc(k)}" data-sys-status="${esc(k)}" aria-pressed="${state.sysStatus===k}"><strong>${m.counts[k]||0}</strong><span>${esc(s.title)}</span><small>${esc(s.summary)}</small></button>`).join('')}</div>`;
+    const tabs=`<div class="sys-tabs" role="tablist" aria-label="Góc nhìn">${Object.entries(sysTabs).map(([k,t])=>`<button type="button" role="tab" id="sys-tab-${k}" aria-controls="sys-body" aria-selected="${state.sysTab===k}" tabindex="${state.sysTab===k?0:-1}" data-sys-tab="${k}">${esc(t)}${k==='repos'?` <span class="count">${m.repos.length}</span>`:''}</button>`).join('')}</div>`;
+    box.innerHTML=`${warn}${statusRow}${tabs}<div id="sys-body" role="tabpanel" aria-labelledby="sys-tab-${state.sysTab}"></div><p class="resource-note">Mô tả vai trò do người viết trong <code>${esc(m.source)}</code> (cập nhật ${esc(m.updated)}). Số liệu đo trực tiếp mỗi lần mở trang: commit trong repos-manifest.json, phiên bản trong package.json và các môi trường Python, ${m.scanned} file nguồn trong src, scripts, tools. Bước quy trình lấy từ tools/production-automation.</p>`;
+  }
+  renderSystemBody();
+}
+function renderSystemBody(){
+  const m=state.system,body=$('#sys-body');if(!m||!body)return;
+  body.setAttribute('aria-labelledby','sys-tab-'+state.sysTab);
+  $('#resource-view').querySelectorAll('[data-sys-status]').forEach(b=>b.setAttribute('aria-pressed',String(state.sysStatus===b.dataset.sysStatus)));
+  const shown=r=>!state.sysStatus||r.status===state.sysStatus;
+  if(state.sysTab==='flow'){
+    const legend=`<ul class="sys-legend" aria-label="Chú giải">${Object.values(sysKinds).map(([t,c])=>`<li><span class="sys-mark ${c}" aria-hidden="true"></span>${esc(t)}</li>`).join('')}</ul>`;
+    const rows=m.stages.map(s=>{
+      const [kindTitle,kindClass]=sysKinds[s.kind]||[s.kind,'tool'];
+      const comps=m.components.filter(c=>c.stages.includes(s.id)),repos=m.repos.filter(r=>r.stages.includes(s.id)&&shown(r));
+      return `<li class="sys-stage ${kindClass}" id="sys-stage-${esc(s.id)}"><span class="sys-mark ${kindClass}" aria-hidden="true"></span><div class="sys-stage-body"><div class="sys-stage-head"><h3>${esc(s.title)}</h3><span class="sys-kind">${esc(kindTitle)}</span></div><p>${esc(s.guide)}</p>
+${comps.length?`<div class="sys-uses"><span class="sys-uses-label">Công cụ</span>${comps.map(c=>`<span class="sys-tool">${esc(c.title)}</span>`).join('')}</div>`:''}
+${repos.length?`<div class="sys-uses"><span class="sys-uses-label">Repo</span>${repos.map(r=>sysRepoChip(m,r)).join('')}</div>`:''}</div></li>`;}).join('');
+    const outside=m.repos.filter(r=>!r.stages.length&&shown(r));
+    body.innerHTML=`<div class="resource-heading"><h2>Một tập đi qua những bước nào</h2><p>Quy trình đầy đủ của series Đọc sách, hiểu mình (các series khác bỏ bước Nguồn sách). Mỗi bước ghi công cụ của repo và repo bên ngoài thật sự tham gia. Bấm tên repo để xem chi tiết.${state.sysStatus?` Đang lọc: ${esc(m.statuses[state.sysStatus].title)}.`:''}</p></div>${legend}<ol class="sys-rail">${rows}</ol>
+${outside.length?`<section class="sys-outside"><h3>Không nằm trong bước nào</h3><p>Phục vụ agent, tra cứu code hoặc đang để dành.</p><div class="sys-uses">${outside.map(r=>sysRepoChip(m,r)).join('')}</div></section>`:''}`;
+  } else if(state.sysTab==='layers'){
+    const gates=m.stages.filter(s=>s.kind==='human-approval');
+    const layer=l=>{
+      let items=m.components.filter(c=>c.layer===l.id).map(c=>{const repos=c.repos.map(id=>m.repos.find(r=>r.id===id)).filter(Boolean).filter(shown);return `<article class="sys-box"><h4>${esc(c.title)}</h4><p>${esc(c.summary)}</p><code>${esc(c.command)}</code><small>${esc(c.path)}</small>${repos.length?`<div class="sys-uses">${repos.map(r=>sysRepoChip(m,r)).join('')}</div>`:''}</article>`;});
+      if(l.id==='user')items=[`<article class="sys-box sys-user"><h4>Việc chỉ bạn làm</h4><ul>${gates.map(g=>`<li>${esc(g.title)}</li>`).join('')}<li>Nghe duyệt giọng, render và đăng tải</li></ul></article>`];
+      if(l.id==='runtime')items.push(...m.environments.map(e=>{const repos=e.repos.map(id=>m.repos.find(r=>r.id===id)).filter(Boolean).filter(shown);return `<article class="sys-box"><h4>${esc(e.title)} <span class="sys-present ${e.present?'yes':'no'}">${e.present?'Có trên máy':'Chưa có'}</span></h4><p>${esc(e.summary)}</p>${repos.length?`<div class="sys-uses">${repos.map(r=>sysRepoChip(m,r)).join('')}</div>`:''}</article>`;}));
+      if(l.id==='engine'){const extra=m.repos.filter(r=>['production','idle','idea'].includes(r.status)&&shown(r)&&!m.components.some(c=>c.layer==='engine'&&c.repos.includes(r.id)));if(extra.length)items.push(`<article class="sys-box sys-wide"><h4>Thư viện khác</h4><p>Đang chạy qua công cụ ở tầng trên, lấy ý tưởng, hoặc đã cài nhưng chưa dùng.</p><div class="sys-uses">${extra.map(r=>sysRepoChip(m,r)).join('')}</div></article>`);}
+      if(l.id==='knowledge'){const skills=m.repos.filter(r=>r.status==='skill'&&shown(r));items.push(`<article class="sys-box sys-wide"><h4>Skill trong skills/</h4><p>Agent đọc trước khi dựng video hoặc sửa trang quản lý; không chạy khi render.</p><div class="sys-uses">${skills.map(r=>sysRepoChip(m,r)).join('')||'<span class="sys-tool">Không có trong bộ lọc này</span>'}</div></article>`);}
+      return `<section class="sys-layer"><div class="sys-layer-head"><h3>${esc(l.title)}</h3><p>${esc(l.summary)}</p></div><div class="sys-layer-items">${items.join('')||'<p class="sys-empty">Không có mục nào trong bộ lọc này.</p>'}</div></section>`;
+    };
+    body.innerHTML=`<div class="resource-heading"><h2>Các tầng của hệ thống</h2><p>Đọc từ trên xuống: bạn điều khiển qua trang quản lý và Studio, công cụ của repo gọi engine trong môi trường riêng; skill chỉ hướng dẫn agent.</p></div><div class="sys-layers">${m.layers.map(layer).join('')}</div>`;
+  } else {
+    const q=fold(state.sysQuery),list=m.repos.filter(r=>shown(r)&&(!q||fold([r.title,r.id,r.category,r.general,r.role,r.facts.upstream].join(' ')).includes(q)));
+    if(!list.some(r=>r.id===state.sysRepo))state.sysRepo=list[0]?.id||'';
+    const focused=document.activeElement?.id==='sys-search';
+    body.innerHTML=`<div class="sys-catalog"><div class="sys-list"><label class="search-field"><span aria-hidden="true">${icon('search')}</span><input id="sys-search" type="search" autocomplete="off" placeholder="Tìm repo, chức năng, vai trò" aria-label="Tìm repo" value="${esc(state.sysQuery)}"></label><p class="filter-result" aria-live="polite">${list.length} repo${state.sysStatus?` · ${esc(m.statuses[state.sysStatus].title)}`:''}</p>
+<ul>${list.map(r=>`<li><button type="button" class="sys-row" data-sys-pick="${esc(r.id)}" aria-current="${r.id===state.sysRepo}"><span class="sys-row-title">${esc(r.title)}</span>${sysPill(m,r.status)}<small>${esc(r.category)} · ${esc(sysUsage(r))}</small></button></li>`).join('')||'<li class="sys-empty">Không có repo khớp.</li>'}</ul></div><div class="sys-detail" id="sys-detail" tabindex="-1">${sysDetail(m,m.repos.find(r=>r.id===state.sysRepo))}</div></div>`;
+    if(focused){const input=$('#sys-search');input.focus();input.setSelectionRange(input.value.length,input.value.length);}
+  }
+}
+function sysDetail(m,r){
+  if(!r)return '<p class="sys-empty">Chọn một repo để xem chi tiết.</p>';
+  const f=r.facts,stage=id=>m.stages.find(s=>s.id===id)?.title||id;
+  const facts=[
+    ['Nguồn',f.upstream?`<a href="https://github.com/${esc(f.upstream)}" target="_blank" rel="noopener noreferrer">${esc(f.upstream)}</a>`:'Chưa ghi trong manifest'],
+    ['Bản clone',f.cloned?`repos/${esc(r.id)} · commit <code>${esc(f.commit)}</code>`:'Chưa clone'],
+    ...(f.packages.length?[['Package npm',f.packages.map(p=>`<code>${esc(p.name)}</code> ${p.version?esc(p.version):'<em>chưa cài</em>'}`).join('<br>')]]:[]),
+    ...(f.python?[['Gói Python',`${esc(f.python.env)} · ${f.python.version?esc(f.python.version):'<em>chưa cài</em>'}`]]:[]),
+    ...(f.binary?[['Chương trình',`<code>${esc(f.binary.path)}</code> ${f.binary.present?'có':'<em>chưa có trên máy</em>'}`]]:[]),
+    ...(f.runtime?[['Runtime',`<code>${esc(f.runtime.path)}</code> ${f.runtime.present?'có':'<em>chưa có</em>'}`]]:[]),
+    ...(f.skills.length?[['Skill',f.skills.map(s=>`<code>${esc(s.name)}</code>${s.present?'':' <em>thiếu</em>'}`).join(' ')]]:[]),
+    ['Giấy phép',esc(r.license||'Chưa ghi')]
+  ];
+  const used=f.usedBy.length?`<details class="sys-files"><summary>${f.usedBy.length} file trong repo dùng tới</summary><ul>${f.usedBy.map(x=>`<li><code>${esc(x)}</code></li>`).join('')}</ul></details>`:'<p class="sys-note">Không có file nào trong src, scripts, tools import hay tham chiếu tới repo này.</p>';
+  return `<div class="sys-detail-head"><h3>${esc(r.title)}</h3>${sysPill(m,r.status)}<span class="tag">${esc(r.category)}</span></div>
+<h4>Chức năng chung</h4><p>${esc(r.general)}</p><h4>Vai trò trong hệ thống này</h4><p>${esc(r.role)}</p>
+${r.stages.length?`<h4>Tham gia các bước</h4><div class="sys-uses">${r.stages.map(s=>`<button type="button" class="sys-tool sys-stage-link" data-sys-stage="${esc(s)}">${esc(stage(s))}</button>`).join('')}</div>`:''}
+${r.usedVia.length?`<h4>Gọi qua</h4><ul class="sys-via">${r.usedVia.map(x=>`<li><code>${esc(x)}</code></li>`).join('')}</ul>`:''}
+<h4>Số liệu đo trên máy</h4><dl class="sys-facts">${facts.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${v}</dd>`).join('')}</dl>${used}
+${r.notes.length?`<div class="sys-warnings"><strong>Lệch với mô tả</strong><ul>${r.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul></div>`:''}
+<h4>Dùng lại ở hệ thống khác</h4><p>${esc(r.reuse)}</p>${r.ideas.length?`<h4>Gợi ý cải thiện</h4><ul class="sys-ideas">${r.ideas.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}`;
+}
+function sysSetTab(tab,focus){state.sysTab=tab;sysUrl();renderSystemBody();$('#resource-view').querySelectorAll('[data-sys-tab]').forEach(b=>{const on=b.dataset.sysTab===tab;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;if(on&&focus)b.focus();});}
+$('#resource-view').addEventListener('click',event=>{
+  if(state.view!=='system')return;
+  const t=event.target.closest('[data-sys-tab],[data-sys-repo],[data-sys-pick],[data-sys-status],[data-sys-stage]');if(!t)return;
+  if(t.dataset.sysTab)sysSetTab(t.dataset.sysTab);
+  else if(t.dataset.sysStatus){state.sysStatus=state.sysStatus===t.dataset.sysStatus?'':t.dataset.sysStatus;renderSystemBody();}
+  else if(t.dataset.sysPick){state.sysRepo=t.dataset.sysPick;sysUrl();renderSystemBody();const d=$('#sys-detail');if(matchMedia('(max-width:900px)').matches)d.scrollIntoView({block:'start'});$(`[data-sys-pick="${CSS.escape(state.sysRepo)}"]`)?.focus();}
+  else if(t.dataset.sysRepo){state.sysRepo=t.dataset.sysRepo;state.sysQuery='';if(state.system&&!state.system.repos.some(r=>r.id===state.sysRepo&&(!state.sysStatus||r.status===state.sysStatus)))state.sysStatus='';sysSetTab('repos');$('#sys-detail')?.scrollIntoView({block:'start'});$('#sys-detail')?.focus({preventScroll:true});}
+  else if(t.dataset.sysStage){const id=t.dataset.sysStage;state.sysStatus='';sysSetTab('flow');const row=document.getElementById('sys-stage-'+id);if(row){row.classList.add('sys-highlight');row.scrollIntoView({block:'center'});setTimeout(()=>row.classList.remove('sys-highlight'),2400);}}
+});
+$('#resource-view').addEventListener('input',event=>{if(state.view!=='system'||event.target.id!=='sys-search')return;state.sysQuery=event.target.value;clearTimeout(searchTimer);searchTimer=setTimeout(renderSystemBody,100);});
+$('#resource-view').addEventListener('keydown',event=>{
+  const tab=event.target.closest?.('[data-sys-tab]');if(!tab||!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
+  const keys=Object.keys(sysTabs),i=keys.indexOf(tab.dataset.sysTab);event.preventDefault();
+  const next=event.key==='Home'?0:event.key==='End'?keys.length-1:(i+(event.key==='ArrowRight'?1:-1)+keys.length)%keys.length;sysSetTab(keys[next],true);
+});
 async function renderResources(){
   const view=state.view,box=$('#resource-view');state.library=state.library||{};
   if(!state.library[view]||state.resourceStale){
