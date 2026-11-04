@@ -934,12 +934,12 @@ function renderChannelProfile(){
 }
 function platformCard(profile,p){
   const label=profile.platformNames[p.platform]||p.platform,initial=[...p.name.trim()][0]||'?';
-  return `<li class="platform-card platform-${esc(p.platform)}"><div class="platform-banner">${p.banner?`<img src="${channelImageUrl(profile.channel,p.banner)}" alt="" width="1200" height="400" loading="lazy" decoding="async">`:''}</div>
-<div class="platform-body"><div class="platform-identity"><span class="platform-avatar">${p.avatar?`<img src="${channelImageUrl(profile.channel,p.avatar)}" alt="" width="96" height="96" loading="lazy" decoding="async">`:`<span aria-hidden="true">${esc(initial.toUpperCase())}</span>`}</span><span class="platform-tag">${esc(label)}</span></div>
-<h3>${esc(p.name)}</h3>${p.handle?`<p class="platform-handle">${esc(p.handle)}</p>`:''}
+  // Compact row: the banner is kept in the profile and shown in the edit dialog, not on the card.
+  return `<li class="platform-card platform-${esc(p.platform)}"><span class="platform-avatar">${p.avatar?`<img src="${channelImageUrl(profile.channel,p.avatar)}" alt="" width="96" height="96" loading="lazy" decoding="async">`:`<span aria-hidden="true">${esc(initial.toUpperCase())}</span>`}</span>
+<div class="platform-main"><div class="platform-title"><h3>${esc(p.name)}</h3><span class="platform-tag">${esc(label)}</span></div>${p.handle?`<p class="platform-handle">${esc(p.handle)}</p>`:''}
 ${p.description?`<p class="platform-description">${esc(p.description)}</p><button class="text-button" data-channel-more aria-expanded="false" hidden>Xem cả mô tả</button>`:'<p class="platform-description is-empty">Chưa có mô tả kênh.</p>'}
-${p.notes?`<p class="platform-notes"><span>Ghi chú riêng:</span> ${esc(p.notes)}</p>`:''}
-<div class="platform-actions">${p.url?`<a class="button secondary" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer">Mở kênh<span class="sr-only"> ${esc(label)} trong tab mới</span></a>`:'<span class="platform-nolink">Chưa có link</span>'}<button class="button quiet" data-channel-edit="${esc(p.id)}">Sửa<span class="sr-only"> ${esc(label)}: ${esc(p.name)}</span></button></div></div></li>`;
+${p.notes?`<p class="platform-notes"><span>Ghi chú riêng:</span> ${esc(p.notes)}</p>`:''}</div>
+<div class="platform-actions">${p.url?`<a class="button secondary" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer">Mở kênh<span class="sr-only"> ${esc(label)} trong tab mới</span></a>`:'<span class="platform-nolink">Chưa có link</span>'}<button class="button quiet" data-channel-edit="${esc(p.id)}">Sửa<span class="sr-only"> ${esc(label)}: ${esc(p.name)}</span></button></div></li>`;
 }
 // One dialog adds or edits a platform; chosen images upload after the text is saved, each against the newest revision.
 function openChannelDialog(id){

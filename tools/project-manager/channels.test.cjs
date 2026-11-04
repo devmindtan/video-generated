@@ -59,7 +59,7 @@ const {chromium}=require('playwright-core'),{createManager}=require('./server.cj
   await page.waitForFunction(()=>document.querySelectorAll('#channel-dialog .channel-image-preview img').length===2);
   await page.screenshot({path:path.join(out,'dialog-1440.png')});
   await page.locator('#submit-channel').click();await page.waitForFunction(()=>!document.querySelector('#channel-dialog').open);
-  const card=page.locator('.platform-card').first();await card.locator('.platform-banner img').waitFor();
+  const card=page.locator('.platform-card').first();await card.locator('.platform-avatar img').waitFor();assert.equal(await card.locator('.platform-banner').count(),0,'compact card leaves the banner to the dialog');
   await page.waitForFunction(()=>[...document.querySelectorAll('.platform-card img')].every(i=>i.complete&&i.naturalWidth>0));
   const saved=JSON.parse(fs.readFileSync(profileFile,'utf8')).platforms[0];
   assert.equal(saved.url,'https://www.youtube.com/@tamlycuocsong');assert.match(saved.avatar,/^[a-f0-9]{64}\.png$/);assert.match(saved.banner,/^[a-f0-9]{64}\.png$/);
