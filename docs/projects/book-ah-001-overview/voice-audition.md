@@ -31,9 +31,9 @@ Nhận dạng cục bộ của các take giọng tạm khớp đủ chữ; nhậ
 ## Giọng clone (2026-11-04)
 
 - Kịch bản chốt sau bản vá p5. Clone một lượt 139 câu: thẻ tập trên laptop (máy GPU chưa sẵn sàng lúc đầu, cùng model),
-  12 đoạn nội dung trên máy GPU desktop-kndgm60 (GTX 1660 SUPER, khoảng 34 giây mỗi câu). Take .
-- Kiểm tra dấu cục bộ đánh dấu 58 câu; clone lại các câu đó một lần (, máy GPU). Mỗi câu dùng bản mới
-  nhất qua kiểm tra dấu, nếu không có thì bản mới nhất (), ghép với nhịp
+  12 đoạn nội dung trên máy GPU desktop-kndgm60 (GTX 1660 SUPER, khoảng 34 giây mỗi câu). Take `seg-<đoạn>-v1`.
+- Kiểm tra dấu cục bộ đánh dấu 58 câu; clone lại các câu đó một lần (`seg-<đoạn>-v2`, máy GPU). Mỗi câu dùng bản mới
+  nhất qua kiểm tra dấu, nếu không có thì bản mới nhất (`build-body.py --project book-ah-001-overview`), ghép với nhịp
   nghỉ như tập 1 rồi +2 bán cung giữ thời lượng.
 - Nghe liền cả tập trong Studio: **BookAhTap02Clone** (13 phút 48 giây). BookAhTap02 vẫn là giọng tạm cho tới khi người
   dùng chọn.
