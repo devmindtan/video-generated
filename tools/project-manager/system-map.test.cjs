@@ -17,9 +17,9 @@ assert.ok(map.stages.length>=10,'stages come from production automation');
 const stageIds=new Set(map.stages.map(s=>s.id));
 for(const c of map.components){assert.ok(map.layers.some(l=>l.id===c.layer),`${c.id}: known layer`);for(const s of c.stages)assert.ok(stageIds.has(s),`${c.id}: stage ${s}`);for(const id of c.repos)assert.ok(ids.includes(id),`${c.id}: repo ${id}`);}
 assert.deepEqual(map.warnings,[],'map agrees with measured facts');
-// Measurement sanity: Remotion is imported, an idle package is not.
+// Measurement sanity: Remotion is imported, an idle package (Satori) is not.
 assert.ok(map.repos.find(r=>r.id==='remotion-dev--remotion').facts.usedBy.length>10);
-assert.equal(map.repos.find(r=>r.id==='mrdoob--three.js').facts.usedBy.length,0);
+assert.equal(map.repos.find(r=>r.id==='vercel--satori').facts.usedBy.length,0);
 console.log(`✓ Map covers ${ids.length} repos, ${map.stages.length} stages, no drift`);
 
 (async()=>{
