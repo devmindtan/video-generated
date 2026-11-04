@@ -99,6 +99,17 @@ Bỏ qua khác biệt chỉ do cách viết (tỉ/tỷ, ý/í, Habits/Habit).
 | 13:32 | Nhận xét chung | gấp → ngấp | Gấp sách lại, điều mình nhớ nhất không phải một con số nào, mà là thay đổi hóa ra không cần bắt đầu bằng một quyết tâm lớn. |
 | 13:41 | Nhận xét chung | dở → vỡ ở | Nếu bạn đang muốn đổi một thói quen mà lần nào cũng bỏ dở giữa chừng, cuốn này cho bạn rất nhiều cách để thử lại, bắt đầu từ những việc chưa tới hai phút. |
 
+## Câu đảo ngược tách đôi (2026-11-04, máy GPU)
+
+Người dùng thấy phần "đảo ngược" khó hiểu: câu "…và đảo ngược lại để bỏ thói quen xấu" được tách thành hai câu, câu
+sau nói rõ bốn điều ngược lại. Clone mới: `seg-04-soi-chi-v6` (hai câu) và `seg-04-soi-chi-v7` (câu đầu, seed 7);
+bản ghép dùng v7 cho câu đầu và v6 cho câu sau. Máy nghi một chữ, cần nghe:
+
+| Mốc (BookAhTap02Clone) | Phần | Máy nghe | Câu |
+| --- | --- | --- | --- |
+| 4:08 | Sợi chỉ | hiển → hiện (v7; v6 nghe "mãn → mạng") | Từ bốn bước đó có bốn quy luật để xây thói quen tốt: làm cho nó hiển nhiên, hấp dẫn, dễ dàng và thỏa mãn. |
+| 4:14 | Sợi chỉ | (không) | Muốn bỏ thói quen xấu thì làm ngược lại: cho nó khó thấy, kém hấp dẫn, khó làm và không thỏa mãn. |
+
 ## Còn lại
 
 - Người dùng nghe BookAhTap02Clone và báo câu nào đọc sai thật: clone lại riêng câu đó thành take mới.

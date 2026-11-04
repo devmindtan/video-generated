@@ -77,7 +77,12 @@
     },
     {
       "scene": 1,
-      "text": "Từ bốn bước đó có bốn quy luật để xây thói quen tốt: làm cho nó hiển nhiên, hấp dẫn, dễ dàng và thỏa mãn; và đảo ngược lại để bỏ thói quen xấu.",
+      "text": "Từ bốn bước đó có bốn quy luật để xây thói quen tốt: làm cho nó hiển nhiên, hấp dẫn, dễ dàng và thỏa mãn.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Muốn bỏ thói quen xấu thì làm ngược lại: cho nó khó thấy, kém hấp dẫn, khó làm và không thỏa mãn.",
       "pauseAfter": 0.9
     },
     {

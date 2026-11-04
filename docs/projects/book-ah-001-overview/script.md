@@ -56,7 +56,7 @@ Từ đó, tác giả khuyên mình bớt nhìn vào mục tiêu mà nhìn vào 
 
 Sâu hơn nữa là con người mình muốn trở thành. Hai người cùng được mời thuốc lá: một người nói "tôi đang cố bỏ", người kia nói "tôi không hút thuốc". Người thứ nhất vẫn thấy mình là người hút thuốc đang cố nhịn; người thứ hai đã thấy mình là người không hút thuốc nữa. Theo tác giả, "Mỗi một hành động là một lá phiếu bầu chọn cho mẫu người mà bạn mong ước trở thành." [nghỉ]
 
-Còn cách làm thì tác giả chia mỗi thói quen thành bốn bước: một dấu hiệu, một sự khao khát, một hành động, và một phần thưởng. Từ bốn bước đó có bốn quy luật để xây thói quen tốt: làm cho nó hiển nhiên, hấp dẫn, dễ dàng và thỏa mãn; và đảo ngược lại để bỏ thói quen xấu. [nghỉ]
+Còn cách làm thì tác giả chia mỗi thói quen thành bốn bước: một dấu hiệu, một sự khao khát, một hành động, và một phần thưởng. Từ bốn bước đó có bốn quy luật để xây thói quen tốt: làm cho nó hiển nhiên, hấp dẫn, dễ dàng và thỏa mãn. Muốn bỏ thói quen xấu thì làm ngược lại: cho nó khó thấy, kém hấp dẫn, khó làm và không thỏa mãn. [nghỉ]
 
 Phần còn lại của cuốn sách, mình xin đi theo đúng bốn quy luật đó, rồi thêm một phần nói về khi thói quen đã thành nếp.
 

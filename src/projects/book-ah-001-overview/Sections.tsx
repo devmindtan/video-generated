@@ -92,13 +92,13 @@ export const MoChuyen = section('02 mở chuyện', /(bài học lớn nhất v�
       <Glow x={1400} y={330} r={170} opacity={appear(c.frame, within(c, 11, .85), 20) * .8} />
     </g>;}},
   {at: 13, draw: (c) => <g>
-    <circle cx={960} cy={500} r={10} fill={GOLD} opacity={appear(c.frame, c.start + 4, 10)} />
-    {[0, 1, 2, 3].map((k) => {const r = interpolate(c.frame, [c.start + 10 + k * 18, c.start + 110 + k * 18], [10, 90 + k * 70], {...clamp, easing: ease});
-      return <circle key={k} cx={960} cy={500} r={r} fill="none" stroke={k % 2 ? IVORY : GOLD} strokeWidth={2} opacity={appear(c.frame, c.start + 10 + k * 18, 10) * (1 - k * .18)} />;})}
+    <circle cx={960} cy={450} r={10} fill={GOLD} opacity={appear(c.frame, c.start + 4, 10)} />
+    {[0, 1, 2, 3].map((k) => {const r = interpolate(c.frame, [c.start + 10 + k * 18, c.start + 110 + k * 18], [10, 60 + k * 45], {...clamp, easing: ease});  // rings stay between the title and the book
+      return <circle key={k} cx={960} cy={450} r={r} fill="none" stroke={k % 2 ? IVORY : GOLD} strokeWidth={2} opacity={appear(c.frame, c.start + 10 + k * 18, 10) * (1 - k * .18)} />;})}
     <g opacity={appear(c.frame, within(c, 13, .55), 18)}>
       <path d="M960 800 C890 770 800 768 730 786 L730 700 C800 682 890 684 960 714 C1030 684 1120 682 1190 700 L1190 786 C1120 768 1030 770 960 800 Z M960 714 L960 800" fill="none" stroke={GOLD} strokeWidth={2.6} strokeLinejoin="round" />
     </g>
-    <Word x={960} y={300} size={42} text="THAY ĐỔI NHỎ · KẾT QUẢ LỚN" opacity={appear(c.frame, within(c, 13, .7), 14) * .9} />
+    <Word x={960} y={200} size={42} text="THAY ĐỔI NHỎ · KẾT QUẢ LỚN" opacity={appear(c.frame, within(c, 13, .7), 14) * .9} />
   </g>},
 ], options);
 
@@ -137,8 +137,8 @@ export const CuonSach = section('03 cuốn sách', /(hai mươi chương|bốn q
   {at: 0, draw: (c) => <g>
     {D(c, openBook(960, 560, 1.4), 0, 34, 2.6)}
     <defs><clipPath id="ah-above-pages"><path d="M0 0 L1920 0 L1920 554 L1282 554 C1184 529 1058 532 960 572 C862 532 736 529 638 554 L0 554 Z" /></clipPath></defs>
-    <g clipPath="url(#ah-above-pages)">{[0, 1, 2, 3, 4, 5].map((k) => {const main = k > 0 && k < 5, up = appear(c.frame, within(c, 0, .25 + k * .1), 14) * (main ? 100 : 56), x = 690 + k * 100;
-      return <g key={k} opacity={appear(c.frame, within(c, 0, .25 + k * .1), 10) * (main ? 1 : .45)}>
+    <g clipPath="url(#ah-above-pages)">{[0, 1, 2, 3, 4, 5].map((k) => {const main = k > 0 && k < 5, when = within(c, 0, main ? .2 + k * .1 : k ? .78 : .66), up = appear(c.frame, when, 14) * (main ? 100 : 56), x = 690 + k * 100;  // the faint first and last tabs come with "nền tảng ở đầu" / "nâng cao ở cuối"
+      return <g key={k} opacity={appear(c.frame, when, 10) * (main ? 1 : .45)}>
         <path d={`M${x} ${560} L${x} ${560 - up} L${x + 52} ${560 - up} L${x + 52} ${560} `} fill="none" stroke={main ? GOLD : IVORY} strokeWidth={2.4} />
         {main ? <text x={x + 26} y={560 - up + 40} textAnchor="middle" fill={GOLD} fontSize={34} fontWeight={700}>{k}</text> : null}
       </g>;})}</g>
@@ -159,8 +159,8 @@ export const CuonSach = section('03 cuốn sách', /(hai mươi chương|bốn q
 // 3–5 an ice cube and a thermometer creeping up; at the last mark the cube melts to drops; the work was not lost
 // 6–8 two runners toward one flag, one on an even brick road, one on a broken path; the flag fades, the road shines
 // 9–11 two figures offered a cigarette: "tôi đang cố bỏ" / "tôi không hút thuốc", the second bubble lights
-// 12 votes dropping into a ballot box (quote) · 13–15 the habit loop building step by step, then the four laws around it,
-// then reversed (to break a bad habit)
+// 12 votes dropping into a ballot box (quote) · 13–14 the habit loop building step by step, then the four laws around it
+// 15–16 a table: per step, the law that builds a good habit beside its opposite that breaks a bad one
 export const SoiChi = section('04 sợi chỉ', /(thói quen nhỏ lặp lại mỗi ngày|một phần trăm|lãi kép|đến muộn|cục nước đá|chưa hiện ra|hệ thống|con người mình muốn trở thành|tôi không hút thuốc|lá phiếu|bốn bước|bốn quy luật)/gi, [
   {at: 0, draw: (c) => <g>{Array.from({length: 24}, (_, i) => {const row = Math.floor(i / 6), col = i % 6, x = 700 + col * 90 + (row % 2) * 45, y = 720 - row * 56;
     return <rect key={i} x={x} y={y} width={84} height={48} rx={3} fill="none" stroke={GOLD} strokeWidth={2.2} opacity={appear(c.frame, c.start + 6 + i * 4, 8)} />;})}</g>},
@@ -168,7 +168,7 @@ export const SoiChi = section('04 sợi chỉ', /(thói quen nhỏ lặp lại m
     const up = Array.from({length: 41}, (_, i) => {const x = i / 40;return `${i ? 'L' : 'M'}${600 + x * 760 * t} ${560 - (Math.pow(1.01, x * 365) - 1) / 36.8 * 300 * t}`;}).join(' ');
     const down = Array.from({length: 41}, (_, i) => {const x = i / 40;return `${i ? 'L' : 'M'}${600 + x * 760 * t} ${560 + (1 - Math.pow(.99, x * 365)) * 220 * t}`;}).join(' ');
     return <g><circle cx={600} cy={560} r={8} fill={GOLD} /><path d={up} fill="none" stroke={GOLD} strokeWidth={3} /><path d={down} fill="none" stroke={IVORY} strokeWidth={2.2} opacity={.7} />
-      <text x={1320} y={240} fill={GOLD} fontSize={40} fontWeight={700} opacity={t}>+1% mỗi ngày</text><text x={1320} y={800} fill={IVORY} fontSize={40} fontWeight={700} opacity={t * .8}>−1% mỗi ngày</text></g>;}},
+      <text x={1390} y={260} fill={GOLD} fontSize={40} fontWeight={700} opacity={t}>+1% mỗi ngày</text><text x={1390} y={796} fill={IVORY} fontSize={40} fontWeight={700} opacity={t * .8}>−1% mỗi ngày</text></g>;}},
   {at: 3, draw: (c) => {const heat = interpolate(c.frame, [within(c, 4, .1), within(c, 4, .85)], [0, 1], clamp), melt = interpolate(c.frame, [within(c, 4, .85), c.at(5) + 30], [0, 1], clamp);
     return <g>
       <g opacity={1 - melt}>{D(c, 'M820 460 L1000 460 L1000 640 L820 640 Z M820 460 L860 420 L1040 420 L1000 460 M1040 420 L1040 600 L1000 640', 0, 30, 2.6)}</g>
@@ -180,45 +180,70 @@ export const SoiChi = section('04 sợi chỉ', /(thói quen nhỏ lặp lại m
   {at: 6, quote: true, draw: (c) => {const fade = appear(c.frame, c.at(8), 24), run = interpolate(c.frame, [c.start + 10, c.at(8)], [0, 1], clamp);return <g>
     <g opacity={1 - fade * .7}>{D(c, 'M1500 300 L1500 760 M1500 300 L1600 330 L1500 360', 0, 20, 2.6)}</g>
     {Array.from({length: 9}, (_, i) => <rect key={i} x={460 + i * 110} y={700} width={100} height={22} rx={3} fill="none" stroke={GOLD} strokeWidth={2.2 + fade} opacity={appear(c.frame, c.start + 8 + i * 3, 8)} />)}
-    {Array.from({length: 9}, (_, i) => i % 3 === 1 ? null : <path key={i} d={`M${460 + i * 110} 560 L${545 + i * 110} 560`} stroke={IVORY} strokeWidth={2.4} opacity={appear(c.frame, c.start + 8 + i * 3, 8) * .85} />)}
+    {Array.from({length: 9}, (_, i) => i % 3 === 1 ? null : <path key={i} d={`M${460 + i * 110} 470 L${545 + i * 110} 470`} stroke={IVORY} strokeWidth={2.4} opacity={appear(c.frame, c.start + 8 + i * 3, 8) * .85} />)}
     <Figure frame={c.frame} from={c.start + 10} x={520 + run * 700} y={690} s={.55} pose="walk" />
-    <Figure frame={c.frame} from={c.start + 10} x={520 + run * 520} y={550} s={.55} pose="walk" color={IVORY} />
+    <Figure frame={c.frame} from={c.start + 10} x={520 + run * 520} y={462} s={.55} pose="walk" color={IVORY} />  {/* broken path kept above the brick runner so the two never cross */}
     <Glow x={900} y={710} r={240} opacity={fade * .6} />
   </g>;}},
-  {at: 9, draw: (c) => {const bubbles = appear(c.frame, c.at(10), 14), second = appear(c.frame, c.at(11), 20);return <g>
-    <Figure frame={c.frame} from={c.start + 6} x={720} y={780} s={1} />
-    <Figure frame={c.frame} from={c.start + 6} x={1200} y={780} s={1} />
-    <g opacity={bubbles}>
-      <path d="M500 290 L940 290 L940 410 L760 410 L730 450 L730 410 L500 410 Z" fill="none" stroke={IVORY} strokeWidth={2.2} opacity={.7} />
-      <text x={720} y={366} textAnchor="middle" fill={IVORY} fontSize={40} fontWeight={700} opacity={.8}>tôi đang cố bỏ</text>
-      <path d="M960 290 L1440 290 L1440 410 L1230 410 L1200 450 L1200 410 L960 410 Z" fill={second ? 'rgba(217,181,111,.12)' : 'none'} stroke={GOLD} strokeWidth={2.2 + second} />
-      <text x={1200} y={366} textAnchor="middle" fill={GOLD} fontSize={40} fontWeight={700}>tôi không hút thuốc</text>
+  // Two people offered a cigarette (user 2026-11-04: say who is who): each bubble appears as its words are read, the
+  // people carry the numbers 1 and 2, and while sentence 11 speaks of "người thứ nhất" then "người thứ hai" that person
+  // lights up and the other dims.
+  {at: 9, draw: (c) => {const b1 = appear(c.frame, within(c, 10, .3), 14), b2 = appear(c.frame, within(c, 10, .64), 14);
+    const one = interpolate(c.frame, [c.at(11) - 6, c.at(11) + 6, within(c, 11, .48), within(c, 11, .54)], [0, 1, 1, 0], clamp), two = appear(c.frame, within(c, 11, .5), 12);
+    const dim = (k: number) => 1 - .55 * (k === 0 ? two : one);
+    return <g>
+    <g opacity={dim(0)}><Figure frame={c.frame} from={c.start + 6} x={720} y={780} s={1} color={one > .5 ? GOLD : IVORY} /></g>
+    <g opacity={dim(1)}><Figure frame={c.frame} from={c.start + 6} x={1200} y={780} s={1} color={two > .5 ? GOLD : IVORY} /></g>
+    {[[620, 520], [1100, 520]].map(([x, y], k) => <g key={k} opacity={appear(c.frame, c.start + 14, 10) * dim(k)}>
+      <circle cx={x} cy={y} r={30} fill={(k === 0 ? one : two) > .5 ? 'rgba(217,181,111,.25)' : 'none'} stroke={GOLD} strokeWidth={3} />
+      <text x={x} y={y + 13} textAnchor="middle" fill={GOLD} fontSize={36} fontWeight={700}>{k + 1}</text>
+    </g>)}
+    <g opacity={b1 * dim(0)}>
+      <path d="M500 290 L940 290 L940 410 L760 410 L730 450 L730 410 L500 410 Z" fill={one > .5 ? 'rgba(217,181,111,.12)' : 'none'} stroke={one > .5 ? GOLD : IVORY} strokeWidth={2.4} />
+      <text x={720} y={366} textAnchor="middle" fill={one > .5 ? GOLD : IVORY} fontSize={40} fontWeight={700}>tôi đang cố bỏ</text>
     </g>
-    <Glow x={1200} y={350} r={200} opacity={second * .6} />
+    <g opacity={b2 * dim(1)}>
+      <path d="M960 290 L1440 290 L1440 410 L1230 410 L1200 450 L1200 410 L960 410 Z" fill={two > .5 ? 'rgba(217,181,111,.12)' : 'none'} stroke={two > .5 ? GOLD : IVORY} strokeWidth={2.4} />
+      <text x={1200} y={366} textAnchor="middle" fill={two > .5 ? GOLD : IVORY} fontSize={40} fontWeight={700}>tôi không hút thuốc</text>
+    </g>
+    <Glow x={720} y={560} r={220} opacity={one * .5} />
+    <Glow x={1200} y={560} r={220} opacity={two * .5} />
   </g>;}},
   {at: 12, quote: true, draw: (c) => <g>
     {D(c, 'M800 620 L1080 620 L1080 790 L800 790 Z M800 620 L860 570 L1140 570 L1080 620 M1140 570 L1140 740 L1080 790', 0, 28, 2.6)}
     {D(c, 'M920 596 L1030 596', 18, 10, 4)}
     <text x={940} y={722} textAnchor="middle" fill={GOLD} fontSize={36} fontWeight={700} opacity={appear(c.frame, c.start + 24, 10)}>PHIẾU</text>
     {[0, 1, 2, 3].map((k) => {const fall = interpolate(c.frame, [c.start + 20 + k * 22, c.start + 44 + k * 22], [0, 1], {...clamp, easing: ease});
-      return <path key={k} d={`M${946 + (k % 2) * 16} ${300 + fall * 250} l50 0 l0 40 l-50 0 Z`} fill="none" stroke={GOLD} strokeWidth={2.2} opacity={appear(c.frame, c.start + 20 + k * 22, 6) * (1 - appear(c.frame, c.start + 44 + k * 22, 6))} />;})}
+      return <path key={k} d={`M${946 + (k % 2) * 16} ${300 + fall * 236} l50 0 l0 40 l-50 0 Z`} fill="none" stroke={GOLD} strokeWidth={2.2} opacity={appear(c.frame, c.start + 20 + k * 22, 6) * (1 - appear(c.frame, c.start + 44 + k * 22, 6))} />;})}
   </g>},
-  // At "đảo ngược lại để bỏ thói quen xấu" (user 2026-11-04): the arrow in the middle of the loop flips to run the other
-  // way and the four laws turn into their reverse (khó thấy · kém hấp dẫn · khó làm · không thỏa mãn).
-  {at: 13, draw: (c) => {const laws = appear(c.frame, c.at(14), 20), rev = appear(c.frame, within(c, 14, .76), 22), turn = interpolate(rev, [0, 1], [1, -1]);
-    const at = (deg: number) => [960 + 62 * Math.cos(deg * Math.PI / 180), 500 + 62 * Math.sin(deg * Math.PI / 180)];
-    const [sx, sy] = at(-150), [ex, ey] = at(120), dx = -Math.sin(120 * Math.PI / 180), dy = Math.cos(120 * Math.PI / 180);
+  // The four laws around the loop, then (user 2026-11-04: "đảo ngược" was hard to follow) a plain table: each step of the
+  // loop is one row, the law that builds a good habit on the left, its opposite that breaks a bad one on the right; the
+  // right-hand words appear as they are read in sentence 15 ("Muốn bỏ thói quen xấu thì làm ngược lại: …").
+  {at: 13, draw: (c) => {const laws = appear(c.frame, c.at(14), 20);
+    const own = c.at(16) > c.at(15), s15 = (share: number) => own ? within(c, 15, share) : within(c, 14, .7 + share * .3);  // placeholder take still reads both in one sentence
+    const table = appear(c.frame, s15(0), 18), word = (k: number) => appear(c.frame, s15([.42, .58, .72, .86][k]), 12);
     const pos = (k: number) => {const [x, y] = [[960, 286], [1460, 520], [960, 758], [460, 520]][k];return {x: x + (k === 1 ? 60 : k === 3 ? -60 : 0), y: y + (k === 0 ? -14 : k === 2 ? 34 : 10), anchor: (k === 1 ? 'start' : k === 3 ? 'end' : 'middle') as 'start' | 'end' | 'middle'};};
+    const rows = [['HIỂN NHIÊN', 'DẤU HIỆU', 'KHÓ THẤY'], ['HẤP DẪN', 'KHAO KHÁT', 'KÉM HẤP DẪN'], ['DỄ DÀNG', 'HÀNH ĐỘNG', 'KHÓ LÀM'], ['THỎA MÃN', 'PHẦN THƯỞNG', 'KHÔNG THỎA MÃN']];
     return <g>
-    {loop(960, 520, 1, -1, interpolate(c.frame, [within(c, 13, .25), within(c, 13, .95)], [0, 1], clamp))}
-    {['HIỂN NHIÊN', 'HẤP DẪN', 'DỄ DÀNG', 'THỎA MÃN'].map((t, k) => {const p = pos(k);
-      return <text key={t} x={p.x} y={p.y} textAnchor={p.anchor} fill={GOLD} fontSize={38} fontWeight={700} opacity={appear(c.frame, within(c, 14, .3 + k * .14), 10) * laws * (1 - rev)}>{`${k + 1} · ${t}`}</text>;})}
-    {['KHÓ THẤY', 'KÉM HẤP DẪN', 'KHÓ LÀM', 'KHÔNG THỎA MÃN'].map((t, k) => {const p = pos(k), x = k === 1 ? 1455 : k === 3 ? 465 : p.x;  // side labels hug their boxes so the long ones stay inside the frame
-      return <text key={t} x={x} y={p.y} textAnchor={p.anchor} fill={IVORY} fontSize={34} fontWeight={700} opacity={rev}>{`${k + 1} · ${t}`}</text>;})}
-    <g transform={`translate(960 500) scale(${turn} 1) translate(-960 -500)`} opacity={laws}>
-      <path d={`M${sx} ${sy} A62 62 0 1 1 ${ex} ${ey} M${ex} ${ey} L${ex - 18 * dx + 10 * dy} ${ey - 18 * dy - 10 * dx} M${ex} ${ey} L${ex - 18 * dx - 10 * dy} ${ey - 18 * dy + 10 * dx}`} fill="none" stroke={rev > .5 ? IVORY : GOLD} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" />
+    <text x={960} y={206} textAnchor="middle" fill={IVORY} fontSize={40} fontWeight={700} opacity={appear(c.frame, c.start + 6, 14) * (1 - table)}>BỐN BƯỚC CỦA MỘT THÓI QUEN</text>
+    <g opacity={1 - table}>
+      {loop(960, 520, 1, -1, interpolate(c.frame, [within(c, 13, .25), within(c, 13, .95)], [0, 1], clamp))}
+      {rows.map(([t], k) => {const p = pos(k);
+        return <text key={t} x={p.x} y={p.y} textAnchor={p.anchor} fill={GOLD} fontSize={38} fontWeight={700} opacity={appear(c.frame, within(c, 14, .3 + k * .14), 10) * laws}>{`${k + 1} · ${t}`}</text>;})}
     </g>
-    <text x={960} y={206} textAnchor="middle" fill={IVORY} fontSize={40} fontWeight={700} opacity={rev}>ĐẢO NGƯỢC ĐỂ BỎ THÓI QUEN XẤU</text>
+    <g opacity={table}>
+      <text x={740} y={300} textAnchor="end" fill={GOLD} fontSize={40} fontWeight={700}>XÂY THÓI QUEN TỐT</text>
+      <text x={1180} y={300} textAnchor="start" fill={IVORY} fontSize={40} fontWeight={700} opacity={appear(c.frame, s15(.05), 12)}>BỎ THÓI QUEN XẤU</text>
+      <path d="M400 336 L1540 336" stroke={IVORY} strokeWidth={2} opacity={.35} />
+      {rows.map(([good, step, bad], k) => {const y = 420 + k * 100;return <g key={step}>
+        <text x={740} y={y} textAnchor="end" fill={GOLD} fontSize={40} fontWeight={700}>{good}</text>
+        <text x={960} y={y - 4} textAnchor="middle" fill={IVORY} fontSize={34} fontWeight={700} opacity={.6}>{step}</text>
+        <g opacity={word(k)}>
+          <path d={`M1106 ${y - 16} L1158 ${y - 16} M1144 ${y - 26} L1158 ${y - 16} L1144 ${y - 6}`} fill="none" stroke={IVORY} strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" />
+          <text x={1180} y={y} textAnchor="start" fill={IVORY} fontSize={40} fontWeight={700}>{bad}</text>
+        </g>
+      </g>;})}
+    </g>
   </g>;}},
 ], options);
 
@@ -285,19 +310,26 @@ export const QuyLuat1 = section('05 quy luật 1', /(hiển nhiên|dấu hiệu|
       {['NGỦ', 'LÀM VIỆC', 'ĂN'].map((t, k) => <text key={t} x={[750, 1160, 1160][k]} y={[598, 390, 630][k]} textAnchor="middle" fill={IVORY} fontSize={36} fontWeight={700}>{t}</text>)}
     </g>
   </g>;}},
-  {at: 13, label: 'Đảo ngược: làm cho khó thấy', quote: true, draw: (c) => {const shut = interpolate(c.frame, [within(c, 14, .4), within(c, 14, .9)], [0, 1], {...clamp, easing: ease});return <g>
-    {D(c, 'M1020 300 L1260 300 L1260 760 L1020 760', 0, 26, 2.6)}
-    <path d={`M1020 300 L${1020 + 220 * (1 - shut)} ${320 + 0 * shut} L${1020 + 220 * (1 - shut)} ${740} L1020 760`} fill="none" stroke={GOLD} strokeWidth={2.6} strokeLinejoin="round" opacity={appear(c.frame, c.start + 16, 10)} />
-    <g opacity={appear(c.frame, c.at(14), 12) * (1 - shut * .85)}><rect x={1100} y={520} width={60} height={110} rx={10} fill="none" stroke={IVORY} strokeWidth={2.4} /></g>
+  // A door in its frame swings shut over the phone on the shelf behind it; the sitter's chair stays behind the knees
+  // so its legs never cross the shins.
+  {at: 13, label: 'Đảo ngược: làm cho khó thấy', quote: true, draw: (c) => {const shut = interpolate(c.frame, [within(c, 15, .45), within(c, 15, .9)], [0, 1], {...clamp, easing: ease});
+    const edge = 900 + 360 * shut, rise = 20 * (1 - shut);  // free edge of the door: swung toward us (left, taller) → closed on the frame
+    return <g>
+    {D(c, 'M1020 760 L1020 300 L1260 300 L1260 760', 0, 26, 2.6)}
+    {D(c, 'M1050 640 L1230 640', 10, 10, 2, .8)}
+    <g opacity={appear(c.frame, c.at(14), 12)}><rect x={1110} y={524} width={60} height={110} rx={10} fill="none" stroke={IVORY} strokeWidth={2.4} /></g>
+    <path d={`M1020 300 L${edge} ${300 - rise} L${edge} ${760 + rise} L1020 760 Z`} fill="#121a17" stroke={GOLD} strokeWidth={2.6} strokeLinejoin="round" opacity={appear(c.frame, c.start + 16, 10)} />
+    <circle cx={edge - (edge > 1020 ? 26 : -26)} cy={530} r={6} fill="none" stroke={GOLD} strokeWidth={2.2} opacity={appear(c.frame, c.start + 20, 10) * Math.min(1, Math.abs(edge - 1020) / 60)} />
     <Figure frame={c.frame} from={c.start + 8} x={680} y={760} s={1} pose="sit" />
-    {D(c, 'M590 676 L720 676 M594 676 L594 760 M716 676 L716 760', 8, 16, 2.4, .9)}
+    {D(c, 'M600 676 L700 676 M604 676 L604 760 M696 676 L696 760 M600 676 L596 560', 8, 16, 2.4, .9)}
   </g>;}},
 ], options);
 
 // 3B Quy luật 2: làm cho hấp dẫn (loop: KHAO KHÁT).
 // 1–2 a wrapped gift whose glow is strongest just before it opens · 4–5 a rider on an exercise bike, the screen lit
 // only while the wheel spins fast · 7–8 a house with three small players round a chessboard · 9–10 a crowd looking one
-// way, one more head turning with them (quote) · 11–14 PHẢI struck through, ĐƯỢC written in, an alarm clock (quote)
+// way, one more head turning with them (quote) · 11–13 quote lines, then PHẢI struck through, ĐƯỢC written in, an alarm
+// clock · 14 the gift opened and found empty (reverse)
 export const QuyLuat2 = section('06 quy luật 2', /(hấp dẫn|mong chờ|giản lược|gói cám dỗ|đạp đủ nhanh|việc mình thích|thiên tài|bình thường ở nơi mình sống|đúng một mình|khát khao nguyên thủy|"phải"|"được"|điều mình cần)/gi, [
   {at: 0, ...card('QUY LUẬT 2', 'Làm cho hấp dẫn', 1)},
   {at: 1, label: 'Muốn trước khi làm', draw: (c) => {const glow = interpolate(c.frame, [c.start + 10, within(c, 1, .8)], [0, 1], clamp);return <g>
@@ -307,7 +339,7 @@ export const QuyLuat2 = section('06 quy luật 2', /(hấp dẫn|mong chờ|gi�
     {Array.from({length: 8}, (_, k) => {const a = k / 8 * Math.PI * 2;return <path key={k} d={`M${960 + Math.cos(a) * 200} ${560 + Math.sin(a) * 200} L${960 + Math.cos(a) * (230 + glow * 40)} ${560 + Math.sin(a) * (230 + glow * 40)}`} stroke={GOLD} strokeWidth={2.4} strokeLinecap="round" opacity={glow} />;})}
   </g>;}},
   {at: 4, label: 'Gói cám dỗ', draw: (c) => {const fast = interpolate(c.frame, [within(c, 4, .4), within(c, 4, .7)], [0, 1], clamp), spin = c.frame * (2 + fast * 10);return <g>
-    {D(c, 'M640 760 L980 760 M676 640 L736 640 M706 640 L724 744 L900 690 M724 744 L696 760 M724 744 L752 760 M900 740 L880 760 M900 740 L920 760 M900 690 L840 572 L796 572 M751 710 a8 8 0 1 0 16 0 a8 8 0 1 0 -16 0 M754 716 L724 744', 0, 26, 2.4)}
+    {D(c, 'M640 760 L980 760 M676 640 L736 640 M706 640 L706 760 M706 732 L760 712 L900 690 M900 740 L880 760 M900 740 L920 760 M900 690 L840 572 L796 572 M742 712 a18 18 0 1 0 36 0 a18 18 0 1 0 -36 0', 0, 26, 2.4)}  {/* seat post under the hip, feet on the crank: no stroke crosses the rider's legs */}
     <g transform={`translate(900 690) rotate(${spin})`}><circle r={50} fill="none" stroke={GOLD} strokeWidth={2.4} />{[0, 1, 2].map((k) => <path key={k} d={`M0 0 L${Math.cos(k * 2.09) * 50} ${Math.sin(k * 2.09) * 50}`} stroke={GOLD} strokeWidth={1.8} />)}</g>
     <Figure frame={c.frame} from={c.start + 8} x={700} y={700} s={.8} pose="sit" arm="reach" />
     {D(c, 'M1080 380 L1460 380 L1460 620 L1080 620 Z M1240 620 L1220 680 L1320 680 L1300 620', 10, 24, 2.4)}
@@ -326,11 +358,21 @@ export const QuyLuat2 = section('06 quy luật 2', /(hấp dẫn|mong chờ|gi�
     <path d="M1300 480 L1560 480" stroke={GOLD} strokeWidth={2} strokeDasharray="6 10" opacity={turn * .7} />
     <path d="M1560 480 L1540 470 M1560 480 L1540 490" stroke={GOLD} strokeWidth={2} opacity={turn * .7} />
   </g>;}},
-  {at: 11, label: 'Đổi cách nói với chính mình', quote: true, draw: (c) => {const strike = appear(c.frame, within(c, 12, .35), 14), better = appear(c.frame, within(c, 12, .55), 14);return <g>
-    <text x={680} y={500} textAnchor="middle" fill={IVORY} fontSize={110} fontWeight={700} opacity={appear(c.frame, c.at(12), 12) * (1 - better * .5)}>PHẢI</text>
+  // 12 is the quote (lines only); PHẢI, its strike and ĐƯỢC come with sentence 13 where those words are read, then the
+  // alarm clock with "dậy sớm" (user 2026-11-04: animation in sync with the narration).
+  {at: 11, label: 'Đổi cách nói với chính mình', quote: true, draw: (c) => {const said = appear(c.frame, within(c, 13, .1), 12), strike = appear(c.frame, within(c, 13, .2), 14), better = appear(c.frame, within(c, 13, .3), 14);return <g>
+    <g opacity={1 - said}>{quoteLines(c)}</g>
+    <text x={680} y={500} textAnchor="middle" fill={IVORY} fontSize={110} fontWeight={700} opacity={said * (1 - better * .5)}>PHẢI</text>
     <path d="M520 462 L840 462" stroke={GOLD} strokeWidth={6} strokeLinecap="round" opacity={strike} />
     <text x={1260} y={500} textAnchor="middle" fill={GOLD} fontSize={110} fontWeight={700} opacity={better}>ĐƯỢC</text>
-    {D(c, 'M960 690 m-60 0 a60 60 0 1 0 120 0 a60 60 0 1 0 -120 0 M960 690 L960 655 M960 690 L985 705 M915 625 L895 605 M1005 625 L1025 605', 6, 24, 2.4)}
+    <g opacity={appear(c.frame, within(c, 13, .5), 14)}><path d="M960 690 m-60 0 a60 60 0 1 0 120 0 a60 60 0 1 0 -120 0 M960 690 L960 655 M960 690 L985 705 M915 625 L895 605 M1005 625 L1025 605" fill="none" stroke={GOLD} strokeWidth={2.4} strokeLinecap="round" /></g>
+  </g>;}},
+  // 14 the reverse: the gift from the start of this rule is opened and found empty ("không thật sự cho mình điều mình cần").
+  {at: 14, label: 'Đảo ngược: làm cho kém hấp dẫn', draw: (c) => {const lift = interpolate(c.frame, [within(c, 14, .35), within(c, 14, .6)], [0, 1], {...clamp, easing: ease});return <g>
+    {D(c, 'M820 500 L1100 500 L1100 740 L820 740 Z M960 500 L960 740', 0, 24, 2.6)}
+    <g transform={`translate(${-120 * lift} ${-110 * lift}) rotate(${-24 * lift} 800 470)`}>{D(c, 'M800 440 L1120 440 L1120 500 L800 500 Z', 8, 16, 2.6)}</g>
+    <path d="M860 520 L1060 520" stroke={IVORY} strokeWidth={2} strokeDasharray="6 10" opacity={lift * .6} />
+    <text x={1180} y={620} fill={IVORY} fontSize={40} fontWeight={700} opacity={appear(c.frame, within(c, 14, .7), 14)}>trống rỗng</text>
   </g>;}},
 ], options);
 
@@ -343,10 +385,10 @@ export const QuyLuat2 = section('06 quy luật 2', /(hấp dẫn|mong chờ|gi�
 export const QuyLuat3 = section('07 quy luật 3', /(dễ dàng|làm nhiều hơn nghĩ|nhóm chụp nhiều|làm thật|tần suất|ma sát|gỡ chỗ gập|hai phút|một trang|trải thảm|gọi xe|chuẩn hóa|làm cho khó|Victor Hugo|thiết bị cam kết|một lần quyết định)/gi, [
   {at: 0, ...card('QUY LUẬT 3', 'Làm cho dễ dàng', 2)},
   {at: 1, label: 'Làm nhiều hơn nghĩ', draw: (c) => {const rise = appear(c.frame, c.at(3), 24);return <g>
-    {Array.from({length: 9}, (_, k) => <rect key={k} x={620 + (k % 2) * 8} y={720 - k * 26} width={220} height={150} rx={4} fill="#0d1411" stroke={GOLD} strokeWidth={2} opacity={appear(c.frame, c.start + 10 + k * 5, 8)} transform={`rotate(${(k % 3 - 1) * 3} 730 ${790 - k * 26})`} />)}
-    {D(c, 'M1180 560 L1400 560 L1400 710 L1180 710 Z', 10, 20, 2.2, .7)}
-    <g transform={`translate(${rise * 260} ${-rise * 150})`} opacity={rise}><rect x={620} y={460} width={220} height={150} rx={4} fill="#0d1411" stroke={GOLD} strokeWidth={3} /><path d="M640 590 L700 530 L740 570 L780 520 L820 590 Z" fill="none" stroke={GOLD} strokeWidth={2} /></g>
-    <Glow x={990} y={385} r={160} opacity={rise * .7} />
+    {Array.from({length: 9}, (_, k) => <rect key={k} x={620 + (k % 2) * 8} y={670 - k * 26} width={220} height={150} rx={4} fill="#0d1411" stroke={GOLD} strokeWidth={2} opacity={appear(c.frame, within(c, 2, .2 + k * .04), 8)} transform={`rotate(${(k % 3 - 1) * 3} 730 ${740 - k * 26})`} />)}
+    {D(c, 'M1180 510 L1400 510 L1400 660 L1180 660 Z', within(c, 2, .66) - c.start, 20, 2.2, .7)}  {/* the photo pile builds while the class is described; the lone frame comes with "một tấm thật hoàn hảo" */}
+    <g transform={`translate(${rise * 260} ${-rise * 150})`} opacity={rise}><rect x={620} y={410} width={220} height={150} rx={4} fill="#0d1411" stroke={GOLD} strokeWidth={3} /><path d="M640 540 L700 480 L740 520 L780 470 L820 540 Z" fill="none" stroke={GOLD} strokeWidth={2} /></g>
+    <Glow x={990} y={335} r={160} opacity={rise * .7} />
   </g>;}},
   {at: 4, quote: true, draw: (c) => {const go = interpolate(c.frame, [within(c, 4, .5), c.at(5) + 30], [0, 1], {...clamp, easing: ease});return <g>
     {D(c, 'M560 340 L900 340 L900 660 L560 660 Z', 0, 24, 2.6)}
@@ -372,7 +414,7 @@ export const QuyLuat3 = section('07 quy luật 3', /(dễ dàng|làm nhiều hơ
     {D(c, hourglass(700, 520, 1.3), 0, 26, 2.6)}
     <path d="M700 520 L700 600" stroke={GOLD} strokeWidth={2} strokeDasharray="3 6" opacity={appear(c.frame, c.start + 20, 10)} />
     <g opacity={appear(c.frame, within(c, 10, .45), 14)}>{D(c, openBook(1120, 420, .7), within(c, 10, .45) - c.start, 20, 2.4)}<text x={1120} y={392} textAnchor="middle" fill={IVORY} fontSize={38} fontWeight={700}>1 trang</text></g>
-    <g opacity={appear(c.frame, within(c, 10, .75), 14)}><path d={`M960 700 L${960 + interpolate(c.frame, [within(c, 10, .75), within(c, 10, 1)], [40, 360], clamp)} 700`} stroke={GOLD} strokeWidth={14} strokeLinecap="round" opacity={.7} /><circle cx={950} cy={694} r={20} fill="none" stroke={GOLD} strokeWidth={2.4} /></g>
+    <g opacity={appear(c.frame, within(c, 10, .64), 14)}><path d={`M960 700 L${960 + interpolate(c.frame, [within(c, 10, .64), within(c, 10, .9)], [40, 360], clamp)} 700`} stroke={GOLD} strokeWidth={14} strokeLinecap="round" opacity={.7} /><circle cx={950} cy={694} r={20} fill="none" stroke={GOLD} strokeWidth={2.4} /></g>
   </g>},
   {at: 11, quote: true, draw: (c) => {const car = interpolate(c.frame, [within(c, 11, .4), within(c, 11, .85)], [0, 1], {...clamp, easing: ease});return <g>
     {D(c, 'M300 760 L1620 760 M300 780 L1620 780', 0, 26, 2, .6)}
@@ -386,7 +428,7 @@ export const QuyLuat3 = section('07 quy luật 3', /(dễ dàng|làm nhiều hơ
     {D(c, 'M560 600 L860 600 L860 760 L560 760 Z M560 600 C560 540 860 540 860 600', 0, 26, 2.6)}
     <g opacity={lock}><rect x={690} y={630} width={40} height={36} rx={4} fill="none" stroke={GOLD} strokeWidth={2.4} /><path d="M698 630 C698 606 722 606 722 630" fill="none" stroke={GOLD} strokeWidth={2.4} /></g>
     {D(c, 'M1110 500 L1110 760 M1000 660 L1110 660 M1004 660 L1004 760 M1080 500 L1110 500', 12, 20, 2.4, .9)}
-    <path d="M1096 504 C1136 520 1146 590 1124 646 M1110 520 C1080 560 1086 610 1100 640" fill="none" stroke={IVORY} strokeWidth={2.4} strokeLinecap="round" opacity={appear(c.frame, within(c, 14, .6), 12)} />
+    <path d="M1106 508 C1076 524 1062 584 1070 644 M1106 508 C1090 544 1088 604 1094 648 M1070 644 L1094 648" fill="none" stroke={IVORY} strokeWidth={2.4} strokeLinecap="round" opacity={appear(c.frame, within(c, 14, .6), 12)} />
     {D(c, 'M1220 640 L1460 640 M1260 640 L1250 760 M1420 640 L1430 760 M1400 560 L1360 630', 16, 20, 2.4)}
     <Word x={960} y={380} size={48} text="THIẾT BỊ CAM KẾT" opacity={word} />
   </g>;}},
@@ -475,8 +517,15 @@ export const ThanhNep = section('08b thành nếp', /(thành nếp|sân chơi|l�
     <Figure frame={c.frame} from={c.start + 6} x={700} y={760 - bob * 0} s={.95} arm={bob > 10 ? 'raise' : 'down'} />
     {Array.from({length: 20}, (_, k) => <path key={k} d={`M${940 + (k % 10) * 46} ${560 + Math.floor(k / 10) * 90} l0 60`} stroke={k % 5 === 4 ? GOLD : IVORY} strokeWidth={2.4} opacity={appear(c.frame, c.start + 14 + k * 5, 6) * (k % 5 === 4 ? 1 : .7)} />)}
   </g>;}},
-  {at: 8, label: 'Xem lại và giữ mình mềm dẻo', quote: true, draw: (c) => {const sway = Math.sin((c.frame - c.start) / 22) * 8;return <g>
-    {D(c, openBook(760, 580, .9), 0, 28, 2.6)}
+  // 8–9 walking in place on a loop that goes nowhere ("làm theo quán tính mà không tiến bộ"); 10 the year-end review
+  // book with its three questions and a supple branch; the book only arrives with "tổng kết mỗi cuối năm".
+  {at: 8, label: 'Xem lại và giữ mình mềm dẻo', quote: true, draw: (c) => {const sway = Math.sin((c.frame - c.start) / 22) * 8, review = appear(c.frame, c.at(10), 18);return <g>
+    <g opacity={1 - review}>
+      {D(c, 'M760 760 C760 720 1160 720 1160 760 C1160 800 760 800 760 760 Z', 6, 26, 2.2, .7)}
+      <Figure frame={c.frame} from={c.start + 10} x={960} y={760} s={.8} pose="walk" />
+      <path d="M1330 620 A80 80 0 1 1 1290 551 M1290 551 L1276 572 M1290 551 L1314 556" fill="none" stroke={GOLD} strokeWidth={2.4} strokeLinecap="round" opacity={appear(c.frame, within(c, 9, .45), 14) * .8} />
+    </g>
+    <g opacity={review}>{D(c, openBook(760, 580, .9), c.at(10) - c.start, 28, 2.6)}</g>
     {['Điều gì tốt?', 'Điều gì chưa tốt?', 'Mình học được gì?'].map((t, k) => <text key={t} x={760} y={340 + k * 62} textAnchor="middle" fill={GOLD} fontSize={42} fontWeight={700} opacity={appear(c.frame, within(c, 10, .3 + k * .15), 10)}>{t}</text>)}
     <g transform={`rotate(${sway} 1300 780)`}><g opacity={appear(c.frame, within(c, 10, .7), 16)}><path d="M1300 780 C1290 680 1310 600 1360 520 M1318 652 C1356 640 1384 612 1398 582 M1334 594 C1306 572 1296 544 1296 514" fill="none" stroke={GOLD} strokeWidth={2.6} strokeLinecap="round" />
       {[[1360, 520, -30], [1398, 582, 20], [1296, 514, -60], [1352, 640, 40], [1310, 700, -40]].map(([x, y, a], k) => <ellipse key={k} cx={x} cy={y} rx={22} ry={10} transform={`rotate(${a} ${x} ${y})`} fill="rgba(217,181,111,.14)" stroke={GOLD} strokeWidth={2.2} />)}</g></g>
@@ -536,7 +585,7 @@ export const YKien = section('08g ý kiến', /(ý kiến riêng|đáng giá nh�
     {D(c, 'M920 596 L1030 596', 18, 10, 4)}
     <g opacity={appear(c.frame, within(c, 2, .3), 12)}><path d="M560 760 L660 760 L660 690 L560 690 Z" fill="none" stroke={IVORY} strokeWidth={2.4} opacity={.75} /><text x={610} y={662} textAnchor="middle" fill={IVORY} fontSize={36} fontWeight={700} opacity={.85}>hôm nay</text></g>
     {[0, 1, 2].map((k) => {const fall = interpolate(c.frame, [within(c, 2, .55) + k * 20, within(c, 2, .55) + k * 20 + 22], [0, 1], {...clamp, easing: ease});
-      return <path key={k} d={`M${946 + (k % 2) * 16} ${300 + fall * 250} l50 0 l0 40 l-50 0 Z`} fill="none" stroke={GOLD} strokeWidth={2.4} opacity={appear(c.frame, within(c, 2, .55) + k * 20, 6) * (1 - appear(c.frame, within(c, 2, .55) + k * 20 + 22, 6))} />;})}
+      return <path key={k} d={`M${946 + (k % 2) * 16} ${300 + fall * 236} l50 0 l0 40 l-50 0 Z`} fill="none" stroke={GOLD} strokeWidth={2.4} opacity={appear(c.frame, within(c, 2, .55) + k * 20, 6) * (1 - appear(c.frame, within(c, 2, .55) + k * 20 + 22, 6))} />;})}
     <text x={1260} y={700} fill={GOLD} fontSize={40} fontWeight={700} opacity={appear(c.frame, within(c, 2, .7), 12)}>ngày mai</text>
   </g>},
   {at: 3, label: 'Cục nước đá', draw: (c) => {const heat = interpolate(c.frame, [c.start + 14, within(c, 3, .9)], [0, 1], {...clamp, easing: ease}), walk = interpolate(c.frame, [within(c, 4, .2), within(c, 4, .9)], [0, 1], clamp);return <g>
@@ -566,8 +615,8 @@ export const YKien = section('08g ý kiến', /(ý kiến riêng|đáng giá nh�
   {at: 9, draw: (c) => <g>
     {D(c, hourglass(560, 560, 1.1), 0, 24, 2.6)}
     {['2 phút', '10 phút', '30 phút'].map((t, k) => <g key={t} opacity={appear(c.frame, within(c, 9, .3 + k * .2), 12)}>
-      <text x={[820, 1110, 1440][k]} y={580} textAnchor="middle" fill={k ? GOLD : IVORY} fontSize={[40, 50, 62][k]} fontWeight={700}>{t}</text>
-      {k < 2 ? <path d={`M${[900, 1210][k]} 566 L${[1000, 1310][k]} 566 M${[984, 1294][k]} 554 L${[1000, 1310][k]} 566 L${[984, 1294][k]} 578`} fill="none" stroke={GOLD} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" /> : null}
+      <text x={[820, 1130, 1500][k]} y={580} textAnchor="middle" fill={k ? GOLD : IVORY} fontSize={[40, 50, 62][k]} fontWeight={700}>{t}</text>
+      {k < 2 ? <path d={`M${[900, 1244][k]} 566 L${[1000, 1340][k]} 566 M${[984, 1324][k]} 554 L${[1000, 1340][k]} 566 L${[984, 1324][k]} 578`} fill="none" stroke={GOLD} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" /> : null}
     </g>)}
   </g>},
   {at: 10, draw: (c) => {const fade = appear(c.frame, within(c, 10, .45), 24), g = interpolate(c.frame, [within(c, 10, .4), within(c, 10, 1)], [0, 1], {...clamp, easing: ease});return <g>
