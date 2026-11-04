@@ -6,14 +6,23 @@ with their captions, and recorded in audio/voice-metadata.json and scripts/proje
 (same naming as 00-intro / 01-gioi-thieu-tap / 99-outro). A file that already exists with other content is moved
 to audio/backups/ first. The video itself keeps reading body-takes.json; this is the published record the final
 review lists. Run again after a segment is re-cloned and picked.
-Usage: .venv/bin/python scripts/projects/book-hvtt-001-overview/publish-voice.py
+Usage: .venv/bin/python scripts/projects/book-hvtt-001-overview/publish-voice.py [--project <slug>]
 """
-import hashlib, json, shutil, time
+import hashlib, json, shutil, sys, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-HERE = Path(__file__).resolve().parent
-AUDIO = ROOT / 'public/book-hvtt-001-overview/audio'
+
+def project_arg(default='book-hvtt-001-overview'):
+    """Another episode of the series: --project <slug> (removed from argv before the script's own options)."""
+    if '--project' in sys.argv:
+        i = sys.argv.index('--project'); slug = sys.argv[i + 1]; del sys.argv[i:i + 2]; return slug
+    return default
+
+
+PROJECT = project_arg()
+HERE = ROOT / 'scripts/projects' / PROJECT
+AUDIO = ROOT / 'public' / PROJECT / 'audio'
 VOICE = 'Giọng người dùng (clone) +2 bán cung'
 
 
@@ -22,9 +31,10 @@ def sha(path):
 
 
 def main():
-    takes = json.loads((ROOT / 'src/projects/book-hvtt-001-overview/body-takes.json').read_text())['voices']
+    takes = json.loads((ROOT / 'src/projects' / PROJECT / 'body-takes.json').read_text())['voices']
+    AUDIO.mkdir(parents=True, exist_ok=True)
     meta_file, voice_file = AUDIO / 'voice-metadata.json', HERE / 'voice.json'
-    meta, voice = json.loads(meta_file.read_text()), json.loads(voice_file.read_text())
+    meta, voice = (json.loads(meta_file.read_text()) if meta_file.exists() else []), json.loads(voice_file.read_text())
     for t in takes:
         if not t['id'].endswith('-sang2') or t['id'].startswith('25-'):
             continue
@@ -40,7 +50,7 @@ def main():
         entry = {'scene': seg, 'file': out.name, 'captionsFile': caps.name, 'voice': VOICE, 'sha256': digest,
                  'durationSeconds': round(t['durationSeconds'], 3), 'phraseRanges': t.get('phraseRanges', []), 'sourceTake': t['file']}
         meta = [m for m in meta if m.get('scene') != seg] + [entry]
-        voice.setdefault('segments', {})[seg] = {'file': f'book-hvtt-001-overview/audio/{out.name}', 'sha256': digest, 'sourceTake': t['file']}
+        voice.setdefault('segments', {})[seg] = {'file': f'{PROJECT}/audio/{out.name}', 'sha256': digest, 'sourceTake': t['file']}
         print(f'{seg}: {entry["durationSeconds"]} s')
     meta.sort(key=lambda m: m['scene'])
     voice['segments'] = dict(sorted(voice['segments'].items()))

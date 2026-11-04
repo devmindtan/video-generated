@@ -3,7 +3,7 @@
 Accent-insensitive word match does not validate tones (mẹ → mẽ); this flags words whose diacritics differ
 (Bà → Ba, mắng → mắn) so the specific sentence can be re-cloned. ASR can also mishear: a flag means "listen
 here", not a verdict. Writes <clone take>/tone-check.json and prints the flagged sentences.
-Usage: .venv/bin/python scripts/projects/book-hvtt-001-overview/check-tones.py <clone-take> [<clone-take> ...]
+Usage: .venv/bin/python scripts/projects/book-hvtt-001-overview/check-tones.py [--project <slug>] <clone-take> [<clone-take> ...]
 """
 import difflib, json, os, re, sys, unicodedata
 from pathlib import Path
@@ -12,12 +12,20 @@ import soundfile as sf, soxr
 from faster_whisper import WhisperModel
 
 ROOT = Path(__file__).resolve().parents[3]
+def project_arg(default='book-hvtt-001-overview'):
+    """Another episode of the series: --project <slug> (removed from argv before the script's own options)."""
+    if '--project' in sys.argv:
+        i = sys.argv.index('--project'); slug = sys.argv[i + 1]; del sys.argv[i:i + 2]; return slug
+    return default
+
+
+PROJECT = project_arg()
 words = lambda t: re.findall(r'\w+', unicodedata.normalize('NFC', t.lower()))
 plain = lambda w: ''.join(c for c in unicodedata.normalize('NFD', w.replace('đ', 'd')) if unicodedata.category(c) != 'Mn')
 model = WhisperModel('medium', device='cpu', compute_type='int8', cpu_threads=4, download_root=str(ROOT / '.cache/whisper'))
 
 for take in sys.argv[1:]:
-    folder = ROOT / 'public/book-hvtt-001-overview/voice-auditions' / take
+    folder = ROOT / 'public' / PROJECT / 'voice-auditions' / take
     manifest = json.loads((folder / 'manifest.json').read_text())
     report = []
     for f in manifest['files']:

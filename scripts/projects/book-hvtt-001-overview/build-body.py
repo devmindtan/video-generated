@@ -5,15 +5,29 @@ clone take that has exactly that text and passed check-tones.py (else simply the
 candidates can be cloned several times and the clean one wins; a pick in voice-picks.json (user listening) wins over both; assembled with the segment's pauses, raised +2
 semitones (episode voice, duration preserved). Missing sentences are skipped until their take exists.
 Never touches public/<slug>/audio/ (published voice) — publishing happens after the user listens.
-Usage: .venv/bin/python scripts/projects/book-hvtt-001-overview/build-body.py
+Other episodes: --project <slug> (segments from scripts/projects/<slug>/segments.json, the card segment 01 is left out).
+Usage: .venv/bin/python scripts/projects/book-hvtt-001-overview/build-body.py [--project <slug>]
 """
 import json, re, shutil, subprocess, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-HERE = Path(__file__).resolve().parent
-AUD = ROOT / 'public/book-hvtt-001-overview/voice-auditions'
+TOOLS = Path(__file__).resolve().parent
+
+def project_arg(default='book-hvtt-001-overview'):
+    """Another episode of the series: --project <slug> (removed from argv before the script's own options)."""
+    if '--project' in sys.argv:
+        i = sys.argv.index('--project'); slug = sys.argv[i + 1]; del sys.argv[i:i + 2]; return slug
+    return default
+
+
+PROJECT = project_arg()
+HERE = ROOT / 'scripts/projects' / PROJECT
+PREFIX = '-'.join(PROJECT.split('-')[:2])  # book-hvtt, book-ah: names of the assembled takes
+AUD = ROOT / 'public' / PROJECT / 'voice-auditions'
 SEGMENTS = ['01b-cach-lam', '02-mo-chuyen', '03-cuon-sach', '04-soi-chi', '05-nhom-3a', '06-nhom-3b', '07-nhom-3c', '08-nhom-3d', '08e-diem-chua-dat', '08f-tong-ket', '08g-y-kien', '09-nhan-xet']
+if (HERE / 'segments.json').exists():
+    SEGMENTS = [s for s in json.loads((HERE / 'segments.json').read_text()).values() if not s.startswith('01-')]
 py = str(ROOT / '.venv/bin/python')
 MAX_PAUSE = .18  # pauses inside a sentence (user 2026-11-02: "chậm chậm, khoảng nghỉ lâu"; again after p9: "chưa liền mạch")
 PAUSE_SCALE = .6  # lead-in, pauses between sentences and tail of each segment (audition-<seg>.json values × this)
@@ -57,25 +71,25 @@ def main():
         choice['__maxPause'] = MAX_PAUSE  # part of the stamp, so a new setting rebuilds
         choice['__pauseScale'] = PAUSE_SCALE
         choice['__pauses'] = [x['pauseAfter'] for x in cfg['sentences']]  # a pause edit rebuilds too
-        out = ROOT / 'public/voice-auditions' / f'book-hvtt-{seg}-clone'  # 'clone' in the name keeps voice ids unsuffixed
+        out = ROOT / 'public/voice-auditions' / f'{PREFIX}-{seg}-clone'  # 'clone' in the name keeps voice ids unsuffixed
         stamp = out / 'sources.json'
         if stamp.exists() and json.loads(stamp.read_text()) == choice:
-            built.append(f'book-hvtt-{seg}-clone-sang2'); print(f'{seg}: không đổi'); continue
-        for d in [out, ROOT / 'public/voice-auditions' / f'book-hvtt-{seg}-clone-sang2']:
+            built.append(f'{PREFIX}-{seg}-clone-sang2'); print(f'{seg}: không đổi'); continue
+        for d in [out, ROOT / 'public/voice-auditions' / f'{PREFIX}-{seg}-clone-sang2']:
             if d.exists(): shutil.rmtree(d)  # derived audio only; clone takes stay untouched
         pick = AUD.parent / f'.choice-{seg}.json'
         pick.write_text(json.dumps({k: v for k, v in choice.items() if not k.startswith('__')}, ensure_ascii=False))
-        subprocess.run([py, str(HERE / 'assemble-clone.py'), '--config', f'audition-{seg}.json', '--clone', *used, '--choice', str(pick), '--out', out.name, '--id', seg, '--max-pause', str(MAX_PAUSE), '--pause-scale', str(PAUSE_SCALE)], check=True)
+        subprocess.run([py, str(TOOLS / 'assemble-clone.py'), '--project', PROJECT, '--config', f'audition-{seg}.json', '--clone', *used, '--choice', str(pick), '--out', out.name, '--id', seg, '--max-pause', str(MAX_PAUSE), '--pause-scale', str(PAUSE_SCALE)], check=True)
         pick.unlink()
-        subprocess.run([py, str(HERE / 'voice-variants.py'), '--source', out.name, '--semitones', '2'], check=True)
+        subprocess.run([py, str(TOOLS / 'voice-variants.py'), '--source', out.name, '--semitones', '2'], check=True)
         stamp.write_text(json.dumps(choice, ensure_ascii=False, indent=1) + '\n')
-        built.append(f'book-hvtt-{seg}-clone-sang2'); print(f'{seg}: đã ghép từ {", ".join(used)}')
+        built.append(f'{PREFIX}-{seg}-clone-sang2'); print(f'{seg}: đã ghép từ {", ".join(used)}')
     if built:
         # Keep the other takes already listed (placeholder voices) so their voice ids stay available.
-        listed = ROOT / 'src/projects/book-hvtt-001-overview/body-takes.json'
+        listed = ROOT / 'src/projects' / PROJECT / 'body-takes.json'
         old = json.loads(listed.read_text())['takes'] if listed.exists() else []
         takes_out = old + [t for t in built if t not in old]
-        subprocess.run([py, str(HERE / 'intro-bands.py'), '--take', *takes_out, '--out', 'src/projects/book-hvtt-001-overview/body-takes.json'], check=True)
+        subprocess.run([py, str(TOOLS / 'intro-bands.py'), '--take', *takes_out, '--out', f'src/projects/{PROJECT}/body-takes.json'], check=True)
 
 
 if __name__ == '__main__':

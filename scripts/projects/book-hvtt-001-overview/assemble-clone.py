@@ -49,14 +49,15 @@ def main():
     parser.add_argument('--out', required=True)
     parser.add_argument('--max-pause', type=float, help='Shorten silences inside each sentence to this many seconds')
     parser.add_argument('--pause-scale', type=float, default=1.0, help='Scale the config lead-in, pauses between sentences and tail')
+    parser.add_argument('--project', default='book-hvtt-001-overview', help='Episode whose config and clone takes are used')
     parser.add_argument('--choice', help='JSON {sentence text: clone take} overriding "last take wins" (build-body.py)')
     args = parser.parse_args()
-    project = ROOT / 'scripts/projects/book-hvtt-001-overview'
+    project = ROOT / 'scripts/projects' / args.project
     cfg = json.loads((project / args.config).read_text())
     choice = json.loads(Path(args.choice).read_text()) if args.choice else {}
     parts = {}
     for take in args.clone:
-        folder = ROOT / 'public/book-hvtt-001-overview/voice-auditions' / take
+        folder = ROOT / 'public' / args.project / 'voice-auditions' / take
         clone = json.loads((folder / 'manifest.json').read_text())
         for f in clone['files']:
             if choice.get(f['text'].strip(), take) == take:
