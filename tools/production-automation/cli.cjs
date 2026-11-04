@@ -333,5 +333,5 @@ function finish(run){
   if(['failed','timed-out','interrupted'].includes(run.status)) process.exitCode=1;
 }
 // Export before main() runs: runner.cjs reads these through a lazy require.
-module.exports={plan,status,doctor,denied,seriesWorkflow,profileFor};
+module.exports={plan,status,doctor,denied,seriesWorkflow,profileFor,codeGraph};
 if(require.main===module) main(process.argv.slice(2)).catch(e=>{console.error(e.message);process.exitCode=1;});

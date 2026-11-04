@@ -1339,6 +1339,7 @@ function sysDetail(m,r){
     ...(f.python?[['Gói Python',`${esc(f.python.env)} · ${f.python.version?esc(f.python.version):'<em>chưa cài</em>'}`]]:[]),
     ...(f.binary?[['Chương trình',`<code>${esc(f.binary.path)}</code> ${f.binary.present?'có':'<em>chưa có trên máy</em>'}`]]:[]),
     ...(f.runtime?[['Runtime',`<code>${esc(f.runtime.path)}</code> ${f.runtime.present?'có':'<em>chưa có</em>'}`]]:[]),
+    ...(f.graph?[['Đồ thị code',f.graph.built?`dựng ${esc(new Date(f.graph.built).toLocaleString('vi-VN'))} · ${f.graph.stale?'<em>cũ hơn code, sẽ tự dựng lại</em>':'khớp code hiện tại'}`:'<em>chưa dựng</em>']]:[]),
     ...(f.skills.length?[['Skill',f.skills.map(s=>`<code>${esc(s.name)}</code>${s.present?'':' <em>thiếu</em>'}`).join(' ')]]:[]),
     ['Giấy phép',esc(r.license||'Chưa ghi')]
   ];

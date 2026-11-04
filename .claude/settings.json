@@ -1,10 +1,18 @@
 {
   "hooks": {
+    "SessionStart": [
+      {"hooks": [{"type": "command",
+        "command": "cd \"$CLAUDE_PROJECT_DIR\" && node scripts/tooling/graph-ensure.cjs --quiet", "timeout": 130}]}
+    ],
     "PreToolUse": [
       {"matcher": "Bash|Grep", "hooks": [{"type": "command",
         "command": "cd \"$CLAUDE_PROJECT_DIR\" && .venv-graph/bin/graphify hook-guard search", "timeout": 10}]},
       {"matcher": "Read|Glob", "hooks": [{"type": "command",
         "command": "cd \"$CLAUDE_PROJECT_DIR\" && .venv-graph/bin/graphify hook-guard read", "timeout": 10}]}
+    ],
+    "PostToolUse": [
+      {"matcher": "Bash", "hooks": [{"type": "command",
+        "command": "cd \"$CLAUDE_PROJECT_DIR\" && node scripts/tooling/graph-ensure.cjs --after-commit", "timeout": 10}]}
     ]
   }
 }

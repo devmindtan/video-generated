@@ -81,6 +81,7 @@ function systemMap(root){
       python:entry.python?{env:entry.python.env,version:distVersion(root,entry.python.env,entry.python.dist||entry.python.module)}:null,
       binary:entry.binary?{path:entry.binary,present:fs.existsSync(path.join(root,entry.binary))}:entry.binaryCheck?{path:entry.binaryCheck,present:onPath(entry.binaryCheck)}:null,
       runtime:entry.runtime?{path:entry.runtime,present:fs.existsSync(path.join(root,entry.runtime))}:null,
+      graph:entry.codeGraph?(()=>{const g=require('../production-automation/cli.cjs').codeGraph(root);return {built:g.builtAt,stale:g.stale};})():null,
       skills:(entry.skills||[]).map(name=>({name,present:fs.existsSync(path.join(root,'skills',name,'SKILL.md'))}))
     };
     const notes=[];

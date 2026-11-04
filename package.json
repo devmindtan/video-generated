@@ -164,6 +164,7 @@
     "automation": "node tools/production-automation/cli.cjs",
     "test:automation": "node tools/production-automation/automation.test.cjs",
     "graph:update": ".venv-graph/bin/graphify update .",
+    "graph:ensure": "node scripts/tooling/graph-ensure.cjs",
     "graph:query": ".venv-graph/bin/graphify query",
     "graph:explain": ".venv-graph/bin/graphify explain",
     "graph:path": ".venv-graph/bin/graphify path",
