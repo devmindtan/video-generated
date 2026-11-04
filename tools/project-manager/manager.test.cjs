@@ -246,3 +246,11 @@ test('VoiceStudio status is read-only; stop requires the session token',async t=
  assert.equal((await post({'X-Workspace-Token':token,Origin:'https://evil.example'})).status,403);assert.equal(stops,0);
  const ok=await post({'X-Workspace-Token':token});assert.equal(ok.status,200);assert.deepEqual(await ok.json(),{stopped:2,forced:0});assert.equal(stops,1);
 });
+test('stylesheet stays well-formed: every comment closes, braces balance, key rules parse',()=>{
+ // An unclosed comment silently drops every rule after it (the review page lost its "Việc của bạn" box once).
+ const css=fs.readFileSync(path.join(__dirname,'web/styles.css'),'utf8');
+ assert.equal((css.match(/\/\*/g)||[]).length,(css.match(/\*\//g)||[]).length,'comment open/close');
+ const plain=css.replace(/\/\*[\s\S]*?\*\//g,'');assert.ok(!plain.includes('/*')&&!plain.includes('*/'),'nested or stray comment marks');
+ assert.equal((plain.match(/\{/g)||[]).length,(plain.match(/\}/g)||[]).length,'braces');
+ for(const sel of ['.gate-next','.patch-panel','.review-dialog','.episodes-view','.media-switch-item'])assert.ok(new RegExp(`(^|[},\\s])${sel.replace('.','\\.')}[\\s{:.,\\[]`).test(plain),`${sel} rule present`);
+});
