@@ -83,7 +83,7 @@ async function restoreRoute(event){
 async function refresh(initial=false){
   if(refreshing)return;refreshing=true;$('#refresh-button').disabled=true;
   refreshVoiceStudio();
-  try{state.data=await api('/api/workspace');state.workflowStale=true;state.resourceStale=true;$('#load-error').hidden=true;$('#connection').classList.remove('offline');$('#connection').lastChild.textContent='Đã kết nối';render();if(initial)openHash();}
+  try{state.data=await api('/api/workspace');state.workflowStale=true;state.resourceStale=true;state.channelProfileStale=true;$('#load-error').hidden=true;$('#connection').classList.remove('offline');$('#connection').lastChild.textContent='Đã kết nối';render();if(initial)openHash();}
   catch(error){$('#load-error').textContent=`Chưa kết nối được: ${error.message}`;$('#load-error').hidden=false;$('#connection').classList.add('offline');}
   finally{refreshing=false;$('#refresh-button').disabled=false;}
 }
@@ -110,7 +110,7 @@ function render(){
   if(!state.data)return;
   renderNav();
   const resource=Boolean(resourceViews[state.view]);
-  $('#resource-view').hidden=!resource;$('#stats').hidden=resource;$('.library').hidden=resource;
+  $('#resource-view').hidden=!resource;$('#stats').hidden=resource;$('.library').hidden=resource;if(resource)$('#channel-profile').hidden=true;
   if(resource){
     $('#new-book-button').hidden=true;$('#book-banner').hidden=true;$('#workflow').hidden=true;$('#new-project-button').className='button secondary';$('#new-project-button').hidden=state.view==='system';
     $('#page-title').textContent=resourceViews[state.view];renderBreadcrumbs();
@@ -142,6 +142,7 @@ function render(){
   $('#last-update').textContent='Đồng bộ lúc '+new Date(state.data.generatedAt).toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'});
   $('#search').value=state.query;
   renderWorkflow();
+  renderChannelProfile();
   renderCards();
 }
 // Card line for a project the agent is working on (from its live progress plan).
@@ -909,6 +910,120 @@ function updateCreateImport(){
   const panel=$('#create-import');if(!panel)return;const series=state.data.series.find(s=>s.id===$('#create-series').value),external=series&&!contentChannels.includes(series.channel),toggle=$('#create-import-toggle'),field=$('#create-video-field'),file=$('#create-video-file');
   panel.hidden=!external;if(!external){toggle.checked=false;file.value='';}field.hidden=!external||!toggle.checked;file.required=external&&toggle.checked;$('#submit-create').textContent=external&&toggle.checked?'Tạo và import video':'Tạo dự án';
 }
+// Channel profiles on social platforms (tools/project-manager/channels.cjs): name, link, description and images per
+// platform. Metadata only; the page never signs in to, reads from or posts to a platform.
+function channelImageUrl(channel,file){return `/api/channel-image?channel=${encodeURIComponent(channel)}&file=${encodeURIComponent(file)}`;}
+async function loadChannelProfile(id){
+  state.channelProfileStale=false;
+  try{state.channelProfile=await api('/api/channel-profile?channel='+encodeURIComponent(id));}catch(error){state.channelProfile={channel:id,error:error.message};}
+  if(state.channel===id&&!state.series&&state.view==='projects')renderChannelProfile();return state.channelProfile;
+}
+function renderChannelProfile(){
+  const box=$('#channel-profile'),show=Boolean(state.channel)&&!state.series&&state.view==='projects'&&contentChannels.includes(state.channel);box.hidden=!show;if(!show)return;
+  const profile=state.channelProfile;
+  if(!profile||profile.channel!==state.channel||state.channelProfileStale){loadChannelProfile(state.channel);if(!profile||profile.channel!==state.channel){box.innerHTML='<p class="workflow-empty">Đang đọc hồ sơ kênh…</p>';return;}}
+  if(profile.error){box.innerHTML=`<p class="workflow-empty">Không đọc được hồ sơ kênh: ${esc(profile.error)}</p>`;return;}
+  const list=profile.platforms;
+  const heading=`<div class="channel-heading"><div><h2 id="channel-profile-title">Kênh trên các nền tảng</h2><p>${list.length?`${list.length} nền tảng. `:''}Tên, link, mô tả và ảnh của kênh ở từng nơi đăng video. Chỉ lưu trên máy, không kết nối tài khoản.</p></div>${list.length?`<button class="button secondary" data-channel-add>${icon('plus')}Thêm nền tảng</button>`:''}</div>`;
+  if(!list.length){box.innerHTML=heading+`<div class="channel-empty"><p>Chưa lưu nền tảng nào cho ${esc(profile.title)}. Thêm YouTube, TikTok, Facebook… để giữ tên, link và mô tả kênh ở một chỗ.</p><button class="button primary" data-channel-add>${icon('plus')}Thêm nền tảng đầu tiên</button></div>`;return;}
+  // A re-render (refresh on window focus, a save) keeps keyboard focus on the same control.
+  const focused=box.contains(document.activeElement)?document.activeElement:null,key=focused?.dataset.channelEdit!==undefined?`[data-channel-edit="${CSS.escape(focused.dataset.channelEdit)}"]`:focused?.hasAttribute('data-channel-add')?'.channel-heading [data-channel-add]':'';
+  box.innerHTML=heading+`<ul class="platform-grid">${list.map(p=>platformCard(profile,p)).join('')}</ul>`;
+  if(key)box.querySelector(key)?.focus({preventScroll:true});
+  box.querySelectorAll('.platform-description').forEach(node=>{const more=node.nextElementSibling;if(more?.hasAttribute('data-channel-more'))more.hidden=node.scrollHeight<=node.clientHeight+2;});
+}
+function platformCard(profile,p){
+  const label=profile.platformNames[p.platform]||p.platform,initial=[...p.name.trim()][0]||'?';
+  return `<li class="platform-card platform-${esc(p.platform)}"><div class="platform-banner">${p.banner?`<img src="${channelImageUrl(profile.channel,p.banner)}" alt="" width="1200" height="400" loading="lazy" decoding="async">`:''}</div>
+<div class="platform-body"><div class="platform-identity"><span class="platform-avatar">${p.avatar?`<img src="${channelImageUrl(profile.channel,p.avatar)}" alt="" width="96" height="96" loading="lazy" decoding="async">`:`<span aria-hidden="true">${esc(initial.toUpperCase())}</span>`}</span><span class="platform-tag">${esc(label)}</span></div>
+<h3>${esc(p.name)}</h3>${p.handle?`<p class="platform-handle">${esc(p.handle)}</p>`:''}
+${p.description?`<p class="platform-description">${esc(p.description)}</p><button class="text-button" data-channel-more aria-expanded="false" hidden>Xem cả mô tả</button>`:'<p class="platform-description is-empty">Chưa có mô tả kênh.</p>'}
+${p.notes?`<p class="platform-notes"><span>Ghi chú riêng:</span> ${esc(p.notes)}</p>`:''}
+<div class="platform-actions">${p.url?`<a class="button secondary" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer">Mở kênh<span class="sr-only"> ${esc(label)} trong tab mới</span></a>`:'<span class="platform-nolink">Chưa có link</span>'}<button class="button quiet" data-channel-edit="${esc(p.id)}">Sửa<span class="sr-only"> ${esc(label)}: ${esc(p.name)}</span></button></div></div></li>`;
+}
+// One dialog adds or edits a platform; chosen images upload after the text is saved, each against the newest revision.
+function openChannelDialog(id){
+  const profile=state.channelProfile;if(!profile||profile.error)return;
+  const item=id?profile.platforms.find(p=>p.id===id):null;if(id&&!item){toast('Nền tảng này vừa bị xóa. Trang đã đọc lại hồ sơ kênh.');loadChannelProfile(state.channel);return;}
+  const form=$('#channel-form'),used=new Set(profile.platforms.map(p=>p.platform));
+  state.channelEdit={id:item?.id||'',images:{avatar:item?.avatar||null,banner:item?.banner||null},picked:{},cleared:{}};
+  form.reset();$('#channel-error').hidden=true;
+  $('#channel-platform').innerHTML=Object.entries(profile.platformNames).map(([key,name])=>`<option value="${esc(key)}">${esc(name)}</option>`).join('');
+  $('#channel-platform').value=item?.platform||Object.keys(profile.platformNames).find(k=>!used.has(k))||'other';
+  for(const field of ['name','handle','url','description','notes'])form.elements[field].value=item?.[field]||'';
+  if(!item)form.elements.name.value=profile.title;
+  $('#channel-dialog-title').textContent=item?`Sửa ${profile.platformNames[item.platform]||item.platform}`:'Thêm nền tảng';
+  $('#channel-dialog-description').textContent=`${profile.title} · lưu trong ${profile.file}`;
+  $('#delete-channel').hidden=!item;$('#channel-order').hidden=!item||profile.platforms.length<2;
+  $('#submit-channel').textContent=item?'Lưu thay đổi':'Thêm nền tảng';
+  for(const kind of ['avatar','banner'])showChannelImage(kind);
+  updateChannelCount();$('#channel-dialog').showModal();form.elements.name.focus();form.elements.name.select();
+}
+function showChannelImage(kind){
+  const e=state.channelEdit,picked=e.picked[kind],current=e.cleared[kind]?null:e.images[kind],box=$(`#channel-${kind}-preview`);
+  const src=picked?.dataUrl||(current?channelImageUrl(state.channelProfile.channel,current):'');
+  box.innerHTML=src?`<img src="${esc(src)}" alt="${kind==='avatar'?'Ảnh đại diện':'Ảnh bìa'} đã chọn">`:`<span>${kind==='avatar'?'Chưa có':'Chưa có ảnh bìa'}</span>`;
+  $(`#channel-${kind}-pick`).textContent=src?'Đổi ảnh':'Chọn ảnh';$(`[data-channel-clear="${kind}"]`).hidden=!src;
+}
+function updateChannelCount(){const value=$('#channel-form').elements.description.value;$('#channel-description-count').textContent=value?`${value.length.toLocaleString('vi-VN')}/5.000`:'';}
+async function uploadChannelImage(kind,file,revision){
+  const profile=state.channelProfile,q=new URLSearchParams({channel:profile.channel,platform:state.channelEdit.id,kind,revision});
+  const response=await fetch('/api/channel-image?'+q,{method:'POST',headers:{'Content-Type':'application/octet-stream','X-Workspace-Token':state.data.token},body:file});
+  let data;try{data=await response.json();}catch{throw Error('Không đọc được phản hồi của trang quản lý.');}
+  if(!response.ok)throw Error(data.error||'Không tải được ảnh lên.');return data;
+}
+async function saveChannelPlatform(event){
+  event.preventDefault();const form=event.target,button=$('#submit-channel'),e=state.channelEdit,original=button.textContent;
+  const values=Object.fromEntries(['platform','name','handle','url','description','notes'].map(k=>[k,form.elements[k].value]));
+  if(!values.name.trim()){showChannelError('Cần nhập tên kênh.');form.elements.name.focus();return;}
+  if(values.url.trim()&&!/^https?:\/\/\S+$/i.test(values.url.trim())){showChannelError('Link cần bắt đầu bằng https:// hoặc http://');form.elements.url.focus();return;}
+  form.setAttribute('aria-busy','true');button.disabled=true;button.textContent='Đang lưu…';$('#channel-error').hidden=true;
+  try{
+    let profile=await api('/api/channel-platform',{channel:state.channelProfile.channel,revision:state.channelProfile.revision,platform:{...values,id:e.id||undefined}});
+    e.id=profile.saved;state.channelProfile=profile;
+    for(const kind of ['avatar','banner']){
+      if(e.picked[kind]){button.textContent=kind==='avatar'?'Đang tải ảnh đại diện…':'Đang tải ảnh bìa…';profile=await uploadChannelImage(kind,e.picked[kind].file,profile.revision);}
+      else if(e.cleared[kind]&&e.images[kind])profile=await api('/api/channel-image-remove',{channel:profile.channel,revision:profile.revision,id:e.id,kind});
+      state.channelProfile=profile;
+    }
+    $('#channel-dialog').close();renderChannelProfile();toast('Đã lưu nền tảng.');
+  }catch(error){showChannelError(error.message);if(/nơi khác/.test(error.message))loadChannelProfile(state.channel);}
+  finally{form.removeAttribute('aria-busy');button.disabled=false;button.textContent=original;}
+}
+function showChannelError(message){$('#channel-error').textContent=message;$('#channel-error').hidden=false;$('#channel-error').focus();}
+async function channelAction(url,body,done){
+  try{state.channelProfile=await api(url,{channel:state.channelProfile.channel,revision:state.channelProfile.revision,id:state.channelEdit.id,...body});renderChannelProfile();if(done)done();}
+  catch(error){showChannelError(error.message);if(/nơi khác/.test(error.message))loadChannelProfile(state.channel);}
+}
+$('#channel-profile').addEventListener('click',event=>{
+  const target=event.target.closest('[data-channel-add],[data-channel-edit],[data-channel-more]');if(!target)return;
+  if(target.hasAttribute('data-channel-more')){const open=target.getAttribute('aria-expanded')!=='true';target.previousElementSibling.classList.toggle('is-open',open);target.setAttribute('aria-expanded',String(open));target.textContent=open?'Thu gọn mô tả':'Xem cả mô tả';}
+  else openChannelDialog(target.dataset.channelEdit||'');
+});
+$('#channel-form').addEventListener('submit',saveChannelPlatform);
+$('#channel-form').addEventListener('input',event=>{if(event.target.name==='description')updateChannelCount();});
+$('#channel-form').addEventListener('change',event=>{
+  const kind=event.target.id==='channel-avatar-file'?'avatar':event.target.id==='channel-banner-file'?'banner':'';if(!kind)return;
+  const file=event.target.files[0];event.target.value='';if(!file)return;
+  if(!['image/jpeg','image/png','image/webp'].includes(file.type)){showChannelError('Chỉ nhận ảnh JPG, PNG hoặc WebP.');return;}
+  if(file.size>8*1024*1024){showChannelError('Ảnh tối đa 8 MB.');return;}
+  // The page's CSP allows data: images but not blob: URLs, so the preview reads the file as a data URL.
+  const reader=new FileReader();reader.onload=()=>{state.channelEdit.picked[kind]={file,dataUrl:reader.result};state.channelEdit.cleared[kind]=false;$('#channel-error').hidden=true;showChannelImage(kind);};reader.readAsDataURL(file);
+});
+$('#channel-form').addEventListener('click',event=>{
+  const clear=event.target.closest('[data-channel-clear]'),move=event.target.closest('[data-channel-move]');
+  if(clear){const kind=clear.dataset.channelClear;delete state.channelEdit.picked[kind];state.channelEdit.cleared[kind]=true;showChannelImage(kind);$(`#channel-${kind}-file`).focus();}
+  if(move)channelAction('/api/channel-platform-move',{direction:move.dataset.channelMove},()=>toast(move.dataset.channelMove==='up'?'Đã đưa lên trước.':'Đã đưa xuống sau.'));
+});
+$('#delete-channel').addEventListener('click',()=>{
+  const item=state.channelProfile.platforms.find(p=>p.id===state.channelEdit.id);if(!item)return;
+  const label=state.channelProfile.platformNames[item.platform]||item.platform;
+  if(!confirm(`Xóa ${label} “${item.name}” khỏi hồ sơ kênh? Bản cũ vẫn được giữ trong lịch sử sửa của thư mục kênh.`))return;
+  channelAction('/api/channel-platform-delete',{},()=>{$('#channel-dialog').close();toast('Đã xóa nền tảng.');});
+});
+$('#close-channel').addEventListener('click',()=>$('#channel-dialog').close());$('#cancel-channel').addEventListener('click',()=>$('#channel-dialog').close());
+$('#channel-dialog').addEventListener('cancel',event=>{if($('#channel-form').hasAttribute('aria-busy'))event.preventDefault();});
+$('#channel-dialog').addEventListener('close',()=>{const id=state.channelEdit?.id,edit=id&&$(`#channel-profile [data-channel-edit="${CSS.escape(id)}"]`);(edit||$('#channel-profile [data-channel-add]'))?.focus({preventScroll:true});});
 async function openHash(){try{const parts=location.hash.slice(1).split('/').map(decodeURIComponent);if(parts[0]==='workflow'&&parts[1]&&parts[2])await openWorkflowStage(parts[1],parts[2],false);if(parts[0]==='project'&&parts[1]){const tab=parts[2]==='duyet'?'review':parts[2]==='tien-trinh'?'progress':'docs';if(state.drawer?.id===parts[1]&&!$('#drawer').hidden)showProjectTab(tab);else await openProject(parts[1],false,tab);}if(parts[0]==='book'&&parts[1]&&parts[2])await openBook(parts[1],parts[2],false);}catch{toast('Đường dẫn hồ sơ không hợp lệ.');}}
 document.addEventListener('click',async event=>{
   const target=event.target.closest('button,a[data-project],a[data-channel],a[data-series],a[data-nav],a[data-watch],a[data-route],[data-books]');if(!target||target.disabled)return;
@@ -970,9 +1085,9 @@ $('#create-form').addEventListener('submit',async event=>{event.preventDefault()
 $('#create-dialog').addEventListener('cancel',event=>{if($('#create-form').hasAttribute('aria-busy'))event.preventDefault();});
 document.addEventListener('keydown',event=>{
   const typing=['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName);
-  if(event.key==='/'&&!typing&&!$('#create-dialog').open&&!$('#help-dialog').open&&!$('#media-dialog').open&&!$('#delete-dialog').open&&!$('#review-dialog').open){event.preventDefault();(resourceViews[state.view]?$('#resource-search'):$('#search'))?.focus();}
-  if(event.key==='Escape'&&!$('#create-dialog').open&&!$('#help-dialog').open&&!$('#media-dialog').open&&!$('#delete-dialog').open&&!$('#review-dialog').open){if(!$('#drawer').hidden)closeDrawer();setMenu(false);}
-  if(event.key==='Tab'&&!$('#drawer').hidden&&!$('#drawer').classList.contains('detail-page')&&!$('#create-dialog').open&&!$('#help-dialog').open&&!$('#media-dialog').open&&!$('#delete-dialog').open&&!$('#review-dialog').open){const nodes=[...$('#drawer').querySelectorAll('button,a,textarea,select,input')].filter(n=>!n.disabled&&n.offsetParent!==null);const first=nodes[0],last=nodes[nodes.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}
+  if(event.key==='/'&&!typing&&!$('#create-dialog').open&&!$('#help-dialog').open&&!$('#media-dialog').open&&!$('#delete-dialog').open&&!$('#review-dialog').open&&!$('#channel-dialog').open){event.preventDefault();(resourceViews[state.view]?$('#resource-search'):$('#search'))?.focus();}
+  if(event.key==='Escape'&&!$('#create-dialog').open&&!$('#help-dialog').open&&!$('#media-dialog').open&&!$('#delete-dialog').open&&!$('#review-dialog').open&&!$('#channel-dialog').open){if(!$('#drawer').hidden)closeDrawer();setMenu(false);}
+  if(event.key==='Tab'&&!$('#drawer').hidden&&!$('#drawer').classList.contains('detail-page')&&!$('#create-dialog').open&&!$('#help-dialog').open&&!$('#media-dialog').open&&!$('#delete-dialog').open&&!$('#review-dialog').open&&!$('#channel-dialog').open){const nodes=[...$('#drawer').querySelectorAll('button,a,textarea,select,input')].filter(n=>!n.disabled&&n.offsetParent!==null);const first=nodes[0],last=nodes[nodes.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}
 });
 window.addEventListener('beforeunload',event=>{if(dirtyNotes()){event.preventDefault();event.returnValue='';}});
 window.addEventListener('focus',()=>{if(state.data)refresh();});

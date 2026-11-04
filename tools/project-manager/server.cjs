@@ -37,6 +37,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
       if (req.method==='POST') {
         if (req.headers['x-workspace-token']!==token || !req.headers.origin || !allowedOrigins.includes(req.headers.origin)) return send(403,{error:'Refresh the workspace and try again'});
         if(route==='/api/book-cover')return send(201,await store.uploadCover(url.searchParams.get('series'),url.searchParams.get('book'),req));
+        if(route==='/api/channel-image'){const q=url.searchParams;return send(201,await store.uploadChannelImage(q.get('channel'),q.get('platform'),q.get('kind'),q.get('revision'),req));}
         if(route==='/api/voice-reference'){if(req.headers['content-type']!=='application/octet-stream')return send(415,{error:'Audio file required'});const q=url.searchParams;return send(201,await store.addVoiceReference({name:q.get('name'),speaker:q.get('speaker'),consent:q.get('consent'),title:q.get('title')},req));}
         if(route==='/api/library-audio'){if(req.headers['content-type']!=='application/octet-stream')return send(415,{error:'Audio file required'});const q=url.searchParams;return send(201,await store.addAudio({kind:q.get('kind'),name:q.get('name'),title:q.get('title'),artists:q.get('artists')},req));}
         if(route==='/api/book-source'){if(req.headers['content-type']!=='application/pdf')return send(415,{error:'PDF required'});return send(201,await store.upload(url.searchParams.get('series'),url.searchParams.get('book'),url.searchParams.get('name'),req));}
@@ -64,6 +65,10 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
         if (route==='/api/projects') return send(201,store.create(body));
         if (route==='/api/notes') return send(200,store.saveNotes(body.id,body.text,body.revision));
         if (route==='/api/workflow') return send(200,store.saveWorkflow(body));
+        if (route==='/api/channel-platform') return send(200,store.saveChannelPlatform(body));
+        if (route==='/api/channel-platform-delete') return send(200,store.deleteChannelPlatform(body));
+        if (route==='/api/channel-platform-move') return send(200,store.moveChannelPlatform(body));
+        if (route==='/api/channel-image-remove') return send(200,store.removeChannelImage(body));
         if (route==='/api/voice-playlist') return send(200,store.savePlaylist(body));
         if (route==='/api/open-folder') {await openFolder(store.folder(body.id,body.group));return send(200,{opened:true});}
         return send(404,{error:'Unknown action'});
@@ -72,6 +77,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
       if(route==='/api/workspace')return send(200,{...store.list(),token,videoFormats:{extensions:Object.keys(VIDEO_FORMATS),label:require('./video-formats.cjs').videoLabel}});
       if(route==='/api/project')return send(200,store.detail(url.searchParams.get('id')));
       if(route==='/api/workflow')return send(200,store.workflow(url.searchParams.get('series')));
+      if(route==='/api/channel-profile')return send(200,store.channelProfile(url.searchParams.get('channel')));
       if(route==='/api/voicestudio')return send(200,await voiceControl.status());
       if(route==='/api/voices')return send(200,store.voices());
       if(route==='/api/system')return send(200,require('./system-map.cjs').systemMap(root));
@@ -86,6 +92,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
       if(route==='/api/book-document')return send(200,store.bookDocument(url.searchParams.get('series'),url.searchParams.get('book'),url.searchParams.get('file')));
       let file;
       if(route==='/api/book-cover'){const cover=store.bookCover(url.searchParams.get('series'),url.searchParams.get('book'));if(!cover)return send(404,{error:'Chưa có ảnh bìa'});file=cover.file;
+      } else if(route==='/api/channel-image'){file=store.channelImage(url.searchParams.get('channel'),url.searchParams.get('file'));if(!file)return send(404,{error:'Chưa có ảnh này'});res.setHeader('Cache-Control','private, max-age=31536000, immutable');
       } else if(route==='/api/review/media'){const file=store.reviewMedia(url.searchParams.get('id'),url.searchParams.get('kind'),url.searchParams.get('key'));if(!file||!fs.existsSync(file))return send(404,{error:'Không có file này'});return serveRange(file);
       } else if(route==='/api/project-media'){const file=store.projectMedia(url.searchParams.get('id'),url.searchParams.get('kind'),url.searchParams.get('file'));if(!file)return send(404,{error:'Không có file này'});return serveRange(file);
       } else if(route==='/api/playback'){const state=store.videoPlayback(url.searchParams.get('id'));if(!state)return send(404,{error:'Chưa có video'});return send(200,{ready:Boolean(state.file),preparing:Boolean(state.preparing),failed:Boolean(state.failed),converted:Boolean(state.converted),codec:state.codec||null});

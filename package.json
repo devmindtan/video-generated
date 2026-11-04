@@ -159,6 +159,7 @@
     "test:manager:navigation": "node tools/project-manager/navigation.test.cjs",
     "test:manager:system": "node tools/project-manager/system-map.test.cjs",
     "test:manager:workflow": "node tools/project-manager/workflow.test.cjs",
+    "test:manager:channels": "node tools/project-manager/channels.test.cjs",
     "test:manager:library": "node tools/project-manager/library.test.cjs",
     "test:manager:documents": "node tools/project-manager/documents.test.cjs",
     "test:manager:voicestudio": "node tools/project-manager/voicestudio.test.cjs",

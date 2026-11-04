@@ -24,7 +24,7 @@ function checkedId(value) {
 }
 function createStore(root) {
   const workspaceRoot=fs.realpathSync(root);
-  const extra={...require('./features.cjs').features(root),...require('./workflow.cjs').createWorkflow(root),...require('./library.cjs').createLibrary(root),...require('./voice-references.cjs').createVoiceReferences(root),...require('./approvals-view.cjs').createApprovals(root)};
+  const extra={...require('./features.cjs').features(root),...require('./workflow.cjs').createWorkflow(root),...require('./library.cjs').createLibrary(root),...require('./voice-references.cjs').createVoiceReferences(root),...require('./approvals-view.cjs').createApprovals(root),...require('./channels.cjs').createChannels(root)};
   const posters=require('./video-poster.cjs').createPosters(root);
   const playback=require('./video-playback.cjs').createPlayback(root);
   function location(relative) {
