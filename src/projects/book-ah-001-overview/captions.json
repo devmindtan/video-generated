@@ -1,7 +1,7 @@
 {
   "source": "Episode.tsx episodeCaptions, BookAhTap02 defaultProps",
   "fps": 30,
-  "totalFrames": 24296,
+  "totalFrames": 24304,
   "parts": [
     {
       "name": "Intro series",
@@ -40,48 +40,48 @@
     },
     {
       "name": "Quy luật 2 · Làm cho hấp dẫn",
-      "frames": 2228,
+      "frames": 2236,
       "startFrame": 10078
     },
     {
       "name": "Quy luật 3 · Làm cho dễ dàng",
       "frames": 2447,
-      "startFrame": 12306
+      "startFrame": 12314
     },
     {
       "name": "Quy luật 4 · Làm cho thỏa mãn",
       "frames": 2329,
-      "startFrame": 14753
+      "startFrame": 14761
     },
     {
       "name": "Khi thói quen đã thành nếp",
       "frames": 1720,
-      "startFrame": 17082
+      "startFrame": 17090
     },
     {
       "name": "Những điểm chưa đạt",
       "frames": 1282,
-      "startFrame": 18802
+      "startFrame": 18810
     },
     {
       "name": "Tổng kết",
       "frames": 821,
-      "startFrame": 20084
+      "startFrame": 20092
     },
     {
       "name": "Ý kiến cá nhân",
       "frames": 2259,
-      "startFrame": 20905
+      "startFrame": 20913
     },
     {
       "name": "Nhận xét chung",
       "frames": 637,
-      "startFrame": 23164
+      "startFrame": 23172
     },
     {
       "name": "Outro series",
       "frames": 495,
-      "startFrame": 23801
+      "startFrame": 23809
     }
   ],
   "pages": [
@@ -821,757 +821,757 @@
       "part": "Quy luật 2 · Làm cho hấp dẫn",
       "text": "không phải \"mình phải dậy sớm đi làm\", mà \"mình được dậy sớm đi làm\".",
       "startMs": 401127,
-      "endMs": 404807
+      "endMs": 405073
     },
     {
       "part": "Quy luật 2 · Làm cho hấp dẫn",
       "text": "Đảo ngược lại, muốn bỏ thói quen xấu thì nhìn",
-      "startMs": 405107,
-      "endMs": 407119
+      "startMs": 405373,
+      "endMs": 407385
     },
     {
       "part": "Quy luật 2 · Làm cho hấp dẫn",
       "text": "rõ nó không thật sự cho mình điều mình cần.",
-      "startMs": 407165,
-      "endMs": 408927
+      "startMs": 407431,
+      "endMs": 409193
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "Quy luật thứ ba là làm cho thói quen trở nên dễ dàng,",
-      "startMs": 410200,
-      "endMs": 413451
+      "startMs": 410467,
+      "endMs": 413717
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "để không có gì cản mình bắt đầu.",
-      "startMs": 413508,
-      "endMs": 415200
+      "startMs": 413775,
+      "endMs": 415467
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "Làm nhiều hơn nghĩ.",
-      "startMs": 416427,
-      "endMs": 417287
+      "startMs": 416693,
+      "endMs": 417553
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "Một thầy dạy nhiếp ảnh chia lớp làm hai: một nửa chấm điểm theo số lượng ảnh,",
-      "startMs": 417807,
-      "endMs": 421446
+      "startMs": 418073,
+      "endMs": 421713
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "nửa kia chỉ cần nộp một tấm thật hoàn hảo.",
-      "startMs": 421501,
-      "endMs": 423787
+      "startMs": 421768,
+      "endMs": 424053
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "Cuối khóa, những tấm đẹp nhất lại đến từ nhóm chụp nhiều,",
-      "startMs": 423987,
-      "endMs": 426991
+      "startMs": 424253,
+      "endMs": 427258
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "vì họ được thực hành và sửa sai liên tục.",
-      "startMs": 427051,
-      "endMs": 429573
+      "startMs": 427317,
+      "endMs": 429840
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "Tác giả phân biệt chuẩn bị với làm thật:",
-      "startMs": 429833,
-      "endMs": 431641
+      "startMs": 430100,
+      "endMs": 431908
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "lên kế hoạch cho bài tập không phải là đi tập.",
-      "startMs": 431695,
-      "endMs": 434373
+      "startMs": 431962,
+      "endMs": 434640
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "Theo tác giả, \"việc hình thành thói quen dựa",
-      "startMs": 434513,
-      "endMs": 436596
+      "startMs": 434780,
+      "endMs": 436863
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "trên tần suất chứ không phải thời gian.\"",
-      "startMs": 436644,
-      "endMs": 439450
+      "startMs": 436911,
+      "endMs": 439717
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "Bớt ma sát.",
-      "startMs": 439537,
-      "endMs": 440580
+      "startMs": 439804,
+      "endMs": 440847
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "Tác giả ví như vòi nước bị gập: thay vì vặn van mạnh hơn, hãy gỡ chỗ gập.",
-      "startMs": 440680,
-      "endMs": 444760
+      "startMs": 440947,
+      "endMs": 445027
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "Chọn phòng tập trên đường đi làm, bày sẵn đồ tập từ tối hôm trước,",
-      "startMs": 445240,
-      "endMs": 448469
+      "startMs": 445507,
+      "endMs": 448736
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "dọn lại căn phòng sau mỗi lần dùng để lần sau bắt đầu ngay được.",
-      "startMs": 448527,
-      "endMs": 451800
+      "startMs": 448794,
+      "endMs": 452067
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "Quy luật hai phút.",
-      "startMs": 452667,
-      "endMs": 453887
+      "startMs": 452933,
+      "endMs": 454153
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "Khi bắt đầu một thói quen mới, tác giả khuyên làm phiên bản chưa tới hai phút:",
-      "startMs": 454067,
-      "endMs": 457468
+      "startMs": 454333,
+      "endMs": 457735
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "muốn đọc sách trước khi ngủ thì đọc một trang; muốn tập yoga thì trải thảm ra.",
-      "startMs": 457513,
-      "endMs": 461607
+      "startMs": 457779,
+      "endMs": 461873
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "Một biên đạo múa kể rằng thói quen buổi sáng của bà không phải hai tiếng tập,",
-      "startMs": 462453,
-      "endMs": 465916
+      "startMs": 462720,
+      "endMs": 466183
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "mà là bước ra đường gọi xe tới phòng tập.",
-      "startMs": 465971,
-      "endMs": 468033
+      "startMs": 466237,
+      "endMs": 468300
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "Như tác giả viết: \"Bạn phải chuẩn hóa trước khi tối ưu hóa.\"",
-      "startMs": 468453,
-      "endMs": 472269
+      "startMs": 468720,
+      "endMs": 472536
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "Đảo ngược: làm cho khó.",
-      "startMs": 472343,
-      "endMs": 474060
+      "startMs": 472610,
+      "endMs": 474327
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "Nhà văn Victor Hugo nhờ người khóa hết quần áo của mình lại,",
-      "startMs": 474320,
-      "endMs": 477507
+      "startMs": 474587,
+      "endMs": 477773
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "chỉ chừa một tấm khăn choàng, để không thể ra ngoài và phải ngồi viết.",
-      "startMs": 477561,
-      "endMs": 481120
+      "startMs": 477828,
+      "endMs": 481387
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "Tác giả gọi đó là thiết bị cam kết.",
-      "startMs": 481320,
-      "endMs": 483727
+      "startMs": 481587,
+      "endMs": 483993
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "Một lần quyết định cũng có thể giữ thói quen tốt lâu dài: tắt thông báo,",
-      "startMs": 483907,
-      "endMs": 487530
+      "startMs": 484173,
+      "endMs": 487797
     },
     {
       "part": "Quy luật 3 · Làm cho dễ dàng",
       "text": "xóa ứng dụng hay làm mình mất giờ, cài tiết kiệm tự động.",
-      "startMs": 487585,
-      "endMs": 490547
+      "startMs": 487851,
+      "endMs": 490813
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Quy luật thứ tư là làm cho thói quen trở nên thỏa mãn, để lần sau mình muốn làm lại.",
-      "startMs": 491767,
-      "endMs": 496567
+      "startMs": 492033,
+      "endMs": 496833
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Phần thưởng ngay lúc làm.",
-      "startMs": 497693,
-      "endMs": 498733
+      "startMs": 497960,
+      "endMs": 499000
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Ở những khu nghèo của một thành phố lớn,",
-      "startMs": 499313,
-      "endMs": 500843
+      "startMs": 499580,
+      "endMs": 501110
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "người dân biết rửa tay là tốt nhưng không làm đều.",
-      "startMs": 500895,
-      "endMs": 503653
+      "startMs": 501161,
+      "endMs": 503920
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Khi có loại xà phòng thơm và nhiều bọt, rửa tay thành việc dễ chịu,",
-      "startMs": 503973,
-      "endMs": 507263
+      "startMs": 504240,
+      "endMs": 507530
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "và nhiều nhà giữ thói quen ấy suốt nhiều năm.",
-      "startMs": 507317,
-      "endMs": 509733
+      "startMs": 507584,
+      "endMs": 510000
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Theo tác giả, quy tắc cốt lõi là:",
-      "startMs": 510500,
-      "endMs": 512286
+      "startMs": 510767,
+      "endMs": 512553
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "điều được thưởng ngay thì lặp lại, điều khó chịu ngay thì tránh.",
-      "startMs": 512335,
-      "endMs": 515360
+      "startMs": 512602,
+      "endMs": 515627
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Thói quen tốt thường trả giá ở hiện tại, còn thói quen xấu trả giá ở tương lai.",
-      "startMs": 515860,
-      "endMs": 520867
+      "startMs": 516127,
+      "endMs": 521133
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Cho việc \"không làm\" một phần thưởng.",
-      "startMs": 520867,
-      "endMs": 522507
+      "startMs": 521133,
+      "endMs": 522773
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Mỗi lần nhịn một ly cà phê ngoài tiệm,",
-      "startMs": 523107,
-      "endMs": 524780
+      "startMs": 523373,
+      "endMs": 525047
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "một người chuyển số tiền ấy vào tài khoản đặt tên là \"áo khoác da\".",
-      "startMs": 524825,
-      "endMs": 528387
+      "startMs": 525092,
+      "endMs": 528653
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Tác giả lưu ý phần thưởng phải hợp với con người mình muốn trở thành,",
-      "startMs": 528947,
-      "endMs": 531911
+      "startMs": 529213,
+      "endMs": 532177
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "vì \"Sự khích lệ có thể bắt đầu một thói quen.",
-      "startMs": 531961,
-      "endMs": 534327
+      "startMs": 532228,
+      "endMs": 534593
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Đặc tính duy trì một thói quen.\"",
-      "startMs": 534467,
-      "endMs": 535867
+      "startMs": 534733,
+      "endMs": 536133
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Nhìn thấy tiến bộ.",
-      "startMs": 536953,
-      "endMs": 538293
+      "startMs": 537220,
+      "endMs": 538560
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Một nhân viên môi giới trẻ đặt hai cái lọ trên bàn,",
-      "startMs": 538473,
-      "endMs": 540960
+      "startMs": 538740,
+      "endMs": 541227
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "mỗi cuộc gọi xong lại chuyển một cái kẹp giấy sang lọ kia.",
-      "startMs": 541017,
-      "endMs": 544440
+      "startMs": 541284,
+      "endMs": 544707
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Tác giả gợi ý đánh dấu lên lịch mỗi ngày đã làm,",
-      "startMs": 544620,
-      "endMs": 546824
+      "startMs": 544887,
+      "endMs": 547091
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "và nhắc một nguyên tắc: \"Bỏ lỡ một lần là vô tình.",
-      "startMs": 546875,
-      "endMs": 549600
+      "startMs": 547141,
+      "endMs": 549867
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Bỏ lỡ hai lần chính là khởi đầu cho một thói quen mới.\"",
-      "startMs": 549820,
-      "endMs": 552593
+      "startMs": 550087,
+      "endMs": 552860
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Những ngày tệ mà vẫn làm một chút lại là những ngày đáng giá nhất.",
-      "startMs": 552648,
-      "endMs": 555720
+      "startMs": 552915,
+      "endMs": 555987
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Đảo ngược: có người cùng giữ lời.",
-      "startMs": 556747,
-      "endMs": 558487
+      "startMs": 557013,
+      "endMs": 558753
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Tác giả kể chuyện một người ký hợp đồng thói quen với",
-      "startMs": 558727,
-      "endMs": 561080
+      "startMs": 558993,
+      "endMs": 561346
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "vợ và huấn luyện viên, ghi sẵn hình phạt nếu bỏ cuộc.",
-      "startMs": 561132,
-      "endMs": 563927
+      "startMs": 561399,
+      "endMs": 564193
     },
     {
       "part": "Quy luật 4 · Làm cho thỏa mãn",
       "text": "Theo tác giả, khi biết có người đang dõi theo, mình khó làm điều sai hơn.",
-      "startMs": 564407,
-      "endMs": 568127
+      "startMs": 564673,
+      "endMs": 568393
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "Phần cuối của sách nói về lúc thói quen đã thành nếp,",
-      "startMs": 569400,
-      "endMs": 572363
+      "startMs": 569667,
+      "endMs": 572630
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "khi điều khó không còn là bắt đầu mà là giữ cho nó đi tiếp.",
-      "startMs": 572413,
-      "endMs": 575220
+      "startMs": 572679,
+      "endMs": 575487
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "Chọn đúng sân chơi.",
-      "startMs": 576487,
-      "endMs": 577887
+      "startMs": 576753,
+      "endMs": 578153
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "Theo tác giả, gen không quyết định số phận, nhưng cho biết mình có lợi thế ở đâu.",
-      "startMs": 578007,
-      "endMs": 582347
+      "startMs": 578273,
+      "endMs": 582613
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "Ông khuyên chọn thói quen hợp với bản tính của mình,",
-      "startMs": 582947,
-      "endMs": 585454
+      "startMs": 583213,
+      "endMs": 585720
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "và \"Khi bạn không thể chiến thắng bằng cách trở nên tốt hơn,",
-      "startMs": 585509,
-      "endMs": 588379
+      "startMs": 585775,
+      "endMs": 588645
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "bạn có thể chiến thắng bằng cách trở nên khác biệt.\"",
-      "startMs": 588435,
-      "endMs": 591493
+      "startMs": 588701,
+      "endMs": 591760
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "Vừa sức và chịu được nhàm chán.",
-      "startMs": 591773,
-      "endMs": 593693
+      "startMs": 592040,
+      "endMs": 593960
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "Tác giả cho rằng mình hứng thú nhất khi việc làm vừa sức,",
-      "startMs": 593913,
-      "endMs": 596513
+      "startMs": 594180,
+      "endMs": 596779
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "không quá dễ cũng không quá khó.",
-      "startMs": 596564,
-      "endMs": 598680
+      "startMs": 596831,
+      "endMs": 598947
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "Nhưng theo ông, \"Mối đe dọa lớn nhất với thành",
-      "startMs": 598680,
-      "endMs": 601315
+      "startMs": 598947,
+      "endMs": 601582
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "công không phải là thất bại mà là sự buồn chán.\"",
-      "startMs": 601354,
-      "endMs": 603700
+      "startMs": 601620,
+      "endMs": 603967
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "Người làm được việc lớn cũng chán như mọi người, chỉ là họ vẫn làm.",
-      "startMs": 604220,
-      "endMs": 607500
+      "startMs": 604487,
+      "endMs": 607767
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "Xem lại và giữ mình mềm dẻo.",
-      "startMs": 608427,
-      "endMs": 610407
+      "startMs": 608693,
+      "endMs": 610673
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "Khi một việc đã thành tự động, mình dễ làm theo quán tính mà không tiến bộ thêm.",
-      "startMs": 610567,
-      "endMs": 614887
+      "startMs": 610833,
+      "endMs": 615153
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "Tác giả tự làm một bản tổng kết mỗi cuối năm,",
-      "startMs": 615127,
-      "endMs": 617303
+      "startMs": 615393,
+      "endMs": 617570
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "và khuyên đừng gắn chặt mình vào một vai trò duy nhất.",
-      "startMs": 617356,
-      "endMs": 619927
+      "startMs": 617622,
+      "endMs": 620193
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "Như tác giả viết: \"Thiếu sự nhận thức bản thân là độc dược.",
-      "startMs": 620387,
-      "endMs": 623507
+      "startMs": 620653,
+      "endMs": 623773
     },
     {
       "part": "Khi thói quen đã thành nếp",
       "text": "Suy xét và đánh giá là thuốc giải.\"",
-      "startMs": 623867,
-      "endMs": 625642
+      "startMs": 624133,
+      "endMs": 625908
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Nói cho công bằng, cuốn sách cũng có những chỗ mình thấy chưa đạt.",
-      "startMs": 626733,
-      "endMs": 630633
+      "startMs": 627000,
+      "endMs": 630900
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Thứ nhất, sách dẫn rất nhiều nghiên cứu và tỉ lệ phần trăm,",
-      "startMs": 630773,
-      "endMs": 633963
+      "startMs": 631040,
+      "endMs": 634229
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "nhưng chính tác giả nói đây là sổ tay hướng dẫn, không phải nghiên cứu khoa học.",
-      "startMs": 634021,
-      "endMs": 637993
+      "startMs": 634288,
+      "endMs": 638260
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Mình nghĩ nên xem các con số ấy như minh họa,",
-      "startMs": 638453,
-      "endMs": 640662
+      "startMs": 638720,
+      "endMs": 640929
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "còn giá trị thật của sách nằm ở cách làm.",
-      "startMs": 640722,
-      "endMs": 642913
+      "startMs": 640988,
+      "endMs": 643180
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Thứ hai, bản dịch tiếng Việt mình đọc có khá nhiều chỗ lệch về năm,",
-      "startMs": 643900,
-      "endMs": 647175
+      "startMs": 644167,
+      "endMs": 647442
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "số liệu và cả nghề nghiệp của người được nhắc tới.",
-      "startMs": 647234,
-      "endMs": 649820
+      "startMs": 647500,
+      "endMs": 650087
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Nếu các bạn muốn dẫn lại một con số trong sách, nên đối chiếu với bản gốc.",
-      "startMs": 650400,
-      "endMs": 654887
+      "startMs": 650667,
+      "endMs": 655153
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Thứ ba, phần lớn ví dụ là chuyện người thành công ở Mỹ,",
-      "startMs": 654887,
-      "endMs": 657808
+      "startMs": 655153,
+      "endMs": 658075
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "và các mẹo sắp xếp môi trường khó áp dụng khi mình đang thật sự nghiện hay",
-      "startMs": 657858,
-      "endMs": 661185
+      "startMs": 658124,
+      "endMs": 661452
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "đang ở hoàn cảnh quá khó; chính tác giả cũng thừa nhận điều đó.",
-      "startMs": 661227,
-      "endMs": 664547
+      "startMs": 661494,
+      "endMs": 664813
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Những lúc như vậy, cần thêm sự giúp đỡ từ người khác hoặc từ chuyên gia.",
-      "startMs": 664947,
-      "endMs": 668207
+      "startMs": 665213,
+      "endMs": 668473
     },
     {
       "part": "Tổng kết",
       "text": "Tóm lại, Thay đổi tí hon hiệu quả bất ngờ xoay quanh một ý:",
-      "startMs": 669467,
-      "endMs": 672578
+      "startMs": 669733,
+      "endMs": 672845
     },
     {
       "part": "Tổng kết",
       "text": "những thói quen nhỏ, lặp lại đủ lâu, sẽ nhân lên thành kết quả lớn,",
-      "startMs": 672627,
-      "endMs": 676517
+      "startMs": 672893,
+      "endMs": 676784
     },
     {
       "part": "Tổng kết",
       "text": "và thói quen bền nhất bắt đầu từ con người mình muốn trở thành.",
-      "startMs": 676580,
-      "endMs": 679867
+      "startMs": 676846,
+      "endMs": 680133
     },
     {
       "part": "Tổng kết",
       "text": "Từ đó, sách đưa ra bốn quy luật: làm cho hiển nhiên, hấp dẫn,",
-      "startMs": 680553,
-      "endMs": 683701
+      "startMs": 680820,
+      "endMs": 683968
     },
     {
       "part": "Tổng kết",
       "text": "dễ dàng và thỏa mãn, cùng cách đảo ngược để bỏ thói quen xấu.",
-      "startMs": 683753,
-      "endMs": 687013
+      "startMs": 684020,
+      "endMs": 687280
     },
     {
       "part": "Tổng kết",
       "text": "Theo mình, đây là cuốn sách nên đọc chậm và làm thử từng chương.",
-      "startMs": 688013,
-      "endMs": 690993
+      "startMs": 688280,
+      "endMs": 691260
     },
     {
       "part": "Tổng kết",
       "text": "Như tác giả viết ở cuối sách:",
-      "startMs": 691780,
-      "endMs": 693133
+      "startMs": 692047,
+      "endMs": 693400
     },
     {
       "part": "Tổng kết",
       "text": "\"Những thói quen nhỏ không thêm vào mà chúng hợp thành.\"",
-      "startMs": 693180,
-      "endMs": 695580
+      "startMs": 693447,
+      "endMs": 695847
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Còn ý kiến riêng của mình thì thế này.",
-      "startMs": 696833,
-      "endMs": 698913
+      "startMs": 697100,
+      "endMs": 699180
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Điều mình thấy đáng giá nhất ở cuốn sách là cách nó đổi câu hỏi:",
-      "startMs": 700080,
-      "endMs": 702894
+      "startMs": 700347,
+      "endMs": 703161
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "thay vì hỏi mình muốn đạt được gì, hãy hỏi mình muốn trở thành người như thế nào.",
-      "startMs": 702948,
-      "endMs": 707080
+      "startMs": 703214,
+      "endMs": 707347
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Hiểu theo cách đó, một ngày làm chưa tốt không phải là thất bại,",
-      "startMs": 707887,
-      "endMs": 710880
+      "startMs": 708153,
+      "endMs": 711147
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "nó chỉ là một lá phiếu, và ngày mai mình vẫn bỏ được lá phiếu khác.",
-      "startMs": 710927,
-      "endMs": 714627
+      "startMs": 711193,
+      "endMs": 714893
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Hình ảnh mình nhớ lâu nhất là cục nước đá.",
-      "startMs": 715653,
-      "endMs": 717853
+      "startMs": 715920,
+      "endMs": 718120
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Rất nhiều người bỏ cuộc đúng ở quãng đó, khi đã cố gắng mà chưa thấy gì thay đổi.",
-      "startMs": 718033,
-      "endMs": 722033
+      "startMs": 718300,
+      "endMs": 722300
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Nhiều mẹo trong sách nghe qua thì rất bình thường,",
-      "startMs": 722860,
-      "endMs": 725353
+      "startMs": 723127,
+      "endMs": 725619
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "như đặt bát táo giữa bếp hay bày sẵn bộ đồ tập từ tối hôm trước.",
-      "startMs": 725407,
-      "endMs": 728740
+      "startMs": 725674,
+      "endMs": 729007
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Nhưng nếu chịu ngồi lại ngẫm, sẽ thấy điều tác giả muốn nói sâu hơn:",
-      "startMs": 729240,
-      "endMs": 732509
+      "startMs": 729507,
+      "endMs": 732776
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "mình không thắng một thói quen bằng sức chịu đựng,",
-      "startMs": 732561,
-      "endMs": 735136
+      "startMs": 732828,
+      "endMs": 735402
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "mà bằng cách sắp xếp để việc đúng dễ xảy ra hơn.",
-      "startMs": 735186,
-      "endMs": 737680
+      "startMs": 735453,
+      "endMs": 737947
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Còn một điều mình muốn nhắc: những ví dụ trong sách chỉ là một góc nhìn,",
-      "startMs": 738887,
-      "endMs": 742098
+      "startMs": 739153,
+      "endMs": 742365
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "phần lớn từ những người đã thành công, nên chưa bao quát hết mọi hoàn cảnh.",
-      "startMs": 742150,
-      "endMs": 746307
+      "startMs": 742417,
+      "endMs": 746573
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Vì vậy, đừng biến các mẹo thành quy tắc phải làm theo cho bằng được.",
-      "startMs": 746427,
-      "endMs": 749527
+      "startMs": 746693,
+      "endMs": 749793
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Quy luật hai phút là để bắt đầu, không phải để dừng mãi ở hai phút.",
-      "startMs": 749527,
-      "endMs": 754260
+      "startMs": 749793,
+      "endMs": 754527
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Còn nếu việc đánh dấu lịch khiến các bạn thấy áp lực,",
-      "startMs": 754420,
-      "endMs": 756753
+      "startMs": 754687,
+      "endMs": 757020
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "cứ bỏ nó đi, miễn là thói quen vẫn còn.",
-      "startMs": 756800,
-      "endMs": 759080
+      "startMs": 757067,
+      "endMs": 759347
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Nếu chỉ chọn một cách để bắt đầu, mình gợi ý xếp chồng thói quen.",
-      "startMs": 760147,
-      "endMs": 763667
+      "startMs": 760413,
+      "endMs": 763933
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Tối nay các bạn có thể viết ra một câu: \"Sau khi làm việc mình vẫn làm mỗi ngày,",
-      "startMs": 763967,
-      "endMs": 768012
+      "startMs": 764233,
+      "endMs": 768279
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "mình sẽ làm thêm một việc nhỏ\", rồi thử ngay sáng mai.",
-      "startMs": 768072,
-      "endMs": 770887
+      "startMs": 768338,
+      "endMs": 771153
     },
     {
       "part": "Nhận xét chung",
       "text": "Mặc dù cuốn sách này còn nhiều những chỗ chưa hay,",
-      "startMs": 772133,
-      "endMs": 774851
+      "startMs": 772400,
+      "endMs": 775117
     },
     {
       "part": "Nhận xét chung",
       "text": "nhưng tổng quan đây là một cuốn sách hay.",
-      "startMs": 774898,
-      "endMs": 776833
+      "startMs": 775164,
+      "endMs": 777100
     },
     {
       "part": "Nhận xét chung",
       "text": "Nếu bạn đang muốn đổi một thói quen mà lần nào cũng bỏ dở giữa chừng, cuốn này",
-      "startMs": 777560,
-      "endMs": 781142
+      "startMs": 777827,
+      "endMs": 781409
     },
     {
       "part": "Nhận xét chung",
       "text": "cho bạn rất nhiều cách để thử lại, bắt đầu từ những việc chưa tới hai phút.",
-      "startMs": 781193,
-      "endMs": 785020
+      "startMs": 781459,
+      "endMs": 785287
     },
     {
       "part": "Nhận xét chung",
       "text": "Nếu bạn có thời gian, có thể đọc qua để hiểu hơn:",
-      "startMs": 786087,
-      "endMs": 788628
+      "startMs": 786353,
+      "endMs": 788895
     },
     {
       "part": "Nhận xét chung",
       "text": "hiểu vì sao mình hay bỏ cuộc, rồi bắt đầu lại từ một việc thật nhỏ.",
-      "startMs": 788690,
-      "endMs": 792207
+      "startMs": 788957,
+      "endMs": 792473
     },
     {
       "part": "Outro series",
       "text": "Đến đây là kết thúc rồi, các bạn thấy thế nào?",
-      "startMs": 794007,
-      "endMs": 796967
+      "startMs": 794273,
+      "endMs": 797233
     },
     {
       "part": "Outro series",
       "text": "Nếu hay thì hãy bình luận vào bên dưới video và cho mình một lượt đăng ký kênh",
-      "startMs": 797707,
-      "endMs": 801925
+      "startMs": 797973,
+      "endMs": 802191
     },
     {
       "part": "Outro series",
       "text": "để mình có động lực để có thể làm thêm nhiều những video thế này hơn nữa nhé.",
-      "startMs": 801980,
-      "endMs": 806507
+      "startMs": 802246,
+      "endMs": 806773
     },
     {
       "part": "Outro series",
       "text": "Hẹn gặp lại cả nhà.",
-      "startMs": 806727,
-      "endMs": 807527
+      "startMs": 806993,
+      "endMs": 807793
     }
   ]
 }

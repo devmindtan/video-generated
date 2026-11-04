@@ -36,6 +36,7 @@ PAUSE_SCALE = .6  # lead-in, pauses between sentences and tail of each segment (
 PACING = json.loads((HERE / 'pacing.json').read_text()) if (HERE / 'pacing.json').exists() else {}
 MAX_PAUSE, PAUSE_SCALE = PACING.get('maxPause', MAX_PAUSE), PACING.get('pauseScale', PAUSE_SCALE)
 MAX_RATE, TITLE_PAUSE = PACING.get('maxRate'), PACING.get('titlePause')
+EDGE_RMS = PACING.get('edgeRms')  # trim near-silent breath at sentence edges (assemble-clone.py --edge-rms)
 
 
 def clone_takes():
@@ -78,6 +79,7 @@ def main():
         choice['__pauses'] = [x['pauseAfter'] for x in cfg['sentences']]  # a pause edit rebuilds too
         if MAX_RATE: choice['__maxRate'] = MAX_RATE
         if TITLE_PAUSE: choice['__titlePause'] = TITLE_PAUSE
+        if EDGE_RMS: choice['__edgeRms'] = EDGE_RMS
         out = ROOT / 'public/voice-auditions' / f'{PREFIX}-{seg}-clone'  # 'clone' in the name keeps voice ids unsuffixed
         stamp = out / 'sources.json'
         if stamp.exists() and json.loads(stamp.read_text()) == choice:
@@ -86,7 +88,7 @@ def main():
             if d.exists(): shutil.rmtree(d)  # derived audio only; clone takes stay untouched
         pick = AUD.parent / f'.choice-{seg}.json'
         pick.write_text(json.dumps({k: v for k, v in choice.items() if not k.startswith('__')}, ensure_ascii=False))
-        subprocess.run([py, str(TOOLS / 'assemble-clone.py'), '--project', PROJECT, '--config', f'audition-{seg}.json', '--clone', *used, '--choice', str(pick), '--out', out.name, '--id', seg, '--max-pause', str(MAX_PAUSE), '--pause-scale', str(PAUSE_SCALE), *(['--max-rate', str(MAX_RATE)] if MAX_RATE else []), *(['--title-pause', str(TITLE_PAUSE)] if TITLE_PAUSE else [])], check=True)
+        subprocess.run([py, str(TOOLS / 'assemble-clone.py'), '--project', PROJECT, '--config', f'audition-{seg}.json', '--clone', *used, '--choice', str(pick), '--out', out.name, '--id', seg, '--max-pause', str(MAX_PAUSE), '--pause-scale', str(PAUSE_SCALE), *(['--max-rate', str(MAX_RATE)] if MAX_RATE else []), *(['--title-pause', str(TITLE_PAUSE)] if TITLE_PAUSE else []), *(['--edge-rms', str(EDGE_RMS)] if EDGE_RMS else [])], check=True)
         pick.unlink()
         subprocess.run([py, str(TOOLS / 'voice-variants.py'), '--source', out.name, '--semitones', '2'], check=True)
         stamp.write_text(json.dumps(choice, ensure_ascii=False, indent=1) + '\n')

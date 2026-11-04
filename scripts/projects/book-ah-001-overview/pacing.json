@@ -1,7 +1,8 @@
 {
   "maxPause": 0.18,
-  "pauseScale": 0.6,
+  "pauseScale": 0.45,
   "maxRate": 4.6,
-  "titlePause": 0.5,
-  "note": "Người dùng 2026-11-04 (nghe bản clone tập 2): \"có một số chỗ đọc bị lướt\". Câu đọc nhanh hơn 4,6 tiếng/giây (trung vị cả tập 4,2) được kéo chậm nhẹ, giữ cao độ, tối đa 12%; sau câu tiêu đề mục ngắn nghỉ ít nhất 0,5 giây."
+  "titlePause": 0.4,
+  "note": "Người dùng 2026-11-04 (nghe bản clone tập 2): \"có một số chỗ đọc bị lướt\". Câu đọc nhanh hơn 4,6 tiếng/giây (trung vị cả tập 4,2) được kéo chậm nhẹ, giữ cao độ, tối đa 12%; sau câu tiêu đề mục ngắn nghỉ ít nhất 0,5 giây. Người dùng 2026-11-04 (lượt sau): \"hơi nhiều khoảng lặng\" → nghỉ giữa câu nhân 0,45 (trước 0,6), sau câu tiêu đề mục ít nhất 0,4 giây (trước 0,5). Đầu mỗi câu clone còn trung bình 0,2 giây tiếng thở/nhiễu nhẹ (có câu 0,55): cắt tới chỗ RMS vượt 0,006, chừa 60 ms.",
+  "edgeRms": 0.006
 }

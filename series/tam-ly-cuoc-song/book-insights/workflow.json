@@ -33,7 +33,8 @@
     },
     "assembly": {
       "rules": [
-        "Dựng intro và 30 giây đầu sau intro (không tính intro) trước, chờ người dùng duyệt rồi mới dựng tiếp (từng phần hoặc toàn bộ theo lựa chọn của họ)."
+        "Dựng intro và 30 giây đầu sau intro (không tính intro) trước, chờ người dùng duyệt rồi mới dựng tiếp (từng phần hoặc toàn bộ theo lựa chọn của họ).",
+        "Ghép giọng clone không để khoảng lặng dài (người dùng 2026-11-04, tập 2: \"hơi nhiều khoảng lặng\"): trong scripts/projects/<slug>/pacing.json đặt pauseScale khoảng 0,45, titlePause 0,4 và edgeRms 0,006 (cắt tiếng thở/nhiễu nhẹ đầu câu); đo lại khoảng lặng ≥0,3 giây sau khi ghép, khoảng dài nhất nên dưới 0,6 giây."
       ],
       "notes": ""
     },

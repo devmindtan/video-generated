@@ -57,6 +57,17 @@ def squeeze_pauses(audio, longest):
     return np.concatenate(keep)
 
 
+def trim_quiet_edges(audio, level, margin=.06):
+    # Clone sentences often start with ~0.2 s (up to 0.5 s) of breath or room noise above the plain-silence threshold;
+    # left in, it lengthens every gap unevenly (user 2026-11-04: "hơi nhiều khoảng lặng").
+    w = int(SR * .02)
+    rms = np.sqrt(np.convolve(audio ** 2, np.ones(w) / w, 'same'))
+    loud = np.flatnonzero(rms > level)
+    if not len(loud): return audio
+    m = int(margin * SR)
+    return audio[max(0, loud[0] - m):min(len(audio), loud[-1] + m)]
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--clone', nargs='+', required=True)
@@ -67,6 +78,7 @@ def main():
     parser.add_argument('--pause-scale', type=float, default=1.0, help='Scale the config lead-in, pauses between sentences and tail')
     parser.add_argument('--max-rate', type=float, help='Slow a sentence spoken faster than this many syllables per voiced second (pitch kept, at most 12%%)')
     parser.add_argument('--title-pause', type=float, help='At least this many seconds after a short heading sentence (six words or fewer)')
+    parser.add_argument('--edge-rms', type=float, help='Also cut near-silent breath/noise at sentence edges: trim to where the 20 ms RMS first/last passes this level, keeping 60 ms of margin')
     parser.add_argument('--project', default='book-hvtt-001-overview', help='Episode whose config and clone takes are used')
     parser.add_argument('--choice', help='JSON {sentence text: clone take} overriding "last take wins" (build-body.py)')
     args = parser.parse_args()
@@ -100,6 +112,7 @@ def main():
         audio = audio.mean(axis=1) if audio.ndim > 1 else audio
         audio = soxr.resample(audio, rate, SR) if rate != SR else audio
         audio = normalize_gain(shared['trim_silence'](audio, SR))
+        if args.edge_rms: audio = trim_quiet_edges(audio, args.edge_rms)
         if args.max_pause: audio = squeeze_pauses(audio, args.max_pause)
         words = len(re.findall(r'\w+', sentence['text']))
         if args.max_rate and voiced_seconds(audio) and words / voiced_seconds(audio) > args.max_rate:
