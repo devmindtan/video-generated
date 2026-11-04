@@ -115,6 +115,11 @@
           "kind": "Composition"
         },
         {
+          "id": "BookAhTap02Clone",
+          "kind": "Composition",
+          "title": "Tập 2 · nghe thử giọng clone"
+        },
+        {
           "id": "BookAhThumbnail",
           "kind": "Still"
         },
