@@ -159,7 +159,8 @@ export const CuonSach = section('03 cuốn sách', /(hai mươi chương|bốn q
 // 3–5 an ice cube and a thermometer creeping up; at the last mark the cube melts to drops; the work was not lost
 // 6–8 two runners toward one flag, one on an even brick road, one on a broken path; the flag fades, the road shines
 // 9–11 two figures offered a cigarette: "tôi đang cố bỏ" / "tôi không hút thuốc", the second bubble lights
-// 12 votes dropping into a ballot box (quote) · 13–15 the habit loop building step by step, then the four laws around it
+// 12 votes dropping into a ballot box (quote) · 13–15 the habit loop building step by step, then the four laws around it,
+// then reversed (to break a bad habit)
 export const SoiChi = section('04 sợi chỉ', /(thói quen nhỏ lặp lại mỗi ngày|một phần trăm|lãi kép|đến muộn|cục nước đá|chưa hiện ra|hệ thống|con người mình muốn trở thành|tôi không hút thuốc|lá phiếu|bốn bước|bốn quy luật)/gi, [
   {at: 0, draw: (c) => <g>{Array.from({length: 24}, (_, i) => {const row = Math.floor(i / 6), col = i % 6, x = 700 + col * 90 + (row % 2) * 45, y = 720 - row * 56;
     return <rect key={i} x={x} y={y} width={84} height={48} rx={3} fill="none" stroke={GOLD} strokeWidth={2.2} opacity={appear(c.frame, c.start + 6 + i * 4, 8)} />;})}</g>},
@@ -202,10 +203,22 @@ export const SoiChi = section('04 sợi chỉ', /(thói quen nhỏ lặp lại m
     {[0, 1, 2, 3].map((k) => {const fall = interpolate(c.frame, [c.start + 20 + k * 22, c.start + 44 + k * 22], [0, 1], {...clamp, easing: ease});
       return <path key={k} d={`M${946 + (k % 2) * 16} ${300 + fall * 250} l50 0 l0 40 l-50 0 Z`} fill="none" stroke={GOLD} strokeWidth={2.2} opacity={appear(c.frame, c.start + 20 + k * 22, 6) * (1 - appear(c.frame, c.start + 44 + k * 22, 6))} />;})}
   </g>},
-  {at: 13, draw: (c) => {const laws = appear(c.frame, c.at(14), 20);return <g>
+  // At "đảo ngược lại để bỏ thói quen xấu" (user 2026-11-04): the arrow in the middle of the loop flips to run the other
+  // way and the four laws turn into their reverse (khó thấy · kém hấp dẫn · khó làm · không thỏa mãn).
+  {at: 13, draw: (c) => {const laws = appear(c.frame, c.at(14), 20), rev = appear(c.frame, within(c, 14, .76), 22), turn = interpolate(rev, [0, 1], [1, -1]);
+    const at = (deg: number) => [960 + 62 * Math.cos(deg * Math.PI / 180), 500 + 62 * Math.sin(deg * Math.PI / 180)];
+    const [sx, sy] = at(-150), [ex, ey] = at(120), dx = -Math.sin(120 * Math.PI / 180), dy = Math.cos(120 * Math.PI / 180);
+    const pos = (k: number) => {const [x, y] = [[960, 286], [1460, 520], [960, 758], [460, 520]][k];return {x: x + (k === 1 ? 60 : k === 3 ? -60 : 0), y: y + (k === 0 ? -14 : k === 2 ? 34 : 10), anchor: (k === 1 ? 'start' : k === 3 ? 'end' : 'middle') as 'start' | 'end' | 'middle'};};
+    return <g>
     {loop(960, 520, 1, -1, interpolate(c.frame, [within(c, 13, .25), within(c, 13, .95)], [0, 1], clamp))}
-    {['HIỂN NHIÊN', 'HẤP DẪN', 'DỄ DÀNG', 'THỎA MÃN'].map((t, k) => {const [x, y] = [[960, 286], [1460, 520], [960, 758], [460, 520]][k];
-      return <text key={t} x={x + (k === 1 ? 60 : k === 3 ? -60 : 0)} y={y + (k === 0 ? -14 : k === 2 ? 34 : 10)} textAnchor={k === 1 ? 'start' : k === 3 ? 'end' : 'middle'} fill={GOLD} fontSize={38} fontWeight={700} opacity={appear(c.frame, within(c, 14, .3 + k * .14), 10) * laws}>{`${k + 1} · ${t}`}</text>;})}
+    {['HIỂN NHIÊN', 'HẤP DẪN', 'DỄ DÀNG', 'THỎA MÃN'].map((t, k) => {const p = pos(k);
+      return <text key={t} x={p.x} y={p.y} textAnchor={p.anchor} fill={GOLD} fontSize={38} fontWeight={700} opacity={appear(c.frame, within(c, 14, .3 + k * .14), 10) * laws * (1 - rev)}>{`${k + 1} · ${t}`}</text>;})}
+    {['KHÓ THẤY', 'KÉM HẤP DẪN', 'KHÓ LÀM', 'KHÔNG THỎA MÃN'].map((t, k) => {const p = pos(k), x = k === 1 ? 1455 : k === 3 ? 465 : p.x;  // side labels hug their boxes so the long ones stay inside the frame
+      return <text key={t} x={x} y={p.y} textAnchor={p.anchor} fill={IVORY} fontSize={34} fontWeight={700} opacity={rev}>{`${k + 1} · ${t}`}</text>;})}
+    <g transform={`translate(960 500) scale(${turn} 1) translate(-960 -500)`} opacity={laws}>
+      <path d={`M${sx} ${sy} A62 62 0 1 1 ${ex} ${ey} M${ex} ${ey} L${ex - 18 * dx + 10 * dy} ${ey - 18 * dy - 10 * dx} M${ex} ${ey} L${ex - 18 * dx - 10 * dy} ${ey - 18 * dy + 10 * dx}`} fill="none" stroke={rev > .5 ? IVORY : GOLD} strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" />
+    </g>
+    <text x={960} y={206} textAnchor="middle" fill={IVORY} fontSize={40} fontWeight={700} opacity={rev}>ĐẢO NGƯỢC ĐỂ BỎ THÓI QUEN XẤU</text>
   </g>;}},
 ], options);
 

@@ -8,7 +8,7 @@ Several clone takes can be given: each sentence is taken from the last take that
 so a script edit only needs the changed sentences re-cloned.
 Usage: .venv/bin/python scripts/projects/book-hvtt-001-overview/assemble-clone.py --clone clone-v2 clone-v3 --out book-hvtt-intro-clone-v3 --id clone-ban-v3
 """
-import argparse, json, os, runpy, sys
+import argparse, io, json, os, re, runpy, subprocess, sys
 from pathlib import Path
 import numpy as np
 import soundfile as sf
@@ -20,6 +20,22 @@ sys.path.insert(0, str(ROOT / 'scripts/shared'))
 from voice_quality import normalize_gain  # noqa: E402
 
 SR = 48000
+FF = ROOT / 'node_modules/@remotion/compositor-linux-x64-gnu/ffmpeg'
+
+
+def voiced_seconds(audio):
+    loud = np.where(np.abs(audio) > np.abs(audio).max() * .02)[0]
+    return (loud[-1] - loud[0]) / SR if len(loud) else 0.0
+
+
+def slow_down(audio, factor):
+    # Tempo factor < 1 makes speech slower with the pitch kept (ffmpeg atempo), same loudness.
+    buf = io.BytesIO()
+    sf.write(buf, audio, SR, format='WAV', subtype='PCM_24')
+    out = subprocess.check_output([str(FF), '-v', 'error', '-f', 'wav', '-i', '-', '-af', f'atempo={factor:.5f}', '-c:a', 'pcm_s24le', '-f', 'wav', '-'],
+                                  input=buf.getvalue(), env={'LD_LIBRARY_PATH': str(FF.parent)})
+    slowed, _ = sf.read(io.BytesIO(out), dtype='float64')
+    return slowed
 
 
 def squeeze_pauses(audio, longest):
@@ -49,6 +65,8 @@ def main():
     parser.add_argument('--out', required=True)
     parser.add_argument('--max-pause', type=float, help='Shorten silences inside each sentence to this many seconds')
     parser.add_argument('--pause-scale', type=float, default=1.0, help='Scale the config lead-in, pauses between sentences and tail')
+    parser.add_argument('--max-rate', type=float, help='Slow a sentence spoken faster than this many syllables per voiced second (pitch kept, at most 12%%)')
+    parser.add_argument('--title-pause', type=float, help='At least this many seconds after a short heading sentence (six words or fewer)')
     parser.add_argument('--project', default='book-hvtt-001-overview', help='Episode whose config and clone takes are used')
     parser.add_argument('--choice', help='JSON {sentence text: clone take} overriding "last take wins" (build-body.py)')
     args = parser.parse_args()
@@ -83,14 +101,19 @@ def main():
         audio = soxr.resample(audio, rate, SR) if rate != SR else audio
         audio = normalize_gain(shared['trim_silence'](audio, SR))
         if args.max_pause: audio = squeeze_pauses(audio, args.max_pause)
+        words = len(re.findall(r'\w+', sentence['text']))
+        if args.max_rate and voiced_seconds(audio) and words / voiced_seconds(audio) > args.max_rate:
+            audio = slow_down(audio, max(.88, args.max_rate / (words / voiced_seconds(audio))))
         edge = min(240, len(audio) // 2)
         audio[:edge] *= np.linspace(0, 1, edge)
         audio[-edge:] *= np.linspace(1, 0, edge)
         at = sum(len(c) for c in chunks) / SR
         chunks.append(audio)
         ranges.append({'text': sentence['text'], 'startSeconds': round(at, 4), 'endSeconds': round(at + len(audio) / SR, 4)})
-        if sentence['pauseAfter']:
-            chunks.append(np.zeros(round(sentence['pauseAfter'] * k * SR)))
+        pause = sentence['pauseAfter'] * k
+        if args.title_pause and words <= 6: pause = max(pause, args.title_pause)
+        if pause:
+            chunks.append(np.zeros(round(pause * SR)))
     speech_end = sum(len(c) for c in chunks) / SR
     chunks.append(np.zeros(round(cfg['tail'] * k * SR)))
     audio = np.concatenate(chunks)

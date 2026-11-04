@@ -18,7 +18,7 @@ Thời lượng mục tiêu khoảng 13 phút (± 1,5 phút). `[nghỉ]` là ch�
 
 ## 0a. Giới thiệu tập (thẻ "TẬP 02 · Thay đổi tí hon hiệu quả bất ngờ · James Clear")
 
-Tập thứ hai, mình chọn cuốn Thay đổi tí hon hiệu quả bất ngờ, tên gốc là Atomic Habits, của tác giả James Clear, một cuốn sách về cách những thói quen rất nhỏ làm nên thay đổi lớn.
+Tập thứ hai, mình chọn cuốn Thay đổi tí hon, hiệu quả bất ngờ, tên gốc là Atomic Habits, của tác giả James Clear, một cuốn sách về cách những thói quen rất nhỏ làm nên thay đổi lớn.
 
 {Câu nháp của kênh, chờ người dùng sửa/duyệt; khoảng 9 giây như thẻ tập 1.}
 
@@ -26,7 +26,7 @@ Tập thứ hai, mình chọn cuốn Thay đổi tí hon hiệu quả bất ng�
 
 Cuốn sách mở đầu bằng chuyện của chính tác giả, câu chuyện mà ông nói đã dạy ông bài học lớn nhất về thói quen. Vào ngày cuối của năm thứ hai trung học, một cây gậy bóng chày tuột khỏi tay một bạn cùng lớp và đập thẳng vào mặt cậu. Cậu bị gãy mũi, rạn xương sọ, được đưa đi cấp cứu bằng trực thăng và hôn mê suốt đêm hôm đó. [nghỉ]
 
-Những tháng sau đó, cậu nhìn mọi thứ thành hai hình, phải tám tháng sau mới lái xe lại được. Điều cậu mong nhất là được quay lại sân bóng, vì bóng chày là giấc mơ cậu theo đuổi từ năm bốn tuổi. Nhưng khi mùa giải mới bắt đầu, cậu là người duy nhất bị loại khỏi đội chính. Hôm đó, cậu ngồi trong xe và khóc. [nghỉ]
+Những tháng sau đó, cậu nhìn mọi thứ thành hai hình, phải tám tháng sau mới lái xe lại được. Điều cậu mong nhất là được quay lại sân bóng, vì bóng chày là giấc mơ mà cậu theo đuổi từ năm bốn tuổi. Nhưng khi mùa giải mới bắt đầu, cậu là người duy nhất bị loại khỏi đội chính. Hôm đó, cậu ngồi trong xe và khóc. [nghỉ]
 
 Hai năm sau, lên đại học, cậu không lao ngay vào tập luyện mà bắt đầu từ việc sắp xếp lại cuộc sống của mình. Trong khi bạn bè thức khuya chơi game, cậu đi ngủ sớm; giữa ký túc xá bừa bộn, cậu giữ cho phòng mình gọn gàng. Theo tác giả, những việc ấy chẳng có gì to tát, nhưng cho cậu cảm giác mình đang làm chủ lại được đời mình. Sự tự tin ấy lan dần sang việc học, rồi sang cả phòng tập. [nghỉ]
 
@@ -54,7 +54,7 @@ Nhưng lãi kép thì đến muộn. Tác giả ví như một cục nước đ�
 
 Từ đó, tác giả khuyên mình bớt nhìn vào mục tiêu mà nhìn vào hệ thống, tức là những việc mình làm mỗi ngày. Người thắng và người thua thường có cùng một mục tiêu; khác nhau ở hệ thống. Như tác giả viết: "Bạn đừng nâng tầm các mục tiêu. Hãy nâng cấp các hệ thống của bạn." [nghỉ]
 
-Sâu hơn nữa là con người mình muốn trở thành. Hai người cùng được mời thuốc lá: một người nói "tôi đang cố bỏ", người kia nói "tôi không hút thuốc". Người thứ hai đã đổi cách nhìn về chính mình. Theo tác giả, "Mỗi một hành động là một lá phiếu bầu chọn cho mẫu người mà bạn mong ước trở thành." [nghỉ]
+Sâu hơn nữa là con người mình muốn trở thành. Hai người cùng được mời thuốc lá: một người nói "tôi đang cố bỏ", người kia nói "tôi không hút thuốc". Người thứ nhất vẫn thấy mình là người hút thuốc đang cố nhịn; người thứ hai đã thấy mình là người không hút thuốc nữa. Theo tác giả, "Mỗi một hành động là một lá phiếu bầu chọn cho mẫu người mà bạn mong ước trở thành." [nghỉ]
 
 Còn cách làm thì tác giả chia mỗi thói quen thành bốn bước: một dấu hiệu, một sự khao khát, một hành động, và một phần thưởng. Từ bốn bước đó có bốn quy luật để xây thói quen tốt: làm cho nó hiển nhiên, hấp dẫn, dễ dàng và thỏa mãn; và đảo ngược lại để bỏ thói quen xấu. [nghỉ]
 
@@ -68,7 +68,7 @@ Phần còn lại của cuốn sách, mình xin đi theo đúng bốn quy luật
 
 Quy luật thứ nhất là làm cho thói quen trở nên hiển nhiên, tức là để dấu hiệu của nó dễ thấy.
 
-**Nhận ra thói quen của mình.** Ở đường sắt tại Nhật Bản, nhân viên vừa chỉ tay vừa nói to từng việc mình đang kiểm tra, để việc tự động được đưa ra ánh sáng. Tác giả gợi ý mình làm một phiếu đánh giá thói quen: viết ra những việc làm mỗi ngày, rồi đánh dấu việc nào đang giúp, việc nào đang cản con người mình muốn trở thành, mà không tự trách. Theo tác giả, "Quá trình thay đổi hành vi luôn luôn bắt đầu với sự nhận biết."
+**Nhận ra thói quen của mình.** Ở đường sắt tại Nhật Bản, nhân viên vừa chỉ tay vừa nói to từng việc mình đang kiểm tra, để những việc vốn làm theo quán tính được làm một cách có ý thức. Tác giả gợi ý mình làm một phiếu đánh giá thói quen: viết ra những việc làm mỗi ngày, rồi đánh dấu việc nào đang giúp, việc nào đang cản con người mình muốn trở thành, mà không tự trách. Theo tác giả, "Quá trình thay đổi hành vi luôn luôn bắt đầu với sự nhận biết."
 
 **Nói rõ khi nào, ở đâu.** Trong một nghiên cứu sách kể, những người viết sẵn câu "tôi sẽ tập vào ngày nào, lúc mấy giờ, ở đâu" giữ việc tập tốt hơn hẳn những người chỉ được khích lệ. Tác giả cho rằng nhiều khi mình không thiếu động lực mà thiếu sự rõ ràng. Một cách khác là xếp chồng thói quen: "Sau khi làm [Thói quen hiện tại], tôi sẽ làm [Thói quen mới]", như sau khi pha cà phê buổi sáng thì ngồi thiền một phút.
 
@@ -134,7 +134,7 @@ Phần cuối của sách nói về lúc thói quen đã thành nếp, khi đi�
 
 ## 3F. Những điểm chưa đạt
 
-[nghỉ] Nói cho công bằng, cuốn sách cũng có những chỗ mình thấy chưa đạt.
+[nghỉ] Cuốn sách có nhiều cách làm hay, nhưng cũng có vài điểm mình chưa ưng.
 
 Thứ nhất, sách dẫn rất nhiều nghiên cứu và tỉ lệ phần trăm, nhưng chính tác giả nói đây là sổ tay hướng dẫn, không phải nghiên cứu khoa học. Mình nghĩ nên xem các con số ấy như minh họa, còn giá trị thật của sách nằm ở cách làm.
 
@@ -146,7 +146,7 @@ Thứ ba, phần lớn ví dụ là chuyện người thành công ở Mỹ, và
 
 ## 3G. Tổng kết
 
-[nghỉ] Tóm lại, Thay đổi tí hon hiệu quả bất ngờ xoay quanh một ý: những thói quen nhỏ, lặp lại đủ lâu, sẽ nhân lên thành kết quả lớn, và thói quen bền nhất bắt đầu từ con người mình muốn trở thành. Từ đó, sách đưa ra bốn quy luật: làm cho hiển nhiên, hấp dẫn, dễ dàng và thỏa mãn, cùng cách đảo ngược để bỏ thói quen xấu. [nghỉ]
+[nghỉ] Tóm lại, Thay đổi tí hon, hiệu quả bất ngờ xoay quanh một ý: những thói quen nhỏ, lặp lại đủ lâu, sẽ nhân lên thành kết quả lớn, và thói quen bền nhất bắt đầu từ con người mình muốn trở thành. Từ đó, sách đưa ra bốn quy luật: làm cho hiển nhiên, hấp dẫn, dễ dàng và thỏa mãn, cùng cách đảo ngược để bỏ thói quen xấu. [nghỉ]
 
 Theo mình, đây là cuốn sách nên đọc chậm và làm thử từng chương. Như tác giả viết ở cuối sách: "Những thói quen nhỏ không thêm vào mà chúng hợp thành."
 
@@ -170,11 +170,11 @@ Nếu chỉ chọn một cách để bắt đầu, mình gợi ý xếp chồng 
 
 ## 5. Nhận xét chung
 
-Mặc dù cuốn sách này còn nhiều những chỗ chưa hay, nhưng tổng quan đây là một cuốn sách hay. Nếu bạn đang muốn đổi một thói quen mà lần nào cũng bỏ dở giữa chừng, cuốn này cho bạn rất nhiều cách để thử lại, bắt đầu từ những việc chưa tới hai phút. [nghỉ]
+Gấp sách lại, điều mình nhớ nhất không phải một con số nào, mà là thay đổi hóa ra không cần bắt đầu bằng một quyết tâm lớn. Nếu bạn đang muốn đổi một thói quen mà lần nào cũng bỏ dở giữa chừng, cuốn này cho bạn rất nhiều cách để thử lại, bắt đầu từ những việc chưa tới hai phút. [nghỉ]
 
 Nếu bạn có thời gian, có thể đọc qua để hiểu hơn: hiểu vì sao mình hay bỏ cuộc, rồi bắt đầu lại từ một việc thật nhỏ.
 
-{Câu đầu và câu cuối theo lời người dùng ở tập 1 (quy tắc series), phần giữa là nháp của kênh cho cuốn này; chờ người dùng sửa.}
+{Câu cuối theo lời người dùng ở tập 1. Câu đầu đổi cách nói (người dùng 2026-11-04: câu "Mặc dù cuốn sách này còn nhiều những chỗ chưa hay…" lặp lại tập 1, intro/outro đã dùng lại nên phần riêng của tập nên nói khác).}
 
 ## 6. Kết (dùng lại nguyên outro của tập 1)
 
