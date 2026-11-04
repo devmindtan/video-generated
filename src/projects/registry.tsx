@@ -87,6 +87,7 @@ import {SkinCareNhuyVideo} from './skin-care-nhuy/Video';
 import {MerzyGlamTintVideo} from './merzy-glam-tint/Video';
 import {FlowerKnowsPowderVideo} from './flower-knows-powder/Video';
 import {FlowerKnowsLipDuoVideo} from './flower-knows-lip-duo/Video';
+import {FlowerKnowsSwanMirrorVideo} from './flower-knows-swan-mirror/Video';
 
 import {StartBeforeReadyVideo} from './start-before-ready/Video';
 import {StartBeforeReadyThumbnail} from './start-before-ready/Thumbnail';
@@ -321,6 +322,9 @@ export const ProjectCompositions: FC = () => (
         </Folder>
         <Folder name="flower-knows-lip-duo">
           <Composition id="FlowerKnowsLipDuoAdam" calculateMetadata={renderTo('flower-knows-lip-duo')} component={FlowerKnowsLipDuoVideo} durationInFrames={638} fps={30} width={1080} height={1920} />
+        </Folder>
+        <Folder name="flower-knows-swan-mirror">
+          <Composition id="FlowerKnowsSwanMirrorAdam" calculateMetadata={renderTo('flower-knows-swan-mirror')} component={FlowerKnowsSwanMirrorVideo} durationInFrames={773} fps={30} width={1080} height={1920} />
         </Folder>
       </Folder>
     </Folder>

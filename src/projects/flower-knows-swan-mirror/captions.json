@@ -1,0 +1,98 @@
+[
+  [
+    {
+      "text": "Xin chào các con vợ của chồng...",
+      "startMs": 0,
+      "endMs": 2040,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Flower Knows lại tới, chồng sắp thành",
+      "startMs": 2380,
+      "endMs": 4380,
+      "timestampMs": 2380,
+      "confidence": null
+    },
+    {
+      "text": "đại lý rồi.",
+      "startMs": 4380,
+      "endMs": 4960,
+      "timestampMs": 4380,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Rút từ từ thôi, như rút thăm trúng thưởng.",
+      "startMs": 0,
+      "endMs": 2240,
+      "timestampMs": 0,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Gương cầm tay Swan Ballet.",
+      "startMs": 0,
+      "endMs": 2020,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Mặt sau toàn thiên nga với hoa tuyết.",
+      "startMs": 2020,
+      "endMs": 3600,
+      "timestampMs": 2020,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Viền bạc, nơ xanh, thiên nga nổi",
+      "startMs": 0,
+      "endMs": 2320,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "lên từng cái lông.",
+      "startMs": 2320,
+      "endMs": 3600,
+      "timestampMs": 2320,
+      "confidence": null
+    },
+    {
+      "text": "Soi gương chưa thấy mặt, đã thấy sang.",
+      "startMs": 3600,
+      "endMs": 5680,
+      "timestampMs": 3600,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Hai thiên nga chụm thành trái tim.",
+      "startMs": 0,
+      "endMs": 1840,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Ế thì đừng nhìn lâu.",
+      "startMs": 2220,
+      "endMs": 3140,
+      "timestampMs": 2220,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Giải tán, các con vợ!",
+      "startMs": 0,
+      "endMs": 1260,
+      "timestampMs": 0,
+      "confidence": null
+    }
+  ]
+]

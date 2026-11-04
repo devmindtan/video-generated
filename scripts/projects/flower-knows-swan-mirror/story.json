@@ -1,0 +1,124 @@
+[
+  {
+    "id": "01-greeting",
+    "start": 0,
+    "duration": 5.3,
+    "leadIn": 0.22,
+    "tail": 0.14,
+    "minWordMatchRatio": 0.75,
+    "temperature": 0.58,
+    "text": "Xin chào các con vợ của chồng... Flower Knows lại tới, chồng sắp thành đại lý rồi.",
+    "sentences": [
+      {
+        "text": "Xin chào các con vợ của chồng...",
+        "pauseAfter": 0.24,
+        "gainDb": 0.35
+      },
+      {
+        "text": "Flower Knows lại tới, chồng sắp thành đại lý rồi.",
+        "pauseAfter": 0,
+        "gainDb": 0.35
+      }
+    ]
+  },
+  {
+    "id": "02-unbox",
+    "start": 5.4,
+    "duration": 2.8,
+    "leadIn": 0.1,
+    "tail": 0.1,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.56,
+    "text": "Rút từ từ thôi, như rút thăm trúng thưởng.",
+    "sentences": [
+      {
+        "text": "Rút từ từ thôi, như rút thăm trúng thưởng.",
+        "pauseAfter": 0,
+        "gainDb": 0.4
+      }
+    ]
+  },
+  {
+    "id": "03-mirror",
+    "start": 8.2,
+    "duration": 4.5,
+    "leadIn": 0.1,
+    "tail": 0.14,
+    "minWordMatchRatio": 0.75,
+    "temperature": 0.54,
+    "text": "Gương cầm tay Swan Ballet. Mặt sau toàn thiên nga với hoa tuyết.",
+    "sentences": [
+      {
+        "text": "Gương cầm tay Swan Ballet.",
+        "pauseAfter": 0.2,
+        "gainDb": 0.2
+      },
+      {
+        "text": "Mặt sau toàn thiên nga với hoa tuyết.",
+        "pauseAfter": 0,
+        "gainDb": 0.25
+      }
+    ]
+  },
+  {
+    "id": "04-relief",
+    "start": 12.7,
+    "duration": 7.6,
+    "leadIn": 0.25,
+    "tail": 0.14,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.56,
+    "text": "Viền bạc, nơ xanh, thiên nga nổi lên từng cái lông. Soi gương chưa thấy mặt, đã thấy sang.",
+    "sentences": [
+      {
+        "text": "Viền bạc, nơ xanh, thiên nga nổi lên từng cái lông.",
+        "pauseAfter": 0.5,
+        "gainDb": 0.2
+      },
+      {
+        "text": "Soi gương chưa thấy mặt, đã thấy sang.",
+        "pauseAfter": 0,
+        "gainDb": 0.45
+      }
+    ]
+  },
+  {
+    "id": "05-heart",
+    "start": 20.3,
+    "duration": 3.9,
+    "leadIn": 0.15,
+    "tail": 0.12,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.56,
+    "text": "Hai thiên nga chụm thành trái tim. Ế thì đừng nhìn lâu.",
+    "sentences": [
+      {
+        "text": "Hai thiên nga chụm thành trái tim.",
+        "pauseAfter": 0.22,
+        "gainDb": 0.2
+      },
+      {
+        "text": "Ế thì đừng nhìn lâu.",
+        "pauseAfter": 0,
+        "gainDb": 0.45
+      }
+    ]
+  },
+  {
+    "id": "06-outro",
+    "start": 24.2,
+    "duration": 1.5,
+    "leadIn": 0.05,
+    "tail": 0.06,
+    "minWordMatchRatio": 0.8,
+    "temperature": 0.6,
+    "text": "Giải tán, các con vợ!",
+    "sentences": [
+      {
+        "text": "Giải tán, các con vợ!",
+        "pauseAfter": 0,
+        "gainDb": 0.5
+      }
+    ]
+  }
+]

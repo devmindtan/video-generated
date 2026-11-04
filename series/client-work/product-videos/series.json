@@ -89,16 +89,21 @@
     {
       "id": "flower-knows-swan-mirror",
       "title": "Gương cầm tay Flower Knows — Adam bựa",
-      "status": "planning",
+      "status": "existing",
       "format": "short",
-      "durationSeconds": null,
+      "durationSeconds": 25.766667,
       "paths": {
         "source": "src/projects/flower-knows-swan-mirror",
         "scripts": "scripts/projects/flower-knows-swan-mirror",
         "docs": "docs/projects/flower-knows-swan-mirror",
         "assets": "public/flower-knows-swan-mirror"
       },
-      "registrations": []
+      "registrations": [
+        {
+          "id": "FlowerKnowsSwanMirrorAdam",
+          "kind": "Composition"
+        }
+      ]
     }
   ]
 }

@@ -4,12 +4,13 @@
 - Series: product-videos
 - Project ID: flower-knows-swan-mirror
 - Định dạng: short
-- Thời lượng: chưa duyệt
-- Trạng thái: planning, chưa có composition/asset/giọng.
+- Thời lượng: 25,8 giây (video khách, bỏ logo CapCut)
+- Trạng thái: đã có composition `FlowerKnowsSwanMirrorAdam` và giọng; chờ nghe duyệt.
+- Giọng: lựa chọn 1 — preset VieNeu **Adam bựa** (không clone). Âm thanh gốc giữ nguyên.
 
 ## Nội dung
 
-Chưa viết; cần duyệt mục tiêu, dàn ý và kịch bản trước sản xuất.
+Lồng giọng hài review gương cầm tay Flower Knows dòng Swan Ballet (hộp, rút gương, phù điêu thiên nga, hai thiên nga chụm trái tim). Kịch bản: [script.md](script.md); thông số: [production-spec.md](production-spec.md).
 
 ## Nguồn và kiểm chứng
 
