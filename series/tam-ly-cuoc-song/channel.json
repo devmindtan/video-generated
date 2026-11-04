@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "channel": "tam-ly-cuoc-song",
+  "platforms": [
+    {
+      "id": "youtube-8f5d1d",
+      "platform": "youtube",
+      "name": "Tâm lý cuộc sống",
+      "handle": "@tamly.cuocsong",
+      "url": "https://www.youtube.com/channel/UCd_w0tmGSbVIonnzzCYlByw",
+      "description": "Tâm lý cuộc sống kể lại những chuyện rất đời thường bằng góc nhìn tâm lý học và triết học khắc kỷ: một ngày làm chưa tốt, nỗi sợ trước khi bắt đầu, lời khuyên đúng nhưng sai lúc, sự tử tế cần có giới hạn.\n\nTrên kênh có:\n• Shorts khoảng 45 giây: mỗi video một tình huống cụ thể và một cách nhìn khác về nó.\n• Câu chuyện Stoic: bài học từ những nhân vật lịch sử, như Nicolas Fouquet và cái giá của việc tỏa sáng sai cách.\n• Đọc sách, hiểu mình: tóm tắt và phân tích từng cuốn sách (Hiểu về trái tim, Thay đổi tí hon hiệu quả bất ngờ…), kèm đánh giá chỗ thuyết phục và chỗ chưa.\n\nNội dung để tham khảo và tự suy ngẫm, không thay cho tư vấn tâm lý chuyên môn.",
+      "notes": "",
+      "avatar": "79c7ce1ea5c6ad07695bcd2963f389e28a5c82a270ce2f2ed061bd229814bdb4.jpg",
+      "banner": null,
+      "updatedAt": "2026-11-04T09:08:37.513Z"
+    },
+    {
+      "id": "tiktok-5f3929",
+      "platform": "tiktok",
+      "name": "Tâm lý cuộc sống",
+      "handle": "@tamly.cuocsong",
+      "url": "https://www.tiktok.com/@tamly.cuocsong",
+      "description": "Tâm lý & triết học khắc kỷ qua chuyện đời thường. Shorts 45 giây, tóm tắt sách.",
+      "notes": "",
+      "avatar": "79c7ce1ea5c6ad07695bcd2963f389e28a5c82a270ce2f2ed061bd229814bdb4.jpg",
+      "banner": null,
+      "updatedAt": "2026-11-04T09:08:37.515Z"
+    }
+  ]
+}
