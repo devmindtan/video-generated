@@ -306,7 +306,8 @@ async function main(argv){
       const changes={...(percent!==''&&hasFlag('--percent')?{percent:Number(percent)}:{}),
         ...(steps?(()=>{const m=steps.match(/^(\d+)\/(\d+)$/);if(!m)throw new Error('--steps dạng done/total, ví dụ 3/10');return {steps:{done:+m[1],total:+m[2]}};})():{}),
         ...(hasFlag('--note')?{note}:{})};
-      if(!b)return json(progress.view(ROOT,a));
+      // Same view as the manager's Tiến trình tab, so tasks completed by the user's own action (doneWhen) read as done here too.
+      if(!b){let v;try{v=require('../project-manager/approvals-view.cjs').createApprovals(ROOT).progressView(a);}catch{}return json(v?.available?v:progress.view(ROOT,a));}
       if(b==='plan'){
         const r=review.summary(ROOT,p);if(!r.version)throw new Error('Chưa chốt ban đầu: kế hoạch thực hiện lập sau khi bạn chốt');
         const data=JSON.parse(fs.readFileSync(path.resolve(ROOT,valueOf('--file')||'-'),'utf8'));

@@ -121,5 +121,8 @@ Tab **Tiến trình** của mỗi dự án cho người dùng theo dõi trực t
 - Thứ tự trên trang: Chờ bạn → Đang làm → Cần chú ý (bị ngắt, lỗi, đang chờ) → Tiếp theo → Đã xong (gập sẵn) → Vòng sửa; lọc theo loại việc; Hoạt động nhóm theo ngày, xem thêm theo đợt.
 - % tổng = trung bình có trọng số (`weight`) của % từng việc. Mỗi thay đổi lưu ngay vào `.automation/progress/<slug>.json` (Git bỏ qua).
 - Bị ngắt: việc "đang làm" mà tiến trình báo cáo đã chết, hoặc 20 phút không cập nhật, hiện là **Bị ngắt** kèm % và ghi chú cuối cùng; file không bị sửa.
+- Việc người dùng tự làm (người dùng 2026-11-04: tiến trình cứ dừng ở bước cuối) có `doneWhen` trong kế hoạch và tự hiện **xong** khi dữ kiện đúng, không cần agent cập nhật:
+  `exported` (mọi video của dự án đã có bản xuất), `review-preview` (đã duyệt Xem bản dựng), `patches-settled` (không còn bản vá chờ, bản mới nhất được chấp nhận).
+  Trạng thái này chỉ tính khi đọc (ghi chú "Tự xong: …"), không ghi vào file. Tách việc "bạn duyệt" và "bạn xuất" thành hai việc; việc đang chờ người dùng để `block`.
 - Trang tự làm mới 4 giây một lần khi tab đang mở; thẻ dự án ngoài danh sách hiện "Đang làm / Bị ngắt · x%".
 

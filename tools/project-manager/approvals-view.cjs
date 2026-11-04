@@ -309,9 +309,18 @@ function createApprovals(root) {
     return item && audioOf(id, item).some(a => a.key === key) ? path.join(root, 'public', key) : null;
   }
   // Read-only: what the agent planned after the lock and is doing now, plus local model runs of this project.
+  // Facts that complete tasks done by the user (progress.cjs DONE_WHEN): exports on disk, the final gate, patch decisions.
+  const features = require('./features.cjs').features(root);
+  function progressFacts(id, plan) {
+    const facts = {};
+    try {const v = features.items(id, 'video');facts.exported = v.length > 0 && v.every(x => x.name);} catch {}
+    try {facts['review-preview'] = approvals.gateState(root, plan, 'review-preview').state === 'approved';} catch {}
+    try {const patches = review.load(root, id).patches;facts['patches-settled'] = patches.length > 0 && !patches.some(x => x.status === 'pending') && patches.at(-1).status === 'accepted';} catch {}
+    return facts;
+  }
   function progressView(id) {
     let plan;try {plan = cli.plan(root, id);} catch (e) {return {available: false, reason: e.message};}
-    const p = progress.view(root, id), r = review.summary(root, plan);
+    const p = progress.view(root, id, {facts: progressFacts(id, plan)}), r = review.summary(root, plan);
     const runs = runner.list(root, id).slice(-10).reverse().map(x => ({runId: x.runId, stage: plan.stages.find(s => s.id === x.stageId)?.title || x.stageId, status: x.status, createdAt: x.createdAt}));
     // Each patch is a round of agent work on your feedback: listed beside the plan and merged into the timeline,
     // so work done outside the plan's tasks still shows. Superseded proposals add no decision line.
@@ -323,7 +332,7 @@ function createApprovals(root) {
     return {available: true, locked: r.version > 0, lockVersion: r.version, ...p, events, lastActivity: events[0]?.at || p.lastActivity, patches, runs};
   }
   function progressSummary(id) {
-    try {const p = progress.view(root, id);return p.plan ? {overall: p.overall, running: p.counts.running, interrupted: p.counts.interrupted, failed: p.counts.failed, total: p.counts.total, done: p.counts.done, lastActivity: p.lastActivity} : null;}
+    try {const p = progress.view(root, id, {facts: progressFacts(id, cli.plan(root, id))});return p.plan ? {overall: p.overall, running: p.counts.running, interrupted: p.counts.interrupted, failed: p.counts.failed, total: p.counts.total, done: p.counts.done, lastActivity: p.lastActivity} : null;}
     catch {return null;}
   }
   return {approvalsView: view, approveGate, gateReview, projectMedia, reviewView, reviewDetail, lockProject, returnLock, decidePatch, reviewNote, reviewScene, reviewMedia, progressView, progressSummary};

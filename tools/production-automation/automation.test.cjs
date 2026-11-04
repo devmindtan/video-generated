@@ -293,6 +293,17 @@ test('live progress: agent plan after the lock, weighted percent, re-plans keep 
  progress.log(root,id,'Đang đợi máy GPU bật');assert.equal(progress.view(root,id).events[0].message,'Đang đợi máy GPU bật');
  assert.ok(fs.existsSync(path.join(root,'.automation/progress',`${id}.json`)));assert.ok(denied(`.automation/progress/${id}.json`));
 }));
+test('progress: a task finished by the user (doneWhen) shows done from the fact, without an update; bad facts are refused',()=>fixture(root=>{
+ const progress=require('./progress.cjs'),id='self-help-shorts';
+ assert.throws(()=>progress.setPlan(root,id,{tasks:[{id:'x',title:'X',doneWhen:'render'}]}),/doneWhen/);
+ progress.setPlan(root,id,{tasks:[{id:'build',title:'Dựng'},{id:'export',title:'Bạn xuất video',doneWhen:'exported'},{id:'final',title:'Bạn duyệt',doneWhen:'review-preview'}]});
+ progress.update(root,id,'build',{status:'done'});progress.update(root,id,'export',{status:'blocked',note:'Chờ bạn'});
+ let v=progress.view(root,id);assert.equal(v.tasks.find(t=>t.id==='export').display,'blocked');assert.equal(v.overall,33);
+ v=progress.view(root,id,{facts:{exported:true}});const e=v.tasks.find(t=>t.id==='export');
+ assert.equal(e.display,'done');assert.equal(e.autoDone,true);assert.match(e.note,/Tự xong/);assert.equal(v.overall,67);
+ assert.equal(progress.load(root,id).tasks.find(t=>t.id==='export').status,'blocked','derived, never stored');
+ assert.equal(progress.view(root,id,{facts:{exported:true,'review-preview':true}}).overall,100);
+}));
 test('initial package can be sent back (Chưa đạt) with notes; the next look knows what changed since',()=>fixture(root=>{
  const review=require('./review.cjs'),id='self-help-shorts',p=plan(root,id),D=`docs/projects/${id}`,X=`scripts/projects/${id}`;
  put(root,`${D}/script.md`,'s1');put(root,`src/projects/${id}/music.json`,'{}');put(root,`${X}/voice.json`,'{}');put(root,`${D}/production-spec.md`,'p');put(root,`${D}/image-prompts.md`,'i');

@@ -7,6 +7,11 @@ const path = require('node:path');
 
 const KINDS = {voice: 'Giọng đọc', visuals: 'Hình ảnh / animation', music: 'Nhạc nền', assembly: 'Dựng', clip: 'Clip duyệt cảnh', check: 'Kiểm tra', other: 'Việc khác'};
 const STATUSES = ['pending', 'running', 'done', 'failed', 'blocked'];
+// Tasks that finish by the user's own action (user rule 2026-11-04: the last step kept "waiting" after the user had
+// reviewed and exported): the plan names the fact that completes them and the page marks them done from that fact,
+// without anyone updating the task. exported: every video of the project has an exported file; review-preview: the
+// "Xem bản dựng" gate is approved; patches-settled: no patch waits and the latest one was accepted.
+const DONE_WHEN = {'exported': 'Đã có bản xuất cho mọi video', 'review-preview': 'Bạn đã duyệt bước Xem bản dựng', 'patches-settled': 'Không còn bản vá chờ, bản mới nhất đã được chấp nhận'};
 const STALE_MS = 20 * 60 * 1000; // a running task with no update for 20 minutes is shown as interrupted
 const MAX_EVENTS = 500;
 
@@ -54,7 +59,8 @@ function setPlan(root, id, {tasks, summary = '', by = 'agent', lockVersion = 0})
     if (typeof t.title !== 'string' || !t.title.trim()) throw new Error(`Việc ${t.id} cần tên`);
     seen.add(t.id);
     const prev = old.get(t.id) || {};
-    return {id: t.id, title: t.title.trim(), kind: KINDS[t.kind] ? t.kind : 'other', detail: t.detail || '', weight: t.weight > 0 ? t.weight : 1,
+    if (t.doneWhen != null && !DONE_WHEN[t.doneWhen]) throw new Error(`doneWhen của ${t.id} phải là một trong: ${Object.keys(DONE_WHEN).join(', ')}`);
+    return {id: t.id, title: t.title.trim(), kind: KINDS[t.kind] ? t.kind : 'other', detail: t.detail || '', weight: t.weight > 0 ? t.weight : 1, doneWhen: t.doneWhen || null,
       status: prev.status || 'pending', percent: prev.percent || 0,
       steps: t.steps ? stepsOf(t.steps, safeSteps(prev.steps)?.done || 0) : safeSteps(prev.steps),
       note: prev.note || '', startedAt: prev.startedAt || null, updatedAt: prev.updatedAt || null, finishedAt: prev.finishedAt || null, pid: prev.pid || null};
@@ -103,9 +109,13 @@ function log(root, id, message, taskId = null) {
   save(root, id, store);
 }
 // What the page shows. "interrupted" is derived, never stored: the last saved state stays as it was.
-function view(root, id, {at = Date.now()} = {}) {
+// facts: {exported, 'review-preview', 'patches-settled'} booleans from the caller (the manager reads exports and
+// approvals); a task whose doneWhen fact holds shows as done with that reason.
+function view(root, id, {at = Date.now(), facts = {}} = {}) {
   const store = load(root, id);
-  const tasks = store.tasks.map(t => {
+  const tasks = store.tasks.map(raw => {
+    const auto = raw.doneWhen && facts[raw.doneWhen] && raw.status !== 'done';
+    const t = auto ? {...raw, status: 'done', note: `Tự xong: ${DONE_WHEN[raw.doneWhen]}`, autoDone: true} : raw;
     const stale = t.status === 'running' && ((t.pid && !alive(t.pid)) || at - Date.parse(t.updatedAt || t.startedAt || 0) > STALE_MS);
     const steps = t.status === 'done' && safeSteps(t.steps) ? {...safeSteps(t.steps), done: safeSteps(t.steps).total} : safeSteps(t.steps);
     return {...t, steps, weight: t.weight > 0 ? t.weight : 1, percent: percentOf(t), display: stale ? 'interrupted' : t.status, kindTitle: KINDS[t.kind]};
@@ -117,4 +127,4 @@ function view(root, id, {at = Date.now()} = {}) {
     counts: {total: tasks.length, done: count('done'), running: count('running'), interrupted: count('interrupted'), failed: count('failed'), blocked: count('blocked'), pending: count('pending')},
     lastActivity: store.events.at(-1)?.at || null};
 }
-module.exports = {KINDS, STATUSES, setPlan, ensureTask, update, log, view, load, file};
+module.exports = {KINDS, STATUSES, DONE_WHEN, setPlan, ensureTask, update, log, view, load, file};
