@@ -16,7 +16,9 @@ import {ChuaDat, CuonSach, MoChuyen, NhanXet, QuyLuat1, QuyLuat2, QuyLuat3, QuyL
 // Episode 2 (Thay đổi tí hon hiệu quả bất ngờ) in the series frame: reused series intro, "Cách làm" and outro, this
 // episode's card and body. Parts join as their narration exists. Placeholder phase: the Quốc Tuấn take of a segment
 // (25-quoc-tuan-<nn>) plays until the clone batch is picked; then the clone take (<segment>-sang2) wins.
-export type EpisodeProps = {introVoice: string; cardVoice: string; outroVoice: string; channelLabel: string; episodeLabel: string; bookTitle: string; bookAuthor: string};
+// clone: play the cloned voice (<segment>-sang2) where it exists; off, the placeholder plays. The clone batch is
+// heard first in its own composition (BookAhTap02Clone) and becomes the default only once the user picks it.
+export type EpisodeProps = {introVoice: string; cardVoice: string; outroVoice: string; channelLabel: string; episodeLabel: string; bookTitle: string; bookAuthor: string; clone?: boolean};
 
 const voices = takesOf(bodyTakes), cards = (cardTakes as unknown as {voices: Voice[]}).voices;
 // The newest placeholder take of a segment: 25-quoc-tuan-<nn>, or a later retake 25-quoc-tuan-<nn><letter> whose
@@ -26,7 +28,7 @@ const placeholder = (seg: string) => {
   const nn = seg.split('-')[0];
   return voices.filter((v) => {const m = /^25-quoc-tuan-(\d+[a-z]?)$/.exec(v.id);return m && (m[1] === nn || (m[1].startsWith(nn) && m[1].length === nn.length + 1 && !NUMBERS.includes(m[1])));}).at(-1)?.id;
 };
-const voiceFor = (seg: string) => [`${seg}-sang2`, seg, placeholder(seg)].find((id) => id && takeOf(id, voices));
+const voiceFor = (seg: string, clone = false) => (clone ? [`${seg}-sang2`, seg, placeholder(seg)] : [placeholder(seg), seg, `${seg}-sang2`]).find((id) => id && takeOf(id, voices));
 const BODY: [string, string, Section][] = [['02-mo-chuyen', 'Mở chuyện', MoChuyen], ['03-cuon-sach', 'Phần 1 · Cuốn sách là gì', CuonSach], ['04-soi-chi', 'Phần 2 · Sợi chỉ xuyên suốt', SoiChi],
   ['05-quy-luat-1', 'Quy luật 1 · Làm cho hiển nhiên', QuyLuat1], ['06-quy-luat-2', 'Quy luật 2 · Làm cho hấp dẫn', QuyLuat2], ['07-quy-luat-3', 'Quy luật 3 · Làm cho dễ dàng', QuyLuat3],
   ['08-quy-luat-4', 'Quy luật 4 · Làm cho thỏa mãn', QuyLuat4], ['08b-thanh-nep', 'Khi thói quen đã thành nếp', ThanhNep], ['08e-diem-chua-dat', 'Những điểm chưa đạt', ChuaDat],
@@ -35,7 +37,7 @@ const BODY: [string, string, Section][] = [['02-mo-chuyen', 'Mở chuyện', MoC
 const parts = (p: EpisodeProps, fps: number): Part[] => {
   const list = openingParts({...p, cardTakes: cards}, fps);
   for (const [seg, name, S] of BODY) {
-    const voice = voiceFor(seg);
+    const voice = voiceFor(seg, p.clone);
     if (voice) list.push(sectionPart(name, S, voice, p.channelLabel, fps, voices));
   }
   list.push(outroPart(p, fps));
