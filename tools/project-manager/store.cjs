@@ -171,7 +171,8 @@ function createStore(root) {
       const added = worked?.first.get(project.id);
       const updatedAt = [worked?.last.get(project.id), progress?.lastActivity].filter(Boolean).sort().at(-1)
         || (fileTime && added && fileTime > added ? added : fileTime || added || null);
-      return {id:project.id,title:project.title,status:project.status,format:project.format,series:series.id,channel:series.channel,
+      const done = project.status==='production' && Boolean(renderedVideo) && extra.finished(project.id);
+      return {id:project.id,title:project.title,status:done?'existing':project.status,finished:done,format:project.format,series:series.id,channel:series.channel,
         seriesTitle:series.title,durationSeconds:node?.fps&&node.durationFrames&&!(node.calculated&&project.durationSeconds)?node.durationFrames/node.fps:project.durationSeconds??null,
         renderedVideo:Boolean(renderedVideo),renderedThumbnail:Boolean(renderedThumbnail),importedVideo:Boolean(renderedVideo?.imported),videoInline:renderedVideo?.inline!==false,videoFile:renderedVideo?.name||null,videoId:video?.id||null,thumbnailId:thumbnail?.id||null,previewType:image?.type||null,updatedAt,book:project.book||null,promotes:project.promotes||null,compositionCount:project.registrations.filter(r=>r.kind==='Composition').length,
         hasScript:exists(path.join(location(project.paths.docs),'script.md')),

@@ -171,7 +171,7 @@
     {
       "id": "book-hvtt-001-shorts",
       "title": "Short giới thiệu tập 1 · Hiểu về trái tim",
-      "status": "production",
+      "status": "existing",
       "format": "short",
       "durationSeconds": 40,
       "book": "hieu-ve-trai-tim",

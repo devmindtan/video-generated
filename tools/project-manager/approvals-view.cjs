@@ -331,10 +331,16 @@ function createApprovals(root) {
       .sort((a, b) => Date.parse(b.at) - Date.parse(a.at));
     return {available: true, locked: r.version > 0, lockVersion: r.version, ...p, events, lastActivity: events[0]?.at || p.lastActivity, patches, runs};
   }
+  // A production project is finished once you approved "Xem bản dựng" and every video has an export (user 2026-11-04:
+  // the page kept saying "Đang sản xuất" after everything was done). Read from facts, so nobody has to remember it.
+  function finished(id) {
+    try {const v = features.items(id, 'video');return v.length > 0 && v.every(x => x.name) && approvals.gateState(root, cli.plan(root, id), 'review-preview').state === 'approved';}
+    catch {return false;}
+  }
   function progressSummary(id) {
     try {const p = progress.view(root, id, {facts: progressFacts(id, cli.plan(root, id))});return p.plan ? {overall: p.overall, running: p.counts.running, interrupted: p.counts.interrupted, failed: p.counts.failed, total: p.counts.total, done: p.counts.done, lastActivity: p.lastActivity} : null;}
     catch {return null;}
   }
-  return {approvalsView: view, approveGate, gateReview, projectMedia, reviewView, reviewDetail, lockProject, returnLock, decidePatch, reviewNote, reviewScene, reviewMedia, progressView, progressSummary};
+  return {approvalsView: view, approveGate, gateReview, projectMedia, reviewView, reviewDetail, lockProject, returnLock, decidePatch, reviewNote, reviewScene, reviewMedia, progressView, progressSummary, finished};
 }
 module.exports = {createApprovals};
