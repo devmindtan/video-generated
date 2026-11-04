@@ -48,6 +48,7 @@ import {BookHvttMoChuyen, moChuyenMetadata} from './book-hvtt-001-overview/MoChu
 import {BookHvttVideo as BookHvttEpisode, episodeMetadata} from './book-hvtt-001-overview/Video';
 import {BookHvttThumbnail} from './book-hvtt-001-overview/Thumbnail';
 import {BookAhVideo as BookAhEpisode, episodeMetadata as bookAhEpisodeMetadata} from './book-ah-001-overview/Video';
+import {BookAhThumbnail} from './book-ah-001-overview/Thumbnail';
 import {BookAhEpisodeCard, bookAhCardMetadata} from './book-ah-001-overview/Episode';
 import {MoChuyen as BookAhMoChuyen, CuonSach as BookAhCuonSach, SoiChi as BookAhSoiChi, QuyLuat1 as BookAhQuyLuat1, QuyLuat2 as BookAhQuyLuat2, QuyLuat3 as BookAhQuyLuat3, QuyLuat4 as BookAhQuyLuat4, ThanhNep as BookAhThanhNep, ChuaDat as BookAhChuaDat, TongKet as BookAhTongKet, YKien as BookAhYKien, NhanXet as BookAhNhanXet} from './book-ah-001-overview/Sections';
 import {ShortPain as BookHvttShortPain, ShortPhone as BookHvttShortPhone, ShortSalt as BookHvttShortSalt} from './book-hvtt-001-shorts/Video';
@@ -256,6 +257,7 @@ export const ProjectCompositions: FC = () => (
         </Folder>
         <Folder name="book-ah-001-overview">
           <Composition id="BookAhTap02" component={BookAhEpisode} calculateMetadata={renderTo('book-ah-001-overview', bookAhEpisodeMetadata)} durationInFrames={1800} fps={30} width={1920} height={1080} defaultProps={{introVoice: 'clone-ban-v4a-sang2', cardVoice: '25-quoc-tuan', outroVoice: 'outro-ban-v2-sang2', channelLabel: 'TÂM LÝ CUỘC SỐNG', episodeLabel: 'TẬP 02', bookTitle: 'Thay đổi tí hon hiệu quả bất ngờ', bookAuthor: 'James Clear'}} />
+          <Still id="BookAhThumbnail" calculateMetadata={renderTo('book-ah-001-overview')} component={BookAhThumbnail} width={1280} height={720} />
           <Composition id="BookAhEpisodeCard" component={BookAhEpisodeCard} calculateMetadata={renderTo('book-ah-001-overview', bookAhCardMetadata)} durationInFrames={300} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan', channelLabel: 'TÂM LÝ CUỘC SỐNG', episodeLabel: 'TẬP 02', bookTitle: 'Thay đổi tí hon hiệu quả bất ngờ', bookAuthor: 'James Clear'}} />
           <Composition id="BookAhMoChuyen" component={BookAhMoChuyen} calculateMetadata={renderTo('book-ah-001-overview', BookAhMoChuyen.metadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan-02b', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
           <Composition id="BookAhCuonSach" component={BookAhCuonSach} calculateMetadata={renderTo('book-ah-001-overview', BookAhCuonSach.metadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan-03', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />

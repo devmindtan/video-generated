@@ -115,6 +115,10 @@
           "kind": "Composition"
         },
         {
+          "id": "BookAhThumbnail",
+          "kind": "Still"
+        },
+        {
           "id": "BookAhEpisodeCard",
           "kind": "Composition"
         },
