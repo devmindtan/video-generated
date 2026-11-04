@@ -5,7 +5,7 @@
 
 ## Thông tin chốt
 
-- **Thời lượng:** mục tiêu 13 phút (780 giây), cho phép **11,5–14,5 phút** (±1,5 phút). Lời đọc phần nội dung hiện khoảng
+- **Thời lượng:** không quá **18 phút** (người dùng 2026-11-04: "miễn video không vượt qua 18 phút là được, đừng khắt khe quá"; trước đó chốt 11,5–14,5 phút). Nhịp đọc dễ nghe quan trọng hơn việc vừa một con số. Lời đọc phần nội dung hiện khoảng
   2.300 tiếng ≈ 10 phút ở nhịp 1×; cộng intro, Cách làm, thẻ tập, outro, khoảng nghỉ và phần ý kiến cá nhân (1–1,5 phút)
   ≈ 12,5–13,5 phút. Không tăng tốc giọng để vừa thời lượng; dài quá thì rút câu.
 - **Duyệt:** chốt ban đầu 5 mục → bản vá (chữ, mô tả thay đổi, video, âm thanh; chỉ phần mới; góp ý qua chat được ghi lại)

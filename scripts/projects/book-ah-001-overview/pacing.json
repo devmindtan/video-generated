@@ -1,14 +1,9 @@
 {
-  "maxPause": 0.18,
+  "maxPause": 0.3,
   "pauseScale": 0.6,
-  "maxRate": 4.4,
+  "maxRate": 4.0,
   "titlePause": 0.5,
-  "note": "Người dùng 2026-11-04 (nghe bản clone tập 2): \"có một số chỗ đọc bị lướt\". Câu đọc nhanh hơn 4,6 tiếng/giây (trung vị cả tập 4,2) được kéo chậm nhẹ, giữ cao độ, tối đa 12%; sau câu tiêu đề mục ngắn nghỉ ít nhất 0,5 giây. Người dùng 2026-11-04 (lượt sau): \"hơi nhiều khoảng lặng\" → nghỉ giữa câu nhân 0,45 (trước 0,6), sau câu tiêu đề mục ít nhất 0,4 giây (trước 0,5). Đầu mỗi câu clone còn trung bình 0,2 giây tiếng thở/nhiễu nhẹ (có câu 0,55): cắt tới chỗ RMS vượt 0,006, chừa 60 ms. Lượt sau nữa: \"giờ nhanh quá, không kịp nghe\" → nghỉ giữa câu trở lại ×0,6, sau tiêu đề 0,5 giây, giữ cắt tiếng thở đầu câu (edgeRms), câu nhanh hơn 4,4 tiếng/giây được kéo chậm nhẹ (trước 4,6). Rồi: \"đoạn đầu … trung học … một cây gậy bóng chày\", \"nhiều chỗ ở đoạn đầu khá nhanh\" → riêng Mở chuyện: ngắt trong câu (dấu phẩy) giữ tới 0,3 giây, câu nhanh hơn 4,0 tiếng/giây được kéo chậm nhẹ.",
+  "note": "Người dùng 2026-11-04 (nghe bản clone tập 2): \"có một số chỗ đọc bị lướt\". Câu đọc nhanh hơn 4,6 tiếng/giây (trung vị cả tập 4,2) được kéo chậm nhẹ, giữ cao độ, tối đa 12%; sau câu tiêu đề mục ngắn nghỉ ít nhất 0,5 giây. Người dùng 2026-11-04 (lượt sau): \"hơi nhiều khoảng lặng\" → nghỉ giữa câu nhân 0,45 (trước 0,6), sau câu tiêu đề mục ít nhất 0,4 giây (trước 0,5). Đầu mỗi câu clone còn trung bình 0,2 giây tiếng thở/nhiễu nhẹ (có câu 0,55): cắt tới chỗ RMS vượt 0,006, chừa 60 ms. Lượt sau nữa: \"giờ nhanh quá, không kịp nghe\" → nghỉ giữa câu trở lại ×0,6, sau tiêu đề 0,5 giây, giữ cắt tiếng thở đầu câu (edgeRms), câu nhanh hơn 4,4 tiếng/giây được kéo chậm nhẹ (trước 4,6). Rồi: \"đoạn đầu … trung học … một cây gậy bóng chày\", \"nhiều chỗ ở đoạn đầu khá nhanh\" → riêng Mở chuyện: ngắt trong câu (dấu phẩy) giữ tới 0,3 giây, câu nhanh hơn 4,0 tiếng/giây được kéo chậm nhẹ. Rồi: \"Tối nay các bạn có thể viết ra một câu sao nói nhanh vậy… miễn video không vượt qua 18 phút\" → nhịp của Mở chuyện áp dụng cả tập: ngắt trong câu tới 0,3 giây, câu nhanh hơn 4,0 tiếng/giây được kéo chậm. Câu còn nhanh vì chạm giới hạn kéo chậm 12% → cho kéo chậm tới 16% (maxSlow 0,84).",
   "edgeRms": 0.006,
-  "segments": {
-    "02-mo-chuyen": {
-      "maxPause": 0.3,
-      "maxRate": 4.0
-    }
-  }
+  "maxSlow": 0.84
 }

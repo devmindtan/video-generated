@@ -78,6 +78,7 @@ def main():
     parser.add_argument('--pause-scale', type=float, default=1.0, help='Scale the config lead-in, pauses between sentences and tail')
     parser.add_argument('--max-rate', type=float, help='Slow a sentence spoken faster than this many syllables per voiced second (pitch kept, at most 12%%)')
     parser.add_argument('--title-pause', type=float, help='At least this many seconds after a short heading sentence (six words or fewer)')
+    parser.add_argument('--max-slow', type=float, default=.88, help='Slowest tempo factor --max-rate may apply (default 0.88 = at most 12%% slower)')
     parser.add_argument('--edge-rms', type=float, help='Also cut near-silent breath/noise at sentence edges: trim to where the 20 ms RMS first/last passes this level, keeping 60 ms of margin')
     parser.add_argument('--project', default='book-hvtt-001-overview', help='Episode whose config and clone takes are used')
     parser.add_argument('--choice', help='JSON {sentence text: clone take} overriding "last take wins" (build-body.py)')
@@ -116,7 +117,7 @@ def main():
         if args.max_pause: audio = squeeze_pauses(audio, args.max_pause)
         words = len(re.findall(r'\w+', sentence['text']))
         if args.max_rate and voiced_seconds(audio) and words / voiced_seconds(audio) > args.max_rate:
-            audio = slow_down(audio, max(.88, args.max_rate / (words / voiced_seconds(audio))))
+            audio = slow_down(audio, max(args.max_slow, args.max_rate / (words / voiced_seconds(audio))))
         edge = min(240, len(audio) // 2)
         audio[:edge] *= np.linspace(0, 1, edge)
         audio[-edge:] *= np.linspace(1, 0, edge)
