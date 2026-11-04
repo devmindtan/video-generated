@@ -98,7 +98,8 @@ const {chromium}=require('playwright-core'),{createManager}=require('./server.cj
    await page.locator('.platform-youtube [data-channel-edit]').click();await page.locator('#channel-dialog[open]').waitFor();await noOverflow();
    assert.ok(await page.locator('#channel-dialog').evaluate(d=>d.getBoundingClientRect().right<=innerWidth));await page.screenshot({path:path.join(out,`dialog-${width}.png`)});
    await page.locator('#cancel-channel').click();
-   assert.ok(await page.locator('.platform-youtube [data-channel-edit]').evaluate(n=>n===document.activeElement),'closing returns focus to the edited card');
+   // The dialog's close event is async: wait for focus to come back to the edited card's button.
+   await page.waitForFunction(()=>document.activeElement===document.querySelector('.platform-youtube [data-channel-edit]'),null,{timeout:3000});
   }
   mark('Tablet and mobile: cards and dialog fit without horizontal overflow');
   await page.setViewportSize({width:1440,height:1000});await page.goto(base+'/?channel=tam-ly-cuoc-song&series=shorts',{waitUntil:'networkidle'});
