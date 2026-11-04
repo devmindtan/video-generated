@@ -37,6 +37,9 @@ console.log(`✓ Map covers ${ids.length} repos, ${map.stages.length} stages, no
       await page.goto(base+'/?view=system',{waitUntil:'networkidle'});
       await page.locator('.sys-rail .sys-stage').first().waitFor();
       assert.equal(await page.locator('#page-title').innerText(),'Bản đồ hệ thống');
+      assert.equal(await page.locator('#new-project-button').isVisible(),false,'no Thêm dự án on the map');
+      assert.equal(await page.locator('#navigation [data-open-voicestudio]').count(),0,'no VoiceStudio entry in the sidebar');
+      assert.ok(await page.locator('.sys-tabs').evaluate(t=>t.scrollHeight<=t.clientHeight+1&&t.scrollWidth<=t.clientWidth+1),'tabs fit without scrollbars');
       assert.equal(await page.locator('.sys-rail .sys-stage').count(),map.stages.length);
       assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`${name}: no horizontal scroll`);
       await page.screenshot({path:path.join(out,`${name}-flow.png`),fullPage:true});

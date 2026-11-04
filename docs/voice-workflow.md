@@ -99,7 +99,7 @@ Take mới không ghi đè take cũ. Nếu quá trình bị gián đoạn, `--re
 
 Nguồn tham khảo: `repos/debpalash--VoiceStudio`, ghim `4d4cb0b` trong `repos-manifest.json` (không sửa). Bản chạy là một checkout riêng cùng commit ở `.voicestudio/app` (ngoài Git), giống cách multi-agent-system có runtime riêng.
 
-- Mở: trang quản lý → **Studio giọng nói** (sidebar hoặc nút trên trang Giọng đọc), hoặc `npm run voicestudio -- start` rồi vào http://127.0.0.1:3900/. `npm run voicestudio -- status` báo trạng thái. Server chạy nền; log ở `.voicestudio/server.log`.
+- Mở: trang quản lý → Giọng đọc → nút **Studio giọng nói**, hoặc `npm run voicestudio -- start` rồi vào http://127.0.0.1:3900/. `npm run voicestudio -- status` báo trạng thái. Server chạy nền; log ở `.voicestudio/server.log`.
 - Cài đặt: `bun` 1.4.2 qua mise (không kích hoạt toàn cục); Python 3.11 + PyTorch `2.8.0+cpu` theo `uv.lock` của repo trong `.voicestudio/app/.venv`; giao diện web build vào `.voicestudio/app/frontend/dist`. Lệnh cài lại: `.voicestudio/install.sh` (đặt `OMNIVOICE_TORCH_VARIANT=cpu`). Không dùng `curl … | sh`, không đụng `.venv` của VieNeu hay các môi trường khác.
 - Chạy: chỉ bind `127.0.0.1:3900` (API loopback không cần khóa; không bật chia sẻ mạng), `OMNIVOICE_ANALYTICS_DISABLED=1`, dữ liệu và cache model trong `.voicestudio/data` (`HF_HOME=.voicestudio/data/huggingface`). Gỡ: dừng server và xóa `.voicestudio/`.
 - Model: **VoxCPM2** (`openbmb/VoxCPM2`, Apache-2.0, có tiếng Việt, 48 kHz, nhân bản và thiết kế giọng bằng mô tả) cài qua sidecar một chạm vào `.voicestudio/data/engines/voxcpm2`. **OmniVoice** (engine mặc định) **không tải**: trọng số CC-BY-NC, chỉ phi thương mại, không hợp với kênh có thể kiếm tiền. Người dùng đã chọn VoxCPM2 ngày 2026-10-30; muốn dùng OmniVoice cần người dùng tự chấp nhận license. CosyVoice 3 và MOSS-TTS-Nano không có tiếng Việt.
@@ -112,7 +112,7 @@ Mỗi video mới chọn một trong hai cách và ghi vào `brief.md` của t�
 
 | | Lựa chọn 1 — Giọng có sẵn (mặc định) | Lựa chọn 2 — Clone giọng (khi muốn) |
 |---|---|---|
-| Công cụ | VieNeu v3 Turbo trong `.venv` (`voice:audition`) | VoiceStudio + VoxCPM2 (`npm run voicestudio -- start`, trang quản lý → Studio giọng nói) |
+| Công cụ | VieNeu v3 Turbo trong `.venv` (`voice:audition`) | VoiceStudio + VoxCPM2 (`npm run voicestudio -- start`, trang quản lý → Giọng đọc) |
 | Nguồn giọng | 25 preset; ưu tiên playlist trong `scripts/shared/voice-playlists.json`; kids giữ Trúc Ly giọng B | Bản ghi mẫu người dùng cung cấp; hoặc thiết kế giọng bằng mô tả |
 | Điều kiện | Không | Bản ghi là giọng của người dùng hoặc người đã đồng ý cho clone. Không clone người nổi tiếng, người sáng tạo khác hay giọng lấy từ video khi chưa có sự đồng ý |
 | Bản ghi mẫu | — | 10–30 giây, một người nói, rõ, không nhạc nền hay tiếng vang; VoxCPM2 chỉ dùng 30 giây đầu. Lưu trong VoiceStudio (`.voicestudio/data`, ngoài Git), không đưa vào `public/` |

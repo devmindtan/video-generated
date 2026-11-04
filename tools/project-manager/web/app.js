@@ -98,12 +98,11 @@ function renderNav(){
     return html;
   };
   const others=channels.filter(c=>!contentChannels.includes(c.id));
-  let html=`<button class="nav-button ${!state.channel&&!state.series&&state.view==='projects'?'active':''}" data-nav="all"><span class="nav-icon">${icon("grid")}</span>Tất cả dự án<span class="nav-count">${projects.length}</span></button><button class="nav-button ${state.view==='books'?'active':''}" data-nav="books"><span class="nav-icon">${icon("book")}</span>Tủ sách nghiên cứu<span class="nav-count">${books.length}</span></button><button class="nav-button ${state.view==='voices'?'active':''}" data-nav="voices"><span class="nav-icon">${icon("mic")}</span>Giọng đọc</button><button class="nav-button ${state.view==='music'?'active':''}" data-nav="music"><span class="nav-icon">${icon("music")}</span>Nhạc nền & hiệu ứng</button><!--voicestudio--><button class="nav-button ${state.view==='system'?'active':''}" data-nav="system"><span class="nav-icon">${icon("network")}</span>Bản đồ hệ thống</button><div class="nav-divider"></div>`;
+  let html=`<button class="nav-button ${!state.channel&&!state.series&&state.view==='projects'?'active':''}" data-nav="all"><span class="nav-icon">${icon("grid")}</span>Tất cả dự án<span class="nav-count">${projects.length}</span></button><button class="nav-button ${state.view==='books'?'active':''}" data-nav="books"><span class="nav-icon">${icon("book")}</span>Tủ sách nghiên cứu<span class="nav-count">${books.length}</span></button><button class="nav-button ${state.view==='voices'?'active':''}" data-nav="voices"><span class="nav-icon">${icon("mic")}</span>Giọng đọc</button><button class="nav-button ${state.view==='music'?'active':''}" data-nav="music"><span class="nav-icon">${icon("music")}</span>Nhạc nền & hiệu ứng</button><button class="nav-button ${state.view==='system'?'active':''}" data-nav="system"><span class="nav-icon">${icon("network")}</span>Bản đồ hệ thống</button><div class="nav-divider"></div>`;
   html+=`<div class="nav-section-title">KÊNH NỘI DUNG</div>`+channels.filter(c=>contentChannels.includes(c.id)).map(channelNav).join('');
   if(others.length)html+=`<div class="nav-section-title">NGOÀI KÊNH</div>`+others.map(channelNav).join('');
-  // Navigation entries become links; the VoiceStudio action stays a real button, inserted after that rewrite.
-  $('#navigation').innerHTML=html.replaceAll('<button class="nav-button','<a class="nav-button').replaceAll('</button>','</a>')
-    .replace('<!--voicestudio-->',`<button class="nav-action nav-button" data-open-voicestudio title="Mở VoiceStudio trong tab mới"><span class="nav-icon">${icon("arrow")}</span>Studio giọng nói<span class="vs-dot" aria-hidden="true"></span><span class="sr-only vs-dot-label"></span></button>`);
+  // Navigation entries become links (VoiceStudio is opened from the Giọng đọc page).
+  $('#navigation').innerHTML=html.replaceAll('<button class="nav-button','<a class="nav-button').replaceAll('</button>','</a>');
   renderVoiceStudio();
   $('#navigation').querySelectorAll('a').forEach(a=>{const p=new URLSearchParams();if(a.dataset.nav&&a.dataset.nav!=='all')p.set('view',a.dataset.nav);if(a.dataset.channel)p.set('channel',a.dataset.channel);if(a.dataset.series){const item=state.data.series.find(s=>s.id===a.dataset.series);p.set('channel',item.channel);p.set('series',item.id);}a.href=p.size?'/?'+p:'/';if(a.classList.contains('active'))a.setAttribute('aria-current','page');});
 }
@@ -113,7 +112,7 @@ function render(){
   const resource=Boolean(resourceViews[state.view]);
   $('#resource-view').hidden=!resource;$('#stats').hidden=resource;$('.library').hidden=resource;
   if(resource){
-    $('#new-book-button').hidden=true;$('#book-banner').hidden=true;$('#workflow').hidden=true;$('#new-project-button').className='button secondary';
+    $('#new-book-button').hidden=true;$('#book-banner').hidden=true;$('#workflow').hidden=true;$('#new-project-button').className='button secondary';$('#new-project-button').hidden=state.view==='system';
     $('#page-title').textContent=resourceViews[state.view];renderBreadcrumbs();
     if(state.view==='system'){$('#eyebrow').textContent='MỖI REPO LÀM GÌ, Ở BƯỚC NÀO';$('#page-description').textContent='Quy trình làm một tập, các tầng của hệ thống và vai trò thật của từng repo, đo trực tiếp trên máy.';renderSystem();return;}
     $('#eyebrow').textContent=state.view==='voices'?'NHỮNG GIỌNG KỂ CHUYỆN':'ÂM THANH CỦA TỪNG TẬP';
@@ -125,7 +124,7 @@ function render(){
   const channel=state.data.channels.find(c=>c.id===state.channel),series=state.data.series.find(s=>s.id===state.series);
   $('#page-title').textContent=state.view==='books'?'Tủ sách nghiên cứu':series?.title||channel?.title||'Không gian sáng tạo';
   renderBreadcrumbs();
-  $('#new-project-button').className='button '+(state.view==='projects'?'primary':'secondary');
+  $('#new-project-button').hidden=false;$('#new-project-button').className='button '+(state.view==='projects'?'primary':'secondary');
   $('#eyebrow').textContent=state.view==='books'?'TỪ TRANG SÁCH ĐẾN CÂU CHUYỆN':series?'TỪNG TẬP, MỘT CÂU CHUYỆN':channel?'NHỮNG CÂU CHUYỆN CỦA KÊNH':'MỘT NƠI CHO MỌI Ý TƯỞNG';
   $('#page-description').textContent=state.view==='books'?'Giữ nguồn, ghi chú và những ý tưởng cho series sách ở cùng một nơi.':series?.summary||'Tìm bản dựng, kịch bản và tài liệu theo từng series.';
   const visible=state.data.projects.filter(p=>(!state.channel||p.channel===state.channel)&&(!state.series||p.series===state.series));
@@ -1358,7 +1357,7 @@ $('#resource-view').addEventListener('click',event=>{
   const t=event.target.closest('[data-sys-tab],[data-sys-repo],[data-sys-pick],[data-sys-status],[data-sys-stage]');if(!t)return;
   if(t.dataset.sysTab)sysSetTab(t.dataset.sysTab);
   else if(t.dataset.sysStatus){state.sysStatus=state.sysStatus===t.dataset.sysStatus?'':t.dataset.sysStatus;renderSystemBody();}
-  else if(t.dataset.sysPick){state.sysRepo=t.dataset.sysPick;sysUrl();renderSystemBody();const d=$('#sys-detail');if(matchMedia('(max-width:900px)').matches)d.scrollIntoView({block:'start'});$(`[data-sys-pick="${CSS.escape(state.sysRepo)}"]`)?.focus();}
+  else if(t.dataset.sysPick){state.sysRepo=t.dataset.sysPick;sysUrl();renderSystemBody();const d=$('#sys-detail'),top=d.getBoundingClientRect().top;if(top<0||top>innerHeight-120)d.scrollIntoView({block:'start'});$(`[data-sys-pick="${CSS.escape(state.sysRepo)}"]`)?.focus();}
   else if(t.dataset.sysRepo){state.sysRepo=t.dataset.sysRepo;state.sysQuery='';if(state.system&&!state.system.repos.some(r=>r.id===state.sysRepo&&(!state.sysStatus||r.status===state.sysStatus)))state.sysStatus='';sysSetTab('repos');$('#sys-detail')?.scrollIntoView({block:'start'});$('#sys-detail')?.focus({preventScroll:true});}
   else if(t.dataset.sysStage){const id=t.dataset.sysStage;state.sysStatus='';sysSetTab('flow');const row=document.getElementById('sys-stage-'+id);if(row){row.classList.add('sys-highlight');row.scrollIntoView({block:'center'});setTimeout(()=>row.classList.remove('sys-highlight'),2400);}}
 });
@@ -1639,8 +1638,6 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshVoi
 function vsState(){const v=state.voiceStudio;if(state.vsStopping)return 'stopping';if(!v)return 'unknown';if(v.state==='off'&&v.missing?.length)return 'missing';return vsLabels[v.state]?v.state:'unknown';}
 function renderVoiceStudio(){
   const s=vsState(),v=state.voiceStudio||{};
-  const nav=$('#navigation [data-open-voicestudio]');
-  if(nav){nav.querySelector('.vs-dot').className='vs-dot vs-'+s;nav.querySelector('.vs-dot-label').textContent=`, ${vsLabels[s]}`;nav.title=`Studio giọng nói: ${vsLabels[s]}. Mở VoiceStudio trong tab mới.`;}
   const panel=$('#vs-panel');if(!panel)return;
   const running=s==='ready'||s==='starting';
   const meta=s==='ready'?[v.version&&`VoiceStudio ${v.version}`,v.engine&&`Engine ${v.engine.name.split(' (')[0]}`,v.memoryBytes?`RAM ${gb(v.memoryBytes)}`:null,v.device&&`Chạy trên ${v.device.toUpperCase()}`].filter(Boolean)
