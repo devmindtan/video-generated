@@ -5,12 +5,26 @@ const {VIDEO_FORMATS,videoExtensions}=require('./video-formats.cjs');
 const digest=x=>crypto.createHash('sha256').update(x).digest('hex');
 const read=f=>JSON.parse(fs.readFileSync(f,'utf8'));
 const write=(f,v)=>{fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,JSON.stringify(v,null,2)+'\n');};
+const instances=new Map();
 function features(root){
   root=fs.realpathSync(root);
+  if(instances.has(root))return instances.get(root);
+  const made=createFeatures(root);instances.set(root,made);return made;
+}
+function createFeatures(root){
   function safe(relative){const f=path.resolve(root,relative);if(!f.startsWith(root+path.sep))throw Error('Invalid path');let p=f;while(!fs.existsSync(p))p=path.dirname(p);if(!fs.realpathSync(p).startsWith(root+path.sep)&&p!==root)throw Error('Symlink outside workspace');return f;}
-  function series(id){const s=load(root).series.find(s=>s.id===id);if(!s)throw Error('Series not found');return s;}
-  function project(id){for(const s of load(root).series){const p=s.projects.find(p=>p.id===id);if(p)return p;}throw Error('Project not found');}
+  // One workspace listing asks for the catalog and each project's exports several times: inside batch(fn) the first
+  // answer is reused, and everything is read fresh again once the listing is done (no stale data between refreshes).
+  let batching=0,catalogCache=null;const exportCache=new Map();
+  function batch(fn){batching++;try{return fn();}finally{if(!--batching){catalogCache=null;exportCache.clear();}}}
+  const catalog=()=>{if(!batching)return load(root);return catalogCache||=load(root);};
+  function series(id){const s=catalog().series.find(s=>s.id===id);if(!s)throw Error('Series not found');return s;}
+  function project(id){for(const s of catalog().series){const p=s.projects.find(p=>p.id===id);if(p)return p;}throw Error('Project not found');}
   function exportsFor(p){
+    if(!batching)return scanExports(p);
+    if(!exportCache.has(p.id))exportCache.set(p.id,scanExports(p));return exportCache.get(p.id);
+  }
+  function scanExports(p){
     const files=new Map();
     const imported=safe(p.paths.assets);
     if(fs.existsSync(imported)&&!fs.lstatSync(imported).isSymbolicLink())for(const name of videoExtensions.map(e=>'imported-video'+e)){
@@ -142,6 +156,6 @@ function features(root){
     if(digest(fs.readFileSync(file,'utf8'))!==b.revision){fs.unlinkSync(temp);throw conflict();}
     fs.renameSync(temp,file);return {revision:digest(text),title,authors};
   }
-  return {bookCover,uploadCover,media,items,exportsFor,newBook,updateBook,sources,upload,deletion,remove};
+  return {batch,bookCover,uploadCover,media,items,exportsFor,newBook,updateBook,sources,upload,deletion,remove};
 }
 module.exports={features};

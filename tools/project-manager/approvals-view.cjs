@@ -311,8 +311,12 @@ function createApprovals(root) {
   // Read-only: what the agent planned after the lock and is doing now, plus local model runs of this project.
   // Facts that complete tasks done by the user (progress.cjs DONE_WHEN): exports on disk, the final gate, patch decisions.
   const features = require('./features.cjs').features(root);
+  // Only worked out when a task waits on one of them (building the plan is the costly part).
   function progressFacts(id, plan) {
     const facts = {};
+    const wanted = new Set(progress.load(root, id).tasks.filter(t => t.doneWhen && t.status !== 'done').map(t => t.doneWhen));
+    if (!wanted.size) return facts;
+    if (typeof plan === 'function') plan = plan();
     try {const v = features.items(id, 'video');facts.exported = v.length > 0 && v.every(x => x.name);} catch {}
     try {facts['review-preview'] = approvals.gateState(root, plan, 'review-preview').state === 'approved';} catch {}
     try {const patches = review.load(root, id).patches;facts['patches-settled'] = patches.length > 0 && !patches.some(x => x.status === 'pending') && patches.at(-1).status === 'accepted';} catch {}
@@ -338,7 +342,7 @@ function createApprovals(root) {
     catch {return false;}
   }
   function progressSummary(id) {
-    try {const p = progress.view(root, id, {facts: progressFacts(id, cli.plan(root, id))});return p.plan ? {overall: p.overall, running: p.counts.running, interrupted: p.counts.interrupted, failed: p.counts.failed, total: p.counts.total, done: p.counts.done, lastActivity: p.lastActivity} : null;}
+    try {const p = progress.view(root, id, {facts: progressFacts(id, () => cli.plan(root, id))});return p.plan ? {overall: p.overall, running: p.counts.running, interrupted: p.counts.interrupted, failed: p.counts.failed, total: p.counts.total, done: p.counts.done, lastActivity: p.lastActivity} : null;}
     catch {return null;}
   }
   return {approvalsView: view, approveGate, gateReview, projectMedia, reviewView, reviewDetail, lockProject, returnLock, decidePatch, reviewNote, reviewScene, reviewMedia, progressView, progressSummary, finished};

@@ -156,7 +156,8 @@ function createStore(root) {
     }
     return activityCache;
   }
-  function list() {
+  function list() {return extra.batch(()=>listNow());}
+  function listNow() {
     const catalog = load(root), nodes = registrations(root), worked = activity(catalog);
     const projects = catalog.series.flatMap(series=>series.projects.map(project=>{
       const node = nodes.find(n=>n.project===project.id&&n.kind==='Composition');
