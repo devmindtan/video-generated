@@ -34,7 +34,7 @@
     "assembly": {
       "rules": [
         "Dựng intro và 30 giây đầu sau intro (không tính intro) trước, chờ người dùng duyệt rồi mới dựng tiếp (từng phần hoặc toàn bộ theo lựa chọn của họ).",
-        "Nhịp giọng clone (người dùng 2026-11-04, tập 2): khoảng lặng dài và không đều thì khó chịu, nhưng ép nhịp thì \"nhanh quá, không kịp nghe\". Đừng ép tập vào một thời lượng sít sao: video dài miễn không quá 18 phút là được. Mức đã dùng: pacing.json pauseScale 0,6, titlePause 0,5, maxPause 0,3 (ngắt ở dấu phẩy), maxRate 4,0, edgeRms 0,006 (cắt tiếng thở/nhiễu nhẹ đầu câu). Đổi nhịp từng bước nhỏ, không giảm nghỉ mạnh một lần."
+        "Nhịp giọng clone (người dùng 2026-11-04, tập 2): KHÔNG kéo chậm/giãn giọng (maxRate, atempo) — người dùng nghe ra giọng bị chỉnh tốc độ và có chỗ khựng (\"gậy BÓNG chày\"); tốc độ đọc giữ nguyên như bản clone, chỉ chỉnh ngắt nghỉ cho hợp lí. Khoảng lặng dài/không đều thì khó chịu, cắt nghỉ quá tay thì \"nhanh quá, không kịp nghe\". Video dài miễn không quá 18 phút, đừng ép thời lượng. Mức đang dùng: pacing.json pauseScale 0,6, titlePause 0,5, maxPause 0,3, edgeRms 0,006; trước câu mở ý mới (vd. lời kêu gọi cuối) nghỉ dài hơn (pauseAfter ~1,3 trong audition-<seg>.json). Câu nào vẫn quá nhanh thì clone lại câu đó, không giãn."
       ],
       "notes": ""
     },
