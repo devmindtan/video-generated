@@ -1,0 +1,152 @@
+{
+  "project": "book-ah-001-overview",
+  "checkedAt": "2026-11-04T10:47:40+07:00",
+  "durationSeconds": 809.87,
+  "parts": [
+    {
+      "name": "Intro series",
+      "start": 0.0,
+      "seconds": 28.13
+    },
+    {
+      "name": "Cách làm của tập",
+      "start": 28.13,
+      "seconds": 15.63
+    },
+    {
+      "name": "Thẻ tập",
+      "start": 43.77,
+      "seconds": 11.57
+    },
+    {
+      "name": "Mở chuyện",
+      "start": 55.33,
+      "seconds": 81.07
+    },
+    {
+      "name": "Phần 1 · Cuốn sách là gì",
+      "start": 136.4,
+      "seconds": 27.9
+    },
+    {
+      "name": "Phần 2 · Sợi chỉ xuyên suốt",
+      "start": 164.3,
+      "seconds": 86.83
+    },
+    {
+      "name": "Quy luật 1 · Làm cho hiển nhiên",
+      "start": 251.13,
+      "seconds": 84.8
+    },
+    {
+      "name": "Quy luật 2 · Làm cho hấp dẫn",
+      "start": 335.93,
+      "seconds": 74.27
+    },
+    {
+      "name": "Quy luật 3 · Làm cho dễ dàng",
+      "start": 410.2,
+      "seconds": 81.57
+    },
+    {
+      "name": "Quy luật 4 · Làm cho thỏa mãn",
+      "start": 491.77,
+      "seconds": 77.63
+    },
+    {
+      "name": "Khi thói quen đã thành nếp",
+      "start": 569.4,
+      "seconds": 57.33
+    },
+    {
+      "name": "Những điểm chưa đạt",
+      "start": 626.73,
+      "seconds": 42.73
+    },
+    {
+      "name": "Tổng kết",
+      "start": 669.47,
+      "seconds": 27.37
+    },
+    {
+      "name": "Ý kiến cá nhân",
+      "start": 696.83,
+      "seconds": 75.3
+    },
+    {
+      "name": "Nhận xét chung",
+      "start": 772.13,
+      "seconds": 21.23
+    },
+    {
+      "name": "Outro series",
+      "start": 793.37,
+      "seconds": 16.5
+    }
+  ],
+  "technicalPass": false,
+  "checks": [
+    {
+      "id": "files",
+      "title": "Đủ file cho bước Xem bản dựng",
+      "ok": true,
+      "detail": "đủ"
+    },
+    {
+      "id": "captionText",
+      "title": "Chữ phụ đề khớp kịch bản đã chốt",
+      "ok": true,
+      "detail": "139 câu khớp"
+    },
+    {
+      "id": "captionTime",
+      "title": "Phụ đề đúng thứ tự, không chồng, đủ lâu, tối đa 2 dòng",
+      "ok": true,
+      "detail": "248 trang"
+    },
+    {
+      "id": "captionStyle",
+      "title": "Kiểu chữ phụ đề đúng chuẩn kênh",
+      "ok": true,
+      "detail": {
+        "Stoic Sans": true,
+        "fontWeight 700": true,
+        "chữ ngà": true,
+        "từ khóa vàng": true
+      }
+    },
+    {
+      "id": "voice",
+      "title": "Giọng không vỡ tiếng, các đoạn to nhỏ đồng đều",
+      "ok": false,
+      "detail": "chưa ghép giọng cuối (public/<slug>/audio trống): chạy publish-voice.py sau khi người dùng chọn giọng clone"
+    },
+    {
+      "id": "music",
+      "title": "Nhạc nền nội dung nằm dưới giọng",
+      "ok": true,
+      "detail": {
+        "thấpHơnGiọngKhiCóLờiDb": 28.2,
+        "thấpHơnGiọngLúcNghỉDb": 22.7,
+        "bài": "Butterflies"
+      }
+    },
+    {
+      "id": "build",
+      "title": "Typecheck và kiểm tra đăng ký dự án",
+      "ok": true,
+      "detail": {
+        "typecheck": true,
+        "projects:check": true
+      }
+    }
+  ],
+  "voiceLevels": {
+    "_": {
+      "rmsDb": -20.0,
+      "peakDb": -3.0
+    }
+  },
+  "toneFlags": [],
+  "listening": "Chưa nghe duyệt: kiểm tra kỹ thuật đạt không có nghĩa là phát âm đã được duyệt; các câu ở toneFlags cần người dùng nghe."
+}

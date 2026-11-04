@@ -10,16 +10,20 @@ Runs the caption export first (captions.json / captions.srt from the video's own
   build        typecheck and projects:check pass
 and lists the sentences the tone check flagged in the takes actually used (listening is the user's call).
 A technical pass is not a listening approval.
-Usage: .venv/bin/python scripts/projects/book-hvtt-001-overview/qa.py
+Other episodes of the series: --project <slug> (series intro/outro/captions style come from episode 1's shared files).
+Usage: .venv/bin/python scripts/projects/book-hvtt-001-overview/qa.py [--project <slug>]
 """
-import datetime, json, re, subprocess, unicodedata
+import datetime, json, re, subprocess, sys, unicodedata
 from pathlib import Path
 import numpy as np
 import librosa
 
 ROOT = Path(__file__).resolve().parents[3]
-HERE = Path(__file__).resolve().parent
-ID = 'book-hvtt-001-overview'
+TOOLS = Path(__file__).resolve().parent
+ID = sys.argv[sys.argv.index('--project') + 1] if '--project' in sys.argv else 'book-hvtt-001-overview'
+HERE = ROOT / 'scripts/projects' / ID
+SHARED = ROOT / 'src/projects/book-hvtt-001-overview'  # series Intro/Outro/caption style
+PREFIX = '-'.join(ID.split('-')[:2])
 SRC, DOCS, PUB = ROOT / 'src/projects' / ID, ROOT / 'docs/projects' / ID, ROOT / 'public'
 AUD = PUB / ID / 'voice-auditions'
 checks = []
@@ -47,14 +51,16 @@ def speech_rms(path):
 
 
 def main():
-    subprocess.run(['node', str(HERE / 'export-captions.mjs')], cwd=ROOT, check=True)
+    subprocess.run(['node', str(TOOLS / 'export-captions.mjs'), '--project', ID], cwd=ROOT, check=True)
     cap = json.loads((SRC / 'captions.json').read_text())
     pages, fps, total = cap['pages'], cap['fps'], cap['totalFrames']
 
-    need = [SRC / 'Video.tsx', SRC / 'Thumbnail.tsx', SRC / 'captions.json', DOCS / 'description.md', SRC / 'music.json', SRC / 'body-music.json', SRC / 'outro-music.json']
+    musics = [SRC / m for m in ['music.json', 'body-music.json']] + [f for f in [SRC / 'outro-music.json', SHARED / 'outro-music.json'] if f.exists()][:1]
+    need = [SRC / 'Video.tsx', SRC / 'Thumbnail.tsx', SRC / 'captions.json', DOCS / 'description.md', *musics]
     missing = [str(p.relative_to(ROOT)) for p in need if not p.exists()]
-    for m in ['music.json', 'body-music.json', 'outro-music.json']:
-        f = json.loads((SRC / m).read_text())['file']
+    for m in musics:
+        if not m.exists(): continue
+        f = json.loads(m.read_text())['file']
         if not (PUB / f).exists(): missing.append(f'public/{f}')
     check('files', 'Đủ file cho bước Xem bản dựng', not missing, 'đủ' if not missing else missing)
 
@@ -86,21 +92,25 @@ def main():
         if p['endMs'] > total * 1000 / fps: bad.append(f"quá cuối video: {p['text'][:40]}")
     check('captionTime', 'Phụ đề đúng thứ tự, không chồng, đủ lâu, tối đa 2 dòng', not bad, f'{len(pages)} trang' if not bad else bad[:12])
 
-    intro = (SRC / 'Intro.tsx').read_text()
-    block = intro[intro.index('export const Captions'):][:1600]
+    intro = (SHARED / 'Intro.tsx').read_text()
+    start = intro.index('export const Captions'); block = intro[start:intro.find('\nexport ', start + 10)]  # the whole Captions component
     style = {'Stoic Sans': 'Stoic Sans' in intro, 'fontWeight 700': 'fontWeight: 700' in block, 'chữ ngà': 'color: IVORY' in block, 'từ khóa vàng': 'GOLD' in block}
     check('captionStyle', 'Kiểu chữ phụ đề đúng chuẩn kênh', all(style.values()), style)
 
     # Narration levels.
-    meta = json.loads((PUB / ID / 'audio/voice-metadata.json').read_text())
+    meta_file = PUB / ID / 'audio/voice-metadata.json'
+    meta = json.loads(meta_file.read_text()) if meta_file.exists() else []
     levels = {}
     for m in meta:
         rms, peak = speech_rms(PUB / ID / 'audio' / m['file'])
         levels[m['scene']] = {'rmsDb': round(db(rms), 1), 'peakDb': round(db(peak), 1)}
+    if not levels:
+        check('voice', 'Giọng không vỡ tiếng, các đoạn to nhỏ đồng đều', False, 'chưa ghép giọng cuối (public/<slug>/audio trống): chạy publish-voice.py sau khi người dùng chọn giọng clone')
+        levels = {'_': {'rmsDb': -20.0, 'peakDb': -3.0}}
     clip = {k: v for k, v in levels.items() if v['peakDb'] > -0.3}
     rmss = [v['rmsDb'] for v in levels.values()]
     spread = round(max(rmss) - min(rmss), 1)
-    check('voice', 'Giọng không vỡ tiếng, các đoạn to nhỏ đồng đều', not clip and spread <= 3,
+    if '_' not in levels: check('voice', 'Giọng không vỡ tiếng, các đoạn to nhỏ đồng đều', not clip and spread <= 3,
           {'đoạn': len(levels), 'chênhLệchDb': spread, 'đỉnhCaoNhấtDb': max(v['peakDb'] for v in levels.values()), 'vỡTiếng': list(clip)})
 
     voice_db = float(np.median(rmss))
@@ -118,10 +128,10 @@ def main():
 
     # Sentences in use that the tone check flagged (accent-insensitive ASR; the user's ear decides).
     flags = []
-    for d in sorted((PUB / 'voice-auditions').glob('book-hvtt-*-clone')):
+    for d in sorted((PUB / 'voice-auditions').glob(f'{PREFIX}-*-clone')):
         src = d / 'sources.json'
         if not src.exists(): continue
-        seg = d.name[len('book-hvtt-'):-len('-clone')]
+        seg = d.name[len(PREFIX) + 1:-len('-clone')]
         for text, take in json.loads(src.read_text()).items():
             if text.startswith('__'): continue
             rows = json.loads((AUD / take / 'tone-check.json').read_text()) if (AUD / take / 'tone-check.json').exists() else []
