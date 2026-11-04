@@ -34,7 +34,7 @@
     "assembly": {
       "rules": [
         "Dựng intro và 30 giây đầu sau intro (không tính intro) trước, chờ người dùng duyệt rồi mới dựng tiếp (từng phần hoặc toàn bộ theo lựa chọn của họ).",
-        "Nhịp giọng clone (người dùng 2026-11-04, tập 2): khoảng lặng dài và không đều thì khó chịu (\"hơi nhiều khoảng lặng\"), nhưng cắt nghỉ quá tay thì \"nhanh quá, không kịp nghe\". Mức đã ưng tạm: pacing.json pauseScale 0,6, titlePause 0,5, maxRate 4,4, edgeRms 0,006 (cắt tiếng thở/nhiễu nhẹ đầu câu cho khoảng nghỉ đều). Đo lại khoảng lặng ≥0,3 giây sau khi ghép: trung vị khoảng 0,4, dài nhất dưới 0,75 giây. Đổi nhịp từng bước nhỏ, không giảm nghỉ mạnh một lần."
+        "Nhịp giọng clone (người dùng 2026-11-04, tập 2): khoảng lặng dài và không đều thì khó chịu (\"hơi nhiều khoảng lặng\"), nhưng cắt nghỉ quá tay thì \"nhanh quá, không kịp nghe\". Mức đã ưng tạm: pacing.json pauseScale 0,6, titlePause 0,5, maxRate 4,4, edgeRms 0,006 (cắt tiếng thở/nhiễu nhẹ đầu câu cho khoảng nghỉ đều). Đo lại khoảng lặng ≥0,3 giây sau khi ghép: trung vị khoảng 0,4, dài nhất dưới 0,75 giây. Đổi nhịp từng bước nhỏ, không giảm nghỉ mạnh một lần. Phần mở chuyện (kể chuyện, nhiều chi tiết) cần chậm hơn: tập 2 dùng \"segments\": {\"02-mo-chuyen\": {\"maxPause\": 0.3, \"maxRate\": 4.0}} trong pacing.json, để ngắt ở dấu phẩy không bị dính (người dùng: \"trung học … một cây gậy bóng chày\", \"đoạn đầu khá nhanh\")."
       ],
       "notes": ""
     },

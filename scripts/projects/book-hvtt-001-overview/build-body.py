@@ -73,6 +73,10 @@ def main():
         if not all(t in texts for t in need):
             print(f'{seg}: chờ {sum(t not in texts for t in need)}/{len(need)} câu'); continue
         used = sorted({texts[t] for t in need}, key=takes.index)
+        own = PACING.get('segments', {}).get(seg, {})  # pacing.json "segments": {seg: {maxPause, maxRate, …}} for one part
+        MAX_PAUSE, PAUSE_SCALE = own.get('maxPause', globals()['MAX_PAUSE']), own.get('pauseScale', globals()['PAUSE_SCALE'])
+        MAX_RATE, TITLE_PAUSE = own.get('maxRate', globals()['MAX_RATE']), own.get('titlePause', globals()['TITLE_PAUSE'])
+        EDGE_RMS = own.get('edgeRms', globals()['EDGE_RMS'])
         choice = {t: texts[t] for t in need}
         choice['__maxPause'] = MAX_PAUSE  # part of the stamp, so a new setting rebuilds
         choice['__pauseScale'] = PAUSE_SCALE
