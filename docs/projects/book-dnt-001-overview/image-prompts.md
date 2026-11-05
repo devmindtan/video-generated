@@ -17,23 +17,25 @@ người theo nét tối giản; mỗi ý một hình trọn vẹn, nét tự hi
 
 | Câu | Hình |
 |---|---|
-| "Ở tập thứ ba, cuốn sách mình mang tới…" | Thẻ "TẬP 03 · Đắc nhân tâm · Dale Carnegie" (component thẻ của series) |
+| "Đắc nhân tâm của Dale Carnegie là cuốn sách mình chọn cho tập thứ ba…" | Thẻ "TẬP 03 · Đắc nhân tâm · Dale Carnegie" (component thẻ của series) |
+| "…gây nhiều tranh cãi, có người thích, có người không…" | Dưới thẻ, một cán cân nét vàng nhỏ: hai đĩa lần lượt hạ xuống |
+| "…đứng ở vai trò trung lập… khách quan nhất" | Cán cân dừng cân bằng ở giữa |
 
 ## 0b · Mở chuyện
 
 | Câu | Hình |
 |---|---|
 | "Một lá thư chưa bao giờ được gửi đi" | Một phong thư nét vàng nằm trên bàn, nắp chưa dán |
-| Lincoln thời trẻ viết thư, làm thơ chế giễu | Dáng người cao gầy đội mũ ống (nhìn nghiêng), vài tờ giấy bay ra từ tay |
-| Bài báo không ký tên, cả thành phố cười | Một trang báo có ô chữ trống chỗ tên tác giả; quanh đó nhiều dấu ngoặc cười nhỏ hiện dần |
-| Lời thách, được can ở phút cuối | Hai dáng người đứng xa nhau, giữa họ một bàn tay thứ ba giơ lên chặn lại (không vẽ kiếm) |
-| Từ đó gần như không chỉ trích ai | Dáng người cao gầy đặt cây bút xuống |
-| Hơn hai mươi năm sau, tướng Meade không tấn công | Bản đồ nét đơn giản: một dòng sông, một mũi tên rút qua cầu, một lá cờ nhỏ đứng yên |
-| Lincoln viết lá thư nặng lời | Bàn tay viết, các dòng chữ hiện dày và gạch mạnh (không đọc được chữ) |
-| Nhưng ông không gửi | Lá thư được gấp lại, đặt vào ngăn kéo; ngăn kéo khép |
-| Tìm thấy sau khi ông qua đời | Ngăn kéo mở ra lần nữa, ánh sáng mờ, lá thư vẫn nằm đó |
-| "Tác giả nói rõ đây chỉ là phỏng đoán" | Một dấu chấm hỏi nét mảnh hiện cạnh dáng người nhìn ra cửa sổ |
-| Gửi đi thì hả giận, người kia lo bào chữa | Hai mũi tên: một mũi bay đi, một mũi quay ngược về |
+| Lincoln thời trẻ hay chế giễu, viết báo giễu một chính khách | Dáng người cao gầy đội mũ ống (nhìn nghiêng), một trang báo bay ra từ tay |
+| Bị thách đấu kiếm, được can ở phút cuối | Hai dáng người đứng xa nhau, giữa họ một bàn tay thứ ba giơ lên chặn lại (không vẽ kiếm) |
+| Thôi hẳn chuyện chỉ trích | Dáng người cao gầy đặt cây bút xuống |
+| Hơn hai mươi năm sau, lệnh cho tướng Meade, chần chừ, lỡ thời cơ | Bản đồ nét đơn giản: một dòng sông, một mũi tên đỏ nhạt rút qua sông, một lá cờ nhỏ đứng yên bên này |
+| Viết lá thư nặng lời | Bàn tay viết, các dòng chữ hiện dày và gạch mạnh (không đọc được chữ) |
+| Gạt lá thư sang một bên, không gửi | Lá thư được đẩy sang mép bàn, cây bút đặt xuống |
+| Tìm thấy sau khi ông qua đời | Một ngăn kéo mở ra, ánh sáng mờ, lá thư nằm trong chồng giấy |
+| "Tác giả đoán rằng…" hả giận một lúc, người kia bào chữa | Một mũi tên bay đi rồi quay ngược về; dấu hỏi nét mảnh cạnh đó (đây là phỏng đoán) |
+| Nguyên tắc đầu tiên | Chữ "Không chỉ trích, oán trách hay than phiền" hiện lớn cùng lúc được đọc |
+| Câu hỏi giữ suốt tập | Hai dáng người đối diện, giữa họ một dấu hỏi lớn sáng dần |
 
 ## 1 · Cuốn sách là gì
 

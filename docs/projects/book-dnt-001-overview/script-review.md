@@ -1,6 +1,6 @@
 # Phản biện kịch bản — Đắc nhân tâm: tổng quan
 
-- Ngày: 2026-11-05. Bản được xét: script.md nháp v1 (gói chốt ban đầu).
+- Ngày: 2026-11-05. Bản được xét: script.md nháp v2 (gói chốt ban đầu, sau lần người dùng trả lại gói).
 - Đã đọc: brief.md, sources.md, script.md, research.md và chapters.json của sách, quy tắc series (workflow.json), script.md
   tập 1 và tập 2 để dò câu mở lặp.
 - Kết luận: **sẵn sàng gửi người dùng duyệt** trong gói chốt ban đầu. Không có lỗi nguồn chặn duyệt. Phần ý kiến cá nhân
@@ -49,3 +49,16 @@
 
 Lời đọc phần riêng ≈ 2.640 tiếng ≈ 11,5 phút; cả tập dự kiến 14–15 phút, dưới giới hạn 18 phút. Phần dài nhất là 3C
 (≈ 1,8 phút): giữ nguyên vì là phần lớn nhất của sách (12/30 nguyên tắc).
+
+## Sửa sau lần trả gói thứ nhất (2026-11-05)
+
+Người dùng trả lại gói (mục Kịch bản; prompt hình chờ kịch bản):
+
+- Thẻ giới thiệu: "viết khác 1 chút so với 2 tập trước", thay "không ưa" bằng ý đứng trung lập. → Câu đầu đổi khuôn (bắt
+  đầu bằng tên sách thay vì "Tập thứ N, mình chọn cuốn…"); câu thứ hai dùng đúng lời người dùng. Phần 1 bỏ câu tuyên bố
+  trung lập lặp lại, chỉ còn "Vì sao cuốn sách gây tranh cãi?".
+- Mở chuyện: "kể thì dài nhưng cuối cùng kết luận… chả ăn nhập". → Gọn lại (bỏ bài báo làm cả thành phố cười, tên James
+  Shields, thơ chế giễu); câu kết nối trực tiếp câu chuyện với nguyên tắc 1 của sách (lá thư không gửi → không chỉ trích),
+  vẫn nói rõ lý do giữ lá thư là phỏng đoán của tác giả, rồi đặt một câu hỏi để người xem tự cân nhắc suốt tập (giữ trung
+  lập, không trả lời thay sách). Câu "Cả cuốn sách bắt đầu từ ý đó" đã bỏ.
+- Prompt hình 0a, 0b viết lại theo lời mới.

@@ -23,21 +23,21 @@ Thời lượng: không quá 18 phút (dự kiến khoảng 14–15 phút). `[ng
 
 ## 0a. Giới thiệu tập (thẻ "TẬP 03 · Đắc nhân tâm · Dale Carnegie")
 
-Ở tập thứ ba, cuốn sách mình mang tới là Đắc nhân tâm của Dale Carnegie, một cuốn sách viết từ năm 1936 về cách đối xử với người khác, mà đến giờ vẫn có người rất thích và có người không ưa.
+Đắc nhân tâm của Dale Carnegie là cuốn sách mình chọn cho tập thứ ba, một cuốn sách viết từ năm 1936 về cách đối xử với người khác. Đây cũng là cuốn sách gây nhiều tranh cãi, có người thích, có người không, nhưng mình sẽ đứng ở vai trò trung lập và phân tích cuốn sách này một cách khách quan nhất theo góc nhìn của mình.
 
-{Khoảng 10 giây như thẻ các tập trước. Năm 1936: PDF 6, 11.}
+{Khoảng 15 giây. Câu thứ hai theo lời người dùng (góp ý gói chốt 2026-11-05). Câu đầu đổi khuôn so với tập 1–2 ("Tập đầu tiên, mình chọn cuốn…", "Tập thứ hai, mình chọn cuốn…"). Năm 1936: PDF 6, 11.}
 
 ## 0b. Mở chuyện
 
 Chương đầu tiên của sách xoay quanh một lá thư chưa bao giờ được gửi đi. [nghỉ]
 
-Người viết lá thư là Abraham Lincoln. Theo tác giả, hồi còn trẻ, Lincoln rất hay chê bai người khác, còn viết thư và làm thơ chế giễu rồi để cho mọi người cùng đọc. Năm 1842, một bài báo không ký tên của ông khiến một chính khách tên là James Shields bị cả thành phố cười nhạo, và người này thách ông đấu kiếm. Đến phút cuối, những người đi cùng hai bên mới can được. Tác giả kể rằng từ đó về sau, Lincoln gần như không bao giờ chỉ trích ai nữa. [nghỉ]
+Theo tác giả, hồi còn trẻ, Abraham Lincoln rất hay chế giễu người khác, có lần còn viết báo giễu một chính khách đến mức bị người này thách đấu kiếm, may mà được can kịp ở phút cuối. Sau lần đó, ông gần như thôi hẳn chuyện chỉ trích ai. [nghỉ]
 
-Hơn hai mươi năm sau, giữa cuộc nội chiến ở Mỹ, một vị tướng tên là Meade không tấn công theo lệnh của Lincoln, để đạo quân đối phương rút qua sông an toàn. Lincoln ngồi viết cho ông ta một lá thư trách móc rất nặng lời. Nhưng ông không gửi. Người ta chỉ tìm thấy lá thư ấy trong giấy tờ của Lincoln sau khi ông qua đời. [nghỉ]
+Hơn hai mươi năm sau, khi đã là tổng thống, Lincoln ra lệnh cho tướng Meade tấn công để sớm kết thúc cuộc nội chiến, nhưng vị tướng này chần chừ và để lỡ thời cơ. Lincoln tức giận, ngồi viết cho ông ta một lá thư trách móc rất nặng lời. Rồi ông gạt lá thư sang một bên, không gửi. Mãi đến khi Lincoln qua đời, người ta mới tìm thấy nó trong giấy tờ của ông. [nghỉ]
 
-Vì sao Lincoln giữ lại lá thư? Tác giả nói rõ đây chỉ là phỏng đoán của ông: có lẽ Lincoln hiểu rằng gửi đi thì mình hả giận được một lúc, còn người kia sẽ chỉ lo tự bào chữa, thậm chí quay lại trách ngược mình. Cả cuốn sách bắt đầu từ ý đó.
+Tác giả đoán rằng Lincoln đã hiểu: gửi lá thư đi thì ông được hả giận một lúc, còn Meade sẽ chỉ lo bào chữa cho mình, và chẳng có gì được sửa. Từ câu chuyện ấy, tác giả đưa ra nguyên tắc đầu tiên của cả cuốn sách: không chỉ trích, oán trách hay than phiền. [nghỉ] Và đây cũng là câu hỏi mình muốn các bạn giữ trong đầu suốt tập này: khi một người làm sai, lời chê trách có thật sự giúp họ thay đổi không?
 
-{Ch1, PDF 38–42 (đã đối chiếu: thư và thơ chế giễu ở Pigeon Creek, bài báo không ký tên năm 1842 về James Shields, lời thách đấu kiếm, người giúp việc hai bên can ở phút cuối PDF 38–39; lệnh cho Meade, quân Lee vượt sông Potomac PDF 40; lá thư năm 1863 không gửi, tìm thấy sau khi Lincoln mất PDF 41; "chỉ là phỏng đoán thôi" PDF 41–42). Không kể vụ ám sát, không đọc nguyên lá thư, không tả cảnh chiến trận.}
+{Ch1, PDF 38–42 (đã đối chiếu: viết thư, thơ chế giễu; bài báo không ký tên năm 1842 về James Shields, lời thách đấu kiếm, được can ở phút cuối, từ đó gần như không chỉ trích ai PDF 38–39; lệnh cho Meade tấn công Lee để chấm dứt chiến tranh, Meade do dự, quân Lee vượt sông Potomac PDF 40; lá thư năm 1863, "gạt bức thư qua một bên", tìm thấy trong hồ sơ sau khi Lincoln mất PDF 41–42; lý do giữ lá thư là "chỉ là phỏng đoán" của tác giả PDF 41–42); nguyên tắc 1 nguyên văn PDF 89. Câu hỏi cuối là câu dẫn của kênh, không trả lời thay sách. Bỏ chi tiết bài báo làm cả thành phố cười và tên James Shields cho gọn (góp ý: kể dài). Không kể vụ ám sát, không đọc nguyên lá thư, không tả cảnh chiến trận.}
 
 ## 1. Cuốn sách là gì
 
@@ -45,7 +45,7 @@ Vì sao Lincoln giữ lại lá thư? Tác giả nói rõ đây chỉ là phỏn
 
 Cuốn mình đọc là bản đã được gia đình tác giả cập nhật về sau. Sách gồm ba mươi nguyên tắc chia làm bốn phần, mỗi nguyên tắc là một chương ngắn, kể qua rất nhiều câu chuyện, phần lớn là chuyện của người thật ở Mỹ vào thời đó. [nghỉ]
 
-Đây cũng là một cuốn sách gây tranh cãi. Có người xem nó như một cẩm nang để sống tử tế với người xung quanh; có người lại thấy nó dạy cách lấy lòng người khác để đạt được mục đích. Ở tập này, mình sẽ kể đúng điều tác giả viết, rồi đến cuối video mới nói những chỗ mình thấy chưa đạt, để các bạn tự đánh giá.
+Vì sao cuốn sách gây tranh cãi? Có người xem nó như một cẩm nang để sống tử tế với người xung quanh; có người lại thấy nó dạy cách lấy lòng người khác để đạt được mục đích. Mình sẽ kể đúng điều tác giả viết trước, rồi đến cuối video mới nói những chỗ mình thấy chưa đạt, để các bạn tự đánh giá.
 
 {Lời tác giả PDF 15–17 (dạy từ năm 1912, lớp nói trước công chúng, không tìm được sách làm tài liệu); 1936 PDF 6, 11; bản Revised & Updated Edition, bản quyền tái bản do gia đình Carnegie giữ PDF 6. Không đọc các tuyên bố quảng bá về doanh số/"hay nhất" ở lời giới thiệu (PDF 7–13). Câu về hai luồng ý kiến là nhận xét của kênh, không gắn cho ai cụ thể.}
 
