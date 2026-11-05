@@ -1,5 +1,5 @@
 import type {FC} from 'react';
-import {AbsoluteFill} from 'remotion';
+import {AbsoluteFill, Img, staticFile} from 'remotion';
 import '../../shared/stoic-fonts';
 import {GOLD, INK, IVORY} from './Intro';
 
@@ -20,5 +20,38 @@ export const BookHvttThumbnail: FC = () => <AbsoluteFill data-testid="book-hvtt-
     <div style={{fontSize: 128, lineHeight: 1.04, color: GOLD, textShadow: '0 4px 20px #000'}}>TRÁI TIM</div>
     <div style={{width: 110, height: 4, background: GOLD, margin: '30px 0 26px'}} />
     <div style={{fontSize: 40, lineHeight: 1.35}}>Tóm tắt trọn cuốn sách<br />của Minh Niệm</div>
+  </div>
+</AbsoluteFill>;
+
+// Thumbnail variants for YouTube "Test & compare" (user 2026-11-05): A is the original above; B adds the real book
+// cover beside the title, C swaps the title for a short promise with the cover. Every variant keeps the bottom-right
+// corner (YouTube's duration badge, about x ≥ 980, y ≥ 600) empty. Shared by later episodes.
+export const ThumbCover: FC<{src: string; height: number; left: number; top: number; tilt?: number}> = ({src, height, left, top, tilt = 0}) => <>
+  <div style={{position: 'absolute', left: left - 90, top: top - 60, width: height * .7 + 180, height: height + 120, background: 'radial-gradient(closest-side, rgba(232,194,122,.34), rgba(232,194,122,0))'}} />
+  <Img src={staticFile(src)} style={{position: 'absolute', left, top, height, transform: `rotate(${tilt}deg)`, borderRadius: 4, boxShadow: '0 24px 60px rgba(0,0,0,.75), 0 0 0 2px rgba(217,181,111,.55)'}} />
+</>;
+const ground = (at: string) => ({background: `radial-gradient(ellipse 70% 80% at ${at}, #24342c 0%, ${INK} 58%, #060908 100%)`, color: IVORY, fontFamily: 'Stoic Sans, sans-serif', fontWeight: 700} as const);
+const label = (episode: string) => <div style={{position: 'absolute', left: 72, top: 70, color: GOLD, fontSize: 26, letterSpacing: 5}}>ĐỌC SÁCH, HIỂU MÌNH · TẬP {episode}</div>;
+const COVER = 'book-hvtt-001-overview/thumbnail/book-cover.jpg';
+
+export const BookHvttThumbnailB: FC = () => <AbsoluteFill data-testid="book-hvtt-thumbnail-b" style={ground('76% 48%')}>
+  <ThumbCover src={COVER} height={500} left={860} top={92} tilt={3} />
+  {label('01')}
+  <div style={{position: 'absolute', left: 72, top: 170, width: 700}}>
+    <div style={{fontSize: 104, lineHeight: 1.04, textShadow: '0 4px 20px #000'}}>HIỂU VỀ</div>
+    <div style={{fontSize: 128, lineHeight: 1.04, color: GOLD, textShadow: '0 4px 20px #000'}}>TRÁI TIM</div>
+    <div style={{width: 110, height: 4, background: GOLD, margin: '30px 0 26px'}} />
+    <div style={{fontSize: 40, lineHeight: 1.35}}>Tóm tắt trọn cuốn sách<br />của Minh Niệm</div>
+  </div>
+</AbsoluteFill>;
+
+export const BookHvttThumbnailC: FC = () => <AbsoluteFill data-testid="book-hvtt-thumbnail-c" style={ground('78% 46%')}>
+  <ThumbCover src={COVER} height={450} left={890} top={110} tilt={4} />
+  {label('01')}
+  <div style={{position: 'absolute', left: 72, top: 165, width: 760}}>
+    <div style={{fontSize: 96, lineHeight: 1.06, whiteSpace: 'nowrap', textShadow: '0 4px 20px #000'}}>VÌ SAO MÌNH</div>
+    <div style={{fontSize: 112, lineHeight: 1.06, whiteSpace: 'nowrap', color: GOLD, textShadow: '0 4px 20px #000'}}>CỨ KHỔ MÃI?</div>
+    <div style={{width: 110, height: 4, background: GOLD, margin: '30px 0 26px'}} />
+    <div style={{fontSize: 40, lineHeight: 1.35}}>Hiểu về trái tim · Minh Niệm<br />Tóm tắt trọn cuốn sách</div>
   </div>
 </AbsoluteFill>;
