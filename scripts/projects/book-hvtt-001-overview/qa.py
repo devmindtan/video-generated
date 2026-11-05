@@ -8,6 +8,7 @@ Runs the caption export first (captions.json / captions.srt from the video's own
   voice        published narration (audio/voice-metadata.json): no clipping, segments within 3 dB of each other
   music        music sits under the voice: body bed ≥ 15 dB below the narration while speaking
   build        typecheck and projects:check pass
+  loudness     exported video to upload is -14 LUFS ± 1, true peak ≤ -1 dBTP (scripts/shared/export_loudness.py)
 and lists the sentences the tone check flagged in the takes actually used (listening is the user's call).
 A technical pass is not a listening approval.
 Other episodes of the series: --project <slug> (series intro/outro/captions style come from episode 1's shared files).
@@ -19,6 +20,8 @@ import numpy as np
 import librosa
 
 ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / 'scripts/shared'))
+from export_loudness import export_loudness  # noqa: E402
 TOOLS = Path(__file__).resolve().parent
 ID = sys.argv[sys.argv.index('--project') + 1] if '--project' in sys.argv else 'book-hvtt-001-overview'
 HERE = ROOT / 'scripts/projects' / ID
@@ -125,6 +128,8 @@ def main():
         r = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True)
         build[name] = r.returncode == 0
     check('build', 'Typecheck và kiểm tra đăng ký dự án', all(build.values()), build)
+    ok, detail, _ = export_loudness(ID)
+    check('loudness', 'Âm lượng bản đăng -14 LUFS, đỉnh ≤ -1 dBTP', ok, detail)
 
     # Sentences in use that the tone check flagged (accent-insensitive ASR; the user's ear decides).
     flags = []

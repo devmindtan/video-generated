@@ -22,6 +22,8 @@ import soundfile as sf
 import librosa
 
 ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / 'scripts/shared'))
+from export_loudness import export_loudness  # noqa: E402
 SLUG = sys.argv[sys.argv.index('--project') + 1] if '--project' in sys.argv else 'book-hvtt-001-shorts'
 SRC, DOCS, HERE = ROOT / 'src/projects' / SLUG, ROOT / 'docs/projects' / SLUG, ROOT / 'scripts/projects' / SLUG
 LAYOUT = json.loads((SRC / 'layout.json').read_text()) if (SRC / 'layout.json').exists() else {}
@@ -156,6 +158,9 @@ def main():
 
     build = [subprocess.run(['npm', 'run', '--silent', c], cwd=ROOT, capture_output=True, text=True) for c in ['typecheck', 'projects:check']]
     checks.append({'id': 'build', 'title': 'Typecheck và projects:check', 'ok': all(b.returncode == 0 for b in build), 'detail': 'đạt' if all(b.returncode == 0 for b in build) else (build[0].stdout + build[0].stderr + build[1].stderr)[-400:]})
+
+    ok, detail, _ = export_loudness(SLUG)
+    checks.append({'id': 'loudness', 'title': 'Âm lượng bản đăng -14 LUFS, đỉnh ≤ -1 dBTP', 'ok': ok, 'detail': detail})
 
     report = {'project': SLUG, 'checkedAt': datetime.datetime.now().astimezone().isoformat(timespec='seconds'), 'shorts': shorts_out,
               'technicalPass': all(c['ok'] for c in checks), 'checks': checks,

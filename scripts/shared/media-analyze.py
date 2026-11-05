@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Local media analysis with Remotion's bundled ffmpeg: shots, contact sheets, music energy, silences.
+"""Local media analysis with Remotion's bundled ffmpeg: shots, contact sheets, music energy, silences, loudness.
 
 Ideas from OpenMontage's scene_detect, frame_sampler, audio_energy and
 silence_cutter (reference clone in repos/calesthio--OpenMontage),
@@ -238,6 +238,59 @@ def command_silences(args):
     print(f'{len(silences)} pause(s) ≥ {args.min}s below {args.noise} dB, {silent:.2f}s of {info["durationSeconds"]:.2f}s silent', file=sys.stderr)
     return 0
 
+LOUDNESS_TARGET = -14.0   # YouTube plays louder uploads down to about -14 LUFS but never turns quieter ones up
+TRUE_PEAK = -1.0
+LOUDNESS_TOLERANCE = 1.0
+
+
+def loudnorm_stats(path, extra=''):
+    stderr = subprocess.run([str(FFMPEG), '-hide_banner', '-nostdin', '-nostats', '-i', str(path), '-vn',
+                             '-af', f'loudnorm=I={LOUDNESS_TARGET}:TP={TRUE_PEAK}:LRA=11{extra}:print_format=json',
+                             '-f', 'null', '-'], capture_output=True, text=True).stderr
+    match = re.search(r'\{[^{}]*"input_i"[^{}]*\}', stderr)
+    if not match:
+        raise RuntimeError(f'{path}: loudness could not be measured')
+    return {key: (float(value) if re.fullmatch(r'-?[\d.]+|-?inf', value) else value)
+            for key, value in json.loads(match.group(0)).items()}
+
+
+def loudness_verdict(integrated, true_peak):
+    return abs(integrated - LOUDNESS_TARGET) <= LOUDNESS_TOLERANCE and true_peak <= TRUE_PEAK + .2
+
+
+def command_loudness(args):
+    path = Path(args.file)
+    stats = loudnorm_stats(path)
+    report = {'file': str(path), 'integratedLufs': stats['input_i'], 'truePeakDb': stats['input_tp'],
+              'loudnessRange': stats['input_lra'], 'target': LOUDNESS_TARGET, 'truePeakLimit': TRUE_PEAK,
+              'ok': loudness_verdict(stats['input_i'], stats['input_tp'])}
+    if args.fix and not report['ok']:
+        out = Path(args.out) if args.out else path.with_name(f'{path.stem}-upload{path.suffix}')
+        if out.resolve() == path.resolve():
+            raise SystemExit('--out must differ from the input; the export is never overwritten')
+        if out.exists():
+            raise SystemExit(f'{out} already exists; remove it or pass another --out')
+        measured = (f":measured_I={stats['input_i']}:measured_TP={stats['input_tp']}:measured_LRA={stats['input_lra']}"
+                    f":measured_thresh={stats['input_thresh']}:offset={stats['target_offset']}:linear=true")
+        run_ffmpeg('-n', '-i', str(path), '-map', '0:v?', '-map', '0:a', '-c:v', 'copy',
+                   '-af', f'loudnorm=I={LOUDNESS_TARGET}:TP={TRUE_PEAK}:LRA=11{measured}',
+                   '-c:a', 'aac', '-b:a', '320k', '-ar', '48000', '-movflags', '+faststart', str(out))
+        after = loudnorm_stats(out)
+        report['fixed'] = {'file': str(out), 'integratedLufs': after['input_i'], 'truePeakDb': after['input_tp'],
+                           'ok': loudness_verdict(after['input_i'], after['input_tp'])}
+    if args.json:
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+    else:
+        state = 'đạt' if report['ok'] else 'chưa đạt'
+        print(f"{path.name}: {report['integratedLufs']:.1f} LUFS, đỉnh {report['truePeakDb']:.1f} dBTP "
+              f"(mục tiêu {LOUDNESS_TARGET:.0f} ± {LOUDNESS_TOLERANCE:.0f} LUFS, đỉnh ≤ {TRUE_PEAK:.0f}) → {state}")
+        if 'fixed' in report:
+            f = report['fixed']
+            print(f"  bản đăng: {f['file']}: {f['integratedLufs']:.1f} LUFS, đỉnh {f['truePeakDb']:.1f} dBTP → {'đạt' if f['ok'] else 'chưa đạt'}")
+        elif not report['ok']:
+            print('  chạy lại với --fix để ghi bản <tên>-upload.mp4 đã chuẩn hóa (bản xuất gốc giữ nguyên)')
+    return 0 if report['ok'] or report.get('fixed', {}).get('ok') else 1
+
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__.split('\n')[0])
@@ -265,8 +318,14 @@ def main(argv=None):
     silences.add_argument('--noise', type=float, default=-35, help='silence threshold in dB')
     silences.add_argument('--min', type=float, default=.35, help='minimum pause in seconds')
     silences.add_argument('--json', action='store_true')
+    loudness = commands.add_parser('loudness', help='integrated loudness and true peak against the YouTube target')
+    loudness.add_argument('file')
+    loudness.add_argument('--fix', action='store_true', help='write <name>-upload.mp4 normalised to -14 LUFS, peak -1 dBTP (video copied)')
+    loudness.add_argument('--out', help='output path for --fix')
+    loudness.add_argument('--json', action='store_true')
     args = parser.parse_args(argv)
-    return {'shots': command_shots, 'sheet': command_sheet, 'energy': command_energy, 'silences': command_silences}[args.command](args)
+    return {'shots': command_shots, 'sheet': command_sheet, 'energy': command_energy, 'silences': command_silences,
+            'loudness': command_loudness}[args.command](args)
 
 
 if __name__ == '__main__':

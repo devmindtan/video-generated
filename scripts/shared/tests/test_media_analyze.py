@@ -61,3 +61,28 @@ class AudioTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class LoudnessTests(unittest.TestCase):
+    def test_verdict_targets_youtube_level_and_true_peak(self):
+        self.assertTrue(media.loudness_verdict(-14.4, -1.0))
+        self.assertFalse(media.loudness_verdict(-18.7, -1.0))   # episodes 1-2 as exported
+        self.assertFalse(media.loudness_verdict(-14.0, 0.0))    # loud enough but clipping
+
+    def test_fix_writes_a_normalised_copy_and_keeps_the_input(self):
+        import tempfile, wave, subprocess, sys
+        with tempfile.TemporaryDirectory() as folder:
+            source = Path(folder)/'quiet.wav'
+            t = np.arange(48000*4)/48000
+            tone = (0.05*np.sin(2*np.pi*440*t)*32767).astype(np.int16)
+            with wave.open(str(source), 'wb') as out:
+                out.setnchannels(1); out.setsampwidth(2); out.setframerate(48000); out.writeframes(tone.tobytes())
+            before = source.read_bytes()
+            result = subprocess.run([sys.executable, str(SCRIPT), 'loudness', str(source), '--fix', '--out', str(Path(folder)/'loud.mp4'), '--json'],
+                                    capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            import json
+            report = json.loads(result.stdout)
+            self.assertFalse(report['ok'])
+            self.assertTrue(report['fixed']['ok'], report)
+            self.assertEqual(source.read_bytes(), before)
