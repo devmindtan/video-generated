@@ -34,16 +34,6 @@
           "kind": "Still"
         },
         {
-          "id": "BookHvttThumbnailB",
-          "kind": "Still",
-          "title": "Thumbnail B · có bìa sách"
-        },
-        {
-          "id": "BookHvttThumbnailC",
-          "kind": "Still",
-          "title": "Thumbnail C · câu hứa hẹn và bìa sách"
-        },
-        {
           "id": "BookHvttIntro",
           "kind": "Composition"
         },
@@ -127,16 +117,6 @@
         {
           "id": "BookAhThumbnail",
           "kind": "Still"
-        },
-        {
-          "id": "BookAhThumbnailB",
-          "kind": "Still",
-          "title": "Thumbnail B · có bìa sách"
-        },
-        {
-          "id": "BookAhThumbnailC",
-          "kind": "Still",
-          "title": "Thumbnail C · câu hứa hẹn và bìa sách"
         },
         {
           "id": "BookAhEpisodeCard",

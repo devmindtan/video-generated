@@ -3,55 +3,35 @@ import {AbsoluteFill, Img, staticFile} from 'remotion';
 import '../../shared/stoic-fonts';
 import {GOLD, INK, IVORY} from './Intro';
 
-// YouTube thumbnail of episode 1 (1280×720, prepared only: never exported automatically). Channel typography: Stoic
-// Sans Bold 700, ivory headline with the gold keyword, dark high-contrast ground, safe margins; no faces, the gold
-// line drawing of the episode (an open book with a heart above it).
-export const BookHvttThumbnail: FC = () => <AbsoluteFill data-testid="book-hvtt-thumbnail" style={{background: `radial-gradient(ellipse 70% 80% at 72% 50%, #24342c 0%, ${INK} 58%, #060908 100%)`, color: IVORY, fontFamily: 'Stoic Sans, sans-serif', fontWeight: 700}}>
-  <svg viewBox="0 0 1280 720" width={1280} height={720} style={{position: 'absolute', inset: 0}}>
-    <defs><radialGradient id="thumb-glow"><stop offset="0%" stopColor="#e8c27a" stopOpacity={.42} /><stop offset="100%" stopColor="#e8c27a" stopOpacity={0} /></radialGradient></defs>
-    <circle cx={930} cy={330} r={250} fill="url(#thumb-glow)" />
-    <path d="M930 420 C800 330 800 220 880 200 C915 192 930 215 930 240 C930 215 945 192 980 200 C1060 220 1060 330 930 420 Z" fill="rgba(217,181,111,.12)" stroke={GOLD} strokeWidth={6} strokeLinejoin="round" />
-    <path d="M930 600 C860 560 770 556 700 576 L700 470 C770 450 860 454 930 494 C1000 454 1090 450 1160 470 L1160 576 C1090 556 1000 560 930 600 Z M930 494 L930 600" fill="none" stroke={GOLD} strokeWidth={5} strokeLinejoin="round" />
-    {[0, 1, 2].map((k) => <path key={k} d={`M730 ${500 + k * 22} C780 ${490 + k * 22} 850 ${492 + k * 22} 905 ${510 + k * 22} M955 ${510 + k * 22} C1010 ${492 + k * 22} 1080 ${490 + k * 22} 1130 ${500 + k * 22}`} fill="none" stroke={GOLD} strokeWidth={3} opacity={.7} />)}
-  </svg>
-  <div style={{position: 'absolute', left: 72, top: 70, color: GOLD, fontSize: 26, letterSpacing: 5}}>ĐỌC SÁCH, HIỂU MÌNH · TẬP 01</div>
-  <div style={{position: 'absolute', left: 72, top: 170, width: 640}}>
-    <div style={{fontSize: 104, lineHeight: 1.04, textShadow: '0 4px 20px #000'}}>HIỂU VỀ</div>
-    <div style={{fontSize: 128, lineHeight: 1.04, color: GOLD, textShadow: '0 4px 20px #000'}}>TRÁI TIM</div>
-    <div style={{width: 110, height: 4, background: GOLD, margin: '30px 0 26px'}} />
-    <div style={{fontSize: 40, lineHeight: 1.35}}>Tóm tắt trọn cuốn sách<br />của Minh Niệm</div>
-  </div>
-</AbsoluteFill>;
+// Thumbnail template of the series' long episodes (user 2026-11-05: layout "B" for every long episode, one thumbnail
+// each). 1280×720, prepared only: never exported automatically. Stoic Sans 700; series label; the book title in two
+// lines (ivory, then gold); a short line "Tóm tắt … / của <author>"; the real book cover on the right with a soft gold
+// glow. The bottom-right corner (x ≥ 980, y ≥ 600) stays empty: YouTube's duration badge covers it. Title lines must
+// fit 700 px wide: pick sizes per book (2 short words: 104/128; long titles: 74/74).
+export type BookThumbnailProps = {
+  episode: string;                 // '01', '02', …
+  title: [string, string];         // upper case, line 2 is the gold one
+  titleSizes?: [number, number];
+  subtitle: [string, string];
+  cover: string;                   // staticFile path, e.g. '<slug>/thumbnail/book-cover.jpg' (white margin trimmed)
+  testId?: string;
+};
 
-// Thumbnail variants for YouTube "Test & compare" (user 2026-11-05): A is the original above; B adds the real book
-// cover beside the title, C swaps the title for a short promise with the cover. Every variant keeps the bottom-right
-// corner (YouTube's duration badge, about x ≥ 980, y ≥ 600) empty. Shared by later episodes.
-export const ThumbCover: FC<{src: string; height: number; left: number; top: number; tilt?: number}> = ({src, height, left, top, tilt = 0}) => <>
+const ThumbCover: FC<{src: string; height: number; left: number; top: number; tilt: number}> = ({src, height, left, top, tilt}) => <>
   <div style={{position: 'absolute', left: left - 90, top: top - 60, width: height * .7 + 180, height: height + 120, background: 'radial-gradient(closest-side, rgba(232,194,122,.34), rgba(232,194,122,0))'}} />
   <Img src={staticFile(src)} style={{position: 'absolute', left, top, height, transform: `rotate(${tilt}deg)`, borderRadius: 4, boxShadow: '0 24px 60px rgba(0,0,0,.75), 0 0 0 2px rgba(217,181,111,.55)'}} />
 </>;
-const ground = (at: string) => ({background: `radial-gradient(ellipse 70% 80% at ${at}, #24342c 0%, ${INK} 58%, #060908 100%)`, color: IVORY, fontFamily: 'Stoic Sans, sans-serif', fontWeight: 700} as const);
-const label = (episode: string) => <div style={{position: 'absolute', left: 72, top: 70, color: GOLD, fontSize: 26, letterSpacing: 5}}>ĐỌC SÁCH, HIỂU MÌNH · TẬP {episode}</div>;
-const COVER = 'book-hvtt-001-overview/thumbnail/book-cover.jpg';
 
-export const BookHvttThumbnailB: FC = () => <AbsoluteFill data-testid="book-hvtt-thumbnail-b" style={ground('76% 48%')}>
-  <ThumbCover src={COVER} height={500} left={860} top={92} tilt={3} />
-  {label('01')}
+export const BookThumbnail: FC<BookThumbnailProps> = ({episode, title, titleSizes = [104, 128], subtitle, cover, testId}) => <AbsoluteFill data-testid={testId} style={{background: `radial-gradient(ellipse 70% 80% at 76% 48%, #24342c 0%, ${INK} 58%, #060908 100%)`, color: IVORY, fontFamily: 'Stoic Sans, sans-serif', fontWeight: 700}}>
+  <ThumbCover src={cover} height={500} left={855} top={92} tilt={3} />
+  <div style={{position: 'absolute', left: 72, top: 70, color: GOLD, fontSize: 26, letterSpacing: 5}}>ĐỌC SÁCH, HIỂU MÌNH · TẬP {episode}</div>
   <div style={{position: 'absolute', left: 72, top: 170, width: 700}}>
-    <div style={{fontSize: 104, lineHeight: 1.04, textShadow: '0 4px 20px #000'}}>HIỂU VỀ</div>
-    <div style={{fontSize: 128, lineHeight: 1.04, color: GOLD, textShadow: '0 4px 20px #000'}}>TRÁI TIM</div>
+    <div style={{fontSize: titleSizes[0], lineHeight: 1.06, whiteSpace: 'nowrap', textShadow: '0 4px 20px #000'}}>{title[0]}</div>
+    <div style={{fontSize: titleSizes[1], lineHeight: 1.06, whiteSpace: 'nowrap', color: GOLD, textShadow: '0 4px 20px #000'}}>{title[1]}</div>
     <div style={{width: 110, height: 4, background: GOLD, margin: '30px 0 26px'}} />
-    <div style={{fontSize: 40, lineHeight: 1.35}}>Tóm tắt trọn cuốn sách<br />của Minh Niệm</div>
+    <div style={{fontSize: 40, lineHeight: 1.35}}>{subtitle[0]}<br />{subtitle[1]}</div>
   </div>
 </AbsoluteFill>;
 
-export const BookHvttThumbnailC: FC = () => <AbsoluteFill data-testid="book-hvtt-thumbnail-c" style={ground('78% 46%')}>
-  <ThumbCover src={COVER} height={450} left={890} top={110} tilt={4} />
-  {label('01')}
-  <div style={{position: 'absolute', left: 72, top: 165, width: 760}}>
-    <div style={{fontSize: 96, lineHeight: 1.06, whiteSpace: 'nowrap', textShadow: '0 4px 20px #000'}}>VÌ SAO MÌNH</div>
-    <div style={{fontSize: 112, lineHeight: 1.06, whiteSpace: 'nowrap', color: GOLD, textShadow: '0 4px 20px #000'}}>CỨ KHỔ MÃI?</div>
-    <div style={{width: 110, height: 4, background: GOLD, margin: '30px 0 26px'}} />
-    <div style={{fontSize: 40, lineHeight: 1.35}}>Hiểu về trái tim · Minh Niệm<br />Tóm tắt trọn cuốn sách</div>
-  </div>
-</AbsoluteFill>;
+export const BookHvttThumbnail: FC = () => <BookThumbnail testId="book-hvtt-thumbnail" episode="01" title={['HIỂU VỀ', 'TRÁI TIM']}
+  subtitle={['Tóm tắt trọn cuốn sách', 'của Minh Niệm']} cover="book-hvtt-001-overview/thumbnail/book-cover.jpg" />;
