@@ -780,9 +780,28 @@ function readStatus(root) {
 }
 
 // Ends every backup process on this machine (tracked or older untracked runs). Copy resumes on the next run.
+// rclone processes started by a backup; ended with it so no orphan keeps copying after a stop.
+function rcloneChildren(parents) {
+  let entries = [];
+  try {
+    entries = fs.readdirSync('/proc');
+  } catch {
+    return [];
+  }
+  return entries.filter((name) => /^\d+$/.test(name)).map(Number).filter((pid) => {
+    try {
+      const stat = fs.readFileSync(`/proc/${pid}/stat`, 'utf8');
+      const ppid = Number(stat.slice(stat.lastIndexOf(')') + 2).split(' ')[1]);
+      return parents.includes(ppid) && /(^|\/)rclone$/.test(processCommand(pid)?.[0] || '');
+    } catch {
+      return false;
+    }
+  });
+}
+
 function stopBackups(root) {
   const pids = findBackupProcesses(root);
-  for (const pid of pids) {
+  for (const pid of [...rcloneChildren(pids), ...pids]) {
     try {
       process.kill(pid, 'SIGTERM');
     } catch {}
