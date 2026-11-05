@@ -303,6 +303,21 @@
       ],
       "book": "thay-doi-ti-hon-hieu-qua-bat-ngo-atomic-habits",
       "promotes": "book-ah-001-overview"
+    },
+    {
+      "id": "book-dnt-001-overview",
+      "title": "Đắc nhân tâm: tổng quan và đánh giá",
+      "status": "planning",
+      "format": "long",
+      "durationSeconds": null,
+      "paths": {
+        "source": "src/projects/book-dnt-001-overview",
+        "scripts": "scripts/projects/book-dnt-001-overview",
+        "docs": "docs/projects/book-dnt-001-overview",
+        "assets": "public/book-dnt-001-overview"
+      },
+      "registrations": [],
+      "book": "dac-nhan-tam"
     }
   ]
 }
