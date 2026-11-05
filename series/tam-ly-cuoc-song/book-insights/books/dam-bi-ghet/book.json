@@ -1,0 +1,31 @@
+{
+  "id": "dam-bi-ghet",
+  "title": "Dám bị ghét",
+  "authors": [
+    "Kishimi Ichiro",
+    "Koga Fumitake"
+  ],
+  "status": "research",
+  "sourceSha256": "c6a88e3de789bc011046e139315b2d7f710ed4d4b0677f0888a861f2eb7ecab7",
+  "note": "Đã đọc đủ 5/5 đêm đối thoại và 56 tiểu mục. research.md tách rõ lập luận của sách khỏi đồng thuận khoa học, đặc biệt ở các mệnh đề về sang chấn, cảm xúc và quan hệ.",
+  "cacheEdition": "c6a88e3de789bc011046e139315b2d7f710ed4d4b0677f0888a861f2eb7ecab7-de2a45e349f9",
+  "editionDetails": {
+    "edition": "Bản ebook tiếng Việt không có trang thông tin xuất bản",
+    "translator": null,
+    "publisher": null,
+    "year": null,
+    "provenance": "PDF người dùng thêm qua trang quản lý; file mang dấu Chiasemoi.com/SachVui.com. Nội dung PDF không ghi tác giả, dịch giả, nhà xuất bản hay năm, nên metadata tác giả lấy từ hồ sơ sách do người dùng tạo và cần đối chiếu bản in trước khi credit."
+  },
+  "sourceFile": "library/books/dam-bi-ghet/sources/Chiasemoi.com_dam-bi-ghet.pdf",
+  "pdfPages": 209,
+  "extractedCharacters": 312290,
+  "textLayer": "native",
+  "ocr": false,
+  "chapterMap": "chapters.json",
+  "research": "research.md",
+  "chaptersTotal": 5,
+  "chaptersRead": 5,
+  "sectionsTotal": 56,
+  "sectionsRead": 56,
+  "checkedAt": "2026-11-05"
+}

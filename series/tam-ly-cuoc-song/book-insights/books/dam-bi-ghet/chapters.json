@@ -1,0 +1,115 @@
+{
+  "book": "dam-bi-ghet",
+  "sourceSha256": "c6a88e3de789bc011046e139315b2d7f710ed4d4b0677f0888a861f2eb7ecab7",
+  "edition": "c6a88e3de789bc011046e139315b2d7f710ed4d4b0677f0888a861f2eb7ecab7-de2a45e349f9",
+  "pageNumberConvention": "PDF không có nhãn/số trang in; chỉ dùng trang PDF 1-based.",
+  "mappingSummary": "62 bookmark đã kiểm: 1 mục giới thiệu, 5 đêm và 56 tiểu mục. Tiêu đề bookmark trùng tiêu đề trong lớp chữ. Mỗi đêm bắt đầu bằng trang tiêu đề ít chữ; nội dung bắt đầu ở bookmark tiểu mục kế tiếp.",
+  "coverage": {"chaptersRead": 5, "chaptersTotal": 5, "sectionsRead": 56, "sectionsTotal": 56, "status": "complete"},
+  "frontMatter": [
+    {"title": "Mục lục ebook", "pdfStart": 2, "pdfEnd": 4, "mappingSource": "text-checked"},
+    {"title": "Giới thiệu", "pdfStart": 5, "pdfEnd": 9, "mappingSource": "bookmark-checked"}
+  ],
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Đêm thứ nhất: Hãy phủ nhận sang chấn tâm lý",
+      "pdfStart": 10,
+      "pdfEnd": 41,
+      "readStatus": "read",
+      "sections": [
+        {"title": "Người khổng lồ thứ ba chưa được biết đến", "pdfStart": 11},
+        {"title": "Tại sao nói con người có thể thay đổi?", "pdfStart": 14},
+        {"title": "Sang chấn tâm lý vốn không tồn tại", "pdfStart": 18},
+        {"title": "Con người ưa ngụy tạo cơn giận", "pdfStart": 21},
+        {"title": "Cách sống không bị quá khứ chi phối", "pdfStart": 24},
+        {"title": "Sokrates và Adler", "pdfStart": 26},
+        {"title": "Cậu không phải mãi như thế này mà được", "pdfStart": 28},
+        {"title": "Cậu bất hạnh là bởi tự mình chọn lấy bất hạnh", "pdfStart": 31},
+        {"title": "Con người thường quyết tâm không thay đổi", "pdfStart": 34},
+        {"title": "Cuộc đời cậu được quyết định ngay tại đây, vào lúc này", "pdfStart": 38}
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Đêm thứ hai: Mọi phiền muộn đều bắt nguồn từ quan hệ giữa người với người",
+      "pdfStart": 42,
+      "pdfEnd": 90,
+      "readStatus": "read",
+      "sections": [
+        {"title": "Tại sao cậu lại ghét bản thân mình?", "pdfStart": 43},
+        {"title": "Mọi phiền muộn đều bắt nguồn từ quan hệ giữa người với người", "pdfStart": 49},
+        {"title": "Cảm giác tự ti là ngộ nhận mang tính chủ quan", "pdfStart": 52},
+        {"title": "Phức cảm tự ti là một sự bao biện", "pdfStart": 56},
+        {"title": "Người nào phô trương, kẻ đó tự ti", "pdfStart": 60},
+        {"title": "Đời không phải là cuộc cạnh tranh với người khác", "pdfStart": 65},
+        {"title": "Chỉ cháu là để ý đến khuôn mặt của mình thôi", "pdfStart": 68},
+        {"title": "Từ tranh giành quyền lực đến trả đũa", "pdfStart": 72},
+        {"title": "Thừa nhận sai lầm không phải là thua cuộc", "pdfStart": 76},
+        {"title": "Làm thế nào vượt qua các nhiệm vụ cuộc đời", "pdfStart": 79},
+        {"title": "Sợi tơ hồng và dây xích chắc", "pdfStart": 83},
+        {"title": "Không được lảng tránh lời nói dối cuộc đời", "pdfStart": 87},
+        {"title": "Tâm lí học sở hữu đến tâm lí học sử dụng", "pdfStart": 89}
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Đêm thứ ba: Bỏ qua nhiệm vụ của người khác",
+      "pdfStart": 91,
+      "pdfEnd": 124,
+      "readStatus": "read",
+      "sections": [
+        {"title": "Phủ định nhu cầu được thừa nhận", "pdfStart": 92},
+        {"title": "Không được sống để đáp ứng mong đợi của người khác", "pdfStart": 96},
+        {"title": "Phân chia nhiệm vụ là gì?", "pdfStart": 101},
+        {"title": "Hãy bỏ qua nhiệm vụ của người khác", "pdfStart": 104},
+        {"title": "Cách loại bỏ hoàn toàn những phiền muộn trong quan hệ", "pdfStart": 106},
+        {"title": "Hãy chém đứt nút thắt Gordias", "pdfStart": 110},
+        {"title": "Nhu cầu được thừa nhận dẫn tới mất tự do", "pdfStart": 114},
+        {"title": "Tự do thực sự là gì", "pdfStart": 117},
+        {"title": "Lá bài mối quan hệ với người khác luôn do bản thân nắm giữ", "pdfStart": 121}
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Đêm thứ tư: Trung tâm thế giới nằm ở đâu",
+      "pdfStart": 125,
+      "pdfEnd": 160,
+      "readStatus": "read",
+      "sections": [
+        {"title": "Tâm lý học cá nhân và tổng thể luận", "pdfStart": 126},
+        {"title": "Mục đích của mối quan hệ là cảm thức cộng đồng", "pdfStart": 129},
+        {"title": "Tại sao chỉ quan tâm đến mình?", "pdfStart": 132},
+        {"title": "Cậu không phải trung tâm của thế giới", "pdfStart": 134},
+        {"title": "Hãy nghe tiếng nói của cộng đồng lớn hơn", "pdfStart": 138},
+        {"title": "Không được mắng mỏ cũng không được khen ngợi", "pdfStart": 142},
+        {"title": "Cách tiếp cận khích lệ lòng can đảm", "pdfStart": 146},
+        {"title": "Làm thế nào thấy mình có giá trị", "pdfStart": 149},
+        {"title": "Chỉ có mặt ở đây là đã có giá trị", "pdfStart": 152},
+        {"title": "Con người không thể tùy cơ ứng biến thay đổi mình", "pdfStart": 156}
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Đêm thứ năm: Sống hết mình ngay tại đây, vào lúc này",
+      "pdfStart": 161,
+      "pdfEnd": 209,
+      "readStatus": "read",
+      "sections": [
+        {"title": "Ý thức quá mức về bản thân sẽ kìm hãm chính mình", "pdfStart": 162},
+        {"title": "Không phải khẳng định bản thân mà là chấp nhận bản thân", "pdfStart": 165},
+        {"title": "Tín dụng và tin tưởng khác nhau thế nào?", "pdfStart": 169},
+        {"title": "Bản chất của công việc là cống hiến cho người khác", "pdfStart": 174},
+        {"title": "Lớp trẻ đi trước lớp già", "pdfStart": 177},
+        {"title": "Nghiện công việc là lời nói dối cuộc đời", "pdfStart": 180},
+        {"title": "Ai cũng có thể hạnh phúc ngay từ giây phút này", "pdfStart": 184},
+        {"title": "Hai con đường của người muốn trở nên đặc biệt", "pdfStart": 189},
+        {"title": "Dám bình thường", "pdfStart": 192},
+        {"title": "Cuộc đời là những khoảnh khắc tiếp nối", "pdfStart": 194},
+        {"title": "Sống như khiêu vũ", "pdfStart": 196},
+        {"title": "Hãy rọi đèn chiếu vào ngay tại đây, vào lúc này", "pdfStart": 199},
+        {"title": "Lời nói dối cuộc đời lớn nhất", "pdfStart": 202},
+        {"title": "Hãy mang lại ý nghĩa cho cuộc đời vô nghĩa", "pdfStart": 205}
+      ]
+    }
+  ]
+}
