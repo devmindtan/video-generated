@@ -317,7 +317,7 @@ function createApprovals(root) {
     const wanted = new Set(progress.load(root, id).tasks.filter(t => t.doneWhen && t.status !== 'done').map(t => t.doneWhen));
     if (!wanted.size) return facts;
     if (typeof plan === 'function') plan = plan();
-    try {const v = features.items(id, 'video');facts.exported = v.length > 0 && v.every(x => x.name);} catch {}
+    try {const v = features.items(id, 'video').filter(x => !x.part);facts.exported = v.length > 0 && v.every(x => x.name);} catch {}
     try {facts['review-preview'] = approvals.gateState(root, plan, 'review-preview').state === 'approved';} catch {}
     try {const patches = review.load(root, id).patches;facts['patches-settled'] = patches.length > 0 && !patches.some(x => x.status === 'pending') && patches.at(-1).status === 'accepted';} catch {}
     return facts;
@@ -335,10 +335,11 @@ function createApprovals(root) {
       .sort((a, b) => Date.parse(b.at) - Date.parse(a.at));
     return {available: true, locked: r.version > 0, lockVersion: r.version, ...p, events, lastActivity: events[0]?.at || p.lastActivity, patches, runs};
   }
-  // A production project is finished once you approved "Xem bản dựng" and every video has an export (user 2026-11-04:
+  // A production project is finished once you approved "Xem bản dựng" and every video has an export (sections of a
+  // long episode registered with "part": true in series.json are Studio previews, never exported, so they do not count) (user 2026-11-04:
   // the page kept saying "Đang sản xuất" after everything was done). Read from facts, so nobody has to remember it.
   function finished(id) {
-    try {const v = features.items(id, 'video');return v.length > 0 && v.every(x => x.name) && approvals.gateState(root, cli.plan(root, id), 'review-preview').state === 'approved';}
+    try {const v = features.items(id, 'video').filter(x => !x.part);return v.length > 0 && v.every(x => x.name) && approvals.gateState(root, cli.plan(root, id), 'review-preview').state === 'approved';}
     catch {return false;}
   }
   function progressSummary(id) {

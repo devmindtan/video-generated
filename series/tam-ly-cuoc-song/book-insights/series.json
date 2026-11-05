@@ -35,63 +35,78 @@
         },
         {
           "id": "BookHvttIntro",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookHvttCachLam",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookHvttEpisodeCard",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookHvttOutro",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookHvttMoChuyen",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookHvttCuonSach",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookHvttSoiChi",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookHvttNhom3A",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookHvttNhom3B",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookHvttNhom3C",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookHvttNhom3D",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookHvttDiemChuaDat",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookHvttTongKet",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookHvttYKien",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookHvttNhanXet",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         }
       ],
       "book": "hieu-ve-trai-tim"
@@ -99,7 +114,7 @@
     {
       "id": "book-ah-001-overview",
       "title": "Thay đổi tí hon hiệu quả bất ngờ: tổng quan và đánh giá",
-      "status": "production",
+      "status": "existing",
       "format": "long",
       "durationSeconds": 780,
       "book": "thay-doi-ti-hon-hieu-qua-bat-ngo-atomic-habits",
@@ -120,55 +135,68 @@
         },
         {
           "id": "BookAhEpisodeCard",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookAhMoChuyen",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookAhCuonSach",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookAhSoiChi",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookAhQuyLuat1",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookAhQuyLuat2",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookAhQuyLuat3",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookAhQuyLuat4",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookAhThanhNep",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookAhChuaDat",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookAhTongKet",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookAhYKien",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         },
         {
           "id": "BookAhNhanXet",
-          "kind": "Composition"
+          "kind": "Composition",
+          "part": true
         }
       ]
     },

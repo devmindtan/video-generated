@@ -66,7 +66,7 @@ Sau khi có tài liệu và duyệt kịch bản:
 
 1. Triển khai ở các đường dẫn chuẩn của project. Giữ engine dùng chung trong `scripts/shared`, không copy cả pipeline vào series.
 2. Tạo Composition/Still literal trong registry: `Folder kênh → Folder series → Folder project ID`. Đặt video và thumbnail cạnh nhau; lấy tên folder kênh/series từ catalog.
-3. Ghi đúng IDs/kinds vào `registrations` của tập rồi chuyển sang production. Trạng thái không tự thay bằng CLI tạo hồ sơ.
+3. Ghi đúng IDs/kinds vào `registrations` của tập rồi chuyển sang production. Composition chỉ để xem từng phần trong Studio (không xuất) thêm `"part": true`; trang quản lý chỉ đòi bản xuất cho các video còn lại khi tính tập đã xong. Trạng thái không tự thay bằng CLI tạo hồ sơ.
 4. Chạy `projects:check`, typecheck và QA của tập. Không chạy batch render hoặc tái tạo tất cả giọng để kiểm tra kiến trúc.
 
 ## Quy trình sản xuất và ghi chú theo series

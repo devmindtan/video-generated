@@ -179,7 +179,7 @@ function createStore(root) {
         hasScript:exists(path.join(location(project.paths.docs),'script.md')),
         hasDescription:exists(path.join(location(project.paths.docs),'description.md')),autoNamed:Boolean(project.autoNamed),progress,
         videoFolder:renderedVideo?path.relative(root,path.dirname(renderedVideo.file)):null,
-        videos:project.registrations.filter(r=>r.kind==='Composition').length>1?extra.items(project.id,'video').map(({file,...v})=>v):[],
+        videos:project.registrations.filter(r=>r.kind==='Composition'&&!r.part).length>1?extra.items(project.id,'video').filter(v=>!v.part).map(({file,part,...v})=>v):[],
         thumbnails:project.registrations.filter(r=>r.kind==='Still').length>1?extra.items(project.id,'thumbnail').map(({file,...v})=>v):[]};
     }));
     return {channels:catalog.channels,series:catalog.series.map(s=>({id:s.id,title:s.title,channel:s.channel,summary:s.summary,

@@ -56,7 +56,7 @@ function createFeatures(root){
     const p=project(id),regs=p.registrations.filter(r=>r.kind===(kind==='video'?'Composition':'Still'));
     const files=exportsFor(p).filter(f=>f.kind===kind&&!f.imported);
     return regs.map((r,k)=>{const f=files.find(f=>{const stem=path.basename(f.name,path.extname(f.name));return stem===r.id||stem.startsWith(r.id+'-');});
-      return {number:k+1,title:r.title||r.id,composition:r.id,name:f?f.name:null,file:f?f.file:null};});
+      return {number:k+1,title:r.title||r.id,composition:r.id,...(r.part?{part:true}:{}),name:f?f.name:null,file:f?f.file:null};});
   }
   function bookFolder(sid,id){if(!slug(id))throw Error('Invalid book id');const s=series(sid);return safe(path.relative(root,path.join(path.dirname(s.file),'books',id)));}
   function sources(sid,id){if(!fs.existsSync(path.join(bookFolder(sid,id),'book.json')))throw Error('Book not found');const folder=safe(`library/books/${id}/sources`);return fs.existsSync(folder)?fs.readdirSync(folder).filter(n=>n.toLowerCase().endsWith('.pdf')).map(name=>({name,size:fs.statSync(safe(`library/books/${id}/sources/${name}`)).size})):[];}
