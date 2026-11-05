@@ -1,29 +1,29 @@
 {
  "project": "book-ah-001-shorts",
- "checkedAt": "2026-11-05T14:10:55+07:00",
+ "checkedAt": "2026-11-05T14:17:49+07:00",
  "shorts": [
   {
    "id": "short-1",
    "composition": "BookAhShortLaiKep",
-   "seconds": 39.37,
+   "seconds": 39.07,
    "pages": 19
   },
   {
    "id": "short-2",
    "composition": "BookAhShortBonBuoc",
-   "seconds": 35.53,
+   "seconds": 35.23,
    "pages": 15
   },
   {
    "id": "short-3",
    "composition": "BookAhShortLamNhieu",
-   "seconds": 39.63,
+   "seconds": 39.33,
    "pages": 18
   },
   {
    "id": "short-4",
    "composition": "BookAhShortThoaMan",
-   "seconds": 41.6,
+   "seconds": 41.3,
    "pages": 18
   }
  ],
@@ -39,7 +39,7 @@
    "id": "duration",
    "title": "Mỗi short dài 30–60 giây",
    "ok": true,
-   "detail": "39.37 giây, 35.53 giây, 39.63 giây, 41.6 giây"
+   "detail": "39.07 giây, 35.23 giây, 39.33 giây, 41.3 giây"
   },
   {
    "id": "captionText",
@@ -57,7 +57,7 @@
    "id": "voice",
    "title": "Giọng không chạm đỉnh, ba phần đều nhau (≤ 3 dB)",
    "ok": true,
-   "detail": "BookAhShortLaiKep: mở -19.3, trích -21.5, mời -20.6 dBFS; BookAhShortBonBuoc: mở -21.6, trích -22.1, mời -20.6 dBFS; BookAhShortLamNhieu: mở -22.1, trích -21.7, mời -20.6 dBFS; BookAhShortThoaMan: mở -21.3, trích -21.5, mời -20.6 dBFS"
+   "detail": "BookAhShortLaiKep: mở -19.3, trích -21.5, mời -20.8 dBFS; BookAhShortBonBuoc: mở -21.6, trích -22.1, mời -20.8 dBFS; BookAhShortLamNhieu: mở -22.1, trích -21.7, mời -20.8 dBFS; BookAhShortThoaMan: mở -21.3, trích -21.5, mời -20.8 dBFS"
   },
   {
    "id": "music",
