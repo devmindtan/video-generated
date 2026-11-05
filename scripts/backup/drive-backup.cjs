@@ -185,6 +185,7 @@ function commonTransferArgs() {
     '--transfers', '4',
     '--drive-chunk-size', '64M',
     '--stats', '30s',
+    '--stats-log-level', 'NOTICE',
     '--log-level', 'NOTICE',
   ];
 }

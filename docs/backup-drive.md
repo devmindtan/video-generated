@@ -41,7 +41,7 @@ Tạo remote với các giá trị:
 
 1. Tên: `video-playground-drive`.
 2. Storage: `drive` (Google Drive).
-3. Client ID/secret: để trống để dùng cấu hình mặc định của rclone.
+3. Client ID/secret: dùng OAuth Desktop client riêng của dự án Google Cloud `video-playground-backup`. Không dùng client mặc định của rclone vì client dùng chung được rclone thông báo nghỉ hoạt động trong năm 2026. File JSON tải từ Google Cloud và `rclone.conf` đều ở ngoài repo, quyền `600`; không in hoặc gửi chúng qua chat.
 4. Scope: quyền đọc/ghi đầy đủ (`drive`).
 5. Root folder ID: `1LfnD8usK-89xeeuOZpiCycsWIwy3GXyP`.
 6. Service account: để trống.
@@ -50,6 +50,15 @@ Tạo remote với các giá trị:
 9. Shared Drive: `n` vì link hiện tại là folder thường, không phải Shared Drive ID.
 
 Rclone lưu token ngoài repo, thường tại `~/.config/rclone/rclone.conf`, với quyền chỉ tài khoản người dùng đọc. Agent không được in hoặc commit nội dung file này.
+
+### Tạo OAuth Desktop client riêng
+
+Trong Google Cloud Console, dùng một project riêng cho backup:
+
+1. Bật Google Drive API.
+2. Cấu hình OAuth consent screen cho chính tài khoản chủ Drive; nếu app ở chế độ Testing, thêm tài khoản đó làm test user.
+3. Tạo OAuth Client ID loại **Desktop app**.
+4. Tải JSON về máy, chuyển đến `~/.config/rclone/google-drive-client.json`, đặt quyền `600`, rồi nhập `client_id` và `client_secret` từ file qua prompt cục bộ. Không lưu hai giá trị vào file tracked, terminal log hoặc chat.
 
 ## Lệnh chuẩn
 
