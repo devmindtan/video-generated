@@ -11,12 +11,14 @@ const {VIDEO_FORMATS}=require('./video-formats.cjs');
 const contentTypes={...Object.fromEntries(Object.entries(VIDEO_FORMATS).map(([e,f])=>[e,f.type])),'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8',
   '.mp4':'video/mp4','.webm':'video/webm','.wav':'audio/wav','.mp3':'audio/mpeg','.m4a':'audio/mp4','.ogg':'audio/ogg','.flac':'audio/flac','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.ttf':'font/ttf','.svg':'image/svg+xml'};
 
-function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voiceStudio=null,openFolder=directory=>new Promise((resolve,reject)=>execFile('xdg-open',[directory],{timeout:10000},error=>error?reject(error):resolve()))}={}) {
+function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voiceStudio=null,backupPanel=null,openFolder=directory=>new Promise((resolve,reject)=>execFile('xdg-open',[directory],{timeout:10000},error=>error?reject(error):resolve()))}={}) {
   const startStudio=ensureStudio||require('./studio.cjs').studioLauncher(root);
   const voice=require('../voicestudio/launcher.cjs');
   const startVoiceStudio=ensureVoiceStudio||voice.voiceStudioLauncher(root);
   // Status/stop are injectable so tests never touch a real VoiceStudio.
   const voiceControl=voiceStudio||{status:()=>voice.status(root),stop:()=>voice.stop(root)};
+  // Drive backup runs detached from the manager; injectable so tests use a fixture remote.
+  const backup=backupPanel||require('./backup.cjs').createBackupPanel(root);
   const store=createStore(root),token=crypto.randomBytes(32).toString('hex'),live=require('./live.cjs').createLive(root);
   const server=http.createServer(async(req,res)=>{
     const authority=`127.0.0.1:${server.address().port}`;
@@ -49,6 +51,8 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
         if(route==='/api/studio'){const p=store.detail(body.id);if(!p.registrations.some(r=>r.id===body.composition))throw Error('Composition not found');await startStudio();return send(200,{url:'http://localhost:3000/'+encodeURIComponent(body.composition)});}
         if(route==='/api/voicestudio')return send(200,await startVoiceStudio());
         if(route==='/api/voicestudio/stop')return send(200,await voiceControl.stop());
+        if(route==='/api/backup/start')return send(202,await backup.start(body.action));
+        if(route==='/api/backup/stop')return send(200,backup.stop());
         if(route==='/api/books')return send(201,store.newBook(body));
         if(route==='/api/approve')return send(200,store.approveGate(body));
         if(route==='/api/review/lock')return send(200,store.lockProject(body));
@@ -79,6 +83,9 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
       if(route==='/api/workflow')return send(200,store.workflow(url.searchParams.get('series')));
       if(route==='/api/channel-profile')return send(200,store.channelProfile(url.searchParams.get('channel')));
       if(route==='/api/voicestudio')return send(200,await voiceControl.status());
+      if(route==='/api/backup')return send(200,backup.overview());
+      if(route==='/api/backup/summary')return send(200,backup.summary());
+      if(route==='/api/backup/pending')return send(200,backup.pendingFiles(url.searchParams.get('source'),url.searchParams.get('limit')));
       if(route==='/api/voices')return send(200,store.voices());
       if(route==='/api/system')return send(200,require('./system-map.cjs').systemMap(root));
       if(route==='/api/music')return send(200,store.music());

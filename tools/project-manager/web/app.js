@@ -2,7 +2,7 @@
 const $=selector=>document.querySelector(selector);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fold=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase();
-const iconPaths={network:'M5 5h5v5H5z M14 14h5v5h-5z M14 5h5v5h-5z M10 7.5h4 M16.5 10v4 M7.5 10v6.5h6.5',back:'M19 12H5 M11 6l-6 6 6 6',grid:'M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z',list:'M8 6h13 M8 12h13 M8 18h13 M3 6h.01 M3 12h.01 M3 18h.01',book:'M12 5C8 2 4 3 2 4v16c3-1 6-1 10 1 4-2 7-2 10-1V4c-3-1-6-1-10 1v16',play:'m9 5 10 7-10 7Z',image:'M3 3h18v18H3z M3 17l6-6 4 4 3-3 5 5 M8 7h.01',arrow:'M7 17 17 7 M7 7h10v10',plus:'M12 5v14 M5 12h14',search:'M21 21l-5-5 M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0',folder:'M3 7V4h6l2 3h10v13H3z',refresh:'M20 7A9 9 0 1 0 21 15 M20 2v6h-6',menu:'M3 6h18 M3 12h18 M3 18h18',close:'M6 6l12 12 M18 6 6 18',channel:'M4 5h16v14H4z M8 9h8 M8 13h5',spark:'m12 3 3 6 6 3-6 3-3 6-3-6-6-3 6-3z',mic:'M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z M5 11a7 7 0 0 0 14 0 M12 18v3',music:'M9 18V5l12-2v13 M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0z M21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z',pause:'M7 5h3v14H7z M14 5h3v14h-3z'};
+const iconPaths={network:'M5 5h5v5H5z M14 14h5v5h-5z M14 5h5v5h-5z M10 7.5h4 M16.5 10v4 M7.5 10v6.5h6.5',back:'M19 12H5 M11 6l-6 6 6 6',grid:'M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z',list:'M8 6h13 M8 12h13 M8 18h13 M3 6h.01 M3 12h.01 M3 18h.01',book:'M12 5C8 2 4 3 2 4v16c3-1 6-1 10 1 4-2 7-2 10-1V4c-3-1-6-1-10 1v16',play:'m9 5 10 7-10 7Z',image:'M3 3h18v18H3z M3 17l6-6 4 4 3-3 5 5 M8 7h.01',arrow:'M7 17 17 7 M7 7h10v10',plus:'M12 5v14 M5 12h14',search:'M21 21l-5-5 M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0',folder:'M3 7V4h6l2 3h10v13H3z',refresh:'M20 7A9 9 0 1 0 21 15 M20 2v6h-6',cloud:'M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 19.5 10 4 4 0 0 1 18 18z M12 17v-6 M9.5 13.5 12 11l2.5 2.5',menu:'M3 6h18 M3 12h18 M3 18h18',close:'M6 6l12 12 M18 6 6 18',channel:'M4 5h16v14H4z M8 9h8 M8 13h5',spark:'m12 3 3 6 6 3-6 3-3 6-3-6-6-3 6-3z',mic:'M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z M5 11a7 7 0 0 0 14 0 M12 18v3',music:'M9 18V5l12-2v13 M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0z M21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z',pause:'M7 5h3v14H7z M14 5h3v14h-3z'};
 function icon(name){return `<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="${iconPaths[name]||iconPaths.folder}"/></svg>`;}
 function dirtyNotes(){
   if(!state.drawer||$('#drawer').hidden)return false;
@@ -12,7 +12,7 @@ function dirtyNotes(){
 function canLeaveNotes(){return !dirtyNotes()||confirm('Ghi chú chưa được lưu. Bạn có muốn rời hồ sơ này?');}
 function setMenu(open){$('#sidebar').classList.toggle('open',open);$('#menu-backdrop').hidden=!open;$('.workspace').inert=open||!$('#drawer').hidden;$('#mobile-menu').setAttribute('aria-expanded',String(open));document.body.classList.toggle('overlay-open',open||!$('#drawer').hidden);if(open)$('#close-mobile-menu').focus();}
 const params=new URLSearchParams(location.search);
-const resourceViews={voices:'Giọng đọc',music:'Nhạc nền & hiệu ứng',system:'Bản đồ hệ thống'};
+const resourceViews={voices:'Giọng đọc',music:'Nhạc nền & hiệu ứng',system:'Bản đồ hệ thống',backup:'Sao lưu Drive'};
 const viewOf=value=>value==='books'||resourceViews[value]?value:'projects';
 const state={data:null,channel:params.get('channel')||'',series:params.get('series')||'',view:viewOf(params.get('view')),
   query:params.get('q')||'',status:params.get('status')||'',sort:params.get('sort')||'recent',limit:12,layout:params.get('layout')==='list'?'list':'grid',drawer:null,documentRequest:0,createMode:'project'};
@@ -98,12 +98,12 @@ function renderNav(){
     return html;
   };
   const others=channels.filter(c=>!contentChannels.includes(c.id));
-  let html=`<button class="nav-button ${!state.channel&&!state.series&&state.view==='projects'?'active':''}" data-nav="all"><span class="nav-icon">${icon("grid")}</span>Tất cả dự án<span class="nav-count">${projects.length}</span></button><button class="nav-button ${state.view==='books'?'active':''}" data-nav="books"><span class="nav-icon">${icon("book")}</span>Tủ sách nghiên cứu<span class="nav-count">${books.length}</span></button><button class="nav-button ${state.view==='voices'?'active':''}" data-nav="voices"><span class="nav-icon">${icon("mic")}</span>Giọng đọc</button><button class="nav-button ${state.view==='music'?'active':''}" data-nav="music"><span class="nav-icon">${icon("music")}</span>Nhạc nền & hiệu ứng</button><button class="nav-button ${state.view==='system'?'active':''}" data-nav="system"><span class="nav-icon">${icon("network")}</span>Bản đồ hệ thống</button><div class="nav-divider"></div>`;
+  let html=`<button class="nav-button ${!state.channel&&!state.series&&state.view==='projects'?'active':''}" data-nav="all"><span class="nav-icon">${icon("grid")}</span>Tất cả dự án<span class="nav-count">${projects.length}</span></button><button class="nav-button ${state.view==='books'?'active':''}" data-nav="books"><span class="nav-icon">${icon("book")}</span>Tủ sách nghiên cứu<span class="nav-count">${books.length}</span></button><button class="nav-button ${state.view==='voices'?'active':''}" data-nav="voices"><span class="nav-icon">${icon("mic")}</span>Giọng đọc</button><button class="nav-button ${state.view==='music'?'active':''}" data-nav="music"><span class="nav-icon">${icon("music")}</span>Nhạc nền & hiệu ứng</button><button class="nav-button ${state.view==='system'?'active':''}" data-nav="system"><span class="nav-icon">${icon("network")}</span>Bản đồ hệ thống</button><button class="nav-button ${state.view==='backup'?'active':''}" data-nav="backup"><span class="nav-icon">${icon("cloud")}</span>Sao lưu Drive<span class="nav-count backup-badge" id="backup-nav-badge"></span></button><div class="nav-divider"></div>`;
   html+=`<div class="nav-section-title">KÊNH NỘI DUNG</div>`+channels.filter(c=>contentChannels.includes(c.id)).map(channelNav).join('');
   if(others.length)html+=`<div class="nav-section-title">NGOÀI KÊNH</div>`+others.map(channelNav).join('');
   // Navigation entries become links (VoiceStudio is opened from the Giọng đọc page).
   $('#navigation').innerHTML=html.replaceAll('<button class="nav-button','<a class="nav-button').replaceAll('</button>','</a>');
-  renderVoiceStudio();
+  renderVoiceStudio();updateBackupBadge();
   $('#navigation').querySelectorAll('a').forEach(a=>{const p=new URLSearchParams();if(a.dataset.nav&&a.dataset.nav!=='all')p.set('view',a.dataset.nav);if(a.dataset.channel)p.set('channel',a.dataset.channel);if(a.dataset.series){const item=state.data.series.find(s=>s.id===a.dataset.series);p.set('channel',item.channel);p.set('series',item.id);}a.href=p.size?'/?'+p:'/';if(a.classList.contains('active'))a.setAttribute('aria-current','page');});
 }
 function render(){
@@ -112,14 +112,16 @@ function render(){
   const resource=Boolean(resourceViews[state.view]);
   $('#resource-view').hidden=!resource;$('#stats').hidden=resource;$('.library').hidden=resource;if(resource)$('#channel-profile').hidden=true;
   if(resource){
-    $('#new-book-button').hidden=true;$('#book-banner').hidden=true;$('#workflow').hidden=true;$('#new-project-button').className='button secondary';$('#new-project-button').hidden=state.view==='system';
+    $('#new-book-button').hidden=true;$('#book-banner').hidden=true;$('#workflow').hidden=true;$('#new-project-button').className='button secondary';$('#new-project-button').hidden=state.view==='system'||state.view==='backup';
     $('#page-title').textContent=resourceViews[state.view];renderBreadcrumbs();
+    if(state.view!=='backup')state.backupView='';
+    if(state.view==='backup'){$('#eyebrow').textContent='DỮ LIỆU NGOÀI GIT';$('#page-description').textContent='Media, bản xuất, sách và lịch sử chỉnh sửa được chép lên Google Drive. Xem phần chưa sao lưu và chạy sao lưu nền.';if(state.backupView!=='backup'){state.backup=null;}state.backupView='backup';renderBackup();refreshBackup();return;}
     if(state.view==='system'){$('#eyebrow').textContent='MỖI REPO LÀM GÌ, Ở BƯỚC NÀO';$('#page-description').textContent='Quy trình làm một tập, các tầng của hệ thống và vai trò thật của từng repo, đo trực tiếp trên máy.';renderSystem();return;}
     $('#eyebrow').textContent=state.view==='voices'?'NHỮNG GIỌNG KỂ CHUYỆN':'ÂM THANH CỦA TỪNG TẬP';
     $('#page-description').textContent=state.view==='voices'?'Nghe thử từng giọng VieNeu và xem tập nào đang dùng giọng nào.':'Nguồn nhạc, credit và hiệu ứng âm thanh mà các tập đang dùng.';
     renderResources();return;
   }
-  $('#resource-view').replaceChildren();state.resourceKey='';
+  $('#resource-view').replaceChildren();state.resourceKey='';state.backupView='';
   $('#new-book-button').hidden=state.view!=='books'&&state.series!=='book-insights';
   const channel=state.data.channels.find(c=>c.id===state.channel),series=state.data.series.find(s=>s.id===state.series);
   $('#page-title').textContent=state.view==='books'?'Tủ sách nghiên cứu':series?.title||channel?.title||'Không gian sáng tạo';
@@ -1778,3 +1780,109 @@ async function stopVoiceStudio(button){
   catch(e){toast(e.message);}
   finally{state.vsStopping=false;await refreshVoiceStudio();$('#vs-panel [data-open-voicestudio]')?.focus();}
 }
+
+// Drive backup (tools/project-manager/backup.cjs). The backup runs as its own process, so this page only reads
+// its status file: polled every 2 s on this page while running, every 5 s for the sidebar badge, slower when idle.
+let backupTimer=null;
+const backupPhases={starting:'Đang khởi động',['checking-remote']:'Đang kết nối Google Drive',copying:'Đang tải lên Drive',verifying:'Đang đối chiếu checksum với Drive',manifest:'Đang ghi biên bản sao lưu'};
+const bytesVi=b=>{b=b||0;const u=['B','KB','MB','GB','TB'];let i=0;while(b>=1024&&i<u.length-1){b/=1024;i++;}return `${b.toLocaleString('vi-VN',{maximumFractionDigits:i<2?0:1})} ${u[i]}`;};
+const etaVi=s=>s==null||!Number.isFinite(s)?'':s<60?'dưới 1 phút':s<3600?`khoảng ${Math.round(s/60)} phút`:`khoảng ${Math.floor(s/3600)} giờ ${Math.round(s%3600/60)} phút`;
+const countVi=n=>(n||0).toLocaleString('vi-VN');
+async function refreshBackup(){
+  clearTimeout(backupTimer);
+  const onPage=state.view==='backup';
+  try{
+    if(onPage){state.backup=await api('/api/backup');state.backupSummary={running:state.backup.running,status:state.backup.status};renderBackup();}
+    else state.backupSummary=await api('/api/backup/summary');
+    state.backupError='';
+  }catch(error){state.backupError=error.message;if(onPage)renderBackup();}
+  updateBackupBadge();
+  const running=state.backupSummary?.running;
+  backupTimer=setTimeout(refreshBackup,document.hidden?60000:running?(onPage?2000:5000):onPage?20000:30000);
+}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshBackup();});
+function updateBackupBadge(){
+  const badge=$('#backup-nav-badge');if(!badge)return;const s=state.backupSummary,st=s?.status;
+  badge.className='nav-count backup-badge';badge.textContent='';
+  if(s?.running){badge.textContent=st&&backupPhases[st.phase]?`${Math.floor(st.percent||0)}%`:'Đang chạy';badge.classList.add('is-running');}
+  else if(st&&['failed','interrupted','stopped'].includes(st.phase)){badge.textContent=st.phase==='stopped'?'Đã dừng':'Lỗi';badge.classList.add('is-warn');}
+}
+function backupHeadline(d){
+  const st=d.status,p=d.pending,phase=st?.phase;
+  if(d.running&&st&&backupPhases[phase])return {tone:'run',title:`${backupPhases[phase]}…`,text:st.action==='verify'?'So từng file trên máy với bản trên Drive, không tải gì lên.':'Chỉ tải file mới hoặc đã đổi; file đã giống trên Drive được bỏ qua.'};
+  if(d.running)return {tone:'run',title:'Một bản sao lưu chạy từ dòng lệnh đang chạy',text:`Tiến trình ${d.untracked.join(', ')} được khởi động trước khi trang có phần theo dõi, nên chưa báo phần trăm. Trang sẽ cập nhật số file chưa sao lưu khi lần chạy sau đối chiếu xong.`};
+  if(phase==='failed')return {tone:'err',title:'Lần sao lưu gần nhất bị lỗi',text:st.error||'Xem nhật ký bên dưới.'};
+  if(phase==='interrupted')return {tone:'warn',title:'Lần sao lưu gần nhất bị ngắt giữa chừng',text:`Tiến trình dừng mà không báo xong (tắt máy hoặc bị dừng) lúc ${when(st.updatedAt)}. Bấm Sao lưu để chạy tiếp; file đã lên Drive không phải tải lại.`};
+  if(phase==='stopped')return {tone:'warn',title:'Đã dừng sao lưu',text:`Dừng lúc ${when(st.finishedAt)}. Bấm Sao lưu để chạy tiếp; file đã lên Drive không phải tải lại.`};
+  if(!p.indexUpdatedAt)return {tone:'warn',title:'Chưa có lần đối chiếu nào với Drive',text:'Trang chưa biết file nào đã có trên Drive nên đang tính mọi file là chưa sao lưu. Bấm Đối chiếu với Drive để kiểm tra mà không tải lên.'};
+  if(p.pendingFiles)return {tone:'warn',title:`${countVi(p.pendingFiles)} file chưa có trên Drive`,text:`${bytesVi(p.pendingBytes)} mới hoặc đã đổi kể từ lần Drive xác nhận gần nhất (${when(p.indexUpdatedAt)}).`};
+  return {tone:'ok',title:'Mọi dữ liệu đã có trên Drive',text:`Drive xác nhận bằng checksum lúc ${when(p.indexUpdatedAt)}. Có file mới thì trang báo ở đây.`};
+}
+function backupNow(d){
+  const st=d.status;if(!d.running||!st||!backupPhases[st.phase])return '';
+  const src=st.sources?.find(s=>s.relative===st.current),stats=src?.stats;
+  const done=(st.sources||[]).filter(s=>s.state==='verified'||s.state==='differs').length;
+  let line=`Nguồn ${done+(src?1:0)}/${st.sources?.length||0}${src?`: ${esc(src.relative)}`:''}`;
+  if(stats&&st.phase==='copying'){
+    line+=stats.totalTransfers?` · ${countVi(stats.transfers)}/${countVi(stats.totalTransfers)} file`:stats.totalChecks?` · đã so ${countVi(stats.checks)}/${countVi(stats.totalChecks)} file`:'';
+    if(stats.totalBytes)line+=` · ${bytesVi(stats.bytes)} / ${bytesVi(stats.totalBytes)}`;
+    if(stats.speed)line+=` · ${bytesVi(stats.speed)}/giây`;
+    const eta=etaVi(stats.eta);if(eta&&stats.totalTransfers>stats.transfers)line+=` · còn ${eta} cho nguồn này`;
+  }else if(stats&&st.phase==='verifying'&&stats.totalChecks)line+=` · đã so ${countVi(stats.checks)}/${countVi(stats.totalChecks)} file`;
+  const files=(stats?.transferring||[]).map(f=>`<li><span class="backup-file-name">${esc(f.name)}</span><span>${f.percentage??0}% của ${bytesVi(f.size)}</span></li>`).join('');
+  return `<p class="backup-now">${line}</p>${files?`<ul class="backup-transfers" aria-label="File đang tải">${files}</ul>`:''}<p class="backup-started">Bắt đầu ${when(st.startedAt)}${stats?.errors?` · <b class="t-warn">${stats.errors} lỗi sẽ được thử lại</b>`:''}</p>`;
+}
+const sourceStates={waiting:'Chờ tới lượt',copying:'Đang tải lên',verifying:'Đang kiểm tra',verified:'Drive đã xác nhận',differs:'Còn file khác Drive'};
+function backupSourceRow(s,live){
+  const open=state.backupOpen===s.relative,run=live?.state&&sourceStates[live.state];
+  const pending=s.pendingFiles?`<span class="tag tag-warn">${countVi(s.pendingFiles)} file · ${bytesVi(s.pendingBytes)}</span>`:'<span class="tag">Đã có đủ</span>';
+  return `<li class="backup-source${open?' open':''}"><div class="row-title"><strong>${esc(s.label)}</strong><small><code>${esc(s.relative)}</code></small></div><span class="row-meta"><span class="m-label">Trên máy: </span>${countVi(s.files)} file · ${bytesVi(s.bytes)}</span><span class="row-meta"><span class="m-label">Chưa sao lưu: </span>${pending}</span><span class="row-meta">${run?`<span class="backup-state is-${esc(live.state)}">${esc(run)}</span>`:''}</span>${s.pendingFiles?`<button class="button quiet expand-button" data-backup-files="${esc(s.relative)}" aria-expanded="${open}">${open?'Thu gọn':'Xem file'}</button>`:'<span></span>'}${open?`<div class="row-detail backup-files" id="backup-files">${state.backupFiles?.relative===s.relative?backupFileList(state.backupFiles):'<p class="muted">Đang đọc danh sách…</p>'}</div>`:''}</li>`;
+}
+function backupFileList(f){
+  if(!f.items.length)return '<p class="muted">Không còn file nào chờ sao lưu.</p>';
+  return `<table class="usage-table"><thead><tr><th scope="col">File</th><th scope="col">Dung lượng</th><th scope="col">Lý do</th></tr></thead><tbody>${f.items.map(i=>`<tr><td><code>${esc(i.path)}</code></td><td>${bytesVi(i.size)}</td><td>${i.reason==='changed'?'Đã sửa':'Mới'}</td></tr>`).join('')}</tbody></table>${f.total>f.items.length?`<p class="resource-note">Hiện ${countVi(f.items.length)} file lớn nhất trên ${countVi(f.total)}.</p>`:''}`;
+}
+function renderBackup(){
+  const box=$('#resource-view');if(state.view!=='backup')return;
+  const d=state.backup;
+  if(!d){box.innerHTML=state.backupError?`<p class="workflow-empty">Không đọc được trạng thái sao lưu: ${esc(state.backupError)}</p>`:'<p class="workflow-empty">Đang đọc trạng thái sao lưu…</p>';return;}
+  const head=backupHeadline(d),st=d.status,tracked=d.running&&st&&backupPhases[st.phase],pct=tracked?Math.floor(st.percent||0):null;
+  const live=Object.fromEntries((d.running&&st?.sources||[]).map(s=>[s.relative,s]));
+  const focusId=document.activeElement?.closest?.('#resource-view')?(document.activeElement.dataset.backupFiles?`[data-backup-files="${CSS.escape(document.activeElement.dataset.backupFiles)}"]`:document.activeElement.dataset.backupAction?`[data-backup-action="${document.activeElement.dataset.backupAction}"]`:''):'';
+  const actions=d.running?`<button class="button secondary" data-backup-action="stop">Dừng sao lưu</button>`
+    :`<button class="button primary" data-backup-action="run">${d.pending.pendingFiles?'Sao lưu lên Drive':'Sao lưu lại và kiểm tra'}</button><button class="button secondary" data-backup-action="verify">Đối chiếu với Drive</button>`;
+  const status=`<section class="backup-status is-${head.tone}" aria-labelledby="backup-status-title" aria-live="polite">
+<div class="backup-status-main">${tracked?`<div class="progress-figure"><strong>${pct}%</strong><span>ước tính</span></div>`:''}<div class="backup-status-text"><h2 id="backup-status-title">${esc(head.title)}</h2><p>${esc(head.text)}</p></div><div class="backup-actions">${actions}</div></div>
+${tracked?`${bar(pct,'is-big')}${backupNow(d)}`:''}
+<p class="backup-note">Chạy nền trên máy này: đóng tab hay tắt trang quản lý không làm dừng. Chỉ sao chép lên Drive, không bao giờ xóa file trên Drive; bản cũ của file bị thay được giữ trong <code>versions/</code>.</p></section>`;
+  const sources=`<section class="resource-block" aria-labelledby="backup-sources-title"><div class="resource-heading"><h2 id="backup-sources-title">Dữ liệu sao lưu <span class="count">${countVi(d.pending.totalFiles)} file · ${bytesVi(d.pending.totalBytes)}</span></h2><p>Những thư mục Git không lưu, theo danh sách trong <code>scripts/backup/drive-config.json</code>. File chưa sao lưu là file mới hoặc đã sửa kể từ khi Drive xác nhận bằng checksum. Bỏ qua credential, <code>.env</code>, cache và môi trường cài lại được.</p></div>
+<div class="row-head backup-row-head" aria-hidden="true"><span>Nguồn</span><span>Trên máy</span><span>Chưa sao lưu</span><span>Lần chạy này</span><span></span></div><ul class="resource-rows backup-sources">${d.pending.sources.map(s=>backupSourceRow(s,live[s.relative])).join('')}</ul></section>`;
+  const history=`<section class="resource-block" aria-labelledby="backup-history-title"><div class="resource-heading"><h2 id="backup-history-title">Các lần sao lưu đã hoàn tất</h2><p>Mỗi lần xong có biên bản trên Drive ở <code>_manifests/</code>. Thư mục Drive: <code>${esc(d.configured.folderId)}</code>, remote <code>${esc(d.configured.remote)}</code>.</p></div>
+${d.history.length?`<ul class="backup-history">${d.history.map(r=>`<li><strong>${esc(when(r.completedAt))}</strong><span>${countVi(r.totalFiles)} file · ${bytesVi(r.totalBytes)}</span><code>${esc(r.runId)}</code></li>`).join('')}</ul>`:'<p class="workflow-empty">Chưa có lần sao lưu nào hoàn tất trên máy này.</p>'}
+${d.log.length?`<details class="backup-log"${state.backupLogOpen?' open':''}><summary>Nhật ký lần chạy gần nhất</summary><pre>${esc(d.log.join('\n'))}</pre></details>`:''}</section>`;
+  box.innerHTML=`${state.backupError?`<p class="error-banner">Mất kết nối tạm thời: ${esc(state.backupError)}</p>`:''}${status}${sources}${history}`;
+  box.querySelectorAll('[data-width]').forEach(n=>{n.style.width=n.dataset.width+'%';});
+  if(focusId)box.querySelector(focusId)?.focus({preventScroll:true});
+}
+async function loadBackupFiles(relative){
+  try{state.backupFiles=await api('/api/backup/pending?source='+encodeURIComponent(relative));}
+  catch(error){state.backupFiles={relative,items:[],total:0};toast(error.message);}
+  renderBackup();
+}
+async function backupAction(action,button){
+  if(action==='stop'&&!confirm('Dừng sao lưu? File đã tải lên vẫn ở trên Drive; lần sau bấm Sao lưu sẽ chạy tiếp phần còn lại.'))return;
+  button.disabled=true;
+  try{
+    if(action==='stop'){const r=await api('/api/backup/stop',{});toast(r.stopped?'Đã gửi lệnh dừng sao lưu.':'Không có bản sao lưu nào đang chạy.');}
+    else{await api('/api/backup/start',{action});toast(action==='verify'?'Đang đối chiếu với Drive. Tiến trình chạy nền.':'Đã bắt đầu sao lưu. Tiến trình chạy nền, có thể đóng trang.');}
+  }catch(error){toast(error.message);}
+  finally{button.disabled=false;await refreshBackup();}
+}
+$('#resource-view').addEventListener('click',event=>{
+  if(state.view!=='backup')return;
+  const files=event.target.closest('[data-backup-files]');
+  if(files){const rel=files.dataset.backupFiles;state.backupOpen=state.backupOpen===rel?'':rel;renderBackup();$(`[data-backup-files="${CSS.escape(rel)}"]`)?.focus();if(state.backupOpen)loadBackupFiles(rel);return;}
+  const action=event.target.closest('[data-backup-action]');if(action)backupAction(action.dataset.backupAction,action);
+});
+$('#resource-view').addEventListener('toggle',event=>{if(state.view==='backup'&&event.target.matches?.('.backup-log'))state.backupLogOpen=event.target.open;},true);
+refreshBackup();

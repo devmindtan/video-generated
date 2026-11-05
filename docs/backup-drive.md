@@ -60,19 +60,35 @@ Trong Google Cloud Console, dùng một project riêng cho backup:
 3. Tạo OAuth Client ID loại **Desktop app**.
 4. Tải JSON về máy, chuyển đến `~/.config/rclone/google-drive-client.json`, đặt quyền `600`, rồi nhập `client_id` và `client_secret` từ file qua prompt cục bộ. Không lưu hai giá trị vào file tracked, terminal log hoặc chat.
 
+## Trên trang quản lý (cách thường dùng)
+
+`npm run manager` → thanh bên **Sao lưu Drive**:
+
+- Hiện từng nguồn trong allowlist: số file/dung lượng trên máy và số file **chưa sao lưu** (mới hoặc đã sửa kể từ khi Drive xác nhận bằng checksum); "Xem file" liệt kê các file đó, lớn nhất trước.
+- **Sao lưu lên Drive** chạy đúng lệnh `backup:drive -- run`; **Đối chiếu với Drive** chạy `verify` (không tải lên, chỉ cập nhật file nào đã có trên Drive). **Dừng sao lưu** có xác nhận; lần sau bấm Sao lưu sẽ chạy tiếp, `copy` bỏ qua file đã giống trên Drive.
+- Lệnh chạy thành tiến trình riêng (session riêng, log ở `.cache/backup-drive/run.log`), nên đóng tab, tắt trang quản lý hay tắt terminal của manager không làm dừng. Tắt máy thì lần chạy hiện "bị ngắt"; bấm Sao lưu để chạy tiếp.
+- Tiến trình trực tiếp: phần trăm ước tính (theo dung lượng từng nguồn, tải lên 85 %, kiểm tra checksum 15 %), nguồn đang chạy, số file/byte, tốc độ, thời gian còn lại, file đang tải; thanh bên hiện phần trăm hoặc "Lỗi"/"Đã dừng" ở mọi trang.
+- Chỉ một bản sao lưu cho mỗi repo: khóa `.cache/backup-drive/lock` và quét tiến trình `drive-backup.cjs run|verify` của repo này (kể cả lần chạy từ terminal). Trang từ chối bắt đầu khi đang có bản chạy.
+
+Trạng thái nằm trong `.cache/backup-drive/` (Git bỏ qua): `status.json` (tiến trình), `index.json` (kích thước + mtime của file mà `rclone check` báo khớp trên Drive; file bị sửa trong lúc kiểm tra không được ghi), `manifests/`, `run.log` và `run.prev.log`. Xóa `index.json` chỉ làm trang tính lại mọi file là chưa sao lưu cho tới lần đối chiếu sau; không ảnh hưởng Drive.
+
 ## Lệnh chuẩn
 
 ```sh
 npm run backup:drive -- plan
+npm run backup:drive -- pending      # file chưa sao lưu theo index (thêm --json)
+npm run backup:drive -- status       # tiến trình lần chạy gần nhất (JSON)
 npm run backup:drive -- doctor
 npm run backup:drive -- run
 npm run backup:drive -- verify
+npm run backup:drive -- stop         # dừng bản sao lưu đang chạy của repo này
 ```
 
 - `plan`: chỉ đọc local, in source, số file và dung lượng.
 - `doctor`: kiểm tra binary, remote và quyền truy cập folder.
 - `run`: copy tăng dần vào `current/`, chuyển phiên bản file bị thay thế vào `versions/<run-id>/`, rồi verify checksum. Không xóa file Drive chỉ vì local đã mất.
-- `verify`: so sánh một chiều từng source local với `current/` bằng checksum do local và Google Drive cung cấp; không tải lại toàn bộ dữ liệu chỉ để kiểm tra.
+- `verify`: so sánh một chiều từng source local với `current/` bằng checksum do local và Google Drive cung cấp; không tải lại toàn bộ dữ liệu chỉ để kiểm tra. File thiếu/khác được báo (thoát mã 1) và vẫn tính là chưa sao lưu.
+- `run` kiểm tra từng nguồn ngay sau khi chép nguồn đó, nên phần đã xác nhận được ghi vào index kể cả khi lần chạy bị ngắt về sau.
 
 Sau một run thành công, manifest nằm trong `_manifests/<run-id>.json`; bản local ở `.cache/backup-drive/manifests/` và bị Git bỏ qua.
 
