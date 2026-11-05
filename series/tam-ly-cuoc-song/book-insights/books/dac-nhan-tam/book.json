@@ -1,0 +1,28 @@
+{
+  "id": "dac-nhan-tam",
+  "title": "Đắc nhân tâm",
+  "authors": [
+    "Dale Carnegie"
+  ],
+  "status": "research",
+  "sourceSha256": "6e498fa2f2823db89a7e36266d8147fb48a653095eddd5ccf85740c5d90b9c44",
+  "note": "Đã đọc và lập ghi chú đủ 30/30 chương, phần giới thiệu và hướng dẫn sử dụng sách. Các luận điểm, ví dụ tiêu biểu, giới hạn nguồn và bản đồ trang nằm trong research.md và chapters.json.",
+  "cacheEdition": "6e498fa2f2823db89a7e36266d8147fb48a653095eddd5ccf85740c5d90b9c44-de2a45e349f9",
+  "editionDetails": {
+    "edition": "Revised & Updated Edition, bản tiếng Việt của First News – Trí Việt",
+    "translator": "Nhóm thực hiện First News – Trí Việt",
+    "publisher": "Nhà xuất bản Trẻ",
+    "year": 2008,
+    "provenance": "PDF người dùng thêm qua trang quản lý. Thông tin bản quyền ở PDF 6; danh sách những người thực hiện ở PDF 4."
+  },
+  "sourceFile": "library/books/dac-nhan-tam/sources/Dac Nhan Tam.pdf",
+  "pdfPages": 322,
+  "extractedCharacters": 373912,
+  "textLayer": "native",
+  "ocr": false,
+  "chapterMap": "chapters.json",
+  "research": "research.md",
+  "chaptersTotal": 30,
+  "chaptersRead": 30,
+  "checkedAt": "2026-11-05"
+}
