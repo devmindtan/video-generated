@@ -1,0 +1,15 @@
+{
+  "file": "audio-library/music/Pufino - Enlivening (freetouse.com).mp3",
+  "speechVolume": 0.6,
+  "pauseVolume": 0.6,
+  "fadeInSeconds": 1.0,
+  "fadeOutSeconds": 1.6,
+  "credit": {
+    "title": "Enlivening",
+    "artists": [
+      "Pufino"
+    ],
+    "source": "freetouse.com"
+  },
+  "editingNote": "Nhạc của intro và outro series: dùng lại nguyên trong BookHvttIntro/BookHvttOutro (src/projects/book-hvtt-001-overview/music.json, outro-music.json). File này ghi lại lựa chọn cho tập 03; không có lớp nhạc riêng nào khác ngoài nhạc nền phần nội dung (body-music.json)."
+}
