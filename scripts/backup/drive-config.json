@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "remote": "video-playground-drive",
+  "destinationFolderId": "1LfnD8usK-89xeeuOZpiCycsWIwy3GXyP",
+  "currentPrefix": "current",
+  "versionsPrefix": "versions",
+  "manifestPrefix": "_manifests",
+  "sources": [
+    "public",
+    "projects",
+    "library",
+    ".automation",
+    ".manager-trash"
+  ],
+  "discoverManagerHistoryIn": [
+    "docs",
+    "scripts",
+    "series"
+  ]
+}
