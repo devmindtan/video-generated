@@ -40,11 +40,26 @@ npm run media -- sheet public/<slug>/imported-video.mp4      # contact sheet 12 
 npm run media -- sheet <video> --at 3,7.5,12 --cols 3 --out <file.png>
 npm run media -- energy public/audio-library/music/<file>.mp3   # mức âm của nhạc; thời điểm nhạc lên tới mức to
 npm run media -- silences public/<slug>/voice/<take>.wav     # các quãng lặng (--noise -35 --min 0.35)
+npm run media -- loudness projects/<slug>/<ID>.mp4           # âm lượng tổng so với mục tiêu YouTube (--json)
+npm run media -- loudness projects/<slug>/<ID>.mp4 --fix     # ghi <ID>-upload.mp4 đã chuẩn hóa, bản gốc giữ nguyên
 ```
 
 - **shots**: mặc định, một khung được tính là cut khi mức thay đổi của nó cao hẳn so với giây xung quanh. Cách này bắt được cả cut cứng lẫn chuyển cảnh mờ ngắn trong video tĩnh, và bỏ qua chuyển động máy cầm tay đều đều. Chuyển cảnh mờ dài hơn khoảng 1 giây có thể bị sót: khi đó xem thêm `sheet`. Dùng khi nhận video nhập vào (dub, review) hoặc khi phân tích nhịp cắt của video mẫu.
 - **sheet**: cách nhanh để agent "xem" một video. Mở PNG kết quả bằng công cụ đọc ảnh, không cần render hay mở Studio.
 - **energy**: mức RMS theo cửa sổ 0,4 giây (thay cho LUFS), làm mượt 1 giây, so với "phần to" của bài (phân vị 95). Kết quả cho biết từ lúc nào nhạc giữ được mức cách phần to 18, 12 và 6 dB. Dùng để chọn source trim trong `music.json`. Đây chỉ là gợi ý: vẫn giữ fade-in/fade-out, ducking và quyết định nghe thử của người dùng.
 - **silences**: liệt kê các quãng lặng của một take giọng đọc hoặc của nhạc, để kiểm tra nhịp nghỉ (khoảng nghỉ có chủ đích giữa các ý). Đây không phải đánh giá chất lượng phát âm.
+
+- **loudness**: đo âm lượng tổng (LUFS) và đỉnh thật bằng filter `loudnorm` của ffmpeg đi kèm. Mục tiêu -14 LUFS ± 1, đỉnh ≤ -1 dBTP: YouTube giảm video to xuống khoảng -14 nhưng không tăng video nhỏ lên. `--fix` chạy loudnorm hai lượt (đo rồi chỉnh, có giới hạn đỉnh), chép nguyên luồng hình và mã hóa lại tiếng AAC 320 kb/s vào `<ID>-upload.mp4` (hoặc `--out`); không bao giờ ghi đè bản xuất. Video dài 14 phút mất khoảng 3 phút. Trang quản lý nhận `<ID>-upload.mp4` là bản xuất của cùng composition. `qa.py` của series sách đo bản sẽ đăng qua `scripts/shared/export_loudness.py` (bản `-upload` nếu có, nếu không là bản xuất).
+
+## Soát hình theo câu: `npm run visual-sync`
+
+```bash
+npm run visual-sync -- <slug>                                   # video dài: composition ghi trong captions.json
+npm run visual-sync -- <slug> --part "Quy luật 2"               # chỉ một phần (so khớp không dấu với tên phần)
+npm run visual-sync -- <slug> --from 120 --to 200               # theo khoảng giây
+npm run visual-sync -- <slug-shorts> --composition <ID>         # một short
+```
+
+Đọc `src/projects/<slug>/captions.json`, gộp các trang phụ đề thành câu, chụp một khung ở giữa mỗi câu bằng `@remotion/renderer` (bundle một lần, trình duyệt headless có sẵn của Remotion, tỉ lệ 0,4) và ghép 9 khung một trang, dưới mỗi khung in mốc giờ, tên phần và lời đọc: `.cache/visual-sync/<slug>/<ID>/sheet-N.png`. Đây là ảnh soát nội bộ trước khi gửi bản vá, không phải bản xuất hay thumbnail. Tối đa 120 câu một lần; short 8 câu mất khoảng 30 giây. Cần `captions.json` đã xuất theo giọng hiện tại (chạy `qa.py` hoặc `export-captions.mjs` của dự án trước).
 
 Kiểm thử: `npm run test:media`.

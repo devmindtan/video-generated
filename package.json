@@ -147,6 +147,7 @@
     "stock": "python3 scripts/shared/stock-media.py",
     "test:stock": "python3 -m unittest discover -s scripts/shared/tests -p test_stock_media.py -v",
     "media": "python3 scripts/shared/media-analyze.py",
+    "visual-sync": "node scripts/shared/visual-sync-sheet.mjs",
     "test:media": "python3 -m unittest discover -s scripts/shared/tests -p test_media_analyze.py -v",
     "projects": "node scripts/catalog/projects.cjs",
     "projects:check": "node scripts/catalog/projects.cjs check",
