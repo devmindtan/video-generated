@@ -1,4 +1,4 @@
-import type {FC} from 'react';
+import type {FC, ReactNode} from 'react';
 import {AbsoluteFill} from 'remotion';
 import '../../shared/stoic-fonts';
 import {GOLD, INK, IVORY} from '../book-hvtt-001-overview/Intro';
@@ -40,17 +40,23 @@ const Phone: FC = () => <g>
 </g>;
 const ART = {salt: Salt, pond: Pond, phone: Phone};
 
-export const ShortCover: FC<ShortCoverProps> = ({art, headline, keyword}) => {
-  const Art = ART[art];
+// The cover frame shared by every promo-shorts project: glow, series label, the picture, headline with its gold
+// keyword and the book line. Each project brings its own pictures.
+export const CoverFrame: FC<{headline: string; keyword: string; bookLine: string; children: ReactNode}> = ({headline, keyword, bookLine, children}) => {
   const [before, after] = headline.split(keyword);
   return <AbsoluteFill style={{background: `radial-gradient(ellipse 85% 55% at 50% 44%, #2c3b31 0%, #16211b 48%, ${INK} 75%, #060a08 100%)`, fontFamily: 'Stoic Sans, sans-serif'}}>
     <AbsoluteFill style={{background: 'radial-gradient(circle at 50% 46%, rgba(232,194,122,.28) 0%, rgba(232,194,122,.08) 30%, transparent 55%)'}} />
     <div style={{position: 'absolute', inset: 36, border: `1.5px solid ${GOLD}`, opacity: .35, borderRadius: 6}} />
     <div style={{position: 'absolute', top: 200, left: 0, right: 0, textAlign: 'center', color: GOLD, fontSize: 34, fontWeight: 700, letterSpacing: 8}}>ĐỌC SÁCH, HIỂU MÌNH</div>
-    <svg viewBox="0 0 1080 1920" width={1080} height={1920} style={{position: 'absolute', inset: 0, filter: 'drop-shadow(0 0 10px rgba(217,181,111,.35))'}}><Art /></svg>
+    <svg viewBox="0 0 1080 1920" width={1080} height={1920} style={{position: 'absolute', inset: 0, filter: 'drop-shadow(0 0 10px rgba(217,181,111,.35))'}}>{children}</svg>
     <div style={{position: 'absolute', top: 1340, left: 70, width: 940, textAlign: 'center', color: IVORY, fontSize: 112, fontWeight: 700, lineHeight: 1.12, textWrap: 'balance', textShadow: '0 6px 30px rgba(0,0,0,.7)'}}>
       {before}<span style={{color: GOLD}}>{keyword}</span>{after}
     </div>
-    <div style={{position: 'absolute', top: 1620, left: 0, right: 0, textAlign: 'center', color: IVORY, fontSize: 40, fontWeight: 700, opacity: .9}}>Hiểu về trái tim · Minh Niệm</div>
+    <div style={{position: 'absolute', top: 1620, left: 0, right: 0, textAlign: 'center', color: IVORY, fontSize: 40, fontWeight: 700, opacity: .9}}>{bookLine}</div>
   </AbsoluteFill>;
+};
+
+export const ShortCover: FC<ShortCoverProps> = ({art, headline, keyword}) => {
+  const Art = ART[art];
+  return <CoverFrame headline={headline} keyword={keyword} bookLine="Hiểu về trái tim · Minh Niệm"><Art /></CoverFrame>;
 };

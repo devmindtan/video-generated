@@ -231,7 +231,48 @@
         "docs": "docs/projects/book-ah-001-shorts",
         "assets": "public/book-ah-001-shorts"
       },
-      "registrations": [],
+      "registrations": [
+        {
+          "id": "BookAhShortLaiKep",
+          "kind": "Composition",
+          "title": "Short 1 · 1% mỗi ngày và cục nước đá"
+        },
+        {
+          "id": "BookAhShortLaiKepCover",
+          "kind": "Still",
+          "title": "Bìa short 1 · 1% mỗi ngày và cục nước đá"
+        },
+        {
+          "id": "BookAhShortBonBuoc",
+          "kind": "Composition",
+          "title": "Short 2 · Bốn bước của một thói quen"
+        },
+        {
+          "id": "BookAhShortBonBuocCover",
+          "kind": "Still",
+          "title": "Bìa short 2 · Bốn bước của một thói quen"
+        },
+        {
+          "id": "BookAhShortLamNhieu",
+          "kind": "Composition",
+          "title": "Short 3 · Làm nhiều hơn nghĩ"
+        },
+        {
+          "id": "BookAhShortLamNhieuCover",
+          "kind": "Still",
+          "title": "Bìa short 3 · Làm nhiều hơn nghĩ"
+        },
+        {
+          "id": "BookAhShortThoaMan",
+          "kind": "Composition",
+          "title": "Short 4 · Làm cho thỏa mãn"
+        },
+        {
+          "id": "BookAhShortThoaManCover",
+          "kind": "Still",
+          "title": "Bìa short 4 · Làm cho thỏa mãn"
+        }
+      ],
       "book": "thay-doi-ti-hon-hieu-qua-bat-ngo-atomic-habits",
       "promotes": "book-ah-001-overview"
     }

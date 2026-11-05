@@ -1,0 +1,79 @@
+{
+ "project": "book-ah-001-shorts",
+ "checkedAt": "2026-11-05T14:10:55+07:00",
+ "shorts": [
+  {
+   "id": "short-1",
+   "composition": "BookAhShortLaiKep",
+   "seconds": 39.37,
+   "pages": 19
+  },
+  {
+   "id": "short-2",
+   "composition": "BookAhShortBonBuoc",
+   "seconds": 35.53,
+   "pages": 15
+  },
+  {
+   "id": "short-3",
+   "composition": "BookAhShortLamNhieu",
+   "seconds": 39.63,
+   "pages": 18
+  },
+  {
+   "id": "short-4",
+   "composition": "BookAhShortThoaMan",
+   "seconds": 41.6,
+   "pages": 18
+  }
+ ],
+ "technicalPass": true,
+ "checks": [
+  {
+   "id": "files",
+   "title": "Đủ file cho bước Xem bản dựng",
+   "ok": true,
+   "detail": "đủ"
+  },
+  {
+   "id": "duration",
+   "title": "Mỗi short dài 30–60 giây",
+   "ok": true,
+   "detail": "39.37 giây, 35.53 giây, 39.63 giây, 41.6 giây"
+  },
+  {
+   "id": "captionText",
+   "title": "Chữ phụ đề khớp kịch bản đã chốt",
+   "ok": true,
+   "detail": "khớp cả 4 short"
+  },
+  {
+   "id": "captionTime",
+   "title": "Phụ đề đúng thứ tự, không chồng, đủ lâu, tối đa 2 dòng",
+   "ok": true,
+   "detail": "70 trang"
+  },
+  {
+   "id": "voice",
+   "title": "Giọng không chạm đỉnh, ba phần đều nhau (≤ 3 dB)",
+   "ok": true,
+   "detail": "BookAhShortLaiKep: mở -19.3, trích -21.5, mời -20.6 dBFS; BookAhShortBonBuoc: mở -21.6, trích -22.1, mời -20.6 dBFS; BookAhShortLamNhieu: mở -22.1, trích -21.7, mời -20.6 dBFS; BookAhShortThoaMan: mở -21.3, trích -21.5, mời -20.6 dBFS"
+  },
+  {
+   "id": "music",
+   "title": "Nhạc nằm dưới giọng ≥ 15 dB khi có lời",
+   "ok": true,
+   "detail": "nhạc nền -40.3 dBFS khi có lời"
+  },
+  {
+   "id": "build",
+   "title": "Typecheck và projects:check",
+   "ok": true,
+   "detail": "đạt"
+  }
+ ],
+ "listenNotes": [
+  "Câu mở short 3: nhận dạng nghe \"kỹ\" thành \"kỷ\"; lời mời bản đầu nghe \"trọn\" thành \"tròn\" nên dùng bản cta-v2 (sạch)."
+ ],
+ "note": "Đạt kỹ thuật không thay cho nghe duyệt; không render tự động."
+}

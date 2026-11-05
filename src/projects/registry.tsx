@@ -54,6 +54,9 @@ import {MoChuyen as BookAhMoChuyen, CuonSach as BookAhCuonSach, SoiChi as BookAh
 import {ShortPain as BookHvttShortPain, ShortPhone as BookHvttShortPhone, ShortSalt as BookHvttShortSalt} from './book-hvtt-001-shorts/Video';
 import {ShortCover as BookHvttShortCover} from './book-hvtt-001-shorts/Thumbnail';
 import type {ShortCoverProps} from './book-hvtt-001-shorts/Thumbnail';
+import {ShortAct as BookAhShortAct, ShortIce as BookAhShortIce, ShortLoop as BookAhShortLoop, ShortSoap as BookAhShortSoap} from './book-ah-001-shorts/Video';
+import {IceShortCover as BookAhShortCover} from './book-ah-001-shorts/Thumbnail';
+import type {IceCoverProps as BookAhShortCoverProps} from './book-ah-001-shorts/Thumbnail';
 import {CachLam, CuonSach, SoiChi, Nhom3A, Nhom3B, Nhom3C, Nhom3D, DiemChuaDat, TongKet, YKien, NhanXet} from './book-hvtt-001-overview/Sections';
 import {PeoplePleasingVideo} from './people-pleasing/Video';
 import {PeoplePleasingThumbnail} from './people-pleasing/Thumbnail';
@@ -280,6 +283,16 @@ export const ProjectCompositions: FC = () => (
           <Still id="BookHvttShortDauVaKhoCover" component={BookHvttShortCover} calculateMetadata={renderTo<ShortCoverProps>('book-hvtt-001-shorts')} width={1080} height={1920} defaultProps={{art: 'pond', headline: 'Đau và khổ khác nhau', keyword: 'khổ'}} />
           <Composition id="BookHvttShortGoiMai" component={BookHvttShortPhone} calculateMetadata={renderTo('book-hvtt-001-shorts', BookHvttShortPhone.metadata)} durationInFrames={1200} fps={30} width={1080} height={1920} defaultProps={{short: 'short-3'}} />
           <Still id="BookHvttShortGoiMaiCover" component={BookHvttShortCover} calculateMetadata={renderTo<ShortCoverProps>('book-hvtt-001-shorts')} width={1080} height={1920} defaultProps={{art: 'phone', headline: 'Chuyện chưa hề xảy ra', keyword: 'chưa hề xảy ra'}} />
+        </Folder>
+        <Folder name="book-ah-001-shorts">
+          <Composition id="BookAhShortLaiKep" component={BookAhShortIce} calculateMetadata={renderTo('book-ah-001-shorts', BookAhShortIce.metadata)} durationInFrames={1200} fps={30} width={1080} height={1920} defaultProps={{short: 'short-1'}} />
+          <Still id="BookAhShortLaiKepCover" component={BookAhShortCover} calculateMetadata={renderTo<BookAhShortCoverProps>('book-ah-001-shorts')} width={1080} height={1920} defaultProps={{art: 'ice', headline: 'Công sức chưa hiện ra', keyword: 'chưa hiện ra'}} />
+          <Composition id="BookAhShortBonBuoc" component={BookAhShortLoop} calculateMetadata={renderTo('book-ah-001-shorts', BookAhShortLoop.metadata)} durationInFrames={1200} fps={30} width={1080} height={1920} defaultProps={{short: 'short-2'}} />
+          <Still id="BookAhShortBonBuocCover" component={BookAhShortCover} calculateMetadata={renderTo<BookAhShortCoverProps>('book-ah-001-shorts')} width={1080} height={1920} defaultProps={{art: 'loop', headline: 'Bốn bước của một thói quen', keyword: 'Bốn bước'}} />
+          <Composition id="BookAhShortLamNhieu" component={BookAhShortAct} calculateMetadata={renderTo('book-ah-001-shorts', BookAhShortAct.metadata)} durationInFrames={1200} fps={30} width={1080} height={1920} defaultProps={{short: 'short-3'}} />
+          <Still id="BookAhShortLamNhieuCover" component={BookAhShortCover} calculateMetadata={renderTo<BookAhShortCoverProps>('book-ah-001-shorts')} width={1080} height={1920} defaultProps={{art: 'photos', headline: 'Làm nhiều hơn nghĩ', keyword: 'Làm nhiều'}} />
+          <Composition id="BookAhShortThoaMan" component={BookAhShortSoap} calculateMetadata={renderTo('book-ah-001-shorts', BookAhShortSoap.metadata)} durationInFrames={1200} fps={30} width={1080} height={1920} defaultProps={{short: 'short-4'}} />
+          <Still id="BookAhShortThoaManCover" component={BookAhShortCover} calculateMetadata={renderTo<BookAhShortCoverProps>('book-ah-001-shorts')} width={1080} height={1920} defaultProps={{art: 'soap', headline: 'Thưởng ngay thì lặp lại', keyword: 'Thưởng ngay'}} />
         </Folder>
       </Folder>
       <Folder name="Stoic-Stories">

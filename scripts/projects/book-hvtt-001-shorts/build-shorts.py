@@ -5,7 +5,10 @@ invitation), silence trimmed, raised +2 semitones with the episode's method (voi
 into a new take <take>-sang2 (never overwritten). Excerpts: the published clone takes of episode 1, cut at the times in
 voice.json. Word times for every clip come from local faster-whisper, matched to the script's words (word-times.py).
 A re-cloned invitation comes from its own take (--cta-take, its first sentence); variants already made are reused.
-Usage: .venv/bin/python scripts/projects/book-hvtt-001-shorts/build-shorts.py --take clone-v1 [--cta-take cta-v2]
+Another episode's shorts (user 2026-11-05: every long episode gets promo shorts): --project <shorts slug> --episode
+<long episode slug>; hooks are all lines but the last, the invitation is the last line, shorts follow voice.json
+"excerpts". Excerpt word times come from the episode's own karaoke words when its captions have them.
+Usage: .venv/bin/python scripts/projects/book-hvtt-001-shorts/build-shorts.py --take clone-v1 [--cta-take cta-v2] [--project book-ah-001-shorts --episode book-ah-001-overview]
 """
 import argparse, importlib.util, json, os
 from pathlib import Path
@@ -14,10 +17,7 @@ import numpy as np, soundfile as sf, soxr
 from faster_whisper import WhisperModel
 
 ROOT = Path(__file__).resolve().parents[3]
-HERE = Path(__file__).resolve().parent
-EP1 = ROOT / 'scripts/projects/book-hvtt-001-overview'
-OUT = ROOT / 'src/projects/book-hvtt-001-shorts/shorts.json'
-AUD = ROOT / 'public/book-hvtt-001-shorts/voice-auditions'
+EP1 = ROOT / 'scripts/projects/book-hvtt-001-overview'  # shared voice tools (voice-variants.py, word-times.py)
 
 
 def load(name, path):
@@ -53,12 +53,18 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--take', required=True)
     parser.add_argument('--cta-take')
+    parser.add_argument('--project', default='book-hvtt-001-shorts')
+    parser.add_argument('--episode', default='book-hvtt-001-overview')
     args = parser.parse_args()
+    global HERE, AUD
+    HERE, AUD = ROOT / 'scripts/projects' / args.project, ROOT / 'public' / args.project / 'voice-auditions'
+    OUT = ROOT / 'src/projects' / args.project / 'shorts.json'
     lines = [l.strip() for l in (HERE / 'lines-clone.txt').read_text().splitlines() if l.strip()]
+    cta_at = len(lines) - 1
     model = WhisperModel('medium', device='cpu', compute_type='int8', cpu_threads=4, download_root=str(ROOT / '.cache/whisper'))
     clips = []
     for i, text in enumerate(lines):
-        take, part = (args.cta_take, 1) if i == 3 and args.cta_take else (args.take, i + 1)
+        take, part = (args.cta_take, 1) if i == cta_at and args.cta_take else (args.take, i + 1)
         dst, name = AUD / f'{take}-sang2', f'part-{part:02d}-sang2.wav'
         dst.mkdir(exist_ok=True)
         if (dst / name).exists():
@@ -73,12 +79,12 @@ def main():
                 'status': 'audition — chờ người dùng nghe chọn', 'lines': done + [text]}, ensure_ascii=False, indent=2) + '\n')
         dur = len(data) / sr
         print(f'{dst.name}/{name}', f'{dur:.2f}s')
-        clips.append({'file': f'book-hvtt-001-shorts/voice-auditions/{dst.name}/{name}', 'durationSeconds': round(dur, 3),
+        clips.append({'file': f'{args.project}/voice-auditions/{dst.name}/{name}', 'durationSeconds': round(dur, 3),
                       'words': words_of(model, data, sr, [{'text': text, 'startMs': 0, 'endMs': round(dur * 1000)}])})
     voice = json.loads((HERE / 'voice.json').read_text())
-    ep1 = {v['id']: v for v in json.loads((ROOT / 'src/projects/book-hvtt-001-overview/body-takes.json').read_text())['voices']}
+    ep1 = {v['id']: v for v in json.loads((ROOT / 'src/projects' / args.episode / 'body-takes.json').read_text())['voices']}
     shorts = []
-    for k, sid in enumerate(['short-1', 'short-2', 'short-3']):
+    for k, sid in enumerate(voice['excerpts']):
         ex = voice['excerpts'][sid]
         take = ep1[ex['take']]
         data, sr = sf.read(ROOT / 'public' / take['file'])
@@ -86,9 +92,14 @@ def main():
         caps = [{'text': c['text'], 'startMs': c['startMs'] - a * 1000, 'endMs': c['endMs'] - a * 1000} for c in take['captions']
                 if c['startMs'] >= a * 1000 - 5 and c['endMs'] <= b * 1000 + 5]
         print(sid, ex['take'], f'{a}–{b}s', len(caps), 'trang')
-        excerpt = {'file': take['file'], 'fromSeconds': a, 'toSeconds': b, 'durationSeconds': round(b - a, 3),
-                   'words': words_of(model, data[int(a * sr):int(b * sr)], sr, caps)}
-        shorts.append({'id': sid, 'hook': clips[k], 'excerpt': excerpt, 'cta': clips[3]})
+        own = [c for c in take['captions'] if c['endMs'] > a * 1000 + 50 and c['startMs'] < b * 1000 - 50]  # pages may start a little before the cut
+        if own and all(c.get('words') for c in own):  # the episode's karaoke words inside the excerpt, shifted to it
+            words = [{'text': w['text'], 'startMs': max(0, round(w['startMs'] - a * 1000)), 'endMs': min(round((b - a) * 1000), round(w['endMs'] - a * 1000))} for c in own for w in c['words']
+                     if a * 1000 - 300 <= w['startMs'] < b * 1000 - 40]
+        else:
+            words = words_of(model, data[int(a * sr):int(b * sr)], sr, caps)
+        excerpt = {'file': take['file'], 'fromSeconds': a, 'toSeconds': b, 'durationSeconds': round(b - a, 3), 'words': words}
+        shorts.append({'id': sid, 'hook': clips[k], 'excerpt': excerpt, 'cta': clips[cta_at]})
     OUT.write_text(json.dumps({'take': args.take, 'ctaTake': args.cta_take or args.take, 'shorts': shorts}, ensure_ascii=False, indent=1) + '\n')
     print(OUT.relative_to(ROOT))
 

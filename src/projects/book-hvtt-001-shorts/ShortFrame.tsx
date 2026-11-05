@@ -23,16 +23,15 @@ export type ShortProps = {short: string};
 export type SCtx = {frame: number; start: number; t: (seconds: number) => number};
 export type SBeat = {at: number; draw: (c: SCtx) => ReactNode};
 
-const shorts = (data as unknown as {shorts: ShortData[]}).shorts;
-const LEAD = .3, GAP1 = .35, GAP2 = .5, TAIL = 1.4;
+export type Music = typeof music;
+// Gaps around the excerpt: GAP1 after the opening line, GAP2 before the invitation (a later episode may lengthen them).
+export type Gaps = {lead: number; gap1: number; gap2: number; tail: number};
 const F = (s: number, fps: number) => Math.round(s * fps);
-export const shortOf = (id: string) => shorts.find((s) => s.id === id) ?? shorts[0];
 // Start frames of the three clips and the total length.
-export const timeline = (s: ShortData, fps = 30) => {
-  const hook = F(LEAD, fps), excerpt = hook + F(s.hook.durationSeconds + GAP1, fps), cta = excerpt + F(s.excerpt.toSeconds - s.excerpt.fromSeconds + GAP2, fps);
-  return {hook, excerpt, cta, end: cta + F(s.cta.durationSeconds, fps), total: cta + F(s.cta.durationSeconds + TAIL, fps)};
+const timelineWith = (g: Gaps) => (s: ShortData, fps = 30) => {
+  const hook = F(g.lead, fps), excerpt = hook + F(s.hook.durationSeconds + g.gap1, fps), cta = excerpt + F(s.excerpt.toSeconds - s.excerpt.fromSeconds + g.gap2, fps);
+  return {hook, excerpt, cta, end: cta + F(s.cta.durationSeconds, fps), total: cta + F(s.cta.durationSeconds + g.tail, fps)};
 };
-export const shortMetadata: CalculateMetadataFunction<ShortProps> = ({props}) => ({durationInFrames: timeline(shortOf(props.short)).total});
 export const D = (c: SCtx, d: string, delay = 0, len = 24, width = 2.8, opacity = 1, color = GOLD) =>
   <Draw key={`${d}${delay}`} d={d} frame={c.frame} from={c.start + delay} to={c.start + delay + len} width={width} opacity={opacity} color={color} />;
 export const W = (x: number, y: number, size: number, text: string, opacity: number, color = IVORY) =>
@@ -73,7 +72,15 @@ const Captions: FC<{words: Word[]; ms: number; highlight: RegExp; top?: number; 
 // An open book drawn in from its spine.
 const book = (c: SCtx, x: number, y: number, s: number, delay = 0) => D(c, `M${x} ${y + 100 * s} C${x - 70 * s} ${y + 70 * s} ${x - 160 * s} ${y + 68 * s} ${x - 230 * s} ${y + 86 * s} L${x - 230 * s} ${y} C${x - 160 * s} ${y - 18 * s} ${x - 70 * s} ${y - 16 * s} ${x} ${y + 14 * s} C${x + 70 * s} ${y - 16 * s} ${x + 160 * s} ${y - 18 * s} ${x + 230 * s} ${y} L${x + 230 * s} ${y + 86 * s} C${x + 160 * s} ${y + 68 * s} ${x + 70 * s} ${y + 70 * s} ${x} ${y + 100 * s} Z M${x} ${y + 14 * s} L${x} ${y + 100 * s}`, delay, 30, 2.8);
 
-export const ShortFrame: FC<ShortProps & {beats: SBeat[]; highlight: RegExp; seriesLabel: string; bookLine: string; episodeLabel: string; bookTitle: string; bookAuthor: string}> = ({short: id, beats, highlight, seriesLabel, bookLine, episodeLabel, bookTitle, bookAuthor}) => {
+// One kit per promo-shorts project (user 2026-11-05: every long episode gets its shorts; the frame is shared, never
+// copied): its shorts.json, music and gaps. Episode 1's kit is the default export below.
+export const createShortKit = (raw: unknown, music: Music, g: Gaps = {lead: .3, gap1: .35, gap2: .5, tail: 1.4}, excerptTrack = 'Giọng · đoạn trích tập 1') => {
+const shorts = (raw as {shorts: ShortData[]}).shorts;
+const shortOf = (id: string) => shorts.find((s) => s.id === id) ?? shorts[0];
+const timeline = timelineWith(g);
+const GAP2 = g.gap2;
+const shortMetadata: CalculateMetadataFunction<ShortProps> = ({props}) => ({durationInFrames: timeline(shortOf(props.short)).total});
+const ShortFrame: FC<ShortProps & {beats: SBeat[]; highlight: RegExp; seriesLabel: string; bookLine: string; bookLineSize?: number; episodeLabel: string; bookTitle: string; bookAuthor: string}> = ({short: id, beats, highlight, seriesLabel, bookLine, bookLineSize = 44, episodeLabel, bookTitle, bookAuthor}) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
   const s = shortOf(id), tl = timeline(s, fps);
@@ -98,7 +105,7 @@ export const ShortFrame: FC<ShortProps & {beats: SBeat[]; highlight: RegExp; ser
       <Grain frame={frame} />
       <div style={{position: 'absolute', inset: 36, border: `1.5px solid ${GOLD}`, opacity: .35, borderRadius: 6}} />
       <div style={{position: 'absolute', top: 220, left: 0, right: 0, textAlign: 'center', color: GOLD, fontSize: 32, fontWeight: 700, letterSpacing: 8}}>{seriesLabel}</div>
-      <div style={{position: 'absolute', top: 280, left: 0, right: 0, textAlign: 'center', color: IVORY, fontSize: 44, fontWeight: 700, opacity: .92}}>{bookLine}</div>
+      <div style={{position: 'absolute', top: 280, left: 0, right: 0, textAlign: 'center', color: IVORY, fontSize: bookLineSize, fontWeight: 700, opacity: .92}}>{bookLine}</div>
       <svg viewBox="0 0 1080 1920" width={1080} height={1920} style={{position: 'absolute', inset: 0, filter: 'drop-shadow(0 0 3px rgba(217,181,111,.18))'}}>
         <defs><radialGradient id="short-glow"><stop offset="0%" stopColor="#e8c27a" stopOpacity={.35} /><stop offset="100%" stopColor="#e8c27a" stopOpacity={0} /></radialGradient></defs>
         {/* Opening: the question itself is the caption, lit with the voice; a book opens under it. */}
@@ -120,7 +127,7 @@ export const ShortFrame: FC<ShortProps & {beats: SBeat[]; highlight: RegExp; ser
         : <Captions words={bodyWords} ms={frame * 1000 / fps} highlight={highlight} />}
     </AbsoluteFill>
     <Track name="Giọng · câu mở"><Sequence from={tl.hook} durationInFrames={F(s.hook.durationSeconds, fps) + 2}><Audio src={staticFile(s.hook.file)} /></Sequence></Track>
-    <Track name="Giọng · đoạn trích tập 1"><Sequence from={tl.excerpt} durationInFrames={tl.cta - tl.excerpt}><Audio src={staticFile(s.excerpt.file)} trimBefore={F(s.excerpt.fromSeconds, fps)} trimAfter={F(s.excerpt.toSeconds + .15, fps)} /></Sequence></Track>
+    <Track name={excerptTrack}><Sequence from={tl.excerpt} durationInFrames={tl.cta - tl.excerpt}><Audio src={staticFile(s.excerpt.file)} trimBefore={F(s.excerpt.fromSeconds, fps)} trimAfter={F(s.excerpt.toSeconds + .15, fps)} /></Sequence></Track>
     <Track name="Giọng · lời mời"><Sequence from={tl.cta} durationInFrames={F(s.cta.durationSeconds, fps) + 2}><Audio src={staticFile(s.cta.file)} /></Sequence></Track>
     <Track name={`Nhạc nền · ${music.credit.artists.join(', ')} – ${music.credit.title} · chỉnh đầu/cuối trong Edit`}>
       <MusicFade fadeInSeconds={music.fadeInSeconds} fadeOutSeconds={music.fadeOutSeconds}>
@@ -129,3 +136,8 @@ export const ShortFrame: FC<ShortProps & {beats: SBeat[]; highlight: RegExp; ser
     </Track>
   </AbsoluteFill>;
 };
+return {shortOf, timeline, shortMetadata, ShortFrame};
+};
+
+const episode1 = createShortKit(data, music);
+export const {shortOf, timeline, shortMetadata, ShortFrame} = episode1;

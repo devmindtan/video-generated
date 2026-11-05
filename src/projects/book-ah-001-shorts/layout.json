@@ -1,0 +1,8 @@
+{
+  "lead": 0.3,
+  "gap1": 0.5,
+  "gap2": 0.8,
+  "tail": 1.4,
+  "note": "Nghỉ 0,5 giây sau câu mở, 0,8 giây trước lời mời (quy tắc series: nghỉ dài hơn trước câu mở ý mới). Shorts.tsx và qa.py cùng đọc file này.",
+  "listenNotes": ["Câu mở short 3: nhận dạng nghe \"kỹ\" thành \"kỷ\"; lời mời bản đầu nghe \"trọn\" thành \"tròn\" nên dùng bản cta-v2 (sạch)."]
+}

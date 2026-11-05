@@ -11,20 +11,23 @@ and one SRT per short (docs/projects/book-hvtt-001-shorts/captions-<n>.srt, for 
   music        the bed sits ≥ 15 dB under the narration while speaking
   build        typecheck and projects:check pass
 A technical pass is not a listening approval.
-Usage: .venv/bin/python scripts/projects/book-hvtt-001-shorts/qa.py
+Another episode's shorts: --project <slug> (gaps from src/projects/<slug>/layout.json, the same file ShortFrame's kit
+reads there; compositions from the project's registrations in series.json).
+Usage: .venv/bin/python scripts/projects/book-hvtt-001-shorts/qa.py [--project book-ah-001-shorts]
 """
-import datetime, json, re, subprocess, unicodedata
+import datetime, json, re, subprocess, sys, unicodedata
 from pathlib import Path
 import numpy as np
 import soundfile as sf
 import librosa
 
 ROOT = Path(__file__).resolve().parents[3]
-SLUG = 'book-hvtt-001-shorts'
-SRC, DOCS, HERE = ROOT / 'src/projects' / SLUG, ROOT / 'docs/projects' / SLUG, Path(__file__).resolve().parent
-LEAD, GAP1, GAP2, TAIL, FPS = .3, .35, .5, 1.4, 30
+SLUG = sys.argv[sys.argv.index('--project') + 1] if '--project' in sys.argv else 'book-hvtt-001-shorts'
+SRC, DOCS, HERE = ROOT / 'src/projects' / SLUG, ROOT / 'docs/projects' / SLUG, ROOT / 'scripts/projects' / SLUG
+LAYOUT = json.loads((SRC / 'layout.json').read_text()) if (SRC / 'layout.json').exists() else {}
+LEAD, GAP1, GAP2, TAIL, FPS = LAYOUT.get('lead', .3), LAYOUT.get('gap1', .35), LAYOUT.get('gap2', .5), LAYOUT.get('tail', 1.4), 30
 TITLES = {}
-IDS = {'short-1': 'BookHvttShortVocMuoi', 'short-2': 'BookHvttShortDauVaKho', 'short-3': 'BookHvttShortGoiMai'}
+IDS = {}
 F = lambda s: round(s * FPS)
 words_of = lambda t: re.findall(r'\w+', unicodedata.normalize('NFC', t.lower()))
 
@@ -94,6 +97,8 @@ def main():
     series = json.loads((ROOT / 'series/tam-ly-cuoc-song/book-insights/series.json').read_text())
     global TITLES
     TITLES = {r['id']: r.get('title', r['id']) for p in series['projects'] if p['id'] == SLUG for r in p['registrations']}
+    comps = [r['id'] for p in series['projects'] if p['id'] == SLUG for r in p['registrations'] if r['kind'] == 'Composition']
+    IDS.update({s['id']: comps[k] for k, s in enumerate(data['shorts'])})
     checks, shorts_out, all_caps = [], [], {}
     for k, s in enumerate(data['shorts']):
         caps, tl = captions(s)
@@ -102,9 +107,9 @@ def main():
         shorts_out.append({'id': s['id'], 'composition': IDS[s['id']], 'seconds': round(tl['total'] / FPS, 2), 'pages': len(caps)})
     (SRC / 'captions.json').write_text(json.dumps({'shorts': all_caps}, ensure_ascii=False, indent=1) + '\n')
 
-    need = ['src/projects/book-hvtt-001-shorts/Video.tsx', 'src/projects/book-hvtt-001-shorts/Thumbnail.tsx', 'src/projects/book-hvtt-001-shorts/captions.json',
-            'src/projects/book-hvtt-001-shorts/music.json', 'docs/projects/book-hvtt-001-shorts/description.md', 'docs/projects/book-hvtt-001-shorts/sources.md',
-            'docs/projects/book-hvtt-001-shorts/script-review.md', 'docs/projects/book-hvtt-001-shorts/voice-audition.md', 'public/' + music['file']]
+    need = [f'src/projects/{SLUG}/Video.tsx', f'src/projects/{SLUG}/Thumbnail.tsx', f'src/projects/{SLUG}/captions.json',
+            f'src/projects/{SLUG}/music.json', f'docs/projects/{SLUG}/description.md', f'docs/projects/{SLUG}/sources.md',
+            f'docs/projects/{SLUG}/script-review.md', f'docs/projects/{SLUG}/voice-audition.md', 'public/' + music['file']]
     missing = [f for f in need if not (ROOT / f).exists()]
     checks.append({'id': 'files', 'title': 'Đủ file cho bước Xem bản dựng', 'ok': not missing, 'detail': 'đủ' if not missing else 'thiếu: ' + ', '.join(missing)})
 
@@ -122,7 +127,7 @@ def main():
         expected = words_of(hook) + words_of(excerpt) + words_of(cta)
         got = words_of(' '.join(p['text'] for p in all_caps[s['id']]['pages']))
         if expected != got: wrong.append(f"{IDS[s['id']]}: {len(got)}/{len(expected)} chữ")
-    checks.append({'id': 'captionText', 'title': 'Chữ phụ đề khớp kịch bản đã chốt', 'ok': not wrong, 'detail': 'khớp cả 3 short' if not wrong else '; '.join(wrong)})
+    checks.append({'id': 'captionText', 'title': 'Chữ phụ đề khớp kịch bản đã chốt', 'ok': not wrong, 'detail': f"khớp cả {len(data['shorts'])} short" if not wrong else '; '.join(wrong)})
 
     issues = []
     for sid, c in all_caps.items():
@@ -154,7 +159,7 @@ def main():
 
     report = {'project': SLUG, 'checkedAt': datetime.datetime.now().astimezone().isoformat(timespec='seconds'), 'shorts': shorts_out,
               'technicalPass': all(c['ok'] for c in checks), 'checks': checks,
-              'listenNotes': ['Câu mở short 2: nhận dạng nghe "Cũng một chuyện" thay vì "Cùng một chuyện"; người dùng nghe trong bản vá p2/p3, không báo sai.'],
+              'listenNotes': LAYOUT.get('listenNotes', ['Câu mở short 2: nhận dạng nghe "Cũng một chuyện" thay vì "Cùng một chuyện"; người dùng nghe trong bản vá p2/p3, không báo sai.'] if SLUG == 'book-hvtt-001-shorts' else []),
               'note': 'Đạt kỹ thuật không thay cho nghe duyệt; không render tự động.'}
     (DOCS / 'qa.json').write_text(json.dumps(report, ensure_ascii=False, indent=1) + '\n')
     for c in checks: print('✓' if c['ok'] else '✗', c['title'], '·', c['detail'])
