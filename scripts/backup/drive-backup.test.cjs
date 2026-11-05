@@ -5,9 +5,11 @@ const path = require('node:path');
 const test = require('node:test');
 
 const {
+  backupFilterArgs,
   buildPlan,
   collectSources,
   formatBytes,
+  shouldSkipBackupEntry,
   validateRelative,
 } = require('./drive-backup.cjs');
 
@@ -43,10 +45,27 @@ test('collectSources keeps configured data and discovers manager history', () =>
 test('buildPlan counts files and bytes without following symlinks', () => {
   const root = fixture();
   fs.symlinkSync('/tmp', path.join(root, 'public', 'episode', 'external'));
+  fs.mkdirSync(path.join(root, 'public', 'episode', '.git', 'hooks'), {recursive: true});
+  fs.writeFileSync(path.join(root, 'public', 'episode', '.git', 'hooks', 'pre-push'), 'secret');
+  fs.mkdirSync(path.join(root, 'public', 'episode', '.cache'), {recursive: true});
+  fs.writeFileSync(path.join(root, 'public', 'episode', '.cache', 'preview.png'), 'cache');
+  fs.writeFileSync(path.join(root, 'public', 'episode', '.env.local'), 'token=secret');
   const plan = buildPlan(root, config);
   assert.equal(plan.totalFiles, 2);
   assert.equal(plan.totalBytes, 15);
   assert.equal(plan.totalSymlinksSkipped, 1);
+});
+
+test('nested forbidden data is excluded from planning and rclone transfers', () => {
+  assert.equal(shouldSkipBackupEntry('.git'), true);
+  assert.equal(shouldSkipBackupEntry('.env.production'), true);
+  assert.equal(shouldSkipBackupEntry('.cache'), true);
+  assert.equal(shouldSkipBackupEntry('voice.wav'), false);
+
+  const filters = backupFilterArgs();
+  assert.ok(filters.includes('**/.git/**'));
+  assert.ok(filters.includes('**/.cache/**'));
+  assert.ok(filters.includes('**/.env*'));
 });
 
 test('unsafe and forbidden paths are rejected', () => {

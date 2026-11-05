@@ -22,6 +22,11 @@ const FORBIDDEN_NAMES = new Set([
   'node_modules',
   'repos',
 ]);
+const BACKUP_SKIP_NAMES = new Set([
+  ...FORBIDDEN_NAMES,
+  '.cache',
+  '.remotion',
+]);
 const DISCOVERY_SKIP = new Set([
   ...FORBIDDEN_NAMES,
   '.automation',
@@ -67,6 +72,10 @@ function validateRelative(relative) {
   return normalized;
 }
 
+function shouldSkipBackupEntry(name) {
+  return BACKUP_SKIP_NAMES.has(name) || name.startsWith('.env');
+}
+
 function discoverManagerHistory(root, startRelative) {
   const start = path.join(root, validateRelative(startRelative));
   if (!fs.existsSync(start)) return [];
@@ -103,18 +112,30 @@ function collectSources(root, config) {
     .sort();
 }
 
-function measureTree(absolute) {
+function measureTree(absolute, isRoot = true) {
   const stat = fs.lstatSync(absolute);
   if (stat.isSymbolicLink()) return {files: 0, bytes: 0, symlinks: 1};
+  if (!isRoot && shouldSkipBackupEntry(path.basename(absolute))) {
+    return {files: 0, bytes: 0, symlinks: 0};
+  }
   if (stat.isFile()) return {files: 1, bytes: stat.size, symlinks: 0};
   const total = {files: 0, bytes: 0, symlinks: 0};
   for (const entry of fs.readdirSync(absolute)) {
-    const measured = measureTree(path.join(absolute, entry));
+    const measured = measureTree(path.join(absolute, entry), false);
     total.files += measured.files;
     total.bytes += measured.bytes;
     total.symlinks += measured.symlinks;
   }
   return total;
+}
+
+function backupFilterArgs() {
+  const args = [];
+  for (const name of [...BACKUP_SKIP_NAMES].sort()) {
+    args.push('--exclude', `${name}/**`, '--exclude', `**/${name}/**`);
+  }
+  args.push('--exclude', '.env*', '--exclude', '**/.env*');
+  return args;
 }
 
 function buildPlan(root, config) {
@@ -198,6 +219,7 @@ function copySource(rclone, root, config, relative, runId) {
     'copy', local, destination,
     '--backup-dir', versionDestination,
     '--create-empty-src-dirs',
+    ...backupFilterArgs(),
     ...commonTransferArgs(),
   ], {cwd: root});
 }
@@ -210,6 +232,7 @@ function verifySource(rclone, root, config, relative) {
     '--one-way',
     '--checksum',
     '--checkers', '8',
+    ...backupFilterArgs(),
   ], {cwd: root});
 }
 
@@ -308,5 +331,7 @@ module.exports = {
   discoverManagerHistory,
   formatBytes,
   loadConfig,
+  backupFilterArgs,
+  shouldSkipBackupEntry,
   validateRelative,
 };
