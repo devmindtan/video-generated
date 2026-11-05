@@ -121,8 +121,15 @@ Hai câu mới: câu 1 dùng `seg-08g-y-kien-v5` (sạch); câu 2 clone 4 bản 
 | 12:55 | Ý kiến cá nhân | (không) | Bản thân mình cũng đã trải qua khá nhiều chuyện trong cuộc sống, và mình thấy không có lời khuyên nào hợp với tất cả mọi người. |
 | 13:02 | Ý kiến cá nhân | quáng → quán | Nên với bất kỳ hướng dẫn hay quy tắc nào trong sách, hãy giữ chính kiến của mình: thử rồi tự xem cái nào hợp, cái nào không, chứ đừng làm theo một cách mù quáng. |
 
+## Đã chốt giọng clone (2026-11-05)
+
+Người dùng duyệt bản vá p15 ("Đã chốt rồi đó"). Nhịp cuối: tốc độ đọc giữ nguyên bản clone (không kéo chậm), chỉ chỉnh
+ngắt nghỉ (`scripts/projects/book-ah-001-overview/pacing.json`). `BookAhTap02` giờ phát giọng clone (`clone: true`,
+thẻ tập `01-gioi-thieu-tap-sang2`); bản nghe thử `BookAhTap02Clone` đã bỏ. Giọng cuối ghép bằng `publish-voice.py`
+vào `public/book-ah-001-overview/audio/<đoạn>-voice-full.wav`; phụ đề sáng theo giọng (`word-times.py`, khoảng 98,6%
+chữ khớp nhận dạng, phần còn lại nội suy). Tập dài 14:13.
+
 ## Còn lại
 
-- Người dùng nghe BookAhTap02Clone và báo câu nào đọc sai thật: clone lại riêng câu đó thành take mới.
-- Sau khi người dùng chọn: đưa giọng clone vào BookAhTap02, cân lại thời gian, phụ đề sáng theo giọng (word-times.py),
-  mô tả có chương, QA; bỏ bản nghe thử BookAhTap02Clone.
+- Người dùng xem bản dựng `BookAhTap02` trong Studio và duyệt bước cuối (Xem bản dựng), rồi tự xuất video và thumbnail.
+- Câu nào nghe ra sai thật: clone lại riêng câu đó thành take mới, ghép lại, chạy lại word-times.py cho đoạn đó.

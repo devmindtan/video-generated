@@ -1,7 +1,7 @@
 {
   "project": "book-ah-001-overview",
-  "checkedAt": "2026-11-04T22:50:37+07:00",
-  "durationSeconds": 810.13,
+  "checkedAt": "2026-11-05T12:23:00+07:00",
+  "durationSeconds": 852.83,
   "parts": [
     {
       "name": "Intro series",
@@ -16,75 +16,75 @@
     {
       "name": "Thẻ tập",
       "start": 43.77,
-      "seconds": 11.57
+      "seconds": 12.13
     },
     {
       "name": "Mở chuyện",
-      "start": 55.33,
-      "seconds": 81.07
+      "start": 55.9,
+      "seconds": 80.37
     },
     {
       "name": "Phần 1 · Cuốn sách là gì",
-      "start": 136.4,
-      "seconds": 27.9
+      "start": 136.27,
+      "seconds": 28.87
     },
     {
       "name": "Phần 2 · Sợi chỉ xuyên suốt",
-      "start": 164.3,
-      "seconds": 86.83
+      "start": 165.13,
+      "seconds": 96.8
     },
     {
       "name": "Quy luật 1 · Làm cho hiển nhiên",
-      "start": 251.13,
-      "seconds": 84.8
+      "start": 261.93,
+      "seconds": 86.5
     },
     {
       "name": "Quy luật 2 · Làm cho hấp dẫn",
-      "start": 335.93,
-      "seconds": 74.53
+      "start": 348.43,
+      "seconds": 79.53
     },
     {
       "name": "Quy luật 3 · Làm cho dễ dàng",
-      "start": 410.47,
-      "seconds": 81.57
+      "start": 427.97,
+      "seconds": 84.6
     },
     {
       "name": "Quy luật 4 · Làm cho thỏa mãn",
-      "start": 492.03,
-      "seconds": 77.63
+      "start": 512.57,
+      "seconds": 80.87
     },
     {
       "name": "Khi thói quen đã thành nếp",
-      "start": 569.67,
-      "seconds": 57.33
+      "start": 593.43,
+      "seconds": 56.83
     },
     {
       "name": "Những điểm chưa đạt",
-      "start": 627.0,
-      "seconds": 42.73
+      "start": 650.27,
+      "seconds": 42.93
     },
     {
       "name": "Tổng kết",
-      "start": 669.73,
-      "seconds": 27.37
+      "start": 693.2,
+      "seconds": 29.07
     },
     {
       "name": "Ý kiến cá nhân",
-      "start": 697.1,
-      "seconds": 75.3
+      "start": 722.27,
+      "seconds": 89.87
     },
     {
       "name": "Nhận xét chung",
-      "start": 772.4,
-      "seconds": 21.23
+      "start": 812.13,
+      "seconds": 24.2
     },
     {
       "name": "Outro series",
-      "start": 793.63,
+      "start": 836.33,
       "seconds": 16.5
     }
   ],
-  "technicalPass": false,
+  "technicalPass": true,
   "checks": [
     {
       "id": "files",
@@ -95,59 +95,14 @@
     {
       "id": "captionText",
       "title": "Chữ phụ đề khớp kịch bản đã chốt",
-      "ok": false,
-      "detail": [
-        {
-          "segment": "02-mo-chuyen",
-          "part": "Mở chuyện",
-          "missing": [
-            "điều cậu mong nhất là được quay lại sân bóng vì bóng chày là giấc mơ mà cậu theo"
-          ]
-        },
-        {
-          "segment": "04-soi-chi",
-          "part": "Phần 2 · Sợi chỉ xuyên suốt",
-          "missing": [
-            "người thứ nhất vẫn thấy mình là người hút thuốc đang cố nhịn người thứ hai đã th",
-            "muốn bỏ thói quen xấu thì làm ngược lại cho nó khó thấy kém hấp dẫn khó làm và k"
-          ]
-        },
-        {
-          "segment": "05-quy-luat-1",
-          "part": "Quy luật 1 · Làm cho hiển nhiên",
-          "missing": [
-            "ở đường sắt tại nhật bản nhân viên vừa chỉ tay vừa nói to từng việc mình đang ki"
-          ]
-        },
-        {
-          "segment": "08e-diem-chua-dat",
-          "part": "Những điểm chưa đạt",
-          "missing": [
-            "cuốn sách có nhiều cách làm hay nhưng cũng có vài điểm mình chưa ưng"
-          ]
-        },
-        {
-          "segment": "08g-y-kien",
-          "part": "Ý kiến cá nhân",
-          "missing": [
-            "bản thân mình cũng đã trải qua khá nhiều chuyện trong cuộc sống và mình thấy khô",
-            "nên với bất kỳ hướng dẫn hay quy tắc nào trong sách hãy giữ chính kiến của mình "
-          ]
-        },
-        {
-          "segment": "09-nhan-xet",
-          "part": "Nhận xét chung",
-          "missing": [
-            "gấp sách lại điều mình nhớ nhất không phải một con số nào mà là thay đổi hóa ra "
-          ]
-        }
-      ]
+      "ok": true,
+      "detail": "142 câu khớp"
     },
     {
       "id": "captionTime",
       "title": "Phụ đề đúng thứ tự, không chồng, đủ lâu, tối đa 2 dòng",
       "ok": true,
-      "detail": "248 trang"
+      "detail": "255 trang"
     },
     {
       "id": "captionStyle",
@@ -163,16 +118,21 @@
     {
       "id": "voice",
       "title": "Giọng không vỡ tiếng, các đoạn to nhỏ đồng đều",
-      "ok": false,
-      "detail": "chưa ghép giọng cuối (public/<slug>/audio trống): chạy publish-voice.py sau khi người dùng chọn giọng clone"
+      "ok": true,
+      "detail": {
+        "đoạn": 12,
+        "chênhLệchDb": 0.6,
+        "đỉnhCaoNhấtDb": -2.4,
+        "vỡTiếng": []
+      }
     },
     {
       "id": "music",
       "title": "Nhạc nền nội dung nằm dưới giọng",
       "ok": true,
       "detail": {
-        "thấpHơnGiọngKhiCóLờiDb": 28.2,
-        "thấpHơnGiọngLúcNghỉDb": 22.7,
+        "thấpHơnGiọngKhiCóLờiDb": 28.0,
+        "thấpHơnGiọngLúcNghỉDb": 22.5,
         "bài": "Butterflies"
       }
     },
@@ -187,9 +147,53 @@
     }
   ],
   "voiceLevels": {
-    "_": {
+    "02-mo-chuyen": {
+      "rmsDb": -20.4,
+      "peakDb": -2.4
+    },
+    "03-cuon-sach": {
+      "rmsDb": -20.1,
+      "peakDb": -2.5
+    },
+    "04-soi-chi": {
+      "rmsDb": -20.1,
+      "peakDb": -2.5
+    },
+    "05-quy-luat-1": {
       "rmsDb": -20.0,
-      "peakDb": -3.0
+      "peakDb": -2.5
+    },
+    "06-quy-luat-2": {
+      "rmsDb": -20.0,
+      "peakDb": -2.4
+    },
+    "07-quy-luat-3": {
+      "rmsDb": -20.2,
+      "peakDb": -2.4
+    },
+    "08-quy-luat-4": {
+      "rmsDb": -20.2,
+      "peakDb": -2.4
+    },
+    "08b-thanh-nep": {
+      "rmsDb": -20.1,
+      "peakDb": -2.5
+    },
+    "08e-diem-chua-dat": {
+      "rmsDb": -20.4,
+      "peakDb": -2.5
+    },
+    "08f-tong-ket": {
+      "rmsDb": -20.5,
+      "peakDb": -2.5
+    },
+    "08g-y-kien": {
+      "rmsDb": -20.3,
+      "peakDb": -2.5
+    },
+    "09-nhan-xet": {
+      "rmsDb": -20.6,
+      "peakDb": -2.5
     }
   },
   "toneFlags": [

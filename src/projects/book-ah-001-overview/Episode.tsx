@@ -16,8 +16,8 @@ import {ChuaDat, CuonSach, MoChuyen, NhanXet, QuyLuat1, QuyLuat2, QuyLuat3, QuyL
 // Episode 2 (Thay đổi tí hon hiệu quả bất ngờ) in the series frame: reused series intro, "Cách làm" and outro, this
 // episode's card and body. Parts join as their narration exists. Placeholder phase: the Quốc Tuấn take of a segment
 // (25-quoc-tuan-<nn>) plays until the clone batch is picked; then the clone take (<segment>-sang2) wins.
-// clone: play the cloned voice (<segment>-sang2) where it exists; off, the placeholder plays. The clone batch is
-// heard first in its own composition (BookAhTap02Clone) and becomes the default only once the user picks it.
+// clone: play the cloned voice (<segment>-sang2) where it exists; off, the placeholder plays. The user picked the
+// clone batch on 2026-11-05 (patch p15), so BookAhTap02 plays it and the listening composition was removed.
 export type EpisodeProps = {introVoice: string; cardVoice: string; outroVoice: string; channelLabel: string; episodeLabel: string; bookTitle: string; bookAuthor: string; clone?: boolean};
 
 const voices = takesOf(bodyTakes), cards = (cardTakes as unknown as {voices: Voice[]}).voices;
