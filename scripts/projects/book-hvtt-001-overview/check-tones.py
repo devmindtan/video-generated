@@ -3,7 +3,10 @@
 Accent-insensitive word match does not validate tones (mẹ → mẽ); this flags words whose diacritics differ
 (Bà → Ba, mắng → mắn) so the specific sentence can be re-cloned. ASR can also mishear: a flag means "listen
 here", not a verdict. Writes <clone take>/tone-check.json and prints the flagged sentences.
-Usage: .venv/bin/python scripts/projects/book-hvtt-001-overview/check-tones.py [--project <slug>] <clone-take> [<clone-take> ...]
+The cloned voice says an initial "x" as "s" (xếp → sếp): that is its accent, not an error (user 2026-11-05), so x/s
+at the start of a word is never flagged. --recheck re-scores the saved transcripts (tone-check.json "heard") without
+running ASR again, after a rule like this changes.
+Usage: .venv/bin/python scripts/projects/book-hvtt-001-overview/check-tones.py [--project <slug>] [--recheck] <clone-take> [<clone-take> ...]
 """
 import difflib, json, os, re, sys, unicodedata
 from pathlib import Path
@@ -20,24 +23,31 @@ def project_arg(default='book-hvtt-001-overview'):
 
 
 PROJECT = project_arg()
+RECHECK = '--recheck' in sys.argv
+if RECHECK: sys.argv.remove('--recheck')
 words = lambda t: re.findall(r'\w+', unicodedata.normalize('NFC', t.lower()))
 plain = lambda w: ''.join(c for c in unicodedata.normalize('NFD', w.replace('đ', 'd')) if unicodedata.category(c) != 'Mn')
-model = WhisperModel('medium', device='cpu', compute_type='int8', cpu_threads=4, download_root=str(ROOT / '.cache/whisper'))
+accent = lambda w: re.sub(r'^x', 's', w)  # the voice's own x → s (not an error)
+model = None if RECHECK else WhisperModel('medium', device='cpu', compute_type='int8', cpu_threads=4, download_root=str(ROOT / '.cache/whisper'))
 
 for take in sys.argv[1:]:
     folder = ROOT / 'public' / PROJECT / 'voice-auditions' / take
     manifest = json.loads((folder / 'manifest.json').read_text())
     report = []
+    saved = {r['file']: r['heard'] for r in json.loads((folder / 'tone-check.json').read_text())} if RECHECK else {}
     for f in manifest['files']:
-        audio, sr = sf.read(folder / f['file'], dtype='float32')
-        audio = audio.mean(axis=1) if audio.ndim > 1 else audio
-        segs, _ = model.transcribe(soxr.resample(audio, sr, 16000), language='vi', beam_size=5)  # no initial_prompt: it would bias ASR toward the script and hide real errors
-        heard = ' '.join(s.text.strip() for s in segs)
+        if RECHECK:
+            heard = saved[f['file']]
+        else:
+            audio, sr = sf.read(folder / f['file'], dtype='float32')
+            audio = audio.mean(axis=1) if audio.ndim > 1 else audio
+            segs, _ = model.transcribe(soxr.resample(audio, sr, 16000), language='vi', beam_size=5)  # no initial_prompt: it would bias ASR toward the script and hide real errors
+            heard = ' '.join(s.text.strip() for s in segs)
         want, got = words(f['text']), words(heard)
         tone, other = [], []
-        for op, a1, a2, b1, b2 in difflib.SequenceMatcher(a=[plain(w) for w in want], b=[plain(w) for w in got], autojunk=False).get_opcodes():
+        for op, a1, a2, b1, b2 in difflib.SequenceMatcher(a=[accent(plain(w)) for w in want], b=[accent(plain(w)) for w in got], autojunk=False).get_opcodes():
             if op == 'equal':
-                tone += [(w, g) for w, g in zip(want[a1:a2], got[b1:b2]) if w != g]
+                tone += [(w, g) for w, g in zip(want[a1:a2], got[b1:b2]) if accent(w) != accent(g)]
             else:
                 other.append((' '.join(want[a1:a2]), ' '.join(got[b1:b2])))
         report.append({'file': f['file'], 'text': f['text'], 'heard': heard, 'toneDiffs': tone, 'wordDiffs': other})

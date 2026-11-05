@@ -156,3 +156,12 @@ npm run voicestudio -- gpu start|status|stop   # bật/xem/tắt thủ công; m�
 - **Tốc độ đo 2026-10-31** (cùng bản ghi mẫu, cùng câu): câu 3 giây 11 giây (CPU laptop 159 giây); câu 75 ký tự ~5 giây âm thanh 23 giây (CPU 220 giây), tức nhanh khoảng 9–14 lần. Mỗi lần chạy mất thêm ~40 giây bật server và nạp model, nên gộp nhiều cảnh vào một lần chạy (`--all`) thay vì gọi lẻ từng cảnh. VRAM dùng ~5,9/6 GB, không có lỗi hết bộ nhớ trong log.
 - **Giới hạn:** VoxCPM2 4,6 GB (bf16) trên card 6 GB là sát; Turing không có bf16 phần cứng. Không chạy song song game/stream (Sunshine) nặng GPU khi clone.
 
+## Giọng clone: nhịp và phát âm (người dùng 2026-11-05)
+
+- Không làm chậm hay giãn giọng clone (atempo, kéo dài giữ cao độ): nghe ra giọng bị chỉnh và có chỗ khựng. Tốc độ đọc
+  giữ nguyên bản clone; chỉ chỉnh khoảng nghỉ cho cân đối, không đọc một lèo và không ngắt quá nhiều. Câu nào vẫn quá
+  nhanh hay ngắt sai thì clone lại riêng câu đó. Mức nghỉ chuẩn của series Đọc sách, hiểu mình nằm trong
+  `series/tam-ly-cuoc-song/book-insights/workflow.json` (bước narration).
+- Giọng clone của kênh đọc "x" thành "s" (xếp → sếp): đó là cách phát âm, không phải lỗi. `check-tones.py` bỏ qua x/s
+  ở đầu chữ; `--recheck` chấm lại các bản đã nhận dạng mà không chạy lại nhận dạng.
+
