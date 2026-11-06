@@ -3,7 +3,12 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
-const {workflow, MODEL} = require('./cli.cjs');
+const {workflow, MODEL, LOCKED, assertUnlocked} = require('./cli.cjs');
+
+test('local image generation stays locked until the user explicitly re-enables it', () => {
+  assert.equal(LOCKED, true);
+  assert.throws(() => assertUnlocked(), /tạm khóa/);
+});
 
 test('SDXL workflow is local, reproducible and saves one image', () => {
   const o = {project: 'book-hvtt-001-overview', name: 'test', width: 1216, height: 704, steps: 30, cfg: 7, seed: 42};

@@ -1,5 +1,7 @@
 # Tạo ảnh local cho thumbnail
 
+> **Tạm khóa từ 2026-11-06 theo yêu cầu người dùng.** Runtime và model được giữ lại, nhưng lệnh `start`/`generate` từ chối chạy. Thumbnail tiếp tục dùng quy trình Remotion/SVG cũ. `status` và `stop` vẫn hoạt động để kiểm tra hoặc giải phóng tài nguyên. Chỉ mở lại khi người dùng yêu cầu rõ ràng.
+
 Runtime dùng **ComfyUI v0.44.0 + SDXL Base 1.0** trên `desktop-kndgm60` (GTX 1660 SUPER 6 GB). Nó không dùng API trả phí, chỉ bind `127.0.0.1` trong WSL và được chuyển tiếp về `127.0.0.1:8189` trên laptop. Runtime/model nằm ngoài Git tại `~/imagegen-gpu`; không đưa model, cache hay ảnh nháp vào repository.
 
 SDXL Base 1.0 là model CreativeML Open RAIL++-M, file `sd_xl_base_1.0.safetensors` 6.938.078.334 byte, SHA-256 `31e35c80fc4829d14f90153f4c74cd59c90b779f6afe05a74cd6120b893f7e5b`. ComfyUI dùng GPL-3.0. Bản cài giữ license SDXL tại `~/imagegen-gpu/SDXL-LICENSE.md` và commit ComfyUI tại `~/imagegen-gpu/COMFYUI_COMMIT`.

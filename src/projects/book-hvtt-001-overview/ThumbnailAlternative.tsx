@@ -1,5 +1,5 @@
 import type {FC} from 'react';
-import {AbsoluteFill, CanvasImage, Img, staticFile} from 'remotion';
+import {AbsoluteFill, CanvasImage, staticFile} from 'remotion';
 import '../../shared/stoic-fonts';
 
 export type ThumbnailAlternativeSpec = {
@@ -12,8 +12,6 @@ export type ThumbnailAlternativeSpec = {
   concreteSituation: string;
   scene: 'seated-book' | 'doorway-step';
   bookCover?: string;
-  backgroundImage?: string;
-  backgroundTranslateX?: number;
 };
 
 const GOLD = '#F4B942';
@@ -58,17 +56,13 @@ const DoorwayStep: FC = () => <svg aria-label="Một người đang bước qua 
 export const BookThumbnailAlternative: FC<{spec: ThumbnailAlternativeSpec; testId: string}> = ({spec, testId}) => {
   const Scene = spec.scene === 'seated-book' ? SeatedBook : DoorwayStep;
   return <AbsoluteFill data-testid={testId} style={{background: spec.colors.background, color: spec.colors.primary, fontFamily: 'Stoic Sans, sans-serif', overflow: 'hidden'}}>
-    {spec.backgroundImage ? <Img src={staticFile(spec.backgroundImage)} style={{position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transform: `translateX(${spec.backgroundTranslateX ?? 0}px)`}} /> : <Scene />}
-    <div style={{position: 'absolute', inset: 0, background: spec.backgroundImage
-      ? 'linear-gradient(90deg, rgba(3,5,8,1) 0%, rgba(3,5,8,.98) 39%, rgba(3,5,8,.82) 54%, rgba(3,5,8,.16) 78%, rgba(3,5,8,.06) 100%)'
-      : 'linear-gradient(90deg, rgba(3,5,8,.98) 0%, rgba(3,5,8,.9) 38%, rgba(3,5,8,.18) 69%, rgba(3,5,8,0) 100%)'}} />
+    <Scene />
+    <div style={{position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(3,5,8,.98) 0%, rgba(3,5,8,.9) 38%, rgba(3,5,8,.18) 69%, rgba(3,5,8,0) 100%)'}} />
     {spec.bookCover ? <>
-      <div style={{position: 'absolute', left: spec.backgroundImage ? 963 : 730, top: spec.backgroundImage ? 266 : 286, width: spec.backgroundImage ? 290 : 330, height: spec.backgroundImage ? 350 : 410, background: 'radial-gradient(ellipse, rgba(244,185,66,.58), rgba(244,185,66,0) 68%)'}} />
-      <CanvasImage src={staticFile(spec.bookCover)} style={{position: 'absolute', left: spec.backgroundImage ? 1020 : 792, top: spec.backgroundImage ? 306 : 318, width: spec.backgroundImage ? 174 : 220, height: spec.backgroundImage ? 268 : 340, objectFit: 'cover', rotate: '-6deg', borderRadius: 5, boxShadow: '0 26px 48px rgba(0,0,0,.86), 0 0 0 4px rgba(255,218,139,.82), 0 0 34px rgba(244,185,66,.5)'}} />
-      {!spec.backgroundImage ? <>
-        <div style={{position: 'absolute', left: 775, top: 483, width: 38, height: 38, borderRadius: '50%', background: '#c8a47d', boxShadow: '0 5px 12px rgba(0,0,0,.5)'}} />
-        <div style={{position: 'absolute', left: 986, top: 455, width: 38, height: 38, borderRadius: '50%', background: '#c8a47d', boxShadow: '0 5px 12px rgba(0,0,0,.5)'}} />
-      </> : null}
+      <div style={{position: 'absolute', left: 730, top: 286, width: 330, height: 410, background: 'radial-gradient(ellipse, rgba(244,185,66,.58), rgba(244,185,66,0) 68%)'}} />
+      <CanvasImage src={staticFile(spec.bookCover)} style={{position: 'absolute', left: 792, top: 318, width: 220, height: 340, objectFit: 'cover', rotate: '-6deg', borderRadius: 5, boxShadow: '0 26px 48px rgba(0,0,0,.86), 0 0 0 4px rgba(255,218,139,.82), 0 0 34px rgba(244,185,66,.5)'}} />
+      <div style={{position: 'absolute', left: 775, top: 483, width: 38, height: 38, borderRadius: '50%', background: '#c8a47d', boxShadow: '0 5px 12px rgba(0,0,0,.5)'}} />
+      <div style={{position: 'absolute', left: 986, top: 455, width: 38, height: 38, borderRadius: '50%', background: '#c8a47d', boxShadow: '0 5px 12px rgba(0,0,0,.5)'}} />
     </> : null}
     <div style={{position: 'absolute', left: 64, top: 154, width: `${spec.textWidthRatio * 100}%`, fontWeight: 700, fontSize: spec.minFontSize, lineHeight: .98, letterSpacing: -2, WebkitTextStroke: '2px rgba(0,0,0,.88)', textShadow: '0 7px 2px rgba(0,0,0,.82), 0 14px 34px rgba(0,0,0,.9)'}}>
       <div style={{color: spec.colors.primary, whiteSpace: 'nowrap'}}>{spec.messageLines[0]}</div>

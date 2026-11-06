@@ -8,6 +8,11 @@ const ROOT = path.resolve(__dirname, '../..');
 const MODEL = 'sd_xl_base_1.0.safetensors';
 const POLL_MS = 1000;
 const TIMEOUT_MS = 20 * 60 * 1000;
+const LOCKED = true; // User decision 2026-11-06: keep the installed runtime, but do not use it for thumbnails.
+
+function assertUnlocked() {
+  if (LOCKED) throw Error('Tạo ảnh SDXL local đang tạm khóa theo yêu cầu của người dùng; thumbnail tiếp tục dùng quy trình Remotion/SVG cũ.');
+}
 
 function values(argv) {
   const out = {};
@@ -92,6 +97,7 @@ async function generateWithApi(base, o, positive, negative, fetchImpl = fetch) {
 }
 
 async function generate(argv) {
+  assertUnlocked();
   const o = parseGenerate(argv), positive = fs.readFileSync(o.promptFile, 'utf8').trim();
   const negative = o.negativeFile ? fs.readFileSync(o.negativeFile, 'utf8').trim() : 'text, letters, logo, watermark, face, deformed hands, extra fingers, duplicate person, split screen, border';
   if (!positive) throw Error('Prompt trống.');
@@ -117,10 +123,10 @@ async function main() {
   const [command = 'status', ...argv] = process.argv.slice(2);
   if (command === 'generate') return generate(argv);
   if (command === 'status') return console.log(JSON.stringify((await gpu.status(ROOT)).imagegen, null, 2));
-  if (command === 'start') {const state = await gpu.start(ROOT, 'imagegen', {lease: 'manual'});return console.log(`ComfyUI SDXL sẵn sàng tại ${state.url}`);}
+  if (command === 'start') {assertUnlocked();const state = await gpu.start(ROOT, 'imagegen', {lease: 'manual'});return console.log(`ComfyUI SDXL sẵn sàng tại ${state.url}`);}
   if (command === 'stop') {const state = await gpu.stop(ROOT, 'imagegen');return console.log(state.remote || 'Đã dừng ComfyUI SDXL.');}
   throw Error('Usage: npm run image:local -- status|start|stop|generate --project <slug> --name <id> --prompt-file <file> [--negative-file <file>] [--seed N] [--width 1024 --height 576 --steps 24 --cfg 7]');
 }
 
-module.exports = {parseGenerate, workflow, generateWithApi, MODEL};
+module.exports = {parseGenerate, workflow, generateWithApi, MODEL, LOCKED, assertUnlocked};
 if (require.main === module) main().catch(error => {console.error(error.message);process.exitCode = 1;});
