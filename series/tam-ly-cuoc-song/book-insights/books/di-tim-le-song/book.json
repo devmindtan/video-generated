@@ -21,8 +21,8 @@
   "ocr": false,
   "chapterMap": "chapters.json",
   "research": "research.md",
-  "sectionsTotal": 4,
-  "sectionsRead": 4,
+  "chaptersTotal": 4,
+  "chaptersRead": 4,
   "frontMatterRead": true,
   "checkedAt": "2026-11-06"
 }
