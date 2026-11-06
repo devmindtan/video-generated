@@ -85,7 +85,7 @@ Lệnh trên là hướng dẫn cài tùy chọn, **chưa được workflow tự
 Copy `docs/templates/book-research.md` vào `docs/books/<book>/research.md` khi có tài liệu thật. Copy chapter map template; không tạo nội dung hoặc số trang giả. Các file nghiên cứu chỉ giữ ghi chú diễn giải, tham chiếu và trích đoạn ngắn cần thiết; toàn văn/page cache nằm riêng trong library đã ignore.
 
 1. Chốt tên tác giả, tác phẩm, ấn bản; ghi source SHA/edition.
-2. Lập chapter map từ bookmark đã kiểm hoặc mục lục in. Ghi trang đã đọc và phần chưa đọc.
+2. Lập chapter map từ bookmark đã kiểm hoặc mục lục in. Ghi trang đã đọc và phần chưa đọc. Giữ đúng tên trường của mẫu `docs/templates/book-chapters.json` dù sách chia theo phần, mục hay chương: danh sách là `chapters`, tiến độ là `coverage.chaptersRead` / `coverage.chaptersTotal` (và `chaptersRead` / `chaptersTotal` trong book.json). Trang quản lý chỉ đọc các trường này; đặt tên khác (vd. `sections`) thì tủ sách hiện như chưa đọc dù đã đọc xong (Đi tìm lẽ sống, 2026-11-06). Đơn vị nhỏ hơn bên trong một chương có thể thêm `sectionsRead` / `sectionsTotal` bên cạnh.
 3. Tập tổng quan: đọc bao quát **mọi chương**, lập ghi chú từng chương, rồi tổng hợp. Không chỉ lấy vài kết quả search và gọi đó là tóm tắt toàn sách.
 4. Tập theo chủ đề: đọc đủ chương liên quan và ngữ cảnh lân cận; nêu phạm vi, không nhận là đại diện toàn bộ tác phẩm.
 5. Tách rõ **ý tác giả**, **diễn giải của kênh**, **ví dụ tự viết**, **phản biện/đối chiếu bên ngoài**. Mỗi luận điểm gán cho tác giả phải truy ngược đến source SHA, chương và PDF page.
