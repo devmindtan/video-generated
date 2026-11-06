@@ -11,6 +11,8 @@ SDXL Base 1.0 là model CreativeML Open RAIL++-M, file `sd_xl_base_1.0.safetenso
 - Mỗi lần sinh lưu PNG và manifest JSON (prompt, negative prompt, seed, kích thước, steps, CFG) dưới `public/<slug>/generated/` để tái tạo được.
 - Card 6 GB chỉ chạy một model nặng. Lệnh từ chối chạy nếu VoiceStudio hoặc Ollama đang giữ GPU; không tự dừng công việc khác.
 - ComfyUI chạy `--offline`, tắt custom nodes và không dùng partner/cloud nodes.
+- Cấu hình card 6 GB dùng `--lowvram`, VAE trên CPU và nạp UNet/text encoder ở FP8; kích thước mặc định đã thử thực tế là 1024×576, 24 bước. Không dùng cấu hình `novram` vì 12 GB RAM của WSL không đủ an toàn cho checkpoint SDXL đầy đủ.
+- Prompt không được coi là bộ điều khiển bố cục chính xác. Chọn ảnh đạt về chủ thể/ánh sáng, sau đó dùng Remotion để khóa vị trí, gradient, chữ và bìa thật; loại ảnh lộ mặt hoặc không còn vùng chữ sạch.
 
 ## Dùng
 
@@ -22,7 +24,7 @@ npm run image:local -- generate \
   --name thumbnail-background-v1 \
   --prompt-file docs/projects/book-hvtt-001-overview/thumbnail-prompt.txt \
   --negative-file docs/projects/book-hvtt-001-overview/thumbnail-negative.txt \
-  --seed 20261106 --width 1216 --height 704 --steps 30 --cfg 7
+  --seed 20261106 --width 1024 --height 576 --steps 24 --cfg 7
 ```
 
 Các lệnh quản trị:

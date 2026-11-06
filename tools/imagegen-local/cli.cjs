@@ -45,12 +45,12 @@ function integer(value, fallback, min, max, label) {
 function parseGenerate(argv) {
   const o = values(argv), project = safeProject(o.project);
   if (!/^[a-z0-9][a-z0-9-]*$/.test(o.name || '')) throw Error('--name chỉ nhận chữ thường, số và dấu gạch ngang.');
-  const width = integer(o.width, 1216, 512, 1536, '--width');
-  const height = integer(o.height, 704, 512, 1536, '--height');
+  const width = integer(o.width, 1024, 512, 1536, '--width');
+  const height = integer(o.height, 576, 512, 1536, '--height');
   if (width % 64 || height % 64) throw Error('--width và --height phải chia hết cho 64.');
   return {project, name: o.name, promptFile: safeFile(o['prompt-file'], '--prompt-file'),
     negativeFile: o['negative-file'] ? safeFile(o['negative-file'], '--negative-file') : null,
-    width, height, steps: integer(o.steps, 30, 1, 60, '--steps'), cfg: Number(o.cfg || 7),
+    width, height, steps: integer(o.steps, 24, 1, 60, '--steps'), cfg: Number(o.cfg || 7),
     seed: integer(o.seed, Math.floor(Math.random() * 2 ** 31), 0, 2 ** 32 - 1, '--seed')};
 }
 
@@ -119,7 +119,7 @@ async function main() {
   if (command === 'status') return console.log(JSON.stringify((await gpu.status(ROOT)).imagegen, null, 2));
   if (command === 'start') {const state = await gpu.start(ROOT, 'imagegen', {lease: 'manual'});return console.log(`ComfyUI SDXL sẵn sàng tại ${state.url}`);}
   if (command === 'stop') {const state = await gpu.stop(ROOT, 'imagegen');return console.log(state.remote || 'Đã dừng ComfyUI SDXL.');}
-  throw Error('Usage: npm run image:local -- status|start|stop|generate --project <slug> --name <id> --prompt-file <file> [--negative-file <file>] [--seed N] [--width 1216 --height 704 --steps 30 --cfg 7]');
+  throw Error('Usage: npm run image:local -- status|start|stop|generate --project <slug> --name <id> --prompt-file <file> [--negative-file <file>] [--seed N] [--width 1024 --height 576 --steps 24 --cfg 7]');
 }
 
 module.exports = {parseGenerate, workflow, generateWithApi, MODEL};
