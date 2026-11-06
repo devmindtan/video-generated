@@ -1,5 +1,5 @@
 import type {FC} from 'react';
-import {AbsoluteFill} from 'remotion';
+import {AbsoluteFill, CanvasImage, staticFile} from 'remotion';
 import '../../shared/stoic-fonts';
 
 export type ThumbnailAlternativeSpec = {
@@ -10,31 +10,27 @@ export type ThumbnailAlternativeSpec = {
   minFontSize: number;
   fullBleed: boolean;
   concreteSituation: string;
-  scene: 'seated-phone' | 'doorway-step';
+  scene: 'seated-book' | 'doorway-step';
+  bookCover?: string;
 };
 
 const GOLD = '#F4B942';
 
-const SeatedPhone: FC = () => <svg aria-label="Một người ngồi bệt, cúi nhìn điện thoại" viewBox="0 0 1280 720" style={{position: 'absolute', inset: 0, width: '100%', height: '100%'}}>
+const SeatedBook: FC = () => <svg aria-label="Một người ngồi bệt bên cuốn sách" viewBox="0 0 1280 720" style={{position: 'absolute', inset: 0, width: '100%', height: '100%'}}>
   <defs>
-    <linearGradient id="room-light" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#172532" /><stop offset="1" stopColor="#07090d" /></linearGradient>
-    <radialGradient id="phone-glow"><stop offset="0" stopColor="#bfe7ff" stopOpacity=".76" /><stop offset="1" stopColor="#bfe7ff" stopOpacity="0" /></radialGradient>
+    <linearGradient id="room-light" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#111923" /><stop offset="1" stopColor="#040609" /></linearGradient>
+    <radialGradient id="subject-light"><stop offset="0" stopColor="#efbd59" stopOpacity=".34" /><stop offset="1" stopColor="#efbd59" stopOpacity="0" /></radialGradient>
   </defs>
   <rect width="1280" height="720" fill="url(#room-light)" />
-  <path d="M760 0H1280V720H685C772 548 824 306 760 0Z" fill="#0d141b" />
-  <path d="M1008 94H1206V388H1008Z" fill="#162b38" stroke="#365366" strokeWidth="8" />
-  <path d="M1107 94V388M1008 241H1206" stroke="#365366" strokeWidth="7" />
-  <path d="M1008 388L752 720H1112L1206 388Z" fill="#1a2a31" opacity=".52" />
-  <ellipse cx="944" cy="690" rx="250" ry="35" fill="#030506" opacity=".78" />
-  <circle cx="944" cy="306" r="78" fill="#1d252d" />
-  <path d="M875 292C897 226 980 207 1025 264C985 246 946 255 918 284C901 301 893 320 889 345C871 332 866 311 875 292Z" fill="#090c10" />
-  <path d="M900 373C851 419 830 500 850 585L1013 590C1035 486 1012 412 974 371C949 384 924 384 900 373Z" fill="#25313b" stroke="#3e4d58" strokeWidth="5" />
-  <path d="M884 446C828 490 786 548 743 624M968 446C1013 491 1050 550 1084 626" fill="none" stroke="#25313b" strokeWidth="42" strokeLinecap="round" />
-  <path d="M874 590C830 614 795 648 768 696M994 590C1033 619 1061 653 1080 696" fill="none" stroke="#1b242c" strokeWidth="58" strokeLinecap="round" />
-  <ellipse cx="927" cy="476" rx="126" ry="112" fill="url(#phone-glow)" />
-  <path d="M894 458L962 438L981 510L913 529Z" fill="#cdeeff" stroke="#f8fdff" strokeWidth="6" />
-  <path d="M890 481L842 510M979 479L1027 503" fill="none" stroke="#c9a983" strokeWidth="20" strokeLinecap="round" />
-  <path d="M682 654H1240" stroke={GOLD} strokeOpacity=".28" strokeWidth="4" />
+  <ellipse cx="1010" cy="378" rx="320" ry="360" fill="url(#subject-light)" />
+  <path d="M704 620H1280V720H664Z" fill="#090d11" />
+  <ellipse cx="1014" cy="686" rx="292" ry="40" fill="#020304" opacity=".85" />
+  <circle cx="1014" cy="235" r="96" fill="#26313b" stroke="#72592e" strokeWidth="6" />
+  <path d="M923 220C942 142 1038 115 1101 177C1063 166 1018 176 985 207C961 230 951 257 951 286C928 268 916 244 923 220Z" fill="#070a0d" />
+  <path d="M952 326C900 378 882 488 905 604L1116 610C1142 476 1114 375 1068 324C1031 344 991 344 952 326Z" fill="#293642" stroke="#596672" strokeWidth="6" />
+  <path d="M930 410C862 460 816 524 780 602M1080 410C1138 465 1176 526 1200 600" fill="none" stroke="#293642" strokeWidth="54" strokeLinecap="round" />
+  <path d="M938 598C875 624 828 656 790 704M1080 600C1129 630 1167 663 1197 704" fill="none" stroke="#1c252d" strokeWidth="72" strokeLinecap="round" />
+  <path d="M742 654H1244" stroke={GOLD} strokeOpacity=".48" strokeWidth="5" />
 </svg>;
 
 const DoorwayStep: FC = () => <svg aria-label="Một người đang bước qua cánh cửa sáng" viewBox="0 0 1280 720" style={{position: 'absolute', inset: 0, width: '100%', height: '100%'}}>
@@ -58,10 +54,30 @@ const DoorwayStep: FC = () => <svg aria-label="Một người đang bước qua 
 </svg>;
 
 export const BookThumbnailAlternative: FC<{spec: ThumbnailAlternativeSpec; testId: string}> = ({spec, testId}) => {
-  const Scene = spec.scene === 'seated-phone' ? SeatedPhone : DoorwayStep;
+  const Scene = spec.scene === 'seated-book' ? SeatedBook : DoorwayStep;
   return <AbsoluteFill data-testid={testId} style={{background: spec.colors.background, color: spec.colors.primary, fontFamily: 'Stoic Sans, sans-serif', overflow: 'hidden'}}>
     <Scene />
     <div style={{position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(3,5,8,.98) 0%, rgba(3,5,8,.9) 38%, rgba(3,5,8,.18) 69%, rgba(3,5,8,0) 100%)'}} />
+    {spec.bookCover ? <>
+      <div style={{position: 'absolute', left: 730, top: 286, width: 330, height: 410, background: 'radial-gradient(ellipse, rgba(244,185,66,.58), rgba(244,185,66,0) 68%)'}} />
+      <CanvasImage
+        src={staticFile(spec.bookCover)}
+        style={{
+          position: 'absolute',
+          left: 792,
+          top: 318,
+          width: 220,
+          height: 340,
+          objectFit: 'cover',
+          rotate: '-6deg',
+          borderRadius: 5,
+          boxShadow: '0 26px 48px rgba(0,0,0,.86), 0 0 0 4px rgba(255,218,139,.82), 0 0 34px rgba(244,185,66,.5)',
+          translate: '150.8px -83.2px'
+        }}
+      />
+      <div style={{position: 'absolute', left: 775, top: 483, width: 38, height: 38, borderRadius: '50%', background: '#c8a47d', boxShadow: '0 5px 12px rgba(0,0,0,.5)'}} />
+      <div style={{position: 'absolute', left: 986, top: 455, width: 38, height: 38, borderRadius: '50%', background: '#c8a47d', boxShadow: '0 5px 12px rgba(0,0,0,.5)'}} />
+    </> : null}
     <div style={{position: 'absolute', left: 64, top: 154, width: `${spec.textWidthRatio * 100}%`, fontWeight: 700, fontSize: spec.minFontSize, lineHeight: .98, letterSpacing: -2, WebkitTextStroke: '2px rgba(0,0,0,.88)', textShadow: '0 7px 2px rgba(0,0,0,.82), 0 14px 34px rgba(0,0,0,.9)'}}>
       <div style={{color: spec.colors.primary, whiteSpace: 'nowrap'}}>{spec.messageLines[0]}</div>
       <div style={{color: spec.colors.accent, whiteSpace: 'nowrap'}}>{spec.messageLines[1]}</div>
