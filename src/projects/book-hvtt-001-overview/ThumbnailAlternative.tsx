@@ -60,21 +60,7 @@ export const BookThumbnailAlternative: FC<{spec: ThumbnailAlternativeSpec; testI
     <div style={{position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(3,5,8,.98) 0%, rgba(3,5,8,.9) 38%, rgba(3,5,8,.18) 69%, rgba(3,5,8,0) 100%)'}} />
     {spec.bookCover ? <>
       <div style={{position: 'absolute', left: 730, top: 286, width: 330, height: 410, background: 'radial-gradient(ellipse, rgba(244,185,66,.58), rgba(244,185,66,0) 68%)'}} />
-      <CanvasImage
-        src={staticFile(spec.bookCover)}
-        style={{
-          position: 'absolute',
-          left: 792,
-          top: 318,
-          width: 220,
-          height: 340,
-          objectFit: 'cover',
-          rotate: '-6deg',
-          borderRadius: 5,
-          boxShadow: '0 26px 48px rgba(0,0,0,.86), 0 0 0 4px rgba(255,218,139,.82), 0 0 34px rgba(244,185,66,.5)',
-          translate: '150.8px -83.2px'
-        }}
-      />
+      <CanvasImage src={staticFile(spec.bookCover)} style={{position: 'absolute', left: 792, top: 318, width: 220, height: 340, objectFit: 'cover', rotate: '-6deg', borderRadius: 5, boxShadow: '0 26px 48px rgba(0,0,0,.86), 0 0 0 4px rgba(255,218,139,.82), 0 0 34px rgba(244,185,66,.5)'}} />
       <div style={{position: 'absolute', left: 775, top: 483, width: 38, height: 38, borderRadius: '50%', background: '#c8a47d', boxShadow: '0 5px 12px rgba(0,0,0,.5)'}} />
       <div style={{position: 'absolute', left: 986, top: 455, width: 38, height: 38, borderRadius: '50%', background: '#c8a47d', boxShadow: '0 5px 12px rgba(0,0,0,.5)'}} />
     </> : null}
