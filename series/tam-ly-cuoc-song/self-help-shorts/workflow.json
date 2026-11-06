@@ -29,9 +29,14 @@
     },
     "metadata": {
       "rules": [
-        "Tiêu đề đặt lời hứa cảm xúc/tình huống cụ thể lên trước. Chỉ thêm cụm tìm kiếm khi nó tự nhiên và đúng nội dung (ví dụ \"cách tha thứ cho bản thân sau một sai lầm\"); không nhồi hậu tố chung như \"bài học cuộc sống\" vào mọi video, không coi điểm từ khóa của vidIQ (như 73, 70, 67) là một phần của từ khóa và không đổi hàng loạt tiêu đề cũ khi chưa có thử nghiệm đối chứng."
+        "S1 · Title Shorts — Hook sớm: đặt thông điệp quan trọng trong 40 ký tự đầu, ưu tiên tình huống hoặc cảm xúc cụ thể.",
+        "S2 · Title Shorts — Cụ thể, dễ hình dung: dùng tình huống, hành động, mâu thuẫn hoặc hệ quả thay cho câu hỏi trừu tượng.",
+        "S3 · Title Shorts — Ngắn và tự nhiên: ưu tiên 35–60 ký tự khi phù hợp; không nhồi từ khóa, tên series hay dấu câu. Chỉ thêm cụm tìm kiếm khi tự nhiên và đúng nội dung; không bắt buộc đuôi series, dấu hỏi hoặc cấm tên sách.",
+        "D1 · Description Shorts — Hai dòng đầu nêu giá trị hoặc thông điệp chính; không mở bằng thông tin hành chính.",
+        "D2 · Description Shorts — Tóm tắt ngắn nội dung; ghi sách/tác giả khi có nguồn và link video đầy đủ nếu có, không ép link vào một dòng cố định.",
+        "D3 · Description Shorts — Dùng một CTA tự nhiên khi phù hợp và khoảng 2–4 hashtag liên quan; không bắt buộc câu hỏi hay một bộ hashtag cố định."
       ],
-      "notes": ""
+      "notes": "Tách nghiên cứu từ khóa SEO khỏi rule viết metadata. Không coi điểm từ khóa vidIQ là một phần của từ khóa, không ép cụm điểm cao vào mọi title và không đổi hàng loạt title cũ khi chưa có thử nghiệm đối chứng."
     },
     "qa": {
       "rules": [
