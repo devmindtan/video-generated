@@ -13,7 +13,17 @@ if [[ "$(git -C "$BASE/app" describe --tags --exact-match 2>/dev/null || true)" 
   echo "ComfyUI trong $BASE/app không đúng tag $TAG; không tự ghi đè." >&2
   exit 1
 fi
-if [[ ! -x "$BASE/venv/bin/python" ]]; then python3 -m venv "$BASE/venv"; fi
+if [[ ! -x "$BASE/venv/bin/pip" ]]; then
+  if [[ -d "$BASE/venv" ]]; then mv "$BASE/venv" "$BASE/venv-incomplete-$(date +%Y%m%d-%H%M%S)"; fi
+  BOOTSTRAP_PY="$HOME/voicestudio-gpu/app/.venv/bin/python"
+  BOOTSTRAP_PIP="$HOME/voicestudio-gpu/app/.venv/bin/pip"
+  if [[ ! -x "$BOOTSTRAP_PY" || ! -x "$BOOTSTRAP_PIP" ]]; then
+    echo "Thiếu python3-venv và không tìm thấy Python bootstrap của VoiceStudio." >&2
+    exit 1
+  fi
+  "$BOOTSTRAP_PIP" install --target "$BASE/bootstrap" virtualenv==20.35.4
+  PYTHONPATH="$BASE/bootstrap" "$BOOTSTRAP_PY" -m virtualenv --python python3 "$BASE/venv"
+fi
 "$BASE/venv/bin/pip" install --upgrade pip
 "$BASE/venv/bin/pip" install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu126
 "$BASE/venv/bin/pip" install -r "$BASE/app/requirements.txt"
