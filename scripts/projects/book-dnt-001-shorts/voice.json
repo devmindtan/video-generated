@@ -1,26 +1,12 @@
 {
-  "voice": "Giọng người dùng (clone) +2 bán cung",
-  "name": "Giọng người dùng (clone) +2 bán cung",
-  "option": 2,
-  "engine": "VoxCPM2 qua VoiceStudio, ưu tiên máy GPU desktop-kndgm60",
-  "reference": "library/voice-references/tam-nhin-cho-cuoc-song/clips/006130-15s.wav",
-  "consent": "self",
-  "pitchSemitones": 2,
-  "processing": "hook và CTA clone mới sau initial lock; đoạn trích dùng nguyên take clone cuối của book-dnt-001-overview; không kéo chậm, chỉ chỉnh khoảng nghỉ",
-  "selection": "Người dùng nghe và chọn hook/CTA; đoạn trích chỉ nối sau khi take cuối của tập dài được chọn.",
-  "excerpts": {
-    "short-1": {
-      "project": "book-dnt-001-overview",
-      "section": "3D",
-      "take": null,
-      "fromSeconds": null,
-      "toSeconds": null,
-      "status": "awaiting-final-clone-take"
-    }
-  },
-  "sample": {
-    "proposed": "book-dnt-001-overview/audio/08-phan-4-voice-full.wav",
-    "status": "not-yet-final"
-  },
+  "voice": "Quốc Tuấn",
+  "name": "Quốc Tuấn",
+  "option": 1,
+  "engine": "VieNeu-TTS v3 Turbo local",
+  "qualityProfile": "natural48",
+  "speed": 1,
+  "processing": "Một take cho hook, đoạn trích và CTA; không kéo chậm, timing hình/caption/nhạc bám audio thực.",
+  "selection": "Người dùng chốt giọng preset mặc định trong chat ngày 2026-11-06.",
+  "take": "quoc-tuan-v1",
   "segments": {}
 }

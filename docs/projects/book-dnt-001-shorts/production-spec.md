@@ -29,7 +29,7 @@
 
 ## Âm thanh
 
-- Giọng clone người dùng +2 bán cung. Không kéo chậm; chỉ đặt khoảng nghỉ tự nhiên khoảng 0,35–0,55 giây sau hook
+- Giọng preset Quốc Tuấn, VieNeu v3 Turbo local, 1×. Không kéo chậm; chỉ đặt khoảng nghỉ tự nhiên khoảng 0,35–0,55 giây sau hook
   và 0,7–0,9 giây trước CTA.
 - Nhạc Moavii — Butterflies: tốc độ 0,85; 4% khi có lời, 8% lúc nghỉ; fade theo cạnh clip và giữ Start/Duration/End
   chỉnh độc lập trong Studio.

@@ -34,13 +34,13 @@ không zoom lặp, không effect trang trí không mang nghĩa.
 
 ## Giọng đọc
 
-Lựa chọn 2, giọng clone của chính người dùng +2 bán cung, đồng nhất với tập dài. Hook và CTA clone mới sau khi khóa;
-đoạn trích dùng nguyên take clone cuối của tập dài, không dùng giọng tạm Quốc Tuấn làm giọng cuối. Không kéo chậm
-giọng; mốc thời gian chỉ được khóa sau khi người dùng chọn take.
+Lựa chọn 1 — preset Quốc Tuấn, VieNeu v3 Turbo local, tốc độ tự nhiên 1×. Người dùng chốt trong chat ngày 2026-11-06:
+không dùng clone, triển khai luôn bằng giọng mặc định. Toàn bộ hook, đoạn trích và CTA dùng cùng preset; không kéo chậm
+giọng. Mốc hình, caption và nhạc bám theo audio thực sau khi tổng hợp.
 
 ## Hoàn thành
 
-- [ ] Gói chốt ban đầu được người dùng khóa: kịch bản, nhạc, giọng + mẫu, thông số, prompt animation
-- [ ] Hook/CTA được clone trên máy GPU và người dùng nghe chọn; đoạn trích dùng take cuối của tập dài
+- [x] Nội dung và hướng làm được người dùng chốt trong chat ngày 2026-11-06
+- [ ] Tổng hợp toàn bộ lời bằng preset Quốc Tuấn và kiểm tra phát âm tiếng Việt
 - [ ] Dựng Composition + Still, phụ đề sáng theo giọng, nhạc và source chỉnh được trong Remotion Studio
 - [ ] Tạo description.md, captions.srt, qa.json và chạy kiểm tra hình/âm thanh; không render tự động
