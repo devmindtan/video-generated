@@ -341,6 +341,22 @@
         }
       ],
       "book": "dac-nhan-tam"
+    },
+    {
+      "id": "book-dnt-001-shorts",
+      "title": "Short giới thiệu tập 3 · Đắc nhân tâm",
+      "status": "planning",
+      "format": "short",
+      "durationSeconds": 45,
+      "paths": {
+        "source": "src/projects/book-dnt-001-shorts",
+        "scripts": "scripts/projects/book-dnt-001-shorts",
+        "docs": "docs/projects/book-dnt-001-shorts",
+        "assets": "public/book-dnt-001-shorts"
+      },
+      "registrations": [],
+      "book": "dac-nhan-tam",
+      "promotes": "book-dnt-001-overview"
     }
   ]
 }
