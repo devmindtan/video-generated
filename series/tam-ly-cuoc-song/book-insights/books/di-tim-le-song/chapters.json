@@ -1,0 +1,19 @@
+{
+  "book": "di-tim-le-song",
+  "sourceSha256": "88a880d0e46c274cf25875b12c58f07ab753d327a48cff6331a0af03e092925d",
+  "edition": "88a880d0e46c274cf25875b12c58f07ab753d327a48cff6331a0af03e092925d-de2a45e349f9",
+  "pageNumberConvention": "Chỉ dùng trang PDF 1-based. PDF không có page label; chưa xác minh ánh xạ với 224 trang in ghi ở trang thông tin ebook.",
+  "mappingSummary": "Sáu bookmark PDF trùng mục lục in ở PDF 3. Mốc bắt đầu từng phần đã kiểm bằng lớp chữ; mốc kết thúc lấy ngay trước bookmark kế tiếp.",
+  "coverage": {"sectionsRead": 0, "sectionsTotal": 4, "status": "in-progress", "resumeAtPdfPage": 11},
+  "frontMatter": [
+    {"title": "Thông tin ebook, mục lục và giới thiệu Viktor E. Frankl", "pdfStart": 2, "pdfEnd": 4, "readStatus": "read", "mappingSource": "text-checked"},
+    {"title": "Lời nói đầu — Harold S. Kushner", "pdfStart": 5, "pdfEnd": 7, "readStatus": "read", "mappingSource": "bookmark-and-text-checked"},
+    {"title": "Lời giới thiệu cho lần ấn bản năm 1992 — Viktor E. Frankl", "pdfStart": 8, "pdfEnd": 10, "readStatus": "read", "mappingSource": "bookmark-and-text-checked"}
+  ],
+  "sections": [
+    {"number": 1, "title": "Phần 1: Những trải nghiệm trong trại tập trung", "pdfStart": 11, "pdfEnd": 69, "readStatus": "not-read"},
+    {"number": 2, "title": "Phần 2: Sơ lược về liệu pháp ý nghĩa", "pdfStart": 70, "pdfEnd": 93, "readStatus": "not-read"},
+    {"number": 3, "title": "Tái bút 1984", "pdfStart": 94, "pdfEnd": 104, "readStatus": "not-read"},
+    {"number": 4, "title": "Lời cuối", "pdfStart": 105, "pdfEnd": 118, "readStatus": "not-read"}
+  ]
+}

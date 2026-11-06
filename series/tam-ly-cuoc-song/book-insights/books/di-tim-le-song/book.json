@@ -1,0 +1,28 @@
+{
+  "id": "di-tim-le-song",
+  "title": "Đi tìm lẽ sống",
+  "authors": ["Viktor E. Frankl"],
+  "status": "research",
+  "sourceSha256": "88a880d0e46c274cf25875b12c58f07ab753d327a48cff6331a0af03e092925d",
+  "note": "Đang đọc. Đã kiểm nguồn, ingest và đọc phần đầu sách PDF 2–10; tiếp tục từ Phần 1 ở PDF 11.",
+  "cacheEdition": "88a880d0e46c274cf25875b12c58f07ab753d327a48cff6331a0af03e092925d-de2a45e349f9",
+  "editionDetails": {
+    "edition": "Bản tiếng Việt, thông tin ebook ghi ngày xuất bản 08-2011",
+    "translators": ["Đặng Ngọc Thảo", "Giang Thủy", "Ngọc Hân"],
+    "publisher": "NXB Trẻ",
+    "publisherBrand": "First News - Trí Việt",
+    "year": 2011,
+    "provenance": "PDF người dùng thêm vào thư viện; trang thông tin ebook ghi nguồn Tve-4u/Sachvui. Cần đối chiếu bản in nếu dùng metadata xuất bản làm credit chính thức."
+  },
+  "sourceFile": "library/books/di-tim-le-song/sources/di-tim-le-song-viktor-emil-frankl.pdf",
+  "pdfPages": 118,
+  "extractedCharacters": 297258,
+  "textLayer": "native",
+  "ocr": false,
+  "chapterMap": "chapters.json",
+  "research": "research.md",
+  "sectionsTotal": 4,
+  "sectionsRead": 0,
+  "frontMatterRead": true,
+  "checkedAt": "2026-11-06"
+}
