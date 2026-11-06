@@ -1,0 +1,10 @@
+{
+  "messageLines": ["ĐỪNG MÃI", "TRÁCH MÌNH"],
+  "colors": {"background": "#080B10", "primary": "#FFFFFF", "accent": "#F4B942"},
+  "hasOutlineOrShadow": true,
+  "textWidthRatio": 0.5,
+  "minFontSize": 112,
+  "fullBleed": true,
+  "concreteSituation": "Một người ngồi bệt, cúi nhìn điện thoại",
+  "scene": "seated-phone"
+}

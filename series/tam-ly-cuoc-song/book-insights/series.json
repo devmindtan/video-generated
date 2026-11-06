@@ -34,6 +34,10 @@
           "kind": "Still"
         },
         {
+          "id": "BookHvttThumbnailAlternative",
+          "kind": "Still"
+        },
+        {
           "id": "BookHvttIntro",
           "kind": "Composition",
           "part": true
@@ -131,6 +135,10 @@
         },
         {
           "id": "BookAhThumbnail",
+          "kind": "Still"
+        },
+        {
+          "id": "BookAhThumbnailAlternative",
           "kind": "Still"
         },
         {
