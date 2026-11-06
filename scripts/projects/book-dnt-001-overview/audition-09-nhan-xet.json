@@ -1,0 +1,24 @@
+{
+  "title": "Đọc sách, hiểu mình — book-dnt-001-overview — 09-nhan-xet",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Khép lại Đắc nhân tâm, mình không nghĩ đây là cuốn sách dạy người ta khéo léo cho bằng được.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Nó giống một lời nhắc chú ý đến người khác nhiều hơn, và dù thích hay không thích cuốn sách, mình nghĩ ai đọc cũng có thể giữ lại được vài điều.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Nếu bạn có thời gian, có thể đọc qua để hiểu hơn: đọc chậm, rồi tự quyết định điều gì đáng giữ.",
+      "pauseAfter": 0
+    }
+  ]
+}

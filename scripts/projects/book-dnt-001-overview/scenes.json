@@ -1,0 +1,62 @@
+[
+  {
+    "id": "01-gioi-thieu-tap",
+    "title": "Giới thiệu tập",
+    "composition": "BookDntEpisodeCard"
+  },
+  {
+    "id": "02-mo-chuyen",
+    "title": "Mở chuyện",
+    "composition": "BookDntMoChuyen"
+  },
+  {
+    "id": "03-cuon-sach",
+    "title": "Phần 1 · Cuốn sách là gì",
+    "composition": "BookDntCuonSach"
+  },
+  {
+    "id": "04-soi-chi",
+    "title": "Phần 2 · Sợi chỉ xuyên suốt",
+    "composition": "BookDntSoiChi"
+  },
+  {
+    "id": "05-phan-1",
+    "title": "Phần một · Ba điều nền tảng",
+    "composition": "BookDntPhan1"
+  },
+  {
+    "id": "06-phan-2",
+    "title": "Phần hai · Sáu cách tạo thiện cảm",
+    "composition": "BookDntPhan2"
+  },
+  {
+    "id": "07-phan-3",
+    "title": "Phần ba · Khi hai người nghĩ khác nhau",
+    "composition": "BookDntPhan3"
+  },
+  {
+    "id": "08-phan-4",
+    "title": "Phần bốn · Góp ý mà không làm tổn thương",
+    "composition": "BookDntPhan4"
+  },
+  {
+    "id": "08e-diem-chua-dat",
+    "title": "Những điểm chưa đạt",
+    "composition": "BookDntChuaDat"
+  },
+  {
+    "id": "08f-tong-ket",
+    "title": "Tổng kết",
+    "composition": "BookDntTongKet"
+  },
+  {
+    "id": "08g-y-kien",
+    "title": "Ý kiến cá nhân",
+    "composition": "BookDntYKien"
+  },
+  {
+    "id": "09-nhan-xet",
+    "title": "Nhận xét chung",
+    "composition": "BookDntNhanXet"
+  }
+]

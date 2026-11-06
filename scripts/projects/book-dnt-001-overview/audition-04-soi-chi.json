@@ -1,0 +1,54 @@
+{
+  "title": "Đọc sách, hiểu mình — book-dnt-001-overview — 04-soi-chi",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Ba mươi nguyên tắc nghe thì nhiều, nhưng mình thấy chúng đều đi ra từ một quan sát của tác giả: ai cũng muốn thấy mình có giá trị, và khi bị chê trách, phản ứng đầu tiên của con người thường là tìm cách bào chữa cho mình.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả minh họa bằng chuyện đi câu.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Ông kể mình rất thích ăn kem và trái cây, nhưng khi đi câu, ông không móc kem vào lưỡi câu mà móc một con giun, vì cá thích giun.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Theo tác giả, ứng xử với con người cũng vậy: muốn người khác làm một điều gì, mình nên bắt đầu từ điều họ muốn, chứ không phải từ điều mình muốn.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Nhưng có một điều tác giả nhắc đi nhắc lại, mà cả người thích lẫn người chê cuốn sách đều nên nhớ: mọi nguyên tắc đều phải đi kèm sự chân thành.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Ông phân biệt rất rõ lời khen thật lòng với lời nịnh.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Như tác giả viết: \"Một điều xuất phát từ tấm lòng, một điều chỉ từ cửa miệng.\"",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Vì vậy, mình hiểu cuốn sách này là lời khuyên bớt đặt cái tôi của mình lên trước, để nhìn thấy người đối diện nhiều hơn.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Còn sách có giữ được tinh thần ấy suốt ba mươi chương hay không, mình sẽ nói ở phần cuối.",
+      "pauseAfter": 0
+    }
+  ]
+}

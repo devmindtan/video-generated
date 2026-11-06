@@ -1,0 +1,59 @@
+{
+  "title": "Đọc sách, hiểu mình — book-dnt-001-overview — 06-phan-2",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Sang phần hai, tác giả chuyển từ chuyện tránh làm người khác mất lòng sang chuyện làm sao để người ta muốn gần mình.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Sáu nguyên tắc ở phần này là: thật lòng quan tâm đến người khác, mỉm cười, nhớ tên người đối diện, biết lắng nghe, nói về điều người kia quan tâm, và thật lòng làm cho họ thấy mình quan trọng.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Câu chuyện mình nhớ nhất ở phần này là một bữa tiệc tối.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả ngồi cạnh một nhà thực vật học và bị cuốn vào những câu chuyện về cây cỏ, đến mức ngồi nghe hàng giờ liền.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Ông gần như không nói gì, vì ông chẳng biết gì về thực vật.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Vậy mà lúc ra về, ông nghe kể lại rằng nhà thực vật học khen ông là người nói chuyện hay nhất.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Theo tác giả, lắng nghe là một trong những cách trân trọng nhất mà mình có thể dành cho người đối diện.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả cũng kể rằng tổng thống Theodore Roosevelt, mỗi khi hẹn gặp ai, thường thức khuya đọc trước về những điều mà người khách ấy quan tâm, để hôm sau câu chuyện của hai người trở nên thú vị.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Đọc phần này, mình thấy sáu nguyên tắc rất dễ bị biến thành kỹ thuật lấy lòng: cười vì muốn bán được hàng, nhớ tên vì muốn được việc.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Bản thân tác giả cũng đặt chữ \"thật lòng\" vào ngay tên của hai nguyên tắc, nên mình nghĩ ông hiểu rõ ranh giới ấy.",
+      "pauseAfter": 0
+    }
+  ]
+}

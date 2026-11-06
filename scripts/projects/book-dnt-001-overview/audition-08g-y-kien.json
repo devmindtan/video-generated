@@ -1,0 +1,49 @@
+{
+  "title": "Đọc sách, hiểu mình — book-dnt-001-overview — 08g-y-kien",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Nói về cảm nhận của riêng mình, thứ mình muốn mang theo sau khi đọc là thói quen dừng lại một nhịp trước khi chê trách ai đó.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Lá thư Lincoln không gửi đi là hình ảnh mình nhớ lâu nhất: viết ra cho hả giận cũng được, nhưng chưa vội gửi.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Nhiều lời khuyên trong sách nghe qua thì rất bình thường, như mỉm cười hay nhớ tên người khác.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Nhưng ngẫm lại, mình thấy điều tác giả muốn nói nằm ở phía sau: nhìn người đối diện như một con người, chứ không phải như một việc cần xong.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Còn một điều mình muốn nhắc: những câu chuyện trong sách chỉ là một góc nhìn, phần lớn là chuyện của những người đã thành công trong một thời và một nơi rất khác với mình bây giờ.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Vì vậy, các bạn cứ giữ chính kiến của mình: thử rồi tự xem điều gì hợp, điều gì không, và đừng dùng bất kỳ cách nào trong sách để đổi lấy sự thật hay để lừa người khác.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Nếu chỉ chọn một điều để bắt đầu, mình gợi ý cách đổi chữ \"nhưng\" thành chữ \"và\".",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Lần tới khi cần góp ý cho ai đó, các bạn thử nói trọn lời khen trước, rồi nối lời góp ý bằng chữ \"và\", xem người nghe phản ứng có khác không.",
+      "pauseAfter": 0
+    }
+  ]
+}

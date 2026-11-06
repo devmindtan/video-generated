@@ -1,0 +1,24 @@
+{
+  "title": "Đọc sách, hiểu mình — book-dnt-001-overview — 08f-tong-ket",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Cả cuốn Đắc nhân tâm có thể kể lại trong một hơi: tác giả cho rằng người ta dễ thay đổi khi được tôn trọng hơn là khi bị chê trách.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Từ đó, sách đi qua bốn phần: ba điều nền tảng là bớt chỉ trích, khen thật lòng và bắt đầu từ điều người khác muốn; sáu cách tạo thiện cảm; mười hai cách cư xử khi hai người nghĩ khác nhau; và chín cách góp ý mà không làm người khác tổn thương.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Và điều kiện đi kèm tất cả những điều ấy, như chính tác giả nhấn mạnh, là phải thật lòng.",
+      "pauseAfter": 0
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "title": "Đọc sách, hiểu mình — book-dnt-001-overview — 08-phan-4",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Phần cuối dành cho tình huống khó nhất: khi mình phải chỉ ra lỗi của người khác, nhất là khi mình là người quản lý.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Nhắc khéo, không quở trách.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả kể ông chủ một cửa hàng lớn ở Philadelphia, mỗi ngày đều đi một vòng quanh cửa hàng.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Có lần ông thấy một vị khách đứng chờ ở quầy, trong khi mấy nhân viên đang mải nói chuyện ở góc xa.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Ông lặng lẽ vào sau quầy, tự phục vụ vị khách, rồi đưa món hàng cho nhân viên gói lại mà không trách một lời nào.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Đổi chữ \"nhưng\" thành chữ \"và\".",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả để ý rằng nhiều người hay khen trước, rồi thêm chữ \"nhưng\" và một lời chê.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Người nghe vừa nghe chữ \"nhưng\" là bắt đầu nghi lời khen ban nãy chỉ để mở đường.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Ông gợi ý một cách đơn giản: thay vì nói \"con học tốt lên rồi, nhưng môn toán còn yếu\", cha mẹ có thể nói \"con học tốt lên rồi, và nếu con cứ cố gắng như vậy thì môn toán cũng sẽ khá lên\".",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Giữ thể diện, khen tiến bộ dù nhỏ.",
+      "pauseAfter": 0.45
+    },
+    {
+      "scene": 1,
+      "text": "Những nguyên tắc còn lại khuyên mình xét mình trước khi phê bình người khác, gợi ý thay vì ra lệnh, giữ thể diện cho người mắc lỗi, khen cả những tiến bộ nhỏ nhất, trao cho người khác một tiếng tốt để họ muốn sống xứng đáng, và làm cho lỗi lầm trông có vẻ dễ sửa.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Mình thấy phần này không bảo mình im lặng trước cái sai.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Điều tác giả bàn là cách nói sao cho người kia còn muốn sửa, chứ không phải tránh nói.",
+      "pauseAfter": 0
+    }
+  ]
+}

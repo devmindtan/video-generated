@@ -1,0 +1,256 @@
+{
+  "source": "Episode.tsx episodeCaptions, BookDntTap03 defaultProps",
+  "fps": 30,
+  "totalFrames": 4254,
+  "parts": [
+    {
+      "name": "Intro series",
+      "frames": 844,
+      "startFrame": 0
+    },
+    {
+      "name": "Cách làm của tập",
+      "frames": 469,
+      "startFrame": 844
+    },
+    {
+      "name": "Thẻ tập",
+      "frames": 563,
+      "startFrame": 1313
+    },
+    {
+      "name": "Mở chuyện",
+      "frames": 1883,
+      "startFrame": 1876
+    },
+    {
+      "name": "Outro series",
+      "frames": 495,
+      "startFrame": 3759
+    }
+  ],
+  "pages": [
+    {
+      "part": "Intro series",
+      "text": "Xin chào cả nhà.",
+      "startMs": 0,
+      "endMs": 1940
+    },
+    {
+      "part": "Intro series",
+      "text": "Chào mừng mọi người đã đến với series Đọc sách, hiểu mình.",
+      "startMs": 2260,
+      "endMs": 6100
+    },
+    {
+      "part": "Intro series",
+      "text": "Ở series này, mình sẽ đọc trọn từng cuốn sách,",
+      "startMs": 6100,
+      "endMs": 8967
+    },
+    {
+      "part": "Intro series",
+      "text": "rồi kể lại những nội dung chính và những điều đáng giữ trong mỗi cuốn.",
+      "startMs": 9022,
+      "endMs": 12980
+    },
+    {
+      "part": "Intro series",
+      "text": "Nếu bạn là người không có nhiều thời gian và cần đọc",
+      "startMs": 12980,
+      "endMs": 15333
+    },
+    {
+      "part": "Intro series",
+      "text": "sách để có thêm kiến thức, thì đây là dành cho bạn.",
+      "startMs": 15383,
+      "endMs": 18680
+    },
+    {
+      "part": "Intro series",
+      "text": "Chúc cả nhà một ngày tràn đầy niềm vui và hạnh phúc.",
+      "startMs": 18680,
+      "endMs": 22800
+    },
+    {
+      "part": "Intro series",
+      "text": "Để không làm mất thời gian của mọi người, chúng ta hãy cùng nhau bắt đầu.",
+      "startMs": 22800,
+      "endMs": 26080
+    },
+    {
+      "part": "Cách làm của tập",
+      "text": "Trước khi vào sách, mình nói rõ cách làm của tập này.",
+      "startMs": 28133,
+      "endMs": 31973
+    },
+    {
+      "part": "Cách làm của tập",
+      "text": "Phần chính của video, mình chỉ đứng ở vị trí người kể lại:",
+      "startMs": 32153,
+      "endMs": 35003
+    },
+    {
+      "part": "Cách làm của tập",
+      "text": "kể đúng điều tác giả viết, kể cả những chỗ mình chưa chắc đồng tình.",
+      "startMs": 35060,
+      "endMs": 38740
+    },
+    {
+      "part": "Cách làm của tập",
+      "text": "Những chỗ mình thấy chưa đạt và ý kiến riêng của mình sẽ nằm ở các phần cuối.",
+      "startMs": 39220,
+      "endMs": 42720
+    },
+    {
+      "part": "Thẻ tập",
+      "text": "Đắc nhân tâm của Dale Carnegie là cuốn sách mình chọn cho tập thứ ba,",
+      "startMs": 44067,
+      "endMs": 48003
+    },
+    {
+      "part": "Thẻ tập",
+      "text": "một cuốn sách viết từ năm 1936 về cách đối xử với người khác.",
+      "startMs": 48061,
+      "endMs": 52227
+    },
+    {
+      "part": "Thẻ tập",
+      "text": "Đây cũng là cuốn sách gây nhiều tranh cãi, có người thích,",
+      "startMs": 52687,
+      "endMs": 55232
+    },
+    {
+      "part": "Thẻ tập",
+      "text": "có người không, nhưng mình sẽ đứng ở vai trò trung lập và phân tích",
+      "startMs": 55282,
+      "endMs": 58512
+    },
+    {
+      "part": "Thẻ tập",
+      "text": "cuốn sách này một cách khách quan nhất theo góc nhìn của mình.",
+      "startMs": 58554,
+      "endMs": 61087
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Chương đầu tiên của sách xoay quanh một lá thư chưa bao giờ được gửi đi.",
+      "startMs": 62713,
+      "endMs": 66233
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Theo tác giả, hồi còn trẻ, Abraham Lincoln rất hay chế giễu người khác,",
+      "startMs": 67420,
+      "endMs": 71673
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "có lần còn viết báo giễu một chính khách đến mức",
+      "startMs": 71720,
+      "endMs": 73934
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "bị người này thách đấu kiếm, may mà được can kịp ở phút cuối.",
+      "startMs": 73972,
+      "endMs": 77160
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Sau lần đó, ông gần như thôi hẳn chuyện chỉ trích ai.",
+      "startMs": 77780,
+      "endMs": 80300
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Hơn hai mươi năm sau, khi đã là tổng thống, Lincoln ra lệnh cho tướng Meade tấn",
+      "startMs": 81527,
+      "endMs": 85673
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "công để sớm kết thúc cuộc nội chiến, nhưng vị tướng này chần chừ và để lỡ thời cơ.",
+      "startMs": 85727,
+      "endMs": 90273
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Lincoln tức giận, ngồi viết cho ông ta một lá thư trách móc rất nặng lời.",
+      "startMs": 90273,
+      "endMs": 94533
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Rồi ông gạt lá thư sang một bên, không gửi.",
+      "startMs": 94733,
+      "endMs": 97273
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Mãi đến khi Lincoln qua đời, người ta mới tìm thấy nó trong giấy tờ của ông.",
+      "startMs": 97473,
+      "endMs": 101533
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Tác giả đoán rằng Lincoln đã hiểu: gửi lá thư đi thì ông được hả giận một lúc,",
+      "startMs": 102700,
+      "endMs": 106631
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "còn Meade sẽ chỉ lo bào chữa cho mình, và chẳng có gì được sửa.",
+      "startMs": 106681,
+      "endMs": 110627
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Từ câu chuyện ấy, tác giả đưa ra nguyên tắc đầu tiên của cả cuốn sách:",
+      "startMs": 110727,
+      "endMs": 114267
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "không chỉ trích, oán trách hay than phiền.",
+      "startMs": 114317,
+      "endMs": 117247
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "Và đây cũng là câu hỏi mình muốn các bạn giữ trong đầu suốt tập này:",
+      "startMs": 117367,
+      "endMs": 120422
+    },
+    {
+      "part": "Mở chuyện",
+      "text": "khi một người làm sai, lời chê trách có thật sự giúp họ thay đổi không?",
+      "startMs": 120481,
+      "endMs": 124067
+    },
+    {
+      "part": "Outro series",
+      "text": "Đến đây là kết thúc rồi, các bạn thấy thế nào?",
+      "startMs": 125940,
+      "endMs": 128900
+    },
+    {
+      "part": "Outro series",
+      "text": "Nếu hay thì hãy bình luận vào bên dưới video và cho mình một lượt đăng ký kênh",
+      "startMs": 129640,
+      "endMs": 133858
+    },
+    {
+      "part": "Outro series",
+      "text": "để mình có động lực để có thể làm thêm nhiều những video thế này hơn nữa nhé.",
+      "startMs": 133913,
+      "endMs": 138440
+    },
+    {
+      "part": "Outro series",
+      "text": "Hẹn gặp lại cả nhà.",
+      "startMs": 138660,
+      "endMs": 139460
+    }
+  ]
+}

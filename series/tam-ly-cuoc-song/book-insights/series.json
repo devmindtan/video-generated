@@ -307,7 +307,7 @@
     {
       "id": "book-dnt-001-overview",
       "title": "Đắc nhân tâm: tổng quan và đánh giá",
-      "status": "planning",
+      "status": "production",
       "format": "long",
       "durationSeconds": null,
       "paths": {
@@ -316,7 +316,22 @@
         "docs": "docs/projects/book-dnt-001-overview",
         "assets": "public/book-dnt-001-overview"
       },
-      "registrations": [],
+      "registrations": [
+        {
+          "id": "BookDntTap03",
+          "kind": "Composition"
+        },
+        {
+          "id": "BookDntEpisodeCard",
+          "kind": "Composition",
+          "part": true
+        },
+        {
+          "id": "BookDntMoChuyen",
+          "kind": "Composition",
+          "part": true
+        }
+      ],
       "book": "dac-nhan-tam"
     }
   ]

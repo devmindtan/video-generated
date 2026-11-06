@@ -1,0 +1,49 @@
+{
+  "title": "Đọc sách, hiểu mình — book-dnt-001-overview — 03-cuon-sach",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Đắc nhân tâm ra đời từ một lớp học.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Theo lời tác giả kể ở đầu sách, từ năm 1912 ông dạy người đi làm ở New York cách nói trước đám đông, rồi nhận ra học viên của mình còn cần học cách cư xử với người khác.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tìm mãi không thấy cuốn sách nào để làm tài liệu, ông tự soạn bài giảng, và từ những bài giảng ấy mà có cuốn sách in lần đầu năm 1936.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Cuốn mình đọc là bản đã được gia đình tác giả cập nhật về sau.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Sách gồm ba mươi nguyên tắc chia làm bốn phần, mỗi nguyên tắc là một chương ngắn, kể qua rất nhiều câu chuyện, phần lớn là chuyện của người thật ở Mỹ vào thời đó.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Vì sao cuốn sách gây tranh cãi?",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Có người xem nó như một cẩm nang để sống tử tế với người xung quanh; có người lại thấy nó dạy cách lấy lòng người khác để đạt được mục đích.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Mình sẽ kể đúng điều tác giả viết trước, rồi đến cuối video mới nói những chỗ mình thấy chưa đạt, để các bạn tự đánh giá.",
+      "pauseAfter": 0
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "title": "Đọc sách, hiểu mình — book-dnt-001-overview — 08e-diem-chua-dat",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Đến đây, mình muốn nói về những chỗ khiến nhiều người không thích cuốn sách này, và cả những chỗ chính mình thấy còn thiếu.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Thứ nhất, sách thuyết phục chủ yếu bằng giai thoại: hết chuyện thành công này đến chuyện thành công khác, và vài con số tỉ lệ phần trăm được đưa ra mà không ghi rõ nguồn.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Mình nghĩ nên xem chúng như ví dụ minh họa, chứ không phải bằng chứng rằng cách làm ấy luôn hiệu quả.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Thứ hai, phần lớn ví dụ là doanh nhân, chính khách và người bán hàng ở Mỹ gần một trăm năm trước, nên có những đoạn đọc giống sách dạy bán hàng hơn là sách về các mối quan hệ.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Thứ ba, một vài cách trong sách, nếu tách khỏi sự chân thành, rất dễ thành thao túng.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả có cảnh báo về chuyện nịnh hót, nhưng mình thấy sách chưa nói nhiều về việc dừng ở đâu.",
+      "pauseAfter": 0.65
+    },
+    {
+      "scene": 1,
+      "text": "Thứ tư, sách khuyên tránh tranh cãi, tha thứ và giữ hòa khí, nhưng gần như không bàn về lúc cần nói thẳng, cần đặt giới hạn, hay khi đúng sai quan trọng hơn chuyện làm người khác vui lòng.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Còn ở chiều ngược lại, mình cũng thấy có người chê cuốn sách là dạy nịnh mà bỏ qua chỗ tác giả nhiều lần tách bạch lời khen thật với lời nịnh.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Hai cách nhìn ấy, mình nghĩ đều có phần đúng.",
+      "pauseAfter": 0
+    }
+  ]
+}

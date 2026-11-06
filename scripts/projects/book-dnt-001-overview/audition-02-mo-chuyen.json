@@ -1,0 +1,59 @@
+{
+  "title": "Đọc sách, hiểu mình — book-dnt-001-overview — 02-mo-chuyen",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 400,
+  "sentences": [
+    {
+      "scene": 1,
+      "text": "Chương đầu tiên của sách xoay quanh một lá thư chưa bao giờ được gửi đi.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Theo tác giả, hồi còn trẻ, Abraham Lincoln rất hay chế giễu người khác, có lần còn viết báo giễu một chính khách đến mức bị người này thách đấu kiếm, may mà được can kịp ở phút cuối.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Sau lần đó, ông gần như thôi hẳn chuyện chỉ trích ai.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Hơn hai mươi năm sau, khi đã là tổng thống, Lincoln ra lệnh cho tướng Meade tấn công để sớm kết thúc cuộc nội chiến, nhưng vị tướng này chần chừ và để lỡ thời cơ.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Lincoln tức giận, ngồi viết cho ông ta một lá thư trách móc rất nặng lời.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Rồi ông gạt lá thư sang một bên, không gửi.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Mãi đến khi Lincoln qua đời, người ta mới tìm thấy nó trong giấy tờ của ông.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Tác giả đoán rằng Lincoln đã hiểu: gửi lá thư đi thì ông được hả giận một lúc, còn Meade sẽ chỉ lo bào chữa cho mình, và chẳng có gì được sửa.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Từ câu chuyện ấy, tác giả đưa ra nguyên tắc đầu tiên của cả cuốn sách: không chỉ trích, oán trách hay than phiền.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Và đây cũng là câu hỏi mình muốn các bạn giữ trong đầu suốt tập này: khi một người làm sai, lời chê trách có thật sự giúp họ thay đổi không?",
+      "pauseAfter": 0
+    }
+  ]
+}
