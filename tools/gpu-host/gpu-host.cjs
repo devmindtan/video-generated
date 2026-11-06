@@ -1,8 +1,8 @@
 // The user's GPU machine (desktop-kndgm60: Windows + WSL Ubuntu, GTX 1660 SUPER 6 GB) over Tailscale + SSH, shared by
-// VoiceStudio clones and the automation runner's Ollama (docs/architecture/gpu-host.md). User rule (2026-10-31): use it
+// VoiceStudio clones, the automation runner's Ollama and local image generation (docs/architecture/gpu-host.md). User rule (2026-10-31): use it
 // when it is on, fall back to the laptop only when it is not. Each service stays bound to 127.0.0.1 there; one SSH
 // process runs it in the foreground and forwards it to a loopback port here, so nothing is exposed to the tailnet.
-// The card holds one of the two models at a time: a service counts as busy-elsewhere while the other one runs.
+// The card holds one large model at a time: a service counts as busy-elsewhere while any other GPU service runs.
 const fs = require('node:fs');
 const path = require('node:path');
 const http = require('node:http');
@@ -15,6 +15,9 @@ const SERVICES = {
       : {state: b.status === 'ok' ? 'ready' : 'starting', version: b.version, device: b.device || null}},
   ollama: {label: 'Ollama', dir: '~/ollama-gpu', remotePort: 11434, localPort: 11435, health: '/api/version',
     read: b => b && typeof b.version === 'string' ? {state: 'ready', version: b.version, device: 'cuda'} : {state: 'occupied'}},
+  imagegen: {label: 'ComfyUI SDXL', dir: '~/imagegen-gpu', remotePort: 8188, localPort: 8189, health: '/system_stats',
+    read: b => b && b.system && Array.isArray(b.devices) ? {state: 'ready', version: b.system.comfyui_version || null,
+      device: b.devices[0]?.name || 'cuda'} : {state: 'occupied'}},
 };
 const SSH = ['-o', 'BatchMode=yes', '-o', 'ConnectTimeout=5'];
 const stateDir = root => path.join(root, '.gpu');
@@ -70,11 +73,11 @@ function remoteState(root) {
 function pick(root, id, o = {}, check = remoteState) {
   if (o.gpu && o.local) throw Error('Chọn một trong --gpu hoặc --local.');
   if (o.local) return {machine: 'local', reason: 'chọn --local'};
-  const st = check(root), other = Object.keys(SERVICES).find(k => k !== id);
+  const st = check(root), other = Object.keys(SERVICES).find(k => k !== id && st.running?.[k]);
   const no = reason => {if (o.gpu) throw Error(`Không dùng được máy GPU: ${reason}.`);return {machine: 'local', reason};};
   if (!st.reachable) return no(st.reason || 'máy GPU không bật');
   if (!st.installed[id]) return no(`máy GPU chưa cài ${SERVICES[id].label}`);
-  if (st.running[other]) return no(`máy GPU đang chạy ${SERVICES[other].label} (card 6 GB chỉ chứa một model)`);
+  if (other) return no(`máy GPU đang chạy ${SERVICES[other].label} (card 6 GB chỉ chứa một model)`);
   return {machine: 'gpu', reason: 'máy GPU đang bật'};
 }
 function tunnelPid(s) {

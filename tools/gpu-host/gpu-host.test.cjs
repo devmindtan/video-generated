@@ -9,7 +9,7 @@ function workspace(t, host) {
   if (host) {fs.mkdirSync(path.join(root, '.gpu'));fs.writeFileSync(path.join(root, '.gpu/host.json'), JSON.stringify(host));}
   return root;
 }
-const on = (running = {}) => () => ({reachable: true, installed: {voicestudio: true, ollama: true}, running: {voicestudio: false, ollama: false, ...running}});
+const on = (running = {}) => () => ({reachable: true, installed: {voicestudio: true, ollama: true, imagegen: true}, running: {voicestudio: false, ollama: false, imagegen: false, ...running}});
 
 test('config: host and per-service overrides are validated before any SSH command is built', t => {
   assert.throws(() => gpu.config(workspace(t)), /host\.json/);
@@ -18,14 +18,18 @@ test('config: host and per-service overrides are validated before any SSH comman
   assert.throws(() => gpu.config(workspace(t, {host: 'h', services: {ollama: {localPort: 11434}}})), /localPort/);
   const c = gpu.config(workspace(t, {host: 'desktop-kndgm60'}));
   assert.equal(c.services.voicestudio.url, 'http://127.0.0.1:3901/');assert.equal(c.services.ollama.url, 'http://127.0.0.1:11435/');
+  assert.equal(c.services.imagegen.url, 'http://127.0.0.1:8189/');
 });
 
 test('pick: GPU when it is on; laptop when it is off, lacks the service or the card is held by the other model', () => {
   assert.equal(gpu.pick('/x', 'ollama', {}, on()).machine, 'gpu');
   assert.equal(gpu.pick('/x', 'voicestudio', {}, on()).machine, 'gpu');
+  assert.equal(gpu.pick('/x', 'imagegen', {}, on()).machine, 'gpu');
   assert.match(gpu.pick('/x', 'ollama', {}, () => ({reachable: false, reason: 'không kết nối được h'})).reason, /không kết nối/);
   assert.match(gpu.pick('/x', 'ollama', {}, on({voicestudio: true})).reason, /đang chạy VoiceStudio/);
   assert.equal(gpu.pick('/x', 'voicestudio', {}, on({ollama: true})).machine, 'local');
+  assert.match(gpu.pick('/x', 'imagegen', {}, on({ollama: true})).reason, /đang chạy Ollama/);
+  assert.match(gpu.pick('/x', 'ollama', {}, on({imagegen: true})).reason, /đang chạy ComfyUI SDXL/);
   assert.equal(gpu.pick('/x', 'ollama', {}, () => ({reachable: true, installed: {ollama: false}, running: {}})).machine, 'local');
   assert.equal(gpu.pick('/x', 'ollama', {local: true}, on()).machine, 'local');
   assert.throws(() => gpu.pick('/x', 'ollama', {gpu: true}, on({voicestudio: true})), /Không dùng được máy GPU/);
