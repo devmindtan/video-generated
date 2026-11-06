@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "general": {
+    "rules": [
+      "Dữ liệu kênh 09/10–06/11/2026 cho thấy format \"Lời nhắn cho chính bạn\" đang dẫn đầu về view và subscriber; coi đây là giả thuyết ưu tiên cho đợt thử nghiệm kế tiếp, không phải công thức vĩnh viễn và không sửa hàng loạt video cũ chỉ từ một cửa sổ 28 ngày.",
+      "Đánh giá Shorts tách khỏi video dài và so các video cùng format, độ dài gần nhau ở cùng tuổi đăng. Raw views chỉ là lượt bắt đầu/phát lại; quyết định nội dung dựa thêm vào stayed to watch, engaged views, average view duration/percentage và subscriber trên 1.000 engaged views. Tỷ trọng Search thấp không tự nó là lỗi đối với một kênh chủ yếu được phân phối qua Shorts feed."
+    ],
+    "notes": ""
+  },
+  "stages": {
+    "brief": {
+      "rules": [
+        "Đợt thử nghiệm kế tiếp gồm 4 Shorts: 3 tập theo format \"Lời nhắn cho chính bạn\" và 1 tập Khắc kỷ làm nhóm so sánh; mỗi tập bám một tình huống cụ thể như tự trách sau sai lầm, kiệt sức nhưng vẫn ép mình cố gắng, hoặc nổi giận với người thân rồi hối hận. Sau 4 tập phải đọc lại dữ liệu trước khi biến tỉ lệ này thành lịch dài hạn."
+      ],
+      "notes": ""
+    },
+    "script": {
+      "rules": [
+        "Trong 0–2 giây đầu, nói ngay một tình huống cụ thể có người, hành động và hệ quả; không mở bằng dẫn nhập chung, lời chào hay câu trấn an quen thuộc. Viết toàn bài cho nhịp đọc tự nhiên 1×; không kéo dài video chỉ vì nhóm video top hiện tại tình cờ dài hơn.",
+        "Khi phù hợp, kết bằng một câu hỏi ngắn, cụ thể và dễ trả lời để hiểu khán giả (ví dụ chọn giữa hai cách nhìn); không dùng lời kêu gọi bình luận chung chung, không khẳng định bình luận sẽ làm thuật toán đẩy video và không yêu cầu người xem công khai chuyện riêng nhạy cảm."
+      ],
+      "notes": ""
+    },
+    "visuals": {
+      "rules": [
+        "Ngay khung đầu phải có hình hoặc phép ẩn dụ đúng tình huống của hook và chữ mở đầu đọc được; không để nền chung, khoảng trống hoặc chuyển động lấy đà chiếm những giây đầu."
+      ],
+      "notes": ""
+    },
+    "metadata": {
+      "rules": [
+        "Tiêu đề đặt lời hứa cảm xúc/tình huống cụ thể lên trước. Chỉ thêm cụm tìm kiếm khi nó tự nhiên và đúng nội dung (ví dụ \"cách tha thứ cho bản thân sau một sai lầm\"); không nhồi hậu tố chung như \"bài học cuộc sống\" vào mọi video, không coi điểm từ khóa của vidIQ (như 73, 70, 67) là một phần của từ khóa và không đổi hàng loạt tiêu đề cũ khi chưa có thử nghiệm đối chứng."
+      ],
+      "notes": ""
+    },
+    "qa": {
+      "rules": [
+        "Sau 24 giờ và 72 giờ, ghi cho từng Short: shown in feed, stayed to watch, engaged views, average view duration, average percentage viewed, retention ở 3/10/15 giây và cuối video, subscriber và comment trên 1.000 engaged views. So với nhóm cùng format/độ dài và cùng tuổi đăng, không trộn với video dài.",
+        "Với video dài, không kết luận title/thumbnail từ số view sớm; chờ đủ dữ liệu rồi xem impressions, CTR, retention 30 giây, average view duration và nguồn Search/Browse/Suggested riêng."
+      ],
+      "notes": ""
+    }
+  }
+}
