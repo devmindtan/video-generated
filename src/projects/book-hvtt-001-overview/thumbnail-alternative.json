@@ -7,5 +7,7 @@
   "fullBleed": true,
   "concreteSituation": "Một người ngồi bệt bên cuốn Hiểu về trái tim",
   "scene": "seated-book",
-  "bookCover": "book-hvtt-001-overview/thumbnail/book-cover.jpg"
+  "bookCover": "book-hvtt-001-overview/thumbnail/book-cover.jpg",
+  "backgroundImage": "book-hvtt-001-overview/generated/thumbnail-bg-local-v4-20261107.png",
+  "backgroundTranslateX": 230
 }
