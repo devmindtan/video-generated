@@ -33,8 +33,8 @@ const hat = (x: number, y: number, s = 1) => {const top = y - 306 * s;return `M$
 //        sentence 2: the others leave, the paper fades, his arm comes down
 // 3      Lincoln (named) sends an order to Meade (named, by his flag); Meade's attack arrow starts and stops as a dotted
 //        line at "chần chừ", with an hourglass (the chance slipping by)
-// 4–6    a desk: the letter written in heavy lines; slid to the edge with the pen down; a drawer opens with the
-//        letter lying in it
+// 4–6    a desk: the letter written in heavy lines; slid to the edge with the pen down; then a box of his papers in the
+//        middle of the frame, the letter rising above it at "tìm thấy"
 // 7      "PHỎNG ĐOÁN" under a question mark (the author's guess); the letter flies to Meade at "gửi lá thư đi", Meade
 //        raises his arm and a speech bubble flies back at "bào chữa"
 // 8–9    an open book with bookmark 1 at "nguyên tắc đầu tiên", the principle in two lines on the words; then the text
@@ -103,17 +103,21 @@ export const MoChuyen = section('02 mở chuyện', /(lá thư chưa bao giờ �
     // Heavy lines of the angry letter, written one after another during sentence 4 (no cross-out: it was not cancelled).
     const lines = [0, 1, 2, 3, 4, 5].map((k) => `M${850} ${340 + k * 40} L${1030 - (k % 3) * 30} ${340 + k * 40}`);
     return <g>
-      {D(c, desk(520, 1400, 640), 0, 26, 2.4, .85)}
+      <g opacity={1 - drawer}>{D(c, desk(520, 1400, 640), 0, 26, 2.4, .85)}</g>
       <g transform={`translate(${aside * 300} 0)`} opacity={1 - drawer}>
         {D(c, sheet(830, 300, 260, 320), 6, 22, 2.4)}
         {lines.map((d, k) => DA(c, d, within(c, 4, .15 + k * .12), 10, 3.4, .95))}
       </g>
       <g opacity={appear(c.frame, within(c, 5, .45), 14) * (1 - drawer)}><path d={quill(600, 626)} fill="none" stroke={IVORY} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" /></g>
-      {/* The drawer under the desk opens: the letter lies in it, folded. */}
+      {/* "Mãi đến khi Lincoln qua đời…": the desk gives way to a box of his papers, drawn upright in the middle (review p2:
+          the flat drawer looked squeezed); at "tìm thấy" the letter rises above it and glows. */}
       <g opacity={drawer}>
-        <path d="M760 672 L1160 672 L1160 760 L760 760 Z M760 760 L720 800 L1120 800 L1160 760 M920 730 L1000 730" fill="none" stroke={GOLD} strokeWidth={2.6} strokeLinejoin="round" />
-        <path d="M800 690 L1000 690 L1000 720 L800 720 Z M800 690 L900 708 L1000 690" fill="none" stroke={IVORY} strokeWidth={2.4} strokeLinejoin="round" />
-        <Glow x={900} y={705} r={160} opacity={drawer * .4} />
+        <path d="M660 540 L1260 540 L1260 790 L660 790 Z M660 540 L700 500 M1260 540 L1220 500 M860 630 L1060 630 L1060 690 L860 690 Z" fill="none" stroke={GOLD} strokeWidth={2.6} strokeLinejoin="round" />
+        {[[720, 440], [870, 462], [1010, 432], [1140, 456]].map(([x, top], k) => <path key={k} d={`M${x} 540 L${x} ${top} L${x + 110} ${top} L${x + 110} 540 M${x + 18} ${top + 24} L${x + 88} ${top + 24} M${x + 18} ${top + 46} L${x + 70} ${top + 46}`} fill="none" stroke={IVORY} strokeWidth={2.2} strokeLinejoin="round" opacity={appear(c.frame, c.at(6) + 6 + k * 4, 12) * .85} />)}
+      </g>
+      <g opacity={appear(c.frame, within(c, 6, .53), 14)} transform={`translate(0 ${(1 - appear(c.frame, within(c, 6, .53), 24)) * 30})`}>
+        <path d={envelope(960, 300, 240, 150)} fill="none" stroke={IVORY} strokeWidth={2.6} strokeLinejoin="round" />
+        <Glow x={960} y={300} r={200} opacity={.55} />
       </g>
     </g>;
   }},
