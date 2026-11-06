@@ -4,7 +4,7 @@
   "authors": ["Viktor E. Frankl"],
   "status": "research",
   "sourceSha256": "88a880d0e46c274cf25875b12c58f07ab753d327a48cff6331a0af03e092925d",
-  "note": "Đang đọc. Đã kiểm nguồn, ingest và đọc phần đầu sách PDF 2–10; tiếp tục từ Phần 1 ở PDF 11.",
+  "note": "Đã đọc toàn bộ 4/4 phần nội dung, lời đầu, lời cuối và chú thích. research.md giữ riêng lập luận của Frankl, hồi ức trại tập trung và phần bình luận của người viết lời cuối.",
   "cacheEdition": "88a880d0e46c274cf25875b12c58f07ab753d327a48cff6331a0af03e092925d-de2a45e349f9",
   "editionDetails": {
     "edition": "Bản tiếng Việt, thông tin ebook ghi ngày xuất bản 08-2011",
@@ -22,7 +22,7 @@
   "chapterMap": "chapters.json",
   "research": "research.md",
   "sectionsTotal": 4,
-  "sectionsRead": 0,
+  "sectionsRead": 4,
   "frontMatterRead": true,
   "checkedAt": "2026-11-06"
 }
