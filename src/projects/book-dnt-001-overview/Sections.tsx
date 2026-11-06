@@ -25,15 +25,24 @@ const quill = (x: number, y: number) => `M${x} ${y} L${x + 150} ${y - 60} M${x +
 // A tall stovepipe hat sitting on a Figure's head (feet at x, y; s as the Figure's scale).
 const hat = (x: number, y: number, s = 1) => {const top = y - 306 * s;return `M${x - 34 * s} ${top} L${x + 34 * s} ${top} M${x - 22 * s} ${top} L${x - 20 * s} ${top - 64 * s} L${x + 20 * s} ${top - 64 * s} L${x + 22 * s} ${top}`;};
 
-// 0b Mở chuyện: Lincoln's letter that was never sent, in six growing scenes (image-prompts.md 0b).
+// 0b Mở chuyện: Lincoln's letter that was never sent (image-prompts.md 0b). Every drawing appears on the word it shows
+// (moments are the phrase's position in its sentence; user review p1: animation a little off and not meaningful).
 // 0      an envelope on a desk, flap not sealed
-// 1–2    young Lincoln (stovepipe hat) with a newspaper flying from his hand; the challenger appears far off and a third
-//        hand rises between them (no swords); then the challenger fades and Lincoln lays his pen down
-// 3      a plain map: a river, an arrow slipping across it, a small flag that stays put
+// 1–2    young Lincoln (stovepipe hat) holding a newspaper at "chế giễu / viết báo"; the politician appears at "chính
+//        khách", an angry spark at "thách đấu kiếm", a third person steps in between at "được can kịp" (no swords);
+//        sentence 2: the others leave, the paper fades, his arm comes down
+// 3      Lincoln (named) sends an order to Meade (named, by his flag); Meade's attack arrow starts and stops as a dotted
+//        line at "chần chừ", with an hourglass (the chance slipping by)
 // 4–6    a desk: the letter written in heavy lines; slid to the edge with the pen down; a drawer opens with the
-//        letter lying in it, dim light
-// 7      "the author guesses": an arrow flies off and turns back; a thin question mark marks it as a guess
-// 8–9    the first principle in large letters; then two figures face each other with a large question mark between
+//        letter lying in it
+// 7      "PHỎNG ĐOÁN" under a question mark (the author's guess); the letter flies to Meade at "gửi lá thư đi", Meade
+//        raises his arm and a speech bubble flies back at "bào chữa"
+// 8–9    an open book with bookmark 1 at "nguyên tắc đầu tiên", the principle in two lines on the words; then the text
+//        is gone before two figures appear; at "lời chê trách" the left one points and a question mark grows between
+const at = (c: Ctx, sentence: number, share: number) => within(c, sentence, share);
+const Label = ({x, y, text, o}: {x: number; y: number; text: string; o: number}) => <Word x={x} y={y} size={36} text={text} opacity={o * .9} />;
+const hourglass = (x: number, y: number) => `M${x - 40} ${y - 70} L${x + 40} ${y - 70} M${x - 40} ${y + 70} L${x + 40} ${y + 70} M${x - 32} ${y - 70} C${x - 32} ${y - 20} ${x - 5} ${y - 8} ${x - 5} ${y} C${x - 5} ${y + 8} ${x - 32} ${y + 20} ${x - 32} ${y + 70} M${x + 32} ${y - 70} C${x + 32} ${y - 20} ${x + 5} ${y - 8} ${x + 5} ${y} C${x + 5} ${y + 8} ${x + 32} ${y + 20} ${x + 32} ${y + 70}`;
+const openBook = (x: number, y: number, s = 1) => `M${x} ${y + 100 * s} C${x - 70 * s} ${y + 70 * s} ${x - 160 * s} ${y + 68 * s} ${x - 230 * s} ${y + 86 * s} L${x - 230 * s} ${y} C${x - 160 * s} ${y - 18 * s} ${x - 70 * s} ${y - 16 * s} ${x} ${y + 14 * s} C${x + 70 * s} ${y - 16 * s} ${x + 160 * s} ${y - 18 * s} ${x + 230 * s} ${y} L${x + 230 * s} ${y + 86 * s} C${x + 160 * s} ${y + 68 * s} ${x + 70 * s} ${y + 70 * s} ${x} ${y + 100 * s} Z M${x} ${y + 14 * s} L${x} ${y + 100 * s}`;
 export const MoChuyen = section('02 mở chuyện', /(lá thư chưa bao giờ được gửi đi|chế giễu|thách đấu kiếm|thôi hẳn chuyện chỉ trích|tướng Meade|trách móc rất nặng lời|không gửi|tìm thấy|đoán|hả giận|bào chữa|nguyên tắc đầu tiên|không chỉ trích, oán trách hay than phiền|lời chê trách)/gi, [
   {at: 0, draw: (c) => <g>
     {D(c, desk(560, 1360, 700), 0, 30, 2.4, .85)}
@@ -41,45 +50,51 @@ export const MoChuyen = section('02 mở chuyện', /(lá thư chưa bao giờ �
     <Glow x={960} y={600} r={200} opacity={appear(c.frame, c.start + 30, 24) * .45} />
   </g>},
   {at: 1, draw: (c) => {
-    const paper = interpolate(c.frame, [within(c, 1, .12), within(c, 1, .4)], [0, 1], {...clamp, easing: ease});
-    const rival = appear(c.frame, within(c, 1, .45), 16) * (1 - appear(c.frame, c.at(2), 16));
-    const stop = appear(c.frame, within(c, 1, .78), 14) * (1 - appear(c.frame, c.at(2), 16));
-    const calm = appear(c.frame, c.at(2), 18);
+    const paper = appear(c.frame, at(c, 1, .27), 14), headline = appear(c.frame, at(c, 1, .45), 16);
+    const leave = appear(c.frame, c.at(2), 18), drop = appear(c.frame, at(c, 2, .4), 18);
+    const rival = appear(c.frame, at(c, 1, .54), 16) * (1 - leave), angry = appear(c.frame, at(c, 1, .73), 10) * (1 - appear(c.frame, at(c, 1, .81), 8));
+    const third = appear(c.frame, at(c, 1, .86), 14) * (1 - leave);
+    const holding = paper * (1 - drop);
     return <g>
-      <g opacity={appear(c.frame, c.start + 4, 14)}>
-        <Figure frame={c.frame} from={c.start + 4} x={620} y={800} s={1} arm={calm > .5 ? 'down' : 'reach'} />
-        {D(c, hat(620, 800), 16, 18, 2.6)}
+      {/* Lincoln: arm reaches while he holds the paper, comes down once it is gone. */}
+      <g opacity={appear(c.frame, c.start + 4, 14) * (holding > .5 ? 0 : 1)}><Figure frame={c.frame} from={c.start + 4} x={560} y={800} s={1} /></g>
+      <g opacity={holding > .5 ? 1 : 0}><Figure frame={c.frame} from={c.start - 30} x={560} y={800} s={1} arm="reach" /></g>
+      {D(c, hat(560, 800), 14, 18, 2.6)}
+      {/* The newspaper in his hand: frame first ("chế giễu"), then the caricature and headline lines ("viết báo"). */}
+      <g opacity={holding}>
+        <path d="M672 520 L812 520 L812 620 L672 620 Z" fill="none" stroke={IVORY} strokeWidth={2.4} strokeLinejoin="round" />
+        <g opacity={headline}>
+          <path d="M686 542 L798 542 M686 562 L760 562" fill="none" stroke={IVORY} strokeWidth={3} strokeLinecap="round" />
+          <circle cx={710} cy={595} r={12} fill="none" stroke={GOLD} strokeWidth={2.2} />
+          <path d="M704 592 L706 592 M714 592 L716 592 M702 602 C708 598 712 598 718 604 M732 588 L794 588 M732 604 L780 604" fill="none" stroke={GOLD} strokeWidth={2} strokeLinecap="round" />
+        </g>
       </g>
-      {/* The newspaper leaves his hand and drifts right; it fades when the challenge comes. */}
-      <g transform={`translate(${760 + paper * 220} ${520 - paper * 120}) rotate(${-8 + paper * 22})`} opacity={paper * (1 - rival * .8) * (1 - calm)}>
-        <path d="M-70 -50 L70 -50 L70 50 L-70 50 Z M-50 -26 L50 -26 M-50 -4 L50 -4 M-50 18 L20 18" fill="none" stroke={IVORY} strokeWidth={2.4} strokeLinejoin="round" />
-      </g>
-      <g opacity={rival}><Figure frame={c.frame} from={within(c, 1, .45)} x={1360} y={800} s={1} facing={-1} arm="point" /></g>
-      {/* A third person's raised open hand between the two: the quarrel is stopped. */}
-      <g opacity={stop}>
-        <path d="M990 760 L990 560 M990 560 C990 530 1000 520 1012 520 C1024 520 1030 530 1030 548 L1030 470 C1030 456 1048 456 1048 470 L1048 540 M1048 470 L1048 452 C1048 438 1066 438 1066 452 L1066 540 M1066 460 C1066 446 1084 446 1084 460 L1084 548 M1084 476 C1084 464 1100 464 1100 476 L1100 580 C1100 640 1070 680 1030 690 L990 700" fill="none" stroke={GOLD} strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" />
-      </g>
-      {/* "Sau lần đó…": the pen is laid down on a small table beside him. */}
-      <g opacity={calm}>
-        <path d="M720 690 L980 690 M745 690 L745 800 M955 690 L955 800" fill="none" stroke={GOLD} strokeWidth={2.4} strokeLinecap="round" />
-        <path d={quill(760, 676)} fill="none" stroke={IVORY} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
-      </g>
+      <g opacity={rival}><Figure frame={c.frame} from={at(c, 1, .54)} x={1360} y={800} s={1} facing={-1} /></g>
+      {/* "thách đấu kiếm": an angry spark between the two (no weapons). */}
+      <path d="M1000 470 L960 520 L1000 530 L955 590" fill="none" stroke={GOLD} strokeWidth={3.4} strokeLinecap="round" strokeLinejoin="round" opacity={angry} />
+      {/* "được can kịp": a third person steps in between them. */}
+      <g opacity={third}><Figure frame={c.frame} from={at(c, 1, .86)} x={980} y={800} s={.9} arm="raise" color={IVORY} /></g>
+      <Glow x={560} y={560} r={180} opacity={drop * .45} />
     </g>;
   }},
   {at: 3, draw: (c) => {
-    const slip = interpolate(c.frame, [within(c, 3, .45), within(c, 3, .95)], [0, 1], {...clamp, easing: ease});
+    const order = interpolate(c.frame, [at(c, 3, .3), at(c, 3, .46)], [0, 1], {...clamp, easing: ease});
+    const attack = interpolate(c.frame, [at(c, 3, .47), at(c, 3, .66)], [0, 1], {...clamp, easing: ease});
+    const stall = appear(c.frame, at(c, 3, .83), 14), late = appear(c.frame, at(c, 3, .83), 14);
     return <g>
-      {D(c, 'M560 300 L1360 300 L1360 800 L560 800 Z', 0, 26, 2.2, .7)}
-      {D(c, 'M900 300 C860 420 980 520 930 620 C890 700 960 760 940 800', 8, 30, 3.2)}
-      {D(c, 'M916 300 C876 420 996 520 946 620 C906 700 976 760 956 800', 12, 30, 1.8, .6)}
-      {/* The flag that stays on this side of the river. */}
-      <g opacity={appear(c.frame, within(c, 3, .2), 14)}>
-        <path d="M680 640 L680 480 M680 480 L780 506 L680 532" fill="none" stroke={GOLD} strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" />
+      <g opacity={appear(c.frame, c.start + 4, 14)}><Figure frame={c.frame} from={c.start + 4} x={480} y={800} s={.95} arm="point" />{D(c, hat(480, 800, .95), 14, 16, 2.6)}</g>
+      <Label x={480} y={380} text="LINCOLN" o={appear(c.frame, c.start + 16, 12)} />
+      <g opacity={appear(c.frame, at(c, 3, .28), 14)}><Figure frame={c.frame} from={at(c, 3, .28)} x={1180} y={800} s={.95} facing={-1} /></g>
+      <Label x={1180} y={440} text="MEADE" o={appear(c.frame, at(c, 3, .3), 12)} />
+      <path d="M1290 800 L1290 600 M1290 600 L1390 626 L1290 652" fill="none" stroke={GOLD} strokeWidth={2.6} strokeLinecap="round" strokeLinejoin="round" opacity={appear(c.frame, at(c, 3, .3), 14)} />
+      {/* The order travels from Lincoln to Meade ("ra lệnh"). */}
+      <g opacity={appear(c.frame, at(c, 3, .3), 8) * (1 - appear(c.frame, at(c, 3, .48), 8))} transform={`translate(${620 + order * 420} 520)`}>
+        <path d={envelope(0, 0, 90, 58)} fill="none" stroke={IVORY} strokeWidth={2.4} strokeLinejoin="round" />
       </g>
-      {/* The arrow that slips across the river and away. */}
-      <g opacity={appear(c.frame, within(c, 3, .4), 12)} transform={`translate(${slip * 260} 0)`}>
-        <path d="M820 560 L1040 560 M1010 534 L1040 560 L1010 586" fill="none" stroke={IVORY} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
-      </g>
+      {/* The attack arrow starts ("tấn công") and stops as a dotted line ("chần chừ"). */}
+      <path d={`M1420 700 L${1420 + attack * 200} 700`} fill="none" stroke={GOLD} strokeWidth={3} strokeLinecap="round" strokeDasharray={stall > .5 ? '6 12' : undefined} opacity={attack > 0 ? 1 - stall * .5 : 0} />
+      <path d={hourglass(1560, 520)} fill="none" stroke={IVORY} strokeWidth={2.4} strokeLinecap="round" opacity={late} />
+      <path d="M1534 584 L1586 584 L1560 560 Z" fill={GOLD} opacity={late * .8} />
     </g>;
   }},
   {at: 4, draw: (c) => {
@@ -103,37 +118,53 @@ export const MoChuyen = section('02 mở chuyện', /(lá thư chưa bao giờ �
     </g>;
   }},
   {at: 7, draw: (c) => {
-    const go = interpolate(c.frame, [within(c, 7, .25), within(c, 7, .6)], [0, 1], {...clamp, easing: ease});
-    const back = interpolate(c.frame, [within(c, 7, .65), within(c, 7, .95)], [0, 1], {...clamp, easing: ease});
-    const x = 760 + go * 380 - back * 380, flip = back > 0 ? -1 : 1;
+    const fly = interpolate(c.frame, [at(c, 7, .24), at(c, 7, .42)], [0, 1], {...clamp, easing: ease});
+    const guard = appear(c.frame, at(c, 7, .57), 10);
+    const back = interpolate(c.frame, [at(c, 7, .69), at(c, 7, .84)], [0, 1], {...clamp, easing: ease});
     return <g>
-      <g opacity={appear(c.frame, c.start + 4, 14)}><Figure frame={c.frame} from={c.start + 4} x={560} y={800} s={.95} />{D(c, hat(560, 800, .95), 14, 16, 2.6)}</g>
-      <g opacity={appear(c.frame, c.start + 10, 14)}><Figure frame={c.frame} from={c.start + 10} x={1360} y={800} s={.95} facing={-1} /></g>
-      {/* The guess is marked as a guess: a thin question mark over the scene. */}
-      <g opacity={appear(c.frame, c.start + 18, 16) * .9}>
-        <path d="M940 300 C940 260 1000 250 1000 290 C1000 320 960 320 960 350 M960 380 L960 384" fill="none" stroke={IVORY} strokeWidth={2.2} strokeLinecap="round" />
+      <g opacity={appear(c.frame, c.start + 4, 14)}><Figure frame={c.frame} from={c.start + 4} x={520} y={800} s={.95} />{D(c, hat(520, 800, .95), 14, 16, 2.6)}</g>
+      <Label x={520} y={380} text="LINCOLN" o={appear(c.frame, c.start + 14, 12)} />
+      <g opacity={appear(c.frame, c.start + 8, 14) * (1 - guard)}><Figure frame={c.frame} from={c.start + 8} x={1400} y={800} s={.95} facing={-1} /></g>
+      <g opacity={guard}><Figure frame={c.frame} from={c.start - 30} x={1400} y={800} s={.95} facing={-1} arm="raise" /></g>
+      <Label x={1400} y={440} text="MEADE" o={appear(c.frame, c.start + 16, 12)} />
+      {/* The author's guess, marked as one. */}
+      <g opacity={appear(c.frame, at(c, 7, .03), 12)}>
+        <path d="M940 210 C940 176 990 168 990 202 C990 228 960 228 960 252 M960 276 L960 280" fill="none" stroke={IVORY} strokeWidth={2.4} strokeLinecap="round" />
+        <Word x={965} y={340} size={36} text="PHỎNG ĐOÁN" opacity={.85} />
       </g>
-      <g opacity={appear(c.frame, within(c, 7, .2), 10)} transform={`translate(${x} 540) scale(${flip} 1)`}>
-        <path d="M-60 0 L60 0 M34 -22 L60 0 L34 22" fill="none" stroke={back > 0 ? IVORY : GOLD} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
+      {/* "gửi lá thư đi": the letter flies to Meade. */}
+      <g opacity={appear(c.frame, at(c, 7, .24), 8) * (1 - appear(c.frame, at(c, 7, .45), 10))} transform={`translate(${650 + fly * 600} 560)`}>
+        <path d={envelope(0, 0, 100, 64)} fill="none" stroke={IVORY} strokeWidth={2.4} strokeLinejoin="round" />
+      </g>
+      <Glow x={520} y={580} r={150} opacity={appear(c.frame, at(c, 7, .44), 14) * (1 - appear(c.frame, at(c, 7, .58), 14)) * .6} />
+      {/* "bào chữa": a speech bubble with "!" flies back from Meade. */}
+      <g opacity={appear(c.frame, at(c, 7, .69), 8) * (1 - appear(c.frame, at(c, 7, .9), 12))} transform={`translate(${1250 - back * 560} 520)`}>
+        <path d="M-60 -36 L60 -36 L60 28 L-10 28 L-30 48 L-26 28 L-60 28 Z" fill="none" stroke={GOLD} strokeWidth={2.6} strokeLinejoin="round" />
+        <path d="M0 -24 L0 4 M0 14 L0 16" fill="none" stroke={GOLD} strokeWidth={4} strokeLinecap="round" />
       </g>
     </g>;
   }},
   {at: 8, draw: (c) => {
-    const question = appear(c.frame, c.at(9), 18);
+    const textOut = 1 - appear(c.frame, c.at(9), 10), figures = appear(c.frame, c.at(9) + 10, 14);
+    const point = appear(c.frame, at(c, 9, .65), 10);
     return <g>
-      <g opacity={1 - question}>
-        {D(c, 'M640 360 L1280 360', 0, 20, 2, .6)}
-        <Word x={960} y={470} size={64} text="KHÔNG CHỈ TRÍCH," opacity={appear(c.frame, within(c, 8, .64), 12)} />
-        <Word x={960} y={570} size={64} text="OÁN TRÁCH HAY THAN PHIỀN" opacity={appear(c.frame, within(c, 8, .8), 12)} />
-        {D(c, 'M640 640 L1280 640', 6, 20, 2, .6)}
-      </g>
-      <g opacity={question}>
-        <Figure frame={c.frame} from={c.at(9)} x={600} y={800} s={.95} />
-        <Figure frame={c.frame} from={c.at(9) + 4} x={1320} y={800} s={.95} facing={-1} />
-        <g opacity={appear(c.frame, within(c, 9, .55), 18)}>
-          <path d="M920 360 C920 290 1020 280 1020 350 C1020 400 960 410 960 470 M960 530 L960 536" fill="none" stroke={GOLD} strokeWidth={4} strokeLinecap="round" />
+      <g opacity={textOut}>
+        <g opacity={appear(c.frame, at(c, 8, .27), 16)}>
+          <path d={openBook(960, 640, 1)} fill="none" stroke={GOLD} strokeWidth={2.6} strokeLinejoin="round" />
+          <path d="M1060 628 L1060 560 L1100 560 L1100 626" fill="none" stroke={GOLD} strokeWidth={2.4} strokeLinejoin="round" />
+          <Word x={1080} y={600} size={34} text="1" opacity={1} />
         </g>
-        <Glow x={960} y={460} r={190} opacity={appear(c.frame, within(c, 9, .6), 24) * .5} />
+        <Word x={960} y={420} size={64} text="KHÔNG CHỈ TRÍCH," opacity={appear(c.frame, at(c, 8, .56), 10)} />
+        <Word x={960} y={510} size={64} text="OÁN TRÁCH HAY THAN PHIỀN" opacity={appear(c.frame, at(c, 8, .71), 10)} />
+      </g>
+      <g opacity={figures}>
+        <g opacity={1 - point}><Figure frame={c.frame} from={c.at(9) + 10} x={620} y={800} s={.95} /></g>
+        <g opacity={point}><Figure frame={c.frame} from={c.at(9) - 30} x={620} y={800} s={.95} arm="point" /></g>
+        <Figure frame={c.frame} from={c.at(9) + 14} x={1300} y={800} s={.95} facing={-1} />
+        <g opacity={appear(c.frame, at(c, 9, .74), 16)}>
+          <path d="M920 340 C920 270 1020 260 1020 330 C1020 380 960 390 960 450 M960 510 L960 516" fill="none" stroke={GOLD} strokeWidth={4} strokeLinecap="round" />
+        </g>
+        <Glow x={960} y={440} r={190} opacity={appear(c.frame, at(c, 9, .8), 24) * .5} />
       </g>
     </g>;
   }},
