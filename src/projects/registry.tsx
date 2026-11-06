@@ -46,9 +46,9 @@ import {BookInsightsOutro, bookOutroMetadata} from './book-hvtt-001-overview/Out
 import {BookInsightsEpisodeCard, episodeCardMetadata} from './book-hvtt-001-overview/EpisodeCard';
 import {BookHvttMoChuyen, moChuyenMetadata} from './book-hvtt-001-overview/MoChuyen';
 import {BookHvttVideo as BookHvttEpisode, episodeMetadata} from './book-hvtt-001-overview/Video';
-import {BookHvttThumbnail, BookHvttThumbnailAlternative} from './book-hvtt-001-overview/Thumbnail';
+import {BookHvttThumbnail} from './book-hvtt-001-overview/Thumbnail';
 import {BookAhVideo as BookAhEpisode, episodeMetadata as bookAhEpisodeMetadata} from './book-ah-001-overview/Video';
-import {BookAhThumbnail, BookAhThumbnailAlternative} from './book-ah-001-overview/Thumbnail';
+import {BookAhThumbnail} from './book-ah-001-overview/Thumbnail';
 import {BookAhEpisodeCard, bookAhCardMetadata} from './book-ah-001-overview/Episode';
 import {BookDntVideo as BookDntEpisode, episodeMetadata as bookDntEpisodeMetadata} from './book-dnt-001-overview/Video';
 import {BookDntEpisodeCard, bookDntCardMetadata} from './book-dnt-001-overview/Episode';
@@ -240,7 +240,6 @@ export const ProjectCompositions: FC = () => (
         <Folder name="book-hvtt-001-overview">
           <Composition id="BookHvttTap01" component={BookHvttEpisode} calculateMetadata={renderTo('book-hvtt-001-overview', episodeMetadata)} durationInFrames={1800} fps={30} width={1920} height={1080} defaultProps={{introVoice: 'clone-ban-v4a-sang2', cardVoice: '01-gioi-thieu-tap', bodyVoice: '02-mo-chuyen-sang2', outroVoice: 'outro-ban-v2-sang2', channelLabel: 'TÂM LÝ CUỘC SỐNG', episodeLabel: 'TẬP 01', bookTitle: 'Hiểu về trái tim', bookAuthor: 'Minh Niệm'}} />
           <Still id="BookHvttThumbnail" calculateMetadata={renderTo('book-hvtt-001-overview')} component={BookHvttThumbnail} width={1280} height={720} />
-          <Still id="BookHvttThumbnailAlternative" calculateMetadata={renderTo('book-hvtt-001-overview')} component={BookHvttThumbnailAlternative} width={1280} height={720} />
           <Composition id="BookHvttIntro" component={BookInsightsIntro} calculateMetadata={renderTo('book-hvtt-001-overview', bookIntroMetadata)} durationInFrames={1050} fps={30} width={1920} height={1080} defaultProps={{
             voice: 'clone-ban-v4a-sang2',
             channelLabel: 'TÂM LÝ CUỘC SỐNG',
@@ -266,7 +265,6 @@ export const ProjectCompositions: FC = () => (
         <Folder name="book-ah-001-overview">
           <Composition id="BookAhTap02" component={BookAhEpisode} calculateMetadata={renderTo('book-ah-001-overview', bookAhEpisodeMetadata)} durationInFrames={1800} fps={30} width={1920} height={1080} defaultProps={{introVoice: 'clone-ban-v4a-sang2', cardVoice: '01-gioi-thieu-tap-sang2', outroVoice: 'outro-ban-v2-sang2', channelLabel: 'TÂM LÝ CUỘC SỐNG', episodeLabel: 'TẬP 02', bookTitle: 'Thay đổi tí hon hiệu quả bất ngờ', bookAuthor: 'James Clear', clone: true}} />
           <Still id="BookAhThumbnail" calculateMetadata={renderTo('book-ah-001-overview')} component={BookAhThumbnail} width={1280} height={720} />
-          <Still id="BookAhThumbnailAlternative" calculateMetadata={renderTo('book-ah-001-overview')} component={BookAhThumbnailAlternative} width={1280} height={720} />
           <Composition id="BookAhEpisodeCard" component={BookAhEpisodeCard} calculateMetadata={renderTo('book-ah-001-overview', bookAhCardMetadata)} durationInFrames={300} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan', channelLabel: 'TÂM LÝ CUỘC SỐNG', episodeLabel: 'TẬP 02', bookTitle: 'Thay đổi tí hon hiệu quả bất ngờ', bookAuthor: 'James Clear'}} />
           <Composition id="BookAhMoChuyen" component={BookAhMoChuyen} calculateMetadata={renderTo('book-ah-001-overview', BookAhMoChuyen.metadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan-02b', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />
           <Composition id="BookAhCuonSach" component={BookAhCuonSach} calculateMetadata={renderTo('book-ah-001-overview', BookAhCuonSach.metadata)} durationInFrames={900} fps={30} width={1920} height={1080} defaultProps={{voice: '25-quoc-tuan-03', channelLabel: 'TÂM LÝ CUỘC SỐNG'}} />

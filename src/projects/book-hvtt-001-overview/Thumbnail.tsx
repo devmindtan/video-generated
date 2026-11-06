@@ -2,12 +2,8 @@ import type {FC} from 'react';
 import {AbsoluteFill, Img, staticFile} from 'remotion';
 import '../../shared/stoic-fonts';
 import {GOLD, INK, IVORY} from './Intro';
-import alternativeSpec from './thumbnail-alternative.json';
-import {BookThumbnailAlternative, type ThumbnailAlternativeSpec} from './ThumbnailAlternative';
-export {BookThumbnailAlternative} from './ThumbnailAlternative';
-export type {ThumbnailAlternativeSpec} from './ThumbnailAlternative';
 
-// Book-cover option retained for comparison. 1280×720, prepared only: never exported automatically. Stoic Sans 700; the book title in two
+// Approved option B. 1280×720, prepared only: never exported automatically. Stoic Sans 700; the book title in two
 // lines (ivory, then gold); a short line "Tóm tắt … / của <author>"; the real book cover on the right with a soft gold
 // glow. The bottom-right corner (x ≥ 980, y ≥ 600) stays empty: YouTube's duration badge covers it. Title lines must
 // fit 700 px wide: pick sizes per book (2 short words: 104/128; long titles: 74/74).
@@ -38,8 +34,3 @@ export const BookThumbnail: FC<BookThumbnailProps> = ({episode, title, titleSize
 
 export const BookHvttThumbnail: FC = () => <BookThumbnail testId="book-hvtt-thumbnail" episode="01" title={['HIỂU VỀ', 'TRÁI TIM']}
   subtitle={['Tóm tắt trọn cuốn sách', 'của Minh Niệm']} cover="book-hvtt-001-overview/thumbnail/book-cover.jpg" />;
-
-export const BookHvttThumbnailAlternative: FC = () => <BookThumbnailAlternative
-  testId="book-hvtt-thumbnail-alternative"
-  spec={alternativeSpec as ThumbnailAlternativeSpec}
-/>;
