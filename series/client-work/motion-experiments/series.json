@@ -29,6 +29,25 @@
           "kind": "Composition"
         }
       ]
+    },
+    {
+      "id": "paper-boat-night-voyage",
+      "title": "Con tàu giấy vượt biển đêm",
+      "status": "production",
+      "format": "short",
+      "durationSeconds": 30,
+      "paths": {
+        "source": "src/projects/paper-boat-night-voyage",
+        "scripts": "scripts/projects/paper-boat-night-voyage",
+        "docs": "docs/projects/paper-boat-night-voyage",
+        "assets": "public/paper-boat-night-voyage"
+      },
+      "registrations": [
+        {
+          "id": "PaperBoatNightVoyage",
+          "kind": "Composition"
+        }
+      ]
     }
   ]
 }

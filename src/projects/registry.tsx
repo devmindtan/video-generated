@@ -95,6 +95,7 @@ import {FlowerKnowsPowderVideo} from './flower-knows-powder/Video';
 import {FlowerKnowsLipDuoVideo} from './flower-knows-lip-duo/Video';
 import {FlowerKnowsSwanMirrorVideo} from './flower-knows-swan-mirror/Video';
 import {CrystalPlanetVideo} from './crystal-planet-awakening/Video';
+import {PaperBoatNightVoyageVideo} from './paper-boat-night-voyage/Video';
 
 import {StartBeforeReadyVideo} from './start-before-ready/Video';
 import {StartBeforeReadyThumbnail} from './start-before-ready/Thumbnail';
@@ -351,6 +352,9 @@ export const ProjectCompositions: FC = () => (
       <Folder name="Motion-Experiments">
         <Folder name="crystal-planet-awakening">
           <Composition id="CrystalPlanetAwakening" calculateMetadata={renderTo('crystal-planet-awakening')} component={CrystalPlanetVideo} durationInFrames={360} fps={30} width={1080} height={1920} />
+        </Folder>
+        <Folder name="paper-boat-night-voyage">
+          <Composition id="PaperBoatNightVoyage" calculateMetadata={renderTo('paper-boat-night-voyage')} component={PaperBoatNightVoyageVideo} durationInFrames={900} fps={30} width={1920} height={1080} />
         </Folder>
       </Folder>
     </Folder>
