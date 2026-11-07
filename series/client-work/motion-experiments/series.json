@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "motion-experiments",
+  "channel": "client-work",
+  "title": "Thử nghiệm chuyển động 3D",
+  "studioFolder": "Motion-Experiments",
+  "formats": [
+    "short",
+    "long"
+  ],
+  "defaultDurationSeconds": null,
+  "summary": "Các bài thử 3D cục bộ bằng Remotion và Three.js, ưu tiên chuyển động, ánh sáng và vật liệu.",
+  "projects": []
+}

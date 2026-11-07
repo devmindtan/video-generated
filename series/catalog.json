@@ -47,6 +47,11 @@
       "id": "product-videos",
       "channel": "client-work",
       "path": "series/client-work/product-videos/series.json"
+    },
+    {
+      "id": "motion-experiments",
+      "channel": "client-work",
+      "path": "series/client-work/motion-experiments/series.json"
     }
   ]
 }

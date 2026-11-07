@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "general": {
+    "rules": [
+      "Chạy hoàn toàn cục bộ; không gọi dịch vụ trả phí.",
+      "Mọi chuyển động 3D phải được điều khiển bằng frame của Remotion để preview và render tái lập.",
+      "Không render hoặc xuất file nếu người dùng chưa yêu cầu rõ."
+    ],
+    "notes": "Series thử nghiệm kỹ thuật; mỗi project có thể tự chọn chủ đề và tỷ lệ khung hình."
+  },
+  "stages": {
+    "visual-plan": {
+      "rules": [
+        "Ưu tiên một chủ thể 3D rõ ràng, camera có chủ đích và ánh sáng đủ tạo chiều sâu.",
+        "Không dùng hiệu ứng chỉ để lấp đầy khung hình."
+      ],
+      "notes": ""
+    },
+    "assembly": {
+      "rules": [
+        "Giữ composition xem được trong Studio và không phụ thuộc trạng thái thời gian thực."
+      ],
+      "notes": ""
+    }
+  }
+}
