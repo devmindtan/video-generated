@@ -10,5 +10,25 @@
   ],
   "defaultDurationSeconds": null,
   "summary": "Các bài thử 3D cục bộ bằng Remotion và Three.js, ưu tiên chuyển động, ánh sáng và vật liệu.",
-  "projects": []
+  "projects": [
+    {
+      "id": "crystal-planet-awakening",
+      "title": "Hành tinh pha lê thức giấc",
+      "status": "production",
+      "format": "short",
+      "durationSeconds": 12,
+      "paths": {
+        "source": "src/projects/crystal-planet-awakening",
+        "scripts": "scripts/projects/crystal-planet-awakening",
+        "docs": "docs/projects/crystal-planet-awakening",
+        "assets": "public/crystal-planet-awakening"
+      },
+      "registrations": [
+        {
+          "id": "CrystalPlanetAwakening",
+          "kind": "Composition"
+        }
+      ]
+    }
+  ]
 }

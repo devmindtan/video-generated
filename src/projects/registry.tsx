@@ -94,6 +94,7 @@ import {MerzyGlamTintVideo} from './merzy-glam-tint/Video';
 import {FlowerKnowsPowderVideo} from './flower-knows-powder/Video';
 import {FlowerKnowsLipDuoVideo} from './flower-knows-lip-duo/Video';
 import {FlowerKnowsSwanMirrorVideo} from './flower-knows-swan-mirror/Video';
+import {CrystalPlanetVideo} from './crystal-planet-awakening/Video';
 
 import {StartBeforeReadyVideo} from './start-before-ready/Video';
 import {StartBeforeReadyThumbnail} from './start-before-ready/Thumbnail';
@@ -345,6 +346,11 @@ export const ProjectCompositions: FC = () => (
         </Folder>
         <Folder name="flower-knows-swan-mirror">
           <Composition id="FlowerKnowsSwanMirrorAdam" calculateMetadata={renderTo('flower-knows-swan-mirror')} component={FlowerKnowsSwanMirrorVideo} durationInFrames={773} fps={30} width={1080} height={1920} />
+        </Folder>
+      </Folder>
+      <Folder name="Motion-Experiments">
+        <Folder name="crystal-planet-awakening">
+          <Composition id="CrystalPlanetAwakening" calculateMetadata={renderTo('crystal-planet-awakening')} component={CrystalPlanetVideo} durationInFrames={360} fps={30} width={1080} height={1920} />
         </Folder>
       </Folder>
     </Folder>
