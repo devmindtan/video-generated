@@ -12,6 +12,7 @@ import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import os from 'node:os';
 import {bundle} from '@remotion/bundler';
+import {assertFreeSpace} from './temp-files.mjs';
 import {openBrowser, renderStill, selectComposition} from '@remotion/renderer';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -97,17 +98,19 @@ fs.mkdirSync(outDir, {recursive: true});
 const inputProps = option('--props') ? JSON.parse(option('--props')) : {};
 const scale = Number(option('--scale', '0.4'));
 
+assertFreeSpace(); // a bundle copies public/ (several GB) into the temp folder
 console.log(`Bundling for ${composition} (${picked.length} sentences)…`);
 const serveUrl = await bundle({entryPoint: path.join(ROOT, 'src/index.tsx'), onProgress: () => {}});
 const browser = await openBrowser('chrome');
 try {
-  const comp = await selectComposition({serveUrl, id: composition, inputProps, puppeteerInstance: browser});
+  // Port 3100, never 3000 (Studio's port): the manager took a render's bundle server for Studio and opened a 404.
+  const comp = await selectComposition({serveUrl, id: composition, inputProps, puppeteerInstance: browser, port: 3100});
   const frames = [];
   for (const [index, sentence] of picked.entries()) {
     const mid = (sentence.startMs + sentence.endMs) / 2;
     const frame = Math.min(comp.durationInFrames - 1, Math.round((mid / 1000) * comp.fps));
     const file = path.join(outDir, `${String(index + 1).padStart(3, '0')}-f${frame}.png`);
-    await renderStill({serveUrl, composition: comp, frame, output: file, inputProps, scale, imageFormat: 'png', puppeteerInstance: browser});
+    await renderStill({serveUrl, composition: comp, frame, output: file, inputProps, scale, imageFormat: 'png', puppeteerInstance: browser, port: 3100});
     frames.push({file, frame, seconds: frame / comp.fps, part: sentence.part, text: sentence.text});
     process.stdout.write(`\r  ${index + 1}/${picked.length}`);
   }

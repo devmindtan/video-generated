@@ -77,8 +77,10 @@ Người dùng 2026-11-02: gộp "bản vá" và "duyệt từng cảnh" làm m�
 
 ## 3. (Bỏ) Duyệt từng cảnh
 
-Màn duyệt riêng từng cảnh không còn. Clip từng cảnh vẫn được xuất bằng `scene-clip` (người dùng cho phép render clip
-duyệt từng cảnh; render cả video vẫn chỉ khi người dùng yêu cầu), nhưng được gửi trong bản vá. Bước nội bộ vẫn mang mã
+Màn duyệt riêng từng cảnh không còn. Từ 2026-11-08 người dùng không muốn xuất clip trong lúc đang làm ("bạn xuất video
+ra chi vậy để đó nào xong rồi xuất"): agent không chạy `scene-clip`; người dùng xem trong Studio, bản vá ghi thay đổi
+(`--changes`, giọng mới bằng `--media`) và tên composition cần mở. Lệnh `scene-clip` vẫn còn, chỉ dùng khi người dùng
+yêu cầu; render/xuất video chỉ khi video xong và người dùng yêu cầu. Bước nội bộ vẫn mang mã
 `scene-review` để giữ lịch sử; nó đạt khi đã chốt, có ít nhất một bản vá được chấp nhận và không còn bản vá chờ.
 
 ## 4. Xem bản dựng và xuất

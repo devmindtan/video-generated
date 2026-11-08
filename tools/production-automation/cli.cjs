@@ -294,7 +294,9 @@ async function main(argv){
       progress.update(ROOT,a,task,{status:'running',percent:0,note:rel,pid:process.pid});
       // --voice <id>: render with another narration take than the composition's default (e.g. a clone take to review).
       const voice=valueOf('--voice');
-      try{execFileSync(path.join(ROOT,'node_modules/.bin/remotion'),['render','src/index.tsx',scene.composition,rel,
+      {const st=fs.statfsSync(require('node:os').tmpdir()),free=st.bavail*st.bsize/1024**3;if(free<12)throw new Error(`Ổ còn ${free.toFixed(1)} GB (< 12 GB): chạy "npm run temp -- status" / "npm run temp -- clean" trước khi render.`);}
+      try{execFileSync(path.join(ROOT,'node_modules/.bin/remotion'),['render','src/index.tsx',scene.composition,rel,'--port=3100', // never 3000: Studio's port (the manager opened a render's bundle server → 404, 2026-11-08)
+        
         ...(scene.frames?[`--frames=${scene.frames[0]}-${scene.frames[1]}`]:[]),...(voice?[`--props=${JSON.stringify({voice})}`]:[])],{cwd:ROOT,stdio:'inherit'});}
       catch(e){progress.update(ROOT,a,task,{status:'failed',note:`Render lỗi: ${e.message.split('\n')[0]}`});throw e;}
       const clip=review.addClip(ROOT,p,b,rel);progress.update(ROOT,a,task,{status:'done',note:'Clip sẵn sàng; đính kèm vào bản vá để bạn xem'});
