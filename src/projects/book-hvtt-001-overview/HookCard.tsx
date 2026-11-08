@@ -1,6 +1,6 @@
 import type {FC} from 'react';
 import {Audio} from '@remotion/media';
-import {AbsoluteFill, Track, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Easing, Track, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import '../../shared/stoic-fonts';
 import {MusicFade} from '../../shared/MusicFade';
 import {Backdrop, Captions, GOLD, INK, IVORY, Visualizer, clamp, ease} from './Intro';
@@ -17,7 +17,7 @@ export type HookSection = 'lead' | 'voice';
 export type HookCardProps = {voice: string; channelLabel: string; episodeLabel: string; bookTitle: string; bookAuthor: string; takes: Voice[]; leadSeconds?: number; section?: HookSection};
 
 export const HOOK_LEAD_SECONDS = 7;
-const TAIL_SECONDS = 1.2, MUSIC_OUT_SECONDS = 1.8;
+const TAIL_SECONDS = 1.8, MUSIC_OUT_SECONDS = 1.8;
 const voiceOf = (id: string, list: Voice[]) => list.find((v) => v.id === id) ?? list[0];
 
 export const hookLeadFrames = (fps = 30, lead = HOOK_LEAD_SECONDS) => Math.round(lead * fps);
@@ -47,12 +47,13 @@ export const BookInsightsHookCard: FC<HookCardProps> = ({voice: voiceId, channel
   const ruleIn = interpolate(frame, [2.8 * fps, 3.8 * fps], [0, 1], {...clamp, easing: ease});
   const authorIn = interpolate(frame, [3.4 * fps, 4.6 * fps], [0, .85], clamp);
   const lower = interpolate(frame, [lead - .6 * fps, lead, end, end + .5 * fps], [0, 1, 1, 0], clamp);
-  const fadeOut = section === 'lead' ? 1 : interpolate(own, [durationInFrames - .8 * fps, durationInFrames], [1, 0], clamp);
+  const fadeOut = section === 'lead' ? 1 : interpolate(own, [durationInFrames - 1.1 * fps, durationInFrames], [1, 0], {...clamp, easing: Easing.inOut(Easing.sin)});
   // Intro level while the screen builds, gone by the first word.
   const musicLevel = interpolate(own, [lead - MUSIC_OUT_SECONDS * fps, lead], [music.pauseVolume, 0], clamp);
   return <AbsoluteFill style={{background: INK, fontFamily: 'Stoic Sans, sans-serif', overflow: 'hidden'}}>
+    {/* The background stays; only the screen's text and voice meter fade, so the next part takes over without a dip. */}
+    <Backdrop frame={frame} fps={fps} durationInFrames={hookFrames(voiceId, takes, fps, leadSeconds)} />
     <AbsoluteFill style={{opacity: fadeOut}}>
-      <Backdrop frame={frame} fps={fps} durationInFrames={hookFrames(voiceId, takes, fps, leadSeconds)} />
       <div style={{position: 'absolute', top: 104, left: 0, right: 0, textAlign: 'center', color: GOLD, fontSize: 22, fontWeight: 700, letterSpacing: 8, opacity: labelIn}}>{channelLabel}</div>
       <div style={{position: 'absolute', top: 300, left: 0, right: 0, textAlign: 'center'}}>
         <div style={{color: GOLD, fontSize: 28, fontWeight: 700, letterSpacing: 10, opacity: labelIn}}>{episodeLabel}</div>

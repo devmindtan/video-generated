@@ -1,6 +1,6 @@
 import type {FC, ReactNode} from 'react';
 import {Audio} from '@remotion/media';
-import {AbsoluteFill, Sequence, Track, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Easing, Sequence, Track, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import type {CalculateMetadataFunction} from 'remotion';
 import '../../shared/stoic-fonts';
 import {Backdrop, Captions, GOLD, INK, IVORY, clamp, ease} from './Intro';
@@ -34,22 +34,26 @@ export type Pacing = {
   voiceFrame: (frame: number) => number | null; // take frame heard at this frame, null during a rest
   frames: number;
 };
-export const pace = (take: Take | undefined, ideaStarts: number[], fps: number, extra: Record<number, number> = {}): Pacing => {
+// Gentle part changes (user 2026-11-08, from episode 3: "chuyển cảnh phải từ từ và mượt mà"): a section may open
+// with a quiet lead before its first word and keep a longer quiet tail; its pictures fade in/out over fadeSeconds while
+// the background stays, and drawings hand over more slowly (beatFadeFrames). Unset = the episode 1–2 timing.
+export type Transition = {leadSeconds: number; tailSeconds: number; fadeSeconds: number; beatFadeFrames: number};
+export const pace = (take: Take | undefined, ideaStarts: number[], fps: number, extra: Record<number, number> = {}, t?: Transition): Pacing => {
   const ranges = take?.phraseRanges ?? [];
   if (!take || !ranges.length) return {at: (i) => i * 3 * fps, end: (i) => (i * 3 + 2.5) * fps, segments: [], voiceFrame: () => null, frames: 5 * fps};
-  const n = ranges.length, F = (sec: number) => Math.round(sec * fps);
+  const n = ranges.length, F = (sec: number) => Math.round(sec * fps), L = F(t?.leadSeconds ?? 0);
   const rest = ranges.map((_, i) => (i < n - 1 ? F(BREATH_SECONDS + (ideaStarts.includes(i + 1) ? IDEA_SECONDS : 0) + (extra[i] ?? 0)) : 0));
   const added = rest.reduce<number[]>((acc, r, i) => [...acc, acc[i] + r], [0]); // rest frames before sentence i
   const cut = ranges.map((r, i) => (i === 0 ? 0 : F((ranges[i - 1].endSeconds + r.startSeconds) / 2))).concat(F(take.durationSeconds));
-  const segments = ranges.map((_, i) => ({from: cut[i] + added[i], trimBefore: cut[i], trimAfter: cut[i + 1]}));
+  const segments = ranges.map((_, i) => ({from: L + cut[i] + added[i], trimBefore: cut[i], trimAfter: cut[i + 1]}));
   const voiceFrame = (frame: number) => {
     const s = segments.find((g) => frame >= g.from && frame < g.from + g.trimAfter - g.trimBefore);
     return s ? s.trimBefore + frame - s.from : null;
   };
   return {
-    at: (i) => (i >= n ? F(take.durationSeconds) + added[n - 1] : F(ranges[Math.max(0, i)].startSeconds) + added[Math.max(0, i)]),
-    end: (i) => F(ranges[Math.min(i, n - 1)].endSeconds) + added[Math.min(i, n - 1)],
-    segments, voiceFrame, frames: F(take.durationSeconds) + added[n - 1] + F(TAIL_SECONDS),
+    at: (i) => L + (i >= n ? F(take.durationSeconds) + added[n - 1] : F(ranges[Math.max(0, i)].startSeconds) + added[Math.max(0, i)]),
+    end: (i) => L + F(ranges[Math.min(i, n - 1)].endSeconds) + added[Math.min(i, n - 1)],
+    segments, voiceFrame, frames: L + F(take.durationSeconds) + added[n - 1] + F(t?.tailSeconds ?? TAIL_SECONDS),
   };
 };
 // The take played piece by piece on the paced timeline.
@@ -68,7 +72,7 @@ export const captionMs = (pacing: Pacing, frame: number, fps: number) => {
   const v = pacing.voiceFrame(frame);
   if (v !== null) return v * 1000 / fps;
   const before = [...pacing.segments].reverse().find((g) => g.from <= frame);
-  return before ? before.trimAfter * 1000 / fps : 0;
+  return before ? before.trimAfter * 1000 / fps : -1e6; // before the first word (a section's lead): no caption
 };
 export const voiceLevel = (take: Take | undefined, pacing: Pacing, frame: number) => {
   const v = pacing.voiceFrame(frame);
@@ -90,11 +94,11 @@ const ideaStartsOf = (beats: Beat[]) => beats.map((b) => b.at).filter((a) => a >
 const cardRestOf = (beats: Beat[]) => Object.fromEntries(beats.filter((b) => b.card).map((b) => [b.at, CARD_SECONDS]));
 // Pacing is pure for a (voice, beats, fps): cached, since the body music asks it for every frame of the episode.
 const paceCache = new WeakMap<Beat[], Map<string, Pacing>>();
-export const sectionPacing = (voice: string, beats: Beat[], fps = 30, list: Take[] = voices) => {
+export const sectionPacing = (voice: string, beats: Beat[], fps = 30, list: Take[] = voices, t?: Transition) => {
   const byKey = paceCache.get(beats) ?? new Map<string, Pacing>();paceCache.set(beats, byKey);
   const key = `${voice}@${fps}`, hit = byKey.get(key);
   if (hit) return hit;
-  const made = pace(takeOf(voice, list), ideaStartsOf(beats), fps, cardRestOf(beats));byKey.set(key, made);
+  const made = pace(takeOf(voice, list), ideaStartsOf(beats), fps, cardRestOf(beats), t);byKey.set(key, made);
   return made;
 };
 
@@ -114,23 +118,28 @@ export const Word: FC<{x: number; y: number; size: number; text: string; opacity
   <text x={x} y={y} fontSize={size} fontWeight={700} textAnchor={anchor} fill={IVORY} opacity={opacity} style={{letterSpacing: size * .06}}>{text}</text>;
 export const appear = (frame: number, from: number, len = 12) => interpolate(frame, [from, from + len], [0, 1], {...clamp, easing: ease});
 
-export const NarratedSection: FC<{voice: string; channelLabel: string; beats: Beat[]; highlight?: RegExp; track: string; takes?: Take[]; quoteSource?: string}> = ({voice: voiceId, channelLabel, beats, highlight, track, takes: list = voices, quoteSource = 'Hiểu về trái tim, Minh Niệm'}) => {
+export const NarratedSection: FC<{voice: string; channelLabel: string; beats: Beat[]; highlight?: RegExp; track: string; takes?: Take[]; quoteSource?: string; transition?: Transition}> = ({voice: voiceId, channelLabel, beats, highlight, track, takes: list = voices, quoteSource = 'Hiểu về trái tim, Minh Niệm', transition}) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
   const voice = takeOf(voiceId, list);
-  const pacing = sectionPacing(voiceId, beats, fps, list);
-  const at = pacing.at;
+  const pacing = sectionPacing(voiceId, beats, fps, list, transition);
+  const at = pacing.at, hand = transition?.beatFadeFrames ?? 12;
   const level = voiceLevel(voice, pacing, frame);
   // A drawing starts in the rest before its sentence; the one before has faded out by then (no overlap).
-  const starts = beats.map((b, i) => (i === 0 ? 0 : at(b.at) - 12));
-  const opacityOf = (i: number) => interpolate(frame, [starts[i], starts[i] + 12, (starts[i + 1] ?? 1e9) - 12, starts[i + 1] ?? 1e9], [i === 0 ? 1 : 0, 1, 1, 0], clamp);
+  const starts = beats.map((b, i) => (i === 0 ? 0 : at(b.at) - hand));
+  const opacityOf = (i: number) => interpolate(frame, [starts[i], starts[i] + hand, (starts[i + 1] ?? 1e9) - hand, starts[i + 1] ?? 1e9], [i === 0 ? 1 : 0, 1, 1, 0], clamp);
   const current = starts.reduce((n, s, i) => (frame >= s ? i : n), 0);
   // Item label of the current beat, or of the last beat before it that set one.
   const label = [...beats.slice(0, current + 1)].reverse().find((b) => b.label !== undefined)?.label;
-  const fadeOut = interpolate(frame, [durationInFrames - .6 * fps, durationInFrames], [1, 0], clamp);
+  // Without a transition the whole part fades to black at its end (episodes 1–2); with one, only the pictures,
+  // labels and captions fade in and out, over the steady background.
+  const fade = transition ? transition.fadeSeconds * fps : 0;
+  const fadeOut = transition ? 1 : interpolate(frame, [durationInFrames - .6 * fps, durationInFrames], [1, 0], clamp);
+  const content = transition ? Math.min(interpolate(frame, [0, fade], [0, 1], {...clamp, easing: Easing.inOut(Easing.sin)}), interpolate(frame, [durationInFrames - fade, durationInFrames], [1, 0], {...clamp, easing: Easing.inOut(Easing.sin)})) : 1;
   return <AbsoluteFill style={{background: INK, fontFamily: 'Stoic Sans, sans-serif', overflow: 'hidden'}}>
     <AbsoluteFill style={{opacity: fadeOut}}>
       <Backdrop frame={frame} fps={fps} durationInFrames={durationInFrames} drawFrame={false} />
+      <AbsoluteFill style={{opacity: content}}>
       <div style={{position: 'absolute', top: 104, left: 0, right: 0, textAlign: 'center', color: GOLD, fontSize: 22, fontWeight: 700, letterSpacing: 8}}>{channelLabel}</div>
       {label ? <div style={{position: 'absolute', top: 150, left: 0, right: 0, textAlign: 'center', color: IVORY, fontSize: 30, fontWeight: 700, letterSpacing: 6, opacity: .9}}>{label.toUpperCase()}</div> : null}
       <svg viewBox="0 0 1920 1080" width={1920} height={1080} style={{position: 'absolute', inset: 0, filter: `drop-shadow(0 0 ${2 + level * 4}px rgba(217,181,111,${.14 + level * .2}))`}}>
@@ -152,6 +161,7 @@ export const NarratedSection: FC<{voice: string; channelLabel: string; beats: Be
       {voice ? <Captions captions={voice.captions} ms={captionMs(pacing, frame, fps)} highlight={highlight} /> : null}
       <CornerVoice take={voice} pacing={pacing} frame={frame} />
       {beats[current]?.quote && quoteSource ? <div style={{position: 'absolute', top: 852, left: 0, right: 0, textAlign: 'center', color: GOLD, fontSize: 24, fontWeight: 700, letterSpacing: 2, opacity: opacityOf(current) * .85}}>— {quoteSource}</div> : null}
+      </AbsoluteFill>
     </AbsoluteFill>
     {voice ? <PacedVoice take={voice} pacing={pacing} track={track} /> : null}
   </AbsoluteFill>;
@@ -193,11 +203,11 @@ export type SectionProps = {voice: string; channelLabel: string};
 export type Section = FC<SectionProps> & {frames: (voice: string, fps?: number) => number; pacing: (voice: string, fps?: number) => Pacing; speaking: (voice: string, frame: number, fps?: number) => boolean; metadata: CalculateMetadataFunction<SectionProps>};
 // takes/quoteSource: the episode's narration and the book named under on-screen quotes (episode 1 by default; '' for
 // none: from episode 2 the user dropped it, it crowded the captions).
-export const section = (track: string, highlight: RegExp, beats: Beat[], options: {takes?: Take[]; quoteSource?: string} = {}): Section => {
-  const list = options.takes ?? voices;
-  const C: FC<SectionProps> = (p) => <NarratedSection {...p} track={track} highlight={highlight} beats={beats} takes={list} quoteSource={options.quoteSource} />;
-  const frames = (voice: string, fps = 30) => sectionPacing(voice, beats, fps, list).frames;
-  const speaking = (voice: string, frame: number, fps = 30) => sectionPacing(voice, beats, fps, list).voiceFrame(frame) !== null;
-  const pacing = (voice: string, fps = 30) => sectionPacing(voice, beats, fps, list);
+export const section = (track: string, highlight: RegExp, beats: Beat[], options: {takes?: Take[]; quoteSource?: string; transition?: Transition} = {}): Section => {
+  const list = options.takes ?? voices, t = options.transition;
+  const C: FC<SectionProps> = (p) => <NarratedSection {...p} track={track} highlight={highlight} beats={beats} takes={list} quoteSource={options.quoteSource} transition={t} />;
+  const frames = (voice: string, fps = 30) => sectionPacing(voice, beats, fps, list, t).frames;
+  const speaking = (voice: string, frame: number, fps = 30) => sectionPacing(voice, beats, fps, list, t).voiceFrame(frame) !== null;
+  const pacing = (voice: string, fps = 30) => sectionPacing(voice, beats, fps, list, t);
   return Object.assign(C, {frames, pacing, speaking, metadata: (({props}) => ({durationInFrames: frames(props.voice)})) as CalculateMetadataFunction<SectionProps>});
 };

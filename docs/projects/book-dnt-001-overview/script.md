@@ -46,13 +46,13 @@ Carnegie phỏng đoán rằng Lincoln đã hiểu: gửi lá thư đi thì ông
 
 ## 1. Cuốn sách là gì
 
-Đắc nhân tâm ra đời từ một lớp học. Carnegie kể rằng từ năm 1912, ông dạy người đi làm ở New York cách nói trước đám đông, rồi nhận ra học viên của mình còn cần học cách cư xử với người khác. Tìm mãi không thấy cuốn sách nào để làm tài liệu, ông tự soạn bài giảng, và từ những bài giảng ấy mà có cuốn sách in lần đầu năm 1936. [nghỉ]
+Đắc nhân tâm ra đời từ một lớp học. Carnegie dạy người đi làm ở New York cách nói trước đám đông, rồi nhận ra học viên của mình còn cần học một thứ khác: cách cư xử với người khác. Tìm mãi không thấy cuốn sách nào làm tài liệu, ông tự soạn bài giảng, và cuốn sách lớn dần lên từ chính những bài giảng ấy. [nghỉ]
 
-Cuốn mình đọc là bản đã được gia đình tác giả cập nhật về sau. Sách gồm ba mươi nguyên tắc chia làm bốn phần, mỗi nguyên tắc là một chương ngắn, kể qua rất nhiều câu chuyện, phần lớn là chuyện của người thật ở Mỹ vào thời đó. [nghỉ]
+Sách có ba mươi nguyên tắc, chia làm bốn phần. Mỗi nguyên tắc là một chương ngắn, kể qua rất nhiều câu chuyện, phần lớn là chuyện người thật ở Mỹ thời đó. [nghỉ]
 
 Vì sao cuốn sách gây tranh cãi? Có người xem nó như một cẩm nang để sống tử tế với người xung quanh; có người lại thấy nó dạy cách lấy lòng người khác để đạt được mục đích. Mình sẽ kể đúng nội dung sách trước, rồi đến cuối video mới nói những chỗ mình thấy chưa đạt, để các bạn tự đánh giá.
 
-{Lời tác giả PDF 15–17 (dạy từ năm 1912, lớp nói trước công chúng, không tìm được sách làm tài liệu); 1936 PDF 6, 11; bản Revised & Updated Edition, bản quyền tái bản do gia đình Carnegie giữ PDF 6. Không đọc các tuyên bố quảng bá về doanh số/"hay nhất" ở lời giới thiệu (PDF 7–13). Câu về hai luồng ý kiến là nhận xét của kênh, không gắn cho ai cụ thể.}
+{Lời tác giả PDF 15–17 (dạy từ năm 1912, lớp nói trước công chúng, không tìm được sách làm tài liệu); 1936 PDF 6, 11; bản Revised & Updated Edition, bản quyền tái bản do gia đình Carnegie giữ PDF 6. Không đọc các tuyên bố quảng bá về doanh số/"hay nhất" ở lời giới thiệu (PDF 7–13). Câu về hai luồng ý kiến là nhận xét của kênh, không gắn cho ai cụ thể. Năm 1912, năm in đầu 1936 và chuyện bản cập nhật không đọc thành lời nữa (quy tắc 2026-11-08: chi tiết không cần cho câu chuyện để ở description).}
 
 ## 2. Sợi chỉ xuyên suốt
 
@@ -146,7 +146,7 @@ Còn ở chiều ngược lại, mình cũng thấy có người chê cuốn sá
 
 ## 3F. Tổng kết
 
-[nghỉ] Cả cuốn Đắc nhân tâm có thể kể lại trong một hơi: Carnegie cho rằng người ta dễ thay đổi khi được tôn trọng hơn là khi bị chê trách. Từ đó, sách đi qua bốn phần: ba điều nền tảng là bớt chỉ trích, khen thật lòng và bắt đầu từ điều người khác muốn; sáu cách tạo thiện cảm; mười hai cách cư xử khi hai người nghĩ khác nhau; và chín cách góp ý mà không làm người khác tổn thương. [nghỉ]
+[nghỉ] Cả cuốn Đắc nhân tâm có thể kể lại trong một hơi: Carnegie cho rằng người ta dễ thay đổi khi được tôn trọng hơn là khi bị chê trách. Từ đó, sách đi qua bốn phần: ba điều nền tảng, sáu cách tạo thiện cảm, mười hai cách cư xử khi hai người nghĩ khác nhau, và chín cách góp ý mà không làm ai tổn thương. [nghỉ]
 
 Và điều kiện cuốn sách nhiều lần nhấn mạnh là: phải thật lòng.
 

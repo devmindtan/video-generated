@@ -9,7 +9,10 @@ import takes from './body-takes.json';
 // Each beat names the sentence (0-based, scripts/projects/book-dnt-001-overview/lines-<segment>.txt) where its drawing
 // starts. Series rules: one complete drawing per idea that grows inside its scene, nothing drawn over a figure, no
 // weapons or fighting, text ≥ 34 px, no book line under quotes.
-const options = {takes: takesOf(takes), quoteSource: ''};
+// Gentle part changes (user 2026-11-08): with the series intro gone there is room for a quiet second before each part's
+// first word, a longer rest after its last, pictures fading in and out over the steady background, and slower
+// hand-overs between drawings.
+const options = {takes: takesOf(takes), quoteSource: '', transition: {leadSeconds: 1.4, tailSeconds: 1.6, fadeSeconds: 1.1, beatFadeFrames: 18}};
 const D = (c: Ctx, d: string, delay = 0, len = 28, width = 2.4, opacity = 1) => <Draw key={`${d}${delay}`} d={d} frame={c.frame} from={c.start + delay} to={c.start + delay + len} width={width} opacity={opacity} />;
 // Same stroke, but from an absolute frame (a moment inside a later sentence of the same scene).
 const DA = (c: Ctx, d: string, from: number, len = 24, width = 2.4, opacity = 1) => <Draw key={`${d}${from}`} d={d} frame={c.frame} from={from} to={from + len} width={width} opacity={opacity} />;
@@ -189,36 +192,34 @@ const Ink = ({d, o = 1, w = 2.4, color = GOLD}: {d: string; o?: number; w?: numb
 const two = (c: Ctx, from: number, gap = 4) => <g><Figure frame={c.frame} from={from} x={600} y={800} s={.95} /><Figure frame={c.frame} from={from + gap} x={1320} y={800} s={.95} facing={-1} /></g>;
 
 // 1 Cuốn sách là gì (lines-03-cuon-sach.txt).
-// 0–1 a classroom: teacher at a lectern, three learners seated; "1912" at its word; two learners turn to each other at
+// 0–1 a classroom: teacher at a lectern, three learners seated; "NEW YORK" at its word; two learners turn to each other at
 //     "cách cư xử"
-// 2–3 lecture notes become a book with "1936" at its word; a new ribbon at "cập nhật về sau"
-// 4   an open book, four tabs 3 · 6 · 12 · 9 at "bốn phần", small speech bubbles of real people's stories
+// 2   lecture notes become the book at "cuốn sách lớn dần"
+// 3–4 an open book, four tabs 3 · 6 · 12 · 9 at "bốn phần", small speech bubbles of real people's stories at "kể qua"
 // 5–7 a question mark; scales with "SỐNG TỬ TẾ" / "LẤY LÒNG" tilting on the words, then level for "các bạn tự đánh giá"
-export const CuonSach = section('03 cuốn sách', /(một lớp học|1912|nói trước đám đông|cách cư xử|bài giảng|1936|ba mươi nguyên tắc|bốn phần|người thật|gây tranh cãi|cẩm nang|lấy lòng|tự đánh giá)/gi, [
+export const CuonSach = section('03 cuốn sách', /(một lớp học|nói trước đám đông|cách cư xử|bài giảng|ba mươi nguyên tắc|bốn phần|người thật|gây tranh cãi|cẩm nang|lấy lòng|tự đánh giá)/gi, [
   {at: 0, draw: (c) => {const talk = appear(c.frame, at(c, 1, .82), 14);return <g>
     {D(c, 'M560 800 L560 620 L700 620 L700 800 M540 620 L720 620', 0, 24, 2.4)}
     <Figure frame={c.frame} from={c.start + 6} x={430} y={800} s={.9} arm="raise" />
     {[0, 1, 2].map((k) => <g key={k} opacity={appear(c.frame, c.start + 14 + k * 4, 12)}><Figure frame={c.frame} from={c.start + 14 + k * 4} x={980 + k * 230} y={800} s={.75} facing={k === 2 && talk > .5 ? -1 : 1} pose="sit" /></g>)}
-    <Word x={1420} y={320} size={56} text="1912" opacity={appear(c.frame, at(c, 1, .14), 12)} />
+    <Word x={1420} y={320} size={44} text="NEW YORK" opacity={appear(c.frame, at(c, 1, .17), 12)} />
     <g opacity={talk}><Ink d={bubble(1290, 430, 120, 64)} color={IVORY} /><Ink d="M1262 430 L1270 430 M1288 430 L1296 430 M1314 430 L1322 430" w={4} color={IVORY} /></g>
   </g>;}},
-  {at: 2, draw: (c) => {const book = appear(c.frame, at(c, 2, .8), 16), ribbon = appear(c.frame, c.at(3) + 6, 14);return <g>
-    <g opacity={1 - book}>{[0, 1, 2].map((k) => <g key={k} opacity={appear(c.frame, at(c, 2, .3 + k * .08), 10)}><Ink d={sheet(560 + k * 300, 330, 240, 320)} color={IVORY} /><Ink d={`M${590 + k * 300} 390 L${760 + k * 300} 390 M${590 + k * 300} 430 L${730 + k * 300} 430 M${590 + k * 300} 470 L${750 + k * 300} 470`} color={IVORY} o={.8} /></g>)}</g>
+  {at: 2, draw: (c) => {const book = appear(c.frame, at(c, 2, .6), 16);return <g>
+    <g opacity={1 - book}>{[0, 1, 2].map((k) => <g key={k} opacity={appear(c.frame, at(c, 2, .38 + k * .06), 10)}><Ink d={sheet(560 + k * 300, 330, 240, 320)} color={IVORY} /><Ink d={`M${590 + k * 300} 390 L${760 + k * 300} 390 M${590 + k * 300} 430 L${730 + k * 300} 430 M${590 + k * 300} 470 L${750 + k * 300} 470`} color={IVORY} o={.8} /></g>)}</g>
     <g opacity={book}>
       <Ink d={closedBook(960, 520, 400, 360)} w={2.8} />
-      <Word x={973} y={470} size={36} text="ĐẮC NHÂN TÂM" opacity={.9} />
-      <Word x={973} y={570} size={52} text="1936" opacity={1} />
-      <Ink d="M1080 340 L1080 290 L1110 290 L1110 340" o={ribbon} w={2.6} />
+      <Word x={973} y={530} size={40} text="ĐẮC NHÂN TÂM" opacity={.9} />
     </g>
   </g>;}},
-  {at: 4, draw: (c) => <g>
+  {at: 3, draw: (c) => <g>
     {D(c, openBook(960, 600, 1.5), 0, 30, 2.6)}
     <defs><clipPath id="dnt-above-pages"><path d="M0 0 L1920 0 L1920 596 L1305 596 C1200 572 1065 575 960 621 C855 575 720 572 615 596 L0 596 Z" /></clipPath></defs>
-    <g clipPath="url(#dnt-above-pages)">{['3', '6', '12', '9'].map((n, k) => {const up = appear(c.frame, at(c, 4, .22 + k * .05), 14) * 110, x = 740 + k * 150;return <g key={n}>
+    <g clipPath="url(#dnt-above-pages)">{['3', '6', '12', '9'].map((n, k) => {const up = appear(c.frame, at(c, 3, .6 + k * .07), 14) * 110, x = 740 + k * 150;return <g key={n}>
       <Ink d={`M${x} 620 L${x} ${620 - up} L${x + 80} ${620 - up} L${x + 80} 620`} w={2.6} />
-      <Word x={x + 40} y={620 - up + 52} size={38} text={n} opacity={appear(c.frame, at(c, 4, .26 + k * .05), 10)} />
+      <Word x={x + 40} y={620 - up + 52} size={38} text={n} opacity={appear(c.frame, at(c, 3, .64 + k * .07), 10)} />
     </g>;})}</g>
-    {[0, 1, 2].map((k) => <g key={k} opacity={appear(c.frame, at(c, 4, .82 + k * .04), 10) * .9}><Ink d={bubble(560 + k * 400, 300 - (k % 2) * 30, 150, 80)} color={IVORY} /></g>)}
+    {[0, 1, 2].map((k) => <g key={k} opacity={appear(c.frame, at(c, 4, .33 + k * .1), 10) * .9}><Ink d={bubble(560 + k * 400, 300 - (k % 2) * 30, 150, 80)} color={IVORY} /></g>)}
   </g>},
   {at: 5, draw: (c) => {const scale = appear(c.frame, c.at(6), 16), left = appear(c.frame, at(c, 6, .16), 16), right = appear(c.frame, at(c, 6, .7), 16), level = appear(c.frame, c.at(7), 24);
     const tilt = (left * -10 + right * 20) * (1 - level) - (right > 0 ? 0 : 0);
@@ -578,7 +579,7 @@ export const TongKet = section('08f tổng kết', /(trong một hơi|được t
   {at: 0, draw: (c) => <g>{two(c, c.start + 4)}<Glow x={1320} y={560} r={180} opacity={appear(c.frame, at(c, 0, .55), 20) * .55} /></g>},
   {at: 1, draw: (c) => <g>
     {D(c, openBook(960, 620, 1.4), 0, 26, 2.6)}
-    {['3', '6', '12', '9'].map((n, k) => {const on = appear(c.frame, at(c, 1, [.12, .47, .57, .79][k]), 10), x = 740 + k * 150;return <g key={n} opacity={on}>
+    {['3', '6', '12', '9'].map((n, k) => {const on = appear(c.frame, at(c, 1, [.17, .28, .43, .74][k]), 10), x = 740 + k * 150;return <g key={n} opacity={on}>
       <Ink d={`M${x} 640 L${x} 520 L${x + 80} 520 L${x + 80} 640`} w={2.6} /><Word x={x + 40} y={576} size={38} text={n} opacity={1} />
     </g>;})}
   </g>},
