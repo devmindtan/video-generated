@@ -330,6 +330,56 @@
           "id": "BookDntMoChuyen",
           "kind": "Composition",
           "part": true
+        },
+        {
+          "id": "BookDntCuonSach",
+          "kind": "Composition",
+          "part": true
+        },
+        {
+          "id": "BookDntSoiChi",
+          "kind": "Composition",
+          "part": true
+        },
+        {
+          "id": "BookDntPhan1",
+          "kind": "Composition",
+          "part": true
+        },
+        {
+          "id": "BookDntPhan2",
+          "kind": "Composition",
+          "part": true
+        },
+        {
+          "id": "BookDntPhan3",
+          "kind": "Composition",
+          "part": true
+        },
+        {
+          "id": "BookDntPhan4",
+          "kind": "Composition",
+          "part": true
+        },
+        {
+          "id": "BookDntChuaDat",
+          "kind": "Composition",
+          "part": true
+        },
+        {
+          "id": "BookDntTongKet",
+          "kind": "Composition",
+          "part": true
+        },
+        {
+          "id": "BookDntYKien",
+          "kind": "Composition",
+          "part": true
+        },
+        {
+          "id": "BookDntNhanXet",
+          "kind": "Composition",
+          "part": true
         }
       ],
       "book": "dac-nhan-tam"

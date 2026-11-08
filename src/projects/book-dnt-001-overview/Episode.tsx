@@ -11,7 +11,7 @@ import type {Section} from '../book-hvtt-001-overview/scene-kit';
 import bodyMusic from './body-music.json';
 import bodyTakes from './body-takes.json';
 import cardTakes from './card-takes.json';
-import {MoChuyen} from './Sections';
+import {ChuaDat, CuonSach, MoChuyen, NhanXet, Phan1, Phan2, Phan3, Phan4, SoiChi, TongKet, YKien} from './Sections';
 
 // Episode 3 (Đắc nhân tâm) in the series frame: reused series intro, "Cách làm" and outro, this episode's card and
 // body. Parts join as their narration exists. Placeholder phase: the Quốc Tuấn take of a segment (25-quoc-tuan-<nn>)
@@ -27,7 +27,10 @@ const placeholder = (seg: string) => {
   return voices.filter((v) => {const m = /^25-quoc-tuan-(\d+[a-z]?)$/.exec(v.id);return m && (m[1] === nn || (m[1].startsWith(nn) && m[1].length === nn.length + 1 && !NUMBERS.includes(m[1])));}).at(-1)?.id;
 };
 const voiceFor = (seg: string, clone = false) => (clone ? [`${seg}-sang2`, seg, placeholder(seg)] : [placeholder(seg), seg, `${seg}-sang2`]).find((id) => id && takeOf(id, voices));
-const BODY: [string, string, Section][] = [['02-mo-chuyen', 'Mở chuyện', MoChuyen]];
+const BODY: [string, string, Section][] = [['02-mo-chuyen', 'Mở chuyện', MoChuyen], ['03-cuon-sach', 'Phần 1 · Cuốn sách là gì', CuonSach], ['04-soi-chi', 'Phần 2 · Sợi chỉ xuyên suốt', SoiChi],
+  ['05-phan-1', 'Phần một · Ba điều nền tảng', Phan1], ['06-phan-2', 'Phần hai · Sáu cách tạo thiện cảm', Phan2], ['07-phan-3', 'Phần ba · Khi hai người nghĩ khác nhau', Phan3],
+  ['08-phan-4', 'Phần bốn · Góp ý mà không làm tổn thương', Phan4], ['08e-diem-chua-dat', 'Những điểm chưa đạt', ChuaDat], ['08f-tong-ket', 'Tổng kết', TongKet],
+  ['08g-y-kien', 'Ý kiến cá nhân', YKien], ['09-nhan-xet', 'Nhận xét chung', NhanXet]];
 
 const parts = (p: EpisodeProps, fps: number): Part[] => {
   const list = openingParts({...p, cardTakes: cards}, fps);
