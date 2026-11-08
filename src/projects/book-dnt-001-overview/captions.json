@@ -1,7 +1,7 @@
 {
   "source": "Episode.tsx episodeCaptions, BookDntTap03 defaultProps",
   "fps": 30,
-  "totalFrames": 22293,
+  "totalFrames": 22230,
   "parts": [
     {
       "name": "Intro series",
@@ -55,28 +55,28 @@
     },
     {
       "name": "Những điểm chưa đạt",
-      "frames": 1886,
+      "frames": 1878,
       "startFrame": 16770
     },
     {
       "name": "Tổng kết",
-      "frames": 799,
-      "startFrame": 18656
+      "frames": 759,
+      "startFrame": 18648
     },
     {
       "name": "Ý kiến cá nhân",
-      "frames": 1751,
-      "startFrame": 19455
+      "frames": 1736,
+      "startFrame": 19407
     },
     {
       "name": "Nhận xét chung",
       "frames": 592,
-      "startFrame": 21206
+      "startFrame": 21143
     },
     {
       "name": "Outro series",
       "frames": 495,
-      "startFrame": 21798
+      "startFrame": 21735
     }
   ],
   "pages": [
@@ -1122,271 +1122,265 @@
       "part": "Những điểm chưa đạt",
       "text": "nên có những đoạn đọc giống sách dạy bán hàng hơn là sách về các mối quan hệ.",
       "startMs": 585773,
-      "endMs": 590860
+      "endMs": 590073
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Thứ ba, một vài cách trong sách,",
       "startMs": 590880,
-      "endMs": 592878
+      "endMs": 592897
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "nếu tách khỏi sự chân thành, rất dễ thành thao túng.",
-      "startMs": 592940,
-      "endMs": 596040
+      "startMs": 592960,
+      "endMs": 596020
     },
     {
       "part": "Những điểm chưa đạt",
-      "text": "Tác giả có cảnh báo về chuyện nịnh hót,",
-      "startMs": 596040,
-      "endMs": 597825
+      "text": "Sách có cảnh báo về chuyện nịnh hót,",
+      "startMs": 596200,
+      "endMs": 597680
     },
     {
       "part": "Những điểm chưa đạt",
-      "text": "nhưng mình thấy sách chưa nói nhiều về việc dừng ở đâu.",
-      "startMs": 597874,
-      "endMs": 600660
+      "text": "nhưng mình thấy chưa nói nhiều về việc dừng ở đâu.",
+      "startMs": 597730,
+      "endMs": 600320
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Thứ tư, sách khuyên tránh tranh cãi, tha thứ và giữ hòa khí,",
-      "startMs": 601567,
-      "endMs": 604727
+      "startMs": 601267,
+      "endMs": 604403
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "nhưng gần như không bàn về lúc cần nói thẳng, cần đặt giới hạn,",
-      "startMs": 604779,
-      "endMs": 607876
+      "startMs": 604455,
+      "endMs": 607576
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "hay khi đúng sai quan trọng hơn chuyện làm người khác vui lòng.",
-      "startMs": 607934,
-      "endMs": 611473
+      "startMs": 607634,
+      "endMs": 610447
     },
     {
       "part": "Những điểm chưa đạt",
-      "text": "Còn ở chiều ngược lại, mình cũng thấy có người chê cuốn sách là dạy nịnh",
-      "startMs": 611473,
-      "endMs": 615124
+      "text": "Còn ở chiều ngược lại, mình cũng thấy có người chê cuốn sách là dạy",
+      "startMs": 611253,
+      "endMs": 614749
     },
     {
       "part": "Những điểm chưa đạt",
-      "text": "mà bỏ qua chỗ tác giả nhiều lần tách bạch lời khen thật với lời nịnh.",
-      "startMs": 615173,
-      "endMs": 618633
+      "text": "nịnh mà bỏ qua những đoạn phân biệt lời khen thật với lời nịnh.",
+      "startMs": 614808,
+      "endMs": 617893
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Hai cách nhìn ấy, mình nghĩ đều có phần đúng.",
-      "startMs": 618773,
-      "endMs": 620613
+      "startMs": 618493,
+      "endMs": 620353
     },
     {
       "part": "Tổng kết",
       "text": "Cả cuốn Đắc nhân tâm có thể kể lại trong một hơi:",
-      "startMs": 621867,
-      "endMs": 624671
+      "startMs": 621600,
+      "endMs": 624500
     },
     {
       "part": "Tổng kết",
-      "text": "tác giả cho rằng người ta dễ thay đổi khi được tôn trọng hơn là khi bị chê trách.",
-      "startMs": 624728,
-      "endMs": 629273
+      "text": "Carnegie cho rằng người ta dễ thay đổi khi được tôn trọng hơn là khi bị chê trách.",
+      "startMs": 624557,
+      "endMs": 629020
     },
     {
       "part": "Tổng kết",
       "text": "Từ đó, sách đi qua bốn phần: ba điều nền tảng là bớt chỉ trích, khen thật lòng và",
-      "startMs": 629413,
-      "endMs": 633619
+      "startMs": 629547,
+      "endMs": 633732
     },
     {
       "part": "Tổng kết",
       "text": "bắt đầu từ điều người khác muốn; sáu cách tạo thiện cảm; mười hai cách cư xử khi",
-      "startMs": 633665,
-      "endMs": 637730
+      "startMs": 633778,
+      "endMs": 637843
     },
     {
       "part": "Tổng kết",
       "text": "hai người nghĩ khác nhau; và chín cách góp ý mà không làm người khác tổn thương.",
-      "startMs": 637776,
-      "endMs": 642400
+      "startMs": 637889,
+      "endMs": 642453
     },
     {
       "part": "Tổng kết",
-      "text": "Và điều kiện đi kèm tất cả những điều ấy,",
-      "startMs": 642840,
-      "endMs": 644758
-    },
-    {
-      "part": "Tổng kết",
-      "text": "như chính tác giả nhấn mạnh, là phải thật lòng.",
-      "startMs": 644811,
-      "endMs": 647220
+      "text": "Và điều kiện cuốn sách nhiều lần nhấn mạnh là: phải thật lòng.",
+      "startMs": 642833,
+      "endMs": 645713
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Nói về cảm nhận của riêng mình, thứ mình muốn mang theo sau khi",
-      "startMs": 648500,
-      "endMs": 651721
+      "startMs": 646900,
+      "endMs": 650121
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "đọc là thói quen dừng lại một nhịp trước khi chê trách ai đó.",
-      "startMs": 651760,
-      "endMs": 654640
+      "startMs": 650160,
+      "endMs": 653040
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Lá thư Lincoln không gửi đi là hình ảnh mình nhớ lâu nhất:",
-      "startMs": 655180,
-      "endMs": 658096
+      "startMs": 653580,
+      "endMs": 656496
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "viết ra cho hả giận cũng được, nhưng chưa vội gửi.",
-      "startMs": 658150,
-      "endMs": 661427
+      "startMs": 656550,
+      "endMs": 659807
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Nhiều lời khuyên trong sách nghe qua thì rất bình thường,",
-      "startMs": 661627,
-      "endMs": 664216
+      "startMs": 660027,
+      "endMs": 662608
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "như mỉm cười hay nhớ tên người khác.",
-      "startMs": 664273,
-      "endMs": 665947
+      "startMs": 662665,
+      "endMs": 664347
     },
     {
       "part": "Ý kiến cá nhân",
-      "text": "Nhưng ngẫm lại, mình thấy điều tác giả muốn nói nằm ở phía sau:",
-      "startMs": 666467,
-      "endMs": 669458
+      "text": "Nhưng ngẫm lại, mình thấy điều đáng giữ nằm ở phía sau:",
+      "startMs": 664847,
+      "endMs": 667440
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "nhìn người đối diện như một con người, chứ không phải như một việc cần xong.",
-      "startMs": 669507,
-      "endMs": 673933
+      "startMs": 667492,
+      "endMs": 671833
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Còn một điều mình muốn nhắc: những câu chuyện trong sách chỉ là một góc nhìn,",
-      "startMs": 673933,
-      "endMs": 677432
+      "startMs": 671833,
+      "endMs": 675312
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "phần lớn là chuyện của những người đã thành",
-      "startMs": 677482,
-      "endMs": 679409
+      "startMs": 675362,
+      "endMs": 677278
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "công trong một thời và một nơi rất khác với mình bây giờ.",
-      "startMs": 679447,
-      "endMs": 682713
+      "startMs": 677315,
+      "endMs": 680613
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Vì vậy, các bạn cứ giữ chính kiến của mình:",
-      "startMs": 682873,
-      "endMs": 685025
+      "startMs": 680773,
+      "endMs": 682905
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "thử rồi tự xem điều gì hợp, điều gì không, và đừng dùng bất kỳ cách",
-      "startMs": 685083,
-      "endMs": 689078
+      "startMs": 682963,
+      "endMs": 686958
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "nào trong sách để đổi lấy sự thật hay để lừa người khác.",
-      "startMs": 689125,
-      "endMs": 691853
+      "startMs": 687005,
+      "endMs": 689733
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Nếu chỉ chọn một điều để bắt đầu, mình gợi ý cách đổi chữ \"nhưng\" thành chữ \"và\".",
-      "startMs": 692860,
-      "endMs": 697020
+      "startMs": 690740,
+      "endMs": 694800
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Lần tới khi cần góp ý cho ai đó, các bạn thử nói trọn lời khen trước,",
-      "startMs": 697880,
-      "endMs": 701933
+      "startMs": 695780,
+      "endMs": 699804
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "rồi nối lời góp ý bằng chữ \"và\", xem người nghe phản ứng có khác không.",
-      "startMs": 701990,
-      "endMs": 705640
+      "startMs": 699860,
+      "endMs": 703520
     },
     {
       "part": "Nhận xét chung",
       "text": "Khép lại Đắc nhân tâm, mình không nghĩ đây là",
-      "startMs": 706867,
-      "endMs": 709494
+      "startMs": 704767,
+      "endMs": 707394
     },
     {
       "part": "Nhận xét chung",
       "text": "cuốn sách dạy người ta khéo léo cho bằng được.",
-      "startMs": 709537,
-      "endMs": 711687
+      "startMs": 707437,
+      "endMs": 709587
     },
     {
       "part": "Nhận xét chung",
       "text": "Nó giống một lời nhắc chú ý đến người khác nhiều hơn, và dù thích hay",
-      "startMs": 712473,
-      "endMs": 715860
+      "startMs": 710373,
+      "endMs": 713760
     },
     {
       "part": "Nhận xét chung",
       "text": "không thích cuốn sách, mình nghĩ ai đọc cũng có thể giữ lại được vài điều.",
-      "startMs": 715907,
-      "endMs": 719153
+      "startMs": 713807,
+      "endMs": 717053
     },
     {
       "part": "Nhận xét chung",
       "text": "Nếu bạn có thời gian, có thể đọc qua để hiểu hơn:",
-      "startMs": 720420,
-      "endMs": 723113
+      "startMs": 718320,
+      "endMs": 721013
     },
     {
       "part": "Nhận xét chung",
       "text": "đọc chậm, rồi tự quyết định điều gì đáng giữ.",
-      "startMs": 723174,
-      "endMs": 725360
+      "startMs": 721074,
+      "endMs": 723260
     },
     {
       "part": "Outro series",
       "text": "Đến đây là kết thúc rồi, các bạn thấy thế nào?",
-      "startMs": 727240,
-      "endMs": 730200
+      "startMs": 725140,
+      "endMs": 728100
     },
     {
       "part": "Outro series",
       "text": "Nếu hay thì hãy bình luận vào bên dưới video và cho mình một lượt đăng ký kênh",
-      "startMs": 730940,
-      "endMs": 735158
+      "startMs": 728840,
+      "endMs": 733058
     },
     {
       "part": "Outro series",
       "text": "để mình có động lực để có thể làm thêm nhiều những video thế này hơn nữa nhé.",
-      "startMs": 735213,
-      "endMs": 739740
+      "startMs": 733113,
+      "endMs": 737640
     },
     {
       "part": "Outro series",
       "text": "Hẹn gặp lại cả nhà.",
-      "startMs": 739960,
-      "endMs": 740760
+      "startMs": 737860,
+      "endMs": 738660
     }
   ]
 }

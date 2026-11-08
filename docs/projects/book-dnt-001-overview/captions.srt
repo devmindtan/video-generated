@@ -695,177 +695,173 @@ bán hàng ở Mỹ gần một trăm năm trước,
 nên có những đoạn đọc giống sách dạy bán hàng hơn là sách về các mối quan hệ.
 
 175
-00:09:50,880 --> 00:09:52,939
+00:09:50,880 --> 00:09:52,959
 Thứ ba, một vài cách trong sách,
 
 176
-00:09:52,940 --> 00:09:56,039
+00:09:52,960 --> 00:09:56,199
 nếu tách khỏi sự chân thành, rất dễ thành thao túng.
 
 177
-00:09:56,040 --> 00:09:57,873
-Tác giả có cảnh báo về chuyện nịnh hót,
+00:09:56,200 --> 00:09:57,729
+Sách có cảnh báo về chuyện nịnh hót,
 
 178
-00:09:57,874 --> 00:10:01,566
-nhưng mình thấy sách chưa nói nhiều về việc dừng ở đâu.
+00:09:57,730 --> 00:10:01,266
+nhưng mình thấy chưa nói nhiều về việc dừng ở đâu.
 
 179
-00:10:01,567 --> 00:10:04,778
+00:10:01,267 --> 00:10:04,454
 Thứ tư, sách khuyên tránh tranh cãi, tha thứ và giữ hòa khí,
 
 180
-00:10:04,779 --> 00:10:07,933
+00:10:04,455 --> 00:10:07,633
 nhưng gần như không bàn về lúc cần nói thẳng, cần đặt giới hạn,
 
 181
-00:10:07,934 --> 00:10:11,472
+00:10:07,634 --> 00:10:11,252
 hay khi đúng sai quan trọng hơn chuyện làm người khác vui lòng.
 
 182
-00:10:11,473 --> 00:10:15,172
-Còn ở chiều ngược lại, mình cũng thấy có người chê cuốn sách là dạy nịnh
+00:10:11,253 --> 00:10:14,807
+Còn ở chiều ngược lại, mình cũng thấy có người chê cuốn sách là dạy
 
 183
-00:10:15,173 --> 00:10:18,772
-mà bỏ qua chỗ tác giả nhiều lần tách bạch lời khen thật với lời nịnh.
+00:10:14,808 --> 00:10:18,492
+nịnh mà bỏ qua những đoạn phân biệt lời khen thật với lời nịnh.
 
 184
-00:10:18,773 --> 00:10:20,613
+00:10:18,493 --> 00:10:20,353
 Hai cách nhìn ấy, mình nghĩ đều có phần đúng.
 
 185
-00:10:21,867 --> 00:10:24,727
+00:10:21,600 --> 00:10:24,556
 Cả cuốn Đắc nhân tâm có thể kể lại trong một hơi:
 
 186
-00:10:24,728 --> 00:10:29,412
-tác giả cho rằng người ta dễ thay đổi khi được tôn trọng hơn là khi bị chê trách.
+00:10:24,557 --> 00:10:29,546
+Carnegie cho rằng người ta dễ thay đổi khi được tôn trọng hơn là khi bị chê trách.
 
 187
-00:10:29,413 --> 00:10:33,664
+00:10:29,547 --> 00:10:33,777
 Từ đó, sách đi qua bốn phần: ba điều nền tảng là bớt chỉ trích, khen thật lòng và
 
 188
-00:10:33,665 --> 00:10:37,775
+00:10:33,778 --> 00:10:37,888
 bắt đầu từ điều người khác muốn; sáu cách tạo thiện cảm; mười hai cách cư xử khi
 
 189
-00:10:37,776 --> 00:10:42,839
+00:10:37,889 --> 00:10:42,832
 hai người nghĩ khác nhau; và chín cách góp ý mà không làm người khác tổn thương.
 
 190
-00:10:42,840 --> 00:10:44,810
-Và điều kiện đi kèm tất cả những điều ấy,
+00:10:42,833 --> 00:10:46,899
+Và điều kiện cuốn sách nhiều lần nhấn mạnh là: phải thật lòng.
 
 191
-00:10:44,811 --> 00:10:47,220
-như chính tác giả nhấn mạnh, là phải thật lòng.
-
-192
-00:10:48,500 --> 00:10:51,759
+00:10:46,900 --> 00:10:50,159
 Nói về cảm nhận của riêng mình, thứ mình muốn mang theo sau khi
 
-193
-00:10:51,760 --> 00:10:55,179
+192
+00:10:50,160 --> 00:10:53,579
 đọc là thói quen dừng lại một nhịp trước khi chê trách ai đó.
 
-194
-00:10:55,180 --> 00:10:58,149
+193
+00:10:53,580 --> 00:10:56,549
 Lá thư Lincoln không gửi đi là hình ảnh mình nhớ lâu nhất:
 
-195
-00:10:58,150 --> 00:11:01,626
+194
+00:10:56,550 --> 00:11:00,026
 viết ra cho hả giận cũng được, nhưng chưa vội gửi.
 
-196
-00:11:01,627 --> 00:11:04,272
+195
+00:11:00,027 --> 00:11:02,664
 Nhiều lời khuyên trong sách nghe qua thì rất bình thường,
 
-197
-00:11:04,273 --> 00:11:06,466
+196
+00:11:02,665 --> 00:11:04,846
 như mỉm cười hay nhớ tên người khác.
 
-198
-00:11:06,467 --> 00:11:09,506
-Nhưng ngẫm lại, mình thấy điều tác giả muốn nói nằm ở phía sau:
+197
+00:11:04,847 --> 00:11:07,491
+Nhưng ngẫm lại, mình thấy điều đáng giữ nằm ở phía sau:
 
-199
-00:11:09,507 --> 00:11:13,932
+198
+00:11:07,492 --> 00:11:11,832
 nhìn người đối diện như một con người, chứ không phải như một việc cần xong.
 
-200
-00:11:13,933 --> 00:11:17,481
+199
+00:11:11,833 --> 00:11:15,361
 Còn một điều mình muốn nhắc: những câu chuyện trong sách chỉ là một góc nhìn,
 
-201
-00:11:17,482 --> 00:11:19,446
+200
+00:11:15,362 --> 00:11:17,314
 phần lớn là chuyện của những người đã thành
 
-202
-00:11:19,447 --> 00:11:22,872
+201
+00:11:17,315 --> 00:11:20,772
 công trong một thời và một nơi rất khác với mình bây giờ.
 
-203
-00:11:22,873 --> 00:11:25,082
+202
+00:11:20,773 --> 00:11:22,962
 Vì vậy, các bạn cứ giữ chính kiến của mình:
 
-204
-00:11:25,083 --> 00:11:29,124
+203
+00:11:22,963 --> 00:11:27,004
 thử rồi tự xem điều gì hợp, điều gì không, và đừng dùng bất kỳ cách
 
-205
-00:11:29,125 --> 00:11:32,859
+204
+00:11:27,005 --> 00:11:30,739
 nào trong sách để đổi lấy sự thật hay để lừa người khác.
 
-206
-00:11:32,860 --> 00:11:37,879
+205
+00:11:30,740 --> 00:11:35,779
 Nếu chỉ chọn một điều để bắt đầu, mình gợi ý cách đổi chữ "nhưng" thành chữ "và".
 
-207
-00:11:37,880 --> 00:11:41,989
+206
+00:11:35,780 --> 00:11:39,859
 Lần tới khi cần góp ý cho ai đó, các bạn thử nói trọn lời khen trước,
 
-208
-00:11:41,990 --> 00:11:45,640
+207
+00:11:39,860 --> 00:11:43,520
 rồi nối lời góp ý bằng chữ "và", xem người nghe phản ứng có khác không.
 
-209
-00:11:46,867 --> 00:11:49,536
+208
+00:11:44,767 --> 00:11:47,436
 Khép lại Đắc nhân tâm, mình không nghĩ đây là
 
-210
-00:11:49,537 --> 00:11:52,472
+209
+00:11:47,437 --> 00:11:50,372
 cuốn sách dạy người ta khéo léo cho bằng được.
 
-211
-00:11:52,473 --> 00:11:55,906
+210
+00:11:50,373 --> 00:11:53,806
 Nó giống một lời nhắc chú ý đến người khác nhiều hơn, và dù thích hay
 
-212
-00:11:55,907 --> 00:11:59,153
+211
+00:11:53,807 --> 00:11:57,053
 không thích cuốn sách, mình nghĩ ai đọc cũng có thể giữ lại được vài điều.
 
-213
-00:12:00,420 --> 00:12:03,173
+212
+00:11:58,320 --> 00:12:01,073
 Nếu bạn có thời gian, có thể đọc qua để hiểu hơn:
 
-214
-00:12:03,174 --> 00:12:05,360
+213
+00:12:01,074 --> 00:12:03,260
 đọc chậm, rồi tự quyết định điều gì đáng giữ.
 
-215
-00:12:07,240 --> 00:12:10,939
+214
+00:12:05,140 --> 00:12:08,839
 Đến đây là kết thúc rồi, các bạn thấy thế nào?
 
-216
-00:12:10,940 --> 00:12:15,212
+215
+00:12:08,840 --> 00:12:13,112
 Nếu hay thì hãy bình luận vào bên dưới video và cho mình một lượt đăng ký kênh
 
-217
-00:12:15,213 --> 00:12:19,959
+216
+00:12:13,113 --> 00:12:17,859
 để mình có động lực để có thể làm thêm nhiều những video thế này hơn nữa nhé.
 
-218
-00:12:19,960 --> 00:12:20,760
+217
+00:12:17,860 --> 00:12:18,660
 Hẹn gặp lại cả nhà.

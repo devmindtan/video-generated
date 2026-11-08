@@ -20,11 +20,11 @@ export type EpisodeProps = {introVoice: string; cardVoice: string; outroVoice: s
 
 const voices = takesOf(bodyTakes), cards = (cardTakes as unknown as {voices: Voice[]}).voices;
 // The newest placeholder take of a segment: 25-quoc-tuan-<nn>, or a later retake 25-quoc-tuan-<nn><letter> whose
-// <nn><letter> is not itself another segment's number (08e, 08f, 08g are segments).
+// <nn><letter> is not itself another segment's number (08e, 08f, 08g are segments; 08ea is a retake of 08e).
 const NUMBERS = ['01', '02', '03', '04', '05', '06', '07', '08', '08e', '08f', '08g', '09'];
 const placeholder = (seg: string) => {
   const nn = seg.split('-')[0];
-  return voices.filter((v) => {const m = /^25-quoc-tuan-(\d+[a-z]?)$/.exec(v.id);return m && (m[1] === nn || (m[1].startsWith(nn) && m[1].length === nn.length + 1 && !NUMBERS.includes(m[1])));}).at(-1)?.id;
+  return voices.filter((v) => {const m = /^25-quoc-tuan-(\d+[a-z]{0,2})$/.exec(v.id);return m && (m[1] === nn || (m[1].startsWith(nn) && m[1].length === nn.length + 1 && !NUMBERS.includes(m[1])));}).at(-1)?.id;
 };
 const voiceFor = (seg: string, clone = false) => (clone ? [`${seg}-sang2`, seg, placeholder(seg)] : [placeholder(seg), seg, `${seg}-sang2`]).find((id) => id && takeOf(id, voices));
 const BODY: [string, string, Section][] = [['02-mo-chuyen', 'Mở chuyện', MoChuyen], ['03-cuon-sach', 'Phần 1 · Cuốn sách là gì', CuonSach], ['04-soi-chi', 'Phần 2 · Sợi chỉ xuyên suốt', SoiChi],

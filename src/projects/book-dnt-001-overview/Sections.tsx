@@ -196,19 +196,19 @@ const two = (c: Ctx, from: number, gap = 4) => <g><Figure frame={c.frame} from={
 // 5–7 a question mark; scales with "SỐNG TỬ TẾ" / "LẤY LÒNG" tilting on the words, then level for "các bạn tự đánh giá"
 export const CuonSach = section('03 cuốn sách', /(một lớp học|1912|nói trước đám đông|cách cư xử|bài giảng|1936|ba mươi nguyên tắc|bốn phần|người thật|gây tranh cãi|cẩm nang|lấy lòng|tự đánh giá)/gi, [
   {at: 0, draw: (c) => {const talk = appear(c.frame, at(c, 1, .82), 14);return <g>
-    {D(c, 'M420 800 L420 600 L560 600 L560 800 M400 600 L580 600', 0, 24, 2.4)}
-    <Figure frame={c.frame} from={c.start + 6} x={490} y={600} s={.75} arm="raise" />
+    {D(c, 'M560 800 L560 620 L700 620 L700 800 M540 620 L720 620', 0, 24, 2.4)}
+    <Figure frame={c.frame} from={c.start + 6} x={430} y={800} s={.9} arm="raise" />
     {[0, 1, 2].map((k) => <g key={k} opacity={appear(c.frame, c.start + 14 + k * 4, 12)}><Figure frame={c.frame} from={c.start + 14 + k * 4} x={980 + k * 230} y={800} s={.75} facing={k === 2 && talk > .5 ? -1 : 1} pose="sit" /></g>)}
     <Word x={1420} y={320} size={56} text="1912" opacity={appear(c.frame, at(c, 1, .14), 12)} />
     <g opacity={talk}><Ink d={bubble(1290, 430, 120, 64)} color={IVORY} /><Ink d="M1262 430 L1270 430 M1288 430 L1296 430 M1314 430 L1322 430" w={4} color={IVORY} /></g>
   </g>;}},
   {at: 2, draw: (c) => {const book = appear(c.frame, at(c, 2, .8), 16), ribbon = appear(c.frame, c.at(3) + 6, 14);return <g>
-    <g opacity={1 - book}>{[0, 1, 2].map((k) => <g key={k} opacity={appear(c.frame, at(c, 2, .3 + k * .08), 10)}><Ink d={sheet(820 + k * 40, 300 + k * 30, 240, 320)} color={IVORY} /><Ink d={`M${850 + k * 40} ${360 + k * 30} L${1020 + k * 40} ${360 + k * 30} M${850 + k * 40} ${400 + k * 30} L${990 + k * 40} ${400 + k * 30}`} color={IVORY} o={.8} /></g>)}</g>
+    <g opacity={1 - book}>{[0, 1, 2].map((k) => <g key={k} opacity={appear(c.frame, at(c, 2, .3 + k * .08), 10)}><Ink d={sheet(560 + k * 300, 330, 240, 320)} color={IVORY} /><Ink d={`M${590 + k * 300} 390 L${760 + k * 300} 390 M${590 + k * 300} 430 L${730 + k * 300} 430 M${590 + k * 300} 470 L${750 + k * 300} 470`} color={IVORY} o={.8} /></g>)}</g>
     <g opacity={book}>
-      <Ink d={closedBook(960, 520)} w={2.8} />
-      <Word x={973} y={470} size={44} text="ĐẮC NHÂN TÂM" opacity={.9} />
-      <Word x={973} y={560} size={52} text="1936" opacity={1} />
-      <Ink d="M1040 350 L1040 300 L1070 300 L1070 350" o={ribbon} w={2.6} />
+      <Ink d={closedBook(960, 520, 400, 360)} w={2.8} />
+      <Word x={973} y={470} size={36} text="ĐẮC NHÂN TÂM" opacity={.9} />
+      <Word x={973} y={570} size={52} text="1936" opacity={1} />
+      <Ink d="M1080 340 L1080 290 L1110 290 L1110 340" o={ribbon} w={2.6} />
     </g>
   </g>;}},
   {at: 4, draw: (c) => <g>
@@ -257,10 +257,12 @@ export const SoiChi = section('04 sợi chỉ', /(ba mươi nguyên tắc|có gi
       <Ink d="M460 520 L500 640 L540 520 Z M460 520 C460 470 540 470 540 520" color={IVORY} />
       <Ink d="M640 560 C600 520 600 620 660 640 C720 620 720 520 680 560 C670 548 650 548 640 560 Z M660 552 L668 528" color={IVORY} />
     </g>
-    {D(c, 'M820 800 L1200 360 M1200 360 L1200 640', 0, 30, 2.6)}
-    {D(c, 'M760 700 C900 690 1300 690 1560 700', 6, 26, 2, .6)}
-    <g opacity={appear(c.frame, at(c, 2, .76), 12)}><Ink d="M1200 640 C1200 668 1176 668 1176 652 M1186 654 C1196 664 1214 664 1222 650 C1228 640 1236 642 1236 654" w={3} /></g>
-    <g transform={`translate(${1480 - swim * 210} 0)`} opacity={appear(c.frame, at(c, 2, .86), 10)}><Ink d="M0 740 C30 712 80 712 110 740 C80 768 30 768 0 740 Z M110 740 L140 718 L140 762 Z M24 734 L28 734" color={IVORY} /></g>
+    <Figure frame={c.frame} from={c.start + 4} x={780} y={800} s={.95} arm="reach" />
+    {D(c, 'M884 604 L1240 360', 10, 24, 2.6)}
+    {D(c, 'M1240 360 L1240 730', 18, 20, 1.8, .9)}
+    {D(c, 'M960 690 C1100 684 1400 684 1700 690', 6, 26, 2, .6)}
+    <g opacity={appear(c.frame, at(c, 2, .76), 12)}><Ink d="M1240 730 C1240 758 1216 758 1216 742 M1226 744 C1236 754 1254 754 1262 740 C1268 730 1276 732 1276 744" w={3} /></g>
+    <g transform={`translate(${1560 - swim * 270} 30)`} opacity={appear(c.frame, at(c, 2, .86), 10)}><Ink d="M0 740 C30 712 80 712 110 740 C80 768 30 768 0 740 Z M110 740 L140 718 L140 762 Z M24 734 L28 734" color={IVORY} /></g>
   </g>;}},
   {at: 3, draw: (c) => {const theirs = appear(c.frame, at(c, 3, .6), 14), mine = appear(c.frame, at(c, 3, .86), 14);return <g>
     {two(c, c.start + 4)}
@@ -312,14 +314,14 @@ export const Phan1 = section('05 phần một', /(ba nguyên tắc|nền móng|c
   {at: 3, draw: (c) => {const hats = appear(c.frame, at(c, 4, .56), 12), turned = appear(c.frame, at(c, 4, .88), 10), off = appear(c.frame, at(c, 4, .93), 10), ask = appear(c.frame, at(c, 5, .2), 14), row = appear(c.frame, c.at(6), 16);
     return <g>
       <g opacity={1 - row}>
-        <g opacity={turned > .5 ? 0 : 1}><Figure frame={c.frame} from={c.start + 4} x={560} y={800} s={.95} arm={ask > .5 ? 'reach' : 'point'} /></g>
+        <g opacity={turned > .5 && ask < .5 ? 0 : 1}><Figure frame={c.frame} from={c.start + 4} x={560} y={800} s={.95} arm={ask > .5 ? 'reach' : 'point'} /></g>
         <g opacity={turned > .5 && ask < .5 ? 1 : 0}><Figure frame={c.frame} from={c.start - 30} x={560} y={800} s={.95} facing={-1} /></g>
         <Label x={560} y={420} text="NGƯỜI PHỤ TRÁCH" o={appear(c.frame, c.start + 14, 12)} />
         {[1160, 1380].map((x, k) => <g key={x}>
           <Figure frame={c.frame} from={c.start + 8 + k * 4} x={x} y={800} s={.95} facing={-1} />
           <Ink d={hardHat(x, 800, .95)} o={hats * (1 - off) + ask * 0} w={2.8} />
         </g>)}
-        <g opacity={ask}><Ink d="M680 560 C680 520 760 520 760 560 M666 560 L774 560" w={2.8} /></g>
+        <g opacity={ask}><Ink d="M640 600 C640 556 720 556 720 600 M626 600 L734 600" w={2.8} /></g>
       </g>
       <g opacity={row}>{[0, 1, 2, 3].map((k) => {const x = 560 + k * 270;return <g key={k}>
         <Figure frame={c.frame} from={c.at(6)} x={x} y={800} s={.85} />
@@ -341,9 +343,9 @@ export const Phan1 = section('05 phần một', /(ba nguyên tắc|nền móng|c
         <g opacity={ears}>{[0, 1, 2].map((k) => <path key={k} d={`M${1290 - k * 20} ${500 - k * 14} C${1270 - k * 24} ${520} ${1270 - k * 24} ${556} ${1290 - k * 20} ${576 + k * 14}`} fill="none" stroke={GOLD} strokeWidth={2.4} opacity={1 - k * .25} />)}</g>
       </g>
       <g opacity={piano * (1 - cheap)}>
-        <Ink d="M700 720 L1220 720 L1220 800 L700 800 Z M700 720 L760 560 L1160 560 L1220 720" w={2.6} />
-        {Array.from({length: 12}, (_, k) => <Ink key={k} d={`M${740 + k * 40} 720 L${740 + k * 40} 800`} w={1.8} o={.8} />)}
-        {[0, 1, 2].map((k) => {const y = 480 - ((c.frame - c.at(10)) * 1.2 + k * 50) % 160;return <Ink key={k} d={`M${900 + k * 80} ${y} L${900 + k * 80} ${y - 50} L${930 + k * 80} ${y - 60} M${900 + k * 80} ${y} a10 8 0 1 1 -1 0`} o={.85 * appear(c.frame, at(c, 10, .3), 14)} color={IVORY} />;})}
+        <Ink d="M740 440 L1180 440 L1180 640 L740 640 Z M720 640 L1200 640 L1200 690 L720 690 Z M760 690 L760 800 M1160 690 L1160 800 M880 470 L1040 470 L1040 560 L880 560 Z" w={2.6} />
+        {Array.from({length: 11}, (_, k) => <Ink key={k} d={`M${760 + k * 40} 640 L${760 + k * 40} 690`} w={1.8} o={.8} />)}
+        {[0, 1, 2].map((k) => {const y = 400 - ((c.frame - c.at(10)) * 1.2 + k * 50) % 120;return <Ink key={k} d={`M${900 + k * 80} ${y} L${900 + k * 80} ${y - 50} L${930 + k * 80} ${y - 60} M${900 + k * 80} ${y} a10 8 0 1 1 -1 0`} o={.85 * appear(c.frame, at(c, 10, .3), 14)} color={IVORY} />;})}
         <Glow x={960} y={600} r={200} opacity={appear(c.frame, at(c, 10, .74), 20) * .5} />
       </g>
       <g opacity={cheap}><Ink d={coin(960, 520)} w={2.8} /><Ink d="M880 600 L1040 440" o={appear(c.frame, at(c, 11, .46), 10)} w={4} color={IVORY} /></g>
@@ -355,13 +357,13 @@ export const Phan1 = section('05 phần một', /(ba nguyên tắc|nền móng|c
         <Figure frame={c.frame} from={c.start + 4} x={560} y={800} s={.85} arm="reach" />
         <Figure frame={c.frame} from={c.start + 8} x={1240} y={800} s={.85} facing={-1} arm="reach" />
       </g>
-      <g transform={`translate(${walk * 420} 0)`} opacity={1 - walk * .9}><Ink d={calf(840, 800)} w={2.6} color={IVORY} /></g>
-      <g opacity={helper * (1 - bubbles)}><Figure frame={c.frame} from={c.at(14)} x={1060} y={800} s={.85} pose="kneel" facing={-1} /></g>
+      <g transform={`translate(${walk * 420} 0)`} opacity={1 - walk}><Ink d={calf(840, 800)} w={2.6} color={IVORY} /></g>
+      <g opacity={helper * (1 - bubbles)}><Figure frame={c.frame} from={c.at(14)} x={1110} y={800} s={.85} pose="kneel" facing={-1} /></g>
       <g opacity={bubbles}>
         <Figure frame={c.frame} from={c.at(15) - 30} x={560} y={800} s={.85} />
         <Figure frame={c.frame} from={c.at(15) - 30} x={1060} y={800} s={.85} />
-        <g opacity={appear(c.frame, at(c, 15, .42), 12)}><Ink d={bubble(560, 380, 300, 100)} color={IVORY} /><Word x={560} y={394} size={34} text="ĐIỀU MÌNH MUỐN" opacity={1} /></g>
-        <g opacity={appear(c.frame, at(c, 15, .82), 12)}><Ink d={bubble(1060, 380, 340, 100)} w={3} /><Word x={1060} y={394} size={34} text="ĐIỀU CON BÊ MUỐN" opacity={1} /></g>
+        <g opacity={appear(c.frame, at(c, 15, .42), 12)}><Ink d={bubble(560, 380, 400, 100)} color={IVORY} /><Word x={560} y={394} size={34} text="ĐIỀU MÌNH MUỐN" opacity={1} /></g>
+        <g opacity={appear(c.frame, at(c, 15, .82), 12)}><Ink d={bubble(1100, 380, 440, 100)} w={3} /><Word x={1100} y={394} size={34} text="ĐIỀU CON BÊ MUỐN" opacity={1} /></g>
       </g>
     </g>;}},
 ], options);
@@ -390,7 +392,7 @@ export const Phan2 = section('06 phần hai', /(muốn gần mình|thật lòng 
     <Figure frame={c.frame} from={c.start + 10} x={1140} y={800} s={.8} pose="sit" facing={-1} />
     <Label x={760} y={440} text="CARNEGIE" o={appear(c.frame, c.at(3), 12)} />
     <Label x={1200} y={440} text="NHÀ THỰC VẬT HỌC" o={appear(c.frame, at(c, 3, .2), 12)} />
-    <g opacity={leaves * (1 - title)}>{[0, 1, 2, 3].map((k) => {const x = 1060 - k * 70, y = 330 - (k % 2) * 30;return <Ink key={k} d={`M${x} ${y + 40} C${x - 30} ${y + 10} ${x - 10} ${y - 30} ${x + 20} ${y - 30} C${x + 30} ${y} ${x + 20} ${y + 30} ${x} ${y + 40} Z M${x} ${y + 40} L${x + 14} ${y - 18}`} o={appear(c.frame, at(c, 3, .62 + k * .06), 10)} />;})}</g>
+    <g opacity={leaves * (1 - title)}>{[0, 1, 2, 3].map((k) => {const x = 1120 + k * 80, y = 330 - (k % 2) * 30;return <Ink key={k} d={`M${x} ${y + 40} C${x - 30} ${y + 10} ${x - 10} ${y - 30} ${x + 20} ${y - 30} C${x + 30} ${y} ${x + 20} ${y + 30} ${x} ${y + 40} Z M${x} ${y + 40} L${x + 14} ${y - 18}`} o={appear(c.frame, at(c, 3, .62 + k * .06), 10)} />;})}</g>
     <Word x={960} y={300} size={44} text="NGƯỜI NÓI CHUYỆN HAY NHẤT" opacity={title} />
   </g>;}},
   {at: 6, draw: (c) => <g>
@@ -403,8 +405,8 @@ export const Phan2 = section('06 phần hai', /(muốn gần mình|thật lòng 
     <Figure frame={c.frame} from={c.start + 4} x={600} y={800} s={.95} pose="sit" />
     <Label x={600} y={440} text="ROOSEVELT" o={appear(c.frame, at(c, 7, .2), 12)} />
     {D(c, 'M720 700 L1260 700 M760 700 L760 800 M1220 700 L1220 800', 4, 22, 2.4, .85)}
-    <Ink d="M820 700 L820 560 L790 560 L880 470 L970 560 L940 560 M940 560 L820 560" w={2.6} o={appear(c.frame, c.start + 14, 12)} />
-    <Glow x={880} y={560} r={150} opacity={late * .6} />
+    <Ink d="M800 700 L900 700 M850 700 L850 560 L900 520 M860 470 L960 470 L990 540 L830 540 Z" w={2.6} o={appear(c.frame, c.start + 14, 12)} />
+    <Glow x={910} y={560} r={150} opacity={late * .6} />
     {[0, 1, 2].map((k) => <Ink key={k} d={`M${1000} ${688 - k * 34} L${1180} ${688 - k * 34} L${1180} ${660 - k * 34} L${1000} ${660 - k * 34} Z`} o={appear(c.frame, c.start + 18 + k * 4, 10)} color={IVORY} />)}
     <g opacity={late}><Ink d="M1380 380 a70 70 0 1 0 140 0 a70 70 0 1 0 -140 0 M1450 380 L1450 326 M1450 380 L1478 360" w={2.6} color={IVORY} /></g>
   </g>;}},
@@ -463,19 +465,19 @@ export const Phan3 = section('07 phần ba', /(mười hai nguyên tắc|không 
     <g opacity={appear(c.frame, c.at(8), 14)}><Word x={960} y={300} size={44} text="ĐỪNG NÓI: “ANH SAI RỒI!”" opacity={appear(c.frame, at(c, 8, .62), 12)} /></g>
   </g>},
   {at: 9, label: 'Nhận lỗi trước', draw: (c) => {const run = (c.frame % 90) / 90, cop = appear(c.frame, at(c, 10, .82), 14), sorry = appear(c.frame, at(c, 11, .76), 12), letgo = appear(c.frame, at(c, 12, .78), 16);
-    const dogX = 980 + Math.sin(run * Math.PI * 2) * 30 + letgo * 300, dogY = 790 - letgo * 140;
+    const dogX = 980 + Math.sin(run * Math.PI * 2) * 30, dogY = 790;
     return <g>
-      {D(c, 'M500 800 L1100 800 C1240 800 1320 660 1460 650 L1560 650', 0, 30, 2.2, .7)}
+      {D(c, 'M460 800 L1760 800', 0, 30, 2.2, .7)}
       {D(c, 'M560 800 L560 640 M520 660 C520 600 600 600 600 660 C600 700 520 700 520 660', 4, 20, 2.2, .7)}
       <g opacity={1 - sorry}><Figure frame={c.frame} from={c.start + 6} x={760} y={800} s={.9} /></g>
       <g opacity={sorry}><Figure frame={c.frame} from={c.start - 30} x={760} y={800} s={.9} arm="reach" facing={1} /></g>
       <Label x={760} y={460} text="CARNEGIE" o={appear(c.frame, c.start + 12, 12)} />
       <g transform={`translate(${dogX} ${dogY})`} opacity={appear(c.frame, at(c, 10, .3), 12)}><Ink d="M-40 -30 C-40 -50 30 -50 30 -30 C30 -16 -40 -16 -40 -30 Z M-30 -20 L-32 0 M20 -20 L22 0 M30 -36 C40 -56 64 -50 60 -32 C58 -22 44 -22 32 -26 M-40 -34 L-56 -46" w={2.4} color={IVORY} /></g>
-      <g opacity={cop * (1 - letgo * .3)} transform={`translate(${1280 + letgo * 120} 0)`}>
-        <Ink d="M-90 800 L-80 700 M60 800 L50 700 M-110 700 C-110 640 90 640 90 700 L-110 700 M90 680 C120 640 140 610 120 590" w={2.6} />
+      <g opacity={cop} transform={`translate(${1340 + letgo * 160} 0) scale(${letgo > .5 ? -1 : 1} 1)`}>
+        <Ink d="M-90 800 L-80 700 M60 800 L50 700 M-110 700 C-110 640 90 640 90 700 L-110 700 M-110 680 C-140 640 -160 610 -140 590" w={2.6} />
         <Figure frame={c.frame} from={at(c, 10, .82)} x={-10} y={660} s={.6} facing={-1} />
       </g>
-      <Label x={1280} y={420} text="CẢNH SÁT" o={cop * (1 - letgo)} />
+      <Label x={1340 + letgo * 160} y={420} text="CẢNH SÁT" o={cop} />
     </g>;}},
   {at: 13, label: 'Để người kia nói', draw: (c) => {const second = appear(c.frame, c.at(15), 14);return <g>
     <g opacity={1 - second}><Lines c={c} s={14} y0={300} items={[['Thái độ thân thiện', .24], ['Câu hỏi để người kia nói "vâng"', .48], ['Để họ nói nhiều hơn', .56], ['Để ý tưởng là của họ', .67], ['Nhìn từ quan điểm của họ', .92]]} /></g>
@@ -486,7 +488,7 @@ export const Phan3 = section('07 phần ba', /(mười hai nguyên tắc|không 
     <g opacity={appear(c.frame, c.at(17), 14)}>
       <Ink d="M820 300 L1100 300 L1100 560 L820 560 Z M850 360 L1070 360 M850 400 L1030 400" color={IVORY} />
       <Word x={960} y={470} size={34} text="ĐIỀU MÌNH MUỐN" opacity={told > .5 ? 1 : open} />
-      <g transform={`translate(${open * 300} 0)`} opacity={1 - open * .4}><Ink d="M800 280 L1120 280 L1120 580 L800 580 Z M840 280 L840 580 M880 280 L880 580 M920 280 L920 580" w={2.6} /></g>
+      <g transform={`translate(0 280) scale(1 ${Math.max(.04, 1 - open)}) translate(0 -280)`}><path d="M800 280 L1120 280 L1120 580 L800 580 Z" fill="#0d1411" stroke={GOLD} strokeWidth={2.6} /><Ink d="M880 280 L880 580 M960 280 L960 580 M1040 280 L1040 580" w={2} o={.8} /></g>
     </g>
     <Glow x={960} y={430} r={200} opacity={told * .5} />
   </g>;}},
@@ -505,13 +507,14 @@ export const Phan4 = section('08 phần bốn', /(chỉ ra lỗi|người quản
     <Figure frame={c.frame} from={c.start + 10} x={860} y={840} s={.6} arm="reach" /><Figure frame={c.frame} from={c.start + 14} x={1000} y={840} s={.6} facing={-1} />
   </g>)},
   {at: 1, label: 'Nhắc khéo', draw: (c) => {const walk = interpolate(c.frame, [at(c, 2, .6), at(c, 2, 1)], [0, 1], clamp), guest = appear(c.frame, at(c, 3, .18), 12), staff = appear(c.frame, at(c, 3, .6), 12), serve = appear(c.frame, at(c, 4, .22), 12), pass = interpolate(c.frame, [at(c, 4, .6), at(c, 4, .85)], [0, 1], {...clamp, easing: ease});
-    const ownerX = serve > .5 ? 900 : 560 + walk * 200;
+    const ownerX = serve > .5 ? 920 : 520 + walk * 130;
     return <g>
       {D(c, 'M760 640 L1080 640 L1080 800 L760 800 Z', 0, 22, 2.4, .9)}
-      {D(c, 'M460 360 L700 360 M460 440 L700 440 M460 520 L700 520', 6, 20, 2, .5)}
+      {D(c, 'M260 380 L420 380 M260 460 L420 460 M260 540 L420 540 M260 380 L260 800 M420 380 L420 800', 6, 20, 2, .5)}
       <g opacity={serve > .5 ? 0 : 1}><Figure frame={c.frame} from={c.start + 4} x={ownerX} y={800} s={.85} pose={walk > 0 && walk < 1 ? 'walk' : 'stand'} /></g>
-      <g opacity={serve}><Figure frame={c.frame} from={c.start - 30} x={900} y={640} s={.6} arm="reach" /></g>
-      <Label x={serve > .5 ? 900 : ownerX} y={serve > .5 ? 400 : 480} text="ÔNG CHỦ" o={appear(c.frame, at(c, 2, .3), 12)} />
+      <defs><clipPath id="dnt-above-counter"><path d="M0 0 L1920 0 L1920 636 L0 636 Z" /></clipPath></defs>
+      <g opacity={serve} clipPath="url(#dnt-above-counter)"><Figure frame={c.frame} from={c.start - 30} x={920} y={800} s={.85} arm="reach" /></g>
+      <Label x={ownerX} y={480} text="ÔNG CHỦ" o={appear(c.frame, at(c, 2, .3), 12)} />
       <g opacity={guest}><Figure frame={c.frame} from={at(c, 3, .18)} x={1200} y={800} s={.85} facing={-1} /></g>
       <g opacity={staff}><Figure frame={c.frame} from={at(c, 3, .6)} x={1500} y={800} s={.7} /><Figure frame={c.frame} from={at(c, 3, .6) + 4} x={1640} y={800} s={.7} facing={-1} /><Ink d={bubble(1570, 420, 120, 60)} color={IVORY} o={.8} /></g>
       <g opacity={appear(c.frame, at(c, 4, .55), 10)} transform={`translate(${980 + pass * 520} ${560 - pass * 30})`}><Ink d="M-34 -24 L34 -24 L34 24 L-34 24 Z M0 -24 L0 24 M-34 0 L34 0" w={2.4} color={IVORY} /></g>
@@ -591,7 +594,7 @@ export const YKien = section('08g ý kiến', /(dừng lại một nhịp|lá th
   {at: 0, draw: (c) => {const stop = appear(c.frame, at(c, 0, .7), 10), letter = appear(c.frame, c.at(1), 16);return <g>
     <g opacity={1 - letter}>
       {D(c, sheet(760, 300, 400, 460), 0, 24, 2.4)}
-      <g transform={`translate(0 ${-30 * stop})`}><Ink d={quill(1040, 600)} w={2.8} color={IVORY} /></g>
+      <g transform={`translate(0 ${-30 * stop})`}><Ink d={quill(830, 640)} w={2.8} color={IVORY} /></g>
     </g>
     <g opacity={letter}>
       <Ink d="M660 560 L1260 560 L1260 790 L660 790 Z M660 560 L700 520 M1260 560 L1220 520" w={2.6} />
@@ -600,7 +603,8 @@ export const YKien = section('08g ý kiến', /(dừng lại một nhịp|lá th
     </g>
   </g>;}},
   {at: 2, draw: (c) => {const person = appear(c.frame, c.at(3), 16);return <g>
-    <g opacity={1 - person}><Ink d={smileSign(800, 520)} w={2.8} o={appear(c.frame, at(c, 2, .64), 12)} color={IVORY} /><Ink d={tagSign(1120, 520)} w={2.8} o={appear(c.frame, at(c, 2, .78), 12)} color={IVORY} /></g>
+    <g opacity={1 - person}><Ink d={smileSign(800, 520)} w={2.8} o={appear(c.frame, c.start + 6, 12)} color={IVORY} /><Ink d={tagSign(1120, 520)} w={2.8} o={appear(c.frame, c.start + 12, 12)} color={IVORY} />
+      <Glow x={800} y={520} r={110} opacity={appear(c.frame, at(c, 2, .64), 12) * .6} /><Glow x={1120} y={520} r={110} opacity={appear(c.frame, at(c, 2, .78), 12) * .6} /></g>
     <g opacity={person}>{two(c, c.at(3))}<Glow x={960} y={560} r={220} opacity={appear(c.frame, at(c, 3, .6), 20) * .45} /></g>
   </g>;}},
   {at: 4, draw: (c) => {const own = appear(c.frame, c.at(5), 16);return <g>
@@ -620,7 +624,7 @@ export const YKien = section('08g ý kiến', /(dừng lại một nhịp|lá th
 // 5 Nhận xét chung (lines-09-nhan-xet.txt): the book closes; two people facing each other; the book lies on a table
 // with a bookmark sticking out.
 export const NhanXet = section('09 nhận xét', /(khéo léo|lời nhắc|chú ý đến người khác|giữ lại được vài điều|đọc chậm|đáng giữ)/gi, [
-  {at: 0, draw: (c) => {const shut = interpolate(c.frame, [c.start + 20, c.start + 60], [1, .08], {...clamp, easing: ease});return <g transform={`translate(960 600) scale(${shut} 1) translate(-960 -600)`}><Ink d={openBook(960, 560, 1.4)} w={2.6} o={appear(c.frame, c.start, 12)} /></g>;}},
+  {at: 0, draw: (c) => {const shut = appear(c.frame, c.start + 30, 20);return <g><Ink d={openBook(960, 560, 1.4)} w={2.6} o={appear(c.frame, c.start, 12) * (1 - shut)} /><Ink d={closedBook(960, 560, 300, 380)} w={2.6} o={shut} /></g>;}},
   {at: 1, draw: (c) => <g>{two(c, c.start + 4)}<Glow x={960} y={560} r={220} opacity={appear(c.frame, at(c, 1, .3), 20) * .4} /></g>},
   {at: 2, draw: (c) => <g>
     {D(c, 'M560 700 L1360 700 M600 700 L600 800 M1320 700 L1320 800', 0, 22, 2.4, .85)}
