@@ -26,9 +26,11 @@ Cùng một cuốn sách, sao người ta lại nghĩ khác nhau đến vậy? H
 
 À, nếu đây là lần đầu bạn xem series này thì để mình nói trước: ở mỗi tập, mình vừa kể những ví dụ có trong sách, vừa rút ra bài học từ chính những ví dụ ấy. [nghỉ]
 
-Cuốn sách hôm nay là Đắc nhân tâm, của Dale Carnegie, viết từ năm 1936. Mình sẽ đứng ở vị trí trung lập, và nhìn nó khách quan nhất có thể, theo góc nhìn của mình.
+Mình sẽ đứng ở vị trí trung lập, và nhìn cuốn sách này khách quan nhất có thể, theo góc nhìn của mình. [nghỉ]
 
-{Ý hook và câu cho người xem lần đầu theo lời người dùng (chat 2026-11-08); viết lại cho có nhịp nói theo docs/script-voice-guide.md (người dùng: "kịch bản đang hơi máy móc nhất là lúc đầu"): câu đầu vào thẳng chuyện, câu ngắn xen câu dài, bỏ "Đúng vậy" chốt lặp ý, ý "nhiều luồng ý kiến" thành một câu hỏi thật. Ý trung lập giữ lời người dùng (góp ý gói chốt 2026-11-05). Năm 1936: PDF 6, 11.}
+Nào, chúng ta cùng đến với Đắc nhân tâm.
+
+{Ý hook và câu cho người xem lần đầu theo lời người dùng (chat 2026-11-08); viết lại cho có nhịp nói theo docs/script-voice-guide.md (người dùng: "kịch bản đang hơi máy móc nhất là lúc đầu"): câu đầu vào thẳng chuyện, câu ngắn xen câu dài, bỏ "Đúng vậy" chốt lặp ý, ý "nhiều luồng ý kiến" thành một câu hỏi thật. Ý trung lập giữ lời người dùng (góp ý gói chốt 2026-11-05). Câu chuyển cuối theo lời người dùng (chat 2026-11-08): chỉ gọi tên sách; tác giả và năm 1936 (PDF 6, 11) để ở thẻ tập và description.}
 
 ## 0p. Cách làm của tập (dùng lại nguyên của tập 1)
 

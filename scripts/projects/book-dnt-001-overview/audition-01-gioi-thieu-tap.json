@@ -42,12 +42,12 @@
     },
     {
       "scene": 1,
-      "text": "Cuốn sách hôm nay là Đắc nhân tâm, của Dale Carnegie, viết từ năm 1936.",
-      "pauseAfter": 0.4
+      "text": "Mình sẽ đứng ở vị trí trung lập, và nhìn cuốn sách này khách quan nhất có thể, theo góc nhìn của mình.",
+      "pauseAfter": 0.9
     },
     {
       "scene": 1,
-      "text": "Mình sẽ đứng ở vị trí trung lập, và nhìn nó khách quan nhất có thể, theo góc nhìn của mình.",
+      "text": "Nào, chúng ta cùng đến với Đắc nhân tâm.",
       "pauseAfter": 0
     }
   ]

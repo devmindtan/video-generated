@@ -28,6 +28,14 @@ của nó. Repo đó viết cho văn viết tiếng Anh; dưới đây là phầ
 - Tiểu từ (à, nhé, thôi, đấy, mà) chỉ dùng khi người thật sẽ nói như vậy, tối đa một hai lần mỗi đoạn.
 - `[nghỉ]` đặt ở chỗ đổi ý, không đặt sau mỗi câu.
 
+## Chỉ nói điều người nghe cần
+
+Người dùng (2026-11-08): lời đọc không chứa thông tin thừa. Tên tác giả, năm xuất bản, ấn bản, nhà xuất bản, số trang,
+số chương… để ở description (và thẻ chữ trên màn hình nếu cần), không đọc thành lời, trừ khi chính câu chuyện cần chi tiết
+đó (vd. một mốc thời gian làm nên ý của đoạn, hoặc tên tác giả để phân biệt nhận định của họ với lời kênh). Câu chuyển
+vào sách chỉ cần gọi tên sách ("Nào, chúng ta cùng đến với Đắc nhân tâm."). Khi bỏ một chi tiết khỏi lời đọc, kiểm tra
+description còn giữ nó.
+
 ## Mở đầu (hook)
 
 - Câu đầu tiên vào thẳng chuyện, không rào đón.
