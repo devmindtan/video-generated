@@ -215,7 +215,7 @@ export const CuonSach = section('03 cuốn sách', /(một lớp học|nói trư
   {at: 3, draw: (c) => <g>
     {D(c, openBook(960, 600, 1.5), 0, 30, 2.6)}
     <defs><clipPath id="dnt-above-pages"><path d="M0 0 L1920 0 L1920 596 L1305 596 C1200 572 1065 575 960 621 C855 575 720 572 615 596 L0 596 Z" /></clipPath></defs>
-    <g clipPath="url(#dnt-above-pages)">{['3', '6', '12', '9'].map((n, k) => {const up = appear(c.frame, at(c, 3, .6 + k * .07), 14) * 110, x = 740 + k * 150;return <g key={n}>
+    <g clipPath="url(#dnt-above-pages)">{['3', '6', '12', '9'].map((n, k) => {const up = appear(c.frame, at(c, 3, .6 + k * .07), 14) * 110, x = 695 + k * 150;return <g key={n}>
       <Ink d={`M${x} 620 L${x} ${620 - up} L${x + 80} ${620 - up} L${x + 80} 620`} w={2.6} />
       <Word x={x + 40} y={620 - up + 52} size={38} text={n} opacity={appear(c.frame, at(c, 3, .64 + k * .07), 10)} />
     </g>;})}</g>
@@ -391,7 +391,7 @@ export const Phan2 = section('06 phần hai', /(muốn gần mình|thật lòng 
     {D(c, 'M560 640 L1360 640 M600 640 L600 780 M1320 640 L1320 780', 0, 24, 2.4, .85)}
     <Figure frame={c.frame} from={c.start + 6} x={820} y={800} s={.8} pose="sit" />
     <Figure frame={c.frame} from={c.start + 10} x={1140} y={800} s={.8} pose="sit" facing={-1} />
-    <Label x={760} y={440} text="CARNEGIE" o={appear(c.frame, c.at(3), 12)} />
+    <Label x={760} y={440} text="TÁC GIẢ" o={appear(c.frame, c.at(3), 12)} />
     <Label x={1200} y={440} text="NHÀ THỰC VẬT HỌC" o={appear(c.frame, at(c, 3, .2), 12)} />
     <g opacity={leaves * (1 - title)}>{[0, 1, 2, 3].map((k) => {const x = 1120 + k * 80, y = 330 - (k % 2) * 30;return <Ink key={k} d={`M${x} ${y + 40} C${x - 30} ${y + 10} ${x - 10} ${y - 30} ${x + 20} ${y - 30} C${x + 30} ${y} ${x + 20} ${y + 30} ${x} ${y + 40} Z M${x} ${y + 40} L${x + 14} ${y - 18}`} o={appear(c.frame, at(c, 3, .62 + k * .06), 10)} />;})}</g>
     <Word x={960} y={300} size={44} text="NGƯỜI NÓI CHUYỆN HAY NHẤT" opacity={title} />
@@ -425,14 +425,19 @@ export const Phan2 = section('06 phần hai', /(muốn gần mình|thật lòng 
 //         scroll (Shakespeare) and "!" at "người kia sai"; the friend's foot nudges his under the table at "đá nhẹ chân";
 //         on the way home two figures walk under a street lamp
 // 7–8     a scale whose two pans both carry a minus at "thua"; the principle's words
-// 9–12    a park: Rex runs; the mounted policeman appears at "viên cảnh sát"; Carnegie raises a hand to his chest at
+// 9–12    a park: Rex runs; the policeman (on foot, peaked cap) appears at "viên cảnh sát"; Carnegie raises a hand to his chest at
 //         "mình sai"; the policeman turns away and Rex runs up the hill at "bỏ qua"
 // 13–15   a list of the principles, each line on its word
 // 16–18   a curtain drawn back to show the paper with "ĐIỀU MÌNH MUỐN" in the open
-const Lines = ({c, items, s, y0 = 300, size = 38}: {c: Ctx; items: [string, number][]; s: number; y0?: number; size?: number}) => <g>{items.map(([t, when], k) => <g key={t} opacity={appear(c.frame, at(c, s, when), 10)}>
-  <circle cx={560} cy={y0 + k * 74 - size * .32} r={7} fill={GOLD} />
-  <text x={590} y={y0 + k * 74} fill={IVORY} fontSize={size} fontWeight={700}>{t}</text>
-</g>)}</g>;
+// A list whose lines come in on their words, a little ahead of the voice. The block is centred on cx (estimated
+// width of its longest line), so a short list does not hang to one side.
+const Lines = ({c, items, s, y0 = 300, size = 38, cx = 960}: {c: Ctx; items: [string, number][]; s: number; y0?: number; size?: number; cx?: number}) => {
+  const x = cx - (Math.max(...items.map(([t]) => t.length)) * size * .54 + 30) / 2;
+  return <g>{items.map(([t, when], k) => <g key={t} opacity={appear(c.frame, at(c, s, Math.max(0, when - .04)), 10)}>
+    <circle cx={x} cy={y0 + k * 74 - size * .32} r={7} fill={GOLD} />
+    <text x={x + 30} y={y0 + k * 74} fill={IVORY} fontSize={size} fontWeight={700}>{t}</text>
+  </g>)}</g>;
+};
 const scroll = (x: number, y: number) => `M${x - 50} ${y - 40} L${x + 50} ${y - 40} L${x + 50} ${y + 40} L${x - 50} ${y + 40} Z M${x - 50} ${y - 40} C${x - 66} ${y - 40} ${x - 66} ${y - 20} ${x - 50} ${y - 20} M${x + 50} ${y + 40} C${x + 66} ${y + 40} ${x + 66} ${y + 20} ${x + 50} ${y + 20} M${x - 30} ${y - 12} L${x + 30} ${y - 12} M${x - 30} ${y + 10} L${x + 20} ${y + 10}`;
 export const Phan3 = section('07 phần ba', /(mười hai nguyên tắc|không cùng ý kiến|tránh tranh cãi|Luân Đôn|Kinh thánh|Shakespeare|người kia sai|đá nhẹ chân|là khách|thua thì mình thua|thắng thì mình cũng thua|giữ chặt|nhận lỗi trước|Rex|viên cảnh sát|mình sai|dịu giọng|bỏ qua|vâng|ý tưởng là của chính họ|quan điểm của họ|đồng cảm|cao thượng|sinh động|thử thách|dễ gây tranh cãi nhất|che giấu mục đích|biết rõ mình đang muốn gì)/gi, [
   {at: 0, ...card('PHẦN BA', 'Khi hai người nghĩ khác nhau', (c) => <g>
@@ -446,7 +451,7 @@ export const Phan3 = section('07 phần ba', /(mười hai nguyên tắc|không 
         <Figure frame={c.frame} from={c.start + 4} x={700} y={800} s={.8} pose="sit" />
         <Figure frame={c.frame} from={c.start + 8} x={960} y={800} s={.8} pose="sit" />
         <Figure frame={c.frame} from={c.start + 12} x={1220} y={800} s={.8} pose="sit" facing={-1} />
-        <Label x={960} y={460} text="CARNEGIE" o={appear(c.frame, c.at(2), 12)} />
+        <Label x={960} y={460} text="TÁC GIẢ" o={appear(c.frame, c.at(2), 12)} />
         <g opacity={bible}><Ink d={bubble(1220, 330, 220, 120)} color={IVORY} /><Ink d={closedBook(1220, 330, 70, 90)} w={2.6} /><Word x={1226} y={340} size={34} text="+" opacity={1} /></g>
         <g opacity={appear(c.frame, at(c, 4, .24), 12)}><Ink d={bubble(900, 300, 240, 120)} w={2.8} /><Ink d={scroll(880, 300)} w={2.4} /><Word x={980} y={316} size={52} text="!" opacity={wrong} /></g>
         <g opacity={kick * (1 - appear(c.frame, at(c, 5, .9), 10))}><Ink d="M720 790 L800 770 M800 770 L780 756 M800 770 L784 786" w={3.2} /><Glow x={780} y={780} r={70} opacity={.6} /></g>
@@ -472,24 +477,28 @@ export const Phan3 = section('07 phần ba', /(mười hai nguyên tắc|không 
       {D(c, 'M560 800 L560 640 M520 660 C520 600 600 600 600 660 C600 700 520 700 520 660', 4, 20, 2.2, .7)}
       <g opacity={1 - sorry}><Figure frame={c.frame} from={c.start + 6} x={760} y={800} s={.9} /></g>
       <g opacity={sorry}><Figure frame={c.frame} from={c.start - 30} x={760} y={800} s={.9} arm="reach" facing={1} /></g>
-      <Label x={760} y={460} text="CARNEGIE" o={appear(c.frame, c.start + 12, 12)} />
+      <Label x={760} y={460} text="TÁC GIẢ" o={appear(c.frame, c.start + 12, 12)} />
       <g transform={`translate(${dogX} ${dogY})`} opacity={appear(c.frame, at(c, 10, .3), 12)}><Ink d="M-40 -30 C-40 -50 30 -50 30 -30 C30 -16 -40 -16 -40 -30 Z M-30 -20 L-32 0 M20 -20 L22 0 M30 -36 C40 -56 64 -50 60 -32 C58 -22 44 -22 32 -26 M-40 -34 L-56 -46" w={2.4} color={IVORY} /></g>
-      <g opacity={cop} transform={`translate(${1340 + letgo * 160} 0) scale(${letgo > .5 ? -1 : 1} 1)`}>
-        <Ink d="M-90 800 L-80 700 M60 800 L50 700 M-110 700 C-110 640 90 640 90 700 L-110 700 M-110 680 C-140 640 -160 610 -140 590" w={2.6} />
-        <Figure frame={c.frame} from={at(c, 10, .82)} x={-10} y={660} s={.6} facing={-1} />
+      {/* The policeman on foot (user 2026-11-08: the mounted one looked odd): a peaked cap, facing the author; when he
+          lets it go he turns away and steps off. */}
+      <g opacity={cop}>
+        <Figure frame={c.frame} from={at(c, 10, .82)} x={1340 + letgo * 120} y={800} s={.9} pose={letgo > .05 && letgo < .95 ? 'walk' : 'stand'} facing={letgo > .5 ? 1 : -1} />
+        <Ink d={`M${1340 + letgo * 120 - 26} 523 L${1340 + letgo * 120 + 26} 523 L${1340 + letgo * 120 + 18} 501 L${1340 + letgo * 120 - 18} 501 Z M${1340 + letgo * 120 + (letgo > .5 ? 26 : -26)} 523 L${1340 + letgo * 120 + (letgo > .5 ? 46 : -46)} 528`} w={2.6} />
       </g>
-      <Label x={1340 + letgo * 160} y={420} text="CẢNH SÁT" o={cop} />
+      <Label x={1340 + letgo * 120} y={440} text="CẢNH SÁT" o={cop} />
     </g>;}},
-  {at: 13, label: 'Để người kia nói', draw: (c) => {const second = appear(c.frame, c.at(15), 14);return <g>
-    <g opacity={1 - second}><Lines c={c} s={14} y0={300} items={[['Thái độ thân thiện', .24], ['Câu hỏi để người kia nói "vâng"', .48], ['Để họ nói nhiều hơn', .56], ['Để ý tưởng là của họ', .67], ['Nhìn từ quan điểm của họ', .92]]} /></g>
-    <g opacity={second}><Lines c={c} s={15} y0={340} items={[['Đồng cảm với mong muốn', .2], ['Khơi gợi sự cao thượng', .49], ['Trình bày sinh động', .7], ['Khơi gợi tinh thần vượt thử thách', .93]]} /></g>
-  </g>;}},
+  // Both lists stay on screen in two columns (user 2026-11-08: the first one left before it had finished), then a
+  // rest after the last item before the next picture.
+  {at: 13, label: 'Để người kia nói', hold: [15, 1.4], draw: (c) => <g>
+    <Lines c={c} s={14} y0={330} size={36} cx={560} items={[['Thái độ thân thiện', .22], ['Câu hỏi để người kia nói "vâng"', .3], ['Để họ nói nhiều hơn', .52], ['Để ý tưởng là của họ', .63], ['Nhìn từ quan điểm của họ', .8]]} />
+    <Lines c={c} s={15} y0={330} size={36} cx={1380} items={[['Đồng cảm với mong muốn', .21], ['Khơi gợi sự cao thượng', .43], ['Trình bày sinh động', .56], ['Khơi gợi tinh thần vượt thử thách', .79]]} />
+  </g>},
   {at: 16, draw: (c) => {const open = interpolate(c.frame, [at(c, 17, .62), at(c, 17, .9)], [0, 1], {...clamp, easing: ease}), told = appear(c.frame, at(c, 18, .7), 16);return <g>
     {two(c, c.start + 4)}
     <g opacity={appear(c.frame, c.at(17), 14)}>
-      <Ink d="M820 300 L1100 300 L1100 560 L820 560 Z M850 360 L1070 360 M850 400 L1030 400" color={IVORY} />
-      <Word x={960} y={470} size={34} text="ĐIỀU MÌNH MUỐN" opacity={told > .5 ? 1 : open} />
-      <g transform={`translate(0 280) scale(1 ${Math.max(.04, 1 - open)}) translate(0 -280)`}><path d="M800 280 L1120 280 L1120 580 L800 580 Z" fill="#0d1411" stroke={GOLD} strokeWidth={2.6} /><Ink d="M880 280 L880 580 M960 280 L960 580 M1040 280 L1040 580" w={2} o={.8} /></g>
+      <Ink d="M740 300 L1180 300 L1180 560 L740 560 Z M800 360 L1120 360 M800 400 L1060 400" color={IVORY} />
+      <Word x={960} y={480} size={36} text="ĐIỀU MÌNH MUỐN" opacity={told > .5 ? 1 : open} />
+      <g transform={`translate(0 280) scale(1 ${Math.max(.04, 1 - open)}) translate(0 -280)`}><path d="M720 280 L1200 280 L1200 580 L720 580 Z" fill="#0d1411" stroke={GOLD} strokeWidth={2.6} /><Ink d="M840 280 L840 580 M960 280 L960 580 M1080 280 L1080 580" w={2} o={.8} /></g>
     </g>
     <Glow x={960} y={430} r={200} opacity={told * .5} />
   </g>;}},
@@ -527,7 +536,7 @@ export const Phan4 = section('08 phần bốn', /(chỉ ra lỗi|người quản
       <g opacity={swap}><Word x={960} y={505} size={48} text="VÀ" opacity={1} /><Glow x={960} y={490} r={120} opacity={.5} /></g>
       <g opacity={crit}><Ink d="M1160 420 L1500 420 L1500 560 L1160 560 Z" color={swap > .5 ? GOLD : IVORY} /><Word x={1330} y={505} size={38} text={swap > .5 ? 'KHÍCH LỆ' : 'LỜI CHÊ'} opacity={1} /></g>
     </g>;}},
-  {at: 9, label: 'Giữ thể diện', draw: (c) => <Lines c={c} s={10} y0={290} size={36} items={[['Xét mình trước', .13], ['Gợi ý thay vì ra lệnh', .28], ['Giữ thể diện cho người mắc lỗi', .39], ['Khen cả tiến bộ nhỏ nhất', .55], ['Trao một tiếng tốt', .7], ['Làm lỗi trông dễ sửa', .95]]} />},
+  {at: 9, label: 'Giữ thể diện', hold: [10, 1.4], draw: (c) => <Lines c={c} s={10} y0={290} size={36} items={[['Xét mình trước', .14], ['Gợi ý thay vì ra lệnh', .29], ['Giữ thể diện cho người mắc lỗi', .38], ['Khen cả tiến bộ nhỏ nhất', .5], ['Trao một tiếng tốt', .62], ['Làm lỗi trông dễ sửa', .87]]} />},
   {at: 11, draw: (c) => <g>
     <Figure frame={c.frame} from={c.start + 4} x={820} y={800} s={.95} arm="reach" />
     <Figure frame={c.frame} from={c.start + 8} x={1000} y={800} s={.95} facing={-1} />
@@ -579,9 +588,11 @@ export const TongKet = section('08f tổng kết', /(trong một hơi|được t
   {at: 0, draw: (c) => <g>{two(c, c.start + 4)}<Glow x={1320} y={560} r={180} opacity={appear(c.frame, at(c, 0, .55), 20) * .55} /></g>},
   {at: 1, draw: (c) => <g>
     {D(c, openBook(960, 620, 1.4), 0, 26, 2.6)}
-    {['3', '6', '12', '9'].map((n, k) => {const on = appear(c.frame, at(c, 1, [.17, .28, .43, .74][k]), 10), x = 740 + k * 150;return <g key={n} opacity={on}>
-      <Ink d={`M${x} 640 L${x} 520 L${x + 80} 520 L${x + 80} 640`} w={2.6} /><Word x={x + 40} y={576} size={38} text={n} opacity={1} />
-    </g>;})}
+    {/* Tabs stand up from behind the pages: clipped above the page edge, no line through them. */}
+    <defs><clipPath id="dnt-above-pages-tk"><path d="M0 0 L1920 0 L1920 616 L1282 616 C1184 594 1058 597 960 640 C862 597 736 594 638 616 L0 616 Z" /></clipPath></defs>
+    <g clipPath="url(#dnt-above-pages-tk)">{['3', '6', '12', '9'].map((n, k) => {const on = appear(c.frame, at(c, 1, [.17, .28, .43, .74][k]), 10), x = 695 + k * 150;return <g key={n} opacity={on}>
+      <Ink d={`M${x} 660 L${x} 520 L${x + 80} 520 L${x + 80} 660`} w={2.6} /><Word x={x + 40} y={576} size={38} text={n} opacity={1} />
+    </g>;})}</g>
   </g>},
   {at: 2, draw: (c) => <g>{two(c, c.start + 2)}<Ink d={heart(960, 560, 1.4)} w={3} o={appear(c.frame, at(c, 2, .7), 14)} /><Glow x={960} y={555} r={170} opacity={appear(c.frame, at(c, 2, .75), 20) * .55} /></g>},
 ], options);

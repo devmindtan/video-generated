@@ -12,7 +12,9 @@ import takes from './body-takes.json';
 // shows one drawing, an optional item label ("CƠN GIẬN") or a group title card, and crossfades to the next.
 export type Take = Voice & {phraseRanges?: {startSeconds: number; endSeconds: number}[]};
 export type Ctx = {frame: number; start: number; at: (sentence: number) => number; level: number};
-export type Beat = {at: number; label?: string; card?: {kicker: string; title: string}; quote?: boolean; draw?: (c: Ctx) => ReactNode};
+// hold: [sentence, seconds] extra rest after that sentence, so a picture that fills up on the last words (a list) can
+// be read before the next one takes over (user 2026-11-08).
+export type Beat = {at: number; label?: string; card?: {kicker: string; title: string}; quote?: boolean; hold?: [number, number]; draw?: (c: Ctx) => ReactNode};
 
 // Each episode passes its own narration takes (voice ids repeat across episodes); episode 1's are the default.
 export const takesOf = (json: unknown) => (json as {voices: Take[]}).voices;
@@ -91,7 +93,11 @@ export const CornerVoice: FC<{take: Take | undefined; pacing: Pacing; frame: num
   </div>;
 };
 const ideaStartsOf = (beats: Beat[]) => beats.map((b) => b.at).filter((a) => a > 0);
-const cardRestOf = (beats: Beat[]) => Object.fromEntries(beats.filter((b) => b.card).map((b) => [b.at, CARD_SECONDS]));
+const cardRestOf = (beats: Beat[]) => {
+  const rest: Record<number, number> = Object.fromEntries(beats.filter((b) => b.card).map((b) => [b.at, CARD_SECONDS]));
+  for (const b of beats) if (b.hold) rest[b.hold[0]] = (rest[b.hold[0]] ?? 0) + b.hold[1];
+  return rest;
+};
 // Pacing is pure for a (voice, beats, fps): cached, since the body music asks it for every frame of the episode.
 const paceCache = new WeakMap<Beat[], Map<string, Pacing>>();
 export const sectionPacing = (voice: string, beats: Beat[], fps = 30, list: Take[] = voices, t?: Transition) => {
