@@ -31,7 +31,7 @@ chuyện dễ nhớ của sách; rồi những điểm chưa đạt, tổng kế
 
 ## Bố cục (chuẩn series, theo tập 1)
 
-Intro series (dùng lại) → Cách làm của tập (dùng lại) → thẻ "TẬP 03" (mới) → Mở chuyện: lá thư Lincoln không gửi →
+Mở đầu tập (từ tập 3 không dùng intro series, người dùng 2026-11-08): màn hình "TẬP 03" chạy khoảng 7 giây với nhạc intro, rồi giọng vào với hook, câu cho người xem lần đầu và tên sách → Cách làm của tập (dùng lại) → Mở chuyện: lá thư Lincoln không gửi →
 1 Cuốn sách là gì → 2 Sợi chỉ xuyên suốt → 3A–3D bốn phần của sách (mỗi phần có thẻ tiêu đề) → 3E Những điểm chưa đạt →
 3F Tổng kết → 4 Ý kiến cá nhân (nháp của kênh, người dùng sửa) → 5 Nhận xét chung → Outro series (dùng lại).
 Kịch bản: [script.md](script.md).

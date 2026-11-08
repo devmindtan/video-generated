@@ -6,6 +6,7 @@ import {MusicFade} from '../../shared/MusicFade';
 import {BookInsightsIntro, GOLD, introCaptions, introFrames, mergeCaptions} from './Intro';
 import type {Voice} from './Intro';
 import {BookInsightsEpisodeCard, cardCaptions, cardFrames} from './EpisodeCard';
+import {BookInsightsHookCard, hookCaptions, hookFrames} from './HookCard';
 import {BookInsightsOutro, outroCaptions, outroFrames} from './Outro';
 import {CachLam} from './Sections';
 import {pacedMs, takeOf} from './scene-kit';
@@ -44,7 +45,17 @@ export const openingParts = (p: SeriesVoices & {cardVoice: string; episodeLabel:
     speaking: () => true, captions: () => mergeCaptions(cardCaptions(p.cardVoice, p.cardTakes))});
   return list;
 };
-export const outroPart = (p: SeriesVoices, fps: number): Part =>
+// From episode 3 on (user 2026-11-08): no series intro; the episode screen on the intro music, then the voice's hook
+// (greeting, why this book, a word for first-time viewers, the book named), then "Cách làm" (reused) and the body.
+// The hook part carries its own music, so it is not "speaking" and the body music starts at "Cách làm".
+export const hookOpeningParts = (p: {channelLabel: string; cardVoice: string; episodeLabel: string; bookTitle: string; bookAuthor: string; cardTakes: Voice[]}, fps: number): Part[] => {
+  const list: Part[] = [{name: 'Mở đầu tập', frames: hookFrames(p.cardVoice, p.cardTakes, fps), node: <BookInsightsHookCard voice={p.cardVoice} channelLabel={p.channelLabel} episodeLabel={p.episodeLabel} bookTitle={p.bookTitle} bookAuthor={p.bookAuthor} takes={p.cardTakes} />,
+    captions: () => mergeCaptions(hookCaptions(p.cardVoice, p.cardTakes))}];
+  const how = voiceFor('01b-cach-lam', series);
+  if (how) list.push(sectionPart('Cách làm của tập', CachLam, how, p.channelLabel, fps, series));
+  return list;
+};
+export const outroPart =(p: SeriesVoices, fps: number): Part =>
   ({name: 'Outro series', frames: outroFrames(p.outroVoice, fps), node: <BookInsightsOutro voice={p.outroVoice} channelLabel={p.channelLabel} />, captions: () => mergeCaptions(outroCaptions(p.outroVoice))});
 
 // Every caption page on the episode timeline (captions.json, .srt for upload) and the parts with their length.

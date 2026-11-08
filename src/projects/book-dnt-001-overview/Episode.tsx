@@ -2,9 +2,9 @@ import type {FC} from 'react';
 import {useVideoConfig} from 'remotion';
 import type {CalculateMetadataFunction} from 'remotion';
 import type {Voice} from '../book-hvtt-001-overview/Intro';
-import {BookInsightsEpisodeCard, episodeCardMetadata} from '../book-hvtt-001-overview/EpisodeCard';
+import {BookInsightsHookCard, hookFrames} from '../book-hvtt-001-overview/HookCard';
 import type {EpisodeCardProps} from '../book-hvtt-001-overview/EpisodeCard';
-import {EpisodeStage, captionsOf, lengthOf, openingParts, outroPart, sectionPart, timelineOf} from '../book-hvtt-001-overview/episode-kit';
+import {EpisodeStage, captionsOf, hookOpeningParts, lengthOf, outroPart, sectionPart, timelineOf} from '../book-hvtt-001-overview/episode-kit';
 import type {BodyMusicConfig, Part} from '../book-hvtt-001-overview/episode-kit';
 import {takeOf, takesOf} from '../book-hvtt-001-overview/scene-kit';
 import type {Section} from '../book-hvtt-001-overview/scene-kit';
@@ -13,8 +13,8 @@ import bodyTakes from './body-takes.json';
 import cardTakes from './card-takes.json';
 import {ChuaDat, CuonSach, MoChuyen, NhanXet, Phan1, Phan2, Phan3, Phan4, SoiChi, TongKet, YKien} from './Sections';
 
-// Episode 3 (Đắc nhân tâm) in the series frame: reused series intro, "Cách làm" and outro, this episode's card and
-// body. Parts join as their narration exists. Placeholder phase: the Quốc Tuấn take of a segment (25-quoc-tuan-<nn>)
+// Episode 3 (Đắc nhân tâm) in the series frame: the episode's own hook opening (no series intro from episode 3 on,
+// user 2026-11-08), reused "Cách làm" and outro, and this episode's body. Parts join as their narration exists. Placeholder phase: the Quốc Tuấn take of a segment (25-quoc-tuan-<nn>)
 // plays until the clone batch is picked; then the clone take (<segment>-sang2) wins.
 export type EpisodeProps = {introVoice: string; cardVoice: string; outroVoice: string; channelLabel: string; episodeLabel: string; bookTitle: string; bookAuthor: string; clone?: boolean};
 
@@ -33,7 +33,7 @@ const BODY: [string, string, Section][] = [['02-mo-chuyen', 'Mở chuyện', MoC
   ['08g-y-kien', 'Ý kiến cá nhân', YKien], ['09-nhan-xet', 'Nhận xét chung', NhanXet]];
 
 const parts = (p: EpisodeProps, fps: number): Part[] => {
-  const list = openingParts({...p, cardTakes: cards}, fps);
+  const list = hookOpeningParts({...p, cardTakes: cards}, fps);
   for (const [seg, name, S] of BODY) {
     const voice = voiceFor(seg, p.clone);
     if (voice) list.push(sectionPart(name, S, voice, p.channelLabel, fps, voices));
@@ -49,6 +49,6 @@ export const BookDntEpisode: FC<EpisodeProps> = (p) => {
   return <EpisodeStage list={parts(p, fps)} music={bodyMusic as BodyMusicConfig} />;
 };
 
-// The card on its own in Studio, with this episode's card narration.
-export const BookDntEpisodeCard: FC<EpisodeCardProps> = (p) => <BookInsightsEpisodeCard {...p} takes={cards} />;
-export const bookDntCardMetadata: CalculateMetadataFunction<EpisodeCardProps> = (o) => episodeCardMetadata({...o, props: {...o.props, takes: cards}});
+// The opening (episode screen on the music, then the hook) on its own in Studio, with this episode's take.
+export const BookDntEpisodeCard: FC<EpisodeCardProps> = (p) => <BookInsightsHookCard {...p} takes={cards} />;
+export const bookDntCardMetadata: CalculateMetadataFunction<EpisodeCardProps> = ({props}) => ({durationInFrames: hookFrames(props.voice, cards)});

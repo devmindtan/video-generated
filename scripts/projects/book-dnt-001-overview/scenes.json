@@ -1,7 +1,7 @@
 [
   {
     "id": "01-gioi-thieu-tap",
-    "title": "Giới thiệu tập",
+    "title": "Mở đầu tập (hook)",
     "composition": "BookDntEpisodeCard"
   },
   {
