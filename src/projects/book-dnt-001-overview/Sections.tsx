@@ -305,9 +305,9 @@ export const Phan1 = section('05 phần một', /(ba nguyên tắc|nền móng|c
     <g opacity={appear(c.frame, c.start + 24, 14)}><Ink d={envelope(960, 740, 140, 90)} color={IVORY} /><Glow x={960} y={740} r={110} opacity={.5} /></g>
   </g>)},
   {at: 1, label: 'Không chỉ trích', draw: (c) => {const out = interpolate(c.frame, [at(c, 2, .18), at(c, 2, .4)], [0, 1], {...clamp, easing: ease}), back = interpolate(c.frame, [at(c, 2, .44), at(c, 2, .7)], [0, 1], {...clamp, easing: ease});
-    const t = back > 0 ? 1 - back : out, bx = 700 + t * 700, by = 520 - Math.sin(t * Math.PI) * 180, flap = Math.sin(c.frame * .5) * 14;
+    const t = back > 0 ? 1 - back : out, bx = 820 + t * 580, by = 520 - Math.sin(t * Math.PI) * 180, flap = Math.sin(c.frame * .5) * 14;
     return <g>
-      <Figure frame={c.frame} from={c.start + 4} x={560} y={800} s={1} arm="reach" />
+      <Figure frame={c.frame} from={c.start + 4} x={680} y={800} s={1} arm="reach" />
       <g opacity={appear(c.frame, at(c, 2, .16), 10)} transform={`translate(${bx} ${by}) scale(${back > 0 ? -1 : 1} 1)`}>
         <Ink d={`M-46 0 C-24 ${-26 - flap} -8 -22 0 0 M46 0 C24 ${-26 - flap} 8 -22 0 0 M0 0 L-10 18 M0 0 L10 18`} w={2.8} color={IVORY} />
       </g>
@@ -352,7 +352,7 @@ export const Phan1 = section('05 phần một', /(ba nguyên tắc|nền móng|c
       <g opacity={cheap}><Ink d={coin(960, 520)} w={2.8} /><Ink d="M880 600 L1040 440" o={appear(c.frame, at(c, 11, .46), 10)} w={4} color={IVORY} /></g>
     </g>;}},
   {at: 12, label: 'Gợi ý muốn', draw: (c) => {const helper = appear(c.frame, c.at(14), 16), walk = interpolate(c.frame, [at(c, 14, .5), at(c, 14, .78)], [0, 1], {...clamp, easing: ease}), bubbles = appear(c.frame, c.at(15), 14);
-    return <g>
+    return <g transform="translate(-130 0)">{/* centred: figures, calf and barn span 480–1700 */}
       <Ink d={barn(1460, 800)} o={appear(c.frame, c.start + 6, 14)} w={2.4} />
       <g opacity={1 - helper}>
         <Figure frame={c.frame} from={c.start + 4} x={560} y={800} s={.85} arm="reach" />
@@ -384,7 +384,7 @@ export const Phan2 = section('06 phần hai', /(muốn gần mình|thật lòng 
     <Figure frame={c.frame} from={c.start + 10} x={640} y={840} s={.6} arm="reach" /><Figure frame={c.frame} from={c.start + 14} x={1280} y={840} s={.6} facing={-1} />
     <Glow x={760} y={700} r={90} opacity={appear(c.frame, c.start + 26, 14) * .6} />
   </g>)},
-  {at: 1, draw: (c) => {const signs = [(x: number) => heart(x, 520, 1.1), (x: number) => smileSign(x, 520), (x: number) => tagSign(x, 520), (x: number) => ear(x - 24, 462), (x: number) => bubble(x, 515, 120, 80), (x: number) => star(x, 520, 52)];
+  {at: 1, hold: [1, 1.2], draw: (c) => {const signs = [(x: number) => heart(x, 520, 1.1), (x: number) => smileSign(x, 520), (x: number) => tagSign(x, 520), (x: number) => ear(x - 24, 462), (x: number) => bubble(x, 515, 120, 80), (x: number) => star(x, 520, 52)];
     const when = [.15, .33, .38, .53, .59, .93];
     return <g>{signs.map((s, k) => <g key={k} opacity={appear(c.frame, at(c, 1, when[k]), 12)}><Ink d={s(460 + k * 200)} w={2.8} color={k === 5 ? GOLD : IVORY} /></g>)}</g>;}},
   {at: 2, draw: (c) => {const leaves = appear(c.frame, at(c, 3, .62), 18), title = appear(c.frame, at(c, 5, .7), 14);return <g>
@@ -456,7 +456,7 @@ export const Phan3 = section('07 phần ba', /(mười hai nguyên tắc|không 
         <g opacity={appear(c.frame, at(c, 4, .24), 12)}><Ink d={bubble(900, 300, 240, 120)} w={2.8} /><Ink d={scroll(880, 300)} w={2.4} /><Word x={980} y={316} size={52} text="!" opacity={wrong} /></g>
         <g opacity={kick * (1 - appear(c.frame, at(c, 5, .9), 10))}><Ink d="M720 790 L800 770 M800 770 L780 756 M800 770 L784 786" w={3.2} /><Glow x={780} y={780} r={70} opacity={.6} /></g>
       </g>
-      <g opacity={home}>
+      <g opacity={home} transform="translate(-170 0)">
         <Ink d="M1500 800 L1500 400 C1500 360 1460 350 1430 370 M1410 370 L1450 370 L1440 400 L1420 400 Z" w={2.6} />
         <Glow x={1430} y={410} r={180} opacity={.4} />
         <Figure frame={c.frame} from={c.at(6)} x={900} y={800} s={.9} pose="walk" />
@@ -626,11 +626,14 @@ export const YKien = section('08g ý kiến', /(dừng lại một nhịp|lá th
     </g>
     <g opacity={own}><Figure frame={c.frame} from={c.at(5)} x={760} y={800} s={1} />{D(c, openBook(1180, 640, .9), 6, 20, 2.4)}</g>
   </g>;}},
-  {at: 6, draw: (c) => <g>
-    <g opacity={appear(c.frame, c.start + 6, 12)}><Ink d="M420 420 L760 420 L760 560 L420 560 Z" color={IVORY} /><Word x={590} y={505} size={38} text="LỜI KHEN" opacity={1} /></g>
-    <g opacity={appear(c.frame, at(c, 6, .9), 12)}><Word x={960} y={505} size={48} text="VÀ" opacity={1} /><Glow x={960} y={490} r={120} opacity={.55} /></g>
-    <g opacity={appear(c.frame, at(c, 7, .5), 12)}><Ink d="M1160 420 L1500 420 L1500 560 L1160 560 Z" /><Word x={1330} y={505} size={38} text="GÓP Ý" opacity={1} /></g>
-  </g>},
+  // Centred from the start (user 2026-11-08: a lone box on the left looked off): "NHƯNG" in the middle turns into "VÀ"
+  // on its word; the praise and the advice boxes join on either side in the next sentence.
+  {at: 6, draw: (c) => {const but = appear(c.frame, at(c, 6, .68), 12), and = appear(c.frame, at(c, 6, .9), 14);return <g>
+    <g opacity={but * (1 - and)}><Word x={960} y={505} size={48} text="NHƯNG" opacity={1} /></g>
+    <g opacity={and}><Word x={960} y={505} size={48} text="VÀ" opacity={1} /><Glow x={960} y={490} r={120} opacity={.55} /></g>
+    <g opacity={appear(c.frame, at(c, 7, .34), 12)}><Ink d="M420 420 L760 420 L760 560 L420 560 Z" color={IVORY} /><Word x={590} y={505} size={38} text="LỜI KHEN" opacity={1} /></g>
+    <g opacity={appear(c.frame, at(c, 7, .52), 12)}><Ink d="M1160 420 L1500 420 L1500 560 L1160 560 Z" /><Word x={1330} y={505} size={38} text="GÓP Ý" opacity={1} /></g>
+  </g>;}},
 ], options);
 
 // 5 Nhận xét chung (lines-09-nhan-xet.txt): the book closes; two people facing each other; the book lies on a table
