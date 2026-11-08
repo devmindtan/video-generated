@@ -1,11 +1,11 @@
 {
   "file": "audio-library/music/Moavii - Butterflies (freetouse.com).mp3",
-  "speechVolume": 0.015,
-  "pauseVolume": 0.015,
+  "speechVolume": 0.01,
+  "pauseVolume": 0.01,
   "fadeInSeconds": 2.5,
   "fadeOutSeconds": 3,
   "playbackRate": 0.85,
-  "editingNote": "Như tập 1–2 (bố cục chuẩn series): nhạc nền rất nhỏ cho phần nội dung, từ Cách làm của tập đến hết Nhận xét chung; 1,5% khi có lời, 2,8% lúc nghỉ, tốc độ 0,85, lặp lại bản gốc đầy đủ; fade theo cạnh đoạn nhạc, chỉnh đầu/cuối trong Studio. Sau câu cuối của mở đầu tập (“Nào, chúng ta cùng đến với Đắc nhân tâm.”), nhạc lên hookSwellVolume (0,3) khoảng 5 giây rồi lắng về mức nghỉ trước Mở chuyện (người dùng 2026-11-08). Sau p10 (người dùng 2026-11-08: \"âm nhạc trong lúc đang đọc… cứ to nhỏ… phải luôn giữ ở mức nhỏ\"): pauseVolume = speechVolume (1,5%), nhạc không nhô lên ở các khoảng nghỉ nữa; chỉ còn đoạn nhạc lên sau câu cuối mở đầu.",
+  "editingNote": "Như tập 1–2 (bố cục chuẩn series): nhạc nền rất nhỏ cho phần nội dung, từ Cách làm của tập đến hết Nhận xét chung; 1,5% khi có lời, 2,8% lúc nghỉ, tốc độ 0,85, lặp lại bản gốc đầy đủ; fade theo cạnh đoạn nhạc, chỉnh đầu/cuối trong Studio. Sau câu cuối của mở đầu tập (“Nào, chúng ta cùng đến với Đắc nhân tâm.”), nhạc lên hookSwellVolume (0,3) khoảng 5 giây rồi lắng về mức nghỉ trước Mở chuyện (người dùng 2026-11-08). Sau p10 (người dùng 2026-11-08: \"âm nhạc trong lúc đang đọc… cứ to nhỏ… phải luôn giữ ở mức nhỏ\"): pauseVolume = speechVolume (1,5%; người dùng hạ xuống 1% sau p11), nhạc không nhô lên ở các khoảng nghỉ nữa; chỉ còn đoạn nhạc lên sau câu cuối mở đầu.",
   "credit": {
     "title": "Butterflies",
     "artists": [
