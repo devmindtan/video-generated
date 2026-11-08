@@ -12,32 +12,42 @@
     },
     {
       "scene": 1,
-      "text": "Tập hôm nay, chúng ta sẽ đi vào một cuốn sách mà ai cũng đã biết, đã đọc, hoặc chỉ là nghe qua.",
+      "text": "Có một cuốn sách mà gần như ai cũng từng nghe tên, dù chưa chắc đã đọc.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Có người thích, có người chê.",
+      "text": "Có người đọc xong thì khen hết lời.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Đúng vậy, hôm nay mình sẽ tìm hiểu tại sao lại có nhiều luồng ý kiến như vậy về cuốn sách này.",
+      "text": "Có người gấp sách lại, lắc đầu.",
       "pauseAfter": 0.9
     },
     {
       "scene": 1,
-      "text": "Nếu ai xem series này lần đầu thì hãy chú ý: đây là video mình sẽ vừa lấy ví dụ ở trong sách, vừa rút ra bài học trong đó.",
-      "pauseAfter": 0.9
-    },
-    {
-      "scene": 1,
-      "text": "Cuốn sách ấy là Đắc nhân tâm của Dale Carnegie, viết từ năm 1936 về cách đối xử với người khác.",
+      "text": "Cùng một cuốn sách, sao người ta lại nghĩ khác nhau đến vậy?",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Mình sẽ đứng ở vai trò trung lập và phân tích cuốn sách này một cách khách quan nhất theo góc nhìn của mình.",
+      "text": "Hôm nay, mình sẽ cùng các bạn đi tìm câu trả lời.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "À, nếu đây là lần đầu bạn xem series này thì để mình nói trước: ở mỗi tập, mình vừa kể những ví dụ có trong sách, vừa rút ra bài học từ chính những ví dụ ấy.",
+      "pauseAfter": 0.9
+    },
+    {
+      "scene": 1,
+      "text": "Cuốn sách hôm nay là Đắc nhân tâm, của Dale Carnegie, viết từ năm 1936.",
+      "pauseAfter": 0.4
+    },
+    {
+      "scene": 1,
+      "text": "Mình sẽ đứng ở vị trí trung lập, và nhìn nó khách quan nhất có thể, theo góc nhìn của mình.",
       "pauseAfter": 0
     }
   ]

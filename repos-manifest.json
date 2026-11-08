@@ -148,5 +148,10 @@
     "repo": "calesthio/OpenMontage",
     "path": "repos/calesthio--OpenMontage",
     "commit": "195eab24478dc9363326aec437aefc3701635ddf"
+  },
+  {
+    "repo": "blader/humanizer",
+    "path": "repos/blader--humanizer",
+    "commit": "0ef9fe5bc3572734fd3ae6c448fe00a30cd5dcf0"
   }
 ]

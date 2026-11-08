@@ -16,15 +16,19 @@ Thời lượng: không quá 18 phút (dự kiến khoảng 14–15 phút). `[ng
 
 ## 0a. Mở đầu tập (thay cho lời chào của series từ tập 3, người dùng 2026-11-08)
 
-{Màn hình "TẬP 03 · Đắc nhân tâm · Dale Carnegie" chạy khoảng 7 giây chỉ có nhạc intro của series (Pufino – Enlivening), nhạc hạ dần rồi giọng mới vào. Không dùng lại BookHvttIntro.}
+{Màn hình "TẬP 03 · Đắc nhân tâm · Dale Carnegie" chạy khoảng 7 giây chỉ có nhạc intro của series (Pufino – Enlivening); nhạc tắt dần trước câu đầu, khi có lời chỉ còn nhạc nền nội dung rất nhỏ như các phần khác. Không dùng lại BookHvttIntro.}
 
-Chào mọi người. Tập hôm nay, chúng ta sẽ đi vào một cuốn sách mà ai cũng đã biết, đã đọc, hoặc chỉ là nghe qua. Có người thích, có người chê. Đúng vậy, hôm nay mình sẽ tìm hiểu tại sao lại có nhiều luồng ý kiến như vậy về cuốn sách này. [nghỉ]
+Chào mọi người. [nghỉ]
 
-Nếu ai xem series này lần đầu thì hãy chú ý: đây là video mình sẽ vừa lấy ví dụ ở trong sách, vừa rút ra bài học trong đó. [nghỉ]
+Có một cuốn sách mà gần như ai cũng từng nghe tên, dù chưa chắc đã đọc. Có người đọc xong thì khen hết lời. Có người gấp sách lại, lắc đầu. [nghỉ]
 
-Cuốn sách ấy là Đắc nhân tâm của Dale Carnegie, viết từ năm 1936 về cách đối xử với người khác. Mình sẽ đứng ở vai trò trung lập và phân tích cuốn sách này một cách khách quan nhất theo góc nhìn của mình.
+Cùng một cuốn sách, sao người ta lại nghĩ khác nhau đến vậy? Hôm nay, mình sẽ cùng các bạn đi tìm câu trả lời. [nghỉ]
 
-{Hook và câu cho người xem lần đầu theo lời người dùng (chat 2026-11-08). Câu "Đây cũng là cuốn sách gây nhiều tranh cãi, có người thích, có người không" của thẻ cũ đã bỏ vì hook vừa nói ý đó; phần "đứng ở vai trò trung lập…" giữ lời người dùng (góp ý gói chốt 2026-11-05). Năm 1936: PDF 6, 11.}
+À, nếu đây là lần đầu bạn xem series này thì để mình nói trước: ở mỗi tập, mình vừa kể những ví dụ có trong sách, vừa rút ra bài học từ chính những ví dụ ấy. [nghỉ]
+
+Cuốn sách hôm nay là Đắc nhân tâm, của Dale Carnegie, viết từ năm 1936. Mình sẽ đứng ở vị trí trung lập, và nhìn nó khách quan nhất có thể, theo góc nhìn của mình.
+
+{Ý hook và câu cho người xem lần đầu theo lời người dùng (chat 2026-11-08); viết lại cho có nhịp nói theo docs/script-voice-guide.md (người dùng: "kịch bản đang hơi máy móc nhất là lúc đầu"): câu đầu vào thẳng chuyện, câu ngắn xen câu dài, bỏ "Đúng vậy" chốt lặp ý, ý "nhiều luồng ý kiến" thành một câu hỏi thật. Ý trung lập giữ lời người dùng (góp ý gói chốt 2026-11-05). Năm 1936: PDF 6, 11.}
 
 ## 0p. Cách làm của tập (dùng lại nguyên của tập 1)
 
