@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
+import os from 'node:os';
 import {bundle} from '@remotion/bundler';
 import {openBrowser, renderStill, selectComposition} from '@remotion/renderer';
 
@@ -117,4 +118,7 @@ try {
   process.exitCode = sheet.status ?? 1;
 } finally {
   await browser.close({silent: true});
+  // bundle() copies the whole public/ folder (several GB) into a temp folder; remove it, or every check run leaks one
+  // (29 copies filled the disk on 2026-11-08).
+  if (serveUrl.startsWith(os.tmpdir())) fs.rmSync(serveUrl, {recursive: true, force: true});
 }
