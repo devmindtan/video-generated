@@ -5,12 +5,13 @@
   "fadeInSeconds": 2.5,
   "fadeOutSeconds": 3,
   "playbackRate": 0.85,
-  "editingNote": "Như tập 1–2 (bố cục chuẩn series): nhạc nền rất nhỏ cho phần nội dung, từ Cách làm của tập đến hết Nhận xét chung; 1,5% khi có lời, 2,8% lúc nghỉ, tốc độ 0,85, lặp lại bản gốc đầy đủ; fade theo cạnh đoạn nhạc, chỉnh đầu/cuối trong Studio.",
+  "editingNote": "Như tập 1–2 (bố cục chuẩn series): nhạc nền rất nhỏ cho phần nội dung, từ Cách làm của tập đến hết Nhận xét chung; 1,5% khi có lời, 2,8% lúc nghỉ, tốc độ 0,85, lặp lại bản gốc đầy đủ; fade theo cạnh đoạn nhạc, chỉnh đầu/cuối trong Studio. Sau câu cuối của mở đầu tập (“Nào, chúng ta cùng đến với Đắc nhân tâm.”), nhạc lên hookSwellVolume (0,3) khoảng 5 giây rồi lắng về mức nghỉ trước Mở chuyện (người dùng 2026-11-08).",
   "credit": {
     "title": "Butterflies",
     "artists": [
       "Moavii"
     ],
     "source": "freetouse.com"
-  }
+  },
+  "hookSwellVolume": 0.3
 }

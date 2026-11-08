@@ -93,7 +93,10 @@ def main():
         for f in clone['files']:
             if choice.get(f['text'].strip(), take) == take:
                 parts[f['text'].strip()] = (folder, f)
-    missing = [s['text'] for s in cfg['sentences'] if s['text'].strip() not in parts]
+    # "say": how the voice should pronounce a sentence when it differs from the caption text (foreign names spelled
+    # the Vietnamese way, user 2026-11-08: "Meade" read wrong); clone takes are made from it, captions keep "text".
+    spoken = lambda s: (s.get('say') or s['text']).strip()
+    missing = [s['text'] for s in cfg['sentences'] if spoken(s) not in parts]
     if missing:
         raise RuntimeError(f'No clone for: {missing}')
     out = ROOT / 'public/voice-auditions' / args.out
@@ -107,7 +110,7 @@ def main():
     chunks, ranges = [np.zeros(round(cfg['leadIn'] * k * SR))], []
     used = []
     for sentence in cfg['sentences']:
-        source, part = parts[sentence['text'].strip()]
+        source, part = parts[spoken(sentence)]
         used.append(str((source / part['file']).relative_to(ROOT)))
         audio, rate = sf.read(source / part['file'], dtype='float64')
         audio = audio.mean(axis=1) if audio.ndim > 1 else audio

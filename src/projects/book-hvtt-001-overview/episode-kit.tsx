@@ -6,7 +6,7 @@ import {MusicFade} from '../../shared/MusicFade';
 import {BookInsightsIntro, GOLD, introCaptions, introFrames, mergeCaptions} from './Intro';
 import type {Voice} from './Intro';
 import {BookInsightsEpisodeCard, cardCaptions, cardFrames} from './EpisodeCard';
-import {BookInsightsHookCard, hookCaptions, hookLeadFrames, hookSpeaking, hookVoiceFrames} from './HookCard';
+import {BookInsightsHookCard, hookCaptions, hookLeadFrames, hookMusic, hookSpeaking, hookVoiceFrames} from './HookCard';
 import {BookInsightsOutro, outroCaptions, outroFrames} from './Outro';
 import {CachLam} from './Sections';
 import {pacedMs, takeOf} from './scene-kit';
@@ -20,8 +20,10 @@ import seriesTakes from './body-takes.json';
 export type Page = {text: string; startMs: number; endMs: number};
 // speaking: whether narration is heard at a local frame (the body music dips under it); unset for intro/outro.
 // captions: the part's caption pages in its own milliseconds.
-export type Part = {name: string; frames: number; node: ReactElement; speaking?: (frame: number) => boolean; captions?: () => Page[]};
-export type BodyMusicConfig = {file: string; speechVolume: number; pauseVolume: number; fadeInSeconds: number; fadeOutSeconds: number; playbackRate: number; credit: {title: string; artists: string[]}};
+// music: the body-music volume this part asks for at a local frame (a swell), undefined = the usual speech/pause level.
+export type Part = {name: string; frames: number; node: ReactElement; speaking?: (frame: number) => boolean; captions?: () => Page[]; music?: (frame: number, m: BodyMusicConfig) => number | undefined};
+// hookSwellVolume: how loud the music rises after the hook's last sentence (episode 3 on).
+export type BodyMusicConfig = {file: string; speechVolume: number; pauseVolume: number; fadeInSeconds: number; fadeOutSeconds: number; playbackRate: number; hookSwellVolume?: number; credit: {title: string; artists: string[]}};
 export type SeriesVoices = {introVoice: string; outroVoice: string; channelLabel: string};
 
 const series = (seriesTakes as unknown as {voices: Take[]}).voices;
@@ -54,7 +56,8 @@ export const hookOpeningParts = (p: {channelLabel: string; cardVoice: string; ep
   const list: Part[] = [
     {name: 'Nhạc mở đầu', frames: hookLeadFrames(fps), node: <BookInsightsHookCard {...card} section="lead" />},
     {name: 'Mở đầu tập', frames: hookVoiceFrames(p.cardVoice, p.cardTakes, fps), node: <BookInsightsHookCard {...card} section="voice" />,
-      speaking: (f) => hookSpeaking(p.cardVoice, p.cardTakes, f, fps), captions: () => mergeCaptions(hookCaptions(p.cardVoice, p.cardTakes))}];
+      speaking: (f) => hookSpeaking(p.cardVoice, p.cardTakes, f, fps), captions: () => mergeCaptions(hookCaptions(p.cardVoice, p.cardTakes, fps)),
+      music: (f, m) => hookMusic(p.cardVoice, p.cardTakes, f, fps, m)}];
   return list;
 };
 export const outroPart =(p: SeriesVoices, fps: number): Part =>
@@ -101,8 +104,9 @@ const BodyMusic: FC<{list: Part[]; starts: number[]; music: BodyMusicConfig}> = 
       if (i - 9 >= 0) sum -= on[i - 9];
       if (i >= 0) out[i] = music.pauseVolume - (music.pauseVolume - music.speechVolume) * (sum / 17);
     }
+    for (const b of body) if (b.music) for (let f = 0; f < b.frames; f++) {const v = b.music(f, music);if (v !== undefined) out[b.start - from + f] = v;}
     return out;
-  }, [key, music.pauseVolume, music.speechVolume]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [key, music.pauseVolume, music.speechVolume, music.hookSwellVolume]); // eslint-disable-line react-hooks/exhaustive-deps
   if (!body.length) return null;
   const title = `${music.credit.artists.join(', ')} – ${music.credit.title}`;
   return <Track name={`Nhạc nền nội dung · ${title} · rất nhỏ, chỉnh đầu/cuối trong Edit`}>

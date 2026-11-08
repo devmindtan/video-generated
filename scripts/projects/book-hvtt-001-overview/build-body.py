@@ -69,7 +69,7 @@ def main():
     built = []
     for seg in SEGMENTS:
         cfg = json.loads((HERE / f'audition-{seg}.json').read_text())
-        need = [s['text'].strip() for s in cfg['sentences']]
+        need = [(s.get('say') or s['text']).strip() for s in cfg['sentences']]  # "say": spoken form (assemble-clone.py)
         if not all(t in texts for t in need):
             print(f'{seg}: chờ {sum(t not in texts for t in need)}/{len(need)} câu'); continue
         used = sorted({texts[t] for t in need}, key=takes.index)

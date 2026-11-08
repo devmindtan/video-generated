@@ -11,8 +11,9 @@ import takes from './body-takes.json';
 // weapons or fighting, text ≥ 34 px, no book line under quotes.
 // Gentle part changes (user 2026-11-08): with the series intro gone there is room for a quiet second before each part's
 // first word, a longer rest after its last, pictures fading in and out over the steady background, and slower
-// hand-overs between drawings.
-const options = {takes: takesOf(takes), quoteSource: '', transition: {leadSeconds: 1.4, tailSeconds: 1.6, fadeSeconds: 1.1, beatFadeFrames: 18}};
+// hand-overs between drawings. After p9 ("chuyển cảnh… như bị ghép gấp"): longer still, and about 1.2 s of quiet
+// at every new drawing.
+const options = {takes: takesOf(takes), quoteSource: '', transition: {leadSeconds: 1.8, tailSeconds: 2.2, fadeSeconds: 1.3, beatFadeFrames: 20, ideaSeconds: 1.2}};
 const D = (c: Ctx, d: string, delay = 0, len = 28, width = 2.4, opacity = 1) => <Draw key={`${d}${delay}`} d={d} frame={c.frame} from={c.start + delay} to={c.start + delay + len} width={width} opacity={opacity} />;
 // Same stroke, but from an absolute frame (a moment inside a later sentence of the same scene).
 const DA = (c: Ctx, d: string, from: number, len = 24, width = 2.4, opacity = 1) => <Draw key={`${d}${from}`} d={d} frame={c.frame} from={from} to={from + len} width={width} opacity={opacity} />;
