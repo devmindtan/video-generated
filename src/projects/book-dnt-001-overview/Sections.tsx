@@ -50,10 +50,10 @@ export const MoChuyen = section('02 mở chuyện', /(lá thư chưa bao giờ �
     <Glow x={960} y={600} r={200} opacity={appear(c.frame, c.start + 30, 24) * .45} />
   </g>},
   {at: 1, draw: (c) => {
-    const paper = appear(c.frame, at(c, 1, .27), 14), headline = appear(c.frame, at(c, 1, .45), 16);
+    const paper = appear(c.frame, at(c, 1, .21), 14), headline = appear(c.frame, at(c, 1, .4), 16);
     const leave = appear(c.frame, c.at(2), 18), drop = appear(c.frame, at(c, 2, .4), 18);
-    const rival = appear(c.frame, at(c, 1, .54), 16) * (1 - leave), angry = appear(c.frame, at(c, 1, .73), 10) * (1 - appear(c.frame, at(c, 1, .81), 8));
-    const third = appear(c.frame, at(c, 1, .86), 14) * (1 - leave);
+    const rival = appear(c.frame, at(c, 1, .51), 16) * (1 - leave), angry = appear(c.frame, at(c, 1, .7), 10) * (1 - appear(c.frame, at(c, 1, .79), 8));
+    const third = appear(c.frame, at(c, 1, .84), 14) * (1 - leave);
     const holding = paper * (1 - drop);
     return <g>
       {/* Lincoln: arm reaches while he holds the paper, comes down once it is gone. */}
@@ -69,11 +69,11 @@ export const MoChuyen = section('02 mở chuyện', /(lá thư chưa bao giờ �
           <path d="M704 592 L706 592 M714 592 L716 592 M702 602 C708 598 712 598 718 604 M732 588 L794 588 M732 604 L780 604" fill="none" stroke={GOLD} strokeWidth={2} strokeLinecap="round" />
         </g>
       </g>
-      <g opacity={rival}><Figure frame={c.frame} from={at(c, 1, .54)} x={1360} y={800} s={1} facing={-1} /></g>
+      <g opacity={rival}><Figure frame={c.frame} from={at(c, 1, .51)} x={1360} y={800} s={1} facing={-1} /></g>
       {/* "thách đấu kiếm": an angry spark between the two (no weapons). */}
       <path d="M1000 470 L960 520 L1000 530 L955 590" fill="none" stroke={GOLD} strokeWidth={3.4} strokeLinecap="round" strokeLinejoin="round" opacity={angry} />
       {/* "được can kịp": a third person steps in between them. */}
-      <g opacity={third}><Figure frame={c.frame} from={at(c, 1, .86)} x={980} y={800} s={.9} arm="raise" color={IVORY} /></g>
+      <g opacity={third}><Figure frame={c.frame} from={at(c, 1, .84)} x={980} y={800} s={.9} arm="raise" color={IVORY} /></g>
       <Glow x={560} y={560} r={180} opacity={drop * .45} />
     </g>;
   }},
@@ -122,9 +122,9 @@ export const MoChuyen = section('02 mở chuyện', /(lá thư chưa bao giờ �
     </g>;
   }},
   {at: 7, draw: (c) => {
-    const fly = interpolate(c.frame, [at(c, 7, .24), at(c, 7, .42)], [0, 1], {...clamp, easing: ease});
-    const guard = appear(c.frame, at(c, 7, .57), 10);
-    const back = interpolate(c.frame, [at(c, 7, .69), at(c, 7, .84)], [0, 1], {...clamp, easing: ease});
+    const fly = interpolate(c.frame, [at(c, 7, .27), at(c, 7, .45)], [0, 1], {...clamp, easing: ease});
+    const guard = appear(c.frame, at(c, 7, .59), 10);
+    const back = interpolate(c.frame, [at(c, 7, .71), at(c, 7, .86)], [0, 1], {...clamp, easing: ease});
     return <g>
       <g opacity={appear(c.frame, c.start + 4, 14)}><Figure frame={c.frame} from={c.start + 4} x={520} y={800} s={.95} />{D(c, hat(520, 800, .95), 14, 16, 2.6)}</g>
       <Label x={520} y={380} text="LINCOLN" o={appear(c.frame, c.start + 14, 12)} />
@@ -137,12 +137,12 @@ export const MoChuyen = section('02 mở chuyện', /(lá thư chưa bao giờ �
         <Word x={965} y={340} size={36} text="PHỎNG ĐOÁN" opacity={.85} />
       </g>
       {/* "gửi lá thư đi": the letter flies to Meade. */}
-      <g opacity={appear(c.frame, at(c, 7, .24), 8) * (1 - appear(c.frame, at(c, 7, .45), 10))} transform={`translate(${650 + fly * 600} 560)`}>
+      <g opacity={appear(c.frame, at(c, 7, .27), 8) * (1 - appear(c.frame, at(c, 7, .48), 10))} transform={`translate(${650 + fly * 600} 560)`}>
         <path d={envelope(0, 0, 100, 64)} fill="none" stroke={IVORY} strokeWidth={2.4} strokeLinejoin="round" />
       </g>
-      <Glow x={520} y={580} r={150} opacity={appear(c.frame, at(c, 7, .44), 14) * (1 - appear(c.frame, at(c, 7, .58), 14)) * .6} />
+      <Glow x={520} y={580} r={150} opacity={appear(c.frame, at(c, 7, .46), 14) * (1 - appear(c.frame, at(c, 7, .6), 14)) * .6} />
       {/* "bào chữa": a speech bubble with "!" flies back from Meade. */}
-      <g opacity={appear(c.frame, at(c, 7, .69), 8) * (1 - appear(c.frame, at(c, 7, .9), 12))} transform={`translate(${1250 - back * 560} 520)`}>
+      <g opacity={appear(c.frame, at(c, 7, .71), 8) * (1 - appear(c.frame, at(c, 7, .92), 12))} transform={`translate(${1250 - back * 560} 520)`}>
         <path d="M-60 -36 L60 -36 L60 28 L-10 28 L-30 48 L-26 28 L-60 28 Z" fill="none" stroke={GOLD} strokeWidth={2.6} strokeLinejoin="round" />
         <path d="M0 -24 L0 4 M0 14 L0 16" fill="none" stroke={GOLD} strokeWidth={4} strokeLinecap="round" />
       </g>

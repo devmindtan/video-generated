@@ -18,8 +18,9 @@ chuyện dễ nhớ của sách; rồi những điểm chưa đạt, tổng kế
 
 Đắc nhân tâm là cuốn sách gây tranh cãi, có người thích, có người ghét, nên tập này giữ sự trung lập và đánh giá khách quan:
 
-- Kể đúng điều tác giả viết, mỗi ý gắn với tác giả ("theo tác giả…", "tác giả kể…"); phỏng đoán của tác giả nói rõ là
-  phỏng đoán (vd. Lincoln "tự nhủ" gì khi giữ lại lá thư, PDF 41–42).
+- Kể đúng điều sách viết. Chỉ gọi tên Carnegie khi cần phân biệt nhận định, lời khuyên hoặc phỏng đoán của ông với lời
+  kênh; khi đã dẫn vào một câu chuyện thì kể tự nhiên, không lặp "theo tác giả / tác giả kể". Phỏng đoán vẫn phải nói
+  rõ là phỏng đoán (vd. Lincoln "tự nhủ" gì khi giữ lại lá thư, PDF 41–42).
 - Không đọc các con số không nguồn hay tuyên bố quảng bá như sự thật (99%, 15%/85%, "chín trong mười", doanh số, "hay
   nhất"); không đọc câu "khoa học đã kiểm chứng" khi sách không dẫn nguồn.
 - Nêu cả hai luồng ý kiến ngay ở phần "Cuốn sách là gì", và ở "Những điểm chưa đạt" nói cả lý do người ta chê lẫn chỗ

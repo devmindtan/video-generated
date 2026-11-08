@@ -17,7 +17,7 @@
     },
     {
       "scene": 1,
-      "text": "Tác giả kể một bữa tiệc ở Luân Đôn.",
+      "text": "Carnegie kể về một bữa tiệc ở Luân Đôn.",
       "pauseAfter": 0.4
     },
     {
@@ -27,7 +27,7 @@
     },
     {
       "scene": 1,
-      "text": "Tác giả biết câu đó là của Shakespeare, và muốn tỏ ra hiểu biết nên nói thẳng là người kia sai.",
+      "text": "Ông biết câu đó là của Shakespeare, và muốn tỏ ra hiểu biết nên nói thẳng là người kia sai.",
       "pauseAfter": 0.4
     },
     {
@@ -42,7 +42,7 @@
     },
     {
       "scene": 1,
-      "text": "Theo tác giả, trong một cuộc tranh cãi, thua thì mình thua, mà thắng thì mình cũng thua, vì người kia sẽ càng giữ chặt ý của họ.",
+      "text": "Từ câu chuyện ấy, Carnegie kết luận rằng trong một cuộc tranh cãi, thua thì mình thua, mà thắng thì mình cũng thua, vì người kia sẽ càng giữ chặt ý của họ.",
       "pauseAfter": 0.4
     },
     {
@@ -57,7 +57,7 @@
     },
     {
       "scene": 1,
-      "text": "Tác giả thường dắt chú chó nhỏ tên Rex vào công viên mà không xích, không bịt mõm, và đã bị một viên cảnh sát nhắc.",
+      "text": "Carnegie thường dắt chú chó nhỏ tên Rex vào công viên mà không xích, không bịt mõm, và đã bị một viên cảnh sát nhắc.",
       "pauseAfter": 0.4
     },
     {
@@ -67,7 +67,7 @@
     },
     {
       "scene": 1,
-      "text": "Viên cảnh sát dịu giọng, rồi chính ông ta lại tìm cách bỏ qua cho tác giả.",
+      "text": "Viên cảnh sát dịu giọng, rồi chính ông ta lại tìm cách bỏ qua cho ông.",
       "pauseAfter": 0.65
     },
     {
@@ -82,7 +82,7 @@
     },
     {
       "scene": 1,
-      "text": "Ở cuối phần, tác giả thêm bốn cách: đồng cảm với mong muốn của người khác, khơi gợi sự cao thượng, trình bày vấn đề một cách sinh động, và khơi gợi tinh thần vượt lên thử thách.",
+      "text": "Ở cuối phần, cuốn sách thêm bốn cách: đồng cảm với mong muốn của người khác, khơi gợi sự cao thượng, trình bày vấn đề một cách sinh động, và khơi gợi tinh thần vượt lên thử thách.",
       "pauseAfter": 0.9
     },
     {

@@ -17,7 +17,7 @@
     },
     {
       "scene": 1,
-      "text": "Tác giả kể ông chủ một cửa hàng lớn ở Philadelphia, mỗi ngày đều đi một vòng quanh cửa hàng.",
+      "text": "Sách kể về ông chủ một cửa hàng lớn ở Philadelphia, mỗi ngày đều đi một vòng quanh cửa hàng.",
       "pauseAfter": 0.4
     },
     {
@@ -37,7 +37,7 @@
     },
     {
       "scene": 1,
-      "text": "Tác giả để ý rằng nhiều người hay khen trước, rồi thêm chữ \"nhưng\" và một lời chê.",
+      "text": "Carnegie để ý rằng nhiều người hay khen trước, rồi thêm chữ \"nhưng\" và một lời chê.",
       "pauseAfter": 0.4
     },
     {
@@ -67,7 +67,7 @@
     },
     {
       "scene": 1,
-      "text": "Điều tác giả bàn là cách nói sao cho người kia còn muốn sửa, chứ không phải tránh nói.",
+      "text": "Điều cuốn sách bàn là cách nói sao cho người kia còn muốn sửa, chứ không phải tránh nói.",
       "pauseAfter": 0
     }
   ]

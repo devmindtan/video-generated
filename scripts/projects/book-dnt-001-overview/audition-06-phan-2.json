@@ -7,7 +7,7 @@
   "sentences": [
     {
       "scene": 1,
-      "text": "Sang phần hai, tác giả chuyển từ chuyện tránh làm người khác mất lòng sang chuyện làm sao để người ta muốn gần mình.",
+      "text": "Sang phần hai, cuốn sách chuyển từ chuyện tránh làm người khác mất lòng sang chuyện làm sao để người ta muốn gần mình.",
       "pauseAfter": 0.4
     },
     {
@@ -22,12 +22,12 @@
     },
     {
       "scene": 1,
-      "text": "Tác giả ngồi cạnh một nhà thực vật học và bị cuốn vào những câu chuyện về cây cỏ, đến mức ngồi nghe hàng giờ liền.",
+      "text": "Carnegie ngồi cạnh một nhà thực vật học và bị cuốn vào những câu chuyện về cây cỏ, đến mức ngồi nghe hàng giờ liền.",
       "pauseAfter": 0.4
     },
     {
       "scene": 1,
-      "text": "Ông gần như không nói gì, vì ông chẳng biết gì về thực vật.",
+      "text": "Ông gần như không nói gì, vì chẳng biết gì về thực vật.",
       "pauseAfter": 0.4
     },
     {
@@ -37,12 +37,12 @@
     },
     {
       "scene": 1,
-      "text": "Theo tác giả, lắng nghe là một trong những cách trân trọng nhất mà mình có thể dành cho người đối diện.",
+      "text": "Với Carnegie, lắng nghe là một trong những cách trân trọng nhất mà mình có thể dành cho người đối diện.",
       "pauseAfter": 0.65
     },
     {
       "scene": 1,
-      "text": "Tác giả cũng kể rằng tổng thống Theodore Roosevelt, mỗi khi hẹn gặp ai, thường thức khuya đọc trước về những điều mà người khách ấy quan tâm, để hôm sau câu chuyện của hai người trở nên thú vị.",
+      "text": "Cuốn sách còn nhắc chuyện tổng thống Theodore Roosevelt: mỗi khi hẹn gặp ai, ông thường thức khuya đọc trước về những điều người khách ấy quan tâm, để hôm sau câu chuyện của hai người trở nên thú vị.",
       "pauseAfter": 0.9
     },
     {
@@ -52,7 +52,7 @@
     },
     {
       "scene": 1,
-      "text": "Bản thân tác giả cũng đặt chữ \"thật lòng\" vào ngay tên của hai nguyên tắc, nên mình nghĩ ông hiểu rõ ranh giới ấy.",
+      "text": "Nhưng chữ \"thật lòng\" đã nằm ngay trong tên của hai nguyên tắc, nên mình nghĩ Carnegie cũng hiểu rõ ranh giới ấy.",
       "pauseAfter": 0
     }
   ]

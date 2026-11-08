@@ -8,8 +8,8 @@
 
 ## Trung lập (yêu cầu của người dùng)
 
-- Ý của sách luôn gắn với tác giả ("theo tác giả", "tác giả kể"); nhận xét của kênh luôn có "mình thấy / mình nghĩ /
-  mình hiểu", tách khỏi ý tác giả.
+- Nhận định, lời khuyên và phỏng đoán cần phân biệt với lời kênh được gắn với Carnegie; chuyện đã dẫn rõ là ở trong sách
+  được kể tự nhiên, không lặp "theo tác giả / tác giả kể". Nhận xét của kênh luôn có "mình thấy / mình nghĩ / mình hiểu".
 - Phần Lincoln "tự nhủ" được nói rõ là phỏng đoán của tác giả (PDF 41–42), không kể như sự thật lịch sử.
 - Hai luồng ý kiến được nêu ngay ở phần 1 mà không gắn cho ai; phần 3E nêu cả lý do người ta chê lẫn chỗ người chê hay bỏ
   qua, kết bằng "cả hai cách nhìn đều có phần đúng". Không có câu ca ngợi tuyệt đối ("hay nhất", "kinh điển", doanh số).
@@ -62,3 +62,10 @@ Người dùng trả lại gói (mục Kịch bản; prompt hình chờ kịch b
   vẫn nói rõ lý do giữ lá thư là phỏng đoán của tác giả, rồi đặt một câu hỏi để người xem tự cân nhắc suốt tập (giữ trung
   lập, không trả lời thay sách). Câu "Cả cuốn sách bắt đầu từ ý đó" đã bỏ.
 - Prompt hình 0a, 0b viết lại theo lời mới.
+
+## Sửa theo phản hồi trong chat (2026-11-06)
+
+- Bỏ "Theo tác giả" ở câu mở chuyện Lincoln vì câu trước đã nói rõ đây là chuyện trong chương đầu; câu chuyện được kể
+  thẳng, không biến một sự việc thành ý kiến của tác giả.
+- Rà toàn bộ kịch bản: chỉ giữ tên Carnegie ở nhận định, lời khuyên hoặc phỏng đoán cần phân nguồn; đổi các câu kể còn lại
+  sang "sách kể", "cuốn sách", "ông" hoặc kể trực tiếp để lời đọc tự nhiên hơn.
