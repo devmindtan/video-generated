@@ -47,15 +47,14 @@ export const openingParts = (p: SeriesVoices & {cardVoice: string; episodeLabel:
 };
 // From episode 3 on (user 2026-11-08): no series intro. The episode screen on the intro music alone ('Nhạc mở đầu'),
 // then the voice's hook ('Mở đầu tập': greeting, why this book, a word for first-time viewers, the book named) under
-// the quiet body music like every narrated part, then "Cách làm" (reused) and the body.
+// the quiet body music like every narrated part, then straight into the body: no "Cách làm" part either, the hook's
+// line for first-time viewers replaces it (user 2026-11-08).
 export const hookOpeningParts = (p: {channelLabel: string; cardVoice: string; episodeLabel: string; bookTitle: string; bookAuthor: string; cardTakes: Voice[]}, fps: number): Part[] => {
   const card = {voice: p.cardVoice, channelLabel: p.channelLabel, episodeLabel: p.episodeLabel, bookTitle: p.bookTitle, bookAuthor: p.bookAuthor, takes: p.cardTakes};
   const list: Part[] = [
     {name: 'Nhạc mở đầu', frames: hookLeadFrames(fps), node: <BookInsightsHookCard {...card} section="lead" />},
     {name: 'Mở đầu tập', frames: hookVoiceFrames(p.cardVoice, p.cardTakes, fps), node: <BookInsightsHookCard {...card} section="voice" />,
       speaking: (f) => hookSpeaking(p.cardVoice, p.cardTakes, f, fps), captions: () => mergeCaptions(hookCaptions(p.cardVoice, p.cardTakes))}];
-  const how = voiceFor('01b-cach-lam', series);
-  if (how) list.push(sectionPart('Cách làm của tập', CachLam, how, p.channelLabel, fps, series));
   return list;
 };
 export const outroPart =(p: SeriesVoices, fps: number): Part =>
