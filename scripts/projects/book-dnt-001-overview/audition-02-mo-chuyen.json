@@ -23,7 +23,8 @@
     {
       "scene": 1,
       "text": "Hơn hai mươi năm sau, khi đã là tổng thống, Lincoln ra lệnh cho tướng Meade tấn công để sớm kết thúc cuộc nội chiến, nhưng vị tướng này chần chừ và để lỡ thời cơ.",
-      "pauseAfter": 0.4
+      "pauseAfter": 0.4,
+      "say": "Hơn hai mươi năm sau, khi đã là tổng thống, Lincoln ra lệnh cho tướng Mít tấn công để sớm kết thúc cuộc nội chiến, nhưng vị tướng này chần chừ và để lỡ thời cơ."
     },
     {
       "scene": 1,
@@ -43,7 +44,8 @@
     {
       "scene": 1,
       "text": "Tác giả phỏng đoán rằng Lincoln đã hiểu: gửi lá thư đi thì ông được hả giận một lúc, còn Meade sẽ chỉ lo bào chữa cho mình, và chẳng có gì được sửa.",
-      "pauseAfter": 0.4
+      "pauseAfter": 0.4,
+      "say": "Tác giả phỏng đoán rằng Lincoln đã hiểu: gửi lá thư đi thì ông được hả giận một lúc, còn Mít sẽ chỉ lo bào chữa cho mình, và chẳng có gì được sửa."
     },
     {
       "scene": 1,

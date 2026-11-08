@@ -48,7 +48,8 @@
     {
       "scene": 1,
       "text": "Nguyên tắc của ông là: \"Tôn trọng ý kiến của người khác. Đừng bao giờ nói rằng: 'Anh/Chị sai rồi!'.\"",
-      "pauseAfter": 0.65
+      "pauseAfter": 0.65,
+      "say": "Nguyên tắc của ông là: tôn trọng ý kiến của người khác. Đừng bao giờ nói rằng: anh sai rồi, chị sai rồi."
     },
     {
       "scene": 1,

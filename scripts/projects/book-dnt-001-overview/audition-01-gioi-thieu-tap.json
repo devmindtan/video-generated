@@ -8,7 +8,7 @@
     {
       "scene": 1,
       "text": "Chào mọi người.",
-      "pauseAfter": 0.4
+      "pauseAfter": 1.6
     },
     {
       "scene": 1,
@@ -22,7 +22,7 @@
     },
     {
       "scene": 1,
-      "text": "Có người gấp sách lại, lắc đầu.",
+      "text": "Có người lại chê, bảo nó chỉ dạy người ta khéo miệng.",
       "pauseAfter": 0.9
     },
     {
@@ -37,7 +37,7 @@
     },
     {
       "scene": 1,
-      "text": "À, nếu đây là lần đầu bạn xem series này thì để mình nói trước: ở mỗi tập, mình vừa kể những ví dụ có trong sách, vừa rút ra bài học từ chính những ví dụ ấy.",
+      "text": "Nếu đây là lần đầu bạn xem series này thì để mình nói trước: ở mỗi tập, mình vừa kể những ví dụ có trong sách, vừa rút ra bài học từ chính những ví dụ ấy.",
       "pauseAfter": 0.9
     },
     {

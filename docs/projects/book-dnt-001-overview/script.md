@@ -20,11 +20,11 @@ Thời lượng: không quá 18 phút (dự kiến khoảng 14–15 phút). `[ng
 
 Chào mọi người. [nghỉ]
 
-Có một cuốn sách mà gần như ai cũng từng nghe tên, dù chưa chắc đã đọc. Có người đọc xong thì khen hết lời. Có người gấp sách lại, lắc đầu. [nghỉ]
+Có một cuốn sách mà gần như ai cũng từng nghe tên, dù chưa chắc đã đọc. Có người đọc xong thì khen hết lời. Có người lại chê, bảo nó chỉ dạy người ta khéo miệng. [nghỉ]
 
 Cùng một cuốn sách, sao người ta lại nghĩ khác nhau đến vậy? Hôm nay, mình sẽ cùng các bạn đi tìm câu trả lời. [nghỉ]
 
-À, nếu đây là lần đầu bạn xem series này thì để mình nói trước: ở mỗi tập, mình vừa kể những ví dụ có trong sách, vừa rút ra bài học từ chính những ví dụ ấy. [nghỉ]
+Nếu đây là lần đầu bạn xem series này thì để mình nói trước: ở mỗi tập, mình vừa kể những ví dụ có trong sách, vừa rút ra bài học từ chính những ví dụ ấy. [nghỉ]
 
 Mình sẽ đứng ở vị trí trung lập, và nhìn cuốn sách này khách quan nhất có thể, theo góc nhìn của mình. [nghỉ]
 
