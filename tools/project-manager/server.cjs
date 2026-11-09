@@ -20,6 +20,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
   // Drive backup runs detached from the manager; injectable so tests use a fixture remote.
   const backup=backupPanel||require('./backup.cjs').createBackupPanel(root);
   // Loudness of exported videos for YouTube (-14 LUFS upload copy), detached like the backup; injectable for tests.
+  const thumbnails=require('./thumbnails.cjs').createThumbnails(root,{catalog:id=>require('../../scripts/catalog/catalog.cjs').load(root).series.flatMap(x=>x.projects).find(x=>x.id===id)});
   const loudness=loudnessPanel||require('./loudness.cjs').createLoudness(root,{catalog:id=>require('../../scripts/catalog/catalog.cjs').load(root).series.flatMap(x=>x.projects).find(x=>x.id===id)});
   const store=createStore(root),token=crypto.randomBytes(32).toString('hex'),live=require('./live.cjs').createLive(root);
   const server=http.createServer(async(req,res)=>{
@@ -55,6 +56,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
         if(route==='/api/voicestudio/stop')return send(200,await voiceControl.stop());
         if(route==='/api/backup/start')return send(202,await backup.start(body.action));
         if(route==='/api/backup/stop')return send(200,backup.stop());
+        if(route==='/api/thumbnails/choose')return send(200,thumbnails.choose({id:String(body.id||''),variant:String(body.variant||''),revision:String(body.revision||'')}));
         if(route==='/api/loudness/fix')return send(202,loudness.start(String(body.id||''),String(body.composition||'')));
         if(route==='/api/books')return send(201,store.newBook(body));
         if(route==='/api/approve')return send(200,store.approveGate(body));
@@ -83,6 +85,10 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
       if(req.method!=='GET')return send(405,{error:'Method not allowed'});
       if(route==='/api/workspace')return send(200,{...store.list(),token,videoFormats:{extensions:Object.keys(VIDEO_FORMATS),label:require('./video-formats.cjs').videoLabel}});
       if(route==='/api/project')return send(200,store.detail(url.searchParams.get('id')));
+      if(route==='/api/thumbnails')return send(200,thumbnails.list(url.searchParams.get('id')||''));
+      // Thumbnail design pages and the fonts/images they use (framed by the project page's Thumbnail tab).
+      if(route.startsWith('/thumb/')||route.startsWith('/public/')){const hit=thumbnails.resolve(route);if(!hit)return send(404,{error:'Not found'});
+        res.setHeader('Content-Security-Policy',hit.csp);res.writeHead(200,{'Content-Type':hit.type});const st=fs.createReadStream(hit.file);st.on('error',()=>res.destroy());return st.pipe(res);}
       if(route==='/api/loudness')return send(200,loudness.status(url.searchParams.get('id')||''));
       if(route==='/api/workflow')return send(200,store.workflow(url.searchParams.get('series')));
       if(route==='/api/channel-profile')return send(200,store.channelProfile(url.searchParams.get('channel')));

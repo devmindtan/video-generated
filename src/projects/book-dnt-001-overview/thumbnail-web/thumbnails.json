@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "note": "Các phương án thumbnail thiết kế bằng web của tập 3; tab Thumbnail trong hồ sơ dự án đọc file này. chosen là phương án người dùng chốt; studioVariant là phương án Thumbnail.tsx (Still studioStill) đang dựng lại. Chọn phương án khác trong trang quản lý thì agent cập nhật Thumbnail.tsx rồi đổi studioVariant.",
+  "studioStill": "BookDntThumbnail",
+  "studioVariant": "f-ket-hop",
+  "chosen": "f-ket-hop",
+  "chosenAt": "2026-11-09",
+  "chosenBy": "người dùng (chat: \"Ok chốt cái này\")",
+  "variants": [
+    {
+      "id": "f-ket-hop",
+      "file": "f-ket-hop.html",
+      "title": "F · Kết hợp (nền E, bìa D, bố cục B)",
+      "summary": "Nền giấy nửa xám lạnh, nửa ngà ấm; bìa tách đôi ở giữa; “khéo miệng” xám xanh, “thật lòng?” đỏ."
+    },
+    {
+      "id": "index",
+      "file": "index.html",
+      "title": "A · Sách 3D dưới ánh đèn",
+      "summary": "Bố cục quen của series, chữ ánh kim, bong bóng và trái tim nét vàng."
+    },
+    {
+      "id": "b-doi-xung",
+      "file": "b-doi-xung.html",
+      "title": "B · Đối xứng",
+      "summary": "Cuốn sách ở giữa; bên lạnh “khéo miệng”, bên ấm “thật lòng?”."
+    },
+    {
+      "id": "c-sach-mo",
+      "file": "c-sach-mo.html",
+      "title": "C · Sách mở",
+      "summary": "Trái tim sáng lên từ trang sách mở, bìa thật đứng cạnh."
+    },
+    {
+      "id": "d-hai-mat",
+      "file": "d-hai-mat.html",
+      "title": "D · Hai mặt",
+      "summary": "Bìa sách nửa xám lạnh, nửa ấm sáng, có đường nối vàng ở giữa."
+    },
+    {
+      "id": "e-giay-sang",
+      "file": "e-giay-sang.html",
+      "title": "E · Nền giấy sáng",
+      "summary": "Kiểu bìa tạp chí: nền giấy ngà, chữ xanh đậm và đỏ."
+    }
+  ]
+}

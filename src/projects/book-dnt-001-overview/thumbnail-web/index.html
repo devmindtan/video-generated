@@ -97,13 +97,6 @@ body{display:grid;place-items:center;min-height:100vh;overflow:hidden}
   <div class="grain"></div>
   <div class="vignette"></div>
 </div>
-<script>
-// Preview mode scales the stage to the window; ?capture (used by the capture tool) keeps it 1:1.
-if(!new URLSearchParams(location.search).has('capture')){
-  document.documentElement.classList.add('preview');
-  const fit=()=>document.documentElement.style.setProperty('--fit',Math.min(1,(innerWidth-32)/1280,(innerHeight-32)/720));
-  addEventListener('resize',fit);fit();
-}
-</script>
+<script src="base.js"></script>
 </body>
 </html>

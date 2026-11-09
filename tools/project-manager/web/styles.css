@@ -841,3 +841,24 @@ mark.pd-del{background:#f6d5c8;color:inherit;text-decoration:line-through;text-d
 .loud.is-run{background:#eef3f8;border-color:#bccde0}
 .loud-bar{height:8px;border-radius:999px;background:#d9e3ec;overflow:hidden}.loud-bar span{display:block;height:100%;background:#2d5d8a;transition:width .4s}
 @media(prefers-reduced-motion:reduce){.loud-bar span{transition:none}}
+/* Thumbnail tab: live web designs of the project's thumbnail, the chosen one large, the variants in a grid. */
+.thumb-frame{position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#0b0f0d;border:1px solid var(--line)}
+.thumb-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
+.thumb-frame.is-full iframe{pointer-events:auto}
+.thumb-open{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;border-radius:10px}
+.thumb-open:focus-visible{outline:3px solid #2d5d8a;outline-offset:3px}
+.thumb-hero{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(240px,1fr);gap:22px;align-items:start;margin-bottom:28px}
+.thumb-hero h3{font-size:20px;margin:8px 0 4px}.thumb-hero p{margin:0 0 10px;color:var(--muted)}
+.thumb-badge{display:inline-block;font-size:13px;font-weight:700;color:#2f5a1f;background:#e6f1e0;border:1px solid #b9d5ad;border-radius:999px;padding:2px 10px}
+.thumb-facts{list-style:none;padding:0;margin:0 0 14px;display:grid;gap:6px;font-size:14px}.thumb-facts li{padding-left:14px;position:relative}
+.thumb-facts li::before{content:'';position:absolute;left:0;top:.65em;width:6px;height:6px;border-radius:50%;background:#9db5a3}
+.thumb-facts li.is-warn{color:#7a4a12}.thumb-facts li.is-warn::before{background:#d39b3a}
+.thumb-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.thumb-none{padding:14px 16px;border:1px dashed var(--line);border-radius:10px;color:var(--muted);margin-bottom:22px}
+.thumb-variants h3{font-size:16px;margin:0 0 2px}
+.thumb-grid{list-style:none;padding:0;margin:12px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:16px}
+.thumb-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:10px}
+.thumb-card.is-chosen{border-color:var(--forest);box-shadow:inset 0 0 0 1px var(--forest)}
+.thumb-card-body{display:flex;flex-direction:column;gap:4px;flex:1}.thumb-card-body p{margin:0 0 8px;font-size:14px;color:var(--muted);flex:1}
+.thumb-dialog{width:min(1320px,96vw);max-width:1320px}
+@media(max-width:900px){.thumb-hero{grid-template-columns:1fr}}

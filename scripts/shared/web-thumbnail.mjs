@@ -1,5 +1,7 @@
 #!/usr/bin/env node
-// Thumbnails designed as web pages (user 2026-11-09): serve the page and the repo's public/ files on loopback, then
+// Thumbnails designed as web pages (user 2026-11-09): variants live in src/projects/<slug>/thumbnail-web/ with a
+// thumbnails.json manifest; the user compares and picks them in the manager's Thumbnail tab (no comparison page).
+// This tool serves one page and the repo's public/ files on loopback for an agent's QA capture:
 //   npm run thumbnail:web -- <page.html>                 preview in the browser (Ctrl+C to stop)
 //   npm run thumbnail:web -- <page.html> --out <file.png> capture the page's #thumb element (1280×720) and exit
 //   npm run thumbnail:web -- <page.html> --check <file.png> capture a QA copy (same as --out; meant for .cache/)
