@@ -31,7 +31,9 @@ def sha(path):
 
 
 def main():
-    takes = json.loads((ROOT / 'src/projects' / PROJECT / 'body-takes.json').read_text())['voices']
+    # Body segments, plus the episode-card hook voice from episode 3 on (card-takes.json, `01-gioi-thieu-tap-sang2`).
+    takes = [t for name in ('body-takes.json', 'card-takes.json') if (ROOT / 'src/projects' / PROJECT / name).exists()
+             for t in json.loads((ROOT / 'src/projects' / PROJECT / name).read_text())['voices']]
     AUDIO.mkdir(parents=True, exist_ok=True)
     meta_file, voice_file = AUDIO / 'voice-metadata.json', HERE / 'voice.json'
     meta, voice = (json.loads(meta_file.read_text()) if meta_file.exists() else []), json.loads(voice_file.read_text())

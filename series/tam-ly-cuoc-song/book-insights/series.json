@@ -322,9 +322,8 @@
           "kind": "Composition"
         },
         {
-          "id": "BookDntTap03Clone",
-          "kind": "Composition",
-          "title": "Tập 3 · nghe thử giọng clone"
+          "id": "BookDntThumbnail",
+          "kind": "Still"
         },
         {
           "id": "BookDntEpisodeCard",

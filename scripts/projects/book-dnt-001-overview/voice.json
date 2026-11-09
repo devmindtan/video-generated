@@ -14,5 +14,67 @@
       "book-hvtt-001-overview/audio/00-intro-voice-full.wav"
     ]
   },
-  "segments": {}
+  "segments": {
+    "01-gioi-thieu-tap": {
+      "file": "book-dnt-001-overview/audio/01-gioi-thieu-tap-voice-full.wav",
+      "sha256": "4a742b01d49786755a56f8b420af11765344c065cbcdfa5c706f352c904bb2bb",
+      "sourceTake": "voice-auditions/book-dnt-01-gioi-thieu-tap-clone-sang2/01-gioi-thieu-tap-sang2.wav"
+    },
+    "02-mo-chuyen": {
+      "file": "book-dnt-001-overview/audio/02-mo-chuyen-voice-full.wav",
+      "sha256": "56b149fb61bdf2c4b2f60912b83598cd2f27be34d50b2c760b4311ac929f7e50",
+      "sourceTake": "voice-auditions/book-dnt-02-mo-chuyen-clone-sang2/02-mo-chuyen-sang2.wav"
+    },
+    "03-cuon-sach": {
+      "file": "book-dnt-001-overview/audio/03-cuon-sach-voice-full.wav",
+      "sha256": "b5dc837140b97c5b9311fad5447b90057c26e5eed67f25278e8b4872bf1e1926",
+      "sourceTake": "voice-auditions/book-dnt-03-cuon-sach-clone-sang2/03-cuon-sach-sang2.wav"
+    },
+    "04-soi-chi": {
+      "file": "book-dnt-001-overview/audio/04-soi-chi-voice-full.wav",
+      "sha256": "52d1b36dd32f32b498c2f66bda13378b6f5ef539a2f8e876b252fc33902e1754",
+      "sourceTake": "voice-auditions/book-dnt-04-soi-chi-clone-sang2/04-soi-chi-sang2.wav"
+    },
+    "05-phan-1": {
+      "file": "book-dnt-001-overview/audio/05-phan-1-voice-full.wav",
+      "sha256": "14b4b7d6a43573bb866d069436121d8246257bf78794fdb5c2970c0016707184",
+      "sourceTake": "voice-auditions/book-dnt-05-phan-1-clone-sang2/05-phan-1-sang2.wav"
+    },
+    "06-phan-2": {
+      "file": "book-dnt-001-overview/audio/06-phan-2-voice-full.wav",
+      "sha256": "0ee968bdcae8bfebe34760a5db1b889189a3e8076e8b1f27464c73ed5b2b733d",
+      "sourceTake": "voice-auditions/book-dnt-06-phan-2-clone-sang2/06-phan-2-sang2.wav"
+    },
+    "07-phan-3": {
+      "file": "book-dnt-001-overview/audio/07-phan-3-voice-full.wav",
+      "sha256": "257621619a9836d9eaafc748893f2c2563a9bb7d127fa66abe2f8eb1a4decf86",
+      "sourceTake": "voice-auditions/book-dnt-07-phan-3-clone-sang2/07-phan-3-sang2.wav"
+    },
+    "08-phan-4": {
+      "file": "book-dnt-001-overview/audio/08-phan-4-voice-full.wav",
+      "sha256": "d8673b4b7ca9263041114c7285ce2a822b6a73ce693f5acc36a9b4d322d76829",
+      "sourceTake": "voice-auditions/book-dnt-08-phan-4-clone-sang2/08-phan-4-sang2.wav"
+    },
+    "08e-diem-chua-dat": {
+      "file": "book-dnt-001-overview/audio/08e-diem-chua-dat-voice-full.wav",
+      "sha256": "205ac5dc500e438f80301042fa7606e41641c613339ec3e5daf4b772391be48f",
+      "sourceTake": "voice-auditions/book-dnt-08e-diem-chua-dat-clone-sang2/08e-diem-chua-dat-sang2.wav"
+    },
+    "08f-tong-ket": {
+      "file": "book-dnt-001-overview/audio/08f-tong-ket-voice-full.wav",
+      "sha256": "6dee41c4752579d55f2690d945ced19458ec006bb6ab6b309f25bad54ebaabd0",
+      "sourceTake": "voice-auditions/book-dnt-08f-tong-ket-clone-sang2/08f-tong-ket-sang2.wav"
+    },
+    "08g-y-kien": {
+      "file": "book-dnt-001-overview/audio/08g-y-kien-voice-full.wav",
+      "sha256": "d5689d8dddc37deeb50ef5ce91871deabf4d26d06be4644fecacfb7526014907",
+      "sourceTake": "voice-auditions/book-dnt-08g-y-kien-clone-sang2/08g-y-kien-sang2.wav"
+    },
+    "09-nhan-xet": {
+      "file": "book-dnt-001-overview/audio/09-nhan-xet-voice-full.wav",
+      "sha256": "6b7d0891a405d785944794ef31a99eb2ca949891f656468112e495ebf7f4542f",
+      "sourceTake": "voice-auditions/book-dnt-09-nhan-xet-clone-sang2/09-nhan-xet-sang2.wav"
+    }
+  },
+  "listeningReview": "Người dùng nghe giọng clone trong Studio (BookDntTap03Clone) qua các bản vá p9–p15 và chấp nhận p15 ngày 2026-11-09; BookDntTap03 dùng giọng này từ đó."
 }
