@@ -39,15 +39,18 @@ export type Pacing = {
 // Gentle part changes (user 2026-11-08, from episode 3: "chuyển cảnh phải từ từ và mượt mà"): a section may open
 // with a quiet lead before its first word and keep a longer quiet tail; its pictures fade in/out over fadeSeconds while
 // the background stays, and drawings hand over more slowly (beatFadeFrames). Unset = the episode 1–2 timing.
-// ideaSeconds: the quiet added where a new drawing starts (default IDEA_SECONDS). After p9 (user 2026-11-08: "các phân
-// cảnh… giống như bị ghép gấp vào… cần có 1 khoảng nghỉ nhẹ") about a second, so one drawing fades out and the next
-// fades in while nobody speaks.
+// ideaSeconds: where a new drawing starts, the TOTAL quiet between the two sentences, counting the pause already in the
+// take (only the missing part is added), so the take's own pause and the scene rest never stack up. After p9 (user
+// 2026-11-08: "các phân cảnh… giống như bị ghép gấp vào") a rest at each new drawing; after p12 (user 2026-11-09: "hơi
+// nhiều khoảng nghỉ dài cần tiết chế… tiết chế chứ không phải là bị ngắt đoạn") counted as a total instead of added.
+// Unset: IDEA_SECONDS is added on top (episodes 1–2).
 export type Transition = {leadSeconds: number; tailSeconds: number; fadeSeconds: number; beatFadeFrames: number; ideaSeconds?: number};
 export const pace = (take: Take | undefined, ideaStarts: number[], fps: number, extra: Record<number, number> = {}, t?: Transition): Pacing => {
   const ranges = take?.phraseRanges ?? [];
   if (!take || !ranges.length) return {at: (i) => i * 3 * fps, end: (i) => (i * 3 + 2.5) * fps, segments: [], voiceFrame: () => null, frames: 5 * fps};
   const n = ranges.length, F = (sec: number) => Math.round(sec * fps), L = F(t?.leadSeconds ?? 0);
-  const rest = ranges.map((_, i) => (i < n - 1 ? F(BREATH_SECONDS + (ideaStarts.includes(i + 1) ? t?.ideaSeconds ?? IDEA_SECONDS : 0) + (extra[i] ?? 0)) : 0));
+  const idea = (i: number) => (t?.ideaSeconds === undefined ? IDEA_SECONDS : Math.max(0, t.ideaSeconds - (ranges[i + 1].startSeconds - ranges[i].endSeconds)));
+  const rest = ranges.map((_, i) => (i < n - 1 ? F(BREATH_SECONDS + (ideaStarts.includes(i + 1) ? idea(i) : 0) + (extra[i] ?? 0)) : 0));
   const added = rest.reduce<number[]>((acc, r, i) => [...acc, acc[i] + r], [0]); // rest frames before sentence i
   const cut = ranges.map((r, i) => (i === 0 ? 0 : F((ranges[i - 1].endSeconds + r.startSeconds) / 2))).concat(F(take.durationSeconds));
   const segments = ranges.map((_, i) => ({from: L + cut[i] + added[i], trimBefore: cut[i], trimAfter: cut[i + 1]}));

@@ -11,9 +11,9 @@ import takes from './body-takes.json';
 // weapons or fighting, text ≥ 34 px, no book line under quotes.
 // Gentle part changes (user 2026-11-08): with the series intro gone there is room for a quiet second before each part's
 // first word, a longer rest after its last, pictures fading in and out over the steady background, and slower
-// hand-overs between drawings. After p9 ("chuyển cảnh… như bị ghép gấp"): longer still, and about 1.2 s of quiet
-// at every new drawing.
-const options = {takes: takesOf(takes), quoteSource: '', transition: {leadSeconds: 1.8, tailSeconds: 2.2, fadeSeconds: 1.3, beatFadeFrames: 20, ideaSeconds: 1.2}};
+// hand-overs between drawings. After p9 ("chuyển cảnh… như bị ghép gấp"): a rest at every new drawing; after p12
+// ("hơi nhiều khoảng nghỉ dài cần tiết chế"): about 0.9 s of quiet in all at a new drawing, ~2.5 s between parts.
+const options = {takes: takesOf(takes), quoteSource: '', transition: {leadSeconds: 1.1, tailSeconds: 1.4, fadeSeconds: 1.1, beatFadeFrames: 13, ideaSeconds: 0.9}};
 const D = (c: Ctx, d: string, delay = 0, len = 28, width = 2.4, opacity = 1) => <Draw key={`${d}${delay}`} d={d} frame={c.frame} from={c.start + delay} to={c.start + delay + len} width={width} opacity={opacity} />;
 // Same stroke, but from an absolute frame (a moment inside a later sentence of the same scene).
 const DA = (c: Ctx, d: string, from: number, len = 24, width = 2.4, opacity = 1) => <Draw key={`${d}${from}`} d={d} frame={c.frame} from={from} to={from + len} width={width} opacity={opacity} />;
