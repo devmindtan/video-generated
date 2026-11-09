@@ -7,10 +7,10 @@ các chỗ cắt.
 
 | Short | Câu mở | Soát |
 |---|---|---|
-| 1 | Có những cuộc cãi nhau mà thắng xong, mình mới là người thua. | Khẳng định nghịch lý, vào thẳng ý; đoạn trích trả lời bằng chuyện bữa tiệc. Không lặp kiểu "Vì sao…?" của short trước. |
-| 2 | Khen một câu thật lòng, rồi chỉ thêm một chữ, thế là người nghe quên sạch lời khen. | Tình huống cụ thể, chưa lộ chữ nào, nên người nghe tò mò chờ. "Quên sạch" hơi mạnh so với sách ("bắt đầu nghi lời khen"); lời này là móc của kênh, đoạn trích nói đúng ý sách ngay sau đó. Nếu người dùng muốn sát sách hơn: "…thế là lời khen phía trước mất hết giá trị." |
+| 1 | Cãi thắng một người, nhiều khi chính mình mới là người thua. | Nói thẳng nghịch lý; đoạn trích giải thích ngay vì sao rồi nêu nguyên tắc. |
+| 2 | Lời khen của bạn có thể mất hết tác dụng, chỉ vì một chữ. | Nói thẳng hậu quả; "có thể" giữ cho câu không nói quá ý sách ("bắt đầu nghi lời khen"). Câu đầu đoạn trích nêu ngay chữ đó. |
 | 3 | Đắc nhân tâm dạy người ta khéo miệng, hay dạy thật lòng? | Đúng câu hỏi thumbnail và tiêu đề tập 3, giúp nhận ra video dài. Câu hỏi thật, đoạn trích trả lời một phần, phần còn lại ở video dài. |
-| 4 | Không phải ai đọc Đắc nhân tâm cũng thích nó. Và lý do của họ, nghe cũng có lý. | Hai câu ngắn, nhịp nói. Giữ thế trung lập: đoạn trích có cả lời chê ngược lại và câu "đều có phần đúng". |
+| 4 | Đắc nhân tâm cũng có những chỗ đáng chê. | Một câu, vào thẳng ý. Giữ thế trung lập: đoạn trích có cả lời chê ngược lại và câu "đều có phần đúng". |
 
 ## Lời mời
 
@@ -22,13 +22,17 @@ các chỗ cắt.
 
 ## Chỗ cắt
 
-- **Short 1**: bỏ nhãn "Tránh tranh cãi." ở đầu. Cuối đoạn dừng sau câu trích nguyên tắc, trước "Nhận lỗi trước.". Câu
-  trích nguyên văn ("Anh/Chị sai rồi") giữ trọn.
-- **Short 2**: đoạn mở bằng nhãn "Đổi chữ "nhưng" thành chữ "và"". Nhãn này nói ra điều câu mở còn giấu; như vậy là có ý,
-  vì câu mở hỏi "một chữ" và đoạn trích trả lời ngay.
-- **Short 3**: mở bằng chữ "Nhưng" của bản gốc. Sau câu hỏi của câu mở, chữ "Nhưng" vẫn nghe như một lời đáp.
-- **Short 4**: bỏ "Thứ ba," và "Thứ tư,". Đây là chỗ duy nhất đoạn trích bị cắt bên trong. Chỉ bỏ hai chữ đánh số ở đầu
-  câu, cắt ở khoảng nghỉ sau dấu phẩy. Người dùng cần nghe chỗ nối khi duyệt.
+Người dùng (2026-11-09, trả gói lần hai): "Vào ngay giúp tôi vấn đề luôn, đừng có ví dụ, không có thời gian." Vì vậy
+các đoạn trích bỏ chuyện kể và ví dụ, chỉ giữ nhận định, nguyên tắc và cách làm.
+
+- **Short 1**: bỏ chuyện bữa tiệc. Đoạn bắt đầu ngay sau "Từ câu chuyện ấy," nên không nhắc tới câu chuyện đã bỏ.
+  Câu trích nguyên tắc ("Anh/Chị sai rồi") giữ trọn.
+- **Short 2**: bỏ ví dụ môn toán. Nối thêm câu "Lần tới khi cần góp ý…" ở phần ý kiến cá nhân của tập 3: cùng ý, nói
+  thẳng điều nên làm. Đây là lời của kênh, giọng clone đã chốt.
+- **Short 3**: không đổi; đoạn này vốn không có ví dụ.
+- **Short 4**: bỏ "Thứ ba," và "Thứ tư,". Đây là chỗ duy nhất cắt bên trong câu: chỉ bỏ chữ đánh số ở đầu câu, cắt ở
+  khoảng nghỉ sau dấu phẩy. Người dùng cần nghe chỗ nối khi duyệt.
+- Short 1 còn khoảng 26 giây, ngắn hơn mức 30 giây của short tập 2; người dùng ưu tiên vào thẳng vấn đề.
 
 ## Trung lập và nguồn
 

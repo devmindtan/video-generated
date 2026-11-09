@@ -3,8 +3,8 @@
 ## Định dạng
 
 - Dọc 1080×1920, 30 fps. Có 4 composition riêng (mỗi short đăng riêng) và 4 bìa (Still), mỗi bìa đặt cạnh short của nó.
-- Thời lượng: khoảng 52, 39, 33, 43 giây (± 3 giây theo độ dài câu mở và lời mời khi clone). Mỗi short không dưới 30
-  giây, không quá 60 giây.
+- Thời lượng: khoảng 26, 34, 33, 40 giây (± 3 giây theo độ dài câu mở và lời mời khi clone), không quá 60 giây. Người
+  dùng (2026-11-09) muốn vào thẳng vấn đề, không ví dụ, nên short 1 ngắn hơn mức 30 giây của short tập 2.
 - Không render tự động; người dùng tự xuất bằng nút Render trong Studio. Bản xuất ra thẳng -14 LUFS
   (`scripts/shared/render-loudness.cjs`).
 
@@ -62,7 +62,7 @@ Chi tiết ở [image-prompts.md](image-prompts.md).
   được đọc.
   - Trước mỗi bản vá có hình, chạy `npm run visual-sync -- book-dnt-001-shorts --composition <ID>`.
   - Soát từng khung: đồng bộ với lời, nét chồng, chữ đè, lệch tâm.
-- **Đoạn trích**: giữ nguyên lời đã chốt, không cắt giữa câu. Short 4 bỏ hai chữ đánh số "Thứ ba," và "Thứ tư," (xem
+- **Đoạn trích**: giữ nguyên lời đã chốt, không cắt giữa câu; chỉ giữ câu nói ra vấn đề, bỏ chuyện kể và ví dụ. Short 4 bỏ hai chữ đánh số "Thứ ba," và "Thứ tư," (xem
   script.md).
 - **Câu mở và lời mời**: mỗi short một câu mở kiểu khác, không lặp câu mở của short tập 1–2. Lời mời nói rõ link video đầy
   đủ nằm ở phần bình luận; khi đăng, ghim một bình luận có link theo câu mẫu trong description.md.

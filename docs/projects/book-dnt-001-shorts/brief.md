@@ -4,7 +4,7 @@
 - Project ID: book-dnt-001-shorts · sách `dac-nhan-tam` · dẫn tới `book-dnt-001-overview`
 - Nguồn: tập 3 `book-dnt-001-overview` (Đắc nhân tâm, bản dựng 12:41 giọng clone, bản vá p15 đã chấp nhận, người dùng
   đã xuất 2026-11-09)
-- Định dạng: 4 short dọc 1080×1920, 30 fps, mỗi short khoảng 33–52 giây (không dưới 30, không quá 60)
+- Định dạng: 4 short dọc 1080×1920, 30 fps, mỗi short khoảng 26–40 giây, vào thẳng vấn đề, không ví dụ (không quá 60)
 - Trạng thái: planning; gói chốt ban đầu chờ người dùng duyệt, chưa có composition hay giọng mới.
 
 ## Mục tiêu

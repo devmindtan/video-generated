@@ -9,14 +9,49 @@
   "processing": "đoạn trích: dùng nguyên giọng clone đã chốt của tập 3 (public/book-dnt-001-overview/audio/<đoạn>-voice-full.wav, nhịp p15; không kéo chậm); câu mở và lời mời: clone mới từng câu, +2 bán cung giữ thời lượng như tập 3; chỉ chỉnh khoảng nghỉ",
   "selection": "Một giọng cho cả series. Người dùng nghe chọn câu mở và lời mời rồi mới ghép.",
   "excerpts": {
-    "short-1": {"take": "07-phan-3", "fromSeconds": 7.14, "toSeconds": 46.6},
-    "short-2": {"take": "08-phan-4", "fromSeconds": 24.08, "toSeconds": 48.7},
-    "short-3": {"take": "04-soi-chi", "fromSeconds": 26.92, "toSeconds": 47.4},
-    "short-4": {"take": "08e-diem-chua-dat", "parts": [{"fromSeconds": 31.3, "toSeconds": 39.8}, {"fromSeconds": 40.68, "toSeconds": 61.3}]}
+    "short-1": {
+      "take": "07-phan-3",
+      "fromSeconds": 32.34,
+      "toSeconds": 46.6
+    },
+    "short-2": {
+      "parts": [
+        {
+          "take": "08-phan-4",
+          "fromSeconds": 24.08,
+          "toSeconds": 37.64
+        },
+        {
+          "take": "08g-y-kien",
+          "fromSeconds": 49.33,
+          "toSeconds": 57.4
+        }
+      ]
+    },
+    "short-3": {
+      "take": "04-soi-chi",
+      "fromSeconds": 26.92,
+      "toSeconds": 47.4
+    },
+    "short-4": {
+      "take": "08e-diem-chua-dat",
+      "parts": [
+        {
+          "fromSeconds": 31.3,
+          "toSeconds": 39.8
+        },
+        {
+          "fromSeconds": 40.68,
+          "toSeconds": 61.3
+        }
+      ]
+    }
   },
   "sample": {
     "proposed": "book-dnt-001-overview/audio/07-phan-3-voice-full.wav",
-    "alternatives": ["book-dnt-001-overview/audio/04-soi-chi-voice-full.wav"]
+    "alternatives": [
+      "book-dnt-001-overview/audio/04-soi-chi-voice-full.wav"
+    ]
   },
   "segments": {}
 }

@@ -9,8 +9,8 @@ Carnegie, bản tiếng Việt của First News – Trí Việt. Bản PDF nằm
 
 | Short | Đoạn trích (tập 3, giây) | Câu trích nguyên văn / chuyện kể | Trang PDF |
 |---|---|---|---|
-| 1 · Thắng cũng là thua | `07-phan-3`, 7,14–46,60 | Bữa tiệc ở Luân Đôn (kể); "thắng cũng là thua"; nguyên tắc 11 trích nguyên văn | Ch10 165–167; 259 |
-| 2 · Chữ "nhưng" thành chữ "và" | `08-phan-4`, 24,08–48,70 | "nhưng" thành "và" (kể); kênh đổi môn đại số thành môn toán, nói rõ là ví dụ của tác giả | 272–273 |
+| 1 · Thắng cũng là thua | `07-phan-3`, 32,34–46,60 | "thắng cũng là thua" (kể); nguyên tắc 11 trích nguyên văn | Ch10 167; 259 |
+| 2 · Chữ "nhưng" thành chữ "và" | `08-phan-4`, 24,08–37,64 và `08g-y-kien`, 49,33–57,40 | "nhưng" thành "và" (kể); câu sau là gợi ý của kênh ở phần ý kiến cá nhân | 272 |
 | 3 · Tấm lòng hay cửa miệng | `04-soi-chi`, 26,92–47,40 | "Một điều xuất phát từ tấm lòng, một điều chỉ từ cửa miệng."; câu cuối là cách hiểu của kênh ("mình hiểu") | Ch2 64 |
 | 4 · Vì sao có người không thích cuốn sách | `08e-diem-chua-dat`, 31,30–39,80 và 40,68–61,30 | Nhận xét của kênh về điểm chưa đạt và lời chê ngược lại, không gắn cho ai cụ thể | — (research.md của sách) |
 

@@ -38,32 +38,30 @@ Short đi theo thumbnail F của tập 3, để người xem thấy short và vi
 
 ## Short 1 · Thắng cũng là thua
 
-Ý tưởng dọc: **một lát cắt bàn tiệc**. Nửa trên là mặt bàn nhìn từ trên xuống, nửa dưới là gầm bàn, ngăn bởi một đường
-mặt bàn.
+Ý tưởng dọc: **đồng xu hai mặt và hai người giữ chặt ý mình**. Không còn cảnh bàn tiệc: kịch bản bỏ chuyện kể (người dùng
+2026-11-09: "vào ngay vấn đề, đừng có ví dụ").
 
 | Câu | Hình |
 |---|---|
-| Câu mở | Một đồng xu lớn quay chậm, mặt "THẮNG" (mực), mặt "THUA" (đỏ). Đến chữ "thua" ở cuối câu, cả hai mặt đều là THUA. |
-| "…một bữa tiệc ở Luân Đôn" | Đồng xu thu lại thành một chiếc đĩa; mặt bàn tiệc hiện ra từ trên xuống, có ba chỗ ngồi (người khách, tác giả, người bạn) và ly, đĩa đơn giản. |
-| "…nằm trong Kinh thánh" | Một tấm thẻ lời nói trượt ra từ chỗ người khách, trên thẻ có cuốn sách dày. |
-| "…của Shakespeare… người kia sai" | Thẻ của tác giả trượt ra, trên thẻ có cuộn giấy; dấu "!" đỏ đóng dấu lên thẻ ở "người kia sai". |
-| "…đá nhẹ chân ông dưới gầm bàn" | Khung lướt xuống nửa dưới (gầm bàn): hai bàn chân, một chân chạm nhẹ chân kia, có hai vệt chuyển động. |
-| "Trên đường về…" | Bàn tiệc mờ thành mực; hai dáng người đi cạnh nhau dưới một ngọn đèn đường. |
-| "thua thì mình thua, mà thắng thì mình cũng thua" | Bảng tỉ số kiểu chữ lật: "THUA → THUA" rồi "THẮNG → THUA", vế nào lật theo vế đó. |
-| Câu trích nguyên tắc | Câu trích in trên một mảnh giấy xé, chữ mực ≥ 56px; "'Anh/Chị sai rồi!'" bị gạch một nét đỏ đúng lúc đọc. |
+| Câu mở "Cãi thắng một người, nhiều khi chính mình mới là người thua." | Hình như bìa đã chọn: chiếc cúp nghiêng, vết nứt đỏ chạy dọc theo chữ "thua". |
+| "…trong một cuộc tranh cãi, thua thì mình thua…" | Hai dáng người đối diện, giữa họ là hai bong bóng lời gạch chéo nhau. Bảng tỉ số lật "THUA → THUA". |
+| "…mà thắng thì mình cũng thua…" | Bảng lật tiếp "THẮNG → THUA", chiếc cúp nứt thêm một đường. |
+| "…vì người kia sẽ càng giữ chặt ý của họ." | Người bên phải ôm chặt một khối vuông (ý của họ), khối viền đỏ dày lên; khoảng cách giữa hai người giãn ra. |
+| Câu trích nguyên tắc | Câu trích in trên một mảnh giấy xé, chữ mực ≥ 56px; chữ "'Anh/Chị sai rồi!'" bị gạch một nét đỏ đúng lúc đọc. |
 
 ## Short 2 · Chữ "nhưng" thành chữ "và"
 
-Ý tưởng dọc: **một câu nói dựng bằng chữ**. Hình chính là chữ: câu khen và câu chê xếp dọc, chữ "nhưng" là nhân vật.
+Ý tưởng dọc: **bảng chữ lật**, cùng hình ảnh với bìa đã chọn. Không còn trang vở ví dụ môn toán.
 
 | Câu | Hình |
 |---|---|
-| Câu mở | Dòng "Con học tốt lên rồi" sáng ấm ở trên; một chữ "NHƯNG" đỏ rơi xuống bên dưới, dòng khen phía trên nguội màu và nứt nhẹ. |
-| "Đổi chữ 'nhưng' thành chữ 'và'" | Hai thẻ lớn "NHƯNG" (đỏ) và "VÀ" (vàng) đứng cạnh nhau, có mũi tên giữa. |
-| "…khen trước, rồi thêm chữ 'nhưng' và một lời chê" | Ba khối xếp dọc lần lượt theo lời: KHEN, NHƯNG, CHÊ. |
-| "…bắt đầu nghi lời khen…" | Khối KHEN mờ đi, có dấu "?" lớn bên cạnh. |
-| "thay vì nói 'con học tốt lên rồi, nhưng môn toán còn yếu'" | Câu hiện như chữ viết tay trên vở, chữ "nhưng" khoanh đỏ. |
-| "cha mẹ có thể nói '…và nếu con cứ cố gắng…'" | "NHƯNG" lật như bảng chữ lật thành "VÀ" vàng; dòng "môn toán còn yếu" được viết lại thành "môn toán cũng sẽ khá lên", nét mực chạy theo lời. |
+| Câu mở "Lời khen của bạn có thể mất hết tác dụng, chỉ vì một chữ." | Một ô "KHEN" sáng ấm ở trên. Bên dưới, một ô bảng lật trống đang lật liên tục, chưa lộ chữ. |
+| "Đổi chữ 'nhưng' thành chữ 'và'." | Hàng ô lật dừng ở NHƯNG (đỏ), rồi dòng VÀ (vàng) hiện bên dưới, như bìa. |
+| "…khen trước, rồi thêm chữ 'nhưng' và một lời chê." | Ba khối xếp dọc lần lượt theo lời: KHEN, NHƯNG, CHÊ. |
+| "…bắt đầu nghi lời khen ban nãy chỉ để mở đường." | Khối KHEN nhạt màu, có dấu "?" lớn bên cạnh. |
+| "Lần tới khi cần góp ý… nói trọn lời khen trước…" | Khối KHEN sáng lại và đứng trọn một mình, có một nhịp lặng. |
+| "…rồi nối lời góp ý bằng chữ 'và'…" | NHƯNG lật thành VÀ; khối CHÊ đổi thành "GÓP Ý" nét mực. |
+| "…xem người nghe phản ứng có khác không." | Dáng người nghe (không mặt) từ khoanh tay chuyển sang buông tay, một trái tim nhỏ nét đỏ hiện cạnh vai. |
 
 ## Short 3 · Tấm lòng hay cửa miệng
 
@@ -85,7 +83,7 @@ vàng ở giữa, hệt như F.
 
 | Câu | Hình |
 |---|---|
-| Câu mở | Bìa sách giữa trang; hai con dấu "THÍCH" (vàng) và "KHÔNG THÍCH" (đỏ) lần lượt đóng xuống hai bên. |
+| Câu mở "Đắc nhân tâm cũng có những chỗ đáng chê." | Bìa sách giữa trang, như bìa đã chọn; tờ ghi chú đầu tiên bay vào dán lên góc bìa ở chữ "đáng chê". |
 | "…rất dễ thành thao túng" | Tờ ghi chú 1 dán lên: hai bàn tay điều khiển sợi dây con rối; sợi dây đứt ở "thao túng". |
 | "…chưa nói nhiều về việc dừng ở đâu" | Tờ ghi chú 2: vạch kẻ "DỪNG Ở ĐÂU?" vẽ nét đứt. |
 | "…lúc cần nói thẳng, cần đặt giới hạn…" | Tờ ghi chú 3: một đường giới hạn đỏ giữa hai dáng người, hiện ở "đặt giới hạn". |
@@ -117,9 +115,11 @@ Tiêu chí cho mỗi bìa:
 - **Chấm điểm trước khi gửi**, theo thang của series: tương phản, số từ/dòng, chiều rộng chữ, đọc được ở 1/4, hình
   chính cụ thể. Dưới 60/100 thì làm lại.
 
-Câu trên bìa (dự kiến, chỉnh khi thiết kế):
+Bìa đã chọn (người dùng 2026-11-09, "1. A 2. C 3. C 4. A"; đã dựng thành Still trong Studio):
 
-1. "THẮNG CŨNG LÀ THUA"
-2. "ĐỪNG NÓI 'NHƯNG'"
-3. "KHÉO MIỆNG HAY THẬT LÒNG?"
-4. "VÌ SAO NHIỀU NGƯỜI CHÊ?"
+1. A · Chiếc cúp nứt: "THẮNG / CŨNG LÀ / THUA"
+2. C · Bảng chữ lật: "ĐỪNG NÓI / NHƯNG / hãy nói / VÀ"
+3. C · Bong bóng và trái tim: "KHÉO MIỆNG / HAY / THẬT LÒNG?"
+4. A · Giấy ghi chú: "VÌ SAO / NHIỀU NGƯỜI / CHÊ?"
+
+Hình mở đầu mỗi short dùng lại hình ảnh của bìa đã chọn, để người xem lướt từ bìa vào video thấy liền mạch.
