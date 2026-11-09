@@ -66,7 +66,7 @@ def main():
     picks = HERE / 'voice-picks.json'  # the user's listening picks win over the tone check (review-page.py)
     if picks.exists():
         texts.update({k.strip(): v for k, v in json.loads(picks.read_text()).items() if (AUD / v / 'manifest.json').exists()})
-    built = []
+    built, changed = [], []  # changed: segments assembled again in this run
     for seg in SEGMENTS:
         cfg = json.loads((HERE / f'audition-{seg}.json').read_text())
         need = [(s.get('say') or s['text']).strip() for s in cfg['sentences']]  # "say": spoken form (assemble-clone.py)
@@ -81,6 +81,7 @@ def main():
         choice['__maxPause'] = MAX_PAUSE  # part of the stamp, so a new setting rebuilds
         choice['__pauseScale'] = PAUSE_SCALE
         choice['__pauses'] = [x['pauseAfter'] for x in cfg['sentences']]  # a pause edit rebuilds too
+        if any(x.get('tailTempo') for x in cfg['sentences']): choice['__tailTempo'] = [x.get('tailTempo') for x in cfg['sentences']]
         if MAX_RATE: choice['__maxRate'] = MAX_RATE
         if TITLE_PAUSE: choice['__titlePause'] = TITLE_PAUSE
         if EDGE_RMS: choice['__edgeRms'] = EDGE_RMS
@@ -98,16 +99,26 @@ def main():
         subprocess.run([py, str(TOOLS / 'voice-variants.py'), '--source', out.name, '--semitones', '2'], check=True)
         stamp.write_text(json.dumps(choice, ensure_ascii=False, indent=1) + '\n')
         built.append(f'{PREFIX}-{seg}-clone-sang2'); print(f'{seg}: đã ghép từ {", ".join(used)}')
+        changed.append(seg)
     if built:
         # Keep the other takes already listed (placeholder voices) so their voice ids stay available.
         listed = ROOT / 'src/projects' / PROJECT / 'body-takes.json'
         old = json.loads(listed.read_text())['takes'] if listed.exists() else []
         takes_out = old + [t for t in built if t not in old]
-        # intro-bands rewrites the captions without word times: voices that had karaoke word times get them again.
-        lit = [v['id'] for v in json.loads(listed.read_text())['voices'] if any(c.get('words') for c in v['captions'])] if listed.exists() else []
+        # intro-bands rewrites the captions without word times. Voices whose take was not rebuilt get their old captions
+        # (with karaoke word times) back as they were; only the rebuilt ones that had word times run ASR again (one
+        # whisper pass per rebuilt part: running it for every part froze the machine, user 2026-11-09).
+        before = {v['id']: v for v in json.loads(listed.read_text())['voices']} if listed.exists() else {}
         subprocess.run([py, str(TOOLS / 'intro-bands.py'), '--take', *takes_out, '--out', f'src/projects/{PROJECT}/body-takes.json'], check=True)
-        if lit:
-            subprocess.run([py, str(TOOLS / 'word-times.py'), f'src/projects/{PROJECT}/body-takes.json', *lit], check=True)
+        rebuilt = {f'{seg}-sang2' for seg in changed} | set(changed)
+        data = json.loads(listed.read_text())
+        for v in data['voices']:
+            old = before.get(v['id'])
+            if old and v['id'] not in rebuilt and any(c.get('words') for c in old['captions']): v['captions'] = old['captions']
+        listed.write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')) + '\n')
+        redo = [i for i in rebuilt if i in before and any(c.get('words') for c in before[i]['captions'])]
+        if redo:
+            subprocess.run([py, str(TOOLS / 'word-times.py'), f'src/projects/{PROJECT}/body-takes.json', *redo], check=True)
 
 
 if __name__ == '__main__':

@@ -55,7 +55,11 @@
     {
       "scene": 1,
       "text": "Và đây cũng là câu hỏi mình muốn các bạn giữ trong đầu suốt tập này: khi một người làm sai, lời chê trách có thật sự giúp họ thay đổi không?",
-      "pauseAfter": 0
+      "pauseAfter": 0,
+      "tailTempo": {
+        "seconds": 0.7,
+        "tempo": 1.2
+      }
     }
   ]
 }

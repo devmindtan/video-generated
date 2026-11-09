@@ -8,6 +8,7 @@ Several clone takes can be given: each sentence is taken from the last take that
 so a script edit only needs the changed sentences re-cloned.
 Usage: .venv/bin/python scripts/projects/book-hvtt-001-overview/assemble-clone.py --clone clone-v2 clone-v3 --out book-hvtt-intro-clone-v3 --id clone-ban-v3
 """
+import tempfile
 import argparse, io, json, os, re, runpy, subprocess, sys
 from pathlib import Path
 import numpy as np
@@ -30,11 +31,17 @@ def voiced_seconds(audio):
 
 def slow_down(audio, factor):
     # Tempo factor < 1 makes speech slower with the pitch kept (ffmpeg atempo), same loudness.
-    buf = io.BytesIO()
-    sf.write(buf, audio, SR, format='WAV', subtype='PCM_24')
-    out = subprocess.check_output([str(FF), '-v', 'error', '-f', 'wav', '-i', '-', '-af', f'atempo={factor:.5f}', '-c:a', 'pcm_s24le', '-f', 'wav', '-'],
-                                  input=buf.getvalue(), env={'LD_LIBRARY_PATH': str(FF.parent)})
-    slowed, _ = sf.read(io.BytesIO(out), dtype='float64')
+    # Through real files: a WAV piped out of ffmpeg has no length in its header, and reading it back gave a sound
+    # hours long that filled the RAM and froze the machine (2026-11-09).
+    with tempfile.TemporaryDirectory() as tmp:
+        src, dst = Path(tmp) / 'in.wav', Path(tmp) / 'out.wav'
+        sf.write(src, audio, SR, subtype='PCM_24')
+        subprocess.run([str(FF), '-v', 'error', '-i', str(src), '-af', f'atempo={factor:.5f}', '-c:a', 'pcm_s24le', str(dst)],
+                       check=True, env={'LD_LIBRARY_PATH': str(FF.parent)})
+        slowed, _ = sf.read(dst, dtype='float64')
+    expected = len(audio) / factor
+    if not .9 * expected <= len(slowed) <= 1.1 * expected + SR * .05:
+        raise RuntimeError(f'atempo gave {len(slowed) / SR:.2f} s for {expected / SR:.2f} s expected')
     return slowed
 
 
@@ -118,6 +125,12 @@ def main():
         audio = normalize_gain(shared['trim_silence'](audio, SR))
         if args.edge_rms: audio = trim_quiet_edges(audio, args.edge_rms)
         if args.max_pause: audio = squeeze_pauses(audio, args.max_pause)
+        if sentence.get('tailTempo'):
+            # "tailTempo": {"seconds": s, "tempo": t}: the sentence's last s seconds a little faster, pitch kept, for a
+            # clone that drags its last word (user 2026-11-09: "thay đổi không" — "đổi" kéo dài quá).
+            cut = int(sentence['tailTempo']['seconds'] * SR); head, tail = audio[:-cut], slow_down(audio[-cut:], sentence['tailTempo']['tempo'])
+            x = min(240, len(head), len(tail)); mix = head[-x:] * np.linspace(1, 0, x) + tail[:x] * np.linspace(0, 1, x)
+            audio = np.concatenate([head[:-x], mix, tail[x:]])
         words = len(re.findall(r'\w+', sentence['text']))
         if args.max_rate and voiced_seconds(audio) and words / voiced_seconds(audio) > args.max_rate:
             audio = slow_down(audio, max(args.max_slow, args.max_rate / (words / voiced_seconds(audio))))
@@ -132,6 +145,8 @@ def main():
         if pause:
             chunks.append(np.zeros(round(pause * SR)))
     speech_end = sum(len(c) for c in chunks) / SR
+    if speech_end > cfg.get('maxDurationSeconds', 600) * 1.5:
+        raise RuntimeError(f'Assembled {speech_end:.0f} s, far over maxDurationSeconds: stopping before writing it')
     chunks.append(np.zeros(round(cfg['tail'] * k * SR)))
     audio = np.concatenate(chunks)
     record = {'id': args.id, 'name': 'Giọng bạn (clone)', 'label': 'Lựa chọn 2 · clone giọng người dùng (consent: self)',
