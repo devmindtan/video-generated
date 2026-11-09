@@ -407,6 +407,12 @@
           "title": "Short 1 · Thắng cũng là thua"
         },
         {
+          "id": "BookDntShortThangThuaClone",
+          "kind": "Composition",
+          "title": "Short 1 · Thắng cũng là thua · nghe thử giọng clone",
+          "part": true
+        },
+        {
           "id": "BookDntShortThangThuaCover",
           "kind": "Still",
           "title": "Bìa short 1 · Thắng cũng là thua"
@@ -415,6 +421,12 @@
           "id": "BookDntShortNhungVa",
           "kind": "Composition",
           "title": "Short 2 · Chữ “nhưng” thành “và”"
+        },
+        {
+          "id": "BookDntShortNhungVaClone",
+          "kind": "Composition",
+          "title": "Short 2 · Chữ “nhưng” thành “và” · nghe thử giọng clone",
+          "part": true
         },
         {
           "id": "BookDntShortNhungVaCover",
@@ -427,6 +439,12 @@
           "title": "Short 3 · Tấm lòng hay cửa miệng"
         },
         {
+          "id": "BookDntShortTamLongClone",
+          "kind": "Composition",
+          "title": "Short 3 · Tấm lòng hay cửa miệng · nghe thử giọng clone",
+          "part": true
+        },
+        {
           "id": "BookDntShortTamLongCover",
           "kind": "Still",
           "title": "Bìa short 3 · Tấm lòng hay cửa miệng"
@@ -435,6 +453,12 @@
           "id": "BookDntShortChuaDat",
           "kind": "Composition",
           "title": "Short 4 · Vì sao có người không thích cuốn sách"
+        },
+        {
+          "id": "BookDntShortChuaDatClone",
+          "kind": "Composition",
+          "title": "Short 4 · Vì sao có người không thích cuốn sách · nghe thử giọng clone",
+          "part": true
         },
         {
           "id": "BookDntShortChuaDatCover",

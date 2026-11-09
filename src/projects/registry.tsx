@@ -320,12 +320,16 @@ export const ProjectCompositions: FC = () => (
         </Folder>
         <Folder name="book-dnt-001-shorts">
           <Composition id="BookDntShortThangThua" component={BookDntShort} calculateMetadata={renderTo('book-dnt-001-shorts', bookDntShortMetadata)} durationInFrames={900} fps={30} width={1080} height={1920} defaultProps={{short: 'short-1'}} />
+          <Composition id="BookDntShortThangThuaClone" component={BookDntShort} calculateMetadata={renderTo('book-dnt-001-shorts', bookDntShortMetadata)} durationInFrames={900} fps={30} width={1080} height={1920} defaultProps={{short: 'short-1', voice: 'clone' as const}} />
           <Still id="BookDntShortThangThuaCover" component={BookDntShortThangThuaCover} calculateMetadata={renderTo('book-dnt-001-shorts')} width={1080} height={1920} />
           <Composition id="BookDntShortNhungVa" component={BookDntShort} calculateMetadata={renderTo('book-dnt-001-shorts', bookDntShortMetadata)} durationInFrames={900} fps={30} width={1080} height={1920} defaultProps={{short: 'short-2'}} />
+          <Composition id="BookDntShortNhungVaClone" component={BookDntShort} calculateMetadata={renderTo('book-dnt-001-shorts', bookDntShortMetadata)} durationInFrames={900} fps={30} width={1080} height={1920} defaultProps={{short: 'short-2', voice: 'clone' as const}} />
           <Still id="BookDntShortNhungVaCover" component={BookDntShortNhungVaCover} calculateMetadata={renderTo('book-dnt-001-shorts')} width={1080} height={1920} />
           <Composition id="BookDntShortTamLong" component={BookDntShort} calculateMetadata={renderTo('book-dnt-001-shorts', bookDntShortMetadata)} durationInFrames={900} fps={30} width={1080} height={1920} defaultProps={{short: 'short-3'}} />
+          <Composition id="BookDntShortTamLongClone" component={BookDntShort} calculateMetadata={renderTo('book-dnt-001-shorts', bookDntShortMetadata)} durationInFrames={900} fps={30} width={1080} height={1920} defaultProps={{short: 'short-3', voice: 'clone' as const}} />
           <Still id="BookDntShortTamLongCover" component={BookDntShortTamLongCover} calculateMetadata={renderTo('book-dnt-001-shorts')} width={1080} height={1920} />
           <Composition id="BookDntShortChuaDat" component={BookDntShort} calculateMetadata={renderTo('book-dnt-001-shorts', bookDntShortMetadata)} durationInFrames={900} fps={30} width={1080} height={1920} defaultProps={{short: 'short-4'}} />
+          <Composition id="BookDntShortChuaDatClone" component={BookDntShort} calculateMetadata={renderTo('book-dnt-001-shorts', bookDntShortMetadata)} durationInFrames={900} fps={30} width={1080} height={1920} defaultProps={{short: 'short-4', voice: 'clone' as const}} />
           <Still id="BookDntShortChuaDatCover" component={BookDntShortChuaDatCover} calculateMetadata={renderTo('book-dnt-001-shorts')} width={1080} height={1920} />
         </Folder>
       </Folder>

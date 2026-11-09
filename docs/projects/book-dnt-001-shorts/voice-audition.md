@@ -28,6 +28,20 @@
   "nịnh hót" → "lịnh hot" (4-3), "dạy nịnh" → "dạy lịnh" (4-5). Đây là giọng tạm: chỉ để xem nhịp và hình, không sửa.
 - Ghép bằng `build-shorts.py --take book-dnt-shorts-qt-v2`: mỗi short một bản đọc, khoảng lặng sau câu theo narration.json.
 
-## Giọng clone
+## Giọng clone (người dùng 2026-11-09: "clone đi")
 
-Chưa làm: chờ người dùng chốt lời đọc mới; sau đó clone toàn bộ 25 câu và lời mời trên máy GPU.
+| Lượt | Take | Câu | Máy | Vì sao |
+|---|---|---|---|---|
+| Clone một lượt | `clone-v1` | 26 (25 câu + lời mời, `lines-clone.txt`) | máy GPU desktop-kndgm60 | Lời đọc viết mới |
+| Clone lại | `clone-fix-v1`, `clone-fix-v2` | 8 (`lines-fix.txt`) | máy GPU | Kiểm tra dấu đánh dấu: cãi, lùi, chữ "nhưng", nãy, vạch ranh, cả |
+
+- Mẫu giọng `library/voice-references/tam-nhin-cho-cuoc-song/clips/006130-15s.wav` (consent self), lời mẫu nhận dạng lại
+  bằng faster-whisper cục bộ và gửi kèm (`--ref-text`), như tập 1–3.
+- Mỗi câu lấy bản có ít chỗ bị đánh dấu nhất (`build-shorts.py --clone clone-v1 clone-fix-v1 clone-fix-v2`; bản dùng ghi ở
+  `shorts-clone.json` "sentenceTakes"); chọn tay thì ghi `scripts/projects/book-dnt-001-shorts/voice-picks.json`.
+  Xử lý như tập 3: ngắt trong câu tối đa 0,3 giây, cắt tiếng thở hai đầu, cân âm lượng từng câu, +2 bán cung giữ thời
+  lượng; không giãn giọng.
+- Còn đánh dấu ở mọi bản: "nhưng" nghe như "nhân" (short 2), "vạch ranh" (3-3), "giữ/dữ", "trọn/chọn", "đắc/đắt", "một/1".
+  Nhiều khả năng là chất giọng và nhận dạng (tập 3 đọc "nhưng" nhiều lần và người dùng đã duyệt), nên chờ người dùng nghe.
+- Nghe trong Studio: `BookDntShortThangThuaClone`, `…NhungVaClone`, `…TamLongClone`, `…ChuaDatClone` (cùng hình, giọng
+  clone). Chưa thay vào short thật; phụ đề sáng theo giọng làm sau khi người dùng chọn.

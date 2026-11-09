@@ -12,6 +12,7 @@ per sentence in video time, for visual-sync and the .srt export). Word times: me
 file when it has them (clone after word-times.py); otherwise estimated by letter count inside each sentence, only so
 pages and drawings land at about the right moment (series rule: word-lit captions only for the picked clone).
 Usage: .venv/bin/python scripts/projects/book-dnt-001-shorts/build-shorts.py --take book-dnt-shorts-qt-v2 [--voice 25-quoc-tuan]
+       .venv/bin/python scripts/projects/book-dnt-001-shorts/build-shorts.py --clone clone-v1 [clone-v2 …]   (→ *-clone files)
 """
 import argparse, json, re
 from pathlib import Path
@@ -33,23 +34,74 @@ def estimated_words(text, start, end):
     return words
 
 
+def load(path, name):
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(name, path);mod = importlib.util.module_from_spec(spec);spec.loader.exec_module(mod);return mod
+
+
+def clone_pieces(takes, order):
+    """The user's cloned voice, as in episode 3 (pacing.json of the series): pauses inside a sentence cut to 0.3 s, breath
+    at the edges trimmed (RMS 0.006), each sentence brought to the same loudness, then +2 semitones with the duration
+    kept (voice-variants.py). No tempo change."""
+    tools = ROOT / 'scripts/projects/book-hvtt-001-overview'
+    asm, var = load(tools / 'assemble-clone.py', 'assemble_clone'), load(tools / 'voice-variants.py', 'voice_variants')
+    import soxr
+    # Per sentence, the take with the fewest tone/word flags from check-tones.py (tone-check.json); ties go to the later
+    # take; a pick in voice-picks.json (user listening, {sentence id: "take/part-NN-clone.wav"}) wins over both.
+    files, score = {}, {}
+    for t in takes:
+        d = ROOT / 'public/book-dnt-001-shorts/voice-auditions' / t
+        m = json.loads((d / 'manifest.json').read_text())
+        checks = {c['file']: len(c['toneDiffs']) + len(c['wordDiffs']) for c in json.loads((d / 'tone-check.json').read_text())} if (d / 'tone-check.json').exists() else {}
+        for f in m['files']:
+            key, sc = f['text'].strip(), checks.get(f['file'], 99)
+            if key not in files or sc <= score[key]:
+                files[key], score[key] = d / f['file'], sc
+    picks_file = HERE / 'voice-picks.json'
+    picks = json.loads(picks_file.read_text()) if picks_file.exists() else {}
+    for s in order:
+        if s['id'] in picks:
+            files[s['text'].strip()] = ROOT / 'public/book-dnt-001-shorts/voice-auditions' / picks[s['id']]
+    clone_pieces.used = {s['id']: str(files[s['text'].strip()].relative_to(ROOT / 'public/book-dnt-001-shorts/voice-auditions')) for s in order if s['text'].strip() in files}
+    clone_pieces.flags = {s['id']: score.get(s['text'].strip()) for s in order}
+    missing = [s['id'] for s in order if s['text'].strip() not in files]
+    assert not missing, f'no clone yet for: {missing}'
+    out = {}
+    for s in order:
+        a, sr = sf.read(files[s['text'].strip()], dtype='float64')
+        a = a.mean(1) if a.ndim > 1 else a
+        if sr != asm.SR: a = soxr.resample(a, sr, asm.SR)
+        a = asm.trim_quiet_edges(asm.squeeze_pauses(a, .3), .006)
+        a = asm.normalize_gain(a, active_only=True)
+        out[s['id']] = var.shift(a, asm.SR, 2).astype('float32')
+    return out, asm.SR
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--take', required=True)
+    ap.add_argument('--take')
+    ap.add_argument('--clone', nargs='+', help='VoiceStudio clone takes in public/book-dnt-001-shorts/voice-auditions/ (one WAV per sentence); a sentence comes from the last take that has its exact text')
     ap.add_argument('--voice', default='25-quoc-tuan')
     args = ap.parse_args()
     nar = json.loads((HERE / 'narration.json').read_text())
-    take = ROOT / 'public/voice-auditions' / args.take
-    manifest = json.loads((take / 'manifest.json').read_text())
-    record = next(r for r in manifest['voices'] if r['file'] == f'{args.voice}.wav')
-    audio, sr = sf.read(take / record['file'], dtype='float32')
     order = [s for sh in nar['shorts'] for s in sh['sentences']] + [nar['cta']]
-    ranges = record['phraseRanges']
-    assert len(ranges) == len(order) and all(r['text'] == s['text'] for r, s in zip(ranges, order)), 'take does not match narration.json: make a new take'
-    piece = {s['id']: audio[max(0, round((r['startSeconds'] - EDGE) * sr)):round((r['endSeconds'] + EDGE) * sr)] for s, r in zip(order, ranges)}
+    if args.clone:
+        piece, sr = clone_pieces(args.clone, order)
+        args.take, args.voice = args.clone[-1], 'clone'
+    else:
+        take = ROOT / 'public/voice-auditions' / args.take
+        manifest = json.loads((take / 'manifest.json').read_text())
+        record = next(r for r in manifest['voices'] if r['file'] == f'{args.voice}.wav')
+        audio, sr = sf.read(take / record['file'], dtype='float32')
+        ranges = record['phraseRanges']
+        assert len(ranges) == len(order) and all(r['text'] == s['text'] for r, s in zip(ranges, order)), 'take does not match narration.json: make a new take'
+        piece = {s['id']: audio[max(0, round((r['startSeconds'] - EDGE) * sr)):round((r['endSeconds'] + EDGE) * sr)] for s, r in zip(order, ranges)}
     OUT.mkdir(parents=True, exist_ok=True)
     layout = json.loads((SRC / 'layout.json').read_text())
     shorts, captions = [], {}
+    # A clone build goes to its own files (…-clone.wav, shorts-clone.json) and the …Clone compositions: the clone is
+    # wired into the real shorts only after the user picks it (series rule).
+    suffix = '-clone' if args.clone else ''
     for sh in nar['shorts']:
         items = [(s, s['pauseAfter']) for s in sh['sentences']]
         items[-1] = (items[-1][0], nar['ctaPause'])
@@ -63,7 +115,7 @@ def main():
                               'startMs': round(start * 1000), 'endMs': round(end * 1000)})
             words += [{**w, 'sentence': s['id']} for w in estimated_words(s['text'], start, end)]
             chunks += [p, np.zeros(round(rest * sr), dtype='float32')];at += len(p) / sr + rest
-        out = OUT / f"{sh['id']}.wav"
+        out = OUT / f"{sh['id']}{suffix}.wav"
         sf.write(out, np.concatenate(chunks), sr, subtype='PCM_16')
         shorts.append({'id': sh['id'], 'title': sh['title'], 'file': str(out.relative_to(ROOT / 'public')), 'durationSeconds': round(at, 3),
                        'sentences': sentences, 'words': words})
@@ -71,8 +123,10 @@ def main():
         captions[sh['id']] = {'title': f"Short {sh['id'][-1]} · {sh['title']}", 'composition': COMPOSITIONS[sh['id']], 'durationSeconds': round(total, 2),
                               'pages': [{'part': {'hook': 'Câu mở', 'body': 'Lời đọc', 'cta': 'Lời mời'}[x['role']], 'text': x['text'],
                                          'startMs': round(lead * 1000) + x['startMs'], 'endMs': round(lead * 1000) + x['endMs']} for x in sentences]}
-    (SRC / 'shorts.json').write_text(json.dumps({'take': args.take, 'voice': args.voice, 'placeholder': args.voice != 'clone', 'estimatedWords': True, 'shorts': shorts}, ensure_ascii=False, indent=1) + '\n')
-    (SRC / 'captions.json').write_text(json.dumps({'shorts': captions}, ensure_ascii=False, indent=1) + '\n')
+    used = getattr(clone_pieces, 'used', None) if args.clone else None
+    (SRC / f'shorts{suffix}.json').write_text(json.dumps({'take': args.take, 'voice': args.voice, 'placeholder': not args.clone, 'estimatedWords': True, **({'sentenceTakes': used} if used else {}), 'shorts': shorts}, ensure_ascii=False, indent=1) + '\n')
+    if not args.clone:
+        (SRC / 'captions.json').write_text(json.dumps({'shorts': captions}, ensure_ascii=False, indent=1) + '\n')
     for s in shorts:
         print(s['id'], f"{s['durationSeconds']:.1f} s narration", f"{captions[s['id']]['durationSeconds']:.1f} s video")
 
