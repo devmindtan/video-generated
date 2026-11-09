@@ -1,0 +1,139 @@
+{
+ "title": "Đọc sách, hiểu mình — book-dnt-001-shorts — lời đọc viết mới (giọng tạm Quốc Tuấn)",
+ "temperature": 0.5,
+ "leadIn": 0.3,
+ "tail": 0.5,
+ "maxDurationSeconds": 240,
+ "sentences": [
+  {
+   "id": "1-1",
+   "text": "Cãi thắng một người, nhiều khi chính mình mới là người thua.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "1-2",
+   "text": "Vì khi bị nói là sai, người ta hiếm khi đổi ý.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "1-3",
+   "text": "Họ lo giữ thể diện, và càng bám chặt điều mình đã nói.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "1-4",
+   "text": "Trong Đắc nhân tâm, tác giả cho rằng: tranh cãi mà thua thì mình thua, còn thắng thì mình cũng thua.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "1-5",
+   "text": "Lời khuyên của sách rất ngắn: tôn trọng ý kiến của người khác, và đừng bao giờ nói thẳng rằng họ sai.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "1-6",
+   "text": "Muốn người kia nghĩ lại, mình nên chừa cho họ một đường lùi.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "2-1",
+   "text": "Lời khen của bạn có thể mất hết tác dụng, chỉ vì một chữ.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "2-2",
+   "text": "Đó là chữ nhưng.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "2-3",
+   "text": "Nhiều người hay khen trước, thêm chữ nhưng, rồi mới góp ý.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "2-4",
+   "text": "Người nghe vừa nghe tới chữ nhưng là bắt đầu nghi lời khen ban nãy chỉ để mở đường.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "2-5",
+   "text": "Trong Đắc nhân tâm, tác giả gợi ý một cách rất đơn giản: đổi chữ nhưng thành chữ và.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "2-6",
+   "text": "Mình nói trọn lời khen trước, rồi nối lời góp ý bằng chữ và.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "2-7",
+   "text": "Vậy là lời khen vẫn còn nguyên, còn lời góp ý thì nghe như một lời động viên.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "3-1",
+   "text": "Đắc nhân tâm dạy người ta khéo miệng, hay dạy thật lòng?",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "3-2",
+   "text": "Có người đọc xong thì thấy đây là sách dạy nịnh.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "3-3",
+   "text": "Nhưng chính tác giả lại vạch ranh giới rất rõ.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "3-4",
+   "text": "Theo tác giả, lời khen thật lòng và lời nịnh khác nhau ở chỗ: một điều xuất phát từ tấm lòng, một điều chỉ từ cửa miệng.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "3-5",
+   "text": "Vì vậy, mọi nguyên tắc trong sách đều phải đi kèm sự chân thành.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "3-6",
+   "text": "Mình thấy, thiếu điều đó thì nụ cười hay việc nhớ tên người khác cũng chỉ còn là kỹ thuật.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "4-1",
+   "text": "Đắc nhân tâm cũng có những chỗ đáng chê.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "4-2",
+   "text": "Mình thấy vài cách trong sách, nếu tách khỏi sự chân thành, rất dễ thành thao túng.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "4-3",
+   "text": "Sách có cảnh báo chuyện nịnh hót, nhưng chưa nói nhiều về việc dừng ở đâu.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "4-4",
+   "text": "Còn khi khuyên tránh tranh cãi, sách gần như không bàn tới lúc cần nói thẳng, hay cần đặt giới hạn.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "4-5",
+   "text": "Ngược lại, gọi cả cuốn là sách dạy nịnh thì cũng chưa công bằng.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "4-6",
+   "text": "Hai cách nhìn ấy, mình nghĩ đều có phần đúng.",
+   "pauseAfter": 0.6
+  },
+  {
+   "id": "cta",
+   "text": "Mình đã kể lại trọn cuốn Đắc nhân tâm trong một video dài. Link ở phần bình luận, bạn ghé xem nhé.",
+   "pauseAfter": 0
+  }
+ ]
+}

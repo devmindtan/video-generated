@@ -3,9 +3,8 @@
 ## Định dạng
 
 - Dọc 1080×1920, 30 fps. Có 4 composition riêng (mỗi short đăng riêng) và 4 bìa (Still), mỗi bìa đặt cạnh short của nó.
-- Thời lượng: khoảng 30, 38, 36, 45 giây, không quá 60 giây. Sau bản thử (người dùng 2026-11-09: "nhịp độ hơi nhanh,
-  animation chưa kịp tới nữa là chuyển cảnh") đoạn trích có thêm khoảng lặng ở cuối câu và chỗ đổi hình (0,3–0,9 giây,
-  `holds` trong voice.json), nghỉ 0,9 giây sau câu mở và 1,2 giây trước lời mời; hình mờ chuyển trong 16 khung.
+- Thời lượng: khoảng 30–40 giây mỗi short, không quá 60 giây. Lời viết mới (narration.json), mỗi câu có khoảng lặng
+  sau (0,6–1,0 giây) để hình kịp vẽ xong; hình mờ chuyển trong 16 khung.
 - Không render tự động; người dùng tự xuất bằng nút Render trong Studio. Bản xuất ra thẳng -14 LUFS
   (`scripts/shared/render-loudness.cjs`).
 
@@ -47,11 +46,9 @@ Chi tiết ở [image-prompts.md](image-prompts.md).
 
 ## Âm thanh
 
-- **Giọng**: lựa chọn 2, clone giọng người dùng +2 bán cung, như tập 3.
-  - Đoạn trích dùng nguyên giọng đã chốt (`public/book-dnt-001-overview/audio/<đoạn>-voice-full.wav`), cắt ở khoảng nghỉ
-    giữa hai chữ.
-  - Câu mở và lời mời được clone mới trên máy GPU; người dùng nghe và chọn trước khi ghép.
-  - Không kéo chậm giọng. Nghỉ 0,5 giây giữa câu mở và đoạn trích, khoảng 0,8 giây trước lời mời.
+- **Giọng**: lựa chọn 2, clone giọng người dùng +2 bán cung, như tập 3. Toàn bộ lời đọc là lời mới: dựng thử bằng giọng
+  tạm Quốc Tuấn, rồi clone toàn bộ trên máy GPU khi lời đã chốt; người dùng nghe và chọn trước khi ghép. Không kéo chậm
+  giọng; nhịp do khoảng lặng giữa các câu.
 - **Nhạc**: Moavii – Butterflies (freetouse.com), tốc độ 0,85, như short tập 1–2.
   - Âm lượng giữ cố định 4%, cả lúc có lời lẫn lúc nghỉ. Đây là quy tắc series 2026-11-08: nhạc dưới lời không to nhỏ
     theo khoảng nghỉ. Short tập 2 dùng 4%/8%.
@@ -63,8 +60,7 @@ Chi tiết ở [image-prompts.md](image-prompts.md).
   được đọc.
   - Trước mỗi bản vá có hình, chạy `npm run visual-sync -- book-dnt-001-shorts --composition <ID>`.
   - Soát từng khung: đồng bộ với lời, nét chồng, chữ đè, lệch tâm.
-- **Đoạn trích**: giữ nguyên lời đã chốt, không cắt giữa câu; chỉ giữ câu nói ra vấn đề, bỏ chuyện kể và ví dụ. Short 4 bỏ hai chữ đánh số "Thứ ba," và "Thứ tư," (xem
-  script.md).
+- **Lời đọc**: viết mới cho short, vào thẳng vấn đề, không chuyện kể hay ví dụ; câu trích của sách giữ nguyên văn bản dịch.
 - **Câu mở và lời mời**: mỗi short một câu mở kiểu khác, không lặp câu mở của short tập 1–2. Lời mời nói rõ link video đầy
   đủ nằm ở phần bình luận; khi đăng, ghim một bình luận có link theo câu mẫu trong description.md.
 - **Mô tả mỗi short**: hai dòng đầu nêu thông điệp (quy tắc D1–D3 của series), kèm Sách/Tác giả, link video dài và 2–4

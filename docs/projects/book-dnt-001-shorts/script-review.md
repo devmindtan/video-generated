@@ -1,7 +1,7 @@
 # Phản biện kịch bản · 4 short giới thiệu tập 3
 
-Phần lớn lời của short là đoạn trích đã chốt ở tập 3, nên phần soát này chỉ tập trung vào lời mới (4 câu mở và lời mời) và
-các chỗ cắt.
+Lời đọc viết mới toàn bộ (người dùng 2026-11-09: "viết lại lời thoại có độ dài phù hợp, đừng lấy của video gốc").
+Phần soát gồm câu mở, lời mời, nhịp và độ chính xác so với sách.
 
 ## Câu mở
 
@@ -14,27 +14,28 @@ các chỗ cắt.
 
 ## Lời mời
 
-"Câu này nằm trong video mình kể lại trọn cuốn Đắc nhân tâm. Bạn muốn nghe cả cuốn thì link ở phần bình luận nhé."
+"Mình đã kể lại trọn cuốn Đắc nhân tâm trong một video dài. Link ở phần bình luận, bạn ghé xem nhé."
 
-- Khác lời mời của short tập 1 ("Đây là một đoạn trong video…") và tập 2 ("Đoạn này nằm trong video…").
-- Không đọc tên tác giả (quy tắc 2026-11-08). Tên tác giả nằm ở dòng tên sách trên màn hình và trong mô tả.
-- "Câu này" khớp với cả bốn short, vì mỗi đoạn trích là một ý trọn.
+- Khác lời mời của short tập 1–2, và không còn chữ "Câu này" vì short không còn là đoạn trích.
+- Không đọc tên tác giả (quy tắc 2026-11-08).
 
-## Chỗ cắt
+## Nhịp và độ dài
 
-Người dùng (2026-11-09, trả gói lần hai): "Vào ngay giúp tôi vấn đề luôn, đừng có ví dụ, không có thời gian." Vì vậy
-các đoạn trích bỏ chuyện kể và ví dụ, chỉ giữ nhận định, nguyên tắc và cách làm.
+- Mỗi short 6–7 câu, khoảng 30–40 giây với khoảng lặng sau mỗi câu (0,6–1,0 giây, dài hơn sau câu mở và trước lời
+  mời) để hình kịp vẽ xong (góp ý "nhịp hơi nhanh" ở bản thử trước).
+- Câu dài nhất khoảng 27 tiếng (câu trích ở short 3), vẫn đọc được trong một hơi. Câu ngắn ("Đó là chữ nhưng.") xen
+  giữa các câu dài.
+- Không hai câu liền mở bằng cùng một chữ (short 4 đổi "Sách… Sách…" thành "Còn khi khuyên…").
 
-- **Short 1**: bỏ chuyện bữa tiệc. Đoạn bắt đầu ngay sau "Từ câu chuyện ấy," nên không nhắc tới câu chuyện đã bỏ.
-  Câu trích nguyên tắc ("Anh/Chị sai rồi") giữ trọn.
-- **Short 2**: bỏ ví dụ môn toán. Nối thêm câu "Lần tới khi cần góp ý…" ở phần ý kiến cá nhân của tập 3: cùng ý, nói
-  thẳng điều nên làm. Đây là lời của kênh, giọng clone đã chốt.
-- **Short 3**: không đổi; đoạn này vốn không có ví dụ.
-- **Short 4**: bỏ "Thứ ba," và "Thứ tư,". Đây là chỗ duy nhất cắt bên trong câu: chỉ bỏ chữ đánh số ở đầu câu, cắt ở
-  khoảng nghỉ sau dấu phẩy. Người dùng cần nghe chỗ nối khi duyệt.
-- Short 1 còn khoảng 26 giây, ngắn hơn mức 30 giây của short tập 2; người dùng ưu tiên vào thẳng vấn đề.
+## Độ chính xác
+
+- Short 1: "thắng cũng là thua" và nguyên tắc 11 nói lại bằng lời thường, không đặt trong ngoặc như lời trích. Câu
+  "chừa đường lùi" là lời kênh, gần nguyên tắc giữ thể diện ở phần bốn.
+- Short 2: câu "nghi lời khen chỉ để mở đường" đúng ý sách; câu cuối là cách hiểu của kênh.
+- Short 3: câu trích giữ nguyên văn bản dịch.
+- Short 4: nhận xét của kênh, có cả lời bênh để giữ thế trung lập.
 
 ## Trung lập và nguồn
 
-Short không thêm sự kiện mới. Nhận xét của kênh vẫn có "mình thấy" và "mình hiểu" như ở tập 3. Không có con số tỉ lệ
+Short không thêm sự kiện mới, không con số. Nhận xét của kênh vẫn có "mình thấy" và "mình hiểu" như ở tập 3. Không có con số tỉ lệ
 phần trăm hay tuyên bố quảng bá nào của sách.

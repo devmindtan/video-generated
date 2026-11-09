@@ -1,8 +1,7 @@
 # Nghe thử giọng · 4 short giới thiệu tập 3
 
-- Lựa chọn giọng: **2, clone giọng người dùng** (+2 bán cung), như tập 3. Đoạn trích dùng nguyên giọng clone đã chốt của
-  tập 3 (`public/book-dnt-001-overview/audio/<đoạn>-voice-full.wav`, p15).
-- Câu mở và lời mời: theo quy tắc "giọng tạm trước, clone sau", dựng thử trước bằng giọng tạm.
+- Lựa chọn giọng: **2, clone giọng người dùng** (+2 bán cung), như tập 3. Từ 2026-11-09 lời đọc viết mới toàn bộ (không còn
+  đoạn trích giọng của tập 3), nên toàn bộ lời sẽ được clone; trước đó dựng thử bằng giọng tạm.
 
 ## Giọng tạm (người dùng 2026-11-09: "sử dụng giọng quốc tuấn trước xem thế nào")
 
@@ -18,6 +17,17 @@
 - Giọng tạm không có mốc từng chữ: phụ đề câu mở và lời mời dùng mốc ước lượng theo độ dài chữ, chỉ để lật trang đúng
   lúc. Phụ đề sáng theo giọng thật sẽ làm sau khi người dùng chọn bản clone.
 
+## Giọng tạm cho lời viết mới
+
+| Take | Giọng | Máy | Câu |
+|---|---|---|---|
+| `public/voice-auditions/book-dnt-shorts-qt-v2/` | Quốc Tuấn (VieNeu, preset) | laptop | 25 câu của 4 short + lời mời (`audition-qt-v2.json`, sinh từ narration.json) |
+
+- Nhận dạng cục bộ khớp 99%. Chỗ nghe có vẻ sai thanh hoặc sai chữ: "Trong" → "Tròng" (1-4), "thêm" → "thềm" (2-3),
+  "trọn" → "chọn" (2-6 và lời mời), "thật lòng" → "thật long" (3-1), "Đắc nhân tâm" → "Đặc nhần tầm" (câu mở short 4),
+  "nịnh hót" → "lịnh hot" (4-3), "dạy nịnh" → "dạy lịnh" (4-5). Đây là giọng tạm: chỉ để xem nhịp và hình, không sửa.
+- Ghép bằng `build-shorts.py --take book-dnt-shorts-qt-v2`: mỗi short một bản đọc, khoảng lặng sau câu theo narration.json.
+
 ## Giọng clone
 
-Chưa làm: chờ người dùng nghe bản dựng thử và chốt câu mở, lời mời.
+Chưa làm: chờ người dùng chốt lời đọc mới; sau đó clone toàn bộ 25 câu và lời mời trên máy GPU.

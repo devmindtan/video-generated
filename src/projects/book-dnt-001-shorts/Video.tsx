@@ -7,37 +7,45 @@ import '../../shared/stoic-fonts';
 import {MusicFade} from '../../shared/MusicFade';
 import {clamp, ease} from '../book-hvtt-001-overview/Intro';
 import {Draw, appear} from '../book-hvtt-001-overview/scene-kit';
-import {Captions, timelineWith} from '../book-hvtt-001-shorts/ShortFrame';
-import type {ShortData, ShortProps} from '../book-hvtt-001-shorts/ShortFrame';
+import {Captions} from '../book-hvtt-001-shorts/ShortFrame';
+import type {ShortProps, Word} from '../book-hvtt-001-shorts/ShortFrame';
 import {BookDntThumbnail} from '../book-dnt-001-overview/Thumbnail';
 import music from './music.json';
 import data from './shorts.json';
 import layout from './layout.json';
 
-// The four promo shorts of episode 3 (docs/projects/book-dnt-001-shorts): opening line → excerpt of episode 3's
-// accepted clone voice → invitation. Own look, not the long episode's (user 2026-11-09): "paper and ink" from the
-// thumbnail F family — light paper, slate ink, the cover's red, gold — straight to the point, no stories or examples.
-// Shared with the series' shorts kit: timing (timelineWith) and word-lit captions (Captions). Layout keeps YouTube's
-// buttons and title clear: drawings in y 460–1340, x 80–940; captions on a dark band in y 1370–1580. The opening line
-// shows whole and fully lit from the first frame over a drawing of the short's own subject (series rule 2026-11-05),
-// and that drawing repeats the chosen cover so the cover and the first second match.
-// Placeholder phase: opening lines and invitation in the preset voice Quốc Tuấn (shorts.json "placeholder"); the clone
-// replaces them after the user picks it (build-shorts.py), timings follow the new durations.
+// The four promo shorts of episode 3 (docs/projects/book-dnt-001-shorts). The words are written for the shorts (user
+// 2026-11-09: "viết lại lời thoại… đừng lấy của video gốc"; narration.json): an opening line, a few sentences straight
+// to the point, the shared invitation, one narration per short with a rest after every sentence so each drawing
+// finishes before the next (user: the first build was too fast). Own look, not the long episode's: "paper and ink"
+// from the thumbnail F family — light paper, slate ink, the cover's red, gold. Shared with the series' shorts kit: the
+// word-lit captions (Captions). Layout keeps YouTube's buttons and title clear: drawings in y 460–1340, x 80–940;
+// captions on a dark band in y 1370–1580. The opening line shows whole and fully lit from the first frame over the
+// chosen cover's subject (series rule 2026-11-05). Drawings are tied to a sentence id and a word in it, so they follow
+// whichever voice is built in (placeholder Quốc Tuấn now with estimated word times, the picked clone later).
 const SLATE = '#2b3a44', RED = '#a3241b', GOLD = '#c99a45', GOLD_HI = '#e9c77e', BROWN = '#7a5a22', IVORY = '#fbf6ea', BOARD = '#1f2a31', NOTE = '#f6e7b8';
 const COVER = staticFile('book-dnt-001-overview/thumbnail/book-cover-source.webp');
 const GRAIN = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .28 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
-const shorts = (data as unknown as {shorts: ShortData[]}).shorts;
+type Sentence = {id: string; text: string; role: 'hook' | 'body' | 'cta'; startMs: number; endMs: number};
+type ShortVoice = {id: string; title: string; file: string; durationSeconds: number; sentences: Sentence[]; words: (Word & {sentence: string})[]};
+const shorts = (data as unknown as {shorts: ShortVoice[]}).shorts;
 const shortOf = (id: string) => shorts.find((s) => s.id === id) ?? shorts[0];
-const timeline = timelineWith(layout);
+const F = (x: number, fps = 30) => Math.round(x * fps);
+const timeline = (s: ShortVoice, fps = 30) => {
+  const start = F(layout.lead, fps), at = (ms: number) => start + F(ms / 1000, fps);
+  const sentence = (role: Sentence['role']) => s.sentences.find((x) => x.role === role)!;
+  const body = s.sentences.find((x) => x.role === 'body')!;
+  return {start, at, body: at(body.startMs), cta: at(sentence('cta').startMs), end: start + F(s.durationSeconds, fps), total: start + F(s.durationSeconds + layout.tail, fps)};
+};
 export const dntShortMetadata: CalculateMetadataFunction<ShortProps> = ({props}) => ({durationInFrames: timeline(shortOf(props.short)).total});
 
-// Drawing context: t(s) is the frame where the excerpt reaches s seconds; start is the beat's first frame.
-type C = {frame: number; start: number; t: (s: number) => number};
-type Beat = {at: number; draw: (c: C) => ReactNode};
+// Drawing context: s(id, f) is the frame at fraction f of sentence id; w(id, word, n) the frame where its n-th "word" starts.
+type C = {frame: number; start: number; s: (id: string, f?: number) => number; w: (id: string, word: string, n?: number) => number};
+type Beat = {at: string; f?: number; draw: (c: C) => ReactNode};
 const ink = (c: C, d: string, from: number, len = 18, width = 5, color = SLATE, opacity = 1) =>
   <Draw key={d + from} d={d} frame={c.frame} from={from} to={from + len} width={width} color={color} opacity={opacity} />;
-const on = (c: C, sec: number, len = 12) => appear(c.frame, c.t(sec) - 4, len);
-const between = (c: C, a: number, b: number) => interpolate(c.frame, [c.t(a), c.t(b)], [0, 1], {...clamp, easing: ease});
+const on = (c: C, at: number, len = 12) => appear(c.frame, at - 4, len);
+const between = (c: C, a: number, b: number) => interpolate(c.frame, [a, b], [0, 1], {...clamp, easing: ease});
 const T = (x: number, y: number, size: number, text: string, opacity = 1, color = SLATE, anchor: 'middle' | 'start' | 'end' = 'middle') =>
   <text x={x} y={y} textAnchor={anchor} fill={color} fontSize={size} fontWeight={700} opacity={opacity}>{text}</text>;
 // A faceless figure (head and shoulders), standing on y = base.
@@ -78,9 +86,9 @@ const Cover: FC<{x: number; y: number; w: number; rot?: number; split?: boolean;
   </div>;
 };
 
-type ShortDef = {hook: RegExp; highlight: RegExp; split?: boolean; hookArt: (frame: number, fps: number) => ReactNode; hookCover?: (frame: number) => ReactNode; beats: Beat[]; covers?: (c: C, tl: {excerpt: number}) => ReactNode};
+type ShortDef = {hook: RegExp; highlight: RegExp; split?: boolean; hookArt: (frame: number) => ReactNode; hookCover?: (frame: number) => ReactNode; beats: Beat[]};
 
-// ── Short 1 · Thắng cũng là thua (07-phan-3 32.20–46.60). Cover A: the cracked trophy.
+// ── Short 1 · Thắng cũng là thua. Cover A: the cracked trophy.
 const cup = (frame: number, dy: number, crack: number) => <g transform={`translate(0 ${dy}) rotate(-9 540 560)`}>
   <path d="M396 352 H684 C684 516 628 604 540 614 C452 604 396 516 396 352 Z" fill="rgba(201,154,69,.28)" stroke={SLATE} strokeWidth={6} strokeLinejoin="round" />
   <path d="M396 394 C318 394 316 512 418 528 M684 394 C762 394 764 512 662 528 M540 614 V690 M500 690 H580 M462 752 L478 690 H602 L618 752 Z" fill="none" stroke={SLATE} strokeWidth={6} strokeLinecap="round" strokeLinejoin="round" />
@@ -89,38 +97,50 @@ const cup = (frame: number, dy: number, crack: number) => <g transform={`transla
 const chip = (x: number, y: number, label: string, color: string, o: number) => <g opacity={o}><rect x={x} y={y} width={330} height={150} rx={18} fill={BOARD} />
   <rect x={x} y={y + 73} width={330} height={4} fill="#0d1418" />{T(x + 165, y + 108, 92, label, 1, color)}</g>;
 const S1: ShortDef = {
-  hook: /người thua/i, highlight: /thua|thắng|sai rồi/i,
+  hook: /người thua/i, highlight: /thua|thắng|sai|đường lùi|tôn trọng/i,
   hookArt: (frame) => cup(frame, 470, 14),
   beats: [
-    {at: 0, draw: (c) => <g>
-      {figure(300, 1300, 1, appear(c.frame, c.start, 12))}{figure(780, 1300, 1, appear(c.frame, c.start + 4, 12))}
-      {ink(c, 'M380 900 C420 820 520 800 580 840 L560 870 Z', c.t(1.7), 12, 5, SLATE)}{T(480, 860, 56, '!', on(c, 1.9), RED)}
-      {ink(c, 'M700 880 C660 800 560 780 500 820 L520 850 Z', c.t(2.0), 12, 5, SLATE)}{T(600, 830, 56, '!', on(c, 2.2), RED)}
-    </g>},
-    {at: 2.6, draw: (c) => <g>
-      {T(540, 700, 44, 'TRONG MỘT CUỘC TRANH CÃI', 1, BROWN)}
-      {chip(110, 760, 'THUA', '#e85a4a', on(c, 2.82))}{ink(c, 'M470 835 H600 M570 805 L604 835 L570 865', c.t(3.2), 10, 6, SLATE)}{chip(640, 760, 'THUA', '#e85a4a', on(c, 3.56))}
-      {chip(110, 990, 'THẮNG', GOLD_HI, on(c, 4.26))}{ink(c, 'M470 1065 H600 M570 1035 L604 1065 L570 1095', c.t(4.6), 10, 6, SLATE)}{chip(640, 990, 'THUA', '#e85a4a', on(c, 5.04))}
-    </g>},
-    {at: 5.42, draw: (c) => {const grip = between(c, 6.6, 7.4), apart = between(c, 6.2, 7.6);return <g>
-      {figure(300 - 40 * apart, 1300, 1)}{figure(780 + 30 * apart, 1300, 1)}
-      <rect x={720 + 30 * apart} y={1000} width={120} height={110} rx={10} fill={IVORY} stroke={RED} strokeWidth={5 + 7 * grip} />
-      {T(780 + 30 * apart, 1074, 44, 'Ý', 1, RED)}
-      <path d={`M${700 + 30 * apart} 1080 C${720 + 30 * apart} 1130 ${840 + 30 * apart} 1130 ${860 + 30 * apart} 1080`} fill="none" stroke={SLATE} strokeWidth={8} strokeLinecap="round" opacity={grip} />
-      <path d={`M${420 - 40 * apart} 1180 H${640 + 30 * apart} M${450 - 40 * apart} 1150 L${418 - 40 * apart} 1180 L${450 - 40 * apart} 1210 M${610 + 30 * apart} 1150 L${642 + 30 * apart} 1180 L${610 + 30 * apart} 1210`} fill="none" stroke={BROWN} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" opacity={apart} />
-      {T(540, 760, 56, 'càng giữ chặt ý mình', on(c, 6.7), BROWN)}
+    // "Vì khi bị nói là sai, người ta hiếm khi đổi ý."
+    {at: '1-2', draw: (c) => {const crossed = between(c, c.w('1-2', 'đổi'), c.w('1-2', 'đổi') + 10);return <g>
+      {figure(300, 1300, 1, appear(c.frame, c.start, 14))}{figure(780, 1300, 1, appear(c.frame, c.start + 4, 14), crossed > .5 ? 'crossed' : 'down')}
+      {ink(c, 'M380 1110 L560 1060', c.w('1-2', 'nói'), 10, 6, SLATE)}
+      <g opacity={on(c, c.w('1-2', 'sai,'))}><rect x={430} y={860} width={220} height={110} rx={22} fill={IVORY} stroke={RED} strokeWidth={5} />{T(540, 940, 64, 'SAI!', 1, RED)}</g>
+      {T(780, 880, 52, 'không đổi ý', on(c, c.w('1-2', 'đổi')), BROWN)}
     </g>;}},
-    {at: 8.2, draw: (c) => <g>
+    // "Họ lo giữ thể diện, và càng bám chặt điều mình đã nói."
+    {at: '1-3', draw: (c) => {const grip = between(c, c.w('1-3', 'bám'), c.w('1-3', 'nói.')), apart = between(c, c.w('1-3', 'càng'), c.w('1-3', 'nói.') + 8);return <g>
+      {figure(300 - 40 * apart, 1300, 1)}{figure(780 + 30 * apart, 1300, 1)}
+      <rect x={720 + 30 * apart} y={1130} width={120} height={110} rx={10} fill={IVORY} stroke={RED} strokeWidth={5 + 7 * grip} />
+      {T(780 + 30 * apart, 1204, 44, 'Ý', 1, RED)}
+      <path d={`M${700 + 30 * apart} 1210 C${720 + 30 * apart} 1260 ${840 + 30 * apart} 1260 ${860 + 30 * apart} 1210`} fill="none" stroke={SLATE} strokeWidth={8} strokeLinecap="round" opacity={grip} />
+      <path d={`M${420 - 40 * apart} 900 H${640 + 30 * apart} M${450 - 40 * apart} 870 L${418 - 40 * apart} 900 L${450 - 40 * apart} 930 M${610 + 30 * apart} 870 L${642 + 30 * apart} 900 L${610 + 30 * apart} 930`} fill="none" stroke={BROWN} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" opacity={apart} />
+      {T(540, 800, 52, 'giữ thể diện', on(c, c.w('1-3', 'thể')), BROWN)}
+    </g>;}},
+    // "…tranh cãi mà thua thì mình thua, còn thắng thì mình cũng thua."
+    {at: '1-4', draw: (c) => <g>
+      {T(540, 700, 44, 'KHI TRANH CÃI', on(c, c.w('1-4', 'tranh')), BROWN)}
+      {chip(110, 760, 'THUA', '#e85a4a', on(c, c.w('1-4', 'thua'))) }{ink(c, 'M470 835 H600 M570 805 L604 835 L570 865', c.w('1-4', 'thì'), 10, 6, SLATE)}{chip(640, 760, 'THUA', '#e85a4a', on(c, c.w('1-4', 'thua', 2)))}
+      {chip(110, 990, 'THẮNG', GOLD_HI, on(c, c.w('1-4', 'thắng')))}{ink(c, 'M470 1065 H600 M570 1035 L604 1065 L570 1095', c.w('1-4', 'thì', 2), 10, 6, SLATE)}{chip(640, 990, 'THUA', '#e85a4a', on(c, c.w('1-4', 'thua', 3)))}
+    </g>},
+    // "Lời khuyên của sách rất ngắn: tôn trọng ý kiến của người khác, và đừng bao giờ nói thẳng rằng họ sai."
+    {at: '1-5', draw: (c) => <g>
       <path d="M110 640 H970 V1180 L930 1200 L890 1176 L840 1204 L790 1178 L740 1200 L690 1176 L640 1204 L590 1178 L540 1200 L490 1176 L440 1204 L390 1178 L340 1200 L290 1176 L240 1204 L190 1178 L150 1200 L110 1180 Z" fill={IVORY} stroke="rgba(43,58,68,.25)" strokeWidth={2} />
-      {T(540, 730, 40, 'NGUYÊN TẮC', on(c, 8.2), BROWN)}
-      {T(540, 830, 64, '“Tôn trọng ý kiến', on(c, 9.3))}{T(540, 910, 64, 'của người khác.', on(c, 10.2))}
-      {T(540, 1020, 58, 'Đừng bao giờ nói:', on(c, 11.24))}{T(540, 1110, 70, '‘Anh/Chị sai rồi!’”', on(c, 12.2), RED)}
-      {ink(c, 'M190 1088 C400 1072 680 1074 890 1086', c.t(13.6), 14, 9, RED)}
+      {T(540, 730, 40, 'LỜI KHUYÊN CỦA SÁCH', on(c, c.start + 6), BROWN)}
+      {T(540, 840, 64, 'Tôn trọng ý kiến', on(c, c.w('1-5', 'tôn')))}{T(540, 920, 64, 'của người khác', on(c, c.w('1-5', 'người')))}
+      {T(540, 1030, 58, 'Đừng nói thẳng:', on(c, c.w('1-5', 'đừng')))}{T(540, 1120, 70, '“Bạn sai rồi”', on(c, c.w('1-5', 'rằng')), RED)}
+      {ink(c, 'M310 1098 C430 1086 640 1088 770 1096', c.w('1-5', 'sai.') + 4, 12, 9, RED)}
+    </g>},
+    // "Muốn người kia nghĩ lại, mình nên chừa cho họ một đường lùi."
+    {at: '1-6', draw: (c) => <g>
+      {figure(320, 1300, 1)}{figure(720, 1300, 1)}
+      {ink(c, 'M760 1200 C860 1180 920 1080 900 960 M872 990 L900 952 L930 992', c.w('1-6', 'đường'), 18, 7, GOLD)}
+      {T(780, 880, 60, 'ĐƯỜNG LÙI', on(c, c.w('1-6', 'lùi.')), GOLD)}
+      {T(320, 880, 52, 'nghĩ lại?', on(c, c.w('1-6', 'nghĩ')), BROWN)}
     </g>},
   ],
 };
 
-// ── Short 2 · Chữ "nhưng" thành chữ "và" (08-phan-4 24.08–37.64 + 08g-y-kien 49.33–57.40). Cover C: the flip board.
+// ── Short 2 · Chữ "nhưng" thành chữ "và". Cover C: the flip board.
 const NHUNG = ['N', 'H', 'Ư', 'N', 'G'];
 // Blank tiles that flip once, one after another, into NHƯNG as the word is read (user 2026-11-09: no running letters).
 const flapRow = (frame: number, x0: number, y: number, settleAt: number | null) => NHUNG.map((l, i) => {
@@ -128,74 +148,112 @@ const flapRow = (frame: number, x0: number, y: number, settleAt: number | null) 
   const squash = settleAt === null ? 0 : interpolate(frame, [at - 4, at, at + 4], [0, 1, 0], clamp);
   return tile(x0 + i * 164, y, 150, 210, frame >= at ? l : '', '#e85a4a', squash, `f${i}`);
 });
+const flip = (c: C, at: number) => Math.min(between(c, at, at + 5), 1 - between(c, at + 5, at + 10));
 const S2: ShortDef = {
-  hook: /một chữ/i, highlight: /"nhưng"|"và"/i,
+  hook: /một chữ/i, highlight: /nhưng|chữ và|bằng chữ và|động viên/i,
   hookArt: (frame) => <g>{block(330, 820, 420, 'KHEN', 'khen')}{flapRow(frame, 133, 1020, null)}{T(540, 1170, 120, '?', appear(frame, 30, 12), RED)}</g>,
   beats: [
-    {at: 0, draw: (c) => <g>
-      {flapRow(c.frame, 133, 700, c.t(1.2))}
-      {ink(c, 'M540 940 V1010 M510 985 L540 1012 L570 985', c.t(2.4), 10, 6, SLATE)}
-      <g opacity={on(c, 3.0)}>{tile(370, 1040, 160, 220, 'V', GOLD_HI)}{tile(550, 1040, 160, 220, 'À', GOLD_HI)}</g>
+    // "Đó là chữ nhưng."
+    {at: '2-2', draw: (c) => <g>{block(330, 640, 420, 'KHEN', 'khen')}{flapRow(c.frame, 133, 860, c.w('2-2', 'nhưng.'))}</g>},
+    // "Nhiều người hay khen trước, thêm chữ nhưng, rồi mới góp ý."
+    {at: '2-3', draw: (c) => <g>
+      {block(280, 660, 520, 'KHEN', 'khen', on(c, c.w('2-3', 'khen')))}
+      {block(280, 840, 520, 'NHƯNG', 'nhung', on(c, c.w('2-3', 'nhưng,')))}
+      {block(280, 1020, 520, 'GÓP Ý', 've', on(c, c.w('2-3', 'góp')))}
     </g>},
-    {at: 3.3, draw: (c) => {const doubt = between(c, 11.0, 11.6);return <g>
-      {block(280, 640, 520, 'KHEN', 'khen', on(c, 5.38) * (1 - .62 * doubt))}
-      {block(280, 820, 520, 'NHƯNG', 'nhung', on(c, 7.22))}
-      {block(280, 1000, 520, 'CHÊ', 've', on(c, 8.22))}
-      {T(880, 760, 150, '?', doubt, RED)}
+    // "Người nghe vừa nghe tới chữ nhưng là bắt đầu nghi lời khen ban nãy chỉ để mở đường."
+    {at: '2-4', draw: (c) => {const doubt = between(c, c.w('2-4', 'nghi'), c.w('2-4', 'nghi') + 12);return <g>
+      {block(280, 660, 520, 'KHEN', 'khen', 1 - .62 * doubt)}{block(280, 840, 520, 'NHƯNG', 'nhung')}{block(280, 1020, 520, 'GÓP Ý', 've')}
+      {T(880, 780, 150, '?', doubt, RED)}
     </g>;}},
-    {at: 14.08, draw: (c) => {const flip = between(c, 19.3, 19.7), back = between(c, 19.7, 20.1), calm = between(c, 20.5, 21.3);
-      return <g>
-        <circle cx={360} cy={725} r={220} fill="rgba(233,199,126,.35)" opacity={on(c, 17.4, 20)} />
-        {block(110, 660, 500, 'KHEN', 'khen')}
-        <g transform={`translate(360 915) scale(1 ${1 - .95 * Math.min(flip, 1 - back)}) translate(-360 -915)`} opacity={on(c, 18.32)}>
-          {back > 0 ? block(110, 850, 500, 'VÀ', 'board', 1, 'va') : block(110, 850, 500, 'NHƯNG', 'nhung', 1, 'nh')}
-        </g>
-        {block(110, 1040, 500, 'GÓP Ý', 've', on(c, 18.78))}
-        {figure(800, 1320, .95, on(c, 20.44), calm > .5 ? 'open' : 'crossed')}
-        <path d={heartPath(880, 1110, .5)} fill={RED} stroke={GOLD_HI} strokeWidth={3} opacity={between(c, 21.2, 21.6)} />
-      </g>;}},
+    // "…đổi chữ nhưng thành chữ và."
+    {at: '2-5', draw: (c) => {const at = c.w('2-5', 'và.');const f = flip(c, at - 6);return <g>
+      {T(540, 700, 44, 'TÁC GIẢ GỢI Ý', on(c, c.w('2-5', 'tác')), BROWN)}
+      <g transform={`translate(540 960) scale(1 ${1 - .95 * f}) translate(-540 -960)`}>
+        {c.frame < at - 1 ? NHUNG.map((l, i) => tile(133 + i * 164, 855, 150, 210, l, '#e85a4a', 0, `n${i}`))
+          : [tile(370, 840, 160, 240, 'V', GOLD_HI, 0, 'v'), tile(550, 840, 160, 240, 'À', GOLD_HI, 0, 'a')]}
+      </g>
+    </g>;}},
+    // "Mình nói trọn lời khen trước, rồi nối lời góp ý bằng chữ và."
+    {at: '2-6', draw: (c) => <g>
+      <circle cx={540} cy={725} r={240} fill="rgba(233,199,126,.35)" opacity={on(c, c.w('2-6', 'trọn'), 20)} />
+      {block(280, 660, 520, 'KHEN', 'khen')}
+      {block(280, 840, 520, 'VÀ', 'board', on(c, c.w('2-6', 'và.')))}
+      {block(280, 1020, 520, 'GÓP Ý', 've', on(c, c.w('2-6', 'góp')))}
+    </g>},
+    // "Vậy là lời khen vẫn còn nguyên, còn lời góp ý thì nghe như một lời động viên."
+    {at: '2-7', draw: (c) => {const calm = between(c, c.w('2-7', 'động'), c.w('2-7', 'viên.'));return <g>
+      <circle cx={360} cy={725} r={200} fill="rgba(233,199,126,.35)" />
+      {block(110, 660, 500, 'KHEN', 'khen')}{block(110, 850, 500, 'VÀ', 'board')}{block(110, 1040, 500, 'GÓP Ý', 've')}
+      {figure(800, 1320, .95, 1, calm > .5 ? 'open' : 'crossed')}
+      <path d={heartPath(880, 1110, .5)} fill={RED} stroke={GOLD_HI} strokeWidth={3} opacity={calm} />
+      {T(800, 820, 52, 'động viên', on(c, c.w('2-7', 'động')), GOLD)}
+    </g>;}},
   ],
 };
 
-// ── Short 3 · Tấm lòng hay cửa miệng (04-soi-chi 26.92–47.40). Cover C: hollow bubble and red heart.
+// ── Short 3 · Tấm lòng hay cửa miệng. Cover C: hollow bubble and red heart.
 const PROFILE = 'M300 1300 C300 1150 360 1080 430 1050 C400 1010 380 960 382 900 C386 790 470 720 560 726 C650 732 712 800 712 880 C712 906 724 920 740 946 C748 960 738 970 722 972 C724 990 720 1004 712 1010 C716 1026 706 1040 690 1040 C680 1060 650 1070 620 1068 L612 1092 C680 1120 740 1180 760 1300 Z';
 const S3: ShortDef = {
-  hook: /khéo miệng|thật lòng/i, highlight: /chân thành|tấm lòng|cửa miệng/i, split: true,
+  hook: /khéo miệng|thật lòng/i, highlight: /dạy nịnh|tấm lòng|cửa miệng|chân thành|kỹ thuật/i, split: true,
   hookArt: (frame) => <g>
     <path d="M150 840 H490 C520 840 532 856 532 884 V1040 C532 1068 520 1084 490 1084 H300 L240 1130 L252 1084 H150 C120 1084 108 1068 108 1040 V884 C108 856 120 840 150 840 Z" fill="rgba(251,246,234,.55)" stroke={SLATE} strokeWidth={7} strokeDasharray="22 14" />
     <path d={heartPath(780, 990, 1.9 + .04 * Math.sin(frame / 8))} fill={RED} stroke={GOLD_HI} strokeWidth={5} />
   </g>,
-  covers: (c) => c.frame < c.t(5.4) ? <div style={{opacity: interpolate(c.frame, [c.t(5.0), c.t(5.4)], [1, 0], clamp) * appear(c.frame, c.t(0) - 6, 12)}}><Cover x={400} y={640} w={280} split /></div> : null,
   beats: [
-    {at: 0, draw: (c) => <g>
-      {T(840, 860, 64, 'THÍCH', on(c, 3.4), GOLD)}{T(240, 860, 64, 'CHÊ', on(c, 4.1), SLATE)}
-      {T(540, 1180, 52, 'đều nên nhớ', on(c, 4.8), BROWN)}
+    // "Có người đọc xong thì thấy đây là sách dạy nịnh."
+    {at: '3-2', draw: (c) => <g>
+      <foreignObject x={400} y={640} width={290} height={420}><Cover x={0} y={0} w={280} /></foreignObject>
+      <g opacity={on(c, c.w('3-2', 'dạy'))} transform="rotate(-8 540 1000)"><rect x={330} y={930} width={420} height={120} rx={16} fill="rgba(251,246,234,.85)" stroke={RED} strokeWidth={10} />{T(540, 1014, 72, 'DẠY NỊNH?', 1, RED)}</g>
     </g>},
-    {at: 5.62, draw: (c) => <g>
-      {figure(290, 1300, 1)}{figure(790, 1300, 1)}
-      <path d={heartPath(540, 1010, 1.2)} fill={RED} stroke={GOLD_HI} strokeWidth={4} opacity={on(c, 7.0)} />
-      {T(540, 760, 60, 'CHÂN THÀNH', on(c, 7.1), RED)}
+    // "Nhưng chính tác giả lại vạch ranh giới rất rõ."
+    {at: '3-3', draw: (c) => <g>
+      <foreignObject x={400} y={640} width={290} height={420}><Cover x={0} y={0} w={280} split /></foreignObject>
+      {ink(c, 'M540 560 V1320', c.w('3-3', 'vạch'), 20, 6, GOLD)}
+      {T(250, 880, 56, 'NỊNH', on(c, c.w('3-3', 'ranh')), SLATE)}{T(830, 880, 56, 'THẬT LÒNG', on(c, c.w('3-3', 'rõ.')), RED)}
     </g>},
-    {at: 7.96, draw: (c) => <g>
+    // "…một điều xuất phát từ tấm lòng, một điều chỉ từ cửa miệng."
+    {at: '3-4', draw: (c) => <g>
       <g transform="translate(-80 60) scale(.8)"><path d={PROFILE} fill={SLATE} opacity={appear(c.frame, c.start, 12)} /></g>
-      <path d={heartPath(344, 980, .55)} fill={RED} stroke={GOLD_HI} strokeWidth={3} opacity={on(c, 11.7)} />
-      {ink(c, 'M380 990 C470 1030 560 1050 640 1060', c.t(11.8), 14, 7, GOLD)}{T(790, 1084, 60, 'TẤM LÒNG', on(c, 12.0), RED)}
-      <g opacity={1 - between(c, 14.3, 14.8) * .85}>
-        <path d="M515 857 C580 830 640 790 700 760" fill="none" stroke={SLATE} strokeWidth={4} strokeDasharray="12 14" opacity={on(c, 13.5)} />
-        {T(790, 730, 60, 'CỬA MIỆNG', on(c, 13.7), SLATE)}
-      </g>
+      <path d={heartPath(344, 980, .55)} fill={RED} stroke={GOLD_HI} strokeWidth={3} opacity={on(c, c.w('3-4', 'tấm'))} />
+      {ink(c, 'M380 990 C470 1030 560 1050 640 1060', c.w('3-4', 'tấm'), 14, 7, GOLD)}{T(790, 1084, 60, 'TẤM LÒNG', on(c, c.w('3-4', 'lòng', 2)), RED)}
+      <path d="M515 857 C580 830 640 790 700 760" fill="none" stroke={SLATE} strokeWidth={4} strokeDasharray="12 14" opacity={on(c, c.w('3-4', 'cửa'))} />
+      {T(790, 730, 60, 'CỬA MIỆNG', on(c, c.w('3-4', 'miệng.')), SLATE)}
     </g>},
-    {at: 14.84, draw: (c) => {const shrink = between(c, 17.3, 18.3), other = on(c, 19.0, 16);return <g>
-      <circle cx={760} cy={1040} r={300} fill="rgba(233,199,126,.32)" opacity={other} />
-      <text x={540 - 260 * shrink} y={980 - 40 * shrink} textAnchor="middle" fill={SLATE} fontSize={260 - 160 * shrink} fontWeight={700} opacity={appear(c.frame, c.start, 12)}>TÔI</text>
-      {figure(280, 1300, .8, shrink)}{figure(760, 1300, 1.05, other)}
+    // "Vì vậy, mọi nguyên tắc trong sách đều phải đi kèm sự chân thành."
+    {at: '3-5', draw: (c) => <g>
+      {figure(290, 1300, 1)}{figure(790, 1300, 1)}
+      <path d={heartPath(540, 1010, 1.2)} fill={RED} stroke={GOLD_HI} strokeWidth={4} opacity={on(c, c.w('3-5', 'chân'))} />
+      {T(540, 760, 60, 'CHÂN THÀNH', on(c, c.w('3-5', 'thành.')), RED)}
+    </g>},
+    // "Mình thấy, thiếu điều đó thì nụ cười hay việc nhớ tên người khác cũng chỉ còn là kỹ thuật."
+    {at: '3-6', draw: (c) => {const cold = between(c, c.w('3-6', 'kỹ'), c.w('3-6', 'thuật.') + 6);return <g>
+      <g opacity={on(c, c.w('3-6', 'nụ'))}><circle cx={330} cy={900} r={130} fill={IVORY} stroke={cold > .5 ? '#8a969c' : SLATE} strokeWidth={6} /><path d="M265 930 Q330 985 395 930" fill="none" stroke={cold > .5 ? '#8a969c' : RED} strokeWidth={7} strokeLinecap="round" /></g>
+      <g opacity={on(c, c.w('3-6', 'nhớ'))}><rect x={600} y={820} width={300} height={170} rx={16} fill={IVORY} stroke={cold > .5 ? '#8a969c' : SLATE} strokeWidth={6} />{T(750, 885, 40, 'XIN CHÀO', 1, BROWN)}{T(750, 950, 50, 'TÊN', 1, cold > .5 ? '#8a969c' : SLATE)}</g>
+      {T(540, 1180, 64, 'chỉ còn là kỹ thuật?', cold, SLATE)}
+      <circle cx={540} cy={1020} r={36} fill="none" stroke="#8a969c" strokeWidth={10} strokeDasharray="14 10" opacity={cold} />
     </g>;}},
   ],
 };
 
-// ── Short 4 · Vì sao có người không thích cuốn sách (08e 31.30–39.80 + 40.62–61.30). Cover A: sticky notes.
+// ── Short 4 · Vì sao có người không thích cuốn sách. Cover A: sticky notes.
+const scale = (c: C, tiltDeg: number, extra?: ReactNode) => {
+  const pan = (x: number, y: number, label: string, color: string) => <g>
+    <path d={`M${x} ${y - 300} V${y}`} stroke={SLATE} strokeWidth={4} />
+    <path d={`M${x - 140} ${y} H${x + 140} C${x + 130} ${y + 40} ${x + 70} ${y + 56} ${x} ${y + 56} C${x - 70} ${y + 56} ${x - 130} ${y + 40} ${x - 140} ${y} Z`} fill={IVORY} stroke={SLATE} strokeWidth={5} />
+    {T(x, y + 120, 56, label, 1, color)}
+  </g>;
+  const r = (tiltDeg * Math.PI) / 180, lx = 540 - 250 * Math.cos(r), ly = 760 - 250 * Math.sin(r), rx = 540 + 250 * Math.cos(r), ry = 760 + 250 * Math.sin(r);
+  return <g>
+    <path d="M540 760 V1330 M440 1330 H640" stroke={SLATE} strokeWidth={6} strokeLinecap="round" />
+    <circle cx={540} cy={760} r={14} fill={GOLD} />
+    <path d={`M${lx} ${ly} L${rx} ${ry}`} stroke={SLATE} strokeWidth={8} strokeLinecap="round" />
+    {pan(lx, ly + 300, 'THÍCH', GOLD)}{pan(rx, ry + 300, 'CHÊ', RED)}
+    {extra ? <g transform={`translate(${rx - 790} ${ry - 760})`}>{extra}</g> : null}
+  </g>;
+};
 const S4: ShortDef = {
-  hook: /đáng chê/i, highlight: /thao túng|dừng ở đâu|nói thẳng|giới hạn|dạy nịnh/i,
+  hook: /đáng chê/i, highlight: /thao túng|dừng ở đâu|nói thẳng|giới hạn|dạy nịnh|chưa công bằng|đều có phần đúng/i,
   hookArt: () => null,
   hookCover: (frame) => <>
     <Cover x={380} y={800} w={320} rot={-3} />
@@ -204,43 +262,40 @@ const S4: ShortDef = {
     </div>
   </>,
   beats: [
-    {at: 0, draw: (c) => {const cut = between(c, 3.7, 4.1);return <g>
-      {note(330, 600, 420, ['dễ thành', 'thao túng?'], -3, on(c, 0.4))}
-      {ink(c, 'M380 870 C440 840 640 840 700 870 M430 870 V840 M540 860 V826 M650 870 V840', c.t(1.0), 16, 6, SLATE)}
-      <path d={`M430 880 V${1010 - 60 * cut} M540 870 V${1000 - 60 * cut} M650 880 V${1010 - 60 * cut}`} stroke={BROWN} strokeWidth={3} opacity={on(c, 1.5)} />
-      <path d="M430 1060 V1090 M540 1050 V1080 M650 1060 V1090" stroke={BROWN} strokeWidth={3} opacity={on(c, 1.5) * (1 - cut)} />
-      {figure(540, 1320, .75, on(c, 1.2))}
+    // "…nếu tách khỏi sự chân thành, rất dễ thành thao túng."
+    {at: '4-2', draw: (c) => {const cut = between(c, c.w('4-2', 'túng.'), c.w('4-2', 'túng.') + 10);return <g>
+      {note(330, 600, 420, ['dễ thành', 'thao túng?'], -3, on(c, c.start + 6))}
+      {ink(c, 'M380 870 C440 840 640 840 700 870 M430 870 V840 M540 860 V826 M650 870 V840', c.w('4-2', 'tách'), 16, 6, SLATE)}
+      <path d={`M430 880 V${1010 - 60 * cut} M540 870 V${1000 - 60 * cut} M650 880 V${1010 - 60 * cut}`} stroke={BROWN} strokeWidth={3} opacity={on(c, c.w('4-2', 'chân'))} />
+      <path d="M430 1060 V1090 M540 1050 V1080 M650 1060 V1090" stroke={BROWN} strokeWidth={3} opacity={on(c, c.w('4-2', 'chân')) * (1 - cut)} />
+      {figure(540, 1320, .75, on(c, c.w('4-2', 'cách')))}
     </g>;}},
-    {at: 4.48, draw: (c) => <g>
-      {note(330, 600, 420, ['dừng', 'ở đâu?'], 3, on(c, 4.6))}
-      {ink(c, 'M130 1260 H950', c.t(5.0), 18, 5, SLATE)}
-      {figure(300, 1250, .7, on(c, 5.3))}
-      <path d="M720 940 V1260" stroke={RED} strokeWidth={7} strokeDasharray="20 16" opacity={on(c, 7.5)} />
-      {T(800, 960, 90, '?', on(c, 7.8), RED)}
+    // "Sách có cảnh báo chuyện nịnh hót, nhưng chưa nói nhiều về việc dừng ở đâu."
+    {at: '4-3', draw: (c) => <g>
+      {note(330, 600, 420, ['dừng', 'ở đâu?'], 3, on(c, c.start + 6))}
+      {ink(c, 'M130 1260 H950', c.w('4-3', 'cảnh'), 18, 5, SLATE)}
+      {figure(300, 1250, .7, on(c, c.w('4-3', 'nịnh')))}
+      <path d="M720 940 V1260" stroke={RED} strokeWidth={7} strokeDasharray="20 16" opacity={on(c, c.w('4-3', 'dừng'))} />
+      {T(800, 960, 90, '?', on(c, c.w('4-3', 'đâu.')), RED)}
     </g>},
-    {at: 9.09, draw: (c) => <g>
-      {note(330, 600, 420, ['lúc cần', 'nói thẳng?'], -2, on(c, 9.2))}
+    // "Còn khi khuyên tránh tranh cãi, sách gần như không bàn tới lúc cần nói thẳng, hay cần đặt giới hạn."
+    {at: '4-4', draw: (c) => <g>
+      {note(330, 600, 420, ['lúc cần', 'nói thẳng?'], -2, on(c, c.start + 6))}
       {figure(290, 1300, .9)}{figure(790, 1300, .9)}
-      {ink(c, 'M380 950 C410 900 470 890 500 910 L486 934 Z', c.t(13.9), 10, 5, SLATE)}{T(450, 935, 44, '!', on(c, 14.0), RED)}
-      {ink(c, 'M540 900 V1310', c.t(14.95), 14, 8, RED)}
-      {T(540, 1350, 40, 'GIỚI HẠN', on(c, 15.2), RED)}
+      {ink(c, 'M380 950 C410 900 470 890 500 910 L486 934 Z', c.w('4-4', 'nói'), 10, 5, SLATE)}{T(450, 935, 44, '!', on(c, c.w('4-4', 'thẳng,')), RED)}
+      {ink(c, 'M540 900 V1310', c.w('4-4', 'giới'), 14, 8, RED)}
+      {T(540, 1350, 40, 'GIỚI HẠN', on(c, c.w('4-4', 'hạn.')), RED)}
     </g>},
-    {at: 19.45, draw: (c) => {const tilt = 8 * between(c, 22.4, 23.0) * (1 - between(c, 26.9, 28.6));
-      const pan = (x: number, y: number, label: string, color: string) => <g>
-        <path d={`M${x} ${y - 300} V${y}`} stroke={SLATE} strokeWidth={4} />
-        <path d={`M${x - 140} ${y} H${x + 140} C${x + 130} ${y + 40} ${x + 70} ${y + 56} ${x} ${y + 56} C${x - 70} ${y + 56} ${x - 130} ${y + 40} ${x - 140} ${y} Z`} fill={IVORY} stroke={SLATE} strokeWidth={5} />
-        {T(x, y + 120, 56, label, 1, color)}
-      </g>;
-      const r = (tilt * Math.PI) / 180, lx = 540 - 250 * Math.cos(r), ly = 760 - 250 * Math.sin(r), rx = 540 + 250 * Math.cos(r), ry = 760 + 250 * Math.sin(r);
-      return <g opacity={appear(c.frame, c.start, 12)}>
-        <path d="M540 760 V1330 M440 1330 H640" stroke={SLATE} strokeWidth={6} strokeLinecap="round" />
-        <circle cx={540} cy={760} r={14} fill={GOLD} />
-        <path d={`M${lx} ${ly} L${rx} ${ry}`} stroke={SLATE} strokeWidth={8} strokeLinecap="round" />
-        {pan(lx, ly + 300, 'THÍCH', GOLD)}{pan(rx, ry + 300, 'CHÊ', RED)}
-        <g opacity={on(c, 22.4)} transform={`rotate(4 ${rx} ${ry + 260})`}><rect x={rx - 130} y={ry + 214} width={260} height={84} fill={NOTE} stroke="rgba(60,40,15,.15)" />{T(rx, ry + 272, 44, 'dạy nịnh?', 1, RED)}</g>
-        {ink(c, `M${rx - 116} ${ry + 258} H${rx + 116}`, c.t(23.6), 12, 5, GOLD)}
-        {T(540, 680, 52, 'đều có phần đúng', on(c, 27.3), BROWN)}
-      </g>;}},
+    // "Ngược lại, gọi cả cuốn là sách dạy nịnh thì cũng chưa công bằng."
+    {at: '4-5', draw: (c) => {const tilt = 8 * between(c, c.w('4-5', 'dạy'), c.w('4-5', 'nịnh') + 8);return <g>
+      {scale(c, tilt, <g opacity={on(c, c.w('4-5', 'dạy'))} transform="rotate(4 790 1020)"><rect x={660} y={974} width={260} height={84} fill={NOTE} stroke="rgba(60,40,15,.15)" />{T(790, 1032, 44, 'dạy nịnh?', 1, RED)}</g>)}
+      {T(540, 680, 52, 'chưa công bằng', on(c, c.w('4-5', 'công')), BROWN)}
+    </g>;}},
+    // "Hai cách nhìn ấy, mình nghĩ đều có phần đúng."
+    {at: '4-6', draw: (c) => {const level = 8 * (1 - between(c, c.w('4-6', 'đều'), c.w('4-6', 'đúng.') + 10));return <g>
+      {scale(c, level, <g transform="rotate(4 790 1020)"><rect x={660} y={974} width={260} height={84} fill={NOTE} stroke="rgba(60,40,15,.15)" />{T(790, 1032, 44, 'dạy nịnh?', 1, RED)}</g>)}
+      {T(540, 680, 52, 'đều có phần đúng', on(c, c.w('4-6', 'đều')), BROWN)}
+    </g>;}},
   ],
 };
 
@@ -252,26 +307,26 @@ const marked = (text: string, re: RegExp) => {
   for (const m of text.matchAll(new RegExp(re.source, 'gi'))) {out.push(text.slice(at, m.index));out.push(<span key={m.index} style={{color: RED}}>{m[0]}</span>);at = (m.index ?? 0) + m[0].length;}
   out.push(text.slice(at));return out;
 };
+const norm = (x: string) => x.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
 
 export const DntShort: FC<ShortProps> = ({short: id}) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
   const s = shortOf(id), tl = timeline(s, fps), def = DEFS[s.id] ?? S1;
-  const F = (x: number) => Math.round(x * fps);
-  // Beat times are written against the cut without the added rests; holds (build-shorts.py) map them onto the audio.
-  const holds = (s.excerpt as {holds?: {at: number; add: number}[]}).holds ?? [];
-  const t = (sec: number) => tl.excerpt + F(sec + holds.reduce((sum, h) => sum + (h.at < sec ? h.add : 0), 0));
-  // Drawings fade over 16 frames, the old one out in the rest before the new sentence (smooth, unhurried changes).
-  const starts = def.beats.map((b, i) => (i === 0 ? tl.excerpt - 8 : t(b.at) - 16));
+  const sentence = (sid: string) => s.sentences.find((x) => x.id === sid) ?? s.sentences[0];
+  const at = (sid: string, f = 0) => {const x = sentence(sid);return tl.at(x.startMs + (x.endMs - x.startMs) * f);};
+  // Frame where the n-th occurrence of a word (compared without punctuation and case) starts in sentence sid.
+  const w = (sid: string, word: string, n = 1) => {const hits = s.words.filter((x) => x.sentence === sid && norm(x.text) === norm(word));
+    const hit = hits[Math.min(n, hits.length) - 1];return hit ? tl.at(hit.startMs) : at(sid);};
+  // Drawings fade over 16 frames; the old one goes out in the rest before its successor's sentence.
+  const starts = def.beats.map((b) => at(b.at, b.f ?? 0) - 16);
   const opacityOf = (i: number) => interpolate(frame, [starts[i], starts[i] + 16, (starts[i + 1] ?? tl.cta - 8) - 16, starts[i + 1] ?? tl.cta + 8], [0, 1, 1, 0], clamp);
-  const hookIn = interpolate(frame, [tl.excerpt - 14, tl.excerpt - 2], [1, 0], clamp);
+  const hookIn = interpolate(frame, [tl.body - 22, tl.body - 6], [1, 0], clamp);
   const ctaIn = interpolate(frame, [tl.cta - 8, tl.cta + 10], [0, 1], {...clamp, easing: ease});
-  const band = interpolate(frame, [tl.excerpt - 10, tl.excerpt + 2], [0, 1], clamp);
+  const band = interpolate(frame, [tl.body - 12, tl.body], [0, 1], clamp);
   const fadeOut = interpolate(frame, [durationInFrames - .7 * fps, durationInFrames], [1, 0], clamp);
-  const hookText = s.hook.words.map((w) => w.text).join(' ');
-  const pageWords = (clip: typeof s.excerpt.words, from: number) => clip.map((w) => ({...w, startMs: w.startMs + from * 1000 / fps, endMs: w.endMs + from * 1000 / fps}));
-  const bodyWords = useMemo(() => [...pageWords(s.excerpt.words, tl.excerpt), ...pageWords(s.cta.words, tl.cta)], [id]); // eslint-disable-line react-hooks/exhaustive-deps
-  const c0: C = {frame, start: 0, t};
+  const hookText = s.sentences[0].text;
+  const bodyWords = useMemo(() => s.words.filter((x) => x.sentence !== s.sentences[0].id).map((x) => ({...x, startMs: x.startMs + layout.lead * 1000, endMs: x.endMs + layout.lead * 1000})), [id]); // eslint-disable-line react-hooks/exhaustive-deps
   const paper = def.split
     ? 'radial-gradient(ellipse 34% 40% at 50% 50%, rgba(255,250,238,.9), rgba(255,250,238,0) 70%), linear-gradient(90deg, #d9dddd 0%, #e5e6e2 32%, #efe9dc 50%, #f5e9cf 68%, #f0dbb3 100%)'
     : 'radial-gradient(ellipse 60% 34% at 50% 50%, rgba(255,251,240,.85), rgba(255,251,240,0) 72%), linear-gradient(180deg, #dcdfdf 0%, #e8e8e3 30%, #efe8da 55%, #f4e6c9 80%, #f0dcb6 100%)';
@@ -287,11 +342,10 @@ export const DntShort: FC<ShortProps> = ({short: id}) => {
           <div>{marked(hookText, def.hook)}</div>
         </div>
         {def.hookCover?.(frame)}
-        <svg viewBox="0 0 1080 1920" width={1080} height={1920} style={{position: 'absolute', inset: 0}}>{def.hookArt(frame, fps)}</svg>
+        <svg viewBox="0 0 1080 1920" width={1080} height={1920} style={{position: 'absolute', inset: 0}}>{def.hookArt(frame)}</svg>
       </div>
-      {def.covers?.(c0, tl)}
       <svg viewBox="0 0 1080 1920" width={1080} height={1920} style={{position: 'absolute', inset: 0, overflow: 'visible'}}>
-        {def.beats.map((b, i) => {const o = opacityOf(i);return o > .001 ? <g key={i} opacity={o}>{b.draw({frame, start: starts[i], t})}</g> : null;})}
+        {def.beats.map((b, i) => {const o = opacityOf(i);return o > .001 ? <g key={i} opacity={o}>{b.draw({frame, start: starts[i] + 16, s: at, w})}</g> : null;})}
       </svg>
       {/* Invitation: episode 3's own thumbnail, the comment link. */}
       <div style={{opacity: ctaIn}}>
@@ -302,15 +356,13 @@ export const DntShort: FC<ShortProps> = ({short: id}) => {
           {T(540, 1232, 46, 'Link ở phần bình luận', appear(frame, tl.cta + 34, 12))}
         </svg>
       </div>
-      {/* Caption band (excerpt and invitation), the channel's caption type on dark ink. */}
+      {/* Caption band (after the opening line), the channel's caption type on dark ink. */}
       <div style={{position: 'absolute', left: 60, width: 960, top: 1370, height: 210, borderRadius: 26, background: 'rgba(31,42,49,.92)', opacity: band}} />
-      {frame >= tl.excerpt - 2 ? <Captions words={bodyWords} ms={frame * 1000 / fps} highlight={def.highlight} /> : null}
+      {frame >= tl.body - 2 ? <Captions words={bodyWords} ms={frame * 1000 / fps} highlight={def.highlight} /> : null}
       <AbsoluteFill style={{opacity: .34, mixBlendMode: 'multiply', backgroundImage: GRAIN, pointerEvents: 'none'}} />
       <AbsoluteFill style={{background: 'radial-gradient(ellipse 95% 80% at 50% 50%, transparent 60%, rgba(70,55,30,.26) 100%)', pointerEvents: 'none'}} />
     </AbsoluteFill>
-    <Track name="Giọng · câu mở (tạm: Quốc Tuấn)"><Sequence from={tl.hook} durationInFrames={F(s.hook.durationSeconds) + 2}><Audio src={staticFile(s.hook.file)} /></Sequence></Track>
-    <Track name="Giọng · đoạn trích tập 3"><Sequence from={tl.excerpt} durationInFrames={tl.cta - tl.excerpt}><Audio src={staticFile(s.excerpt.file)} /></Sequence></Track>
-    <Track name="Giọng · lời mời (tạm: Quốc Tuấn)"><Sequence from={tl.cta} durationInFrames={F(s.cta.durationSeconds) + 2}><Audio src={staticFile(s.cta.file)} /></Sequence></Track>
+    <Track name="Giọng · lời đọc (tạm: Quốc Tuấn)"><Sequence from={tl.start} durationInFrames={tl.end - tl.start + 2}><Audio src={staticFile(s.file)} /></Sequence></Track>
     <Track name={`Nhạc nền · ${music.credit.artists.join(', ')} – ${music.credit.title} · chỉnh đầu/cuối trong Edit`}>
       <MusicFade fadeInSeconds={music.fadeInSeconds} fadeOutSeconds={music.fadeOutSeconds}>
         <Audio name={`${music.credit.artists.join(', ')} – ${music.credit.title}`} src={staticFile(music.file)} from={0} durationInFrames={durationInFrames} volume={music.speechVolume} playbackRate={music.playbackRate} loop />

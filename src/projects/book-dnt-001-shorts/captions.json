@@ -3,190 +3,202 @@
   "short-1": {
    "title": "Short 1 · Thắng cũng là thua",
    "composition": "BookDntShortThangThua",
-   "durationSeconds": 29.73,
+   "durationSeconds": 34.11,
    "pages": [
     {
      "part": "Câu mở",
      "text": "Cãi thắng một người, nhiều khi chính mình mới là người thua.",
-     "startMs": 350,
-     "endMs": 2997
+     "startMs": 340,
+     "endMs": 3087
     },
     {
-     "part": "Đoạn trích tập 3",
-     "text": "Tác giả kết luận rằng trong một cuộc tranh cãi, thua thì mình thua, mà thắng thì mình cũng thua, vì người kia sẽ càng giữ chặt ý của họ.",
-     "startMs": 4173,
-     "endMs": 13613
+     "part": "Lời đọc",
+     "text": "Vì khi bị nói là sai, người ta hiếm khi đổi ý.",
+     "startMs": 4167,
+     "endMs": 6790
     },
     {
-     "part": "Đoạn trích tập 3",
-     "text": "Nguyên tắc của ông là: \"Tôn trọng ý kiến của người khác.",
-     "startMs": 14833,
-     "endMs": 17693
+     "part": "Lời đọc",
+     "text": "Họ lo giữ thể diện, và càng bám chặt điều mình đã nói.",
+     "startMs": 7470,
+     "endMs": 10462
     },
     {
-     "part": "Đoạn trích tập 3",
-     "text": "Đừng bao giờ nói rằng: 'Anh/Chị sai rồi!'.\"",
-     "startMs": 18373,
-     "endMs": 21393
+     "part": "Lời đọc",
+     "text": "Trong Đắc nhân tâm, tác giả cho rằng: tranh cãi mà thua thì mình thua, còn thắng thì mình cũng thua.",
+     "startMs": 11442,
+     "endMs": 16248
+    },
+    {
+     "part": "Lời đọc",
+     "text": "Lời khuyên của sách rất ngắn: tôn trọng ý kiến của người khác, và đừng bao giờ nói thẳng rằng họ sai.",
+     "startMs": 17228,
+     "endMs": 22507
+    },
+    {
+     "part": "Lời đọc",
+     "text": "Muốn người kia nghĩ lại, mình nên chừa cho họ một đường lùi.",
+     "startMs": 23387,
+     "endMs": 26344
     },
     {
      "part": "Lời mời",
-     "text": "Câu này nằm trong video mình kể lại trọn cuốn Đắc nhân tâm.",
-     "startMs": 22783,
-     "endMs": 25604
-    },
-    {
-     "part": "Lời mời",
-     "text": "Bạn muốn nghe cả cuốn thì link ở phần bình luận nhé.",
-     "startMs": 25604,
-     "endMs": 28097
+     "text": "Mình đã kể lại trọn cuốn Đắc nhân tâm trong một video dài. Link ở phần bình luận, bạn ghé xem nhé.",
+     "startMs": 27524,
+     "endMs": 32475
     }
    ]
   },
   "short-2": {
-   "title": "Short 2 · Chữ “nhưng” thành “và”",
+   "title": "Short 2 · Chữ “nhưng” thành chữ “và”",
    "composition": "BookDntShortNhungVa",
-   "durationSeconds": 38.17,
+   "durationSeconds": 36.16,
    "pages": [
     {
      "part": "Câu mở",
      "text": "Lời khen của bạn có thể mất hết tác dụng, chỉ vì một chữ.",
-     "startMs": 350,
-     "endMs": 3362
+     "startMs": 340,
+     "endMs": 3452
     },
     {
-     "part": "Đoạn trích tập 3",
-     "text": "Đổi chữ \"nhưng\" thành chữ \"và\".",
-     "startMs": 4740,
-     "endMs": 7540
+     "part": "Lời đọc",
+     "text": "Đó là chữ nhưng.",
+     "startMs": 4432,
+     "endMs": 5630
     },
     {
-     "part": "Đoạn trích tập 3",
-     "text": "Tác giả để ý rằng nhiều người hay khen trước, rồi thêm chữ \"nhưng\" và một lời chê.",
-     "startMs": 8400,
-     "endMs": 14060
+     "part": "Lời đọc",
+     "text": "Nhiều người hay khen trước, thêm chữ nhưng, rồi mới góp ý.",
+     "startMs": 6510,
+     "endMs": 9644
     },
     {
-     "part": "Đoạn trích tập 3",
-     "text": "Người nghe vừa nghe chữ \"nhưng\" là bắt đầu nghi lời khen ban nãy chỉ để mở đường.",
-     "startMs": 14960,
-     "endMs": 19560
+     "part": "Lời đọc",
+     "text": "Người nghe vừa nghe tới chữ nhưng là bắt đầu nghi lời khen ban nãy chỉ để mở đường.",
+     "startMs": 10324,
+     "endMs": 14369
     },
     {
-     "part": "Đoạn trích tập 3",
-     "text": "Lần tới khi cần góp ý cho ai đó, các bạn thử nói trọn lời khen trước, rồi nối lời góp ý bằng chữ \"và\", xem người nghe phản ứng có khác không.",
-     "startMs": 20780,
-     "endMs": 29920
+     "part": "Lời đọc",
+     "text": "Trong Đắc nhân tâm, tác giả gợi ý một cách rất đơn giản: đổi chữ nhưng thành chữ và.",
+     "startMs": 15349,
+     "endMs": 19398
+    },
+    {
+     "part": "Lời đọc",
+     "text": "Mình nói trọn lời khen trước, rồi nối lời góp ý bằng chữ và.",
+     "startMs": 20278,
+     "endMs": 23779
+    },
+    {
+     "part": "Lời đọc",
+     "text": "Vậy là lời khen vẫn còn nguyên, còn lời góp ý thì nghe như một lời động viên.",
+     "startMs": 24558,
+     "endMs": 28394
     },
     {
      "part": "Lời mời",
-     "text": "Câu này nằm trong video mình kể lại trọn cuốn Đắc nhân tâm.",
-     "startMs": 31217,
-     "endMs": 34038
-    },
-    {
-     "part": "Lời mời",
-     "text": "Bạn muốn nghe cả cuốn thì link ở phần bình luận nhé.",
-     "startMs": 34038,
-     "endMs": 36531
+     "text": "Mình đã kể lại trọn cuốn Đắc nhân tâm trong một video dài. Link ở phần bình luận, bạn ghé xem nhé.",
+     "startMs": 29574,
+     "endMs": 34525
     }
    ]
   },
   "short-3": {
    "title": "Short 3 · Tấm lòng hay cửa miệng",
    "composition": "BookDntShortTamLong",
-   "durationSeconds": 36.47,
+   "durationSeconds": 34.29,
    "pages": [
     {
      "part": "Câu mở",
      "text": "Đắc nhân tâm dạy người ta khéo miệng, hay dạy thật lòng?",
-     "startMs": 350,
-     "endMs": 3040
+     "startMs": 340,
+     "endMs": 3130
     },
     {
-     "part": "Đoạn trích tập 3",
-     "text": "Nhưng có một điều cuốn sách nhắc đi nhắc lại, mà cả người thích lẫn người chê đều nên nhớ: mọi nguyên tắc phải đi kèm sự chân thành.",
-     "startMs": 4000,
-     "endMs": 12400
+     "part": "Lời đọc",
+     "text": "Có người đọc xong thì thấy đây là sách dạy nịnh.",
+     "startMs": 4210,
+     "endMs": 6637
     },
     {
-     "part": "Đoạn trích tập 3",
-     "text": "Tác giả phân biệt rất rõ lời khen thật lòng với lời nịnh: \"Một điều xuất phát từ tấm lòng, một điều chỉ từ cửa miệng.\"",
-     "startMs": 13660,
-     "endMs": 21240
+     "part": "Lời đọc",
+     "text": "Nhưng chính tác giả lại vạch ranh giới rất rõ.",
+     "startMs": 7317,
+     "endMs": 9618
     },
     {
-     "part": "Đoạn trích tập 3",
-     "text": "Vì vậy, mình hiểu cuốn sách này là lời khuyên bớt đặt cái tôi của mình lên trước, để nhìn thấy người đối diện nhiều hơn.",
-     "startMs": 22240,
-     "endMs": 28200
+     "part": "Lời đọc",
+     "text": "Theo tác giả, lời khen thật lòng và lời nịnh khác nhau ở chỗ: một điều xuất phát từ tấm lòng, một điều chỉ từ cửa miệng.",
+     "startMs": 10498,
+     "endMs": 16975
+    },
+    {
+     "part": "Lời đọc",
+     "text": "Vì vậy, mọi nguyên tắc trong sách đều phải đi kèm sự chân thành.",
+     "startMs": 17955,
+     "endMs": 21323
+    },
+    {
+     "part": "Lời đọc",
+     "text": "Mình thấy, thiếu điều đó thì nụ cười hay việc nhớ tên người khác cũng chỉ còn là kỹ thuật.",
+     "startMs": 22203,
+     "endMs": 26520
     },
     {
      "part": "Lời mời",
-     "text": "Câu này nằm trong video mình kể lại trọn cuốn Đắc nhân tâm.",
-     "startMs": 29517,
-     "endMs": 32338
-    },
-    {
-     "part": "Lời mời",
-     "text": "Bạn muốn nghe cả cuốn thì link ở phần bình luận nhé.",
-     "startMs": 32338,
-     "endMs": 34831
+     "text": "Mình đã kể lại trọn cuốn Đắc nhân tâm trong một video dài. Link ở phần bình luận, bạn ghé xem nhé.",
+     "startMs": 27700,
+     "endMs": 32651
     }
    ]
   },
   "short-4": {
    "title": "Short 4 · Vì sao có người không thích cuốn sách",
    "composition": "BookDntShortChuaDat",
-   "durationSeconds": 45.43,
+   "durationSeconds": 32.75,
    "pages": [
     {
      "part": "Câu mở",
      "text": "Đắc nhân tâm cũng có những chỗ đáng chê.",
-     "startMs": 350,
-     "endMs": 2550
+     "startMs": 340,
+     "endMs": 2640
     },
     {
-     "part": "Đoạn trích tập 3",
-     "text": "Một vài cách trong sách, nếu tách khỏi sự chân thành, rất dễ thành thao túng.",
-     "startMs": 3640,
-     "endMs": 7820
+     "part": "Lời đọc",
+     "text": "Mình thấy vài cách trong sách, nếu tách khỏi sự chân thành, rất dễ thành thao túng.",
+     "startMs": 3620,
+     "endMs": 7786
     },
     {
-     "part": "Đoạn trích tập 3",
-     "text": "Sách có cảnh báo về chuyện nịnh hót, nhưng mình thấy chưa nói nhiều về việc dừng ở đâu.",
-     "startMs": 8780,
-     "endMs": 12600
+     "part": "Lời đọc",
+     "text": "Sách có cảnh báo chuyện nịnh hót, nhưng chưa nói nhiều về việc dừng ở đâu.",
+     "startMs": 8566,
+     "endMs": 12043
     },
     {
-     "part": "Đoạn trích tập 3",
-     "text": "Sách khuyên tránh tranh cãi, tha thứ và giữ hòa khí, nhưng gần như không bàn về lúc cần nói thẳng, cần đặt giới hạn, hay khi đúng sai quan trọng hơn chuyện làm người khác vui lòng.",
-     "startMs": 13990,
-     "endMs": 25130
+     "part": "Lời đọc",
+     "text": "Còn khi khuyên tránh tranh cãi, sách gần như không bàn tới lúc cần nói thẳng, hay cần đặt giới hạn.",
+     "startMs": 12923,
+     "endMs": 17752
     },
     {
-     "part": "Đoạn trích tập 3",
-     "text": "Còn ở chiều ngược lại, mình cũng thấy có người chê cuốn sách là dạy nịnh mà bỏ qua những đoạn phân biệt lời khen thật với lời nịnh.",
-     "startMs": 26250,
-     "endMs": 33550
+     "part": "Lời đọc",
+     "text": "Ngược lại, gọi cả cuốn là sách dạy nịnh thì cũng chưa công bằng.",
+     "startMs": 18732,
+     "endMs": 22065
     },
     {
-     "part": "Đoạn trích tập 3",
+     "part": "Lời đọc",
      "text": "Hai cách nhìn ấy, mình nghĩ đều có phần đúng.",
-     "startMs": 34490,
-     "endMs": 37070
+     "startMs": 22845,
+     "endMs": 24980
     },
     {
      "part": "Lời mời",
-     "text": "Câu này nằm trong video mình kể lại trọn cuốn Đắc nhân tâm.",
-     "startMs": 38483,
-     "endMs": 41304
-    },
-    {
-     "part": "Lời mời",
-     "text": "Bạn muốn nghe cả cuốn thì link ở phần bình luận nhé.",
-     "startMs": 41304,
-     "endMs": 43797
+     "text": "Mình đã kể lại trọn cuốn Đắc nhân tâm trong một video dài. Link ở phần bình luận, bạn ghé xem nhé.",
+     "startMs": 26160,
+     "endMs": 31111
     }
    ]
   }
