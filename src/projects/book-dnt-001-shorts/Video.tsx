@@ -86,7 +86,8 @@ const Cover: FC<{x: number; y: number; w: number; rot?: number; split?: boolean;
   </div>;
 };
 
-type ShortDef = {hook: RegExp; highlight: RegExp; split?: boolean; hookArt: (frame: number) => ReactNode; hookCover?: (frame: number) => ReactNode; beats: Beat[]};
+// stage: one drawing kept in place from the first frame to the invitation (elements change state where they are).
+type ShortDef = {hook: RegExp; highlight: RegExp; split?: boolean; hookArt: (frame: number) => ReactNode; hookCover?: (frame: number) => ReactNode; beats: Beat[]; stage?: (c: C) => ReactNode};
 
 // ── Short 1 · Thắng cũng là thua. Cover A: the cracked trophy.
 const cup = (frame: number, dy: number, crack: number) => <g transform={`translate(0 ${dy}) rotate(-9 540 560)`}>
@@ -143,53 +144,37 @@ const S1: ShortDef = {
 // ── Short 2 · Chữ "nhưng" thành chữ "và". Cover C: the flip board.
 const NHUNG = ['N', 'H', 'Ư', 'N', 'G'];
 // Blank tiles that flip once, one after another, into NHƯNG as the word is read (user 2026-11-09: no running letters).
-const flapRow = (frame: number, x0: number, y: number, settleAt: number | null) => NHUNG.map((l, i) => {
+const flapRow = (frame: number, x0: number, y: number, settleAt: number | null, w = 150, h = 210, step = 164) => NHUNG.map((l, i) => {
   const at = settleAt === null ? Number.MAX_SAFE_INTEGER : settleAt + i * 4;
   const squash = settleAt === null ? 0 : interpolate(frame, [at - 4, at, at + 4], [0, 1, 0], clamp);
-  return tile(x0 + i * 164, y, 150, 210, frame >= at ? l : '', '#e85a4a', squash, `f${i}`);
+  return tile(x0 + i * step, y, w, h, frame >= at ? l : '', '#e85a4a', squash, `f${i}`);
 });
 const flip = (c: C, at: number) => Math.min(between(c, at, at + 5), 1 - between(c, at + 5, at + 10));
+// One fixed stage (user 2026-11-09: KHEN jumped around between sentences): KHEN on top, the flip row in the middle,
+// GÓP Ý at the bottom, from the opening line to the invitation; each element changes state in place.
 const S2: ShortDef = {
   hook: /một chữ/i, highlight: /nhưng|chữ và|bằng chữ và|động viên/i,
-  hookArt: (frame) => <g>{block(330, 820, 420, 'KHEN', 'khen')}{flapRow(frame, 133, 1020, null)}{T(540, 1170, 120, '?', appear(frame, 30, 12), RED)}</g>,
-  beats: [
-    // "Đó là chữ nhưng."
-    {at: '2-2', draw: (c) => <g>{block(330, 640, 420, 'KHEN', 'khen')}{flapRow(c.frame, 133, 860, c.w('2-2', 'nhưng.'))}</g>},
-    // "Nhiều người hay khen trước, thêm chữ nhưng, rồi mới góp ý."
-    {at: '2-3', draw: (c) => <g>
-      {block(280, 660, 520, 'KHEN', 'khen', on(c, c.w('2-3', 'khen')))}
-      {block(280, 840, 520, 'NHƯNG', 'nhung', on(c, c.w('2-3', 'nhưng,')))}
-      {block(280, 1020, 520, 'GÓP Ý', 've', on(c, c.w('2-3', 'góp')))}
-    </g>},
-    // "Người nghe vừa nghe tới chữ nhưng là bắt đầu nghi lời khen ban nãy chỉ để mở đường."
-    {at: '2-4', draw: (c) => {const doubt = between(c, c.w('2-4', 'nghi'), c.w('2-4', 'nghi') + 12);return <g>
-      {block(280, 660, 520, 'KHEN', 'khen', 1 - .62 * doubt)}{block(280, 840, 520, 'NHƯNG', 'nhung')}{block(280, 1020, 520, 'GÓP Ý', 've')}
-      {T(880, 780, 150, '?', doubt, RED)}
-    </g>;}},
-    // "…đổi chữ nhưng thành chữ và."
-    {at: '2-5', draw: (c) => {const at = c.w('2-5', 'và.');const f = flip(c, at - 6);return <g>
-      {T(540, 700, 44, 'TÁC GIẢ GỢI Ý', on(c, c.w('2-5', 'tác')), BROWN)}
-      <g transform={`translate(540 960) scale(1 ${1 - .95 * f}) translate(-540 -960)`}>
-        {c.frame < at - 1 ? NHUNG.map((l, i) => tile(133 + i * 164, 855, 150, 210, l, '#e85a4a', 0, `n${i}`))
-          : [tile(370, 840, 160, 240, 'V', GOLD_HI, 0, 'v'), tile(550, 840, 160, 240, 'À', GOLD_HI, 0, 'a')]}
+  hookArt: () => null,
+  beats: [],
+  stage: (c) => {
+    const nhung = c.w('2-2', 'nhưng'), toVa = c.w('2-5', 'và') - 6, doubt = between(c, c.w('2-4', 'nghi'), c.w('2-4', 'nghi') + 12);
+    const relit = between(c, c.w('2-6', 'trọn'), c.w('2-6', 'trọn') + 14), cheer = between(c, c.w('2-7', 'động'), c.w('2-7', 'viên') + 8);
+    const dim = doubt * (1 - relit), f = flip(c, toVa);
+    return <g>
+      <circle cx={540} cy={865} r={250} fill="rgba(233,199,126,.35)" opacity={relit} />
+      {block(280, 800, 520, 'KHEN', 'khen', 1 - .62 * dim)}
+      {T(890, 890, 140, '?', dim, RED)}
+      <g transform={`translate(540 1070) scale(1 ${1 - .95 * f}) translate(-540 -1070)`}>
+        {c.frame < toVa + 5 ? <>{flapRow(c.frame, 197, 985, nhung, 126, 170, 140)}{c.frame < nhung ? T(540, 1108, 96, '?', appear(c.frame, 30, 12), RED) : null}</>
+          : [tile(390, 980, 140, 180, 'V', GOLD_HI, 0, 'v'), tile(550, 980, 140, 180, 'À', GOLD_HI, 0, 'a')]}
       </g>
-    </g>;}},
-    // "Mình nói trọn lời khen trước, rồi nối lời góp ý bằng chữ và."
-    {at: '2-6', draw: (c) => <g>
-      <circle cx={540} cy={725} r={240} fill="rgba(233,199,126,.35)" opacity={on(c, c.w('2-6', 'trọn'), 20)} />
-      {block(280, 660, 520, 'KHEN', 'khen')}
-      {block(280, 840, 520, 'VÀ', 'board', on(c, c.w('2-6', 'và.')))}
-      {block(280, 1020, 520, 'GÓP Ý', 've', on(c, c.w('2-6', 'góp')))}
-    </g>},
-    // "Vậy là lời khen vẫn còn nguyên, còn lời góp ý thì nghe như một lời động viên."
-    {at: '2-7', draw: (c) => {const calm = between(c, c.w('2-7', 'động'), c.w('2-7', 'viên.'));return <g>
-      <circle cx={360} cy={725} r={200} fill="rgba(233,199,126,.35)" />
-      {block(110, 660, 500, 'KHEN', 'khen')}{block(110, 850, 500, 'VÀ', 'board')}{block(110, 1040, 500, 'GÓP Ý', 've')}
-      {figure(800, 1320, .95, 1, calm > .5 ? 'open' : 'crossed')}
-      <path d={heartPath(880, 1110, .5)} fill={RED} stroke={GOLD_HI} strokeWidth={3} opacity={calm} />
-      {T(800, 820, 52, 'động viên', on(c, c.w('2-7', 'động')), GOLD)}
-    </g>;}},
-  ],
+      <g opacity={on(c, c.w('2-3', 'góp'))}>
+        <rect x={280} y={1196} width={520} height={110} rx={18} fill={IVORY} stroke={cheer > .5 ? GOLD : SLATE} strokeWidth={5} />
+        {T(540, 1272, 62, cheer > .5 ? 'ĐỘNG VIÊN' : 'GÓP Ý', 1, cheer > .5 ? BROWN : SLATE)}
+      </g>
+      <path d={heartPath(870, 1250, .45)} fill={RED} stroke={GOLD_HI} strokeWidth={3} opacity={cheer} />
+    </g>;
+  },
 };
 
 // ── Short 3 · Tấm lòng hay cửa miệng. Cover C: hollow bubble and red heart.
@@ -318,9 +303,9 @@ export const DntShort: FC<ShortProps> = ({short: id}) => {
   // Frame where the n-th occurrence of a word (compared without punctuation and case) starts in sentence sid.
   const w = (sid: string, word: string, n = 1) => {const hits = s.words.filter((x) => x.sentence === sid && norm(x.text) === norm(word));
     const hit = hits[Math.min(n, hits.length) - 1];return hit ? tl.at(hit.startMs) : at(sid);};
-  // Drawings fade over 16 frames; the old one goes out in the rest before its successor's sentence.
-  const starts = def.beats.map((b) => at(b.at, b.f ?? 0) - 16);
-  const opacityOf = (i: number) => interpolate(frame, [starts[i], starts[i] + 16, (starts[i + 1] ?? tl.cta - 8) - 16, starts[i + 1] ?? tl.cta + 8], [0, 1, 1, 0], clamp);
+  // The old drawing stays until the next sentence starts; the new one fades in over its first 16 frames.
+  const starts = def.beats.map((b) => at(b.at, b.f ?? 0) - 4);
+  const opacityOf = (i: number) => interpolate(frame, [starts[i], starts[i] + 16, starts[i + 1] ?? tl.cta - 8, (starts[i + 1] ?? tl.cta - 8) + 14], [0, 1, 1, 0], clamp);
   const hookIn = interpolate(frame, [tl.body - 22, tl.body - 6], [1, 0], clamp);
   const ctaIn = interpolate(frame, [tl.cta - 8, tl.cta + 10], [0, 1], {...clamp, easing: ease});
   const band = interpolate(frame, [tl.body - 12, tl.body], [0, 1], clamp);
@@ -344,6 +329,7 @@ export const DntShort: FC<ShortProps> = ({short: id}) => {
         {def.hookCover?.(frame)}
         <svg viewBox="0 0 1080 1920" width={1080} height={1920} style={{position: 'absolute', inset: 0}}>{def.hookArt(frame)}</svg>
       </div>
+      {def.stage ? <svg viewBox="0 0 1080 1920" width={1080} height={1920} style={{position: 'absolute', inset: 0, opacity: 1 - ctaIn}}>{def.stage({frame, start: 0, s: at, w})}</svg> : null}
       <svg viewBox="0 0 1080 1920" width={1080} height={1920} style={{position: 'absolute', inset: 0, overflow: 'visible'}}>
         {def.beats.map((b, i) => {const o = opacityOf(i);return o > .001 ? <g key={i} opacity={o}>{b.draw({frame, start: starts[i] + 16, s: at, w})}</g> : null;})}
       </svg>

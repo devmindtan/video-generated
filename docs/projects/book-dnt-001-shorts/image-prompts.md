@@ -52,15 +52,18 @@ Lời đọc đã viết mới (script.md, narration.json). Mỗi hình gắn v�
 
 ## Short 2 · Chữ "nhưng" thành chữ "và"
 
-| Câu | Hình |
+**Một khung cố định** từ câu mở tới lời mời (người dùng 2026-11-09: chữ KHEN xuất hiện chỗ này chỗ kia): KHEN ở trên,
+hàng ô lật ở giữa, GÓP Ý ở dưới; từng phần đổi trạng thái tại chỗ, không vẽ lại khung.
+
+| Câu | Thay đổi trong khung |
 |---|---|
-| 2-1 câu mở | Ô "KHEN" và năm ô bảng lật để trống, dấu "?" đỏ (không chạy chữ). |
-| 2-2 "Đó là chữ nhưng." | Năm ô lật lần lượt, mỗi ô một lần, thành NHƯNG. |
-| 2-3 "…khen trước, thêm chữ nhưng, rồi mới góp ý." | Ba khối KHEN, NHƯNG, GÓP Ý hiện theo từng chữ. |
-| 2-4 "…bắt đầu nghi lời khen…" | Khối KHEN nhạt đi, dấu "?" lớn ở chữ "nghi". |
+| 2-1 câu mở | KHEN; năm ô lật trống, dấu "?" đỏ. |
+| 2-2 "Đó là chữ nhưng." | Năm ô lật lần lượt thành NHƯNG. |
+| 2-3 "…rồi mới góp ý." | Ô GÓP Ý hiện ở dưới. |
+| 2-4 "…nghi lời khen…" | KHEN nhạt đi, dấu "?" lớn bên phải. |
 | 2-5 "…đổi chữ nhưng thành chữ và." | Hàng NHƯNG lật một lần thành VÀ vàng. |
-| 2-6 "Mình nói trọn lời khen trước…" | KHEN sáng ấm; VÀ thay chỗ NHƯNG; GÓP Ý ở dưới. |
-| 2-7 "…nghe như một lời động viên." | Người nghe từ khoanh tay sang buông tay, trái tim nhỏ, chữ "động viên". |
+| 2-6 "Mình nói trọn lời khen trước…" | KHEN sáng lại, quầng ấm; dấu "?" tắt. |
+| 2-7 "…một lời động viên." | Ô GÓP Ý đổi thành ĐỘNG VIÊN viền vàng, trái tim nhỏ. |
 
 ## Short 3 · Tấm lòng hay cửa miệng
 
