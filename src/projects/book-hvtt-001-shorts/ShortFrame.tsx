@@ -28,7 +28,7 @@ export type Music = typeof music;
 export type Gaps = {lead: number; gap1: number; gap2: number; tail: number};
 const F = (s: number, fps: number) => Math.round(s * fps);
 // Start frames of the three clips and the total length.
-const timelineWith = (g: Gaps) => (s: ShortData, fps = 30) => {
+export const timelineWith = (g: Gaps) => (s: ShortData, fps = 30) => {
   const hook = F(g.lead, fps), excerpt = hook + F(s.hook.durationSeconds + g.gap1, fps), cta = excerpt + F(s.excerpt.toSeconds - s.excerpt.fromSeconds + g.gap2, fps);
   return {hook, excerpt, cta, end: cta + F(s.cta.durationSeconds, fps), total: cta + F(s.cta.durationSeconds + g.tail, fps)};
 };
@@ -56,7 +56,8 @@ const pagesOf = (words: Word[]) => {
   }
   return pages;
 };
-const Captions: FC<{words: Word[]; ms: number; highlight: RegExp; top?: number; size?: number}> = ({words, ms, highlight, top = 1390, size = 58}) => {
+// Exported for later episodes that draw their own frame around the shared timing and captions (episode 3: paper and ink).
+export const Captions: FC<{words: Word[]; ms: number; highlight: RegExp; top?: number; size?: number}> = ({words, ms, highlight, top = 1390, size = 58}) => {
   const pages = useMemo(() => pagesOf(words), [words]);
   const n = pages.findIndex((p, i) => ms >= p[0].startMs - 80 && ms < (pages[i + 1]?.[0].startMs ?? p[p.length - 1].endMs + 500) - 80);
   if (n < 0) return null;

@@ -11,7 +11,7 @@
   "excerpts": {
     "short-1": {
       "take": "07-phan-3",
-      "fromSeconds": 32.34,
+      "fromSeconds": 32.2,
       "toSeconds": 46.6
     },
     "short-2": {
@@ -41,7 +41,7 @@
           "toSeconds": 39.8
         },
         {
-          "fromSeconds": 40.68,
+          "fromSeconds": 40.62,
           "toSeconds": 61.3
         }
       ]

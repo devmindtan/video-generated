@@ -61,6 +61,7 @@ import type {ShortCoverProps} from './book-hvtt-001-shorts/Thumbnail';
 import {ShortAct as BookAhShortAct, ShortIce as BookAhShortIce, ShortLoop as BookAhShortLoop, ShortSoap as BookAhShortSoap} from './book-ah-001-shorts/Video';
 import {IceShortCover as BookAhShortCover} from './book-ah-001-shorts/Thumbnail';
 import type {IceCoverProps as BookAhShortCoverProps} from './book-ah-001-shorts/Thumbnail';
+import {DntShort as BookDntShort, dntShortMetadata as bookDntShortMetadata} from './book-dnt-001-shorts/Video';
 import {ChuaDatCover as BookDntShortChuaDatCover, NhungVaCover as BookDntShortNhungVaCover, TamLongCover as BookDntShortTamLongCover, ThangThuaCover as BookDntShortThangThuaCover} from './book-dnt-001-shorts/Thumbnail';
 import {CachLam, CuonSach, SoiChi, Nhom3A, Nhom3B, Nhom3C, Nhom3D, DiemChuaDat, TongKet, YKien, NhanXet} from './book-hvtt-001-overview/Sections';
 import {PeoplePleasingVideo} from './people-pleasing/Video';
@@ -318,9 +319,13 @@ export const ProjectCompositions: FC = () => (
           <Still id="BookAhShortThoaManCover" component={BookAhShortCover} calculateMetadata={renderTo<BookAhShortCoverProps>('book-ah-001-shorts')} width={1080} height={1920} defaultProps={{art: 'soap', headline: 'Thưởng ngay thì lặp lại', keyword: 'Thưởng ngay'}} />
         </Folder>
         <Folder name="book-dnt-001-shorts">
+          <Composition id="BookDntShortThangThua" component={BookDntShort} calculateMetadata={renderTo('book-dnt-001-shorts', bookDntShortMetadata)} durationInFrames={900} fps={30} width={1080} height={1920} defaultProps={{short: 'short-1'}} />
           <Still id="BookDntShortThangThuaCover" component={BookDntShortThangThuaCover} calculateMetadata={renderTo('book-dnt-001-shorts')} width={1080} height={1920} />
+          <Composition id="BookDntShortNhungVa" component={BookDntShort} calculateMetadata={renderTo('book-dnt-001-shorts', bookDntShortMetadata)} durationInFrames={900} fps={30} width={1080} height={1920} defaultProps={{short: 'short-2'}} />
           <Still id="BookDntShortNhungVaCover" component={BookDntShortNhungVaCover} calculateMetadata={renderTo('book-dnt-001-shorts')} width={1080} height={1920} />
+          <Composition id="BookDntShortTamLong" component={BookDntShort} calculateMetadata={renderTo('book-dnt-001-shorts', bookDntShortMetadata)} durationInFrames={900} fps={30} width={1080} height={1920} defaultProps={{short: 'short-3'}} />
           <Still id="BookDntShortTamLongCover" component={BookDntShortTamLongCover} calculateMetadata={renderTo('book-dnt-001-shorts')} width={1080} height={1920} />
+          <Composition id="BookDntShortChuaDat" component={BookDntShort} calculateMetadata={renderTo('book-dnt-001-shorts', bookDntShortMetadata)} durationInFrames={900} fps={30} width={1080} height={1920} defaultProps={{short: 'short-4'}} />
           <Still id="BookDntShortChuaDatCover" component={BookDntShortChuaDatCover} calculateMetadata={renderTo('book-dnt-001-shorts')} width={1080} height={1920} />
         </Folder>
       </Folder>

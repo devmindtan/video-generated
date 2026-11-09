@@ -1,0 +1,14 @@
+{
+  "title": "Đọc sách, hiểu mình — book-dnt-001-shorts — câu mở và lời mời (giọng tạm Quốc Tuấn)",
+  "temperature": 0.5,
+  "leadIn": 0.3,
+  "tail": 0.5,
+  "maxDurationSeconds": 60,
+  "sentences": [
+    {"id": "hook-1", "text": "Cãi thắng một người, nhiều khi chính mình mới là người thua.", "pauseAfter": 1.0},
+    {"id": "hook-2", "text": "Lời khen của bạn có thể mất hết tác dụng, chỉ vì một chữ.", "pauseAfter": 1.0},
+    {"id": "hook-3", "text": "Đắc nhân tâm dạy người ta khéo miệng, hay dạy thật lòng?", "pauseAfter": 1.0},
+    {"id": "hook-4", "text": "Đắc nhân tâm cũng có những chỗ đáng chê.", "pauseAfter": 1.0},
+    {"id": "cta", "text": "Câu này nằm trong video mình kể lại trọn cuốn Đắc nhân tâm. Bạn muốn nghe cả cuốn thì link ở phần bình luận nhé.", "pauseAfter": 0}
+  ]
+}

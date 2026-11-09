@@ -1,0 +1,7 @@
+{
+  "lead": 0.3,
+  "gap1": 0.5,
+  "gap2": 0.8,
+  "tail": 1.4,
+  "note": "Nghỉ 0,5 giây sau câu mở, 0,8 giây trước lời mời (như short tập 2). Video.tsx đọc file này."
+}

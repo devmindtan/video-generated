@@ -391,9 +391,9 @@
     {
       "id": "book-dnt-001-shorts",
       "title": "Short giới thiệu tập 3 · Đắc nhân tâm",
-      "status": "planning",
+      "status": "production",
       "format": "short",
-      "durationSeconds": 40,
+      "durationSeconds": 34,
       "paths": {
         "source": "src/projects/book-dnt-001-shorts",
         "scripts": "scripts/projects/book-dnt-001-shorts",
@@ -402,9 +402,19 @@
       },
       "registrations": [
         {
+          "id": "BookDntShortThangThua",
+          "kind": "Composition",
+          "title": "Short 1 · Thắng cũng là thua"
+        },
+        {
           "id": "BookDntShortThangThuaCover",
           "kind": "Still",
           "title": "Bìa short 1 · Thắng cũng là thua"
+        },
+        {
+          "id": "BookDntShortNhungVa",
+          "kind": "Composition",
+          "title": "Short 2 · Chữ “nhưng” thành “và”"
         },
         {
           "id": "BookDntShortNhungVaCover",
@@ -412,9 +422,19 @@
           "title": "Bìa short 2 · Chữ “nhưng” thành “và”"
         },
         {
+          "id": "BookDntShortTamLong",
+          "kind": "Composition",
+          "title": "Short 3 · Tấm lòng hay cửa miệng"
+        },
+        {
           "id": "BookDntShortTamLongCover",
           "kind": "Still",
           "title": "Bìa short 3 · Tấm lòng hay cửa miệng"
+        },
+        {
+          "id": "BookDntShortChuaDat",
+          "kind": "Composition",
+          "title": "Short 4 · Vì sao có người không thích cuốn sách"
         },
         {
           "id": "BookDntShortChuaDatCover",
