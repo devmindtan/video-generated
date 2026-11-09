@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thumbnail tập 3</title>
+<!--
+  YouTube thumbnail of episode 3 (Đắc nhân tâm), designed as a web page (user 2026-11-09: "tận dụng sự tự do thiết
+  kế của web… rồi chụp lại trang web đó làm thumbnail"). The #thumb stage is exactly 1280×720; capture it with
+  `npm run thumbnail:web -- src/projects/book-dnt-001-overview/thumbnail-web/index.html --out <png>` (only when the
+  user asks). Headline chosen by the user: "Khéo miệng hay thật lòng?". Stoic Sans 700 (series identity), ivory +
+  gold, dark outline/shadow. The real cover stands as a 3D book, page edges towards the viewer, under a warm light,
+  with gold ink drawings in the video's style: a speech bubble (khéo miệng) and a heart (thật lòng) linked by a
+  dotted arc around the book. The bottom-right corner (x ≥ 980, y ≥ 600) stays empty for YouTube's duration badge.
+  The cover image lives in ignored public/ (not redistributed through Git).
+-->
+<style>
+@font-face{font-family:'Stoic Sans';font-weight:700;src:url('/public/stoic/fonts/NotoSans-Bold.ttf') format('truetype')}
+:root{--ink:#0b120f;--gold:#d9b56f;--gold-hi:#f7e1a6;--gold-lo:#9c7533;--ivory:#f4eee2}
+*{box-sizing:border-box}
+html,body{margin:0;background:#050806;min-height:100%}
+body{display:grid;place-items:center;min-height:100vh}
+/* Preview only: scale the fixed stage to the window; ?capture keeps it at 1:1. */
+.preview #thumb{transform:scale(var(--fit,1));transform-origin:center}
+#thumb{position:relative;width:1280px;height:720px;overflow:hidden;font-family:'Stoic Sans',sans-serif;font-weight:700;color:var(--ivory);
+  background:
+    radial-gradient(ellipse 34% 52% at 79% 46%,rgba(214,170,92,.30),rgba(214,170,92,0) 70%),
+    radial-gradient(ellipse 60% 75% at 76% 50%,#203229 0%,#121c17 45%,var(--ink) 70%),
+    var(--ink)}
+/* Light falling on the book from above. */
+.beam{position:absolute;left:880px;top:-40px;width:420px;height:700px;background:linear-gradient(180deg,rgba(247,225,166,.28),rgba(247,225,166,0) 85%);
+  clip-path:polygon(38% 0,62% 0,100% 100%,0 100%);filter:blur(10px)}
+.vignette{position:absolute;inset:0;background:radial-gradient(ellipse 85% 90% at 55% 50%,transparent 55%,rgba(0,0,0,.65) 100%)}
+.grain{position:absolute;inset:0;opacity:.16;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.dust{position:absolute;inset:0;background:
+  radial-gradient(circle at 70% 18%,rgba(247,225,166,.55) 0 1.5px,transparent 2.5px),
+  radial-gradient(circle at 88% 30%,rgba(247,225,166,.45) 0 1.2px,transparent 2px),
+  radial-gradient(circle at 74% 62%,rgba(247,225,166,.35) 0 1.4px,transparent 2.4px),
+  radial-gradient(circle at 93% 12%,rgba(247,225,166,.40) 0 1px,transparent 2px)}
+
+/* Headline */
+.kicker{position:absolute;left:72px;top:62px;display:flex;align-items:center;gap:16px;font-size:24px;letter-spacing:.28em;color:var(--gold)}
+.kicker::before{content:'';width:46px;height:3px;background:var(--gold)}
+.headline{position:absolute;left:66px;top:236px;margin:0;font-weight:700;line-height:1.02;letter-spacing:-.01em}
+.headline span{display:block;white-space:nowrap}
+.l1{font-size:112px;color:var(--ivory);text-shadow:0 3px 0 rgba(0,0,0,.55),0 10px 30px rgba(0,0,0,.85)}
+.l2{font-size:88px;margin-top:8px;background:linear-gradient(180deg,var(--gold-hi) 0%,var(--gold) 46%,var(--gold-lo) 58%,#e2c27e 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 0 rgba(0,0,0,.6)) drop-shadow(0 10px 24px rgba(0,0,0,.85))}
+.underline{position:absolute;left:70px;top:482px;width:560px;height:40px;overflow:visible}
+
+/* 3D book: real cover on the front, cream page edges on the right, navy spine and top. */
+.scene{position:absolute;left:918px;top:150px;width:300px;height:432px;perspective:1500px}
+.book{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateY(-30deg) rotateX(3deg)}
+.face{position:absolute;backface-visibility:hidden}
+.front{inset:0;transform:translateZ(22px);background:url('/public/book-dnt-001-overview/thumbnail/book-cover-source.webp') center/cover;border-radius:2px 5px 5px 2px;
+  box-shadow:inset 6px 0 10px rgba(0,0,0,.35),inset -1px 0 0 rgba(255,255,255,.25)}
+.front::after{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(115deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 32%,rgba(0,0,0,0) 70%,rgba(0,0,0,.22) 100%)}
+.pages{top:4px;left:128px;width:44px;height:424px;transform:rotateY(90deg) translateZ(149px);
+  background:repeating-linear-gradient(90deg,#f1e8d4 0 2px,#d6cbb2 2px 3px),#efe5cf;box-shadow:inset 0 0 12px rgba(0,0,0,.35)}
+.top{left:0;top:194px;width:300px;height:44px;transform:rotateX(90deg) translateZ(216px);background:#132a3a}
+.back{inset:0;transform:rotateY(180deg) translateZ(22px);background:#0e2433}
+.shadow{position:absolute;left:860px;top:560px;width:420px;height:46px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(0,0,0,.85),rgba(0,0,0,0) 70%);filter:blur(4px)}
+/* Warm halo behind the book: a filled blurred shape (a box-shadow left an unlit hole inside its box). */
+.rim{position:absolute;left:900px;top:120px;width:330px;height:500px;border-radius:40px;background:rgba(214,170,92,.16);filter:blur(40px)}
+
+/* Gold ink drawings (same stroke style as the episode's drawings). */
+.ink{position:absolute;inset:0;overflow:visible;pointer-events:none}
+.ink path,.ink circle{fill:none;stroke:var(--gold);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.ink .dots{stroke-width:4;stroke-dasharray:1 14;opacity:.9}
+</style>
+</head>
+<body>
+<div id="thumb" role="img" aria-label="Khéo miệng hay thật lòng? Đọc sách, hiểu mình, tập 03: Đắc nhân tâm">
+  <div class="beam"></div>
+  <div class="rim"></div>
+  <div class="shadow"></div>
+  <div class="scene"><div class="book">
+    <div class="face pages"></div><div class="face front"></div>
+  </div></div>
+  <svg class="ink" viewBox="0 0 1280 720" aria-hidden="true">
+    <defs><filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+    <g filter="url(#glow)" transform="translate(44 0)">
+      <!-- speech bubble with a polite smile: "khéo miệng" -->
+      <path d="M778 86 H900 Q924 86 924 110 V160 Q924 184 900 184 H862 L838 214 L836 184 H778 Q754 184 754 160 V110 Q754 86 778 86 Z"/>
+      <path d="M800 128 Q839 162 878 128"/>
+      <!-- heart: "thật lòng" -->
+      <path d="M1166 182 C1112 144 1110 96 1140 88 C1156 84 1166 96 1166 108 C1166 96 1176 84 1192 88 C1222 96 1220 144 1166 182 Z"/>
+      <!-- dotted arc from the bubble over the book to the heart: which one is it? -->
+      <path class="dots" d="M932 112 Q1040 34 1120 84"/>
+    </g>
+  </svg>
+  <h1 class="headline"><span class="l1">KHÉO MIỆNG</span><span class="l2">HAY THẬT LÒNG?</span></h1>
+  <svg class="underline" viewBox="0 0 600 40" aria-hidden="true"><path d="M6 24 C120 10 300 8 420 16 S560 30 594 18" fill="none" stroke="#d9b56f" stroke-width="6" stroke-linecap="round"/></svg>
+  <div class="kicker">ĐỌC SÁCH, HIỂU MÌNH · TẬP 03</div>
+  <div class="dust"></div>
+  <div class="grain"></div>
+  <div class="vignette"></div>
+</div>
+<script>
+// Preview mode scales the stage to the window; ?capture (used by the capture tool) keeps it 1:1.
+if(!new URLSearchParams(location.search).has('capture')){
+  document.documentElement.classList.add('preview');
+  const fit=()=>document.documentElement.style.setProperty('--fit',Math.min(1,(innerWidth-32)/1280,(innerHeight-32)/720));
+  addEventListener('resize',fit);fit();
+}
+</script>
+</body>
+</html>
