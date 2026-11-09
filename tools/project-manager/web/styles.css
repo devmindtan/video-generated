@@ -768,3 +768,45 @@ mark.pd-del{background:#f6d5c8;color:inherit;text-decoration:line-through;text-d
 .backup-log{margin-top:14px}.backup-log summary{cursor:pointer;color:var(--muted);font-size:14px;min-height:32px}
 .backup-log pre{max-height:320px;overflow:auto;background:#f0f3ef;border:1px solid var(--line);border-radius:8px;padding:12px;font-size:12px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
 @media(max-width:760px){.backup-status{padding:14px}.backup-status-main{flex-wrap:wrap}.backup-status-text{flex-basis:calc(100% - 100px)}.backup-actions{width:100%;justify-content:stretch}.backup-actions .button{flex:1}.backup-row-head{display:none}.backup-sources .backup-source{grid-template-columns:minmax(0,1fr) auto}.backup-source .row-meta{grid-column:1/2}.backup-source .expand-button{grid-column:2;grid-row:1}.backup-history code{margin-left:0;flex-basis:100%}.backup-source .m-label{display:inline;color:var(--muted)}}
+
+/* Not-exported video/cover in the media dialog: light panel with a 16:9 frame instead of the dark player box. */
+#media-content.is-empty{background:var(--paper,#f6f8f3);border:1px solid var(--line);justify-content:stretch}
+.media-pending{display:grid;grid-template-columns:minmax(160px,260px) 1fr;gap:24px;align-items:center;width:100%;padding:28px}
+.media-pending-frame{aspect-ratio:16/9;border:2px dashed #b9c8bd;border-radius:10px;display:grid;place-items:center;background:#fff}
+.media-pending-play{width:0;height:0;border-left:22px solid #b9c8bd;border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:6px}
+.media-pending-text strong{display:block;font-size:18px;color:var(--ink);margin-bottom:6px}
+.media-pending-text p{margin:0 0 16px;font-size:15px;line-height:1.55;color:var(--muted);max-width:52ch}
+@media (max-width:640px){.media-pending{grid-template-columns:1fr;padding:20px}.media-pending-frame{max-width:240px}}
+
+/* Patch: watch in Studio (no exported review clips). */
+.studio-strip{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 10px}.studio-strip>span{font-weight:600;color:var(--ink)}
+.studio-strip .button{min-height:36px;padding:6px 14px}
+.studio-instead{margin:0 0 12px;color:var(--muted)}
+
+/* System map, 2026-11-09: repo overview bar, Mermaid diagrams with a side panel (replaces the stage rail and layer cards). */
+.sys-overview{margin:0 0 24px}.sys-overview h2{font-size:16px;margin:0 0 10px}
+.sys-bar{display:flex;height:10px;border-radius:999px;overflow:hidden;gap:2px;background:var(--line)}.sys-bar span{background:var(--sys-edge)}
+.sys-key{display:flex;flex-wrap:wrap;gap:4px 6px;list-style:none;padding:0;margin:10px 0 0}
+.sys-key-item{display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:4px 12px 4px 10px;border:1px solid transparent;border-radius:999px;background:none;color:var(--ink);font-size:14px}
+.sys-key-item strong{font-variant-numeric:tabular-nums;color:var(--sys-fg)}
+.sys-key-item:hover,.sys-key-item:focus-visible{background:var(--sys-bg);border-color:var(--sys-edge)}
+.sys-dot{width:10px;height:10px;border-radius:50%;background:var(--sys-edge);flex-shrink:0}
+.sys-idle .sys-dot{background:none;border:2px dashed var(--sys-edge)}
+.sys-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,360px);gap:22px;align-items:start;margin-bottom:24px}
+.sys-diagram{margin:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;min-height:240px;overflow-x:auto}
+.sys-diagram svg{display:block;margin:0 auto;height:auto;max-width:100%}
+.sys-node{cursor:pointer;outline:none}
+#sys-diagram .sys-node:hover rect,#sys-diagram .sys-node:hover polygon,#sys-diagram .sys-node:hover path{filter:drop-shadow(0 2px 4px rgba(22,54,46,.18))}
+#sys-diagram .sys-node.is-selected rect,#sys-diagram .sys-node.is-selected polygon,#sys-diagram .sys-node.is-selected path{stroke:#b79554 !important;stroke-width:3.5px !important}
+#sys-diagram .sys-node:focus-visible rect,#sys-diagram .sys-node:focus-visible polygon,#sys-diagram .sys-node:focus-visible path{stroke:#2d5d8a !important;stroke-width:3.5px !important}
+.sys-side{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:18px 20px;font-size:14px}
+@media(min-width:901px) and (min-height:700px){.sys-side{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto}}
+.sys-side h3{font-size:18px;margin:2px 0 6px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}.sys-side p{margin:0 0 8px;color:#3f5248;line-height:1.6}
+.sys-side h4{font-size:13px;color:var(--muted);margin:16px 0 6px;font-weight:700}
+.sys-side-kind{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted) !important;margin:0 !important}
+.sys-comp-list{list-style:none;padding:0;margin:0;display:grid;gap:8px}.sys-comp-list li{display:grid;gap:2px}
+.sys-comp-list code{font-size:12.5px;color:#2c4a3c;overflow-wrap:anywhere}
+@media(max-width:900px){.sys-split{grid-template-columns:1fr}.sys-side{position:static}}
+/* Phones: keep diagram text readable at its natural size and scroll the diagram sideways inside its frame. */
+@media(max-width:640px){.sys-diagram{padding:12px}.sys-diagram svg{width:min(640px,var(--sys-natural,640px)) !important;max-width:none !important;margin:0}}
+.panel-body>.studio-strip{padding:0 18px;margin-bottom:16px}

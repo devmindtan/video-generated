@@ -79,12 +79,7 @@ test('panel shows pending files, runs detached, refuses a second run, stops and 
     assert.ok(view.log.some(line => line.includes('completed and verified')));
     assert.ok(fs.existsSync(path.join(root, 'drive', 'current', 'public', 'ep', 'video.bin')));
 
-    fs.writeFileSync(path.join(root, 'library', 'new.txt'), 'x');
-    await panel.start('verify');
-    await until(() => !panel.summary().running && panel.overview().status?.phase === 'done');
-    view = panel.overview();
-    assert.equal(view.status.result, 'differs');
-    assert.equal(view.pending.pendingFiles, 1);
+    await assert.rejects(panel.start('verify'), /không hợp lệ/);
   } finally {
     panel.stop();
     await until(() => !panel.summary().running).catch(() => {});

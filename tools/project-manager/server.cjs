@@ -26,7 +26,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
     const allowedOrigins=allowedHosts.map(h=>`http://${h}`);
     res.setHeader('X-Content-Type-Options','nosniff');
     res.setHeader('Referrer-Policy','no-referrer');
-    res.setHeader('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'");
+    res.setHeader('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'");
     res.setHeader('Cache-Control','no-store');
     const send=(status,value)=>{res.writeHead(status,{'Content-Type':'application/json; charset=utf-8'});res.end(JSON.stringify(value));};
     // Video/audio with seek ranges so the native players can scrub without loading whole files.
@@ -116,9 +116,13 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
       } else if(route==='/font/regular.ttf'||route==='/font/bold.ttf') {
         file=path.join(root,'public/stoic/fonts',route.includes('bold')?'NotoSans-Bold.ttf':'NotoSans-Regular.ttf');
       } else {
-        const files={'/':'index.html','/app.js':'app.js','/styles.css':'styles.css','/icon.svg':'icon.svg'};
-        if(!files[route])return send(404,{error:'Not found'});
-        file=path.join(WEB,files[route]);
+        // Mermaid (system map diagrams) is served from the local npm install, never a CDN (the manager is offline).
+        if(route==='/vendor/mermaid.js'){file=path.join(__dirname,'../../node_modules/mermaid/dist/mermaid.min.js');}
+        else{
+          const files={'/':'index.html','/app.js':'app.js','/styles.css':'styles.css','/icon.svg':'icon.svg'};
+          if(!files[route])return send(404,{error:'Not found'});
+          file=path.join(WEB,files[route]);
+        }
       }
       if(!fs.existsSync(file))return send(404,{error:'File not found'});
       res.writeHead(200,{'Content-Type':contentTypes[path.extname(file)]||'application/octet-stream'});

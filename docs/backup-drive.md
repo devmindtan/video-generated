@@ -65,7 +65,7 @@ Trong Google Cloud Console, dùng một project riêng cho backup:
 `npm run manager` → thanh bên **Sao lưu Drive**:
 
 - Hiện từng nguồn trong allowlist: số file/dung lượng trên máy và số file **chưa sao lưu** (mới hoặc đã sửa kể từ khi Drive xác nhận bằng checksum); "Xem file" liệt kê các file đó, lớn nhất trước.
-- **Sao lưu lên Drive** chạy đúng lệnh `backup:drive -- run`; **Đối chiếu với Drive** chạy `verify` (không tải lên, chỉ cập nhật file nào đã có trên Drive). **Dừng sao lưu** có xác nhận; lần sau bấm Sao lưu sẽ chạy tiếp, `copy` bỏ qua file đã giống trên Drive.
+- **Sao lưu lên Drive** chạy đúng lệnh `backup:drive -- run` (tự so checksum với Drive và kiểm lại sau khi tải; trang không còn nút đối chiếu riêng từ 2026-11-09, `verify` chỉ còn ở dòng lệnh). **Dừng sao lưu** có xác nhận; lần sau bấm Sao lưu sẽ chạy tiếp, `copy` bỏ qua file đã giống trên Drive.
 - Lệnh chạy thành tiến trình riêng (session riêng, log ở `.cache/backup-drive/run.log`), nên đóng tab, tắt trang quản lý hay tắt terminal của manager không làm dừng. Tắt máy thì lần chạy hiện "bị ngắt"; bấm Sao lưu để chạy tiếp.
 - Tiến trình trực tiếp: phần trăm ước tính (theo dung lượng từng nguồn, tải lên 85 %, kiểm tra checksum 15 %), nguồn đang chạy, số file/byte, tốc độ, thời gian còn lại, file đang tải; thanh bên hiện phần trăm hoặc "Lỗi"/"Đã dừng" ở mọi trang.
 - Chỉ một bản sao lưu cho mỗi repo: khóa `.cache/backup-drive/lock` và quét tiến trình `drive-backup.cjs run|verify` của repo này (kể cả lần chạy từ terminal). Trang từ chối bắt đầu khi đang có bản chạy.

@@ -89,10 +89,11 @@ function createBackupPanel(root, {env = {}} = {}) {
     return {relative, label: labelOf(relative), total: items.length, items: items.slice(0, Math.min(Math.max(Number(limit) || 300, 1), 1000))};
   }
 
-  // Spawns `drive-backup.cjs run|verify` in its own session with output in run.log, then returns once the
-  // run has taken the lock (or reports why it ended at once, e.g. another backup was already running).
+  // Spawns `drive-backup.cjs run` in its own session with output in run.log, then returns once the run has taken
+  // the lock (or reports why it ended at once, e.g. another backup was already running). The separate "compare with
+  // Drive" action was removed (user 2026-11-09): every run already compares checksums and verifies after copying.
   async function start(action) {
-    if (!['run', 'verify'].includes(action)) throw Object.assign(new Error('Thao tác không hợp lệ'), {status: 400});
+    if (action !== 'run') throw Object.assign(new Error('Thao tác không hợp lệ'), {status: 400});
     if (backup.readStatus(root).running) throw Object.assign(new Error('Một bản sao lưu đang chạy. Chờ xong hoặc dừng nó trước.'), {status: 409});
     fs.mkdirSync(paths.dir, {recursive: true});
     try {

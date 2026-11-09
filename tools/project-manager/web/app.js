@@ -112,7 +112,7 @@ function render(){
   const resource=Boolean(resourceViews[state.view]);
   $('#resource-view').hidden=!resource;$('#stats').hidden=resource;$('.library').hidden=resource;if(resource)$('#channel-profile').hidden=true;
   if(resource){
-    $('#new-book-button').hidden=true;$('#book-banner').hidden=true;$('#workflow').hidden=true;$('#new-project-button').className='button secondary';$('#new-project-button').hidden=state.view==='system'||state.view==='backup';
+    $('#new-book-button').hidden=true;$('#book-banner').hidden=true;$('#workflow').hidden=true;$('#new-project-button').hidden=true;
     $('#page-title').textContent=resourceViews[state.view];renderBreadcrumbs();
     if(state.view!=='backup')state.backupView='';
     if(state.view==='backup'){$('#eyebrow').textContent='DỮ LIỆU NGOÀI GIT';$('#page-description').textContent='Media, bản xuất, sách và lịch sử chỉnh sửa được chép lên Google Drive. Xem phần chưa sao lưu và chạy sao lưu nền.';if(state.backupView!=='backup'){state.backup=null;}state.backupView='backup';renderBackup();refreshBackup();return;}
@@ -126,7 +126,9 @@ function render(){
   const channel=state.data.channels.find(c=>c.id===state.channel),series=state.data.series.find(s=>s.id===state.series);
   $('#page-title').textContent=state.view==='books'?'Tủ sách nghiên cứu':series?.title||channel?.title||'Không gian sáng tạo';
   renderBreadcrumbs();
-  $('#new-project-button').hidden=false;$('#new-project-button').className='button '+(state.view==='projects'?'primary':'secondary');
+  // "Thêm dự án" only where projects are listed: all projects and a channel/series (user 2026-11-09: on Tủ sách,
+  // Giọng đọc… it was easy to mistake for adding a book or a voice).
+  $('#new-project-button').hidden=state.view==='books';$('#new-project-button').className='button primary';
   $('#eyebrow').textContent=state.view==='books'?'TỪ TRANG SÁCH ĐẾN CÂU CHUYỆN':series?'TỪNG TẬP, MỘT CÂU CHUYỆN':channel?'NHỮNG CÂU CHUYỆN CỦA KÊNH':'MỘT NƠI CHO MỌI Ý TƯỞNG';
   $('#page-description').textContent=state.view==='books'?'Giữ nguồn, ghi chú và những ý tưởng cho series sách ở cùng một nơi.':series?.summary||'Tìm bản dựng, kịch bản và tài liệu theo từng series.';
   const visible=state.data.projects.filter(p=>(!state.channel||p.channel===state.channel)&&(!state.series||p.series===state.series));
@@ -348,7 +350,7 @@ function diffRows(rows,key){
 // Checklist items: media first (listen / look), then each document that is new, edited or missing.
 function reviewItems(r){
   const items=[],m=r.media||{};
-  if(m.watch)items.push({key:'watch',kind:'watch',name:'Xem video',status:'media',detail:`${m.watch.clips.length} clip cảnh · mở Studio`});
+  if(m.watch)items.push({key:'watch',kind:'watch',name:'Xem video',status:'media',detail:'Xem trong Studio'});
   if(m.voices)items.push({key:'voices',kind:'voices',name:m.watch?'Nghe lời đọc và nhạc':'Nghe giọng đọc',status:'media',detail:`${m.voices.length} đoạn${m.music?' · nhạc nền':''}`});
   if(m.images)items.push({key:'images',kind:'images',name:'Xem hình ảnh',status:'media',detail:`${(m.compositions||[]).length} composition${m.images.length?` · ${m.images.length} ảnh`:''}`});
   // Source code is folded away (still part of the approval hash); documents and data are shown readable.
@@ -358,8 +360,7 @@ function reviewItems(r){
 function mediaPanel(r,item){
   const id=encodeURIComponent(state.drawer.id),m=r.media||{};
   if(item.kind==='watch'){
-    const clips=m.watch.clips.map(c=>`<li><strong>${esc(c.title)}</strong><video controls playsinline preload="metadata" src="/api/review/media?id=${id}&kind=clip&key=${encodeURIComponent(c.key)}"></video></li>`).join('');
-    return `<p class="review-hint">Xem liền cả tập trong Studio (bản dựng hiện tại, đã có giọng, nhạc, phụ đề); nếu không nghe tiếng, tải lại tab Studio.</p><ul class="studio-links">${m.watch.compositions.slice(0,1).map(c=>`<li><a class="button primary" href="${studio(c)}" target="_blank" rel="noopener">Mở ${esc(c)} trong Studio</a></li>`).join('')}</ul>${m.watch.compositions.length>1?`<details class="setting-more"><summary>Mở từng phần trong Studio (${m.watch.compositions.length-1})</summary><ul class="studio-links">${m.watch.compositions.slice(1).map(c=>`<li><a class="button secondary" href="${studio(c)}" target="_blank" rel="noopener">${esc(c)}</a></li>`).join('')}</ul></details>`:''}${clips?`<p class="review-hint">Clip cảnh xuất sau bản chốt mới nhất:</p><ol class="preview-clips">${clips}</ol>`:''}${m.watch.staleClips?`<p class="muted">${m.watch.staleClips} clip cảnh cũ (xuất trước bản chốt hiện tại) không còn đúng với bản dựng nên được ẩn.</p>`:''}`;
+    return `<p class="review-hint">Xem liền cả tập trong Studio (bản dựng hiện tại, đã có giọng, nhạc, phụ đề); nếu không nghe tiếng, tải lại tab Studio.</p><ul class="studio-links">${m.watch.compositions.slice(0,1).map(c=>`<li><a class="button primary" href="${studio(c)}" target="_blank" rel="noopener">Mở ${esc(c)} trong Studio</a></li>`).join('')}</ul>${m.watch.compositions.length>1?`<details class="setting-more"><summary>Mở từng phần trong Studio (${m.watch.compositions.length-1})</summary><ul class="studio-links">${m.watch.compositions.slice(1).map(c=>`<li><a class="button secondary" href="${studio(c)}" target="_blank" rel="noopener">${esc(c)}</a></li>`).join('')}</ul></details>`:''}`;
   }
   if(item.kind==='voices')return m.voices.length||m.music||m.musicList?.length?`<p class="review-hint">Nghe hết các đoạn: đúng giọng, rõ chữ, đúng thanh điệu, không vấp.</p><ul class="voice-takes">${m.voices.map(v=>`<li><strong>${esc(v.name)}</strong><span>${v.durationSeconds?`${Math.round(v.durationSeconds*10)/10} giây`:''}</span><audio controls preload="none" src="/api/project-media?id=${id}&kind=voice&file=${encodeURIComponent(v.file)}"></audio></li>`).join('')}${(m.musicList||(m.music?[m.music]:[])).map(x=>`<li><strong>Nhạc: ${esc(x.title)}</strong><span>bản gốc đầy đủ</span><audio controls preload="none" src="/api/project-media?id=${id}&kind=music&file=${encodeURIComponent(x.file)}"></audio></li>`).join('')}</ul>`:'<p class="warn">Chưa có file giọng nào trong thư mục audio của tập.</p>';
   const comps=m.compositions||[];
@@ -513,12 +514,14 @@ function settingsView(kind,text){
   const rest=Object.entries(data).filter(([k])=>!USED[kind].includes(k));
   return `<dl class="setting-list">${rows.map(([l,v])=>`<div${String(v).length>90?' class="is-long"':''}><dt>${esc(l)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>${rest.length?`<details class="setting-more"><summary>Thông số khác (${rest.length})</summary><dl class="setting-list is-compact">${rest.map(([k,v])=>`<div><dt><code>${esc(k)}</code></dt><dd>${esc(shortValue(v))}</dd></div>`).join('')}</dl></details>`:''}<details class="setting-more"><summary>Xem file gốc</summary><pre class="setting-raw">${esc(text)}</pre></details>`;
 }
+// Where a patch is watched: one Studio button per main composition of the project (no exported review clips).
+const studioStrip=list=>list?.length?`<span class="studio-strip"><span>Xem trong Studio:</span>${list.map(c=>`<button type="button" class="button studio-button" data-studio-launch="${esc(c.id)}">${esc(c.title)}</button>`).join('')}</span>`:'';
 // Lock and patch: the same checklist layout (items on the left, one at a time on the right, "seen" before deciding).
 function detailPanel(item){
   const id=encodeURIComponent(state.drawer.id);
   if(item.change){const c=item.change;return `<p class="review-hint">${esc(item.guide)}</p><dl class="change-card"><div><dt>Sửa gì</dt><dd>${esc(c.what)}</dd></div>${c.why?`<div><dt>Vì sao</dt><dd>${esc(c.why)}</dd></div>`:''}${c.before?`<div class="is-before"><dt>Trước</dt><dd>${esc(c.before)}</dd></div>`:''}${c.after?`<div class="is-after"><dt>Sau</dt><dd>${esc(c.after)}</dd></div>`:''}</dl>`;}
   if(item.media){const src=`/api/review/media?id=${id}&kind=patch&key=${encodeURIComponent(item.media.src)}`;
-    return `<p class="review-hint">${esc(item.guide)}</p>${item.media.changedSince?'<p class="warn">File này đã đổi sau khi agent gửi bản vá; agent cần gửi bản vá mới.</p>':''}${item.media.kind==='video'?`<video class="patch-video" controls playsinline preload="metadata" src="${src}"></video>`:`<audio class="patch-audio" controls preload="metadata" src="${src}"></audio>`}<p class="media-path"><code>${esc(item.media.path)}</code></p>`;}
+    return `<p class="review-hint">${esc(item.guide)}</p>${item.media.changedSince?'<p class="warn">File này đã đổi sau khi agent gửi bản vá; agent cần gửi bản vá mới.</p>':''}${item.media.kind==='video'?`<p class="studio-instead">Xem đoạn này trực tiếp trong Studio (bản dựng hiện tại), không cần clip xuất riêng.</p>${studioStrip(state.review.compositions)}`:`<audio class="patch-audio" controls preload="metadata" src="${src}"></audio><p class="media-path"><code>${esc(item.media.path)}</code></p>`}`;}
   const audio=item.audio.length?`<ul class="voice-takes is-pair">${item.audio.map(a=>`<li><strong>${esc(a.name)}</strong><audio controls preload="none" src="/api/review/media?id=${id}&kind=${encodeURIComponent(a.kind)}&key=${encodeURIComponent(a.key)}"></audio></li>`).join('')}</ul>`:'';
   const files=item.files.map((f,i)=>`<section class="detail-file"><h4>${esc(f.name)} <code>${esc(f.path)}</code></h4>${
     f.status==='changed'&&/\.md$/i.test(f.path)&&!f.tooLarge?`<p class="review-hint">${state.review?.returned?'So với bản bạn đã trả lại':f.base&&f.base!=='lock'?`Chỉ phần mới so với bản vá ${esc(f.base)}`:'So với bản chốt'}: chỉ hiện đoạn đã đổi, theo từng phần. Chữ <mark class="pd-add">thêm</mark>, chữ <mark class="pd-del">bỏ</mark>.</p><div class="prose-diff">${proseDiff(f.rows)}</div><details class="diff-raw"><summary>Xem so từng dòng (bản gốc)</summary>${diffRows(f.rows,`${item.key}-${i}`)}</details>`
@@ -553,7 +556,7 @@ function renderDetail(){
   const title=lock?(r.state==='unlocked'?'Chốt ban đầu':`Bản chốt v${state.gates.version}`):`Bản vá ${r.patch.id}`;
   const badge=lock?(r.state==='unlocked'?'Chờ bạn chốt':'Đã chốt'):patchText[r.patch.status]||r.patch.status;
   const intro=lock?(r.state==='unlocked'?(r.returned?`Bạn đã trả lại gói lúc ${when(r.returned.at)}${r.returned.note?` (“${esc(r.returned.note)}”)`:''}. ${r.returned.revisedItems.length?'Phần đã sửa được so với bản bạn trả lại; ghi chú cũ hiện ở từng mục.':'Agent chưa sửa mục nào.'} Xem lại từng mục: tất cả đạt thì chốt, còn mục chưa đạt thì trả lại tiếp.`:'Xem từng mục và bấm Đạt hoặc Chưa đạt (mục chưa đạt thì ghi chỗ cần sửa). Tất cả đạt thì chốt; có mục chưa đạt thì trả lại cho agent sửa tới khi đạt. Sau khi chốt, mọi chỉnh sửa đi qua bản vá.'):'Nội dung đang dùng; phần sửa sau bản chốt được so với bản chốt.')
-    :`${esc(r.patch.reason)} · tạo ${when(r.patch.createdAt)} trên bản v${r.patch.baseVersion}${r.patch.note?` · Ghi chú: ${esc(r.patch.note)}`:''}${requestList(r.patch.requests)}${r.patch.previous?`<span class="review-prev">Chỉ hiện phần mới so với bản vá ${esc(r.patch.previous.id)}${r.patch.previous.unchanged.length?`; không đổi từ đó: ${esc(r.patch.previous.unchanged.join(', '))}`:''}. Chấp nhận là nhận cả những gì đã sửa từ bản chốt.</span>`:''}`;
+    :`${studioStrip(r.compositions)}${esc(r.patch.reason)} · tạo ${when(r.patch.createdAt)} trên bản v${r.patch.baseVersion}${r.patch.note?` · Ghi chú: ${esc(r.patch.note)}`:''}${requestList(r.patch.requests)}${r.patch.previous?`<span class="review-prev">Chỉ hiện phần mới so với bản vá ${esc(r.patch.previous.id)}${r.patch.previous.unchanged.length?`; không đổi từ đó: ${esc(r.patch.previous.unchanged.join(', '))}`:''}. Chấp nhận là nhận cả những gì đã sửa từ bản chốt.</span>`:''}`;
   const rail=`<aside class="review-rail" aria-label="Danh sách cần xem"><p class="rail-title">${editable?'Cần bạn xem':'Nội dung'} <span>${editable?`${done}/${items.length}`:items.length}</span></p><ol>${items.map((it,i)=>`<li><button class="rail-item${it===current?' is-current':''}${dec[it.key]==='pass'?' is-seen':''}${dec[it.key]==='fail'?' is-fail':''}" data-review-item="${i}" aria-current="${it===current}"><span class="rail-check" aria-hidden="true">${dec[it.key]==='pass'?'✓':dec[it.key]==='fail'?'!':i+1}</span><span class="rail-name">${esc(it.title)}<small>${esc(railSmall(it))}</small></span></button></li>`).join('')}</ol></aside>`;
   const recorded=current&&state.reviewLockedNotes[current.key]?`<div class="note-recorded"><span>Ghi chú của bạn khi ${r.returned?'trả lại':lock?'chốt':'duyệt'} (${when(state.reviewLockedNotes[current.key].at)})</span><p>${esc(state.reviewLockedNotes[current.key].text)}</p></div>`:'';
   const draft=current?state.noteDrafts[current.key]??state.reviewNotes[current.key]?.text??'':'';
@@ -609,6 +612,7 @@ $('#drawer-content').addEventListener('click',event=>{
 });
 $('#review-dialog').addEventListener('click',event=>{
   if(event.target===event.currentTarget||event.target.closest('[data-review-close]')){$('#review-dialog').close();return;}
+  const sl=event.target.closest('[data-studio-launch]');if(sl&&state.drawer?.id){launchStudio(state.drawer.id,sl.dataset.studioLaunch);return;}
   const item=event.target.closest('[data-review-item]');if(item){showItem(Number(item.dataset.reviewItem));return;}
   if(event.target.closest('[data-review-prev]')){showItem(Math.max(0,state.reviewIndex-1));return;}
   if(event.target.closest('[data-patch-return]')){decidePatch('returned');return;}
@@ -1153,10 +1157,19 @@ async function watch(id,kind,number=0){
   const show=()=>{
     if(pick){selectedMedia.composition=pick.composition;$('#media-studio').hidden=false;}
     $('#media-folder').hidden=Boolean(pick&&!pick.name);
+    $('#media-content').classList.toggle('is-empty',Boolean(pick&&!pick.name));
     if(pick&&!pick.name){
-      const note=document.createElement('div');note.className='media-unplayable';
-      note.append(Object.assign(document.createElement('p'),{textContent:`${pick.title} chưa được xuất. Bấm “Mở trong Studio” để xem và xuất bản này.`}));
-      $('#media-status').textContent='';$('#media-content').replaceChildren(note);return;
+      // Not exported yet (user 2026-11-09: the dark box with a floating note looked broken): a light 16:9 frame that says
+      // where the work is watched (Studio) and carries the one action; the footer Studio button is hidden meanwhile.
+      const note=document.createElement('div');note.className='media-pending';
+      const frame=document.createElement('div');frame.className='media-pending-frame';frame.setAttribute('aria-hidden','true');
+      frame.append(Object.assign(document.createElement('span'),{className:'media-pending-play'}));
+      const text=document.createElement('div');text.className='media-pending-text';
+      text.append(Object.assign(document.createElement('strong'),{textContent:'Chưa có bản xuất'}),
+        Object.assign(document.createElement('p'),{textContent:`${pick.title} đang được dựng: xem trực tiếp trong Studio. Khi video xong và bạn xuất, bản xuất sẽ phát ngay tại đây.`}),
+        Object.assign(document.createElement('button'),{type:'button',className:'button studio-button',textContent:'Mở trong Studio',onclick:()=>launchStudio(id,pick.composition)}));
+      note.append(frame,text);
+      $('#media-studio').hidden=true;$('#media-status').textContent='';$('#media-content').replaceChildren(note);return;
     }
     const media=document.createElement(kind==='video'?'video':'img');
     media.src=`/api/media?id=${encodeURIComponent(id)}&kind=${kind}${pick?'&file='+encodeURIComponent(pick.name):''}`;
@@ -1379,7 +1392,7 @@ const playButton=(kind,key,title,subtitle='')=>`<button class="play-button" data
 // System map (Bản đồ hệ thống): workflow, architecture and repo catalog from /api/system. Read-only view.
 const sysTabs={flow:'Quy trình sản xuất',layers:'Kiến trúc',repos:'Danh mục repo'};
 const sysKinds={'draft-task':['Agent soạn nháp','agent'],'operator-task':['Chạy công cụ','tool'],check:['Kiểm tra','check'],'human-approval':['Bạn duyệt','gate']};
-Object.assign(state,{sysTab:sysTabs[params.get('sys')]?params.get('sys'):'flow',sysRepo:params.get('repo')||'',sysStatus:'',sysQuery:''});
+Object.assign(state,{sysTab:sysTabs[params.get('sys')]?params.get('sys'):'flow',sysRepo:params.get('repo')||'',sysStatus:'',sysQuery:'',sysStage:'',sysNode:''});
 function sysUrl(){const u=new URL(location.href);u.searchParams.set('sys',state.sysTab);if(state.sysTab==='repos'&&state.sysRepo)u.searchParams.set('repo',state.sysRepo);else u.searchParams.delete('repo');history.replaceState(history.state,'',u);}
 const sysPill=(m,status)=>`<span class="sys-pill sys-${esc(status)}">${esc(m.statuses[status]?.title||status)}</span>`;
 const sysRepoChip=(m,r)=>`<button type="button" class="sys-chip sys-${esc(r.status)}" data-sys-repo="${esc(r.id)}" title="${esc(m.statuses[r.status]?.title||'')}">${esc(r.title)}</button>`;
@@ -1391,6 +1404,95 @@ function sysUsage(r){
   if(f.python?.version)return `${f.python.env} · ${f.python.version}`;
   if(r.packages?.length)return 'Đã cài, chưa file nào dùng';
   return f.cloned?'Chỉ có bản clone':'Chưa clone';
+}
+// ---- System map diagrams (Mermaid, served locally from node_modules) -------------------------------------
+const mmText=t=>String(t).replace(/"/g,'#quot;').replace(/[<>]/g,'');
+let mermaidReady=null;
+function loadMermaid(){
+  if(window.mermaid)return Promise.resolve(window.mermaid);
+  return mermaidReady||=new Promise((resolve,reject)=>{const tag=document.createElement('script');tag.src='/vendor/mermaid.js';tag.onload=()=>{
+    window.mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'base',flowchart:{curve:'basis',nodeSpacing:28,rankSpacing:40,padding:12,htmlLabels:true,useMaxWidth:true},
+      themeVariables:{fontFamily:'Workspace, system-ui, sans-serif',fontSize:'15px',primaryColor:'#ffffff',primaryBorderColor:'#9db5a3',primaryTextColor:'#20362d',lineColor:'#9aafa1',clusterBkg:'#f6f8f5',clusterBorder:'#dce4dc',titleColor:'#20362d',edgeLabelBackground:'#f6f8f5'}});
+    resolve(window.mermaid);};tag.onerror=()=>{mermaidReady=null;reject(new Error('Không tải được thư viện vẽ sơ đồ'));};document.head.append(tag);});
+}
+const SYS_CLASSES=`classDef agent fill:#eef3ec,stroke:#16362e,stroke-width:1.5px,color:#16362e
+classDef tool fill:#ffffff,stroke:#596c61,stroke-width:1.5px,color:#20362d
+classDef check fill:#ffffff,stroke:#596c61,stroke-width:1.5px,stroke-dasharray:5 4,color:#20362d
+classDef gate fill:#f6ecd6,stroke:#8e6f34,stroke-width:2px,color:#5c4314
+classDef env fill:#e1eff3,stroke:#24596a,stroke-width:1.5px,color:#1d4654
+classDef repo fill:#ffffff,stroke:#2f6a2a,stroke-width:1.5px,color:#2f6a2a
+classDef skill fill:#f8f0dc,stroke:#b8954c,stroke-width:1.5px,color:#5c4314
+classDef me fill:#16362e,stroke:#16362e,color:#ffffff`;
+function sysFlowChart(m){
+  const id=x=>'s'+m.stages.findIndex(s=>s.id===x),kind=s=>(sysKinds[s.kind]||[0,'tool'])[1];
+  const shape=s=>{const t=`"${mmText(s.title)}"`;return kind(s)==='agent'?`([${t}])`:kind(s)==='gate'?`{{${t}}}`:`[${t}]`;};
+  const lines=['flowchart TB',...m.stages.map(s=>`  ${id(s.id)}${shape(s)}`),...m.stages.flatMap(s=>(s.dependencies||[]).filter(d=>m.stages.some(x=>x.id===d)).map(d=>`  ${id(d)} --> ${id(s.id)}`)),SYS_CLASSES];
+  for(const k of ['agent','tool','check','gate']){const ids=m.stages.filter(s=>kind(s)===k).map(s=>id(s.id));if(ids.length)lines.push(`class ${ids.join(',')} ${k}`);}
+  return {code:lines.join('\n'),nodes:Object.fromEntries(m.stages.map(s=>[id(s.id),{stage:s.id,label:s.title}]))};
+}
+// Architecture nodes: components and environments per layer, the user's own steps, engine and skill repos.
+function sysArchNodes(m){
+  const out=[],repo=id=>m.repos.find(r=>r.id===id);
+  out.push({key:'u',layer:'user',label:'Bạn duyệt và xuất',cls:'me'});
+  for(const c of m.components)out.push({key:'c:'+c.id,layer:c.layer,label:c.title,cls:'tool',component:c});
+  for(const e of m.environments)out.push({key:'e:'+e.id,layer:'runtime',label:e.title,cls:'env',env:e});
+  const engine=new Set(m.components.filter(c=>c.layer==='engine').flatMap(c=>c.repos));
+  for(const id of engine)if(repo(id))out.push({key:'r:'+id,layer:'engine',label:repo(id).title,cls:'repo',repo:id});
+  for(const r of m.repos.filter(r=>r.status==='skill'))out.push({key:'r:'+r.id,layer:'knowledge',label:r.title,cls:'skill',repo:r.id});
+  return out;
+}
+function sysArchChart(m){
+  // Layers read top to bottom; skills sit last (an invisible link keeps them under the engine, not beside the user).
+  const nodes=sysArchNodes(m),nid=new Map(nodes.map((n,i)=>[n.key,'n'+i])),lines=['flowchart TB'];
+  const shape=n=>n.repo?`(["${mmText(n.label)}"])`:`["${mmText(n.label)}"]`;
+  for(const l of m.layers){const inside=nodes.filter(n=>n.layer===l.id);if(!inside.length)continue;
+    lines.push(`  subgraph L_${l.id}["${mmText(l.title)}"]`,'    direction LR',...inside.map(n=>`    ${nid.get(n.key)}${shape(n)}`),'  end');}
+  const present=m.layers.filter(l=>nodes.some(n=>n.layer===l.id)).map(l=>l.id);
+  for(let i=0;i<present.length-1;i++)lines.push(present[i+1]==='knowledge'?`  L_${present[i]} ~~~ L_${present[i+1]}`:`  L_${present[i]} --> L_${present[i+1]}`);
+  lines.push(SYS_CLASSES);
+  for(const k of ['me','tool','env','repo','skill']){const ids=nodes.filter(n=>n.cls===k).map(n=>nid.get(n.key));if(ids.length)lines.push(`class ${ids.join(',')} ${k}`);}
+  return {code:lines.join('\n'),nodes:Object.fromEntries(nodes.map(n=>[nid.get(n.key),{node:n.key,repo:n.repo,label:n.label}]))};
+}
+let diagramToken=0;
+async function drawDiagram({code,nodes},tab){
+  const token=++diagramToken,box=$('#sys-diagram');
+  try{
+    const mermaid=await loadMermaid();await document.fonts?.ready;
+    const {svg}=await mermaid.render('sysmap'+token,code);
+    if(token!==diagramToken||state.sysTab!==tab||!box.isConnected)return;
+    box.innerHTML=svg;
+    // Mermaid node ids look like "<svg id>-flowchart-<node>-<n>" or "flowchart-<node>-<n>": make each node a button.
+    box.querySelectorAll('g.node').forEach(g=>{const hit=(g.id||'').match(/flowchart-([a-z]\d+)-\d+$/);const info=hit&&nodes[hit[1]];if(!info)return;
+      g.setAttribute('tabindex','0');g.setAttribute('role','button');g.setAttribute('aria-label',info.repo?`${info.label}: mở trong danh mục repo`:info.label);g.dataset.sysNodeInfo=JSON.stringify(info);g.classList.add('sys-node');});
+    markSelected();box.scrollLeft=(box.scrollWidth-box.clientWidth)/2; // phones: start at the centre of a wide diagram
+  }catch(error){if(token===diagramToken&&box.isConnected)box.innerHTML=`<p class="sys-empty">Không vẽ được sơ đồ: ${esc(error.message)}</p>`;}
+}
+const markSelected=()=>document.querySelectorAll('#sys-diagram .sys-node').forEach(g=>{const i=JSON.parse(g.dataset.sysNodeInfo);const on=state.sysTab==='flow'?i.stage===state.sysStage:i.node===state.sysNode;g.classList.toggle('is-selected',Boolean(on));g.setAttribute('aria-pressed',String(Boolean(on&&!i.repo)));
+  // Mermaid writes classDef colours inline with !important, so the selection outline is set inline too.
+  g.querySelectorAll('rect,polygon,path').forEach(sh=>{if(sh.closest('.label'))return;
+    if(sh.dataset.stroke===undefined){sh.dataset.stroke=sh.style.getPropertyValue('stroke');sh.dataset.strokeWidth=sh.style.getPropertyValue('stroke-width');}
+    sh.style.setProperty('stroke',on?'#b79554':sh.dataset.stroke,'important');sh.style.setProperty('stroke-width',on?'3.5px':sh.dataset.strokeWidth,'important');});});
+function sysPickNode(info){
+  if(info.repo){sysOpenRepo(info.repo);return;}
+  if(info.stage)state.sysStage=info.stage;else state.sysNode=info.node;
+  const side=$('#sys-side');if(side)side.innerHTML=info.stage?sysStagePanel(state.system,info.stage):sysNodePanel(state.system,info.node);
+  markSelected();side?.scrollIntoView({block:'nearest'});
+}
+function sysOpenRepo(id){state.sysRepo=id;state.sysQuery='';if(state.system&&!state.system.repos.some(r=>r.id===id&&(!state.sysStatus||r.status===state.sysStatus)))state.sysStatus='';sysSetTab('repos');$('#sys-detail')?.scrollIntoView({block:'start'});$('#sys-detail')?.focus({preventScroll:true});}
+const sysRepoList=(m,ids)=>{const list=ids.map(id=>m.repos.find(r=>r.id===id)).filter(Boolean);return list.length?`<h4>Repo bên ngoài</h4><div class="sys-uses">${list.map(r=>sysRepoChip(m,r)).join('')}</div>`:'';};
+function sysStagePanel(m,id){
+  const s=m.stages.find(x=>x.id===id);if(!s)return '<p class="sys-empty">Chọn một bước trên sơ đồ.</p>';
+  const [kindTitle,kindClass]=sysKinds[s.kind]||[s.kind,'tool'],comps=m.components.filter(c=>c.stages.includes(s.id));
+  const deps=(s.dependencies||[]).map(d=>m.stages.find(x=>x.id===d)?.title).filter(Boolean);
+  return `<p class="sys-side-kind"><span class="sys-mark ${kindClass}" aria-hidden="true"></span>${esc(kindTitle)}</p><h3>${esc(s.title)}</h3><p>${esc(s.guide)}</p>${deps.length?`<p class="sys-note">Sau: ${esc(deps.join(', '))}</p>`:''}
+${comps.length?`<h4>Công cụ trong repo</h4><ul class="sys-comp-list">${comps.map(c=>`<li><strong>${esc(c.title)}</strong><code>${esc(c.command)}</code></li>`).join('')}</ul>`:''}${sysRepoList(m,m.repos.filter(r=>r.stages.includes(s.id)).map(r=>r.id))}`;
+}
+function sysNodePanel(m,key){
+  const n=sysArchNodes(m).find(x=>x.key===key);if(!n)return '<p class="sys-empty">Chọn một khối trên sơ đồ.</p>';
+  const layer=m.layers.find(l=>l.id===n.layer);
+  if(n.key==='u'){const gates=m.stages.filter(s=>s.kind==='human-approval');return `<p class="sys-side-kind">${esc(layer?.title||'')}</p><h3>Việc chỉ bạn làm</h3><p>${esc(layer?.summary||'')}</p><ul class="sys-comp-list">${gates.map(g=>`<li><strong>${esc(g.title)}</strong></li>`).join('')}<li><strong>Nghe duyệt giọng, render và đăng tải</strong></li></ul>`;}
+  if(n.component){const c=n.component;return `<p class="sys-side-kind">${esc(layer?.title||'')}</p><h3>${esc(c.title)}</h3><p>${esc(c.summary)}</p><dl class="sys-facts"><dt>Lệnh</dt><dd><code>${esc(c.command)}</code></dd><dt>Thư mục</dt><dd><code>${esc(c.path)}</code></dd></dl>${c.stages.length?`<h4>Tham gia các bước</h4><div class="sys-uses">${c.stages.map(id=>`<button type="button" class="sys-tool sys-stage-link" data-sys-stage="${esc(id)}">${esc(m.stages.find(s=>s.id===id)?.title||id)}</button>`).join('')}</div>`:''}${sysRepoList(m,c.repos)}`;}
+  const e=n.env;return `<p class="sys-side-kind">${esc(layer?.title||'')}</p><h3>${esc(e.title)} <span class="sys-present ${e.present?'yes':'no'}">${e.present?'Có trên máy':'Chưa có'}</span></h3><p>${esc(e.summary)}</p><dl class="sys-facts"><dt>Thư mục</dt><dd><code>${esc(e.path)}</code></dd></dl>${sysRepoList(m,e.repos)}`;
 }
 async function renderSystem(){
   const box=$('#resource-view');
@@ -1404,7 +1506,9 @@ async function renderSystem(){
   if(state.resourceKey!==key||!box.querySelector('#sys-body')){
     state.resourceKey=key;
     const warn=m.warnings.length?`<div class="sys-warnings" role="status"><strong>${m.warnings.length} điểm bản đồ lệch với thực tế</strong><ul>${m.warnings.map(w=>`<li>${w.repo?`<button type="button" class="link-button" data-sys-repo="${esc(w.repo)}">${esc(w.title)}</button>`:esc(w.title)}: ${esc(w.message)}</li>`).join('')}</ul><p>Sửa mô tả trong <code>${esc(m.source)}</code>.</p></div>`:'';
-    const statusRow=`<div class="sys-statuses">${Object.entries(m.statuses).map(([k,s])=>`<button type="button" class="sys-status sys-${esc(k)}" data-sys-status="${esc(k)}" aria-pressed="${state.sysStatus===k}"><strong>${m.counts[k]||0}</strong><span>${esc(s.title)}</span><small>${esc(s.summary)}</small></button>`).join('')}</div>`;
+    // Repo statuses as one stacked bar plus a legend; each entry opens the repo catalog filtered to that status
+    // (user 2026-11-09: the six tall cards looked clumsy and clicking should lead straight to the catalog).
+    const total=m.repos.length,statusRow=`<section class="sys-overview" aria-labelledby="sys-overview-title"><h2 id="sys-overview-title">${total} repo trong <code>repos/</code></h2><div class="sys-bar" aria-hidden="true">${Object.keys(m.statuses).filter(k=>m.counts[k]).map(k=>`<span class="sys-${esc(k)}" style="flex:${m.counts[k]}"></span>`).join('')}</div><ul class="sys-key">${Object.entries(m.statuses).map(([k,st])=>`<li><button type="button" class="sys-key-item sys-${esc(k)}" data-sys-status="${esc(k)}" title="${esc(st.summary)}"><span class="sys-dot" aria-hidden="true"></span><strong>${m.counts[k]||0}</strong> ${esc(st.title)}</button></li>`).join('')}</ul></section>`;
     const tabs=`<div class="sys-tabs" role="tablist" aria-label="Góc nhìn">${Object.entries(sysTabs).map(([k,t])=>`<button type="button" role="tab" id="sys-tab-${k}" aria-controls="sys-body" aria-selected="${state.sysTab===k}" tabindex="${state.sysTab===k?0:-1}" data-sys-tab="${k}">${esc(t)}${k==='repos'?` <span class="count">${m.repos.length}</span>`:''}</button>`).join('')}</div>`;
     box.innerHTML=`${warn}${statusRow}${tabs}<div id="sys-body" role="tabpanel" aria-labelledby="sys-tab-${state.sysTab}"></div><p class="resource-note">Mô tả vai trò do người viết trong <code>${esc(m.source)}</code> (cập nhật ${esc(m.updated)}). Số liệu đo trực tiếp mỗi lần mở trang: commit trong repos-manifest.json, phiên bản trong package.json và các môi trường Python, ${m.scanned} file nguồn trong src, scripts, tools. Bước quy trình lấy từ tools/production-automation.</p>`;
   }
@@ -1416,27 +1520,14 @@ function renderSystemBody(){
   $('#resource-view').querySelectorAll('[data-sys-status]').forEach(b=>b.setAttribute('aria-pressed',String(state.sysStatus===b.dataset.sysStatus)));
   const shown=r=>!state.sysStatus||r.status===state.sysStatus;
   if(state.sysTab==='flow'){
+    if(!m.stages.some(x=>x.id===state.sysStage))state.sysStage=m.stages[0]?.id||'';
     const legend=`<ul class="sys-legend" aria-label="Chú giải">${Object.values(sysKinds).map(([t,c])=>`<li><span class="sys-mark ${c}" aria-hidden="true"></span>${esc(t)}</li>`).join('')}</ul>`;
-    const rows=m.stages.map(s=>{
-      const [kindTitle,kindClass]=sysKinds[s.kind]||[s.kind,'tool'];
-      const comps=m.components.filter(c=>c.stages.includes(s.id)),repos=m.repos.filter(r=>r.stages.includes(s.id)&&shown(r));
-      return `<li class="sys-stage ${kindClass}" id="sys-stage-${esc(s.id)}"><span class="sys-mark ${kindClass}" aria-hidden="true"></span><div class="sys-stage-body"><div class="sys-stage-head"><h3>${esc(s.title)}</h3><span class="sys-kind">${esc(kindTitle)}</span></div><p>${esc(s.guide)}</p>
-${comps.length?`<div class="sys-uses"><span class="sys-uses-label">Công cụ</span>${comps.map(c=>`<span class="sys-tool">${esc(c.title)}</span>`).join('')}</div>`:''}
-${repos.length?`<div class="sys-uses"><span class="sys-uses-label">Repo</span>${repos.map(r=>sysRepoChip(m,r)).join('')}</div>`:''}</div></li>`;}).join('');
-    const outside=m.repos.filter(r=>!r.stages.length&&shown(r));
-    body.innerHTML=`<div class="resource-heading"><h2>Một tập đi qua những bước nào</h2><p>Quy trình đầy đủ của series Đọc sách, hiểu mình (các series khác bỏ bước Nguồn sách). Mỗi bước ghi công cụ của repo và repo bên ngoài thật sự tham gia. Bấm tên repo để xem chi tiết.${state.sysStatus?` Đang lọc: ${esc(m.statuses[state.sysStatus].title)}.`:''}</p></div>${legend}<ol class="sys-rail">${rows}</ol>
-${outside.length?`<section class="sys-outside"><h3>Không nằm trong bước nào</h3><p>Phục vụ agent, tra cứu code hoặc đang để dành.</p><div class="sys-uses">${outside.map(r=>sysRepoChip(m,r)).join('')}</div></section>`:''}`;
+    body.innerHTML=`<div class="resource-heading"><h2>Một tập đi qua những bước nào</h2><p>Quy trình đầy đủ của series Đọc sách, hiểu mình (các series khác bỏ bước Nguồn sách). Mũi tên là thứ tự phụ thuộc. Bấm một bước để xem công cụ và repo tham gia; bấm tên repo để mở danh mục repo.</p></div>${legend}<div class="sys-split"><figure class="sys-diagram" id="sys-diagram" aria-label="Sơ đồ quy trình sản xuất"><p class="sys-empty">Đang vẽ sơ đồ…</p></figure><aside class="sys-side" id="sys-side" aria-live="polite">${sysStagePanel(m,state.sysStage)}</aside></div>`;
+    drawDiagram(sysFlowChart(m),'flow');
   } else if(state.sysTab==='layers'){
-    const gates=m.stages.filter(s=>s.kind==='human-approval');
-    const layer=l=>{
-      let items=m.components.filter(c=>c.layer===l.id).map(c=>{const repos=c.repos.map(id=>m.repos.find(r=>r.id===id)).filter(Boolean).filter(shown);return `<article class="sys-box"><h4>${esc(c.title)}</h4><p>${esc(c.summary)}</p><code>${esc(c.command)}</code><small>${esc(c.path)}</small>${repos.length?`<div class="sys-uses">${repos.map(r=>sysRepoChip(m,r)).join('')}</div>`:''}</article>`;});
-      if(l.id==='user')items=[`<article class="sys-box sys-user"><h4>Việc chỉ bạn làm</h4><ul>${gates.map(g=>`<li>${esc(g.title)}</li>`).join('')}<li>Nghe duyệt giọng, render và đăng tải</li></ul></article>`];
-      if(l.id==='runtime')items.push(...m.environments.map(e=>{const repos=e.repos.map(id=>m.repos.find(r=>r.id===id)).filter(Boolean).filter(shown);return `<article class="sys-box"><h4>${esc(e.title)} <span class="sys-present ${e.present?'yes':'no'}">${e.present?'Có trên máy':'Chưa có'}</span></h4><p>${esc(e.summary)}</p>${repos.length?`<div class="sys-uses">${repos.map(r=>sysRepoChip(m,r)).join('')}</div>`:''}</article>`;}));
-      if(l.id==='engine'){const extra=m.repos.filter(r=>['production','trial','idle','idea'].includes(r.status)&&shown(r)&&!m.components.some(c=>c.layer==='engine'&&c.repos.includes(r.id)));if(extra.length)items.push(`<article class="sys-box sys-wide"><h4>Thư viện khác</h4><p>Đang chạy qua công cụ ở tầng trên, lấy ý tưởng, hoặc đã cài nhưng chưa dùng.</p><div class="sys-uses">${extra.map(r=>sysRepoChip(m,r)).join('')}</div></article>`);}
-      if(l.id==='knowledge'){const skills=m.repos.filter(r=>r.status==='skill'&&shown(r));items.push(`<article class="sys-box sys-wide"><h4>Skill trong skills/</h4><p>Agent đọc trước khi dựng video hoặc sửa trang quản lý; không chạy khi render.</p><div class="sys-uses">${skills.map(r=>sysRepoChip(m,r)).join('')||'<span class="sys-tool">Không có trong bộ lọc này</span>'}</div></article>`);}
-      return `<section class="sys-layer"><div class="sys-layer-head"><h3>${esc(l.title)}</h3><p>${esc(l.summary)}</p></div><div class="sys-layer-items">${items.join('')||'<p class="sys-empty">Không có mục nào trong bộ lọc này.</p>'}</div></section>`;
-    };
-    body.innerHTML=`<div class="resource-heading"><h2>Các tầng của hệ thống</h2><p>Đọc từ trên xuống: bạn điều khiển qua trang quản lý và Studio, công cụ của repo gọi engine trong môi trường riêng; skill chỉ hướng dẫn agent.</p></div><div class="sys-layers">${m.layers.map(layer).join('')}</div>`;
+    const sel=state.sysNode&&sysArchNodes(m).find(n=>n.key===state.sysNode)?state.sysNode:'c:manager';state.sysNode=sel;
+    body.innerHTML=`<div class="resource-heading"><h2>Các tầng của hệ thống</h2><p>Đọc từ trên xuống: bạn điều khiển qua trang quản lý và Studio, công cụ của repo chạy trong môi trường riêng và gọi engine; skill chỉ hướng dẫn agent. Bấm một khối để xem chi tiết; khối viền tròn là repo bên ngoài, bấm vào mở thẳng danh mục repo.</p></div><div class="sys-split"><figure class="sys-diagram" id="sys-diagram" aria-label="Sơ đồ kiến trúc"><p class="sys-empty">Đang vẽ sơ đồ…</p></figure><aside class="sys-side" id="sys-side" aria-live="polite">${sysNodePanel(m,sel)}</aside></div>`;
+    drawDiagram(sysArchChart(m),'layers');
   } else {
     const q=fold(state.sysQuery),list=m.repos.filter(r=>shown(r)&&(!q||fold([r.title,r.id,r.category,r.general,r.role,r.facts.upstream].join(' ')).includes(q)));
     if(!list.some(r=>r.id===state.sysRepo))state.sysRepo=list[0]?.id||'';
@@ -1472,15 +1563,17 @@ ${r.notes.length?`<div class="sys-warnings"><strong>Lệch với mô tả</stron
 function sysSetTab(tab,focus){state.sysTab=tab;sysUrl();renderSystemBody();$('#resource-view').querySelectorAll('[data-sys-tab]').forEach(b=>{const on=b.dataset.sysTab===tab;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;if(on&&focus)b.focus();});}
 $('#resource-view').addEventListener('click',event=>{
   if(state.view!=='system')return;
+  const node=event.target.closest('[data-sys-node-info]');if(node){sysPickNode(JSON.parse(node.dataset.sysNodeInfo));return;}
   const t=event.target.closest('[data-sys-tab],[data-sys-repo],[data-sys-pick],[data-sys-status],[data-sys-stage]');if(!t)return;
   if(t.dataset.sysTab)sysSetTab(t.dataset.sysTab);
-  else if(t.dataset.sysStatus){state.sysStatus=state.sysStatus===t.dataset.sysStatus?'':t.dataset.sysStatus;renderSystemBody();}
+  else if(t.dataset.sysStatus){const k=t.dataset.sysStatus;state.sysStatus=state.sysTab==='repos'&&state.sysStatus===k?'':k;state.sysRepo='';state.sysQuery='';sysSetTab('repos');}
   else if(t.dataset.sysPick){state.sysRepo=t.dataset.sysPick;sysUrl();renderSystemBody();const d=$('#sys-detail'),top=d.getBoundingClientRect().top;if(top<0||top>innerHeight-120)d.scrollIntoView({block:'start'});$(`[data-sys-pick="${CSS.escape(state.sysRepo)}"]`)?.focus();}
-  else if(t.dataset.sysRepo){state.sysRepo=t.dataset.sysRepo;state.sysQuery='';if(state.system&&!state.system.repos.some(r=>r.id===state.sysRepo&&(!state.sysStatus||r.status===state.sysStatus)))state.sysStatus='';sysSetTab('repos');$('#sys-detail')?.scrollIntoView({block:'start'});$('#sys-detail')?.focus({preventScroll:true});}
-  else if(t.dataset.sysStage){const id=t.dataset.sysStage;state.sysStatus='';sysSetTab('flow');const row=document.getElementById('sys-stage-'+id);if(row){row.classList.add('sys-highlight');row.scrollIntoView({block:'center'});setTimeout(()=>row.classList.remove('sys-highlight'),2400);}}
+  else if(t.dataset.sysRepo)sysOpenRepo(t.dataset.sysRepo);
+  else if(t.dataset.sysStage){state.sysStage=t.dataset.sysStage;state.sysStatus='';sysSetTab('flow');$('#sys-side')?.scrollIntoView({block:'nearest'});}
 });
 $('#resource-view').addEventListener('input',event=>{if(state.view!=='system'||event.target.id!=='sys-search')return;state.sysQuery=event.target.value;clearTimeout(searchTimer);searchTimer=setTimeout(renderSystemBody,100);});
 $('#resource-view').addEventListener('keydown',event=>{
+  const node=event.target.closest?.('[data-sys-node-info]');if(node&&(event.key==='Enter'||event.key===' ')){event.preventDefault();sysPickNode(JSON.parse(node.dataset.sysNodeInfo));return;}
   const tab=event.target.closest?.('[data-sys-tab]');if(!tab||!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
   const keys=Object.keys(sysTabs),i=keys.indexOf(tab.dataset.sysTab);event.preventDefault();
   const next=event.key==='Home'?0:event.key==='End'?keys.length-1:(i+(event.key==='ArrowRight'?1:-1)+keys.length)%keys.length;sysSetTab(keys[next],true);
@@ -1814,7 +1907,7 @@ function backupHeadline(d){
   if(phase==='failed')return {tone:'err',title:'Lần sao lưu gần nhất bị lỗi',text:st.error||'Xem nhật ký bên dưới.'};
   if(phase==='interrupted')return {tone:'warn',title:'Lần sao lưu gần nhất bị ngắt giữa chừng',text:`Tiến trình dừng mà không báo xong (tắt máy hoặc bị dừng) lúc ${when(st.updatedAt)}. Bấm Sao lưu để chạy tiếp; file đã lên Drive không phải tải lại.`};
   if(phase==='stopped')return {tone:'warn',title:'Đã dừng sao lưu',text:`Dừng lúc ${when(st.finishedAt)}. Bấm Sao lưu để chạy tiếp; file đã lên Drive không phải tải lại.`};
-  if(!p.indexUpdatedAt)return {tone:'warn',title:'Chưa có lần đối chiếu nào với Drive',text:'Trang chưa biết file nào đã có trên Drive nên đang tính mọi file là chưa sao lưu. Bấm Đối chiếu với Drive để kiểm tra mà không tải lên.'};
+  if(!p.indexUpdatedAt)return {tone:'warn',title:'Chưa có lần đối chiếu nào với Drive',text:'Trang chưa biết file nào đã có trên Drive nên đang tính mọi file là chưa sao lưu. Bấm Sao lưu lên Drive: lần chạy tự so với Drive và bỏ qua file đã có.'};
   if(p.pendingFiles)return {tone:'warn',title:`${countVi(p.pendingFiles)} file chưa có trên Drive`,text:`${bytesVi(p.pendingBytes)} mới hoặc đã đổi kể từ lần Drive xác nhận gần nhất (${when(p.indexUpdatedAt)}).`};
   return {tone:'ok',title:'Mọi dữ liệu đã có trên Drive',text:`Drive xác nhận bằng checksum lúc ${when(p.indexUpdatedAt)}. Có file mới thì trang báo ở đây.`};
 }
@@ -1850,7 +1943,7 @@ function renderBackup(){
   const live=Object.fromEntries((d.running&&st?.sources||[]).map(s=>[s.relative,s]));
   const focusId=document.activeElement?.closest?.('#resource-view')?(document.activeElement.dataset.backupFiles?`[data-backup-files="${CSS.escape(document.activeElement.dataset.backupFiles)}"]`:document.activeElement.dataset.backupAction?`[data-backup-action="${document.activeElement.dataset.backupAction}"]`:''):'';
   const actions=d.running?`<button class="button secondary" data-backup-action="stop">Dừng sao lưu</button>`
-    :`<button class="button primary" data-backup-action="run">${d.pending.pendingFiles?'Sao lưu lên Drive':'Sao lưu lại và kiểm tra'}</button><button class="button secondary" data-backup-action="verify">Đối chiếu với Drive</button>`;
+    :`<button class="button primary" data-backup-action="run">${d.pending.pendingFiles?'Sao lưu lên Drive':'Sao lưu lại và kiểm tra'}</button>`;
   const status=`<section class="backup-status is-${head.tone}" aria-labelledby="backup-status-title" aria-live="polite">
 <div class="backup-status-main">${tracked?`<div class="progress-figure"><strong>${pct}%</strong><span>ước tính</span></div>`:''}<div class="backup-status-text"><h2 id="backup-status-title">${esc(head.title)}</h2><p>${esc(head.text)}</p></div><div class="backup-actions">${actions}</div></div>
 ${tracked?`${bar(pct,'is-big')}${backupNow(d)}`:''}
@@ -1874,7 +1967,7 @@ async function backupAction(action,button){
   button.disabled=true;
   try{
     if(action==='stop'){const r=await api('/api/backup/stop',{});toast(r.stopped?'Đã gửi lệnh dừng sao lưu.':'Không có bản sao lưu nào đang chạy.');}
-    else{await api('/api/backup/start',{action});toast(action==='verify'?'Đang đối chiếu với Drive. Tiến trình chạy nền.':'Đã bắt đầu sao lưu. Tiến trình chạy nền, có thể đóng trang.');}
+    else{await api('/api/backup/start',{action});toast('Đã bắt đầu sao lưu. Tiến trình chạy nền, có thể đóng trang.');}
   }catch(error){toast(error.message);}
   finally{button.disabled=false;await refreshBackup();}
 }

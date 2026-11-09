@@ -51,12 +51,13 @@ export const Projects=()=> <Folder name="Test"><Folder name="Demo"><Folder name=
       await page.locator('#close-media').click();assert.equal(await page.locator('#media-switch').isHidden(),true);
       // Covers not exported yet: the dialog still lists all three; Studio opens the selected one.
       let studio=null;await page.route('**/api/studio',r=>{studio=JSON.parse(r.request().postData()||'{}');r.fulfill({status:500,body:'{"error":"test"}',contentType:'application/json'});});
-      await page.locator('[data-watch="thumbnail"]').first().click();await page.locator('#media-dialog[open] .media-unplayable').waitFor();
+      await page.locator('[data-watch="thumbnail"]').first().click();await page.locator('#media-dialog[open] .media-pending').waitFor();
       const covers=page.locator('#media-switch button');assert.equal(await covers.count(),3);
       assert.match(await covers.nth(0).innerText(),/Bìa Short 1[\s\S]*Chưa xuất/);
       assert.equal(await page.locator('#media-folder').isHidden(),true);
-      await covers.nth(2).click();assert.match(await page.locator('#media-content').innerText(),/Bìa Short 3 · Gọi mãi không nghe máy chưa được xuất/);
-      await page.locator('#media-studio').click();await page.waitForTimeout(300);assert.equal(studio?.composition,'ShortThreeCover');
+      await covers.nth(2).click();assert.match(await page.locator('#media-content').innerText(),/Chưa có bản xuất[\s\S]*Bìa Short 3 · Gọi mãi không nghe máy đang được dựng/);
+      assert.equal(await page.locator('#media-studio').isHidden(),true,'one Studio button, inside the empty state');
+      await page.locator('#media-content .studio-button').click();await page.waitForTimeout(300);assert.equal(studio?.composition,'ShortThreeCover');
       if(name==='mobile')await page.screenshot({path:path.join(output,'media-switch-covers-mobile.png')});
       await page.locator('#close-media').click();
       console.log(`✓ ${name}: three numbered videos, opens on the first, switches by click and keyboard`);

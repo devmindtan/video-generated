@@ -246,6 +246,9 @@ function createApprovals(root) {
     const prev = previousPatch(store, patch), seen = Object.keys(patch.changed).filter(rel => prev?.changed[rel]?.after === patch.changed[rel].after);
     return {mode: 'patch', revision: v.revision, notes: r.notes[patch.id] || {}, lockedNotes: patch.itemNotes || {}, patch: {id: patch.id, reason: patch.reason, status: patch.status, createdAt: patch.createdAt, baseVersion: patch.baseVersion, note: patch.note,
       previous: prev ? {id: prev.id, status: prev.status, unchanged: seen.map(nameOf)} : null, requests: (patch.requests || []).map(x => x.text)},
+      // The videos to watch the patch in: the project's main compositions (not its parts), opened in Studio (user
+      // 2026-11-09: no exported clips, the manager shows the patch's information and the user watches in Studio).
+      compositions: (load(root).series.flatMap(s => s.projects).find(p => p.id === id)?.registrations || []).filter(x => x.kind === 'Composition' && !x.part).map(x => ({id: x.id, title: x.title || x.id})),
       items: Object.entries(patch.changed).filter(([rel]) => !seen.includes(rel)).map(([rel, c]) => {
         const since = prev?.changed[rel]?.after ? approvals.approvedContent(root, prev.changed[rel].after) : null;
         const item = itemOf(rel), before = since || approvals.approvedContent(root, c.before), after = approvals.approvedContent(root, c.after);

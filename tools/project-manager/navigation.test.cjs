@@ -51,7 +51,7 @@ const fs=require('node:fs'),path=require('node:path');
   await page.locator('#drawer-breadcrumb a').last().click();await page.locator('#drawer').waitFor({state:'hidden'});
   assert.equal(new URL(page.url()).searchParams.get('view'),'books');
   assert.ok(await page.locator('#new-book-button').evaluate(n=>n.classList.contains('primary')));
-  assert.ok(await page.locator('#new-project-button').evaluate(n=>n.classList.contains('secondary')));mark('Book breadcrumb and one primary action in library');
+  assert.equal(await page.locator('#new-project-button').isVisible(),false,'no Thêm dự án in the library');mark('Book breadcrumb and one primary action in library');
   await page.setViewportSize({width:768,height:1000});await overflow();await shot('tablet');
   await page.setViewportSize({width:390,height:844});await overflow();await shot('mobile-books');
   await page.locator('.book-card .card-title').first().click();await page.locator('#drawer:not([hidden])').waitFor();await overflow();await shot('mobile-book-detail');

@@ -35,22 +35,25 @@ console.log(`✓ Map covers ${ids.length} repos, ${map.stages.length} stages, no
     for(const [name,width,height] of [['desktop',1440,1000],['tablet',900,1100],['mobile',390,860]]){
       const page=await browser.newPage({viewport:{width,height}});page.on('pageerror',e=>errors.push(e.message));
       await page.goto(base+'/?view=system',{waitUntil:'networkidle'});
-      await page.locator('.sys-rail .sys-stage').first().waitFor();
+      await page.locator('#sys-diagram .sys-node').first().waitFor();
       assert.equal(await page.locator('#page-title').innerText(),'Bản đồ hệ thống');
       assert.equal(await page.locator('#new-project-button').isVisible(),false,'no Thêm dự án on the map');
       assert.equal(await page.locator('#navigation [data-open-voicestudio]').count(),0,'no VoiceStudio entry in the sidebar');
       assert.ok(await page.locator('.sys-tabs').evaluate(t=>t.scrollHeight<=t.clientHeight+1&&t.scrollWidth<=t.clientWidth+1),'tabs fit without scrollbars');
-      assert.equal(await page.locator('.sys-rail .sys-stage').count(),map.stages.length);
+      assert.equal(await page.locator('#sys-diagram .sys-node').count(),map.stages.length,'one diagram node per stage');
       assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`${name}: no horizontal scroll`);
       await page.screenshot({path:path.join(out,`${name}-flow.png`),fullPage:true});
-      // Repo chip on a stage opens the catalog with that repo's detail.
-      await page.locator('#sys-stage-sources [data-sys-repo="pymupdf--PyMuPDF"]').click();
+      // Clicking a stage node shows it in the side panel; its repo chip opens the catalog with that repo's detail.
+      await page.locator('#sys-diagram .sys-node',{hasText:/^Nguồn sách$/}).click();
+      await page.locator('#sys-side h3').filter({hasText:'Nguồn sách'}).waitFor();
+      await page.locator('#sys-side [data-sys-repo="pymupdf--PyMuPDF"]').click();
       await page.locator('#sys-detail h3').filter({hasText:'PyMuPDF'}).waitFor();
       assert.match(page.url(),/sys=repos&repo=pymupdf--PyMuPDF/);
       assert.match(await page.locator('#sys-detail').innerText(),/1\.26\.7/);
       await page.screenshot({path:path.join(out,`${name}-repo.png`),fullPage:true});
-      // Status filter + search.
-      await page.locator('[data-sys-status="idle"]').click();
+      // Status legend opens the catalog filtered to that status; then search.
+      await page.locator('#sys-tab-flow').click();await page.locator('[data-sys-status="idle"]').click();
+      assert.match(page.url(),/sys=repos/);
       const idle=map.repos.filter(r=>r.status==='idle').length;
       assert.equal(await page.locator('.sys-row').count(),idle);
       await page.locator('#sys-search').fill('three');await page.waitForTimeout(250);
@@ -61,15 +64,20 @@ console.log(`✓ Map covers ${ids.length} repos, ${map.stages.length} stages, no
       // Keyboard tabs and architecture view.
       await page.locator('#sys-tab-repos').focus();await page.keyboard.press('ArrowLeft');
       assert.equal(await page.locator('#sys-tab-layers').getAttribute('aria-selected'),'true');
-      await page.locator('[data-sys-status="idle"]').click();
-      assert.ok(await page.locator('.sys-layer').count()>=5);
+      await page.locator('#sys-diagram .sys-node').first().waitFor();
+      assert.ok(await page.locator('#sys-diagram .cluster').count()>=5,'one box per layer');
+      // A repo node in the architecture opens the catalog directly.
+      await page.locator('#sys-diagram .sys-node',{hasText:/^FFmpeg$/}).click();
+      await page.locator('#sys-detail h3').filter({hasText:'FFmpeg'}).waitFor();
+      await page.locator('#sys-tab-layers').click();await page.locator('#sys-diagram .sys-node').first().waitFor();
       assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`${name}: layers fit`);
       await page.screenshot({path:path.join(out,`${name}-layers.png`),fullPage:true});
-      // Stage link from a repo detail jumps back to the rail.
+      // Stage link from a repo detail jumps back to the flow with that stage selected.
       await page.locator('#sys-tab-repos').click();await page.locator('#sys-search').fill('');await page.waitForTimeout(200);
       await page.locator('[data-sys-pick="remotion-dev--remotion"]').click();
       await page.locator('#sys-detail [data-sys-stage="assembly"]').click();
-      await page.locator('#sys-stage-assembly.sys-highlight').waitFor();
+      await page.locator('#sys-side h3').filter({hasText:'Dựng video'}).waitFor();
+      await page.locator('#sys-diagram .sys-node.is-selected',{hasText:'Dựng video'}).waitFor();
       console.log(`✓ ${name} ${width}×${height}: flow, repo detail, filters, tabs, layers`);
       await page.close();
     }

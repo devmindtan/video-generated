@@ -125,7 +125,9 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   await next.locator('[data-review-open="patch"]').click();await dialog.locator('.rail-item').first().waitFor();
   assert.deepEqual(await dialog.locator('.rail-item small').allInnerTexts(),['Mô tả thay đổi','Video','Âm thanh']);assert.match(await dialog.locator('.rail-name').first().innerText(),/Hình ảnh: Mở chuyện/);
   assert.match(await dialog.locator('.change-card').innerText(),/Sửa gì[\s\S]*ngang tầm mắt[\s\S]*Vì sao[\s\S]*Trước[\s\S]*Sau/);await page.screenshot({path:path.join(out,'patch-change-1440.png')});await dialog.locator('[data-item-pass]').click();
-  assert.equal(await dialog.locator('.patch-video').evaluate(v=>fetch(v.src).then(r=>r.status)),200);
+  // No exported clips in the manager (user 2026-11-09): a video item says to watch in Studio and carries the Studio buttons.
+  assert.equal(await dialog.locator('.patch-video').count(),0);assert.match(await dialog.locator('.review-panel').innerText(),/trực tiếp trong Studio/);
+  assert.ok(await dialog.locator('.review-panel [data-studio-launch]').count()>=1);assert.ok(await dialog.locator('.review-intro [data-studio-launch]').count()>=1,'patch header links Studio');
   await page.screenshot({path:path.join(out,'patch-video-1440.png')});
   await dialog.locator('[data-item-fail]').click();await dialog.locator('.item-note textarea').fill('Ảnh ngạch cửa hơi tối, giọng vào sớm');
   await page.waitForFunction(()=>/Đã lưu/.test(document.querySelector('.note-state')?.textContent||''));
@@ -136,7 +138,7 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   assert.deepEqual([store().patches[2].status,store().patches[2].itemNotes['media:0'].text,store().scenes['02-mo-chuyen'].clips[0].status],['returned','Ảnh ngạch cửa hơi tối, giọng vào sớm','needs-changes']);
   assert.match(await page.locator('.patch-panel').innerText(),/Video cảnh: Mở chuyện: Ảnh ngạch cửa hơi tối/);
   assert.equal(store().locks.length,2,'a patch of results only never makes a new lock version');
-  mark('A patch of results: video and audio items play, Chưa đạt on the video returns it with the note on that clip');
+  mark('A patch of results: video items point to Studio, audio plays, Chưa đạt on the video returns it with the note on that clip');
   review.createPatch(root,plan,{reason:'Bản vá chờ',by:'agent',changes:[{area:'caption',what:'Phụ đề to hơn'}]});
   clip('02-mo-chuyen','b.mp4');review.createPatch(root,plan,{reason:'Cảnh mở chuyện sáng hơn',by:'agent',media:[review.sceneClip(root,plan,'02-mo-chuyen')],requests:['Cảnh mở chuyện còn tối'],requestedBy:'Hieu'});
   await live(/sáng hơn/,'.gate-next');assert.match(await page.locator('.patch-pending .patch-requests summary').innerText(),/Đã xử lý 1 góp ý của bạn trong chat/);assert.equal(await page.locator('.patch-pending .patch-requests').evaluate(d=>d.open),false,'folded by default');
@@ -153,17 +155,17 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   const names=await dialog.locator('.rail-name').evaluateAll(n=>n.map(x=>x.firstChild.textContent));
   assert.deepEqual(names.slice(0,2),['Xem video','Nghe lời đọc và nhạc']);assert.ok(!names.some(n=>/\.tsx$/.test(n)),'code is folded, not a review item');
   assert.match(await dialog.locator('.rail-prior').last().innerText(),/Mã dựng, không cần đọc/);
-  assert.equal(await dialog.locator('.preview-clips video').count(),1);assert.equal(await dialog.locator('.preview-clips video').first().evaluate(v=>fetch(v.src).then(r=>r.status)),200);
+  assert.equal(await dialog.locator('.preview-clips video').count(),0,'no exported clips; the video is watched in Studio');assert.ok(await dialog.locator('.review-panel .studio-links a').count()>=1);
   await dialog.locator('.rail-item',{hasText:'Nghe lời đọc'}).click();assert.match(await dialog.locator('.voice-takes').innerText(),/Mở chuyện[\s\S]*Nhạc: Enlivening — Pufino \(music.json\)/);
   assert.equal(await dialog.locator('audio').last().evaluate(a=>fetch(a.src).then(r=>r.status)),200);
   await page.keyboard.press('Escape');
-  mark('Final review: watch scene clips, listen to narration and music; code folded away; opens after a manager lock');
+  mark('Final review: watch in Studio, listen to narration and music; code folded away; opens after a manager lock');
   for(const width of [768,390]){await page.setViewportSize({width,height:900});await open();
    assert.ok(await page.locator('#drawer').evaluate(d=>d.scrollWidth<=d.clientWidth+1),'page fits at '+width);
    await page.locator('.patch-panel').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(out,`gates-${width}.png`)});
    await page.locator('[data-review-open="lock"]').first().click();await dialog.locator('.rail-item').first().waitFor();assert.equal(await dialog.locator('[data-item-pass]').count(),0,'a locked package is view-only');
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no page overflow at '+width);await page.screenshot({path:path.join(out,`lock-${width}.png`)});await page.keyboard.press('Escape');
-   await page.locator('.patch-item [data-review-open="patch"]').first().click();await dialog.locator('.patch-video').waitFor();
+   await page.locator('.patch-item [data-review-open="patch"]').first().click();await dialog.locator('.rail-item').first().waitFor();
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'patch dialog fits at '+width);await page.screenshot({path:path.join(out,`patch-video-${width}.png`)});await page.keyboard.press('Escape');}
   mark('Tablet and mobile fit without horizontal overflow');
   assert.deepEqual(errors.filter(e=>!/409|400|Failed to load resource/.test(e)),[]);mark('No browser errors; fixture workspace only');
