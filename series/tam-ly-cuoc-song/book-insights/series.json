@@ -400,7 +400,28 @@
         "docs": "docs/projects/book-dnt-001-shorts",
         "assets": "public/book-dnt-001-shorts"
       },
-      "registrations": [],
+      "registrations": [
+        {
+          "id": "BookDntShortThangThuaCover",
+          "kind": "Still",
+          "title": "Bìa short 1 · Thắng cũng là thua"
+        },
+        {
+          "id": "BookDntShortNhungVaCover",
+          "kind": "Still",
+          "title": "Bìa short 2 · Chữ “nhưng” thành “và”"
+        },
+        {
+          "id": "BookDntShortTamLongCover",
+          "kind": "Still",
+          "title": "Bìa short 3 · Tấm lòng hay cửa miệng"
+        },
+        {
+          "id": "BookDntShortChuaDatCover",
+          "kind": "Still",
+          "title": "Bìa short 4 · Vì sao có người không thích cuốn sách"
+        }
+      ],
       "book": "dac-nhan-tam",
       "promotes": "book-dnt-001-overview"
     }

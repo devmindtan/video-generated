@@ -3,36 +3,128 @@
   "note": "Bìa dọc của 4 short tập 3 (người dùng 2026-11-09: thiết kế cẩn thận như thumbnail video dài). Mỗi short một nhóm (sets): người dùng chọn phương án trong tab Thumbnail của dự án; agent chép phương án đã chọn 1:1 vào Still studioStill rồi đặt studioVariant. Ngôn ngữ giấy và mực theo thumbnail F của tập 3; chữ và vật chính nằm trong vùng giữa 1080×1350 (lưới short cắt 4:5).",
   "sets": [
     {
-      "id": "short-1", "title": "Short 1 · Thắng cũng là thua", "width": 1080, "height": 1920, "studioStill": "BookDntShortThangThuaCover", "chosen": null,
+      "id": "short-1",
+      "title": "Short 1 · Thắng cũng là thua",
+      "width": 1080,
+      "height": 1920,
+      "studioStill": "BookDntShortThangThuaCover",
+      "chosen": "s1-a-cup-nut",
       "variants": [
-        {"id": "s1-a-cup-nut", "file": "s1-a-cup-nut.html", "title": "A · Chiếc cúp nứt", "summary": "Chữ là chính: cúp nghiêng có vết nứt đỏ trên dòng THẮNG / CŨNG LÀ / THUA."},
-        {"id": "s1-b-gam-ban", "file": "s1-b-gam-ban.html", "title": "B · Dưới gầm bàn", "summary": "Cảnh là chính: bàn tiệc cắt đôi, dưới gầm bàn một bàn chân chạm nhẹ chân người kia, đúng lúc mấu chốt của chuyện."},
-        {"id": "s1-c-bia-tach", "file": "s1-c-bia-tach.html", "title": "C · Bìa tách đôi", "summary": "Như thumbnail F dựng đứng: bìa thật nửa trên lạnh, nửa dưới ấm, đường vàng ở giữa; THẮNG xám, THUA đỏ."}
-      ]
+        {
+          "id": "s1-a-cup-nut",
+          "file": "s1-a-cup-nut.html",
+          "title": "A · Chiếc cúp nứt",
+          "summary": "Chữ là chính: cúp nghiêng có vết nứt đỏ trên dòng THẮNG / CŨNG LÀ / THUA."
+        },
+        {
+          "id": "s1-b-gam-ban",
+          "file": "s1-b-gam-ban.html",
+          "title": "B · Dưới gầm bàn",
+          "summary": "Cảnh là chính: bàn tiệc cắt đôi, dưới gầm bàn một bàn chân chạm nhẹ chân người kia, đúng lúc mấu chốt của chuyện."
+        },
+        {
+          "id": "s1-c-bia-tach",
+          "file": "s1-c-bia-tach.html",
+          "title": "C · Bìa tách đôi",
+          "summary": "Như thumbnail F dựng đứng: bìa thật nửa trên lạnh, nửa dưới ấm, đường vàng ở giữa; THẮNG xám, THUA đỏ."
+        }
+      ],
+      "chosenAt": "2026-11-09T12:47:26.042Z",
+      "chosenBy": "người dùng (chat: \"1. A 2. C 3. C 4. A\")",
+      "studioVariant": "s1-a-cup-nut"
     },
     {
-      "id": "short-2", "title": "Short 2 · Chữ “nhưng” thành “và”", "width": 1080, "height": 1920, "studioStill": "BookDntShortNhungVaCover", "chosen": null,
+      "id": "short-2",
+      "title": "Short 2 · Chữ “nhưng” thành “và”",
+      "width": 1080,
+      "height": 1920,
+      "studioStill": "BookDntShortNhungVaCover",
+      "chosen": "s2-c-bang-lat",
       "variants": [
-        {"id": "s2-a-gach-nhung", "file": "s2-a-gach-nhung.html", "title": "A · Gạch chữ nhưng", "summary": "Chữ là chính: KHEN XONG, ĐỪNG NÓI; NHƯNG đỏ bị gạch, mũi tên xuống VÀ vàng sáng."},
-        {"id": "s2-b-trang-vo", "file": "s2-b-trang-vo.html", "title": "B · Trang vở", "summary": "Vật là chính: MỘT CHỮ PHÁ LỜI KHEN trên trang vở “Con học tốt lên rồi, nhưng…”, chữ nhưng khoanh đỏ, sửa thành và."},
-        {"id": "s2-c-bang-lat", "file": "s2-c-bang-lat.html", "title": "C · Bảng chữ lật", "summary": "Tương phản mạnh: bảng chữ lật tối trên nền giấy, NHƯNG đỏ đang lật, bên dưới VÀ vàng."}
-      ]
+        {
+          "id": "s2-a-gach-nhung",
+          "file": "s2-a-gach-nhung.html",
+          "title": "A · Gạch chữ nhưng",
+          "summary": "Chữ là chính: KHEN XONG, ĐỪNG NÓI; NHƯNG đỏ bị gạch, mũi tên xuống VÀ vàng sáng."
+        },
+        {
+          "id": "s2-b-trang-vo",
+          "file": "s2-b-trang-vo.html",
+          "title": "B · Trang vở",
+          "summary": "Vật là chính: MỘT CHỮ PHÁ LỜI KHEN trên trang vở “Con học tốt lên rồi, nhưng…”, chữ nhưng khoanh đỏ, sửa thành và."
+        },
+        {
+          "id": "s2-c-bang-lat",
+          "file": "s2-c-bang-lat.html",
+          "title": "C · Bảng chữ lật",
+          "summary": "Tương phản mạnh: bảng chữ lật tối trên nền giấy, NHƯNG đỏ đang lật, bên dưới VÀ vàng."
+        }
+      ],
+      "chosenAt": "2026-11-09T12:47:26.048Z",
+      "chosenBy": "người dùng (chat: \"1. A 2. C 3. C 4. A\")",
+      "studioVariant": "s2-c-bang-lat"
     },
     {
-      "id": "short-3", "title": "Short 3 · Tấm lòng hay cửa miệng", "width": 1080, "height": 1920, "studioStill": "BookDntShortTamLongCover", "chosen": null,
+      "id": "short-3",
+      "title": "Short 3 · Tấm lòng hay cửa miệng",
+      "width": 1080,
+      "height": 1920,
+      "studioStill": "BookDntShortTamLongCover",
+      "chosen": "s3-c-hai-bong-bong",
       "variants": [
-        {"id": "s3-a-bia-doc", "file": "s3-a-bia-doc.html", "title": "A · Thumbnail F dựng đứng", "summary": "Gần thumbnail video dài nhất: nền nửa lạnh nửa ấm, bìa thật tách đôi; KHÉO MIỆNG xám, HAY, THẬT LÒNG? đỏ."},
-        {"id": "s3-b-hai-duong", "file": "s3-b-hai-duong.html", "title": "B · Hai đường", "summary": "Dáng người nghiêng không mặt: đường mảnh từ miệng đứt quãng, trái tim đỏ ở ngực nối xuống THẬT LÒNG?."},
-        {"id": "s3-c-hai-bong-bong", "file": "s3-c-hai-bong-bong.html", "title": "C · Bong bóng và trái tim", "summary": "Hai hình lớn, dễ đọc khi nhỏ: bong bóng lời nói rỗng nét đứt chứa KHÉO MIỆNG, trái tim đỏ chứa THẬT LÒNG?."}
-      ]
+        {
+          "id": "s3-a-bia-doc",
+          "file": "s3-a-bia-doc.html",
+          "title": "A · Thumbnail F dựng đứng",
+          "summary": "Gần thumbnail video dài nhất: nền nửa lạnh nửa ấm, bìa thật tách đôi; KHÉO MIỆNG xám, HAY, THẬT LÒNG? đỏ."
+        },
+        {
+          "id": "s3-b-hai-duong",
+          "file": "s3-b-hai-duong.html",
+          "title": "B · Hai đường",
+          "summary": "Dáng người nghiêng không mặt: đường mảnh từ miệng đứt quãng, trái tim đỏ ở ngực nối xuống THẬT LÒNG?."
+        },
+        {
+          "id": "s3-c-hai-bong-bong",
+          "file": "s3-c-hai-bong-bong.html",
+          "title": "C · Bong bóng và trái tim",
+          "summary": "Hai hình lớn, dễ đọc khi nhỏ: bong bóng lời nói rỗng nét đứt chứa KHÉO MIỆNG, trái tim đỏ chứa THẬT LÒNG?."
+        }
+      ],
+      "chosenAt": "2026-11-09T12:47:26.057Z",
+      "chosenBy": "người dùng (chat: \"1. A 2. C 3. C 4. A\")",
+      "studioVariant": "s3-c-hai-bong-bong"
     },
     {
-      "id": "short-4", "title": "Short 4 · Vì sao có người không thích cuốn sách", "width": 1080, "height": 1920, "studioStill": "BookDntShortChuaDatCover", "chosen": null,
+      "id": "short-4",
+      "title": "Short 4 · Vì sao có người không thích cuốn sách",
+      "width": 1080,
+      "height": 1920,
+      "studioStill": "BookDntShortChuaDatCover",
+      "chosen": "s4-a-giay-ghi-chu",
       "variants": [
-        {"id": "s4-a-giay-ghi-chu", "file": "s4-a-giay-ghi-chu.html", "title": "A · Giấy ghi chú", "summary": "Bìa thật với ba tờ ghi chú phản biện: dễ thành thao túng?, dừng ở đâu?, quên lúc nói thẳng?"},
-        {"id": "s4-b-con-dau", "file": "s4-b-con-dau.html", "title": "B · Con dấu", "summary": "Bìa thật lớn, con dấu đỏ CHÊ? đóng chéo, con dấu vàng KHEN mờ phía sau: cả hai cách nhìn."},
-        {"id": "s4-c-can", "file": "s4-c-can.html", "title": "C · Chiếc cân", "summary": "Cân hai đĩa: một bên cuốn sách, một bên chồng lời chê nặng hơn; CHÊ? đỏ thật to."}
-      ]
+        {
+          "id": "s4-a-giay-ghi-chu",
+          "file": "s4-a-giay-ghi-chu.html",
+          "title": "A · Giấy ghi chú",
+          "summary": "Bìa thật với ba tờ ghi chú phản biện: dễ thành thao túng?, dừng ở đâu?, quên lúc nói thẳng?"
+        },
+        {
+          "id": "s4-b-con-dau",
+          "file": "s4-b-con-dau.html",
+          "title": "B · Con dấu",
+          "summary": "Bìa thật lớn, con dấu đỏ CHÊ? đóng chéo, con dấu vàng KHEN mờ phía sau: cả hai cách nhìn."
+        },
+        {
+          "id": "s4-c-can",
+          "file": "s4-c-can.html",
+          "title": "C · Chiếc cân",
+          "summary": "Cân hai đĩa: một bên cuốn sách, một bên chồng lời chê nặng hơn; CHÊ? đỏ thật to."
+        }
+      ],
+      "chosenAt": "2026-11-09T12:47:26.061Z",
+      "chosenBy": "người dùng (chat: \"1. A 2. C 3. C 4. A\")",
+      "studioVariant": "s4-a-giay-ghi-chu"
     }
   ]
 }
