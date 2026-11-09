@@ -20,7 +20,8 @@ export type HookCardProps = {voice: string; channelLabel: string; episodeLabel: 
 // "cuối Đắc nhân tâm tăng âm lượng nhạc to lên tầm 5 giây rồi chuyển nhẹ nhàng"): the music runs about 15 s, fades out
 // slowly and leaves a clear quiet before the greeting (QUIET + VOICE_GAP); after the last sentence the body music
 // swells for a few seconds (hookMusic) and settles again before the first body part.
-export const HOOK_LEAD_SECONDS = 15;
+// User 2026-11-09 after p13: "phần đầu chạy nhạc giảm 2s là ổn" → 13 s.
+export const HOOK_LEAD_SECONDS = 13;
 const MUSIC_OUT_SECONDS = 4, QUIET_SECONDS = 1.1, VOICE_GAP_SECONDS = .5;
 const SWELL_DELAY = .4, SWELL_UP = 1.4, SWELL_HOLD = 3.2, SWELL_DOWN = 2.4, TAIL_SECONDS = SWELL_DELAY + SWELL_UP + SWELL_HOLD + SWELL_DOWN + .6;
 const voiceOf = (id: string, list: Voice[]) => list.find((v) => v.id === id) ?? list[0];

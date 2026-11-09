@@ -386,8 +386,8 @@ export const Phan2 = section('06 phần hai', /(muốn gần mình|thật lòng 
     <Glow x={760} y={700} r={90} opacity={appear(c.frame, c.start + 26, 14) * .6} />
   </g>)},
   {at: 1, hold: [1, 1.2], draw: (c) => {const signs = [(x: number) => heart(x, 520, 1.1), (x: number) => smileSign(x, 520), (x: number) => tagSign(x, 520), (x: number) => ear(x - 24, 462), (x: number) => bubble(x, 515, 120, 80), (x: number) => star(x, 520, 52)];
-    const when = [.15, .33, .38, .53, .59, .93];
-    return <g>{signs.map((s, k) => <g key={k} opacity={appear(c.frame, at(c, 1, when[k]), 12)}><Ink d={s(460 + k * 200)} w={2.8} color={k === 5 ? GOLD : IVORY} /></g>)}</g>;}},
+    const when = [.15, .33, .38, .53, .59, .8], cue = ['thật lòng quan tâm', 'mỉm cười', 'nhớ tên', 'biết lắng nghe', 'nói về điều', 'thật lòng làm'];
+    return <g>{signs.map((s, k) => <g key={k} opacity={appear(c.frame, (c.word(cue[k], 1) ?? at(c, 1, when[k])) - 4, 12)}><Ink d={s(460 + k * 200)} w={2.8} color={k === 5 ? GOLD : IVORY} /></g>)}</g>;}},
   {at: 2, draw: (c) => {const leaves = appear(c.frame, at(c, 3, .62), 18), title = appear(c.frame, at(c, 5, .7), 14);return <g>
     {D(c, 'M560 640 L1360 640 M600 640 L600 780 M1320 640 L1320 780', 0, 24, 2.4, .85)}
     <Figure frame={c.frame} from={c.start + 6} x={820} y={800} s={.8} pose="sit" />
@@ -432,9 +432,10 @@ export const Phan2 = section('06 phần hai', /(muốn gần mình|thật lòng 
 // 16–18   a curtain drawn back to show the paper with "ĐIỀU MÌNH MUỐN" in the open
 // A list whose lines come in on their words, a little ahead of the voice. The block is centred on cx (estimated
 // width of its longest line), so a short list does not hang to one side.
-const Lines = ({c, items, s, y0 = 300, size = 38, cx = 960}: {c: Ctx; items: [string, number][]; s: number; y0?: number; size?: number; cx?: number}) => {
+// items: [text on screen, share of the sentence (placeholder voices), words of the narration that bring it in].
+const Lines = ({c, items, s, y0 = 300, size = 38, cx = 960}: {c: Ctx; items: [string, number, string][]; s: number; y0?: number; size?: number; cx?: number}) => {
   const x = cx - (Math.max(...items.map(([t]) => t.length)) * size * .54 + 30) / 2;
-  return <g>{items.map(([t, when], k) => <g key={t} opacity={appear(c.frame, at(c, s, Math.max(0, when - .04)), 10)}>
+  return <g>{items.map(([t, when, cue], k) => <g key={t} opacity={appear(c.frame, (c.word(cue, s) ?? at(c, s, Math.max(0, when - .04))) - 4, 10)}>
     <circle cx={x} cy={y0 + k * 74 - size * .32} r={7} fill={GOLD} />
     <text x={x + 30} y={y0 + k * 74} fill={IVORY} fontSize={size} fontWeight={700}>{t}</text>
   </g>)}</g>;
@@ -491,8 +492,8 @@ export const Phan3 = section('07 phần ba', /(mười hai nguyên tắc|không 
   // Both lists stay on screen in two columns (user 2026-11-08: the first one left before it had finished), then a
   // rest after the last item before the next picture.
   {at: 13, label: 'Để người kia nói', hold: [15, 1.4], draw: (c) => <g>
-    <Lines c={c} s={14} y0={330} size={36} cx={560} items={[['Thái độ thân thiện', .22], ['Câu hỏi để người kia nói "vâng"', .3], ['Để họ nói nhiều hơn', .52], ['Để ý tưởng là của họ', .63], ['Nhìn từ quan điểm của họ', .8]]} />
-    <Lines c={c} s={15} y0={330} size={36} cx={1380} items={[['Đồng cảm với mong muốn', .21], ['Khơi gợi sự cao thượng', .43], ['Trình bày sinh động', .56], ['Khơi gợi tinh thần vượt thử thách', .79]]} />
+    <Lines c={c} s={14} y0={330} size={36} cx={560} items={[['Thái độ thân thiện', .22, 'thái độ thân thiện'], ['Câu hỏi để người kia nói "vâng"', .3, 'đặt những câu hỏi'], ['Để họ nói nhiều hơn', .52, 'để họ được nói'], ['Để ý tưởng là của họ', .63, 'để họ thấy'], ['Nhìn từ quan điểm của họ', .8, 'thành thật nhìn']]} />
+    <Lines c={c} s={15} y0={330} size={36} cx={1380} items={[['Đồng cảm với mong muốn', .21, 'đồng cảm'], ['Khơi gợi sự cao thượng', .43, 'khơi gợi sự'], ['Trình bày sinh động', .56, 'trình bày'], ['Khơi gợi tinh thần vượt thử thách', .79, 'khơi gợi tinh thần']]} />
   </g>},
   {at: 16, draw: (c) => {const open = interpolate(c.frame, [at(c, 17, .62), at(c, 17, .9)], [0, 1], {...clamp, easing: ease}), told = appear(c.frame, at(c, 18, .7), 16);return <g>
     {two(c, c.start + 4)}
@@ -537,7 +538,7 @@ export const Phan4 = section('08 phần bốn', /(chỉ ra lỗi|người quản
       <g opacity={swap}><Word x={960} y={505} size={48} text="VÀ" opacity={1} /><Glow x={960} y={490} r={120} opacity={.5} /></g>
       <g opacity={crit}><Ink d="M1160 420 L1500 420 L1500 560 L1160 560 Z" color={swap > .5 ? GOLD : IVORY} /><Word x={1330} y={505} size={38} text={swap > .5 ? 'KHÍCH LỆ' : 'LỜI CHÊ'} opacity={1} /></g>
     </g>;}},
-  {at: 9, label: 'Giữ thể diện', hold: [10, 1.4], draw: (c) => <Lines c={c} s={10} y0={290} size={36} items={[['Xét mình trước', .14], ['Gợi ý thay vì ra lệnh', .29], ['Giữ thể diện cho người mắc lỗi', .38], ['Khen cả tiến bộ nhỏ nhất', .5], ['Trao một tiếng tốt', .62], ['Làm lỗi trông dễ sửa', .87]]} />},
+  {at: 9, label: 'Giữ thể diện', hold: [10, 1.4], draw: (c) => <Lines c={c} s={10} y0={290} size={36} items={[['Xét mình trước', .14, 'xét mình'], ['Gợi ý thay vì ra lệnh', .29, 'gợi ý thay'], ['Giữ thể diện cho người mắc lỗi', .38, 'giữ thể diện'], ['Khen cả tiến bộ nhỏ nhất', .5, 'khen cả'], ['Trao một tiếng tốt', .62, 'trao cho'], ['Làm lỗi trông dễ sửa', .87, 'làm cho lỗi']]} />},
   {at: 11, draw: (c) => <g>
     <Figure frame={c.frame} from={c.start + 4} x={820} y={800} s={.95} arm="reach" />
     <Figure frame={c.frame} from={c.start + 8} x={1000} y={800} s={.95} facing={-1} />

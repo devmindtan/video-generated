@@ -1,3 +1,4 @@
+import {useMemo} from 'react';
 import type {FC, ReactNode} from 'react';
 import {Audio} from '@remotion/media';
 import {AbsoluteFill, Easing, Sequence, Track, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
@@ -11,7 +12,12 @@ import takes from './body-takes.json';
 // A section is a list of beats; each beat starts at a sentence of the narration (phrase ranges of the voice),
 // shows one drawing, an optional item label ("CƠN GIẬN") or a group title card, and crossfades to the next.
 export type Take = Voice & {phraseRanges?: {startSeconds: number; endSeconds: number}[]};
-export type Ctx = {frame: number; start: number; at: (sentence: number) => number; level: number};
+// word(phrase, sentence): frame where the phrase is spoken (first time from that sentence on), from the final voice's
+// word times (word-times.py); undefined without them (placeholder voices), so callers fall back to a share of the
+// sentence. Lists and icons that appear item by item use it so they follow the voice actually heard (user 2026-11-09:
+// an icon timed for the placeholder came in so late that it vanished as soon as it appeared).
+export type Ctx = {frame: number; start: number; at: (sentence: number) => number; level: number; word: (phrase: string, sentence: number) => number | undefined};
+const norm = (t: string) => t.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
 // hold: [sentence, seconds] extra rest after that sentence, so a picture that fills up on the last words (a list) can
 // be read before the next one takes over (user 2026-11-08).
 export type Beat = {at: number; label?: string; card?: {kicker: string; title: string}; quote?: boolean; hold?: [number, number]; draw?: (c: Ctx) => ReactNode};
@@ -136,9 +142,17 @@ export const NarratedSection: FC<{voice: string; channelLabel: string; beats: Be
   const voice = takeOf(voiceId, list);
   const pacing = sectionPacing(voiceId, beats, fps, list, transition);
   const at = pacing.at, hand = transition?.beatFadeFrames ?? 12;
+  const spoken = useMemo(() => (voice?.captions ?? []).flatMap((c) => c.words ?? []).map((w) => ({n: norm(w.text), f: Math.round(pacedMs(pacing, w.startMs, fps) * fps / 1000)})), [voice, pacing, fps]);
+  const word = (phrase: string, sentence: number) => {
+    const want = phrase.split(/\s+/).map(norm).filter(Boolean), from = at(sentence) - 3;
+    for (let i = 0; i + want.length <= spoken.length; i++) if (spoken[i].f >= from && want.every((w, k) => spoken[i + k].n === w)) return spoken[i].f;
+    return undefined;
+  };
   const level = voiceLevel(voice, pacing, frame);
   // A drawing starts in the rest before its sentence; the one before has faded out by then (no overlap).
-  const starts = beats.map((b, i) => (i === 0 ? 0 : at(b.at) - hand));
+  // With a transition the first drawing also waits for the voice (user 2026-11-09: a drawing popped up during the
+  // quiet part change at 12:04), starting just before the first word instead of in the lead.
+  const starts = beats.map((b, i) => (i === 0 ? (transition ? Math.max(0, at(b.at) - 2 * hand) : 0) : at(b.at) - hand));
   const opacityOf = (i: number) => interpolate(frame, [starts[i], starts[i] + hand, (starts[i + 1] ?? 1e9) - hand, starts[i + 1] ?? 1e9], [i === 0 ? 1 : 0, 1, 1, 0], clamp);
   const current = starts.reduce((n, s, i) => (frame >= s ? i : n), 0);
   // Item label of the current beat, or of the last beat before it that set one.
@@ -158,7 +172,7 @@ export const NarratedSection: FC<{voice: string; channelLabel: string; beats: Be
         <defs><radialGradient id="kit-glow"><stop offset="0%" stopColor="#e8c27a" stopOpacity={.35} /><stop offset="100%" stopColor="#e8c27a" stopOpacity={0} /></radialGradient></defs>
         {beats.map((b, i) => {
           const o = opacityOf(i);
-          return o > .001 && b.draw ? <g key={i} opacity={o}>{b.draw({frame, start: starts[i], at, level})}</g> : null;
+          return o > .001 && b.draw ? <g key={i} opacity={o}>{b.draw({frame, start: starts[i], at, level, word})}</g> : null;
         })}
       </svg>
       {beats.map((b, i) => {
