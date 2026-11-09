@@ -60,6 +60,8 @@ Chi tiết ở [image-prompts.md](image-prompts.md).
   được đọc.
   - Trước mỗi bản vá có hình, chạy `npm run visual-sync -- book-dnt-001-shorts --composition <ID>`.
   - Soát từng khung: đồng bộ với lời, nét chồng, chữ đè, lệch tâm.
+  - Chụp thêm `--moment end` (ngay sau cuối mỗi câu, lúc hình đã đủ): chữ và hình hiện ở chữ cuối câu chỉ thấy ở lượt này
+    (người dùng 2026-11-09 chỉ ra nhãn đè lên bìa ở short 3 mà khung giữa câu không bắt được).
 - **Lời đọc**: viết mới cho short, vào thẳng vấn đề, không chuyện kể hay ví dụ; câu trích của sách giữ nguyên văn bản dịch.
 - **Câu mở và lời mời**: mỗi short một câu mở kiểu khác, không lặp câu mở của short tập 1–2. Lời mời nói rõ link video đầy
   đủ nằm ở phần bình luận; khi đăng, ghim một bình luận có link theo câu mẫu trong description.md.

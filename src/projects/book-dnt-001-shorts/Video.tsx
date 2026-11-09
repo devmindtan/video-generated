@@ -96,7 +96,7 @@ const cup = (frame: number, dy: number, crack: number) => <g transform={`transla
   <Draw d="M566 352 L538 426 L572 470 L532 538 L556 606" frame={frame} from={crack} to={crack + 22} width={7} color={RED} />
 </g>;
 const chip = (x: number, y: number, label: string, color: string, o: number) => <g opacity={o}><rect x={x} y={y} width={330} height={150} rx={18} fill={BOARD} />
-  <rect x={x} y={y + 73} width={330} height={4} fill="#0d1418" />{T(x + 165, y + 108, 92, label, 1, color)}</g>;
+  <rect x={x} y={y + 73} width={330} height={4} fill="#0d1418" />{T(x + 165, y + (label.length > 4 ? 102 : 108), label.length > 4 ? 76 : 92, label, 1, color)}</g>;
 const S1: ShortDef = {
   hook: /người thua/i, highlight: /thua|thắng|sai|đường lùi|tôn trọng/i,
   hookArt: (frame) => cup(frame, 470, 14),
@@ -104,9 +104,9 @@ const S1: ShortDef = {
     // "Vì khi bị nói là sai, người ta hiếm khi đổi ý."
     {at: '1-2', draw: (c) => {const crossed = between(c, c.w('1-2', 'đổi'), c.w('1-2', 'đổi') + 10);return <g>
       {figure(300, 1300, 1, appear(c.frame, c.start, 14))}{figure(780, 1300, 1, appear(c.frame, c.start + 4, 14), crossed > .5 ? 'crossed' : 'down')}
-      {ink(c, 'M380 1110 L560 1060', c.w('1-2', 'nói'), 10, 6, SLATE)}
-      <g opacity={on(c, c.w('1-2', 'sai,'))}><rect x={430} y={860} width={220} height={110} rx={22} fill={IVORY} stroke={RED} strokeWidth={5} />{T(540, 940, 64, 'SAI!', 1, RED)}</g>
-      {T(780, 880, 52, 'không đổi ý', on(c, c.w('1-2', 'đổi')), BROWN)}
+      {ink(c, 'M380 1110 L540 1066', c.w('1-2', 'nói'), 10, 6, SLATE)}
+      <g opacity={on(c, c.w('1-2', 'sai,'))}><rect x={340} y={860} width={220} height={110} rx={22} fill={IVORY} stroke={RED} strokeWidth={5} />{T(450, 940, 64, 'SAI!', 1, RED)}</g>
+      {T(800, 900, 48, 'không đổi ý', on(c, c.w('1-2', 'đổi')), BROWN)}
     </g>;}},
     // "Họ lo giữ thể diện, và càng bám chặt điều mình đã nói."
     {at: '1-3', draw: (c) => {const grip = between(c, c.w('1-3', 'bám'), c.w('1-3', 'nói.')), apart = between(c, c.w('1-3', 'càng'), c.w('1-3', 'nói.') + 8);return <g>
@@ -195,13 +195,13 @@ const S3: ShortDef = {
     {at: '3-3', draw: (c) => <g>
       <foreignObject x={400} y={640} width={290} height={420}><Cover x={0} y={0} w={280} split /></foreignObject>
       {ink(c, 'M540 560 V1320', c.w('3-3', 'vạch'), 20, 6, GOLD)}
-      {T(250, 880, 56, 'NỊNH', on(c, c.w('3-3', 'ranh')), SLATE)}{T(830, 880, 56, 'THẬT LÒNG', on(c, c.w('3-3', 'rõ.')), RED)}
+      {T(330, 1170, 56, 'NỊNH', on(c, c.w('3-3', 'ranh')), SLATE)}{T(760, 1170, 52, 'THẬT LÒNG', on(c, c.w('3-3', 'rõ.')), RED)}
     </g>},
     // "…một điều xuất phát từ tấm lòng, một điều chỉ từ cửa miệng."
     {at: '3-4', draw: (c) => <g>
       <g transform="translate(-80 60) scale(.8)"><path d={PROFILE} fill={SLATE} opacity={appear(c.frame, c.start, 12)} /></g>
       <path d={heartPath(344, 980, .55)} fill={RED} stroke={GOLD_HI} strokeWidth={3} opacity={on(c, c.w('3-4', 'tấm'))} />
-      {ink(c, 'M380 990 C470 1030 560 1050 640 1060', c.w('3-4', 'tấm'), 14, 7, GOLD)}{T(790, 1084, 60, 'TẤM LÒNG', on(c, c.w('3-4', 'lòng', 2)), RED)}
+      {ink(c, 'M380 990 C450 1025 520 1045 590 1052', c.w('3-4', 'tấm'), 14, 7, GOLD)}{T(800, 1074, 60, 'TẤM LÒNG', on(c, c.w('3-4', 'lòng', 2)), RED)}
       <path d="M515 857 C580 830 640 790 700 760" fill="none" stroke={SLATE} strokeWidth={4} strokeDasharray="12 14" opacity={on(c, c.w('3-4', 'cửa'))} />
       {T(790, 730, 60, 'CỬA MIỆNG', on(c, c.w('3-4', 'miệng.')), SLATE)}
     </g>},
@@ -268,8 +268,8 @@ const S4: ShortDef = {
       {note(330, 600, 420, ['lúc cần', 'nói thẳng?'], -2, on(c, c.start + 6))}
       {figure(290, 1300, .9)}{figure(790, 1300, .9)}
       {ink(c, 'M380 950 C410 900 470 890 500 910 L486 934 Z', c.w('4-4', 'nói'), 10, 5, SLATE)}{T(450, 935, 44, '!', on(c, c.w('4-4', 'thẳng,')), RED)}
-      {ink(c, 'M540 900 V1310', c.w('4-4', 'giới'), 14, 8, RED)}
-      {T(540, 1350, 40, 'GIỚI HẠN', on(c, c.w('4-4', 'hạn.')), RED)}
+      {ink(c, 'M540 920 V1310', c.w('4-4', 'giới'), 14, 8, RED)}
+      {T(562, 945, 40, 'GIỚI HẠN', on(c, c.w('4-4', 'hạn.')), RED, 'start')}
     </g>},
     // "Ngược lại, gọi cả cuốn là sách dạy nịnh thì cũng chưa công bằng."
     {at: '4-5', draw: (c) => {const tilt = 8 * between(c, c.w('4-5', 'dạy'), c.w('4-5', 'nịnh') + 8);return <g>

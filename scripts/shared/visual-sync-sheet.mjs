@@ -5,7 +5,7 @@
 // Writes only to .cache/visual-sync/<slug>/; review stills, never an export or a thumbnail.
 //
 // Usage: npm run visual-sync -- <slug> [--composition <ID>] [--part <text>] [--from <s>] [--to <s>]
-//        [--props '<json>'] [--scale 0.4]
+//        [--props '<json>'] [--scale 0.4] [--moment end]
 import fs from 'node:fs';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
@@ -107,7 +107,8 @@ try {
   const comp = await selectComposition({serveUrl, id: composition, inputProps, puppeteerInstance: browser, port: 3100});
   const frames = [];
   for (const [index, sentence] of picked.entries()) {
-    const mid = (sentence.startMs + sentence.endMs) / 2;
+    // --moment end: just after the sentence ends (its drawing should be complete and still on screen), else the middle.
+    const mid = option('--moment') === 'end' ? sentence.endMs + 300 : (sentence.startMs + sentence.endMs) / 2;
     const frame = Math.min(comp.durationInFrames - 1, Math.round((mid / 1000) * comp.fps));
     const file = path.join(outDir, `${String(index + 1).padStart(3, '0')}-f${frame}.png`);
     await renderStill({serveUrl, composition: comp, frame, output: file, inputProps, scale, imageFormat: 'png', puppeteerInstance: browser, port: 3100});
