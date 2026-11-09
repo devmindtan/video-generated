@@ -1,0 +1,32 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="base.css"><title>Thumbnail tập 3 · D</title>
+<!-- Variant D "Hai mặt": the real cover split down the middle, the left half cold and grey (khéo miệng), the right
+     half warm and lit (thật lòng), with a gold seam; the headline repeats the two tones. -->
+<style>
+#thumb{background:linear-gradient(90deg,#0b0f12 0%,#0d1210 55%,#17130b 100%)}
+.warm{position:absolute;inset:0;background:radial-gradient(ellipse 30% 55% at 90% 48%,rgba(214,170,92,.26),transparent 70%)}
+.coolglow{position:absolute;inset:0;background:radial-gradient(ellipse 26% 50% at 66% 48%,rgba(150,180,200,.12),transparent 70%)}
+.kicker{position:absolute;left:72px;top:62px;display:flex;align-items:center;gap:16px;font-size:24px;letter-spacing:.28em;color:var(--gold)}
+.kicker::before{content:'';width:46px;height:3px;background:var(--gold)}
+.headline{position:absolute;left:66px;top:208px;margin:0;line-height:1.2}
+.headline span{display:block;white-space:nowrap}
+.l1{font-size:108px;color:#d7dde2;text-shadow:0 3px 0 rgba(0,0,0,.55),0 10px 30px rgba(0,0,0,.85)}
+.l2{font-size:86px;margin-top:16px}
+.cover{position:absolute;left:860px;top:110px;width:330px;height:474px;transform:rotate(2deg);box-shadow:0 30px 70px rgba(0,0,0,.8);border-radius:3px;overflow:hidden}
+.cover div{position:absolute;inset:0;background:url('/public/book-dnt-001-overview/thumbnail/book-cover-source.webp') center/cover}
+.cover .cold{clip-path:inset(0 50% 0 0);filter:grayscale(1) brightness(.62) contrast(1.1)}
+.cover .cold::after{content:'';position:absolute;inset:0;background:rgba(90,130,160,.22);mix-blend-mode:color}
+.cover .lit{clip-path:inset(0 0 0 50%);filter:saturate(1.15) brightness(1.06)}
+.seam{position:absolute;left:1023px;top:96px;width:4px;height:502px;transform:rotate(2deg);background:linear-gradient(180deg,transparent,var(--gold-hi) 15%,var(--gold) 85%,transparent);box-shadow:0 0 18px rgba(247,225,166,.8)}
+.ink .grey{stroke:#c9d3da}
+</style></head><body>
+<div id="thumb" role="img" aria-label="Khéo miệng hay thật lòng? Đắc nhân tâm">
+  <div class="coolglow"></div><div class="warm"></div>
+  <div class="cover"><div class="cold"></div><div class="lit"></div></div><div class="seam"></div>
+  <svg class="ink" viewBox="0 0 1280 720" aria-hidden="true">
+    <g transform="translate(-14 -24)"><path class="grey" d="M870 40 H960 Q980 40 980 60 V92 Q980 112 960 112 H930 L912 134 L912 112 H870 Q850 112 850 92 V60 Q850 40 870 40 Z"/><path class="grey" d="M880 70 Q915 96 950 70"/></g>
+    <path d="M1150 120 C1104 88 1102 50 1128 44 C1142 40 1150 50 1150 60 C1150 50 1158 40 1172 44 C1198 50 1196 88 1150 120 Z"/>
+  </svg>
+  <div class="kicker">ĐỌC SÁCH, HIỂU MÌNH · TẬP 03</div>
+  <h1 class="headline"><span class="l1">KHÉO MIỆNG</span><span class="l2 gold-text">HAY THẬT LÒNG?</span></h1>
+  <div class="grain"></div><div class="vignette"></div>
+</div><script src="base.js"></script></body></html>

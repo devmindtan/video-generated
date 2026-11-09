@@ -1,0 +1,40 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="base.css"><title>Thumbnail tập 3 · C</title>
+<!-- Variant C "Sách mở": an open book on the right with a warm heart of light rising from its pages (thật lòng),
+     the real cover standing beside it; headline on the left. -->
+<style>
+#thumb{background:radial-gradient(ellipse 50% 60% at 74% 62%,#3a2d14 0%,#1a1810 40%,#0b0f0c 75%)}
+.rays{position:absolute;left:840px;top:60px;width:440px;height:520px;background:repeating-conic-gradient(from 200deg at 50% 92%,rgba(247,225,166,.16) 0deg 4deg,transparent 4deg 13deg);
+  -webkit-mask:radial-gradient(ellipse 60% 70% at 50% 92%,#000 30%,transparent 72%);mask:radial-gradient(ellipse 60% 70% at 50% 92%,#000 30%,transparent 72%)}
+.halo{position:absolute;left:952px;top:214px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,226,150,.65),rgba(255,200,110,.18) 45%,transparent 70%);filter:blur(6px)}
+.kicker{position:absolute;left:72px;top:62px;display:flex;align-items:center;gap:16px;font-size:24px;letter-spacing:.28em;color:var(--gold)}
+.kicker::before{content:'';width:46px;height:3px;background:var(--gold)}
+.headline{position:absolute;left:66px;top:208px;margin:0;line-height:1.2}
+.headline span{display:block;white-space:nowrap}
+.l1{font-size:100px}.l2{font-size:80px;margin-top:16px}
+.book3d{left:806px;top:318px;width:176px;height:253px;--w:190px;--d:30px;--rot:24deg}
+.book3d .pages{transform:rotateY(-90deg) translateZ(calc(var(--w) / 2 - 1px))}
+.open{position:absolute;left:0;top:0;width:1280px;height:720px}
+</style></head><body>
+<div id="thumb" role="img" aria-label="Khéo miệng hay thật lòng? Đắc nhân tâm">
+  <div class="rays"></div>
+  <svg class="open" viewBox="0 0 1280 720" aria-hidden="true">
+    <defs>
+      <linearGradient id="pg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#f6eedb"/><stop offset="1" stop-color="#cdbf9f"/></linearGradient>
+      <filter id="soft"><feGaussianBlur stdDeviation="10"/></filter>
+    </defs>
+    <g transform="translate(1060 530) scale(.8) translate(-1000 -530)"><ellipse cx="1000" cy="590" rx="250" ry="26" fill="#000" opacity=".7" filter="url(#soft)"/>
+    <path d="M1000 470 C930 440 830 440 770 462 L776 574 C840 556 930 556 1000 584 Z" fill="url(#pg)"/>
+    <path d="M1000 470 C1070 440 1170 440 1230 462 L1224 574 C1160 556 1070 556 1000 584 Z" fill="url(#pg)"/>
+    <path d="M1000 470 L1000 584" stroke="#a8946a" stroke-width="2"/>
+    <g stroke="#b9a77f" stroke-width="2" fill="none" opacity=".7"><path d="M800 486 C860 470 930 472 980 490"/><path d="M800 506 C860 490 930 492 980 510"/><path d="M800 526 C860 510 930 512 980 530"/>
+      <path d="M1020 490 C1070 472 1140 470 1200 486"/><path d="M1020 510 C1070 492 1140 490 1200 506"/></g></g>
+  </svg>
+  <div class="halo"></div>
+  <svg class="ink" viewBox="0 0 1280 720" aria-hidden="true"><defs><filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+    <g transform="translate(1060 530) scale(.8) translate(-1000 -530)"><path filter="url(#glow)" style="stroke:#ffe2a0;stroke-width:6" d="M990 380 C900 320 896 236 944 224 C970 218 990 236 990 258 C990 236 1010 218 1036 224 C1084 236 1080 320 990 380 Z"/>
+    <path filter="url(#glow)" style="stroke-dasharray:2 14;stroke-width:4" d="M990 456 L990 396"/></g></svg>
+  <div class="book3d"><div class="book"><div class="pages"></div><div class="front"></div></div></div>
+  <div class="kicker">ĐỌC SÁCH, HIỂU MÌNH · TẬP 03</div>
+  <h1 class="headline"><span class="l1 ivory-text">KHÉO MIỆNG</span><span class="l2 gold-text">HAY THẬT LÒNG?</span></h1>
+  <div class="grain"></div><div class="vignette"></div>
+</div><script src="base.js"></script></body></html>

@@ -1,0 +1,21 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>So sánh thumbnail tập 3</title>
+<!-- Side-by-side preview of the episode-3 thumbnail variants (npm run thumbnail:web -- <this file>). -->
+<style>
+@font-face{font-family:'Stoic Sans';font-weight:700;src:url('/public/stoic/fonts/NotoSans-Bold.ttf') format('truetype')}
+body{margin:0;background:#0b0f0d;color:#e9e4d8;font:16px/1.6 system-ui,sans-serif}
+main{max-width:1500px;margin:0 auto;padding:28px 16px 48px}
+h1{font:700 26px 'Stoic Sans',sans-serif;margin:0 0 4px}p{color:#9aa79f;margin:0 0 22px;max-width:80ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,560px),1fr));gap:22px}
+figure{margin:0}iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:10px;background:#000}
+figcaption{margin-top:8px}figcaption strong{font-family:'Stoic Sans',sans-serif}figcaption span{display:block;color:#9aa79f;font-size:14px}
+</style></head><body><main>
+<h1>Thumbnail tập 3 · “Khéo miệng hay thật lòng?”</h1>
+<p>Năm hướng thiết kế bằng web, mỗi khung đúng 1280×720. Mở riêng một phương án để chỉnh: npm run thumbnail:web -- src/projects/book-dnt-001-overview/thumbnail-web/&lt;file&gt;.</p>
+<div class="grid">
+<figure><iframe src="index.html" title="Phương án A"></iframe><figcaption><strong>A · Sách 3D dưới ánh đèn</strong><span>Bố cục quen của series, chữ ánh kim, bong bóng và trái tim nét vàng.</span></figcaption></figure>
+<figure><iframe src="b-doi-xung.html" title="Phương án B"></iframe><figcaption><strong>B · Đối xứng</strong><span>Cuốn sách ở giữa; bên lạnh “khéo miệng”, bên ấm “thật lòng?”.</span></figcaption></figure>
+<figure><iframe src="c-sach-mo.html" title="Phương án C"></iframe><figcaption><strong>C · Sách mở</strong><span>Trái tim sáng lên từ trang sách mở, bìa thật đứng cạnh.</span></figcaption></figure>
+<figure><iframe src="d-hai-mat.html" title="Phương án D"></iframe><figcaption><strong>D · Hai mặt</strong><span>Bìa sách nửa xám lạnh, nửa ấm sáng, có đường nối vàng ở giữa.</span></figcaption></figure>
+<figure><iframe src="e-giay-sang.html" title="Phương án E"></iframe><figcaption><strong>E · Nền giấy sáng</strong><span>Kiểu bìa tạp chí: nền giấy ngà, chữ xanh đậm và đỏ, nổi bật giữa các thumbnail tối.</span></figcaption></figure>
+</div></main></body></html>

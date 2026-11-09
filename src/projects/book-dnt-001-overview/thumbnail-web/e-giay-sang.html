@@ -1,0 +1,33 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="base.css"><title>Thumbnail tập 3 · E</title>
+<!-- Variant E "Nền giấy sáng": warm paper background like a magazine cover, deep green and cover-red headline, the
+     3D book casting a real shadow on the paper, ink sketches in dark green. Stands out among dark thumbnails. -->
+<style>
+#thumb{background:radial-gradient(ellipse 70% 80% at 70% 45%,#f8f2e6,#ece2cf 70%,#dfd2b9);color:#13302a}
+.grain{opacity:.35;mix-blend-mode:multiply}
+.vignette{background:radial-gradient(ellipse 90% 95% at 50% 50%,transparent 60%,rgba(80,60,30,.25) 100%)}
+.kicker{position:absolute;left:72px;top:62px;display:flex;align-items:center;gap:16px;font-size:24px;letter-spacing:.28em;color:#7a5a22}
+.kicker::before{content:'';width:46px;height:3px;background:#7a5a22}
+.headline{position:absolute;left:66px;top:208px;margin:0;line-height:1.2}
+.headline span{display:block;white-space:nowrap}
+.l1{font-size:108px;color:#13302a}
+.l2{font-size:86px;margin-top:16px;color:#a3241b}
+.mark{position:absolute;left:60px;top:378px;width:690px;height:96px;background:rgba(217,181,111,.45);transform:skewX(-8deg);border-radius:6px;z-index:0}
+.headline{z-index:1}
+.book3d{left:930px;top:140px;width:290px;height:417px;--w:290px;--d:42px;--rot:-26deg}
+.book3d .front{box-shadow:inset 6px 0 10px rgba(0,0,0,.25)}
+.cast{position:absolute;left:880px;top:520px;width:380px;height:70px;border-radius:50%;background:radial-gradient(ellipse,rgba(60,40,15,.55),transparent 70%);filter:blur(8px)}
+.ink path{stroke:#13302a;stroke-width:4.5}
+</style></head><body>
+<div id="thumb" role="img" aria-label="Khéo miệng hay thật lòng? Đắc nhân tâm">
+  <div class="cast"></div>
+  <div class="book3d"><div class="book"><div class="pages"></div><div class="front"></div></div></div>
+  <svg class="ink" viewBox="0 0 1280 720" aria-hidden="true">
+    <path d="M820 70 H920 Q942 70 942 92 V130 Q942 152 920 152 H886 L866 178 L866 152 H820 Q798 152 798 130 V92 Q798 70 820 70 Z"/><path d="M832 104 Q870 134 908 104"/>
+    <path d="M1226 116 C1180 84 1178 46 1204 40 C1218 36 1226 46 1226 56 C1226 46 1234 36 1248 40 C1274 46 1272 84 1226 116 Z" transform="translate(-30 0)"/>
+    <path style="stroke-dasharray:2 12;stroke-width:3.5" d="M952 96 Q1060 20 1172 64"/>
+  </svg>
+  <div class="mark"></div>
+  <div class="kicker">ĐỌC SÁCH, HIỂU MÌNH · TẬP 03</div>
+  <h1 class="headline"><span class="l1">KHÉO MIỆNG</span><span class="l2">HAY THẬT LÒNG?</span></h1>
+  <div class="grain"></div><div class="vignette"></div>
+</div><script src="base.js"></script></body></html>

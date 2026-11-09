@@ -1,0 +1,33 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="base.css"><title>Thumbnail tập 3 · B</title>
+<!-- Variant B "Đối xứng": the book in the middle under one light, KHÉO MIỆNG on a cool left side, THẬT LÒNG? on a warm
+     right side, a small HAY above the book. Bottom-right corner kept empty for YouTube's duration badge. -->
+<style>
+#thumb{background:linear-gradient(90deg,#0d1418 0%,#101a1a 38%,#1a1a12 62%,#1c160c 100%)}
+.cool{position:absolute;inset:0;background:radial-gradient(ellipse 40% 60% at 18% 52%,rgba(150,180,200,.12),transparent 70%)}
+.warm{position:absolute;inset:0;background:radial-gradient(ellipse 42% 62% at 82% 48%,rgba(214,170,92,.22),transparent 70%)}
+.beam{position:absolute;left:470px;top:-40px;width:340px;height:700px;background:linear-gradient(180deg,rgba(247,225,166,.30),rgba(247,225,166,0) 85%);clip-path:polygon(40% 0,60% 0,100% 100%,0 100%);filter:blur(8px)}
+.kicker{position:absolute;left:0;right:0;top:44px;text-align:center;font-size:22px;letter-spacing:.3em;color:var(--gold)}
+.hay{position:absolute;left:0;right:0;top:118px;text-align:center;font-size:54px;letter-spacing:.12em}
+.side{position:absolute;top:248px;font-size:104px;line-height:1.16;margin:0}
+.side span{display:block}
+.left{right:820px;text-align:right}
+.left span{color:#e9edf0;text-shadow:0 3px 0 rgba(0,0,0,.55),0 10px 30px rgba(0,0,0,.9)}
+.right{left:812px;text-align:left}
+.book3d{left:520px;top:215px;width:240px;height:345px;--w:240px;--d:38px;--rot:-14deg}
+.floor{position:absolute;left:460px;top:540px;width:360px;height:40px;border-radius:50%;background:radial-gradient(ellipse,rgba(0,0,0,.85),transparent 70%);filter:blur(4px)}
+.ink path{stroke-width:4.5}
+.ink .cool-line{stroke:#c9d3da}
+</style></head><body>
+<div id="thumb" role="img" aria-label="Khéo miệng hay thật lòng? Đắc nhân tâm">
+  <div class="cool"></div><div class="warm"></div><div class="beam"></div><div class="floor"></div>
+  <div class="book3d"><div class="book"><div class="pages"></div><div class="front"></div></div></div>
+  <div class="kicker">ĐỌC SÁCH, HIỂU MÌNH · TẬP 03</div>
+  <div class="hay gold-text">HAY</div>
+  <h1 class="side left"><span>KHÉO</span><span>MIỆNG</span></h1>
+  <h1 class="side right"><span class="gold-text">THẬT</span><span class="gold-text">LÒNG?</span></h1>
+  <svg class="ink" viewBox="0 0 1280 720" aria-hidden="true">
+    <path class="cool-line" d="M300 548 Q380 590 460 548"/>
+    <path d="M1010 598 C962 564 960 522 986 515 C1000 511 1010 522 1010 534 C1010 522 1020 511 1034 515 C1060 522 1058 564 1010 598 Z"/>
+  </svg>
+  <div class="grain"></div><div class="vignette"></div>
+</div><script src="base.js"></script></body></html>

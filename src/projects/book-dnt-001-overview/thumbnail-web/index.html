@@ -19,9 +19,9 @@
 :root{--ink:#0b120f;--gold:#d9b56f;--gold-hi:#f7e1a6;--gold-lo:#9c7533;--ivory:#f4eee2}
 *{box-sizing:border-box}
 html,body{margin:0;background:#050806;min-height:100%}
-body{display:grid;place-items:center;min-height:100vh}
+body{display:grid;place-items:center;min-height:100vh;overflow:hidden}
 /* Preview only: scale the fixed stage to the window; ?capture keeps it at 1:1. */
-.preview #thumb{transform:scale(var(--fit,1));transform-origin:center}
+.preview #thumb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(var(--fit,1))}
 #thumb{position:relative;width:1280px;height:720px;overflow:hidden;font-family:'Stoic Sans',sans-serif;font-weight:700;color:var(--ivory);
   background:
     radial-gradient(ellipse 34% 52% at 79% 46%,rgba(214,170,92,.30),rgba(214,170,92,0) 70%),
