@@ -638,10 +638,35 @@ export const YKien = section('08g ý kiến', /(dừng lại một nhịp|lá th
   </g>;}},
 ], options);
 
+// The open book closes for real (user after p14: the cross-fade into a different closed book looked odd): it is drawn
+// open, then on "Khép lại" the right half turns over the spine onto the left half (scaleX = cos of the turn, so the
+// page goes edge-on and lands mirrored), the closed book slides to the centre and its cover edge thickens.
+const halfL = (x: number, y: number, s: number) => `M${x} ${y + 100 * s} C${x - 70 * s} ${y + 70 * s} ${x - 160 * s} ${y + 68 * s} ${x - 230 * s} ${y + 86 * s} L${x - 230 * s} ${y} C${x - 160 * s} ${y - 18 * s} ${x - 70 * s} ${y - 16 * s} ${x} ${y + 14 * s} L${x} ${y + 100 * s}`;
+const halfR = (x: number, y: number, s: number) => `M${x} ${y + 14 * s} C${x + 70 * s} ${y - 16 * s} ${x + 160 * s} ${y - 18 * s} ${x + 230 * s} ${y} L${x + 230 * s} ${y + 86 * s} C${x + 160 * s} ${y + 68 * s} ${x + 70 * s} ${y + 70 * s} ${x} ${y + 100 * s}`;
+const pageLines = (x: number, y: number, s: number, dir: 1 | -1) => [28, 46, 64].map((dy) => `M${x + dir * 40 * s} ${y + (dy - 2) * s} C${x + dir * 100 * s} ${y + (dy - 10) * s} ${x + dir * 150 * s} ${y + (dy - 12) * s} ${x + dir * 195 * s} ${y + (dy - 6) * s}`).join(' ');
+const ClosingBook = ({c}: {c: Ctx}) => {
+  const x = 960, y = 540, s = 1.4;
+  // Seen open for about a second first (drawn by start + 30), then it turns while "…Đắc nhân tâm" is said.
+  const from = Math.max(c.start + 52, (c.word('đắc nhân tâm', 0) ?? c.at(0) + 20) - 4);
+  const turn = interpolate(c.frame, [from, from + 30], [0, 1], {...clamp, easing: ease});
+  const settle = interpolate(c.frame, [from + 30, from + 46], [0, 1], {...clamp, easing: ease});
+  const sx = Math.cos(Math.PI * turn);
+  return <g transform={`translate(${115 * s * settle} ${-20 * settle})`}>
+    {D(c, halfL(x, y, s), 0, 26, 2.6)}
+    {D(c, pageLines(x, y, s, -1), 18, 16, 1.8, .55 * (1 - settle))}
+    <g transform={`translate(${x} 0) scale(${sx} 1) translate(${-x} 0)`}>
+      {D(c, halfR(x, y, s), 4, 26, 2.6)}
+      {D(c, pageLines(x, y, s, 1), 22, 16, 1.8, .55 * (1 - clamp01(turn * 2)))}
+    </g>
+    <Ink d={`M${x - 230 * s} ${y} L${x - 230 * s} ${y + 86 * s} M${x - 222 * s} ${y + 4 * s} L${x - 222 * s} ${y + 90 * s} L${x} ${y + 104 * s}`} w={2.6} o={settle} />
+  </g>;
+};
+const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
+
 // 5 Nhận xét chung (lines-09-nhan-xet.txt): the book closes; two people facing each other; the book lies on a table
 // with a bookmark sticking out.
 export const NhanXet = section('09 nhận xét', /(khéo léo|lời nhắc|chú ý đến người khác|giữ lại được vài điều|đọc chậm|đáng giữ)/gi, [
-  {at: 0, draw: (c) => {const shut = appear(c.frame, c.start + 30, 20);return <g><Ink d={openBook(960, 560, 1.4)} w={2.6} o={appear(c.frame, c.start, 12) * (1 - shut)} /><Ink d={closedBook(960, 560, 300, 380)} w={2.6} o={shut} /></g>;}},
+  {at: 0, draw: (c) => <ClosingBook c={c} />},
   {at: 1, draw: (c) => <g>{two(c, c.start + 4)}<Glow x={960} y={560} r={220} opacity={appear(c.frame, at(c, 1, .3), 20) * .4} /></g>},
   {at: 2, draw: (c) => <g>
     {D(c, 'M560 700 L1360 700 M600 700 L600 800 M1320 700 L1320 800', 0, 22, 2.4, .85)}
