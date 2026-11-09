@@ -1405,32 +1405,19 @@ function sysUsage(r){
   if(r.packages?.length)return 'Đã cài, chưa file nào dùng';
   return f.cloned?'Chỉ có bản clone':'Chưa clone';
 }
-// ---- System map diagrams (Mermaid, served locally from node_modules) -------------------------------------
-const mmText=t=>String(t).replace(/"/g,'#quot;').replace(/[<>]/g,'');
-let mermaidReady=null;
-function loadMermaid(){
-  if(window.mermaid)return Promise.resolve(window.mermaid);
-  return mermaidReady||=new Promise((resolve,reject)=>{const tag=document.createElement('script');tag.src='/vendor/mermaid.js';tag.onload=()=>{
-    window.mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'base',flowchart:{curve:'basis',nodeSpacing:28,rankSpacing:40,padding:12,htmlLabels:true,useMaxWidth:true},
-      themeVariables:{fontFamily:'Workspace, system-ui, sans-serif',fontSize:'15px',primaryColor:'#ffffff',primaryBorderColor:'#9db5a3',primaryTextColor:'#20362d',lineColor:'#9aafa1',clusterBkg:'#f6f8f5',clusterBorder:'#dce4dc',titleColor:'#20362d',edgeLabelBackground:'#f6f8f5'}});
-    resolve(window.mermaid);};tag.onerror=()=>{mermaidReady=null;reject(new Error('Không tải được thư viện vẽ sơ đồ'));};document.head.append(tag);});
+// ---- System map diagrams: plain buttons laid out by the page, connectors drawn in SVG with attributes only
+// (user 2026-11-09: Mermaid rendered black boxes in their browser; "tự thiết kế bằng giao diện… theo phong cách
+// diagram"). Nodes are real buttons, so keyboard, focus and selection work without any library.
+const stageKind=s=>(sysKinds[s.kind]||[0,'tool'])[1];
+// Rank of a stage = longest dependency chain before it; each rank is one row of the flow.
+function stageRows(m){
+  const rank={},get=id=>{if(rank[id]!==undefined)return rank[id];const s=m.stages.find(x=>x.id===id);rank[id]=0;
+    rank[id]=Math.max(0,...(s?.dependencies||[]).filter(d=>m.stages.some(x=>x.id===d)).map(d=>get(d)+1));return rank[id];};
+  m.stages.forEach(s=>get(s.id));const rows=[];m.stages.forEach(s=>(rows[rank[s.id]]||=[]).push(s));return rows.filter(Boolean);
 }
-const SYS_CLASSES=`classDef agent fill:#eef3ec,stroke:#16362e,stroke-width:1.5px,color:#16362e
-classDef tool fill:#ffffff,stroke:#596c61,stroke-width:1.5px,color:#20362d
-classDef check fill:#ffffff,stroke:#596c61,stroke-width:1.5px,stroke-dasharray:5 4,color:#20362d
-classDef gate fill:#f6ecd6,stroke:#8e6f34,stroke-width:2px,color:#5c4314
-classDef env fill:#e1eff3,stroke:#24596a,stroke-width:1.5px,color:#1d4654
-classDef repo fill:#ffffff,stroke:#2f6a2a,stroke-width:1.5px,color:#2f6a2a
-classDef skill fill:#f8f0dc,stroke:#b8954c,stroke-width:1.5px,color:#5c4314
-classDef me fill:#16362e,stroke:#16362e,color:#ffffff`;
-function sysFlowChart(m){
-  const id=x=>'s'+m.stages.findIndex(s=>s.id===x),kind=s=>(sysKinds[s.kind]||[0,'tool'])[1];
-  const shape=s=>{const t=`"${mmText(s.title)}"`;return kind(s)==='agent'?`([${t}])`:kind(s)==='gate'?`{{${t}}}`:`[${t}]`;};
-  const lines=['flowchart TB',...m.stages.map(s=>`  ${id(s.id)}${shape(s)}`),...m.stages.flatMap(s=>(s.dependencies||[]).filter(d=>m.stages.some(x=>x.id===d)).map(d=>`  ${id(d)} --> ${id(s.id)}`)),SYS_CLASSES];
-  for(const k of ['agent','tool','check','gate']){const ids=m.stages.filter(s=>kind(s)===k).map(s=>id(s.id));if(ids.length)lines.push(`class ${ids.join(',')} ${k}`);}
-  return {code:lines.join('\n'),nodes:Object.fromEntries(m.stages.map(s=>[id(s.id),{stage:s.id,label:s.title}]))};
+function sysFlowHtml(m){
+  return `<div class="dg dg-flow" id="sys-diagram" role="group" aria-label="Sơ đồ quy trình sản xuất"><svg class="dg-edges" aria-hidden="true" focusable="false"></svg>${stageRows(m).map(row=>`<div class="dg-row">${row.map(s=>`<button type="button" class="dg-node k-${stageKind(s)}" data-dg-stage="${esc(s.id)}" aria-pressed="${s.id===state.sysStage}" title="${esc((sysKinds[s.kind]||[s.kind])[0])}">${stageKind(s)==='gate'?'<span class="dg-gate-mark" aria-hidden="true"></span>':''}<span>${esc(s.title)}</span></button>`).join('')}</div>`).join('')}</div>`;
 }
-// Architecture nodes: components and environments per layer, the user's own steps, engine and skill repos.
 function sysArchNodes(m){
   const out=[],repo=id=>m.repos.find(r=>r.id===id);
   out.push({key:'u',layer:'user',label:'Bạn duyệt và xuất',cls:'me'});
@@ -1441,42 +1428,37 @@ function sysArchNodes(m){
   for(const r of m.repos.filter(r=>r.status==='skill'))out.push({key:'r:'+r.id,layer:'knowledge',label:r.title,cls:'skill',repo:r.id});
   return out;
 }
-function sysArchChart(m){
-  // Layers read top to bottom; skills sit last (an invisible link keeps them under the engine, not beside the user).
-  const nodes=sysArchNodes(m),nid=new Map(nodes.map((n,i)=>[n.key,'n'+i])),lines=['flowchart TB'];
-  const shape=n=>n.repo?`(["${mmText(n.label)}"])`:`["${mmText(n.label)}"]`;
-  for(const l of m.layers){const inside=nodes.filter(n=>n.layer===l.id);if(!inside.length)continue;
-    lines.push(`  subgraph L_${l.id}["${mmText(l.title)}"]`,'    direction LR',...inside.map(n=>`    ${nid.get(n.key)}${shape(n)}`),'  end');}
-  const present=m.layers.filter(l=>nodes.some(n=>n.layer===l.id)).map(l=>l.id);
-  for(let i=0;i<present.length-1;i++)lines.push(present[i+1]==='knowledge'?`  L_${present[i]} ~~~ L_${present[i+1]}`:`  L_${present[i]} --> L_${present[i+1]}`);
-  lines.push(SYS_CLASSES);
-  for(const k of ['me','tool','env','repo','skill']){const ids=nodes.filter(n=>n.cls===k).map(n=>nid.get(n.key));if(ids.length)lines.push(`class ${ids.join(',')} ${k}`);}
-  return {code:lines.join('\n'),nodes:Object.fromEntries(nodes.map(n=>[nid.get(n.key),{node:n.key,repo:n.repo,label:n.label}]))};
+function sysArchHtml(m){
+  const nodes=sysArchNodes(m);
+  const node=n=>n.repo?`<button type="button" class="dg-node k-${n.cls==='skill'?'skill':'repo'}" data-sys-repo="${esc(n.repo)}" title="Mở trong danh mục repo"><span>${esc(n.label)}</span><span class="dg-go" aria-hidden="true">→</span></button>`
+    :`<button type="button" class="dg-node k-${n.cls}" data-dg-node="${esc(n.key)}" aria-pressed="${n.key===state.sysNode}"><span>${esc(n.label)}</span></button>`;
+  return `<div class="dg dg-layers" id="sys-diagram" role="group" aria-label="Sơ đồ kiến trúc">${m.layers.filter(l=>nodes.some(n=>n.layer===l.id)).map(l=>`<section class="dg-layer${l.id==='knowledge'?' is-aside':''}"><h3>${esc(l.title)}</h3><div class="dg-row is-wrap">${nodes.filter(n=>n.layer===l.id).map(node).join('')}</div></section>`).join('')}</div>`;
 }
-let diagramToken=0;
-async function drawDiagram({code,nodes},tab){
-  const token=++diagramToken,box=$('#sys-diagram');
-  try{
-    const mermaid=await loadMermaid();await document.fonts?.ready;
-    const {svg}=await mermaid.render('sysmap'+token,code);
-    if(token!==diagramToken||state.sysTab!==tab||!box.isConnected)return;
-    box.innerHTML=svg;
-    // Mermaid node ids look like "<svg id>-flowchart-<node>-<n>" or "flowchart-<node>-<n>": make each node a button.
-    box.querySelectorAll('g.node').forEach(g=>{const hit=(g.id||'').match(/flowchart-([a-z]\d+)-\d+$/);const info=hit&&nodes[hit[1]];if(!info)return;
-      g.setAttribute('tabindex','0');g.setAttribute('role','button');g.setAttribute('aria-label',info.repo?`${info.label}: mở trong danh mục repo`:info.label);g.dataset.sysNodeInfo=JSON.stringify(info);g.classList.add('sys-node');});
-    markSelected();box.scrollLeft=(box.scrollWidth-box.clientWidth)/2; // phones: start at the centre of a wide diagram
-  }catch(error){if(token===diagramToken&&box.isConnected)box.innerHTML=`<p class="sys-empty">Không vẽ được sơ đồ: ${esc(error.message)}</p>`;}
+// Connectors of the flow: from the bottom of each dependency to the top of the stage, redrawn when the size changes.
+function drawFlowEdges(){
+  const box=$('#sys-diagram.dg-flow'),svg=box?.querySelector('.dg-edges');if(!svg||!state.system)return;
+  const base=box.getBoundingClientRect(),pos=id=>{const r=box.querySelector(`[data-dg-stage="${CSS.escape(id)}"]`)?.getBoundingClientRect();return r&&{x:r.left-base.left+r.width/2,top:r.top-base.top,bottom:r.bottom-base.top};};
+  svg.setAttribute('width',box.scrollWidth);svg.setAttribute('height',box.scrollHeight);svg.setAttribute('viewBox',`0 0 ${box.scrollWidth} ${box.scrollHeight}`);
+  const ns='http://www.w3.org/2000/svg',parts=[];
+  for(const s of state.system.stages)for(const d of s.dependencies||[]){const a=pos(d),b=pos(s.id);if(!a||!b)continue;
+    const y1=a.bottom+2,y2=b.top-7,mid=(y1+y2)/2,on=s.id===state.sysStage||d===state.sysStage;
+    const path=document.createElementNS(ns,'path');path.setAttribute('d',`M${a.x} ${y1} C${a.x} ${mid} ${b.x} ${mid} ${b.x} ${y2}`);
+    path.setAttribute('fill','none');path.setAttribute('stroke',on?'#b79554':'#a9bcae');path.setAttribute('stroke-width',on?'2.4':'1.6');
+    const head=document.createElementNS(ns,'path');head.setAttribute('d',`M${b.x-5} ${y2} L${b.x+5} ${y2} L${b.x} ${y2+6} Z`);head.setAttribute('fill',on?'#b79554':'#a9bcae');head.setAttribute('stroke','none');
+    parts.push(on?[1,path,head]:[0,path,head]);}
+  parts.sort((x,y)=>x[0]-y[0]);svg.replaceChildren(...parts.flatMap(p=>[p[1],p[2]]));
 }
-const markSelected=()=>document.querySelectorAll('#sys-diagram .sys-node').forEach(g=>{const i=JSON.parse(g.dataset.sysNodeInfo);const on=state.sysTab==='flow'?i.stage===state.sysStage:i.node===state.sysNode;g.classList.toggle('is-selected',Boolean(on));g.setAttribute('aria-pressed',String(Boolean(on&&!i.repo)));
-  // Mermaid writes classDef colours inline with !important, so the selection outline is set inline too.
-  g.querySelectorAll('rect,polygon,path').forEach(sh=>{if(sh.closest('.label'))return;
-    if(sh.dataset.stroke===undefined){sh.dataset.stroke=sh.style.getPropertyValue('stroke');sh.dataset.strokeWidth=sh.style.getPropertyValue('stroke-width');}
-    sh.style.setProperty('stroke',on?'#b79554':sh.dataset.stroke,'important');sh.style.setProperty('stroke-width',on?'3.5px':sh.dataset.strokeWidth,'important');});});
-function sysPickNode(info){
-  if(info.repo){sysOpenRepo(info.repo);return;}
-  if(info.stage)state.sysStage=info.stage;else state.sysNode=info.node;
-  const side=$('#sys-side');if(side)side.innerHTML=info.stage?sysStagePanel(state.system,info.stage):sysNodePanel(state.system,info.node);
-  markSelected();side?.scrollIntoView({block:'nearest'});
+let edgeObserver=null;
+function watchFlowEdges(){
+  edgeObserver?.disconnect();const box=$('#sys-diagram.dg-flow');if(!box)return;
+  edgeObserver=new ResizeObserver(()=>drawFlowEdges());edgeObserver.observe(box);document.fonts?.ready.then(drawFlowEdges);drawFlowEdges();
+}
+function sysSelect({stage,node}){
+  if(stage)state.sysStage=stage;else state.sysNode=node;
+  const side=$('#sys-side');if(side)side.innerHTML=stage?sysStagePanel(state.system,stage):sysNodePanel(state.system,node);
+  document.querySelectorAll('#sys-diagram [data-dg-stage]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.dgStage===state.sysStage)));
+  document.querySelectorAll('#sys-diagram [data-dg-node]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.dgNode===state.sysNode)));
+  if(stage)drawFlowEdges();side?.scrollIntoView({block:'nearest'});
 }
 function sysOpenRepo(id){state.sysRepo=id;state.sysQuery='';if(state.system&&!state.system.repos.some(r=>r.id===id&&(!state.sysStatus||r.status===state.sysStatus)))state.sysStatus='';sysSetTab('repos');$('#sys-detail')?.scrollIntoView({block:'start'});$('#sys-detail')?.focus({preventScroll:true});}
 const sysRepoList=(m,ids)=>{const list=ids.map(id=>m.repos.find(r=>r.id===id)).filter(Boolean);return list.length?`<h4>Repo bên ngoài</h4><div class="sys-uses">${list.map(r=>sysRepoChip(m,r)).join('')}</div>`:'';};
@@ -1508,10 +1490,12 @@ async function renderSystem(){
     const warn=m.warnings.length?`<div class="sys-warnings" role="status"><strong>${m.warnings.length} điểm bản đồ lệch với thực tế</strong><ul>${m.warnings.map(w=>`<li>${w.repo?`<button type="button" class="link-button" data-sys-repo="${esc(w.repo)}">${esc(w.title)}</button>`:esc(w.title)}: ${esc(w.message)}</li>`).join('')}</ul><p>Sửa mô tả trong <code>${esc(m.source)}</code>.</p></div>`:'';
     // Repo statuses as one stacked bar plus a legend; each entry opens the repo catalog filtered to that status
     // (user 2026-11-09: the six tall cards looked clumsy and clicking should lead straight to the catalog).
-    const total=m.repos.length,statusRow=`<section class="sys-overview" aria-labelledby="sys-overview-title"><h2 id="sys-overview-title">${total} repo trong <code>repos/</code></h2><div class="sys-bar" aria-hidden="true">${Object.keys(m.statuses).filter(k=>m.counts[k]).map(k=>`<span class="sys-${esc(k)}" style="flex:${m.counts[k]}"></span>`).join('')}</div><ul class="sys-key">${Object.entries(m.statuses).map(([k,st])=>`<li><button type="button" class="sys-key-item sys-${esc(k)}" data-sys-status="${esc(k)}" title="${esc(st.summary)}"><span class="sys-dot" aria-hidden="true"></span><strong>${m.counts[k]||0}</strong> ${esc(st.title)}</button></li>`).join('')}</ul></section>`;
+    const total=m.repos.length,statusRow=`<section class="sys-overview" aria-labelledby="sys-overview-title"><h2 id="sys-overview-title">${total} repo trong <code>repos/</code></h2><div class="sys-bar" aria-hidden="true">${Object.keys(m.statuses).filter(k=>m.counts[k]).map(k=>`<span class="sys-${esc(k)}" data-n="${m.counts[k]}"></span>`).join('')}</div><ul class="sys-key">${Object.entries(m.statuses).map(([k,st])=>`<li><button type="button" class="sys-key-item sys-${esc(k)}" data-sys-status="${esc(k)}" title="${esc(st.summary)}"><span class="sys-dot" aria-hidden="true"></span><strong>${m.counts[k]||0}</strong> ${esc(st.title)}</button></li>`).join('')}</ul></section>`;
     const tabs=`<div class="sys-tabs" role="tablist" aria-label="Góc nhìn">${Object.entries(sysTabs).map(([k,t])=>`<button type="button" role="tab" id="sys-tab-${k}" aria-controls="sys-body" aria-selected="${state.sysTab===k}" tabindex="${state.sysTab===k?0:-1}" data-sys-tab="${k}">${esc(t)}${k==='repos'?` <span class="count">${m.repos.length}</span>`:''}</button>`).join('')}</div>`;
     box.innerHTML=`${warn}${statusRow}${tabs}<div id="sys-body" role="tabpanel" aria-labelledby="sys-tab-${state.sysTab}"></div><p class="resource-note">Mô tả vai trò do người viết trong <code>${esc(m.source)}</code> (cập nhật ${esc(m.updated)}). Số liệu đo trực tiếp mỗi lần mở trang: commit trong repos-manifest.json, phiên bản trong package.json và các môi trường Python, ${m.scanned} file nguồn trong src, scripts, tools. Bước quy trình lấy từ tools/production-automation.</p>`;
   }
+  // The page's CSP blocks inline style attributes; widths are set through the DOM instead.
+  box.querySelectorAll('.sys-bar span').forEach(sp=>{sp.style.flex=sp.dataset.n;});
   renderSystemBody();
 }
 function renderSystemBody(){
@@ -1522,12 +1506,12 @@ function renderSystemBody(){
   if(state.sysTab==='flow'){
     if(!m.stages.some(x=>x.id===state.sysStage))state.sysStage=m.stages[0]?.id||'';
     const legend=`<ul class="sys-legend" aria-label="Chú giải">${Object.values(sysKinds).map(([t,c])=>`<li><span class="sys-mark ${c}" aria-hidden="true"></span>${esc(t)}</li>`).join('')}</ul>`;
-    body.innerHTML=`<div class="resource-heading"><h2>Một tập đi qua những bước nào</h2><p>Quy trình đầy đủ của series Đọc sách, hiểu mình (các series khác bỏ bước Nguồn sách). Mũi tên là thứ tự phụ thuộc. Bấm một bước để xem công cụ và repo tham gia; bấm tên repo để mở danh mục repo.</p></div>${legend}<div class="sys-split"><figure class="sys-diagram" id="sys-diagram" aria-label="Sơ đồ quy trình sản xuất"><p class="sys-empty">Đang vẽ sơ đồ…</p></figure><aside class="sys-side" id="sys-side" aria-live="polite">${sysStagePanel(m,state.sysStage)}</aside></div>`;
-    drawDiagram(sysFlowChart(m),'flow');
+    body.innerHTML=`<div class="resource-heading"><h2>Một tập đi qua những bước nào</h2><p>Quy trình đầy đủ của series Đọc sách, hiểu mình (các series khác bỏ bước Nguồn sách). Mũi tên là thứ tự phụ thuộc. Bấm một bước để xem công cụ và repo tham gia; bấm tên repo để mở danh mục repo.</p></div>${legend}<div class="sys-split"><div class="sys-diagram">${sysFlowHtml(m)}</div><aside class="sys-side" id="sys-side" aria-live="polite">${sysStagePanel(m,state.sysStage)}</aside></div>`;
+    watchFlowEdges();
   } else if(state.sysTab==='layers'){
     const sel=state.sysNode&&sysArchNodes(m).find(n=>n.key===state.sysNode)?state.sysNode:'c:manager';state.sysNode=sel;
-    body.innerHTML=`<div class="resource-heading"><h2>Các tầng của hệ thống</h2><p>Đọc từ trên xuống: bạn điều khiển qua trang quản lý và Studio, công cụ của repo chạy trong môi trường riêng và gọi engine; skill chỉ hướng dẫn agent. Bấm một khối để xem chi tiết; khối viền tròn là repo bên ngoài, bấm vào mở thẳng danh mục repo.</p></div><div class="sys-split"><figure class="sys-diagram" id="sys-diagram" aria-label="Sơ đồ kiến trúc"><p class="sys-empty">Đang vẽ sơ đồ…</p></figure><aside class="sys-side" id="sys-side" aria-live="polite">${sysNodePanel(m,sel)}</aside></div>`;
-    drawDiagram(sysArchChart(m),'layers');
+    body.innerHTML=`<div class="resource-heading"><h2>Các tầng của hệ thống</h2><p>Đọc từ trên xuống: bạn điều khiển qua trang quản lý và Studio, công cụ của repo chạy trong môi trường riêng và gọi engine; skill chỉ hướng dẫn agent. Bấm một khối để xem chi tiết; khối có mũi tên là repo bên ngoài, bấm vào mở thẳng danh mục repo.</p></div><div class="sys-split"><div class="sys-diagram">${sysArchHtml(m)}</div><aside class="sys-side" id="sys-side" aria-live="polite">${sysNodePanel(m,sel)}</aside></div>`;
+    edgeObserver?.disconnect();
   } else {
     const q=fold(state.sysQuery),list=m.repos.filter(r=>shown(r)&&(!q||fold([r.title,r.id,r.category,r.general,r.role,r.facts.upstream].join(' ')).includes(q)));
     if(!list.some(r=>r.id===state.sysRepo))state.sysRepo=list[0]?.id||'';
@@ -1563,7 +1547,7 @@ ${r.notes.length?`<div class="sys-warnings"><strong>Lệch với mô tả</stron
 function sysSetTab(tab,focus){state.sysTab=tab;sysUrl();renderSystemBody();$('#resource-view').querySelectorAll('[data-sys-tab]').forEach(b=>{const on=b.dataset.sysTab===tab;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;if(on&&focus)b.focus();});}
 $('#resource-view').addEventListener('click',event=>{
   if(state.view!=='system')return;
-  const node=event.target.closest('[data-sys-node-info]');if(node){sysPickNode(JSON.parse(node.dataset.sysNodeInfo));return;}
+  const dg=event.target.closest('[data-dg-stage],[data-dg-node]');if(dg){sysSelect({stage:dg.dataset.dgStage,node:dg.dataset.dgNode});return;}
   const t=event.target.closest('[data-sys-tab],[data-sys-repo],[data-sys-pick],[data-sys-status],[data-sys-stage]');if(!t)return;
   if(t.dataset.sysTab)sysSetTab(t.dataset.sysTab);
   else if(t.dataset.sysStatus){const k=t.dataset.sysStatus;state.sysStatus=state.sysTab==='repos'&&state.sysStatus===k?'':k;state.sysRepo='';state.sysQuery='';sysSetTab('repos');}
@@ -1573,7 +1557,6 @@ $('#resource-view').addEventListener('click',event=>{
 });
 $('#resource-view').addEventListener('input',event=>{if(state.view!=='system'||event.target.id!=='sys-search')return;state.sysQuery=event.target.value;clearTimeout(searchTimer);searchTimer=setTimeout(renderSystemBody,100);});
 $('#resource-view').addEventListener('keydown',event=>{
-  const node=event.target.closest?.('[data-sys-node-info]');if(node&&(event.key==='Enter'||event.key===' ')){event.preventDefault();sysPickNode(JSON.parse(node.dataset.sysNodeInfo));return;}
   const tab=event.target.closest?.('[data-sys-tab]');if(!tab||!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
   const keys=Object.keys(sysTabs),i=keys.indexOf(tab.dataset.sysTab);event.preventDefault();
   const next=event.key==='Home'?0:event.key==='End'?keys.length-1:(i+(event.key==='ArrowRight'?1:-1)+keys.length)%keys.length;sysSetTab(keys[next],true);

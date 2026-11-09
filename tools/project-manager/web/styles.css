@@ -793,12 +793,6 @@ mark.pd-del{background:#f6d5c8;color:inherit;text-decoration:line-through;text-d
 .sys-dot{width:10px;height:10px;border-radius:50%;background:var(--sys-edge);flex-shrink:0}
 .sys-idle .sys-dot{background:none;border:2px dashed var(--sys-edge)}
 .sys-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,360px);gap:22px;align-items:start;margin-bottom:24px}
-.sys-diagram{margin:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;min-height:240px;overflow-x:auto}
-.sys-diagram svg{display:block;margin:0 auto;height:auto;max-width:100%}
-.sys-node{cursor:pointer;outline:none}
-#sys-diagram .sys-node:hover rect,#sys-diagram .sys-node:hover polygon,#sys-diagram .sys-node:hover path{filter:drop-shadow(0 2px 4px rgba(22,54,46,.18))}
-#sys-diagram .sys-node.is-selected rect,#sys-diagram .sys-node.is-selected polygon,#sys-diagram .sys-node.is-selected path{stroke:#b79554 !important;stroke-width:3.5px !important}
-#sys-diagram .sys-node:focus-visible rect,#sys-diagram .sys-node:focus-visible polygon,#sys-diagram .sys-node:focus-visible path{stroke:#2d5d8a !important;stroke-width:3.5px !important}
 .sys-side{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:18px 20px;font-size:14px}
 @media(min-width:901px) and (min-height:700px){.sys-side{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto}}
 .sys-side h3{font-size:18px;margin:2px 0 6px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}.sys-side p{margin:0 0 8px;color:#3f5248;line-height:1.6}
@@ -807,6 +801,35 @@ mark.pd-del{background:#f6d5c8;color:inherit;text-decoration:line-through;text-d
 .sys-comp-list{list-style:none;padding:0;margin:0;display:grid;gap:8px}.sys-comp-list li{display:grid;gap:2px}
 .sys-comp-list code{font-size:12.5px;color:#2c4a3c;overflow-wrap:anywhere}
 @media(max-width:900px){.sys-split{grid-template-columns:1fr}.sys-side{position:static}}
-/* Phones: keep diagram text readable at its natural size and scroll the diagram sideways inside its frame. */
-@media(max-width:640px){.sys-diagram{padding:12px}.sys-diagram svg{width:min(640px,var(--sys-natural,640px)) !important;max-width:none !important;margin:0}}
 .panel-body>.studio-strip{padding:0 18px;margin-bottom:16px}
+
+/* System map diagrams drawn by the page (no Mermaid): rows of node buttons, SVG connectors for the flow,
+   stacked layer bands with arrows for the architecture. */
+.sys-diagram{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 18px;min-width:0}
+.dg{position:relative}
+.dg-edges{position:absolute;inset:0;pointer-events:none;overflow:visible}
+.dg-flow{display:grid;gap:30px}
+.dg-row{position:relative;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.dg-node{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;min-width:120px;max-width:220px;padding:8px 16px;
+  font-size:14.5px;font-weight:600;line-height:1.35;text-align:center;color:var(--ink);background:#fff;border:1.5px solid #8ea596;border-radius:6px;cursor:pointer}
+.dg-node:hover{border-color:var(--forest);box-shadow:0 2px 8px rgba(22,54,46,.12)}
+.dg-node:focus-visible{outline:3px solid #2d5d8a;outline-offset:2px}
+.dg-node[aria-pressed="true"]{box-shadow:0 0 0 3px var(--accent);border-color:#8e6f34}
+.dg-node.k-agent{border-radius:999px;background:#eef3ec;border-color:#16362e}
+.dg-node.k-check{border-style:dashed}
+.dg-node.k-gate{background:#f6ecd6;border:2px solid #8e6f34;color:#5c4314}
+.dg-gate-mark{width:10px;height:10px;background:var(--accent);transform:rotate(45deg);flex-shrink:0}
+.dg-node.k-me{background:var(--forest);border-color:var(--forest);color:#fff}
+.dg-node.k-env{background:#e1eff3;border-color:#24596a;color:#1d4654}
+.dg-node.k-repo{border-radius:999px;border-color:#2f6a2a;color:#2f6a2a;font-weight:600}
+.dg-node.k-skill{border-radius:999px;background:#f8f0dc;border-color:#b8954c;color:#5c4314}
+.dg-go{font-weight:400;opacity:.7}
+.dg-layers{display:grid;gap:30px}
+.dg-layer{position:relative;border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:30px 14px 16px}
+.dg-layer h3{position:absolute;top:-11px;left:14px;margin:0;padding:0 8px;font-size:13.5px;font-weight:700;color:var(--muted);background:#fff}
+.dg-layer:not(:last-child):not(.is-aside)::after{content:'';position:absolute;left:50%;bottom:-24px;width:2px;height:16px;background:#a9bcae;transform:translateX(-50%)}
+.dg-layer:not(:last-child):not(.is-aside)::before{content:'';position:absolute;left:50%;bottom:-29px;transform:translateX(-50%);border:6px solid transparent;border-top:7px solid #a9bcae;border-bottom:0}
+.dg-layer.is-aside{border-style:dashed}
+.dg-layers .dg-layer:nth-last-child(2)::after,.dg-layers .dg-layer:nth-last-child(2)::before{display:none}
+@media(max-width:640px){.sys-diagram{padding:18px 8px}.dg-flow{gap:26px}.dg-row{gap:8px}.dg-flow .dg-row{flex-wrap:nowrap}.dg-node{min-width:0;flex:0 1 150px;font-size:14px;padding:8px 10px}.dg-flow .dg-node{flex:1 1 0;max-width:160px;padding:8px 6px;font-size:13.5px}.dg-node.k-agent,.dg-node.k-repo,.dg-node.k-skill{border-radius:22px}}
+@media(prefers-reduced-motion:reduce){.dg-node{transition:none}}
