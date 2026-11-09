@@ -1,5 +1,13 @@
 # Video playground
 
+## Disk cleanup and physical space reclamation (2026-11-09)
+
+User rule: finishing a large job, installation or storage migration includes cleaning up data that is no longer used; do not leave agent-created temporary output, partial copies, superseded staging folders or verified-orphaned runtime files behind. Before deleting, resolve exact paths, confirm no process/lease still uses them and verify that the replacement or final output is complete. Delete only the agent's own artifacts and clearly identified stale runtime data as part of normal completion. Never broadly clear caches, downloads, exports, source media, user originals or unknown folders merely to gain space; report those candidates and ask first.
+
+A move is not complete when files were only copied. After verification, remove the superseded source, preserve required compatibility with a symlink/config change, and measure free space on the physical host filesystem before and after. Distinguish logical file totals from unique allocated bytes and from space actually returned to the host. For WSL, Docker, virtual machines, sparse files or other container images, free space inside the guest does not mean the host disk reclaimed it: trim and safely compact/punch holes or enable the supported sparse mechanism while the guest is stopped, then re-measure the Windows/host volume. If physical reclamation cannot be completed safely, say that the cleanup is incomplete instead of reporting the logical moved size as recovered space.
+
+On the Windows GPU host, keep recurring large model stores, WSL swap and similarly movable runtime data on drive D when practical, with stable paths/symlinks so services continue to work; keep environments/binaries on Linux when moving them to NTFS would break permissions or performance. Check that both C and D retain at least 10% free space, clean verified stale swap/temp files after the owning service is stopped, and smoke-test paths/manifests without loading a heavy model unnecessarily. Do not move Windows system files, pagefile, installed applications or an entire WSL distro just to make C look smaller unless the user explicitly approves that scope.
+
 ## Git commits (2026-10-31)
 
 User rule: commit after every change or update you make (one focused commit per completed change, on the current branch), and do not push. Stage only the files you changed for that work; never sweep in other people's uncommitted edits (`git add -A`/`.`), and leave unrelated dirty files as they are. Run the affected tests before committing; if they fail, say so instead of committing broken work silently. Never commit secrets, `.voicestudio/`, media caches or other ignored runtime data.
