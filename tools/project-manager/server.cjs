@@ -56,7 +56,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
         if(route==='/api/voicestudio/stop')return send(200,await voiceControl.stop());
         if(route==='/api/backup/start')return send(202,await backup.start(body.action));
         if(route==='/api/backup/stop')return send(200,backup.stop());
-        if(route==='/api/thumbnails/choose')return send(200,thumbnails.choose({id:String(body.id||''),variant:String(body.variant||''),revision:String(body.revision||'')}));
+        if(route==='/api/thumbnails/choose')return send(200,thumbnails.choose({id:String(body.id||''),variant:String(body.variant||''),set:body.set==null?null:String(body.set),revision:String(body.revision||'')}));
         if(route==='/api/loudness/fix')return send(202,loudness.start(String(body.id||''),String(body.composition||'')));
         if(route==='/api/books')return send(201,store.newBook(body));
         if(route==='/api/approve')return send(200,store.approveGate(body));

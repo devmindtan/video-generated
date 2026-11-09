@@ -861,4 +861,16 @@ mark.pd-del{background:#f6d5c8;color:inherit;text-decoration:line-through;text-d
 .thumb-card.is-chosen{border-color:var(--forest);box-shadow:inset 0 0 0 1px var(--forest)}
 .thumb-card-body{display:flex;flex-direction:column;gap:4px;flex:1}.thumb-card-body p{margin:0 0 8px;font-size:14px;color:var(--muted);flex:1}
 .thumb-dialog{width:min(1320px,96vw);max-width:1320px}
-@media(max-width:900px){.thumb-hero{grid-template-columns:1fr}}
+.thumb-sets{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+.thumb-set{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:0;max-width:100%;padding:8px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;color:inherit;font:inherit;font-weight:700;text-align:left;cursor:pointer}
+.thumb-set small{font-weight:400;font-size:13px;color:var(--muted)}
+.thumb-set.is-on{border-color:var(--forest);box-shadow:inset 0 0 0 1px var(--forest);background:#f3f8f1}
+.thumb-set:focus-visible{outline:3px solid #2d5d8a;outline-offset:2px}
+/* Portrait covers (shorts, 1080×1920) */
+.thumb-frame.is-portrait{aspect-ratio:9/16}
+.thumb-hero.is-portrait{grid-template-columns:minmax(0,300px) minmax(240px,1fr)}
+.thumb-grid.is-portrait{grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr))}
+/* the cover's height fits the window (78dvh), the dialog's width follows it */
+.thumb-dialog.is-portrait{width:calc(min(78dvh,1100px) * 9 / 16 + 54px);max-width:calc(100vw - 28px)}
+.thumb-dialog.is-portrait .thumb-frame{aspect-ratio:9/16;width:100%;height:auto;margin-top:12px}
+@media(max-width:900px){.thumb-hero,.thumb-hero.is-portrait{grid-template-columns:1fr}.thumb-hero.is-portrait .thumb-open{max-width:300px}}

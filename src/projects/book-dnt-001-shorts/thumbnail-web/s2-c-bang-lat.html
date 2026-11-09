@@ -1,0 +1,22 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="base.css"><title>Bìa short 2 · C</title>
+<!-- Short 2 · C "Bảng chữ lật": a split-flap board on the paper; the top row shows NHƯNG in red tiles with one tile
+     mid-flip, the bottom row VÀ in gold tiles. Headline ĐỪNG NÓI above. Strong dark-on-light contrast. -->
+<style>
+.w1{top:318px;font-size:150px}
+.board{position:absolute;left:70px;width:940px;display:flex;justify-content:center;gap:14px}
+.r1{top:600px}.r2{top:1060px}
+.tile{position:relative;width:170px;height:250px;border-radius:14px;background:linear-gradient(180deg,#26333b 0 49.4%,#141c21 49.6% 50.4%,#1f2a31 50.6%);
+  box-shadow:0 4px 0 rgba(0,0,0,.25),0 22px 36px rgba(30,25,15,.35);display:grid;place-items:center;font-size:150px;line-height:1;color:#e85a4a}
+.r2 .tile{width:250px;height:330px;font-size:230px;color:var(--gold-hi)}
+.flip{transform:perspective(600px) rotateX(-28deg);transform-origin:50% 100%;filter:brightness(.85)}
+.note{position:absolute;left:0;right:0;top:900px;text-align:center;font-size:62px;color:var(--brown);letter-spacing:.06em}
+</style></head><body>
+<div id="thumb" role="img" aria-label="Đừng nói nhưng. Bảng chữ lật đổi nhưng thành và. Đọc sách, hiểu mình, tập 03: Đắc nhân tâm">
+  <div class="cool"></div><div class="warm"></div>
+  <div class="kicker">ĐỌC SÁCH, HIỂU MÌNH · <b>ĐẮC NHÂN TÂM</b></div>
+  <h1 class="t w1 slate lift">ĐỪNG NÓI</h1>
+  <div class="board r1"><div class="tile">N</div><div class="tile">H</div><div class="tile flip">Ư</div><div class="tile">N</div><div class="tile">G</div></div>
+  <div class="note">hãy nói</div>
+  <div class="board r2"><div class="tile">V</div><div class="tile">À</div></div>
+  <div class="grain"></div><div class="vignette"></div>
+</div><script src="base.js"></script></body></html>

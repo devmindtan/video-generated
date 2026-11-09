@@ -229,27 +229,34 @@ function showProjectTab(tab){
 // Projects without designs (older episodes) do not show the tab.
 async function loadThumbnails(id){
   let d;try{d=await api('/api/thumbnails?id='+encodeURIComponent(id));}catch{d={available:false,variants:[]};}
-  if(state.drawer?.id!==id)return;state.thumbs=d;
+  if(state.drawer?.id!==id)return;if(state.thumbs?.projectId!==id)state.thumbSet=null;state.thumbs={...d,projectId:id};
   const tab=$('#tab-thumbnail');if(tab)tab.hidden=!d.available;
   if(!d.available&&state.projectTab==='thumbnail')showProjectTab('docs');
   renderThumbnails();
 }
 const thumbFrame=(v,cls='')=>`<div class="thumb-frame ${cls}"><iframe src="${esc(v.url)}" title="${esc(v.title)}" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>`;
+// A shorts project has one design set per short (its own variants, pick and Studio Still): a row of buttons picks the
+// short; the frames follow the set's stage size (portrait covers stay portrait).
+const thumbSet=()=>{const d=state.thumbs;if(!d?.sets?.length)return null;return d.sets.find(x=>x.id===state.thumbSet)||d.sets[0];};
 function renderThumbnails(){
   const d=state.thumbs,box=$('#thumbs');if(!box||!d)return;
-  if(!d.available){box.innerHTML='<p class="muted">Dự án này chưa có thiết kế thumbnail.</p>';return;}
-  const id=state.drawer.id,chosen=d.variants.find(v=>v.id===d.chosen),studioV=d.variants.find(v=>v.id===d.studioVariant);
-  const studio=!d.studioStill?'Chưa có thumbnail trong Studio.':d.studioVariant===d.chosen?`Trong Studio: ${d.studioStill} dựng đúng phương án này.`:`Trong Studio: ${d.studioStill} vẫn là ${studioV?studioV.title:'phương án cũ'}; agent sẽ cập nhật theo phương án bạn vừa chọn.`;
-  const exported=d.exported?`Đã xuất ${d.exported.name} (${when(d.exported.at)}).`:'Chưa xuất: render trong Studio khi video xong.';
-  const hero=chosen?`<section class="thumb-hero" aria-labelledby="thumb-chosen"><button type="button" class="thumb-open" data-thumb-view="${esc(chosen.id)}" aria-label="Xem lớn ${esc(chosen.title)}">${thumbFrame(chosen,'is-large')}</button><div class="thumb-hero-info"><span class="thumb-badge">Đã chốt</span><h3 id="thumb-chosen">${esc(chosen.title)}</h3><p>${esc(chosen.summary)}</p><ul class="thumb-facts"><li class="${d.studioVariant===d.chosen?'':'is-warn'}">${esc(studio)}</li><li>${esc(exported)}</li>${d.chosenAt?`<li>Chọn ngày ${esc(String(d.chosenAt).slice(0,10).split('-').reverse().join('/'))}</li>`:''}</ul><div class="thumb-actions">${d.studioStill?`<button class="button studio-button" data-studio="${esc(d.studioStill)}" data-id="${esc(id)}">Mở trong Studio</button>`:''}<button type="button" class="button secondary" data-thumb-view="${esc(chosen.id)}">Xem lớn</button></div></div></section>`
-    :'<p class="thumb-none">Chưa chốt phương án nào. Xem các phương án bên dưới và bấm “Chọn phương án này”.</p>';
-  const cards=d.variants.map(v=>{const on=v.id===d.chosen;return `<li class="thumb-card${on?' is-chosen':''}"><button type="button" class="thumb-open" data-thumb-view="${esc(v.id)}" aria-label="Xem lớn ${esc(v.title)}">${thumbFrame(v)}</button><div class="thumb-card-body"><strong>${esc(v.title)}</strong><p>${esc(v.summary)}</p><div class="thumb-actions">${on?'<span class="thumb-badge">Đang chốt</span>':`<button type="button" class="button secondary" data-thumb-choose="${esc(v.id)}">Chọn phương án này</button>`}</div></div></li>`;}).join('');
-  box.innerHTML=`${hero}<section class="thumb-variants" aria-labelledby="thumb-all"><h3 id="thumb-all">Các phương án <span class="count">${d.variants.length}</span></h3><p class="muted">Mỗi khung là trang thiết kế thật, 1280×720. Bấm vào khung để xem lớn.</p><ul class="thumb-grid">${cards}</ul></section>`;
+  if(!d.available||!d.sets?.length){box.innerHTML='<p class="muted">Dự án này chưa có thiết kế thumbnail.</p>';return;}
+  const id=state.drawer.id,set=thumbSet(),multi=d.sets.length>1,portrait=set.height>set.width,shape=portrait?'is-portrait':'';
+  const chosen=set.variants.find(v=>v.id===set.chosen),studioV=set.variants.find(v=>v.id===set.studioVariant);
+  const studio=!set.studioStill?(set.plannedStill?'Chưa có trong Studio: agent dựng Still sau khi bạn chọn.':'Chưa có thumbnail trong Studio.'):set.studioVariant===set.chosen?`Trong Studio: ${set.studioStill} dựng đúng phương án này.`:`Trong Studio: ${set.studioStill} vẫn là ${studioV?studioV.title:'phương án cũ'}; agent sẽ cập nhật theo phương án bạn vừa chọn.`;
+  const exported=set.exported?`Đã xuất ${set.exported.name} (${when(set.exported.at)}).`:'Chưa xuất: render trong Studio khi video xong.';
+  const tabs=multi?`<div class="thumb-sets" role="group" aria-label="Chọn short">${d.sets.map(x=>`<button type="button" class="thumb-set${x.id===set.id?' is-on':''}" data-thumb-set="${esc(x.id)}" aria-pressed="${x.id===set.id}"><span>${esc(x.title||x.id)}</span><small>${x.chosen?'Đã chọn':`${x.variants.length} phương án · chưa chọn`}</small></button>`).join('')}</div>`:'';
+  const hero=chosen?`<section class="thumb-hero ${shape}" aria-labelledby="thumb-chosen"><button type="button" class="thumb-open" data-thumb-view="${esc(chosen.id)}" aria-label="Xem lớn ${esc(chosen.title)}">${thumbFrame(chosen,'is-large '+shape)}</button><div class="thumb-hero-info"><span class="thumb-badge">Đã chốt</span><h3 id="thumb-chosen">${esc(chosen.title)}</h3><p>${esc(chosen.summary)}</p><ul class="thumb-facts"><li class="${set.studioStill&&set.studioVariant!==set.chosen?'is-warn':''}">${esc(studio)}</li><li>${esc(exported)}</li>${set.chosenAt?`<li>Chọn ngày ${esc(String(set.chosenAt).slice(0,10).split('-').reverse().join('/'))}</li>`:''}</ul><div class="thumb-actions">${set.studioStill?`<button class="button studio-button" data-studio="${esc(set.studioStill)}" data-id="${esc(id)}">Mở trong Studio</button>`:''}<button type="button" class="button secondary" data-thumb-view="${esc(chosen.id)}">Xem lớn</button></div></div></section>`
+    :`<p class="thumb-none">${multi?`Chưa chốt bìa cho ${esc(set.title||'short này')}.`:'Chưa chốt phương án nào.'} Xem các phương án bên dưới và bấm “Chọn phương án này”.</p>`;
+  const cards=set.variants.map(v=>{const on=v.id===set.chosen;return `<li class="thumb-card${on?' is-chosen':''}"><button type="button" class="thumb-open" data-thumb-view="${esc(v.id)}" aria-label="Xem lớn ${esc(v.title)}">${thumbFrame(v,shape)}</button><div class="thumb-card-body"><strong>${esc(v.title)}</strong><p>${esc(v.summary)}</p><div class="thumb-actions">${on?'<span class="thumb-badge">Đang chốt</span>':`<button type="button" class="button secondary" data-thumb-choose="${esc(v.id)}">Chọn phương án này</button>`}</div></div></li>`;}).join('');
+  box.innerHTML=`${tabs}${hero}<section class="thumb-variants" aria-labelledby="thumb-all"><h3 id="thumb-all">Các phương án${multi?' · '+esc(set.title||set.id):''} <span class="count">${set.variants.length}</span></h3><p class="muted">Mỗi khung là trang thiết kế thật, ${set.width}×${set.height}. Bấm vào khung để xem lớn.</p><ul class="thumb-grid ${shape}">${cards}</ul></section>`;
 }
 $('#drawer-content').addEventListener('click',async event=>{
-  const view=event.target.closest('[data-thumb-view]'),pick=event.target.closest('[data-thumb-choose]');
-  if(view){const v=state.thumbs?.variants.find(x=>x.id===view.dataset.thumbView);if(!v)return;$('#thumb-dialog-title').textContent=v.title;$('#thumb-dialog-frame').src=v.url;$('#thumb-dialog-frame').title=v.title;$('#thumb-dialog').showModal();return;}
-  if(pick){pick.disabled=true;try{state.thumbs=await api('/api/thumbnails/choose',{id:state.drawer.id,variant:pick.dataset.thumbChoose,revision:state.thumbs.revision});renderThumbnails();toast('Đã chốt phương án. Agent sẽ cập nhật thumbnail trong Studio theo phương án này.');}catch(e){toast(e.message);pick.disabled=false;}}
+  const view=event.target.closest('[data-thumb-view]'),pick=event.target.closest('[data-thumb-choose]'),setBtn=event.target.closest('[data-thumb-set]');
+  if(setBtn){state.thumbSet=setBtn.dataset.thumbSet;renderThumbnails();$(`[data-thumb-set="${CSS.escape(state.thumbSet)}"]`)?.focus();return;}
+  const set=thumbSet();
+  if(view){const v=set?.variants.find(x=>x.id===view.dataset.thumbView);if(!v)return;const dlg=$('#thumb-dialog');dlg.classList.toggle('is-portrait',set.height>set.width);$('#thumb-dialog-title').textContent=(set.title&&state.thumbs.sets.length>1?set.title+' · ':'')+v.title;$('#thumb-dialog-frame').src=v.url;$('#thumb-dialog-frame').title=v.title;dlg.showModal();return;}
+  if(pick){pick.disabled=true;try{state.thumbs={...await api('/api/thumbnails/choose',{id:state.drawer.id,set:state.thumbs.sets.length>1?set.id:null,variant:pick.dataset.thumbChoose,revision:state.thumbs.revision}),projectId:state.drawer.id};renderThumbnails();toast('Đã chốt phương án. Agent sẽ cập nhật thumbnail trong Studio theo phương án này.');}catch(e){toast(e.message);pick.disabled=false;}}
 });
 function selectProjectTab(tab,focus=false){
   if(!state.drawer||state.projectTab===tab)return;showProjectTab(tab);
@@ -1119,7 +1126,7 @@ $('#create-dialog').addEventListener('cancel',event=>{if($('#create-form').hasAt
 document.addEventListener('keydown',event=>{
   const typing=['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName);
   if(event.key==='/'&&!typing&&!$('#create-dialog').open&&!$('#help-dialog').open&&!$('#media-dialog').open&&!$('#delete-dialog').open&&!$('#review-dialog').open&&!$('#channel-dialog').open){event.preventDefault();(resourceViews[state.view]?$('#resource-search'):$('#search'))?.focus();}
-  if(event.key==='Escape'&&!$('#create-dialog').open&&!$('#help-dialog').open&&!$('#media-dialog').open&&!$('#delete-dialog').open&&!$('#review-dialog').open&&!$('#channel-dialog').open){if(!$('#drawer').hidden)closeDrawer();setMenu(false);}
+  if(event.key==='Escape'&&!$('#create-dialog').open&&!$('#help-dialog').open&&!$('#media-dialog').open&&!$('#delete-dialog').open&&!$('#review-dialog').open&&!$('#channel-dialog').open&&!$('#thumb-dialog').open){if(!$('#drawer').hidden)closeDrawer();setMenu(false);}
   if(event.key==='Tab'&&!$('#drawer').hidden&&!$('#drawer').classList.contains('detail-page')&&!$('#create-dialog').open&&!$('#help-dialog').open&&!$('#media-dialog').open&&!$('#delete-dialog').open&&!$('#review-dialog').open&&!$('#channel-dialog').open){const nodes=[...$('#drawer').querySelectorAll('button,a,textarea,select,input')].filter(n=>!n.disabled&&n.offsetParent!==null);const first=nodes[0],last=nodes[nodes.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}
 });
 window.addEventListener('beforeunload',event=>{if(dirtyNotes()){event.preventDefault();event.returnValue='';}});

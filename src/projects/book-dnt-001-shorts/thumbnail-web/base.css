@@ -1,0 +1,35 @@
+/* Covers of the episode 3 shorts (user 2026-11-09: designed as carefully as the long video's thumbnail). Fixed
+   1080×1920 #thumb stage in the "paper and ink" language of thumbnail F: light paper with a cool/warm tilt, slate ink,
+   the cover's red, gold; Stoic Sans 700. The short shelf crops covers to 4:5, so the message and main object stay in
+   the middle 1080×1350 (y 285–1635). Preview scaling as in episode 3 (?capture keeps 1:1). */
+@font-face{font-family:'Stoic Sans';font-weight:700;src:url('/public/stoic/fonts/NotoSans-Bold.ttf') format('truetype')}
+:root{--slate:#2b3a44;--slate-lo:#55646d;--red:#a3241b;--red-hi:#c2372a;--gold:#c99a45;--gold-hi:#e9c77e;--brown:#7a5a22;--ivory:#fbf6ea;--board:#1f2a31}
+*{box-sizing:border-box}
+html,body{margin:0;background:#2a2722;min-height:100%}
+body{display:grid;place-items:center;min-height:100vh;overflow:hidden}
+.preview #thumb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(var(--fit,1))}
+#thumb{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:'Stoic Sans',sans-serif;font-weight:700;color:var(--slate);
+  background:radial-gradient(ellipse 60% 34% at 50% 50%,rgba(255,251,240,.85),rgba(255,251,240,0) 72%),linear-gradient(180deg,#dcdfdf 0%,#e8e8e3 30%,#efe8da 55%,#f4e6c9 80%,#f0dcb6 100%)}
+#thumb.split-x{background:radial-gradient(ellipse 34% 40% at 50% 50%,rgba(255,250,238,.9),rgba(255,250,238,0) 70%),linear-gradient(90deg,#d9dddd 0%,#e5e6e2 32%,#efe9dc 50%,#f5e9cf 68%,#f0dbb3 100%)}
+.grain{position:absolute;inset:0;opacity:.34;mix-blend-mode:multiply;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .28 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 95% 80% at 50% 50%,transparent 60%,rgba(70,55,30,.26) 100%)}
+.cool{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 30% at 30% 22%,rgba(140,165,185,.22),transparent 70%)}
+.warm{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 30% at 70% 80%,rgba(222,168,80,.24),transparent 70%)}
+.kicker{position:absolute;left:0;right:0;top:206px;text-align:center;font-size:30px;letter-spacing:.24em;color:var(--brown)}
+.kicker b{color:var(--red);font-weight:700}
+.t{position:absolute;left:0;right:0;margin:0;text-align:center;line-height:1.2;font-weight:700}
+.slate{color:var(--slate)}.red{color:var(--red)}.gold{color:var(--gold)}.brown{color:var(--brown)}
+.lift{text-shadow:0 2px 0 rgba(255,255,255,.55),0 14px 30px rgba(80,60,25,.18)}
+.ink{position:absolute;inset:0;width:1080px;height:1920px;overflow:visible;pointer-events:none}
+.ink .s{fill:none;stroke:var(--slate);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.ink .r{fill:none;stroke:var(--red);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.ink .g{fill:none;stroke:var(--gold);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+/* The real book cover, optionally split cold/lit like thumbnail F */
+.cover{position:absolute;border-radius:4px;overflow:hidden;box-shadow:0 3px 0 rgba(0,0,0,.08),0 30px 46px rgba(60,40,15,.36),0 60px 110px rgba(60,40,15,.22)}
+.cover div{position:absolute;inset:0;background:url('/public/book-dnt-001-overview/thumbnail/book-cover-source.webp') center/cover}
+.cover .cold{clip-path:inset(0 50% 0 0);filter:grayscale(1) brightness(.78) contrast(1.05)}
+.cover .cold::after{content:'';position:absolute;inset:0;background:rgba(90,130,160,.25);mix-blend-mode:color}
+.cover .lit{clip-path:inset(0 0 0 50%);filter:saturate(1.12) brightness(1.04)}
+.cover .full{filter:saturate(1.08)}
+.cover::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.2),rgba(255,255,255,0) 35%)}

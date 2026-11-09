@@ -3,7 +3,8 @@
 // thumbnails.json manifest; the user compares and picks them in the manager's Thumbnail tab (no comparison page).
 // This tool serves one page and the repo's public/ files on loopback for an agent's QA capture:
 //   npm run thumbnail:web -- <page.html>                 preview in the browser (Ctrl+C to stop)
-//   npm run thumbnail:web -- <page.html> --out <file.png> capture the page's #thumb element (1280×720) and exit
+//   npm run thumbnail:web -- <page.html> --out <file.png> capture the page's #thumb element (1280×720, or 1080×1920 for a
+//                                                        short's cover) and exit
 //   npm run thumbnail:web -- <page.html> --check <file.png> capture a QA copy (same as --out; meant for .cache/)
 // Capturing writes a thumbnail: run --out only when the user asks for the export. Read-only server: GET of files
 // inside the page's folder or public/, nothing else (no .env, no library/, no listing). Port 3100 (never Studio's
@@ -56,7 +57,8 @@ if (!outArg) {
   const out = path.resolve(ROOT, outArg);
   const browser = await chromium.launch({headless: true, executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome'});
   try {
-    const tab = await browser.newPage({viewport: {width: 1280, height: 720}, deviceScaleFactor: 1});
+    // The stage is 1280×720 (long video) or 1080×1920 (a short's cover); the viewport follows the stage.
+    const tab = await browser.newPage({viewport: {width: 1920, height: 1920}, deviceScaleFactor: 1});
     const errors = [];
     tab.on('pageerror', e => errors.push(e.message));
     tab.on('requestfailed', r => errors.push(`${r.url()} ${r.failure()?.errorText}`));
@@ -67,10 +69,12 @@ if (!outArg) {
     if (errors.length) throw new Error('Trang lỗi khi tải:\n' + errors.join('\n'));
     if (!fonts.length) throw new Error('Font chưa tải được; không chụp.');
     const box = await tab.locator('#thumb').boundingBox();
-    if (!box || Math.round(box.width) !== 1280 || Math.round(box.height) !== 720) throw new Error(`#thumb phải đúng 1280×720 (đang ${box?.width}×${box?.height}).`);
+    const size = box && `${Math.round(box.width)}×${Math.round(box.height)}`;
+    if (!['1280×720', '1080×1920'].includes(size)) throw new Error(`#thumb phải đúng 1280×720 hoặc 1080×1920 (đang ${size}).`);
+    await tab.setViewportSize({width: Math.round(box.width), height: Math.round(box.height)});
     fs.mkdirSync(path.dirname(out), {recursive: true});
     await tab.locator('#thumb').screenshot({path: out});
-    console.log(`Đã chụp ${path.relative(ROOT, out)} (1280×720, font: ${[...new Set(fonts)].join(', ')})`);
+    console.log(`Đã chụp ${path.relative(ROOT, out)} (${size}, font: ${[...new Set(fonts)].join(', ')})`);
   } finally {
     await browser.close();
     server.close();

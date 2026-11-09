@@ -38,3 +38,27 @@ test('lists designs, records the pick, serves only the design folder and public 
     fs.rmSync(root, {recursive: true, force: true});
   }
 });
+
+test('a shorts project keeps one design set per short, each with its own pick and portrait size', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'thumbs-sets-'));
+  try {
+    const dir = path.join(root, 'src/projects/sh/thumbnail-web');
+    fs.mkdirSync(dir, {recursive: true});
+    for (const f of ['1a.html', '1b.html', '2a.html']) fs.writeFileSync(path.join(dir, f), 'x');
+    fs.writeFileSync(path.join(dir, 'thumbnails.json'), JSON.stringify({sets: [
+      {id: 'short-1', title: 'Short 1', width: 1080, height: 1920, studioStill: 'Sh1Cover', variants: [{id: '1a', file: '1a.html', title: '1A'}, {id: '1b', file: '1b.html', title: '1B'}]},
+      {id: 'short-2', title: 'Short 2', width: 1080, height: 1920, studioStill: 'Sh2Cover', chosen: '2a', variants: [{id: '2a', file: '2a.html', title: '2A'}]}]}));
+    const t = createThumbnails(root, {catalog: () => ({id: 'sh', paths: {source: 'src/projects/sh'}, registrations: [{id: 'Sh2Cover', kind: 'Still'}]})});
+    let d = t.list('sh');
+    assert.deepEqual(d.sets.map(s => [s.id, s.width, s.height, s.variants.length, s.chosen]), [['short-1', 1080, 1920, 2, null], ['short-2', 1080, 1920, 1, '2a']]);
+    assert.equal(d.sets[0].studioStill, null, 'a planned Still that is not registered yet');
+    assert.equal(d.sets[0].plannedStill, 'Sh1Cover');
+    assert.equal(d.sets[1].studioStill, 'Sh2Cover');
+    assert.throws(() => t.choose({id: 'sh', set: 'short-9', variant: '1a', revision: d.revision}), /nhóm/);
+    assert.throws(() => t.choose({id: 'sh', set: 'short-2', variant: '1a', revision: d.revision}), /Không có phương án/, 'a variant of another short');
+    d = t.choose({id: 'sh', set: 'short-1', variant: '1b', revision: d.revision});
+    assert.equal(d.sets[0].chosen, '1b');assert.equal(d.sets[1].chosen, '2a', 'the other short keeps its pick');
+  } finally {
+    fs.rmSync(root, {recursive: true, force: true});
+  }
+});
