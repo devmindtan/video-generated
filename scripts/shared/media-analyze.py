@@ -11,11 +11,13 @@ only writes the sheet image it is asked for.
 import argparse
 import io
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
 import sys
 import tempfile
+import time
 import wave
 
 import numpy as np
@@ -243,10 +245,33 @@ TRUE_PEAK = -1.0
 LOUDNESS_TOLERANCE = 1.0
 
 
-def loudnorm_stats(path, extra=''):
-    stderr = subprocess.run([str(FFMPEG), '-hide_banner', '-nostdin', '-nostats', '-i', str(path), '-vn',
-                             '-af', f'loudnorm=I={LOUDNESS_TARGET}:TP={TRUE_PEAK}:LRA=11{extra}:print_format=json',
-                             '-f', 'null', '-'], capture_output=True, text=True).stderr
+def ffmpeg_with_progress(args, duration=None, on_progress=None):
+    """Runs ffmpeg and returns its stderr; calls on_progress(0..1) from the time= stats when given."""
+    if not on_progress or not duration:
+        return subprocess.run([str(FFMPEG), '-hide_banner', '-nostdin', '-nostats', *args], capture_output=True, text=True).stderr
+    proc = subprocess.Popen([str(FFMPEG), '-hide_banner', '-nostdin', '-stats', *args], stderr=subprocess.PIPE, text=True, errors='replace')
+    out, buf = [], ''
+    while True:
+        chunk = proc.stderr.read(512)
+        if not chunk:
+            break
+        buf += chunk
+        *parts, buf = re.split(r'[\r\n]', buf)
+        for line in parts:
+            out.append(line)
+            hit = re.search(r'time=(\d+):(\d+):(\d+(?:\.\d+)?)', line)
+            if hit:
+                on_progress(min(1, (int(hit[1]) * 3600 + int(hit[2]) * 60 + float(hit[3])) / duration))
+    out.append(buf)
+    proc.wait()
+    if proc.returncode:
+        raise RuntimeError(next((l for l in reversed(out) if l.strip()), 'ffmpeg failed'))
+    return '\n'.join(out)
+
+
+def loudnorm_stats(path, extra='', duration=None, on_progress=None):
+    stderr = ffmpeg_with_progress(['-i', str(path), '-vn', '-af', f'loudnorm=I={LOUDNESS_TARGET}:TP={TRUE_PEAK}:LRA=11{extra}:print_format=json',
+                                   '-f', 'null', '-'], duration, on_progress)
     match = re.search(r'\{[^{}]*"input_i"[^{}]*\}', stderr)
     if not match:
         raise RuntimeError(f'{path}: loudness could not be measured')
@@ -260,7 +285,32 @@ def loudness_verdict(integrated, true_peak):
 
 def command_loudness(args):
     path = Path(args.file)
-    stats = loudnorm_stats(path)
+    # --progress <file.json>: phase and percent for the project manager's "Chuẩn hóa âm lượng" button (measure 0–40 %,
+    # write the upload copy 40–90 %, measure it 90–100 %); the final report is written there too.
+    progress_file = Path(args.progress) if getattr(args, 'progress', None) else None
+    def report_progress(phase, percent, **extra):
+        if progress_file:
+            tmp = progress_file.with_suffix('.tmp')
+            tmp.write_text(json.dumps({'pid': os.getpid(), 'phase': phase, 'percent': round(percent, 1), 'file': str(path),
+                                       'updatedAt': time.strftime('%Y-%m-%dT%H:%M:%S%z'), **extra}, ensure_ascii=False))
+            tmp.replace(progress_file)
+    duration = None
+    if progress_file:
+        try:
+            duration = stream_info(path)['durationSeconds']
+        except Exception:
+            duration = None
+    stage = lambda phase, lo, hi: (lambda f: report_progress(phase, lo + (hi - lo) * f))
+    report_progress('measuring', 0)
+    try:
+        return _loudness(args, path, duration, stage, report_progress)
+    except BaseException as error:
+        report_progress('failed', 100, error=str(error) or error.__class__.__name__)
+        raise
+
+
+def _loudness(args, path, duration, stage, report_progress):
+    stats = loudnorm_stats(path, duration=duration, on_progress=stage('measuring', 0, 40))
     report = {'file': str(path), 'integratedLufs': stats['input_i'], 'truePeakDb': stats['input_tp'],
               'loudnessRange': stats['input_lra'], 'target': LOUDNESS_TARGET, 'truePeakLimit': TRUE_PEAK,
               'ok': loudness_verdict(stats['input_i'], stats['input_tp'])}
@@ -272,12 +322,14 @@ def command_loudness(args):
             raise SystemExit(f'{out} already exists; remove it or pass another --out')
         measured = (f":measured_I={stats['input_i']}:measured_TP={stats['input_tp']}:measured_LRA={stats['input_lra']}"
                     f":measured_thresh={stats['input_thresh']}:offset={stats['target_offset']}:linear=true")
-        run_ffmpeg('-n', '-i', str(path), '-map', '0:v?', '-map', '0:a', '-c:v', 'copy',
-                   '-af', f'loudnorm=I={LOUDNESS_TARGET}:TP={TRUE_PEAK}:LRA=11{measured}',
-                   '-c:a', 'aac', '-b:a', '320k', '-ar', '48000', '-movflags', '+faststart', str(out))
-        after = loudnorm_stats(out)
+        ffmpeg_with_progress(['-n', '-i', str(path), '-map', '0:v?', '-map', '0:a', '-c:v', 'copy',
+                              '-af', f'loudnorm=I={LOUDNESS_TARGET}:TP={TRUE_PEAK}:LRA=11{measured}',
+                              '-c:a', 'aac', '-b:a', '320k', '-ar', '48000', '-movflags', '+faststart', str(out)],
+                             duration, stage('writing', 40, 90))
+        after = loudnorm_stats(out, duration=duration, on_progress=stage('verifying', 90, 100))
         report['fixed'] = {'file': str(out), 'integratedLufs': after['input_i'], 'truePeakDb': after['input_tp'],
                            'ok': loudness_verdict(after['input_i'], after['input_tp'])}
+    report_progress('done', 100, report=report)
     if args.json:
         print(json.dumps(report, ensure_ascii=False, indent=2))
     else:
@@ -323,6 +375,7 @@ def main(argv=None):
     loudness.add_argument('--fix', action='store_true', help='write <name>-upload.mp4 normalised to -14 LUFS, peak -1 dBTP (video copied)')
     loudness.add_argument('--out', help='output path for --fix')
     loudness.add_argument('--json', action='store_true')
+    loudness.add_argument('--progress', help='write phase/percent/report JSON here while working (project manager)')
     args = parser.parse_args(argv)
     return {'shots': command_shots, 'sheet': command_sheet, 'energy': command_energy, 'silences': command_silences,
             'loudness': command_loudness}[args.command](args)

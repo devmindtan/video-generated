@@ -74,6 +74,9 @@ tóm tắt sách, đắc nhân tâm, tóm tắt đắc nhân tâm, dale carnegie
   (PDF trang 4, 6, 11). Bìa trên thumbnail ghi "Nguyễn Văn Phước dịch" nhưng PDF ghi nhóm thực hiện First News – Trí Việt,
   nên mô tả không ghi tên dịch giả.
 - Nhạc từ freetouse.com cần ghi nguồn: trước khi đăng, mở trang của từng bài để chép đúng dòng ghi nguồn họ yêu cầu.
+- Âm lượng: render `BookDntTap03` bằng nút Render trong Studio, rồi mở video trong trang quản lý và bấm **Chuẩn hóa
+  âm lượng cho YouTube**; đăng `projects/book-dnt-001-overview/BookDntTap03-upload.mp4` (-14 LUFS). Nếu trang báo
+  bản xuất đã đạt thì đăng thẳng bản xuất.
 - Phụ đề: tải `docs/projects/book-dnt-001-overview/captions.srt` lên YouTube; tạo lại bằng
   `node scripts/projects/book-hvtt-001-overview/export-captions.mjs --project book-dnt-001-overview` sau khi đổi giọng.
 - Thumbnail: `BookDntThumbnail` (1280×720) trong Studio, phương án F người dùng chốt ngày 2026-11-09 (thiết kế gốc ở

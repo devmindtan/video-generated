@@ -833,3 +833,11 @@ mark.pd-del{background:#f6d5c8;color:inherit;text-decoration:line-through;text-d
 .dg-layers .dg-layer:nth-last-child(2)::after,.dg-layers .dg-layer:nth-last-child(2)::before{display:none}
 @media(max-width:640px){.sys-diagram{padding:18px 8px}.dg-flow{gap:26px}.dg-row{gap:8px}.dg-flow .dg-row{flex-wrap:nowrap}.dg-node{min-width:0;flex:0 1 150px;font-size:14px;padding:8px 10px}.dg-flow .dg-node{flex:1 1 0;max-width:160px;padding:8px 6px;font-size:13.5px}.dg-node.k-agent,.dg-node.k-repo,.dg-node.k-skill{border-radius:22px}}
 @media(prefers-reduced-motion:reduce){.dg-node{transition:none}}
+
+/* Loudness for YouTube in the video dialog (upload copy at -14 LUFS). */
+.loud{margin:4px 0 14px;padding:12px 16px;border-radius:10px;border:1px solid var(--line);background:#fff}
+.loud strong{display:block;font-size:15px}.loud p{margin:2px 0 10px;font-size:14px;color:var(--muted);max-width:75ch}
+.loud.is-ok{background:#eef6ea;border-color:#b9d5ad}.loud.is-warn{background:#fbf5e6;border-color:#e3cf9b}.loud.is-err{background:#fbeceb;border-color:#e4b5ae}
+.loud.is-run{background:#eef3f8;border-color:#bccde0}
+.loud-bar{height:8px;border-radius:999px;background:#d9e3ec;overflow:hidden}.loud-bar span{display:block;height:100%;background:#2d5d8a;transition:width .4s}
+@media(prefers-reduced-motion:reduce){.loud-bar span{transition:none}}

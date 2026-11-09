@@ -11,7 +11,7 @@ const {VIDEO_FORMATS}=require('./video-formats.cjs');
 const contentTypes={...Object.fromEntries(Object.entries(VIDEO_FORMATS).map(([e,f])=>[e,f.type])),'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8',
   '.mp4':'video/mp4','.webm':'video/webm','.wav':'audio/wav','.mp3':'audio/mpeg','.m4a':'audio/mp4','.ogg':'audio/ogg','.flac':'audio/flac','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.ttf':'font/ttf','.svg':'image/svg+xml'};
 
-function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voiceStudio=null,backupPanel=null,openFolder=directory=>new Promise((resolve,reject)=>execFile('xdg-open',[directory],{timeout:10000},error=>error?reject(error):resolve()))}={}) {
+function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voiceStudio=null,backupPanel=null,loudnessPanel=null,openFolder=directory=>new Promise((resolve,reject)=>execFile('xdg-open',[directory],{timeout:10000},error=>error?reject(error):resolve()))}={}) {
   const startStudio=ensureStudio||require('./studio.cjs').studioLauncher(root);
   const voice=require('../voicestudio/launcher.cjs');
   const startVoiceStudio=ensureVoiceStudio||voice.voiceStudioLauncher(root);
@@ -19,6 +19,8 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
   const voiceControl=voiceStudio||{status:()=>voice.status(root),stop:()=>voice.stop(root)};
   // Drive backup runs detached from the manager; injectable so tests use a fixture remote.
   const backup=backupPanel||require('./backup.cjs').createBackupPanel(root);
+  // Loudness of exported videos for YouTube (-14 LUFS upload copy), detached like the backup; injectable for tests.
+  const loudness=loudnessPanel||require('./loudness.cjs').createLoudness(root,{catalog:id=>require('../../scripts/catalog/catalog.cjs').load(root).series.flatMap(x=>x.projects).find(x=>x.id===id)});
   const store=createStore(root),token=crypto.randomBytes(32).toString('hex'),live=require('./live.cjs').createLive(root);
   const server=http.createServer(async(req,res)=>{
     const authority=`127.0.0.1:${server.address().port}`;
@@ -53,6 +55,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
         if(route==='/api/voicestudio/stop')return send(200,await voiceControl.stop());
         if(route==='/api/backup/start')return send(202,await backup.start(body.action));
         if(route==='/api/backup/stop')return send(200,backup.stop());
+        if(route==='/api/loudness/fix')return send(202,loudness.start(String(body.id||''),String(body.composition||'')));
         if(route==='/api/books')return send(201,store.newBook(body));
         if(route==='/api/approve')return send(200,store.approveGate(body));
         if(route==='/api/review/lock')return send(200,store.lockProject(body));
@@ -80,6 +83,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
       if(req.method!=='GET')return send(405,{error:'Method not allowed'});
       if(route==='/api/workspace')return send(200,{...store.list(),token,videoFormats:{extensions:Object.keys(VIDEO_FORMATS),label:require('./video-formats.cjs').videoLabel}});
       if(route==='/api/project')return send(200,store.detail(url.searchParams.get('id')));
+      if(route==='/api/loudness')return send(200,loudness.status(url.searchParams.get('id')||''));
       if(route==='/api/workflow')return send(200,store.workflow(url.searchParams.get('series')));
       if(route==='/api/channel-profile')return send(200,store.channelProfile(url.searchParams.get('channel')));
       if(route==='/api/voicestudio')return send(200,await voiceControl.status());

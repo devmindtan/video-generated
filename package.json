@@ -185,6 +185,7 @@
     "test:manager:approvals": "node tools/project-manager/approvals-ui.test.cjs",
     "test:manager:media-switch": "node tools/project-manager/media-switch.test.cjs",
     "test:manager:backup": "node --test tools/project-manager/backup.test.cjs",
+    "test:manager:loudness": "node --test tools/project-manager/loudness.test.cjs",
     "check:book-hvtt-001-overview": ".venv/bin/python scripts/projects/book-hvtt-001-overview/qa.py",
     "check:book-ah-001-overview": ".venv/bin/python scripts/projects/book-hvtt-001-overview/qa.py --project book-ah-001-overview",
     "check:book-dnt-001-overview": ".venv/bin/python scripts/projects/book-hvtt-001-overview/qa.py --project book-dnt-001-overview",

@@ -1190,6 +1190,41 @@ async function watch(id,kind,number=0){
     }
   }
   show();if(!$('#media-dialog').open)$('#media-dialog').showModal();
+  const loudFor=()=>kind==='video'&&!p.importedVideo?(pick?pick.name&&pick.composition:p.videoId):null;
+  renderLoudness(id,loudFor());bar.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>renderLoudness(id,loudFor())));
+}
+// Loudness for YouTube (user 2026-11-09: renders with Studio's button, never the command line): after an export, one
+// button writes the upload copy <ID>-upload.mp4 at -14 LUFS in the background; the export itself is never touched.
+const loudPhase={starting:'Đang khởi động',measuring:'Đang đo âm lượng bản xuất',writing:'Đang ghi bản đăng đã chuẩn hóa',verifying:'Đang đo lại bản đăng'};
+let loudTimer=null;
+async function renderLoudness(id,composition){
+  clearTimeout(loudTimer);const box=$('#media-loudness');if(!box)return;
+  if(!composition){box.hidden=true;box.replaceChildren();return;}
+  let d;try{d=await api('/api/loudness?id='+encodeURIComponent(id));}catch{box.hidden=true;return;}
+  if(!$('#media-dialog').open||selectedMedia?.id!==id)return;
+  const v=d.videos.find(x=>x.composition===composition);if(!v||!v.exported){box.hidden=true;return;}
+  const j=v.job,lufs=n=>`${String(Math.round(n*10)/10).replace('.',',')} LUFS`,rep=j?.report;
+  const el=(tag,props={},...kids)=>{const e=Object.assign(document.createElement(tag),props);e.append(...kids);return e;};
+  const fixButton=label=>{const b=el('button',{type:'button',className:'button primary',textContent:label});
+    b.onclick=async()=>{b.disabled=true;try{await api('/api/loudness/fix',{id,composition});toast('Đang chuẩn hóa âm lượng, chạy nền khoảng 3 phút.');}catch(e){toast(e.message);}renderLoudness(id,composition);};return b;};
+  let tone,title,text,extra=null;
+  if(j?.running){
+    tone='run';title=`${loudPhase[j.phase]||'Đang chuẩn hóa'}… ${Math.floor(j.percent)}%`;text='Chạy nền: có thể đóng hộp này hoặc trang quản lý. Bản xuất gốc giữ nguyên.';
+    const bar=el('div',{className:'loud-bar'});const fill=el('span');fill.style.width=`${Math.max(2,j.percent)}%`;bar.append(fill);extra=bar;
+    loudTimer=setTimeout(()=>renderLoudness(id,composition),2000);
+  }else if(v.uploadCopy?.fresh){
+    tone='ok';title='Bản đăng YouTube đã sẵn sàng';
+    text=`${v.uploadName}${rep?.fixed?`: ${lufs(rep.fixed.integratedLufs)}, đỉnh ${String(rep.fixed.truePeakDb).replace('.',',')} dBTP (bản xuất ${lufs(rep.integratedLufs)})`:', đã chuẩn hóa -14 LUFS'}. Đăng file này lên YouTube; bản xuất gốc giữ nguyên trong cùng thư mục.`;
+  }else if(j?.phase==='done'&&rep?.ok){
+    tone='ok';title='Bản xuất đã đạt âm lượng YouTube';text=`${lufs(rep.integratedLufs)}, đỉnh ${String(rep.truePeakDb).replace('.',',')} dBTP: đăng thẳng bản xuất này, không cần bản chuẩn hóa.`;
+  }else if(j&&j.phase!=='done'){
+    tone='err';title=j.phase==='interrupted'?'Lần chuẩn hóa trước bị ngắt giữa chừng':'Chuẩn hóa âm lượng bị lỗi';text=j.error||'Bấm chạy lại; bản xuất không bị ảnh hưởng.';extra=fixButton('Chạy lại');
+  }else{
+    tone='warn';title='Chưa chuẩn hóa âm lượng cho YouTube';
+    text=`YouTube hạ video quá to về khoảng -14 LUFS nhưng không tăng video nhỏ. Bấm để tạo bản đăng ${v.uploadName} ở -14 LUFS (khoảng 3 phút, chạy nền); bản xuất gốc giữ nguyên.`;
+    extra=fixButton('Chuẩn hóa âm lượng cho YouTube');
+  }
+  box.className=`loud is-${tone}`;box.hidden=false;box.replaceChildren(el('strong',{textContent:title}),el('p',{textContent:text}),...(extra?[extra]:[]));
 }
 async function preparePlayback(id){
   // HEVC/ProRes imports get a one-time H.264 copy on the server; the imported file stays untouched.
@@ -1204,6 +1239,7 @@ async function preparePlayback(id){
   }
 }
 $('#close-media').onclick=()=>$('#media-dialog').close();
+$('#media-dialog').addEventListener('close',()=>clearTimeout(loudTimer));
 $('#media-dialog').addEventListener('close',()=>{$('#media-content').replaceChildren();$('#media-switch').replaceChildren();$('#media-switch').hidden=true;});
 $('#media-studio').onclick=()=>launchStudio(selectedMedia.id,selectedMedia.composition);
 $('#media-folder').onclick=()=>api('/api/open-folder',{id:selectedMedia.id,group:selectedMedia.kind}).catch(error=>toast(error.message));
