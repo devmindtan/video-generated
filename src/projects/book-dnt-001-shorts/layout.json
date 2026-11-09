@@ -1,7 +1,7 @@
 {
   "lead": 0.3,
-  "gap1": 0.5,
-  "gap2": 0.8,
-  "tail": 1.4,
-  "note": "Nghỉ 0,5 giây sau câu mở, 0,8 giây trước lời mời (như short tập 2). Video.tsx đọc file này."
+  "gap1": 0.9,
+  "gap2": 1.2,
+  "tail": 1.6,
+  "note": "Nghỉ 0,9 giây sau câu mở, 1,2 giây trước lời mời (người dùng 2026-11-09: nhịp hơi nhanh, cần chậm lại). Video.tsx và build-shorts.py đọc file này."
 }

@@ -121,16 +121,16 @@ const S1: ShortDef = {
 };
 
 // ── Short 2 · Chữ "nhưng" thành chữ "và" (08-phan-4 24.08–37.64 + 08g-y-kien 49.33–57.40). Cover C: the flip board.
-const NHUNG = ['N', 'H', 'Ư', 'N', 'G'], SCRAMBLE = 'ABCDĐEGHKLMNOPQRSTUVXY';
+const NHUNG = ['N', 'H', 'Ư', 'N', 'G'];
+// Blank tiles that flip once, one after another, into NHƯNG as the word is read (user 2026-11-09: no running letters).
 const flapRow = (frame: number, x0: number, y: number, settleAt: number | null) => NHUNG.map((l, i) => {
-  const settled = settleAt !== null && frame >= settleAt + i * 3;
-  const letter = settled ? l : SCRAMBLE[(Math.floor(frame / 3) * 7 + i * 11) % SCRAMBLE.length];
-  const squash = settled ? 0 : (frame % 3) / 6;
-  return tile(x0 + i * 164, y, 150, 210, letter, '#e85a4a', squash, `f${i}`);
+  const at = settleAt === null ? Number.MAX_SAFE_INTEGER : settleAt + i * 4;
+  const squash = settleAt === null ? 0 : interpolate(frame, [at - 4, at, at + 4], [0, 1, 0], clamp);
+  return tile(x0 + i * 164, y, 150, 210, frame >= at ? l : '', '#e85a4a', squash, `f${i}`);
 });
 const S2: ShortDef = {
   hook: /một chữ/i, highlight: /"nhưng"|"và"/i,
-  hookArt: (frame) => <g>{block(330, 820, 420, 'KHEN', 'khen')}{flapRow(frame, 133, 1020, null)}</g>,
+  hookArt: (frame) => <g>{block(330, 820, 420, 'KHEN', 'khen')}{flapRow(frame, 133, 1020, null)}{T(540, 1170, 120, '?', appear(frame, 30, 12), RED)}</g>,
   beats: [
     {at: 0, draw: (c) => <g>
       {flapRow(c.frame, 133, 700, c.t(1.2))}
@@ -258,9 +258,12 @@ export const DntShort: FC<ShortProps> = ({short: id}) => {
   const {fps, durationInFrames} = useVideoConfig();
   const s = shortOf(id), tl = timeline(s, fps), def = DEFS[s.id] ?? S1;
   const F = (x: number) => Math.round(x * fps);
-  const t = (sec: number) => tl.excerpt + F(sec);
-  const starts = def.beats.map((b, i) => (i === 0 ? tl.excerpt - 6 : t(b.at) - 12));
-  const opacityOf = (i: number) => interpolate(frame, [starts[i], starts[i] + 12, (starts[i + 1] ?? tl.cta - 6) - 12, starts[i + 1] ?? tl.cta + 6], [0, 1, 1, 0], clamp);
+  // Beat times are written against the cut without the added rests; holds (build-shorts.py) map them onto the audio.
+  const holds = (s.excerpt as {holds?: {at: number; add: number}[]}).holds ?? [];
+  const t = (sec: number) => tl.excerpt + F(sec + holds.reduce((sum, h) => sum + (h.at < sec ? h.add : 0), 0));
+  // Drawings fade over 16 frames, the old one out in the rest before the new sentence (smooth, unhurried changes).
+  const starts = def.beats.map((b, i) => (i === 0 ? tl.excerpt - 8 : t(b.at) - 16));
+  const opacityOf = (i: number) => interpolate(frame, [starts[i], starts[i] + 16, (starts[i + 1] ?? tl.cta - 8) - 16, starts[i + 1] ?? tl.cta + 8], [0, 1, 1, 0], clamp);
   const hookIn = interpolate(frame, [tl.excerpt - 14, tl.excerpt - 2], [1, 0], clamp);
   const ctaIn = interpolate(frame, [tl.cta - 8, tl.cta + 10], [0, 1], {...clamp, easing: ease});
   const band = interpolate(frame, [tl.excerpt - 10, tl.excerpt + 2], [0, 1], clamp);

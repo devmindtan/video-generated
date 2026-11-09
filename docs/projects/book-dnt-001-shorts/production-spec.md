@@ -3,8 +3,9 @@
 ## Định dạng
 
 - Dọc 1080×1920, 30 fps. Có 4 composition riêng (mỗi short đăng riêng) và 4 bìa (Still), mỗi bìa đặt cạnh short của nó.
-- Thời lượng: khoảng 26, 34, 33, 40 giây (± 3 giây theo độ dài câu mở và lời mời khi clone), không quá 60 giây. Người
-  dùng (2026-11-09) muốn vào thẳng vấn đề, không ví dụ, nên short 1 ngắn hơn mức 30 giây của short tập 2.
+- Thời lượng: khoảng 30, 38, 36, 45 giây, không quá 60 giây. Sau bản thử (người dùng 2026-11-09: "nhịp độ hơi nhanh,
+  animation chưa kịp tới nữa là chuyển cảnh") đoạn trích có thêm khoảng lặng ở cuối câu và chỗ đổi hình (0,3–0,9 giây,
+  `holds` trong voice.json), nghỉ 0,9 giây sau câu mở và 1,2 giây trước lời mời; hình mờ chuyển trong 16 khung.
 - Không render tự động; người dùng tự xuất bằng nút Render trong Studio. Bản xuất ra thẳng -14 LUFS
   (`scripts/shared/render-loudness.cjs`).
 

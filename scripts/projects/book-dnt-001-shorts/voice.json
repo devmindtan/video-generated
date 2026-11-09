@@ -12,7 +12,29 @@
     "short-1": {
       "take": "07-phan-3",
       "fromSeconds": 32.2,
-      "toSeconds": 46.6
+      "toSeconds": 46.6,
+      "holds": [
+        {
+          "afterWordAt": 2.26,
+          "seconds": 0.7
+        },
+        {
+          "afterWordAt": 3.56,
+          "seconds": 0.4
+        },
+        {
+          "afterWordAt": 5.04,
+          "seconds": 0.7
+        },
+        {
+          "afterWordAt": 7.58,
+          "seconds": 0.9
+        },
+        {
+          "afterWordAt": 10.76,
+          "seconds": 0.5
+        }
+      ]
     },
     "short-2": {
       "parts": [
@@ -26,12 +48,72 @@
           "fromSeconds": 49.33,
           "toSeconds": 57.4
         }
+      ],
+      "holds": [
+        {
+          "afterWordAt": 3.02,
+          "seconds": 0.8
+        },
+        {
+          "afterWordAt": 5.58,
+          "seconds": 0.3
+        },
+        {
+          "afterWordAt": 8.22,
+          "seconds": 0.7
+        },
+        {
+          "afterWordAt": 13.06,
+          "seconds": 0.6
+        },
+        {
+          "afterWordAt": 15.82,
+          "seconds": 0.3
+        },
+        {
+          "afterWordAt": 17.68,
+          "seconds": 0.5
+        },
+        {
+          "afterWordAt": 20.24,
+          "seconds": 0.4
+        }
       ]
     },
     "short-3": {
       "take": "04-soi-chi",
       "fromSeconds": 26.92,
-      "toSeconds": 47.4
+      "toSeconds": 47.4,
+      "holds": [
+        {
+          "afterWordAt": 2.3,
+          "seconds": 0.3
+        },
+        {
+          "afterWordAt": 4.94,
+          "seconds": 0.5
+        },
+        {
+          "afterWordAt": 7.38,
+          "seconds": 0.9
+        },
+        {
+          "afterWordAt": 10.28,
+          "seconds": 0.4
+        },
+        {
+          "afterWordAt": 12.1,
+          "seconds": 0.4
+        },
+        {
+          "afterWordAt": 13.96,
+          "seconds": 0.9
+        },
+        {
+          "afterWordAt": 18.24,
+          "seconds": 0.4
+        }
+      ]
     },
     "short-4": {
       "take": "08e-diem-chua-dat",
@@ -44,6 +126,36 @@
           "fromSeconds": 40.62,
           "toSeconds": 61.3
         }
+      ],
+      "holds": [
+        {
+          "afterWordAt": 3.8,
+          "seconds": 0.8
+        },
+        {
+          "afterWordAt": 8.02,
+          "seconds": 0.6
+        },
+        {
+          "afterWordAt": 10.05,
+          "seconds": 0.3
+        },
+        {
+          "afterWordAt": 14.29,
+          "seconds": 0.3
+        },
+        {
+          "afterWordAt": 15.45,
+          "seconds": 0.4
+        },
+        {
+          "afterWordAt": 18.55,
+          "seconds": 0.9
+        },
+        {
+          "afterWordAt": 26.13,
+          "seconds": 0.8
+        }
       ]
     }
   },
@@ -53,5 +165,6 @@
       "book-dnt-001-overview/audio/04-soi-chi-voice-full.wav"
     ]
   },
-  "segments": {}
+  "segments": {},
+  "holdsNote": "Khoảng lặng thêm trong đoạn trích (người dùng 2026-11-09 sau bản thử: \"nhịp độ hơi nhanh, animation chưa kịp tới nữa là chuyển cảnh\"): afterWordAt là giây (thời gian đoạn trích, trước khi thêm lặng) của chữ đứng trước chỗ lặng; build-shorts.py chèn lặng giữa chữ đó và chữ sau."
 }

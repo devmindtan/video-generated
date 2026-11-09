@@ -56,9 +56,26 @@ def excerpt(short, spec):
         if k == 0 or re.search(r'[.?!…]["”\']*$', words[k - 1]['text']) or w.get('partStart'):
             w['text'] = w['text'][:1].upper() + w['text'][1:]
         w.pop('partStart', None)
+    audio = np.concatenate(chunks)
+    # Extra rests (user 2026-11-09: the pace was too fast for the drawings): silence after chosen words, placed halfway
+    # between that word's end and the next word's start. Holds are reported in pre-hold excerpt time so Video.tsx can
+    # map its beat times (written against the cut without rests) onto the longer audio.
+    holds = []
+    for h in sorted(spec.get('holds', []), key=lambda h: h['afterWordAt']):
+        k = min(range(len(words)), key=lambda i: abs(words[i]['startMs'] / 1000 - h['afterWordAt']))
+        if k + 1 >= len(words):
+            continue
+        holds.append({'at': round((words[k]['endMs'] + words[k + 1]['startMs']) / 2000, 3), 'add': h['seconds']})
+    for h in sorted(holds, key=lambda h: -h['at']):
+        i = round(h['at'] * rate)
+        audio = np.concatenate([audio[:i], np.zeros((round(h['add'] * rate), audio.shape[1]), dtype='float32'), audio[i:]])
+    shift = lambda sec: sec + sum(h['add'] for h in holds if h['at'] < sec)
+    for w in words:
+        w['startMs'] = round(shift(w['startMs'] / 1000) * 1000);w['endMs'] = round(shift(w['endMs'] / 1000) * 1000)
+    total = len(audio) / rate
     out = OUT / f'{short}-excerpt.wav'
-    sf.write(out, np.concatenate(chunks), rate, subtype='PCM_24')
-    return {'file': str(out.relative_to(ROOT / 'public')), 'fromSeconds': 0, 'toSeconds': round(at, 3), 'durationSeconds': round(at, 3), 'words': words}
+    sf.write(out, audio, rate, subtype='PCM_24')
+    return {'file': str(out.relative_to(ROOT / 'public')), 'fromSeconds': 0, 'toSeconds': round(total, 3), 'durationSeconds': round(total, 3), 'holds': holds, 'words': words}
 
 def take_clip(take, voice, ranges, sentence_id, name):
     audio, sr = sf.read(ROOT / 'public/voice-auditions' / take / f'{voice}.wav', dtype='float32')
