@@ -1,0 +1,14 @@
+{
+  "file": "audio-library/music/Moavii - Butterflies (freetouse.com).mp3",
+  "speechVolume": 0.04,
+  "pauseVolume": 0.04,
+  "fadeInSeconds": 1,
+  "fadeOutSeconds": 2,
+  "playbackRate": 0.85,
+  "editingNote": "Như short tập 1–2: Butterflies tốc độ 0,85, 4% dưới lời. Theo quy tắc series 2026-11-08 nhạc dưới lời giữ một mức cố định (pauseVolume = speechVolume), không nhô lên ở khoảng nghỉ. Fade theo cạnh đoạn nhạc, chỉnh đầu/cuối trong Studio.",
+  "credit": {
+    "title": "Butterflies",
+    "artists": ["Moavii"],
+    "source": "freetouse.com"
+  }
+}
