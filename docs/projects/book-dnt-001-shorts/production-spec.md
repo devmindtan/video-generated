@@ -8,19 +8,41 @@
 - Không render tự động; người dùng tự xuất bằng nút Render trong Studio. Bản xuất ra thẳng -14 LUFS
   (`scripts/shared/render-loudness.cjs`).
 
-## Bố cục màn hình (vùng an toàn của YouTube Shorts), như short tập 1–2
+## Bố cục màn hình (vùng an toàn của YouTube Shorts)
 
-Dùng chung bộ khung short của series (`src/projects/book-hvtt-001-shorts/ShortFrame`), không chép thành bản riêng.
+Hình và nền **thiết kế riêng cho short**, không giống tập dài. Đây là ý của người dùng khi trả gói (2026-11-09).
+Chi tiết ở [image-prompts.md](image-prompts.md).
 
-- **Trên cùng** (y ≈ 200–400): "ĐỌC SÁCH, HIỂU MÌNH" và tên sách "Đắc nhân tâm · Dale Carnegie".
-- **Giữa** (y ≈ 460–1340, rộng 80–940): hình nét vàng của tập 3, vẽ lại cho khung dọc.
-  - Vật xếp trên dưới, hình to, ít chi tiết.
-  - Chữ trong hình ≥ 44px, nét ≥ 2,6. Không nét chồng nét, không chữ đè lên nét.
-- **Phụ đề** (y ≈ 1380–1560): Stoic Sans 700, màu ngà, từ khóa vàng, khoảng 58px. Từng chữ sáng lên khi giọng đọc tới.
-- **Hook**: ngay từ khung đầu tiên, câu mở hiện trọn trên một trang, chữ to và sáng hẳn, kèm hình nói đúng chủ đề của
-  short. Không để nửa dưới màn hình trống trong 3 giây đầu.
-- **Chừa chỗ cho YouTube**: chừa mép phải khoảng 140px và đáy khoảng 380px cho nút và tiêu đề.
-- **Bỏ khỏi short**: intro hay outro series, thanh tiến trình và thanh giọng ở góc của tập dài.
+- **Kiểu hình**: "giấy và mực" theo thumbnail F của tập 3.
+  - Nền giấy sáng, tương phản lạnh/ấm nhẹ.
+  - Nét mực xám đá, điểm nhấn đỏ của bìa sách và vàng.
+  - Chữ chuyển động là một phần của hình.
+- **Phần dùng lại và phần làm mới**:
+  - Dùng lại phần thời gian, giọng, phụ đề và nhạc của bộ khung short trong series (`src/projects/book-hvtt-001-shorts/ShortFrame`), không chép thành bản riêng.
+  - Phần hình (nền, nét, chuyển cảnh, thẻ lời mời) làm mới trong `src/projects/book-dnt-001-shorts/`.
+- **Đầu trang** (y ≈ 200–400): "ĐỌC SÁCH, HIỂU MÌNH · TẬP 03" và "Đắc nhân tâm · Dale Carnegie".
+- **Vùng hình** (y ≈ 460–1340, rộng 80–940):
+  - Vật to, ít chi tiết, nét mực 4–6px.
+  - Chữ trong hình ≥ 56px.
+  - Không nét chồng nét, không chữ đè lên nét.
+- **Phụ đề** (y ≈ 1380–1560):
+  - Giữ kiểu chữ Stoic của kênh: Stoic Sans 700, màu ngà, từ khóa vàng, khoảng 58px, sáng theo giọng từng chữ.
+  - Phụ đề đặt trên một dải mực tối bo góc để đọc rõ trên nền sáng.
+- **Hook**: ngay từ khung đầu tiên, câu mở hiện trọn trên một trang, chữ to, kèm hình nói đúng chủ đề của short. Không
+  để nửa dưới trống trong 3 giây đầu.
+- **Lời mời**: có thumbnail F thu nhỏ của video dài để người xem nhận ra.
+- **Vùng của YouTube**: chừa mép phải khoảng 140px và đáy khoảng 380px cho nút và tiêu đề.
+- **Không dùng**: intro/outro series, thanh tiến trình, thanh giọng ở góc.
+
+## Bìa
+
+- **Không lấy khung hình trong video.** Người dùng 2026-11-09: "cả thumbnail cũng cần phải thiết kế cẩn thận hơn".
+- **Định dạng**: mỗi short có một bìa dọc 1080×1920, thiết kế bằng HTML/CSS trong `thumbnail-web/`.
+- **Phương án**: ít nhất 3 hướng cho mỗi short. Người dùng chọn trong tab Thumbnail của dự án; tab sẽ được mở rộng để
+  mỗi short có một nhóm phương án riêng.
+- **Vào Studio**: phương án đã chọn được chép 1:1 vào Still dọc, đặt cạnh short của nó.
+- **Vùng an toàn**: chữ và vật chính nằm giữa 1080×1350, vì lưới short cắt bìa về 4:5.
+- **Kiểm tra trước khi gửi**: chấm điểm theo thang thumbnail của series; dưới 60/100 thì làm lại.
 
 ## Âm thanh
 
@@ -46,5 +68,4 @@ Dùng chung bộ khung short của series (`src/projects/book-hvtt-001-shorts/Sh
   đủ nằm ở phần bình luận; khi đăng, ghim một bình luận có link theo câu mẫu trong description.md.
 - **Mô tả mỗi short**: hai dòng đầu nêu thông điệp (quy tắc D1–D3 của series), kèm Sách/Tác giả, link video dài và 2–4
   hashtag. Không có dòng nói về giọng AI.
-- **Bìa**: hình là chính, chữ ít (như bìa short tập 1–2), không lộ mặt người.
 - **Tiến trình và duyệt**: không render để duyệt; người dùng xem trong Studio. Mỗi lần sửa sau khi chốt đi qua bản vá.
