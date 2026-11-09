@@ -103,7 +103,11 @@ def main():
         listed = ROOT / 'src/projects' / PROJECT / 'body-takes.json'
         old = json.loads(listed.read_text())['takes'] if listed.exists() else []
         takes_out = old + [t for t in built if t not in old]
+        # intro-bands rewrites the captions without word times: voices that had karaoke word times get them again.
+        lit = [v['id'] for v in json.loads(listed.read_text())['voices'] if any(c.get('words') for c in v['captions'])] if listed.exists() else []
         subprocess.run([py, str(TOOLS / 'intro-bands.py'), '--take', *takes_out, '--out', f'src/projects/{PROJECT}/body-takes.json'], check=True)
+        if lit:
+            subprocess.run([py, str(TOOLS / 'word-times.py'), f'src/projects/{PROJECT}/body-takes.json', *lit], check=True)
 
 
 if __name__ == '__main__':
