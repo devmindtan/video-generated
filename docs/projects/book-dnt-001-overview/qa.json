@@ -1,0 +1,754 @@
+{
+  "project": "book-dnt-001-overview",
+  "checkedAt": "2026-11-09T14:38:39+07:00",
+  "durationSeconds": 760.93,
+  "parts": [
+    {
+      "name": "Nhạc mở đầu",
+      "start": 0.0,
+      "seconds": 13.0
+    },
+    {
+      "name": "Mở đầu tập",
+      "start": 13.0,
+      "seconds": 43.13
+    },
+    {
+      "name": "Mở chuyện",
+      "start": 56.13,
+      "seconds": 64.3
+    },
+    {
+      "name": "Phần 1 · Cuốn sách là gì",
+      "start": 120.43,
+      "seconds": 44.0
+    },
+    {
+      "name": "Phần 2 · Sợi chỉ xuyên suốt",
+      "start": 164.43,
+      "seconds": 56.3
+    },
+    {
+      "name": "Phần một · Ba điều nền tảng",
+      "start": 220.73,
+      "seconds": 85.47
+    },
+    {
+      "name": "Phần hai · Sáu cách tạo thiện cảm",
+      "start": 306.2,
+      "seconds": 71.73
+    },
+    {
+      "name": "Phần ba · Khi hai người nghĩ khác nhau",
+      "start": 377.93,
+      "seconds": 114.1
+    },
+    {
+      "name": "Phần bốn · Góp ý mà không làm tổn thương",
+      "start": 492.03,
+      "seconds": 78.07
+    },
+    {
+      "name": "Những điểm chưa đạt",
+      "start": 570.1,
+      "seconds": 66.4
+    },
+    {
+      "name": "Tổng kết",
+      "start": 636.5,
+      "seconds": 24.9
+    },
+    {
+      "name": "Ý kiến cá nhân",
+      "start": 661.4,
+      "seconds": 61.6
+    },
+    {
+      "name": "Nhận xét chung",
+      "start": 723.0,
+      "seconds": 21.43
+    },
+    {
+      "name": "Outro series",
+      "start": 744.43,
+      "seconds": 16.5
+    }
+  ],
+  "technicalPass": true,
+  "checks": [
+    {
+      "id": "files",
+      "title": "Đủ file cho bước Xem bản dựng",
+      "ok": true,
+      "detail": "đủ"
+    },
+    {
+      "id": "captionText",
+      "title": "Chữ phụ đề khớp kịch bản đã chốt",
+      "ok": true,
+      "detail": "116 câu khớp"
+    },
+    {
+      "id": "captionTime",
+      "title": "Phụ đề đúng thứ tự, không chồng, đủ lâu, tối đa 2 dòng",
+      "ok": true,
+      "detail": "210 trang"
+    },
+    {
+      "id": "captionStyle",
+      "title": "Kiểu chữ phụ đề đúng chuẩn kênh",
+      "ok": true,
+      "detail": {
+        "Stoic Sans": true,
+        "fontWeight 700": true,
+        "chữ ngà": true,
+        "từ khóa vàng": true
+      }
+    },
+    {
+      "id": "voice",
+      "title": "Giọng không vỡ tiếng, các đoạn to nhỏ đồng đều",
+      "ok": true,
+      "detail": {
+        "đoạn": 12,
+        "chênhLệchDb": 0.4,
+        "đỉnhCaoNhấtDb": -2.4,
+        "vỡTiếng": []
+      }
+    },
+    {
+      "id": "music",
+      "title": "Nhạc nền nội dung nằm dưới giọng",
+      "ok": true,
+      "detail": {
+        "thấpHơnGiọngKhiCóLờiDb": 31.4,
+        "thấpHơnGiọngLúcNghỉDb": 31.4,
+        "bài": "Butterflies"
+      }
+    },
+    {
+      "id": "build",
+      "title": "Typecheck và kiểm tra đăng ký dự án",
+      "ok": true,
+      "detail": {
+        "typecheck": true,
+        "projects:check": true
+      }
+    },
+    {
+      "id": "loudness",
+      "title": "Âm lượng bản đăng -14 LUFS, đỉnh ≤ -1 dBTP",
+      "ok": true,
+      "detail": "chưa có bản xuất; đo khi đã xuất"
+    }
+  ],
+  "voiceLevels": {
+    "01-gioi-thieu-tap": {
+      "rmsDb": -20.3,
+      "peakDb": -2.4
+    },
+    "02-mo-chuyen": {
+      "rmsDb": -20.3,
+      "peakDb": -2.5
+    },
+    "03-cuon-sach": {
+      "rmsDb": -20.2,
+      "peakDb": -2.4
+    },
+    "04-soi-chi": {
+      "rmsDb": -20.2,
+      "peakDb": -2.5
+    },
+    "05-phan-1": {
+      "rmsDb": -20.4,
+      "peakDb": -2.5
+    },
+    "06-phan-2": {
+      "rmsDb": -20.3,
+      "peakDb": -2.5
+    },
+    "07-phan-3": {
+      "rmsDb": -20.3,
+      "peakDb": -2.4
+    },
+    "08-phan-4": {
+      "rmsDb": -20.2,
+      "peakDb": -2.4
+    },
+    "08e-diem-chua-dat": {
+      "rmsDb": -20.2,
+      "peakDb": -2.4
+    },
+    "08f-tong-ket": {
+      "rmsDb": -20.5,
+      "peakDb": -2.5
+    },
+    "08g-y-kien": {
+      "rmsDb": -20.2,
+      "peakDb": -2.4
+    },
+    "09-nhan-xet": {
+      "rmsDb": -20.6,
+      "peakDb": -2.5
+    }
+  },
+  "toneFlags": [
+    {
+      "segment": "02-mo-chuyen",
+      "text": "Chương đầu tiên của sách xoay quanh một lá thư chưa bao giờ được gửi đi.",
+      "heard": "chân đầu tiên của sách xoay quanh một lá thư chưa bao giờ được gửi đi.",
+      "tone": [],
+      "words": [
+        [
+          "chương",
+          "chân"
+        ]
+      ]
+    },
+    {
+      "segment": "02-mo-chuyen",
+      "text": "Hồi còn trẻ, Abraham Lincoln rất hay chế giễu người khác, có lần còn viết báo giễu một chính khách đến mức bị người này thách đấu kiếm, may mà được can kịp ở phút cuối.",
+      "heard": "Hồi còn trẻ, Abraham Lincoln rất hay chế diễu người khác, có lần còn viết báo diễu một chính khách đến mức bị người này thách đấu kiếm, may mà được can thiệp ở phút cuối.",
+      "tone": [],
+      "words": [
+        [
+          "giễu",
+          "diễu"
+        ],
+        [
+          "giễu",
+          "diễu"
+        ],
+        [
+          "kịp",
+          "thiệp"
+        ]
+      ]
+    },
+    {
+      "segment": "02-mo-chuyen",
+      "text": "Hơn hai mươi năm sau, khi đã là tổng thống, Lincoln ra lệnh cho tướng Mít tấn công để sớm kết thúc cuộc nội chiến, nhưng vị tướng này chần chừ và để lỡ thời cơ.",
+      "heard": "Hơn 20 năm sau, khi đã là tổng thống, Lincoln ra lệnh cho tướng Mick tấn công để sớm kết thúc cuộc nội chiến, nhưng vị tướng này trần trừ và để lỡ thời cơ.",
+      "tone": [],
+      "words": [
+        [
+          "hai mươi",
+          "20"
+        ],
+        [
+          "mít",
+          "mick"
+        ],
+        [
+          "chần chừ",
+          "trần trừ"
+        ]
+      ]
+    },
+    {
+      "segment": "02-mo-chuyen",
+      "text": "Lincoln tức giận, ngồi viết cho ông ta một lá thư trách móc rất nặng lời.",
+      "heard": "Linh Thanh tức giận, ngồi viết cho ông ta một lá thư trách móc, rất nặng lời.",
+      "tone": [],
+      "words": [
+        [
+          "lincoln",
+          "linh thanh"
+        ]
+      ]
+    },
+    {
+      "segment": "02-mo-chuyen",
+      "text": "Tác giả phỏng đoán rằng Lincoln đã hiểu: gửi lá thư đi thì ông được hả giận một lúc, còn Mít sẽ chỉ lo bào chữa cho mình, và chẳng có gì được sửa.",
+      "heard": "Tác giả phỏng đoán rằng Lincoln đã hiểu, gửi lá thư đi thì ông được hã giận một lúc, còn Mitch sẽ chỉ lo bào chữa cho mình, và chẳng có gì được sửa.",
+      "tone": [
+        [
+          "hả",
+          "hã"
+        ]
+      ],
+      "words": [
+        [
+          "mít",
+          "mitch"
+        ]
+      ]
+    },
+    {
+      "segment": "02-mo-chuyen",
+      "text": "Từ câu chuyện ấy, ông rút ra nguyên tắc đầu tiên của cả cuốn sách: không chỉ trích, oán trách hay than phiền.",
+      "heard": "Từ câu chuyện ấy, ông rút ra nguyên tắc đầu tiên của cả cuốn sách, không chỉ trích, quán trách hay than phiền.",
+      "tone": [],
+      "words": [
+        [
+          "oán",
+          "quán"
+        ]
+      ]
+    },
+    {
+      "segment": "03-cuon-sach",
+      "text": "Tác giả dạy người đi làm ở New York cách nói trước đám đông, rồi nhận ra học viên của mình còn cần học một thứ khác: cách cư xử với người khác.",
+      "heard": "Tác giả dạy người đi làm ở New York cách nói trước đám đông, rồi nhận ra học viên của mình còn cần học một thứ khác, cách cư sự với người khác.",
+      "tone": [
+        [
+          "xử",
+          "sự"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "03-cuon-sach",
+      "text": "Tìm mãi không thấy cuốn sách nào làm tài liệu, ông tự soạn bài giảng, và cuốn sách lớn dần lên từ chính những bài giảng ấy.",
+      "heard": "Tim mãi không thấy cuốn sách nào làm tài liệu, ông tự soạn bài giảng và cuốn sách lớn dần lên từ chính những bài giảng ấy.",
+      "tone": [
+        [
+          "tìm",
+          "tim"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "03-cuon-sach",
+      "text": "Có người xem nó như một cẩm nang để sống tử tế với người xung quanh; có người lại thấy nó dạy cách lấy lòng người khác để đạt được mục đích.",
+      "heard": "Có người xem nó như một cẩm nan để sống tử tế với người xung quanh. Có người lại thấy nó dạy cách lấy lòng người khác để đạt được mục đích.",
+      "tone": [],
+      "words": [
+        [
+          "nang",
+          "nan"
+        ]
+      ]
+    },
+    {
+      "segment": "04-soi-chi",
+      "text": "Ba mươi nguyên tắc nghe thì nhiều, nhưng mình thấy chúng đều đi ra từ một quan sát xuyên suốt cuốn sách: ai cũng muốn thấy mình có giá trị, và khi bị chê trách, phản ứng đầu tiên của con người thường là tìm cách bào chữa cho mình.",
+      "heard": "Ba mươi nguyên tắc nghe thì nhiều, nhưng mình thấy chúng đều đi ra từ một quan sát xuyên suốt cuốn sách, ai cũng muốn thấy mình có giá trị, và khi bị che trách, phản ứng đầu tiên của con người thường là tìm cách bào chứa cho mình.",
+      "tone": [
+        [
+          "chê",
+          "che"
+        ],
+        [
+          "chữa",
+          "chứa"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "04-soi-chi",
+      "text": "Tác giả minh họa bằng chuyện đi câu.",
+      "heard": "tác giảm minh họa bằng chuyện đi câu.",
+      "tone": [],
+      "words": [
+        [
+          "giả",
+          "giảm"
+        ]
+      ]
+    },
+    {
+      "segment": "04-soi-chi",
+      "text": "Ông rất thích ăn kem và trái cây, nhưng khi đi câu, ông không móc kem vào lưỡi câu mà móc một con giun, vì cá thích giun.",
+      "heard": "Ông rất thích ăn kem và trái cây, nhưng khi đi câu, ông không móc kem vào lưỡi câu mà móc một con dùn vì cá thích dùn.",
+      "tone": [],
+      "words": [
+        [
+          "giun",
+          "dùn"
+        ],
+        [
+          "giun",
+          "dùn"
+        ]
+      ]
+    },
+    {
+      "segment": "04-soi-chi",
+      "text": "Nhưng có một điều cuốn sách nhắc đi nhắc lại, mà cả người thích lẫn người chê đều nên nhớ: mọi nguyên tắc phải đi kèm sự chân thành.",
+      "heard": "Nhưng có một điều cuốn sách nhắc đi nhắc lại mà cả người thích lẫn người che đều nên nhớ, mọi nguyên tắc phải đi kèm sự chân thành.",
+      "tone": [
+        [
+          "chê",
+          "che"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "05-phan-1",
+      "text": "Không chỉ trích, oán trách hay than phiền.",
+      "heard": "không chỉ trích, quảng trách hay thăng phiền.",
+      "tone": [],
+      "words": [
+        [
+          "oán",
+          "quảng"
+        ],
+        [
+          "than",
+          "thăng"
+        ]
+      ]
+    },
+    {
+      "segment": "05-phan-1",
+      "text": "Từ đó, số người chịu đội nón tăng lên mà không ai khó chịu.",
+      "heard": "Từ đó, số người chịu đội nóng tăng lên, mà không ai khó chịu.",
+      "tone": [],
+      "words": [
+        [
+          "nón",
+          "nóng"
+        ]
+      ]
+    },
+    {
+      "segment": "05-phan-1",
+      "text": "Cậu bé ấy về sau trở thành ca sĩ Stevie Wonder, và kể rằng lời khen hôm đó là một bước ngoặt trong đời mình.",
+      "heard": "Cậu bé ấy về sau trở thành ca sĩ Stevie Wonder và kể rằng lời khen hôm đó là một bước mặt trong đời mình.",
+      "tone": [],
+      "words": [
+        [
+          "ngoặt",
+          "mặt"
+        ]
+      ]
+    },
+    {
+      "segment": "05-phan-1",
+      "text": "Cuốn sách cũng nói rõ: nịnh hót là lời khen rẻ tiền và giả dối, không phải điều nó khuyến khích.",
+      "heard": "Cuốn sách cũng nói rõ, định hót là lời khen rẻ tiền và giả dối, không phải điều nó khuyến khích.",
+      "tone": [],
+      "words": [
+        [
+          "nịnh",
+          "định"
+        ]
+      ]
+    },
+    {
+      "segment": "05-phan-1",
+      "text": "Gợi cho người khác ý muốn làm điều mình mong.",
+      "heard": "gửi cho người khác ý muốn làm điều mình mong.",
+      "tone": [],
+      "words": [
+        [
+          "gợi",
+          "gửi"
+        ]
+      ]
+    },
+    {
+      "segment": "05-phan-1",
+      "text": "Sách kể chuyện nhà văn Emerson cùng con trai đẩy, kéo mãi mà con bê vẫn đứng yên không chịu vào chuồng.",
+      "heard": "sách kể chuyện nhà văn Emerson cùng con trai đẩy kéo mãi mà con B vẫn đứng yên không chịu vào chuộng",
+      "tone": [
+        [
+          "chuồng",
+          "chuộng"
+        ]
+      ],
+      "words": [
+        [
+          "bê",
+          "b"
+        ]
+      ]
+    },
+    {
+      "segment": "05-phan-1",
+      "text": "Cô giúp việc đi tới, đưa ngón tay cho con bê mút như bú mẹ, rồi dắt nó vào chuồng thật nhẹ nhàng.",
+      "heard": "Cô giúp việc đi tới, đưa ngón tay cho con B1 như bố mẹ, rồi dắt nó vào chuộng thật nhẹ nhàng.",
+      "tone": [
+        [
+          "chuồng",
+          "chuộng"
+        ]
+      ],
+      "words": [
+        [
+          "bê mút",
+          "b1"
+        ],
+        [
+          "bú",
+          "bố"
+        ]
+      ]
+    },
+    {
+      "segment": "05-phan-1",
+      "text": "Trong câu chuyện này, hai cha con chỉ nghĩ tới điều mình muốn, còn cô giúp việc nghĩ tới điều con bê muốn.",
+      "heard": "Trong câu chuyện này, hai cha con chỉ nghĩ tới điều mình muốn Còn cô giúp việc nghĩ tới điều con bé muốn",
+      "tone": [
+        [
+          "bê",
+          "bé"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "06-phan-2",
+      "text": "Ông gần như không nói gì, vì chẳng biết gì về thực vật.",
+      "heard": "Ông gần như không nói gì, vì chẳng biết gì về thực phật.",
+      "tone": [],
+      "words": [
+        [
+          "vật",
+          "phật"
+        ]
+      ]
+    },
+    {
+      "segment": "06-phan-2",
+      "text": "Cuốn sách còn nhắc chuyện tổng thống Theodore Roosevelt: mỗi khi hẹn gặp ai, ông thường thức khuya đọc trước về những điều người khách ấy quan tâm, để hôm sau câu chuyện của hai người trở nên thú vị.",
+      "heard": "Cúng sách còn nhắc chuyện tổng thống Theodore Roosevelt. Mỗi khi hẹn gặp ai, ông thường thức khuya đọc trước về những điều người khách ấy quan tâm để hôm sau câu chuyện của hai người trở nên thú vị.",
+      "tone": [],
+      "words": [
+        [
+          "cuốn",
+          "cúng"
+        ]
+      ]
+    },
+    {
+      "segment": "06-phan-2",
+      "text": "Đọc phần này, mình thấy sáu nguyên tắc rất dễ bị biến thành kỹ thuật lấy lòng: cười vì muốn bán được hàng, nhớ tên vì muốn được việc.",
+      "heard": "Đọc phần này, mình thấy 6 nguyên tắc rất dễ bị biến thành kỹ thuật lấy lòng Cười vì muốn bán được hàng, nhớ tên vì muốn được Việt",
+      "tone": [],
+      "words": [
+        [
+          "sáu",
+          "6"
+        ],
+        [
+          "việc",
+          "việt"
+        ]
+      ]
+    },
+    {
+      "segment": "07-phan-3",
+      "text": "Tránh tranh cãi.",
+      "heard": "Chánh tranh cãi",
+      "tone": [],
+      "words": [
+        [
+          "tránh",
+          "chánh"
+        ]
+      ]
+    },
+    {
+      "segment": "07-phan-3",
+      "text": "Tác giả kể về một bữa tiệc ở Luân Đôn.",
+      "heard": "tác giả kể về một bữa tiệc ở London.",
+      "tone": [],
+      "words": [
+        [
+          "luân đôn",
+          "london"
+        ]
+      ]
+    },
+    {
+      "segment": "07-phan-3",
+      "text": "Một người bạn của ông, vốn nghiên cứu Shakespeare, được hỏi ý kiến, đã đá nhẹ chân ông dưới gầm bàn rồi nói câu ấy đúng là ở Kinh thánh.",
+      "heard": "Một người bạn của ông, bố nghiên cứu Shakespeare được hỏi ý kiến đã đá nhẹ chân ông dưới gầm bàn, rồi nói câu ấy đúng là ở Kinh Thánh.",
+      "tone": [],
+      "words": [
+        [
+          "vốn",
+          "bố"
+        ]
+      ]
+    },
+    {
+      "segment": "07-phan-3",
+      "text": "Tác giả thường dắt chú chó nhỏ tên Rex vào công viên mà không xích, không bịt mõm, và đã bị một viên cảnh sát nhắc.",
+      "heard": "Tác giả thường dắt chú chó nhỏ tên Rex vào công viên mà không xích, không bịch mỏng và đã bị một viên cảnh sát nhất.",
+      "tone": [],
+      "words": [
+        [
+          "bịt mõm",
+          "bịch mỏng"
+        ],
+        [
+          "nhắc",
+          "nhất"
+        ]
+      ]
+    },
+    {
+      "segment": "07-phan-3",
+      "text": "Viên cảnh sát dịu giọng, rồi chính ông ta lại tìm cách bỏ qua cho ông.",
+      "heard": "Viên cảnh sát dịu dọng, rồi chính ông ta lại tìm cách bỏ qua cho ông.",
+      "tone": [],
+      "words": [
+        [
+          "giọng",
+          "dọng"
+        ]
+      ]
+    },
+    {
+      "segment": "07-phan-3",
+      "text": "Theo mình, ranh giới nằm ở chỗ mình có sẵn lòng để người kia biết rõ mình đang muốn gì hay không.",
+      "heard": "Theo mình, ranh giới nằm ở chỗ mình có sẵn lọng để người kia biết rõ mình đang muốn gì hay không.",
+      "tone": [
+        [
+          "lòng",
+          "lọng"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "08-phan-4",
+      "text": "Nhắc khéo, không quở trách.",
+      "heard": "Nhắc khéo, không quẩy trách",
+      "tone": [],
+      "words": [
+        [
+          "quở",
+          "quẩy"
+        ]
+      ]
+    },
+    {
+      "segment": "08-phan-4",
+      "text": "Có lần ông thấy một vị khách đứng chờ ở quầy, trong khi mấy nhân viên đang mải nói chuyện ở góc xa.",
+      "heard": "Có lần ông thấy một vị khách đứng chờ ở quầy, trong khi mấy nhân viên đang mãi nói chuyện ở góc xa.",
+      "tone": [
+        [
+          "mải",
+          "mãi"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "08-phan-4",
+      "text": "Ông lặng lẽ vào sau quầy, tự phục vụ vị khách, rồi đưa món hàng cho nhân viên gói lại mà không trách một lời nào.",
+      "heard": "Ông lặn lẽ vào sau quầy, tự phục vụ vị khách, rồi đưa món hàng cho nhân viên gói lại, mà không trách một lời nào.",
+      "tone": [],
+      "words": [
+        [
+          "lặng",
+          "lặn"
+        ]
+      ]
+    },
+    {
+      "segment": "08-phan-4",
+      "text": "Giữ thể diện, khen tiến bộ dù nhỏ.",
+      "heard": "Giữ thể diện, khen tiến bộ vô nhỏ",
+      "tone": [],
+      "words": [
+        [
+          "dù",
+          "vô"
+        ]
+      ]
+    },
+    {
+      "segment": "08e-diem-chua-dat",
+      "text": "Thứ nhất, sách thuyết phục chủ yếu bằng giai thoại: hết chuyện thành công này đến chuyện thành công khác, và vài con số tỉ lệ phần trăm được đưa ra mà không ghi rõ nguồn.",
+      "heard": "Thứ nhất, sách thuyết phục chủ yếu bằng giai thoại, hết chuyện thành công này đến chuyện thành công khác, và vài con số tỷ lệ phần trăm được đưa ra mà không ghi rõ nguồn.",
+      "tone": [],
+      "words": [
+        [
+          "tỉ",
+          "tỷ"
+        ]
+      ]
+    },
+    {
+      "segment": "08e-diem-chua-dat",
+      "text": "Thứ hai, phần lớn ví dụ là doanh nhân, chính khách và người bán hàng ở Mỹ gần một trăm năm trước, nên có những đoạn đọc giống sách dạy bán hàng hơn là sách về các mối quan hệ.",
+      "heard": "Thứ hai, phần lớn tí dụ là doanh nhân, chính khách và người bán hàng ở Mỹ gần 100 năm trước nên có những đoạn đọc giống sách dạy bán hàng hơn là sách về các mối quan hệ.",
+      "tone": [],
+      "words": [
+        [
+          "ví",
+          "tí"
+        ],
+        [
+          "một trăm",
+          "100"
+        ]
+      ]
+    },
+    {
+      "segment": "08e-diem-chua-dat",
+      "text": "Thứ ba, một vài cách trong sách, nếu tách khỏi sự chân thành, rất dễ thành thao túng.",
+      "heard": "Thứ ba, một vài cách trông sách, nếu tách khỏi sự chân thành, rất dễ thành thao túng.",
+      "tone": [
+        [
+          "trong",
+          "trông"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "08g-y-kien",
+      "text": "Lá thư Lincoln không gửi đi là hình ảnh mình nhớ lâu nhất: viết ra cho hả giận cũng được, nhưng chưa vội gửi.",
+      "heard": "Lá thư Lincoln không gửi đi là hình ảnh mình nhớ lâu nhất, viết ra cho hã giận cũng được, nhưng chưa vội gửi.",
+      "tone": [
+        [
+          "hả",
+          "hã"
+        ]
+      ],
+      "words": []
+    },
+    {
+      "segment": "08g-y-kien",
+      "text": "Nhiều lời khuyên trong sách nghe qua thì rất bình thường, như mỉm cười hay nhớ tên người khác.",
+      "heard": "Nhiều lời khuyên trong sách nghe qua thì rất bình thường, nhưng mỉm cười hay nhớ tên người khác.",
+      "tone": [],
+      "words": [
+        [
+          "như",
+          "nhưng"
+        ]
+      ]
+    },
+    {
+      "segment": "08g-y-kien",
+      "text": "Nhưng ngẫm lại, mình thấy điều đáng giữ nằm ở phía sau: nhìn người đối diện như một con người, chứ không phải như một việc cần xong.",
+      "heard": "Nhưng ngẩm lại, mình thấy điều đáng dữ nằm ở phía sau. Nhìn người đối diện như một con người, chứ không phải như một việc cần xong.",
+      "tone": [
+        [
+          "ngẫm",
+          "ngẩm"
+        ]
+      ],
+      "words": [
+        [
+          "giữ",
+          "dữ"
+        ]
+      ]
+    },
+    {
+      "segment": "09-nhan-xet",
+      "text": "Nếu bạn có thời gian, có thể đọc qua để hiểu hơn: đọc chậm, rồi tự quyết định điều gì đáng giữ.",
+      "heard": "Nếu bạn có thời gian, có thể đọc qua để hiểu hơn, đọc chậm, rồi tự quyết định điều gì đáng dữ.",
+      "tone": [],
+      "words": [
+        [
+          "giữ",
+          "dữ"
+        ]
+      ]
+    }
+  ],
+  "listening": "Chưa nghe duyệt: kiểm tra kỹ thuật đạt không có nghĩa là phát âm đã được duyệt; các câu ở toneFlags cần người dùng nghe."
+}

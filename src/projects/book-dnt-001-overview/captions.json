@@ -1,1339 +1,1339 @@
 {
   "source": "Episode.tsx episodeCaptions, BookDntTap03 defaultProps",
   "fps": 30,
-  "totalFrames": 22265,
+  "totalFrames": 22828,
   "parts": [
     {
       "name": "Nhạc mở đầu",
-      "frames": 210,
+      "frames": 390,
       "startFrame": 0
     },
     {
       "name": "Mở đầu tập",
-      "frames": 1149,
-      "startFrame": 210
+      "frames": 1294,
+      "startFrame": 390
     },
     {
       "name": "Mở chuyện",
-      "frames": 1930,
-      "startFrame": 1359
+      "frames": 1929,
+      "startFrame": 1684
     },
     {
       "name": "Phần 1 · Cuốn sách là gì",
-      "frames": 1370,
-      "startFrame": 3289
+      "frames": 1320,
+      "startFrame": 3613
     },
     {
       "name": "Phần 2 · Sợi chỉ xuyên suốt",
-      "frames": 1732,
-      "startFrame": 4659
+      "frames": 1689,
+      "startFrame": 4933
     },
     {
       "name": "Phần một · Ba điều nền tảng",
-      "frames": 2588,
-      "startFrame": 6391
+      "frames": 2564,
+      "startFrame": 6622
     },
     {
       "name": "Phần hai · Sáu cách tạo thiện cảm",
-      "frames": 2036,
-      "startFrame": 8979
+      "frames": 2152,
+      "startFrame": 9186
     },
     {
       "name": "Phần ba · Khi hai người nghĩ khác nhau",
-      "frames": 3284,
-      "startFrame": 11015
+      "frames": 3423,
+      "startFrame": 11338
     },
     {
       "name": "Phần bốn · Góp ý mà không làm tổn thương",
       "frames": 2342,
-      "startFrame": 14299
+      "startFrame": 14761
     },
     {
       "name": "Những điểm chưa đạt",
-      "frames": 1950,
-      "startFrame": 16641
+      "frames": 1992,
+      "startFrame": 17103
     },
     {
       "name": "Tổng kết",
-      "frames": 707,
-      "startFrame": 18591
+      "frames": 747,
+      "startFrame": 19095
     },
     {
       "name": "Ý kiến cá nhân",
-      "frames": 1808,
-      "startFrame": 19298
+      "frames": 1848,
+      "startFrame": 19842
     },
     {
       "name": "Nhận xét chung",
-      "frames": 664,
-      "startFrame": 21106
+      "frames": 643,
+      "startFrame": 21690
     },
     {
       "name": "Outro series",
       "frames": 495,
-      "startFrame": 21770
+      "startFrame": 22333
     }
   ],
   "pages": [
     {
       "part": "Mở đầu tập",
       "text": "Chào mọi người.",
-      "startMs": 7000,
-      "endMs": 8460
+      "startMs": 13500,
+      "endMs": 15240
     },
     {
       "part": "Mở đầu tập",
       "text": "Có một cuốn sách mà gần như ai cũng từng nghe tên, dù chưa chắc đã đọc.",
-      "startMs": 8640,
-      "endMs": 12680
+      "startMs": 15500,
+      "endMs": 19060
     },
     {
       "part": "Mở đầu tập",
       "text": "Có người đọc xong thì khen hết lời.",
-      "startMs": 12820,
-      "endMs": 14520
+      "startMs": 19180,
+      "endMs": 21000
     },
     {
       "part": "Mở đầu tập",
-      "text": "Có người gấp sách lại, lắc đầu.",
-      "startMs": 15040,
-      "endMs": 16900
+      "text": "Có người lại chê, bảo nó chỉ dạy người ta khéo miệng.",
+      "startMs": 21300,
+      "endMs": 25100
     },
     {
       "part": "Mở đầu tập",
       "text": "Cùng một cuốn sách, sao người ta lại nghĩ khác nhau đến vậy?",
-      "startMs": 17940,
-      "endMs": 20780
+      "startMs": 25160,
+      "endMs": 27760
     },
     {
       "part": "Mở đầu tập",
       "text": "Hôm nay, mình sẽ cùng các bạn đi tìm câu trả lời.",
-      "startMs": 21340,
-      "endMs": 24180
+      "startMs": 28120,
+      "endMs": 30680
     },
     {
       "part": "Mở đầu tập",
-      "text": "À, nếu đây là lần đầu bạn xem series này thì để mình nói trước: ở mỗi tập,",
-      "startMs": 25180,
-      "endMs": 29451
+      "text": "Nếu đây là lần đầu bạn xem series này thì để mình nói trước: ở mỗi tập,",
+      "startMs": 31280,
+      "endMs": 35083
     },
     {
       "part": "Mở đầu tập",
       "text": "mình vừa kể những ví dụ có trong sách, vừa rút ra bài học từ chính những ví dụ ấy.",
-      "startMs": 29512,
-      "endMs": 33800
+      "startMs": 35134,
+      "endMs": 39460
     },
     {
       "part": "Mở đầu tập",
       "text": "Mình sẽ đứng ở vị trí trung lập,",
-      "startMs": 34640,
-      "endMs": 36304
+      "startMs": 39460,
+      "endMs": 41567
     },
     {
       "part": "Mở đầu tập",
       "text": "và nhìn cuốn sách này khách quan nhất có thể, theo góc nhìn của mình.",
-      "startMs": 36350,
-      "endMs": 39760
+      "startMs": 41613,
+      "endMs": 45300
     },
     {
       "part": "Mở đầu tập",
       "text": "Nào, chúng ta cùng đến với Đắc nhân tâm.",
-      "startMs": 40820,
-      "endMs": 42860
+      "startMs": 45580,
+      "endMs": 47760
     },
     {
       "part": "Mở chuyện",
       "text": "Chương đầu tiên của sách xoay quanh một lá thư chưa bao giờ được gửi đi.",
-      "startMs": 46880,
-      "endMs": 50400
+      "startMs": 57413,
+      "endMs": 60633
     },
     {
       "part": "Mở chuyện",
       "text": "Hồi còn trẻ, Abraham Lincoln rất hay chế giễu người khác,",
-      "startMs": 51627,
-      "endMs": 54717
+      "startMs": 61540,
+      "endMs": 65075
     },
     {
       "part": "Mở chuyện",
       "text": "có lần còn viết báo giễu một chính khách đến mức bị",
-      "startMs": 54769,
-      "endMs": 57074
+      "startMs": 65124,
+      "endMs": 67651
     },
     {
       "part": "Mở chuyện",
       "text": "người này thách đấu kiếm, may mà được can kịp ở phút cuối.",
-      "startMs": 57128,
-      "endMs": 60207
+      "startMs": 67706,
+      "endMs": 70940
     },
     {
       "part": "Mở chuyện",
       "text": "Sau lần đó, ông gần như thôi hẳn chuyện chỉ trích ai.",
-      "startMs": 60807,
-      "endMs": 63327
+      "startMs": 71120,
+      "endMs": 74220
     },
     {
       "part": "Mở chuyện",
       "text": "Hơn hai mươi năm sau, khi đã là tổng thống, Lincoln ra lệnh cho tướng Meade tấn",
-      "startMs": 64593,
-      "endMs": 68720
+      "startMs": 75227,
+      "endMs": 79615
     },
     {
       "part": "Mở chuyện",
       "text": "công để sớm kết thúc cuộc nội chiến, nhưng vị tướng này chần chừ và để lỡ thời cơ.",
-      "startMs": 68773,
-      "endMs": 72813
+      "startMs": 79667,
+      "endMs": 83967
     },
     {
       "part": "Mở chuyện",
       "text": "Lincoln tức giận, ngồi viết cho ông ta một lá thư trách móc rất nặng lời.",
-      "startMs": 73560,
-      "endMs": 77220
+      "startMs": 83967,
+      "endMs": 89093
     },
     {
       "part": "Mở chuyện",
       "text": "Rồi ông gạt lá thư sang một bên, không gửi.",
-      "startMs": 77220,
-      "endMs": 80320
+      "startMs": 89273,
+      "endMs": 91993
     },
     {
       "part": "Mở chuyện",
       "text": "Mãi đến khi Lincoln qua đời, người ta mới tìm thấy nó trong giấy tờ của ông.",
-      "startMs": 80540,
-      "endMs": 84640
+      "startMs": 92093,
+      "endMs": 95993
     },
     {
       "part": "Mở chuyện",
       "text": "Tác giả phỏng đoán rằng Lincoln đã hiểu: gửi lá thư đi thì ông được hả giận một lúc,",
-      "startMs": 85747,
-      "endMs": 90136
+      "startMs": 96920,
+      "endMs": 101584
     },
     {
       "part": "Mở chuyện",
       "text": "còn Meade sẽ chỉ lo bào chữa cho mình, và chẳng có gì được sửa.",
-      "startMs": 90188,
-      "endMs": 94113
+      "startMs": 101633,
+      "endMs": 105867
     },
     {
       "part": "Mở chuyện",
       "text": "Từ câu chuyện ấy, ông rút ra nguyên tắc đầu tiên của cả cuốn sách:",
-      "startMs": 94113,
-      "endMs": 97533
+      "startMs": 105987,
+      "endMs": 109053
     },
     {
       "part": "Mở chuyện",
       "text": "không chỉ trích, oán trách hay than phiền.",
-      "startMs": 97593,
-      "endMs": 100173
+      "startMs": 109119,
+      "endMs": 111927
     },
     {
       "part": "Mở chuyện",
       "text": "Và đây cũng là câu hỏi mình muốn các bạn giữ trong đầu suốt tập này:",
-      "startMs": 100693,
-      "endMs": 103758
+      "startMs": 112067,
+      "endMs": 115227
     },
     {
       "part": "Mở chuyện",
       "text": "khi một người làm sai, lời chê trách có thật sự giúp họ thay đổi không?",
-      "startMs": 103819,
-      "endMs": 107473
+      "startMs": 115282,
+      "endMs": 118647
     },
     {
       "part": "Phần 1 · Cuốn sách là gì",
       "text": "Đắc nhân tâm ra đời từ một lớp học.",
-      "startMs": 111033,
-      "endMs": 113333
+      "startMs": 121533,
+      "endMs": 123933
     },
     {
       "part": "Phần 1 · Cuốn sách là gì",
       "text": "Tác giả dạy người đi làm ở New York cách nói trước đám đông,",
-      "startMs": 113813,
-      "endMs": 116803
+      "startMs": 124353,
+      "endMs": 126929
     },
     {
       "part": "Phần 1 · Cuốn sách là gì",
       "text": "rồi nhận ra học viên của mình còn cần học một thứ khác: cách cư xử với người khác.",
-      "startMs": 116853,
-      "endMs": 121033
+      "startMs": 126973,
+      "endMs": 131740
     },
     {
       "part": "Phần 1 · Cuốn sách là gì",
       "text": "Tìm mãi không thấy cuốn sách nào làm tài liệu, ông tự soạn bài giảng,",
-      "startMs": 121720,
-      "endMs": 125125
+      "startMs": 131900,
+      "endMs": 135416
     },
     {
       "part": "Phần 1 · Cuốn sách là gì",
       "text": "và cuốn sách lớn dần lên từ chính những bài giảng ấy.",
-      "startMs": 125183,
-      "endMs": 127920
+      "startMs": 135476,
+      "endMs": 138300
     },
     {
       "part": "Phần 1 · Cuốn sách là gì",
       "text": "Sách có ba mươi nguyên tắc, chia làm bốn phần.",
-      "startMs": 129127,
-      "endMs": 131647
+      "startMs": 139307,
+      "endMs": 141547
     },
     {
       "part": "Phần 1 · Cuốn sách là gì",
       "text": "Mỗi nguyên tắc là một chương ngắn, kể qua rất nhiều câu chuyện,",
-      "startMs": 131867,
-      "endMs": 134653
+      "startMs": 141747,
+      "endMs": 144714
     },
     {
       "part": "Phần 1 · Cuốn sách là gì",
       "text": "phần lớn là chuyện người thật ở Mỹ thời đó.",
-      "startMs": 134695,
-      "endMs": 136707
+      "startMs": 144763,
+      "endMs": 146807
     },
     {
       "part": "Phần 1 · Cuốn sách là gì",
       "text": "Vì sao cuốn sách gây tranh cãi?",
-      "startMs": 137793,
-      "endMs": 139913
+      "startMs": 147813,
+      "endMs": 149313
     },
     {
       "part": "Phần 1 · Cuốn sách là gì",
       "text": "Có người xem nó như một cẩm nang để sống tử tế với người xung quanh;",
-      "startMs": 140053,
-      "endMs": 143540
+      "startMs": 149413,
+      "endMs": 152713
     },
     {
       "part": "Phần 1 · Cuốn sách là gì",
       "text": "có người lại thấy nó dạy cách lấy lòng người khác để đạt được mục đích.",
-      "startMs": 143592,
-      "endMs": 147193
+      "startMs": 152762,
+      "endMs": 156513
     },
     {
       "part": "Phần 1 · Cuốn sách là gì",
       "text": "Mình sẽ kể đúng nội dung sách trước, rồi đến cuối video mới",
-      "startMs": 147433,
-      "endMs": 150447
+      "startMs": 156613,
+      "endMs": 159642
     },
     {
       "part": "Phần 1 · Cuốn sách là gì",
       "text": "nói những chỗ mình thấy chưa đạt, để các bạn tự đánh giá.",
-      "startMs": 150509,
-      "endMs": 153113
+      "startMs": 159700,
+      "endMs": 162653
     },
     {
       "part": "Phần 2 · Sợi chỉ xuyên suốt",
       "text": "Ba mươi nguyên tắc nghe thì nhiều, nhưng mình thấy chúng đều đi ra từ một quan",
-      "startMs": 156700,
-      "endMs": 160788
+      "startMs": 165533,
+      "endMs": 169341
     },
     {
       "part": "Phần 2 · Sợi chỉ xuyên suốt",
       "text": "sát xuyên suốt cuốn sách: ai cũng muốn thấy mình có giá trị, và khi bị chê trách,",
-      "startMs": 160830,
-      "endMs": 165314
+      "startMs": 169386,
+      "endMs": 173434
     },
     {
       "part": "Phần 2 · Sợi chỉ xuyên suốt",
       "text": "phản ứng đầu tiên của con người thường là tìm cách bào chữa cho mình.",
-      "startMs": 165380,
-      "endMs": 168760
+      "startMs": 173493,
+      "endMs": 176953
     },
     {
       "part": "Phần 2 · Sợi chỉ xuyên suốt",
       "text": "Tác giả minh họa bằng chuyện đi câu.",
-      "startMs": 169887,
-      "endMs": 172027
+      "startMs": 177880,
+      "endMs": 179680
     },
     {
       "part": "Phần 2 · Sợi chỉ xuyên suốt",
       "text": "Ông rất thích ăn kem và trái cây, nhưng khi đi câu,",
-      "startMs": 172207,
-      "endMs": 174587
+      "startMs": 179820,
+      "endMs": 182353
     },
     {
       "part": "Phần 2 · Sợi chỉ xuyên suốt",
       "text": "ông không móc kem vào lưỡi câu mà móc một con giun, vì cá thích giun.",
-      "startMs": 174641,
-      "endMs": 178813
+      "startMs": 182412,
+      "endMs": 187507
     },
     {
       "part": "Phần 2 · Sợi chỉ xuyên suốt",
       "text": "Ý của câu chuyện là: muốn người khác làm một điều gì,",
-      "startMs": 178813,
-      "endMs": 181586
+      "startMs": 187507,
+      "endMs": 190238
     },
     {
       "part": "Phần 2 · Sợi chỉ xuyên suốt",
       "text": "mình nên bắt đầu từ điều họ muốn, chứ không phải từ điều mình muốn.",
-      "startMs": 181645,
-      "endMs": 184973
+      "startMs": 190293,
+      "endMs": 193487
     },
     {
       "part": "Phần 2 · Sợi chỉ xuyên suốt",
       "text": "Nhưng có một điều cuốn sách nhắc đi nhắc lại, mà cả người thích lẫn",
-      "startMs": 186040,
-      "endMs": 189276
+      "startMs": 193487,
+      "endMs": 197827
     },
     {
       "part": "Phần 2 · Sợi chỉ xuyên suốt",
       "text": "người chê đều nên nhớ: mọi nguyên tắc phải đi kèm sự chân thành.",
-      "startMs": 189335,
-      "endMs": 192620
+      "startMs": 197891,
+      "endMs": 201493
     },
     {
       "part": "Phần 2 · Sợi chỉ xuyên suốt",
       "text": "Tác giả phân biệt rất rõ lời khen thật lòng với lời nịnh:",
-      "startMs": 193140,
-      "endMs": 195999
+      "startMs": 201813,
+      "endMs": 204633
     },
     {
       "part": "Phần 2 · Sợi chỉ xuyên suốt",
       "text": "\"Một điều xuất phát từ tấm lòng, một điều chỉ từ cửa miệng.\"",
-      "startMs": 196052,
-      "endMs": 200249
+      "startMs": 204683,
+      "endMs": 208748
     },
     {
       "part": "Phần 2 · Sợi chỉ xuyên suốt",
       "text": "Vì vậy, mình hiểu cuốn sách này là lời khuyên bớt đặt cái tôi",
-      "startMs": 200327,
-      "endMs": 203272
+      "startMs": 208820,
+      "endMs": 211846
     },
     {
       "part": "Phần 2 · Sợi chỉ xuyên suốt",
       "text": "của mình lên trước, để nhìn thấy người đối diện nhiều hơn.",
-      "startMs": 203309,
-      "endMs": 206027
+      "startMs": 211886,
+      "endMs": 214620
     },
     {
       "part": "Phần 2 · Sợi chỉ xuyên suốt",
       "text": "Còn sách có giữ được tinh thần ấy suốt ba mươi",
-      "startMs": 206487,
-      "endMs": 208433
+      "startMs": 214940,
+      "endMs": 216862
     },
     {
       "part": "Phần 2 · Sợi chỉ xuyên suốt",
       "text": "chương hay không, mình sẽ nói ở phần cuối.",
-      "startMs": 208480,
-      "endMs": 210767
+      "startMs": 216906,
+      "endMs": 219000
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "Phần đầu của sách chỉ có ba nguyên tắc,",
-      "startMs": 214433,
-      "endMs": 216735
+      "startMs": 221833,
+      "endMs": 224236
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "được đặt làm nền móng cho tất cả những phần còn lại.",
-      "startMs": 216791,
-      "endMs": 219533
+      "startMs": 224287,
+      "endMs": 226733
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "Không chỉ trích, oán trách hay than phiền.",
-      "startMs": 219533,
-      "endMs": 222820
+      "startMs": 227813,
+      "endMs": 229873
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "Tác giả ví lời chỉ trích như chim bồ câu đưa thư, bao giờ cũng quay về nơi",
-      "startMs": 223060,
-      "endMs": 227082
+      "startMs": 230053,
+      "endMs": 233796
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "nó xuất phát: người bị chê sẽ tìm lý lẽ bảo vệ mình và trách ngược lại.",
-      "startMs": 227126,
-      "endMs": 231100
+      "startMs": 233841,
+      "endMs": 237833
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "Sách kể chuyện một người phụ trách an toàn ở công trường.",
-      "startMs": 231847,
-      "endMs": 234827
+      "startMs": 238780,
+      "endMs": 241500
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "Lúc đầu, mỗi lần thấy công nhân không đội nón bảo hộ,",
-      "startMs": 235007,
-      "endMs": 237543
+      "startMs": 241660,
+      "endMs": 244606
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "ông dùng quyền để bắt họ đội, và họ chỉ đội cho tới khi ông quay lưng đi.",
-      "startMs": 237594,
-      "endMs": 241607
+      "startMs": 244666,
+      "endMs": 248840
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "Sau đó ông đổi cách: hỏi xem chiếc nón có gì không vừa,",
-      "startMs": 241607,
-      "endMs": 245269
+      "startMs": 248840,
+      "endMs": 252366
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "rồi nhắc rằng nón giúp họ khỏi bị thương.",
-      "startMs": 245325,
-      "endMs": 247587
+      "startMs": 252425,
+      "endMs": 254660
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "Từ đó, số người chịu đội nón tăng lên mà không ai khó chịu.",
-      "startMs": 247667,
-      "endMs": 250887
+      "startMs": 254760,
+      "endMs": 259160
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "Thành thật khen ngợi và biết ơn.",
-      "startMs": 251933,
-      "endMs": 253773
+      "startMs": 259400,
+      "endMs": 260940
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "Tác giả cho rằng ai cũng khao khát được người khác trân trọng.",
-      "startMs": 254033,
-      "endMs": 257600
+      "startMs": 261140,
+      "endMs": 264967
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "Một câu chuyện từng được kể trên đài phát thanh nói về cô giáo nhờ cậu học trò",
-      "startMs": 257740,
-      "endMs": 261560
+      "startMs": 265067,
+      "endMs": 268667
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "khiếm thị tìm giúp con chuột trong lớp, rồi khen cậu có đôi tai rất thính.",
-      "startMs": 261609,
-      "endMs": 265480
+      "startMs": 268720,
+      "endMs": 272667
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "Cậu bé ấy về sau trở thành ca sĩ Stevie Wonder,",
-      "startMs": 266000,
-      "endMs": 268728
+      "startMs": 272947,
+      "endMs": 275524
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "và kể rằng lời khen hôm đó là một bước ngoặt trong đời mình.",
-      "startMs": 268797,
-      "endMs": 271820
+      "startMs": 275591,
+      "endMs": 278907
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "Cuốn sách cũng nói rõ: nịnh hót là lời khen rẻ tiền và giả dối,",
-      "startMs": 271820,
-      "endMs": 275541
+      "startMs": 278907,
+      "endMs": 283217
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "không phải điều nó khuyến khích.",
-      "startMs": 275596,
-      "endMs": 277687
+      "startMs": 283270,
+      "endMs": 285507
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "Gợi cho người khác ý muốn làm điều mình mong.",
-      "startMs": 277967,
-      "endMs": 280247
+      "startMs": 285507,
+      "endMs": 287987
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "Sách kể chuyện nhà văn Emerson cùng con trai đẩy,",
-      "startMs": 280507,
-      "endMs": 283009
+      "startMs": 288247,
+      "endMs": 290967
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "kéo mãi mà con bê vẫn đứng yên không chịu vào chuồng.",
-      "startMs": 283074,
-      "endMs": 286047
+      "startMs": 291027,
+      "endMs": 293627
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "Cô giúp việc đi tới, đưa ngón tay cho con bê mút như bú mẹ,",
-      "startMs": 286267,
-      "endMs": 289277
+      "startMs": 293967,
+      "endMs": 297062
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "rồi dắt nó vào chuồng thật nhẹ nhàng.",
-      "startMs": 289333,
-      "endMs": 291487
+      "startMs": 297121,
+      "endMs": 299347
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "Trong câu chuyện này, hai cha con chỉ nghĩ tới điều mình muốn,",
-      "startMs": 291807,
-      "endMs": 294934
+      "startMs": 299487,
+      "endMs": 302467
     },
     {
       "part": "Phần một · Ba điều nền tảng",
       "text": "còn cô giúp việc nghĩ tới điều con bê muốn.",
-      "startMs": 294988,
-      "endMs": 297027
+      "startMs": 302515,
+      "endMs": 304407
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "Sang phần hai, cuốn sách chuyển từ chuyện tránh làm người",
-      "startMs": 300700,
-      "endMs": 303624
+      "startMs": 307300,
+      "endMs": 310638
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "khác mất lòng sang chuyện làm sao để người ta muốn gần mình.",
-      "startMs": 303663,
-      "endMs": 306540
+      "startMs": 310689,
+      "endMs": 315127
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "Sáu nguyên tắc ở phần này là: thật lòng quan tâm đến người khác,",
-      "startMs": 307527,
-      "endMs": 310484
+      "startMs": 315307,
+      "endMs": 318303
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "mỉm cười, nhớ tên người đối diện, biết lắng nghe,",
-      "startMs": 310527,
-      "endMs": 313127
+      "startMs": 318347,
+      "endMs": 321473
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "nói về điều người kia quan tâm, và thật lòng làm cho họ thấy mình quan trọng.",
-      "startMs": 313182,
-      "endMs": 317167
+      "startMs": 321520,
+      "endMs": 327473
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "Câu chuyện mình nhớ nhất ở phần này là một bữa tiệc tối.",
-      "startMs": 318253,
-      "endMs": 321333
+      "startMs": 327653,
+      "endMs": 330513
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "Tác giả ngồi cạnh một nhà thực vật học và bị cuốn vào những",
-      "startMs": 321553,
-      "endMs": 324088
+      "startMs": 331153,
+      "endMs": 334373
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "câu chuyện về cây cỏ, đến mức ngồi nghe hàng giờ liền.",
-      "startMs": 324133,
-      "endMs": 327393
+      "startMs": 334433,
+      "endMs": 337673
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "Ông gần như không nói gì, vì chẳng biết gì về thực vật.",
-      "startMs": 327393,
-      "endMs": 330893
+      "startMs": 337673,
+      "endMs": 340693
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "Vậy mà lúc ra về, ông nghe kể lại rằng nhà thực",
-      "startMs": 331073,
-      "endMs": 333751
+      "startMs": 340853,
+      "endMs": 343601
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "vật học khen ông là người nói chuyện hay nhất.",
-      "startMs": 333798,
-      "endMs": 335673
+      "startMs": 343662,
+      "endMs": 345673
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "Với tác giả, lắng nghe là một trong những cách trân",
-      "startMs": 336340,
-      "endMs": 338790
+      "startMs": 346600,
+      "endMs": 349060
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "trọng nhất mà mình có thể dành cho người đối diện.",
-      "startMs": 338827,
-      "endMs": 341507
+      "startMs": 349100,
+      "endMs": 351940
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "Cuốn sách còn nhắc chuyện tổng thống Theodore Roosevelt: mỗi khi hẹn gặp ai,",
-      "startMs": 341747,
-      "endMs": 345532
+      "startMs": 351940,
+      "endMs": 355468
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "ông thường thức khuya đọc trước về những điều người khách ấy quan tâm,",
-      "startMs": 345580,
-      "endMs": 348662
+      "startMs": 355518,
+      "endMs": 358832
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "để hôm sau câu chuyện của hai người trở nên thú vị.",
-      "startMs": 348720,
-      "endMs": 351327
+      "startMs": 358885,
+      "endMs": 362207
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "Đọc phần này, mình thấy sáu nguyên tắc rất dễ bị biến thành kỹ thuật lấy lòng:",
-      "startMs": 352533,
-      "endMs": 356335
+      "startMs": 362427,
+      "endMs": 366659
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "cười vì muốn bán được hàng, nhớ tên vì muốn được việc.",
-      "startMs": 356387,
-      "endMs": 359293
+      "startMs": 366724,
+      "endMs": 370247
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "Nhưng chữ \"thật lòng\" đã nằm ngay trong tên của hai nguyên tắc,",
-      "startMs": 359833,
-      "endMs": 362777
+      "startMs": 370247,
+      "endMs": 373703
     },
     {
       "part": "Phần hai · Sáu cách tạo thiện cảm",
       "text": "nên mình nghĩ tác giả cũng hiểu rõ ranh giới ấy.",
-      "startMs": 362829,
-      "endMs": 364893
+      "startMs": 373748,
+      "endMs": 376147
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Phần ba dài nhất, với mười hai nguyên tắc dành cho",
-      "startMs": 368567,
-      "endMs": 371425
+      "startMs": 379033,
+      "endMs": 381994
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "những lúc mình và người khác không cùng ý kiến.",
-      "startMs": 371464,
-      "endMs": 374633
+      "startMs": 382042,
+      "endMs": 385513
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Tránh tranh cãi.",
-      "startMs": 374813,
-      "endMs": 376033
+      "startMs": 385513,
+      "endMs": 386853
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Tác giả kể về một bữa tiệc ở Luân Đôn.",
-      "startMs": 376193,
-      "endMs": 378853
+      "startMs": 386853,
+      "endMs": 389313
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Người ngồi cạnh ông dẫn một câu nói và bảo nó nằm trong Kinh thánh.",
-      "startMs": 378853,
-      "endMs": 382293
+      "startMs": 389313,
+      "endMs": 393093
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Ông biết câu đó là của Shakespeare,",
-      "startMs": 382453,
-      "endMs": 384009
+      "startMs": 393313,
+      "endMs": 394694
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "và muốn tỏ ra hiểu biết nên nói thẳng là người kia sai.",
-      "startMs": 384053,
-      "endMs": 386953
+      "startMs": 394733,
+      "endMs": 397893
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Một người bạn của ông, vốn nghiên cứu Shakespeare, được hỏi ý kiến,",
-      "startMs": 387593,
-      "endMs": 391125
+      "startMs": 398253,
+      "endMs": 401744
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "đã đá nhẹ chân ông dưới gầm bàn rồi nói câu ấy đúng là ở Kinh thánh.",
-      "startMs": 391187,
-      "endMs": 394453
+      "startMs": 401801,
+      "endMs": 405353
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Trên đường về, người bạn giải thích: mình là khách trong một bữa tiệc,",
-      "startMs": 394813,
-      "endMs": 398089
+      "startMs": 405353,
+      "endMs": 408909
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "việc gì phải chứng minh người khác sai.",
-      "startMs": 398133,
-      "endMs": 399793
+      "startMs": 408953,
+      "endMs": 410753
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Từ câu chuyện ấy, tác giả kết luận rằng trong một cuộc tranh cãi, thua thì mình",
-      "startMs": 400560,
-      "endMs": 404350
+      "startMs": 411740,
+      "endMs": 416153
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "thua, mà thắng thì mình cũng thua, vì người kia sẽ càng giữ chặt ý của họ.",
-      "startMs": 404401,
-      "endMs": 408400
+      "startMs": 416209,
+      "endMs": 420480
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Nguyên tắc của ông là: \"Tôn trọng ý kiến của người khác.",
-      "startMs": 408840,
-      "endMs": 411480
+      "startMs": 420800,
+      "endMs": 423660
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Đừng bao giờ nói rằng: 'Anh/Chị sai rồi!'.\"",
-      "startMs": 411800,
-      "endMs": 414233
+      "startMs": 423840,
+      "endMs": 427538
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Nhận lỗi trước.",
-      "startMs": 414307,
-      "endMs": 415747
+      "startMs": 427600,
+      "endMs": 428600
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Tác giả thường dắt chú chó nhỏ tên Rex vào công viên mà không xích,",
-      "startMs": 416267,
-      "endMs": 419637
+      "startMs": 429120,
+      "endMs": 432990
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "không bịt mõm, và đã bị một viên cảnh sát nhắc.",
-      "startMs": 419707,
-      "endMs": 422407
+      "startMs": 433056,
+      "endMs": 435940
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Lần thứ hai bị bắt gặp, ông không đợi người kia lên",
-      "startMs": 422907,
-      "endMs": 425500
+      "startMs": 435940,
+      "endMs": 439045
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "tiếng mà tự nói ngay rằng mình sai, mình có lỗi.",
-      "startMs": 425547,
-      "endMs": 428247
+      "startMs": 439096,
+      "endMs": 442520
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Viên cảnh sát dịu giọng, rồi chính ông ta lại tìm cách bỏ qua cho ông.",
-      "startMs": 428787,
-      "endMs": 432467
+      "startMs": 442660,
+      "endMs": 447020
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Để người kia nói và nhìn từ phía họ.",
-      "startMs": 433473,
-      "endMs": 435253
+      "startMs": 447220,
+      "endMs": 449340
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Các nguyên tắc tiếp theo khuyên mình bắt đầu bằng thái độ thân thiện,",
-      "startMs": 435733,
-      "endMs": 438547
+      "startMs": 449660,
+      "endMs": 452859
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "đặt những câu hỏi mà người kia dễ trả lời \"vâng\", để họ được nói nhiều hơn, để họ",
-      "startMs": 438593,
-      "endMs": 442859
+      "startMs": 452920,
+      "endMs": 457949
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "thấy ý tưởng là của chính họ, và thành thật nhìn vấn đề theo quan điểm của họ.",
-      "startMs": 442918,
-      "endMs": 446973
+      "startMs": 458010,
+      "endMs": 462340
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Ở cuối phần, cuốn sách thêm bốn cách: đồng cảm với mong muốn của người khác,",
-      "startMs": 447373,
-      "endMs": 451223
+      "startMs": 462340,
+      "endMs": 466634
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "khơi gợi sự cao thượng, trình bày vấn đề một cách sinh động,",
-      "startMs": 451273,
-      "endMs": 454355
+      "startMs": 466687,
+      "endMs": 469805
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "và khơi gợi tinh thần vượt lên thử thách.",
-      "startMs": 454412,
-      "endMs": 456733
+      "startMs": 469862,
+      "endMs": 474187
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Đây cũng là phần dễ gây tranh cãi nhất.",
-      "startMs": 459260,
-      "endMs": 461280
+      "startMs": 474727,
+      "endMs": 476527
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Những cách như dẫn người khác trả lời \"vâng\" liên tục, hay để họ tin ý tưởng",
-      "startMs": 461620,
-      "endMs": 465137
+      "startMs": 476727,
+      "endMs": 481017
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "là của mình, nếu dùng để che giấu mục đích thì đã không còn là tôn trọng nữa.",
-      "startMs": 465195,
-      "endMs": 468960
+      "startMs": 481080,
+      "endMs": 485147
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "Theo mình, ranh giới nằm ở chỗ mình có sẵn lòng",
-      "startMs": 469460,
-      "endMs": 472115
+      "startMs": 485487,
+      "endMs": 488033
     },
     {
       "part": "Phần ba · Khi hai người nghĩ khác nhau",
       "text": "để người kia biết rõ mình đang muốn gì hay không.",
-      "startMs": 472169,
-      "endMs": 474420
+      "startMs": 488090,
+      "endMs": 490247
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "Phần cuối dành cho tình huống khó nhất:",
-      "startMs": 478033,
-      "endMs": 479984
+      "startMs": 493133,
+      "endMs": 494935
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "khi mình phải chỉ ra lỗi của người khác, nhất là khi mình là người quản lý.",
-      "startMs": 480038,
-      "endMs": 484920
+      "startMs": 494987,
+      "endMs": 499773
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "Nhắc khéo, không quở trách.",
-      "startMs": 485240,
-      "endMs": 486500
+      "startMs": 499933,
+      "endMs": 501653
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "Sách kể về ông chủ một cửa hàng lớn ở Philadelphia,",
-      "startMs": 486500,
-      "endMs": 489705
+      "startMs": 501953,
+      "endMs": 504512
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "mỗi ngày đều đi một vòng quanh cửa hàng.",
-      "startMs": 489766,
-      "endMs": 491620
+      "startMs": 504568,
+      "endMs": 506593
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "Có lần ông thấy một vị khách đứng chờ ở quầy,",
-      "startMs": 492220,
-      "endMs": 494419
+      "startMs": 506933,
+      "endMs": 508912
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "trong khi mấy nhân viên đang mải nói chuyện ở góc xa.",
-      "startMs": 494476,
-      "endMs": 497460
+      "startMs": 508969,
+      "endMs": 511673
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "Ông lặng lẽ vào sau quầy, tự phục vụ vị khách,",
-      "startMs": 497620,
-      "endMs": 500301
+      "startMs": 511813,
+      "endMs": 514431
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "rồi đưa món hàng cho nhân viên gói lại mà không trách một lời nào.",
-      "startMs": 500356,
-      "endMs": 503500
+      "startMs": 514485,
+      "endMs": 517913
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "Đổi chữ \"nhưng\" thành chữ \"và\".",
-      "startMs": 504287,
-      "endMs": 505987
+      "startMs": 517913,
+      "endMs": 521713
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "Tác giả để ý rằng nhiều người hay khen trước, rồi thêm chữ \"nhưng\" và một lời chê.",
-      "startMs": 505987,
-      "endMs": 511047
+      "startMs": 521713,
+      "endMs": 527093
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "Người nghe vừa nghe chữ \"nhưng\" là bắt đầu nghi lời khen ban nãy chỉ để mở đường.",
-      "startMs": 511307,
-      "endMs": 515067
+      "startMs": 527273,
+      "endMs": 531893
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "Ông gợi ý một cách đơn giản: thay vì nói \"con học tốt lên rồi,",
-      "startMs": 515587,
-      "endMs": 518836
+      "startMs": 532073,
+      "endMs": 535631
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "nhưng môn toán còn yếu\", cha mẹ có thể nói \"con học tốt lên rồi,",
-      "startMs": 518898,
-      "endMs": 522476
+      "startMs": 535690,
+      "endMs": 539516
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "và nếu con cứ cố gắng như vậy thì môn toán cũng sẽ khá lên\".",
-      "startMs": 522542,
-      "endMs": 525827
+      "startMs": 539582,
+      "endMs": 543053
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "Giữ thể diện, khen tiến bộ dù nhỏ.",
-      "startMs": 526813,
-      "endMs": 529193
+      "startMs": 543053,
+      "endMs": 546273
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "Những nguyên tắc còn lại khuyên mình xét mình trước khi phê bình người khác,",
-      "startMs": 529413,
-      "endMs": 532329
+      "startMs": 546513,
+      "endMs": 549781
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "gợi ý thay vì ra lệnh, giữ thể diện cho người mắc lỗi,",
-      "startMs": 532404,
-      "endMs": 535433
+      "startMs": 549846,
+      "endMs": 552693
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "khen cả những tiến bộ nhỏ nhất, trao cho người khác một tiếng tốt",
-      "startMs": 535473,
-      "endMs": 538974
+      "startMs": 552733,
+      "endMs": 556053
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "để họ muốn sống xứng đáng, và làm cho lỗi lầm trông có vẻ dễ sửa.",
-      "startMs": 539013,
-      "endMs": 542773
+      "startMs": 556093,
+      "endMs": 561860
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "Mình thấy phần này không bảo mình im lặng trước cái sai.",
-      "startMs": 545260,
-      "endMs": 547720
+      "startMs": 562040,
+      "endMs": 564240
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "Điều cuốn sách bàn là cách nói sao cho người",
-      "startMs": 548340,
-      "endMs": 550423
+      "startMs": 564620,
+      "endMs": 566530
     },
     {
       "part": "Phần bốn · Góp ý mà không làm tổn thương",
       "text": "kia còn muốn sửa, chứ không phải tránh nói.",
-      "startMs": 550479,
-      "endMs": 552460
+      "startMs": 566580,
+      "endMs": 568340
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Đến đây, mình muốn nói về những chỗ khiến nhiều người không thích cuốn sách này,",
-      "startMs": 556100,
-      "endMs": 559986
+      "startMs": 571200,
+      "endMs": 575155
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "và cả những chỗ chính mình thấy còn thiếu.",
-      "startMs": 560043,
-      "endMs": 563027
+      "startMs": 575210,
+      "endMs": 578480
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Thứ nhất, sách thuyết phục chủ yếu bằng giai thoại:",
-      "startMs": 563167,
-      "endMs": 565492
+      "startMs": 578620,
+      "endMs": 580826
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "hết chuyện thành công này đến chuyện thành công khác,",
-      "startMs": 565536,
-      "endMs": 567995
+      "startMs": 580870,
+      "endMs": 583434
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "và vài con số tỉ lệ phần trăm được đưa ra mà không ghi rõ nguồn.",
-      "startMs": 568043,
-      "endMs": 571867
+      "startMs": 583486,
+      "endMs": 587320
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Mình nghĩ nên xem chúng như ví dụ minh họa,",
-      "startMs": 571967,
-      "endMs": 573930
+      "startMs": 587360,
+      "endMs": 589253
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "chứ không phải bằng chứng rằng cách làm ấy luôn hiệu quả.",
-      "startMs": 573974,
-      "endMs": 577453
+      "startMs": 589299,
+      "endMs": 592960
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Thứ hai, phần lớn ví dụ là doanh nhân, chính khách và người",
-      "startMs": 577613,
-      "endMs": 581004
+      "startMs": 593120,
+      "endMs": 596481
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "bán hàng ở Mỹ gần một trăm năm trước,",
-      "startMs": 581050,
-      "endMs": 582822
+      "startMs": 596532,
+      "endMs": 598298
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "nên có những đoạn đọc giống sách dạy bán hàng hơn là sách về các mối quan hệ.",
-      "startMs": 582873,
-      "endMs": 587173
+      "startMs": 598344,
+      "endMs": 603300
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Thứ ba, một vài cách trong sách,",
-      "startMs": 587980,
-      "endMs": 589997
+      "startMs": 603340,
+      "endMs": 605221
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "nếu tách khỏi sự chân thành, rất dễ thành thao túng.",
-      "startMs": 590060,
-      "endMs": 593120
+      "startMs": 605280,
+      "endMs": 608340
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Sách có cảnh báo về chuyện nịnh hót,",
-      "startMs": 593300,
-      "endMs": 594780
+      "startMs": 608480,
+      "endMs": 609909
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "nhưng mình thấy chưa nói nhiều về việc dừng ở đâu.",
-      "startMs": 594830,
-      "endMs": 597420
+      "startMs": 609951,
+      "endMs": 613060
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Thứ tư, sách khuyên tránh tranh cãi, tha thứ và giữ hòa khí,",
-      "startMs": 598367,
-      "endMs": 601503
+      "startMs": 613200,
+      "endMs": 617027
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "nhưng gần như không bàn về lúc cần nói thẳng, cần đặt giới hạn,",
-      "startMs": 601555,
-      "endMs": 604676
+      "startMs": 617092,
+      "endMs": 620727
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "hay khi đúng sai quan trọng hơn chuyện làm người khác vui lòng.",
-      "startMs": 604734,
-      "endMs": 607547
+      "startMs": 620793,
+      "endMs": 624487
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Còn ở chiều ngược lại, mình cũng thấy có người chê cuốn sách là dạy",
-      "startMs": 608353,
-      "endMs": 611849
+      "startMs": 624687,
+      "endMs": 627885
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "nịnh mà bỏ qua những đoạn phân biệt lời khen thật với lời nịnh.",
-      "startMs": 611908,
-      "endMs": 614993
+      "startMs": 627951,
+      "endMs": 632027
     },
     {
       "part": "Những điểm chưa đạt",
       "text": "Hai cách nhìn ấy, mình nghĩ đều có phần đúng.",
-      "startMs": 615593,
-      "endMs": 617453
+      "startMs": 632127,
+      "endMs": 634707
     },
     {
       "part": "Tổng kết",
       "text": "Cả cuốn Đắc nhân tâm có thể kể lại trong một hơi:",
-      "startMs": 621100,
-      "endMs": 623918
+      "startMs": 637600,
+      "endMs": 640520
     },
     {
       "part": "Tổng kết",
       "text": "tác giả cho rằng người ta dễ thay đổi khi được tôn trọng hơn là khi bị chê trách.",
-      "startMs": 623976,
-      "endMs": 627980
+      "startMs": 640573,
+      "endMs": 645987
     },
     {
       "part": "Tổng kết",
       "text": "Từ đó, sách đi qua bốn phần: ba điều nền tảng, sáu cách tạo thiện cảm, mười hai cách",
-      "startMs": 628667,
-      "endMs": 633025
+      "startMs": 646067,
+      "endMs": 651458
     },
     {
       "part": "Tổng kết",
       "text": "cư xử khi hai người nghĩ khác nhau, và chín cách góp ý mà không làm ai tổn thương.",
-      "startMs": 633077,
-      "endMs": 636947
+      "startMs": 651519,
+      "endMs": 656513
     },
     {
       "part": "Tổng kết",
       "text": "Và điều kiện cuốn sách nhiều lần nhấn mạnh là: phải thật lòng.",
-      "startMs": 638213,
-      "endMs": 641053
+      "startMs": 656833,
+      "endMs": 659633
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Nói về cảm nhận của riêng mình, thứ mình muốn mang theo sau khi",
-      "startMs": 644667,
-      "endMs": 647887
+      "startMs": 662500,
+      "endMs": 666066
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "đọc là thói quen dừng lại một nhịp trước khi chê trách ai đó.",
-      "startMs": 647927,
-      "endMs": 650807
+      "startMs": 666120,
+      "endMs": 669420
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Lá thư Lincoln không gửi đi là hình ảnh mình nhớ lâu nhất:",
-      "startMs": 651347,
-      "endMs": 654263
+      "startMs": 669720,
+      "endMs": 672620
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "viết ra cho hả giận cũng được, nhưng chưa vội gửi.",
-      "startMs": 654317,
-      "endMs": 657573
+      "startMs": 672667,
+      "endMs": 675980
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Nhiều lời khuyên trong sách nghe qua thì rất bình thường,",
-      "startMs": 657793,
-      "endMs": 660375
+      "startMs": 676180,
+      "endMs": 678898
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "như mỉm cười hay nhớ tên người khác.",
-      "startMs": 660432,
-      "endMs": 662113
+      "startMs": 678954,
+      "endMs": 680720
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Nhưng ngẫm lại, mình thấy điều đáng giữ nằm ở phía sau:",
-      "startMs": 662613,
-      "endMs": 665206
+      "startMs": 681040,
+      "endMs": 683790
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "nhìn người đối diện như một con người, chứ không phải như một việc cần xong.",
-      "startMs": 665258,
-      "endMs": 669600
+      "startMs": 683844,
+      "endMs": 688307
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Còn một điều mình muốn nhắc: những câu chuyện trong sách chỉ là một góc nhìn,",
-      "startMs": 669600,
-      "endMs": 673078
+      "startMs": 688307,
+      "endMs": 691887
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "phần lớn là chuyện của những người đã thành",
-      "startMs": 673129,
-      "endMs": 675044
+      "startMs": 691940,
+      "endMs": 693956
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "công trong một thời và một nơi rất khác với mình bây giờ.",
-      "startMs": 675082,
-      "endMs": 678380
+      "startMs": 693995,
+      "endMs": 696927
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Vì vậy, các bạn cứ giữ chính kiến của mình:",
-      "startMs": 678540,
-      "endMs": 680672
+      "startMs": 697067,
+      "endMs": 699479
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "thử rồi tự xem điều gì hợp, điều gì không, và đừng dùng bất kỳ cách",
-      "startMs": 680730,
-      "endMs": 684724
+      "startMs": 699537,
+      "endMs": 703085
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "nào trong sách để đổi lấy sự thật hay để lừa người khác.",
-      "startMs": 684771,
-      "endMs": 687500
+      "startMs": 703130,
+      "endMs": 706207
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Nếu chỉ chọn một điều để bắt đầu, mình gợi ý cách đổi chữ \"nhưng\" thành chữ \"và\".",
-      "startMs": 688507,
-      "endMs": 692567
+      "startMs": 707447,
+      "endMs": 713127
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "Lần tới khi cần góp ý cho ai đó, các bạn thử nói trọn lời khen trước,",
-      "startMs": 693547,
-      "endMs": 697570
+      "startMs": 713127,
+      "endMs": 717273
     },
     {
       "part": "Ý kiến cá nhân",
       "text": "rồi nối lời góp ý bằng chữ \"và\", xem người nghe phản ứng có khác không.",
-      "startMs": 697627,
-      "endMs": 701287
+      "startMs": 717327,
+      "endMs": 721207
     },
     {
       "part": "Nhận xét chung",
       "text": "Khép lại Đắc nhân tâm, mình không nghĩ đây là",
-      "startMs": 704933,
-      "endMs": 707561
+      "startMs": 724100,
+      "endMs": 726549
     },
     {
       "part": "Nhận xét chung",
       "text": "cuốn sách dạy người ta khéo léo cho bằng được.",
-      "startMs": 707603,
-      "endMs": 709753
+      "startMs": 726595,
+      "endMs": 728700
     },
     {
       "part": "Nhận xét chung",
       "text": "Nó giống một lời nhắc chú ý đến người khác nhiều hơn, và dù thích hay",
-      "startMs": 710540,
-      "endMs": 713926
+      "startMs": 729647,
+      "endMs": 732736
     },
     {
       "part": "Nhận xét chung",
       "text": "không thích cuốn sách, mình nghĩ ai đọc cũng có thể giữ lại được vài điều.",
-      "startMs": 713974,
-      "endMs": 717220
+      "startMs": 732777,
+      "endMs": 736227
     },
     {
       "part": "Nhận xét chung",
       "text": "Nếu bạn có thời gian, có thể đọc qua để hiểu hơn:",
-      "startMs": 718487,
-      "endMs": 721180
+      "startMs": 737233,
+      "endMs": 740026
     },
     {
       "part": "Nhận xét chung",
       "text": "đọc chậm, rồi tự quyết định điều gì đáng giữ.",
-      "startMs": 721240,
-      "endMs": 723427
+      "startMs": 740097,
+      "endMs": 742633
     },
     {
       "part": "Outro series",
       "text": "Đến đây là kết thúc rồi, các bạn thấy thế nào?",
-      "startMs": 726307,
-      "endMs": 729267
+      "startMs": 745073,
+      "endMs": 748033
     },
     {
       "part": "Outro series",
       "text": "Nếu hay thì hãy bình luận vào bên dưới video và cho mình một lượt đăng ký kênh",
-      "startMs": 730007,
-      "endMs": 734225
+      "startMs": 748773,
+      "endMs": 752991
     },
     {
       "part": "Outro series",
       "text": "để mình có động lực để có thể làm thêm nhiều những video thế này hơn nữa nhé.",
-      "startMs": 734280,
-      "endMs": 738807
+      "startMs": 753046,
+      "endMs": 757573
     },
     {
       "part": "Outro series",
       "text": "Hẹn gặp lại cả nhà.",
-      "startMs": 739027,
-      "endMs": 739827
+      "startMs": 757793,
+      "endMs": 758593
     }
   ]
 }

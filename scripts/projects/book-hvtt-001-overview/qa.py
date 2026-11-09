@@ -74,7 +74,10 @@ def main():
     for lines in sorted(HERE.glob('lines-*.txt')):
         seg = lines.stem[len('lines-'):]
         if not (HERE / f'audition-{seg}.json').exists(): continue
-        sentences = [norm(s) for s in lines.read_text().splitlines() if s.strip()]
+        # A sentence may be spoken differently from how it is shown ("say", e.g. Meade read as "Mít"): lines-*.txt keep
+        # the spoken form, captions keep the written one.
+        shown = {norm(x['say']): norm(x['text']) for x in json.loads((HERE / f'audition-{seg}.json').read_text()).get('sentences', []) if x.get('say')}
+        sentences = [shown.get(norm(s), norm(s)) for s in lines.read_text().splitlines() if s.strip()]
         best = max(by_part.items(), key=lambda kv: sum(s in norm(' '.join(kv[1])) for s in sentences))
         text = norm(' '.join(best[1])); pos, lost = 0, []
         for s in sentences:
