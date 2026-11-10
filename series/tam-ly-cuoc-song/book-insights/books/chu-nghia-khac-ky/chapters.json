@@ -1,0 +1,42 @@
+{
+  "book": "chu-nghia-khac-ky",
+  "sourceSha256": "66a50fb49f42d0dbc4b1093b336af3ac8dc6b46fe6a4db5e2aadea60e6ca02da",
+  "edition": "66a50fb49f42d0dbc4b1093b336af3ac8dc6b46fe6a4db5e2aadea60e6ca02da-de2a45e349f9",
+  "pageNumberConvention": "PDF không có nhãn/số trang in; chỉ dùng trang PDF 1-based.",
+  "mappingSummary": "27 bookmark đã kiểm: lời cảm ơn, giới thiệu, 4 phần và 21 chương. Tiêu đề bookmark khớp mục lục PDF và tiêu đề trong lớp chữ.",
+  "coverage": {"chaptersRead": 21, "chaptersTotal": 21, "status": "complete"},
+  "frontMatter": [
+    {"title": "Mục lục ebook", "pdfStart": 2, "pdfEnd": 2, "mappingSource": "text-and-visual-checked"},
+    {"title": "Lời cảm ơn", "pdfStart": 4, "pdfEnd": 4, "mappingSource": "bookmark-checked"},
+    {"title": "Giới thiệu: Một kế hoạch cho cuộc sống", "pdfStart": 5, "pdfEnd": 15, "mappingSource": "bookmark-checked", "readStatus": "read"}
+  ],
+  "parts": [
+    {"number": 1, "title": "Sự hình thành của chủ nghĩa Khắc kỷ", "pdfStart": 16, "pdfEnd": 49, "chapters": [1, 2, 3]},
+    {"number": 2, "title": "Các kỹ thuật tâm lý của chủ nghĩa Khắc kỷ", "pdfStart": 50, "pdfEnd": 95, "chapters": [4, 5, 6, 7, 8]},
+    {"number": 3, "title": "Lời khuyên của các nhà Khắc kỷ", "pdfStart": 96, "pdfEnd": 155, "chapters": [9, 10, 11, 12, 13, 14, 15, 16, 17, 18]},
+    {"number": 4, "title": "Chủ nghĩa Khắc kỷ trong cuộc sống hiện đại", "pdfStart": 156, "pdfEnd": 215, "chapters": [19, 20, 21]}
+  ],
+  "chapters": [
+    {"number": 1, "title": "Triết học quan tâm đến cuộc sống", "pdfStart": 17, "pdfEnd": 25, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 2, "title": "Các nhà Khắc kỷ đầu tiên", "pdfStart": 26, "pdfEnd": 36, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 3, "title": "Chủ nghĩa Khắc kỷ La Mã", "pdfStart": 37, "pdfEnd": 49, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 4, "title": "Tưởng tượng tiêu cực: Điều tồi tệ nhất có thể xảy ra là gì?", "pdfStart": 51, "pdfEnd": 65, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 5, "title": "Sự lưỡng phân của quyền kiểm soát: Về việc trở nên bất khả chiến bại", "pdfStart": 66, "pdfEnd": 77, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 6, "title": "Thuyết vận mệnh: Buông bỏ quá khứ... và cả hiện tại", "pdfStart": 78, "pdfEnd": 83, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 7, "title": "Tự tiết chế bản thân: Ứng phó với mặt tối của lạc thú", "pdfStart": 84, "pdfEnd": 90, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 8, "title": "Suy ngẫm: Quan sát bản thân thực hành chủ nghĩa Khắc kỷ", "pdfStart": 91, "pdfEnd": 95, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 9, "title": "Bổn phận: Về tình yêu thương nhân loại", "pdfStart": 97, "pdfEnd": 101, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 10, "title": "Quan hệ xã hội: Về việc ứng xử với người khác", "pdfStart": 102, "pdfEnd": 107, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 11, "title": "Sự xúc phạm: Vượt qua những hành vi xúc phạm", "pdfStart": 108, "pdfEnd": 116, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 12, "title": "Sự đau buồn: Vượt qua nước mắt bằng lý trí", "pdfStart": 117, "pdfEnd": 121, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 13, "title": "Cơn giận: Vượt qua tâm thế phản đối niềm vui", "pdfStart": 122, "pdfEnd": 126, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 14, "title": "Những giá trị cá nhân 1: Bàn về việc theo đuổi danh vọng", "pdfStart": 127, "pdfEnd": 132, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 15, "title": "Những giá trị cá nhân 2: Bàn về cuộc sống xa hoa", "pdfStart": 133, "pdfEnd": 140, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 16, "title": "Tuổi già: Bàn về việc bị gửi vào viện dưỡng lão", "pdfStart": 141, "pdfEnd": 147, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 17, "title": "Chết: Bàn về kết thúc êm đẹp cho một cuộc đời viên mãn", "pdfStart": 148, "pdfEnd": 151, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 18, "title": "Trở thành người Khắc kỷ: Bắt đầu ngay bây giờ và chuẩn bị tinh thần bị chế nhạo", "pdfStart": 152, "pdfEnd": 155, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 19, "title": "Sự suy tàn của chủ nghĩa Khắc kỷ", "pdfStart": 157, "pdfEnd": 170, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 20, "title": "Xét lại chủ nghĩa Khắc kỷ", "pdfStart": 171, "pdfEnd": 190, "mappingSource": "bookmark-checked", "readStatus": "read"},
+    {"number": 21, "title": "Thực hành chủ nghĩa Khắc kỷ", "pdfStart": 191, "pdfEnd": 215, "mappingSource": "bookmark-checked", "readStatus": "read"}
+  ]
+}

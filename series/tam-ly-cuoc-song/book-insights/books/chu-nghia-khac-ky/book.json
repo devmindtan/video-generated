@@ -1,0 +1,26 @@
+{
+  "id": "chu-nghia-khac-ky",
+  "title": "Chủ nghĩa khắc kỷ: Phong cách sống bản lĩnh và bình thản",
+  "authors": ["William B. Irvine"],
+  "status": "research",
+  "sourceSha256": "66a50fb49f42d0dbc4b1093b336af3ac8dc6b46fe6a4db5e2aadea60e6ca02da",
+  "note": "Đã đọc phần giới thiệu và đủ 21/21 chương. Đây là bản diễn giải và hiện đại hóa chủ nghĩa Khắc kỷ của William B. Irvine; các sửa đổi riêng của tác giả và các nhận định sức khỏe cần được ghi nguồn, không trình bày như đồng thuận hiện hành.",
+  "cacheEdition": "66a50fb49f42d0dbc4b1093b336af3ac8dc6b46fe6a4db5e2aadea60e6ca02da-de2a45e349f9",
+  "editionDetails": {
+    "edition": "Bản ebook tiếng Việt không có trang thông tin xuất bản",
+    "translator": null,
+    "publisher": null,
+    "year": null,
+    "provenance": "PDF người dùng thêm qua trang quản lý. Metadata PDF ghi William B. Irvine và tên tiếng Việt; file chỉ mang dấu ebook©vctvegroup, không ghi dịch giả, nhà xuất bản hay năm của ấn bản tiếng Việt, nên cần đối chiếu bản in trước khi credit."
+  },
+  "sourceFile": "library/books/chu-nghia-khac-ky/sources/Chủ Nghĩa Khắc Kỷ - Phong Cách Sống Bản Lĩnh Và Bình Thản - William B. Irvine.pdf",
+  "pdfPages": 215,
+  "extractedCharacters": 450237,
+  "textLayer": "native",
+  "ocr": false,
+  "chapterMap": "chapters.json",
+  "research": "research.md",
+  "chaptersTotal": 21,
+  "chaptersRead": 21,
+  "checkedAt": "2026-11-10"
+}
