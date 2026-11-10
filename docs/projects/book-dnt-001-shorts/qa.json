@@ -1,0 +1,90 @@
+{
+ "project": "book-dnt-001-shorts",
+ "checkedAt": "2026-11-10T11:01:29+07:00",
+ "shorts": [
+  {
+   "id": "short-1",
+   "composition": "BookDntShortThangThua",
+   "seconds": 36.37,
+   "pages": 16,
+   "wordTimes": "đo bằng nhận dạng"
+  },
+  {
+   "id": "short-2",
+   "composition": "BookDntShortNhungVa",
+   "seconds": 52.36,
+   "pages": 22,
+   "wordTimes": "đo bằng nhận dạng"
+  },
+  {
+   "id": "short-3",
+   "composition": "BookDntShortTamLong",
+   "seconds": 37.32,
+   "pages": 15,
+   "wordTimes": "đo bằng nhận dạng"
+  },
+  {
+   "id": "short-4",
+   "composition": "BookDntShortChuaDat",
+   "seconds": 34.86,
+   "pages": 14,
+   "wordTimes": "đo bằng nhận dạng"
+  }
+ ],
+ "technicalPass": true,
+ "checks": [
+  {
+   "id": "files",
+   "title": "Đủ file cho bước Xem bản dựng",
+   "ok": true,
+   "detail": "đủ"
+  },
+  {
+   "id": "duration",
+   "title": "Mỗi short dài 30–60 giây",
+   "ok": true,
+   "detail": "36.37 giây, 52.36 giây, 37.32 giây, 34.86 giây"
+  },
+  {
+   "id": "captionText",
+   "title": "Chữ phụ đề khớp lời đọc đã viết",
+   "ok": true,
+   "detail": "khớp cả 4 short"
+  },
+  {
+   "id": "captionTime",
+   "title": "Phụ đề đúng thứ tự, không chồng, đủ lâu, tối đa 2 dòng",
+   "ok": true,
+   "detail": "67 trang"
+  },
+  {
+   "id": "voice",
+   "title": "Giọng không chạm đỉnh, các câu đều nhau (≤ 3 dB)",
+   "ok": true,
+   "detail": "BookDntShortThangThua: giọng -20.9 dBFS, lệch tối đa 0.7 dB; BookDntShortNhungVa: giọng -20.9 dBFS, lệch tối đa 2.2 dB; BookDntShortTamLong: giọng -22.0 dBFS, lệch tối đa 1.4 dB; BookDntShortChuaDat: giọng -21.2 dBFS, lệch tối đa 1.6 dB"
+  },
+  {
+   "id": "music",
+   "title": "Nhạc nằm dưới giọng ≥ 15 dB",
+   "ok": true,
+   "detail": "nhạc nền -40.3 dBFS"
+  },
+  {
+   "id": "build",
+   "title": "Typecheck và projects:check",
+   "ok": true,
+   "detail": "đạt"
+  },
+  {
+   "id": "loudness",
+   "title": "Âm lượng bản đăng -14 LUFS, đỉnh ≤ -1 dBTP",
+   "ok": true,
+   "detail": "chưa có bản xuất; đo khi đã xuất"
+  }
+ ],
+ "listenNotes": [
+  "Nhận dạng nghe \"nhưng\" như \"nhân\" ở mọi bản clone; tập 3 dùng cùng giọng và người dùng đã duyệt, short 2 người dùng nghe và chốt 2026-11-10.",
+  "\"trọn\" như \"chọn\", \"giữ\" như \"dữ\", \"đắc\" như \"đắt\": chất giọng, không clone lại."
+ ],
+ "note": "Đạt kỹ thuật không thay cho nghe duyệt; không render tự động."
+}

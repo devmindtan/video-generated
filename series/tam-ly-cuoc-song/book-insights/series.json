@@ -109,7 +109,11 @@
           "part": true
         }
       ],
-      "book": "hieu-ve-trai-tim"
+      "book": "hieu-ve-trai-tim",
+      "look": {
+        "theme": "rung-dem-vang",
+        "style": "net-ve"
+      }
     },
     {
       "id": "book-ah-001-overview",
@@ -198,7 +202,11 @@
           "kind": "Composition",
           "part": true
         }
-      ]
+      ],
+      "look": {
+        "theme": "rung-dem-vang",
+        "style": "net-ve"
+      }
     },
     {
       "id": "book-hvtt-001-shorts",
@@ -245,7 +253,11 @@
           "kind": "Still",
           "title": "Bìa short 3 · Gọi mãi không nghe máy"
         }
-      ]
+      ],
+      "look": {
+        "theme": "rung-dem-vang",
+        "style": "net-ve"
+      }
     },
     {
       "id": "book-ah-001-shorts",
@@ -302,7 +314,11 @@
         }
       ],
       "book": "thay-doi-ti-hon-hieu-qua-bat-ngo-atomic-habits",
-      "promotes": "book-ah-001-overview"
+      "promotes": "book-ah-001-overview",
+      "look": {
+        "theme": "rung-dem-vang",
+        "style": "net-ve"
+      }
     },
     {
       "id": "book-dnt-001-overview",
@@ -386,14 +402,18 @@
           "part": true
         }
       ],
-      "book": "dac-nhan-tam"
+      "book": "dac-nhan-tam",
+      "look": {
+        "theme": "rung-dem-vang",
+        "style": "net-ve"
+      }
     },
     {
       "id": "book-dnt-001-shorts",
       "title": "Short giới thiệu tập 3 · Đắc nhân tâm",
       "status": "production",
       "format": "short",
-      "durationSeconds": 34,
+      "durationSeconds": 40,
       "paths": {
         "source": "src/projects/book-dnt-001-shorts",
         "scripts": "scripts/projects/book-dnt-001-shorts",
@@ -407,12 +427,6 @@
           "title": "Short 1 · Thắng cũng là thua"
         },
         {
-          "id": "BookDntShortThangThuaClone",
-          "kind": "Composition",
-          "title": "Short 1 · Thắng cũng là thua · nghe thử giọng clone",
-          "part": true
-        },
-        {
           "id": "BookDntShortThangThuaCover",
           "kind": "Still",
           "title": "Bìa short 1 · Thắng cũng là thua"
@@ -421,12 +435,6 @@
           "id": "BookDntShortNhungVa",
           "kind": "Composition",
           "title": "Short 2 · Chữ “nhưng” thành “và”"
-        },
-        {
-          "id": "BookDntShortNhungVaClone",
-          "kind": "Composition",
-          "title": "Short 2 · Chữ “nhưng” thành “và” · nghe thử giọng clone",
-          "part": true
         },
         {
           "id": "BookDntShortNhungVaCover",
@@ -439,12 +447,6 @@
           "title": "Short 3 · Tấm lòng hay cửa miệng"
         },
         {
-          "id": "BookDntShortTamLongClone",
-          "kind": "Composition",
-          "title": "Short 3 · Tấm lòng hay cửa miệng · nghe thử giọng clone",
-          "part": true
-        },
-        {
           "id": "BookDntShortTamLongCover",
           "kind": "Still",
           "title": "Bìa short 3 · Tấm lòng hay cửa miệng"
@@ -455,19 +457,17 @@
           "title": "Short 4 · Vì sao có người không thích cuốn sách"
         },
         {
-          "id": "BookDntShortChuaDatClone",
-          "kind": "Composition",
-          "title": "Short 4 · Vì sao có người không thích cuốn sách · nghe thử giọng clone",
-          "part": true
-        },
-        {
           "id": "BookDntShortChuaDatCover",
           "kind": "Still",
           "title": "Bìa short 4 · Vì sao có người không thích cuốn sách"
         }
       ],
       "book": "dac-nhan-tam",
-      "promotes": "book-dnt-001-overview"
+      "promotes": "book-dnt-001-overview",
+      "look": {
+        "theme": "rung-dem-vang",
+        "style": "net-ve"
+      }
     }
   ]
 }

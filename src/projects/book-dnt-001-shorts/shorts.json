@@ -1,754 +1,784 @@
 {
- "take": "book-dnt-shorts-qt-v4",
- "voice": "25-quoc-tuan",
- "placeholder": true,
- "estimatedWords": true,
+ "take": "clone-fix3-v3",
+ "voice": "clone",
+ "placeholder": false,
+ "estimatedWords": false,
+ "sentenceTakes": {
+  "1-1": "clone-fix-v1/part-01-clone.wav",
+  "1-2": "clone-v1/part-02-clone.wav",
+  "1-3": "clone-v1/part-03-clone.wav",
+  "1-4": "clone-v1/part-04-clone.wav",
+  "1-5": "clone-v1/part-05-clone.wav",
+  "1-6": "clone-fix-v2/part-02-clone.wav",
+  "2-1": "clone-v1/part-07-clone.wav",
+  "2-2": "clone-fix-v2/part-03-clone.wav",
+  "2-3": "clone-fix-v2/part-04-clone.wav",
+  "2-3b": "clone-fix2-v2/part-01-clone.wav",
+  "2-4": "clone-fix-v2/part-05-clone.wav",
+  "2-5": "clone-fix3-v1/part-01-clone.wav",
+  "2-6": "clone-fix3-v2/part-02-clone.wav",
+  "2-6b": "clone-fix2-v2/part-04-clone.wav",
+  "2-7": "clone-v1/part-13-clone.wav",
+  "3-1": "clone-v1/part-14-clone.wav",
+  "3-2": "clone-v1/part-15-clone.wav",
+  "3-3": "clone-fix-v2/part-07-clone.wav",
+  "3-4": "clone-v1/part-17-clone.wav",
+  "3-5": "clone-v1/part-18-clone.wav",
+  "3-6": "clone-v1/part-19-clone.wav",
+  "4-1": "clone-v1/part-20-clone.wav",
+  "4-2": "clone-v1/part-21-clone.wav",
+  "4-3": "clone-v1/part-22-clone.wav",
+  "4-4": "clone-v1/part-23-clone.wav",
+  "4-5": "clone-fix-v2/part-08-clone.wav",
+  "4-6": "clone-v1/part-25-clone.wav",
+  "cta": "clone-v1/part-26-clone.wav"
+ },
  "shorts": [
   {
    "id": "short-1",
    "title": "Thắng cũng là thua",
    "file": "book-dnt-001-shorts/audio/short-1.wav",
-   "durationSeconds": 33.415,
+   "durationSeconds": 34.471,
    "sentences": [
     {
      "id": "1-1",
      "text": "Cãi thắng một người, nhiều khi chính mình mới là người thua.",
      "role": "hook",
      "startMs": 40,
-     "endMs": 2787
+     "endMs": 2602
     },
     {
      "id": "1-2",
      "text": "Vì khi bị nói là sai, người ta hiếm khi đổi ý.",
      "role": "body",
-     "startMs": 3867,
-     "endMs": 6490
+     "startMs": 3682,
+     "endMs": 6061
     },
     {
      "id": "1-3",
      "text": "Họ lo giữ thể diện, và càng bám chặt điều mình đã nói.",
      "role": "body",
-     "startMs": 7470,
-     "endMs": 10462
+     "startMs": 7041,
+     "endMs": 10358
     },
     {
      "id": "1-4",
      "text": "Trong Đắc nhân tâm, tác giả cho rằng: tranh cãi mà thua thì mình thua, còn thắng thì mình cũng thua.",
      "role": "body",
-     "startMs": 11742,
-     "endMs": 16548
+     "startMs": 11638,
+     "endMs": 17150
     },
     {
      "id": "1-5",
      "text": "Lời khuyên của sách rất ngắn: tôn trọng ý kiến của người khác, và đừng bao giờ nói thẳng rằng họ sai.",
      "role": "body",
-     "startMs": 17828,
-     "endMs": 23107
+     "startMs": 18430,
+     "endMs": 23887
     },
     {
      "id": "1-6",
      "text": "Muốn người kia nghĩ lại, mình nên chừa cho họ một đường lùi.",
      "role": "body",
-     "startMs": 24287,
-     "endMs": 27244
+     "startMs": 25067,
+     "endMs": 27977
     },
     {
      "id": "cta",
      "text": "Mình đã kể lại trọn cuốn Đắc nhân tâm trong một video dài. Link ở phần bình luận, bạn ghé xem nhé.",
      "role": "cta",
-     "startMs": 28424,
-     "endMs": 33375
+     "startMs": 29157,
+     "endMs": 34431
     }
    ],
    "words": [
     {
      "text": "Cãi",
-     "startMs": 40,
-     "endMs": 220,
+     "startMs": 0,
+     "endMs": 245,
      "sentence": "1-1"
     },
     {
      "text": "thắng",
-     "startMs": 220,
-     "endMs": 490,
+     "startMs": 245,
+     "endMs": 463,
      "sentence": "1-1"
     },
     {
      "text": "một",
-     "startMs": 490,
-     "endMs": 670,
+     "startMs": 463,
+     "endMs": 671,
      "sentence": "1-1"
     },
     {
      "text": "người,",
-     "startMs": 670,
-     "endMs": 986,
+     "startMs": 671,
+     "endMs": 1019,
      "sentence": "1-1"
     },
     {
      "text": "nhiều",
-     "startMs": 986,
-     "endMs": 1256,
+     "startMs": 1019,
+     "endMs": 1279,
      "sentence": "1-1"
     },
     {
      "text": "khi",
-     "startMs": 1256,
-     "endMs": 1436,
+     "startMs": 1279,
+     "endMs": 1481,
      "sentence": "1-1"
     },
     {
      "text": "chính",
-     "startMs": 1436,
-     "endMs": 1706,
+     "startMs": 1481,
+     "endMs": 1711,
      "sentence": "1-1"
     },
     {
      "text": "mình",
-     "startMs": 1706,
-     "endMs": 1931,
+     "startMs": 1711,
+     "endMs": 1899,
      "sentence": "1-1"
     },
     {
      "text": "mới",
-     "startMs": 1931,
-     "endMs": 2112,
+     "startMs": 1899,
+     "endMs": 2052,
      "sentence": "1-1"
     },
     {
      "text": "là",
-     "startMs": 2112,
-     "endMs": 2247,
+     "startMs": 2052,
+     "endMs": 2160,
      "sentence": "1-1"
     },
     {
      "text": "người",
-     "startMs": 2247,
-     "endMs": 2517,
+     "startMs": 2160,
+     "endMs": 2340,
      "sentence": "1-1"
     },
     {
      "text": "thua.",
-     "startMs": 2517,
-     "endMs": 2787,
+     "startMs": 2340,
+     "endMs": 2540,
      "sentence": "1-1"
     },
     {
      "text": "Vì",
-     "startMs": 3867,
-     "endMs": 4034,
+     "startMs": 3642,
+     "endMs": 3868,
      "sentence": "1-2"
     },
     {
      "text": "khi",
-     "startMs": 4034,
-     "endMs": 4258,
+     "startMs": 3868,
+     "endMs": 4027,
      "sentence": "1-2"
     },
     {
      "text": "bị",
-     "startMs": 4258,
-     "endMs": 4425,
+     "startMs": 4027,
+     "endMs": 4182,
      "sentence": "1-2"
     },
     {
      "text": "nói",
-     "startMs": 4425,
-     "endMs": 4648,
+     "startMs": 4182,
+     "endMs": 4375,
      "sentence": "1-2"
     },
     {
      "text": "là",
-     "startMs": 4648,
-     "endMs": 4816,
+     "startMs": 4375,
+     "endMs": 4615,
      "sentence": "1-2"
     },
     {
      "text": "sai,",
-     "startMs": 4816,
-     "endMs": 5095,
+     "startMs": 4615,
+     "endMs": 4933,
      "sentence": "1-2"
     },
     {
      "text": "người",
-     "startMs": 5095,
-     "endMs": 5430,
+     "startMs": 4933,
+     "endMs": 5177,
      "sentence": "1-2"
     },
     {
      "text": "ta",
-     "startMs": 5430,
-     "endMs": 5597,
+     "startMs": 5177,
+     "endMs": 5319,
      "sentence": "1-2"
     },
     {
      "text": "hiếm",
-     "startMs": 5597,
-     "endMs": 5876,
+     "startMs": 5319,
+     "endMs": 5537,
      "sentence": "1-2"
     },
     {
      "text": "khi",
-     "startMs": 5876,
-     "endMs": 6100,
+     "startMs": 5537,
+     "endMs": 5723,
      "sentence": "1-2"
     },
     {
      "text": "đổi",
-     "startMs": 6100,
-     "endMs": 6323,
+     "startMs": 5723,
+     "endMs": 5918,
      "sentence": "1-2"
     },
     {
      "text": "ý.",
-     "startMs": 6323,
-     "endMs": 6490,
+     "startMs": 5918,
+     "endMs": 6002,
      "sentence": "1-2"
     },
     {
      "text": "Họ",
-     "startMs": 7470,
-     "endMs": 7633,
+     "startMs": 7001,
+     "endMs": 7241,
      "sentence": "1-3"
     },
     {
      "text": "lo",
-     "startMs": 7633,
-     "endMs": 7797,
+     "startMs": 7241,
+     "endMs": 7501,
      "sentence": "1-3"
     },
     {
      "text": "giữ",
-     "startMs": 7797,
-     "endMs": 8014,
+     "startMs": 7501,
+     "endMs": 7795,
      "sentence": "1-3"
     },
     {
      "text": "thể",
-     "startMs": 8014,
-     "endMs": 8232,
+     "startMs": 7795,
+     "endMs": 8041,
      "sentence": "1-3"
     },
     {
      "text": "diện,",
-     "startMs": 8232,
-     "endMs": 8558,
+     "startMs": 8041,
+     "endMs": 8711,
      "sentence": "1-3"
     },
     {
      "text": "và",
-     "startMs": 8558,
-     "endMs": 8721,
+     "startMs": 8711,
+     "endMs": 9026,
      "sentence": "1-3"
     },
     {
      "text": "càng",
-     "startMs": 8721,
-     "endMs": 8993,
+     "startMs": 9026,
+     "endMs": 9281,
      "sentence": "1-3"
     },
     {
      "text": "bám",
-     "startMs": 8993,
-     "endMs": 9211,
+     "startMs": 9281,
+     "endMs": 9446,
      "sentence": "1-3"
     },
     {
      "text": "chặt",
-     "startMs": 9211,
-     "endMs": 9483,
+     "startMs": 9446,
+     "endMs": 9626,
      "sentence": "1-3"
     },
     {
      "text": "điều",
-     "startMs": 9483,
-     "endMs": 9755,
+     "startMs": 9626,
+     "endMs": 9806,
      "sentence": "1-3"
     },
     {
      "text": "mình",
-     "startMs": 9755,
-     "endMs": 10027,
+     "startMs": 9806,
+     "endMs": 10041,
      "sentence": "1-3"
     },
     {
      "text": "đã",
-     "startMs": 10027,
-     "endMs": 10190,
+     "startMs": 10041,
+     "endMs": 10176,
      "sentence": "1-3"
     },
     {
      "text": "nói.",
-     "startMs": 10190,
-     "endMs": 10462,
+     "startMs": 10176,
+     "endMs": 10281,
      "sentence": "1-3"
     },
     {
      "text": "Trong",
-     "startMs": 11742,
-     "endMs": 12027,
+     "startMs": 11598,
+     "endMs": 11831,
      "sentence": "1-4"
     },
     {
      "text": "Đắc",
-     "startMs": 12027,
-     "endMs": 12218,
+     "startMs": 11831,
+     "endMs": 12041,
      "sentence": "1-4"
     },
     {
      "text": "nhân",
-     "startMs": 12218,
-     "endMs": 12456,
+     "startMs": 12041,
+     "endMs": 12393,
      "sentence": "1-4"
     },
     {
      "text": "tâm,",
-     "startMs": 12456,
-     "endMs": 12694,
+     "startMs": 12393,
+     "endMs": 12854,
      "sentence": "1-4"
     },
     {
      "text": "tác",
-     "startMs": 12694,
-     "endMs": 12884,
+     "startMs": 12854,
+     "endMs": 13036,
      "sentence": "1-4"
     },
     {
      "text": "giả",
-     "startMs": 12884,
-     "endMs": 13074,
+     "startMs": 13036,
+     "endMs": 13208,
      "sentence": "1-4"
     },
     {
      "text": "cho",
-     "startMs": 13074,
-     "endMs": 13265,
+     "startMs": 13208,
+     "endMs": 13406,
      "sentence": "1-4"
     },
     {
      "text": "rằng:",
-     "startMs": 13265,
-     "endMs": 13550,
+     "startMs": 13406,
+     "endMs": 13921,
      "sentence": "1-4"
     },
     {
      "text": "tranh",
-     "startMs": 13550,
-     "endMs": 13836,
+     "startMs": 13921,
+     "endMs": 14102,
      "sentence": "1-4"
     },
     {
      "text": "cãi",
-     "startMs": 13836,
-     "endMs": 14026,
+     "startMs": 14102,
+     "endMs": 14352,
      "sentence": "1-4"
     },
     {
      "text": "mà",
-     "startMs": 14026,
-     "endMs": 14169,
+     "startMs": 14352,
+     "endMs": 14513,
      "sentence": "1-4"
     },
     {
      "text": "thua",
-     "startMs": 14169,
-     "endMs": 14407,
+     "startMs": 14513,
+     "endMs": 14798,
      "sentence": "1-4"
     },
     {
      "text": "thì",
-     "startMs": 14407,
-     "endMs": 14597,
+     "startMs": 14798,
+     "endMs": 14973,
      "sentence": "1-4"
     },
     {
      "text": "mình",
-     "startMs": 14597,
-     "endMs": 14835,
+     "startMs": 14973,
+     "endMs": 15193,
      "sentence": "1-4"
     },
     {
      "text": "thua,",
-     "startMs": 14835,
-     "endMs": 15120,
+     "startMs": 15193,
+     "endMs": 15703,
      "sentence": "1-4"
     },
     {
      "text": "còn",
-     "startMs": 15120,
-     "endMs": 15311,
+     "startMs": 15703,
+     "endMs": 15873,
      "sentence": "1-4"
     },
     {
      "text": "thắng",
-     "startMs": 15311,
-     "endMs": 15596,
-     "sentence": "1-4"
-    },
-    {
-     "text": "thì",
-     "startMs": 15596,
-     "endMs": 15787,
-     "sentence": "1-4"
-    },
-    {
-     "text": "mình",
-     "startMs": 15787,
-     "endMs": 16025,
-     "sentence": "1-4"
-    },
-    {
-     "text": "cũng",
-     "startMs": 16025,
+     "startMs": 15873,
      "endMs": 16262,
      "sentence": "1-4"
     },
     {
-     "text": "thua.",
+     "text": "thì",
      "startMs": 16262,
-     "endMs": 16548,
+     "endMs": 16562,
+     "sentence": "1-4"
+    },
+    {
+     "text": "mình",
+     "startMs": 16562,
+     "endMs": 16756,
+     "sentence": "1-4"
+    },
+    {
+     "text": "cũng",
+     "startMs": 16756,
+     "endMs": 16975,
+     "sentence": "1-4"
+    },
+    {
+     "text": "thua.",
+     "startMs": 16975,
+     "endMs": 17158,
      "sentence": "1-4"
     },
     {
      "text": "Lời",
-     "startMs": 17828,
-     "endMs": 18035,
+     "startMs": 18390,
+     "endMs": 18694,
      "sentence": "1-5"
     },
     {
      "text": "khuyên",
-     "startMs": 18035,
-     "endMs": 18397,
+     "startMs": 18694,
+     "endMs": 18966,
      "sentence": "1-5"
     },
     {
      "text": "của",
-     "startMs": 18397,
-     "endMs": 18604,
+     "startMs": 18966,
+     "endMs": 19158,
      "sentence": "1-5"
     },
     {
      "text": "sách",
-     "startMs": 18604,
-     "endMs": 18863,
+     "startMs": 19158,
+     "endMs": 19284,
      "sentence": "1-5"
     },
     {
      "text": "rất",
-     "startMs": 18863,
-     "endMs": 19070,
+     "startMs": 19284,
+     "endMs": 19530,
      "sentence": "1-5"
     },
     {
      "text": "ngắn:",
-     "startMs": 19070,
-     "endMs": 19381,
+     "startMs": 19530,
+     "endMs": 19858,
      "sentence": "1-5"
     },
     {
      "text": "tôn",
-     "startMs": 19381,
-     "endMs": 19588,
+     "startMs": 19858,
+     "endMs": 20324,
      "sentence": "1-5"
     },
     {
      "text": "trọng",
-     "startMs": 19588,
-     "endMs": 19898,
+     "startMs": 20324,
+     "endMs": 20504,
      "sentence": "1-5"
     },
     {
      "text": "ý",
-     "startMs": 19898,
-     "endMs": 20002,
+     "startMs": 20504,
+     "endMs": 20643,
      "sentence": "1-5"
     },
     {
      "text": "kiến",
-     "startMs": 20002,
-     "endMs": 20261,
+     "startMs": 20643,
+     "endMs": 20926,
      "sentence": "1-5"
     },
     {
      "text": "của",
-     "startMs": 20261,
-     "endMs": 20468,
+     "startMs": 20926,
+     "endMs": 21091,
      "sentence": "1-5"
     },
     {
      "text": "người",
-     "startMs": 20468,
-     "endMs": 20778,
+     "startMs": 21091,
+     "endMs": 21299,
      "sentence": "1-5"
     },
     {
      "text": "khác,",
-     "startMs": 20778,
-     "endMs": 21089,
+     "startMs": 21299,
+     "endMs": 21594,
      "sentence": "1-5"
     },
     {
      "text": "và",
-     "startMs": 21089,
-     "endMs": 21244,
+     "startMs": 21594,
+     "endMs": 22064,
      "sentence": "1-5"
     },
     {
      "text": "đừng",
-     "startMs": 21244,
-     "endMs": 21503,
+     "startMs": 22064,
+     "endMs": 22249,
      "sentence": "1-5"
     },
     {
      "text": "bao",
-     "startMs": 21503,
-     "endMs": 21710,
+     "startMs": 22249,
+     "endMs": 22406,
      "sentence": "1-5"
     },
     {
      "text": "giờ",
-     "startMs": 21710,
-     "endMs": 21917,
+     "startMs": 22406,
+     "endMs": 22624,
      "sentence": "1-5"
     },
     {
      "text": "nói",
-     "startMs": 21917,
-     "endMs": 22124,
+     "startMs": 22624,
+     "endMs": 22821,
      "sentence": "1-5"
     },
     {
      "text": "thẳng",
-     "startMs": 22124,
-     "endMs": 22434,
+     "startMs": 22821,
+     "endMs": 23201,
      "sentence": "1-5"
     },
     {
      "text": "rằng",
-     "startMs": 22434,
-     "endMs": 22693,
+     "startMs": 23201,
+     "endMs": 23417,
      "sentence": "1-5"
     },
     {
      "text": "họ",
-     "startMs": 22693,
-     "endMs": 22848,
+     "startMs": 23417,
+     "endMs": 23595,
      "sentence": "1-5"
     },
     {
      "text": "sai.",
-     "startMs": 22848,
-     "endMs": 23107,
+     "startMs": 23595,
+     "endMs": 23810,
      "sentence": "1-5"
     },
     {
      "text": "Muốn",
-     "startMs": 24287,
-     "endMs": 24530,
+     "startMs": 25027,
+     "endMs": 25283,
      "sentence": "1-6"
     },
     {
      "text": "người",
-     "startMs": 24530,
-     "endMs": 24820,
+     "startMs": 25283,
+     "endMs": 25481,
      "sentence": "1-6"
     },
     {
      "text": "kia",
-     "startMs": 24820,
-     "endMs": 25014,
+     "startMs": 25481,
+     "endMs": 25632,
      "sentence": "1-6"
     },
     {
      "text": "nghĩ",
-     "startMs": 25014,
-     "endMs": 25257,
+     "startMs": 25632,
+     "endMs": 25852,
      "sentence": "1-6"
     },
     {
      "text": "lại,",
-     "startMs": 25257,
-     "endMs": 25499,
+     "startMs": 25852,
+     "endMs": 26387,
      "sentence": "1-6"
     },
     {
      "text": "mình",
-     "startMs": 25499,
-     "endMs": 25741,
+     "startMs": 26387,
+     "endMs": 26507,
      "sentence": "1-6"
     },
     {
      "text": "nên",
-     "startMs": 25741,
-     "endMs": 25935,
+     "startMs": 26507,
+     "endMs": 26687,
      "sentence": "1-6"
     },
     {
      "text": "chừa",
-     "startMs": 25935,
-     "endMs": 26178,
+     "startMs": 26687,
+     "endMs": 27021,
      "sentence": "1-6"
     },
     {
      "text": "cho",
-     "startMs": 26178,
-     "endMs": 26372,
+     "startMs": 27021,
+     "endMs": 27207,
      "sentence": "1-6"
     },
     {
      "text": "họ",
-     "startMs": 26372,
-     "endMs": 26517,
+     "startMs": 27207,
+     "endMs": 27367,
      "sentence": "1-6"
     },
     {
      "text": "một",
-     "startMs": 26517,
-     "endMs": 26711,
+     "startMs": 27367,
+     "endMs": 27555,
      "sentence": "1-6"
     },
     {
      "text": "đường",
-     "startMs": 26711,
-     "endMs": 27002,
+     "startMs": 27555,
+     "endMs": 27732,
      "sentence": "1-6"
     },
     {
      "text": "lùi.",
-     "startMs": 27002,
-     "endMs": 27244,
+     "startMs": 27732,
+     "endMs": 27927,
      "sentence": "1-6"
     },
     {
      "text": "Mình",
-     "startMs": 28424,
-     "endMs": 28674,
+     "startMs": 29117,
+     "endMs": 29372,
      "sentence": "cta"
     },
     {
      "text": "đã",
-     "startMs": 28674,
-     "endMs": 28824,
+     "startMs": 29372,
+     "endMs": 29554,
      "sentence": "cta"
     },
     {
      "text": "kể",
-     "startMs": 28824,
-     "endMs": 28974,
+     "startMs": 29554,
+     "endMs": 29703,
      "sentence": "cta"
     },
     {
      "text": "lại",
-     "startMs": 28974,
-     "endMs": 29174,
+     "startMs": 29703,
+     "endMs": 29940,
      "sentence": "cta"
     },
     {
      "text": "trọn",
-     "startMs": 29174,
-     "endMs": 29424,
+     "startMs": 29940,
+     "endMs": 30151,
      "sentence": "cta"
     },
     {
      "text": "cuốn",
-     "startMs": 29424,
-     "endMs": 29674,
+     "startMs": 30151,
+     "endMs": 30389,
      "sentence": "cta"
     },
     {
      "text": "Đắc",
-     "startMs": 29674,
-     "endMs": 29874,
+     "startMs": 30389,
+     "endMs": 30582,
      "sentence": "cta"
     },
     {
      "text": "nhân",
-     "startMs": 29874,
-     "endMs": 30124,
+     "startMs": 30582,
+     "endMs": 30836,
      "sentence": "cta"
     },
     {
      "text": "tâm",
-     "startMs": 30124,
-     "endMs": 30324,
+     "startMs": 30836,
+     "endMs": 31069,
      "sentence": "cta"
     },
     {
      "text": "trong",
-     "startMs": 30324,
-     "endMs": 30624,
+     "startMs": 31069,
+     "endMs": 31329,
      "sentence": "cta"
     },
     {
      "text": "một",
-     "startMs": 30624,
-     "endMs": 30824,
+     "startMs": 31329,
+     "endMs": 31521,
      "sentence": "cta"
     },
     {
      "text": "video",
-     "startMs": 30824,
-     "endMs": 31124,
+     "startMs": 31521,
+     "endMs": 31922,
      "sentence": "cta"
     },
     {
      "text": "dài.",
-     "startMs": 31124,
-     "endMs": 31374,
+     "startMs": 31922,
+     "endMs": 32577,
      "sentence": "cta"
     },
     {
      "text": "Link",
-     "startMs": 31374,
-     "endMs": 31624,
+     "startMs": 32577,
+     "endMs": 32794,
      "sentence": "cta"
     },
     {
      "text": "ở",
-     "startMs": 31624,
-     "endMs": 31724,
+     "startMs": 32794,
+     "endMs": 32844,
      "sentence": "cta"
     },
     {
      "text": "phần",
-     "startMs": 31724,
-     "endMs": 31975,
+     "startMs": 32838,
+     "endMs": 33011,
      "sentence": "cta"
     },
     {
      "text": "bình",
-     "startMs": 31975,
-     "endMs": 32225,
+     "startMs": 33011,
+     "endMs": 33251,
      "sentence": "cta"
     },
     {
      "text": "luận,",
-     "startMs": 32225,
-     "endMs": 32525,
+     "startMs": 33251,
+     "endMs": 33718,
      "sentence": "cta"
     },
     {
      "text": "bạn",
-     "startMs": 32525,
-     "endMs": 32725,
+     "startMs": 33718,
+     "endMs": 33860,
      "sentence": "cta"
     },
     {
      "text": "ghé",
-     "startMs": 32725,
-     "endMs": 32925,
+     "startMs": 33860,
+     "endMs": 34068,
      "sentence": "cta"
     },
     {
      "text": "xem",
-     "startMs": 32925,
-     "endMs": 33125,
+     "startMs": 34068,
+     "endMs": 34266,
      "sentence": "cta"
     },
     {
      "text": "nhé.",
-     "startMs": 33125,
-     "endMs": 33375,
+     "startMs": 34266,
+     "endMs": 34437,
      "sentence": "cta"
     }
    ]
@@ -757,1074 +787,1074 @@
    "id": "short-2",
    "title": "Chữ “nhưng” thành chữ “và”",
    "file": "book-dnt-001-shorts/audio/short-2.wav",
-   "durationSeconds": 48.375,
+   "durationSeconds": 50.462,
    "sentences": [
     {
      "id": "2-1",
      "text": "Lời khen của bạn có thể mất hết tác dụng, chỉ vì một chữ.",
      "role": "hook",
      "startMs": 40,
-     "endMs": 3152
+     "endMs": 3229
     },
     {
      "id": "2-2",
      "text": "Đó là chữ nhưng.",
      "role": "body",
-     "startMs": 4132,
-     "endMs": 5330
+     "startMs": 4209,
+     "endMs": 4975
     },
     {
      "id": "2-3",
      "text": "Nhiều người hay khen trước, thêm chữ nhưng, rồi mới góp ý.",
      "role": "body",
-     "startMs": 6510,
-     "endMs": 9644
+     "startMs": 6155,
+     "endMs": 9373
     },
     {
      "id": "2-3b",
      "text": "Kiểu như: bài này em làm tốt lắm, nhưng phần cuối còn sơ sài.",
      "role": "body",
-     "startMs": 10624,
-     "endMs": 13980
+     "startMs": 10353,
+     "endMs": 13765
     },
     {
      "id": "2-4",
      "text": "Người nghe vừa nghe tới chữ nhưng là bắt đầu nghi lời khen ban nãy chỉ để mở đường.",
      "role": "body",
-     "startMs": 15060,
-     "endMs": 19105
+     "startMs": 14845,
+     "endMs": 19463
     },
     {
      "id": "2-5",
      "text": "Trong Đắc nhân tâm, tác giả gợi ý một cách rất đơn giản: thay chữ nhưng bằng chữ và, thế thôi.",
      "role": "body",
-     "startMs": 20385,
-     "endMs": 25153
+     "startMs": 20743,
+     "endMs": 26059
     },
     {
      "id": "2-6",
      "text": "Mình nói trọn lời khen trước, rồi nối lời góp ý bằng chữ và, không dùng chữ nhưng nữa.",
      "role": "body",
-     "startMs": 26333,
-     "endMs": 30809
+     "startMs": 27239,
+     "endMs": 31962
     },
     {
      "id": "2-6b",
      "text": "Câu lúc nãy sẽ thành: bài này em làm tốt lắm, và nếu chăm chút thêm phần cuối thì còn tốt hơn nữa.",
      "role": "body",
-     "startMs": 31889,
-     "endMs": 37289
+     "startMs": 33042,
+     "endMs": 38554
     },
     {
      "id": "2-7",
      "text": "Vậy là lời khen vẫn còn nguyên, còn lời góp ý thì nghe như một lời động viên.",
      "role": "body",
-     "startMs": 38369,
-     "endMs": 42205
+     "startMs": 39634,
+     "endMs": 43969
     },
     {
      "id": "cta",
      "text": "Mình đã kể lại trọn cuốn Đắc nhân tâm trong một video dài. Link ở phần bình luận, bạn ghé xem nhé.",
      "role": "cta",
-     "startMs": 43385,
-     "endMs": 48335
+     "startMs": 45149,
+     "endMs": 50422
     }
    ],
    "words": [
     {
      "text": "Lời",
-     "startMs": 40,
-     "endMs": 255,
+     "startMs": 0,
+     "endMs": 267,
      "sentence": "2-1"
     },
     {
      "text": "khen",
-     "startMs": 255,
-     "endMs": 523,
+     "startMs": 267,
+     "endMs": 445,
      "sentence": "2-1"
     },
     {
      "text": "của",
-     "startMs": 523,
-     "endMs": 737,
+     "startMs": 445,
+     "endMs": 628,
      "sentence": "2-1"
     },
     {
      "text": "bạn",
-     "startMs": 737,
-     "endMs": 952,
+     "startMs": 628,
+     "endMs": 771,
      "sentence": "2-1"
     },
     {
      "text": "có",
-     "startMs": 952,
-     "endMs": 1113,
+     "startMs": 771,
+     "endMs": 916,
      "sentence": "2-1"
     },
     {
      "text": "thể",
-     "startMs": 1113,
-     "endMs": 1328,
+     "startMs": 916,
+     "endMs": 1051,
      "sentence": "2-1"
     },
     {
      "text": "mất",
-     "startMs": 1328,
-     "endMs": 1542,
+     "startMs": 1051,
+     "endMs": 1227,
      "sentence": "2-1"
     },
     {
      "text": "hết",
-     "startMs": 1542,
-     "endMs": 1757,
+     "startMs": 1227,
+     "endMs": 1399,
      "sentence": "2-1"
     },
     {
      "text": "tác",
-     "startMs": 1757,
-     "endMs": 1972,
+     "startMs": 1399,
+     "endMs": 1586,
      "sentence": "2-1"
     },
     {
      "text": "dụng,",
-     "startMs": 1972,
-     "endMs": 2293,
+     "startMs": 1586,
+     "endMs": 1995,
      "sentence": "2-1"
     },
     {
      "text": "chỉ",
-     "startMs": 2293,
-     "endMs": 2508,
+     "startMs": 1995,
+     "endMs": 2272,
      "sentence": "2-1"
     },
     {
      "text": "vì",
-     "startMs": 2508,
-     "endMs": 2669,
+     "startMs": 2272,
+     "endMs": 2420,
      "sentence": "2-1"
     },
     {
      "text": "một",
-     "startMs": 2669,
-     "endMs": 2884,
+     "startMs": 2420,
+     "endMs": 2950,
      "sentence": "2-1"
     },
     {
      "text": "chữ.",
-     "startMs": 2884,
-     "endMs": 3152,
+     "startMs": 2950,
+     "endMs": 3140,
      "sentence": "2-1"
     },
     {
      "text": "Đó",
-     "startMs": 4132,
-     "endMs": 4343,
+     "startMs": 4169,
+     "endMs": 4409,
      "sentence": "2-2"
     },
     {
      "text": "là",
-     "startMs": 4343,
-     "endMs": 4555,
+     "startMs": 4409,
+     "endMs": 4569,
      "sentence": "2-2"
     },
     {
      "text": "chữ",
-     "startMs": 4555,
-     "endMs": 4836,
+     "startMs": 4569,
+     "endMs": 4709,
      "sentence": "2-2"
     },
     {
      "text": "nhưng.",
-     "startMs": 4836,
-     "endMs": 5330,
+     "startMs": 4709,
+     "endMs": 4909,
      "sentence": "2-2"
     },
     {
      "text": "Nhiều",
-     "startMs": 6510,
-     "endMs": 6828,
+     "startMs": 6115,
+     "endMs": 6407,
      "sentence": "2-3"
     },
     {
      "text": "người",
-     "startMs": 6828,
-     "endMs": 7147,
+     "startMs": 6407,
+     "endMs": 6615,
      "sentence": "2-3"
     },
     {
      "text": "hay",
-     "startMs": 7147,
-     "endMs": 7360,
+     "startMs": 6615,
+     "endMs": 6808,
      "sentence": "2-3"
     },
     {
      "text": "khen",
-     "startMs": 7360,
-     "endMs": 7625,
+     "startMs": 6808,
+     "endMs": 7068,
      "sentence": "2-3"
     },
     {
      "text": "trước,",
-     "startMs": 7625,
-     "endMs": 7997,
+     "startMs": 7068,
+     "endMs": 7600,
      "sentence": "2-3"
     },
     {
      "text": "thêm",
-     "startMs": 7997,
-     "endMs": 8263,
+     "startMs": 7600,
+     "endMs": 7817,
      "sentence": "2-3"
     },
     {
      "text": "chữ",
-     "startMs": 8263,
-     "endMs": 8475,
+     "startMs": 7817,
+     "endMs": 7993,
      "sentence": "2-3"
     },
     {
      "text": "nhưng,",
-     "startMs": 8475,
-     "endMs": 8847,
+     "startMs": 7993,
+     "endMs": 8560,
      "sentence": "2-3"
     },
     {
      "text": "rồi",
-     "startMs": 8847,
-     "endMs": 9059,
+     "startMs": 8560,
+     "endMs": 8806,
      "sentence": "2-3"
     },
     {
      "text": "mới",
-     "startMs": 9059,
-     "endMs": 9272,
+     "startMs": 8806,
+     "endMs": 8998,
      "sentence": "2-3"
     },
     {
      "text": "góp",
-     "startMs": 9272,
-     "endMs": 9484,
+     "startMs": 8998,
+     "endMs": 9218,
      "sentence": "2-3"
     },
     {
      "text": "ý.",
-     "startMs": 9484,
-     "endMs": 9644,
+     "startMs": 9218,
+     "endMs": 9315,
      "sentence": "2-3"
     },
     {
      "text": "Kiểu",
-     "startMs": 10624,
-     "endMs": 10894,
+     "startMs": 10313,
+     "endMs": 10583,
      "sentence": "2-3b"
     },
     {
      "text": "như:",
-     "startMs": 10894,
-     "endMs": 11165,
+     "startMs": 10583,
+     "endMs": 10951,
      "sentence": "2-3b"
     },
     {
      "text": "bài",
-     "startMs": 11165,
-     "endMs": 11382,
+     "startMs": 10951,
+     "endMs": 11216,
      "sentence": "2-3b"
     },
     {
      "text": "này",
-     "startMs": 11382,
-     "endMs": 11598,
+     "startMs": 11216,
+     "endMs": 11359,
      "sentence": "2-3b"
     },
     {
      "text": "em",
-     "startMs": 11598,
-     "endMs": 11761,
+     "startMs": 11359,
+     "endMs": 11499,
      "sentence": "2-3b"
     },
     {
      "text": "làm",
-     "startMs": 11761,
-     "endMs": 11977,
+     "startMs": 11499,
+     "endMs": 11681,
      "sentence": "2-3b"
     },
     {
      "text": "tốt",
-     "startMs": 11977,
-     "endMs": 12194,
+     "startMs": 11681,
+     "endMs": 11893,
      "sentence": "2-3b"
     },
     {
      "text": "lắm,",
-     "startMs": 12194,
-     "endMs": 12464,
+     "startMs": 11893,
+     "endMs": 12237,
      "sentence": "2-3b"
     },
     {
      "text": "nhưng",
-     "startMs": 12464,
-     "endMs": 12789,
+     "startMs": 12237,
+     "endMs": 12497,
      "sentence": "2-3b"
     },
     {
      "text": "phần",
-     "startMs": 12789,
-     "endMs": 13060,
+     "startMs": 12497,
+     "endMs": 12718,
      "sentence": "2-3b"
     },
     {
      "text": "cuối",
-     "startMs": 13060,
-     "endMs": 13331,
+     "startMs": 12718,
+     "endMs": 12962,
      "sentence": "2-3b"
     },
     {
      "text": "còn",
-     "startMs": 13331,
-     "endMs": 13547,
+     "startMs": 12962,
+     "endMs": 13184,
      "sentence": "2-3b"
     },
     {
      "text": "sơ",
-     "startMs": 13547,
-     "endMs": 13710,
+     "startMs": 13184,
+     "endMs": 13463,
      "sentence": "2-3b"
     },
     {
      "text": "sài.",
-     "startMs": 13710,
-     "endMs": 13980,
+     "startMs": 13463,
+     "endMs": 13693,
      "sentence": "2-3b"
     },
     {
      "text": "Người",
-     "startMs": 15060,
-     "endMs": 15349,
+     "startMs": 14805,
+     "endMs": 15101,
      "sentence": "2-4"
     },
     {
      "text": "nghe",
-     "startMs": 15349,
-     "endMs": 15590,
+     "startMs": 15101,
+     "endMs": 15376,
      "sentence": "2-4"
     },
     {
      "text": "vừa",
-     "startMs": 15590,
-     "endMs": 15783,
+     "startMs": 15376,
+     "endMs": 15554,
      "sentence": "2-4"
     },
     {
      "text": "nghe",
-     "startMs": 15783,
-     "endMs": 16023,
+     "startMs": 15554,
+     "endMs": 15772,
      "sentence": "2-4"
     },
     {
      "text": "tới",
-     "startMs": 16023,
-     "endMs": 16216,
+     "startMs": 15772,
+     "endMs": 15858,
      "sentence": "2-4"
     },
     {
      "text": "chữ",
-     "startMs": 16216,
-     "endMs": 16409,
+     "startMs": 15858,
+     "endMs": 16211,
      "sentence": "2-4"
     },
     {
      "text": "nhưng",
-     "startMs": 16409,
-     "endMs": 16698,
+     "startMs": 16211,
+     "endMs": 16777,
      "sentence": "2-4"
     },
     {
      "text": "là",
-     "startMs": 16698,
-     "endMs": 16842,
+     "startMs": 16777,
+     "endMs": 16906,
      "sentence": "2-4"
     },
     {
      "text": "bắt",
-     "startMs": 16842,
-     "endMs": 17035,
+     "startMs": 16906,
+     "endMs": 17145,
      "sentence": "2-4"
     },
     {
      "text": "đầu",
-     "startMs": 17035,
-     "endMs": 17227,
+     "startMs": 17145,
+     "endMs": 17303,
      "sentence": "2-4"
     },
     {
      "text": "nghi",
-     "startMs": 17227,
-     "endMs": 17468,
+     "startMs": 17303,
+     "endMs": 17517,
      "sentence": "2-4"
     },
     {
      "text": "lời",
-     "startMs": 17468,
-     "endMs": 17661,
+     "startMs": 17517,
+     "endMs": 17722,
      "sentence": "2-4"
     },
     {
      "text": "khen",
-     "startMs": 17661,
-     "endMs": 17901,
+     "startMs": 17722,
+     "endMs": 17980,
      "sentence": "2-4"
     },
     {
      "text": "ban",
-     "startMs": 17901,
-     "endMs": 18094,
+     "startMs": 17980,
+     "endMs": 18148,
      "sentence": "2-4"
     },
     {
      "text": "nãy",
-     "startMs": 18094,
-     "endMs": 18287,
+     "startMs": 18148,
+     "endMs": 18440,
      "sentence": "2-4"
     },
     {
      "text": "chỉ",
-     "startMs": 18287,
-     "endMs": 18479,
+     "startMs": 18440,
+     "endMs": 18842,
      "sentence": "2-4"
     },
     {
      "text": "để",
-     "startMs": 18479,
-     "endMs": 18624,
+     "startMs": 18842,
+     "endMs": 19112,
      "sentence": "2-4"
     },
     {
      "text": "mở",
-     "startMs": 18624,
-     "endMs": 18768,
+     "startMs": 19112,
+     "endMs": 19274,
      "sentence": "2-4"
     },
     {
      "text": "đường.",
-     "startMs": 18768,
-     "endMs": 19105,
+     "startMs": 19274,
+     "endMs": 19405,
      "sentence": "2-4"
     },
     {
      "text": "Trong",
-     "startMs": 20385,
-     "endMs": 20686,
+     "startMs": 20703,
+     "endMs": 20950,
      "sentence": "2-5"
     },
     {
      "text": "Đắc",
-     "startMs": 20686,
-     "endMs": 20887,
+     "startMs": 20950,
+     "endMs": 21113,
      "sentence": "2-5"
     },
     {
      "text": "nhân",
-     "startMs": 20887,
-     "endMs": 21138,
+     "startMs": 21113,
+     "endMs": 21324,
      "sentence": "2-5"
     },
     {
      "text": "tâm,",
-     "startMs": 21138,
-     "endMs": 21389,
+     "startMs": 21324,
+     "endMs": 21694,
      "sentence": "2-5"
     },
     {
      "text": "tác",
-     "startMs": 21389,
-     "endMs": 21590,
+     "startMs": 21694,
+     "endMs": 22027,
      "sentence": "2-5"
     },
     {
      "text": "giả",
-     "startMs": 21590,
-     "endMs": 21790,
+     "startMs": 22027,
+     "endMs": 22295,
      "sentence": "2-5"
     },
     {
      "text": "gợi",
-     "startMs": 21790,
-     "endMs": 21991,
+     "startMs": 22295,
+     "endMs": 22530,
      "sentence": "2-5"
     },
     {
      "text": "ý",
-     "startMs": 21991,
-     "endMs": 22092,
+     "startMs": 22530,
+     "endMs": 22581,
      "sentence": "2-5"
     },
     {
      "text": "một",
-     "startMs": 22092,
-     "endMs": 22292,
+     "startMs": 22581,
+     "endMs": 22735,
      "sentence": "2-5"
     },
     {
      "text": "cách",
-     "startMs": 22292,
-     "endMs": 22543,
+     "startMs": 22735,
+     "endMs": 22948,
      "sentence": "2-5"
     },
     {
      "text": "rất",
-     "startMs": 22543,
-     "endMs": 22744,
+     "startMs": 22948,
+     "endMs": 23216,
      "sentence": "2-5"
     },
     {
      "text": "đơn",
-     "startMs": 22744,
-     "endMs": 22945,
+     "startMs": 23216,
+     "endMs": 23454,
      "sentence": "2-5"
     },
     {
      "text": "giản:",
-     "startMs": 22945,
-     "endMs": 23246,
+     "startMs": 23454,
+     "endMs": 24052,
      "sentence": "2-5"
     },
     {
      "text": "thay",
-     "startMs": 23246,
-     "endMs": 23497,
+     "startMs": 24052,
+     "endMs": 24242,
      "sentence": "2-5"
     },
     {
      "text": "chữ",
-     "startMs": 23497,
-     "endMs": 23698,
+     "startMs": 24242,
+     "endMs": 24421,
      "sentence": "2-5"
     },
     {
      "text": "nhưng",
-     "startMs": 23698,
-     "endMs": 23999,
+     "startMs": 24421,
+     "endMs": 24660,
      "sentence": "2-5"
     },
     {
      "text": "bằng",
-     "startMs": 23999,
-     "endMs": 24250,
+     "startMs": 24660,
+     "endMs": 24904,
      "sentence": "2-5"
     },
     {
      "text": "chữ",
-     "startMs": 24250,
-     "endMs": 24450,
+     "startMs": 24904,
+     "endMs": 25235,
      "sentence": "2-5"
     },
     {
      "text": "và,",
-     "startMs": 24450,
-     "endMs": 24651,
+     "startMs": 25235,
+     "endMs": 25735,
      "sentence": "2-5"
     },
     {
      "text": "thế",
-     "startMs": 24651,
-     "endMs": 24852,
+     "startMs": 25735,
+     "endMs": 25858,
      "sentence": "2-5"
     },
     {
      "text": "thôi.",
-     "startMs": 24852,
-     "endMs": 25153,
+     "startMs": 25858,
+     "endMs": 26023,
      "sentence": "2-5"
     },
     {
      "text": "Mình",
-     "startMs": 26333,
-     "endMs": 26590,
+     "startMs": 27199,
+     "endMs": 27475,
      "sentence": "2-6"
     },
     {
      "text": "nói",
-     "startMs": 26590,
-     "endMs": 26796,
+     "startMs": 27475,
+     "endMs": 27653,
      "sentence": "2-6"
     },
     {
      "text": "trọn",
-     "startMs": 26796,
-     "endMs": 27053,
+     "startMs": 27653,
+     "endMs": 27870,
      "sentence": "2-6"
     },
     {
      "text": "lời",
-     "startMs": 27053,
-     "endMs": 27259,
+     "startMs": 27870,
+     "endMs": 28084,
      "sentence": "2-6"
     },
     {
      "text": "khen",
-     "startMs": 27259,
-     "endMs": 27516,
+     "startMs": 28084,
+     "endMs": 28304,
      "sentence": "2-6"
     },
     {
      "text": "trước,",
-     "startMs": 27516,
-     "endMs": 27877,
+     "startMs": 28304,
+     "endMs": 28617,
      "sentence": "2-6"
     },
     {
      "text": "rồi",
-     "startMs": 27877,
-     "endMs": 28082,
+     "startMs": 28617,
+     "endMs": 29021,
      "sentence": "2-6"
     },
     {
      "text": "nối",
-     "startMs": 28082,
-     "endMs": 28288,
+     "startMs": 29021,
+     "endMs": 29284,
      "sentence": "2-6"
     },
     {
      "text": "lời",
-     "startMs": 28288,
-     "endMs": 28494,
+     "startMs": 29284,
+     "endMs": 29503,
      "sentence": "2-6"
     },
     {
      "text": "góp",
-     "startMs": 28494,
-     "endMs": 28700,
+     "startMs": 29503,
+     "endMs": 29704,
      "sentence": "2-6"
     },
     {
      "text": "ý",
-     "startMs": 28700,
-     "endMs": 28803,
+     "startMs": 29704,
+     "endMs": 29802,
      "sentence": "2-6"
     },
     {
      "text": "bằng",
-     "startMs": 28803,
-     "endMs": 29060,
+     "startMs": 29802,
+     "endMs": 30066,
      "sentence": "2-6"
     },
     {
      "text": "chữ",
-     "startMs": 29060,
-     "endMs": 29266,
+     "startMs": 30066,
+     "endMs": 30240,
      "sentence": "2-6"
     },
     {
      "text": "và,",
-     "startMs": 29266,
-     "endMs": 29471,
+     "startMs": 30240,
+     "endMs": 30515,
      "sentence": "2-6"
     },
     {
      "text": "không",
-     "startMs": 29471,
-     "endMs": 29780,
+     "startMs": 30515,
+     "endMs": 30978,
      "sentence": "2-6"
     },
     {
      "text": "dùng",
-     "startMs": 29780,
-     "endMs": 30037,
+     "startMs": 30978,
+     "endMs": 31245,
      "sentence": "2-6"
     },
     {
      "text": "chữ",
-     "startMs": 30037,
-     "endMs": 30243,
+     "startMs": 31245,
+     "endMs": 31441,
      "sentence": "2-6"
     },
     {
      "text": "nhưng",
-     "startMs": 30243,
-     "endMs": 30552,
+     "startMs": 31441,
+     "endMs": 31643,
      "sentence": "2-6"
     },
     {
      "text": "nữa.",
-     "startMs": 30552,
-     "endMs": 30809,
+     "startMs": 31643,
+     "endMs": 31899,
      "sentence": "2-6"
     },
     {
      "text": "Câu",
-     "startMs": 31889,
-     "endMs": 32107,
+     "startMs": 33002,
+     "endMs": 33244,
      "sentence": "2-6b"
     },
     {
      "text": "lúc",
-     "startMs": 32107,
-     "endMs": 32325,
+     "startMs": 33244,
+     "endMs": 33427,
      "sentence": "2-6b"
     },
     {
      "text": "nãy",
-     "startMs": 32325,
-     "endMs": 32544,
+     "startMs": 33427,
+     "endMs": 33616,
      "sentence": "2-6b"
     },
     {
      "text": "sẽ",
-     "startMs": 32544,
-     "endMs": 32707,
+     "startMs": 33616,
+     "endMs": 33831,
      "sentence": "2-6b"
     },
     {
      "text": "thành:",
-     "startMs": 32707,
-     "endMs": 33089,
+     "startMs": 33831,
+     "endMs": 34135,
      "sentence": "2-6b"
     },
     {
      "text": "bài",
-     "startMs": 33089,
-     "endMs": 33307,
+     "startMs": 34135,
+     "endMs": 34488,
      "sentence": "2-6b"
     },
     {
      "text": "này",
-     "startMs": 33307,
-     "endMs": 33525,
+     "startMs": 34488,
+     "endMs": 34660,
      "sentence": "2-6b"
     },
     {
      "text": "em",
-     "startMs": 33525,
-     "endMs": 33689,
+     "startMs": 34660,
+     "endMs": 34808,
      "sentence": "2-6b"
     },
     {
      "text": "làm",
-     "startMs": 33689,
-     "endMs": 33907,
+     "startMs": 34808,
+     "endMs": 34988,
      "sentence": "2-6b"
     },
     {
      "text": "tốt",
-     "startMs": 33907,
-     "endMs": 34125,
+     "startMs": 34988,
+     "endMs": 35183,
      "sentence": "2-6b"
     },
     {
      "text": "lắm,",
-     "startMs": 34125,
-     "endMs": 34398,
+     "startMs": 35183,
+     "endMs": 35533,
      "sentence": "2-6b"
     },
     {
      "text": "và",
-     "startMs": 34398,
-     "endMs": 34562,
+     "startMs": 35533,
+     "endMs": 35839,
      "sentence": "2-6b"
     },
     {
      "text": "nếu",
-     "startMs": 34562,
-     "endMs": 34780,
+     "startMs": 35839,
+     "endMs": 36140,
      "sentence": "2-6b"
     },
     {
      "text": "chăm",
-     "startMs": 34780,
-     "endMs": 35053,
+     "startMs": 36140,
+     "endMs": 36343,
      "sentence": "2-6b"
     },
     {
      "text": "chút",
-     "startMs": 35053,
-     "endMs": 35326,
+     "startMs": 36343,
+     "endMs": 36525,
      "sentence": "2-6b"
     },
     {
      "text": "thêm",
-     "startMs": 35326,
-     "endMs": 35598,
+     "startMs": 36525,
+     "endMs": 36708,
      "sentence": "2-6b"
     },
     {
      "text": "phần",
-     "startMs": 35598,
-     "endMs": 35871,
+     "startMs": 36708,
+     "endMs": 36965,
      "sentence": "2-6b"
     },
     {
      "text": "cuối",
-     "startMs": 35871,
-     "endMs": 36144,
+     "startMs": 36965,
+     "endMs": 37437,
      "sentence": "2-6b"
     },
     {
      "text": "thì",
-     "startMs": 36144,
-     "endMs": 36362,
+     "startMs": 37437,
+     "endMs": 37689,
      "sentence": "2-6b"
     },
     {
      "text": "còn",
-     "startMs": 36362,
-     "endMs": 36580,
+     "startMs": 37689,
+     "endMs": 37894,
      "sentence": "2-6b"
     },
     {
      "text": "tốt",
-     "startMs": 36580,
-     "endMs": 36798,
+     "startMs": 37894,
+     "endMs": 38116,
      "sentence": "2-6b"
     },
     {
      "text": "hơn",
-     "startMs": 36798,
-     "endMs": 37016,
+     "startMs": 38116,
+     "endMs": 38280,
      "sentence": "2-6b"
     },
     {
      "text": "nữa.",
-     "startMs": 37016,
-     "endMs": 37289,
+     "startMs": 38280,
+     "endMs": 38482,
      "sentence": "2-6b"
     },
     {
      "text": "Vậy",
-     "startMs": 38369,
-     "endMs": 38566,
+     "startMs": 39594,
+     "endMs": 39818,
      "sentence": "2-7"
     },
     {
      "text": "là",
-     "startMs": 38566,
-     "endMs": 38713,
+     "startMs": 39818,
+     "endMs": 39998,
      "sentence": "2-7"
     },
     {
      "text": "lời",
-     "startMs": 38713,
-     "endMs": 38910,
+     "startMs": 39998,
+     "endMs": 40145,
      "sentence": "2-7"
     },
     {
      "text": "khen",
-     "startMs": 38910,
-     "endMs": 39156,
+     "startMs": 40145,
+     "endMs": 40469,
      "sentence": "2-7"
     },
     {
      "text": "vẫn",
-     "startMs": 39156,
-     "endMs": 39353,
+     "startMs": 40469,
+     "endMs": 40691,
      "sentence": "2-7"
     },
     {
      "text": "còn",
-     "startMs": 39353,
-     "endMs": 39549,
+     "startMs": 40691,
+     "endMs": 40896,
      "sentence": "2-7"
     },
     {
      "text": "nguyên,",
-     "startMs": 39549,
-     "endMs": 39943,
+     "startMs": 40896,
+     "endMs": 41332,
      "sentence": "2-7"
     },
     {
      "text": "còn",
-     "startMs": 39943,
-     "endMs": 40139,
+     "startMs": 41332,
+     "endMs": 41605,
      "sentence": "2-7"
     },
     {
      "text": "lời",
-     "startMs": 40139,
-     "endMs": 40336,
+     "startMs": 41605,
+     "endMs": 41802,
      "sentence": "2-7"
     },
     {
      "text": "góp",
-     "startMs": 40336,
-     "endMs": 40533,
+     "startMs": 41802,
+     "endMs": 42022,
      "sentence": "2-7"
     },
     {
      "text": "ý",
-     "startMs": 40533,
-     "endMs": 40631,
+     "startMs": 42022,
+     "endMs": 42323,
      "sentence": "2-7"
     },
     {
      "text": "thì",
-     "startMs": 40631,
-     "endMs": 40828,
+     "startMs": 42323,
+     "endMs": 42830,
      "sentence": "2-7"
     },
     {
      "text": "nghe",
-     "startMs": 40828,
-     "endMs": 41074,
+     "startMs": 42830,
+     "endMs": 43041,
      "sentence": "2-7"
     },
     {
      "text": "như",
-     "startMs": 41074,
-     "endMs": 41270,
+     "startMs": 43041,
+     "endMs": 43219,
      "sentence": "2-7"
     },
     {
      "text": "một",
-     "startMs": 41270,
-     "endMs": 41467,
+     "startMs": 43219,
+     "endMs": 43402,
      "sentence": "2-7"
     },
     {
      "text": "lời",
-     "startMs": 41467,
-     "endMs": 41664,
+     "startMs": 43402,
+     "endMs": 43528,
      "sentence": "2-7"
     },
     {
      "text": "động",
-     "startMs": 41664,
-     "endMs": 41910,
+     "startMs": 43528,
+     "endMs": 43711,
      "sentence": "2-7"
     },
     {
      "text": "viên.",
-     "startMs": 41910,
-     "endMs": 42205,
+     "startMs": 43711,
+     "endMs": 43974,
      "sentence": "2-7"
     },
     {
      "text": "Mình",
-     "startMs": 43385,
-     "endMs": 43635,
+     "startMs": 45109,
+     "endMs": 45363,
      "sentence": "cta"
     },
     {
      "text": "đã",
-     "startMs": 43635,
-     "endMs": 43785,
+     "startMs": 45363,
+     "endMs": 45546,
      "sentence": "cta"
     },
     {
      "text": "kể",
-     "startMs": 43785,
-     "endMs": 43935,
+     "startMs": 45546,
+     "endMs": 45695,
      "sentence": "cta"
     },
     {
      "text": "lại",
-     "startMs": 43935,
-     "endMs": 44135,
+     "startMs": 45695,
+     "endMs": 45931,
      "sentence": "cta"
     },
     {
      "text": "trọn",
-     "startMs": 44135,
-     "endMs": 44385,
+     "startMs": 45931,
+     "endMs": 46142,
      "sentence": "cta"
     },
     {
      "text": "cuốn",
-     "startMs": 44385,
-     "endMs": 44635,
+     "startMs": 46142,
+     "endMs": 46380,
      "sentence": "cta"
     },
     {
      "text": "Đắc",
-     "startMs": 44635,
-     "endMs": 44835,
+     "startMs": 46380,
+     "endMs": 46573,
      "sentence": "cta"
     },
     {
      "text": "nhân",
-     "startMs": 44835,
-     "endMs": 45085,
+     "startMs": 46573,
+     "endMs": 46827,
      "sentence": "cta"
     },
     {
      "text": "tâm",
-     "startMs": 45085,
-     "endMs": 45285,
+     "startMs": 46827,
+     "endMs": 47060,
      "sentence": "cta"
     },
     {
      "text": "trong",
-     "startMs": 45285,
-     "endMs": 45585,
+     "startMs": 47060,
+     "endMs": 47321,
      "sentence": "cta"
     },
     {
      "text": "một",
-     "startMs": 45585,
-     "endMs": 45785,
+     "startMs": 47321,
+     "endMs": 47513,
      "sentence": "cta"
     },
     {
      "text": "video",
-     "startMs": 45785,
-     "endMs": 46085,
+     "startMs": 47513,
+     "endMs": 47913,
      "sentence": "cta"
     },
     {
      "text": "dài.",
-     "startMs": 46085,
-     "endMs": 46335,
+     "startMs": 47913,
+     "endMs": 48569,
      "sentence": "cta"
     },
     {
      "text": "Link",
-     "startMs": 46335,
-     "endMs": 46585,
+     "startMs": 48569,
+     "endMs": 48786,
      "sentence": "cta"
     },
     {
      "text": "ở",
-     "startMs": 46585,
-     "endMs": 46685,
+     "startMs": 48786,
+     "endMs": 48836,
      "sentence": "cta"
     },
     {
      "text": "phần",
-     "startMs": 46685,
-     "endMs": 46935,
+     "startMs": 48830,
+     "endMs": 49002,
      "sentence": "cta"
     },
     {
      "text": "bình",
-     "startMs": 46935,
-     "endMs": 47185,
+     "startMs": 49002,
+     "endMs": 49242,
      "sentence": "cta"
     },
     {
      "text": "luận,",
-     "startMs": 47185,
-     "endMs": 47485,
+     "startMs": 49242,
+     "endMs": 49709,
      "sentence": "cta"
     },
     {
      "text": "bạn",
-     "startMs": 47485,
-     "endMs": 47685,
+     "startMs": 49709,
+     "endMs": 49851,
      "sentence": "cta"
     },
     {
      "text": "ghé",
-     "startMs": 47685,
-     "endMs": 47885,
+     "startMs": 49851,
+     "endMs": 50059,
      "sentence": "cta"
     },
     {
      "text": "xem",
-     "startMs": 47885,
-     "endMs": 48085,
+     "startMs": 50059,
+     "endMs": 50257,
      "sentence": "cta"
     },
     {
      "text": "nhé.",
-     "startMs": 48085,
-     "endMs": 48335,
+     "startMs": 50257,
+     "endMs": 50429,
      "sentence": "cta"
     }
    ]
@@ -1833,753 +1863,753 @@
    "id": "short-3",
    "title": "Tấm lòng hay cửa miệng",
    "file": "book-dnt-001-shorts/audio/short-3.wav",
-   "durationSeconds": 33.591,
+   "durationSeconds": 35.42,
    "sentences": [
     {
      "id": "3-1",
      "text": "Đắc nhân tâm dạy người ta khéo miệng, hay dạy thật lòng?",
      "role": "hook",
      "startMs": 40,
-     "endMs": 2830
+     "endMs": 3528
     },
     {
      "id": "3-2",
      "text": "Có người đọc xong thì thấy đây là sách dạy nịnh.",
      "role": "body",
-     "startMs": 3910,
-     "endMs": 6337
+     "startMs": 4608,
+     "endMs": 7112
     },
     {
      "id": "3-3",
      "text": "Nhưng chính tác giả lại vạch ranh giới rất rõ.",
      "role": "body",
-     "startMs": 7317,
-     "endMs": 9618
+     "startMs": 8092,
+     "endMs": 10465
     },
     {
      "id": "3-4",
      "text": "Theo tác giả, lời khen thật lòng và lời nịnh khác nhau ở chỗ: một điều xuất phát từ tấm lòng, một điều chỉ từ cửa miệng.",
      "role": "body",
-     "startMs": 10798,
-     "endMs": 17275
+     "startMs": 11645,
+     "endMs": 18381
     },
     {
      "id": "3-5",
      "text": "Vì vậy, mọi nguyên tắc trong sách đều phải đi kèm sự chân thành.",
      "role": "body",
-     "startMs": 18555,
-     "endMs": 21923
+     "startMs": 19661,
+     "endMs": 23089
     },
     {
      "id": "3-6",
      "text": "Mình thấy, thiếu điều đó thì nụ cười hay việc nhớ tên người khác cũng chỉ còn là kỹ thuật.",
      "role": "body",
-     "startMs": 23103,
-     "endMs": 27420
+     "startMs": 24269,
+     "endMs": 28927
     },
     {
      "id": "cta",
      "text": "Mình đã kể lại trọn cuốn Đắc nhân tâm trong một video dài. Link ở phần bình luận, bạn ghé xem nhé.",
      "role": "cta",
-     "startMs": 28600,
-     "endMs": 33551
+     "startMs": 30107,
+     "endMs": 35380
     }
    ],
    "words": [
     {
      "text": "Đắc",
-     "startMs": 40,
-     "endMs": 236,
+     "startMs": 0,
+     "endMs": 346,
      "sentence": "3-1"
     },
     {
      "text": "nhân",
-     "startMs": 236,
-     "endMs": 480,
+     "startMs": 346,
+     "endMs": 562,
      "sentence": "3-1"
     },
     {
      "text": "tâm",
-     "startMs": 480,
-     "endMs": 676,
+     "startMs": 562,
+     "endMs": 970,
      "sentence": "3-1"
     },
     {
      "text": "dạy",
-     "startMs": 676,
-     "endMs": 872,
+     "startMs": 970,
+     "endMs": 1302,
      "sentence": "3-1"
     },
     {
      "text": "người",
-     "startMs": 872,
-     "endMs": 1166,
+     "startMs": 1302,
+     "endMs": 1572,
      "sentence": "3-1"
     },
     {
      "text": "ta",
-     "startMs": 1166,
-     "endMs": 1312,
+     "startMs": 1572,
+     "endMs": 1870,
      "sentence": "3-1"
     },
     {
      "text": "khéo",
-     "startMs": 1312,
-     "endMs": 1557,
+     "startMs": 1870,
+     "endMs": 2094,
      "sentence": "3-1"
     },
     {
      "text": "miệng,",
-     "startMs": 1557,
-     "endMs": 1900,
+     "startMs": 2094,
+     "endMs": 2703,
      "sentence": "3-1"
     },
     {
      "text": "hay",
-     "startMs": 1900,
-     "endMs": 2096,
+     "startMs": 2703,
+     "endMs": 2916,
      "sentence": "3-1"
     },
     {
      "text": "dạy",
-     "startMs": 2096,
-     "endMs": 2291,
+     "startMs": 2916,
+     "endMs": 3128,
      "sentence": "3-1"
     },
     {
      "text": "thật",
-     "startMs": 2291,
-     "endMs": 2536,
+     "startMs": 3128,
+     "endMs": 3306,
      "sentence": "3-1"
     },
     {
      "text": "lòng?",
-     "startMs": 2536,
-     "endMs": 2830,
+     "startMs": 3306,
+     "endMs": 3440,
      "sentence": "3-1"
     },
     {
      "text": "Có",
-     "startMs": 3910,
-     "endMs": 4058,
+     "startMs": 4568,
+     "endMs": 4768,
      "sentence": "3-2"
     },
     {
      "text": "người",
-     "startMs": 4058,
-     "endMs": 4355,
+     "startMs": 4768,
+     "endMs": 4928,
      "sentence": "3-2"
     },
     {
      "text": "đọc",
-     "startMs": 4355,
-     "endMs": 4554,
+     "startMs": 4928,
+     "endMs": 5148,
      "sentence": "3-2"
     },
     {
      "text": "xong",
-     "startMs": 4554,
-     "endMs": 4801,
+     "startMs": 5148,
+     "endMs": 5608,
      "sentence": "3-2"
     },
     {
      "text": "thì",
-     "startMs": 4801,
-     "endMs": 4999,
+     "startMs": 5608,
+     "endMs": 5848,
      "sentence": "3-2"
     },
     {
      "text": "thấy",
-     "startMs": 4999,
-     "endMs": 5247,
+     "startMs": 5848,
+     "endMs": 5968,
      "sentence": "3-2"
     },
     {
      "text": "đây",
-     "startMs": 5247,
-     "endMs": 5445,
+     "startMs": 5968,
+     "endMs": 6248,
      "sentence": "3-2"
     },
     {
      "text": "là",
-     "startMs": 5445,
-     "endMs": 5594,
+     "startMs": 6248,
+     "endMs": 6408,
      "sentence": "3-2"
     },
     {
      "text": "sách",
-     "startMs": 5594,
-     "endMs": 5841,
+     "startMs": 6408,
+     "endMs": 6608,
      "sentence": "3-2"
     },
     {
      "text": "dạy",
-     "startMs": 5841,
-     "endMs": 6040,
+     "startMs": 6608,
+     "endMs": 6908,
      "sentence": "3-2"
     },
     {
      "text": "nịnh.",
-     "startMs": 6040,
-     "endMs": 6337,
+     "startMs": 6908,
+     "endMs": 7128,
      "sentence": "3-2"
     },
     {
      "text": "Nhưng",
-     "startMs": 7317,
-     "endMs": 7611,
+     "startMs": 8052,
+     "endMs": 8642,
      "sentence": "3-3"
     },
     {
      "text": "chính",
-     "startMs": 7611,
-     "endMs": 7904,
+     "startMs": 8642,
+     "endMs": 8846,
      "sentence": "3-3"
     },
     {
      "text": "tác",
-     "startMs": 7904,
-     "endMs": 8100,
+     "startMs": 8846,
+     "endMs": 9055,
      "sentence": "3-3"
     },
     {
      "text": "giả",
-     "startMs": 8100,
-     "endMs": 8296,
+     "startMs": 9055,
+     "endMs": 9288,
      "sentence": "3-3"
     },
     {
      "text": "lại",
-     "startMs": 8296,
-     "endMs": 8492,
+     "startMs": 9288,
+     "endMs": 9436,
      "sentence": "3-3"
     },
     {
      "text": "vạch",
-     "startMs": 8492,
-     "endMs": 8737,
+     "startMs": 9436,
+     "endMs": 9663,
      "sentence": "3-3"
     },
     {
      "text": "ranh",
-     "startMs": 8737,
-     "endMs": 8981,
+     "startMs": 9663,
+     "endMs": 9822,
      "sentence": "3-3"
     },
     {
      "text": "giới",
-     "startMs": 8981,
-     "endMs": 9226,
+     "startMs": 9822,
+     "endMs": 9955,
      "sentence": "3-3"
     },
     {
      "text": "rất",
-     "startMs": 9226,
-     "endMs": 9422,
+     "startMs": 9955,
+     "endMs": 10218,
      "sentence": "3-3"
     },
     {
      "text": "rõ.",
-     "startMs": 9422,
-     "endMs": 9618,
+     "startMs": 10218,
+     "endMs": 10372,
      "sentence": "3-3"
     },
     {
      "text": "Theo",
-     "startMs": 10798,
-     "endMs": 11065,
+     "startMs": 11605,
+     "endMs": 11859,
      "sentence": "3-4"
     },
     {
      "text": "tác",
-     "startMs": 11065,
-     "endMs": 11279,
+     "startMs": 11859,
+     "endMs": 12122,
      "sentence": "3-4"
     },
     {
      "text": "giả,",
-     "startMs": 11279,
-     "endMs": 11547,
+     "startMs": 12122,
+     "endMs": 12498,
      "sentence": "3-4"
     },
     {
      "text": "lời",
-     "startMs": 11547,
-     "endMs": 11761,
+     "startMs": 12498,
+     "endMs": 12808,
      "sentence": "3-4"
     },
     {
      "text": "khen",
-     "startMs": 11761,
-     "endMs": 12029,
+     "startMs": 12808,
+     "endMs": 13107,
      "sentence": "3-4"
     },
     {
      "text": "thật",
-     "startMs": 12029,
-     "endMs": 12296,
+     "startMs": 13107,
+     "endMs": 13381,
      "sentence": "3-4"
     },
     {
      "text": "lòng",
-     "startMs": 12296,
-     "endMs": 12564,
+     "startMs": 13381,
+     "endMs": 13688,
      "sentence": "3-4"
     },
     {
      "text": "và",
-     "startMs": 12564,
-     "endMs": 12725,
+     "startMs": 13688,
+     "endMs": 14096,
      "sentence": "3-4"
     },
     {
      "text": "lời",
-     "startMs": 12725,
-     "endMs": 12939,
+     "startMs": 14096,
+     "endMs": 14263,
      "sentence": "3-4"
     },
     {
      "text": "nịnh",
-     "startMs": 12939,
-     "endMs": 13206,
+     "startMs": 14263,
+     "endMs": 14496,
      "sentence": "3-4"
     },
     {
      "text": "khác",
-     "startMs": 13206,
-     "endMs": 13474,
+     "startMs": 14496,
+     "endMs": 14743,
      "sentence": "3-4"
     },
     {
      "text": "nhau",
-     "startMs": 13474,
-     "endMs": 13742,
+     "startMs": 14743,
+     "endMs": 15046,
      "sentence": "3-4"
     },
     {
      "text": "ở",
-     "startMs": 13742,
-     "endMs": 13849,
+     "startMs": 15046,
+     "endMs": 15170,
      "sentence": "3-4"
     },
     {
      "text": "chỗ:",
-     "startMs": 13849,
-     "endMs": 14116,
+     "startMs": 15170,
+     "endMs": 15646,
      "sentence": "3-4"
     },
     {
      "text": "một",
-     "startMs": 14116,
-     "endMs": 14331,
+     "startMs": 15646,
+     "endMs": 15750,
      "sentence": "3-4"
     },
     {
      "text": "điều",
-     "startMs": 14331,
-     "endMs": 14598,
+     "startMs": 15750,
+     "endMs": 15890,
      "sentence": "3-4"
     },
     {
      "text": "xuất",
-     "startMs": 14598,
-     "endMs": 14866,
+     "startMs": 15890,
+     "endMs": 16164,
      "sentence": "3-4"
     },
     {
      "text": "phát",
-     "startMs": 14866,
-     "endMs": 15133,
+     "startMs": 16164,
+     "endMs": 16349,
      "sentence": "3-4"
     },
     {
      "text": "từ",
-     "startMs": 15133,
-     "endMs": 15294,
+     "startMs": 16349,
+     "endMs": 16529,
      "sentence": "3-4"
     },
     {
      "text": "tấm",
-     "startMs": 15294,
-     "endMs": 15508,
+     "startMs": 16529,
+     "endMs": 16768,
      "sentence": "3-4"
     },
     {
      "text": "lòng,",
-     "startMs": 15508,
-     "endMs": 15829,
+     "startMs": 16768,
+     "endMs": 17327,
      "sentence": "3-4"
     },
     {
      "text": "một",
-     "startMs": 15829,
-     "endMs": 16043,
+     "startMs": 17327,
+     "endMs": 17393,
      "sentence": "3-4"
     },
     {
      "text": "điều",
-     "startMs": 16043,
-     "endMs": 16311,
+     "startMs": 17393,
+     "endMs": 17553,
      "sentence": "3-4"
     },
     {
      "text": "chỉ",
-     "startMs": 16311,
-     "endMs": 16525,
+     "startMs": 17553,
+     "endMs": 17780,
      "sentence": "3-4"
     },
     {
      "text": "từ",
-     "startMs": 16525,
-     "endMs": 16686,
+     "startMs": 17780,
+     "endMs": 17981,
      "sentence": "3-4"
     },
     {
      "text": "cửa",
-     "startMs": 16686,
-     "endMs": 16900,
+     "startMs": 17981,
+     "endMs": 18211,
      "sentence": "3-4"
     },
     {
      "text": "miệng.",
-     "startMs": 16900,
-     "endMs": 17275,
+     "startMs": 18211,
+     "endMs": 18385,
      "sentence": "3-4"
     },
     {
      "text": "Vì",
-     "startMs": 18555,
-     "endMs": 18710,
+     "startMs": 19621,
+     "endMs": 19910,
      "sentence": "3-5"
     },
     {
      "text": "vậy,",
-     "startMs": 18710,
-     "endMs": 18969,
+     "startMs": 19910,
+     "endMs": 20237,
      "sentence": "3-5"
     },
     {
      "text": "mọi",
-     "startMs": 18969,
-     "endMs": 19176,
+     "startMs": 20237,
+     "endMs": 20654,
      "sentence": "3-5"
     },
     {
      "text": "nguyên",
-     "startMs": 19176,
-     "endMs": 19539,
+     "startMs": 20654,
+     "endMs": 20885,
      "sentence": "3-5"
     },
     {
      "text": "tắc",
-     "startMs": 19539,
-     "endMs": 19747,
+     "startMs": 20885,
+     "endMs": 21045,
      "sentence": "3-5"
     },
     {
      "text": "trong",
-     "startMs": 19747,
-     "endMs": 20057,
+     "startMs": 21045,
+     "endMs": 21316,
      "sentence": "3-5"
     },
     {
      "text": "sách",
-     "startMs": 20057,
-     "endMs": 20317,
+     "startMs": 21316,
+     "endMs": 21666,
      "sentence": "3-5"
     },
     {
      "text": "đều",
-     "startMs": 20317,
-     "endMs": 20524,
+     "startMs": 21666,
+     "endMs": 21909,
      "sentence": "3-5"
     },
     {
      "text": "phải",
-     "startMs": 20524,
-     "endMs": 20783,
+     "startMs": 21909,
+     "endMs": 22116,
      "sentence": "3-5"
     },
     {
      "text": "đi",
-     "startMs": 20783,
-     "endMs": 20938,
+     "startMs": 22116,
+     "endMs": 22310,
      "sentence": "3-5"
     },
     {
      "text": "kèm",
-     "startMs": 20938,
-     "endMs": 21146,
+     "startMs": 22310,
+     "endMs": 22531,
      "sentence": "3-5"
     },
     {
      "text": "sự",
-     "startMs": 21146,
-     "endMs": 21301,
+     "startMs": 22531,
+     "endMs": 22693,
      "sentence": "3-5"
     },
     {
      "text": "chân",
-     "startMs": 21301,
-     "endMs": 21560,
+     "startMs": 22693,
+     "endMs": 22880,
      "sentence": "3-5"
     },
     {
      "text": "thành.",
-     "startMs": 21560,
-     "endMs": 21923,
+     "startMs": 22880,
+     "endMs": 23001,
      "sentence": "3-5"
     },
     {
      "text": "Mình",
-     "startMs": 23103,
-     "endMs": 23340,
+     "startMs": 24229,
+     "endMs": 24515,
      "sentence": "3-6"
     },
     {
      "text": "thấy,",
-     "startMs": 23340,
-     "endMs": 23625,
+     "startMs": 24515,
+     "endMs": 24935,
      "sentence": "3-6"
     },
     {
      "text": "thiếu",
-     "startMs": 23625,
-     "endMs": 23909,
+     "startMs": 24935,
+     "endMs": 25198,
      "sentence": "3-6"
     },
     {
      "text": "điều",
-     "startMs": 23909,
-     "endMs": 24147,
+     "startMs": 25198,
+     "endMs": 25423,
      "sentence": "3-6"
     },
     {
      "text": "đó",
-     "startMs": 24147,
-     "endMs": 24289,
+     "startMs": 25423,
+     "endMs": 25829,
      "sentence": "3-6"
     },
     {
      "text": "thì",
-     "startMs": 24289,
-     "endMs": 24479,
+     "startMs": 25829,
+     "endMs": 26061,
      "sentence": "3-6"
     },
     {
      "text": "nụ",
-     "startMs": 24479,
-     "endMs": 24621,
+     "startMs": 26061,
+     "endMs": 26247,
      "sentence": "3-6"
     },
     {
      "text": "cười",
-     "startMs": 24621,
-     "endMs": 24858,
+     "startMs": 26247,
+     "endMs": 26448,
      "sentence": "3-6"
     },
     {
      "text": "hay",
-     "startMs": 24858,
-     "endMs": 25048,
+     "startMs": 26448,
+     "endMs": 26589,
      "sentence": "3-6"
     },
     {
      "text": "việc",
-     "startMs": 25048,
-     "endMs": 25285,
+     "startMs": 26589,
+     "endMs": 26790,
      "sentence": "3-6"
     },
     {
      "text": "nhớ",
-     "startMs": 25285,
-     "endMs": 25475,
+     "startMs": 26790,
+     "endMs": 27015,
      "sentence": "3-6"
     },
     {
      "text": "tên",
-     "startMs": 25475,
-     "endMs": 25665,
+     "startMs": 27015,
+     "endMs": 27160,
      "sentence": "3-6"
     },
     {
      "text": "người",
-     "startMs": 25665,
-     "endMs": 25949,
+     "startMs": 27160,
+     "endMs": 27456,
      "sentence": "3-6"
     },
     {
      "text": "khác",
-     "startMs": 25949,
-     "endMs": 26187,
+     "startMs": 27456,
+     "endMs": 27844,
      "sentence": "3-6"
     },
     {
      "text": "cũng",
-     "startMs": 26187,
-     "endMs": 26424,
+     "startMs": 27844,
+     "endMs": 28131,
      "sentence": "3-6"
     },
     {
      "text": "chỉ",
-     "startMs": 26424,
-     "endMs": 26613,
+     "startMs": 28131,
+     "endMs": 28304,
      "sentence": "3-6"
     },
     {
      "text": "còn",
-     "startMs": 26613,
-     "endMs": 26803,
+     "startMs": 28304,
+     "endMs": 28536,
      "sentence": "3-6"
     },
     {
      "text": "là",
-     "startMs": 26803,
-     "endMs": 26946,
+     "startMs": 28536,
+     "endMs": 28721,
      "sentence": "3-6"
     },
     {
      "text": "kỹ",
-     "startMs": 26946,
-     "endMs": 27088,
+     "startMs": 28721,
+     "endMs": 28828,
      "sentence": "3-6"
     },
     {
      "text": "thuật.",
-     "startMs": 27088,
-     "endMs": 27420,
+     "startMs": 28828,
+     "endMs": 28929,
      "sentence": "3-6"
     },
     {
      "text": "Mình",
-     "startMs": 28600,
-     "endMs": 28850,
+     "startMs": 30067,
+     "endMs": 30322,
      "sentence": "cta"
     },
     {
      "text": "đã",
-     "startMs": 28850,
-     "endMs": 29000,
+     "startMs": 30322,
+     "endMs": 30504,
      "sentence": "cta"
     },
     {
      "text": "kể",
-     "startMs": 29000,
-     "endMs": 29150,
+     "startMs": 30504,
+     "endMs": 30653,
      "sentence": "cta"
     },
     {
      "text": "lại",
-     "startMs": 29150,
-     "endMs": 29350,
+     "startMs": 30653,
+     "endMs": 30889,
      "sentence": "cta"
     },
     {
      "text": "trọn",
-     "startMs": 29350,
-     "endMs": 29600,
+     "startMs": 30889,
+     "endMs": 31100,
      "sentence": "cta"
     },
     {
      "text": "cuốn",
-     "startMs": 29600,
-     "endMs": 29850,
+     "startMs": 31100,
+     "endMs": 31338,
      "sentence": "cta"
     },
     {
      "text": "Đắc",
-     "startMs": 29850,
-     "endMs": 30050,
+     "startMs": 31338,
+     "endMs": 31532,
      "sentence": "cta"
     },
     {
      "text": "nhân",
-     "startMs": 30050,
-     "endMs": 30300,
+     "startMs": 31532,
+     "endMs": 31785,
      "sentence": "cta"
     },
     {
      "text": "tâm",
-     "startMs": 30300,
-     "endMs": 30500,
+     "startMs": 31785,
+     "endMs": 32019,
      "sentence": "cta"
     },
     {
      "text": "trong",
-     "startMs": 30500,
-     "endMs": 30800,
+     "startMs": 32019,
+     "endMs": 32279,
      "sentence": "cta"
     },
     {
      "text": "một",
-     "startMs": 30800,
-     "endMs": 31000,
+     "startMs": 32279,
+     "endMs": 32471,
      "sentence": "cta"
     },
     {
      "text": "video",
-     "startMs": 31000,
-     "endMs": 31300,
+     "startMs": 32471,
+     "endMs": 32871,
      "sentence": "cta"
     },
     {
      "text": "dài.",
-     "startMs": 31300,
-     "endMs": 31550,
+     "startMs": 32871,
+     "endMs": 33527,
      "sentence": "cta"
     },
     {
      "text": "Link",
-     "startMs": 31550,
-     "endMs": 31800,
+     "startMs": 33527,
+     "endMs": 33744,
      "sentence": "cta"
     },
     {
      "text": "ở",
-     "startMs": 31800,
-     "endMs": 31900,
+     "startMs": 33744,
+     "endMs": 33794,
      "sentence": "cta"
     },
     {
      "text": "phần",
-     "startMs": 31900,
-     "endMs": 32150,
+     "startMs": 33788,
+     "endMs": 33961,
      "sentence": "cta"
     },
     {
      "text": "bình",
-     "startMs": 32150,
-     "endMs": 32400,
+     "startMs": 33961,
+     "endMs": 34201,
      "sentence": "cta"
     },
     {
      "text": "luận,",
-     "startMs": 32400,
-     "endMs": 32701,
+     "startMs": 34201,
+     "endMs": 34668,
      "sentence": "cta"
     },
     {
      "text": "bạn",
-     "startMs": 32701,
-     "endMs": 32901,
+     "startMs": 34668,
+     "endMs": 34809,
      "sentence": "cta"
     },
     {
      "text": "ghé",
-     "startMs": 32901,
-     "endMs": 33101,
+     "startMs": 34809,
+     "endMs": 35017,
      "sentence": "cta"
     },
     {
      "text": "xem",
-     "startMs": 33101,
-     "endMs": 33301,
+     "startMs": 35017,
+     "endMs": 35215,
      "sentence": "cta"
     },
     {
      "text": "nhé.",
-     "startMs": 33301,
-     "endMs": 33551,
+     "startMs": 35215,
+     "endMs": 35387,
      "sentence": "cta"
     }
    ]
@@ -2588,711 +2618,711 @@
    "id": "short-4",
    "title": "Vì sao có người không thích cuốn sách",
    "file": "book-dnt-001-shorts/audio/short-4.wav",
-   "durationSeconds": 32.051,
+   "durationSeconds": 32.957,
    "sentences": [
     {
      "id": "4-1",
      "text": "Đắc nhân tâm cũng có những chỗ đáng chê.",
      "role": "hook",
      "startMs": 40,
-     "endMs": 2340
+     "endMs": 1808
     },
     {
      "id": "4-2",
      "text": "Mình thấy vài cách trong sách, nếu tách khỏi sự chân thành, rất dễ thành thao túng.",
      "role": "body",
-     "startMs": 3320,
-     "endMs": 7486
+     "startMs": 2788,
+     "endMs": 6996
     },
     {
      "id": "4-3",
      "text": "Sách có cảnh báo chuyện nịnh hót, nhưng chưa nói nhiều về việc dừng ở đâu.",
      "role": "body",
-     "startMs": 8566,
-     "endMs": 12043
+     "startMs": 8076,
+     "endMs": 11417
     },
     {
      "id": "4-4",
      "text": "Còn khi khuyên tránh tranh cãi, sách gần như không bàn tới lúc cần nói thẳng, hay cần đặt giới hạn.",
      "role": "body",
-     "startMs": 13223,
-     "endMs": 18052
+     "startMs": 12597,
+     "endMs": 17812
     },
     {
      "id": "4-5",
      "text": "Ngược lại, gọi cả cuốn là sách dạy nịnh thì cũng chưa công bằng.",
      "role": "body",
-     "startMs": 19332,
-     "endMs": 22665
+     "startMs": 19092,
+     "endMs": 22926
     },
     {
      "id": "4-6",
      "text": "Hai cách nhìn ấy, mình nghĩ đều có phần đúng.",
      "role": "body",
-     "startMs": 23745,
-     "endMs": 25880
+     "startMs": 24006,
+     "endMs": 26464
     },
     {
      "id": "cta",
      "text": "Mình đã kể lại trọn cuốn Đắc nhân tâm trong một video dài. Link ở phần bình luận, bạn ghé xem nhé.",
      "role": "cta",
-     "startMs": 27060,
-     "endMs": 32011
+     "startMs": 27644,
+     "endMs": 32917
     }
    ],
    "words": [
     {
      "text": "Đắc",
-     "startMs": 40,
-     "endMs": 264,
+     "startMs": 0,
+     "endMs": 284,
      "sentence": "4-1"
     },
     {
      "text": "nhân",
-     "startMs": 264,
-     "endMs": 545,
+     "startMs": 284,
+     "endMs": 458,
      "sentence": "4-1"
     },
     {
      "text": "tâm",
-     "startMs": 545,
-     "endMs": 769,
+     "startMs": 458,
+     "endMs": 695,
      "sentence": "4-1"
     },
     {
      "text": "cũng",
-     "startMs": 769,
-     "endMs": 1050,
+     "startMs": 695,
+     "endMs": 892,
      "sentence": "4-1"
     },
     {
      "text": "có",
-     "startMs": 1050,
-     "endMs": 1218,
+     "startMs": 892,
+     "endMs": 1017,
      "sentence": "4-1"
     },
     {
      "text": "những",
-     "startMs": 1218,
-     "endMs": 1555,
+     "startMs": 1017,
+     "endMs": 1194,
      "sentence": "4-1"
     },
     {
      "text": "chỗ",
-     "startMs": 1555,
-     "endMs": 1779,
+     "startMs": 1194,
+     "endMs": 1349,
      "sentence": "4-1"
     },
     {
      "text": "đáng",
-     "startMs": 1779,
-     "endMs": 2060,
+     "startMs": 1349,
+     "endMs": 1497,
      "sentence": "4-1"
     },
     {
      "text": "chê.",
-     "startMs": 2060,
-     "endMs": 2340,
+     "startMs": 1497,
+     "endMs": 1740,
      "sentence": "4-1"
     },
     {
      "text": "Mình",
-     "startMs": 3320,
-     "endMs": 3568,
+     "startMs": 2748,
+     "endMs": 2998,
      "sentence": "4-2"
     },
     {
      "text": "thấy",
-     "startMs": 3568,
-     "endMs": 3816,
+     "startMs": 2998,
+     "endMs": 3243,
      "sentence": "4-2"
     },
     {
      "text": "vài",
-     "startMs": 3816,
-     "endMs": 4015,
+     "startMs": 3243,
+     "endMs": 3501,
      "sentence": "4-2"
     },
     {
      "text": "cách",
-     "startMs": 4015,
-     "endMs": 4263,
+     "startMs": 3501,
+     "endMs": 3619,
      "sentence": "4-2"
     },
     {
      "text": "trong",
-     "startMs": 4263,
-     "endMs": 4560,
+     "startMs": 3619,
+     "endMs": 3868,
      "sentence": "4-2"
     },
     {
      "text": "sách,",
-     "startMs": 4560,
-     "endMs": 4858,
+     "startMs": 3868,
+     "endMs": 4334,
      "sentence": "4-2"
     },
     {
      "text": "nếu",
-     "startMs": 4858,
-     "endMs": 5056,
+     "startMs": 4334,
+     "endMs": 4505,
      "sentence": "4-2"
     },
     {
      "text": "tách",
-     "startMs": 5056,
-     "endMs": 5304,
+     "startMs": 4505,
+     "endMs": 4768,
      "sentence": "4-2"
     },
     {
      "text": "khỏi",
-     "startMs": 5304,
-     "endMs": 5552,
+     "startMs": 4768,
+     "endMs": 5005,
      "sentence": "4-2"
     },
     {
      "text": "sự",
-     "startMs": 5552,
-     "endMs": 5701,
+     "startMs": 5005,
+     "endMs": 5204,
      "sentence": "4-2"
     },
     {
      "text": "chân",
-     "startMs": 5701,
-     "endMs": 5949,
+     "startMs": 5204,
+     "endMs": 5405,
      "sentence": "4-2"
     },
     {
      "text": "thành,",
-     "startMs": 5949,
-     "endMs": 6296,
+     "startMs": 5405,
+     "endMs": 5995,
      "sentence": "4-2"
     },
     {
      "text": "rất",
-     "startMs": 6296,
-     "endMs": 6494,
+     "startMs": 5995,
+     "endMs": 6160,
      "sentence": "4-2"
     },
     {
      "text": "dễ",
-     "startMs": 6494,
-     "endMs": 6643,
+     "startMs": 6160,
+     "endMs": 6365,
      "sentence": "4-2"
     },
     {
      "text": "thành",
-     "startMs": 6643,
-     "endMs": 6941,
+     "startMs": 6365,
+     "endMs": 6599,
      "sentence": "4-2"
     },
     {
      "text": "thao",
-     "startMs": 6941,
-     "endMs": 7189,
+     "startMs": 6599,
+     "endMs": 6800,
      "sentence": "4-2"
     },
     {
      "text": "túng.",
-     "startMs": 7189,
-     "endMs": 7486,
+     "startMs": 6800,
+     "endMs": 6968,
      "sentence": "4-2"
     },
     {
      "text": "Sách",
-     "startMs": 8566,
-     "endMs": 8798,
+     "startMs": 8036,
+     "endMs": 8327,
      "sentence": "4-3"
     },
     {
      "text": "có",
-     "startMs": 8798,
-     "endMs": 8937,
+     "startMs": 8327,
+     "endMs": 8489,
      "sentence": "4-3"
     },
     {
      "text": "cảnh",
-     "startMs": 8937,
-     "endMs": 9169,
+     "startMs": 8489,
+     "endMs": 8755,
      "sentence": "4-3"
     },
     {
      "text": "báo",
-     "startMs": 9169,
-     "endMs": 9354,
+     "startMs": 8755,
+     "endMs": 8913,
      "sentence": "4-3"
     },
     {
      "text": "chuyện",
-     "startMs": 9354,
-     "endMs": 9679,
+     "startMs": 8913,
+     "endMs": 9149,
      "sentence": "4-3"
     },
     {
      "text": "nịnh",
-     "startMs": 9679,
-     "endMs": 9911,
+     "startMs": 9149,
+     "endMs": 9348,
      "sentence": "4-3"
     },
     {
      "text": "hót,",
-     "startMs": 9911,
-     "endMs": 10142,
+     "startMs": 9348,
+     "endMs": 9472,
      "sentence": "4-3"
     },
     {
      "text": "nhưng",
-     "startMs": 10142,
-     "endMs": 10420,
+     "startMs": 9472,
+     "endMs": 9980,
      "sentence": "4-3"
     },
     {
      "text": "chưa",
-     "startMs": 10420,
-     "endMs": 10652,
+     "startMs": 9980,
+     "endMs": 10188,
      "sentence": "4-3"
     },
     {
      "text": "nói",
-     "startMs": 10652,
-     "endMs": 10838,
+     "startMs": 10188,
+     "endMs": 10352,
      "sentence": "4-3"
     },
     {
      "text": "nhiều",
-     "startMs": 10838,
-     "endMs": 11116,
+     "startMs": 10352,
+     "endMs": 10616,
      "sentence": "4-3"
     },
     {
      "text": "về",
-     "startMs": 11116,
-     "endMs": 11255,
+     "startMs": 10616,
+     "endMs": 10759,
      "sentence": "4-3"
     },
     {
      "text": "việc",
-     "startMs": 11255,
-     "endMs": 11486,
+     "startMs": 10759,
+     "endMs": 10928,
      "sentence": "4-3"
     },
     {
      "text": "dừng",
-     "startMs": 11486,
-     "endMs": 11718,
+     "startMs": 10928,
+     "endMs": 11248,
      "sentence": "4-3"
     },
     {
      "text": "ở",
-     "startMs": 11718,
-     "endMs": 11811,
+     "startMs": 11248,
+     "endMs": 11298,
      "sentence": "4-3"
     },
     {
      "text": "đâu.",
-     "startMs": 11811,
-     "endMs": 12043,
+     "startMs": 11289,
+     "endMs": 11339,
      "sentence": "4-3"
     },
     {
      "text": "Còn",
-     "startMs": 13223,
-     "endMs": 13416,
+     "startMs": 12557,
+     "endMs": 12800,
      "sentence": "4-4"
     },
     {
      "text": "khi",
-     "startMs": 13416,
-     "endMs": 13609,
+     "startMs": 12800,
+     "endMs": 13020,
      "sentence": "4-4"
     },
     {
      "text": "khuyên",
-     "startMs": 13609,
-     "endMs": 13947,
+     "startMs": 13020,
+     "endMs": 13284,
      "sentence": "4-4"
     },
     {
      "text": "tránh",
-     "startMs": 13947,
-     "endMs": 14237,
+     "startMs": 13284,
+     "endMs": 13531,
      "sentence": "4-4"
     },
     {
      "text": "tranh",
-     "startMs": 14237,
-     "endMs": 14527,
+     "startMs": 13531,
+     "endMs": 13879,
      "sentence": "4-4"
     },
     {
      "text": "cãi,",
-     "startMs": 14527,
-     "endMs": 14768,
+     "startMs": 13879,
+     "endMs": 14319,
      "sentence": "4-4"
     },
     {
      "text": "sách",
-     "startMs": 14768,
-     "endMs": 15010,
+     "startMs": 14319,
+     "endMs": 14601,
      "sentence": "4-4"
     },
     {
      "text": "gần",
-     "startMs": 15010,
-     "endMs": 15203,
+     "startMs": 14601,
+     "endMs": 14810,
      "sentence": "4-4"
     },
     {
      "text": "như",
-     "startMs": 15203,
-     "endMs": 15396,
+     "startMs": 14810,
+     "endMs": 14972,
      "sentence": "4-4"
     },
     {
      "text": "không",
-     "startMs": 15396,
-     "endMs": 15686,
+     "startMs": 14972,
+     "endMs": 15178,
      "sentence": "4-4"
     },
     {
      "text": "bàn",
-     "startMs": 15686,
-     "endMs": 15879,
+     "startMs": 15178,
+     "endMs": 15368,
      "sentence": "4-4"
     },
     {
      "text": "tới",
-     "startMs": 15879,
-     "endMs": 16072,
+     "startMs": 15368,
+     "endMs": 15536,
      "sentence": "4-4"
     },
     {
      "text": "lúc",
-     "startMs": 16072,
-     "endMs": 16265,
+     "startMs": 15536,
+     "endMs": 15698,
      "sentence": "4-4"
     },
     {
      "text": "cần",
-     "startMs": 16265,
-     "endMs": 16458,
+     "startMs": 15698,
+     "endMs": 15878,
      "sentence": "4-4"
     },
     {
      "text": "nói",
-     "startMs": 16458,
-     "endMs": 16652,
+     "startMs": 15878,
+     "endMs": 16060,
      "sentence": "4-4"
     },
     {
      "text": "thẳng,",
-     "startMs": 16652,
-     "endMs": 16990,
+     "startMs": 16060,
+     "endMs": 16690,
      "sentence": "4-4"
     },
     {
      "text": "hay",
-     "startMs": 16990,
-     "endMs": 17183,
+     "startMs": 16690,
+     "endMs": 16924,
      "sentence": "4-4"
     },
     {
      "text": "cần",
-     "startMs": 17183,
-     "endMs": 17376,
+     "startMs": 16924,
+     "endMs": 17147,
      "sentence": "4-4"
     },
     {
      "text": "đặt",
-     "startMs": 17376,
-     "endMs": 17569,
+     "startMs": 17147,
+     "endMs": 17351,
      "sentence": "4-4"
     },
     {
      "text": "giới",
-     "startMs": 17569,
-     "endMs": 17811,
+     "startMs": 17351,
+     "endMs": 17671,
      "sentence": "4-4"
     },
     {
      "text": "hạn.",
-     "startMs": 17811,
-     "endMs": 18052,
+     "startMs": 17671,
+     "endMs": 17817,
      "sentence": "4-4"
     },
     {
      "text": "Ngược",
-     "startMs": 19332,
-     "endMs": 19640,
+     "startMs": 19053,
+     "endMs": 19340,
      "sentence": "4-5"
     },
     {
      "text": "lại,",
-     "startMs": 19640,
-     "endMs": 19896,
+     "startMs": 19340,
+     "endMs": 19762,
      "sentence": "4-5"
     },
     {
      "text": "gọi",
-     "startMs": 19896,
-     "endMs": 20101,
+     "startMs": 19762,
+     "endMs": 20198,
      "sentence": "4-5"
     },
     {
      "text": "cả",
-     "startMs": 20101,
-     "endMs": 20255,
+     "startMs": 20198,
+     "endMs": 20335,
      "sentence": "4-5"
     },
     {
      "text": "cuốn",
-     "startMs": 20255,
-     "endMs": 20512,
+     "startMs": 20335,
+     "endMs": 20576,
      "sentence": "4-5"
     },
     {
      "text": "là",
-     "startMs": 20512,
-     "endMs": 20665,
+     "startMs": 20576,
+     "endMs": 20735,
      "sentence": "4-5"
     },
     {
      "text": "sách",
-     "startMs": 20665,
-     "endMs": 20922,
+     "startMs": 20735,
+     "endMs": 20910,
      "sentence": "4-5"
     },
     {
      "text": "dạy",
-     "startMs": 20922,
-     "endMs": 21127,
+     "startMs": 20910,
+     "endMs": 21220,
      "sentence": "4-5"
     },
     {
      "text": "nịnh",
-     "startMs": 21127,
-     "endMs": 21383,
+     "startMs": 21220,
+     "endMs": 21756,
      "sentence": "4-5"
     },
     {
      "text": "thì",
-     "startMs": 21383,
-     "endMs": 21588,
+     "startMs": 21756,
+     "endMs": 22070,
      "sentence": "4-5"
     },
     {
      "text": "cũng",
-     "startMs": 21588,
-     "endMs": 21845,
+     "startMs": 22070,
+     "endMs": 22283,
      "sentence": "4-5"
     },
     {
      "text": "chưa",
-     "startMs": 21845,
-     "endMs": 22101,
+     "startMs": 22283,
+     "endMs": 22536,
      "sentence": "4-5"
     },
     {
      "text": "công",
-     "startMs": 22101,
-     "endMs": 22357,
+     "startMs": 22536,
+     "endMs": 22773,
      "sentence": "4-5"
     },
     {
      "text": "bằng.",
-     "startMs": 22357,
-     "endMs": 22665,
+     "startMs": 22773,
+     "endMs": 22873,
      "sentence": "4-5"
     },
     {
      "text": "Hai",
-     "startMs": 23745,
-     "endMs": 23931,
+     "startMs": 23966,
+     "endMs": 24514,
      "sentence": "4-6"
     },
     {
      "text": "cách",
-     "startMs": 23931,
-     "endMs": 24163,
+     "startMs": 24514,
+     "endMs": 24689,
      "sentence": "4-6"
     },
     {
      "text": "nhìn",
-     "startMs": 24163,
-     "endMs": 24395,
+     "startMs": 24689,
+     "endMs": 24964,
      "sentence": "4-6"
     },
     {
      "text": "ấy,",
-     "startMs": 24395,
-     "endMs": 24581,
+     "startMs": 24964,
+     "endMs": 25218,
      "sentence": "4-6"
     },
     {
      "text": "mình",
-     "startMs": 24581,
-     "endMs": 24813,
+     "startMs": 25218,
+     "endMs": 25566,
      "sentence": "4-6"
     },
     {
      "text": "nghĩ",
-     "startMs": 24813,
-     "endMs": 25045,
+     "startMs": 25566,
+     "endMs": 25761,
      "sentence": "4-6"
     },
     {
      "text": "đều",
-     "startMs": 25045,
-     "endMs": 25230,
+     "startMs": 25761,
+     "endMs": 25947,
      "sentence": "4-6"
     },
     {
      "text": "có",
-     "startMs": 25230,
-     "endMs": 25370,
+     "startMs": 25947,
+     "endMs": 26048,
      "sentence": "4-6"
     },
     {
      "text": "phần",
-     "startMs": 25370,
-     "endMs": 25602,
+     "startMs": 26048,
+     "endMs": 26217,
      "sentence": "4-6"
     },
     {
      "text": "đúng.",
-     "startMs": 25602,
-     "endMs": 25880,
+     "startMs": 26217,
+     "endMs": 26386,
      "sentence": "4-6"
     },
     {
      "text": "Mình",
-     "startMs": 27060,
-     "endMs": 27310,
+     "startMs": 27604,
+     "endMs": 27859,
      "sentence": "cta"
     },
     {
      "text": "đã",
-     "startMs": 27310,
-     "endMs": 27460,
+     "startMs": 27859,
+     "endMs": 28041,
      "sentence": "cta"
     },
     {
      "text": "kể",
-     "startMs": 27460,
-     "endMs": 27610,
+     "startMs": 28041,
+     "endMs": 28190,
      "sentence": "cta"
     },
     {
      "text": "lại",
-     "startMs": 27610,
-     "endMs": 27810,
+     "startMs": 28190,
+     "endMs": 28426,
      "sentence": "cta"
     },
     {
      "text": "trọn",
-     "startMs": 27810,
-     "endMs": 28060,
+     "startMs": 28426,
+     "endMs": 28638,
      "sentence": "cta"
     },
     {
      "text": "cuốn",
-     "startMs": 28060,
-     "endMs": 28310,
+     "startMs": 28638,
+     "endMs": 28875,
      "sentence": "cta"
     },
     {
      "text": "Đắc",
-     "startMs": 28310,
-     "endMs": 28510,
+     "startMs": 28875,
+     "endMs": 29069,
      "sentence": "cta"
     },
     {
      "text": "nhân",
-     "startMs": 28510,
-     "endMs": 28761,
+     "startMs": 29069,
+     "endMs": 29322,
      "sentence": "cta"
     },
     {
      "text": "tâm",
-     "startMs": 28761,
-     "endMs": 28961,
+     "startMs": 29322,
+     "endMs": 29556,
      "sentence": "cta"
     },
     {
      "text": "trong",
-     "startMs": 28961,
-     "endMs": 29261,
+     "startMs": 29556,
+     "endMs": 29816,
      "sentence": "cta"
     },
     {
      "text": "một",
-     "startMs": 29261,
-     "endMs": 29461,
+     "startMs": 29816,
+     "endMs": 30008,
      "sentence": "cta"
     },
     {
      "text": "video",
-     "startMs": 29461,
-     "endMs": 29761,
+     "startMs": 30008,
+     "endMs": 30408,
      "sentence": "cta"
     },
     {
      "text": "dài.",
-     "startMs": 29761,
-     "endMs": 30011,
+     "startMs": 30408,
+     "endMs": 31064,
      "sentence": "cta"
     },
     {
      "text": "Link",
-     "startMs": 30011,
-     "endMs": 30261,
+     "startMs": 31064,
+     "endMs": 31281,
      "sentence": "cta"
     },
     {
      "text": "ở",
-     "startMs": 30261,
-     "endMs": 30361,
+     "startMs": 31281,
+     "endMs": 31331,
      "sentence": "cta"
     },
     {
      "text": "phần",
-     "startMs": 30361,
-     "endMs": 30611,
+     "startMs": 31325,
+     "endMs": 31498,
      "sentence": "cta"
     },
     {
      "text": "bình",
-     "startMs": 30611,
-     "endMs": 30861,
+     "startMs": 31498,
+     "endMs": 31738,
      "sentence": "cta"
     },
     {
      "text": "luận,",
-     "startMs": 30861,
-     "endMs": 31161,
+     "startMs": 31738,
+     "endMs": 32205,
      "sentence": "cta"
     },
     {
      "text": "bạn",
-     "startMs": 31161,
-     "endMs": 31361,
+     "startMs": 32205,
+     "endMs": 32346,
      "sentence": "cta"
     },
     {
      "text": "ghé",
-     "startMs": 31361,
-     "endMs": 31561,
+     "startMs": 32346,
+     "endMs": 32555,
      "sentence": "cta"
     },
     {
      "text": "xem",
-     "startMs": 31561,
-     "endMs": 31761,
+     "startMs": 32555,
+     "endMs": 32752,
      "sentence": "cta"
     },
     {
      "text": "nhé.",
-     "startMs": 31761,
-     "endMs": 32011,
+     "startMs": 32752,
+     "endMs": 32924,
      "sentence": "cta"
     }
    ]

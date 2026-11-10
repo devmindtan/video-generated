@@ -194,6 +194,7 @@
     "check:book-dnt-001-overview": ".venv/bin/python scripts/projects/book-hvtt-001-overview/qa.py --project book-dnt-001-overview",
     "check:book-hvtt-001-shorts": ".venv/bin/python scripts/projects/book-hvtt-001-shorts/qa.py",
     "check:book-ah-001-shorts": ".venv/bin/python scripts/projects/book-hvtt-001-shorts/qa.py --project book-ah-001-shorts",
+    "check:book-dnt-001-shorts": ".venv/bin/python scripts/projects/book-dnt-001-shorts/qa.py",
     "backup:drive": "node scripts/backup/drive-backup.cjs",
     "test:backup-drive": "node scripts/backup/drive-backup.test.cjs"
   },

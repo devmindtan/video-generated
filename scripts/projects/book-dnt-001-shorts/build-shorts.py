@@ -34,6 +34,33 @@ def estimated_words(text, start, end):
     return words
 
 
+def word_timer():
+    """Measured word times for the picked clone (series rule: word-lit captions only for the final cloned voice):
+    faster-whisper medium (local, CPU, int8) with word timestamps on each processed sentence. The caption keeps the
+    script's words; each script word gets the time where the recognised speech reaches the same share of letters, so a
+    mis-heard word ("nhân" for "nhưng") still lands at the right moment."""
+    import soxr
+    from faster_whisper import WhisperModel
+    model = WhisperModel('medium', device='cpu', compute_type='int8', cpu_threads=6, download_root=str(ROOT / '.cache/whisper'))
+
+    def measure(audio, sr, text, offset):
+        a16 = soxr.resample(audio.astype('float32'), sr, 16000).astype('float32')
+        segs, _ = model.transcribe(a16, language='vi', word_timestamps=True, beam_size=5)
+        heard = [w for sg in segs for w in sg.words if w.word.strip()]
+        if not heard:
+            return None
+        lens = [len(w.word.strip()) for w in heard];total_h = sum(lens);acc = 0;marks = []
+        for w, n in zip(heard, lens):
+            marks.append((acc / total_h, w.start));acc += n;marks.append((acc / total_h, w.end))
+        at = lambda f: float(np.interp(f, [m[0] for m in marks], [m[1] for m in marks]))
+        tokens = text.split();lt = [len(t.strip('.,:;!?“”"')) or 1 for t in tokens];total = sum(lt);acc = 0;out = []
+        for t, n in zip(tokens, lt):
+            a = at(acc / total);acc += n;b = at(acc / total)
+            out.append({'text': t, 'startMs': round((offset + a) * 1000), 'endMs': round((offset + max(b, a + .05)) * 1000)})
+        return out
+    return measure
+
+
 def load(path, name):
     import importlib.util
     spec = importlib.util.spec_from_file_location(name, path);mod = importlib.util.module_from_spec(spec);spec.loader.exec_module(mod);return mod
@@ -80,6 +107,7 @@ def clone_pieces(takes, order):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--take')
+    ap.add_argument('--final', action='store_true', help='with --clone: the user picked the clone; write it to the real shorts (short-N.wav, shorts.json, captions.json) with measured word times')
     ap.add_argument('--clone', nargs='+', help='VoiceStudio clone takes in public/book-dnt-001-shorts/voice-auditions/ (one WAV per sentence); a sentence comes from the last take that has its exact text')
     ap.add_argument('--voice', default='25-quoc-tuan')
     args = ap.parse_args()
@@ -101,7 +129,8 @@ def main():
     shorts, captions = [], {}
     # A clone build goes to its own files (…-clone.wav, shorts-clone.json) and the …Clone compositions: the clone is
     # wired into the real shorts only after the user picks it (series rule).
-    suffix = '-clone' if args.clone else ''
+    suffix = '-clone' if args.clone and not args.final else ''
+    measure = word_timer() if args.final else None
     for sh in nar['shorts']:
         items = [(s, s['pauseAfter']) for s in sh['sentences']]
         items[-1] = (items[-1][0], nar['ctaPause'])
@@ -113,7 +142,8 @@ def main():
             start, end = at + EDGE, at + len(p) / sr - EDGE
             sentences.append({'id': s['id'], 'text': s['text'], 'role': 'hook' if s is sh['sentences'][0] else 'cta' if s is nar['cta'] else 'body',
                               'startMs': round(start * 1000), 'endMs': round(end * 1000)})
-            words += [{**w, 'sentence': s['id']} for w in estimated_words(s['text'], start, end)]
+            found = measure(p, sr, s['text'], at) if measure else None
+            words += [{**w, 'sentence': s['id']} for w in (found or estimated_words(s['text'], start, end))]
             chunks += [p, np.zeros(round(rest * sr), dtype='float32')];at += len(p) / sr + rest
         out = OUT / f"{sh['id']}{suffix}.wav"
         sf.write(out, np.concatenate(chunks), sr, subtype='PCM_16')
@@ -124,8 +154,8 @@ def main():
                               'pages': [{'part': {'hook': 'Câu mở', 'body': 'Lời đọc', 'cta': 'Lời mời'}[x['role']], 'text': x['text'],
                                          'startMs': round(lead * 1000) + x['startMs'], 'endMs': round(lead * 1000) + x['endMs']} for x in sentences]}
     used = getattr(clone_pieces, 'used', None) if args.clone else None
-    (SRC / f'shorts{suffix}.json').write_text(json.dumps({'take': args.take, 'voice': args.voice, 'placeholder': not args.clone, 'estimatedWords': True, **({'sentenceTakes': used} if used else {}), 'shorts': shorts}, ensure_ascii=False, indent=1) + '\n')
-    if not args.clone:
+    (SRC / f'shorts{suffix}.json').write_text(json.dumps({'take': args.take, 'voice': args.voice, 'placeholder': not args.clone, 'estimatedWords': not args.final, **({'sentenceTakes': used} if used else {}), 'shorts': shorts}, ensure_ascii=False, indent=1) + '\n')
+    if not suffix:
         (SRC / 'captions.json').write_text(json.dumps({'shorts': captions}, ensure_ascii=False, indent=1) + '\n')
     for s in shorts:
         print(s['id'], f"{s['durationSeconds']:.1f} s narration", f"{captions[s['id']]['durationSeconds']:.1f} s video")

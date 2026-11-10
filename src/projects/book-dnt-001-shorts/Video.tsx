@@ -12,7 +12,6 @@ import type {ShortProps, Word} from '../book-hvtt-001-shorts/ShortFrame';
 import {BookDntThumbnail} from '../book-dnt-001-overview/Thumbnail';
 import music from './music.json';
 import data from './shorts.json';
-import cloneData from './shorts-clone.json';
 import layout from './layout.json';
 
 // The four promo shorts of episode 3 (docs/projects/book-dnt-001-shorts). The words are written for the shorts (user
@@ -23,17 +22,17 @@ import layout from './layout.json';
 // word-lit captions (Captions). Layout keeps YouTube's buttons and title clear: drawings in y 460–1340, x 80–940;
 // captions on a dark band in y 1370–1580. The opening line shows whole and fully lit from the first frame over the
 // chosen cover's subject (series rule 2026-11-05). Drawings are tied to a sentence id and a word in it, so they follow
-// whichever voice is built in (placeholder Quốc Tuấn now with estimated word times, the picked clone later).
+// the voice built in (the user's picked clone, measured word times).
 const SLATE = '#2b3a44', RED = '#a3241b', GOLD = '#c99a45', GOLD_HI = '#e9c77e', BROWN = '#7a5a22', IVORY = '#fbf6ea', BOARD = '#1f2a31', NOTE = '#f6e7b8';
 const COVER = staticFile('book-dnt-001-overview/thumbnail/book-cover-source.webp');
 const GRAIN = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .28 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 type Sentence = {id: string; text: string; role: 'hook' | 'body' | 'cta'; startMs: number; endMs: number};
 type ShortVoice = {id: string; title: string; file: string; durationSeconds: number; sentences: Sentence[]; words: (Word & {sentence: string})[]};
-// voice 'clone': the user's cloned voice (shorts-clone.json, the …Clone compositions) until the user picks it; then it
-// becomes shorts.json and the …Clone compositions go away (as in episode 3).
-export type DntShortProps = ShortProps & {voice?: 'clone'};
-const sets = {placeholder: (data as unknown as {shorts: ShortVoice[]}).shorts, clone: (cloneData as unknown as {shorts: ShortVoice[]}).shorts};
-const shortOf = (id: string, voice?: 'clone') => {const list = voice === 'clone' ? sets.clone : sets.placeholder;return list.find((s) => s.id === id) ?? list[0];};
+// The user's cloned voice, picked 2026-11-10 ("chốt hoàn thành"), with measured word times (build-shorts.py --final).
+// Rebuilding with a new take is the same command; the placeholder Quốc Tuấn takes stay in voice-auditions.
+export type DntShortProps = ShortProps;
+const list = (data as unknown as {shorts: ShortVoice[]}).shorts;
+const shortOf = (id: string) => list.find((s) => s.id === id) ?? list[0];
 const F = (x: number, fps = 30) => Math.round(x * fps);
 const timeline = (s: ShortVoice, fps = 30) => {
   const start = F(layout.lead, fps), at = (ms: number) => start + F(ms / 1000, fps);
@@ -41,7 +40,7 @@ const timeline = (s: ShortVoice, fps = 30) => {
   const body = s.sentences.find((x) => x.role === 'body')!;
   return {start, at, body: at(body.startMs), cta: at(sentence('cta').startMs), end: start + F(s.durationSeconds, fps), total: start + F(s.durationSeconds + layout.tail, fps)};
 };
-export const dntShortMetadata: CalculateMetadataFunction<DntShortProps> = ({props}) => ({durationInFrames: timeline(shortOf(props.short, props.voice)).total});
+export const dntShortMetadata: CalculateMetadataFunction<DntShortProps> = ({props}) => ({durationInFrames: timeline(shortOf(props.short)).total});
 
 // Drawing context: s(id, f) is the frame at fraction f of sentence id; w(id, word, n) the frame where its n-th "word" starts.
 type C = {frame: number; start: number; s: (id: string, f?: number) => number; w: (id: string, word: string, n?: number) => number};
@@ -161,7 +160,7 @@ const S2: ShortDef = {
   hookArt: () => null,
   beats: [],
   stage: (c) => {
-    const nhung = c.w('2-2', 'nhưng'), toVa = c.w('2-5', 'và') - 6, doubt = between(c, c.w('2-4', 'nghi'), c.w('2-4', 'nghi') + 12);
+    const nhung = c.w('2-2', 'chữ'), toVa = c.w('2-5', 'và') - 6, doubt = between(c, c.w('2-4', 'nghi'), c.w('2-4', 'nghi') + 12);
     const relit = between(c, c.w('2-6', 'trọn'), c.w('2-6', 'trọn') + 14), cheer = between(c, c.w('2-7', 'động'), c.w('2-7', 'viên') + 8);
     const dim = doubt * (1 - relit), f = flip(c, toVa);
     // The channel's example (user 2026-11-10: "cần cho 1 câu ví dụ nữa mới dễ hình dung"): the same sentence said with
@@ -309,10 +308,10 @@ const marked = (text: string, re: RegExp) => {
 };
 const norm = (x: string) => x.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
 
-export const DntShort: FC<DntShortProps> = ({short: id, voice}) => {
+export const DntShort: FC<DntShortProps> = ({short: id}) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
-  const s = shortOf(id, voice), tl = timeline(s, fps), def = DEFS[s.id] ?? S1;
+  const s = shortOf(id), tl = timeline(s, fps), def = DEFS[s.id] ?? S1;
   const sentence = (sid: string) => s.sentences.find((x) => x.id === sid) ?? s.sentences[0];
   const at = (sid: string, f = 0) => {const x = sentence(sid);return tl.at(x.startMs + (x.endMs - x.startMs) * f);};
   // Frame where the n-th occurrence of a word (compared without punctuation and case) starts in sentence sid.
@@ -326,7 +325,7 @@ export const DntShort: FC<DntShortProps> = ({short: id, voice}) => {
   const band = interpolate(frame, [tl.body - 12, tl.body], [0, 1], clamp);
   const fadeOut = interpolate(frame, [durationInFrames - .7 * fps, durationInFrames], [1, 0], clamp);
   const hookText = s.sentences[0].text;
-  const bodyWords = useMemo(() => s.words.filter((x) => x.sentence !== s.sentences[0].id).map((x) => ({...x, startMs: x.startMs + layout.lead * 1000, endMs: x.endMs + layout.lead * 1000})), [id, voice]); // eslint-disable-line react-hooks/exhaustive-deps
+  const bodyWords = useMemo(() => s.words.filter((x) => x.sentence !== s.sentences[0].id).map((x) => ({...x, startMs: x.startMs + layout.lead * 1000, endMs: x.endMs + layout.lead * 1000})), [id]); // eslint-disable-line react-hooks/exhaustive-deps
   const paper = def.split
     ? 'radial-gradient(ellipse 34% 40% at 50% 50%, rgba(255,250,238,.9), rgba(255,250,238,0) 70%), linear-gradient(90deg, #d9dddd 0%, #e5e6e2 32%, #efe9dc 50%, #f5e9cf 68%, #f0dbb3 100%)'
     : 'radial-gradient(ellipse 60% 34% at 50% 50%, rgba(255,251,240,.85), rgba(255,251,240,0) 72%), linear-gradient(180deg, #dcdfdf 0%, #e8e8e3 30%, #efe8da 55%, #f4e6c9 80%, #f0dcb6 100%)';
@@ -363,7 +362,7 @@ export const DntShort: FC<DntShortProps> = ({short: id, voice}) => {
       <AbsoluteFill style={{opacity: .34, mixBlendMode: 'multiply', backgroundImage: GRAIN, pointerEvents: 'none'}} />
       <AbsoluteFill style={{background: 'radial-gradient(ellipse 95% 80% at 50% 50%, transparent 60%, rgba(70,55,30,.26) 100%)', pointerEvents: 'none'}} />
     </AbsoluteFill>
-    <Track name={voice === 'clone' ? 'Giọng · lời đọc (clone, chờ bạn nghe chọn)' : 'Giọng · lời đọc (tạm: Quốc Tuấn)'}><Sequence from={tl.start} durationInFrames={tl.end - tl.start + 2}><Audio src={staticFile(s.file)} /></Sequence></Track>
+    <Track name="Giọng · lời đọc (clone giọng người dùng)"><Sequence from={tl.start} durationInFrames={tl.end - tl.start + 2}><Audio src={staticFile(s.file)} /></Sequence></Track>
     <Track name={`Nhạc nền · ${music.credit.artists.join(', ')} – ${music.credit.title} · chỉnh đầu/cuối trong Edit`}>
       <MusicFade fadeInSeconds={music.fadeInSeconds} fadeOutSeconds={music.fadeOutSeconds}>
         <Audio name={`${music.credit.artists.join(', ')} – ${music.credit.title}`} src={staticFile(music.file)} from={0} durationInFrames={durationInFrames} volume={music.speechVolume} playbackRate={music.playbackRate} loop />
