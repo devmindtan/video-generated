@@ -117,6 +117,15 @@ function validate(catalog) {
   for (const {project} of projects.values()) {
     if (project.status !== 'planning' && !project.registrations.some(r => r.kind === 'Composition')) throw new Error(`Production project needs a video: ${project.id}`);
   }
+  // Look of a project (user 2026-11-10): "look": {"theme": <src/looks/themes.json id>, "style": <animation-styles.json id>}, both optional.
+  const looks = dir => {try {return JSON.parse(fs.readFileSync(path.join(root, 'src/looks', dir), 'utf8'));} catch {return null;}};
+  const themeIds = new Set((looks('themes.json')?.themes || []).map(t => t.id)), styleIds = new Set((looks('animation-styles.json')?.styles || []).map(s => s.id));
+  for (const {project} of projects.values()) {
+    if (project.look == null) continue;
+    if (typeof project.look !== 'object' || Object.keys(project.look).some(k => !['theme', 'style'].includes(k))) throw new Error(`Invalid "look" for ${project.id}`);
+    if (project.look.theme != null && !themeIds.has(project.look.theme)) throw new Error(`Unknown theme for ${project.id}: ${project.look.theme}`);
+    if (project.look.style != null && !styleIds.has(project.look.style)) throw new Error(`Unknown animation style for ${project.id}: ${project.look.style}`);
+  }
   // Book links live only here (user rule 2026-11-04): in a series with "requireBook" every project names its book, and a
   // short made to lead to a long episode names that episode in "promotes" (same series, same book, a long video).
   for (const {series, project} of projects.values()) {

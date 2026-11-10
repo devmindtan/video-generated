@@ -160,6 +160,7 @@
     "test:image-local": "node --test tools/imagegen-local/imagegen.test.cjs tools/gpu-host/gpu-host.test.cjs",
     "test:voicestudio": "node --test tools/voicestudio/clone.test.cjs tools/gpu-host/gpu-host.test.cjs",
     "test:manager": "node tools/project-manager/manager.test.cjs && node --test tools/project-manager/activity.test.cjs",
+    "test:manager:looks": "node tools/project-manager/looks.test.cjs",
     "test:manager:browser": "node tools/project-manager/browser.test.cjs",
     "test:manager:navigation": "node tools/project-manager/navigation.test.cjs",
     "test:manager:system": "node tools/project-manager/system-map.test.cjs",

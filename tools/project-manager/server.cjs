@@ -22,6 +22,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
   // Loudness of exported videos for YouTube (-14 LUFS upload copy), detached like the backup; injectable for tests.
   const thumbnails=require('./thumbnails.cjs').createThumbnails(root,{catalog:id=>require('../../scripts/catalog/catalog.cjs').load(root).series.flatMap(x=>x.projects).find(x=>x.id===id)});
   const loudness=loudnessPanel||require('./loudness.cjs').createLoudness(root,{catalog:id=>require('../../scripts/catalog/catalog.cjs').load(root).series.flatMap(x=>x.projects).find(x=>x.id===id)});
+  const looks=require('./looks.cjs').createLooks(root);
   const store=createStore(root),token=crypto.randomBytes(32).toString('hex'),live=require('./live.cjs').createLive(root);
   const server=http.createServer(async(req,res)=>{
     const authority=`127.0.0.1:${server.address().port}`;
@@ -52,6 +53,12 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
         for await(const chunk of req) {bytes+=chunk.length;if(bytes>100000){send(413,{error:'Request too large'});return;}chunks.push(chunk);}
         let body;try {body=JSON.parse(Buffer.concat(chunks).toString());}catch{return send(400,{error:'Invalid JSON'});}
         if(route==='/api/studio'){const p=store.detail(body.id);if(!p.registrations.some(r=>r.id===body.composition))throw Error('Composition not found');await startStudio();return send(200,{url:'http://localhost:3000/'+encodeURIComponent(body.composition)});}
+        // Style library samples live outside the project catalog: only their listed Studio IDs are opened.
+        if(route==='/api/studio-look'){if(!looks.sampleIds().includes(String(body.composition||'')))throw Error('Composition not found');await startStudio();return send(200,{url:'http://localhost:3000/'+encodeURIComponent(body.composition)});}
+        if(route==='/api/looks/theme')return send(200,looks.saveTheme(body));
+        if(route==='/api/looks/theme-delete')return send(200,looks.deleteTheme(body));
+        if(route==='/api/looks/style-note')return send(200,looks.saveStyleNote(body));
+        if(route==='/api/looks/project')return send(200,looks.setLook(body));
         if(route==='/api/voicestudio')return send(200,await startVoiceStudio());
         if(route==='/api/voicestudio/stop')return send(200,await voiceControl.stop());
         if(route==='/api/backup/start')return send(202,await backup.start(body.action));
@@ -96,6 +103,8 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
       if(route==='/api/backup')return send(200,backup.overview());
       if(route==='/api/backup/summary')return send(200,backup.summary());
       if(route==='/api/backup/pending')return send(200,backup.pendingFiles(url.searchParams.get('source'),url.searchParams.get('limit')));
+      if(route==='/api/looks')return send(200,looks.looks());
+      if(route==='/api/looks/series-revision')return send(200,looks.seriesRevision(url.searchParams.get('id')));
       if(route==='/api/voices')return send(200,store.voices());
       if(route==='/api/system')return send(200,require('./system-map.cjs').systemMap(root));
       if(route==='/api/music')return send(200,store.music());
@@ -126,7 +135,7 @@ function createManager({root=ROOT,ensureStudio=null,ensureVoiceStudio=null,voice
       } else if(route==='/font/regular.ttf'||route==='/font/bold.ttf') {
         file=path.join(root,'public/stoic/fonts',route.includes('bold')?'NotoSans-Bold.ttf':'NotoSans-Regular.ttf');
       } else {
-        const files={'/':'index.html','/app.js':'app.js','/styles.css':'styles.css','/icon.svg':'icon.svg'};
+        const files={'/':'index.html','/app.js':'app.js','/looks.js':'looks.js','/styles.css':'styles.css','/icon.svg':'icon.svg'};
         if(!files[route])return send(404,{error:'Not found'});
         file=path.join(WEB,files[route]);
       }

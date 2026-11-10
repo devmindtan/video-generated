@@ -61,3 +61,21 @@ Tách books-grid khỏi lưới video: cột rộng tối thiểu 180px, 5 cột
 ## Thẻ sách dạng kệ (2026-10-30)
 
 Giữ palette có sẵn: nền #f6f8f5, chữ #20362d, phụ #596c61, vùng đặt sách #edf1eb, hover #e4ebe1. Workspace Bold 700 cho tên 14px/1.6, tác giả và trạng thái 12px. Bỏ khung trắng bao ngoài và footer chia vạch kiểu thẻ video; bìa thật là trọng tâm, vùng đặt bìa 232px có bóng nhẹ, metadata thẳng trái bên dưới. Bỏ nút Hồ sơ lặp lại: bấm bìa hoặc tên đều mở hồ sơ, giữ nhãn truy cập và focus rõ. 5 cột desktop, 2 cột mobile; giữ tên dài đầy đủ, trạng thái nguồn và fallback sách thiếu bìa. List giữ bố cục ngang. Kiểm tra ảnh thật, tìm kiếm, detail và upload fixture trên ba kích thước.
+
+## Chủ đề hình ảnh và Phong cách animation (2026-11-10)
+
+Người dùng muốn làm thật nhiều short trước khi có tương tác, nên cần chọn nhanh một "bộ mặt" hợp chủ đề cho mỗi video.
+Hai trang mới ở sidebar, dữ liệu ở `src/looks/themes.json` và `src/looks/animation-styles.json` (video đọc qua
+`src/looks/looks.tsx`), lựa chọn của dự án ở trường `look` trong series.json.
+
+- Điểm nhấn duy nhất: **chính các chủ đề**. Mỗi thẻ là một khung dọc 9:16 vẽ bằng màu, nền và nét của chủ đề đó (phụ
+  đề mẫu có từ khóa), chrome của trang giữ palette xanh rừng/trắng hiện có và lùi lại. Không thêm gradient trang trí.
+- Thẻ chủ đề: khung xem 9:16 cao 280px; tên 16px/700, không khí 14px, "Hợp:" các chủ đề nói, số dự án đang dùng. Lưới
+  tự co: 4 cột 1440px, 2 cột 768px, 1 cột 390px (khung xem thu nhỏ cạnh chữ khi một cột).
+- Hộp chi tiết (dialog lớn): trái là xem trước 9:16 và 16:9, phải là bảng màu theo vai trò (Nền, Mặt phụ, Chữ, Chữ
+  phụ, Nhấn, Nhấn 2 + mã hex), chất liệu nền, nét, phụ đề, nhạc, phong cách gợi ý, dự án đang dùng, "Gắn cho dự án".
+  Sửa/Nhân bản ngay trong hộp: ô chọn màu gốc, xem trước đổi theo từng thay đổi; Xóa bị khóa khi có dự án đang dùng.
+- Phong cách animation: danh sách hàng (không phải lưới thẻ giống nhau): khung xem nhỏ chạy chuyển động mô phỏng khi rê
+  chuột/focus hoặc bấm "Chạy thử", không tự chạy khi `prefers-reduced-motion`; tên, mô tả, hợp với, cách làm, nhịp, độ
+  công phu, nút "Xem mẫu trong Studio" (mẫu Remotion thật, đổi chủ đề trong props), ưu tiên và ghi chú của người dùng.
+- Chữ tối thiểu 13px cho thông tin phụ, nút chạm 44px trên điện thoại, focus rõ, ghi có kiểm tra revision và lịch sử.
