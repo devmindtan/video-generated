@@ -1,0 +1,81 @@
+{
+  "book": "lam-ra-lam-choi-ra-choi",
+  "sourceSha256": "e463478ce60f7445d0ae9d905781e920ff031d5c81c181585b4313ce27a30a13",
+  "edition": "e463478ce60f7445d0ae9d905781e920ff031d5c81c181585b4313ce27a30a13-de2a45e349f9",
+  "pageNumberConvention": "PDF không có nhãn/số trang in; chỉ dùng trang PDF 1-based.",
+  "mappingSummary": "12 bookmark đã kiểm, trùng mục lục ở PDF 3 và PDF 228: lời giới thiệu, lời mở đầu, 2 phần, 3 chương, 4 quy tắc, kết luận. Mốc bắt đầu đã kiểm bằng lớp chữ; mốc kết thúc lấy ngay trước bookmark kế tiếp. Các chiến lược bên trong mỗi quy tắc chỉ là tiêu đề trong lớp chữ, không có bookmark; trang mở của chúng ghi theo trang đã đọc.",
+  "coverage": {"chaptersRead": 8, "chaptersTotal": 8, "status": "complete"},
+  "frontMatter": [
+    {"title": "Trang dấu ebook và mục lục", "pdfStart": 1, "pdfEnd": 3, "readStatus": "read", "mappingSource": "text-checked"},
+    {"title": "Lời giới thiệu (Alpha Books)", "pdfStart": 4, "pdfEnd": 4, "readStatus": "read", "mappingSource": "bookmark-and-text-checked"},
+    {"title": "Lời mở đầu", "pdfStart": 5, "pdfEnd": 20, "readStatus": "read", "mappingSource": "bookmark-and-text-checked"}
+  ],
+  "parts": [
+    {"title": "Phần 1: Ý tưởng", "pdfStart": 21, "pdfEnd": 84, "chapters": [1, 2, 3]},
+    {"title": "Phần 2: Các quy tắc", "pdfStart": 85, "pdfEnd": 221, "chapters": [4, 5, 6, 7]}
+  ],
+  "chapters": [
+    {"number": 1, "title": "Chương một: Làm việc sâu thật đáng giá", "pdfStart": 22, "pdfEnd": 46, "mappingSource": "bookmark-and-text-checked", "readStatus": "read"},
+    {"number": 2, "title": "Chương hai: Trạng thái làm việc sâu rất ít khi xuất hiện", "pdfStart": 47, "pdfEnd": 66, "mappingSource": "bookmark-and-text-checked", "readStatus": "read"},
+    {"number": 3, "title": "Chương ba: Làm việc sâu có ý nghĩa", "pdfStart": 67, "pdfEnd": 84, "mappingSource": "bookmark-and-text-checked", "readStatus": "read"},
+    {
+      "number": 4,
+      "title": "Quy tắc số 1: Làm việc sâu",
+      "pdfStart": 86,
+      "pdfEnd": 136,
+      "mappingSource": "bookmark-and-text-checked",
+      "readStatus": "read",
+      "sections": [
+        {"title": "Quyết định mang tính triết lý về khả năng tập trung sâu (bốn triết lý xếp lịch)", "pdfStart": 91, "mappingSource": "text-only-no-bookmark"},
+        {"title": "Quá trình nghi thức hóa", "pdfStart": 105, "mappingSource": "text-only-no-bookmark"},
+        {"title": "Quan trọng hóa vấn đề", "pdfStart": 108, "mappingSource": "text-only-no-bookmark"},
+        {"title": "Không làm việc một mình", "pdfStart": 112, "mappingSource": "text-only-no-bookmark"},
+        {"title": "Các nguyên tắc thực thi", "pdfStart": 119, "mappingSource": "text-only-no-bookmark"},
+        {"title": "Sự biếng nhác", "pdfStart": 125, "mappingSource": "text-only-no-bookmark"}
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Quy tắc số 2: Tận dụng sự buồn chán",
+      "pdfStart": 137,
+      "pdfEnd": 157,
+      "mappingSource": "bookmark-and-text-checked",
+      "readStatus": "read",
+      "sections": [
+        {"title": "Đừng nghỉ ngơi sau khi bị phân tâm, mà hãy nghỉ ngơi sau khi tập trung", "pdfStart": 141, "mappingSource": "text-only-no-bookmark"},
+        {"title": "Làm việc như Teddy Roosevelt", "pdfStart": 146, "mappingSource": "text-only-no-bookmark"},
+        {"title": "Suy ngẫm hiệu quả", "pdfStart": 149, "mappingSource": "text-only-no-bookmark"},
+        {"title": "Ghi nhớ một bộ bài", "pdfStart": 152, "mappingSource": "text-only-no-bookmark"}
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Quy tắc số 3: Thoát khỏi truyền thông xã hội",
+      "pdfStart": 158,
+      "pdfEnd": 187,
+      "mappingSource": "bookmark-and-text-checked",
+      "readStatus": "read",
+      "sections": [
+        {"title": "Áp dụng luật Số ít Thiết yếu vào những thói quen sử dụng Internet của bạn", "pdfStart": 168, "mappingSource": "text-only-no-bookmark"},
+        {"title": "Thoát khỏi truyền thông xã hội", "pdfStart": 177, "mappingSource": "text-only-no-bookmark"},
+        {"title": "Đừng sử dụng Internet để giải trí", "pdfStart": 182, "mappingSource": "text-only-no-bookmark"}
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Quy tắc số 4: Loại bỏ những thứ hời hợt",
+      "pdfStart": 188,
+      "pdfEnd": 221,
+      "mappingSource": "bookmark-and-text-checked",
+      "readStatus": "read",
+      "sections": [
+        {"title": "Lập kế hoạch cho mỗi phút trong ngày", "pdfStart": 193, "mappingSource": "text-only-no-bookmark"},
+        {"title": "Định lượng độ sâu của mỗi hoạt động", "pdfStart": 198, "mappingSource": "text-only-no-bookmark"},
+        {"title": "Hãy hỏi sếp về quỹ thời gian dành cho nhiệm vụ không chuyên sâu", "pdfStart": 202, "mappingSource": "text-only-no-bookmark"},
+        {"title": "Hoàn thành công việc trước 5 giờ 30 phút chiều", "pdfStart": 205, "mappingSource": "text-only-no-bookmark"},
+        {"title": "Trở nên khó tiếp cận", "pdfStart": 210, "mappingSource": "text-only-no-bookmark"}
+      ]
+    },
+    {"number": 8, "title": "Kết luận", "pdfStart": 222, "pdfEnd": 227, "mappingSource": "bookmark-and-text-checked", "readStatus": "read"}
+  ]
+}

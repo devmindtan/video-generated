@@ -1,0 +1,30 @@
+{
+  "id": "lam-ra-lam-choi-ra-choi",
+  "title": "Làm ra làm chơi ra chơi",
+  "authors": [
+    "Cal Newport"
+  ],
+  "status": "research",
+  "sourceSha256": "e463478ce60f7445d0ae9d905781e920ff031d5c81c181585b4313ce27a30a13",
+  "note": "Đã đọc đủ lời giới thiệu, lời mở đầu và 8/8 đơn vị nội dung (3 chương của Phần 1, 4 quy tắc của Phần 2, kết luận). Bản dịch có nhiều chỗ gượng và sai (thuật ngữ, con số, tên sách), nên research.md ghi cả cách bản dịch gọi lẫn ý gốc dễ nhận ra, và đánh dấu các nghiên cứu tâm lý mà sách dựa vào nhưng nay còn tranh cãi.",
+  "cacheEdition": "e463478ce60f7445d0ae9d905781e920ff031d5c81c181585b4313ce27a30a13-de2a45e349f9",
+  "editionDetails": {
+    "edition": "Bản ebook tiếng Việt không có trang thông tin xuất bản",
+    "translator": null,
+    "publisher": null,
+    "publisherBrand": "Alpha Books",
+    "year": null,
+    "provenance": "PDF người dùng thêm qua trang quản lý; mỗi trang mang dấu thuviensach.vn. File không có trang tên sách; lời giới thiệu (PDF 4) ký Alpha Books và nêu tên Cal Newport, một chú thích ở PDF 222 nhắc sách Alpha Books xuất bản năm 2018 nên bản dịch không sớm hơn năm đó. Dịch giả, nhà xuất bản và năm in chưa xác minh; cần đối chiếu bản in trước khi credit."
+  },
+  "sourceFile": "library/books/lam-ra-lam-choi-ra-choi/sources/lam-ra-lam-choi-ra-choi.pdf",
+  "pdfPages": 228,
+  "extractedCharacters": 456310,
+  "textLayer": "native",
+  "ocr": false,
+  "chapterMap": "chapters.json",
+  "research": "research.md",
+  "chaptersTotal": 8,
+  "chaptersRead": 8,
+  "frontMatterRead": true,
+  "checkedAt": "2026-11-10"
+}
