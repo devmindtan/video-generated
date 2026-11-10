@@ -60,9 +60,11 @@ hàng ô lật ở giữa, GÓP Ý ở dưới; từng phần đổi trạng th�
 | 2-1 câu mở | KHEN; năm ô lật trống, dấu "?" đỏ. |
 | 2-2 "Đó là chữ nhưng." | Năm ô lật lần lượt thành NHƯNG. |
 | 2-3 "…rồi mới góp ý." | Ô GÓP Ý hiện ở dưới. |
+| 2-3b ví dụ "bài này em làm tốt lắm, nhưng…" | Bong bóng lời nói ở nửa trên: câu ví dụ, chữ "nhưng" đỏ; tắt khi sang câu 2-5. |
 | 2-4 "…nghi lời khen…" | KHEN nhạt đi, dấu "?" lớn bên phải. |
 | 2-5 "…đổi chữ nhưng thành chữ và." | Hàng NHƯNG lật một lần thành VÀ vàng. |
 | 2-6 "Mình nói trọn lời khen trước…" | KHEN sáng lại, quầng ấm; dấu "?" tắt. |
+| 2-6b "Câu lúc nãy sẽ thành…" | Bong bóng lời nói lại hiện: cùng câu ví dụ với chữ "và" vàng. |
 | 2-7 "…một lời động viên." | Ô GÓP Ý đổi thành ĐỘNG VIÊN viền vàng, trái tim nhỏ. |
 
 ## Short 3 · Tấm lòng hay cửa miệng

@@ -164,6 +164,15 @@ const S2: ShortDef = {
     const nhung = c.w('2-2', 'nhưng'), toVa = c.w('2-5', 'và') - 6, doubt = between(c, c.w('2-4', 'nghi'), c.w('2-4', 'nghi') + 12);
     const relit = between(c, c.w('2-6', 'trọn'), c.w('2-6', 'trọn') + 14), cheer = between(c, c.w('2-7', 'động'), c.w('2-7', 'viên') + 8);
     const dim = doubt * (1 - relit), f = flip(c, toVa);
+    // The channel's example (user 2026-11-10: "cần cho 1 câu ví dụ nữa mới dễ hình dung"): the same sentence said with
+    // "nhưng" (2-3b) and again with "và" (2-6b), in a speech bubble over the stage.
+    const ex1 = Math.min(on(c, c.s('2-3b')), 1 - between(c, c.s('2-5') - 10, c.s('2-5') + 6)), ex2 = on(c, c.s('2-6b'));
+    const bubble = (o: number, joiner: string, color: string, rest: string, last: string, key: string) => <g key={key} opacity={o}>
+      <path d="M150 430 H930 C960 430 975 446 975 476 V676 C975 706 960 722 930 722 H600 L540 772 L548 722 H150 C120 722 105 706 105 676 V476 C105 446 120 430 150 430 Z" fill={IVORY} stroke={SLATE} strokeWidth={5} strokeLinejoin="round" />
+      {T(540, 518, 46, '“Bài này em làm tốt lắm,')}
+      <text x={540} y={596} textAnchor="middle" fontSize={46} fontWeight={700} fill={SLATE}><tspan fill={color}>{joiner}</tspan>{rest}</text>
+      {T(540, 674, 46, last)}
+    </g>;
     return <g>
       <circle cx={540} cy={865} r={250} fill="rgba(233,199,126,.35)" opacity={relit} />
       {block(280, 800, 520, 'KHEN', 'khen', 1 - .62 * dim)}
@@ -177,6 +186,8 @@ const S2: ShortDef = {
         {T(540, 1272, 62, cheer > .5 ? 'ĐỘNG VIÊN' : 'GÓP Ý', 1, cheer > .5 ? BROWN : SLATE)}
       </g>
       <path d={heartPath(870, 1250, .45)} fill={RED} stroke={GOLD_HI} strokeWidth={3} opacity={cheer} />
+      {ex1 > .001 ? bubble(ex1, 'nhưng', RED, ' phần cuối', 'còn sơ sài.”', 'e1') : null}
+      {ex2 > .001 ? bubble(ex2, 'và', GOLD, ' nếu chăm chút thêm phần cuối', 'thì còn tốt hơn nữa.”', 'e2') : null}
     </g>;
   },
 };
@@ -348,7 +359,7 @@ export const DntShort: FC<DntShortProps> = ({short: id, voice}) => {
       </div>
       {/* Caption band (after the opening line), the channel's caption type on dark ink. */}
       <div style={{position: 'absolute', left: 60, width: 960, top: 1370, height: 210, borderRadius: 26, background: 'rgba(31,42,49,.92)', opacity: band}} />
-      {frame >= tl.body - 2 ? <Captions words={bodyWords} ms={frame * 1000 / fps} highlight={def.highlight} /> : null}
+      {frame >= tl.body - 2 ? <Captions words={bodyWords} ms={frame * 1000 / fps} highlight={def.highlight} left={100} width={880} top={1390} /> : null}
       <AbsoluteFill style={{opacity: .34, mixBlendMode: 'multiply', backgroundImage: GRAIN, pointerEvents: 'none'}} />
       <AbsoluteFill style={{background: 'radial-gradient(ellipse 95% 80% at 50% 50%, transparent 60%, rgba(70,55,30,.26) 100%)', pointerEvents: 'none'}} />
     </AbsoluteFill>

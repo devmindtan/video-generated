@@ -57,14 +57,15 @@ const pagesOf = (words: Word[]) => {
   return pages;
 };
 // Exported for later episodes that draw their own frame around the shared timing and captions (episode 3: paper and ink).
-export const Captions: FC<{words: Word[]; ms: number; highlight: RegExp; top?: number; size?: number}> = ({words, ms, highlight, top = 1390, size = 58}) => {
+// left/width default to episode 1–2's frame (x 80–940); a frame may centre them on its own caption band.
+export const Captions: FC<{words: Word[]; ms: number; highlight: RegExp; top?: number; size?: number; left?: number; width?: number}> = ({words, ms, highlight, top = 1390, size = 58, left = 80, width = 860}) => {
   const pages = useMemo(() => pagesOf(words), [words]);
   const n = pages.findIndex((p, i) => ms >= p[0].startMs - 80 && ms < (pages[i + 1]?.[0].startMs ?? p[p.length - 1].endMs + 500) - 80);
   if (n < 0) return null;
   const page = pages[n], text = page.map((w) => w.text).join(' ');
   const gold: [number, number][] = [...text.matchAll(new RegExp(highlight.source, 'gi'))].map((m) => [m.index ?? 0, (m.index ?? 0) + m[0].length]);
   let at = 0;
-  return <div style={{position: 'absolute', left: 80, width: 860, top, minHeight: 170, display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', color: IVORY, fontSize: size, fontWeight: 700, lineHeight: 1.3, textShadow: '0 3px 14px #000', textWrap: 'balance'}}>
+  return <div style={{position: 'absolute', left, width, top, minHeight: 170, display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', color: IVORY, fontSize: size, fontWeight: 700, lineHeight: 1.3, textShadow: '0 3px 14px #000', textWrap: 'balance'}}>
     <div>{page.map((w, i) => {const offset = text.indexOf(w.text, at);at = offset + w.text.length;
       return <span key={i} style={{color: gold.some(([a, b]) => offset >= a && offset < b) ? GOLD : undefined, opacity: interpolate(ms, [w.startMs - 40, w.startMs + 80], [.38, 1], clamp)}}>{w.text}{i < page.length - 1 ? ' ' : ''}</span>;})}</div>
   </div>;

@@ -22,6 +22,7 @@
 | Take | Giọng | Máy | Câu |
 |---|---|---|---|
 | `public/voice-auditions/book-dnt-shorts-qt-v2/` | Quốc Tuấn (VieNeu, preset) | laptop | 25 câu của 4 short + lời mời (`audition-qt-v2.json`, sinh từ narration.json) |
+| `public/voice-auditions/book-dnt-shorts-qt-v3/` | Quốc Tuấn | laptop | Như v2, short 2 có câu ví dụ (`audition-qt-v3.json`) |
 
 - Nhận dạng cục bộ khớp 99%. Chỗ nghe có vẻ sai thanh hoặc sai chữ: "Trong" → "Tròng" (1-4), "thêm" → "thềm" (2-3),
   "trọn" → "chọn" (2-6 và lời mời), "thật lòng" → "thật long" (3-1), "Đắc nhân tâm" → "Đặc nhần tầm" (câu mở short 4),
@@ -34,6 +35,7 @@
 |---|---|---|---|---|
 | Clone một lượt | `clone-v1` | 26 (25 câu + lời mời, `lines-clone.txt`) | máy GPU desktop-kndgm60 | Lời đọc viết mới |
 | Clone lại | `clone-fix-v1`, `clone-fix-v2` | 8 (`lines-fix.txt`) | máy GPU | Kiểm tra dấu đánh dấu: cãi, lùi, chữ "nhưng", nãy, vạch ranh, cả |
+| Short 2 sửa lời (2026-11-10) | `clone-fix2-v1`, `clone-fix2-v2` | 4 (`lines-fix2.txt`) | máy GPU | Thêm câu ví dụ 2-3b, 2-6b; viết lại 2-5, 2-6 để chữ "và" không đứng cuối câu (người dùng: "chữ và đang bị kéo dài") |
 
 - Mẫu giọng `library/voice-references/tam-nhin-cho-cuoc-song/clips/006130-15s.wav` (consent self), lời mẫu nhận dạng lại
   bằng faster-whisper cục bộ và gửi kèm (`--ref-text`), như tập 1–3.

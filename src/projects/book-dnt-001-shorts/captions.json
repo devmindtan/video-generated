@@ -52,7 +52,7 @@
   "short-2": {
    "title": "Short 2 · Chữ “nhưng” thành chữ “và”",
    "composition": "BookDntShortNhungVa",
-   "durationSeconds": 37.66,
+   "durationSeconds": 49.23,
    "pages": [
     {
      "part": "Câu mở",
@@ -74,33 +74,45 @@
     },
     {
      "part": "Lời đọc",
-     "text": "Người nghe vừa nghe tới chữ nhưng là bắt đầu nghi lời khen ban nãy chỉ để mở đường.",
+     "text": "Kiểu như: bài này em làm tốt lắm, nhưng phần cuối còn sơ sài.",
      "startMs": 10924,
-     "endMs": 14969
+     "endMs": 14280
     },
     {
      "part": "Lời đọc",
-     "text": "Trong Đắc nhân tâm, tác giả gợi ý một cách rất đơn giản: đổi chữ nhưng thành chữ và.",
-     "startMs": 16249,
-     "endMs": 20298
+     "text": "Người nghe vừa nghe tới chữ nhưng là bắt đầu nghi lời khen ban nãy chỉ để mở đường.",
+     "startMs": 15360,
+     "endMs": 19405
     },
     {
      "part": "Lời đọc",
-     "text": "Mình nói trọn lời khen trước, rồi nối lời góp ý bằng chữ và.",
-     "startMs": 21478,
-     "endMs": 24978
+     "text": "Trong Đắc nhân tâm, tác giả gợi ý một cách rất đơn giản: dùng chữ và thay cho chữ nhưng.",
+     "startMs": 20685,
+     "endMs": 25134
+    },
+    {
+     "part": "Lời đọc",
+     "text": "Mình nói trọn lời khen trước, rồi dùng chữ và để nối sang lời góp ý.",
+     "startMs": 26314,
+     "endMs": 30060
+    },
+    {
+     "part": "Lời đọc",
+     "text": "Câu lúc nãy sẽ thành: bài này em làm tốt lắm, và nếu chăm chút thêm phần cuối thì còn tốt hơn nữa.",
+     "startMs": 31140,
+     "endMs": 36540
     },
     {
      "part": "Lời đọc",
      "text": "Vậy là lời khen vẫn còn nguyên, còn lời góp ý thì nghe như một lời động viên.",
-     "startMs": 26058,
-     "endMs": 29894
+     "startMs": 37620,
+     "endMs": 41455
     },
     {
      "part": "Lời mời",
      "text": "Mình đã kể lại trọn cuốn Đắc nhân tâm trong một video dài. Link ở phần bình luận, bạn ghé xem nhé.",
-     "startMs": 31074,
-     "endMs": 36025
+     "startMs": 42635,
+     "endMs": 47586
     }
    ]
   },

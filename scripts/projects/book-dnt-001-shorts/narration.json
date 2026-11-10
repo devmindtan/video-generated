@@ -1,5 +1,5 @@
 {
-  "note": "Lời đọc của 4 short tập 3, viết mới cho short (người dùng 2026-11-09: \"viết lại lời thoại có độ dài phù hợp, đừng lấy của video gốc\"). Mỗi câu một id; pauseAfter là khoảng lặng sau câu (giây). Câu đầu là câu mở, câu cuối là lời mời chung (cta). docs/projects/book-dnt-001-shorts/script.md là bản đọc của file này; build-shorts.py và Video.tsx đọc theo id câu. Khoảng lặng sau các câu thân bài tăng thêm 0,3 giây (người dùng 2026-11-09: một số chỗ hình chưa xong đã chuyển cảnh).",
+  "note": "Lời đọc của 4 short tập 3, viết mới cho short (người dùng 2026-11-09: \"viết lại lời thoại có độ dài phù hợp, đừng lấy của video gốc\"). Mỗi câu một id; pauseAfter là khoảng lặng sau câu (giây). Câu đầu là câu mở, câu cuối là lời mời chung (cta). docs/projects/book-dnt-001-shorts/script.md là bản đọc của file này; build-shorts.py và Video.tsx đọc theo id câu. Khoảng lặng sau các câu thân bài tăng thêm 0,3 giây (người dùng 2026-11-09: một số chỗ hình chưa xong đã chuyển cảnh). Short 2 (người dùng 2026-11-10): thêm một câu ví dụ để dễ hình dung (2-3b, 2-6b, ví dụ của kênh); chữ \"và\" không đứng cuối câu nữa vì giọng clone kéo dài chữ cuối.",
   "cta": {
     "id": "cta",
     "text": "Mình đã kể lại trọn cuốn Đắc nhân tâm trong một video dài. Link ở phần bình luận, bạn ghé xem nhé."
@@ -62,18 +62,28 @@
           "pauseAfter": 0.9
         },
         {
+          "id": "2-3b",
+          "text": "Kiểu như: bài này em làm tốt lắm, nhưng phần cuối còn sơ sài.",
+          "pauseAfter": 1.0
+        },
+        {
           "id": "2-4",
           "text": "Người nghe vừa nghe tới chữ nhưng là bắt đầu nghi lời khen ban nãy chỉ để mở đường.",
           "pauseAfter": 1.2
         },
         {
           "id": "2-5",
-          "text": "Trong Đắc nhân tâm, tác giả gợi ý một cách rất đơn giản: đổi chữ nhưng thành chữ và.",
+          "text": "Trong Đắc nhân tâm, tác giả gợi ý một cách rất đơn giản: dùng chữ và thay cho chữ nhưng.",
           "pauseAfter": 1.1
         },
         {
           "id": "2-6",
-          "text": "Mình nói trọn lời khen trước, rồi nối lời góp ý bằng chữ và.",
+          "text": "Mình nói trọn lời khen trước, rồi dùng chữ và để nối sang lời góp ý.",
+          "pauseAfter": 1.0
+        },
+        {
+          "id": "2-6b",
+          "text": "Câu lúc nãy sẽ thành: bài này em làm tốt lắm, và nếu chăm chút thêm phần cuối thì còn tốt hơn nữa.",
           "pauseAfter": 1.0
         },
         {
