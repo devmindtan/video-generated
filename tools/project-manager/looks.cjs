@@ -29,13 +29,65 @@ function createLooks(root) {
     fs.renameSync(temp, target);
     return hashText(text);
   }
-  const projects = () => load(root).series.flatMap(series => series.projects.map(p => ({id: p.id, title: p.title, format: p.format, status: p.status,
-    series: series.id, seriesTitle: series.title, look: p.look || null})));
+  // ---- automatic detection (user 2026-11-10: "Đang dùng" must recognise itself, not wait for an agent) ----------------
+  // A project's code plus the files it imports (relative, inside src/, three levels deep): its colours and markers.
+  function codeOf(sourceDir) {
+    const seen = new Set(), texts = [], src = path.join(root, 'src');
+    const walk = dir => {for (const e of fs.existsSync(dir) ? fs.readdirSync(dir, {withFileTypes: true}) : []) {
+      const f = path.join(dir, e.name);if (e.isDirectory()) walk(f);else if (/\.(tsx?|jsx?)$/.test(e.name)) add(f, 0);}};
+    const add = (file, depth) => {
+      if (seen.has(file) || !file.startsWith(src + path.sep) || file.includes(`${path.sep}looks${path.sep}`)) return;
+      seen.add(file);const text = fs.readFileSync(file, 'utf8');texts.push(text);
+      if (depth >= 3) return;
+      for (const m of text.matchAll(/from\s+['"](\.{1,2}\/[^'"]+)['"]/g)) {
+        const base = path.resolve(path.dirname(file), m[1]);
+        const hit = [base, `${base}.tsx`, `${base}.ts`, path.join(base, 'index.tsx'), path.join(base, 'index.ts')].find(x => fs.existsSync(x) && fs.statSync(x).isFile());
+        if (hit) add(hit, depth + 1);
+      }
+    };
+    walk(sourceDir);
+    return texts.join('\n');
+  }
+  const rgb = hex => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
+  const distance = (a, b) => Math.hypot(...rgb(a).map((v, i) => v - rgb(b)[i]));
+  // Theme: its background, text and accent all appear (within a small colour distance); the closest theme wins.
+  function detectTheme(code, themes, style) {
+    const colors = [...new Set((code.match(/#[0-9a-fA-F]{6}\b/g) || []).map(c => c.toLowerCase()))];
+    if (!colors.length) return null;
+    let best = null;
+    for (const t of themes) {
+      // The same identity drifts a little from video to video (near-black grounds, warmer or paler golds).
+      const gaps = ['background', 'ink', 'accent'].map(role => Math.min(...colors.map(c => distance(c, t.palette[role]))));
+      // Themes of one colour family (dark, ivory, gold) are told apart by the style the project uses.
+      const score = gaps.reduce((a, b) => a + b) - (style && t.styles.includes(style) ? 15 : 0);
+      if (gaps[0] <= 20 && gaps[1] <= 20 && gaps[2] <= 36 && (!best || score < best.score)) best = {id: t.id, score};
+    }
+    return best && {id: best.id, why: 'màu nền, chữ và nhấn trong code khớp bảng màu'};
+  }
+  // Style: the one whose "detect.any" markers occur most often in the code, unless one of its "detect.none" markers is
+  // there (a short with eight stills and one drawn line is a still-image short).
+  function detectStyle(code, styles) {
+    let best = null;
+    for (const s of styles) {
+      const none = s.detect?.none || [];
+      if (!(s.detect?.any || []).length || none.some(r => new RegExp(r).test(code))) continue;
+      const count = s.detect.any.reduce((n, r) => n + (code.match(new RegExp(r, 'g')) || []).length, 0);
+      if (count && (!best || count > best.count)) best = {id: s.id, count};
+    }
+    return best && {id: best.id, why: `${best.count} dấu hiệu trong code`};
+  }
+  const projects = (themes, styles) => load(root).series.flatMap(series => series.projects.map(p => {
+    const code = themes ? codeOf(path.join(root, p.paths.source)) : '';
+    const foundStyle = styles ? detectStyle(code, styles) : null, foundTheme = themes ? detectTheme(code, themes, foundStyle?.id) : null;
+    const theme = p.look?.theme ? {id: p.look.theme, by: 'chosen'} : foundTheme ? {...foundTheme, by: 'detected'} : null;
+    const style = p.look?.style ? {id: p.look.style, by: 'chosen'} : foundStyle ? {...foundStyle, by: 'detected'} : null;
+    return {id: p.id, title: p.title, format: p.format, status: p.status, series: series.id, seriesTitle: series.title, look: p.look || null, theme, style};
+  }));
 
   function overview() {
-    const themesText = read(THEMES), stylesText = read(STYLES), list = projects();
-    const themes = JSON.parse(themesText).themes.map(t => ({...t, usedBy: list.filter(p => p.look?.theme === t.id).map(p => p.id)}));
-    const styles = JSON.parse(stylesText).styles.map(s => ({...s, usedBy: list.filter(p => p.look?.style === s.id).map(p => p.id),
+    const themesText = read(THEMES), stylesText = read(STYLES), list = projects(JSON.parse(themesText).themes, JSON.parse(stylesText).styles);
+    const themes = JSON.parse(themesText).themes.map(t => ({...t, usedBy: list.filter(p => p.theme?.id === t.id).map(p => p.id)}));
+    const styles = JSON.parse(stylesText).styles.map(s => ({...s, usedBy: list.filter(p => p.style?.id === s.id).map(p => p.id),
       suggestedBy: themes.filter(t => t.styles.includes(s.id)).map(t => t.id)}));
     return {themes, styles, projects: list, textures: TEXTURES, revisions: {themes: hashText(themesText), styles: hashText(stylesText)}};
   }
@@ -81,7 +133,7 @@ function createLooks(root) {
   function deleteTheme({id, revision}) {
     const target = file(THEMES), before = read(THEMES), data = JSON.parse(before);
     if (!data.themes.some(t => t.id === id)) throw fail('Không tìm thấy chủ đề này');
-    const users = projects().filter(p => p.look?.theme === id);
+    const users = overview().projects.filter(p => p.theme?.id === id);
     if (users.length) throw fail(`Chủ đề đang dùng cho ${users.length} dự án (${users.map(p => p.title).slice(0, 3).join(', ')}). Đổi chủ đề của các dự án đó trước.`);
     if (data.themes.length === 1) throw fail('Cần giữ ít nhất một chủ đề');
     data.themes = data.themes.filter(t => t.id !== id);

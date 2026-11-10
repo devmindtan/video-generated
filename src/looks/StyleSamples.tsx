@@ -39,6 +39,24 @@ export const AnhTinh: FC<SampleProps> = ({theme}) => {const f = useCurrentFrame(
     {Array.from({length: 30}, (_, i) => <circle key={i} cx={(random(`ax${i}`) * 1080 + f * (.3 + random(`as${i}`))) % 1080} cy={300 + random(`ay${i}`) * 1100} r={1.5 + random(`ar${i}`) * 2.5} fill={t.palette.accent} opacity={.25 + .35 * Math.sin((f + i * 11) / 20) ** 2} />)}
   </SampleFrame>;};
 
+// Tranh vector tô màu: a painted valley at dusk built from gradient-filled shapes, a soft sun glow, drifting clouds and
+// light rising on the water; colours come from the theme.
+export const TranhVector = make((t, f) => {const p = t.palette, rise = grow(f, 0, 150), drift = f * .6;return <g>
+  <defs><linearGradient id="tv-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={p.background} /><stop offset="1" stopColor={p.surface} /></linearGradient>
+    <linearGradient id="tv-hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={p.muted} stopOpacity={.55} /><stop offset="1" stopColor={p.background} /></linearGradient>
+    <linearGradient id="tv-water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={p.accent} stopOpacity={.35} /><stop offset="1" stopColor={p.background} stopOpacity={.1} /></linearGradient>
+    <radialGradient id="tv-sun"><stop offset="0" stopColor={p.accent2} stopOpacity={.9} /><stop offset="1" stopColor={p.accent} stopOpacity={0} /></radialGradient>
+    <filter id="tv-soft"><feGaussianBlur stdDeviation="6" /></filter></defs>
+  <rect x={60} y={380} width={960} height={940} rx={24} fill="url(#tv-sky)" />
+  <circle cx={540} cy={860 - rise * 120} r={260} fill="url(#tv-sun)" />
+  <circle cx={540} cy={860 - rise * 120} r={70} fill={p.accent} />
+  {[0, 1].map((k) => <ellipse key={k} cx={((260 + k * 420 + drift * (k ? .7 : 1)) % 1100) - 20} cy={560 + k * 70} rx={130} ry={26} fill={p.ink} opacity={.18} filter="url(#tv-soft)" />)}
+  <path d="M60 980 C220 860 360 900 480 960 C620 1030 760 880 1020 940 L1020 1320 L60 1320 Z" fill="url(#tv-hill)" />
+  <path d="M60 1090 C260 1040 420 1100 600 1080 C780 1060 900 1100 1020 1080 L1020 1320 L60 1320 Z" fill={p.surface} />
+  <rect x={160} y={1150} width={760} height={120} rx={60} fill="url(#tv-water)" />
+  {[0, 1, 2].map((k) => <path key={k} d={`M${380 + k * 60} ${1180 + k * 26} l${120 - k * 30} 0`} stroke={p.accent} strokeWidth={6} strokeLinecap="round" opacity={(.3 + .5 * rise) * (.6 + .4 * Math.sin((f + k * 20) / 12))} />)}
+</g>;}, 'TRANH VECTOR TÔ MÀU');
+
 // Chữ chuyển động: the sample sentence word by word with springs, set as centred lines; the keyword larger, in the
 // accent, and underlined once it is complete.
 export const ChuChuyenDong = make((t, f, fps) => {
@@ -132,5 +150,5 @@ export const SoTay = make((t, f, fps) => {const p = t.palette, drop = spring({fr
   <Ink d="M300 1000 C340 1120 460 1150 560 1100 M530 1078 L566 1100 L540 1134" f={f} a={100} b={140} color={p.ink} w={6} />
 </g>;}, 'TRANG SỔ TAY', false);
 
-export const SAMPLES: Record<string, FC<SampleProps>> = {PhongCachNetVe: NetVe, PhongCachAnhTinh: AnhTinh, PhongCachChuChuyenDong: ChuChuyenDong, PhongCachCatGiay: CatGiay, PhongCachPhanBang: PhanBang,
+export const SAMPLES: Record<string, FC<SampleProps>> = {PhongCachNetVe: NetVe, PhongCachAnhTinh: AnhTinh, PhongCachTranhVector: TranhVector, PhongCachChuChuyenDong: ChuChuyenDong, PhongCachCatGiay: CatGiay, PhongCachPhanBang: PhanBang,
   PhongCachBongDo: BongDo, PhongCachInfographic: Infographic, PhongCachMucLoang: MucLoang, PhongCachHatAnhSang: HatAnhSang, PhongCachHinhKhoi: HinhKhoi, PhongCachSoTay: SoTay};

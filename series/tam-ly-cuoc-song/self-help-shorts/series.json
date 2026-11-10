@@ -30,11 +30,7 @@
           "id": "OneBadDayThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "start-before-ready",
@@ -56,11 +52,7 @@
           "id": "StartBeforeReadyThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "stoic",
@@ -82,11 +74,7 @@
           "id": "StoicThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "past-self",
@@ -108,11 +96,7 @@
           "id": "PastSelfThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "let-it-settle",
@@ -134,11 +118,7 @@
           "id": "LetItSettleThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "single-task",
@@ -160,11 +140,7 @@
           "id": "SingleTaskThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "discipline-purpose",
@@ -186,11 +162,7 @@
           "id": "DisciplinePurposeThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "right-advice",
@@ -212,11 +184,7 @@
           "id": "RightAdviceThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "people-pleasing",
@@ -238,11 +206,7 @@
           "id": "PeoplePleasingThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "never-tried",
@@ -264,11 +228,7 @@
           "id": "NeverTriedThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "take-stock",
@@ -290,11 +250,7 @@
           "id": "TakeStockThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "get-back-up",
@@ -316,11 +272,7 @@
           "id": "GetBackUpThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "dream-trap",
@@ -342,11 +294,7 @@
           "id": "DreamTrapThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "call-back",
@@ -368,11 +316,7 @@
           "id": "CallBackThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "time-and-gold",
@@ -394,11 +338,7 @@
           "id": "TimeAndGoldThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "less-judgment",
@@ -420,11 +360,7 @@
           "id": "LessJudgmentThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "small-mistakes",
@@ -446,11 +382,7 @@
           "id": "SmallMistakesThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "anger-at-home",
@@ -472,11 +404,7 @@
           "id": "AngerAtHomeThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "cherish-today",
@@ -498,11 +426,7 @@
           "id": "CherishTodayThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "rest-day",
@@ -524,11 +448,7 @@
           "id": "RestDayThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "apology-change",
@@ -550,11 +470,7 @@
           "id": "ApologyChangeThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "listen-first",
@@ -576,11 +492,7 @@
           "id": "ListenFirstThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "exhausted",
@@ -602,11 +514,7 @@
           "id": "ExhaustedThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "solitude",
@@ -628,11 +536,7 @@
           "id": "SolitudeThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "forgiveness",
@@ -654,11 +558,7 @@
           "id": "ForgivenessThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "letting-go",
@@ -680,11 +580,7 @@
           "id": "LettingGoThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "boundaries",
@@ -706,11 +602,7 @@
           "id": "BoundariesThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "crab-mentality",
@@ -732,11 +624,7 @@
           "id": "CrabMentalityThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "reciprocity-trap",
@@ -758,11 +646,7 @@
           "id": "ReciprocityTrapThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "provocation-control",
@@ -780,11 +664,7 @@
           "id": "StoicProvocationControl",
           "kind": "Composition"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "hidden-intentions",
@@ -802,11 +682,7 @@
           "id": "StoicHiddenIntentions",
           "kind": "Composition"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "own-timeline",
@@ -828,11 +704,7 @@
           "id": "OwnTimelineThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     },
     {
       "id": "know-when-to-quit",
@@ -855,11 +727,7 @@
           "id": "KnowWhenToQuitThumbnail",
           "kind": "Still"
         }
-      ],
-      "look": {
-        "theme": "dem-stoic",
-        "style": "anh-tinh"
-      }
+      ]
     }
   ]
 }

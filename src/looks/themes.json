@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "note": "Chủ đề hình ảnh cho mọi video (short và dài): màu, nền, nét vẽ, phụ đề, không khí nhạc. Sửa ở trang quản lý → Chủ đề hình ảnh (bản cũ ở src/looks/.manager-history/). Dự án chọn chủ đề bằng trường \"look\" trong series.json; video đọc token qua src/looks/looks.ts. Font chỉ có Stoic Sans (Noto Sans 400/700) trên máy.",
+  "note": "Chủ đề hình ảnh cho mọi video (short và dài): màu, nền, nét vẽ, phụ đề, không khí nhạc. Sửa ở trang quản lý → Chủ đề hình ảnh (bản cũ ở src/looks/.manager-history/). Trang quản lý tự nhận diện chủ đề của từng dự án từ mã màu trong code (nền, chữ, nhấn); trường \"look\" trong series.json chỉ dùng khi người dùng chọn khác; video đọc token qua src/looks/looks.ts. Font chỉ có Stoic Sans (Noto Sans 400/700) trên máy.",
   "themes": [
     {
       "id": "rung-dem-vang",
@@ -18,9 +18,9 @@
         "long"
       ],
       "palette": {
-        "background": "#0f1714",
+        "background": "#0d1411",
         "surface": "#22302a",
-        "ink": "#efe6d2",
+        "ink": "#f2ede3",
         "muted": "#9aa79f",
         "accent": "#d9b56f",
         "accent2": "#e8c27a"
@@ -83,7 +83,8 @@
       "styles": [
         "anh-tinh",
         "chu-chuyen-dong",
-        "bong-do"
+        "bong-do",
+        "tranh-vector"
       ],
       "sample": {
         "caption": "Giữ giới hạn cũng là giữ sự tôn trọng",

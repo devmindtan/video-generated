@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "note": "Các phong cách animation 2D làm được bằng Remotion (code, không AI tạo ảnh, không dịch vụ trả phí). Mỗi phong cách có một mẫu thật trong Studio (thư mục Thu-Vien-Phong-Cach, đổi chủ đề trong ô props). Người dùng ghi chú và đánh dấu ưu tiên ở trang quản lý → Phong cách animation; mô tả kỹ thuật do agent cập nhật khi làm thêm.",
+  "note": "Các phong cách animation 2D làm được bằng Remotion (code, không AI tạo ảnh, không dịch vụ trả phí). Mỗi phong cách có một mẫu thật trong Studio (thư mục Thu-Vien-Phong-Cach, đổi chủ đề trong ô props). Người dùng ghi chú và đánh dấu ưu tiên ở trang quản lý → Phong cách animation; mô tả kỹ thuật do agent cập nhật khi làm thêm. \"detect\": dấu hiệu trong mã nguồn của dự án để trang tự nhận diện phong cách (any: có một trong các mẫu regex; none: có thì loại).",
   "styles": [
     {
       "id": "net-ve",
@@ -20,7 +20,18 @@
       "effort": 2,
       "sample": "PhongCachNetVe",
       "favorite": false,
-      "userNote": ""
+      "userNote": "",
+      "detect": {
+        "any": [
+          "book-hvtt-001-overview/(scene-kit|Intro)",
+          "book-hvtt-001-shorts/ShortFrame",
+          "strokeDashoffset",
+          "<Draw\\b"
+        ],
+        "none": [
+          "@remotion/three"
+        ]
+      }
     },
     {
       "id": "anh-tinh",
@@ -40,7 +51,46 @@
       "effort": 1,
       "sample": "PhongCachAnhTinh",
       "favorite": false,
-      "userNote": ""
+      "userNote": "",
+      "detect": {
+        "any": [
+          "<(Img|CanvasImage)\\b"
+        ],
+        "none": [
+          "<(Video|OffthreadVideo)\\b",
+          "@remotion/three",
+          "book-hvtt-001-overview/(scene-kit|Intro)"
+        ]
+      }
+    },
+    {
+      "id": "tranh-vector",
+      "name": "Tranh vector tô màu",
+      "summary": "Mỗi cảnh là một bức tranh vẽ bằng khối màu chuyển sắc, ánh sáng và bóng mềm, chuyển động chậm như minh họa sách: ấm, rõ ý, không cần ảnh.",
+      "bestFor": [
+        "ẩn dụ bằng hình",
+        "lời nhắc cuộc sống",
+        "bối cảnh có không khí"
+      ],
+      "techniques": [
+        "khối SVG tô gradient, lớp sáng và bóng",
+        "filter làm mềm và phát sáng",
+        "chuyển động chậm của mây, nước, ánh sáng"
+      ],
+      "pace": "Chậm",
+      "effort": 3,
+      "sample": "PhongCachTranhVector",
+      "favorite": false,
+      "userNote": "",
+      "detect": {
+        "any": [
+          "<linearGradient\\b"
+        ],
+        "none": [
+          "<(Video|OffthreadVideo)\\b",
+          "@remotion/three"
+        ]
+      }
     },
     {
       "id": "chu-chuyen-dong",
@@ -60,7 +110,11 @@
       "effort": 1,
       "sample": "PhongCachChuChuyenDong",
       "favorite": false,
-      "userNote": ""
+      "userNote": "",
+      "detect": {
+        "any": [],
+        "none": []
+      }
     },
     {
       "id": "cat-giay",
@@ -80,7 +134,11 @@
       "effort": 2,
       "sample": "PhongCachCatGiay",
       "favorite": false,
-      "userNote": ""
+      "userNote": "",
+      "detect": {
+        "any": [],
+        "none": []
+      }
     },
     {
       "id": "phan-bang",
@@ -100,7 +158,11 @@
       "effort": 2,
       "sample": "PhongCachPhanBang",
       "favorite": false,
-      "userNote": ""
+      "userNote": "",
+      "detect": {
+        "any": [],
+        "none": []
+      }
     },
     {
       "id": "bong-do",
@@ -120,7 +182,11 @@
       "effort": 2,
       "sample": "PhongCachBongDo",
       "favorite": false,
-      "userNote": ""
+      "userNote": "",
+      "detect": {
+        "any": [],
+        "none": []
+      }
     },
     {
       "id": "infographic",
@@ -140,7 +206,11 @@
       "effort": 1,
       "sample": "PhongCachInfographic",
       "favorite": false,
-      "userNote": ""
+      "userNote": "",
+      "detect": {
+        "any": [],
+        "none": []
+      }
     },
     {
       "id": "muc-loang",
@@ -160,7 +230,11 @@
       "effort": 3,
       "sample": "PhongCachMucLoang",
       "favorite": false,
-      "userNote": ""
+      "userNote": "",
+      "detect": {
+        "any": [],
+        "none": []
+      }
     },
     {
       "id": "hat-anh-sang",
@@ -180,7 +254,11 @@
       "effort": 1,
       "sample": "PhongCachHatAnhSang",
       "favorite": false,
-      "userNote": ""
+      "userNote": "",
+      "detect": {
+        "any": [],
+        "none": []
+      }
     },
     {
       "id": "hinh-khoi",
@@ -200,7 +278,11 @@
       "effort": 2,
       "sample": "PhongCachHinhKhoi",
       "favorite": false,
-      "userNote": ""
+      "userNote": "",
+      "detect": {
+        "any": [],
+        "none": []
+      }
     },
     {
       "id": "so-tay",
@@ -220,7 +302,11 @@
       "effort": 1,
       "sample": "PhongCachSoTay",
       "favorite": false,
-      "userNote": ""
+      "userNote": "",
+      "detect": {
+        "any": [],
+        "none": []
+      }
     }
   ]
 }

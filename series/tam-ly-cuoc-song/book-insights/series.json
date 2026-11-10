@@ -109,11 +109,7 @@
           "part": true
         }
       ],
-      "book": "hieu-ve-trai-tim",
-      "look": {
-        "theme": "rung-dem-vang",
-        "style": "net-ve"
-      }
+      "book": "hieu-ve-trai-tim"
     },
     {
       "id": "book-ah-001-overview",
@@ -202,11 +198,7 @@
           "kind": "Composition",
           "part": true
         }
-      ],
-      "look": {
-        "theme": "rung-dem-vang",
-        "style": "net-ve"
-      }
+      ]
     },
     {
       "id": "book-hvtt-001-shorts",
@@ -253,11 +245,7 @@
           "kind": "Still",
           "title": "Bìa short 3 · Gọi mãi không nghe máy"
         }
-      ],
-      "look": {
-        "theme": "rung-dem-vang",
-        "style": "net-ve"
-      }
+      ]
     },
     {
       "id": "book-ah-001-shorts",
@@ -314,11 +302,7 @@
         }
       ],
       "book": "thay-doi-ti-hon-hieu-qua-bat-ngo-atomic-habits",
-      "promotes": "book-ah-001-overview",
-      "look": {
-        "theme": "rung-dem-vang",
-        "style": "net-ve"
-      }
+      "promotes": "book-ah-001-overview"
     },
     {
       "id": "book-dnt-001-overview",
@@ -402,11 +386,7 @@
           "part": true
         }
       ],
-      "book": "dac-nhan-tam",
-      "look": {
-        "theme": "rung-dem-vang",
-        "style": "net-ve"
-      }
+      "book": "dac-nhan-tam"
     },
     {
       "id": "book-dnt-001-shorts",
@@ -463,11 +443,7 @@
         }
       ],
       "book": "dac-nhan-tam",
-      "promotes": "book-dnt-001-overview",
-      "look": {
-        "theme": "rung-dem-vang",
-        "style": "net-ve"
-      }
+      "promotes": "book-dnt-001-overview"
     }
   ]
 }
