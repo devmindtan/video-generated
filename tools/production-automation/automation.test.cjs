@@ -320,3 +320,26 @@ test('initial package can be sent back (Chưa đạt) with notes; the next look 
  assert.throws(()=>review.returnLock(root,p,{by:'u',note:'x'}),/bản vá/);
  assert.equal(review.load(root,id).lockReturns.length,1);
 }));
+test('patches go on before the lock: compared with the package as sent back, decided before or after the lock',()=>fixture(root=>{
+ // user 2026-11-10: "dù chưa chốt nhưng đã có bản vá thì cũng phải tiếp tục chứ không đợi chốt"
+ const review=require('./review.cjs'),id='self-help-shorts',p=plan(root,id),D=`docs/projects/${id}`,X=`scripts/projects/${id}`,S=`src/projects/${id}`;
+ put(root,`${D}/script.md`,'s1');put(root,`${S}/music.json`,'{"file":"m.mp3"}');put(root,`${X}/voice.json`,'{"voice":"Hải Đăng"}');
+ put(root,`${D}/production-spec.md`,'45 ± 5 giây');put(root,`${D}/image-prompts.md`,'cảnh 1: ngọn nến');
+ // Never sent back: a patch can still carry results or described changes.
+ const p0=review.createPatch(root,p,{reason:'Bản dựng thử bằng giọng tạm',by:'a',changes:[{area:'visual',what:'Hình 4 short'}]});
+ assert.deepEqual([p0.baseVersion,Object.keys(p0.changed)],[0,[]]);
+ review.decidePatch(root,p,p0.id,{decision:'returned',note:'Nhịp nhanh',by:'u'});
+ review.returnLock(root,p,{by:'u',note:'Bỏ ví dụ'});
+ put(root,`${D}/script.md`,'s2');
+ const p1=review.createPatch(root,p,{reason:'Bỏ ví dụ',by:'a'});
+ assert.deepEqual([p1.baseVersion,Object.keys(p1.changed)],[0,[`${D}/script.md`]]);         // against the package as sent back
+ let s=review.summary(root,p);assert.deepEqual([s.state,s.pending.id],['unlocked',p1.id]);
+ review.decidePatch(root,p,p1.id,{decision:'accepted',by:'u'});
+ assert.equal(review.load(root,id).locks.length,0);                                          // accepting is not the lock
+ put(root,`${D}/script.md`,'s3');
+ const p2=review.createPatch(root,p,{reason:'Thêm câu ví dụ',by:'a'});
+ assert.equal(p2.changed[`${D}/script.md`].before,p1.changed[`${D}/script.md`].after);       // builds on the earlier patch
+ review.lock(root,p,{by:'u'});                                                               // the user locks with p2 still waiting
+ assert.equal(review.decidePatch(root,p,p2.id,{decision:'accepted',by:'u'}).version,2);       // a pre-lock patch still decides
+ put(root,`${D}/script.md`,'s4');assert.equal(review.createPatch(root,p,{reason:'Sau chốt',by:'a'}).baseVersion,2);
+}));

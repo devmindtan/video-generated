@@ -178,9 +178,20 @@ function changeEntry(c) {
   return Object.fromEntries(Object.entries(entry).filter(([, v]) => v));
 }
 
+// Before the lock (user 2026-11-10: "dù chưa chốt nhưng đã có bản vá thì cũng phải tiếp tục chứ không đợi chốt"), work
+// does not wait: patches are recorded too. Their base is version 0: the package as the user last sent it back (or, if
+// it never was, as it stands now), plus what earlier patches before the lock already showed.
+function provisionalBase(root, plan, store) {
+  const back = store.lockReturns.at(-1) || null;
+  const files = back ? {...back.files} : Object.fromEntries(items(root, plan).flatMap(i => i.files).map(rel => [rel, approvals.sha256(root, rel)]));
+  if (!back) for (const [rel, hash] of Object.entries(files)) if (hash) approvals.snapshot(root, rel, hash);
+  for (const p of store.patches) if (p.baseVersion === 0 && p.status !== 'superseded' && (!back || p.createdAt >= back.at))
+    for (const [rel, c] of Object.entries(p.changed)) files[rel] = c.after;
+  return {version: 0, files};
+}
+
 function createPatch(root, plan, {reason, by, media = [], changes = [], requests = [], requestedBy = 'người dùng'}) {
-  const store = load(root, plan.projectId), base = latestLock(store);
-  if (!base) throw new Error('Chưa chốt ban đầu: chưa có gì để vá');
+  const store = load(root, plan.projectId), base = latestLock(store) || provisionalBase(root, plan, store);
   if (typeof reason !== 'string' || !reason.trim()) throw new Error('Cần ghi lý do của bản vá (--reason)');
   const changed = {};
   for (const rel of items(root, plan).flatMap(i => i.files)) {
@@ -189,7 +200,7 @@ function createPatch(root, plan, {reason, by, media = [], changes = [], requests
   }
   const attached = media.map(m => mediaEntry(root, plan, m)).filter((m, i, all) => all.findIndex(x => x.file === m.file) === i);
   const described = (Array.isArray(changes) ? changes : []).map(changeEntry);
-  if (!Object.keys(changed).length && !attached.length && !described.length) throw new Error('Không có thay đổi nào so với bản chốt v' + base.version + ', không có mô tả thay đổi hay video/âm thanh nào để xem');
+  if (!Object.keys(changed).length && !attached.length && !described.length) throw new Error(`Không có thay đổi nào so với ${base.version ? 'bản chốt v' + base.version : 'gói hiện có'}, không có mô tả thay đổi hay video/âm thanh nào để xem`);
   // Change requests the user made in chat instead of in the manager (user 2026-11-02): the waiting patch is recorded
   // as returned with those words (never accepted), and the new patch lists them as handled.
   const asked = (Array.isArray(requests) ? requests : []).map(r => String(r).trim()).filter(Boolean);
@@ -211,13 +222,15 @@ function decidePatch(root, plan, patchId, {decision, note = '', by}) {
   const store = load(root, plan.projectId), patch = store.patches.find(p => p.id === patchId);
   if (!patch || patch.status !== 'pending') throw new Error('Bản vá này không còn chờ duyệt');
   const base = latestLock(store);
-  if (patch.baseVersion !== base.version) throw new Error('Bản chốt đã đổi sau khi tạo bản vá; tạo bản vá mới');
+  // A patch made before the lock (version 0) can be decided before or after it; one made on a lock needs that lock.
+  if (patch.baseVersion !== 0 && patch.baseVersion !== base?.version) throw new Error('Bản chốt đã đổi sau khi tạo bản vá; tạo bản vá mới');
   if (decision === 'accepted') {
     const moved = [...Object.entries(patch.changed).filter(([rel, c]) => approvals.sha256(root, rel) !== c.after).map(([rel]) => rel),
       ...(patch.media || []).filter(m => approvals.sha256(root, m.file) !== m.sha256).map(m => m.file)];
     if (moved.length) throw Object.assign(new Error(`File đổi sau khi tạo bản vá: ${moved.join(', ')}. Tạo bản vá mới rồi duyệt.`), {status: 409});
     // Only package edits make a new lock version; a patch of results alone (clips, takes) leaves the lock as it is.
-    if (Object.keys(patch.changed).length) {
+    // Before the lock there is no version to raise: accepting is the user's look, the lock stays theirs to give.
+    if (base && Object.keys(patch.changed).length) {
       const files = {...base.files};
       for (const [rel, c] of Object.entries(patch.changed)) files[rel] = c.after;
       store.locks.push({version: base.version + 1, files, by, at: now(), note, fromPatch: patch.id});
@@ -232,7 +245,7 @@ function decidePatch(root, plan, patchId, {decision, note = '', by}) {
   }
   Object.assign(patch, {status: decision, decidedAt: now(), decidedBy: by, note, itemNotes});
   save(root, plan.projectId, store);
-  return {patch, version: latestLock(store).version};
+  return {patch, version: latestLock(store)?.version || 0};
 }
 
 function addClip(root, plan, sceneId, rel) {

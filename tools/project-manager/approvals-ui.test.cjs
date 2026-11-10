@@ -44,7 +44,7 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
   await page.goto(base+`/#project/${id}/duyet`,{waitUntil:'networkidle'});await page.locator('.gate-step').first().waitFor();
   mark('Review has its own tab and URL; Back returns to Hồ sơ; arrow keys switch tabs; pending work is flagged on the tab');
   assert.match(await page.locator('.lock-chip').innerText(),/Chưa chốt/);assert.match(await next.innerText(),/Việc của bạn[\s\S]*Chốt ban đầu/i);
-  assert.equal(await page.locator('.review-stepper .gate-step').count(),3,'patches are not a stage');assert.match(await page.locator('.patch-panel').innerText(),/Sau khi chốt, mọi kết quả và chỉnh sửa/);
+  assert.equal(await page.locator('.review-stepper .gate-step').count(),3,'patches are not a stage');assert.match(await page.locator('.patch-panel').innerText(),/Chưa chốt nhưng agent vẫn làm tiếp/);
   await next.locator('[data-review-open="lock"]').click();await dialog.locator('.rail-item').first().waitFor();
   assert.deepEqual(await dialog.locator('.rail-name').evaluateAll(n=>n.map(x=>x.firstChild.textContent)),['Kịch bản','Nhạc nền','Giọng đọc','Thông tin đã chốt','Prompt hình / animation từng cảnh']);
   assert.equal(await dialog.locator('#review-form button[type=submit]').isDisabled(),true,'lock stays off until every item is marked');

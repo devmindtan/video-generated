@@ -17,7 +17,7 @@ const cli=require('../production-automation/cli.cjs'),review=require('../product
  const run=(...args)=>execFileSync(process.execPath,[path.resolve('tools/production-automation/cli.cjs'),'progress',id,...args],{env:{...process.env,AUTOMATION_ROOT:root},encoding:'utf8',stdio:['ignore','pipe','pipe']});
  const planFile=path.join(root,'plan.json');
  write('plan.json',{summary:'Sau chốt v1: giọng, hình, nhạc, dựng',tasks:[{id:'voice',title:'Clone giọng toàn bộ kịch bản',kind:'voice',weight:3,steps:12},{id:'img-mo-chuyen',title:'Ảnh/animation cảnh Mở chuyện',kind:'visuals',weight:2},{id:'img-cuon-sach',title:'Ảnh/animation cảnh Cuốn sách',kind:'visuals',weight:2},{id:'music',title:'Cắt và cân nhạc nền',kind:'music'},{id:'assembly',title:'Dựng các phần vào composition',kind:'assembly',weight:2}]});
- assert.throws(()=>run('plan','--file',planFile),/Chưa chốt ban đầu/);
+ // The plan no longer waits for the lock (user 2026-11-10); the page test below still starts from an empty plan.
  const server=createManager({root});await new Promise(r=>server.listen(0,'127.0.0.1',r));
  const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH||'/usr/bin/google-chrome'});
  const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});

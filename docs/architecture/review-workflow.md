@@ -31,6 +31,14 @@ Bấm Chốt ghi **bản chốt v1**: hash + bản sao của mọi file trong g�
 đọc ở `npm run automation -- review <slug>` → `returned`, sửa các file trong gói (chưa chốt nên sửa thẳng, không cần bản vá).
 Lần xem sau, mục đã sửa được so với bản đã trả lại và ghi chú cũ hiện ở đầu mục; trả lại bao nhiêu lần cũng được trước khi chốt.
 
+**Chưa chốt vẫn làm tiếp (người dùng 2026-11-10).** Nếu người dùng bảo làm tiếp khi gói chưa chốt, agent không đợi:
+mỗi lượt làm hoặc sửa vẫn thành bản vá như sau khi chốt (kể cả góp ý qua chat với `--from-chat`). Bản vá trước khi chốt
+có `baseVersion` 0 và được so với gói lúc người dùng trả lại lần cuối (chưa trả lần nào thì với gói hiện có), cộng các
+bản vá trước đó. Người dùng chấp nhận hay trả lại bản vá này được cả trước lẫn sau khi chốt; chấp nhận bản vá không phải
+là chốt, và chỉ sau khi đã có bản chốt thì một bản vá sửa file của gói mới tạo phiên bản chốt mới. Trang quản lý đưa bản
+vá đang chờ lên làm việc đầu tiên của người dùng, dù gói đã chốt hay chưa. Kế hoạch tiến trình cũng lập được trước khi
+chốt.
+
 Mỗi mục hiện dạng dễ đọc (nhạc nền và giọng đọc: tên bài, tác giả, âm lượng %, fade, cách chọn giọng, sự đồng ý,
 cao độ, tốc độ, kèm trình nghe; JSON gốc gập lại). Mỗi mục có hai nút **Đạt** / **Chưa đạt** (người dùng 2026-11-01).
 Đạt thì không cần ghi chú. Chưa đạt thì ô **chỗ chưa đạt** mới hiện và bắt buộc ghi; ô tự lưu khi gõ, còn nguyên khi

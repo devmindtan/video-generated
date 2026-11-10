@@ -311,7 +311,7 @@ async function main(argv){
       // Same view as the manager's Tiến trình tab, so tasks completed by the user's own action (doneWhen) read as done here too.
       if(!b){let v;try{v=require('../project-manager/approvals-view.cjs').createApprovals(ROOT).progressView(a);}catch{}return json(v?.available?v:progress.view(ROOT,a));}
       if(b==='plan'){
-        const r=review.summary(ROOT,p);if(!r.version)throw new Error('Chưa chốt ban đầu: kế hoạch thực hiện lập sau khi bạn chốt');
+        const r=review.summary(ROOT,p);// before the lock too (user 2026-11-10): work and its plan do not wait for the lock
         const data=JSON.parse(fs.readFileSync(path.resolve(ROOT,valueOf('--file')||'-'),'utf8'));
         return json(progress.setPlan(ROOT,a,{tasks:data.tasks,summary:data.summary||'',by:'agent',lockVersion:r.version}));
       }
