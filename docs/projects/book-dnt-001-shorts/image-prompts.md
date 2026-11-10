@@ -76,7 +76,7 @@ hàng ô lật ở giữa, GÓP Ý ở dưới; từng phần đổi trạng th�
 | 3-3 "…vạch ranh giới rất rõ." | Bìa tách đôi lạnh/ấm; đường vàng vẽ dọc ở chữ "vạch"; hai nhãn NỊNH / THẬT LÒNG. |
 | 3-4 câu trích | Dáng người nghiêng: tim và đường vàng từ ngực ra "TẤM LÒNG", đường xám nét đứt từ miệng ra "CỬA MIỆNG", mỗi đường ở chữ của nó. |
 | 3-5 "…đi kèm sự chân thành." | Hai dáng người, trái tim đỏ giữa họ, chữ "CHÂN THÀNH". |
-| 3-6 "…chỉ còn là kỹ thuật." | Nụ cười và thẻ tên hiện theo chữ; ở "kỹ thuật" cả hai nhạt xám, một bánh răng nét đứt, chữ "chỉ còn là kỹ thuật?". |
+| 3-6 "…chỉ còn là cái vỏ bên ngoài." | Nụ cười và thẻ tên hiện theo chữ; ở "cái vỏ" một khung viền nét đứt khép quanh cả hai, cả hai rỗng ruột và nhạt xám, chữ "chỉ còn là cái vỏ?" (người dùng 2026-11-10: đổi chữ "kỹ thuật"). |
 
 ## Short 4 · Vì sao có người không thích cuốn sách
 

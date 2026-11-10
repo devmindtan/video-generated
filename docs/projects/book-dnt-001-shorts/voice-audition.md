@@ -38,6 +38,7 @@
 | Clone lại | `clone-fix-v1`, `clone-fix-v2` | 8 (`lines-fix.txt`) | máy GPU | Kiểm tra dấu đánh dấu: cãi, lùi, chữ "nhưng", nãy, vạch ranh, cả |
 | Short 2 sửa lời (2026-11-10) | `clone-fix2-v1`, `clone-fix2-v2` | 4 (`lines-fix2.txt`) | máy GPU | Thêm câu ví dụ 2-3b, 2-6b; viết lại 2-5, 2-6 để chữ "và" không đứng cuối câu (người dùng: "chữ và đang bị kéo dài") |
 | "và" bị đọc lướt (2026-11-10) | `clone-fix3-v1`–`-v3` | 2 (`lines-fix3.txt`) | máy GPU | "và" đặt trước dấu phẩy; chọn bản theo độ dài chữ "và" đo bằng nhận dạng cục bộ: 2-5 bản v1 (0,40 giây, nghỉ 0,30), 2-6 bản v2 (0,28 giây, nghỉ 0,42); bản cũ chỉ 0,20–0,22 giây, không nghỉ. Ghi ở `voice-picks.json` |
+| Short 3 câu cuối (2026-11-10) | `clone-fix4-v1`, `clone-fix4-v2` | 1 (`lines-fix4.txt`) | laptop (máy GPU tắt) | "cái vỏ bên ngoài" thay "kỹ thuật" theo người dùng; cả hai bản qua kiểm tra dấu, dùng v2; bản thứ ba bỏ để laptop không quá tải |
 
 - Mẫu giọng `library/voice-references/tam-nhin-cho-cuoc-song/clips/006130-15s.wav` (consent self), lời mẫu nhận dạng lại
   bằng faster-whisper cục bộ và gửi kèm (`--ref-text`), như tập 1–3.

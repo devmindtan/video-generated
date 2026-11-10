@@ -60,7 +60,7 @@ Source: https://freetouse.com/music
 Có người đọc xong thấy Đắc nhân tâm là sách dạy nịnh. Nhưng chính tác giả lại vạch ranh giới rất rõ:
 "Một điều xuất phát từ tấm lòng, một điều chỉ từ cửa miệng."
 
-Thiếu sự chân thành, nụ cười hay việc nhớ tên người khác cũng chỉ còn là kỹ thuật.
+Thiếu sự chân thành, nụ cười hay việc nhớ tên người khác cũng chỉ còn là cái vỏ bên ngoài.
 
 Sách: Đắc nhân tâm (How to Win Friends and Influence People) · Tác giả: Dale Carnegie
 Câu trích theo bản dịch tiếng Việt của First News – Trí Việt.

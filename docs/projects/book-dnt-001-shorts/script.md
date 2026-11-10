@@ -50,7 +50,7 @@ Có người đọc xong thì thấy đây là sách dạy nịnh.
 Nhưng chính tác giả lại vạch ranh giới rất rõ.
 Theo tác giả, lời khen thật lòng và lời nịnh khác nhau ở chỗ: một điều xuất phát từ tấm lòng, một điều chỉ từ cửa miệng.
 Vì vậy, mọi nguyên tắc trong sách đều phải đi kèm sự chân thành.
-Mình thấy, thiếu điều đó thì nụ cười hay việc nhớ tên người khác cũng chỉ còn là kỹ thuật.
+Mình thấy, thiếu điều đó thì nụ cười hay việc nhớ tên người khác cũng chỉ còn là cái vỏ bên ngoài.
 
 **Lời mời.**
 

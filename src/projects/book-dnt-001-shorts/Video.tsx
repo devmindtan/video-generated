@@ -194,7 +194,7 @@ const S2: ShortDef = {
 // ── Short 3 · Tấm lòng hay cửa miệng. Cover C: hollow bubble and red heart.
 const PROFILE = 'M300 1300 C300 1150 360 1080 430 1050 C400 1010 380 960 382 900 C386 790 470 720 560 726 C650 732 712 800 712 880 C712 906 724 920 740 946 C748 960 738 970 722 972 C724 990 720 1004 712 1010 C716 1026 706 1040 690 1040 C680 1060 650 1070 620 1068 L612 1092 C680 1120 740 1180 760 1300 Z';
 const S3: ShortDef = {
-  hook: /khéo miệng|thật lòng/i, highlight: /dạy nịnh|tấm lòng|cửa miệng|chân thành|kỹ thuật/i, split: true,
+  hook: /khéo miệng|thật lòng/i, highlight: /dạy nịnh|tấm lòng|cửa miệng|chân thành|cái vỏ bên ngoài/i, split: true,
   hookArt: (frame) => <g>
     <path d="M150 840 H490 C520 840 532 856 532 884 V1040 C532 1068 520 1084 490 1084 H300 L240 1130 L252 1084 H150 C120 1084 108 1068 108 1040 V884 C108 856 120 840 150 840 Z" fill="rgba(251,246,234,.55)" stroke={SLATE} strokeWidth={7} strokeDasharray="22 14" />
     <path d={heartPath(780, 990, 1.9 + .04 * Math.sin(frame / 8))} fill={RED} stroke={GOLD_HI} strokeWidth={5} />
@@ -225,12 +225,15 @@ const S3: ShortDef = {
       <path d={heartPath(540, 1010, 1.2)} fill={RED} stroke={GOLD_HI} strokeWidth={4} opacity={on(c, c.w('3-5', 'chân'))} />
       {T(540, 760, 60, 'CHÂN THÀNH', on(c, c.w('3-5', 'thành.')), RED)}
     </g>},
-    // "Mình thấy, thiếu điều đó thì nụ cười hay việc nhớ tên người khác cũng chỉ còn là kỹ thuật."
-    {at: '3-6', draw: (c) => {const cold = between(c, c.w('3-6', 'kỹ'), c.w('3-6', 'thuật.') + 6);return <g>
-      <g opacity={on(c, c.w('3-6', 'nụ'))}><circle cx={330} cy={900} r={130} fill={IVORY} stroke={cold > .5 ? '#8a969c' : SLATE} strokeWidth={6} /><path d="M265 930 Q330 985 395 930" fill="none" stroke={cold > .5 ? '#8a969c' : RED} strokeWidth={7} strokeLinecap="round" /></g>
-      <g opacity={on(c, c.w('3-6', 'nhớ'))}><rect x={600} y={820} width={300} height={170} rx={16} fill={IVORY} stroke={cold > .5 ? '#8a969c' : SLATE} strokeWidth={6} />{T(750, 885, 40, 'XIN CHÀO', 1, BROWN)}{T(750, 950, 50, 'TÊN', 1, cold > .5 ? '#8a969c' : SLATE)}</g>
-      {T(540, 1180, 64, 'chỉ còn là kỹ thuật?', cold, SLATE)}
-      <circle cx={540} cy={1020} r={36} fill="none" stroke="#8a969c" strokeWidth={10} strokeDasharray="14 10" opacity={cold} />
+    // "Mình thấy, thiếu điều đó thì nụ cười hay việc nhớ tên người khác cũng chỉ còn là cái vỏ bên ngoài."
+    // (user 2026-11-10: another phrase than "kỹ thuật"): at "cái vỏ" a dashed shell closes around the smile and the name
+    // tag, and both turn hollow (fill gone, grey lines).
+    {at: '3-6', draw: (c) => {const at = c.w('3-6', 'vỏ'), cold = between(c, at, at + 14), grey = cold > .5 ? '#8a969c' : SLATE;
+      const fill = `rgba(251,246,234,${1 - .85 * cold})`;return <g>
+      <g opacity={on(c, c.w('3-6', 'nụ'))}><circle cx={330} cy={900} r={130} fill={fill} stroke={grey} strokeWidth={6} /><path d="M265 930 Q330 985 395 930" fill="none" stroke={cold > .5 ? '#8a969c' : RED} strokeWidth={7} strokeLinecap="round" /></g>
+      <g opacity={on(c, c.w('3-6', 'nhớ'))}><rect x={600} y={820} width={300} height={170} rx={16} fill={fill} stroke={grey} strokeWidth={6} />{T(750, 885, 40, 'XIN CHÀO', 1, BROWN)}{T(750, 950, 50, 'TÊN', 1, grey)}</g>
+      <Draw d="M175 720 H950 C975 720 985 732 985 758 V1062 C985 1088 975 1100 950 1100 H175 C150 1100 140 1088 140 1062 V758 C140 732 150 720 175 720 Z" frame={c.frame} from={at - 4} to={at + 18} width={6} color="#8a969c" opacity={.9} />
+      {T(580, 1190, 64, 'chỉ còn là cái vỏ?', cold, SLATE)}
     </g>;}},
   ],
 };

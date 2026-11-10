@@ -1,5 +1,5 @@
 {
-  "note": "Lời đọc của 4 short tập 3, viết mới cho short (người dùng 2026-11-09: \"viết lại lời thoại có độ dài phù hợp, đừng lấy của video gốc\"). Mỗi câu một id; pauseAfter là khoảng lặng sau câu (giây). Câu đầu là câu mở, câu cuối là lời mời chung (cta). docs/projects/book-dnt-001-shorts/script.md là bản đọc của file này; build-shorts.py và Video.tsx đọc theo id câu. Khoảng lặng sau các câu thân bài tăng thêm 0,3 giây (người dùng 2026-11-09: một số chỗ hình chưa xong đã chuyển cảnh). Short 2 (người dùng 2026-11-10): thêm một câu ví dụ để dễ hình dung (2-3b, 2-6b, ví dụ của kênh); chữ \"và\" không đứng cuối câu nữa vì giọng clone kéo dài chữ cuối. Sau đó (2026-11-10) \"và\" ở giữa câu bị đọc lướt (\"nhanh đến mức tôi không kịp nghe\"): đặt \"và\" trước dấu phẩy để có nhịp ngắt sau nó, không ở cuối câu.",
+  "note": "Lời đọc của 4 short tập 3, viết mới cho short (người dùng 2026-11-09: \"viết lại lời thoại có độ dài phù hợp, đừng lấy của video gốc\"). Mỗi câu một id; pauseAfter là khoảng lặng sau câu (giây). Câu đầu là câu mở, câu cuối là lời mời chung (cta). docs/projects/book-dnt-001-shorts/script.md là bản đọc của file này; build-shorts.py và Video.tsx đọc theo id câu. Khoảng lặng sau các câu thân bài tăng thêm 0,3 giây (người dùng 2026-11-09: một số chỗ hình chưa xong đã chuyển cảnh). Short 2 (người dùng 2026-11-10): thêm một câu ví dụ để dễ hình dung (2-3b, 2-6b, ví dụ của kênh); chữ \"và\" không đứng cuối câu nữa vì giọng clone kéo dài chữ cuối. Sau đó (2026-11-10) \"và\" ở giữa câu bị đọc lướt (\"nhanh đến mức tôi không kịp nghe\"): đặt \"và\" trước dấu phẩy để có nhịp ngắt sau nó, không ở cuối câu. Short 3 câu cuối (2026-11-10, sau khi xuất): \"cái vỏ bên ngoài\" thay \"kỹ thuật\" theo người dùng.",
   "cta": {
     "id": "cta",
     "text": "Mình đã kể lại trọn cuốn Đắc nhân tâm trong một video dài. Link ở phần bình luận, bạn ghé xem nhé."
@@ -124,7 +124,7 @@
         },
         {
           "id": "3-6",
-          "text": "Mình thấy, thiếu điều đó thì nụ cười hay việc nhớ tên người khác cũng chỉ còn là kỹ thuật.",
+          "text": "Mình thấy, thiếu điều đó thì nụ cười hay việc nhớ tên người khác cũng chỉ còn là cái vỏ bên ngoài.",
           "pauseAfter": 0
         }
       ]

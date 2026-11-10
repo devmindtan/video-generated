@@ -119,7 +119,7 @@
   "short-3": {
    "title": "Short 3 · Tấm lòng hay cửa miệng",
    "composition": "BookDntShortTamLong",
-   "durationSeconds": 37.32,
+   "durationSeconds": 38.72,
    "pages": [
     {
      "part": "Câu mở",
@@ -153,15 +153,15 @@
     },
     {
      "part": "Lời đọc",
-     "text": "Mình thấy, thiếu điều đó thì nụ cười hay việc nhớ tên người khác cũng chỉ còn là kỹ thuật.",
+     "text": "Mình thấy, thiếu điều đó thì nụ cười hay việc nhớ tên người khác cũng chỉ còn là cái vỏ bên ngoài.",
      "startMs": 24569,
-     "endMs": 29227
+     "endMs": 30631
     },
     {
      "part": "Lời mời",
      "text": "Mình đã kể lại trọn cuốn Đắc nhân tâm trong một video dài. Link ở phần bình luận, bạn ghé xem nhé.",
-     "startMs": 30407,
-     "endMs": 35680
+     "startMs": 31811,
+     "endMs": 37084
     }
    ]
   },
