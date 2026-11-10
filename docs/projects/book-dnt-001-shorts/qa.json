@@ -1,6 +1,6 @@
 {
  "project": "book-dnt-001-shorts",
- "checkedAt": "2026-11-10T11:32:34+07:00",
+ "checkedAt": "2026-11-10T11:01:29+07:00",
  "shorts": [
   {
    "id": "short-1",
@@ -79,7 +79,7 @@
    "id": "loudness",
    "title": "Âm lượng bản đăng -14 LUFS, đỉnh ≤ -1 dBTP",
    "ok": true,
-   "detail": "BookDntShortThangThua -14.2 LUFS, đỉnh -1.4; BookDntShortNhungVa -14.2 LUFS, đỉnh -1.4; BookDntShortTamLong -14.2 LUFS, đỉnh -1.4; BookDntShortChuaDat -14.2 LUFS, đỉnh -1.4"
+   "detail": "chưa có bản xuất; đo khi đã xuất"
   }
  ],
  "listenNotes": [
