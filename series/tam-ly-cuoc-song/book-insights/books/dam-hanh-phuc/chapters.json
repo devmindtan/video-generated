@@ -1,0 +1,138 @@
+{
+  "book": "dam-hanh-phuc",
+  "sourceSha256": "fa420356564aaaf6643541044b903e211e3aca0adc447e1971e0922c5046d0ed",
+  "edition": "fa420356564aaaf6643541044b903e211e3aca0adc447e1971e0922c5046d0ed-de2a45e349f9",
+  "pageNumberConvention": "PDF không có nhãn/số trang in; chỉ dùng trang PDF 1-based.",
+  "mappingSummary": "55 bookmark đã kiểm: tác giả, phần mở đầu, 5 phần và 48 tiểu mục; tiêu đề bookmark trùng tiêu đề trong lớp chữ. Hai tiêu đề phụ có trong lớp chữ nhưng không có bookmark: “Mọi người đều hiểu nhầm tư tưởng của Adler” (PDF 10, phần mở đầu) và “Tự lập nghĩa là rời bỏ ‘tôi’” (PDF 268, phần 5; tính là tiểu mục thứ 49). Mốc kết thúc mỗi phần lấy ngay trước bookmark phần kế tiếp; sách kết thúc ở PDF 317, không có lời bạt.",
+  "coverage": {
+    "chaptersRead": 5,
+    "chaptersTotal": 5,
+    "sectionsRead": 49,
+    "sectionsTotal": 49,
+    "status": "complete"
+  },
+  "frontMatter": [
+    {
+      "title": "Bìa, trang tên sách và thông tin ấn bản",
+      "pdfStart": 1,
+      "pdfEnd": 2,
+      "readStatus": "read",
+      "mappingSource": "text-checked"
+    },
+    {
+      "title": "Tác giả",
+      "pdfStart": 3,
+      "pdfEnd": 3,
+      "readStatus": "read",
+      "mappingSource": "bookmark-and-text-checked"
+    },
+    {
+      "title": "Phần mở đầu (gồm tiểu mục “Mọi người đều hiểu nhầm tư tưởng của Adler”, PDF 10)",
+      "pdfStart": 4,
+      "pdfEnd": 17,
+      "readStatus": "read",
+      "mappingSource": "bookmark-and-text-checked"
+    }
+  ],
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Phần thứ nhất: Người khác xấu xa, ta tội nghiệp",
+      "pdfStart": 18,
+      "pdfEnd": 80,
+      "mappingSource": "bookmark-and-text-checked",
+      "readStatus": "read",
+      "sections": [
+        {"title": "Tâm lý học Adler có phải là tôn giáo?", "pdfStart": 19},
+        {"title": "Mục tiêu của giáo dục là “tự lập”", "pdfStart": 28},
+        {"title": "Tôn trọng nghĩa là “nhìn nhận người đó như chính họ”", "pdfStart": 37},
+        {"title": "Hãy quan tâm tới “những điều người khác quan tâm”", "pdfStart": 46},
+        {"title": "Nếu có “cùng một trái tim và cùng một cuộc đời”", "pdfStart": 53},
+        {"title": "Lòng can đảm dễ lây, sự tôn trọng cũng dễ lây", "pdfStart": 57},
+        {"title": "Lý do thực sự của việc “không thể thay đổi”", "pdfStart": 62},
+        {"title": "“hiện tại” của cậu sẽ quyết định quá khứ", "pdfStart": 69},
+        {"title": "Người khác xấu xa, ta tội nghiệp", "pdfStart": 73},
+        {"title": "Không có “phép mầu” trong tâm lý học Adler", "pdfStart": 77}
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Phần thứ hai: Tại sao lại phủ định “thưởng phạt”?",
+      "pdfStart": 81,
+      "pdfEnd": 138,
+      "mappingSource": "bookmark-and-text-checked",
+      "readStatus": "read",
+      "sections": [
+        {"title": "Lớp học là quốc gia dân chủ", "pdfStart": 82},
+        {"title": "Không được khen ngợi cũng không được mắng mỏ", "pdfStart": 88},
+        {"title": "Mục đích của hành động quậy phá là gì?", "pdfStart": 94},
+        {"title": "Căm ghét tôi đi! vứt bỏ tôi đi!", "pdfStart": 101},
+        {"title": "Nếu “phạt” liệu “tội” có mất đi", "pdfStart": 112},
+        {"title": "Sự giao tiếp mang tên bạo lực", "pdfStart": 118},
+        {"title": "Giận dữ đồng nghĩa với mắng mỏ", "pdfStart": 124},
+        {"title": "Có thể tự lựa chọn cuộc đời", "pdfStart": 129}
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Phần thứ ba: Từ nguyên lý cạnh tranh đến nguyên lý hợp tác",
+      "pdfStart": 139,
+      "pdfEnd": 187,
+      "mappingSource": "bookmark-and-text-checked",
+      "readStatus": "read",
+      "sections": [
+        {"title": "Hãy phủ định “dạy bằng cách khen”", "pdfStart": 140},
+        {"title": "Khen thưởng sẽ sinh ra cạnh tranh", "pdfStart": 145},
+        {"title": "Căn bệnh của tập thể", "pdfStart": 149},
+        {"title": "Cuộc đời bắt đầu từ sự “không trọn vẹn”", "pdfStart": 154},
+        {"title": "Can đảm “là chính mình”", "pdfStart": 164},
+        {"title": "Hành động quậy phá đó hướng về “cậu”", "pdfStart": 170},
+        {"title": "Tại sao con người lại muốn trở thành “đấng cứu thế”?", "pdfStart": 175},
+        {"title": "Giáo dục không phải “công việc” mà là “quan hệ bạn bè”", "pdfStart": 182}
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Phần thứ tư: Hãy cho đi, nếu không sẽ không được nhận lại",
+      "pdfStart": 188,
+      "pdfEnd": 246,
+      "mappingSource": "bookmark-and-text-checked",
+      "readStatus": "read",
+      "sections": [
+        {"title": "Mọi niềm vui đều bắt nguồn từ quan hệ giữa người với người", "pdfStart": 189},
+        {"title": "Tín dụng hay tin tưởng?", "pdfStart": 196},
+        {"title": "Tại sao “công việc” lại trở thành nhiệm vụ cuộc đời", "pdfStart": 202},
+        {"title": "Nghề nghiệp không có sang hèn", "pdfStart": 208},
+        {"title": "Quan trọng là sử dụng những gì được trao cho như thế nào", "pdfStart": 215},
+        {"title": "Cậu có bao nhiêu bạn thân?", "pdfStart": 222},
+        {"title": "“tin tưởng” trước", "pdfStart": 227},
+        {"title": "Con người vĩnh viễn không thể hiểu nhau", "pdfStart": 232},
+        {"title": "“những ngày bình thường” là thử thách cuộc đời", "pdfStart": 237},
+        {"title": "Trao đi rồi sẽ nhận được", "pdfStart": 243}
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Phần thứ năm: Hãy chọn cuộc đời yêu thương",
+      "pdfStart": 247,
+      "pdfEnd": 317,
+      "mappingSource": "bookmark-and-text-checked",
+      "readStatus": "read",
+      "sections": [
+        {"title": "Không thể “rơi vào” tình yêu", "pdfStart": 248},
+        {"title": "Từ “nghệ thuật được yêu” thành “nghệ thuật yêu”", "pdfStart": 253},
+        {"title": "Tình yêu là “nhiệm vụ do hai người thực hiện”", "pdfStart": 258},
+        {"title": "Hãy thay đổi “chủ ngữ” của cuộc đời", "pdfStart": 263},
+        {"title": "Tự lập nghĩa là rời bỏ “tôi”", "pdfStart": 268, "mappingSource": "text-only-no-bookmark"},
+        {"title": "Tình yêu dành cho “ai”", "pdfStart": 275},
+        {"title": "Làm thế nào để giành được tình yêu của cha mẹ", "pdfStart": 280},
+        {"title": "Con người sợ yêu", "pdfStart": 287},
+        {"title": "Không có người yêu định mệnh", "pdfStart": 292},
+        {"title": "Tình yêu là “sự quyết đoán”", "pdfStart": 297},
+        {"title": "Hãy lựa chọn lại lối sống", "pdfStart": 302},
+        {"title": "Hãy cứ tiếp tục đơn giản", "pdfStart": 309},
+        {"title": "Gửi những người bạn sẽ xây dựng thời đại mới", "pdfStart": 312}
+      ]
+    }
+  ]
+}

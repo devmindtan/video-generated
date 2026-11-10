@@ -1,0 +1,33 @@
+{
+  "id": "dam-hanh-phuc",
+  "title": "Dám hạnh phúc",
+  "authors": [
+    "Kishimi Ichiro",
+    "Koga Fumitake"
+  ],
+  "status": "research",
+  "sourceSha256": "fa420356564aaaf6643541044b903e211e3aca0adc447e1971e0922c5046d0ed",
+  "note": "Đã đọc đủ phần mở đầu, 5/5 phần đối thoại và 49 tiểu mục. Là phần tiếp theo của Dám bị ghét (ba năm sau, chàng thanh niên đã làm giáo viên). research.md tách lập luận của nhân vật Triết gia khỏi lời Adler được sách dẫn và khỏi đồng thuận khoa học, nhất là ở các mệnh đề về quá khứ/sang chấn, thưởng phạt, hành vi tự hại và thứ tự sinh.",
+  "cacheEdition": "fa420356564aaaf6643541044b903e211e3aca0adc447e1971e0922c5046d0ed-de2a45e349f9",
+  "editionDetails": {
+    "edition": "Bản ebook tiếng Việt, trang tên sách ghi ebook©vctvegroup 20-05-2020",
+    "translator": "Nguyễn Thanh Vân",
+    "publisher": "NXB Lao Động",
+    "publisherBrand": "Nhã Nam",
+    "year": null,
+    "provenance": "PDF người dùng thêm qua trang quản lý; mỗi trang mang dấu thuviensach.vn. Trang tên sách (PDF 2) ghi tác giả, người dịch, đơn vị phát hành và nhà xuất bản nhưng không ghi năm in; cần đối chiếu bản in trước khi credit chính thức."
+  },
+  "sourceFile": "library/books/dam-hanh-phuc/sources/698-dam-hanh-phuc-thuviensach.vn.pdf",
+  "pdfPages": 317,
+  "extractedCharacters": 328810,
+  "textLayer": "native",
+  "ocr": false,
+  "chapterMap": "chapters.json",
+  "research": "research.md",
+  "chaptersTotal": 5,
+  "chaptersRead": 5,
+  "sectionsTotal": 49,
+  "sectionsRead": 49,
+  "frontMatterRead": true,
+  "checkedAt": "2026-11-10"
+}
