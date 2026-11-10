@@ -1,5 +1,5 @@
 import type {FC, ReactNode} from 'react';
-import {Easing, interpolate, random, spring, useCurrentFrame, useVideoConfig} from 'remotion';
+import {Easing, Img, interpolate, random, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {FONT, SampleFrame, strokeOf, themeOf} from './looks';
 import type {Theme} from './looks';
 
@@ -26,6 +26,18 @@ export const NetVe = make((t, f) => {const c = strokeOf(t), w = t.stroke.width *
   <Ink d="M548 930 C610 910 660 860 670 810 C610 810 556 850 548 930 Z" f={f} a={105} b={135} color={c} w={w} />
   <Ink d="M558 770 C590 740 620 730 650 735 C630 765 600 780 558 770 Z" f={f} a={120} b={145} color={c} w={w} />
 </g>;}, 'NÉT VẼ TAY');
+
+// Ảnh tĩnh chuyển động chậm: two existing still images without faces (people-pleasing) with a slow push and drift, a cross-fade and
+// drifting dust; the theme gives the ground, dust and caption colours.
+export const AnhTinh: FC<SampleProps> = ({theme}) => {const f = useCurrentFrame(), t = themeOf(theme), cross = interpolate(f, [80, 110], [0, 1], clamp);
+  const shot = (file: string, a: number, o: number, dir: number) => <Img src={staticFile(file)} style={{position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: o,
+    transform: `scale(${1.06 + .08 * interpolate(f, [a, a + 180], [0, 1], clamp)}) translateX(${dir * interpolate(f, [a, a + 180], [-12, 12], clamp)}px)`}} />;
+  return <SampleFrame theme={t} frame={f} label="ẢNH TĨNH CHUYỂN ĐỘNG CHẬM">
+    <foreignObject x={0} y={0} width={1080} height={1920}><div style={{position: 'relative', width: 1080, height: 1920, overflow: 'hidden'}}>
+      {shot('people-pleasing/images/03-silk.png', 0, 1 - cross, 1)}{shot('people-pleasing/images/04-gate.png', 80, cross, -1)}
+      <div style={{position: 'absolute', inset: 0, background: `linear-gradient(transparent 55%, ${t.palette.background} 92%)`}} /></div></foreignObject>
+    {Array.from({length: 30}, (_, i) => <circle key={i} cx={(random(`ax${i}`) * 1080 + f * (.3 + random(`as${i}`))) % 1080} cy={300 + random(`ay${i}`) * 1100} r={1.5 + random(`ar${i}`) * 2.5} fill={t.palette.accent} opacity={.25 + .35 * Math.sin((f + i * 11) / 20) ** 2} />)}
+  </SampleFrame>;};
 
 // Chữ chuyển động: the sample sentence word by word with springs, set as centred lines; the keyword larger, in the
 // accent, and underlined once it is complete.
@@ -120,5 +132,5 @@ export const SoTay = make((t, f, fps) => {const p = t.palette, drop = spring({fr
   <Ink d="M300 1000 C340 1120 460 1150 560 1100 M530 1078 L566 1100 L540 1134" f={f} a={100} b={140} color={p.ink} w={6} />
 </g>;}, 'TRANG SỔ TAY', false);
 
-export const SAMPLES: Record<string, FC<SampleProps>> = {PhongCachNetVe: NetVe, PhongCachChuChuyenDong: ChuChuyenDong, PhongCachCatGiay: CatGiay, PhongCachPhanBang: PhanBang,
+export const SAMPLES: Record<string, FC<SampleProps>> = {PhongCachNetVe: NetVe, PhongCachAnhTinh: AnhTinh, PhongCachChuChuyenDong: ChuChuyenDong, PhongCachCatGiay: CatGiay, PhongCachPhanBang: PhanBang,
   PhongCachBongDo: BongDo, PhongCachInfographic: Infographic, PhongCachMucLoang: MucLoang, PhongCachHatAnhSang: HatAnhSang, PhongCachHinhKhoi: HinhKhoi, PhongCachSoTay: SoTay};

@@ -12,6 +12,8 @@ chủ đích. Áp dụng cho mọi video, short hay dài.
 | `src/looks/animation-styles.json` | Phong cách animation làm được bằng Remotion: mô tả, hợp với, cách làm, nhịp, độ công phu, mẫu Studio; `favorite` và `userNote` của người dùng | Agent cập nhật mô tả/kỹ thuật khi làm thêm; người dùng chỉ ghi chú và đánh dấu ưu tiên |
 | `series.json` → dự án → `"look": {"theme", "style"}` | Lựa chọn của từng dự án | Người dùng ở hai trang (nút **Gắn cho dự án**); `projects:check` từ chối mã không có |
 
+Các dự án làm trước khi có thư viện đã được gắn bù theo đúng bộ mặt đang dùng (2026-11-10): Đọc sách, hiểu mình → `rung-dem-vang` + `net-ve`; Self-help shorts và Câu chuyện Stoic → `dem-stoic` + `anh-tinh` (ảnh tĩnh chuyển động chậm). Video thiếu nhi, video sản phẩm và thử nghiệm 3D dùng cảnh quay hoặc 3D, không thuộc phong cách 2D nào nên để trống.
+
 Mỗi lần ghi từ trang quản lý giữ bản cũ trong `.manager-history/` cạnh file và từ chối khi file vừa đổi ở nơi khác.
 
 ## Agent dùng thế nào

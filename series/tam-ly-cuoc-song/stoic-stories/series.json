@@ -30,7 +30,11 @@
           "id": "FouquetPowerThumbnail",
           "kind": "Still"
         }
-      ]
+      ],
+      "look": {
+        "theme": "dem-stoic",
+        "style": "anh-tinh"
+      }
     }
   ]
 }

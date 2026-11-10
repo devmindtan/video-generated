@@ -14,7 +14,7 @@ const catalog=require('../../scripts/catalog/catalog.cjs');
  const mark=s=>console.log('✓ '+s);
  // ---- backend --------------------------------------------------------------------------------------------
  const looks=createLooks(root);let view=looks.looks();
- assert.equal(view.themes.length,10);assert.equal(view.styles.length,10);assert.equal(view.projects[0].id,'thu-mot');
+ assert.equal(view.themes.length,11);assert.equal(view.styles.length,11);assert.equal(view.projects[0].id,'thu-mot');
  const base=structuredClone(view.themes[0]);delete base.id;delete base.usedBy;
  const made=looks.saveTheme({theme:{...base,name:'Biển chiều'},revision:view.revisions.themes});assert.equal(made.theme.id,'bien-chieu');
  assert.throws(()=>looks.saveTheme({theme:{...base,name:'Cũ'},revision:view.revisions.themes}),e=>e.status===409);mark('A new theme gets a slug id; a stale revision is refused (409)');
@@ -29,7 +29,7 @@ const catalog=require('../../scripts/catalog/catalog.cjs');
  const data=JSON.parse(fs.readFileSync(seriesFile,'utf8'));data.projects[0].look={theme:'khong-co'};fs.writeFileSync(seriesFile,JSON.stringify(data,null,2)+'\n');
  assert.throws(()=>catalog.validate(catalog.load(root)),/Unknown theme/);data.projects[0].look={theme:'bien-chieu',style:'chu-chuyen-dong'};fs.writeFileSync(seriesFile,JSON.stringify(data,null,2)+'\n');mark('projects:check rejects an unknown theme');
  const fav=looks.saveStyleNote({id:'net-ve',userNote:'Dùng cho tóm tắt sách',favorite:true,revision:view.revisions.styles});
- assert.equal(JSON.parse(fs.readFileSync(path.join(root,'src/looks/animation-styles.json'),'utf8')).styles[0].userNote,'Dùng cho tóm tắt sách');assert.ok(fav.revision);
+ assert.equal(JSON.parse(fs.readFileSync(path.join(root,'src/looks/animation-styles.json'),'utf8')).styles.find(x=>x.id==='net-ve').userNote,'Dùng cho tóm tắt sách');assert.ok(fav.revision);
  assert.ok(looks.sampleIds().includes('PhongCachNetVe'));mark('Style note and favourite are saved; sample IDs come from the list');
  // ---- browser --------------------------------------------------------------------------------------------
  const server=createManager({root,ensureStudio:async()=>{}});await new Promise(r=>server.listen(0,'127.0.0.1',r));const url=`http://127.0.0.1:${server.address().port}`;
@@ -38,11 +38,11 @@ const catalog=require('../../scripts/catalog/catalog.cjs');
   for(const [w,h,tag] of [[1440,1000,'desktop'],[768,1024,'tablet'],[390,844,'mobile']]){
    const page=await browser.newPage({viewport:{width:w,height:h},locale:'vi-VN'});page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
    await page.goto(url+'/?view=themes',{waitUntil:'networkidle'});await page.locator('.theme-card').first().waitFor();
-   assert.equal(await page.locator('.theme-card').count(),11);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'horizontal overflow '+tag);
+   assert.equal(await page.locator('.theme-card').count(),12);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'horizontal overflow '+tag);
    // Theme colours reach the preview through CSS variables (the CSP blocks inline style attributes).
    assert.equal(await page.locator('.theme-card .look-stage').first().evaluate(el=>getComputedStyle(el).getPropertyValue('--t-accent').trim()),'#d9b56f');
    await page.locator('#looks-search').fill('lo au');await page.waitForTimeout(350);assert.equal(await page.locator('.theme-card').count(),1);
-   await page.locator('#looks-search').fill('');await page.waitForTimeout(350);await page.locator('[data-look-format="long"]').click();assert.ok(await page.locator('.theme-card').count()<11);
+   await page.locator('#looks-search').fill('');await page.waitForTimeout(350);await page.locator('[data-look-format="long"]').click();assert.ok(await page.locator('.theme-card').count()<12);
    await page.screenshot({path:path.join(out,`themes-${tag}.png`)});mark(`${tag}: theme grid, accent-insensitive search and format filter`);
    await page.close();
   }
@@ -54,10 +54,18 @@ const catalog=require('../../scripts/catalog/catalog.cjs');
   assert.ok(JSON.parse(fs.readFileSync(path.join(root,'src/looks/themes.json'),'utf8')).themes.some(t=>t.id==='hoang-hon-tim'&&t.palette.background==='#2a1840'));mark('A theme created in the form is saved');
   await page.locator('[data-look-assign^="theme:"]').click();await page.locator('#assign-form select').selectOption('thu-mot');await page.locator('#assign-form button[type=submit]').click();await page.waitForTimeout(400);
   assert.equal(JSON.parse(fs.readFileSync(seriesFile,'utf8')).projects[0].look.theme,'hoang-hon-tim');mark('"Gắn cho dự án" writes the project look');
-  await page.goto(url+'/?view=motion',{waitUntil:'networkidle'});await page.locator('.motion-row').first().waitFor();assert.equal(await page.locator('.motion-row').count(),10);
-  await page.locator('[data-motion-play="chu-chuyen-dong"]').click();assert.equal(await page.locator('[data-motion-play="chu-chuyen-dong"]').getAttribute('aria-pressed'),'true');
-  await page.locator('[data-style-fav="hinh-khoi"]').click();await page.waitForTimeout(400);await page.locator('[data-look-fav="1"]').click();assert.equal(await page.locator('.motion-row').count(),2);mark('Preview toggles; favourites filter shows the marked styles');
-  const studio=page.waitForEvent('popup');await page.locator('[data-style-studio="PhongCachHinhKhoi"]').click();assert.match((await studio).url(),/PhongCachHinhKhoi/);mark('"Xem mẫu trong Studio" opens the sample composition');
+  await page.goto(url+'/?view=motion',{waitUntil:'networkidle'});await page.locator('.motion-card').first().waitFor();assert.equal(await page.locator('.motion-card').count(),11);
+  // Compact grid (user 2026-11-10): no details on the page, a card opens them.
+  assert.equal(await page.locator('#resource-view .look-facts').count(),0);assert.equal(await page.locator('#resource-view textarea').count(),0);
+  await page.locator('.motion-card[data-style-open="hinh-khoi"]').hover();assert.ok(await page.locator('[data-style-open="hinh-khoi"] .motion-preview.is-playing').count());
+  await page.locator('[data-style-open="hinh-khoi"]').click();await page.locator('#looks-dialog .look-facts').waitFor();
+  assert.match(await page.locator('#looks-dialog .usage').innerText(),/Chưa có dự án/);
+  await page.locator('#looks-dialog [data-style-fav="hinh-khoi"]').click();await page.locator('#looks-dialog [data-style-fav="hinh-khoi"].on').waitFor();
+  await page.locator('#looks-dialog [data-style-note]').fill('Dùng cho câu mở');await page.locator('#looks-dialog [data-style-save]').click();await page.waitForTimeout(400);
+  assert.equal(JSON.parse(fs.readFileSync(path.join(root,'src/looks/animation-styles.json'),'utf8')).styles.find(x=>x.id==='hinh-khoi').userNote,'Dùng cho câu mở');
+  const studio=page.waitForEvent('popup');await page.locator('#looks-dialog [data-style-studio="PhongCachHinhKhoi"]').click();assert.match((await studio).url(),/PhongCachHinhKhoi/);
+  await page.keyboard.press('Escape');await page.locator('[data-look-fav="1"]').click();assert.equal(await page.locator('.motion-card').count(),2);
+  mark('Style cards open a dialog: favourite, note, Studio sample; hover runs the preview; favourites filter');
   await page.screenshot({path:path.join(out,'motion-desktop.png')});
   assert.deepEqual(errors,[]);
  }finally{await browser.close();server.close();fs.rmSync(root,{recursive:true,force:true});}

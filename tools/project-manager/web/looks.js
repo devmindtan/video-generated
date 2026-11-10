@@ -48,18 +48,33 @@ function renderMotion(){
   box.innerHTML=`<div class="looks-toolbar"><label class="search-field"><span>${icon('search')}</span><input id="looks-search" type="search" autocomplete="off" placeholder="Tìm theo cách dùng: câu mở, số liệu, thiền…" aria-label="Tìm phong cách" value="${esc(looks.query)}"></label>
     <div class="looks-filter" role="group" aria-label="Lọc"><button type="button" class="chip ${looks.favorites?'':'active'}" aria-pressed="${!looks.favorites}" data-look-fav="0">Tất cả</button><button type="button" class="chip ${looks.favorites?'active':''}" aria-pressed="${looks.favorites}" data-look-fav="1">Ưu tiên</button></div>
     <button type="button" class="button secondary" data-motion-all aria-pressed="false">Chạy thử tất cả</button></div>
-    <p class="looks-count" role="status">${list.length} phong cách · khung nhỏ là mô phỏng, mẫu thật mở trong Studio và đổi được chủ đề ở ô props</p>
-    ${list.length?`<ol class="motion-list">${list.map(s=>{const t=themeById(s.suggestedBy[0])||d.themes[0];return `<li class="motion-row" data-style="${esc(s.id)}">
-      <button type="button" class="motion-preview" data-motion-play="${esc(s.id)}" data-paint="${esc(t.id)}" aria-label="Chạy thử ${esc(s.name)}" aria-pressed="false">${motionArt(s.id)}<span class="motion-hint">Chạy thử</span></button>
-      <div class="motion-body"><div class="motion-title"><h2>${esc(s.name)}</h2><button type="button" class="star ${s.favorite?'on':''}" data-style-fav="${esc(s.id)}" aria-pressed="${s.favorite}">${s.favorite?'★ Ưu tiên':'☆ Đánh dấu ưu tiên'}</button></div>
-        <p>${esc(s.summary)}</p>
-        <dl class="motion-facts"><div><dt>Hợp với</dt><dd>${esc(s.bestFor.join(', '))}</dd></div><div><dt>Nhịp</dt><dd>${esc(s.pace)}</dd></div><div><dt>Độ công phu</dt><dd>${EFFORT_NAMES[s.effort]||s.effort}</dd></div>
-          <div><dt>Cách làm</dt><dd>${esc(s.techniques.join('; '))}</dd></div><div><dt>Chủ đề gợi ý</dt><dd>${s.suggestedBy.map(id=>`<button type="button" class="link-button" data-theme-open="${esc(id)}">${esc(themeById(id)?.name||id)}</button>`).join(', ')||'Chưa có'}</dd></div>
-          <div><dt>Đang dùng</dt><dd>${s.usedBy.length?esc(s.usedBy.map(projectTitle).join(', ')):'Chưa có dự án'}</dd></div></dl>
-        <label class="field motion-note"><span>Ghi chú của bạn</span><textarea rows="1" maxlength="1000" data-style-note="${esc(s.id)}" placeholder="Khi nào muốn dùng, điều cần tránh…">${esc(s.userNote||'')}</textarea></label>
-        <div class="motion-actions"><button type="button" class="button studio-button" data-style-studio="${esc(s.sample)}">${icon('play')}Xem mẫu trong Studio</button><button type="button" class="button secondary" data-look-assign="style:${esc(s.id)}">Gắn cho dự án</button><button type="button" class="button quiet" data-style-save="${esc(s.id)}" hidden>Lưu ghi chú</button></div></div></li>`;}).join('')}</ol>`
+    <p class="looks-count" role="status">${list.length} / ${d.styles.length} phong cách · bấm một phong cách để xem cách làm, mẫu trong Studio hoặc gắn cho dự án</p>
+    ${list.length?`<div class="theme-grid motion-grid">${list.map(s=>{const t=themeById(s.suggestedBy[0])||d.themes[0];return `<button type="button" class="theme-card motion-card" data-style-open="${esc(s.id)}" aria-label="Xem phong cách ${esc(s.name)}">
+      <span class="motion-preview" data-paint="${esc(t.id)}" data-motion="${esc(s.id)}">${motionArt(s.id)}</span>
+      <span class="theme-meta"><strong>${esc(s.name)}${s.favorite?' <span class="fav-mark" aria-label="ưu tiên">★</span>':''}</strong><span class="theme-mood">${esc(s.bestFor.join(', '))}</span>
+      <span class="theme-foot"><span>${esc(s.pace)} · ${EFFORT_NAMES[s.effort]||s.effort}</span><span class="${s.usedBy.length?'in-use':''}">${s.usedBy.length?`Đang dùng: ${s.usedBy.length} dự án`:'Chưa dùng'}</span></span></span></button>`;}).join('')}</div>`
       :`<div class="empty-state">Chưa có phong cách nào được đánh dấu ưu tiên. <button type="button" class="link-button" data-look-fav="0">Xem tất cả</button>.</div>`}`;
   paintAll(box);
+}
+// Projects using a theme or style, grouped by series: "Self-help (33): a, b, c… và 30 tập khác".
+function usage(ids){
+  if(!ids?.length)return 'Chưa có dự án';
+  const groups={};for(const id of ids){const p=looks.data.projects.find(x=>x.id===id);(groups[p?.seriesTitle||'Khác']||=[]).push(p?.title||id);}
+  return Object.entries(groups).map(([g,ts])=>`<span class="usage-group"><strong>${esc(g)} (${ts.length})</strong>: ${esc(ts.slice(0,4).join(', '))}${ts.length>4?` và ${ts.length-4} tập khác`:''}</span>`).join('');
+}
+function openStyle(id){
+  const s=styleById(id),t=themeById(s.suggestedBy[0])||looks.data.themes[0],dlg=ensureDialog();looks.edit=null;looks.dialog=null;
+  dlg.innerHTML=`<div class="modal-heading"><div><h2 id="looks-dialog-title" tabindex="-1">${esc(s.name)}</h2><p class="modal-description">${esc(s.pace)} · độ công phu ${EFFORT_NAMES[s.effort]||s.effort}</p></div><button type="button" class="icon-button" data-looks-close aria-label="Đóng">${icon('close')}</button></div>
+    <div class="look-layout"><div class="look-previews"><button type="button" class="motion-preview large is-playing" data-motion-play="${esc(s.id)}" data-paint="${esc(t.id)}" aria-label="Dừng mô phỏng" aria-pressed="true">${motionArt(s.id)}<span class="motion-hint">Dừng</span></button>
+      <p class="resource-note">Khung này là mô phỏng. Mẫu thật chạy trong Studio, đổi được chủ đề ở ô props.</p></div>
+    <div class="look-detail"><div class="motion-title"><p class="look-desc">${esc(s.summary)}</p><button type="button" class="star ${s.favorite?'on':''}" data-style-fav="${esc(s.id)}" aria-pressed="${s.favorite}">${s.favorite?'★ Ưu tiên':'☆ Đánh dấu ưu tiên'}</button></div>
+      <dl class="look-facts"><div><dt>Hợp với</dt><dd>${esc(s.bestFor.join(', '))}</dd></div><div><dt>Nhịp</dt><dd>${esc(s.pace)}</dd></div>
+        <div class="wide"><dt>Cách làm</dt><dd>${esc(s.techniques.join('; '))}</dd></div>
+        <div class="wide"><dt>Chủ đề gợi ý</dt><dd>${s.suggestedBy.map(i=>`<button type="button" class="link-button" data-theme-open="${esc(i)}">${esc(themeById(i)?.name||i)}</button>`).join(', ')||'Chưa có'}</dd></div>
+        <div class="wide"><dt>Đang dùng</dt><dd class="usage">${usage(s.usedBy)}</dd></div></dl>
+      <label class="field motion-note"><span>Ghi chú của bạn</span><textarea rows="2" maxlength="1000" data-style-note="${esc(s.id)}" placeholder="Khi nào muốn dùng, điều cần tránh…">${esc(s.userNote||'')}</textarea></label>
+      <div class="look-actions"><button type="button" class="button studio-button" data-style-studio="${esc(s.sample)}">${icon('play')}Xem mẫu trong Studio</button><button type="button" class="button primary" data-look-assign="style:${esc(s.id)}">Gắn cho dự án</button><span class="footer-spacer"></span><button type="button" class="button secondary" data-style-save="${esc(s.id)}" hidden>Lưu ghi chú</button></div></div></div>`;
+  paintAll(dlg);looks.styleDialog=id;if(!dlg.open)dlg.showModal();dlg.querySelector('h2').focus();
 }
 
 // Simplified CSS previews of each style; the real Remotion sample opens in Studio.
@@ -67,6 +82,7 @@ function motionArt(id){
   const svg=inner=>`<svg viewBox="0 0 120 160" class="m-art m-${id}" aria-hidden="true">${inner}</svg>`;
   switch(id){
     case 'net-ve':return svg('<path class="m-draw" pathLength="1" d="M22 120 C36 114 50 114 60 120 C70 114 84 114 98 120 L98 134 C84 128 70 128 60 134 C50 128 36 128 22 134 Z M60 120 C58 100 62 86 60 66 M60 98 C48 96 42 88 41 80 C50 80 58 88 60 98 Z M61 84 C72 80 78 72 79 64 C70 64 62 72 61 84 Z"/>');
+    case 'anh-tinh':return svg('<rect x="0" y="0" width="120" height="160" class="m-photo"/><path d="M0 112 L36 76 L60 96 L86 64 L120 104 L120 160 L0 160Z" class="m-hills"/><circle cx="88" cy="40" r="10" class="m-moon"/><rect x="0" y="100" width="120" height="60" class="m-fade"/>');
     case 'chu-chuyen-dong':return svg('<text x="60" y="64" class="m-w m-w1">Thói</text><text x="60" y="90" class="m-w m-w2">quen</text><text x="60" y="122" class="m-w m-w3 m-key">nhỏ</text><rect x="34" y="128" width="52" height="4" class="m-line"/>');
     case 'cat-giay':return svg('<circle cx="86" cy="52" r="14" class="m-sun"/><path class="m-l1" d="M0 104 C30 92 60 112 120 96 L120 160 L0 160Z"/><path class="m-l2" d="M0 120 C40 108 70 128 120 114 L120 160 L0 160Z"/><path class="m-l3" d="M0 138 C30 130 80 146 120 132 L120 160 L0 160Z"/>');
     case 'phan-bang':return svg('<circle class="m-draw m-chalk" pathLength="1" cx="60" cy="74" r="30"/><text x="60" y="82" class="m-w m-chalk-t">1%</text><path class="m-draw m-chalk2" pathLength="1" d="M26 132 C44 118 70 120 92 108 M86 104 L94 108 L88 114"/>');
@@ -84,7 +100,9 @@ function motionArt(id){
 function ensureDialog(){
   let dlg=$('#looks-dialog');
   if(!dlg){dlg=document.createElement('dialog');dlg.id='looks-dialog';dlg.className='looks-dialog';dlg.setAttribute('aria-labelledby','looks-dialog-title');document.body.append(dlg);
-    dlg.addEventListener('close',()=>{looks.edit=null;looks.dialog=null;});dlg.addEventListener('click',onLooksClick);dlg.addEventListener('input',onDialogInput);dlg.addEventListener('change',onDialogInput);}
+    dlg.addEventListener('close',()=>{looks.edit=null;looks.dialog=null;looks.styleDialog=null;});dlg.addEventListener('click',onLooksClick);dlg.addEventListener('input',onDialogInput);dlg.addEventListener('change',onDialogInput);
+    // Unsaved style note: show its save button (the note box lives in this dialog).
+    dlg.addEventListener('input',e=>{const id=e.target.dataset.styleNote;if(id)dlg.querySelector(`[data-style-save="${CSS.escape(id)}"]`).hidden=e.target.value.trim()===(styleById(id).userNote||'');});}
   return dlg;
 }
 function openTheme(id){looks.edit=null;looks.dialog=id;const dlg=ensureDialog();renderThemeDialog();if(!dlg.open)dlg.showModal();dlg.querySelector('h2')?.focus();}
@@ -97,7 +115,7 @@ function renderThemeDialog(){
     <dl class="look-facts"><div><dt>Không khí</dt><dd>${esc(t.mood)}</dd></div><div><dt>Hợp nói về</dt><dd>${esc(t.topics.join(', '))}</dd></div><div><dt>Định dạng</dt><dd>${t.formats.map(f=>FORMAT_NAMES[f]).join(', ')}</dd></div>
       <div><dt>Nền</dt><dd>${TEXTURE_NAMES[t.texture]}</dd></div><div><dt>Nét vẽ</dt><dd>màu ${ROLE_NAMES[t.stroke.color]}, dày ${t.stroke.width}</dd></div><div><dt>Phụ đề</dt><dd>chữ ${ROLE_NAMES[t.caption.text]}, từ khóa ${ROLE_NAMES[t.caption.keyword]}${t.caption.box?' trên dải màu':''}</dd></div>
       <div><dt>Nhạc</dt><dd>${esc(t.music)}</dd></div><div><dt>Phong cách gợi ý</dt><dd>${t.styles.map(id=>esc(styleById(id)?.name||id)).join(', ')||'Chưa chọn'}</dd></div>
-      <div><dt>Đang dùng</dt><dd>${t.usedBy?.length?esc(t.usedBy.map(projectTitle).join(', ')):'Chưa có dự án'}</dd></div></dl>
+      <div class="wide"><dt>Đang dùng</dt><dd class="usage">${usage(t.usedBy)}</dd></div></dl>
     <div class="look-actions"><button type="button" class="button primary" data-look-assign="theme:${esc(t.id)}">Gắn cho dự án</button><button type="button" class="button secondary" data-theme-edit>Sửa</button><button type="button" class="button secondary" data-theme-copy>Nhân bản</button>
       <span class="footer-spacer"></span><button type="button" class="button danger" data-theme-delete ${t.usedBy?.length?'disabled title="Đang có dự án dùng chủ đề này"':''}>Xóa</button></div></div>`;
   const opt=(v,cur,label)=>`<option value="${esc(v)}" ${v===cur?'selected':''}>${esc(label)}</option>`;
@@ -168,6 +186,7 @@ async function onLooksClick(event){
   else if(b.dataset.lookFav!==undefined){looks.favorites=b.dataset.lookFav==='1';renderLooks();}
   else if(b.hasAttribute('data-look-clear')){looks.query='';looks.format='';renderLooks();}
   else if(b.dataset.themeOpen){openTheme(b.dataset.themeOpen);}
+  else if(b.dataset.styleOpen){openStyle(b.dataset.styleOpen);}
   else if(b.hasAttribute('data-theme-new')){const base=looks.data.themes[0];looks.dialog=null;looks.edit={id:'',draft:{...structuredClone(base),id:'',name:'Chủ đề mới',usedBy:[]}};const dlg=ensureDialog();renderThemeDialog();if(!dlg.open)dlg.showModal();dlg.querySelector('input[name=name]').select();}
   else if(b.hasAttribute('data-theme-edit')){const t=themeById(looks.dialog);looks.edit={id:t.id,draft:structuredClone(t)};renderThemeDialog();ensureDialog().querySelector('input[name=name]').focus();}
   else if(b.hasAttribute('data-theme-copy')){const t=themeById(looks.dialog);looks.edit={id:'',draft:{...structuredClone(t),id:'',name:t.name+' (bản sao)',usedBy:[]}};renderThemeDialog();ensureDialog().querySelector('input[name=name]').select();}
@@ -179,19 +198,22 @@ async function onLooksClick(event){
   else if(b.dataset.styleStudio){b.disabled=true;try{const r=await api('/api/studio-look',{composition:b.dataset.styleStudio});window.open(r.url,'_blank','noopener');}catch(error){toast(error.message);}finally{b.disabled=false;}}
   else if(b.dataset.styleFav){const s=styleById(b.dataset.styleFav);await saveStyle(s,{favorite:!s.favorite});}
   else if(b.dataset.styleSave){const s=styleById(b.dataset.styleSave),text=$(`[data-style-note="${CSS.escape(s.id)}"]`).value;await saveStyle(s,{userNote:text});}
-  else if(b.dataset.motionPlay){const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));b.classList.toggle('is-playing',on);b.querySelector('.motion-hint').textContent=on?'Dừng':'Chạy thử';}
+  else if(b.dataset.motionPlay){const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));b.classList.toggle('is-playing',on);b.querySelector('.motion-hint').textContent=on?'Dừng':'Chạy thử';b.setAttribute('aria-label',on?'Dừng mô phỏng':'Chạy mô phỏng');}
   else if(b.hasAttribute('data-motion-all')){const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));b.textContent=on?'Dừng tất cả':'Chạy thử tất cả';
-    document.querySelectorAll('[data-motion-play]').forEach(p=>{p.classList.toggle('is-playing',on);p.setAttribute('aria-pressed',String(on));p.querySelector('.motion-hint').textContent=on?'Dừng':'Chạy thử';});}
+    document.querySelectorAll('#resource-view [data-motion]').forEach(p=>p.classList.toggle('is-playing',on));}
 }
 async function saveStyle(s,change){
-  try{await api('/api/looks/style-note',{id:s.id,userNote:change.userNote??s.userNote??'',favorite:change.favorite??s.favorite,revision:looks.data.revisions.styles});await reloadLooks();renderLooks();toast(change.userNote!==undefined?'Đã lưu ghi chú.':'Đã cập nhật ưu tiên.');}
+  try{await api('/api/looks/style-note',{id:s.id,userNote:change.userNote??s.userNote??'',favorite:change.favorite??s.favorite,revision:looks.data.revisions.styles});await reloadLooks();renderLooks();if(ensureDialog().open&&looks.styleDialog===s.id)openStyle(s.id);toast(change.userNote!==undefined?'Đã lưu ghi chú.':'Đã cập nhật ưu tiên.');}
   catch(error){toast(error.message);}
 }
 document.addEventListener('DOMContentLoaded',()=>{
   const box=$('#resource-view');
   box.addEventListener('click',event=>{if(state.view==='themes'||state.view==='motion')onLooksClick(event);});
+  // A style card runs its preview while hovered or focused (unless "Chạy thử tất cả" already runs them all).
+  const hover=(on,event)=>{const card=event.target.closest?.('.motion-card');if(!card||card.contains(event.relatedTarget))return;
+    if(document.querySelector('[data-motion-all]')?.getAttribute('aria-pressed')!=='true')card.querySelector('.motion-preview').classList.toggle('is-playing',on);};
+  box.addEventListener('mouseover',e=>hover(true,e));box.addEventListener('mouseout',e=>hover(false,e));box.addEventListener('focusin',e=>hover(true,e));box.addEventListener('focusout',e=>hover(false,e));
   box.addEventListener('input',event=>{
     if(event.target.id==='looks-search'){looks.query=event.target.value;clearTimeout(looks.timer);looks.timer=setTimeout(()=>{const pos=event.target.selectionStart;renderLooks();const i=$('#looks-search');i.focus();i.setSelectionRange(pos,pos);},200);}
-    const note=event.target.dataset.styleNote;if(note){const s=styleById(note);box.querySelector(`[data-style-save="${CSS.escape(note)}"]`).hidden=event.target.value.trim()===(s.userNote||'');}
   });
 });

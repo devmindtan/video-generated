@@ -6,8 +6,16 @@
       "id": "net-ve",
       "name": "Nét vẽ tay",
       "summary": "Hình được vẽ dần bằng một nét liền, như ai đó đang phác trên giấy, đi đúng nhịp từng câu.",
-      "bestFor": ["kể chuyện", "giải thích ý trừu tượng", "tóm tắt sách"],
-      "techniques": ["SVG path vẽ dần theo stroke-dashoffset", "mỗi hình hiện đúng lúc từ được đọc", "quầng sáng nhẹ quanh điểm nhấn"],
+      "bestFor": [
+        "kể chuyện",
+        "giải thích ý trừu tượng",
+        "tóm tắt sách"
+      ],
+      "techniques": [
+        "SVG path vẽ dần theo stroke-dashoffset",
+        "mỗi hình hiện đúng lúc từ được đọc",
+        "quầng sáng nhẹ quanh điểm nhấn"
+      ],
       "pace": "Chậm vừa, mỗi câu một hình",
       "effort": 2,
       "sample": "PhongCachNetVe",
@@ -15,11 +23,39 @@
       "userNote": ""
     },
     {
+      "id": "anh-tinh",
+      "name": "Ảnh tĩnh chuyển động chậm",
+      "summary": "Mỗi cảnh một ảnh tĩnh, máy quay đẩy hoặc lia thật chậm, chuyển cảnh mờ chéo, ánh sáng và hạt bụi nhẹ: điện ảnh, tập trung vào lời.",
+      "bestFor": [
+        "lời nhắc cuộc sống",
+        "câu chuyện lịch sử",
+        "cảm xúc"
+      ],
+      "techniques": [
+        "ảnh nền phóng và trượt chậm theo khung",
+        "mờ chéo giữa các cảnh",
+        "quầng sáng và hạt bụi chồng lên ảnh"
+      ],
+      "pace": "Chậm",
+      "effort": 1,
+      "sample": "PhongCachAnhTinh",
+      "favorite": false,
+      "userNote": ""
+    },
+    {
       "id": "chu-chuyen-dong",
       "name": "Chữ chuyển động",
       "summary": "Chữ là nhân vật chính: từng từ bật lên, từ khóa phóng to, gạch chân quét qua theo giọng đọc.",
-      "bestFor": ["câu mở short", "trích dẫn", "câu chốt"],
-      "techniques": ["spring cho từng từ", "từ khóa đổi cỡ và màu", "gạch chân quét theo thời điểm chữ"],
+      "bestFor": [
+        "câu mở short",
+        "trích dẫn",
+        "câu chốt"
+      ],
+      "techniques": [
+        "spring cho từng từ",
+        "từ khóa đổi cỡ và màu",
+        "gạch chân quét theo thời điểm chữ"
+      ],
       "pace": "Nhanh, bám nhịp giọng",
       "effort": 1,
       "sample": "PhongCachChuChuyenDong",
@@ -30,8 +66,16 @@
       "id": "cat-giay",
       "name": "Cắt giấy nhiều lớp",
       "summary": "Cảnh dựng từ các lớp giấy cắt có bóng đổ, trượt vào và rung nhẹ như mô hình giấy thủ công.",
-      "bestFor": ["phong cảnh", "câu chuyện có bối cảnh", "chữa lành"],
-      "techniques": ["nhiều lớp SVG lệch nhau tạo chiều sâu", "bóng đổ mềm", "chuyển động trượt có độ nảy"],
+      "bestFor": [
+        "phong cảnh",
+        "câu chuyện có bối cảnh",
+        "chữa lành"
+      ],
+      "techniques": [
+        "nhiều lớp SVG lệch nhau tạo chiều sâu",
+        "bóng đổ mềm",
+        "chuyển động trượt có độ nảy"
+      ],
       "pace": "Vừa, êm",
       "effort": 2,
       "sample": "PhongCachCatGiay",
@@ -42,8 +86,16 @@
       "id": "phan-bang",
       "name": "Phấn trên bảng",
       "summary": "Chữ và hình vẽ phấn có nét run nhẹ liên tục, bụi phấn rơi, như đang giảng trên lớp.",
-      "bestFor": ["giải thích từng bước", "công thức", "so sánh đúng sai"],
-      "techniques": ["nét vẽ dần có độ rung đổi mỗi 4 khung", "chữ viết tay hiện theo nét", "hạt bụi phấn"],
+      "bestFor": [
+        "giải thích từng bước",
+        "công thức",
+        "so sánh đúng sai"
+      ],
+      "techniques": [
+        "nét vẽ dần có độ rung đổi mỗi 4 khung",
+        "chữ viết tay hiện theo nét",
+        "hạt bụi phấn"
+      ],
       "pace": "Vừa",
       "effort": 2,
       "sample": "PhongCachPhanBang",
@@ -54,8 +106,16 @@
       "id": "bong-do",
       "name": "Bóng đổ ngược sáng",
       "summary": "Nhân vật và cảnh là những khối bóng đen trước một nguồn sáng lớn, không lộ mặt, giàu cảm xúc.",
-      "bestFor": ["khoảnh khắc một mình", "hành trình", "triết lý"],
-      "techniques": ["khối hình tô đặc trước mặt trời/trăng", "bước đi có nhịp", "đổi màu trời theo cảm xúc"],
+      "bestFor": [
+        "khoảnh khắc một mình",
+        "hành trình",
+        "triết lý"
+      ],
+      "techniques": [
+        "khối hình tô đặc trước mặt trời/trăng",
+        "bước đi có nhịp",
+        "đổi màu trời theo cảm xúc"
+      ],
       "pace": "Chậm",
       "effort": 2,
       "sample": "PhongCachBongDo",
@@ -66,8 +126,16 @@
       "id": "infographic",
       "name": "Đồ họa thông tin phẳng",
       "summary": "Con số đếm lên, cột lớn dần, biểu tượng phẳng và mũi tên nối ý: số liệu dễ nhớ trong vài giây.",
-      "bestFor": ["con số", "so sánh", "quy trình"],
-      "techniques": ["số đếm theo khung", "cột và vòng tròn tăng có easing", "biểu tượng vector đơn giản"],
+      "bestFor": [
+        "con số",
+        "so sánh",
+        "quy trình"
+      ],
+      "techniques": [
+        "số đếm theo khung",
+        "cột và vòng tròn tăng có easing",
+        "biểu tượng vector đơn giản"
+      ],
       "pace": "Nhanh vừa",
       "effort": 1,
       "sample": "PhongCachInfographic",
@@ -78,8 +146,16 @@
       "id": "muc-loang",
       "name": "Mực loang",
       "summary": "Vệt mực lan ra trên giấy, nét cọ quét để lộ chữ và hình: tĩnh lặng, nghệ thuật.",
-      "bestFor": ["thiền", "buông bỏ", "câu trích sâu"],
-      "techniques": ["SVG filter turbulence làm mép mực loang", "mặt nạ nét cọ để lộ dần", "dấu triện đỏ"],
+      "bestFor": [
+        "thiền",
+        "buông bỏ",
+        "câu trích sâu"
+      ],
+      "techniques": [
+        "SVG filter turbulence làm mép mực loang",
+        "mặt nạ nét cọ để lộ dần",
+        "dấu triện đỏ"
+      ],
       "pace": "Chậm",
       "effort": 3,
       "sample": "PhongCachMucLoang",
@@ -90,8 +166,16 @@
       "id": "hat-anh-sang",
       "name": "Hạt và ánh sáng",
       "summary": "Những hạt sáng trôi lơ lửng, vòng tròn thở phồng xẹp: không gian để người xem chậm lại.",
-      "bestFor": ["hơi thở", "giấc ngủ", "chữa lành"],
-      "techniques": ["hạt có vị trí tất định theo khung", "vòng tròn co giãn theo nhịp thở", "quầng sáng chồng lớp"],
+      "bestFor": [
+        "hơi thở",
+        "giấc ngủ",
+        "chữa lành"
+      ],
+      "techniques": [
+        "hạt có vị trí tất định theo khung",
+        "vòng tròn co giãn theo nhịp thở",
+        "quầng sáng chồng lớp"
+      ],
       "pace": "Rất chậm",
       "effort": 1,
       "sample": "PhongCachHatAnhSang",
@@ -102,8 +186,16 @@
       "id": "hinh-khoi",
       "name": "Hình khối biến đổi",
       "summary": "Tròn, vuông, tam giác nối nhau biến hình theo ý: tối giản, hiện đại, nhịp chắc.",
-      "bestFor": ["khái niệm trừu tượng", "câu mở mạnh", "chuyển cảnh"],
-      "techniques": ["biến hình giữa các path cùng số điểm", "xoay và phóng theo spring", "lưới nền chuyển động"],
+      "bestFor": [
+        "khái niệm trừu tượng",
+        "câu mở mạnh",
+        "chuyển cảnh"
+      ],
+      "techniques": [
+        "biến hình giữa các path cùng số điểm",
+        "xoay và phóng theo spring",
+        "lưới nền chuyển động"
+      ],
       "pace": "Nhanh",
       "effort": 2,
       "sample": "PhongCachHinhKhoi",
@@ -114,8 +206,16 @@
       "id": "so-tay",
       "name": "Trang sổ tay",
       "summary": "Trang giấy kẻ dòng, bút dạ quét vàng qua chữ, giấy nhớ rơi xuống, mũi tên vẽ tay: như ghi chép thật.",
-      "bestFor": ["mẹo áp dụng ngay", "danh sách", "tóm tắt"],
-      "techniques": ["dạ quang quét theo thời điểm chữ", "giấy nhớ rơi có xoay", "mũi tên và vòng tròn vẽ tay"],
+      "bestFor": [
+        "mẹo áp dụng ngay",
+        "danh sách",
+        "tóm tắt"
+      ],
+      "techniques": [
+        "dạ quang quét theo thời điểm chữ",
+        "giấy nhớ rơi có xoay",
+        "mũi tên và vòng tròn vẽ tay"
+      ],
       "pace": "Vừa",
       "effort": 1,
       "sample": "PhongCachSoTay",

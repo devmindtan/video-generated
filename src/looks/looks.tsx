@@ -47,7 +47,7 @@ export const ThemeCaption: FC<{theme: Theme; text: string; keyword?: string; top
 export const SampleFrame: FC<{theme: Theme; frame: number; label: string; children: ReactNode; caption?: boolean}> = ({theme: t, frame, label, children, caption = true}) =>
   <AbsoluteFill style={{fontFamily: FONT, overflow: 'hidden'}}>
     <ThemeBackground theme={t} frame={frame} />
-    <div style={{position: 'absolute', top: 200, left: 0, right: 0, textAlign: 'center', color: t.palette.accent, fontSize: 34, fontWeight: 700, letterSpacing: 6}}>{label}</div>
     <svg viewBox="0 0 1080 1920" width={1080} height={1920} style={{position: 'absolute', inset: 0}}>{children}</svg>
+    <div style={{position: 'absolute', top: 200, left: 0, right: 0, textAlign: 'center', color: t.palette.accent, fontSize: 34, fontWeight: 700, letterSpacing: 6, textShadow: '0 2px 12px rgba(0,0,0,.6)'}}>{label}</div>
     {caption ? <ThemeCaption theme={t} text={t.sample.caption} keyword={t.sample.keyword} opacity={interpolate(frame, [20, 34], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})} /> : null}
   </AbsoluteFill>;
