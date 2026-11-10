@@ -79,7 +79,7 @@ def clone_pieces(takes, order):
     for t in takes:
         d = ROOT / 'public/book-dnt-001-shorts/voice-auditions' / t
         m = json.loads((d / 'manifest.json').read_text())
-        checks = {c['file']: len(c['toneDiffs']) + len(c['wordDiffs']) for c in json.loads((d / 'tone-check.json').read_text())} if (d / 'tone-check.json').exists() else {}
+        checks = {c['file']: len(c['toneDiffs']) + len(c['wordDiffs']) + 2 * len(c.get('stretched', [])) + 2 * len(c.get('repeats', [])) for c in json.loads((d / 'tone-check.json').read_text())} if (d / 'tone-check.json').exists() else {}
         for f in m['files']:
             key, sc = f['text'].strip(), checks.get(f['file'], 99)
             if key not in files or sc <= score[key]:

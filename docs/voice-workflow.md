@@ -164,4 +164,8 @@ npm run voicestudio -- gpu start|status|stop   # bật/xem/tắt thủ công; m�
   `series/tam-ly-cuoc-song/book-insights/workflow.json` (bước narration).
 - Giọng clone của kênh đọc "x" thành "s" (xếp → sếp): đó là cách phát âm, không phải lỗi. `check-tones.py` bỏ qua x/s
   ở đầu chữ; `--recheck` chấm lại các bản đã nhận dạng mà không chạy lại nhận dạng.
+- `check-tones.py` còn đánh dấu chữ bị kéo dài (giữ hơn 0,7 giây, trừ chữ đầu câu) và chỗ máy đọc lại đầu câu (cùng hai chữ
+  lặp sát nhau mà kịch bản không có), từ cùng lượt nhận dạng (thêm 2026-11-10, ý từ ghost-editor `subcheck`, MIT, tự viết
+  lại). Lý do: chữ "và" cuối câu bị ngân 1,1 giây ở short tập 3. `build-shorts.py` của short tập 3 tính các lỗi này nặng
+  gấp đôi khi chọn bản clone.
 
