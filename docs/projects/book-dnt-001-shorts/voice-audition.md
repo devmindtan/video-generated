@@ -23,6 +23,7 @@
 |---|---|---|---|
 | `public/voice-auditions/book-dnt-shorts-qt-v2/` | Quốc Tuấn (VieNeu, preset) | laptop | 25 câu của 4 short + lời mời (`audition-qt-v2.json`, sinh từ narration.json) |
 | `public/voice-auditions/book-dnt-shorts-qt-v3/` | Quốc Tuấn | laptop | Như v2, short 2 có câu ví dụ (`audition-qt-v3.json`) |
+| `public/voice-auditions/book-dnt-shorts-qt-v4/` | Quốc Tuấn | laptop | Như v3, "và" trước dấu phẩy (`audition-qt-v4.json`) |
 
 - Nhận dạng cục bộ khớp 99%. Chỗ nghe có vẻ sai thanh hoặc sai chữ: "Trong" → "Tròng" (1-4), "thêm" → "thềm" (2-3),
   "trọn" → "chọn" (2-6 và lời mời), "thật lòng" → "thật long" (3-1), "Đắc nhân tâm" → "Đặc nhần tầm" (câu mở short 4),
@@ -36,6 +37,7 @@
 | Clone một lượt | `clone-v1` | 26 (25 câu + lời mời, `lines-clone.txt`) | máy GPU desktop-kndgm60 | Lời đọc viết mới |
 | Clone lại | `clone-fix-v1`, `clone-fix-v2` | 8 (`lines-fix.txt`) | máy GPU | Kiểm tra dấu đánh dấu: cãi, lùi, chữ "nhưng", nãy, vạch ranh, cả |
 | Short 2 sửa lời (2026-11-10) | `clone-fix2-v1`, `clone-fix2-v2` | 4 (`lines-fix2.txt`) | máy GPU | Thêm câu ví dụ 2-3b, 2-6b; viết lại 2-5, 2-6 để chữ "và" không đứng cuối câu (người dùng: "chữ và đang bị kéo dài") |
+| "và" bị đọc lướt (2026-11-10) | `clone-fix3-v1`–`-v3` | 2 (`lines-fix3.txt`) | máy GPU | "và" đặt trước dấu phẩy; chọn bản theo độ dài chữ "và" đo bằng nhận dạng cục bộ: 2-5 bản v1 (0,40 giây, nghỉ 0,30), 2-6 bản v2 (0,28 giây, nghỉ 0,42); bản cũ chỉ 0,20–0,22 giây, không nghỉ. Ghi ở `voice-picks.json` |
 
 - Mẫu giọng `library/voice-references/tam-nhin-cho-cuoc-song/clips/006130-15s.wav` (consent self), lời mẫu nhận dạng lại
   bằng faster-whisper cục bộ và gửi kèm (`--ref-text`), như tập 1–3.

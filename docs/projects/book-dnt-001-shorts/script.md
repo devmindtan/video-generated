@@ -33,14 +33,14 @@ Muốn người kia nghĩ lại, mình nên chừa cho họ một đường lùi
 Nhiều người hay khen trước, thêm chữ nhưng, rồi mới góp ý.
 Kiểu như: bài này em làm tốt lắm, nhưng phần cuối còn sơ sài.
 Người nghe vừa nghe tới chữ nhưng là bắt đầu nghi lời khen ban nãy chỉ để mở đường.
-Trong Đắc nhân tâm, tác giả gợi ý một cách rất đơn giản: dùng chữ và thay cho chữ nhưng.
-Mình nói trọn lời khen trước, rồi dùng chữ và để nối sang lời góp ý.
+Trong Đắc nhân tâm, tác giả gợi ý một cách rất đơn giản: thay chữ nhưng bằng chữ và, thế thôi.
+Mình nói trọn lời khen trước, rồi nối lời góp ý bằng chữ và, không dùng chữ nhưng nữa.
 Câu lúc nãy sẽ thành: bài này em làm tốt lắm, và nếu chăm chút thêm phần cuối thì còn tốt hơn nữa.
 Vậy là lời khen vẫn còn nguyên, còn lời góp ý thì nghe như một lời động viên.
 
 **Lời mời.**
 
-{Ý sách: "nhưng" thành "và", Ch23 PDF 272–273 (người nghe nghi lời khen trước chữ "nhưng"). Câu "nói trọn lời khen trước…" là gợi ý của kênh ở phần ý kiến cá nhân tập 3. Câu cuối là cách hiểu của kênh. Người dùng 2026-11-10 muốn thêm một câu ví dụ cho dễ hình dung: "Kiểu như…" và "Câu lúc nãy sẽ thành…" là ví dụ của kênh (cùng ý với ví dụ con học môn toán của sách, PDF 272–273, nhưng không phải lời sách). Chữ "và" không đứng cuối câu vì giọng clone kéo dài chữ cuối (người dùng: "chữ và đang bị kéo dài").}
+{Ý sách: "nhưng" thành "và", Ch23 PDF 272–273 (người nghe nghi lời khen trước chữ "nhưng"). Câu "nói trọn lời khen trước…" là gợi ý của kênh ở phần ý kiến cá nhân tập 3. Câu cuối là cách hiểu của kênh. Người dùng 2026-11-10 muốn thêm một câu ví dụ cho dễ hình dung: "Kiểu như…" và "Câu lúc nãy sẽ thành…" là ví dụ của kênh (cùng ý với ví dụ con học môn toán của sách, PDF 272–273, nhưng không phải lời sách). Chữ "và" không đứng cuối câu vì giọng clone kéo dài chữ cuối (người dùng: "chữ và đang bị kéo dài"), và đứng trước dấu phẩy để có nhịp ngắt sau nó, vì ở giữa câu giọng clone đọc lướt ("nhanh đến mức tôi không kịp nghe").}
 
 ## Short 3 · Tấm lòng hay cửa miệng
 

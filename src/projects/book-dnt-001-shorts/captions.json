@@ -52,7 +52,7 @@
   "short-2": {
    "title": "Short 2 · Chữ “nhưng” thành chữ “và”",
    "composition": "BookDntShortNhungVa",
-   "durationSeconds": 49.23,
+   "durationSeconds": 50.28,
    "pages": [
     {
      "part": "Câu mở",
@@ -86,33 +86,33 @@
     },
     {
      "part": "Lời đọc",
-     "text": "Trong Đắc nhân tâm, tác giả gợi ý một cách rất đơn giản: dùng chữ và thay cho chữ nhưng.",
+     "text": "Trong Đắc nhân tâm, tác giả gợi ý một cách rất đơn giản: thay chữ nhưng bằng chữ và, thế thôi.",
      "startMs": 20685,
-     "endMs": 25134
+     "endMs": 25453
     },
     {
      "part": "Lời đọc",
-     "text": "Mình nói trọn lời khen trước, rồi dùng chữ và để nối sang lời góp ý.",
-     "startMs": 26314,
-     "endMs": 30060
+     "text": "Mình nói trọn lời khen trước, rồi nối lời góp ý bằng chữ và, không dùng chữ nhưng nữa.",
+     "startMs": 26633,
+     "endMs": 31109
     },
     {
      "part": "Lời đọc",
      "text": "Câu lúc nãy sẽ thành: bài này em làm tốt lắm, và nếu chăm chút thêm phần cuối thì còn tốt hơn nữa.",
-     "startMs": 31140,
-     "endMs": 36540
+     "startMs": 32189,
+     "endMs": 37589
     },
     {
      "part": "Lời đọc",
      "text": "Vậy là lời khen vẫn còn nguyên, còn lời góp ý thì nghe như một lời động viên.",
-     "startMs": 37620,
-     "endMs": 41455
+     "startMs": 38669,
+     "endMs": 42505
     },
     {
      "part": "Lời mời",
      "text": "Mình đã kể lại trọn cuốn Đắc nhân tâm trong một video dài. Link ở phần bình luận, bạn ghé xem nhé.",
-     "startMs": 42635,
-     "endMs": 47586
+     "startMs": 43685,
+     "endMs": 48635
     }
    ]
   },
