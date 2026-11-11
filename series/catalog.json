@@ -15,6 +15,11 @@
       "id": "client-work",
       "title": "Video khách hàng",
       "studioFolder": "Client-Work"
+    },
+    {
+      "id": "ngoai-kenh",
+      "title": "Chưa thuộc kênh",
+      "studioFolder": "Ngoai-Kenh"
     }
   ],
   "series": [
@@ -52,6 +57,11 @@
       "id": "motion-experiments",
       "channel": "client-work",
       "path": "series/client-work/motion-experiments/series.json"
+    },
+    {
+      "id": "sach-ky-thuat",
+      "channel": "ngoai-kenh",
+      "path": "series/ngoai-kenh/sach-ky-thuat/series.json"
     }
   ]
 }

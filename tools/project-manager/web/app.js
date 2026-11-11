@@ -87,8 +87,10 @@ async function refresh(initial=false){
   catch(error){$('#load-error').textContent=`Chưa kết nối được: ${error.message}`;$('#load-error').hidden=false;$('#connection').classList.add('offline');}
   finally{refreshing=false;$('#refresh-button').disabled=false;}
 }
-// Every catalog channel is a content channel except client work, which is listed apart.
-const contentChannels={includes:id=>id!=='client-work'};
+// Every catalog channel is a content channel except the groups listed apart under NGOÀI KÊNH: client work and
+// "ngoai-kenh" (videos not yet assigned to a channel, user 2026-11-11). Only client work imports finished videos.
+const outsideGroups=['client-work','ngoai-kenh'];
+const contentChannels={includes:id=>!outsideGroups.includes(id)};
 // A book series (series.json "requireBook") has a bookshelf, whatever its genre or channel.
 const isBookSeries=id=>Boolean(state.data?.series.find(s=>s.id===id)?.bookSeries);
 function renderNav(){
@@ -952,7 +954,7 @@ function updateCreateSeries(book){
 }
 function updateCreateDuration(){const form=$('#create-form');const series=state.data.series.find(s=>s.id===form.elements.series?.value);form.elements.duration.value=series?.channel==='tam-ly-cuoc-song'&&form.elements.format.value==='short'?'45':'';}
 function updateCreateImport(){
-  const panel=$('#create-import');if(!panel)return;const series=state.data.series.find(s=>s.id===$('#create-series').value),external=series&&!contentChannels.includes(series.channel),toggle=$('#create-import-toggle'),field=$('#create-video-field'),file=$('#create-video-file');
+  const panel=$('#create-import');if(!panel)return;const series=state.data.series.find(s=>s.id===$('#create-series').value),external=series?.channel==='client-work',toggle=$('#create-import-toggle'),field=$('#create-video-field'),file=$('#create-video-file');
   panel.hidden=!external;if(!external){toggle.checked=false;file.value='';}field.hidden=!external||!toggle.checked;file.required=external&&toggle.checked;$('#submit-create').textContent=external&&toggle.checked?'Tạo và import video':'Tạo dự án';
 }
 // Channel profiles on social platforms (tools/project-manager/channels.cjs): name, link, description and images per

@@ -70,8 +70,9 @@ async function run(){
     assert.equal(await page.locator('input[name="duration"]').inputValue(),'');
     await screenshot('project-form');await page.locator('#cancel-create').click();mark('Planning form derives slug and leaves long duration unapproved; no submit');
     assert.equal(await page.locator('#new-series-button, #delete-series-button').count(),0);mark('No series create/delete actions');
-    assert.deepEqual(await page.locator('#navigation .nav-channel').allInnerTexts().then(t=>t.map(x=>x.replace(/\s*\d+$/,''))),['Tâm lý cuộc sống','Kênh thiếu nhi','Video khách hàng']);
-    assert.equal(await page.locator('#navigation').getByText('Toàn bộ kênh').count(),0);mark('Sidebar lists two content channels as links, client work apart');
+    assert.deepEqual(await page.locator('#navigation .nav-channel').allInnerTexts().then(t=>t.map(x=>x.replace(/\s*\d+$/,''))),['Tâm lý cuộc sống','Kênh thiếu nhi','Video khách hàng','Chưa thuộc kênh']);
+    assert.deepEqual(await page.locator('#navigation .nav-section-title').allInnerTexts(),['KÊNH NỘI DUNG','NGOÀI KÊNH']);
+    assert.equal(await page.locator('#navigation').getByText('Toàn bộ kênh').count(),0);mark('Sidebar lists two content channels as links, client work and unassigned books apart');
     await page.setViewportSize({width:768,height:1000});await page.locator('[data-nav="all"]').click();await noOverflow();await screenshot('tablet');mark('Tablet layout has no horizontal overflow');
     await page.setViewportSize({width:390,height:844});await page.locator('#mobile-menu').click();
     assert.ok(await page.locator('#menu-backdrop').isVisible());await screenshot('mobile-menu');
