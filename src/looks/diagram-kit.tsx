@@ -28,7 +28,7 @@ export const along = (pts: Pt[], t: number): Pt => {
 };
 const pathOf = (pts: Pt[]) => pts.map((p, i) => `${i ? 'L' : 'M'}${p[0]} ${p[1]}`).join(' ');
 
-export type NodeKind = 'server' | 'db' | 'cache' | 'queue' | 'client' | 'lb' | 'cdn' | 'box' | 'phone' | 'service';
+export type NodeKind = 'server' | 'db' | 'cache' | 'queue' | 'client' | 'lb' | 'cdn' | 'box' | 'phone' | 'service' | 'none';
 export type NodeState = 'ok' | 'down' | 'hot' | 'key' | 'dim';
 
 // A small line icon for each kind, drawn inside a 56×56 box centred at (0, 0).
@@ -43,6 +43,7 @@ const Glyph: FC<{kind: NodeKind; c: string; w: number}> = ({kind, c, w}) => {
     case 'phone': return <g {...s}><rect x={-14} y={-26} width={28} height={52} rx={6} /><path d="M-4 18 H4" /></g>;
     case 'lb': return <g {...s}><circle cx={-16} cy={0} r={6} /><path d="M-10 0 H6 M6 0 L20 -16 M6 0 L20 0 M6 0 L20 16" /><circle cx={22} cy={-16} r={3} fill={c} /><circle cx={22} cy={0} r={3} fill={c} /><circle cx={22} cy={16} r={3} fill={c} /></g>;
     case 'cdn': return <g {...s}><circle r={22} /><path d="M-22 0 H22 M0 -22 C-12 -10 -12 10 0 22 M0 -22 C12 -10 12 10 0 22" /></g>;
+    case 'none': return null;
     case 'service': return <g {...s}><path d="M0 -24 L21 -12 V12 L0 24 L-21 12 V-12 Z" /><circle r={7} /></g>;
     default: return <g {...s}><rect x={-20} y={-20} width={40} height={40} rx={6} /></g>;
   }
@@ -111,8 +112,9 @@ export const Counter: FC<{t: Theme; f: number; x: number; y: number; from: numbe
   };
 
 // A monospace card whose lines type in one after another from `at`.
-export const CodeCard: FC<{t: Theme; f: number; x: number; y: number; w: number; lines: string[]; at?: number; cps?: number; title?: string; size?: number; highlight?: number[]}> =
-  ({t, f, x, y, w, lines, at = 0, cps = 1.6, title, size = 30, highlight = []}) => {
+// `prose`: the lines are Vietnamese text, set in the theme font (monospace fonts space Vietnamese accents badly).
+export const CodeCard: FC<{t: Theme; f: number; x: number; y: number; w: number; lines: string[]; at?: number; cps?: number; title?: string; size?: number; highlight?: number[]; prose?: boolean}> =
+  ({t, f, x, y, w, lines, at = 0, cps = 1.6, title, size = 30, highlight = [], prose = false}) => {
     const p = t.palette, k = grow(f, at, at + 12), lh = size * 1.5, h = lines.length * lh + (title ? 64 : 34) + 22;
     if (k <= 0) return null;
     let budget = Math.max(0, (f - at - 8) * cps);
@@ -121,7 +123,7 @@ export const CodeCard: FC<{t: Theme; f: number; x: number; y: number; w: number;
       {title ? <g><circle cx={28} cy={28} r={7} fill="#ff6b6b" opacity={.8} /><circle cx={52} cy={28} r={7} fill={p.accent} opacity={.8} /><circle cx={76} cy={28} r={7} fill={p.accent2} opacity={.8} />
         <text x={104} y={38} fontFamily={MONO} fontSize={28} fill={p.muted}>{title}</text></g> : null}
       {lines.map((line, i) => {const shown = line.slice(0, Math.floor(budget));budget -= line.length;
-        return <text key={i} x={28} y={(title ? 64 : 34) + (i + .8) * lh} fontFamily={MONO} fontSize={size} fill={highlight.includes(i) ? p.accent : p.ink} style={{whiteSpace: 'pre'}}>{shown}</text>;})}
+        return <text key={i} x={28} y={(title ? 64 : 34) + (i + .8) * lh} fontFamily={prose ? FONT : MONO} fontSize={size} fill={highlight.includes(i) ? p.accent : p.ink} style={{whiteSpace: 'pre'}}>{shown}</text>;})}
     </g>;
   };
 
