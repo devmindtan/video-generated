@@ -3,7 +3,7 @@
 | Mục | Giá trị |
 |---|---|
 | Định dạng | Video dài 16:9, 1920×1080, 30 fps |
-| Thời lượng mục tiêu | 12,5 phút ± 1,5 phút (lời đọc ≈ 11 phút ở tốc độ 1×; không ép giọng nhanh để vừa thời lượng) |
+| Thời lượng mục tiêu | 12,5 phút ± 1,5 phút (bản dựng hiện tại 12:31; không ép giọng nhanh để vừa thời lượng) |
 | Cấu trúc | Màn tên video 6,5 s (chỉ nhạc) → Mở đầu (hook) → 10 chương theo thứ tự sách → Khép lại |
 | Giọng | Lựa chọn 1, Minh Đức (VieNeu), một giọng cho cả video; voice.json |
 | Nhạc | Aylex – Passionate (freetouse.com): 30% trên màn tên, hạ về 1,2% khi giọng vào, giữ cố định dưới lời; fade theo cạnh clip, chỉnh đầu/cuối trong Studio; music.json |
@@ -13,7 +13,7 @@
 | Phụ đề | Trang phụ đề theo thời gian từng chữ của giọng (make-voice + faster-whisper), một dòng là chính, từ khóa màu nhấn; không làm chữ sáng theo giọng như series sách tâm lý |
 | Nhịp hình | Mỗi câu một nhịp hình (mốc câu lấy từ giọng, `timing.json`); hình chạy liên tục (gói dữ liệu, bộ đếm), không vẽ theo từng chữ |
 | Chuyển chương | Nhãn chương góc trên trái; nghỉ 1,2 s cuối mỗi đoạn có sẵn trong giọng; hình mờ ra/vào trên nền giữ nguyên |
-| Duyệt | Bản dựng duyệt: màn tên + mở đầu + 37 giây đầu chương 1 (luật 30 giây đầu của video dài, cắt ở cuối câu). Không render/xuất để duyệt; xem trong Studio |
+| Duyệt | 30 giây đầu đã qua (người dùng 2026-11-11 bảo tiếp tục); cả video xem trong Studio, không render/xuất để duyệt |
 | Xuất | Chỉ khi video xong và người dùng yêu cầu; người dùng bấm Render trong Studio |
 
 ## Quy tắc đang áp dụng

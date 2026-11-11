@@ -4,7 +4,7 @@
 - Project ID: `system-design-tong-quan`. Sách: `system-design` (*Hướng dẫn cách tiếp cận phỏng vấn System Design*,
   Nguyễn Thế Huy), hồ sơ nghiên cứu đọc đủ 10/10 chương.
 - Định dạng: video dài 16:9, 1920×1080, 30 fps. Thời lượng dự kiến 12–13 phút (lời đọc ≈ 11 phút, chưa chốt).
-- Trạng thái: gói chốt ban đầu + bản dựng duyệt 30 giây đầu (màn tên video, mở đầu, đầu chương 1).
+- Trạng thái: đã dựng đủ video 12:31 (người dùng 2026-11-11 sau 30 giây đầu: sửa "đời... thường" rồi tiếp tục); chờ duyệt bản vá trong Studio.
 
 ## Yêu cầu của người dùng (2026-11-11)
 
@@ -46,5 +46,6 @@ lời kênh chỉ nối ý. Không đọc tên tác giả, email hay thông tin 
 
 - [ ] Gói chốt ban đầu được người dùng chốt
 - [x] Bản dựng 30 giây đầu sau mở đầu để duyệt trong Studio (không render)
-- [ ] Các chương 2–10 và đoạn kết, sau khi người dùng duyệt 30 giây đầu
-- [ ] description.md, captions.srt, QA, thumbnail web; render chỉ khi người dùng yêu cầu
+- [x] Các chương 2–10 và đoạn kết (dựng sau khi người dùng bảo tiếp tục)
+- [x] description.md, captions.srt (đề xuất)
+- [ ] QA, thumbnail web; render chỉ khi người dùng yêu cầu

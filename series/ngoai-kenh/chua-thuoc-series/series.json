@@ -17,7 +17,7 @@
       "title": "System Design: tóm tắt cả cuốn sách",
       "status": "existing",
       "format": "long",
-      "durationSeconds": null,
+      "durationSeconds": 751,
       "paths": {
         "source": "src/projects/system-design-tong-quan",
         "scripts": "scripts/projects/system-design-tong-quan",

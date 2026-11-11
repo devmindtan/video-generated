@@ -22,9 +22,24 @@ Từ nào giọng đọc lệch trong lần thử thì viết lại theo cách k
 đinh"/"sát", cache-aside → "cát ơ sai", idempotency → "ai đem pô tần xi", HTTP/HTTPS/HttpOnly → "hát tê tê pê…", TCP →
 "tê xê pê", RPC/gRPC → "a pi xi"/"gi a pi xi", POST → "pốt", MTBF/MTTR → "em ti bi ép"/"em ti ti a", JWT → "gi đáp bờ
 liu ti", RBAC/ABAC → "a rờ bác"/"ây bác", OAuth2 → "ô ót hai", SameSite → "sêm sai", XSS → "ích ét ét", CSRF → "xi ét
-a ép", CPU → "xi pi iu", Metrics → "mét tríc", Logs → "lóc". 21 câu dùng cách đọc riêng; chưa ai nghe xác nhận.
+a ép", CPU → "xi pi iu", Metrics → "mét trích", Logs → "lóc". 21 câu dùng cách đọc riêng; chưa ai nghe xác nhận.
 
-## Kiểm tra hai đoạn đã đọc
+## Chữ bị kéo dài (người dùng 2026-11-11)
+
+Người dùng nghe "ví dụ đời... thường": giọng giữ chữ "đời" 0,44 giây, gấp đôi các chữ bên cạnh. VieNeu đọc mỗi lần
+một khác, nên đây là một lần đọc xấu chứ không phải lỗi chữ. `scripts/projects/system-design-tong-quan/fix-drag.py` đo
+thời lượng từng chữ trong mọi câu (faster-whisper), câu nào có chữ giữ ≥ 0,42 giây và ≥ 1,8 lần chữ trung vị (bỏ chữ đầu,
+chữ cuối, chữ đứng trước dấu câu, thuật ngữ dài) thì đọc lại tối đa 4 lần và giữ lần mượt nhất; bản cũ còn trong cache.
+Kết quả: câu "ví dụ đời thường" giờ đọc "đời" 0,22 giây; 49 câu trong cả video được thay. Phép đo chỉ là gợi ý, vẫn cần
+nghe: các chữ còn bị gắn cờ sau khi thay phần lớn là chỗ ngắt tự nhiên ("là", "và" trước một vế).
+
+## Cả video (12 đoạn, 12:31)
+
+Khớp chữ từng đoạn 89–98%. Chỗ nhận dạng nghe khác, cần người dùng nghe: "Cache giữ" (nghe "Các chữ", đoạn 02), "muôn
+thuở" (05), "thì REST" (07), "Lỗi" (nghe "Lối", 08), "Metrics" (đã đổi cách đọc thành "mét trích", 10), "Logs" (nghe
+"Lock", 10). Âm "tr" đọc gần "ch" (trễ → chễ) là giọng miền Bắc của preset, không phải lỗi.
+
+## Kiểm tra hai đoạn đầu (lần đọc thứ nhất)
 
 | Đoạn | Thời lượng | Khớp chữ | Ghi chú nhận dạng (cần nghe) |
 |---|---|---|---|

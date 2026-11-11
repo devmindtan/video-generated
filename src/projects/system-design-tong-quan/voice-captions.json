@@ -3,148 +3,148 @@
     {
       "text": "Bốn mươi lăm phút, một cái bảng",
       "startMs": 180,
-      "endMs": 2160,
+      "endMs": 2280,
       "timestampMs": 180,
       "confidence": null
     },
     {
       "text": "trắng, và một câu đề: hãy thiết",
-      "startMs": 2160,
-      "endMs": 4460,
-      "timestampMs": 2160,
+      "startMs": 2280,
+      "endMs": 4500,
+      "timestampMs": 2280,
       "confidence": null
     },
     {
       "text": "kế cho tôi một ứng dụng chia sẻ ảnh.",
-      "startMs": 4460,
-      "endMs": 7060,
-      "timestampMs": 4460,
+      "startMs": 4500,
+      "endMs": 7100,
+      "timestampMs": 4500,
       "confidence": null
     },
     {
       "text": "Không có yêu cầu chi tiết.",
-      "startMs": 7260,
-      "endMs": 8920,
-      "timestampMs": 7260,
+      "startMs": 7320,
+      "endMs": 8780,
+      "timestampMs": 7320,
       "confidence": null
     },
     {
       "text": "Không phải viết dòng code nào.",
-      "startMs": 9140,
-      "endMs": 10680,
-      "timestampMs": 9140,
+      "startMs": 8960,
+      "endMs": 10520,
+      "timestampMs": 8960,
       "confidence": null
     },
     {
       "text": "Và cũng không có đáp án đúng.",
-      "startMs": 10680,
+      "startMs": 10940,
       "endMs": 12740,
-      "timestampMs": 10680,
+      "timestampMs": 10940,
       "confidence": null
     },
     {
       "text": "Đó là vòng phỏng vấn System Design,",
-      "startMs": 13220,
-      "endMs": 15200,
-      "timestampMs": 13220,
+      "startMs": 13260,
+      "endMs": 15160,
+      "timestampMs": 13260,
       "confidence": null
     },
     {
       "text": "và ở nhiều công ty lớn, kết",
-      "startMs": 15200,
-      "endMs": 17560,
-      "timestampMs": 15200,
+      "startMs": 15700,
+      "endMs": 17600,
+      "timestampMs": 15700,
       "confidence": null
     },
     {
       "text": "quả vòng này quyết định cả chuyện",
-      "startMs": 17560,
-      "endMs": 19280,
-      "timestampMs": 17560,
+      "startMs": 17600,
+      "endMs": 19160,
+      "timestampMs": 17600,
       "confidence": null
     },
     {
       "text": "bạn được nhận lẫn mức đãi ngộ.",
-      "startMs": 19280,
-      "endMs": 21080,
-      "timestampMs": 19280,
+      "startMs": 19160,
+      "endMs": 21000,
+      "timestampMs": 19160,
       "confidence": null
     },
     {
       "text": "Video này tóm tắt cuốn System Design,",
-      "startMs": 22060,
-      "endMs": 24640,
-      "timestampMs": 22060,
+      "startMs": 22080,
+      "endMs": 24580,
+      "timestampMs": 22080,
       "confidence": null
     },
     {
       "text": "một cuốn hướng dẫn cách đi qua",
-      "startMs": 24880,
-      "endMs": 26400,
-      "timestampMs": 24880,
+      "startMs": 24900,
+      "endMs": 26420,
+      "timestampMs": 24900,
       "confidence": null
     },
     {
       "text": "vòng phỏng vấn đó.",
-      "startMs": 26400,
-      "endMs": 27480,
-      "timestampMs": 26400,
+      "startMs": 26420,
+      "endMs": 27460,
+      "timestampMs": 26420,
       "confidence": null
     },
     {
       "text": "Mình đi lần lượt mười chương của",
-      "startMs": 27480,
-      "endMs": 29680,
-      "timestampMs": 27480,
+      "startMs": 27460,
+      "endMs": 29580,
+      "timestampMs": 27460,
       "confidence": null
     },
     {
       "text": "sách: từ khái niệm nền tảng, dữ",
-      "startMs": 29680,
-      "endMs": 31820,
-      "timestampMs": 29680,
+      "startMs": 29580,
+      "endMs": 31700,
+      "timestampMs": 29580,
       "confidence": null
     },
     {
       "text": "liệu, mở rộng hệ thống, cho tới",
-      "startMs": 31820,
-      "endMs": 34120,
-      "timestampMs": 31820,
+      "startMs": 31700,
+      "endMs": 33880,
+      "timestampMs": 31700,
       "confidence": null
     },
     {
       "text": "chịu lỗi, bảo mật và giám sát.",
-      "startMs": 34120,
-      "endMs": 36360,
-      "timestampMs": 34120,
+      "startMs": 33880,
+      "endMs": 36100,
+      "timestampMs": 33880,
       "confidence": null
     },
     {
       "text": "Phần nào cũng có một ví dụ",
-      "startMs": 36580,
-      "endMs": 38240,
-      "timestampMs": 36580,
+      "startMs": 36280,
+      "endMs": 37820,
+      "timestampMs": 36280,
       "confidence": null
     },
     {
       "text": "đời thường như trong sách, và một",
-      "startMs": 38240,
-      "endMs": 40620,
-      "timestampMs": 38240,
+      "startMs": 37820,
+      "endMs": 39860,
+      "timestampMs": 37820,
       "confidence": null
     },
     {
       "text": "ý bạn có thể nói ngay trong",
-      "startMs": 40620,
-      "endMs": 42620,
-      "timestampMs": 40620,
+      "startMs": 39860,
+      "endMs": 41760,
+      "timestampMs": 39860,
       "confidence": null
     },
     {
       "text": "buổi phỏng vấn.",
-      "startMs": 42620,
-      "endMs": 43260,
-      "timestampMs": 42620,
+      "startMs": 41760,
+      "endMs": 42420,
+      "timestampMs": 41760,
       "confidence": null
     }
   ],
@@ -152,190 +152,2156 @@
     {
       "text": "Trước hết, người phỏng vấn muốn thấy gì?",
       "startMs": 0,
-      "endMs": 2900,
+      "endMs": 2940,
       "timestampMs": 0,
       "confidence": null
     },
     {
       "text": "Bạn nhận một bài toán mở, chẳng",
-      "startMs": 3380,
-      "endMs": 5280,
-      "timestampMs": 3380,
+      "startMs": 3400,
+      "endMs": 5400,
+      "timestampMs": 3400,
       "confidence": null
     },
     {
       "text": "hạn một dịch vụ nhắn tin hay",
-      "startMs": 5280,
-      "endMs": 7160,
-      "timestampMs": 5280,
+      "startMs": 5400,
+      "endMs": 7100,
+      "timestampMs": 5400,
       "confidence": null
     },
     {
       "text": "một nền tảng xem phim.",
-      "startMs": 7160,
-      "endMs": 8860,
-      "timestampMs": 7160,
+      "startMs": 7100,
+      "endMs": 8620,
+      "timestampMs": 7100,
       "confidence": null
     },
     {
       "text": "Việc của bạn là vẽ ra các",
-      "startMs": 9080,
-      "endMs": 10640,
-      "timestampMs": 9080,
+      "startMs": 8960,
+      "endMs": 10720,
+      "timestampMs": 8960,
       "confidence": null
     },
     {
       "text": "thành phần chính, cách chúng nói",
-      "startMs": 10640,
-      "endMs": 12300,
-      "timestampMs": 10640,
+      "startMs": 10720,
+      "endMs": 12380,
+      "timestampMs": 10720,
       "confidence": null
     },
     {
       "text": "chuyện với nhau, và vì sao hệ",
-      "startMs": 12300,
-      "endMs": 14360,
-      "timestampMs": 12300,
+      "startMs": 12380,
+      "endMs": 14460,
+      "timestampMs": 12380,
       "confidence": null
     },
     {
       "text": "thống chịu được lượng người dùng đặt ra.",
-      "startMs": 14360,
-      "endMs": 16460,
-      "timestampMs": 14360,
+      "startMs": 14460,
+      "endMs": 16360,
+      "timestampMs": 14460,
       "confidence": null
     },
     {
       "text": "Người mới hay vấp ở mấy chỗ.",
-      "startMs": 17700,
-      "endMs": 19820,
-      "timestampMs": 17700,
+      "startMs": 17600,
+      "endMs": 19660,
+      "timestampMs": 17600,
       "confidence": null
     },
     {
       "text": "Câu hỏi quá mở nên không biết",
-      "startMs": 19960,
-      "endMs": 21800,
-      "timestampMs": 19960,
+      "startMs": 19860,
+      "endMs": 21720,
+      "timestampMs": 19860,
       "confidence": null
     },
     {
       "text": "bắt đầu từ đâu.",
-      "startMs": 21800,
-      "endMs": 22720,
-      "timestampMs": 21800,
+      "startMs": 21720,
+      "endMs": 22600,
+      "timestampMs": 21720,
       "confidence": null
     },
     {
       "text": "Chưa từng làm hệ thống lớn, nên",
-      "startMs": 22720,
+      "startMs": 22600,
       "endMs": 25040,
-      "timestampMs": 22720,
+      "timestampMs": 22600,
       "confidence": null
     },
     {
       "text": "không rõ khi nào cần cache hay hàng đợi.",
       "startMs": 25040,
-      "endMs": 27920,
+      "endMs": 27840,
       "timestampMs": 25040,
       "confidence": null
     },
     {
       "text": "Chỉ có bốn lăm đến sáu mươi",
-      "startMs": 28080,
+      "startMs": 28020,
       "endMs": 29520,
-      "timestampMs": 28080,
+      "timestampMs": 28020,
       "confidence": null
     },
     {
       "text": "phút, dễ mải vẽ chi tiết mà",
       "startMs": 29520,
-      "endMs": 32100,
+      "endMs": 32080,
       "timestampMs": 29520,
       "confidence": null
     },
     {
       "text": "quên ý chính.",
-      "startMs": 32100,
-      "endMs": 32920,
-      "timestampMs": 32100,
+      "startMs": 32080,
+      "endMs": 32860,
+      "timestampMs": 32080,
       "confidence": null
     },
     {
       "text": "Và nỗi ám ảnh phải đưa ra",
-      "startMs": 33460,
+      "startMs": 33420,
       "endMs": 35320,
-      "timestampMs": 33460,
+      "timestampMs": 33420,
       "confidence": null
     },
     {
       "text": "một thiết kế hoàn hảo.",
       "startMs": 35320,
-      "endMs": 36700,
+      "endMs": 36460,
       "timestampMs": 35320,
       "confidence": null
     },
     {
       "text": "Theo sách, đa số người trượt vòng",
-      "startMs": 37600,
-      "endMs": 39460,
-      "timestampMs": 37600,
+      "startMs": 37580,
+      "endMs": 39700,
+      "timestampMs": 37580,
       "confidence": null
     },
     {
       "text": "này vì thiếu một cách làm lặp lại được.",
-      "startMs": 39460,
-      "endMs": 41980,
-      "timestampMs": 39460,
+      "startMs": 39700,
+      "endMs": 42100,
+      "timestampMs": 39700,
       "confidence": null
     },
     {
       "text": "Một khung đơn giản: hỏi rõ yêu",
-      "startMs": 42540,
-      "endMs": 44480,
-      "timestampMs": 42540,
+      "startMs": 42640,
+      "endMs": 44420,
+      "timestampMs": 42640,
       "confidence": null
     },
     {
       "text": "cầu, vẽ kiến trúc tổng quan, rồi",
-      "startMs": 44480,
-      "endMs": 47060,
-      "timestampMs": 44480,
+      "startMs": 44420,
+      "endMs": 46800,
+      "timestampMs": 44420,
       "confidence": null
     },
     {
       "text": "đi sâu vào từng phần.",
-      "startMs": 47060,
-      "endMs": 48600,
-      "timestampMs": 47060,
+      "startMs": 46800,
+      "endMs": 48260,
+      "timestampMs": 46800,
       "confidence": null
     },
     {
       "text": "Người phỏng vấn chấm cách bạn đi",
-      "startMs": 48600,
-      "endMs": 51080,
-      "timestampMs": 48600,
+      "startMs": 48260,
+      "endMs": 50360,
+      "timestampMs": 48260,
       "confidence": null
     },
     {
       "text": "tới đáp án, nhiều hơn chính đáp án.",
-      "startMs": 51080,
-      "endMs": 53700,
-      "timestampMs": 51080,
+      "startMs": 50360,
+      "endMs": 52940,
+      "timestampMs": 50360,
       "confidence": null
     },
     {
       "text": "Và trong lúc làm, hãy nghĩ thành",
-      "startMs": 53900,
-      "endMs": 55720,
-      "timestampMs": 53900,
+      "startMs": 53240,
+      "endMs": 54980,
+      "timestampMs": 53240,
       "confidence": null
     },
     {
       "text": "tiếng, đừng im lặng quá lâu.",
-      "startMs": 55720,
-      "endMs": 57520,
-      "timestampMs": 55720,
+      "startMs": 54980,
+      "endMs": 56800,
+      "timestampMs": 54980,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Chương hai đặt những viên gạch đầu tiên.",
+      "startMs": 180,
+      "endMs": 3240,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "Độ trễ, latency, là thời gian một",
+      "startMs": 3460,
+      "endMs": 6200,
+      "timestampMs": 3460,
+      "confidence": null
+    },
+    {
+      "text": "xe đi qua trạm thu phí.",
+      "startMs": 6200,
+      "endMs": 7900,
+      "timestampMs": 6200,
+      "confidence": null
+    },
+    {
+      "text": "Thông lượng, throughput, là số xe qua",
+      "startMs": 8220,
+      "endMs": 10680,
+      "timestampMs": 8220,
+      "confidence": null
+    },
+    {
+      "text": "trạm trong một phút.",
+      "startMs": 10680,
+      "endMs": 11920,
+      "timestampMs": 10680,
+      "confidence": null
+    },
+    {
+      "text": "Hai con số này không đi cùng",
+      "startMs": 12200,
+      "endMs": 13980,
+      "timestampMs": 12200,
+      "confidence": null
+    },
+    {
+      "text": "nhau: hệ thống có thể trả lời",
+      "startMs": 13980,
+      "endMs": 15940,
+      "timestampMs": 13980,
+      "confidence": null
+    },
+    {
+      "text": "rất nhanh mà vẫn chỉ phục vụ",
+      "startMs": 15940,
+      "endMs": 17860,
+      "timestampMs": 15940,
+      "confidence": null
+    },
+    {
+      "text": "được ít người.",
+      "startMs": 17860,
+      "endMs": 18700,
+      "timestampMs": 17860,
+      "confidence": null
+    },
+    {
+      "text": "Khi quán phở đông khách, bạn có hai cách.",
+      "startMs": 19880,
+      "endMs": 22360,
+      "timestampMs": 19880,
+      "confidence": null
+    },
+    {
+      "text": "Mua nồi to hơn, thuê đầu bếp",
+      "startMs": 22360,
+      "endMs": 25020,
+      "timestampMs": 22360,
+      "confidence": null
+    },
+    {
+      "text": "giỏi hơn: đó là mở rộng theo",
+      "startMs": 25020,
+      "endMs": 27040,
+      "timestampMs": 25020,
+      "confidence": null
+    },
+    {
+      "text": "chiều dọc, nâng cấp chính cái máy",
+      "startMs": 27040,
+      "endMs": 28980,
+      "timestampMs": 27040,
+      "confidence": null
+    },
+    {
+      "text": "chủ đang có.",
+      "startMs": 28980,
+      "endMs": 30140,
+      "timestampMs": 28980,
+      "confidence": null
+    },
+    {
+      "text": "Hoặc mở thêm quán: mở rộng theo",
+      "startMs": 30380,
+      "endMs": 32360,
+      "timestampMs": 30380,
+      "confidence": null
+    },
+    {
+      "text": "chiều ngang, thêm máy chủ chạy song song.",
+      "startMs": 32360,
+      "endMs": 35080,
+      "timestampMs": 32360,
+      "confidence": null
+    },
+    {
+      "text": "Cách thứ hai thường được chọn, vì",
+      "startMs": 35300,
+      "endMs": 37280,
+      "timestampMs": 35300,
+      "confidence": null
+    },
+    {
+      "text": "một quán đóng cửa thì quán khác vẫn bán.",
+      "startMs": 37280,
+      "endMs": 39760,
+      "timestampMs": 37280,
+      "confidence": null
+    },
+    {
+      "text": "Tính khả dụng được đo bằng những",
+      "startMs": 41080,
+      "endMs": 42640,
+      "timestampMs": 41080,
+      "confidence": null
+    },
+    {
+      "text": "con số chín.",
+      "startMs": 42640,
+      "endMs": 43298,
+      "timestampMs": 42640,
+      "confidence": null
+    },
+    {
+      "text": "Chín mươi chín phẩy chín chín phần",
+      "startMs": 43298,
+      "endMs": 45662,
+      "timestampMs": 43298,
+      "confidence": null
+    },
+    {
+      "text": "trăm nghĩa là cứ mười nghìn phút,",
+      "startMs": 45662,
+      "endMs": 48280,
+      "timestampMs": 45662,
+      "confidence": null
+    },
+    {
+      "text": "hệ thống chỉ được ngừng một phút.",
+      "startMs": 48420,
+      "endMs": 50300,
+      "timestampMs": 48420,
+      "confidence": null
+    },
+    {
+      "text": "Độ tin cậy đòi thêm một điều:",
+      "startMs": 50300,
+      "endMs": 52280,
+      "timestampMs": 50300,
+      "confidence": null
+    },
+    {
+      "text": "không mất dữ liệu, không sai giao dịch.",
+      "startMs": 52520,
+      "endMs": 54680,
+      "timestampMs": 52520,
+      "confidence": null
+    },
+    {
+      "text": "Rồi đến kiến trúc cấp cao, giống",
+      "startMs": 55800,
+      "endMs": 57680,
+      "timestampMs": 55800,
+      "confidence": null
+    },
+    {
+      "text": "bản thiết kế tổng thể của một",
+      "startMs": 57680,
+      "endMs": 59720,
+      "timestampMs": 57680,
+      "confidence": null
+    },
+    {
+      "text": "ngôi nhà, trước khi lo từng phòng.",
+      "startMs": 59720,
+      "endMs": 62200,
+      "timestampMs": 59720,
+      "confidence": null
+    },
+    {
+      "text": "Web server là lễ tân đón yêu",
+      "startMs": 62420,
+      "endMs": 64560,
+      "timestampMs": 62420,
+      "confidence": null
+    },
+    {
+      "text": "cầu, application server là gian bếp xử",
+      "startMs": 64560,
+      "endMs": 67820,
+      "timestampMs": 64560,
+      "confidence": null
+    },
+    {
+      "text": "lý nghiệp vụ, database là bộ nhớ lâu dài.",
+      "startMs": 67820,
+      "endMs": 71180,
+      "timestampMs": 67820,
+      "confidence": null
+    },
+    {
+      "text": "Đứng trước tất cả là load balancer chia việc.",
+      "startMs": 71420,
+      "endMs": 74320,
+      "timestampMs": 71420,
+      "confidence": null
+    },
+    {
+      "text": "Cache giữ sẵn bản sao dữ liệu",
+      "startMs": 74860,
+      "endMs": 77000,
+      "timestampMs": 74860,
+      "confidence": null
+    },
+    {
+      "text": "hay dùng, CDN đặt nội dung gần",
+      "startMs": 77000,
+      "endMs": 79340,
+      "timestampMs": 77000,
+      "confidence": null
+    },
+    {
+      "text": "người xem, còn message queue nhận việc",
+      "startMs": 79340,
+      "endMs": 81840,
+      "timestampMs": 79340,
+      "confidence": null
+    },
+    {
+      "text": "để làm sau.",
+      "startMs": 81840,
+      "endMs": 82500,
+      "timestampMs": 81840,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Chương ba nói về một cặp luôn",
+      "startMs": 180,
+      "endMs": 2020,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "kéo nhau: nhất quán và khả dụng.",
+      "startMs": 2020,
+      "endMs": 4040,
+      "timestampMs": 2020,
+      "confidence": null
+    },
+    {
+      "text": "Nhất quán mạnh nghĩa là ghi xong",
+      "startMs": 4660,
+      "endMs": 6600,
+      "timestampMs": 4660,
+      "confidence": null
+    },
+    {
+      "text": "thì ai đọc cũng thấy giá trị mới.",
+      "startMs": 6800,
+      "endMs": 8760,
+      "timestampMs": 6800,
+      "confidence": null
+    },
+    {
+      "text": "Chuyến bay chỉ còn một ghế: đại",
+      "startMs": 9320,
+      "endMs": 11400,
+      "timestampMs": 9320,
+      "confidence": null
+    },
+    {
+      "text": "lý A vừa bán, đại lý B",
+      "startMs": 11400,
+      "endMs": 13420,
+      "timestampMs": 11400,
+      "confidence": null
+    },
+    {
+      "text": "phải thấy ngay là đã hết.",
+      "startMs": 13420,
+      "endMs": 14600,
+      "timestampMs": 13420,
+      "confidence": null
+    },
+    {
+      "text": "Nhất quán cuối cùng thì cho phép",
+      "startMs": 15160,
+      "endMs": 17000,
+      "timestampMs": 15160,
+      "confidence": null
+    },
+    {
+      "text": "lệch một lúc: bạn đổi ảnh đại",
+      "startMs": 17000,
+      "endMs": 19020,
+      "timestampMs": 17000,
+      "confidence": null
+    },
+    {
+      "text": "diện, vài giây sau mọi người mới",
+      "startMs": 19020,
+      "endMs": 21180,
+      "timestampMs": 19020,
+      "confidence": null
+    },
+    {
+      "text": "thấy ảnh mới.",
+      "startMs": 21180,
+      "endMs": 21860,
+      "timestampMs": 21180,
+      "confidence": null
+    },
+    {
+      "text": "Để có nhiều bản sao dữ liệu,",
+      "startMs": 22780,
+      "endMs": 24940,
+      "timestampMs": 22780,
+      "confidence": null
+    },
+    {
+      "text": "người ta dùng replication.",
+      "startMs": 25120,
+      "endMs": 27340,
+      "timestampMs": 25120,
+      "confidence": null
+    },
+    {
+      "text": "Đồng bộ chặt thì chậm mà chắc,",
+      "startMs": 27340,
+      "endMs": 29080,
+      "timestampMs": 27340,
+      "confidence": null
+    },
+    {
+      "text": "bất đồng bộ thì nhanh nhưng có lúc lệch.",
+      "startMs": 29320,
+      "endMs": 31840,
+      "timestampMs": 29320,
+      "confidence": null
+    },
+    {
+      "text": "Máy chính hỏng thì failover chuyển",
+      "startMs": 31980,
+      "endMs": 34460,
+      "timestampMs": 31980,
+      "confidence": null
+    },
+    {
+      "text": "sang máy dự phòng.",
+      "startMs": 34460,
+      "endMs": 35820,
+      "timestampMs": 34460,
+      "confidence": null
+    },
+    {
+      "text": "Quorum là một cách cân hai bên.",
+      "startMs": 35820,
+      "endMs": 39120,
+      "timestampMs": 35820,
+      "confidence": null
+    },
+    {
+      "text": "Với năm bản sao, ghi phải được",
+      "startMs": 39360,
+      "endMs": 41180,
+      "timestampMs": 39360,
+      "confidence": null
+    },
+    {
+      "text": "ba máy xác nhận, đọc thì hỏi ba máy.",
+      "startMs": 41180,
+      "endMs": 43860,
+      "timestampMs": 41180,
+      "confidence": null
+    },
+    {
+      "text": "Chỉ cần số máy ghi cộng số",
+      "startMs": 44560,
+      "endMs": 46120,
+      "timestampMs": 44560,
+      "confidence": null
+    },
+    {
+      "text": "máy đọc lớn hơn tổng số bản",
+      "startMs": 46120,
+      "endMs": 48060,
+      "timestampMs": 46120,
+      "confidence": null
+    },
+    {
+      "text": "sao, hai nhóm luôn gặp nhau ở",
+      "startMs": 48060,
+      "endMs": 50280,
+      "timestampMs": 48060,
+      "confidence": null
+    },
+    {
+      "text": "ít nhất một máy có dữ liệu mới.",
+      "startMs": 50280,
+      "endMs": 52240,
+      "timestampMs": 50280,
+      "confidence": null
+    },
+    {
+      "text": "Và định lý CAP: khi mạng giữa",
+      "startMs": 53460,
+      "endMs": 55880,
+      "timestampMs": 53460,
+      "confidence": null
+    },
+    {
+      "text": "các máy bị cắt, bạn phải chọn",
+      "startMs": 55880,
+      "endMs": 57820,
+      "timestampMs": 55880,
+      "confidence": null
+    },
+    {
+      "text": "giữ nhất quán hoặc giữ khả dụng.",
+      "startMs": 57820,
+      "endMs": 60220,
+      "timestampMs": 57820,
+      "confidence": null
+    },
+    {
+      "text": "Hai cửa hàng dùng chung một kho",
+      "startMs": 60220,
+      "endMs": 62080,
+      "timestampMs": 60220,
+      "confidence": null
+    },
+    {
+      "text": "mà mất liên lạc: hoặc ngừng bán",
+      "startMs": 62080,
+      "endMs": 64540,
+      "timestampMs": 62080,
+      "confidence": null
+    },
+    {
+      "text": "một bên cho chắc, hoặc cứ bán",
+      "startMs": 64540,
+      "endMs": 66860,
+      "timestampMs": 64540,
+      "confidence": null
+    },
+    {
+      "text": "và chấp nhận có thể bán trùng",
+      "startMs": 66860,
+      "endMs": 68860,
+      "timestampMs": 66860,
+      "confidence": null
+    },
+    {
+      "text": "chiếc laptop cuối cùng.",
+      "startMs": 68860,
+      "endMs": 70160,
+      "timestampMs": 68860,
+      "confidence": null
+    },
+    {
+      "text": "Ngân hàng thường chọn nhất quán, mạng",
+      "startMs": 70660,
+      "endMs": 72740,
+      "timestampMs": 70660,
+      "confidence": null
+    },
+    {
+      "text": "xã hội thường chọn khả dụng.",
+      "startMs": 72740,
+      "endMs": 74100,
+      "timestampMs": 72740,
+      "confidence": null
+    },
+    {
+      "text": "Sách gói lại ba điều: hiểu nhu",
+      "startMs": 74740,
+      "endMs": 76680,
+      "timestampMs": 74740,
+      "confidence": null
+    },
+    {
+      "text": "cầu, biết đánh đổi, và giải thích mạch lạc.",
+      "startMs": 76680,
+      "endMs": 79220,
+      "timestampMs": 76680,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Dữ liệu là trung tâm của hệ thống lớn.",
+      "startMs": 0,
+      "endMs": 3440,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "SQL lưu thành bảng có cấu trúc",
+      "startMs": 3660,
+      "endMs": 5740,
+      "timestampMs": 3660,
+      "confidence": null
+    },
+    {
+      "text": "chặt, mạnh ở giao dịch và JOIN,",
+      "startMs": 5740,
+      "endMs": 7820,
+      "timestampMs": 5740,
+      "confidence": null
+    },
+    {
+      "text": "nhưng khó mở rộng ngang.",
+      "startMs": 8300,
+      "endMs": 9860,
+      "timestampMs": 8300,
+      "confidence": null
+    },
+    {
+      "text": "NoSQL linh hoạt hơn, thêm máy dễ",
+      "startMs": 10400,
+      "endMs": 12640,
+      "timestampMs": 10400,
+      "confidence": null
+    },
+    {
+      "text": "hơn, đổi lại phải nhường bớt tính",
+      "startMs": 12640,
+      "endMs": 14640,
+      "timestampMs": 12640,
+      "confidence": null
+    },
+    {
+      "text": "nhất quán tức thì.",
+      "startMs": 14640,
+      "endMs": 15660,
+      "timestampMs": 14640,
+      "confidence": null
+    },
+    {
+      "text": "Nhiều hệ thống dùng cả hai: SQL",
+      "startMs": 16320,
+      "endMs": 19080,
+      "timestampMs": 16320,
+      "confidence": null
+    },
+    {
+      "text": "cho số dư và giao dịch, NoSQL",
+      "startMs": 19080,
+      "endMs": 22340,
+      "timestampMs": 19080,
+      "confidence": null
+    },
+    {
+      "text": "cho nhật ký hoạt động.",
+      "startMs": 22340,
+      "endMs": 23540,
+      "timestampMs": 22340,
+      "confidence": null
+    },
+    {
+      "text": "Khi một máy database thành nút thắt,",
+      "startMs": 24400,
+      "endMs": 26960,
+      "timestampMs": 24400,
+      "confidence": null
+    },
+    {
+      "text": "ta chia dữ liệu ra nhiều máy,",
+      "startMs": 27060,
+      "endMs": 29040,
+      "timestampMs": 27060,
+      "confidence": null
+    },
+    {
+      "text": "gọi là sharding.",
+      "startMs": 29100,
+      "endMs": 30700,
+      "timestampMs": 29100,
+      "confidence": null
+    },
+    {
+      "text": "Chia theo khoảng giá trị thì dễ",
+      "startMs": 30700,
+      "endMs": 32540,
+      "timestampMs": 30700,
+      "confidence": null
+    },
+    {
+      "text": "truy vấn nhưng dễ lệch tải.",
+      "startMs": 32540,
+      "endMs": 34680,
+      "timestampMs": 32540,
+      "confidence": null
+    },
+    {
+      "text": "Chia theo hàm băm thì đều hơn,",
+      "startMs": 35000,
+      "endMs": 36700,
+      "timestampMs": 35000,
+      "confidence": null
+    },
+    {
+      "text": "nhưng thêm máy phải tính lại, nên",
+      "startMs": 37240,
+      "endMs": 39000,
+      "timestampMs": 37240,
+      "confidence": null
+    },
+    {
+      "text": "người ta dùng consistent hashing.",
+      "startMs": 39000,
+      "endMs": 40660,
+      "timestampMs": 39000,
+      "confidence": null
+    },
+    {
+      "text": "Còn có chia theo bảng tra, và",
+      "startMs": 41500,
+      "endMs": 43400,
+      "timestampMs": 41500,
+      "confidence": null
+    },
+    {
+      "text": "chia theo vùng địa lý để dữ",
+      "startMs": 43400,
+      "endMs": 45220,
+      "timestampMs": 43400,
+      "confidence": null
+    },
+    {
+      "text": "liệu ở gần người dùng.",
+      "startMs": 45220,
+      "endMs": 46700,
+      "timestampMs": 45220,
+      "confidence": null
+    },
+    {
+      "text": "Chọn sai khóa chia, một shard sẽ",
+      "startMs": 46920,
+      "endMs": 49040,
+      "timestampMs": 46920,
+      "confidence": null
+    },
+    {
+      "text": "nóng rực trong khi các shard khác ngồi chơi.",
+      "startMs": 49040,
+      "endMs": 51600,
+      "timestampMs": 49040,
+      "confidence": null
+    },
+    {
+      "text": "Index giống mục lục của cuốn sách:",
+      "startMs": 52800,
+      "endMs": 54920,
+      "timestampMs": 52800,
+      "confidence": null
+    },
+    {
+      "text": "tra mục lục thay vì lật từng trang.",
+      "startMs": 54920,
+      "endMs": 57560,
+      "timestampMs": 54920,
+      "confidence": null
+    },
+    {
+      "text": "Nhưng index nào cũng làm việc ghi",
+      "startMs": 57940,
+      "endMs": 60040,
+      "timestampMs": 57940,
+      "confidence": null
+    },
+    {
+      "text": "chậm đi, và với index nhiều cột,",
+      "startMs": 60040,
+      "endMs": 62420,
+      "timestampMs": 60040,
+      "confidence": null
+    },
+    {
+      "text": "thứ tự cột quyết định nó có",
+      "startMs": 62660,
+      "endMs": 64180,
+      "timestampMs": 62660,
+      "confidence": null
+    },
+    {
+      "text": "được dùng hay không.",
+      "startMs": 64180,
+      "endMs": 65220,
+      "timestampMs": 64180,
+      "confidence": null
+    },
+    {
+      "text": "Khi trình bày, đi từ yêu cầu",
+      "startMs": 66240,
+      "endMs": 68220,
+      "timestampMs": 66240,
+      "confidence": null
+    },
+    {
+      "text": "dữ liệu, chọn loại database có lý",
+      "startMs": 68220,
+      "endMs": 70660,
+      "timestampMs": 68220,
+      "confidence": null
+    },
+    {
+      "text": "do, rồi nói trước kế hoạch khi",
+      "startMs": 70660,
+      "endMs": 72500,
+      "timestampMs": 70660,
+      "confidence": null
+    },
+    {
+      "text": "người dùng tăng gấp mười.",
+      "startMs": 72500,
+      "endMs": 73697,
+      "timestampMs": 72500,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Chương năm là ba công cụ mở",
+      "startMs": 180,
+      "endMs": 2560,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "rộng quen thuộc nhất.",
+      "startMs": 2560,
+      "endMs": 3480,
+      "timestampMs": 2560,
+      "confidence": null
+    },
+    {
+      "text": "Load balancer giống nhân viên điều",
+      "startMs": 3980,
+      "endMs": 6160,
+      "timestampMs": 3980,
+      "confidence": null
+    },
+    {
+      "text": "phối ở ngân hàng, đưa từng khách",
+      "startMs": 6160,
+      "endMs": 8140,
+      "timestampMs": 6160,
+      "confidence": null
+    },
+    {
+      "text": "tới quầy còn trống.",
+      "startMs": 8140,
+      "endMs": 9500,
+      "timestampMs": 8140,
+      "confidence": null
+    },
+    {
+      "text": "Round robin chia lần lượt, least",
+      "startMs": 9800,
+      "endMs": 11840,
+      "timestampMs": 9800,
+      "confidence": null
+    },
+    {
+      "text": "connections đưa việc cho máy đang rảnh",
+      "startMs": 11840,
+      "endMs": 14040,
+      "timestampMs": 11840,
+      "confidence": null
+    },
+    {
+      "text": "nhất, IP hash giữ một người dùng",
+      "startMs": 14040,
+      "endMs": 16680,
+      "timestampMs": 14040,
+      "confidence": null
+    },
+    {
+      "text": "ở cùng một máy.",
+      "startMs": 16680,
+      "endMs": 18080,
+      "timestampMs": 16680,
+      "confidence": null
+    },
+    {
+      "text": "Load balancer tầng bốn chỉ nhìn địa",
+      "startMs": 18300,
+      "endMs": 20300,
+      "timestampMs": 18300,
+      "confidence": null
+    },
+    {
+      "text": "chỉ và cổng nên rất nhanh.",
+      "startMs": 20300,
+      "endMs": 22360,
+      "timestampMs": 20300,
+      "confidence": null
+    },
+    {
+      "text": "Tầng bảy đọc được đường dẫn, cookie,",
+      "startMs": 22560,
+      "endMs": 24660,
+      "timestampMs": 22560,
+      "confidence": null
+    },
+    {
+      "text": "nên chia việc thông minh hơn, đổi",
+      "startMs": 24660,
+      "endMs": 26800,
+      "timestampMs": 24660,
+      "confidence": null
+    },
+    {
+      "text": "lại tốn tài nguyên hơn.",
+      "startMs": 26800,
+      "endMs": 27980,
+      "timestampMs": 26800,
+      "confidence": null
+    },
+    {
+      "text": "Cache giống như lần thứ hai đi",
+      "startMs": 28920,
+      "endMs": 30760,
+      "timestampMs": 28920,
+      "confidence": null
+    },
+    {
+      "text": "một con đường: bạn đã nhớ đường,",
+      "startMs": 30760,
+      "endMs": 32860,
+      "timestampMs": 30760,
+      "confidence": null
+    },
+    {
+      "text": "nên đi nhanh hơn hẳn.",
+      "startMs": 33120,
+      "endMs": 34160,
+      "timestampMs": 33120,
+      "confidence": null
+    },
+    {
+      "text": "Cache có thể nằm ở trình duyệt,",
+      "startMs": 34760,
+      "endMs": 37080,
+      "timestampMs": 34760,
+      "confidence": null
+    },
+    {
+      "text": "ở CDN, ở reverse proxy, trong ứng",
+      "startMs": 37240,
+      "endMs": 40760,
+      "timestampMs": 37240,
+      "confidence": null
+    },
+    {
+      "text": "dụng hay cạnh database.",
+      "startMs": 40760,
+      "endMs": 42140,
+      "timestampMs": 40760,
+      "confidence": null
+    },
+    {
+      "text": "Phổ biến nhất là cache-aside: tìm",
+      "startMs": 42900,
+      "endMs": 45100,
+      "timestampMs": 42900,
+      "confidence": null
+    },
+    {
+      "text": "trong cache trước, không có thì đọc",
+      "startMs": 45100,
+      "endMs": 47240,
+      "timestampMs": 45100,
+      "confidence": null
+    },
+    {
+      "text": "database rồi cất vào cache.",
+      "startMs": 47240,
+      "endMs": 49240,
+      "timestampMs": 47240,
+      "confidence": null
+    },
+    {
+      "text": "Write-through ghi cả hai nơi cùng lúc,",
+      "startMs": 49240,
+      "endMs": 52540,
+      "timestampMs": 49240,
+      "confidence": null
+    },
+    {
+      "text": "write-back ghi vào cache trước rồi mới",
+      "startMs": 52540,
+      "endMs": 54920,
+      "timestampMs": 52540,
+      "confidence": null
+    },
+    {
+      "text": "đẩy xuống database sau.",
+      "startMs": 54920,
+      "endMs": 56160,
+      "timestampMs": 54920,
+      "confidence": null
+    },
+    {
+      "text": "Cái khó muôn thuở là biết lúc",
+      "startMs": 56160,
+      "endMs": 58460,
+      "timestampMs": 56160,
+      "confidence": null
+    },
+    {
+      "text": "nào phải xóa bản cũ.",
+      "startMs": 58460,
+      "endMs": 60640,
+      "timestampMs": 58460,
+      "confidence": null
+    },
+    {
+      "text": "Message queue thì giống tấm phiếu gọi",
+      "startMs": 60640,
+      "endMs": 63280,
+      "timestampMs": 60640,
+      "confidence": null
+    },
+    {
+      "text": "món ở quán đông khách.",
+      "startMs": 63280,
+      "endMs": 64720,
+      "timestampMs": 63280,
+      "confidence": null
+    },
+    {
+      "text": "Producer đặt phiếu vào hàng đợi rồi",
+      "startMs": 65080,
+      "endMs": 67460,
+      "timestampMs": 65080,
+      "confidence": null
+    },
+    {
+      "text": "đi tiếp, consumer lấy từng phiếu ra",
+      "startMs": 67460,
+      "endMs": 70560,
+      "timestampMs": 67460,
+      "confidence": null
+    },
+    {
+      "text": "làm theo sức mình.",
+      "startMs": 70560,
+      "endMs": 71600,
+      "timestampMs": 70560,
+      "confidence": null
+    },
+    {
+      "text": "Người dùng tải video lên là có",
+      "startMs": 72080,
+      "endMs": 74180,
+      "timestampMs": 72080,
+      "confidence": null
+    },
+    {
+      "text": "phản hồi ngay, còn việc chuyển định",
+      "startMs": 74180,
+      "endMs": 76260,
+      "timestampMs": 74180,
+      "confidence": null
+    },
+    {
+      "text": "dạng để các worker chạy phía sau.",
+      "startMs": 76260,
+      "endMs": 78320,
+      "timestampMs": 76260,
+      "confidence": null
+    },
+    {
+      "text": "Khi phiếu dồn nhanh hơn sức bếp,",
+      "startMs": 78840,
+      "endMs": 80900,
+      "timestampMs": 78840,
+      "confidence": null
+    },
+    {
+      "text": "hệ thống cần backpressure: chậm nhận",
+      "startMs": 81020,
+      "endMs": 83220,
+      "timestampMs": 81020,
+      "confidence": null
+    },
+    {
+      "text": "lại, hoặc thêm người làm.",
+      "startMs": 83220,
+      "endMs": 84600,
+      "timestampMs": 83220,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Mạng chập chờn, client gửi lại yêu",
+      "startMs": 0,
+      "endMs": 2580,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "cầu, và tiền bị trừ hai lần.",
+      "startMs": 2580,
+      "endMs": 4900,
+      "timestampMs": 2580,
+      "confidence": null
+    },
+    {
+      "text": "Idempotency là thuộc tính giúp gửi bao",
+      "startMs": 4900,
+      "endMs": 8540,
+      "timestampMs": 4900,
+      "confidence": null
+    },
+    {
+      "text": "nhiêu lần thì kết quả cũng như một lần.",
+      "startMs": 8540,
+      "endMs": 11180,
+      "timestampMs": 8540,
+      "confidence": null
+    },
+    {
+      "text": "Cách hay dùng là gắn kèm một",
+      "startMs": 11380,
+      "endMs": 13140,
+      "timestampMs": 11380,
+      "confidence": null
+    },
+    {
+      "text": "idempotency key cho mỗi yêu cầu chuyển",
+      "startMs": 13140,
+      "endMs": 16160,
+      "timestampMs": 13140,
+      "confidence": null
+    },
+    {
+      "text": "tiền hay đặt hàng.",
+      "startMs": 16160,
+      "endMs": 17300,
+      "timestampMs": 16160,
+      "confidence": null
+    },
+    {
+      "text": "Khi hai người cùng sửa một bản",
+      "startMs": 18580,
+      "endMs": 20020,
+      "timestampMs": 18580,
+      "confidence": null
+    },
+    {
+      "text": "ghi, có hai kiểu khóa.",
+      "startMs": 20020,
+      "endMs": 21880,
+      "timestampMs": 20020,
+      "confidence": null
+    },
+    {
+      "text": "Khóa bi quan khóa bản ghi ngay",
+      "startMs": 22080,
+      "endMs": 23680,
+      "timestampMs": 22080,
+      "confidence": null
+    },
+    {
+      "text": "từ đầu, người sau phải chờ: an",
+      "startMs": 23680,
+      "endMs": 26100,
+      "timestampMs": 23680,
+      "confidence": null
+    },
+    {
+      "text": "toàn, nhưng dễ tắc và có thể kẹt cứng.",
+      "startMs": 26100,
+      "endMs": 28620,
+      "timestampMs": 26100,
+      "confidence": null
+    },
+    {
+      "text": "Khóa lạc quan để mọi người cùng",
+      "startMs": 28620,
+      "endMs": 30900,
+      "timestampMs": 28620,
+      "confidence": null
+    },
+    {
+      "text": "sửa, mỗi bản ghi mang một số phiên bản.",
+      "startMs": 30900,
+      "endMs": 33720,
+      "timestampMs": 30900,
+      "confidence": null
+    },
+    {
+      "text": "Lúc lưu, ai cầm phiên bản cũ",
+      "startMs": 34060,
+      "endMs": 36260,
+      "timestampMs": 34060,
+      "confidence": null
+    },
+    {
+      "text": "thì phải đọc lại và làm lại.",
+      "startMs": 36260,
+      "endMs": 38080,
+      "timestampMs": 36260,
+      "confidence": null
+    },
+    {
+      "text": "Ít xung đột thì dùng khóa lạc",
+      "startMs": 38560,
+      "endMs": 40460,
+      "timestampMs": 38560,
+      "confidence": null
+    },
+    {
+      "text": "quan, còn tiền bạc thì sách nghiêng",
+      "startMs": 40460,
+      "endMs": 42640,
+      "timestampMs": 40460,
+      "confidence": null
+    },
+    {
+      "text": "về khóa bi quan.",
+      "startMs": 42640,
+      "endMs": 43460,
+      "timestampMs": 42640,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "HTTP là kiểu hỏi đáp quen thuộc",
+      "startMs": 1140,
+      "endMs": 3340,
+      "timestampMs": 1140,
+      "confidence": null
+    },
+    {
+      "text": "của web, và nó không nhớ bạn",
+      "startMs": 3340,
+      "endMs": 5260,
+      "timestampMs": 3340,
+      "confidence": null
+    },
+    {
+      "text": "là ai giữa hai lần gọi.",
+      "startMs": 5260,
+      "endMs": 6880,
+      "timestampMs": 5260,
+      "confidence": null
+    },
+    {
+      "text": "Chính vì không giữ trạng thái, thêm",
+      "startMs": 7080,
+      "endMs": 9080,
+      "timestampMs": 7080,
+      "confidence": null
+    },
+    {
+      "text": "máy chủ phía sau rất dễ.",
+      "startMs": 9080,
+      "endMs": 10780,
+      "timestampMs": 9080,
+      "confidence": null
+    },
+    {
+      "text": "TCP bắt tay ba bước rồi mới",
+      "startMs": 11320,
+      "endMs": 13440,
+      "timestampMs": 11320,
+      "confidence": null
+    },
+    {
+      "text": "gửi, đánh số từng gói, mất gói",
+      "startMs": 13440,
+      "endMs": 15880,
+      "timestampMs": 13440,
+      "confidence": null
+    },
+    {
+      "text": "nào gửi lại gói đó.",
+      "startMs": 15880,
+      "endMs": 17260,
+      "timestampMs": 15880,
+      "confidence": null
+    },
+    {
+      "text": "UDP thì gửi là quên: nhanh, mất",
+      "startMs": 17260,
+      "endMs": 20640,
+      "timestampMs": 17260,
+      "confidence": null
+    },
+    {
+      "text": "vài gói cũng kệ.",
+      "startMs": 20640,
+      "endMs": 21600,
+      "timestampMs": 20640,
+      "confidence": null
+    },
+    {
+      "text": "Gọi video hay chơi game chọn UDP,",
+      "startMs": 22060,
+      "endMs": 25140,
+      "timestampMs": 22060,
+      "confidence": null
+    },
+    {
+      "text": "vì mất một khung hình còn hơn",
+      "startMs": 25140,
+      "endMs": 27120,
+      "timestampMs": 25140,
+      "confidence": null
+    },
+    {
+      "text": "hình bị trễ.",
+      "startMs": 27120,
+      "endMs": 28800,
+      "timestampMs": 27120,
+      "confidence": null
+    },
+    {
+      "text": "Giữa các dịch vụ nội bộ, RPC",
+      "startMs": 28800,
+      "endMs": 31600,
+      "timestampMs": 28800,
+      "confidence": null
+    },
+    {
+      "text": "như gRPC cho phép gọi hàm ở",
+      "startMs": 31880,
+      "endMs": 34060,
+      "timestampMs": 31880,
+      "confidence": null
+    },
+    {
+      "text": "máy khác như gọi hàm ngay trong code.",
+      "startMs": 34060,
+      "endMs": 36840,
+      "timestampMs": 34060,
+      "confidence": null
+    },
+    {
+      "text": "Nó nhanh, nhưng hai bên dính chặt",
+      "startMs": 36840,
+      "endMs": 38980,
+      "timestampMs": 36840,
+      "confidence": null
+    },
+    {
+      "text": "vào cùng một giao diện.",
+      "startMs": 38980,
+      "endMs": 40500,
+      "timestampMs": 38980,
+      "confidence": null
+    },
+    {
+      "text": "Còn API mở ra bên ngoài thì",
+      "startMs": 40760,
+      "endMs": 43020,
+      "timestampMs": 40760,
+      "confidence": null
+    },
+    {
+      "text": "REST là lựa chọn an toàn: mỗi",
+      "startMs": 43020,
+      "endMs": 45420,
+      "timestampMs": 43020,
+      "confidence": null
+    },
+    {
+      "text": "tài nguyên một đường dẫn, mỗi thao",
+      "startMs": 45420,
+      "endMs": 47240,
+      "timestampMs": 45420,
+      "confidence": null
+    },
+    {
+      "text": "tác một động từ HTTP.",
+      "startMs": 47240,
+      "endMs": 49000,
+      "timestampMs": 47240,
+      "confidence": null
+    },
+    {
+      "text": "Lấy danh sách công việc là GET,",
+      "startMs": 49740,
+      "endMs": 51540,
+      "timestampMs": 49740,
+      "confidence": null
+    },
+    {
+      "text": "tạo mới là POST, xóa là DELETE.",
+      "startMs": 51940,
+      "endMs": 55051,
+      "timestampMs": 51940,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Chương tám bắt đầu bằng một câu:",
+      "startMs": 0,
+      "endMs": 2480,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "mọi thứ có thể hỏng thì sẽ hỏng.",
+      "startMs": 2620,
+      "endMs": 5100,
+      "timestampMs": 2620,
+      "confidence": null
+    },
+    {
+      "text": "Ổ cứng chết, phần mềm có lỗi,",
+      "startMs": 5200,
+      "endMs": 7200,
+      "timestampMs": 5200,
+      "confidence": null
+    },
+    {
+      "text": "mạng bị chia cắt, người vận hành",
+      "startMs": 7660,
+      "endMs": 9540,
+      "timestampMs": 7660,
+      "confidence": null
+    },
+    {
+      "text": "gõ nhầm lệnh, hay lượng truy cập",
+      "startMs": 9540,
+      "endMs": 11560,
+      "timestampMs": 9540,
+      "confidence": null
+    },
+    {
+      "text": "vượt dự tính.",
+      "startMs": 11560,
+      "endMs": 13360,
+      "timestampMs": 11560,
+      "confidence": null
+    },
+    {
+      "text": "Cách chống đỡ đầu tiên là không",
+      "startMs": 13520,
+      "endMs": 15160,
+      "timestampMs": 13520,
+      "confidence": null
+    },
+    {
+      "text": "để trứng vào một giỏ: thành phần",
+      "startMs": 15160,
+      "endMs": 17000,
+      "timestampMs": 15160,
+      "confidence": null
+    },
+    {
+      "text": "nào quan trọng cũng phải có bản dự phòng.",
+      "startMs": 17000,
+      "endMs": 19500,
+      "timestampMs": 17000,
+      "confidence": null
+    },
+    {
+      "text": "Health check hỏi thăm từng máy vài",
+      "startMs": 20040,
+      "endMs": 21900,
+      "timestampMs": 20040,
+      "confidence": null
+    },
+    {
+      "text": "giây một lần, máy không trả lời",
+      "startMs": 21900,
+      "endMs": 23880,
+      "timestampMs": 21900,
+      "confidence": null
+    },
+    {
+      "text": "thì failover chuyển việc sang máy khác.",
+      "startMs": 23880,
+      "endMs": 26300,
+      "timestampMs": 23880,
+      "confidence": null
+    },
+    {
+      "text": "Lỗi tạm thời thì thử lại, nhưng",
+      "startMs": 26300,
+      "endMs": 28900,
+      "timestampMs": 26300,
+      "confidence": null
+    },
+    {
+      "text": "mỗi lần chờ lâu gấp đôi, để",
+      "startMs": 28900,
+      "endMs": 30800,
+      "timestampMs": 28900,
+      "confidence": null
+    },
+    {
+      "text": "không dồn thêm tải vào chỗ đang hỏng.",
+      "startMs": 30800,
+      "endMs": 33100,
+      "timestampMs": 30800,
+      "confidence": null
+    },
+    {
+      "text": "Lỗi kéo dài thì circuit breaker ngắt",
+      "startMs": 33280,
+      "endMs": 36040,
+      "timestampMs": 33280,
+      "confidence": null
+    },
+    {
+      "text": "hẳn đường gọi.",
+      "startMs": 36040,
+      "endMs": 37020,
+      "timestampMs": 36040,
+      "confidence": null
+    },
+    {
+      "text": "Và khi buộc phải hy sinh, hãy",
+      "startMs": 37280,
+      "endMs": 39360,
+      "timestampMs": 37280,
+      "confidence": null
+    },
+    {
+      "text": "tắt bớt tính năng phụ, hạ video",
+      "startMs": 39360,
+      "endMs": 41720,
+      "timestampMs": 39360,
+      "confidence": null
+    },
+    {
+      "text": "từ HD xuống chất lượng thấp, giữ",
+      "startMs": 41720,
+      "endMs": 44160,
+      "timestampMs": 41720,
+      "confidence": null
+    },
+    {
+      "text": "phần cốt lõi chạy tiếp.",
+      "startMs": 44160,
+      "endMs": 45520,
+      "timestampMs": 44160,
+      "confidence": null
+    },
+    {
+      "text": "Sách phân biệt hai mức.",
+      "startMs": 46620,
+      "endMs": 48260,
+      "timestampMs": 46620,
+      "confidence": null
+    },
+    {
+      "text": "Sẵn sàng cao chấp nhận gián đoạn",
+      "startMs": 48520,
+      "endMs": 50220,
+      "timestampMs": 48520,
+      "confidence": null
+    },
+    {
+      "text": "vài chục giây để đổi lấy sự đơn giản.",
+      "startMs": 50220,
+      "endMs": 53040,
+      "timestampMs": 50220,
+      "confidence": null
+    },
+    {
+      "text": "Chịu lỗi hoàn toàn thì như máy",
+      "startMs": 53040,
+      "endMs": 55040,
+      "timestampMs": 53040,
+      "confidence": null
+    },
+    {
+      "text": "bay hai động cơ: hỏng một chiếc",
+      "startMs": 55040,
+      "endMs": 56820,
+      "timestampMs": 55040,
+      "confidence": null
+    },
+    {
+      "text": "vẫn bay tiếp, nhưng chi phí cao hơn nhiều.",
+      "startMs": 56820,
+      "endMs": 59440,
+      "timestampMs": 56820,
+      "confidence": null
+    },
+    {
+      "text": "Đo bằng thời gian giữa hai lần",
+      "startMs": 59900,
+      "endMs": 61260,
+      "timestampMs": 59900,
+      "confidence": null
+    },
+    {
+      "text": "hỏng, MTBF, và thời gian để hồi phục, MTTR.",
+      "startMs": 61260,
+      "endMs": 66720,
+      "timestampMs": 61260,
+      "confidence": null
+    },
+    {
+      "text": "Lý tưởng là lâu lắm mới hỏng,",
+      "startMs": 66720,
+      "endMs": 68520,
+      "timestampMs": 66720,
+      "confidence": null
+    },
+    {
+      "text": "mà hỏng thì dậy rất nhanh.",
+      "startMs": 68580,
+      "endMs": 69880,
+      "timestampMs": 68580,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Bảo mật bắt đầu bằng hai câu",
+      "startMs": 0,
+      "endMs": 2000,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "hỏi: bạn là ai, và bạn được làm gì.",
+      "startMs": 2000,
+      "endMs": 4720,
+      "timestampMs": 2000,
+      "confidence": null
+    },
+    {
+      "text": "Câu thứ nhất là xác thực: mật",
+      "startMs": 5300,
+      "endMs": 7400,
+      "timestampMs": 5300,
+      "confidence": null
+    },
+    {
+      "text": "khẩu chỉ lưu dạng băm có thêm",
+      "startMs": 7400,
+      "endMs": 9440,
+      "timestampMs": 7400,
+      "confidence": null
+    },
+    {
+      "text": "muối, có thêm mã OTP cho tài",
+      "startMs": 9440,
+      "endMs": 12140,
+      "timestampMs": 9440,
+      "confidence": null
+    },
+    {
+      "text": "khoản quan trọng.",
+      "startMs": 12140,
+      "endMs": 13240,
+      "timestampMs": 12140,
+      "confidence": null
+    },
+    {
+      "text": "Session lưu trạng thái trên máy chủ,",
+      "startMs": 13540,
+      "endMs": 15600,
+      "timestampMs": 13540,
+      "confidence": null
+    },
+    {
+      "text": "dễ thu hồi.",
+      "startMs": 15840,
+      "endMs": 16520,
+      "timestampMs": 15840,
+      "confidence": null
+    },
+    {
+      "text": "JWT thì tự mang thông tin, gọn",
+      "startMs": 16520,
+      "endMs": 19980,
+      "timestampMs": 16520,
+      "confidence": null
+    },
+    {
+      "text": "cho nhiều dịch vụ, nhưng phần nội",
+      "startMs": 19980,
+      "endMs": 21840,
+      "timestampMs": 19980,
+      "confidence": null
+    },
+    {
+      "text": "dung ai cũng đọc được, và bị",
+      "startMs": 21840,
+      "endMs": 23960,
+      "timestampMs": 21840,
+      "confidence": null
+    },
+    {
+      "text": "lộ thì khó thu hồi.",
+      "startMs": 23960,
+      "endMs": 25340,
+      "timestampMs": 23960,
+      "confidence": null
+    },
+    {
+      "text": "Câu thứ hai là phân quyền: RBAC",
+      "startMs": 26100,
+      "endMs": 29080,
+      "timestampMs": 26100,
+      "confidence": null
+    },
+    {
+      "text": "chia theo vai trò, ABAC xét thêm",
+      "startMs": 29080,
+      "endMs": 31700,
+      "timestampMs": 29080,
+      "confidence": null
+    },
+    {
+      "text": "thuộc tính như phòng ban hay giờ làm việc.",
+      "startMs": 31700,
+      "endMs": 34100,
+      "timestampMs": 31700,
+      "confidence": null
+    },
+    {
+      "text": "OAuth2 cho ứng dụng khác một access",
+      "startMs": 34100,
+      "endMs": 37120,
+      "timestampMs": 34100,
+      "confidence": null
+    },
+    {
+      "text": "token thay vì đưa nó mật khẩu của bạn.",
+      "startMs": 37120,
+      "endMs": 39820,
+      "timestampMs": 37120,
+      "confidence": null
+    },
+    {
+      "text": "Ở cửa API: giới hạn số lần",
+      "startMs": 40960,
+      "endMs": 43340,
+      "timestampMs": 40960,
+      "confidence": null
+    },
+    {
+      "text": "gọi, kiểm tra mọi dữ liệu đầu",
+      "startMs": 43340,
+      "endMs": 45180,
+      "timestampMs": 43340,
+      "confidence": null
+    },
+    {
+      "text": "vào, và không nhúng khóa bí mật",
+      "startMs": 45180,
+      "endMs": 47220,
+      "timestampMs": 45180,
+      "confidence": null
+    },
+    {
+      "text": "vào ứng dụng phía người dùng.",
+      "startMs": 47220,
+      "endMs": 48880,
+      "timestampMs": 47220,
+      "confidence": null
+    },
+    {
+      "text": "Với dữ liệu: mọi kết nối đi",
+      "startMs": 48880,
+      "endMs": 51420,
+      "timestampMs": 48880,
+      "confidence": null
+    },
+    {
+      "text": "qua HTTPS, cookie bật Secure, HttpOnly",
+      "startMs": 51420,
+      "endMs": 56000,
+      "timestampMs": 51420,
+      "confidence": null
+    },
+    {
+      "text": "và SameSite để chặn XSS và CSRF.",
+      "startMs": 56000,
+      "endMs": 59280,
+      "timestampMs": 56000,
+      "confidence": null
+    },
+    {
+      "text": "Sách gọi chung là phòng thủ nhiều",
+      "startMs": 59280,
+      "endMs": 60920,
+      "timestampMs": 59280,
+      "confidence": null
+    },
+    {
+      "text": "lớp: không một biện pháp nào đủ một mình.",
+      "startMs": 60920,
+      "endMs": 63440,
+      "timestampMs": 60920,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Chương cuối tách hai việc hay bị",
+      "startMs": 180,
+      "endMs": 2480,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "gộp làm một.",
+      "startMs": 2480,
+      "endMs": 3140,
+      "timestampMs": 2480,
+      "confidence": null
+    },
+    {
+      "text": "Monitoring cho biết chuyện gì đang xảy",
+      "startMs": 3760,
+      "endMs": 6120,
+      "timestampMs": 3760,
+      "confidence": null
+    },
+    {
+      "text": "ra: CPU, độ trễ, tỷ lệ lỗi,",
+      "startMs": 6120,
+      "endMs": 9440,
+      "timestampMs": 6120,
+      "confidence": null
+    },
+    {
+      "text": "vượt ngưỡng là báo động.",
+      "startMs": 9700,
+      "endMs": 10800,
+      "timestampMs": 9700,
+      "confidence": null
+    },
+    {
+      "text": "Observability giúp trả lời vì sao.",
+      "startMs": 12020,
+      "endMs": 13980,
+      "timestampMs": 12020,
+      "confidence": null
+    },
+    {
+      "text": "Nó dựa vào ba trụ cột.",
+      "startMs": 15040,
+      "endMs": 16980,
+      "timestampMs": 15040,
+      "confidence": null
+    },
+    {
+      "text": "Metrics là những con số theo thời",
+      "startMs": 16980,
+      "endMs": 18900,
+      "timestampMs": 16980,
+      "confidence": null
+    },
+    {
+      "text": "gian, như độ trễ bỗng nhảy từ",
+      "startMs": 18900,
+      "endMs": 21200,
+      "timestampMs": 18900,
+      "confidence": null
+    },
+    {
+      "text": "một trăm lên năm trăm mili giây",
+      "startMs": 21200,
+      "endMs": 23020,
+      "timestampMs": 21200,
+      "confidence": null
+    },
+    {
+      "text": "lúc mười giờ sáng.",
+      "startMs": 23020,
+      "endMs": 24160,
+      "timestampMs": 23020,
+      "confidence": null
+    },
+    {
+      "text": "Logs là nhật ký từng sự kiện,",
+      "startMs": 24160,
+      "endMs": 26460,
+      "timestampMs": 24160,
+      "confidence": null
+    },
+    {
+      "text": "cho bạn biết lỗi xảy ra ở dòng nào.",
+      "startMs": 26640,
+      "endMs": 28740,
+      "timestampMs": 26640,
+      "confidence": null
+    },
+    {
+      "text": "Traces lần theo một yêu cầu qua",
+      "startMs": 28740,
+      "endMs": 31600,
+      "timestampMs": 28740,
+      "confidence": null
+    },
+    {
+      "text": "nhiều dịch vụ, chỉ ra đúng chỗ",
+      "startMs": 31600,
+      "endMs": 33560,
+      "timestampMs": 31600,
+      "confidence": null
+    },
+    {
+      "text": "đang làm chậm cả chuỗi.",
+      "startMs": 33560,
+      "endMs": 34740,
+      "timestampMs": 33560,
+      "confidence": null
+    },
+    {
+      "text": "Sách ví monitoring như đèn cảnh báo",
+      "startMs": 36140,
+      "endMs": 38400,
+      "timestampMs": 36140,
+      "confidence": null
+    },
+    {
+      "text": "trên xe hơi, còn observability là mở",
+      "startMs": 38400,
+      "endMs": 41440,
+      "timestampMs": 38400,
+      "confidence": null
+    },
+    {
+      "text": "nắp capo, cắm máy chẩn đoán vào xem.",
+      "startMs": 41440,
+      "endMs": 44020,
+      "timestampMs": 41440,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Đọc hết mười chương, câu hỏi lặp",
+      "startMs": 0,
+      "endMs": 2380,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "lại nhiều nhất là: hệ thống này",
+      "startMs": 2380,
+      "endMs": 4160,
+      "timestampMs": 2380,
+      "confidence": null
+    },
+    {
+      "text": "thật sự cần gì, và mình sẵn",
+      "startMs": 4160,
+      "endMs": 6060,
+      "timestampMs": 4160,
+      "confidence": null
+    },
+    {
+      "text": "sàng trả giá nào để có nó.",
+      "startMs": 6060,
+      "endMs": 8020,
+      "timestampMs": 6060,
+      "confidence": null
+    },
+    {
+      "text": "Nhanh hay chính xác, đơn giản hay",
+      "startMs": 8600,
+      "endMs": 10620,
+      "timestampMs": 8600,
+      "confidence": null
+    },
+    {
+      "text": "không bao giờ ngừng, tiện hay an toàn.",
+      "startMs": 10620,
+      "endMs": 13160,
+      "timestampMs": 10620,
+      "confidence": null
+    },
+    {
+      "text": "Sách nói rõ: người phỏng vấn không",
+      "startMs": 13380,
+      "endMs": 15480,
+      "timestampMs": 13380,
+      "confidence": null
+    },
+    {
+      "text": "chờ một thiết kế hoàn hảo, họ",
+      "startMs": 15480,
+      "endMs": 17680,
+      "timestampMs": 15480,
+      "confidence": null
+    },
+    {
+      "text": "chờ xem bạn suy nghĩ thế nào.",
+      "startMs": 17680,
+      "endMs": 19280,
+      "timestampMs": 17680,
+      "confidence": null
+    },
+    {
+      "text": "Nếu bạn đang chuẩn bị cho vòng",
+      "startMs": 19880,
+      "endMs": 21360,
+      "timestampMs": 19880,
+      "confidence": null
+    },
+    {
+      "text": "này, hãy chọn một ứng dụng quen",
+      "startMs": 21360,
+      "endMs": 23320,
+      "timestampMs": 21360,
+      "confidence": null
+    },
+    {
+      "text": "thuộc và thử đi lại đúng các",
+      "startMs": 23320,
+      "endMs": 25180,
+      "timestampMs": 23320,
+      "confidence": null
+    },
+    {
+      "text": "bước trong video: hỏi yêu cầu, vẽ",
+      "startMs": 25180,
+      "endMs": 27660,
+      "timestampMs": 25180,
+      "confidence": null
+    },
+    {
+      "text": "khung, rồi đi sâu từng phần.",
+      "startMs": 27660,
+      "endMs": 29780,
+      "timestampMs": 27660,
+      "confidence": null
+    },
+    {
+      "text": "Cảm ơn bạn đã nghe đến đây.",
+      "startMs": 30120,
+      "endMs": 31520,
+      "timestampMs": 30120,
       "confidence": null
     }
   ]

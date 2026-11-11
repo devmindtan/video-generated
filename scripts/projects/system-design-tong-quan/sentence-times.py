@@ -12,8 +12,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 SRC = ROOT / 'src/projects/system-design-tong-quan'
 TITLE_SECONDS = 6.5
-# Review build (first-30-seconds gate, user rule 2026-10-30): section 1 stops after its list of pitfalls.
-CUTS = {'01-vong-phong-van-nay-cham-dieu-gi': 37.4}
+# Review cuts (first-30-seconds gate, user rule 2026-10-30): {segment id: seconds}. The gate build cut section 1 at
+# 37.4 s; the user said to continue on 2026-11-11, so the full video has no cut.
+CUTS = {}
 END_PAD = 1.2
 
 story = json.loads((ROOT / 'scripts/projects/system-design-tong-quan/story.json').read_text())

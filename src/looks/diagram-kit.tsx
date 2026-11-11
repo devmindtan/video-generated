@@ -61,9 +61,9 @@ export const DiagramNode: FC<{t: Theme; f: number; x: number; y: number; w?: num
     {state === 'hot' ? <rect x={-w / 2 - 10} y={-h / 2 - 10} width={w + 20} height={h + 20} rx={22} fill={p.accent} opacity={.12 + .14 * pulse} /> : null}
     <rect x={-w / 2} y={-h / 2} width={w} height={h} rx={16} fill={p.surface} stroke={edge} strokeWidth={3} />
     <g transform={`translate(0 ${icon})`}><Glyph kind={kind} c={edge} w={3} /></g>
-    {label ? <text y={h / 2 - (sub ? 44 : 22)} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={labelSize} fill={p.ink}>{label}</text> : null}
+    {label ? <text y={h / 2 - (sub ? 54 : 22)} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={labelSize} fill={p.ink}>{label}</text> : null}
     {sub ? <text y={h / 2 - 16} textAnchor="middle" fontFamily={FONT} fontSize={30} fill={p.muted}>{sub}</text> : null}
-    {state === 'down' ? <path d={`M${-w / 2 + 18} ${-h / 2 + 18} L${w / 2 - 18} ${h / 2 - 18} M${w / 2 - 18} ${-h / 2 + 18} L${-w / 2 + 18} ${h / 2 - 18}`} stroke="#ff6b6b" strokeWidth={5} strokeLinecap="round" opacity={.8} /> : null}
+    {state === 'down' ? <path d={`M${-w / 2 + 18} ${-h / 2 + 16} L${w / 2 - 18} ${h / 2 - (label ? 66 : 16)} M${w / 2 - 18} ${-h / 2 + 16} L${-w / 2 + 18} ${h / 2 - (label ? 66 : 16)}`} stroke="#ff6b6b" strokeWidth={5} strokeLinecap="round" opacity={.8} /> : null}
   </g>;
 };
 

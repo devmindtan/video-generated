@@ -5,7 +5,7 @@
   "engine": "VieNeu-TTS v3 Turbo, local CPU (laptop), scripts/shared/make-voice.py, legacy24, tốc độ 1×, temperature 0,5",
   "pitchSemitones": 0,
   "speed": 1,
-  "processing": "Một file mỗi đoạn kịch bản; khoảng nghỉ 0,45 giây giữa câu, 1,1 giây ở chỗ đổi ý; thuật ngữ tiếng Anh dùng cách đọc riêng (say) khi giọng đọc lệch; phụ đề giữ chữ gốc.",
+  "processing": "Một file mỗi đoạn kịch bản; khoảng nghỉ 0,45 giây giữa câu, 1,1 giây ở chỗ đổi ý; thuật ngữ tiếng Anh dùng cách đọc riêng (say) khi giọng đọc lệch; phụ đề giữ chữ gốc. Sau khi đọc, fix-drag.py rà chữ bị kéo dài (người dùng 2026-11-11: \"ví dụ đời... thường\") và thay bằng lần đọc mượt hơn; bản cũ giữ trong cache.",
   "selection": "Lựa chọn 1 (người dùng 2026-11-11: giọng cơ bản, không clone). Minh Đức đọc thuật ngữ tiếng Anh tốt hơn Xuân Vĩnh trong lần thử; chờ người dùng nghe và chốt.",
   "sample": {
     "proposed": "system-design-tong-quan/audio/00-mo-dau-voice-full.wav",
@@ -16,13 +16,75 @@
   "segments": {
     "00-mo-dau": {
       "file": "system-design-tong-quan/audio/00-mo-dau-voice-full.wav",
-      "sha256": "b7e6d8efe18fe0cc62b99f97e3de06ac2431d5aba1f7ed09014f9765da909afc",
-      "durationSeconds": 44.6
+      "sha256": "79f4912c98724d3c3b77c455b36cc5d2e939e758ce324ab99d22fbb8680d1914",
+      "durationSeconds": 43.77,
+      "wordMatchRatio": 0.964
     },
     "01-vong-phong-van-nay-cham-dieu-gi": {
       "file": "system-design-tong-quan/audio/01-vong-phong-van-nay-cham-dieu-gi-voice-full.wav",
-      "sha256": "671066c4f0ff30fc714508b54a7ad8bf5958c5fd8b61056c0f3a8fc7a16fa68f",
-      "durationSeconds": 58.91
+      "sha256": "03c9a5b6a098ed73cf9585c2f6309845ffbb1abf2ba02937b1208fce10202dd9",
+      "durationSeconds": 58.17,
+      "wordMatchRatio": 0.961
+    },
+    "02-nhung-vien-gach-nen": {
+      "file": "system-design-tong-quan/audio/02-nhung-vien-gach-nen-voice-full.wav",
+      "sha256": "a535abe108531f8c290ad7589b1d85b8f4d569b48dbda83934cdaf6484eb7624",
+      "durationSeconds": 83.95,
+      "wordMatchRatio": 0.922
+    },
+    "03-nhat-quan-hay-kha-dung": {
+      "file": "system-design-tong-quan/audio/03-nhat-quan-hay-kha-dung-voice-full.wav",
+      "sha256": "76a512254726c7ce5ebdd04030fbd6a9890a1d9af29d33ae2bd98091adfe4953",
+      "durationSeconds": 80.51,
+      "wordMatchRatio": 0.98
+    },
+    "04-chon-cho-luu-du-lieu": {
+      "file": "system-design-tong-quan/audio/04-chon-cho-luu-du-lieu-voice-full.wav",
+      "sha256": "f56684bb982e2fbb16a54ef1bf9e819a2e8c0bf521daab94abe2b876938a4ecf",
+      "durationSeconds": 74.95,
+      "wordMatchRatio": 0.977
+    },
+    "05-mo-rong-va-tang-toc": {
+      "file": "system-design-tong-quan/audio/05-mo-rong-va-tang-toc-voice-full.wav",
+      "sha256": "eecb396b7f23b94639bfaefa970e30758fd75f4d292c07f381b12af8ab43e779",
+      "durationSeconds": 85.97,
+      "wordMatchRatio": 0.929
+    },
+    "06-gui-hai-lan-ma-chi-tinh-mot": {
+      "file": "system-design-tong-quan/audio/06-gui-hai-lan-ma-chi-tinh-mot-voice-full.wav",
+      "sha256": "0288f91cb5899268aa529e0e6f76e61777b4a5b4fd20720ed0d5c26333ea1a54",
+      "durationSeconds": 44.89,
+      "wordMatchRatio": 0.962
+    },
+    "07-cac-may-noi-chuyen-voi-nhau-the-nao": {
+      "file": "system-design-tong-quan/audio/07-cac-may-noi-chuyen-voi-nhau-the-nao-voice-full.wav",
+      "sha256": "82504a798e2c3173df780c7d5a3a5bdc7358412b76e8c59f313e9afad54a0357",
+      "durationSeconds": 56.31,
+      "wordMatchRatio": 0.961
+    },
+    "08-khi-moi-thu-hong": {
+      "file": "system-design-tong-quan/audio/08-khi-moi-thu-hong-voice-full.wav",
+      "sha256": "d59cf3f58d43e704e6b8146582f3e97a319a2fd1d5b0fcbecb6beb293afa51bc",
+      "durationSeconds": 71.21,
+      "wordMatchRatio": 0.972
+    },
+    "09-bao-mat-nhieu-lop": {
+      "file": "system-design-tong-quan/audio/09-bao-mat-nhieu-lop-voice-full.wav",
+      "sha256": "b9a437f0f9c185c6412e9959beb05fe9e43aee8191b55c0df75597402314db92",
+      "durationSeconds": 64.84,
+      "wordMatchRatio": 0.933
+    },
+    "10-biet-chuyen-gi-dang-xay-ra": {
+      "file": "system-design-tong-quan/audio/10-biet-chuyen-gi-dang-xay-ra-voice-full.wav",
+      "sha256": "e10c57e7d7247b2a57b89d6e82a5b78fb4301ab07ced07a8100c87de6cac057b",
+      "durationSeconds": 45.46,
+      "wordMatchRatio": 0.886
+    },
+    "11-khep-lai": {
+      "file": "system-design-tong-quan/audio/11-khep-lai-voice-full.wav",
+      "sha256": "9149251843e9a74814c783152899d8cc832bf3366ff73aa15055adbcf256edca",
+      "durationSeconds": 32.84,
+      "wordMatchRatio": 0.981
     }
   }
 }

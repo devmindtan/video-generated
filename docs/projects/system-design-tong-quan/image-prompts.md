@@ -2,7 +2,7 @@
 
 Không có ảnh tạo bằng AI: mọi hình là sơ đồ vẽ bằng code (`src/looks/diagram-kit.tsx`, chủ đề Bản vẽ kỹ thuật), cộng
 bìa sách người dùng đã tải lên. Mỗi dòng là một nhịp hình, bắt đầu ở câu ghi trong ngoặc. Hình chạy liên tục (gói dữ
-liệu trên đường nối, bộ đếm, đồng hồ); không vẽ theo từng chữ. Đã dựng: màn tên, 00 và nửa đầu 01.
+liệu trên đường nối, bộ đếm, đồng hồ); không vẽ theo từng chữ. Đã dựng toàn bộ (Video.tsx, Chapters.tsx); mô tả dưới đây là kế hoạch, chi tiết có thể khác chút sau khi xem khung hình.
 
 ## Màn tên (6,5 s, chỉ nhạc) — đã dựng
 Sơ đồ mờ phía trên (điện thoại → load balancer → 3 máy chủ, gói dữ liệu chạy), chữ "System Design", "Tóm tắt cả cuốn
@@ -23,7 +23,7 @@ sách", dòng nhỏ tên sách đầy đủ · tác giả.
    "chịu tải"; thanh người dùng 1 nghìn → 1 triệu, gói dữ liệu dày lên theo tải.
 3. (câu 4–8) Bốn thẻ khó khăn: câu hỏi mở (ba nhánh + dấu hỏi), chưa làm hệ thống lớn (cache, queue mờ + dấu hỏi),
    45–60 phút (vòng thời gian chạy), thiết kế hoàn hảo (ngôi sao bị gạch).
-4. (câu 9–12, chưa dựng) Một vòng lặp ba bước "Hỏi yêu cầu → Kiến trúc tổng quan → Đi sâu" chạy lặp; con trỏ chấm điểm
+4. (câu 9–12) Một vòng lặp ba bước "Hỏi yêu cầu → Kiến trúc tổng quan → Đi sâu" chạy lặp; con trỏ chấm điểm
    nằm trên mũi tên "cách đi" hơn là ô "đáp án"; bong bóng thoại "nghĩ thành tiếng" bật lên liên tục.
 
 ## 02 Những viên gạch nền

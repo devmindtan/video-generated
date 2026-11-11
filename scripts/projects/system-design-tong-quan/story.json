@@ -31,7 +31,7 @@
     "leadIn": 0.4,
     "tail": 1.2,
     "maxTail": 3,
-    "duration": 44.6,
+    "duration": 43.77,
     "minWordMatchRatio": 0.75,
     "start": 0
   },
@@ -91,8 +91,573 @@
     "leadIn": 0.4,
     "tail": 1.2,
     "maxTail": 3,
-    "duration": 58.91,
+    "duration": 58.17,
     "minWordMatchRatio": 0.75,
-    "start": 44.6
+    "start": 43.77
+  },
+  {
+    "id": "02-nhung-vien-gach-nen",
+    "text": "Chương hai đặt những viên gạch đầu tiên. Độ trễ, latency, là thời gian một xe đi qua trạm thu phí. Thông lượng, throughput, là số xe qua trạm trong một phút. Hai con số này không đi cùng nhau: hệ thống có thể trả lời rất nhanh mà vẫn chỉ phục vụ được ít người. Khi quán phở đông khách, bạn có hai cách. Mua nồi to hơn, thuê đầu bếp giỏi hơn: đó là mở rộng theo chiều dọc, nâng cấp chính cái máy chủ đang có. Hoặc mở thêm quán: mở rộng theo chiều ngang, thêm máy chủ chạy song song. Cách thứ hai thường được chọn, vì một quán đóng cửa thì quán khác vẫn bán. Tính khả dụng được đo bằng những con số chín. Chín mươi chín phẩy chín chín phần trăm nghĩa là cứ mười nghìn phút, hệ thống chỉ được ngừng một phút. Độ tin cậy đòi thêm một điều: không mất dữ liệu, không sai giao dịch. Rồi đến kiến trúc cấp cao, giống bản thiết kế tổng thể của một ngôi nhà, trước khi lo từng phòng. Web server là lễ tân đón yêu cầu, application server là gian bếp xử lý nghiệp vụ, database là bộ nhớ lâu dài. Đứng trước tất cả là load balancer chia việc. Cache giữ sẵn bản sao dữ liệu hay dùng, CDN đặt nội dung gần người xem, còn message queue nhận việc để làm sau.",
+    "sentences": [
+      {
+        "text": "Chương hai đặt những viên gạch đầu tiên.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Độ trễ, latency, là thời gian một xe đi qua trạm thu phí.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Thông lượng, throughput, là số xe qua trạm trong một phút.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Hai con số này không đi cùng nhau: hệ thống có thể trả lời rất nhanh mà vẫn chỉ phục vụ được ít người.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Khi quán phở đông khách, bạn có hai cách.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Mua nồi to hơn, thuê đầu bếp giỏi hơn: đó là mở rộng theo chiều dọc, nâng cấp chính cái máy chủ đang có.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Hoặc mở thêm quán: mở rộng theo chiều ngang, thêm máy chủ chạy song song.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Cách thứ hai thường được chọn, vì một quán đóng cửa thì quán khác vẫn bán.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Tính khả dụng được đo bằng những con số chín.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Chín mươi chín phẩy chín chín phần trăm nghĩa là cứ mười nghìn phút, hệ thống chỉ được ngừng một phút.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Độ tin cậy đòi thêm một điều: không mất dữ liệu, không sai giao dịch.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Rồi đến kiến trúc cấp cao, giống bản thiết kế tổng thể của một ngôi nhà, trước khi lo từng phòng.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Web server là lễ tân đón yêu cầu, application server là gian bếp xử lý nghiệp vụ, database là bộ nhớ lâu dài.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Đứng trước tất cả là load balancer chia việc.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Cache giữ sẵn bản sao dữ liệu hay dùng, CDN đặt nội dung gần người xem, còn message queue nhận việc để làm sau.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 83.95,
+    "minWordMatchRatio": 0.75,
+    "start": 101.94
+  },
+  {
+    "id": "03-nhat-quan-hay-kha-dung",
+    "text": "Chương ba nói về một cặp luôn kéo nhau: nhất quán và khả dụng. Nhất quán mạnh nghĩa là ghi xong thì ai đọc cũng thấy giá trị mới. Chuyến bay chỉ còn một ghế: đại lý A vừa bán, đại lý B phải thấy ngay là đã hết. Nhất quán cuối cùng thì cho phép lệch một lúc: bạn đổi ảnh đại diện, vài giây sau mọi người mới thấy ảnh mới. Để có nhiều bản sao dữ liệu, người ta dùng replication. Đồng bộ chặt thì chậm mà chắc, bất đồng bộ thì nhanh nhưng có lúc lệch. Máy chính hỏng thì failover chuyển sang máy dự phòng. Quorum là một cách cân hai bên. Với năm bản sao, ghi phải được ba máy xác nhận, đọc thì hỏi ba máy. Chỉ cần số máy ghi cộng số máy đọc lớn hơn tổng số bản sao, hai nhóm luôn gặp nhau ở ít nhất một máy có dữ liệu mới. Và định lý CAP: khi mạng giữa các máy bị cắt, bạn phải chọn giữ nhất quán hoặc giữ khả dụng. Hai cửa hàng dùng chung một kho mà mất liên lạc: hoặc ngừng bán một bên cho chắc, hoặc cứ bán và chấp nhận có thể bán trùng chiếc laptop cuối cùng. Ngân hàng thường chọn nhất quán, mạng xã hội thường chọn khả dụng. Sách gói lại ba điều: hiểu nhu cầu, biết đánh đổi, và giải thích mạch lạc.",
+    "sentences": [
+      {
+        "text": "Chương ba nói về một cặp luôn kéo nhau: nhất quán và khả dụng.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Nhất quán mạnh nghĩa là ghi xong thì ai đọc cũng thấy giá trị mới.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Chuyến bay chỉ còn một ghế: đại lý A vừa bán, đại lý B phải thấy ngay là đã hết.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Nhất quán cuối cùng thì cho phép lệch một lúc: bạn đổi ảnh đại diện, vài giây sau mọi người mới thấy ảnh mới.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Để có nhiều bản sao dữ liệu, người ta dùng replication.",
+        "pauseAfter": 0.45,
+        "say": "Để có nhiều bản sao dữ liệu, người ta dùng rép li kê sần."
+      },
+      {
+        "text": "Đồng bộ chặt thì chậm mà chắc, bất đồng bộ thì nhanh nhưng có lúc lệch.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Máy chính hỏng thì failover chuyển sang máy dự phòng.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Quorum là một cách cân hai bên.",
+        "pauseAfter": 0.45,
+        "say": "Quô rầm là một cách cân hai bên."
+      },
+      {
+        "text": "Với năm bản sao, ghi phải được ba máy xác nhận, đọc thì hỏi ba máy.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Chỉ cần số máy ghi cộng số máy đọc lớn hơn tổng số bản sao, hai nhóm luôn gặp nhau ở ít nhất một máy có dữ liệu mới.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Và định lý CAP: khi mạng giữa các máy bị cắt, bạn phải chọn giữ nhất quán hoặc giữ khả dụng.",
+        "pauseAfter": 0.45,
+        "say": "Và định lý xê a pê: khi mạng giữa các máy bị cắt, bạn phải chọn giữ nhất quán hoặc giữ khả dụng."
+      },
+      {
+        "text": "Hai cửa hàng dùng chung một kho mà mất liên lạc: hoặc ngừng bán một bên cho chắc, hoặc cứ bán và chấp nhận có thể bán trùng chiếc laptop cuối cùng.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Ngân hàng thường chọn nhất quán, mạng xã hội thường chọn khả dụng.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Sách gói lại ba điều: hiểu nhu cầu, biết đánh đổi, và giải thích mạch lạc.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 80.51,
+    "minWordMatchRatio": 0.75,
+    "start": 185.89
+  },
+  {
+    "id": "04-chon-cho-luu-du-lieu",
+    "text": "Dữ liệu là trung tâm của hệ thống lớn. SQL lưu thành bảng có cấu trúc chặt, mạnh ở giao dịch và JOIN, nhưng khó mở rộng ngang. NoSQL linh hoạt hơn, thêm máy dễ hơn, đổi lại phải nhường bớt tính nhất quán tức thì. Nhiều hệ thống dùng cả hai: SQL cho số dư và giao dịch, NoSQL cho nhật ký hoạt động. Khi một máy database thành nút thắt, ta chia dữ liệu ra nhiều máy, gọi là sharding. Chia theo khoảng giá trị thì dễ truy vấn nhưng dễ lệch tải. Chia theo hàm băm thì đều hơn, nhưng thêm máy phải tính lại, nên người ta dùng consistent hashing. Còn có chia theo bảng tra, và chia theo vùng địa lý để dữ liệu ở gần người dùng. Chọn sai khóa chia, một shard sẽ nóng rực trong khi các shard khác ngồi chơi. Index giống mục lục của cuốn sách: tra mục lục thay vì lật từng trang. Nhưng index nào cũng làm việc ghi chậm đi, và với index nhiều cột, thứ tự cột quyết định nó có được dùng hay không. Khi trình bày, đi từ yêu cầu dữ liệu, chọn loại database có lý do, rồi nói trước kế hoạch khi người dùng tăng gấp mười.",
+    "sentences": [
+      {
+        "text": "Dữ liệu là trung tâm của hệ thống lớn.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "SQL lưu thành bảng có cấu trúc chặt, mạnh ở giao dịch và JOIN, nhưng khó mở rộng ngang.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "NoSQL linh hoạt hơn, thêm máy dễ hơn, đổi lại phải nhường bớt tính nhất quán tức thì.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Nhiều hệ thống dùng cả hai: SQL cho số dư và giao dịch, NoSQL cho nhật ký hoạt động.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Khi một máy database thành nút thắt, ta chia dữ liệu ra nhiều máy, gọi là sharding.",
+        "pauseAfter": 0.45,
+        "say": "Khi một máy database thành nút thắt, ta chia dữ liệu ra nhiều máy, gọi là sác đinh."
+      },
+      {
+        "text": "Chia theo khoảng giá trị thì dễ truy vấn nhưng dễ lệch tải.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Chia theo hàm băm thì đều hơn, nhưng thêm máy phải tính lại, nên người ta dùng consistent hashing.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Còn có chia theo bảng tra, và chia theo vùng địa lý để dữ liệu ở gần người dùng.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Chọn sai khóa chia, một shard sẽ nóng rực trong khi các shard khác ngồi chơi.",
+        "pauseAfter": 1.1,
+        "say": "Chọn sai khóa chia, một sát sẽ nóng rực trong khi các sát khác ngồi chơi."
+      },
+      {
+        "text": "Index giống mục lục của cuốn sách: tra mục lục thay vì lật từng trang.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Nhưng index nào cũng làm việc ghi chậm đi, và với index nhiều cột, thứ tự cột quyết định nó có được dùng hay không.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Khi trình bày, đi từ yêu cầu dữ liệu, chọn loại database có lý do, rồi nói trước kế hoạch khi người dùng tăng gấp mười.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 74.95,
+    "minWordMatchRatio": 0.75,
+    "start": 266.4
+  },
+  {
+    "id": "05-mo-rong-va-tang-toc",
+    "text": "Chương năm là ba công cụ mở rộng quen thuộc nhất. Load balancer giống nhân viên điều phối ở ngân hàng, đưa từng khách tới quầy còn trống. Round robin chia lần lượt, least connections đưa việc cho máy đang rảnh nhất, IP hash giữ một người dùng ở cùng một máy. Load balancer tầng bốn chỉ nhìn địa chỉ và cổng nên rất nhanh. Tầng bảy đọc được đường dẫn, cookie, nên chia việc thông minh hơn, đổi lại tốn tài nguyên hơn. Cache giống như lần thứ hai đi một con đường: bạn đã nhớ đường, nên đi nhanh hơn hẳn. Cache có thể nằm ở trình duyệt, ở CDN, ở reverse proxy, trong ứng dụng hay cạnh database. Phổ biến nhất là cache-aside: tìm trong cache trước, không có thì đọc database rồi cất vào cache. Write-through ghi cả hai nơi cùng lúc, write-back ghi vào cache trước rồi mới đẩy xuống database sau. Cái khó muôn thuở là biết lúc nào phải xóa bản cũ. Message queue thì giống tấm phiếu gọi món ở quán đông khách. Producer đặt phiếu vào hàng đợi rồi đi tiếp, consumer lấy từng phiếu ra làm theo sức mình. Người dùng tải video lên là có phản hồi ngay, còn việc chuyển định dạng để các worker chạy phía sau. Khi phiếu dồn nhanh hơn sức bếp, hệ thống cần backpressure: chậm nhận lại, hoặc thêm người làm.",
+    "sentences": [
+      {
+        "text": "Chương năm là ba công cụ mở rộng quen thuộc nhất.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Load balancer giống nhân viên điều phối ở ngân hàng, đưa từng khách tới quầy còn trống.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Round robin chia lần lượt, least connections đưa việc cho máy đang rảnh nhất, IP hash giữ một người dùng ở cùng một máy.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Load balancer tầng bốn chỉ nhìn địa chỉ và cổng nên rất nhanh.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Tầng bảy đọc được đường dẫn, cookie, nên chia việc thông minh hơn, đổi lại tốn tài nguyên hơn.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Cache giống như lần thứ hai đi một con đường: bạn đã nhớ đường, nên đi nhanh hơn hẳn.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Cache có thể nằm ở trình duyệt, ở CDN, ở reverse proxy, trong ứng dụng hay cạnh database.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Phổ biến nhất là cache-aside: tìm trong cache trước, không có thì đọc database rồi cất vào cache.",
+        "pauseAfter": 0.45,
+        "say": "Phổ biến nhất là cát ơ sai: tìm trong cache trước, không có thì đọc database rồi cất vào cache."
+      },
+      {
+        "text": "Write-through ghi cả hai nơi cùng lúc, write-back ghi vào cache trước rồi mới đẩy xuống database sau.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Cái khó muôn thuở là biết lúc nào phải xóa bản cũ.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Message queue thì giống tấm phiếu gọi món ở quán đông khách.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Producer đặt phiếu vào hàng đợi rồi đi tiếp, consumer lấy từng phiếu ra làm theo sức mình.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Người dùng tải video lên là có phản hồi ngay, còn việc chuyển định dạng để các worker chạy phía sau.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Khi phiếu dồn nhanh hơn sức bếp, hệ thống cần backpressure: chậm nhận lại, hoặc thêm người làm.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 85.97,
+    "minWordMatchRatio": 0.75,
+    "start": 341.35
+  },
+  {
+    "id": "06-gui-hai-lan-ma-chi-tinh-mot",
+    "text": "Mạng chập chờn, client gửi lại yêu cầu, và tiền bị trừ hai lần. Idempotency là thuộc tính giúp gửi bao nhiêu lần thì kết quả cũng như một lần. Cách hay dùng là gắn kèm một idempotency key cho mỗi yêu cầu chuyển tiền hay đặt hàng. Khi hai người cùng sửa một bản ghi, có hai kiểu khóa. Khóa bi quan khóa bản ghi ngay từ đầu, người sau phải chờ: an toàn, nhưng dễ tắc và có thể kẹt cứng. Khóa lạc quan để mọi người cùng sửa, mỗi bản ghi mang một số phiên bản. Lúc lưu, ai cầm phiên bản cũ thì phải đọc lại và làm lại. Ít xung đột thì dùng khóa lạc quan, còn tiền bạc thì sách nghiêng về khóa bi quan.",
+    "sentences": [
+      {
+        "text": "Mạng chập chờn, client gửi lại yêu cầu, và tiền bị trừ hai lần.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Idempotency là thuộc tính giúp gửi bao nhiêu lần thì kết quả cũng như một lần.",
+        "pauseAfter": 0.45,
+        "say": "Ai đem pô tần xi là thuộc tính giúp gửi bao nhiêu lần thì kết quả cũng như một lần."
+      },
+      {
+        "text": "Cách hay dùng là gắn kèm một idempotency key cho mỗi yêu cầu chuyển tiền hay đặt hàng.",
+        "pauseAfter": 1.1,
+        "say": "Cách hay dùng là gắn kèm một ai đem pô tần xi ki cho mỗi yêu cầu chuyển tiền hay đặt hàng."
+      },
+      {
+        "text": "Khi hai người cùng sửa một bản ghi, có hai kiểu khóa.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Khóa bi quan khóa bản ghi ngay từ đầu, người sau phải chờ: an toàn, nhưng dễ tắc và có thể kẹt cứng.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Khóa lạc quan để mọi người cùng sửa, mỗi bản ghi mang một số phiên bản.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Lúc lưu, ai cầm phiên bản cũ thì phải đọc lại và làm lại.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Ít xung đột thì dùng khóa lạc quan, còn tiền bạc thì sách nghiêng về khóa bi quan.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 44.89,
+    "minWordMatchRatio": 0.75,
+    "start": 427.32
+  },
+  {
+    "id": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+    "text": "HTTP là kiểu hỏi đáp quen thuộc của web, và nó không nhớ bạn là ai giữa hai lần gọi. Chính vì không giữ trạng thái, thêm máy chủ phía sau rất dễ. TCP bắt tay ba bước rồi mới gửi, đánh số từng gói, mất gói nào gửi lại gói đó. UDP thì gửi là quên: nhanh, mất vài gói cũng kệ. Gọi video hay chơi game chọn UDP, vì mất một khung hình còn hơn hình bị trễ. Giữa các dịch vụ nội bộ, RPC như gRPC cho phép gọi hàm ở máy khác như gọi hàm ngay trong code. Nó nhanh, nhưng hai bên dính chặt vào cùng một giao diện. Còn API mở ra bên ngoài thì REST là lựa chọn an toàn: mỗi tài nguyên một đường dẫn, mỗi thao tác một động từ HTTP. Lấy danh sách công việc là GET, tạo mới là POST, xóa là DELETE.",
+    "sentences": [
+      {
+        "text": "HTTP là kiểu hỏi đáp quen thuộc của web, và nó không nhớ bạn là ai giữa hai lần gọi.",
+        "pauseAfter": 0.45,
+        "say": "Hát tê tê pê là kiểu hỏi đáp quen thuộc của web, và nó không nhớ bạn là ai giữa hai lần gọi."
+      },
+      {
+        "text": "Chính vì không giữ trạng thái, thêm máy chủ phía sau rất dễ.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "TCP bắt tay ba bước rồi mới gửi, đánh số từng gói, mất gói nào gửi lại gói đó.",
+        "pauseAfter": 0.45,
+        "say": "Tê xê pê bắt tay ba bước rồi mới gửi, đánh số từng gói, mất gói nào gửi lại gói đó."
+      },
+      {
+        "text": "UDP thì gửi là quên: nhanh, mất vài gói cũng kệ.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Gọi video hay chơi game chọn UDP, vì mất một khung hình còn hơn hình bị trễ.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Giữa các dịch vụ nội bộ, RPC như gRPC cho phép gọi hàm ở máy khác như gọi hàm ngay trong code.",
+        "pauseAfter": 0.45,
+        "say": "Giữa các dịch vụ nội bộ, a pi xi như gi a pi xi cho phép gọi hàm ở máy khác như gọi hàm ngay trong code."
+      },
+      {
+        "text": "Nó nhanh, nhưng hai bên dính chặt vào cùng một giao diện.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Còn API mở ra bên ngoài thì REST là lựa chọn an toàn: mỗi tài nguyên một đường dẫn, mỗi thao tác một động từ HTTP.",
+        "pauseAfter": 0.45,
+        "say": "Còn API mở ra bên ngoài thì REST là lựa chọn an toàn: mỗi tài nguyên một đường dẫn, mỗi thao tác một động từ hát tê tê pê."
+      },
+      {
+        "text": "Lấy danh sách công việc là GET, tạo mới là POST, xóa là DELETE.",
+        "pauseAfter": 0,
+        "say": "Lấy danh sách công việc là GET, tạo mới là pốt, xóa là DELETE."
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 56.31,
+    "minWordMatchRatio": 0.75,
+    "start": 472.21
+  },
+  {
+    "id": "08-khi-moi-thu-hong",
+    "text": "Chương tám bắt đầu bằng một câu: mọi thứ có thể hỏng thì sẽ hỏng. Ổ cứng chết, phần mềm có lỗi, mạng bị chia cắt, người vận hành gõ nhầm lệnh, hay lượng truy cập vượt dự tính. Cách chống đỡ đầu tiên là không để trứng vào một giỏ: thành phần nào quan trọng cũng phải có bản dự phòng. Health check hỏi thăm từng máy vài giây một lần, máy không trả lời thì failover chuyển việc sang máy khác. Lỗi tạm thời thì thử lại, nhưng mỗi lần chờ lâu gấp đôi, để không dồn thêm tải vào chỗ đang hỏng. Lỗi kéo dài thì circuit breaker ngắt hẳn đường gọi. Và khi buộc phải hy sinh, hãy tắt bớt tính năng phụ, hạ video từ HD xuống chất lượng thấp, giữ phần cốt lõi chạy tiếp. Sách phân biệt hai mức. Sẵn sàng cao chấp nhận gián đoạn vài chục giây để đổi lấy sự đơn giản. Chịu lỗi hoàn toàn thì như máy bay hai động cơ: hỏng một chiếc vẫn bay tiếp, nhưng chi phí cao hơn nhiều. Đo bằng thời gian giữa hai lần hỏng, MTBF, và thời gian để hồi phục, MTTR. Lý tưởng là lâu lắm mới hỏng, mà hỏng thì dậy rất nhanh.",
+    "sentences": [
+      {
+        "text": "Chương tám bắt đầu bằng một câu: mọi thứ có thể hỏng thì sẽ hỏng.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Ổ cứng chết, phần mềm có lỗi, mạng bị chia cắt, người vận hành gõ nhầm lệnh, hay lượng truy cập vượt dự tính.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Cách chống đỡ đầu tiên là không để trứng vào một giỏ: thành phần nào quan trọng cũng phải có bản dự phòng.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Health check hỏi thăm từng máy vài giây một lần, máy không trả lời thì failover chuyển việc sang máy khác.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Lỗi tạm thời thì thử lại, nhưng mỗi lần chờ lâu gấp đôi, để không dồn thêm tải vào chỗ đang hỏng.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Lỗi kéo dài thì circuit breaker ngắt hẳn đường gọi.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Và khi buộc phải hy sinh, hãy tắt bớt tính năng phụ, hạ video từ HD xuống chất lượng thấp, giữ phần cốt lõi chạy tiếp.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Sách phân biệt hai mức.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Sẵn sàng cao chấp nhận gián đoạn vài chục giây để đổi lấy sự đơn giản.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Chịu lỗi hoàn toàn thì như máy bay hai động cơ: hỏng một chiếc vẫn bay tiếp, nhưng chi phí cao hơn nhiều.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Đo bằng thời gian giữa hai lần hỏng, MTBF, và thời gian để hồi phục, MTTR.",
+        "pauseAfter": 0.45,
+        "say": "Đo bằng thời gian giữa hai lần hỏng, em ti bi ép, và thời gian để hồi phục, em ti ti a."
+      },
+      {
+        "text": "Lý tưởng là lâu lắm mới hỏng, mà hỏng thì dậy rất nhanh.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 71.21,
+    "minWordMatchRatio": 0.75,
+    "start": 528.52
+  },
+  {
+    "id": "09-bao-mat-nhieu-lop",
+    "text": "Bảo mật bắt đầu bằng hai câu hỏi: bạn là ai, và bạn được làm gì. Câu thứ nhất là xác thực: mật khẩu chỉ lưu dạng băm có thêm muối, có thêm mã OTP cho tài khoản quan trọng. Session lưu trạng thái trên máy chủ, dễ thu hồi. JWT thì tự mang thông tin, gọn cho nhiều dịch vụ, nhưng phần nội dung ai cũng đọc được, và bị lộ thì khó thu hồi. Câu thứ hai là phân quyền: RBAC chia theo vai trò, ABAC xét thêm thuộc tính như phòng ban hay giờ làm việc. OAuth2 cho ứng dụng khác một access token thay vì đưa nó mật khẩu của bạn. Ở cửa API: giới hạn số lần gọi, kiểm tra mọi dữ liệu đầu vào, và không nhúng khóa bí mật vào ứng dụng phía người dùng. Với dữ liệu: mọi kết nối đi qua HTTPS, cookie bật Secure, HttpOnly và SameSite để chặn XSS và CSRF. Sách gọi chung là phòng thủ nhiều lớp: không một biện pháp nào đủ một mình.",
+    "sentences": [
+      {
+        "text": "Bảo mật bắt đầu bằng hai câu hỏi: bạn là ai, và bạn được làm gì.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Câu thứ nhất là xác thực: mật khẩu chỉ lưu dạng băm có thêm muối, có thêm mã OTP cho tài khoản quan trọng.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Session lưu trạng thái trên máy chủ, dễ thu hồi.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "JWT thì tự mang thông tin, gọn cho nhiều dịch vụ, nhưng phần nội dung ai cũng đọc được, và bị lộ thì khó thu hồi.",
+        "pauseAfter": 1.1,
+        "say": "Gi đáp bờ liu ti thì tự mang thông tin, gọn cho nhiều dịch vụ, nhưng phần nội dung ai cũng đọc được, và bị lộ thì khó thu hồi."
+      },
+      {
+        "text": "Câu thứ hai là phân quyền: RBAC chia theo vai trò, ABAC xét thêm thuộc tính như phòng ban hay giờ làm việc.",
+        "pauseAfter": 0.45,
+        "say": "Câu thứ hai là phân quyền: a rờ bác chia theo vai trò, ây bác xét thêm thuộc tính như phòng ban hay giờ làm việc."
+      },
+      {
+        "text": "OAuth2 cho ứng dụng khác một access token thay vì đưa nó mật khẩu của bạn.",
+        "pauseAfter": 1.1,
+        "say": "Ô ót hai cho ứng dụng khác một access token thay vì đưa nó mật khẩu của bạn."
+      },
+      {
+        "text": "Ở cửa API: giới hạn số lần gọi, kiểm tra mọi dữ liệu đầu vào, và không nhúng khóa bí mật vào ứng dụng phía người dùng.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Với dữ liệu: mọi kết nối đi qua HTTPS, cookie bật Secure, HttpOnly và SameSite để chặn XSS và CSRF.",
+        "pauseAfter": 0.45,
+        "say": "Với dữ liệu: mọi kết nối đi qua hát tê tê pê ét, cookie bật Secure, hát tê tê pê ôn li và sêm sai để chặn ích ét ét và xi ét a ép."
+      },
+      {
+        "text": "Sách gọi chung là phòng thủ nhiều lớp: không một biện pháp nào đủ một mình.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 64.84,
+    "minWordMatchRatio": 0.75,
+    "start": 599.73
+  },
+  {
+    "id": "10-biet-chuyen-gi-dang-xay-ra",
+    "text": "Chương cuối tách hai việc hay bị gộp làm một. Monitoring cho biết chuyện gì đang xảy ra: CPU, độ trễ, tỷ lệ lỗi, vượt ngưỡng là báo động. Observability giúp trả lời vì sao. Nó dựa vào ba trụ cột. Metrics là những con số theo thời gian, như độ trễ bỗng nhảy từ một trăm lên năm trăm mili giây lúc mười giờ sáng. Logs là nhật ký từng sự kiện, cho bạn biết lỗi xảy ra ở dòng nào. Traces lần theo một yêu cầu qua nhiều dịch vụ, chỉ ra đúng chỗ đang làm chậm cả chuỗi. Sách ví monitoring như đèn cảnh báo trên xe hơi, còn observability là mở nắp capo, cắm máy chẩn đoán vào xem.",
+    "sentences": [
+      {
+        "text": "Chương cuối tách hai việc hay bị gộp làm một.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Monitoring cho biết chuyện gì đang xảy ra: CPU, độ trễ, tỷ lệ lỗi, vượt ngưỡng là báo động.",
+        "pauseAfter": 0.45,
+        "say": "Monitoring cho biết chuyện gì đang xảy ra: xi pi iu, độ trễ, tỷ lệ lỗi, vượt ngưỡng là báo động."
+      },
+      {
+        "text": "Observability giúp trả lời vì sao.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Nó dựa vào ba trụ cột.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Metrics là những con số theo thời gian, như độ trễ bỗng nhảy từ một trăm lên năm trăm mili giây lúc mười giờ sáng.",
+        "pauseAfter": 0.45,
+        "say": "Mét trích là những con số theo thời gian, như độ trễ bỗng nhảy từ một trăm lên năm trăm mili giây lúc mười giờ sáng."
+      },
+      {
+        "text": "Logs là nhật ký từng sự kiện, cho bạn biết lỗi xảy ra ở dòng nào.",
+        "pauseAfter": 0.45,
+        "say": "Lóc là nhật ký từng sự kiện, cho bạn biết lỗi xảy ra ở dòng nào."
+      },
+      {
+        "text": "Traces lần theo một yêu cầu qua nhiều dịch vụ, chỉ ra đúng chỗ đang làm chậm cả chuỗi.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Sách ví monitoring như đèn cảnh báo trên xe hơi, còn observability là mở nắp capo, cắm máy chẩn đoán vào xem.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 45.46,
+    "minWordMatchRatio": 0.75,
+    "start": 664.57
+  },
+  {
+    "id": "11-khep-lai",
+    "text": "Đọc hết mười chương, câu hỏi lặp lại nhiều nhất là: hệ thống này thật sự cần gì, và mình sẵn sàng trả giá nào để có nó. Nhanh hay chính xác, đơn giản hay không bao giờ ngừng, tiện hay an toàn. Sách nói rõ: người phỏng vấn không chờ một thiết kế hoàn hảo, họ chờ xem bạn suy nghĩ thế nào. Nếu bạn đang chuẩn bị cho vòng này, hãy chọn một ứng dụng quen thuộc và thử đi lại đúng các bước trong video: hỏi yêu cầu, vẽ khung, rồi đi sâu từng phần. Cảm ơn bạn đã nghe đến đây.",
+    "sentences": [
+      {
+        "text": "Đọc hết mười chương, câu hỏi lặp lại nhiều nhất là: hệ thống này thật sự cần gì, và mình sẵn sàng trả giá nào để có nó.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Nhanh hay chính xác, đơn giản hay không bao giờ ngừng, tiện hay an toàn.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Sách nói rõ: người phỏng vấn không chờ một thiết kế hoàn hảo, họ chờ xem bạn suy nghĩ thế nào.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Nếu bạn đang chuẩn bị cho vòng này, hãy chọn một ứng dụng quen thuộc và thử đi lại đúng các bước trong video: hỏi yêu cầu, vẽ khung, rồi đi sâu từng phần.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Cảm ơn bạn đã nghe đến đây.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 32.84,
+    "minWordMatchRatio": 0.75,
+    "start": 710.03
   }
 ]

@@ -30,7 +30,7 @@ SAY = [
     ('MTBF', 'em ti bi ép'), ('MTTR', 'em ti ti a'),
     ('JWT', 'gi đáp bờ liu ti'), ('RBAC', 'a rờ bác'), ('ABAC', 'ây bác'), ('OAuth2', 'ô ót hai'),
     ('SameSite', 'sêm sai'), ('XSS', 'ích ét ét'), ('CSRF', 'xi ét a ép'),
-    ('CPU', 'xi pi iu'), ('Metrics', 'Mét tríc'), ('Logs', 'Lóc'),
+    ('CPU', 'xi pi iu'), ('Metrics', 'Mét trích'), ('Logs', 'Lóc'),
 ]
 
 

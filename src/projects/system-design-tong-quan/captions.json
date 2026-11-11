@@ -5,235 +5,1957 @@
    "part": "00-mo-dau",
    "text": "Bốn mươi lăm phút, một cái bảng",
    "startMs": 6680,
-   "endMs": 8660
+   "endMs": 8780
   },
   {
    "part": "00-mo-dau",
    "text": "trắng, và một câu đề: hãy thiết",
-   "startMs": 8660,
-   "endMs": 10960
+   "startMs": 8780,
+   "endMs": 11000
   },
   {
    "part": "00-mo-dau",
    "text": "kế cho tôi một ứng dụng chia sẻ ảnh.",
-   "startMs": 10960,
-   "endMs": 13560
+   "startMs": 11000,
+   "endMs": 13600
   },
   {
    "part": "00-mo-dau",
    "text": "Không có yêu cầu chi tiết.",
-   "startMs": 13760,
-   "endMs": 15420
+   "startMs": 13820,
+   "endMs": 15280
   },
   {
    "part": "00-mo-dau",
    "text": "Không phải viết dòng code nào.",
-   "startMs": 15640,
-   "endMs": 17180
+   "startMs": 15460,
+   "endMs": 17020
   },
   {
    "part": "00-mo-dau",
    "text": "Và cũng không có đáp án đúng.",
-   "startMs": 17180,
+   "startMs": 17440,
    "endMs": 19240
   },
   {
    "part": "00-mo-dau",
    "text": "Đó là vòng phỏng vấn System Design,",
-   "startMs": 19720,
-   "endMs": 21700
+   "startMs": 19760,
+   "endMs": 21660
   },
   {
    "part": "00-mo-dau",
    "text": "và ở nhiều công ty lớn, kết",
-   "startMs": 21700,
-   "endMs": 24060
+   "startMs": 22200,
+   "endMs": 24100
   },
   {
    "part": "00-mo-dau",
    "text": "quả vòng này quyết định cả chuyện",
-   "startMs": 24060,
-   "endMs": 25780
+   "startMs": 24100,
+   "endMs": 25660
   },
   {
    "part": "00-mo-dau",
    "text": "bạn được nhận lẫn mức đãi ngộ.",
-   "startMs": 25780,
-   "endMs": 27580
+   "startMs": 25660,
+   "endMs": 27500
   },
   {
    "part": "00-mo-dau",
    "text": "Video này tóm tắt cuốn System Design,",
-   "startMs": 28560,
-   "endMs": 31140
+   "startMs": 28580,
+   "endMs": 31080
   },
   {
    "part": "00-mo-dau",
    "text": "một cuốn hướng dẫn cách đi qua",
-   "startMs": 31380,
-   "endMs": 32900
+   "startMs": 31400,
+   "endMs": 32920
   },
   {
    "part": "00-mo-dau",
    "text": "vòng phỏng vấn đó.",
-   "startMs": 32900,
-   "endMs": 33980
+   "startMs": 32920,
+   "endMs": 33960
   },
   {
    "part": "00-mo-dau",
    "text": "Mình đi lần lượt mười chương của",
-   "startMs": 33980,
-   "endMs": 36180
+   "startMs": 33960,
+   "endMs": 36080
   },
   {
    "part": "00-mo-dau",
    "text": "sách: từ khái niệm nền tảng, dữ",
-   "startMs": 36180,
-   "endMs": 38320
+   "startMs": 36080,
+   "endMs": 38200
   },
   {
    "part": "00-mo-dau",
    "text": "liệu, mở rộng hệ thống, cho tới",
-   "startMs": 38320,
-   "endMs": 40620
+   "startMs": 38200,
+   "endMs": 40380
   },
   {
    "part": "00-mo-dau",
    "text": "chịu lỗi, bảo mật và giám sát.",
-   "startMs": 40620,
-   "endMs": 42860
+   "startMs": 40380,
+   "endMs": 42600
   },
   {
    "part": "00-mo-dau",
    "text": "Phần nào cũng có một ví dụ",
-   "startMs": 43080,
-   "endMs": 44740
+   "startMs": 42780,
+   "endMs": 44320
   },
   {
    "part": "00-mo-dau",
    "text": "đời thường như trong sách, và một",
-   "startMs": 44740,
-   "endMs": 47120
+   "startMs": 44320,
+   "endMs": 46360
   },
   {
    "part": "00-mo-dau",
    "text": "ý bạn có thể nói ngay trong",
-   "startMs": 47120,
-   "endMs": 49120
+   "startMs": 46360,
+   "endMs": 48260
   },
   {
    "part": "00-mo-dau",
    "text": "buổi phỏng vấn.",
-   "startMs": 49120,
-   "endMs": 49760
+   "startMs": 48260,
+   "endMs": 48920
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "Trước hết, người phỏng vấn muốn thấy gì?",
-   "startMs": 51100,
-   "endMs": 54000
+   "startMs": 50270,
+   "endMs": 53210
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "Bạn nhận một bài toán mở, chẳng",
-   "startMs": 54480,
-   "endMs": 56380
+   "startMs": 53670,
+   "endMs": 55670
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "hạn một dịch vụ nhắn tin hay",
-   "startMs": 56380,
-   "endMs": 58260
+   "startMs": 55670,
+   "endMs": 57370
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "một nền tảng xem phim.",
-   "startMs": 58260,
-   "endMs": 59960
+   "startMs": 57370,
+   "endMs": 58890
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "Việc của bạn là vẽ ra các",
-   "startMs": 60180,
-   "endMs": 61740
+   "startMs": 59230,
+   "endMs": 60990
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "thành phần chính, cách chúng nói",
-   "startMs": 61740,
-   "endMs": 63400
+   "startMs": 60990,
+   "endMs": 62650
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "chuyện với nhau, và vì sao hệ",
-   "startMs": 63400,
-   "endMs": 65460
+   "startMs": 62650,
+   "endMs": 64730
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "thống chịu được lượng người dùng đặt ra.",
-   "startMs": 65460,
-   "endMs": 67560
+   "startMs": 64730,
+   "endMs": 66630
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "Người mới hay vấp ở mấy chỗ.",
-   "startMs": 68800,
-   "endMs": 70920
+   "startMs": 67870,
+   "endMs": 69930
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "Câu hỏi quá mở nên không biết",
-   "startMs": 71060,
-   "endMs": 72900
+   "startMs": 70130,
+   "endMs": 71990
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "bắt đầu từ đâu.",
-   "startMs": 72900,
-   "endMs": 73820
+   "startMs": 71990,
+   "endMs": 72870
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "Chưa từng làm hệ thống lớn, nên",
-   "startMs": 73820,
-   "endMs": 76140
+   "startMs": 72870,
+   "endMs": 75310
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "không rõ khi nào cần cache hay hàng đợi.",
-   "startMs": 76140,
-   "endMs": 79020
+   "startMs": 75310,
+   "endMs": 78110
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "Chỉ có bốn lăm đến sáu mươi",
-   "startMs": 79180,
-   "endMs": 80620
+   "startMs": 78290,
+   "endMs": 79790
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "phút, dễ mải vẽ chi tiết mà",
-   "startMs": 80620,
-   "endMs": 83200
+   "startMs": 79790,
+   "endMs": 82350
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "quên ý chính.",
-   "startMs": 83200,
-   "endMs": 84020
+   "startMs": 82350,
+   "endMs": 83130
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "Và nỗi ám ảnh phải đưa ra",
-   "startMs": 84560,
-   "endMs": 86420
+   "startMs": 83690,
+   "endMs": 85590
   },
   {
    "part": "01-vong-phong-van-nay-cham-dieu-gi",
    "text": "một thiết kế hoàn hảo.",
-   "startMs": 86420,
-   "endMs": 87800
+   "startMs": 85590,
+   "endMs": 86730
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "Theo sách, đa số người trượt vòng",
+   "startMs": 87850,
+   "endMs": 89970
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "này vì thiếu một cách làm lặp lại được.",
+   "startMs": 89970,
+   "endMs": 92370
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "Một khung đơn giản: hỏi rõ yêu",
+   "startMs": 92910,
+   "endMs": 94690
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "cầu, vẽ kiến trúc tổng quan, rồi",
+   "startMs": 94690,
+   "endMs": 97070
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "đi sâu vào từng phần.",
+   "startMs": 97070,
+   "endMs": 98530
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "Người phỏng vấn chấm cách bạn đi",
+   "startMs": 98530,
+   "endMs": 100630
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "tới đáp án, nhiều hơn chính đáp án.",
+   "startMs": 100630,
+   "endMs": 103210
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "Và trong lúc làm, hãy nghĩ thành",
+   "startMs": 103510,
+   "endMs": 105250
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "tiếng, đừng im lặng quá lâu.",
+   "startMs": 105250,
+   "endMs": 107070
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "Chương hai đặt những viên gạch đầu tiên.",
+   "startMs": 108620,
+   "endMs": 111680
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "Độ trễ, latency, là thời gian một",
+   "startMs": 111900,
+   "endMs": 114640
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "xe đi qua trạm thu phí.",
+   "startMs": 114640,
+   "endMs": 116340
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "Thông lượng, throughput, là số xe qua",
+   "startMs": 116660,
+   "endMs": 119120
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "trạm trong một phút.",
+   "startMs": 119120,
+   "endMs": 120360
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "Hai con số này không đi cùng",
+   "startMs": 120640,
+   "endMs": 122420
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "nhau: hệ thống có thể trả lời",
+   "startMs": 122420,
+   "endMs": 124380
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "rất nhanh mà vẫn chỉ phục vụ",
+   "startMs": 124380,
+   "endMs": 126300
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "được ít người.",
+   "startMs": 126300,
+   "endMs": 127140
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "Khi quán phở đông khách, bạn có hai cách.",
+   "startMs": 128320,
+   "endMs": 130800
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "Mua nồi to hơn, thuê đầu bếp",
+   "startMs": 130800,
+   "endMs": 133460
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "giỏi hơn: đó là mở rộng theo",
+   "startMs": 133460,
+   "endMs": 135480
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "chiều dọc, nâng cấp chính cái máy",
+   "startMs": 135480,
+   "endMs": 137420
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "chủ đang có.",
+   "startMs": 137420,
+   "endMs": 138580
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "Hoặc mở thêm quán: mở rộng theo",
+   "startMs": 138820,
+   "endMs": 140800
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "chiều ngang, thêm máy chủ chạy song song.",
+   "startMs": 140800,
+   "endMs": 143520
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "Cách thứ hai thường được chọn, vì",
+   "startMs": 143740,
+   "endMs": 145720
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "một quán đóng cửa thì quán khác vẫn bán.",
+   "startMs": 145720,
+   "endMs": 148200
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "Tính khả dụng được đo bằng những",
+   "startMs": 149520,
+   "endMs": 151080
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "con số chín.",
+   "startMs": 151080,
+   "endMs": 151738
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "Chín mươi chín phẩy chín chín phần",
+   "startMs": 151738,
+   "endMs": 154102
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "trăm nghĩa là cứ mười nghìn phút,",
+   "startMs": 154102,
+   "endMs": 156720
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "hệ thống chỉ được ngừng một phút.",
+   "startMs": 156860,
+   "endMs": 158740
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "Độ tin cậy đòi thêm một điều:",
+   "startMs": 158740,
+   "endMs": 160720
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "không mất dữ liệu, không sai giao dịch.",
+   "startMs": 160960,
+   "endMs": 163120
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "Rồi đến kiến trúc cấp cao, giống",
+   "startMs": 164240,
+   "endMs": 166120
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "bản thiết kế tổng thể của một",
+   "startMs": 166120,
+   "endMs": 168160
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "ngôi nhà, trước khi lo từng phòng.",
+   "startMs": 168160,
+   "endMs": 170640
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "Web server là lễ tân đón yêu",
+   "startMs": 170860,
+   "endMs": 173000
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "cầu, application server là gian bếp xử",
+   "startMs": 173000,
+   "endMs": 176260
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "lý nghiệp vụ, database là bộ nhớ lâu dài.",
+   "startMs": 176260,
+   "endMs": 179620
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "Đứng trước tất cả là load balancer chia việc.",
+   "startMs": 179860,
+   "endMs": 182760
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "Cache giữ sẵn bản sao dữ liệu",
+   "startMs": 183300,
+   "endMs": 185440
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "hay dùng, CDN đặt nội dung gần",
+   "startMs": 185440,
+   "endMs": 187780
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "người xem, còn message queue nhận việc",
+   "startMs": 187780,
+   "endMs": 190280
+  },
+  {
+   "part": "02-nhung-vien-gach-nen",
+   "text": "để làm sau.",
+   "startMs": 190280,
+   "endMs": 190940
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "Chương ba nói về một cặp luôn",
+   "startMs": 192570,
+   "endMs": 194410
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "kéo nhau: nhất quán và khả dụng.",
+   "startMs": 194410,
+   "endMs": 196430
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "Nhất quán mạnh nghĩa là ghi xong",
+   "startMs": 197050,
+   "endMs": 198990
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "thì ai đọc cũng thấy giá trị mới.",
+   "startMs": 199190,
+   "endMs": 201150
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "Chuyến bay chỉ còn một ghế: đại",
+   "startMs": 201710,
+   "endMs": 203790
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "lý A vừa bán, đại lý B",
+   "startMs": 203790,
+   "endMs": 205810
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "phải thấy ngay là đã hết.",
+   "startMs": 205810,
+   "endMs": 206990
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "Nhất quán cuối cùng thì cho phép",
+   "startMs": 207550,
+   "endMs": 209390
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "lệch một lúc: bạn đổi ảnh đại",
+   "startMs": 209390,
+   "endMs": 211410
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "diện, vài giây sau mọi người mới",
+   "startMs": 211410,
+   "endMs": 213570
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "thấy ảnh mới.",
+   "startMs": 213570,
+   "endMs": 214250
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "Để có nhiều bản sao dữ liệu,",
+   "startMs": 215170,
+   "endMs": 217330
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "người ta dùng replication.",
+   "startMs": 217510,
+   "endMs": 219730
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "Đồng bộ chặt thì chậm mà chắc,",
+   "startMs": 219730,
+   "endMs": 221470
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "bất đồng bộ thì nhanh nhưng có lúc lệch.",
+   "startMs": 221710,
+   "endMs": 224230
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "Máy chính hỏng thì failover chuyển",
+   "startMs": 224370,
+   "endMs": 226850
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "sang máy dự phòng.",
+   "startMs": 226850,
+   "endMs": 228210
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "Quorum là một cách cân hai bên.",
+   "startMs": 228210,
+   "endMs": 231510
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "Với năm bản sao, ghi phải được",
+   "startMs": 231750,
+   "endMs": 233570
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "ba máy xác nhận, đọc thì hỏi ba máy.",
+   "startMs": 233570,
+   "endMs": 236250
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "Chỉ cần số máy ghi cộng số",
+   "startMs": 236950,
+   "endMs": 238510
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "máy đọc lớn hơn tổng số bản",
+   "startMs": 238510,
+   "endMs": 240450
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "sao, hai nhóm luôn gặp nhau ở",
+   "startMs": 240450,
+   "endMs": 242670
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "ít nhất một máy có dữ liệu mới.",
+   "startMs": 242670,
+   "endMs": 244630
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "Và định lý CAP: khi mạng giữa",
+   "startMs": 245850,
+   "endMs": 248270
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "các máy bị cắt, bạn phải chọn",
+   "startMs": 248270,
+   "endMs": 250210
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "giữ nhất quán hoặc giữ khả dụng.",
+   "startMs": 250210,
+   "endMs": 252610
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "Hai cửa hàng dùng chung một kho",
+   "startMs": 252610,
+   "endMs": 254470
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "mà mất liên lạc: hoặc ngừng bán",
+   "startMs": 254470,
+   "endMs": 256930
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "một bên cho chắc, hoặc cứ bán",
+   "startMs": 256930,
+   "endMs": 259250
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "và chấp nhận có thể bán trùng",
+   "startMs": 259250,
+   "endMs": 261250
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "chiếc laptop cuối cùng.",
+   "startMs": 261250,
+   "endMs": 262550
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "Ngân hàng thường chọn nhất quán, mạng",
+   "startMs": 263050,
+   "endMs": 265130
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "xã hội thường chọn khả dụng.",
+   "startMs": 265130,
+   "endMs": 266490
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "Sách gói lại ba điều: hiểu nhu",
+   "startMs": 267130,
+   "endMs": 269070
+  },
+  {
+   "part": "03-nhat-quan-hay-kha-dung",
+   "text": "cầu, biết đánh đổi, và giải thích mạch lạc.",
+   "startMs": 269070,
+   "endMs": 271610
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "Dữ liệu là trung tâm của hệ thống lớn.",
+   "startMs": 272900,
+   "endMs": 276340
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "SQL lưu thành bảng có cấu trúc",
+   "startMs": 276560,
+   "endMs": 278640
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "chặt, mạnh ở giao dịch và JOIN,",
+   "startMs": 278640,
+   "endMs": 280720
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "nhưng khó mở rộng ngang.",
+   "startMs": 281200,
+   "endMs": 282760
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "NoSQL linh hoạt hơn, thêm máy dễ",
+   "startMs": 283300,
+   "endMs": 285540
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "hơn, đổi lại phải nhường bớt tính",
+   "startMs": 285540,
+   "endMs": 287540
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "nhất quán tức thì.",
+   "startMs": 287540,
+   "endMs": 288560
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "Nhiều hệ thống dùng cả hai: SQL",
+   "startMs": 289220,
+   "endMs": 291980
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "cho số dư và giao dịch, NoSQL",
+   "startMs": 291980,
+   "endMs": 295240
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "cho nhật ký hoạt động.",
+   "startMs": 295240,
+   "endMs": 296440
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "Khi một máy database thành nút thắt,",
+   "startMs": 297300,
+   "endMs": 299860
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "ta chia dữ liệu ra nhiều máy,",
+   "startMs": 299960,
+   "endMs": 301940
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "gọi là sharding.",
+   "startMs": 302000,
+   "endMs": 303600
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "Chia theo khoảng giá trị thì dễ",
+   "startMs": 303600,
+   "endMs": 305440
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "truy vấn nhưng dễ lệch tải.",
+   "startMs": 305440,
+   "endMs": 307580
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "Chia theo hàm băm thì đều hơn,",
+   "startMs": 307900,
+   "endMs": 309600
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "nhưng thêm máy phải tính lại, nên",
+   "startMs": 310140,
+   "endMs": 311900
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "người ta dùng consistent hashing.",
+   "startMs": 311900,
+   "endMs": 313560
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "Còn có chia theo bảng tra, và",
+   "startMs": 314400,
+   "endMs": 316300
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "chia theo vùng địa lý để dữ",
+   "startMs": 316300,
+   "endMs": 318120
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "liệu ở gần người dùng.",
+   "startMs": 318120,
+   "endMs": 319600
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "Chọn sai khóa chia, một shard sẽ",
+   "startMs": 319820,
+   "endMs": 321940
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "nóng rực trong khi các shard khác ngồi chơi.",
+   "startMs": 321940,
+   "endMs": 324500
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "Index giống mục lục của cuốn sách:",
+   "startMs": 325700,
+   "endMs": 327820
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "tra mục lục thay vì lật từng trang.",
+   "startMs": 327820,
+   "endMs": 330460
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "Nhưng index nào cũng làm việc ghi",
+   "startMs": 330840,
+   "endMs": 332940
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "chậm đi, và với index nhiều cột,",
+   "startMs": 332940,
+   "endMs": 335320
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "thứ tự cột quyết định nó có",
+   "startMs": 335560,
+   "endMs": 337080
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "được dùng hay không.",
+   "startMs": 337080,
+   "endMs": 338120
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "Khi trình bày, đi từ yêu cầu",
+   "startMs": 339140,
+   "endMs": 341120
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "dữ liệu, chọn loại database có lý",
+   "startMs": 341120,
+   "endMs": 343560
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "do, rồi nói trước kế hoạch khi",
+   "startMs": 343560,
+   "endMs": 345400
+  },
+  {
+   "part": "04-chon-cho-luu-du-lieu",
+   "text": "người dùng tăng gấp mười.",
+   "startMs": 345400,
+   "endMs": 346597
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "Chương năm là ba công cụ mở",
+   "startMs": 348030,
+   "endMs": 350410
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "rộng quen thuộc nhất.",
+   "startMs": 350410,
+   "endMs": 351330
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "Load balancer giống nhân viên điều",
+   "startMs": 351830,
+   "endMs": 354010
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "phối ở ngân hàng, đưa từng khách",
+   "startMs": 354010,
+   "endMs": 355990
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "tới quầy còn trống.",
+   "startMs": 355990,
+   "endMs": 357350
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "Round robin chia lần lượt, least",
+   "startMs": 357650,
+   "endMs": 359690
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "connections đưa việc cho máy đang rảnh",
+   "startMs": 359690,
+   "endMs": 361890
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "nhất, IP hash giữ một người dùng",
+   "startMs": 361890,
+   "endMs": 364530
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "ở cùng một máy.",
+   "startMs": 364530,
+   "endMs": 365930
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "Load balancer tầng bốn chỉ nhìn địa",
+   "startMs": 366150,
+   "endMs": 368150
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "chỉ và cổng nên rất nhanh.",
+   "startMs": 368150,
+   "endMs": 370210
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "Tầng bảy đọc được đường dẫn, cookie,",
+   "startMs": 370410,
+   "endMs": 372510
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "nên chia việc thông minh hơn, đổi",
+   "startMs": 372510,
+   "endMs": 374650
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "lại tốn tài nguyên hơn.",
+   "startMs": 374650,
+   "endMs": 375830
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "Cache giống như lần thứ hai đi",
+   "startMs": 376770,
+   "endMs": 378610
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "một con đường: bạn đã nhớ đường,",
+   "startMs": 378610,
+   "endMs": 380710
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "nên đi nhanh hơn hẳn.",
+   "startMs": 380970,
+   "endMs": 382010
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "Cache có thể nằm ở trình duyệt,",
+   "startMs": 382610,
+   "endMs": 384930
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "ở CDN, ở reverse proxy, trong ứng",
+   "startMs": 385090,
+   "endMs": 388610
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "dụng hay cạnh database.",
+   "startMs": 388610,
+   "endMs": 389990
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "Phổ biến nhất là cache-aside: tìm",
+   "startMs": 390750,
+   "endMs": 392950
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "trong cache trước, không có thì đọc",
+   "startMs": 392950,
+   "endMs": 395090
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "database rồi cất vào cache.",
+   "startMs": 395090,
+   "endMs": 397090
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "Write-through ghi cả hai nơi cùng lúc,",
+   "startMs": 397090,
+   "endMs": 400390
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "write-back ghi vào cache trước rồi mới",
+   "startMs": 400390,
+   "endMs": 402770
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "đẩy xuống database sau.",
+   "startMs": 402770,
+   "endMs": 404010
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "Cái khó muôn thuở là biết lúc",
+   "startMs": 404010,
+   "endMs": 406310
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "nào phải xóa bản cũ.",
+   "startMs": 406310,
+   "endMs": 408490
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "Message queue thì giống tấm phiếu gọi",
+   "startMs": 408490,
+   "endMs": 411130
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "món ở quán đông khách.",
+   "startMs": 411130,
+   "endMs": 412570
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "Producer đặt phiếu vào hàng đợi rồi",
+   "startMs": 412930,
+   "endMs": 415310
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "đi tiếp, consumer lấy từng phiếu ra",
+   "startMs": 415310,
+   "endMs": 418410
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "làm theo sức mình.",
+   "startMs": 418410,
+   "endMs": 419450
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "Người dùng tải video lên là có",
+   "startMs": 419930,
+   "endMs": 422030
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "phản hồi ngay, còn việc chuyển định",
+   "startMs": 422030,
+   "endMs": 424110
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "dạng để các worker chạy phía sau.",
+   "startMs": 424110,
+   "endMs": 426170
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "Khi phiếu dồn nhanh hơn sức bếp,",
+   "startMs": 426690,
+   "endMs": 428750
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "hệ thống cần backpressure: chậm nhận",
+   "startMs": 428870,
+   "endMs": 431070
+  },
+  {
+   "part": "05-mo-rong-va-tang-toc",
+   "text": "lại, hoặc thêm người làm.",
+   "startMs": 431070,
+   "endMs": 432450
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "Mạng chập chờn, client gửi lại yêu",
+   "startMs": 433820,
+   "endMs": 436400
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "cầu, và tiền bị trừ hai lần.",
+   "startMs": 436400,
+   "endMs": 438720
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "Idempotency là thuộc tính giúp gửi bao",
+   "startMs": 438720,
+   "endMs": 442360
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "nhiêu lần thì kết quả cũng như một lần.",
+   "startMs": 442360,
+   "endMs": 445000
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "Cách hay dùng là gắn kèm một",
+   "startMs": 445200,
+   "endMs": 446960
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "idempotency key cho mỗi yêu cầu chuyển",
+   "startMs": 446960,
+   "endMs": 449980
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "tiền hay đặt hàng.",
+   "startMs": 449980,
+   "endMs": 451120
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "Khi hai người cùng sửa một bản",
+   "startMs": 452400,
+   "endMs": 453840
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "ghi, có hai kiểu khóa.",
+   "startMs": 453840,
+   "endMs": 455700
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "Khóa bi quan khóa bản ghi ngay",
+   "startMs": 455900,
+   "endMs": 457500
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "từ đầu, người sau phải chờ: an",
+   "startMs": 457500,
+   "endMs": 459920
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "toàn, nhưng dễ tắc và có thể kẹt cứng.",
+   "startMs": 459920,
+   "endMs": 462440
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "Khóa lạc quan để mọi người cùng",
+   "startMs": 462440,
+   "endMs": 464720
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "sửa, mỗi bản ghi mang một số phiên bản.",
+   "startMs": 464720,
+   "endMs": 467540
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "Lúc lưu, ai cầm phiên bản cũ",
+   "startMs": 467880,
+   "endMs": 470080
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "thì phải đọc lại và làm lại.",
+   "startMs": 470080,
+   "endMs": 471900
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "Ít xung đột thì dùng khóa lạc",
+   "startMs": 472380,
+   "endMs": 474280
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "quan, còn tiền bạc thì sách nghiêng",
+   "startMs": 474280,
+   "endMs": 476460
+  },
+  {
+   "part": "06-gui-hai-lan-ma-chi-tinh-mot",
+   "text": "về khóa bi quan.",
+   "startMs": 476460,
+   "endMs": 477280
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "HTTP là kiểu hỏi đáp quen thuộc",
+   "startMs": 479850,
+   "endMs": 482050
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "của web, và nó không nhớ bạn",
+   "startMs": 482050,
+   "endMs": 483970
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "là ai giữa hai lần gọi.",
+   "startMs": 483970,
+   "endMs": 485590
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "Chính vì không giữ trạng thái, thêm",
+   "startMs": 485790,
+   "endMs": 487790
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "máy chủ phía sau rất dễ.",
+   "startMs": 487790,
+   "endMs": 489490
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "TCP bắt tay ba bước rồi mới",
+   "startMs": 490030,
+   "endMs": 492150
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "gửi, đánh số từng gói, mất gói",
+   "startMs": 492150,
+   "endMs": 494590
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "nào gửi lại gói đó.",
+   "startMs": 494590,
+   "endMs": 495970
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "UDP thì gửi là quên: nhanh, mất",
+   "startMs": 495970,
+   "endMs": 499350
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "vài gói cũng kệ.",
+   "startMs": 499350,
+   "endMs": 500310
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "Gọi video hay chơi game chọn UDP,",
+   "startMs": 500770,
+   "endMs": 503850
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "vì mất một khung hình còn hơn",
+   "startMs": 503850,
+   "endMs": 505830
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "hình bị trễ.",
+   "startMs": 505830,
+   "endMs": 507510
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "Giữa các dịch vụ nội bộ, RPC",
+   "startMs": 507510,
+   "endMs": 510310
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "như gRPC cho phép gọi hàm ở",
+   "startMs": 510590,
+   "endMs": 512770
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "máy khác như gọi hàm ngay trong code.",
+   "startMs": 512770,
+   "endMs": 515550
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "Nó nhanh, nhưng hai bên dính chặt",
+   "startMs": 515550,
+   "endMs": 517690
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "vào cùng một giao diện.",
+   "startMs": 517690,
+   "endMs": 519210
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "Còn API mở ra bên ngoài thì",
+   "startMs": 519470,
+   "endMs": 521730
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "REST là lựa chọn an toàn: mỗi",
+   "startMs": 521730,
+   "endMs": 524130
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "tài nguyên một đường dẫn, mỗi thao",
+   "startMs": 524130,
+   "endMs": 525950
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "tác một động từ HTTP.",
+   "startMs": 525950,
+   "endMs": 527710
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "Lấy danh sách công việc là GET,",
+   "startMs": 528450,
+   "endMs": 530250
+  },
+  {
+   "part": "07-cac-may-noi-chuyen-voi-nhau-the-nao",
+   "text": "tạo mới là POST, xóa là DELETE.",
+   "startMs": 530650,
+   "endMs": 533761
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "Chương tám bắt đầu bằng một câu:",
+   "startMs": 535020,
+   "endMs": 537500
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "mọi thứ có thể hỏng thì sẽ hỏng.",
+   "startMs": 537640,
+   "endMs": 540120
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "Ổ cứng chết, phần mềm có lỗi,",
+   "startMs": 540220,
+   "endMs": 542220
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "mạng bị chia cắt, người vận hành",
+   "startMs": 542680,
+   "endMs": 544560
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "gõ nhầm lệnh, hay lượng truy cập",
+   "startMs": 544560,
+   "endMs": 546580
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "vượt dự tính.",
+   "startMs": 546580,
+   "endMs": 548380
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "Cách chống đỡ đầu tiên là không",
+   "startMs": 548540,
+   "endMs": 550180
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "để trứng vào một giỏ: thành phần",
+   "startMs": 550180,
+   "endMs": 552020
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "nào quan trọng cũng phải có bản dự phòng.",
+   "startMs": 552020,
+   "endMs": 554520
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "Health check hỏi thăm từng máy vài",
+   "startMs": 555060,
+   "endMs": 556920
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "giây một lần, máy không trả lời",
+   "startMs": 556920,
+   "endMs": 558900
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "thì failover chuyển việc sang máy khác.",
+   "startMs": 558900,
+   "endMs": 561320
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "Lỗi tạm thời thì thử lại, nhưng",
+   "startMs": 561320,
+   "endMs": 563920
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "mỗi lần chờ lâu gấp đôi, để",
+   "startMs": 563920,
+   "endMs": 565820
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "không dồn thêm tải vào chỗ đang hỏng.",
+   "startMs": 565820,
+   "endMs": 568120
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "Lỗi kéo dài thì circuit breaker ngắt",
+   "startMs": 568300,
+   "endMs": 571060
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "hẳn đường gọi.",
+   "startMs": 571060,
+   "endMs": 572040
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "Và khi buộc phải hy sinh, hãy",
+   "startMs": 572300,
+   "endMs": 574380
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "tắt bớt tính năng phụ, hạ video",
+   "startMs": 574380,
+   "endMs": 576740
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "từ HD xuống chất lượng thấp, giữ",
+   "startMs": 576740,
+   "endMs": 579180
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "phần cốt lõi chạy tiếp.",
+   "startMs": 579180,
+   "endMs": 580540
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "Sách phân biệt hai mức.",
+   "startMs": 581640,
+   "endMs": 583280
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "Sẵn sàng cao chấp nhận gián đoạn",
+   "startMs": 583540,
+   "endMs": 585240
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "vài chục giây để đổi lấy sự đơn giản.",
+   "startMs": 585240,
+   "endMs": 588060
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "Chịu lỗi hoàn toàn thì như máy",
+   "startMs": 588060,
+   "endMs": 590060
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "bay hai động cơ: hỏng một chiếc",
+   "startMs": 590060,
+   "endMs": 591840
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "vẫn bay tiếp, nhưng chi phí cao hơn nhiều.",
+   "startMs": 591840,
+   "endMs": 594460
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "Đo bằng thời gian giữa hai lần",
+   "startMs": 594920,
+   "endMs": 596280
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "hỏng, MTBF, và thời gian để hồi phục, MTTR.",
+   "startMs": 596280,
+   "endMs": 601740
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "Lý tưởng là lâu lắm mới hỏng,",
+   "startMs": 601740,
+   "endMs": 603540
+  },
+  {
+   "part": "08-khi-moi-thu-hong",
+   "text": "mà hỏng thì dậy rất nhanh.",
+   "startMs": 603600,
+   "endMs": 604900
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "Bảo mật bắt đầu bằng hai câu",
+   "startMs": 606230,
+   "endMs": 608230
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "hỏi: bạn là ai, và bạn được làm gì.",
+   "startMs": 608230,
+   "endMs": 610950
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "Câu thứ nhất là xác thực: mật",
+   "startMs": 611530,
+   "endMs": 613630
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "khẩu chỉ lưu dạng băm có thêm",
+   "startMs": 613630,
+   "endMs": 615670
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "muối, có thêm mã OTP cho tài",
+   "startMs": 615670,
+   "endMs": 618370
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "khoản quan trọng.",
+   "startMs": 618370,
+   "endMs": 619470
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "Session lưu trạng thái trên máy chủ,",
+   "startMs": 619770,
+   "endMs": 621830
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "dễ thu hồi.",
+   "startMs": 622070,
+   "endMs": 622750
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "JWT thì tự mang thông tin, gọn",
+   "startMs": 622750,
+   "endMs": 626210
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "cho nhiều dịch vụ, nhưng phần nội",
+   "startMs": 626210,
+   "endMs": 628070
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "dung ai cũng đọc được, và bị",
+   "startMs": 628070,
+   "endMs": 630190
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "lộ thì khó thu hồi.",
+   "startMs": 630190,
+   "endMs": 631570
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "Câu thứ hai là phân quyền: RBAC",
+   "startMs": 632330,
+   "endMs": 635310
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "chia theo vai trò, ABAC xét thêm",
+   "startMs": 635310,
+   "endMs": 637930
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "thuộc tính như phòng ban hay giờ làm việc.",
+   "startMs": 637930,
+   "endMs": 640330
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "OAuth2 cho ứng dụng khác một access",
+   "startMs": 640330,
+   "endMs": 643350
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "token thay vì đưa nó mật khẩu của bạn.",
+   "startMs": 643350,
+   "endMs": 646050
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "Ở cửa API: giới hạn số lần",
+   "startMs": 647190,
+   "endMs": 649570
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "gọi, kiểm tra mọi dữ liệu đầu",
+   "startMs": 649570,
+   "endMs": 651410
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "vào, và không nhúng khóa bí mật",
+   "startMs": 651410,
+   "endMs": 653450
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "vào ứng dụng phía người dùng.",
+   "startMs": 653450,
+   "endMs": 655110
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "Với dữ liệu: mọi kết nối đi",
+   "startMs": 655110,
+   "endMs": 657650
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "qua HTTPS, cookie bật Secure, HttpOnly",
+   "startMs": 657650,
+   "endMs": 662230
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "và SameSite để chặn XSS và CSRF.",
+   "startMs": 662230,
+   "endMs": 665510
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "Sách gọi chung là phòng thủ nhiều",
+   "startMs": 665510,
+   "endMs": 667150
+  },
+  {
+   "part": "09-bao-mat-nhieu-lop",
+   "text": "lớp: không một biện pháp nào đủ một mình.",
+   "startMs": 667150,
+   "endMs": 669670
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "Chương cuối tách hai việc hay bị",
+   "startMs": 671250,
+   "endMs": 673550
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "gộp làm một.",
+   "startMs": 673550,
+   "endMs": 674210
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "Monitoring cho biết chuyện gì đang xảy",
+   "startMs": 674830,
+   "endMs": 677190
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "ra: CPU, độ trễ, tỷ lệ lỗi,",
+   "startMs": 677190,
+   "endMs": 680510
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "vượt ngưỡng là báo động.",
+   "startMs": 680770,
+   "endMs": 681870
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "Observability giúp trả lời vì sao.",
+   "startMs": 683090,
+   "endMs": 685050
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "Nó dựa vào ba trụ cột.",
+   "startMs": 686110,
+   "endMs": 688050
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "Metrics là những con số theo thời",
+   "startMs": 688050,
+   "endMs": 689970
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "gian, như độ trễ bỗng nhảy từ",
+   "startMs": 689970,
+   "endMs": 692270
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "một trăm lên năm trăm mili giây",
+   "startMs": 692270,
+   "endMs": 694090
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "lúc mười giờ sáng.",
+   "startMs": 694090,
+   "endMs": 695230
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "Logs là nhật ký từng sự kiện,",
+   "startMs": 695230,
+   "endMs": 697530
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "cho bạn biết lỗi xảy ra ở dòng nào.",
+   "startMs": 697710,
+   "endMs": 699810
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "Traces lần theo một yêu cầu qua",
+   "startMs": 699810,
+   "endMs": 702670
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "nhiều dịch vụ, chỉ ra đúng chỗ",
+   "startMs": 702670,
+   "endMs": 704630
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "đang làm chậm cả chuỗi.",
+   "startMs": 704630,
+   "endMs": 705810
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "Sách ví monitoring như đèn cảnh báo",
+   "startMs": 707210,
+   "endMs": 709470
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "trên xe hơi, còn observability là mở",
+   "startMs": 709470,
+   "endMs": 712510
+  },
+  {
+   "part": "10-biet-chuyen-gi-dang-xay-ra",
+   "text": "nắp capo, cắm máy chẩn đoán vào xem.",
+   "startMs": 712510,
+   "endMs": 715090
+  },
+  {
+   "part": "11-khep-lai",
+   "text": "Đọc hết mười chương, câu hỏi lặp",
+   "startMs": 716530,
+   "endMs": 718910
+  },
+  {
+   "part": "11-khep-lai",
+   "text": "lại nhiều nhất là: hệ thống này",
+   "startMs": 718910,
+   "endMs": 720690
+  },
+  {
+   "part": "11-khep-lai",
+   "text": "thật sự cần gì, và mình sẵn",
+   "startMs": 720690,
+   "endMs": 722590
+  },
+  {
+   "part": "11-khep-lai",
+   "text": "sàng trả giá nào để có nó.",
+   "startMs": 722590,
+   "endMs": 724550
+  },
+  {
+   "part": "11-khep-lai",
+   "text": "Nhanh hay chính xác, đơn giản hay",
+   "startMs": 725130,
+   "endMs": 727150
+  },
+  {
+   "part": "11-khep-lai",
+   "text": "không bao giờ ngừng, tiện hay an toàn.",
+   "startMs": 727150,
+   "endMs": 729690
+  },
+  {
+   "part": "11-khep-lai",
+   "text": "Sách nói rõ: người phỏng vấn không",
+   "startMs": 729910,
+   "endMs": 732010
+  },
+  {
+   "part": "11-khep-lai",
+   "text": "chờ một thiết kế hoàn hảo, họ",
+   "startMs": 732010,
+   "endMs": 734210
+  },
+  {
+   "part": "11-khep-lai",
+   "text": "chờ xem bạn suy nghĩ thế nào.",
+   "startMs": 734210,
+   "endMs": 735810
+  },
+  {
+   "part": "11-khep-lai",
+   "text": "Nếu bạn đang chuẩn bị cho vòng",
+   "startMs": 736410,
+   "endMs": 737890
+  },
+  {
+   "part": "11-khep-lai",
+   "text": "này, hãy chọn một ứng dụng quen",
+   "startMs": 737890,
+   "endMs": 739850
+  },
+  {
+   "part": "11-khep-lai",
+   "text": "thuộc và thử đi lại đúng các",
+   "startMs": 739850,
+   "endMs": 741710
+  },
+  {
+   "part": "11-khep-lai",
+   "text": "bước trong video: hỏi yêu cầu, vẽ",
+   "startMs": 741710,
+   "endMs": 744190
+  },
+  {
+   "part": "11-khep-lai",
+   "text": "khung, rồi đi sâu từng phần.",
+   "startMs": 744190,
+   "endMs": 746310
+  },
+  {
+   "part": "11-khep-lai",
+   "text": "Cảm ơn bạn đã nghe đến đây.",
+   "startMs": 746650,
+   "endMs": 748050
   }
  ]
 }

@@ -3,9 +3,11 @@ import {Audio} from '@remotion/media';
 import {AbsoluteFill, Img, Sequence, Track, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import type {CalculateMetadataFunction} from 'remotion';
 import {MusicFade} from '../../shared/MusicFade';
-import {FONT, ThemeBackground, ThemeCaption, themeOf} from '../../looks/looks';
-import type {Theme} from '../../looks/looks';
+import {FONT, ThemeBackground, ThemeCaption} from '../../looks/looks';
 import {Chip, CodeCard, DiagramNode, DiagramPacket, DiagramWire, Label, MONO, Mark, Timer, fade, grow} from '../../looks/diagram-kit';
+import {Stage, THEME, useBeat} from './common';
+import type {Seg} from './common';
+import {BaoMat, ChiuLoi, DuLieu, GiamSat, GiaoTiep, Idempotency, KhepLai, MoRong, NenTang, NhatQuan, PhuongPhap} from './Chapters';
 import captionsData from './captions.json';
 import timingData from './timing.json';
 import music from './music.json';
@@ -13,28 +15,32 @@ import music from './music.json';
 // System Design: tóm tắt cả cuốn sách. Theme "Bản vẽ kỹ thuật", style "Sơ đồ hệ thống động" (src/looks). Each
 // narration segment is one audio file (make-voice, Minh Đức); picture beats start on sentence times from
 // timing.json (scripts/projects/system-design-tong-quan/sentence-times.py), so re-voicing keeps them in place.
-// Review build (first-30-seconds gate): title card, opening, and section 1 up to the end of its list of pitfalls.
-// The layout (title length, segment starts, review cut) and the timeline captions come from sentence-times.py.
+// The layout (title length, segment starts, any review cut) and the timeline captions come from sentence-times.py;
+// chapters 1 (tail) to 10 and the closing live in Chapters.tsx.
 
-const THEME = themeOf('ban-ve-ky-thuat');
-type Seg = {file: string; start: number; length: number; duration: number; speechEndsAt: number; sentences: number[]; cut?: boolean};
+type Page = {part: string; text: string; startMs: number; endMs: number};
 const TIMING = timingData as {titleSeconds: number; endPadSeconds: number; segments: Record<string, Seg>};
 const TITLE_SECONDS = TIMING.titleSeconds;
-type Page = {part: string; text: string; startMs: number; endMs: number};
 const CAPTIONS = (captionsData as {pages: Page[]}).pages;
+// Segments in script order; a segment is shown once its narration exists in timing.json.
 const SEGMENTS = [
   {id: '00-mo-dau', label: 'MỞ ĐẦU', node: (s: Seg) => <MoDau s={s} />},
   {id: '01-vong-phong-van-nay-cham-dieu-gi', label: 'CHƯƠNG 1 · VÒNG PHỎNG VẤN', node: (s: Seg) => <VongPhongVan s={s} />},
+  {id: '02-nhung-vien-gach-nen', label: 'CHƯƠNG 2 · NỀN TẢNG', node: (s: Seg) => <NenTang s={s} />},
+  {id: '03-nhat-quan-hay-kha-dung', label: 'CHƯƠNG 3 · NHẤT QUÁN VÀ KHẢ DỤNG', node: (s: Seg) => <NhatQuan s={s} />},
+  {id: '04-chon-cho-luu-du-lieu', label: 'CHƯƠNG 4 · DỮ LIỆU', node: (s: Seg) => <DuLieu s={s} />},
+  {id: '05-mo-rong-va-tang-toc', label: 'CHƯƠNG 5 · MỞ RỘNG', node: (s: Seg) => <MoRong s={s} />},
+  {id: '06-gui-hai-lan-ma-chi-tinh-mot', label: 'CHƯƠNG 6 · IDEMPOTENCY VÀ KHÓA', node: (s: Seg) => <Idempotency s={s} />},
+  {id: '07-cac-may-noi-chuyen-voi-nhau-the-nao', label: 'CHƯƠNG 7 · GIAO TIẾP VÀ API', node: (s: Seg) => <GiaoTiep s={s} />},
+  {id: '08-khi-moi-thu-hong', label: 'CHƯƠNG 8 · CHỊU LỖI', node: (s: Seg) => <ChiuLoi s={s} />},
+  {id: '09-bao-mat-nhieu-lop', label: 'CHƯƠNG 9 · BẢO MẬT', node: (s: Seg) => <BaoMat s={s} />},
+  {id: '10-biet-chuyen-gi-dang-xay-ra', label: 'CHƯƠNG 10 · GIÁM SÁT', node: (s: Seg) => <GiamSat s={s} />},
+  {id: '11-khep-lai', label: 'KHÉP LẠI', node: (s: Seg) => <KhepLai s={s} />},
 ].filter((x) => TIMING.segments[x.id]);
-const KEYWORDS = ['System Design', 'đáp án đúng', 'mười chương', 'thiết kế hoàn hảo', 'cache', 'hàng đợi', 'lượng người dùng', 'bài toán mở', 'ví dụ đời thường'];
-
-// ---- layout helpers ---------------------------------------------------------------------------------------
-const Stage: FC<{children: ReactNode}> = ({children}) => <svg viewBox="0 0 1920 1080" width="100%" height="100%" style={{position: 'absolute', inset: 0}}>{children}</svg>;
-// Seconds → frames inside a segment; `at(i, d)` = sentence i start plus d seconds.
-const useBeat = (s: Seg) => {
-  const {fps} = useVideoConfig(), f = useCurrentFrame();
-  return {f, fps, sec: (x: number) => Math.round(x * fps), at: (i: number, d = 0) => Math.round((s.sentences[i] + d) * fps)};
-};
+const KEYWORDS = ['System Design', 'đáp án đúng', 'mười chương', 'thiết kế hoàn hảo', 'ví dụ đời thường', 'lượng người dùng', 'bài toán mở', 'load balancer', 'Load balancer',
+  'message queue', 'Message queue', 'replication', 'failover', 'Quorum', 'định lý CAP', 'sharding', 'consistent hashing', 'Index', 'cache-aside', 'Cache', 'backpressure',
+  'Idempotency', 'idempotency key', 'Khóa bi quan', 'Khóa lạc quan', 'HTTP', 'TCP', 'UDP', 'gRPC', 'REST', 'circuit breaker', 'Health check', 'MTBF', 'JWT', 'OAuth2', 'RBAC',
+  'Monitoring', 'Observability', 'Metrics', 'Logs', 'Traces', 'SQL', 'NoSQL', 'CDN', 'latency', 'throughput', 'cache', 'hàng đợi', 'đánh đổi'];
 
 // ---- title card -------------------------------------------------------------------------------------------
 const TitleCard: FC = () => {
@@ -150,7 +156,7 @@ const ChapterRoute: FC<{f: number; start: number; len: number}> = ({f, start, le
 // ---- 01 · what the round checks (review build: up to the list of pitfalls) ---------------------------------
 const VongPhongVan: FC<{s: Seg}> = ({s}) => {
   const {f, fps, at} = useBeat(s), t = THEME, p = t.palette;
-  const b1 = fade(f, 0, at(2) + 6), b2 = fade(f, at(2) - 6, at(3) + 6), b3 = fade(f, at(3) - 6, Math.round(s.length * fps) + 60);
+  const b1 = fade(f, 0, at(2) + 6), b2 = fade(f, at(2) - 6, at(3) + 6), b3 = fade(f, at(3) - 6, s.sentences[8] === undefined ? Math.round(s.length * fps) + 60 : at(8) + 6);
   const users = grow(f, at(2, 4.5), at(2, 7.5));
   const pitfalls: {title: string; sentence: number; draw: (x: number, y: number, a: number) => ReactNode}[] = [
     {title: 'Câu hỏi\nquá mở', sentence: 4, draw: (x, y, a) => <g>
@@ -206,6 +212,8 @@ const VongPhongVan: FC<{s: Seg}> = ({s}) => {
         {title.split('\n').map((line, i, all) => <Label key={i} t={t} x={x} y={712 - (all.length - 1 - i) * 42} size={36}>{line}</Label>)}
       </g>;})}
     </g>
+    {/* 4 · the repeatable method (Chapters.tsx) */}
+    {s.sentences[8] === undefined ? null : <PhuongPhap s={s} />}
   </Stage>;
 };
 
