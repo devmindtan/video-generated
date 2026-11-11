@@ -1,0 +1,14 @@
+{
+  "file": "audio-library/music/Aylex - Passionate (freetouse.com).mp3",
+  "titleVolume": 0.3,
+  "speechVolume": 0.012,
+  "pauseVolume": 0.012,
+  "fadeInSeconds": 1.0,
+  "fadeOutSeconds": 3.0,
+  "credit": {
+    "title": "Passionate",
+    "artists": ["Aylex"],
+    "source": "freetouse.com"
+  },
+  "editingNote": "Đề xuất (chưa chốt): nhạc lên rõ trên màn tên video (30%), hạ dần về mức nền khi giọng vào; dưới lời đọc giữ một mức nhỏ cố định 1,2% (pauseVolume = speechVolume), theo bài học từ series sách. Lặp lại bản gốc đầy đủ; fade theo cạnh đoạn nhạc, chỉnh đầu/cuối trong Studio."
+}

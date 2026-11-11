@@ -1,0 +1,2507 @@
+{
+ "source": "KienTrucUngDungWebTongQuan defaultProps; scripts/projects/kien-truc-ung-dung-web-tong-quan/sentence-times.py",
+ "pages": [
+  {
+   "part": "00-mo-dau",
+   "text": "Một controller đặt hàng e-book, gần ba mươi dòng.",
+   "startMs": 6500,
+   "endMs": 10300
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Nó lấy giá từ database, nhân với",
+   "startMs": 10840,
+   "endMs": 13060
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "số lượng, ghi vào bảng orders, rồi",
+   "startMs": 13060,
+   "endMs": 15560
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "nhét mã đơn vào session.",
+   "startMs": 15560,
+   "endMs": 17360
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Chạy đúng.",
+   "startMs": 17900,
+   "endMs": 18540
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Nhưng thử hỏi: nghiệp vụ tính tiền",
+   "startMs": 19700,
+   "endMs": 21700
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "nằm ở đâu?",
+   "startMs": 21700,
+   "endMs": 22500
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Nếu ngày mai đổi sang PostgreSQL, thêm",
+   "startMs": 23040,
+   "endMs": 26120
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "một job gửi mail, hay chỉ muốn",
+   "startMs": 26120,
+   "endMs": 28460
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "viết một test cho phần tính tiền,",
+   "startMs": 28460,
+   "endMs": 30540
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "bạn sẽ phải sửa những đâu?",
+   "startMs": 30640,
+   "endMs": 32020
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Đó là câu hỏi cuốn Kiến trúc",
+   "startMs": 33020,
+   "endMs": 34900
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "ứng dụng web đi tìm lời giải.",
+   "startMs": 34900,
+   "endMs": 37580
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Sách kể một chức năng đặt hàng,",
+   "startMs": 37580,
+   "endMs": 39100
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "rồi mổ nó ra từng lớp: tách",
+   "startMs": 39360,
+   "endMs": 41160
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "nghiệp vụ khỏi database, khỏi",
+   "startMs": 41160,
+   "endMs": 43180
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "framework, khỏi cách giao tiếp bên ngoài.",
+   "startMs": 43180,
+   "endMs": 45900
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Mình sẽ đi qua bảy chương, giữ",
+   "startMs": 46060,
+   "endMs": 48100
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "đúng một ví dụ xuyên suốt, và",
+   "startMs": 48100,
+   "endMs": 50200
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "dừng ở những chỗ đáng lấy.",
+   "startMs": 50200,
+   "endMs": 51900
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Cái đáng lấy không phải một cây",
+   "startMs": 52100,
+   "endMs": 54040
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "thư mục đẹp.",
+   "startMs": 54040,
+   "endMs": 55140
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Mà là một câu hỏi dùng được",
+   "startMs": 55160,
+   "endMs": 56920
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "mỗi ngày: đoạn code này có chạy",
+   "startMs": 56920,
+   "endMs": 59100
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "được một mình, trong bộ nhớ, không",
+   "startMs": 59100,
+   "endMs": 61740
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "cần database, không cần framework không?",
+   "startMs": 61740,
+   "endMs": 64260
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Bắt đầu bằng đúng đoạn code đó.",
+   "startMs": 65583,
+   "endMs": 67943
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Hàm orderEbook nhận request, gọi",
+   "startMs": 68463,
+   "endMs": 70823
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "database lấy giá, nhân với số lượng,",
+   "startMs": 70823,
+   "endMs": 73263
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "insert vào bảng orders, lưu id vào session.",
+   "startMs": 73623,
+   "endMs": 76723
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Nhìn qua thì gọn.",
+   "startMs": 77443,
+   "endMs": 78523
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Nhưng trong cùng một hàm có đủ",
+   "startMs": 79623,
+   "endMs": 81423
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "thứ: một câu SQL, một phép tính",
+   "startMs": 81423,
+   "endMs": 84423
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "tiền, một quy ước lưu session, và",
+   "startMs": 84423,
+   "endMs": 87183
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "cả cách trả về của framework.",
+   "startMs": 87183,
+   "endMs": 88943
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Muốn test phần tính tiền, bạn phải dựng database.",
+   "startMs": 89483,
+   "endMs": 92323
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Muốn đổi cách lưu đơn, bạn phải",
+   "startMs": 92323,
+   "endMs": 94843
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "sửa một chỗ không hề nói gì",
+   "startMs": 94843,
+   "endMs": 96543
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "về việc lưu trữ.",
+   "startMs": 96543,
+   "endMs": 97823
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Và không ai kiểm tra email có",
+   "startMs": 97823,
+   "endMs": 100343
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "đúng không, số lượng có lớn hơn không.",
+   "startMs": 100343,
+   "endMs": 102663
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Sách gọi phần này là code trộn lẫn.",
+   "startMs": 103843,
+   "endMs": 106363
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Phần nghiệp vụ thật sự chỉ có",
+   "startMs": 106603,
+   "endMs": 108283
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "một câu: đơn hàng này gồm gì,",
+   "startMs": 108283,
+   "endMs": 110363
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "giá bao nhiêu.",
+   "startMs": 110583,
+   "endMs": 111543
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Phần còn lại là hạ tầng: database,",
+   "startMs": 111823,
+   "endMs": 114063
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "session, framework, thư viện.",
+   "startMs": 114283,
+   "endMs": 116263
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Khi hai thứ dính vào nhau, có",
+   "startMs": 116263,
+   "endMs": 118583
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "năm chuyện thường xảy ra.",
+   "startMs": 118583,
+   "endMs": 120063
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Đọc code không thấy câu chuyện nghiệp",
+   "startMs": 120463,
+   "endMs": 122443
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "vụ, chỉ thấy công nghệ.",
+   "startMs": 122443,
+   "endMs": 124283
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Đổi công nghệ kéo theo sửa logic.",
+   "startMs": 124523,
+   "endMs": 126423
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Test tự động khó, vì mỗi test",
+   "startMs": 126963,
+   "endMs": 129043
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "phải mang theo cả môi trường.",
+   "startMs": 129043,
+   "endMs": 131103
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Dữ liệu không được bảo đảm hợp",
+   "startMs": 131363,
+   "endMs": 132803
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "lệ, vì chẳng có chỗ nào đứng",
+   "startMs": 132803,
+   "endMs": 134803
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "ra kiểm tra.",
+   "startMs": 134803,
+   "endMs": 135543
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Và code nhanh chóng thành thứ không",
+   "startMs": 136063,
+   "endMs": 137963
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "ai dám sửa, tức là legacy.",
+   "startMs": 137963,
+   "endMs": 140103
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Ngược lại, khi tách được, lợi ích",
+   "startMs": 141383,
+   "endMs": 143643
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "cũng rất cụ thể.",
+   "startMs": 143643,
+   "endMs": 144563
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Code nghiệp vụ đọc như một câu",
+   "startMs": 144563,
+   "endMs": 146703
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "chuyện: tạo đơn, kiểm tra, lưu.",
+   "startMs": 146703,
+   "endMs": 149623
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Test chạy trong bộ nhớ, không cần dựng MySQL.",
+   "startMs": 149883,
+   "endMs": 152863
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Đổi hạ tầng chỉ sửa đúng phần hạ tầng.",
+   "startMs": 153603,
+   "endMs": 156523
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Và người mới vào đọc một file",
+   "startMs": 156743,
+   "endMs": 158423
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "là hiểu quy tắc, không phải lần",
+   "startMs": 158423,
+   "endMs": 160483
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "theo mười lớp.",
+   "startMs": 160483,
+   "endMs": 161583
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Sách nhắc một câu đáng nhớ: nếu",
+   "startMs": 161723,
+   "endMs": 163603
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "ứng dụng sống dài hơn hai năm,",
+   "startMs": 163603,
+   "endMs": 165223
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "việc tách khỏi hạ tầng rất đáng làm.",
+   "startMs": 165703,
+   "endMs": 167563
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "Đó là nhận định của tác giả,",
+   "startMs": 168163,
+   "endMs": 169943
+  },
+  {
+   "part": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
+   "text": "không phải một con số đo được.",
+   "startMs": 170123,
+   "endMs": 171623
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Vậy lấy gì để biết một đoạn",
+   "startMs": 172930,
+   "endMs": 174870
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "code là core hay hạ tầng?",
+   "startMs": 174870,
+   "endMs": 177130
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Sách đưa một định nghĩa rất thực",
+   "startMs": 177350,
+   "endMs": 178770
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "dụng: core code là code chạy được",
+   "startMs": 178770,
+   "endMs": 180830
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "chỉ với bộ nhớ và CPU.",
+   "startMs": 181170,
+   "endMs": 182810
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Không database, không gọi mạng, không",
+   "startMs": 183590,
+   "endMs": 185990
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "đọc file, không đồng hồ hệ thống, không SMTP.",
+   "startMs": 185990,
+   "endMs": 189230
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Quy tắc thứ nhất: không phụ thuộc",
+   "startMs": 189970,
+   "endMs": 191690
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "trực tiếp vào hệ thống bên ngoài.",
+   "startMs": 191690,
+   "endMs": 193850
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Quy tắc thứ hai: không cần môi",
+   "startMs": 194050,
+   "endMs": 195790
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "trường đặc biệt.",
+   "startMs": 195790,
+   "endMs": 196730
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Không cần web server, không cần CLI,",
+   "startMs": 196730,
+   "endMs": 199710
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "không cần framework, không cần biến",
+   "startMs": 199870,
+   "endMs": 201910
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "POST hay session.",
+   "startMs": 201910,
+   "endMs": 203790
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Thiếu một trong hai, nó là hạ tầng.",
+   "startMs": 203970,
+   "endMs": 206090
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Một hàm tính VAT là core.",
+   "startMs": 207390,
+   "endMs": 209430
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Một đối tượng Order tự tính tổng",
+   "startMs": 210070,
+   "endMs": 211750
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "tiền là core.",
+   "startMs": 211750,
+   "endMs": 212910
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Một OrderService chỉ dùng entity và",
+   "startMs": 213530,
+   "endMs": 216050
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "interface là core.",
+   "startMs": 216050,
+   "endMs": 217510
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Còn câu SQL, lời gọi HTTP, đoạn",
+   "startMs": 218070,
+   "endMs": 221450
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "đọc file, controller, Eloquent model: hạ tầng.",
+   "startMs": 221450,
+   "endMs": 225270
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Có một cách nói dễ nhớ: hạ",
+   "startMs": 225270,
+   "endMs": 227230
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "tầng là phần còn lại sau khi trừ core.",
+   "startMs": 227230,
+   "endMs": 229170
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Và đừng nhầm thư mục với bản chất.",
+   "startMs": 229810,
+   "endMs": 232070
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Cùng nằm trong thư mục Service, một",
+   "startMs": 232210,
+   "endMs": 234230
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "file có thể là core, file bên",
+   "startMs": 234230,
+   "endMs": 236390
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "cạnh có thể là hạ tầng.",
+   "startMs": 236390,
+   "endMs": 238450
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Điều quyết định là nó có chạm",
+   "startMs": 238710,
+   "endMs": 240630
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "vào thế giới bên ngoài hay không.",
+   "startMs": 240630,
+   "endMs": 242170
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Sách còn cảnh báo một cái bẫy:",
+   "startMs": 243430,
+   "endMs": 245350
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "đặt interface lên trên hạ tầng không",
+   "startMs": 245430,
+   "endMs": 248450
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "tự biến nó thành core.",
+   "startMs": 248450,
+   "endMs": 249710
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Một interface Connection với hàm",
+   "startMs": 249710,
+   "endMs": 252670
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "insert bảng và dữ liệu vẫn lộ",
+   "startMs": 252670,
+   "endMs": 254970
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "nguyên khái niệm database.",
+   "startMs": 254970,
+   "endMs": 256930
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Che bằng tên gọi không đủ; phải",
+   "startMs": 256930,
+   "endMs": 258830
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "che bằng ý nghĩa nghiệp vụ.",
+   "startMs": 258830,
+   "endMs": 260890
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Ví dụ dễ thấy nhất là đồng hồ.",
+   "startMs": 261090,
+   "endMs": 263450
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Gọi Carbon::now ở giữa logic thì test",
+   "startMs": 263610,
+   "endMs": 266810
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "nào cũng phụ thuộc thời gian thật.",
+   "startMs": 266810,
+   "endMs": 268630
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Thay bằng một interface Clock, rồi",
+   "startMs": 268930,
+   "endMs": 270990
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "SystemClock ở ngoài, trong test dùng FakeClock.",
+   "startMs": 270990,
+   "endMs": 274730
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Giờ muốn kiểm tra chuyện gì xảy",
+   "startMs": 274730,
+   "endMs": 276390
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "ra lúc nửa đêm, bạn chỉ cần",
+   "startMs": 276390,
+   "endMs": 278870
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "chỉnh cái đồng hồ giả.",
+   "startMs": 278870,
+   "endMs": 279970
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "Đó là toàn bộ tinh thần của",
+   "startMs": 281270,
+   "endMs": 282990
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "chương này: tìm đúng đường ranh giới,",
+   "startMs": 282990,
+   "endMs": 285370
+  },
+  {
+   "part": "02-ranh-gioi-core-va-ha-tang",
+   "text": "rồi giữ nó bằng những thứ nhỏ như vậy.",
+   "startMs": 285650,
+   "endMs": 287610
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Sang chương ba, sách so hai cách",
+   "startMs": 288858,
+   "endMs": 291338
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "viết cùng một nghiệp vụ.",
+   "startMs": 291338,
+   "endMs": 292838
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Cách thứ nhất là Transaction Script:",
+   "startMs": 293018,
+   "endMs": 295358
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "mọi bước nằm trong controller, dữ liệu",
+   "startMs": 295698,
+   "endMs": 297978
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "chỉ là mảng, không ai giữ luật.",
+   "startMs": 297978,
+   "endMs": 300178
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Cách thứ hai là Domain Model: dữ",
+   "startMs": 300378,
+   "endMs": 302998
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "liệu và hành vi nằm chung trong đối tượng.",
+   "startMs": 302998,
+   "endMs": 305578
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Ví dụ là entity Order.",
+   "startMs": 305858,
+   "endMs": 307598
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Constructor nhận ebookId, email,",
+   "startMs": 308338,
+   "endMs": 310818
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "quantity, pricePerUnit.",
+   "startMs": 311018,
+   "endMs": 313638
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Nếu id nhỏ hơn hoặc bằng không, ném lỗi.",
+   "startMs": 313638,
+   "endMs": 316458
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Nếu email sai định dạng, ném lỗi.",
+   "startMs": 316458,
+   "endMs": 319298
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Nếu số lượng nhỏ hơn hoặc bằng",
+   "startMs": 319918,
+   "endMs": 321838
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "không, ném lỗi.",
+   "startMs": 321838,
+   "endMs": 323158
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Nếu giá âm, ném lỗi.",
+   "startMs": 323458,
+   "endMs": 325358
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Và tổng tiền do chính Order tính,",
+   "startMs": 325558,
+   "endMs": 327578
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "không phải controller tính.",
+   "startMs": 327898,
+   "endMs": 329458
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Điểm đáng chú ý không phải là",
+   "startMs": 330558,
+   "endMs": 332378
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "mấy câu if.",
+   "startMs": 332378,
+   "endMs": 333238
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Mà là không có cách nào tạo",
+   "startMs": 333538,
+   "endMs": 335298
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "ra một Order sai.",
+   "startMs": 335298,
+   "endMs": 337098
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Mọi chỗ trong hệ thống muốn có",
+   "startMs": 337098,
+   "endMs": 338718
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "đơn hàng, đều phải đi qua cái constructor đó.",
+   "startMs": 338718,
+   "endMs": 341818
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Luật nghiệp vụ chỉ nằm một chỗ,",
+   "startMs": 341818,
+   "endMs": 344178
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "thay vì rải ở controller, ở job, ở seeder.",
+   "startMs": 344318,
+   "endMs": 348798
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Sách phân biệt thêm entity và value object.",
+   "startMs": 348798,
+   "endMs": 351958
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Entity có danh tính: hai đơn hàng",
+   "startMs": 352518,
+   "endMs": 354718
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "khác id thì khác nhau, dù nội",
+   "startMs": 354718,
+   "endMs": 357178
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "dung giống hệt.",
+   "startMs": 357178,
+   "endMs": 358158
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Value object không có danh tính, so",
+   "startMs": 358398,
+   "endMs": 360738
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "bằng giá trị: EmailAddress, Money.",
+   "startMs": 360738,
+   "endMs": 363638
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Một EmailAddress đã tạo được thì chắc",
+   "startMs": 364258,
+   "endMs": 367098
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "chắn hợp lệ.",
+   "startMs": 367098,
+   "endMs": 368198
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Một Money đã tạo được thì không",
+   "startMs": 368198,
+   "endMs": 370758
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "tự nhiên thành số âm.",
+   "startMs": 370758,
+   "endMs": 372258
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Đó là cùng một ý: đặt luật",
+   "startMs": 372438,
+   "endMs": 374298
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "vào nơi sinh ra giá trị.",
+   "startMs": 374298,
+   "endMs": 376038
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Nhưng đối tượng đẹp đến mấy vẫn",
+   "startMs": 377018,
+   "endMs": 378798
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "cần được lưu.",
+   "startMs": 378798,
+   "endMs": 379818
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Và đây là chỗ nhiều người dừng",
+   "startMs": 380138,
+   "endMs": 381818
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "lại: để entity gọi thẳng database.",
+   "startMs": 381818,
+   "endMs": 384378
+  },
+  {
+   "part": "03-domain-model-de-doi-tuong-tu-bao-ve",
+   "text": "Sách đề nghị đi xa hơn một bước.",
+   "startMs": 385098,
+   "endMs": 386758
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Repository là một interface đứng về",
+   "startMs": 389058,
+   "endMs": 391378
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "phía nghiệp vụ, mô tả việc lưu",
+   "startMs": 391378,
+   "endMs": 393678
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "và lấy đối tượng.",
+   "startMs": 393678,
+   "endMs": 394638
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Nó không nói bảng nào, cột nào,",
+   "startMs": 395138,
+   "endMs": 397058
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "SQL ra sao.",
+   "startMs": 397418,
+   "endMs": 398398
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Nó chỉ nói: save một Order, trả",
+   "startMs": 399058,
+   "endMs": 401678
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "về id; getById một id, trả về Order.",
+   "startMs": 401678,
+   "endMs": 405238
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Có một mẹo viết rất hay: cứ",
+   "startMs": 406398,
+   "endMs": 408458
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "giả định thành phần mình cần đã",
+   "startMs": 408458,
+   "endMs": 410278
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "tồn tại, rồi định nghĩa nó.",
+   "startMs": 410278,
+   "endMs": 412078
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Trong controller, bạn muốn gọi",
+   "startMs": 412078,
+   "endMs": 414538
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "orderRepository->save(order).",
+   "startMs": 414538,
+   "endMs": 417758
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Vậy thì viết interface đúng như cách",
+   "startMs": 417758,
+   "endMs": 419958
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "bạn muốn gọi.",
+   "startMs": 419958,
+   "endMs": 421058
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Phần cài đặt để sau.",
+   "startMs": 421258,
+   "endMs": 422618
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Ngoài đời, SqlOrderRepository dùng",
+   "startMs": 423698,
+   "endMs": 427158
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "query builder, hoặc giấu một Eloquent",
+   "startMs": 427158,
+   "endMs": 429658
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "model bên trong.",
+   "startMs": 429658,
+   "endMs": 430598
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Trong test, MemoryOrderRepository giữ",
+   "startMs": 431198,
+   "endMs": 434618
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "đơn hàng trong một mảng.",
+   "startMs": 434618,
+   "endMs": 436278
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Sau này nếu chuyển sang gọi API",
+   "startMs": 436278,
+   "endMs": 438618
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "của hệ thống khác, thêm RemoteOrderRepository.",
+   "startMs": 438618,
+   "endMs": 442958
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Controller không cần biết đang dùng cái nào.",
+   "startMs": 442958,
+   "endMs": 445498
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Sau khi tách, controller chỉ còn vài bước.",
+   "startMs": 446618,
+   "endMs": 449598
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Lấy giá qua EbookRepository.",
+   "startMs": 449918,
+   "endMs": 452638
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Tạo Order trong một khối try catch,",
+   "startMs": 452638,
+   "endMs": 454838
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "vì constructor có thể ném lỗi.",
+   "startMs": 454838,
+   "endMs": 457158
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Gọi save.",
+   "startMs": 457758,
+   "endMs": 459218
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Lưu id vào session.",
+   "startMs": 459218,
+   "endMs": 460758
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Trả về trang tiếp theo.",
+   "startMs": 461438,
+   "endMs": 462998
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Phần MySQL nằm gọn trong một lớp.",
+   "startMs": 463198,
+   "endMs": 466058
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Phần nghiệp vụ là một đối tượng",
+   "startMs": 466058,
+   "endMs": 467958
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "PHP thuần, không kế thừa framework,",
+   "startMs": 467958,
+   "endMs": 470478
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "không gọi database.",
+   "startMs": 470898,
+   "endMs": 471938
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Và mỗi phần có thể test riêng.",
+   "startMs": 472838,
+   "endMs": 474698
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "Đó là lần tách đầu tiên, và",
+   "startMs": 475958,
+   "endMs": 478158
+  },
+  {
+   "part": "04-repository-kho-cua-doi-tuong-nghiep-vu",
+   "text": "cũng là lần tạo ra khác biệt lớn nhất.",
+   "startMs": 478158,
+   "endMs": 480198
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "Đến chương bốn, sách chỉ ra một",
+   "startMs": 481458,
+   "endMs": 484018
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "chỗ hay bị bỏ qua: phần đọc.",
+   "startMs": 484018,
+   "endMs": 486438
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "Thường thì ta lấy luôn entity dùng",
+   "startMs": 486538,
+   "endMs": 488638
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "để ghi, đưa cho view.",
+   "startMs": 488638,
+   "endMs": 489978
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "Nhưng entity đó mang theo đủ phương",
+   "startMs": 490658,
+   "endMs": 492758
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "thức đổi giá, ẩn sản phẩm, đổi trạng thái.",
+   "startMs": 492758,
+   "endMs": 495518
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "View chỉ cần hiển thị, lại cầm",
+   "startMs": 496098,
+   "endMs": 498038
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "một đối tượng có thể thay đổi dữ liệu.",
+   "startMs": 498038,
+   "endMs": 500518
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "Lâu dần, class phình to vì phục",
+   "startMs": 500798,
+   "endMs": 503278
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "vụ cả hai việc.",
+   "startMs": 503278,
+   "endMs": 504118
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "Sách đề nghị tách read model.",
+   "startMs": 505318,
+   "endMs": 507318
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "Có thể là một EbookReadModel với",
+   "startMs": 507318,
+   "endMs": 510098
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "EbookReadRepository riêng.",
+   "startMs": 510098,
+   "endMs": 512578
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "Cũng có thể nhẹ hơn: một interface",
+   "startMs": 512738,
+   "endMs": 514938
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "GetPrice với hàm ofEbook, chỉ trả về",
+   "startMs": 514938,
+   "endMs": 518338
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "con số cần dùng.",
+   "startMs": 518338,
+   "endMs": 519738
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "Cách nặng hơn là CQRS: lưu trữ",
+   "startMs": 519918,
+   "endMs": 522918
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "đọc riêng, cập nhật qua domain event.",
+   "startMs": 522918,
+   "endMs": 525538
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "Sách không đẩy bạn vào đó, vì",
+   "startMs": 526198,
+   "endMs": 528038
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "phải giữ nhất quán giữa hai kho.",
+   "startMs": 528038,
+   "endMs": 529638
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "Với đa số dự án, chung database",
+   "startMs": 530278,
+   "endMs": 532538
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "nhưng repository đọc riêng là đủ; chỉ",
+   "startMs": 532538,
+   "endMs": 535778
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "cần thêm integration test.",
+   "startMs": 535778,
+   "endMs": 537558
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "Rồi đến view model.",
+   "startMs": 538818,
+   "endMs": 539978
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "Đây là một DTO được tạo đúng",
+   "startMs": 540558,
+   "endMs": 542838
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "theo thứ màn hình cần.",
+   "startMs": 542838,
+   "endMs": 543918
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "EbookViewModel có formattedPrice, đã format sẵn.",
+   "startMs": 543918,
+   "endMs": 549018
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "OrderListViewModel có findRecentOrders",
+   "startMs": 549018,
+   "endMs": 552158
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "và toArray, hoặc JsonSerializable.",
+   "startMs": 552158,
+   "endMs": 555798
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "Không phải để bọc cho đẹp, mà",
+   "startMs": 555798,
+   "endMs": 557798
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "để tầng hiển thị không phải biết",
+   "startMs": 557798,
+   "endMs": 559678
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "cấu trúc dữ liệu bên trong.",
+   "startMs": 559678,
+   "endMs": 561018
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "Nguyên tắc gói lại một câu: đừng",
+   "startMs": 562318,
+   "endMs": 564298
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "dùng một đối tượng có thể thay",
+   "startMs": 564298,
+   "endMs": 566218
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "đổi và có logic phức tạp cho",
+   "startMs": 566218,
+   "endMs": 568358
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "việc chỉ đọc.",
+   "startMs": 568358,
+   "endMs": 569418
+  },
+  {
+   "part": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
+   "text": "Đọc thì trả đúng thứ cần đọc.",
+   "startMs": 569618,
+   "endMs": 571158
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Chương năm xử lý một chỗ phình khác: controller.",
+   "startMs": 572548,
+   "endMs": 575888
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Lý do controller phình rất dễ hiểu:",
+   "startMs": 576308,
+   "endMs": 578568
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "nó là nơi duy nhất ai cũng",
+   "startMs": 578728,
+   "endMs": 580368
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "nhét use case vào.",
+   "startMs": 580368,
+   "endMs": 581648
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Sách tách use case ra thành Application Service.",
+   "startMs": 582228,
+   "endMs": 585548
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Một service điều phối đúng một use",
+   "startMs": 586088,
+   "endMs": 587908
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "case, và gọi được từ web, từ",
+   "startMs": 587908,
+   "endMs": 590228
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "CLI, từ job, hay từ test.",
+   "startMs": 590228,
+   "endMs": 592748
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Đầu vào được gói thành Command.",
+   "startMs": 593268,
+   "endMs": 595068
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Ví dụ PlaceOrderCommand gồm",
+   "startMs": 595068,
+   "endMs": 597848
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "customerId, danh sách món, email.",
+   "startMs": 597848,
+   "endMs": 600508
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "PlaceOrderService có hàm handle nhận",
+   "startMs": 600508,
+   "endMs": 603528
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "command, trả về OrderId.",
+   "startMs": 603528,
+   "endMs": 607128
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Bên trong service làm những việc của nghiệp vụ.",
+   "startMs": 607128,
+   "endMs": 610308
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Lấy sản phẩm.",
+   "startMs": 610568,
+   "endMs": 611668
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Kiểm tra tồn kho, ném",
+   "startMs": 611888,
+   "endMs": 613488
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "OutOfStockException nếu hết.",
+   "startMs": 613488,
+   "endMs": 615788
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Tính tiền.",
+   "startMs": 616068,
+   "endMs": 617048
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Lấy id mới.",
+   "startMs": 617288,
+   "endMs": 618308
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Tạo Order.",
+   "startMs": 618908,
+   "endMs": 619608
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Lưu.",
+   "startMs": 620348,
+   "endMs": 620988
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Controller chỉ còn hai việc: đổi",
+   "startMs": 621228,
+   "endMs": 623708
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "request thành command, và trả response.",
+   "startMs": 623708,
+   "endMs": 626528
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Chương này cũng nói rõ cách nối dependency.",
+   "startMs": 627368,
+   "endMs": 630368
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Dùng constructor injection thay cho",
+   "startMs": 631168,
+   "endMs": 633388
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "service locator kiểu app()->make.",
+   "startMs": 633388,
+   "endMs": 636488
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Lý do rất thực dụng: nhìn constructor",
+   "startMs": 636488,
+   "endMs": 638928
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "là biết class cần gì.",
+   "startMs": 638928,
+   "endMs": 640568
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Còn service locator giấu dependency",
+   "startMs": 641068,
+   "endMs": 643928
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "đi, muốn biết phải đọc hết bên trong.",
+   "startMs": 643928,
+   "endMs": 646228
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Và lợi ích đo được nằm ở test.",
+   "startMs": 647128,
+   "endMs": 649288
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Test PlaceOrderService với một",
+   "startMs": 649848,
+   "endMs": 652188
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "repository trong bộ nhớ và một stub gửi mail.",
+   "startMs": 652188,
+   "endMs": 655748
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Không cần framework, không cần",
+   "startMs": 656328,
+   "endMs": 658068
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "database, không cần mạng.",
+   "startMs": 658068,
+   "endMs": 660188
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Use case chạy trong vài mili giây.",
+   "startMs": 660508,
+   "endMs": 662808
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "Đó mới là thứ khiến người ta",
+   "startMs": 663188,
+   "endMs": 664848
+  },
+  {
+   "part": "06-application-service-va-command",
+   "text": "dám sửa code.",
+   "startMs": 664848,
+   "endMs": 665508
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Chương sáu lùi lại nhìn toàn bộ hệ thống.",
+   "startMs": 666751,
+   "endMs": 670151
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Cách chia cũ là ba tầng: giao",
+   "startMs": 670391,
+   "endMs": 672251
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "diện, nghiệp vụ, truy cập dữ liệu.",
+   "startMs": 672251,
+   "endMs": 674671
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Nó vẫn hữu ích: biết đặt code",
+   "startMs": 674891,
+   "endMs": 676931
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "ở đâu, đổi một tầng thì ít",
+   "startMs": 676931,
+   "endMs": 679111
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "đụng tầng khác.",
+   "startMs": 679111,
+   "endMs": 679831
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Nhưng nó có hai rủi ro.",
+   "startMs": 680311,
+   "endMs": 681571
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Logic rò rỉ giữa các tầng, và",
+   "startMs": 682231,
+   "endMs": 684511
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "chỉ có kỷ luật con người mới ngăn được.",
+   "startMs": 684511,
+   "endMs": 686531
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Thêm tầng nữa thì thành một mớ",
+   "startMs": 687051,
+   "endMs": 688811
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "lasagna, đi qua bảy lớp mới tới câu SQL.",
+   "startMs": 688811,
+   "endMs": 692111
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Sách đề nghị ba tầng theo hướng",
+   "startMs": 693491,
+   "endMs": 695411
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "nghiệp vụ đứng giữa.",
+   "startMs": 695411,
+   "endMs": 696351
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Domain: entity, aggregate, value",
+   "startMs": 696351,
+   "endMs": 700031
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "object, domain service, domain event,",
+   "startMs": 700031,
+   "endMs": 703071
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "interface repository, factory.",
+   "startMs": 703371,
+   "endMs": 706031
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Tầng này không import framework.",
+   "startMs": 706231,
+   "endMs": 708191
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Application: use case handler,",
+   "startMs": 708551,
+   "endMs": 710891
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "command, query, transaction; sách gọi",
+   "startMs": 711171,
+   "endMs": 713971
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "là lớp keo.",
+   "startMs": 713971,
+   "endMs": 714951
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Infrastructure: framework, ORM,",
+   "startMs": 715511,
+   "endMs": 718331
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "adapter gọi dịch vụ ngoài, phần cài đặt interface.",
+   "startMs": 718331,
+   "endMs": 721351
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Tầng này test kiểu integration.",
+   "startMs": 721991,
+   "endMs": 723871
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Điểm cốt lõi là Dependency Rule: phụ",
+   "startMs": 724891,
+   "endMs": 728011
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "thuộc chỉ được hướng vào trong.",
+   "startMs": 728011,
+   "endMs": 729571
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Giao diện biết Application.",
+   "startMs": 730171,
+   "endMs": 732031
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Application biết Domain.",
+   "startMs": 732871,
+   "endMs": 734411
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Infrastructure cũng trỏ vào Domain,",
+   "startMs": 735391,
+   "endMs": 737311
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "nhưng Domain không biết ai đang cài đặt mình.",
+   "startMs": 737571,
+   "endMs": 740051
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Sách vẽ nó thành một mũi tên",
+   "startMs": 740551,
+   "endMs": 742171
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "vòng vào trong, và nhắc Hollywood",
+   "startMs": 742171,
+   "endMs": 744511
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Principle: đừng gọi tôi, tôi sẽ gọi bạn.",
+   "startMs": 744511,
+   "endMs": 747491
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Nối các tầng bằng một service provider.",
+   "startMs": 747491,
+   "endMs": 751551
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "OrderServiceProvider bind interface",
+   "startMs": 751551,
+   "endMs": 754471
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "OrderRepository với EloquentOrderRepository.",
+   "startMs": 754471,
+   "endMs": 759591
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Khi chạy thật, container đưa bản Eloquent.",
+   "startMs": 759591,
+   "endMs": 762331
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Khi test, đưa bản trong bộ nhớ.",
+   "startMs": 762911,
+   "endMs": 764991
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Luồng đặt hàng đi như sau: request",
+   "startMs": 765551,
+   "endMs": 767591
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "vào controller, controller gọi",
+   "startMs": 767591,
+   "endMs": 769891
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "PlaceOrderHandler, handler dùng",
+   "startMs": 769891,
+   "endMs": 772551
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "repository, lưu xong phát OrderPlaced,",
+   "startMs": 772551,
+   "endMs": 775391
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "listener gửi email.",
+   "startMs": 775391,
+   "endMs": 777951
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Mỗi mũi tên đều đi vào trong,",
+   "startMs": 777951,
+   "endMs": 779731
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "không có mũi tên nào từ Domain",
+   "startMs": 780011,
+   "endMs": 782131
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "trỏ ra database.",
+   "startMs": 782131,
+   "endMs": 783431
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Nhưng sách cũng nhắc: không phải việc",
+   "startMs": 784831,
+   "endMs": 786631
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "gì cũng cần nhiều lớp.",
+   "startMs": 786631,
+   "endMs": 788511
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Một chức năng CRUD đơn giản mà",
+   "startMs": 788711,
+   "endMs": 791291
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "bắt đi qua đủ bốn tầng thì",
+   "startMs": 791291,
+   "endMs": 793131
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "chỉ làm chậm team.",
+   "startMs": 793131,
+   "endMs": 794731
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "Kiến trúc để giảm chi phí thay",
+   "startMs": 794731,
+   "endMs": 796651
+  },
+  {
+   "part": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
+   "text": "đổi, không phải để trông có vẻ chuyên nghiệp.",
+   "startMs": 796651,
+   "endMs": 799307
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Chương bảy đưa cách nhìn cuối cùng:",
+   "startMs": 800687,
+   "endMs": 803067
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Hexagonal Architecture.",
+   "startMs": 803287,
+   "endMs": 805067
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Alistair Cockburn đề xuất năm 2005.",
+   "startMs": 805727,
+   "endMs": 808727
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Cái tên lục giác chỉ là ẩn",
+   "startMs": 809507,
+   "endMs": 811187
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "dụ; không có nghĩa là hệ thống",
+   "startMs": 811187,
+   "endMs": 812827
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "phải có sáu cạnh.",
+   "startMs": 812827,
+   "endMs": 813907
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Hình dung một cổng USB.",
+   "startMs": 814487,
+   "endMs": 816127
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Lõi máy không biết bạn cắm chuột,",
+   "startMs": 816807,
+   "endMs": 818427
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "bàn phím hay ổ cứng.",
+   "startMs": 818767,
+   "endMs": 819927
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Nó chỉ biết một chuẩn cắm.",
+   "startMs": 820547,
+   "endMs": 822207
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Port là chuẩn đó; adapter là từng",
+   "startMs": 822787,
+   "endMs": 825087
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "thiết bị cụ thể.",
+   "startMs": 825087,
+   "endMs": 826047
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Sách chỉ ra những chỗ phân lớp",
+   "startMs": 827267,
+   "endMs": 829067
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "còn chưa giải quyết.",
+   "startMs": 829067,
+   "endMs": 830067
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Phụ thuộc vẫn có thể nằm ngầm.",
+   "startMs": 830067,
+   "endMs": 832947
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Thêm một kênh mới, ví dụ CLI,",
+   "startMs": 833147,
+   "endMs": 835487
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "vẫn phải sửa nhiều.",
+   "startMs": 835647,
+   "endMs": 836707
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Test tầng application vẫn có thể chậm",
+   "startMs": 836707,
+   "endMs": 839947
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "nếu khởi động framework.",
+   "startMs": 839947,
+   "endMs": 841527
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Và tích hợp với hệ thống khác",
+   "startMs": 841847,
+   "endMs": 843487
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "dễ làm bẩn domain.",
+   "startMs": 843487,
+   "endMs": 844967
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Hexagonal tách hai loại port.",
+   "startMs": 846647,
+   "endMs": 848087
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Port đầu vào là cách thế giới",
+   "startMs": 848667,
+   "endMs": 850447
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "gọi vào lõi: UI, API, CLI, bộ test.",
+   "startMs": 850447,
+   "endMs": 854547
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Port đầu ra là cách lõi gọi",
+   "startMs": 854547,
+   "endMs": 856927
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "ra ngoài: lưu trữ, gửi thông báo,",
+   "startMs": 856927,
+   "endMs": 859387
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "dịch vụ bên thứ ba.",
+   "startMs": 859627,
+   "endMs": 860947
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Cả hai đều là interface nằm trong core.",
+   "startMs": 861287,
+   "endMs": 864007
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Adapter là code cụ thể ở Infrastructure.",
+   "startMs": 864627,
+   "endMs": 867467
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Và mỗi port nên có ít nhất",
+   "startMs": 868267,
+   "endMs": 870227
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "một adapter thật, một adapter giả cho test.",
+   "startMs": 870227,
+   "endMs": 873447
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Cockburn đề xuất mô hình này chủ",
+   "startMs": 873447,
+   "endMs": 876287
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "yếu vì testing.",
+   "startMs": 876287,
+   "endMs": 877367
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Cách áp dụng có bốn bước.",
+   "startMs": 878487,
+   "endMs": 880407
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Xác định port.",
+   "startMs": 880407,
+   "endMs": 882047
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Định nghĩa interface trong core.",
+   "startMs": 882047,
+   "endMs": 884267
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Viết adapter.",
+   "startMs": 884267,
+   "endMs": 885367
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Nối bằng dependency injection.",
+   "startMs": 885947,
+   "endMs": 888247
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Ví dụ trong sách.",
+   "startMs": 889427,
+   "endMs": 890707
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "OrderRepository là port;",
+   "startMs": 890707,
+   "endMs": 894097
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "EloquentOrderRepository và",
+   "startMs": 894097,
+   "endMs": 895887
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "InMemoryOrderRepository là hai adapter.",
+   "startMs": 895887,
+   "endMs": 899687
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "OrderNotification là port với hàm",
+   "startMs": 899687,
+   "endMs": 903227
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "sendOrderConfirmation; EmailOrderNotification và",
+   "startMs": 903227,
+   "endMs": 907467
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "LogOrderNotification là hai adapter.",
+   "startMs": 907467,
+   "endMs": 910707
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "HexagonBindings nối tất cả lại.",
+   "startMs": 910707,
+   "endMs": 914327
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Test PlaceOrderHandler chỉ cần hai",
+   "startMs": 914327,
+   "endMs": 917107
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "adapter giả, không cần khởi động Laravel.",
+   "startMs": 917107,
+   "endMs": 919687
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Sách còn mở rộng.",
+   "startMs": 920987,
+   "endMs": 922507
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Một ImportOrderCommand đọc file CSV:",
+   "startMs": 922507,
+   "endMs": 926007
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "đọc file là adapter, phần xử lý",
+   "startMs": 926007,
+   "endMs": 928407
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "đơn vẫn là core.",
+   "startMs": 928407,
+   "endMs": 929807
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Lưu hai database song song: hai",
+   "startMs": 930147,
+   "endMs": 932387
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "adapter cùng một port.",
+   "startMs": 932387,
+   "endMs": 933927
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Hai bounded context nói chuyện với",
+   "startMs": 934567,
+   "endMs": 936247
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "nhau qua một port CustomerContext,",
+   "startMs": 936247,
+   "endMs": 939307
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "thay vì gọi thẳng vào database của nhau.",
+   "startMs": 939307,
+   "endMs": 941307
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Cái giá cũng được nói rõ.",
+   "startMs": 942507,
+   "endMs": 944247
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Nhiều interface và class hơn.",
+   "startMs": 944467,
+   "endMs": 946727
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Cần quy ước đặt tên, nếu không sẽ rối.",
+   "startMs": 947227,
+   "endMs": 949467
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Và đừng trừu tượng hóa mọi thứ.",
+   "startMs": 949467,
+   "endMs": 951827
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Chỉ tách ở chỗ dễ thay đổi",
+   "startMs": 952367,
+   "endMs": 954127
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "hoặc khó test.",
+   "startMs": 954127,
+   "endMs": 954987
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "Đó là lý do sách nhắc đi",
+   "startMs": 955607,
+   "endMs": 957087
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "nhắc lại: kiến trúc là công cụ,",
+   "startMs": 957087,
+   "endMs": 959247
+  },
+  {
+   "part": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
+   "text": "không phải tôn giáo.",
+   "startMs": 959487,
+   "endMs": 960427
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "Đọc hết bảy chương, câu hỏi quay",
+   "startMs": 961733,
+   "endMs": 964153
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "lại rất đơn giản.",
+   "startMs": 964153,
+   "endMs": 965593
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "Đoạn code này có chạy được một",
+   "startMs": 965793,
+   "endMs": 967453
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "mình, trong bộ nhớ, không cần gì",
+   "startMs": 967453,
+   "endMs": 969873
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "bên ngoài không?",
+   "startMs": 969873,
+   "endMs": 970733
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "Nếu có, nó là nghiệp vụ, và",
+   "startMs": 971233,
+   "endMs": 973453
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "nên được giữ sạch.",
+   "startMs": 973453,
+   "endMs": 974933
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "Nếu không, nó là hạ tầng, và",
+   "startMs": 975033,
+   "endMs": 977253
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "nên bị đẩy ra rìa sau một interface.",
+   "startMs": 977253,
+   "endMs": 979393
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "Bạn không cần biến cả dự án",
+   "startMs": 979993,
+   "endMs": 981713
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "thành hexagonal trong một tuần.",
+   "startMs": 981713,
+   "endMs": 983973
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "Chọn một use case thật.",
+   "startMs": 983973,
+   "endMs": 986033
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "Tách một phụ thuộc khó test nhất.",
+   "startMs": 986273,
+   "endMs": 987993
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "Viết một test chạy không cần database.",
+   "startMs": 988533,
+   "endMs": 990533
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "Rồi lặp lại.",
+   "startMs": 991273,
+   "endMs": 992073
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "Cuốn sách này không hứa kiến trúc",
+   "startMs": 993213,
+   "endMs": 994713
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "đẹp sẽ làm code chạy nhanh hơn.",
+   "startMs": 994713,
+   "endMs": 996753
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "Nó hứa một điều khiêm tốn hơn:",
+   "startMs": 997373,
+   "endMs": 999013
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "khi yêu cầu đổi, bạn biết phải",
+   "startMs": 999013,
+   "endMs": 1001193
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "sửa ở đâu.",
+   "startMs": 1001193,
+   "endMs": 1001953
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "Và đó thường là thứ đắt nhất",
+   "startMs": 1002473,
+   "endMs": 1004353
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "trong một hệ thống sống đủ lâu.",
+   "startMs": 1004353,
+   "endMs": 1006153
+  },
+  {
+   "part": "09-khep-lai",
+   "text": "Cảm ơn bạn đã nghe đến đây.",
+   "startMs": 1006573,
+   "endMs": 1008073
+  }
+ ]
+}

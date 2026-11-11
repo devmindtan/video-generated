@@ -1,0 +1,2941 @@
+[
+  [
+    {
+      "text": "Một controller đặt hàng e-book, gần ba mươi dòng.",
+      "startMs": 0,
+      "endMs": 3800,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Nó lấy giá từ database, nhân với",
+      "startMs": 4340,
+      "endMs": 6560,
+      "timestampMs": 4340,
+      "confidence": null
+    },
+    {
+      "text": "số lượng, ghi vào bảng orders, rồi",
+      "startMs": 6560,
+      "endMs": 9060,
+      "timestampMs": 6560,
+      "confidence": null
+    },
+    {
+      "text": "nhét mã đơn vào session.",
+      "startMs": 9060,
+      "endMs": 10860,
+      "timestampMs": 9060,
+      "confidence": null
+    },
+    {
+      "text": "Chạy đúng.",
+      "startMs": 11400,
+      "endMs": 12040,
+      "timestampMs": 11400,
+      "confidence": null
+    },
+    {
+      "text": "Nhưng thử hỏi: nghiệp vụ tính tiền",
+      "startMs": 13200,
+      "endMs": 15200,
+      "timestampMs": 13200,
+      "confidence": null
+    },
+    {
+      "text": "nằm ở đâu?",
+      "startMs": 15200,
+      "endMs": 16000,
+      "timestampMs": 15200,
+      "confidence": null
+    },
+    {
+      "text": "Nếu ngày mai đổi sang PostgreSQL, thêm",
+      "startMs": 16540,
+      "endMs": 19620,
+      "timestampMs": 16540,
+      "confidence": null
+    },
+    {
+      "text": "một job gửi mail, hay chỉ muốn",
+      "startMs": 19620,
+      "endMs": 21960,
+      "timestampMs": 19620,
+      "confidence": null
+    },
+    {
+      "text": "viết một test cho phần tính tiền,",
+      "startMs": 21960,
+      "endMs": 24040,
+      "timestampMs": 21960,
+      "confidence": null
+    },
+    {
+      "text": "bạn sẽ phải sửa những đâu?",
+      "startMs": 24140,
+      "endMs": 25520,
+      "timestampMs": 24140,
+      "confidence": null
+    },
+    {
+      "text": "Đó là câu hỏi cuốn Kiến trúc",
+      "startMs": 26520,
+      "endMs": 28400,
+      "timestampMs": 26520,
+      "confidence": null
+    },
+    {
+      "text": "ứng dụng web đi tìm lời giải.",
+      "startMs": 28400,
+      "endMs": 31080,
+      "timestampMs": 28400,
+      "confidence": null
+    },
+    {
+      "text": "Sách kể một chức năng đặt hàng,",
+      "startMs": 31080,
+      "endMs": 32600,
+      "timestampMs": 31080,
+      "confidence": null
+    },
+    {
+      "text": "rồi mổ nó ra từng lớp: tách",
+      "startMs": 32860,
+      "endMs": 34660,
+      "timestampMs": 32860,
+      "confidence": null
+    },
+    {
+      "text": "nghiệp vụ khỏi database, khỏi",
+      "startMs": 34660,
+      "endMs": 36680,
+      "timestampMs": 34660,
+      "confidence": null
+    },
+    {
+      "text": "framework, khỏi cách giao tiếp bên ngoài.",
+      "startMs": 36680,
+      "endMs": 39400,
+      "timestampMs": 36680,
+      "confidence": null
+    },
+    {
+      "text": "Mình sẽ đi qua bảy chương, giữ",
+      "startMs": 39560,
+      "endMs": 41600,
+      "timestampMs": 39560,
+      "confidence": null
+    },
+    {
+      "text": "đúng một ví dụ xuyên suốt, và",
+      "startMs": 41600,
+      "endMs": 43700,
+      "timestampMs": 41600,
+      "confidence": null
+    },
+    {
+      "text": "dừng ở những chỗ đáng lấy.",
+      "startMs": 43700,
+      "endMs": 45400,
+      "timestampMs": 43700,
+      "confidence": null
+    },
+    {
+      "text": "Cái đáng lấy không phải một cây",
+      "startMs": 45600,
+      "endMs": 47540,
+      "timestampMs": 45600,
+      "confidence": null
+    },
+    {
+      "text": "thư mục đẹp.",
+      "startMs": 47540,
+      "endMs": 48640,
+      "timestampMs": 47540,
+      "confidence": null
+    },
+    {
+      "text": "Mà là một câu hỏi dùng được",
+      "startMs": 48660,
+      "endMs": 50420,
+      "timestampMs": 48660,
+      "confidence": null
+    },
+    {
+      "text": "mỗi ngày: đoạn code này có chạy",
+      "startMs": 50420,
+      "endMs": 52600,
+      "timestampMs": 50420,
+      "confidence": null
+    },
+    {
+      "text": "được một mình, trong bộ nhớ, không",
+      "startMs": 52600,
+      "endMs": 55240,
+      "timestampMs": 52600,
+      "confidence": null
+    },
+    {
+      "text": "cần database, không cần framework không?",
+      "startMs": 55240,
+      "endMs": 57760,
+      "timestampMs": 55240,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Bắt đầu bằng đúng đoạn code đó.",
+      "startMs": 0,
+      "endMs": 2360,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Hàm orderEbook nhận request, gọi",
+      "startMs": 2880,
+      "endMs": 5240,
+      "timestampMs": 2880,
+      "confidence": null
+    },
+    {
+      "text": "database lấy giá, nhân với số lượng,",
+      "startMs": 5240,
+      "endMs": 7680,
+      "timestampMs": 5240,
+      "confidence": null
+    },
+    {
+      "text": "insert vào bảng orders, lưu id vào session.",
+      "startMs": 8040,
+      "endMs": 11140,
+      "timestampMs": 8040,
+      "confidence": null
+    },
+    {
+      "text": "Nhìn qua thì gọn.",
+      "startMs": 11860,
+      "endMs": 12940,
+      "timestampMs": 11860,
+      "confidence": null
+    },
+    {
+      "text": "Nhưng trong cùng một hàm có đủ",
+      "startMs": 14040,
+      "endMs": 15840,
+      "timestampMs": 14040,
+      "confidence": null
+    },
+    {
+      "text": "thứ: một câu SQL, một phép tính",
+      "startMs": 15840,
+      "endMs": 18840,
+      "timestampMs": 15840,
+      "confidence": null
+    },
+    {
+      "text": "tiền, một quy ước lưu session, và",
+      "startMs": 18840,
+      "endMs": 21600,
+      "timestampMs": 18840,
+      "confidence": null
+    },
+    {
+      "text": "cả cách trả về của framework.",
+      "startMs": 21600,
+      "endMs": 23360,
+      "timestampMs": 21600,
+      "confidence": null
+    },
+    {
+      "text": "Muốn test phần tính tiền, bạn phải dựng database.",
+      "startMs": 23900,
+      "endMs": 26740,
+      "timestampMs": 23900,
+      "confidence": null
+    },
+    {
+      "text": "Muốn đổi cách lưu đơn, bạn phải",
+      "startMs": 26740,
+      "endMs": 29260,
+      "timestampMs": 26740,
+      "confidence": null
+    },
+    {
+      "text": "sửa một chỗ không hề nói gì",
+      "startMs": 29260,
+      "endMs": 30960,
+      "timestampMs": 29260,
+      "confidence": null
+    },
+    {
+      "text": "về việc lưu trữ.",
+      "startMs": 30960,
+      "endMs": 32240,
+      "timestampMs": 30960,
+      "confidence": null
+    },
+    {
+      "text": "Và không ai kiểm tra email có",
+      "startMs": 32240,
+      "endMs": 34760,
+      "timestampMs": 32240,
+      "confidence": null
+    },
+    {
+      "text": "đúng không, số lượng có lớn hơn không.",
+      "startMs": 34760,
+      "endMs": 37080,
+      "timestampMs": 34760,
+      "confidence": null
+    },
+    {
+      "text": "Sách gọi phần này là code trộn lẫn.",
+      "startMs": 38260,
+      "endMs": 40780,
+      "timestampMs": 38260,
+      "confidence": null
+    },
+    {
+      "text": "Phần nghiệp vụ thật sự chỉ có",
+      "startMs": 41020,
+      "endMs": 42700,
+      "timestampMs": 41020,
+      "confidence": null
+    },
+    {
+      "text": "một câu: đơn hàng này gồm gì,",
+      "startMs": 42700,
+      "endMs": 44780,
+      "timestampMs": 42700,
+      "confidence": null
+    },
+    {
+      "text": "giá bao nhiêu.",
+      "startMs": 45000,
+      "endMs": 45960,
+      "timestampMs": 45000,
+      "confidence": null
+    },
+    {
+      "text": "Phần còn lại là hạ tầng: database,",
+      "startMs": 46240,
+      "endMs": 48480,
+      "timestampMs": 46240,
+      "confidence": null
+    },
+    {
+      "text": "session, framework, thư viện.",
+      "startMs": 48700,
+      "endMs": 50680,
+      "timestampMs": 48700,
+      "confidence": null
+    },
+    {
+      "text": "Khi hai thứ dính vào nhau, có",
+      "startMs": 50680,
+      "endMs": 53000,
+      "timestampMs": 50680,
+      "confidence": null
+    },
+    {
+      "text": "năm chuyện thường xảy ra.",
+      "startMs": 53000,
+      "endMs": 54480,
+      "timestampMs": 53000,
+      "confidence": null
+    },
+    {
+      "text": "Đọc code không thấy câu chuyện nghiệp",
+      "startMs": 54880,
+      "endMs": 56860,
+      "timestampMs": 54880,
+      "confidence": null
+    },
+    {
+      "text": "vụ, chỉ thấy công nghệ.",
+      "startMs": 56860,
+      "endMs": 58700,
+      "timestampMs": 56860,
+      "confidence": null
+    },
+    {
+      "text": "Đổi công nghệ kéo theo sửa logic.",
+      "startMs": 58940,
+      "endMs": 60840,
+      "timestampMs": 58940,
+      "confidence": null
+    },
+    {
+      "text": "Test tự động khó, vì mỗi test",
+      "startMs": 61380,
+      "endMs": 63460,
+      "timestampMs": 61380,
+      "confidence": null
+    },
+    {
+      "text": "phải mang theo cả môi trường.",
+      "startMs": 63460,
+      "endMs": 65520,
+      "timestampMs": 63460,
+      "confidence": null
+    },
+    {
+      "text": "Dữ liệu không được bảo đảm hợp",
+      "startMs": 65780,
+      "endMs": 67220,
+      "timestampMs": 65780,
+      "confidence": null
+    },
+    {
+      "text": "lệ, vì chẳng có chỗ nào đứng",
+      "startMs": 67220,
+      "endMs": 69220,
+      "timestampMs": 67220,
+      "confidence": null
+    },
+    {
+      "text": "ra kiểm tra.",
+      "startMs": 69220,
+      "endMs": 69960,
+      "timestampMs": 69220,
+      "confidence": null
+    },
+    {
+      "text": "Và code nhanh chóng thành thứ không",
+      "startMs": 70480,
+      "endMs": 72380,
+      "timestampMs": 70480,
+      "confidence": null
+    },
+    {
+      "text": "ai dám sửa, tức là legacy.",
+      "startMs": 72380,
+      "endMs": 74520,
+      "timestampMs": 72380,
+      "confidence": null
+    },
+    {
+      "text": "Ngược lại, khi tách được, lợi ích",
+      "startMs": 75800,
+      "endMs": 78060,
+      "timestampMs": 75800,
+      "confidence": null
+    },
+    {
+      "text": "cũng rất cụ thể.",
+      "startMs": 78060,
+      "endMs": 78980,
+      "timestampMs": 78060,
+      "confidence": null
+    },
+    {
+      "text": "Code nghiệp vụ đọc như một câu",
+      "startMs": 78980,
+      "endMs": 81120,
+      "timestampMs": 78980,
+      "confidence": null
+    },
+    {
+      "text": "chuyện: tạo đơn, kiểm tra, lưu.",
+      "startMs": 81120,
+      "endMs": 84040,
+      "timestampMs": 81120,
+      "confidence": null
+    },
+    {
+      "text": "Test chạy trong bộ nhớ, không cần dựng MySQL.",
+      "startMs": 84300,
+      "endMs": 87280,
+      "timestampMs": 84300,
+      "confidence": null
+    },
+    {
+      "text": "Đổi hạ tầng chỉ sửa đúng phần hạ tầng.",
+      "startMs": 88020,
+      "endMs": 90940,
+      "timestampMs": 88020,
+      "confidence": null
+    },
+    {
+      "text": "Và người mới vào đọc một file",
+      "startMs": 91160,
+      "endMs": 92840,
+      "timestampMs": 91160,
+      "confidence": null
+    },
+    {
+      "text": "là hiểu quy tắc, không phải lần",
+      "startMs": 92840,
+      "endMs": 94900,
+      "timestampMs": 92840,
+      "confidence": null
+    },
+    {
+      "text": "theo mười lớp.",
+      "startMs": 94900,
+      "endMs": 96000,
+      "timestampMs": 94900,
+      "confidence": null
+    },
+    {
+      "text": "Sách nhắc một câu đáng nhớ: nếu",
+      "startMs": 96140,
+      "endMs": 98020,
+      "timestampMs": 96140,
+      "confidence": null
+    },
+    {
+      "text": "ứng dụng sống dài hơn hai năm,",
+      "startMs": 98020,
+      "endMs": 99640,
+      "timestampMs": 98020,
+      "confidence": null
+    },
+    {
+      "text": "việc tách khỏi hạ tầng rất đáng làm.",
+      "startMs": 100120,
+      "endMs": 101980,
+      "timestampMs": 100120,
+      "confidence": null
+    },
+    {
+      "text": "Đó là nhận định của tác giả,",
+      "startMs": 102580,
+      "endMs": 104360,
+      "timestampMs": 102580,
+      "confidence": null
+    },
+    {
+      "text": "không phải một con số đo được.",
+      "startMs": 104540,
+      "endMs": 106040,
+      "timestampMs": 104540,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Vậy lấy gì để biết một đoạn",
+      "startMs": 0,
+      "endMs": 1940,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "code là core hay hạ tầng?",
+      "startMs": 1940,
+      "endMs": 4200,
+      "timestampMs": 1940,
+      "confidence": null
+    },
+    {
+      "text": "Sách đưa một định nghĩa rất thực",
+      "startMs": 4420,
+      "endMs": 5840,
+      "timestampMs": 4420,
+      "confidence": null
+    },
+    {
+      "text": "dụng: core code là code chạy được",
+      "startMs": 5840,
+      "endMs": 7900,
+      "timestampMs": 5840,
+      "confidence": null
+    },
+    {
+      "text": "chỉ với bộ nhớ và CPU.",
+      "startMs": 8240,
+      "endMs": 9880,
+      "timestampMs": 8240,
+      "confidence": null
+    },
+    {
+      "text": "Không database, không gọi mạng, không",
+      "startMs": 10660,
+      "endMs": 13060,
+      "timestampMs": 10660,
+      "confidence": null
+    },
+    {
+      "text": "đọc file, không đồng hồ hệ thống, không SMTP.",
+      "startMs": 13060,
+      "endMs": 16300,
+      "timestampMs": 13060,
+      "confidence": null
+    },
+    {
+      "text": "Quy tắc thứ nhất: không phụ thuộc",
+      "startMs": 17040,
+      "endMs": 18760,
+      "timestampMs": 17040,
+      "confidence": null
+    },
+    {
+      "text": "trực tiếp vào hệ thống bên ngoài.",
+      "startMs": 18760,
+      "endMs": 20920,
+      "timestampMs": 18760,
+      "confidence": null
+    },
+    {
+      "text": "Quy tắc thứ hai: không cần môi",
+      "startMs": 21120,
+      "endMs": 22860,
+      "timestampMs": 21120,
+      "confidence": null
+    },
+    {
+      "text": "trường đặc biệt.",
+      "startMs": 22860,
+      "endMs": 23800,
+      "timestampMs": 22860,
+      "confidence": null
+    },
+    {
+      "text": "Không cần web server, không cần CLI,",
+      "startMs": 23800,
+      "endMs": 26780,
+      "timestampMs": 23800,
+      "confidence": null
+    },
+    {
+      "text": "không cần framework, không cần biến",
+      "startMs": 26940,
+      "endMs": 28980,
+      "timestampMs": 26940,
+      "confidence": null
+    },
+    {
+      "text": "POST hay session.",
+      "startMs": 28980,
+      "endMs": 30860,
+      "timestampMs": 28980,
+      "confidence": null
+    },
+    {
+      "text": "Thiếu một trong hai, nó là hạ tầng.",
+      "startMs": 31040,
+      "endMs": 33160,
+      "timestampMs": 31040,
+      "confidence": null
+    },
+    {
+      "text": "Một hàm tính VAT là core.",
+      "startMs": 34460,
+      "endMs": 36500,
+      "timestampMs": 34460,
+      "confidence": null
+    },
+    {
+      "text": "Một đối tượng Order tự tính tổng",
+      "startMs": 37140,
+      "endMs": 38820,
+      "timestampMs": 37140,
+      "confidence": null
+    },
+    {
+      "text": "tiền là core.",
+      "startMs": 38820,
+      "endMs": 39980,
+      "timestampMs": 38820,
+      "confidence": null
+    },
+    {
+      "text": "Một OrderService chỉ dùng entity và",
+      "startMs": 40600,
+      "endMs": 43120,
+      "timestampMs": 40600,
+      "confidence": null
+    },
+    {
+      "text": "interface là core.",
+      "startMs": 43120,
+      "endMs": 44580,
+      "timestampMs": 43120,
+      "confidence": null
+    },
+    {
+      "text": "Còn câu SQL, lời gọi HTTP, đoạn",
+      "startMs": 45140,
+      "endMs": 48520,
+      "timestampMs": 45140,
+      "confidence": null
+    },
+    {
+      "text": "đọc file, controller, Eloquent model: hạ tầng.",
+      "startMs": 48520,
+      "endMs": 52340,
+      "timestampMs": 48520,
+      "confidence": null
+    },
+    {
+      "text": "Có một cách nói dễ nhớ: hạ",
+      "startMs": 52340,
+      "endMs": 54300,
+      "timestampMs": 52340,
+      "confidence": null
+    },
+    {
+      "text": "tầng là phần còn lại sau khi trừ core.",
+      "startMs": 54300,
+      "endMs": 56240,
+      "timestampMs": 54300,
+      "confidence": null
+    },
+    {
+      "text": "Và đừng nhầm thư mục với bản chất.",
+      "startMs": 56880,
+      "endMs": 59140,
+      "timestampMs": 56880,
+      "confidence": null
+    },
+    {
+      "text": "Cùng nằm trong thư mục Service, một",
+      "startMs": 59280,
+      "endMs": 61300,
+      "timestampMs": 59280,
+      "confidence": null
+    },
+    {
+      "text": "file có thể là core, file bên",
+      "startMs": 61300,
+      "endMs": 63460,
+      "timestampMs": 61300,
+      "confidence": null
+    },
+    {
+      "text": "cạnh có thể là hạ tầng.",
+      "startMs": 63460,
+      "endMs": 65520,
+      "timestampMs": 63460,
+      "confidence": null
+    },
+    {
+      "text": "Điều quyết định là nó có chạm",
+      "startMs": 65780,
+      "endMs": 67700,
+      "timestampMs": 65780,
+      "confidence": null
+    },
+    {
+      "text": "vào thế giới bên ngoài hay không.",
+      "startMs": 67700,
+      "endMs": 69240,
+      "timestampMs": 67700,
+      "confidence": null
+    },
+    {
+      "text": "Sách còn cảnh báo một cái bẫy:",
+      "startMs": 70500,
+      "endMs": 72420,
+      "timestampMs": 70500,
+      "confidence": null
+    },
+    {
+      "text": "đặt interface lên trên hạ tầng không",
+      "startMs": 72500,
+      "endMs": 75520,
+      "timestampMs": 72500,
+      "confidence": null
+    },
+    {
+      "text": "tự biến nó thành core.",
+      "startMs": 75520,
+      "endMs": 76780,
+      "timestampMs": 75520,
+      "confidence": null
+    },
+    {
+      "text": "Một interface Connection với hàm",
+      "startMs": 76780,
+      "endMs": 79740,
+      "timestampMs": 76780,
+      "confidence": null
+    },
+    {
+      "text": "insert bảng và dữ liệu vẫn lộ",
+      "startMs": 79740,
+      "endMs": 82040,
+      "timestampMs": 79740,
+      "confidence": null
+    },
+    {
+      "text": "nguyên khái niệm database.",
+      "startMs": 82040,
+      "endMs": 84000,
+      "timestampMs": 82040,
+      "confidence": null
+    },
+    {
+      "text": "Che bằng tên gọi không đủ; phải",
+      "startMs": 84000,
+      "endMs": 85900,
+      "timestampMs": 84000,
+      "confidence": null
+    },
+    {
+      "text": "che bằng ý nghĩa nghiệp vụ.",
+      "startMs": 85900,
+      "endMs": 87960,
+      "timestampMs": 85900,
+      "confidence": null
+    },
+    {
+      "text": "Ví dụ dễ thấy nhất là đồng hồ.",
+      "startMs": 88160,
+      "endMs": 90520,
+      "timestampMs": 88160,
+      "confidence": null
+    },
+    {
+      "text": "Gọi Carbon::now ở giữa logic thì test",
+      "startMs": 90680,
+      "endMs": 93880,
+      "timestampMs": 90680,
+      "confidence": null
+    },
+    {
+      "text": "nào cũng phụ thuộc thời gian thật.",
+      "startMs": 93880,
+      "endMs": 95700,
+      "timestampMs": 93880,
+      "confidence": null
+    },
+    {
+      "text": "Thay bằng một interface Clock, rồi",
+      "startMs": 96000,
+      "endMs": 98060,
+      "timestampMs": 96000,
+      "confidence": null
+    },
+    {
+      "text": "SystemClock ở ngoài, trong test dùng FakeClock.",
+      "startMs": 98060,
+      "endMs": 101800,
+      "timestampMs": 98060,
+      "confidence": null
+    },
+    {
+      "text": "Giờ muốn kiểm tra chuyện gì xảy",
+      "startMs": 101800,
+      "endMs": 103460,
+      "timestampMs": 101800,
+      "confidence": null
+    },
+    {
+      "text": "ra lúc nửa đêm, bạn chỉ cần",
+      "startMs": 103460,
+      "endMs": 105940,
+      "timestampMs": 103460,
+      "confidence": null
+    },
+    {
+      "text": "chỉnh cái đồng hồ giả.",
+      "startMs": 105940,
+      "endMs": 107040,
+      "timestampMs": 105940,
+      "confidence": null
+    },
+    {
+      "text": "Đó là toàn bộ tinh thần của",
+      "startMs": 108340,
+      "endMs": 110060,
+      "timestampMs": 108340,
+      "confidence": null
+    },
+    {
+      "text": "chương này: tìm đúng đường ranh giới,",
+      "startMs": 110060,
+      "endMs": 112440,
+      "timestampMs": 110060,
+      "confidence": null
+    },
+    {
+      "text": "rồi giữ nó bằng những thứ nhỏ như vậy.",
+      "startMs": 112720,
+      "endMs": 114680,
+      "timestampMs": 112720,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Sang chương ba, sách so hai cách",
+      "startMs": 0,
+      "endMs": 2480,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "viết cùng một nghiệp vụ.",
+      "startMs": 2480,
+      "endMs": 3980,
+      "timestampMs": 2480,
+      "confidence": null
+    },
+    {
+      "text": "Cách thứ nhất là Transaction Script:",
+      "startMs": 4160,
+      "endMs": 6500,
+      "timestampMs": 4160,
+      "confidence": null
+    },
+    {
+      "text": "mọi bước nằm trong controller, dữ liệu",
+      "startMs": 6840,
+      "endMs": 9120,
+      "timestampMs": 6840,
+      "confidence": null
+    },
+    {
+      "text": "chỉ là mảng, không ai giữ luật.",
+      "startMs": 9120,
+      "endMs": 11320,
+      "timestampMs": 9120,
+      "confidence": null
+    },
+    {
+      "text": "Cách thứ hai là Domain Model: dữ",
+      "startMs": 11520,
+      "endMs": 14140,
+      "timestampMs": 11520,
+      "confidence": null
+    },
+    {
+      "text": "liệu và hành vi nằm chung trong đối tượng.",
+      "startMs": 14140,
+      "endMs": 16720,
+      "timestampMs": 14140,
+      "confidence": null
+    },
+    {
+      "text": "Ví dụ là entity Order.",
+      "startMs": 17000,
+      "endMs": 18740,
+      "timestampMs": 17000,
+      "confidence": null
+    },
+    {
+      "text": "Constructor nhận ebookId, email,",
+      "startMs": 19480,
+      "endMs": 21960,
+      "timestampMs": 19480,
+      "confidence": null
+    },
+    {
+      "text": "quantity, pricePerUnit.",
+      "startMs": 22160,
+      "endMs": 24780,
+      "timestampMs": 22160,
+      "confidence": null
+    },
+    {
+      "text": "Nếu id nhỏ hơn hoặc bằng không, ném lỗi.",
+      "startMs": 24780,
+      "endMs": 27600,
+      "timestampMs": 24780,
+      "confidence": null
+    },
+    {
+      "text": "Nếu email sai định dạng, ném lỗi.",
+      "startMs": 27600,
+      "endMs": 30440,
+      "timestampMs": 27600,
+      "confidence": null
+    },
+    {
+      "text": "Nếu số lượng nhỏ hơn hoặc bằng",
+      "startMs": 31060,
+      "endMs": 32980,
+      "timestampMs": 31060,
+      "confidence": null
+    },
+    {
+      "text": "không, ném lỗi.",
+      "startMs": 32980,
+      "endMs": 34300,
+      "timestampMs": 32980,
+      "confidence": null
+    },
+    {
+      "text": "Nếu giá âm, ném lỗi.",
+      "startMs": 34600,
+      "endMs": 36500,
+      "timestampMs": 34600,
+      "confidence": null
+    },
+    {
+      "text": "Và tổng tiền do chính Order tính,",
+      "startMs": 36700,
+      "endMs": 38720,
+      "timestampMs": 36700,
+      "confidence": null
+    },
+    {
+      "text": "không phải controller tính.",
+      "startMs": 39040,
+      "endMs": 40600,
+      "timestampMs": 39040,
+      "confidence": null
+    },
+    {
+      "text": "Điểm đáng chú ý không phải là",
+      "startMs": 41700,
+      "endMs": 43520,
+      "timestampMs": 41700,
+      "confidence": null
+    },
+    {
+      "text": "mấy câu if.",
+      "startMs": 43520,
+      "endMs": 44380,
+      "timestampMs": 43520,
+      "confidence": null
+    },
+    {
+      "text": "Mà là không có cách nào tạo",
+      "startMs": 44680,
+      "endMs": 46440,
+      "timestampMs": 44680,
+      "confidence": null
+    },
+    {
+      "text": "ra một Order sai.",
+      "startMs": 46440,
+      "endMs": 48240,
+      "timestampMs": 46440,
+      "confidence": null
+    },
+    {
+      "text": "Mọi chỗ trong hệ thống muốn có",
+      "startMs": 48240,
+      "endMs": 49860,
+      "timestampMs": 48240,
+      "confidence": null
+    },
+    {
+      "text": "đơn hàng, đều phải đi qua cái constructor đó.",
+      "startMs": 49860,
+      "endMs": 52960,
+      "timestampMs": 49860,
+      "confidence": null
+    },
+    {
+      "text": "Luật nghiệp vụ chỉ nằm một chỗ,",
+      "startMs": 52960,
+      "endMs": 55320,
+      "timestampMs": 52960,
+      "confidence": null
+    },
+    {
+      "text": "thay vì rải ở controller, ở job, ở seeder.",
+      "startMs": 55460,
+      "endMs": 59940,
+      "timestampMs": 55460,
+      "confidence": null
+    },
+    {
+      "text": "Sách phân biệt thêm entity và value object.",
+      "startMs": 59940,
+      "endMs": 63100,
+      "timestampMs": 59940,
+      "confidence": null
+    },
+    {
+      "text": "Entity có danh tính: hai đơn hàng",
+      "startMs": 63660,
+      "endMs": 65860,
+      "timestampMs": 63660,
+      "confidence": null
+    },
+    {
+      "text": "khác id thì khác nhau, dù nội",
+      "startMs": 65860,
+      "endMs": 68320,
+      "timestampMs": 65860,
+      "confidence": null
+    },
+    {
+      "text": "dung giống hệt.",
+      "startMs": 68320,
+      "endMs": 69300,
+      "timestampMs": 68320,
+      "confidence": null
+    },
+    {
+      "text": "Value object không có danh tính, so",
+      "startMs": 69540,
+      "endMs": 71880,
+      "timestampMs": 69540,
+      "confidence": null
+    },
+    {
+      "text": "bằng giá trị: EmailAddress, Money.",
+      "startMs": 71880,
+      "endMs": 74780,
+      "timestampMs": 71880,
+      "confidence": null
+    },
+    {
+      "text": "Một EmailAddress đã tạo được thì chắc",
+      "startMs": 75400,
+      "endMs": 78240,
+      "timestampMs": 75400,
+      "confidence": null
+    },
+    {
+      "text": "chắn hợp lệ.",
+      "startMs": 78240,
+      "endMs": 79340,
+      "timestampMs": 78240,
+      "confidence": null
+    },
+    {
+      "text": "Một Money đã tạo được thì không",
+      "startMs": 79340,
+      "endMs": 81900,
+      "timestampMs": 79340,
+      "confidence": null
+    },
+    {
+      "text": "tự nhiên thành số âm.",
+      "startMs": 81900,
+      "endMs": 83400,
+      "timestampMs": 81900,
+      "confidence": null
+    },
+    {
+      "text": "Đó là cùng một ý: đặt luật",
+      "startMs": 83580,
+      "endMs": 85440,
+      "timestampMs": 83580,
+      "confidence": null
+    },
+    {
+      "text": "vào nơi sinh ra giá trị.",
+      "startMs": 85440,
+      "endMs": 87180,
+      "timestampMs": 85440,
+      "confidence": null
+    },
+    {
+      "text": "Nhưng đối tượng đẹp đến mấy vẫn",
+      "startMs": 88160,
+      "endMs": 89940,
+      "timestampMs": 88160,
+      "confidence": null
+    },
+    {
+      "text": "cần được lưu.",
+      "startMs": 89940,
+      "endMs": 90960,
+      "timestampMs": 89940,
+      "confidence": null
+    },
+    {
+      "text": "Và đây là chỗ nhiều người dừng",
+      "startMs": 91280,
+      "endMs": 92960,
+      "timestampMs": 91280,
+      "confidence": null
+    },
+    {
+      "text": "lại: để entity gọi thẳng database.",
+      "startMs": 92960,
+      "endMs": 95520,
+      "timestampMs": 92960,
+      "confidence": null
+    },
+    {
+      "text": "Sách đề nghị đi xa hơn một bước.",
+      "startMs": 96240,
+      "endMs": 97900,
+      "timestampMs": 96240,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Repository là một interface đứng về",
+      "startMs": 980,
+      "endMs": 3300,
+      "timestampMs": 980,
+      "confidence": null
+    },
+    {
+      "text": "phía nghiệp vụ, mô tả việc lưu",
+      "startMs": 3300,
+      "endMs": 5600,
+      "timestampMs": 3300,
+      "confidence": null
+    },
+    {
+      "text": "và lấy đối tượng.",
+      "startMs": 5600,
+      "endMs": 6560,
+      "timestampMs": 5600,
+      "confidence": null
+    },
+    {
+      "text": "Nó không nói bảng nào, cột nào,",
+      "startMs": 7060,
+      "endMs": 8980,
+      "timestampMs": 7060,
+      "confidence": null
+    },
+    {
+      "text": "SQL ra sao.",
+      "startMs": 9340,
+      "endMs": 10320,
+      "timestampMs": 9340,
+      "confidence": null
+    },
+    {
+      "text": "Nó chỉ nói: save một Order, trả",
+      "startMs": 10980,
+      "endMs": 13600,
+      "timestampMs": 10980,
+      "confidence": null
+    },
+    {
+      "text": "về id; getById một id, trả về Order.",
+      "startMs": 13600,
+      "endMs": 17160,
+      "timestampMs": 13600,
+      "confidence": null
+    },
+    {
+      "text": "Có một mẹo viết rất hay: cứ",
+      "startMs": 18320,
+      "endMs": 20380,
+      "timestampMs": 18320,
+      "confidence": null
+    },
+    {
+      "text": "giả định thành phần mình cần đã",
+      "startMs": 20380,
+      "endMs": 22200,
+      "timestampMs": 20380,
+      "confidence": null
+    },
+    {
+      "text": "tồn tại, rồi định nghĩa nó.",
+      "startMs": 22200,
+      "endMs": 24000,
+      "timestampMs": 22200,
+      "confidence": null
+    },
+    {
+      "text": "Trong controller, bạn muốn gọi",
+      "startMs": 24000,
+      "endMs": 26460,
+      "timestampMs": 24000,
+      "confidence": null
+    },
+    {
+      "text": "orderRepository->save(order).",
+      "startMs": 26460,
+      "endMs": 29680,
+      "timestampMs": 26460,
+      "confidence": null
+    },
+    {
+      "text": "Vậy thì viết interface đúng như cách",
+      "startMs": 29680,
+      "endMs": 31880,
+      "timestampMs": 29680,
+      "confidence": null
+    },
+    {
+      "text": "bạn muốn gọi.",
+      "startMs": 31880,
+      "endMs": 32980,
+      "timestampMs": 31880,
+      "confidence": null
+    },
+    {
+      "text": "Phần cài đặt để sau.",
+      "startMs": 33180,
+      "endMs": 34540,
+      "timestampMs": 33180,
+      "confidence": null
+    },
+    {
+      "text": "Ngoài đời, SqlOrderRepository dùng",
+      "startMs": 35620,
+      "endMs": 39080,
+      "timestampMs": 35620,
+      "confidence": null
+    },
+    {
+      "text": "query builder, hoặc giấu một Eloquent",
+      "startMs": 39080,
+      "endMs": 41580,
+      "timestampMs": 39080,
+      "confidence": null
+    },
+    {
+      "text": "model bên trong.",
+      "startMs": 41580,
+      "endMs": 42520,
+      "timestampMs": 41580,
+      "confidence": null
+    },
+    {
+      "text": "Trong test, MemoryOrderRepository giữ",
+      "startMs": 43120,
+      "endMs": 46540,
+      "timestampMs": 43120,
+      "confidence": null
+    },
+    {
+      "text": "đơn hàng trong một mảng.",
+      "startMs": 46540,
+      "endMs": 48200,
+      "timestampMs": 46540,
+      "confidence": null
+    },
+    {
+      "text": "Sau này nếu chuyển sang gọi API",
+      "startMs": 48200,
+      "endMs": 50540,
+      "timestampMs": 48200,
+      "confidence": null
+    },
+    {
+      "text": "của hệ thống khác, thêm RemoteOrderRepository.",
+      "startMs": 50540,
+      "endMs": 54880,
+      "timestampMs": 50540,
+      "confidence": null
+    },
+    {
+      "text": "Controller không cần biết đang dùng cái nào.",
+      "startMs": 54880,
+      "endMs": 57420,
+      "timestampMs": 54880,
+      "confidence": null
+    },
+    {
+      "text": "Sau khi tách, controller chỉ còn vài bước.",
+      "startMs": 58540,
+      "endMs": 61520,
+      "timestampMs": 58540,
+      "confidence": null
+    },
+    {
+      "text": "Lấy giá qua EbookRepository.",
+      "startMs": 61840,
+      "endMs": 64560,
+      "timestampMs": 61840,
+      "confidence": null
+    },
+    {
+      "text": "Tạo Order trong một khối try catch,",
+      "startMs": 64560,
+      "endMs": 66760,
+      "timestampMs": 64560,
+      "confidence": null
+    },
+    {
+      "text": "vì constructor có thể ném lỗi.",
+      "startMs": 66760,
+      "endMs": 69080,
+      "timestampMs": 66760,
+      "confidence": null
+    },
+    {
+      "text": "Gọi save.",
+      "startMs": 69680,
+      "endMs": 71140,
+      "timestampMs": 69680,
+      "confidence": null
+    },
+    {
+      "text": "Lưu id vào session.",
+      "startMs": 71140,
+      "endMs": 72680,
+      "timestampMs": 71140,
+      "confidence": null
+    },
+    {
+      "text": "Trả về trang tiếp theo.",
+      "startMs": 73360,
+      "endMs": 74920,
+      "timestampMs": 73360,
+      "confidence": null
+    },
+    {
+      "text": "Phần MySQL nằm gọn trong một lớp.",
+      "startMs": 75120,
+      "endMs": 77980,
+      "timestampMs": 75120,
+      "confidence": null
+    },
+    {
+      "text": "Phần nghiệp vụ là một đối tượng",
+      "startMs": 77980,
+      "endMs": 79880,
+      "timestampMs": 77980,
+      "confidence": null
+    },
+    {
+      "text": "PHP thuần, không kế thừa framework,",
+      "startMs": 79880,
+      "endMs": 82400,
+      "timestampMs": 79880,
+      "confidence": null
+    },
+    {
+      "text": "không gọi database.",
+      "startMs": 82820,
+      "endMs": 83860,
+      "timestampMs": 82820,
+      "confidence": null
+    },
+    {
+      "text": "Và mỗi phần có thể test riêng.",
+      "startMs": 84760,
+      "endMs": 86620,
+      "timestampMs": 84760,
+      "confidence": null
+    },
+    {
+      "text": "Đó là lần tách đầu tiên, và",
+      "startMs": 87880,
+      "endMs": 90080,
+      "timestampMs": 87880,
+      "confidence": null
+    },
+    {
+      "text": "cũng là lần tạo ra khác biệt lớn nhất.",
+      "startMs": 90080,
+      "endMs": 92120,
+      "timestampMs": 90080,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Đến chương bốn, sách chỉ ra một",
+      "startMs": 0,
+      "endMs": 2560,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "chỗ hay bị bỏ qua: phần đọc.",
+      "startMs": 2560,
+      "endMs": 4980,
+      "timestampMs": 2560,
+      "confidence": null
+    },
+    {
+      "text": "Thường thì ta lấy luôn entity dùng",
+      "startMs": 5080,
+      "endMs": 7180,
+      "timestampMs": 5080,
+      "confidence": null
+    },
+    {
+      "text": "để ghi, đưa cho view.",
+      "startMs": 7180,
+      "endMs": 8520,
+      "timestampMs": 7180,
+      "confidence": null
+    },
+    {
+      "text": "Nhưng entity đó mang theo đủ phương",
+      "startMs": 9200,
+      "endMs": 11300,
+      "timestampMs": 9200,
+      "confidence": null
+    },
+    {
+      "text": "thức đổi giá, ẩn sản phẩm, đổi trạng thái.",
+      "startMs": 11300,
+      "endMs": 14060,
+      "timestampMs": 11300,
+      "confidence": null
+    },
+    {
+      "text": "View chỉ cần hiển thị, lại cầm",
+      "startMs": 14640,
+      "endMs": 16580,
+      "timestampMs": 14640,
+      "confidence": null
+    },
+    {
+      "text": "một đối tượng có thể thay đổi dữ liệu.",
+      "startMs": 16580,
+      "endMs": 19060,
+      "timestampMs": 16580,
+      "confidence": null
+    },
+    {
+      "text": "Lâu dần, class phình to vì phục",
+      "startMs": 19340,
+      "endMs": 21820,
+      "timestampMs": 19340,
+      "confidence": null
+    },
+    {
+      "text": "vụ cả hai việc.",
+      "startMs": 21820,
+      "endMs": 22660,
+      "timestampMs": 21820,
+      "confidence": null
+    },
+    {
+      "text": "Sách đề nghị tách read model.",
+      "startMs": 23860,
+      "endMs": 25860,
+      "timestampMs": 23860,
+      "confidence": null
+    },
+    {
+      "text": "Có thể là một EbookReadModel với",
+      "startMs": 25860,
+      "endMs": 28640,
+      "timestampMs": 25860,
+      "confidence": null
+    },
+    {
+      "text": "EbookReadRepository riêng.",
+      "startMs": 28640,
+      "endMs": 31120,
+      "timestampMs": 28640,
+      "confidence": null
+    },
+    {
+      "text": "Cũng có thể nhẹ hơn: một interface",
+      "startMs": 31280,
+      "endMs": 33480,
+      "timestampMs": 31280,
+      "confidence": null
+    },
+    {
+      "text": "GetPrice với hàm ofEbook, chỉ trả về",
+      "startMs": 33480,
+      "endMs": 36880,
+      "timestampMs": 33480,
+      "confidence": null
+    },
+    {
+      "text": "con số cần dùng.",
+      "startMs": 36880,
+      "endMs": 38280,
+      "timestampMs": 36880,
+      "confidence": null
+    },
+    {
+      "text": "Cách nặng hơn là CQRS: lưu trữ",
+      "startMs": 38460,
+      "endMs": 41460,
+      "timestampMs": 38460,
+      "confidence": null
+    },
+    {
+      "text": "đọc riêng, cập nhật qua domain event.",
+      "startMs": 41460,
+      "endMs": 44080,
+      "timestampMs": 41460,
+      "confidence": null
+    },
+    {
+      "text": "Sách không đẩy bạn vào đó, vì",
+      "startMs": 44740,
+      "endMs": 46580,
+      "timestampMs": 44740,
+      "confidence": null
+    },
+    {
+      "text": "phải giữ nhất quán giữa hai kho.",
+      "startMs": 46580,
+      "endMs": 48180,
+      "timestampMs": 46580,
+      "confidence": null
+    },
+    {
+      "text": "Với đa số dự án, chung database",
+      "startMs": 48820,
+      "endMs": 51080,
+      "timestampMs": 48820,
+      "confidence": null
+    },
+    {
+      "text": "nhưng repository đọc riêng là đủ; chỉ",
+      "startMs": 51080,
+      "endMs": 54320,
+      "timestampMs": 51080,
+      "confidence": null
+    },
+    {
+      "text": "cần thêm integration test.",
+      "startMs": 54320,
+      "endMs": 56100,
+      "timestampMs": 54320,
+      "confidence": null
+    },
+    {
+      "text": "Rồi đến view model.",
+      "startMs": 57360,
+      "endMs": 58520,
+      "timestampMs": 57360,
+      "confidence": null
+    },
+    {
+      "text": "Đây là một DTO được tạo đúng",
+      "startMs": 59100,
+      "endMs": 61380,
+      "timestampMs": 59100,
+      "confidence": null
+    },
+    {
+      "text": "theo thứ màn hình cần.",
+      "startMs": 61380,
+      "endMs": 62460,
+      "timestampMs": 61380,
+      "confidence": null
+    },
+    {
+      "text": "EbookViewModel có formattedPrice, đã format sẵn.",
+      "startMs": 62460,
+      "endMs": 67560,
+      "timestampMs": 62460,
+      "confidence": null
+    },
+    {
+      "text": "OrderListViewModel có findRecentOrders",
+      "startMs": 67560,
+      "endMs": 70700,
+      "timestampMs": 67560,
+      "confidence": null
+    },
+    {
+      "text": "và toArray, hoặc JsonSerializable.",
+      "startMs": 70700,
+      "endMs": 74340,
+      "timestampMs": 70700,
+      "confidence": null
+    },
+    {
+      "text": "Không phải để bọc cho đẹp, mà",
+      "startMs": 74340,
+      "endMs": 76340,
+      "timestampMs": 74340,
+      "confidence": null
+    },
+    {
+      "text": "để tầng hiển thị không phải biết",
+      "startMs": 76340,
+      "endMs": 78220,
+      "timestampMs": 76340,
+      "confidence": null
+    },
+    {
+      "text": "cấu trúc dữ liệu bên trong.",
+      "startMs": 78220,
+      "endMs": 79560,
+      "timestampMs": 78220,
+      "confidence": null
+    },
+    {
+      "text": "Nguyên tắc gói lại một câu: đừng",
+      "startMs": 80860,
+      "endMs": 82840,
+      "timestampMs": 80860,
+      "confidence": null
+    },
+    {
+      "text": "dùng một đối tượng có thể thay",
+      "startMs": 82840,
+      "endMs": 84760,
+      "timestampMs": 82840,
+      "confidence": null
+    },
+    {
+      "text": "đổi và có logic phức tạp cho",
+      "startMs": 84760,
+      "endMs": 86900,
+      "timestampMs": 84760,
+      "confidence": null
+    },
+    {
+      "text": "việc chỉ đọc.",
+      "startMs": 86900,
+      "endMs": 87960,
+      "timestampMs": 86900,
+      "confidence": null
+    },
+    {
+      "text": "Đọc thì trả đúng thứ cần đọc.",
+      "startMs": 88160,
+      "endMs": 89700,
+      "timestampMs": 88160,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Chương năm xử lý một chỗ phình khác: controller.",
+      "startMs": 180,
+      "endMs": 3520,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "Lý do controller phình rất dễ hiểu:",
+      "startMs": 3940,
+      "endMs": 6200,
+      "timestampMs": 3940,
+      "confidence": null
+    },
+    {
+      "text": "nó là nơi duy nhất ai cũng",
+      "startMs": 6360,
+      "endMs": 8000,
+      "timestampMs": 6360,
+      "confidence": null
+    },
+    {
+      "text": "nhét use case vào.",
+      "startMs": 8000,
+      "endMs": 9280,
+      "timestampMs": 8000,
+      "confidence": null
+    },
+    {
+      "text": "Sách tách use case ra thành Application Service.",
+      "startMs": 9860,
+      "endMs": 13180,
+      "timestampMs": 9860,
+      "confidence": null
+    },
+    {
+      "text": "Một service điều phối đúng một use",
+      "startMs": 13720,
+      "endMs": 15540,
+      "timestampMs": 13720,
+      "confidence": null
+    },
+    {
+      "text": "case, và gọi được từ web, từ",
+      "startMs": 15540,
+      "endMs": 17860,
+      "timestampMs": 15540,
+      "confidence": null
+    },
+    {
+      "text": "CLI, từ job, hay từ test.",
+      "startMs": 17860,
+      "endMs": 20380,
+      "timestampMs": 17860,
+      "confidence": null
+    },
+    {
+      "text": "Đầu vào được gói thành Command.",
+      "startMs": 20900,
+      "endMs": 22700,
+      "timestampMs": 20900,
+      "confidence": null
+    },
+    {
+      "text": "Ví dụ PlaceOrderCommand gồm",
+      "startMs": 22700,
+      "endMs": 25480,
+      "timestampMs": 22700,
+      "confidence": null
+    },
+    {
+      "text": "customerId, danh sách món, email.",
+      "startMs": 25480,
+      "endMs": 28140,
+      "timestampMs": 25480,
+      "confidence": null
+    },
+    {
+      "text": "PlaceOrderService có hàm handle nhận",
+      "startMs": 28140,
+      "endMs": 31160,
+      "timestampMs": 28140,
+      "confidence": null
+    },
+    {
+      "text": "command, trả về OrderId.",
+      "startMs": 31160,
+      "endMs": 34760,
+      "timestampMs": 31160,
+      "confidence": null
+    },
+    {
+      "text": "Bên trong service làm những việc của nghiệp vụ.",
+      "startMs": 34760,
+      "endMs": 37940,
+      "timestampMs": 34760,
+      "confidence": null
+    },
+    {
+      "text": "Lấy sản phẩm.",
+      "startMs": 38200,
+      "endMs": 39300,
+      "timestampMs": 38200,
+      "confidence": null
+    },
+    {
+      "text": "Kiểm tra tồn kho, ném",
+      "startMs": 39520,
+      "endMs": 41120,
+      "timestampMs": 39520,
+      "confidence": null
+    },
+    {
+      "text": "OutOfStockException nếu hết.",
+      "startMs": 41120,
+      "endMs": 43420,
+      "timestampMs": 41120,
+      "confidence": null
+    },
+    {
+      "text": "Tính tiền.",
+      "startMs": 43700,
+      "endMs": 44680,
+      "timestampMs": 43700,
+      "confidence": null
+    },
+    {
+      "text": "Lấy id mới.",
+      "startMs": 44920,
+      "endMs": 45940,
+      "timestampMs": 44920,
+      "confidence": null
+    },
+    {
+      "text": "Tạo Order.",
+      "startMs": 46540,
+      "endMs": 47240,
+      "timestampMs": 46540,
+      "confidence": null
+    },
+    {
+      "text": "Lưu.",
+      "startMs": 47980,
+      "endMs": 48620,
+      "timestampMs": 47980,
+      "confidence": null
+    },
+    {
+      "text": "Controller chỉ còn hai việc: đổi",
+      "startMs": 48860,
+      "endMs": 51340,
+      "timestampMs": 48860,
+      "confidence": null
+    },
+    {
+      "text": "request thành command, và trả response.",
+      "startMs": 51340,
+      "endMs": 54160,
+      "timestampMs": 51340,
+      "confidence": null
+    },
+    {
+      "text": "Chương này cũng nói rõ cách nối dependency.",
+      "startMs": 55000,
+      "endMs": 58000,
+      "timestampMs": 55000,
+      "confidence": null
+    },
+    {
+      "text": "Dùng constructor injection thay cho",
+      "startMs": 58800,
+      "endMs": 61020,
+      "timestampMs": 58800,
+      "confidence": null
+    },
+    {
+      "text": "service locator kiểu app()->make.",
+      "startMs": 61020,
+      "endMs": 64120,
+      "timestampMs": 61020,
+      "confidence": null
+    },
+    {
+      "text": "Lý do rất thực dụng: nhìn constructor",
+      "startMs": 64120,
+      "endMs": 66560,
+      "timestampMs": 64120,
+      "confidence": null
+    },
+    {
+      "text": "là biết class cần gì.",
+      "startMs": 66560,
+      "endMs": 68200,
+      "timestampMs": 66560,
+      "confidence": null
+    },
+    {
+      "text": "Còn service locator giấu dependency",
+      "startMs": 68700,
+      "endMs": 71560,
+      "timestampMs": 68700,
+      "confidence": null
+    },
+    {
+      "text": "đi, muốn biết phải đọc hết bên trong.",
+      "startMs": 71560,
+      "endMs": 73860,
+      "timestampMs": 71560,
+      "confidence": null
+    },
+    {
+      "text": "Và lợi ích đo được nằm ở test.",
+      "startMs": 74760,
+      "endMs": 76920,
+      "timestampMs": 74760,
+      "confidence": null
+    },
+    {
+      "text": "Test PlaceOrderService với một",
+      "startMs": 77480,
+      "endMs": 79820,
+      "timestampMs": 77480,
+      "confidence": null
+    },
+    {
+      "text": "repository trong bộ nhớ và một stub gửi mail.",
+      "startMs": 79820,
+      "endMs": 83380,
+      "timestampMs": 79820,
+      "confidence": null
+    },
+    {
+      "text": "Không cần framework, không cần",
+      "startMs": 83960,
+      "endMs": 85700,
+      "timestampMs": 83960,
+      "confidence": null
+    },
+    {
+      "text": "database, không cần mạng.",
+      "startMs": 85700,
+      "endMs": 87820,
+      "timestampMs": 85700,
+      "confidence": null
+    },
+    {
+      "text": "Use case chạy trong vài mili giây.",
+      "startMs": 88140,
+      "endMs": 90440,
+      "timestampMs": 88140,
+      "confidence": null
+    },
+    {
+      "text": "Đó mới là thứ khiến người ta",
+      "startMs": 90820,
+      "endMs": 92480,
+      "timestampMs": 90820,
+      "confidence": null
+    },
+    {
+      "text": "dám sửa code.",
+      "startMs": 92480,
+      "endMs": 93140,
+      "timestampMs": 92480,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Chương sáu lùi lại nhìn toàn bộ hệ thống.",
+      "startMs": 0,
+      "endMs": 3400,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Cách chia cũ là ba tầng: giao",
+      "startMs": 3640,
+      "endMs": 5500,
+      "timestampMs": 3640,
+      "confidence": null
+    },
+    {
+      "text": "diện, nghiệp vụ, truy cập dữ liệu.",
+      "startMs": 5500,
+      "endMs": 7920,
+      "timestampMs": 5500,
+      "confidence": null
+    },
+    {
+      "text": "Nó vẫn hữu ích: biết đặt code",
+      "startMs": 8140,
+      "endMs": 10180,
+      "timestampMs": 8140,
+      "confidence": null
+    },
+    {
+      "text": "ở đâu, đổi một tầng thì ít",
+      "startMs": 10180,
+      "endMs": 12360,
+      "timestampMs": 10180,
+      "confidence": null
+    },
+    {
+      "text": "đụng tầng khác.",
+      "startMs": 12360,
+      "endMs": 13080,
+      "timestampMs": 12360,
+      "confidence": null
+    },
+    {
+      "text": "Nhưng nó có hai rủi ro.",
+      "startMs": 13560,
+      "endMs": 14820,
+      "timestampMs": 13560,
+      "confidence": null
+    },
+    {
+      "text": "Logic rò rỉ giữa các tầng, và",
+      "startMs": 15480,
+      "endMs": 17760,
+      "timestampMs": 15480,
+      "confidence": null
+    },
+    {
+      "text": "chỉ có kỷ luật con người mới ngăn được.",
+      "startMs": 17760,
+      "endMs": 19780,
+      "timestampMs": 17760,
+      "confidence": null
+    },
+    {
+      "text": "Thêm tầng nữa thì thành một mớ",
+      "startMs": 20300,
+      "endMs": 22060,
+      "timestampMs": 20300,
+      "confidence": null
+    },
+    {
+      "text": "lasagna, đi qua bảy lớp mới tới câu SQL.",
+      "startMs": 22060,
+      "endMs": 25360,
+      "timestampMs": 22060,
+      "confidence": null
+    },
+    {
+      "text": "Sách đề nghị ba tầng theo hướng",
+      "startMs": 26740,
+      "endMs": 28660,
+      "timestampMs": 26740,
+      "confidence": null
+    },
+    {
+      "text": "nghiệp vụ đứng giữa.",
+      "startMs": 28660,
+      "endMs": 29600,
+      "timestampMs": 28660,
+      "confidence": null
+    },
+    {
+      "text": "Domain: entity, aggregate, value",
+      "startMs": 29600,
+      "endMs": 33280,
+      "timestampMs": 29600,
+      "confidence": null
+    },
+    {
+      "text": "object, domain service, domain event,",
+      "startMs": 33280,
+      "endMs": 36320,
+      "timestampMs": 33280,
+      "confidence": null
+    },
+    {
+      "text": "interface repository, factory.",
+      "startMs": 36620,
+      "endMs": 39280,
+      "timestampMs": 36620,
+      "confidence": null
+    },
+    {
+      "text": "Tầng này không import framework.",
+      "startMs": 39480,
+      "endMs": 41440,
+      "timestampMs": 39480,
+      "confidence": null
+    },
+    {
+      "text": "Application: use case handler,",
+      "startMs": 41800,
+      "endMs": 44140,
+      "timestampMs": 41800,
+      "confidence": null
+    },
+    {
+      "text": "command, query, transaction; sách gọi",
+      "startMs": 44420,
+      "endMs": 47220,
+      "timestampMs": 44420,
+      "confidence": null
+    },
+    {
+      "text": "là lớp keo.",
+      "startMs": 47220,
+      "endMs": 48200,
+      "timestampMs": 47220,
+      "confidence": null
+    },
+    {
+      "text": "Infrastructure: framework, ORM,",
+      "startMs": 48760,
+      "endMs": 51580,
+      "timestampMs": 48760,
+      "confidence": null
+    },
+    {
+      "text": "adapter gọi dịch vụ ngoài, phần cài đặt interface.",
+      "startMs": 51580,
+      "endMs": 54600,
+      "timestampMs": 51580,
+      "confidence": null
+    },
+    {
+      "text": "Tầng này test kiểu integration.",
+      "startMs": 55240,
+      "endMs": 57120,
+      "timestampMs": 55240,
+      "confidence": null
+    },
+    {
+      "text": "Điểm cốt lõi là Dependency Rule: phụ",
+      "startMs": 58140,
+      "endMs": 61260,
+      "timestampMs": 58140,
+      "confidence": null
+    },
+    {
+      "text": "thuộc chỉ được hướng vào trong.",
+      "startMs": 61260,
+      "endMs": 62820,
+      "timestampMs": 61260,
+      "confidence": null
+    },
+    {
+      "text": "Giao diện biết Application.",
+      "startMs": 63420,
+      "endMs": 65280,
+      "timestampMs": 63420,
+      "confidence": null
+    },
+    {
+      "text": "Application biết Domain.",
+      "startMs": 66120,
+      "endMs": 67660,
+      "timestampMs": 66120,
+      "confidence": null
+    },
+    {
+      "text": "Infrastructure cũng trỏ vào Domain,",
+      "startMs": 68640,
+      "endMs": 70560,
+      "timestampMs": 68640,
+      "confidence": null
+    },
+    {
+      "text": "nhưng Domain không biết ai đang cài đặt mình.",
+      "startMs": 70820,
+      "endMs": 73300,
+      "timestampMs": 70820,
+      "confidence": null
+    },
+    {
+      "text": "Sách vẽ nó thành một mũi tên",
+      "startMs": 73800,
+      "endMs": 75420,
+      "timestampMs": 73800,
+      "confidence": null
+    },
+    {
+      "text": "vòng vào trong, và nhắc Hollywood",
+      "startMs": 75420,
+      "endMs": 77760,
+      "timestampMs": 75420,
+      "confidence": null
+    },
+    {
+      "text": "Principle: đừng gọi tôi, tôi sẽ gọi bạn.",
+      "startMs": 77760,
+      "endMs": 80740,
+      "timestampMs": 77760,
+      "confidence": null
+    },
+    {
+      "text": "Nối các tầng bằng một service provider.",
+      "startMs": 80740,
+      "endMs": 84800,
+      "timestampMs": 80740,
+      "confidence": null
+    },
+    {
+      "text": "OrderServiceProvider bind interface",
+      "startMs": 84800,
+      "endMs": 87720,
+      "timestampMs": 84800,
+      "confidence": null
+    },
+    {
+      "text": "OrderRepository với EloquentOrderRepository.",
+      "startMs": 87720,
+      "endMs": 92840,
+      "timestampMs": 87720,
+      "confidence": null
+    },
+    {
+      "text": "Khi chạy thật, container đưa bản Eloquent.",
+      "startMs": 92840,
+      "endMs": 95580,
+      "timestampMs": 92840,
+      "confidence": null
+    },
+    {
+      "text": "Khi test, đưa bản trong bộ nhớ.",
+      "startMs": 96160,
+      "endMs": 98240,
+      "timestampMs": 96160,
+      "confidence": null
+    },
+    {
+      "text": "Luồng đặt hàng đi như sau: request",
+      "startMs": 98800,
+      "endMs": 100840,
+      "timestampMs": 98800,
+      "confidence": null
+    },
+    {
+      "text": "vào controller, controller gọi",
+      "startMs": 100840,
+      "endMs": 103140,
+      "timestampMs": 100840,
+      "confidence": null
+    },
+    {
+      "text": "PlaceOrderHandler, handler dùng",
+      "startMs": 103140,
+      "endMs": 105800,
+      "timestampMs": 103140,
+      "confidence": null
+    },
+    {
+      "text": "repository, lưu xong phát OrderPlaced,",
+      "startMs": 105800,
+      "endMs": 108640,
+      "timestampMs": 105800,
+      "confidence": null
+    },
+    {
+      "text": "listener gửi email.",
+      "startMs": 108640,
+      "endMs": 111200,
+      "timestampMs": 108640,
+      "confidence": null
+    },
+    {
+      "text": "Mỗi mũi tên đều đi vào trong,",
+      "startMs": 111200,
+      "endMs": 112980,
+      "timestampMs": 111200,
+      "confidence": null
+    },
+    {
+      "text": "không có mũi tên nào từ Domain",
+      "startMs": 113260,
+      "endMs": 115380,
+      "timestampMs": 113260,
+      "confidence": null
+    },
+    {
+      "text": "trỏ ra database.",
+      "startMs": 115380,
+      "endMs": 116680,
+      "timestampMs": 115380,
+      "confidence": null
+    },
+    {
+      "text": "Nhưng sách cũng nhắc: không phải việc",
+      "startMs": 118080,
+      "endMs": 119880,
+      "timestampMs": 118080,
+      "confidence": null
+    },
+    {
+      "text": "gì cũng cần nhiều lớp.",
+      "startMs": 119880,
+      "endMs": 121760,
+      "timestampMs": 119880,
+      "confidence": null
+    },
+    {
+      "text": "Một chức năng CRUD đơn giản mà",
+      "startMs": 121960,
+      "endMs": 124540,
+      "timestampMs": 121960,
+      "confidence": null
+    },
+    {
+      "text": "bắt đi qua đủ bốn tầng thì",
+      "startMs": 124540,
+      "endMs": 126380,
+      "timestampMs": 124540,
+      "confidence": null
+    },
+    {
+      "text": "chỉ làm chậm team.",
+      "startMs": 126380,
+      "endMs": 127980,
+      "timestampMs": 126380,
+      "confidence": null
+    },
+    {
+      "text": "Kiến trúc để giảm chi phí thay",
+      "startMs": 127980,
+      "endMs": 129900,
+      "timestampMs": 127980,
+      "confidence": null
+    },
+    {
+      "text": "đổi, không phải để trông có vẻ chuyên nghiệp.",
+      "startMs": 129900,
+      "endMs": 132556,
+      "timestampMs": 129900,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Chương bảy đưa cách nhìn cuối cùng:",
+      "startMs": 180,
+      "endMs": 2560,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "Hexagonal Architecture.",
+      "startMs": 2780,
+      "endMs": 4560,
+      "timestampMs": 2780,
+      "confidence": null
+    },
+    {
+      "text": "Alistair Cockburn đề xuất năm 2005.",
+      "startMs": 5220,
+      "endMs": 8220,
+      "timestampMs": 5220,
+      "confidence": null
+    },
+    {
+      "text": "Cái tên lục giác chỉ là ẩn",
+      "startMs": 9000,
+      "endMs": 10680,
+      "timestampMs": 9000,
+      "confidence": null
+    },
+    {
+      "text": "dụ; không có nghĩa là hệ thống",
+      "startMs": 10680,
+      "endMs": 12320,
+      "timestampMs": 10680,
+      "confidence": null
+    },
+    {
+      "text": "phải có sáu cạnh.",
+      "startMs": 12320,
+      "endMs": 13400,
+      "timestampMs": 12320,
+      "confidence": null
+    },
+    {
+      "text": "Hình dung một cổng USB.",
+      "startMs": 13980,
+      "endMs": 15620,
+      "timestampMs": 13980,
+      "confidence": null
+    },
+    {
+      "text": "Lõi máy không biết bạn cắm chuột,",
+      "startMs": 16300,
+      "endMs": 17920,
+      "timestampMs": 16300,
+      "confidence": null
+    },
+    {
+      "text": "bàn phím hay ổ cứng.",
+      "startMs": 18260,
+      "endMs": 19420,
+      "timestampMs": 18260,
+      "confidence": null
+    },
+    {
+      "text": "Nó chỉ biết một chuẩn cắm.",
+      "startMs": 20040,
+      "endMs": 21700,
+      "timestampMs": 20040,
+      "confidence": null
+    },
+    {
+      "text": "Port là chuẩn đó; adapter là từng",
+      "startMs": 22280,
+      "endMs": 24580,
+      "timestampMs": 22280,
+      "confidence": null
+    },
+    {
+      "text": "thiết bị cụ thể.",
+      "startMs": 24580,
+      "endMs": 25540,
+      "timestampMs": 24580,
+      "confidence": null
+    },
+    {
+      "text": "Sách chỉ ra những chỗ phân lớp",
+      "startMs": 26760,
+      "endMs": 28560,
+      "timestampMs": 26760,
+      "confidence": null
+    },
+    {
+      "text": "còn chưa giải quyết.",
+      "startMs": 28560,
+      "endMs": 29560,
+      "timestampMs": 28560,
+      "confidence": null
+    },
+    {
+      "text": "Phụ thuộc vẫn có thể nằm ngầm.",
+      "startMs": 29560,
+      "endMs": 32440,
+      "timestampMs": 29560,
+      "confidence": null
+    },
+    {
+      "text": "Thêm một kênh mới, ví dụ CLI,",
+      "startMs": 32640,
+      "endMs": 34980,
+      "timestampMs": 32640,
+      "confidence": null
+    },
+    {
+      "text": "vẫn phải sửa nhiều.",
+      "startMs": 35140,
+      "endMs": 36200,
+      "timestampMs": 35140,
+      "confidence": null
+    },
+    {
+      "text": "Test tầng application vẫn có thể chậm",
+      "startMs": 36200,
+      "endMs": 39440,
+      "timestampMs": 36200,
+      "confidence": null
+    },
+    {
+      "text": "nếu khởi động framework.",
+      "startMs": 39440,
+      "endMs": 41020,
+      "timestampMs": 39440,
+      "confidence": null
+    },
+    {
+      "text": "Và tích hợp với hệ thống khác",
+      "startMs": 41340,
+      "endMs": 42980,
+      "timestampMs": 41340,
+      "confidence": null
+    },
+    {
+      "text": "dễ làm bẩn domain.",
+      "startMs": 42980,
+      "endMs": 44460,
+      "timestampMs": 42980,
+      "confidence": null
+    },
+    {
+      "text": "Hexagonal tách hai loại port.",
+      "startMs": 46140,
+      "endMs": 47580,
+      "timestampMs": 46140,
+      "confidence": null
+    },
+    {
+      "text": "Port đầu vào là cách thế giới",
+      "startMs": 48160,
+      "endMs": 49940,
+      "timestampMs": 48160,
+      "confidence": null
+    },
+    {
+      "text": "gọi vào lõi: UI, API, CLI, bộ test.",
+      "startMs": 49940,
+      "endMs": 54040,
+      "timestampMs": 49940,
+      "confidence": null
+    },
+    {
+      "text": "Port đầu ra là cách lõi gọi",
+      "startMs": 54040,
+      "endMs": 56420,
+      "timestampMs": 54040,
+      "confidence": null
+    },
+    {
+      "text": "ra ngoài: lưu trữ, gửi thông báo,",
+      "startMs": 56420,
+      "endMs": 58880,
+      "timestampMs": 56420,
+      "confidence": null
+    },
+    {
+      "text": "dịch vụ bên thứ ba.",
+      "startMs": 59120,
+      "endMs": 60440,
+      "timestampMs": 59120,
+      "confidence": null
+    },
+    {
+      "text": "Cả hai đều là interface nằm trong core.",
+      "startMs": 60780,
+      "endMs": 63500,
+      "timestampMs": 60780,
+      "confidence": null
+    },
+    {
+      "text": "Adapter là code cụ thể ở Infrastructure.",
+      "startMs": 64120,
+      "endMs": 66960,
+      "timestampMs": 64120,
+      "confidence": null
+    },
+    {
+      "text": "Và mỗi port nên có ít nhất",
+      "startMs": 67760,
+      "endMs": 69720,
+      "timestampMs": 67760,
+      "confidence": null
+    },
+    {
+      "text": "một adapter thật, một adapter giả cho test.",
+      "startMs": 69720,
+      "endMs": 72940,
+      "timestampMs": 69720,
+      "confidence": null
+    },
+    {
+      "text": "Cockburn đề xuất mô hình này chủ",
+      "startMs": 72940,
+      "endMs": 75780,
+      "timestampMs": 72940,
+      "confidence": null
+    },
+    {
+      "text": "yếu vì testing.",
+      "startMs": 75780,
+      "endMs": 76860,
+      "timestampMs": 75780,
+      "confidence": null
+    },
+    {
+      "text": "Cách áp dụng có bốn bước.",
+      "startMs": 77980,
+      "endMs": 79900,
+      "timestampMs": 77980,
+      "confidence": null
+    },
+    {
+      "text": "Xác định port.",
+      "startMs": 79900,
+      "endMs": 81540,
+      "timestampMs": 79900,
+      "confidence": null
+    },
+    {
+      "text": "Định nghĩa interface trong core.",
+      "startMs": 81540,
+      "endMs": 83760,
+      "timestampMs": 81540,
+      "confidence": null
+    },
+    {
+      "text": "Viết adapter.",
+      "startMs": 83760,
+      "endMs": 84860,
+      "timestampMs": 83760,
+      "confidence": null
+    },
+    {
+      "text": "Nối bằng dependency injection.",
+      "startMs": 85440,
+      "endMs": 87740,
+      "timestampMs": 85440,
+      "confidence": null
+    },
+    {
+      "text": "Ví dụ trong sách.",
+      "startMs": 88920,
+      "endMs": 90200,
+      "timestampMs": 88920,
+      "confidence": null
+    },
+    {
+      "text": "OrderRepository là port;",
+      "startMs": 90200,
+      "endMs": 93590,
+      "timestampMs": 90200,
+      "confidence": null
+    },
+    {
+      "text": "EloquentOrderRepository và",
+      "startMs": 93590,
+      "endMs": 95380,
+      "timestampMs": 93590,
+      "confidence": null
+    },
+    {
+      "text": "InMemoryOrderRepository là hai adapter.",
+      "startMs": 95380,
+      "endMs": 99180,
+      "timestampMs": 95380,
+      "confidence": null
+    },
+    {
+      "text": "OrderNotification là port với hàm",
+      "startMs": 99180,
+      "endMs": 102720,
+      "timestampMs": 99180,
+      "confidence": null
+    },
+    {
+      "text": "sendOrderConfirmation; EmailOrderNotification và",
+      "startMs": 102720,
+      "endMs": 106960,
+      "timestampMs": 102720,
+      "confidence": null
+    },
+    {
+      "text": "LogOrderNotification là hai adapter.",
+      "startMs": 106960,
+      "endMs": 110200,
+      "timestampMs": 106960,
+      "confidence": null
+    },
+    {
+      "text": "HexagonBindings nối tất cả lại.",
+      "startMs": 110200,
+      "endMs": 113820,
+      "timestampMs": 110200,
+      "confidence": null
+    },
+    {
+      "text": "Test PlaceOrderHandler chỉ cần hai",
+      "startMs": 113820,
+      "endMs": 116600,
+      "timestampMs": 113820,
+      "confidence": null
+    },
+    {
+      "text": "adapter giả, không cần khởi động Laravel.",
+      "startMs": 116600,
+      "endMs": 119180,
+      "timestampMs": 116600,
+      "confidence": null
+    },
+    {
+      "text": "Sách còn mở rộng.",
+      "startMs": 120480,
+      "endMs": 122000,
+      "timestampMs": 120480,
+      "confidence": null
+    },
+    {
+      "text": "Một ImportOrderCommand đọc file CSV:",
+      "startMs": 122000,
+      "endMs": 125500,
+      "timestampMs": 122000,
+      "confidence": null
+    },
+    {
+      "text": "đọc file là adapter, phần xử lý",
+      "startMs": 125500,
+      "endMs": 127900,
+      "timestampMs": 125500,
+      "confidence": null
+    },
+    {
+      "text": "đơn vẫn là core.",
+      "startMs": 127900,
+      "endMs": 129300,
+      "timestampMs": 127900,
+      "confidence": null
+    },
+    {
+      "text": "Lưu hai database song song: hai",
+      "startMs": 129640,
+      "endMs": 131880,
+      "timestampMs": 129640,
+      "confidence": null
+    },
+    {
+      "text": "adapter cùng một port.",
+      "startMs": 131880,
+      "endMs": 133420,
+      "timestampMs": 131880,
+      "confidence": null
+    },
+    {
+      "text": "Hai bounded context nói chuyện với",
+      "startMs": 134060,
+      "endMs": 135740,
+      "timestampMs": 134060,
+      "confidence": null
+    },
+    {
+      "text": "nhau qua một port CustomerContext,",
+      "startMs": 135740,
+      "endMs": 138800,
+      "timestampMs": 135740,
+      "confidence": null
+    },
+    {
+      "text": "thay vì gọi thẳng vào database của nhau.",
+      "startMs": 138800,
+      "endMs": 140800,
+      "timestampMs": 138800,
+      "confidence": null
+    },
+    {
+      "text": "Cái giá cũng được nói rõ.",
+      "startMs": 142000,
+      "endMs": 143740,
+      "timestampMs": 142000,
+      "confidence": null
+    },
+    {
+      "text": "Nhiều interface và class hơn.",
+      "startMs": 143960,
+      "endMs": 146220,
+      "timestampMs": 143960,
+      "confidence": null
+    },
+    {
+      "text": "Cần quy ước đặt tên, nếu không sẽ rối.",
+      "startMs": 146720,
+      "endMs": 148960,
+      "timestampMs": 146720,
+      "confidence": null
+    },
+    {
+      "text": "Và đừng trừu tượng hóa mọi thứ.",
+      "startMs": 148960,
+      "endMs": 151320,
+      "timestampMs": 148960,
+      "confidence": null
+    },
+    {
+      "text": "Chỉ tách ở chỗ dễ thay đổi",
+      "startMs": 151860,
+      "endMs": 153620,
+      "timestampMs": 151860,
+      "confidence": null
+    },
+    {
+      "text": "hoặc khó test.",
+      "startMs": 153620,
+      "endMs": 154480,
+      "timestampMs": 153620,
+      "confidence": null
+    },
+    {
+      "text": "Đó là lý do sách nhắc đi",
+      "startMs": 155100,
+      "endMs": 156580,
+      "timestampMs": 155100,
+      "confidence": null
+    },
+    {
+      "text": "nhắc lại: kiến trúc là công cụ,",
+      "startMs": 156580,
+      "endMs": 158740,
+      "timestampMs": 156580,
+      "confidence": null
+    },
+    {
+      "text": "không phải tôn giáo.",
+      "startMs": 158980,
+      "endMs": 159920,
+      "timestampMs": 158980,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Đọc hết bảy chương, câu hỏi quay",
+      "startMs": 0,
+      "endMs": 2420,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "lại rất đơn giản.",
+      "startMs": 2420,
+      "endMs": 3860,
+      "timestampMs": 2420,
+      "confidence": null
+    },
+    {
+      "text": "Đoạn code này có chạy được một",
+      "startMs": 4060,
+      "endMs": 5720,
+      "timestampMs": 4060,
+      "confidence": null
+    },
+    {
+      "text": "mình, trong bộ nhớ, không cần gì",
+      "startMs": 5720,
+      "endMs": 8140,
+      "timestampMs": 5720,
+      "confidence": null
+    },
+    {
+      "text": "bên ngoài không?",
+      "startMs": 8140,
+      "endMs": 9000,
+      "timestampMs": 8140,
+      "confidence": null
+    },
+    {
+      "text": "Nếu có, nó là nghiệp vụ, và",
+      "startMs": 9500,
+      "endMs": 11720,
+      "timestampMs": 9500,
+      "confidence": null
+    },
+    {
+      "text": "nên được giữ sạch.",
+      "startMs": 11720,
+      "endMs": 13200,
+      "timestampMs": 11720,
+      "confidence": null
+    },
+    {
+      "text": "Nếu không, nó là hạ tầng, và",
+      "startMs": 13300,
+      "endMs": 15520,
+      "timestampMs": 13300,
+      "confidence": null
+    },
+    {
+      "text": "nên bị đẩy ra rìa sau một interface.",
+      "startMs": 15520,
+      "endMs": 17660,
+      "timestampMs": 15520,
+      "confidence": null
+    },
+    {
+      "text": "Bạn không cần biến cả dự án",
+      "startMs": 18260,
+      "endMs": 19980,
+      "timestampMs": 18260,
+      "confidence": null
+    },
+    {
+      "text": "thành hexagonal trong một tuần.",
+      "startMs": 19980,
+      "endMs": 22240,
+      "timestampMs": 19980,
+      "confidence": null
+    },
+    {
+      "text": "Chọn một use case thật.",
+      "startMs": 22240,
+      "endMs": 24300,
+      "timestampMs": 22240,
+      "confidence": null
+    },
+    {
+      "text": "Tách một phụ thuộc khó test nhất.",
+      "startMs": 24540,
+      "endMs": 26260,
+      "timestampMs": 24540,
+      "confidence": null
+    },
+    {
+      "text": "Viết một test chạy không cần database.",
+      "startMs": 26800,
+      "endMs": 28800,
+      "timestampMs": 26800,
+      "confidence": null
+    },
+    {
+      "text": "Rồi lặp lại.",
+      "startMs": 29540,
+      "endMs": 30340,
+      "timestampMs": 29540,
+      "confidence": null
+    },
+    {
+      "text": "Cuốn sách này không hứa kiến trúc",
+      "startMs": 31480,
+      "endMs": 32980,
+      "timestampMs": 31480,
+      "confidence": null
+    },
+    {
+      "text": "đẹp sẽ làm code chạy nhanh hơn.",
+      "startMs": 32980,
+      "endMs": 35020,
+      "timestampMs": 32980,
+      "confidence": null
+    },
+    {
+      "text": "Nó hứa một điều khiêm tốn hơn:",
+      "startMs": 35640,
+      "endMs": 37280,
+      "timestampMs": 35640,
+      "confidence": null
+    },
+    {
+      "text": "khi yêu cầu đổi, bạn biết phải",
+      "startMs": 37280,
+      "endMs": 39460,
+      "timestampMs": 37280,
+      "confidence": null
+    },
+    {
+      "text": "sửa ở đâu.",
+      "startMs": 39460,
+      "endMs": 40220,
+      "timestampMs": 39460,
+      "confidence": null
+    },
+    {
+      "text": "Và đó thường là thứ đắt nhất",
+      "startMs": 40740,
+      "endMs": 42620,
+      "timestampMs": 40740,
+      "confidence": null
+    },
+    {
+      "text": "trong một hệ thống sống đủ lâu.",
+      "startMs": 42620,
+      "endMs": 44420,
+      "timestampMs": 42620,
+      "confidence": null
+    },
+    {
+      "text": "Cảm ơn bạn đã nghe đến đây.",
+      "startMs": 44840,
+      "endMs": 46340,
+      "timestampMs": 44840,
+      "confidence": null
+    }
+  ]
+]

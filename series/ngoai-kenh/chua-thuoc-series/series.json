@@ -31,6 +31,26 @@
         }
       ],
       "book": "system-design"
+    },
+    {
+      "id": "kien-truc-ung-dung-web-tong-quan",
+      "title": "Kiến trúc ứng dụng web: tóm tắt cả cuốn sách",
+      "status": "planning",
+      "format": "long",
+      "durationSeconds": 750,
+      "paths": {
+        "source": "src/projects/kien-truc-ung-dung-web-tong-quan",
+        "scripts": "scripts/projects/kien-truc-ung-dung-web-tong-quan",
+        "docs": "docs/projects/kien-truc-ung-dung-web-tong-quan",
+        "assets": "public/kien-truc-ung-dung-web-tong-quan"
+      },
+      "registrations": [
+        {
+          "id": "KienTrucUngDungWebTongQuan",
+          "kind": "Composition"
+        }
+      ],
+      "book": "kien-truc-ung-dung-web"
     }
   ]
 }
