@@ -1,0 +1,139 @@
+{
+  "book": "system-design",
+  "sourceSha256": "f119d2b346861c620b66bed8afb5bb6a51c42906cafbe269133d8a9fb0f5400b",
+  "edition": "f119d2b346861c620b66bed8afb5bb6a51c42906cafbe269133d8a9fb0f5400b-de2a45e349f9",
+  "pageNumberConvention": "Số trang PDF đếm từ 1. Sách là ebook không đánh số trang in; dùng số trang PDF.",
+  "mappingSummary": "Bản đồ chương lấy từ 92 bookmark của PDF và kiểm tra lại trang mở từng chương. Sách tự gọi phần khái niệm là 'chương 2' và phần giao tiếp là 'Chương 6' dù chương Idempotency không đánh số; ở đây đánh số theo thứ tự bookmark.",
+  "coverage": {
+    "chaptersRead": 10,
+    "chaptersTotal": 10,
+    "status": "complete"
+  },
+  "frontMatter": [
+    {
+      "title": "Mục lục",
+      "pdfStart": 2,
+      "pdfEnd": 4,
+      "printedStartVerified": null,
+      "mappingSource": "text-checked"
+    },
+    {
+      "title": "Lời mở đầu",
+      "pdfStart": 5,
+      "pdfEnd": 5,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked"
+    }
+  ],
+  "backMatter": [
+    {
+      "title": "Lời kết",
+      "pdfStart": 94,
+      "pdfEnd": 94,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked"
+    }
+  ],
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Giới thiệu",
+      "pdfStart": 6,
+      "pdfEnd": 10,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "summary": "Vòng phỏng vấn System Design là gì, vì sao quan trọng, bốn khó khăn của người mới, năm kỹ năng nhà tuyển dụng tìm",
+      "readStatus": "read"
+    },
+    {
+      "number": 2,
+      "title": "Các khái niệm nền tảng trong Thiết kế hệ thống",
+      "pdfStart": 11,
+      "pdfEnd": 21,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "summary": "Latency, throughput, scalability (dọc/ngang), availability (các số 9), reliability, kiến trúc cấp cao và bảy thành phần phổ biến",
+      "readStatus": "read"
+    },
+    {
+      "number": 3,
+      "title": "Tính nhất quán và khả dụng trong System Design",
+      "pdfStart": 21,
+      "pdfEnd": 33,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "summary": "Mô hình nhất quán mạnh/cuối cùng/yếu; replication, failover, quorum W+R>N; định lý CAP, CP và AP; cách trình bày",
+      "readStatus": "read"
+    },
+    {
+      "number": 4,
+      "title": "Lựa chọn Cơ sở dữ liệu, Sharding và Tối ưu hóa lưu trữ",
+      "pdfStart": 33,
+      "pdfEnd": 44,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "summary": "SQL và NoSQL; bốn chiến lược sharding và shard key; index B-Tree, composite index; OLTP/OLAP, chọn kiểu lưu trữ; trình bày phần database",
+      "readStatus": "read"
+    },
+    {
+      "number": 5,
+      "title": "Mở rộng hệ thống và tối ưu hiệu suất",
+      "pdfStart": 45,
+      "pdfEnd": 60,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "summary": "Load balancer (thuật toán, tầng 4/7), caching (vị trí, cache-aside, write-through, write-back, refresh-ahead), message queue (producer–queue–consumer, backpressure)",
+      "readStatus": "read"
+    },
+    {
+      "number": 6,
+      "title": "Idempotency và cơ chế khóa trong hệ thống phân tán",
+      "pdfStart": 60,
+      "pdfEnd": 62,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "summary": "Idempotency key; khóa bi quan (SELECT … FOR UPDATE) và khóa lạc quan (version)",
+      "readStatus": "read"
+    },
+    {
+      "number": 7,
+      "title": "Các phương thức giao tiếp và thiết kế API",
+      "pdfStart": 62,
+      "pdfEnd": 70,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "summary": "HTTP stateless và các method; TCP tin cậy, UDP gửi là quên; RPC/gRPC cho nội bộ; REST cho API công khai",
+      "readStatus": "read"
+    },
+    {
+      "number": 8,
+      "title": "Đảm bảo khả năng chịu lỗi và phục hồi hệ thống",
+      "pdfStart": 71,
+      "pdfEnd": 79,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "summary": "Các loại sự cố; redundancy, failover, load balancing, retry có backoff, graceful degradation, health check; HA và FT; uptime, SLA, MTBF, MTTR",
+      "readStatus": "read"
+    },
+    {
+      "number": 9,
+      "title": "Bảo mật và phân quyền",
+      "pdfStart": 80,
+      "pdfEnd": 85,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "summary": "Xác thực (mật khẩu, MFA, session, JWT), phân quyền (RBAC, ABAC, OAuth2), bảo mật API, bảo vệ dữ liệu (TLS, hash+salt, XSS, CSRF, cookie), phòng thủ nhiều lớp",
+      "readStatus": "read"
+    },
+    {
+      "number": 10,
+      "title": "Monitoring và Observability",
+      "pdfStart": 86,
+      "pdfEnd": 93,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "summary": "Monitoring trả lời chuyện gì đang xảy ra, observability trả lời vì sao; ba trụ cột logs, metrics, traces; công cụ; cách trình bày",
+      "readStatus": "read"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "system-design",
+  "title": "System Design",
+  "authors": [
+    "Nguyễn Thế Huy"
+  ],
+  "status": "research",
+  "sourceSha256": "f119d2b346861c620b66bed8afb5bb6a51c42906cafbe269133d8a9fb0f5400b",
+  "note": "Đã đọc đủ 10/10 chương, lời mở đầu và lời kết (2026-11-11). Ghi chú theo trang trong research.md, bản đồ chương trong chapters.json.",
+  "fullTitle": "Hướng dẫn cách tiếp cận phỏng vấn System Design",
+  "cacheEdition": "f119d2b346861c620b66bed8afb5bb6a51c42906cafbe269133d8a9fb0f5400b-de2a45e349f9",
+  "sourceFile": "library/books/system-design/sources/System Design.pdf",
+  "pdfPages": 94,
+  "extractedCharacters": 218029,
+  "textLayer": "native",
+  "ocr": false,
+  "chapterMap": "chapters.json",
+  "research": "research.md",
+  "chaptersTotal": 10,
+  "chaptersRead": 10,
+  "checkedAt": "2026-11-11",
+  "editionDetails": {
+    "edition": "Ebook PDF, tiếng Việt, tác giả tự phát hành",
+    "provenance": "PDF người dùng thêm qua trang quản lý ngày 2026-11-11. Không có trang thông tin xuất bản, năm hay nhà xuất bản."
+  }
+}
