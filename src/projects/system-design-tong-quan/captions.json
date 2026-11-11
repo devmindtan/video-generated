@@ -1,0 +1,239 @@
+{
+ "source": "SystemDesignTongQuan defaultProps; scripts/projects/system-design-tong-quan/sentence-times.py",
+ "pages": [
+  {
+   "part": "00-mo-dau",
+   "text": "Bốn mươi lăm phút, một cái bảng",
+   "startMs": 6680,
+   "endMs": 8660
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "trắng, và một câu đề: hãy thiết",
+   "startMs": 8660,
+   "endMs": 10960
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "kế cho tôi một ứng dụng chia sẻ ảnh.",
+   "startMs": 10960,
+   "endMs": 13560
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Không có yêu cầu chi tiết.",
+   "startMs": 13760,
+   "endMs": 15420
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Không phải viết dòng code nào.",
+   "startMs": 15640,
+   "endMs": 17180
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Và cũng không có đáp án đúng.",
+   "startMs": 17180,
+   "endMs": 19240
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Đó là vòng phỏng vấn System Design,",
+   "startMs": 19720,
+   "endMs": 21700
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "và ở nhiều công ty lớn, kết",
+   "startMs": 21700,
+   "endMs": 24060
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "quả vòng này quyết định cả chuyện",
+   "startMs": 24060,
+   "endMs": 25780
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "bạn được nhận lẫn mức đãi ngộ.",
+   "startMs": 25780,
+   "endMs": 27580
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Video này tóm tắt cuốn System Design,",
+   "startMs": 28560,
+   "endMs": 31140
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "một cuốn hướng dẫn cách đi qua",
+   "startMs": 31380,
+   "endMs": 32900
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "vòng phỏng vấn đó.",
+   "startMs": 32900,
+   "endMs": 33980
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Mình đi lần lượt mười chương của",
+   "startMs": 33980,
+   "endMs": 36180
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "sách: từ khái niệm nền tảng, dữ",
+   "startMs": 36180,
+   "endMs": 38320
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "liệu, mở rộng hệ thống, cho tới",
+   "startMs": 38320,
+   "endMs": 40620
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "chịu lỗi, bảo mật và giám sát.",
+   "startMs": 40620,
+   "endMs": 42860
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Phần nào cũng có một ví dụ",
+   "startMs": 43080,
+   "endMs": 44740
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "đời thường như trong sách, và một",
+   "startMs": 44740,
+   "endMs": 47120
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "ý bạn có thể nói ngay trong",
+   "startMs": 47120,
+   "endMs": 49120
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "buổi phỏng vấn.",
+   "startMs": 49120,
+   "endMs": 49760
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "Trước hết, người phỏng vấn muốn thấy gì?",
+   "startMs": 51100,
+   "endMs": 54000
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "Bạn nhận một bài toán mở, chẳng",
+   "startMs": 54480,
+   "endMs": 56380
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "hạn một dịch vụ nhắn tin hay",
+   "startMs": 56380,
+   "endMs": 58260
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "một nền tảng xem phim.",
+   "startMs": 58260,
+   "endMs": 59960
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "Việc của bạn là vẽ ra các",
+   "startMs": 60180,
+   "endMs": 61740
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "thành phần chính, cách chúng nói",
+   "startMs": 61740,
+   "endMs": 63400
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "chuyện với nhau, và vì sao hệ",
+   "startMs": 63400,
+   "endMs": 65460
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "thống chịu được lượng người dùng đặt ra.",
+   "startMs": 65460,
+   "endMs": 67560
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "Người mới hay vấp ở mấy chỗ.",
+   "startMs": 68800,
+   "endMs": 70920
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "Câu hỏi quá mở nên không biết",
+   "startMs": 71060,
+   "endMs": 72900
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "bắt đầu từ đâu.",
+   "startMs": 72900,
+   "endMs": 73820
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "Chưa từng làm hệ thống lớn, nên",
+   "startMs": 73820,
+   "endMs": 76140
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "không rõ khi nào cần cache hay hàng đợi.",
+   "startMs": 76140,
+   "endMs": 79020
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "Chỉ có bốn lăm đến sáu mươi",
+   "startMs": 79180,
+   "endMs": 80620
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "phút, dễ mải vẽ chi tiết mà",
+   "startMs": 80620,
+   "endMs": 83200
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "quên ý chính.",
+   "startMs": 83200,
+   "endMs": 84020
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "Và nỗi ám ảnh phải đưa ra",
+   "startMs": 84560,
+   "endMs": 86420
+  },
+  {
+   "part": "01-vong-phong-van-nay-cham-dieu-gi",
+   "text": "một thiết kế hoàn hảo.",
+   "startMs": 86420,
+   "endMs": 87800
+  }
+ ]
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "id": "00-mo-dau",
+    "text": "Bốn mươi lăm phút, một cái bảng trắng, và một câu đề: hãy thiết kế cho tôi một ứng dụng chia sẻ ảnh. Không có yêu cầu chi tiết. Không phải viết dòng code nào. Và cũng không có đáp án đúng. Đó là vòng phỏng vấn System Design, và ở nhiều công ty lớn, kết quả vòng này quyết định cả chuyện bạn được nhận lẫn mức đãi ngộ. Video này tóm tắt cuốn System Design, một cuốn hướng dẫn cách đi qua vòng phỏng vấn đó. Mình đi lần lượt mười chương của sách: từ khái niệm nền tảng, dữ liệu, mở rộng hệ thống, cho tới chịu lỗi, bảo mật và giám sát. Phần nào cũng có một ví dụ đời thường như trong sách, và một ý bạn có thể nói ngay trong buổi phỏng vấn.",
+    "sentences": [
+      {
+        "text": "Bốn mươi lăm phút, một cái bảng trắng, và một câu đề: hãy thiết kế cho tôi một ứng dụng chia sẻ ảnh.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Không có yêu cầu chi tiết. Không phải viết dòng code nào. Và cũng không có đáp án đúng.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Đó là vòng phỏng vấn System Design, và ở nhiều công ty lớn, kết quả vòng này quyết định cả chuyện bạn được nhận lẫn mức đãi ngộ.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Video này tóm tắt cuốn System Design, một cuốn hướng dẫn cách đi qua vòng phỏng vấn đó.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Mình đi lần lượt mười chương của sách: từ khái niệm nền tảng, dữ liệu, mở rộng hệ thống, cho tới chịu lỗi, bảo mật và giám sát.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Phần nào cũng có một ví dụ đời thường như trong sách, và một ý bạn có thể nói ngay trong buổi phỏng vấn.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 44.6,
+    "minWordMatchRatio": 0.75,
+    "start": 0
+  },
+  {
+    "id": "01-vong-phong-van-nay-cham-dieu-gi",
+    "text": "Trước hết, người phỏng vấn muốn thấy gì? Bạn nhận một bài toán mở, chẳng hạn một dịch vụ nhắn tin hay một nền tảng xem phim. Việc của bạn là vẽ ra các thành phần chính, cách chúng nói chuyện với nhau, và vì sao hệ thống chịu được lượng người dùng đặt ra. Người mới hay vấp ở mấy chỗ. Câu hỏi quá mở nên không biết bắt đầu từ đâu. Chưa từng làm hệ thống lớn, nên không rõ khi nào cần cache hay hàng đợi. Chỉ có bốn lăm đến sáu mươi phút, dễ mải vẽ chi tiết mà quên ý chính. Và nỗi ám ảnh phải đưa ra một thiết kế hoàn hảo. Theo sách, đa số người trượt vòng này vì thiếu một cách làm lặp lại được. Một khung đơn giản: hỏi rõ yêu cầu, vẽ kiến trúc tổng quan, rồi đi sâu vào từng phần. Người phỏng vấn chấm cách bạn đi tới đáp án, nhiều hơn chính đáp án. Và trong lúc làm, hãy nghĩ thành tiếng, đừng im lặng quá lâu.",
+    "sentences": [
+      {
+        "text": "Trước hết, người phỏng vấn muốn thấy gì?",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Bạn nhận một bài toán mở, chẳng hạn một dịch vụ nhắn tin hay một nền tảng xem phim.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Việc của bạn là vẽ ra các thành phần chính, cách chúng nói chuyện với nhau, và vì sao hệ thống chịu được lượng người dùng đặt ra.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Người mới hay vấp ở mấy chỗ.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Câu hỏi quá mở nên không biết bắt đầu từ đâu.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Chưa từng làm hệ thống lớn, nên không rõ khi nào cần cache hay hàng đợi.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Chỉ có bốn lăm đến sáu mươi phút, dễ mải vẽ chi tiết mà quên ý chính.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Và nỗi ám ảnh phải đưa ra một thiết kế hoàn hảo.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Theo sách, đa số người trượt vòng này vì thiếu một cách làm lặp lại được.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Một khung đơn giản: hỏi rõ yêu cầu, vẽ kiến trúc tổng quan, rồi đi sâu vào từng phần.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Người phỏng vấn chấm cách bạn đi tới đáp án, nhiều hơn chính đáp án.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Và trong lúc làm, hãy nghĩ thành tiếng, đừng im lặng quá lâu.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 58.91,
+    "minWordMatchRatio": 0.75,
+    "start": 44.6
+  }
+]

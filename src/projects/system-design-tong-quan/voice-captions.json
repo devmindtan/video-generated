@@ -1,0 +1,342 @@
+[
+  [
+    {
+      "text": "Bốn mươi lăm phút, một cái bảng",
+      "startMs": 180,
+      "endMs": 2160,
+      "timestampMs": 180,
+      "confidence": null
+    },
+    {
+      "text": "trắng, và một câu đề: hãy thiết",
+      "startMs": 2160,
+      "endMs": 4460,
+      "timestampMs": 2160,
+      "confidence": null
+    },
+    {
+      "text": "kế cho tôi một ứng dụng chia sẻ ảnh.",
+      "startMs": 4460,
+      "endMs": 7060,
+      "timestampMs": 4460,
+      "confidence": null
+    },
+    {
+      "text": "Không có yêu cầu chi tiết.",
+      "startMs": 7260,
+      "endMs": 8920,
+      "timestampMs": 7260,
+      "confidence": null
+    },
+    {
+      "text": "Không phải viết dòng code nào.",
+      "startMs": 9140,
+      "endMs": 10680,
+      "timestampMs": 9140,
+      "confidence": null
+    },
+    {
+      "text": "Và cũng không có đáp án đúng.",
+      "startMs": 10680,
+      "endMs": 12740,
+      "timestampMs": 10680,
+      "confidence": null
+    },
+    {
+      "text": "Đó là vòng phỏng vấn System Design,",
+      "startMs": 13220,
+      "endMs": 15200,
+      "timestampMs": 13220,
+      "confidence": null
+    },
+    {
+      "text": "và ở nhiều công ty lớn, kết",
+      "startMs": 15200,
+      "endMs": 17560,
+      "timestampMs": 15200,
+      "confidence": null
+    },
+    {
+      "text": "quả vòng này quyết định cả chuyện",
+      "startMs": 17560,
+      "endMs": 19280,
+      "timestampMs": 17560,
+      "confidence": null
+    },
+    {
+      "text": "bạn được nhận lẫn mức đãi ngộ.",
+      "startMs": 19280,
+      "endMs": 21080,
+      "timestampMs": 19280,
+      "confidence": null
+    },
+    {
+      "text": "Video này tóm tắt cuốn System Design,",
+      "startMs": 22060,
+      "endMs": 24640,
+      "timestampMs": 22060,
+      "confidence": null
+    },
+    {
+      "text": "một cuốn hướng dẫn cách đi qua",
+      "startMs": 24880,
+      "endMs": 26400,
+      "timestampMs": 24880,
+      "confidence": null
+    },
+    {
+      "text": "vòng phỏng vấn đó.",
+      "startMs": 26400,
+      "endMs": 27480,
+      "timestampMs": 26400,
+      "confidence": null
+    },
+    {
+      "text": "Mình đi lần lượt mười chương của",
+      "startMs": 27480,
+      "endMs": 29680,
+      "timestampMs": 27480,
+      "confidence": null
+    },
+    {
+      "text": "sách: từ khái niệm nền tảng, dữ",
+      "startMs": 29680,
+      "endMs": 31820,
+      "timestampMs": 29680,
+      "confidence": null
+    },
+    {
+      "text": "liệu, mở rộng hệ thống, cho tới",
+      "startMs": 31820,
+      "endMs": 34120,
+      "timestampMs": 31820,
+      "confidence": null
+    },
+    {
+      "text": "chịu lỗi, bảo mật và giám sát.",
+      "startMs": 34120,
+      "endMs": 36360,
+      "timestampMs": 34120,
+      "confidence": null
+    },
+    {
+      "text": "Phần nào cũng có một ví dụ",
+      "startMs": 36580,
+      "endMs": 38240,
+      "timestampMs": 36580,
+      "confidence": null
+    },
+    {
+      "text": "đời thường như trong sách, và một",
+      "startMs": 38240,
+      "endMs": 40620,
+      "timestampMs": 38240,
+      "confidence": null
+    },
+    {
+      "text": "ý bạn có thể nói ngay trong",
+      "startMs": 40620,
+      "endMs": 42620,
+      "timestampMs": 40620,
+      "confidence": null
+    },
+    {
+      "text": "buổi phỏng vấn.",
+      "startMs": 42620,
+      "endMs": 43260,
+      "timestampMs": 42620,
+      "confidence": null
+    }
+  ],
+  [
+    {
+      "text": "Trước hết, người phỏng vấn muốn thấy gì?",
+      "startMs": 0,
+      "endMs": 2900,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "Bạn nhận một bài toán mở, chẳng",
+      "startMs": 3380,
+      "endMs": 5280,
+      "timestampMs": 3380,
+      "confidence": null
+    },
+    {
+      "text": "hạn một dịch vụ nhắn tin hay",
+      "startMs": 5280,
+      "endMs": 7160,
+      "timestampMs": 5280,
+      "confidence": null
+    },
+    {
+      "text": "một nền tảng xem phim.",
+      "startMs": 7160,
+      "endMs": 8860,
+      "timestampMs": 7160,
+      "confidence": null
+    },
+    {
+      "text": "Việc của bạn là vẽ ra các",
+      "startMs": 9080,
+      "endMs": 10640,
+      "timestampMs": 9080,
+      "confidence": null
+    },
+    {
+      "text": "thành phần chính, cách chúng nói",
+      "startMs": 10640,
+      "endMs": 12300,
+      "timestampMs": 10640,
+      "confidence": null
+    },
+    {
+      "text": "chuyện với nhau, và vì sao hệ",
+      "startMs": 12300,
+      "endMs": 14360,
+      "timestampMs": 12300,
+      "confidence": null
+    },
+    {
+      "text": "thống chịu được lượng người dùng đặt ra.",
+      "startMs": 14360,
+      "endMs": 16460,
+      "timestampMs": 14360,
+      "confidence": null
+    },
+    {
+      "text": "Người mới hay vấp ở mấy chỗ.",
+      "startMs": 17700,
+      "endMs": 19820,
+      "timestampMs": 17700,
+      "confidence": null
+    },
+    {
+      "text": "Câu hỏi quá mở nên không biết",
+      "startMs": 19960,
+      "endMs": 21800,
+      "timestampMs": 19960,
+      "confidence": null
+    },
+    {
+      "text": "bắt đầu từ đâu.",
+      "startMs": 21800,
+      "endMs": 22720,
+      "timestampMs": 21800,
+      "confidence": null
+    },
+    {
+      "text": "Chưa từng làm hệ thống lớn, nên",
+      "startMs": 22720,
+      "endMs": 25040,
+      "timestampMs": 22720,
+      "confidence": null
+    },
+    {
+      "text": "không rõ khi nào cần cache hay hàng đợi.",
+      "startMs": 25040,
+      "endMs": 27920,
+      "timestampMs": 25040,
+      "confidence": null
+    },
+    {
+      "text": "Chỉ có bốn lăm đến sáu mươi",
+      "startMs": 28080,
+      "endMs": 29520,
+      "timestampMs": 28080,
+      "confidence": null
+    },
+    {
+      "text": "phút, dễ mải vẽ chi tiết mà",
+      "startMs": 29520,
+      "endMs": 32100,
+      "timestampMs": 29520,
+      "confidence": null
+    },
+    {
+      "text": "quên ý chính.",
+      "startMs": 32100,
+      "endMs": 32920,
+      "timestampMs": 32100,
+      "confidence": null
+    },
+    {
+      "text": "Và nỗi ám ảnh phải đưa ra",
+      "startMs": 33460,
+      "endMs": 35320,
+      "timestampMs": 33460,
+      "confidence": null
+    },
+    {
+      "text": "một thiết kế hoàn hảo.",
+      "startMs": 35320,
+      "endMs": 36700,
+      "timestampMs": 35320,
+      "confidence": null
+    },
+    {
+      "text": "Theo sách, đa số người trượt vòng",
+      "startMs": 37600,
+      "endMs": 39460,
+      "timestampMs": 37600,
+      "confidence": null
+    },
+    {
+      "text": "này vì thiếu một cách làm lặp lại được.",
+      "startMs": 39460,
+      "endMs": 41980,
+      "timestampMs": 39460,
+      "confidence": null
+    },
+    {
+      "text": "Một khung đơn giản: hỏi rõ yêu",
+      "startMs": 42540,
+      "endMs": 44480,
+      "timestampMs": 42540,
+      "confidence": null
+    },
+    {
+      "text": "cầu, vẽ kiến trúc tổng quan, rồi",
+      "startMs": 44480,
+      "endMs": 47060,
+      "timestampMs": 44480,
+      "confidence": null
+    },
+    {
+      "text": "đi sâu vào từng phần.",
+      "startMs": 47060,
+      "endMs": 48600,
+      "timestampMs": 47060,
+      "confidence": null
+    },
+    {
+      "text": "Người phỏng vấn chấm cách bạn đi",
+      "startMs": 48600,
+      "endMs": 51080,
+      "timestampMs": 48600,
+      "confidence": null
+    },
+    {
+      "text": "tới đáp án, nhiều hơn chính đáp án.",
+      "startMs": 51080,
+      "endMs": 53700,
+      "timestampMs": 51080,
+      "confidence": null
+    },
+    {
+      "text": "Và trong lúc làm, hãy nghĩ thành",
+      "startMs": 53900,
+      "endMs": 55720,
+      "timestampMs": 53900,
+      "confidence": null
+    },
+    {
+      "text": "tiếng, đừng im lặng quá lâu.",
+      "startMs": 55720,
+      "endMs": 57520,
+      "timestampMs": 55720,
+      "confidence": null
+    }
+  ]
+]

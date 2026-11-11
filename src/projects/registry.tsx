@@ -1,4 +1,5 @@
 import {renderTo} from './render-output';
+import {SystemDesignVideo, metadata as systemDesignMetadata} from './system-design-tong-quan/Video';
 import type {FC} from 'react';
 import {Composition, Folder, Still} from 'remotion';
 import {BoundariesThumbnail} from './boundaries/Thumbnail';
@@ -379,6 +380,13 @@ export const ProjectCompositions: FC = () => (
         </Folder>
         <Folder name="paper-boat-night-voyage">
           <Composition id="PaperBoatNightVoyage" calculateMetadata={renderTo('paper-boat-night-voyage')} component={PaperBoatNightVoyageVideo} durationInFrames={900} fps={30} width={1920} height={1080} />
+        </Folder>
+      </Folder>
+    </Folder>
+    <Folder name="Ngoai-Kenh">
+      <Folder name="Chua-Thuoc-Series">
+        <Folder name="system-design-tong-quan">
+          <Composition id="SystemDesignTongQuan" calculateMetadata={renderTo('system-design-tong-quan', systemDesignMetadata)} component={SystemDesignVideo} durationInFrames={2700} fps={30} width={1920} height={1080} />
         </Folder>
       </Folder>
     </Folder>

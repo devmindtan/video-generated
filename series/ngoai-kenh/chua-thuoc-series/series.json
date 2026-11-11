@@ -11,5 +11,26 @@
   "defaultDurationSeconds": null,
   "summary": "Dự án và sách chưa xếp vào series nào (ví dụ video về sách kỹ thuật); chuyển sang series riêng khi đã rõ hướng.",
   "bookshelf": true,
-  "projects": []
+  "projects": [
+    {
+      "id": "system-design-tong-quan",
+      "title": "System Design: tóm tắt cả cuốn sách",
+      "status": "existing",
+      "format": "long",
+      "durationSeconds": null,
+      "paths": {
+        "source": "src/projects/system-design-tong-quan",
+        "scripts": "scripts/projects/system-design-tong-quan",
+        "docs": "docs/projects/system-design-tong-quan",
+        "assets": "public/system-design-tong-quan"
+      },
+      "registrations": [
+        {
+          "id": "SystemDesignTongQuan",
+          "kind": "Composition"
+        }
+      ],
+      "book": "system-design"
+    }
+  ]
 }

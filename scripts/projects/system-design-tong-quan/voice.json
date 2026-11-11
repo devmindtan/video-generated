@@ -1,0 +1,28 @@
+{
+  "voice": "Minh Đức",
+  "name": "Minh Đức (VieNeu preset)",
+  "option": 1,
+  "engine": "VieNeu-TTS v3 Turbo, local CPU (laptop), scripts/shared/make-voice.py, legacy24, tốc độ 1×, temperature 0,5",
+  "pitchSemitones": 0,
+  "speed": 1,
+  "processing": "Một file mỗi đoạn kịch bản; khoảng nghỉ 0,45 giây giữa câu, 1,1 giây ở chỗ đổi ý; thuật ngữ tiếng Anh dùng cách đọc riêng (say) khi giọng đọc lệch; phụ đề giữ chữ gốc.",
+  "selection": "Lựa chọn 1 (người dùng 2026-11-11: giọng cơ bản, không clone). Minh Đức đọc thuật ngữ tiếng Anh tốt hơn Xuân Vĩnh trong lần thử; chờ người dùng nghe và chốt.",
+  "sample": {
+    "proposed": "system-design-tong-quan/audio/00-mo-dau-voice-full.wav",
+    "alternatives": [
+      "system-design-tong-quan/audio/01-vong-phong-van-nay-cham-dieu-gi-voice-full.wav"
+    ]
+  },
+  "segments": {
+    "00-mo-dau": {
+      "file": "system-design-tong-quan/audio/00-mo-dau-voice-full.wav",
+      "sha256": "b7e6d8efe18fe0cc62b99f97e3de06ac2431d5aba1f7ed09014f9765da909afc",
+      "durationSeconds": 44.6
+    },
+    "01-vong-phong-van-nay-cham-dieu-gi": {
+      "file": "system-design-tong-quan/audio/01-vong-phong-van-nay-cham-dieu-gi-voice-full.wav",
+      "sha256": "671066c4f0ff30fc714508b54a7ad8bf5958c5fd8b61056c0f3a8fc7a16fa68f",
+      "durationSeconds": 58.91
+    }
+  }
+}
