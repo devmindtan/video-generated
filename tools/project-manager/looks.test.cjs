@@ -16,7 +16,7 @@ const catalog=require('../../scripts/catalog/catalog.cjs');
  const mark=s=>console.log('✓ '+s);
  // ---- backend --------------------------------------------------------------------------------------------
  const looks=createLooks(root);let view=looks.looks();
- assert.equal(view.themes.length,11);assert.equal(view.styles.length,12);assert.equal(view.projects[0].id,'thu-mot');
+ assert.equal(view.themes.length,12);assert.equal(view.styles.length,13);assert.equal(view.projects[0].id,'thu-mot');
  assert.deepEqual([view.projects[0].theme.id,view.projects[0].theme.by,view.projects[0].style.id],['dem-stoic','detected','anh-tinh']);
  assert.deepEqual(view.themes.find(t=>t.id==='dem-stoic').usedBy,['thu-mot']);mark('Theme and style are detected from the project code, with no look set');
  const base=structuredClone(view.themes[0]);delete base.id;delete base.usedBy;
@@ -42,11 +42,11 @@ const catalog=require('../../scripts/catalog/catalog.cjs');
   for(const [w,h,tag] of [[1440,1000,'desktop'],[768,1024,'tablet'],[390,844,'mobile']]){
    const page=await browser.newPage({viewport:{width:w,height:h},locale:'vi-VN'});page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
    await page.goto(url+'/?view=themes',{waitUntil:'networkidle'});await page.locator('.theme-card').first().waitFor();
-   assert.equal(await page.locator('.theme-card').count(),12);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'horizontal overflow '+tag);
+   assert.equal(await page.locator('.theme-card').count(),13);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'horizontal overflow '+tag);
    // Theme colours reach the preview through CSS variables (the CSP blocks inline style attributes).
    assert.equal(await page.locator('.theme-card .look-stage').first().evaluate(el=>getComputedStyle(el).getPropertyValue('--t-accent').trim()),'#d9b56f');
    await page.locator('#looks-search').fill('lo au');await page.waitForTimeout(350);assert.equal(await page.locator('.theme-card').count(),1);
-   await page.locator('#looks-search').fill('');await page.waitForTimeout(350);await page.locator('[data-look-format="long"]').click();assert.ok(await page.locator('.theme-card').count()<12);
+   await page.locator('#looks-search').fill('');await page.waitForTimeout(350);await page.locator('[data-look-format="long"]').click();assert.ok(await page.locator('.theme-card').count()<13);
    await page.screenshot({path:path.join(out,`themes-${tag}.png`)});mark(`${tag}: theme grid, accent-insensitive search and format filter`);
    await page.close();
   }
@@ -60,7 +60,7 @@ const catalog=require('../../scripts/catalog/catalog.cjs');
   assert.equal(JSON.parse(fs.readFileSync(seriesFile,'utf8')).projects[0].look.theme,'hoang-hon-tim');mark('"Gắn cho dự án" writes the project look');
   await page.locator('[data-theme-open="hoang-hon-tim"]').click();await page.locator('#looks-dialog .usage-series a[data-project="thu-mot"]').waitFor();
   assert.match(await page.locator('#looks-dialog .usage-series').innerText(),/Tập thử một\s*bạn chọn/);await page.keyboard.press('Escape');mark('"Đang dùng" lists the project as a link, marked as chosen');
-  await page.goto(url+'/?view=motion',{waitUntil:'networkidle'});await page.locator('.motion-card').first().waitFor();assert.equal(await page.locator('.motion-card').count(),12);
+  await page.goto(url+'/?view=motion',{waitUntil:'networkidle'});await page.locator('.motion-card').first().waitFor();assert.equal(await page.locator('.motion-card').count(),13);
   // Compact grid (user 2026-11-10): no details on the page, a card opens them.
   assert.equal(await page.locator('#resource-view .look-facts').count(),0);assert.equal(await page.locator('#resource-view textarea').count(),0);
   await page.locator('.motion-card[data-style-open="hinh-khoi"]').hover();assert.ok(await page.locator('[data-style-open="hinh-khoi"] .motion-preview.is-playing').count());

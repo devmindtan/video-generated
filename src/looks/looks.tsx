@@ -9,7 +9,7 @@ import stylesData from './animation-styles.json';
 // and preview them, and compositions read the tokens here instead of hard-coding colours.
 export type Palette = {background: string; surface: string; ink: string; muted: string; accent: string; accent2: string};
 export type Theme = {id: string; name: string; mood: string; description: string; topics: string[]; formats: string[]; palette: Palette;
-  texture: 'grain' | 'paper' | 'chalk' | 'glow' | 'marble' | 'none'; stroke: {color: keyof Palette; width: number};
+  texture: 'grain' | 'paper' | 'chalk' | 'glow' | 'marble' | 'grid' | 'none'; stroke: {color: keyof Palette; width: number};
   caption: {text: keyof Palette; keyword: keyof Palette; box: boolean}; music: string; styles: string[]; sample: {caption: string; keyword: string}};
 export type AnimationStyle = {id: string; name: string; summary: string; bestFor: string[]; techniques: string[]; pace: string; effort: number; sample: string};
 
@@ -27,6 +27,10 @@ export const ThemeBackground: FC<{theme: Theme; frame: number}> = ({theme: t, fr
     {t.texture === 'glow' ? <AbsoluteFill style={{background: `radial-gradient(circle at 50% ${40 + Math.sin(frame / 40) * 3}%, ${p.surface} 0%, ${p.background} 62%)`}} /> : null}
     {t.texture === 'paper' ? <AbsoluteFill style={{background: `repeating-linear-gradient(8deg, transparent 0 7px, ${p.surface}55 7px 8px), radial-gradient(ellipse at 50% 40%, transparent 40%, ${p.surface} 100%)`}} /> : null}
     {t.texture === 'chalk' ? <AbsoluteFill style={{background: `radial-gradient(ellipse 90% 70% at 50% 45%, ${p.surface} 0%, ${p.background} 80%)`}} /> : null}
+    {t.texture === 'grid' ? <AbsoluteFill style={{background: `radial-gradient(ellipse 80% 60% at 50% 45%, ${p.surface} 0%, ${p.background} 75%)`}}>
+      <AbsoluteFill style={{backgroundImage: `linear-gradient(${p.accent2}14 1px, transparent 1px), linear-gradient(90deg, ${p.accent2}14 1px, transparent 1px), linear-gradient(${p.accent2}0a 1px, transparent 1px), linear-gradient(90deg, ${p.accent2}0a 1px, transparent 1px)`,
+        backgroundSize: '120px 120px, 120px 120px, 24px 24px, 24px 24px'}} />
+    </AbsoluteFill> : null}
     {t.texture === 'marble' ? <AbsoluteFill style={{background: `radial-gradient(ellipse 60% 22% at 30% 28%, ${p.surface}99, transparent 70%), radial-gradient(ellipse 50% 18% at 72% 66%, ${p.surface}88, transparent 70%), radial-gradient(ellipse at 40% 30%, #ffffff44, transparent 60%)`}} /> : null}
     {t.texture === 'grain' || t.texture === 'chalk' || t.texture === 'paper' ? <svg width="100%" height="100%" style={{position: 'absolute', inset: 0, opacity: .5}}>
       {Array.from({length: 90}, (_, i) => <circle key={i} cx={`${random(`x${i}`) * 100}%`} cy={`${random(`y${i}`) * 100}%`} r={1 + random(`r${i}`) * 1.4} fill={p.muted} opacity={.18 + .12 * Math.sin((frame + i * 7) / 9)} />)}

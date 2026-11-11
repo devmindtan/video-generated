@@ -9,7 +9,7 @@ const crypto = require('node:crypto');
 const {load} = require('../../scripts/catalog/catalog.cjs');
 
 const THEMES = 'src/looks/themes.json', STYLES = 'src/looks/animation-styles.json';
-const TEXTURES = ['grain', 'paper', 'chalk', 'glow', 'marble', 'none'], ROLES = ['background', 'surface', 'ink', 'muted', 'accent', 'accent2'];
+const TEXTURES = ['grain', 'paper', 'chalk', 'glow', 'marble', 'grid', 'none'], ROLES = ['background', 'surface', 'ink', 'muted', 'accent', 'accent2'];
 const hashText = text => crypto.createHash('sha256').update(text).digest('hex');
 const conflict = what => Object.assign(new Error(`${what} vừa được sửa ở nơi khác. Hãy tải lại trang.`), {status: 409});
 const fail = message => Object.assign(new Error(message), {status: 400});

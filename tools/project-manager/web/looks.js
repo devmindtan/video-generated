@@ -1,7 +1,7 @@
 /* Chủ đề hình ảnh and Phong cách animation (user 2026-11-10). Uses app.js globals ($, esc, fold, api, state, toast,
    icon). The page CSP blocks inline style attributes, so theme colours are set as CSS variables through the DOM. */
 const ROLE_NAMES={background:'Nền',surface:'Mặt phụ',ink:'Chữ',muted:'Chữ phụ',accent:'Nhấn',accent2:'Nhấn 2'};
-const TEXTURE_NAMES={grain:'Hạt mịn',paper:'Giấy có thớ',chalk:'Bảng phấn',glow:'Quầng sáng',marble:'Vân đá',none:'Trơn'};
+const TEXTURE_NAMES={grain:'Hạt mịn',paper:'Giấy có thớ',chalk:'Bảng phấn',glow:'Quầng sáng',marble:'Vân đá',grid:'Lưới bản vẽ',none:'Trơn'};
 const FORMAT_NAMES={short:'Short',long:'Video dài'};
 const EFFORT_NAMES={1:'Nhẹ',2:'Vừa',3:'Công phu'};
 const looks={data:null,format:'',query:'',favorites:false,dialog:null,edit:null,saving:false};
@@ -94,6 +94,7 @@ function motionArt(id){
     case 'phan-bang':return svg('<circle class="m-draw m-chalk" pathLength="1" cx="60" cy="74" r="30"/><text x="60" y="82" class="m-w m-chalk-t">1%</text><path class="m-draw m-chalk2" pathLength="1" d="M26 132 C44 118 70 120 92 108 M86 104 L94 108 L88 114"/>');
     case 'bong-do':return svg('<circle cx="60" cy="96" r="38" class="m-sun"/><path d="M0 120 C40 112 80 116 120 108 L120 160 L0 160Z" class="m-ground"/><g class="m-walker"><circle cx="0" cy="-30" r="4"/><path d="M0 -26 L0 -12 M0 -12 L-4 0 M0 -12 L4 0 M0 -22 L-4 -14 M0 -22 L4 -14"/></g>');
     case 'infographic':return svg('<circle cx="60" cy="60" r="26" class="m-ring-bg"/><circle cx="60" cy="60" r="26" class="m-ring" pathLength="1"/><rect x="28" y="104" width="16" height="36" class="m-bar m-b1"/><rect x="52" y="104" width="16" height="36" class="m-bar m-b2"/><rect x="76" y="104" width="16" height="36" class="m-bar m-b3"/>');
+    case 'so-do-he-thong':return svg('<path class="m-wire" d="M30 50 L90 50 M60 58 L60 104 M30 112 L90 112"/><rect x="14" y="40" width="32" height="20" rx="4" class="m-node"/><rect x="74" y="40" width="32" height="20" rx="4" class="m-node"/><rect x="44" y="102" width="32" height="20" rx="4" class="m-node m-node-key"/><circle r="4" class="m-pkt m-pk1" cx="30" cy="50"/><circle r="4" class="m-pkt m-pk2" cx="60" cy="60"/>');
     case 'muc-loang':return svg('<circle cx="48" cy="70" r="22" class="m-blot m-p1"/><circle cx="74" cy="84" r="16" class="m-blot m-p2"/><rect x="18" y="118" width="84" height="10" rx="5" class="m-brush"/><rect x="86" y="40" width="12" height="12" class="m-seal"/>');
     case 'hat-anh-sang':return svg('<circle cx="60" cy="80" r="30" class="m-breath"/><circle cx="60" cy="80" r="18" class="m-breath2"/>'+Array.from({length:12},(_,i)=>`<circle cx="${10+i*9}" cy="${30+(i*37)%110}" r="${1.5+(i%3)}" class="m-dot m-d${i%3}"/>`).join(''));
     case 'hinh-khoi':return svg('<rect x="38" y="58" width="44" height="44" class="m-morph"/><circle cx="60" cy="80" r="44" class="m-orbit"/>');

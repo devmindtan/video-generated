@@ -1,6 +1,7 @@
 import type {FC, ReactNode} from 'react';
 import {Easing, Img, interpolate, random, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {FONT, SampleFrame, strokeOf, themeOf} from './looks';
+import {DiagramNode, DiagramPacket, DiagramWire} from './diagram-kit';
 import type {Theme} from './looks';
 
 // One short vertical sample per 2D animation style (animation-styles.json "sample"), 6 s at 30 fps. Each takes a
@@ -150,5 +151,19 @@ export const SoTay = make((t, f, fps) => {const p = t.palette, drop = spring({fr
   <Ink d="M300 1000 C340 1120 460 1150 560 1100 M530 1078 L566 1100 L540 1134" f={f} a={100} b={140} color={p.ink} w={6} />
 </g>;}, 'TRANG SỔ TAY', false);
 
+// Sơ đồ hệ thống động: client → load balancer → three servers → database; packets run along the wires, then one
+// server fails and the balancer sends its traffic to the other two.
+export const SoDoHeThong = make((t, f) => {const down = f > 110, xs = [260, 540, 820];return <g>
+  <DiagramWire t={t} f={f} pts={[[540, 470], [540, 600]]} at={14} />
+  {xs.map((x, k) => <DiagramWire key={k} t={t} f={f} pts={[[540, 700], [x, 820]]} at={24 + k * 6} opacity={down && k === 1 ? .25 : 1} />)}
+  {xs.map((x, k) => <DiagramWire key={k} t={t} f={f} pts={[[x, 950], [540, 1100]]} at={40 + k * 6} arrow={false} opacity={down && k === 1 ? .25 : 1} />)}
+  <DiagramNode t={t} f={f} x={540} y={400} kind="phone" label="Người dùng" at={0} />
+  <DiagramNode t={t} f={f} x={540} y={650} w={300} h={100} kind="lb" at={10} state="key" />
+  {xs.map((x, k) => <DiagramNode key={k} t={t} f={f} x={x} y={885} w={200} h={120} kind="server" at={20 + k * 6} state={down && k === 1 ? 'down' : 'ok'} />)}
+  <DiagramNode t={t} f={f} x={540} y={1170} kind="db" label="Database" at={36} />
+  <DiagramPacket t={t} f={f} pts={[[540, 470], [540, 600]]} at={50} period={30} count={2} />
+  {xs.map((x, k) => <DiagramPacket key={k} t={t} f={f} pts={[[540, 700], [x, 820]]} at={58} until={down && k === 1 ? 110 : Infinity} period={36} count={2} />)}
+</g>;}, 'SƠ ĐỒ HỆ THỐNG');
+
 export const SAMPLES: Record<string, FC<SampleProps>> = {PhongCachNetVe: NetVe, PhongCachAnhTinh: AnhTinh, PhongCachTranhVector: TranhVector, PhongCachChuChuyenDong: ChuChuyenDong, PhongCachCatGiay: CatGiay, PhongCachPhanBang: PhanBang,
-  PhongCachBongDo: BongDo, PhongCachInfographic: Infographic, PhongCachMucLoang: MucLoang, PhongCachHatAnhSang: HatAnhSang, PhongCachHinhKhoi: HinhKhoi, PhongCachSoTay: SoTay};
+  PhongCachBongDo: BongDo, PhongCachInfographic: Infographic, PhongCachMucLoang: MucLoang, PhongCachHatAnhSang: HatAnhSang, PhongCachHinhKhoi: HinhKhoi, PhongCachSoTay: SoTay, PhongCachSoDoHeThong: SoDoHeThong};

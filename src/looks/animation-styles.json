@@ -307,6 +307,34 @@
         "any": [],
         "none": []
       }
+    },
+    {
+      "id": "so-do-he-thong",
+      "name": "Sơ đồ hệ thống động",
+      "summary": "Khối máy chủ, cơ sở dữ liệu, hàng đợi nối bằng đường dẫn; gói dữ liệu chạy dọc đường nối, đồng hồ và bộ đếm chạy, máy hỏng thì đổi màu: thấy được hệ thống đang làm việc.",
+      "bestFor": [
+        "sách kỹ thuật",
+        "kiến trúc phần mềm",
+        "quy trình dữ liệu",
+        "so sánh giải pháp"
+      ],
+      "techniques": [
+        "khối và đường nối vẽ dần theo khung",
+        "gói dữ liệu chạy dọc đường nối suy ra từ frame",
+        "bộ đếm, đồng hồ, thẻ code chữ đơn cách"
+      ],
+      "pace": "Vừa, liên tục",
+      "effort": 2,
+      "sample": "PhongCachSoDoHeThong",
+      "favorite": false,
+      "userNote": "",
+      "detect": {
+        "any": [
+          "DiagramPacket",
+          "DiagramNode"
+        ],
+        "none": []
+      }
     }
   ]
 }

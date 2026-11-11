@@ -483,6 +483,50 @@
         "caption": "Mỗi ngày tốt hơn một chút là đủ",
         "keyword": "một chút"
       }
+    },
+    {
+      "id": "ban-ve-ky-thuat",
+      "name": "Bản vẽ kỹ thuật",
+      "mood": "Mạch lạc, chính xác, như kỹ sư phác kiến trúc",
+      "description": "Nền xanh bản vẽ có lưới mờ, khối và đường nối màu xanh lơ, nhấn vàng hổ phách, chữ trắng xanh. Hợp sách kỹ thuật, kiến trúc phần mềm, sơ đồ hệ thống.",
+      "topics": [
+        "kỹ thuật",
+        "kiến trúc phần mềm",
+        "hệ thống",
+        "lập trình"
+      ],
+      "formats": [
+        "short",
+        "long"
+      ],
+      "palette": {
+        "background": "#0b1a2b",
+        "surface": "#132a42",
+        "ink": "#e6f1fa",
+        "muted": "#86a3bd",
+        "accent": "#ffb547",
+        "accent2": "#4fd1e8"
+      },
+      "texture": "grid",
+      "stroke": {
+        "color": "accent2",
+        "width": 3
+      },
+      "caption": {
+        "text": "ink",
+        "keyword": "accent",
+        "box": false
+      },
+      "music": "Nhạc điện tử nhẹ, nhịp đều, không lời",
+      "styles": [
+        "so-do-he-thong",
+        "infographic",
+        "chu-chuyen-dong"
+      ],
+      "sample": {
+        "caption": "Thêm máy chủ thì cần load balancer",
+        "keyword": "load balancer"
+      }
     }
   ]
 }

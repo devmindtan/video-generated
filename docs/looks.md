@@ -8,7 +8,7 @@ chủ đích. Áp dụng cho mọi video, short hay dài.
 
 | File | Nội dung | Ai sửa |
 |---|---|---|
-| `src/looks/themes.json` | Chủ đề: bảng màu theo vai trò (background, surface, ink, muted, accent, accent2), nền (`grain`, `paper`, `chalk`, `glow`, `marble`, `none`), nét vẽ, kiểu phụ đề, không khí nhạc, chủ đề nói hợp, phong cách gợi ý, câu mẫu | Người dùng ở trang quản lý → **Chủ đề hình ảnh** (tạo, sửa, nhân bản, xóa khi chưa dùng); agent khi được yêu cầu |
+| `src/looks/themes.json` | Chủ đề: bảng màu theo vai trò (background, surface, ink, muted, accent, accent2), nền (`grain`, `paper`, `chalk`, `glow`, `marble`, `grid`, `none`), nét vẽ, kiểu phụ đề, không khí nhạc, chủ đề nói hợp, phong cách gợi ý, câu mẫu | Người dùng ở trang quản lý → **Chủ đề hình ảnh** (tạo, sửa, nhân bản, xóa khi chưa dùng); agent khi được yêu cầu |
 | `src/looks/animation-styles.json` | Phong cách animation làm được bằng Remotion: mô tả, hợp với, cách làm, nhịp, độ công phu, mẫu Studio; `favorite` và `userNote` của người dùng | Agent cập nhật mô tả/kỹ thuật khi làm thêm; người dùng chỉ ghi chú và đánh dấu ưu tiên |
 | `series.json` → dự án → `"look": {"theme", "style"}` | Lựa chọn tay của dự án (chỉ khi muốn khác điều trang tự nhận diện) | Người dùng ở hai trang (nút **Gắn cho dự án**); `projects:check` từ chối mã không có |
 
