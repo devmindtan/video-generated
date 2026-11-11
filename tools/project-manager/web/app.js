@@ -91,7 +91,7 @@ async function refresh(initial=false){
 // "ngoai-kenh" (videos not yet assigned to a channel, user 2026-11-11). Only client work imports finished videos.
 const outsideGroups=['client-work','ngoai-kenh'];
 const contentChannels={includes:id=>!outsideGroups.includes(id)};
-// A book series (series.json "requireBook") has a bookshelf, whatever its genre or channel.
+// A series with books (series.json "requireBook" or "bookshelf") has a bookshelf, whatever its genre or channel.
 const isBookSeries=id=>Boolean(state.data?.series.find(s=>s.id===id)?.bookSeries);
 function renderNav(){
   const {channels,series,projects,books}=state.data;

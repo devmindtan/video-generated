@@ -56,7 +56,7 @@ function stagesOf(root){
   try{
     const {seriesWorkflow}=require('../production-automation/cli.cjs');
     const {load}=require('../../scripts/catalog/catalog.cjs');
-    return seriesWorkflow(root,(load(root).series.find(s=>s.requireBook===true)||{id:'book-insights'}).id).stages.map(s=>({id:s.id,title:s.title,kind:s.kind,role:s.role,guide:s.guide,dependencies:s.dependencies}));
+    return seriesWorkflow(root,(load(root).series.find(s=>s.requireBook===true||s.bookshelf===true)||{id:'book-insights'}).id).stages.map(s=>({id:s.id,title:s.title,kind:s.kind,role:s.role,guide:s.guide,dependencies:s.dependencies}));
   }catch(error){return [];}
 }
 

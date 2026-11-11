@@ -115,16 +115,17 @@ function createSeries(catalog, options) {
   const formats = [...new Set((options['--formats'] || '').split(','))];
   if (!catalog.channels.some(c => c.id === channel) || !slug(id) || !title || formats.some(f => !['short','long'].includes(f))) throw new Error('Require --channel, unique --id, --title, --formats short,long');
   if (catalog.series.some(s => s.id === id)) throw new Error(`Series already exists: ${id}`);
-  const books = options['--books'] === 'yes';
-  if (options['--books'] !== undefined && !books) throw new Error('Use --books yes for a book series');
+  const books = options['--books'];
+  if (books !== undefined && !['required','optional'].includes(books)) throw new Error('Use --books required|optional');
   const relative = `series/${channel}/${id}/series.json`, file = inside(catalog.root, relative);
   const dir = path.dirname(file);
   if (fs.existsSync(dir)) throw new Error(`Directory exists: ${dir}`);
   fs.mkdirSync(dir, {recursive:true});
   fs.writeFileSync(file, JSON.stringify({schemaVersion:1,id,channel,title,studioFolder:id,formats,
     defaultDurationSeconds:null,summary:options['--summary']?.trim()||'Chưa duyệt mục tiêu series.',
-    // --books: a book series of any genre; every project names its book and the manager shows a bookshelf.
-    ...(books?{requireBook:true}:{}),projects:[]}, null, 2)+'\n', {flag:'wx'});
+    // --books required: a book series of any genre, every project names its book. --books optional: the series has a
+    // bookshelf but projects may have no book. Both get a bookshelf in the manager.
+    ...(books==='required'?{requireBook:true}:books==='optional'?{bookshelf:true}:{}),projects:[]}, null, 2)+'\n', {flag:'wx'});
   fs.writeFileSync(path.join(dir,'README.md'), `# ${title}\n\nHồ sơ: [series.json](series.json). Chưa có tập sản xuất.\n\nChốt mục tiêu, đối tượng và workflow trước khi thêm tập.\n`, {flag:'wx'});
   const {series, root, ...index} = catalog;
   atomicJson(path.join(catalog.root,'series/catalog.json'), {...index,series:[...series.map(s => ({id:s.id,channel:s.channel,path:s.relativeFile})),{id,channel,path:relative}]});

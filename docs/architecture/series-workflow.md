@@ -105,13 +105,23 @@ Lệnh chuyển bốn thư mục của dự án, thay mã và dạng PascalCase 
 npm run projects -- create-series --channel tam-ly-cuoc-song --id new-series --title 'Tên series mới' --formats long,short
 ```
 
-Series đọc sách thuộc thể loại bất kỳ (tâm lý, kỹ thuật, kinh doanh…) thêm `--books yes` (và có thể `--summary '<mô tả>'`):
+Series có sách thuộc thể loại bất kỳ (tâm lý, kỹ thuật, kinh doanh…) thêm `--books required` (mọi tập phải gắn một
+cuốn, `"requireBook": true`) hoặc `--books optional` (có tủ sách nhưng tập không bắt buộc gắn sách, `"bookshelf": true`),
+và có thể `--summary '<mô tả>'`:
 
 ```sh
-npm run projects -- create-series --channel <kenh> --id <series-sach> --title '<Tên series>' --formats long,short --books yes
+npm run projects -- create-series --channel <kenh> --id <series> --title '<Tên series>' --formats long,short --books required
 ```
 
-Series đó có `"requireBook": true`: mỗi tập phải gắn một cuốn sách (`--book`), trang quản lý có Tủ sách và nút Thêm sách cho series, automation dùng quy trình sách (bước Nguồn sách đọc `books/` của chính series). Hồ sơ sách nằm ở `series/<kenh>/<series>/books/<sach>/`, PDF vẫn ở `library/books/<sach>/` theo [workflow PDF](../book-pdf-workflow.md). Bố cục tập, giọng, nhạc và hình của mỗi series sách ghi trong README/workflow.json của chính series đó; quy tắc của Đọc sách, hiểu mình (intro, hook, bố cục 12 phần) không tự áp sang series khác.
+Cả hai có Tủ sách và nút Thêm sách trong trang quản lý. Tập gắn sách (`--book`) dùng quy trình sách của automation
+(bước Nguồn sách đọc `books/` của chính series), dù series thuộc kênh nào. Hồ sơ sách nằm ở
+`series/<kenh>/<series>/books/<sach>/`, PDF ở `library/books/<sach>/` theo [workflow PDF](../book-pdf-workflow.md).
+Bố cục, giọng, nhạc, hình của mỗi series ghi trong README/workflow.json của chính nó; quy tắc của Đọc sách, hiểu mình
+không tự áp sang series khác.
+
+**Chưa thuộc kênh / Chưa thuộc series** (`series/ngoai-kenh/chua-thuoc-series`, người dùng 2026-11-11): chỗ cho dự án
+và sách chưa xếp vào kênh hay series nào, ví dụ video về sách kỹ thuật. Có tủ sách, tập không bắt buộc gắn sách. Khi đã có
+kênh/series riêng, chuyển dự án sang đó.
 
 Lệnh chỉ tạo hồ sơ series và cập nhật danh bạ. Chốt đối tượng, định dạng, âm thanh/thị giác, nguồn và quy trình duyệt trong README của series. Không mặc định mọi series dùng cùng giọng/nhạc/cách dựng. Thêm kênh mới bằng cách cập nhật catalog, chốt chính sách kênh và thêm Folder khi có composition thật.
 

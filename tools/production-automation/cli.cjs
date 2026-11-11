@@ -19,10 +19,13 @@ const globRe=g=>new RegExp('^'+g.split(/(\*\*\/|\/\*\*|\*)/).map(t=>t==='**/'?'(
 const DENY=policy.deniedPaths.map(globRe);
 const denied=rel=>DENY.some(re=>re.test(rel.replace(/\/\*\*$/,'/x')));
 
-// Each profile is an approved production workflow; a channel without one has no automated stages. Every series
-// marked "requireBook" (any genre, any channel) is a book series and gets the source-grounded book profile.
-function profileFor(series){
-  return series.requireBook===true?'book':series.channel==='kids'?'kids':series.channel==='tam-ly-cuoc-song'?'philosophy':null;
+// Each profile is an approved production workflow; a channel without one has no automated stages. A series with
+// books ("requireBook", or "bookshelf" where a book is optional), and any project linked to a book, gets the
+// source-grounded book profile whatever its genre or channel.
+const hasBooks=series=>series.requireBook===true||series.bookshelf===true;
+function profileFor(series,project){
+  if(project) return project.book!=null||series.requireBook===true?'book':profileFor({...series,requireBook:false,bookshelf:false});
+  return hasBooks(series)?'book':series.channel==='kids'?'kids':series.channel==='tam-ly-cuoc-song'?'philosophy':null;
 }
 const seriesDirOf=series=>path.posix.dirname(series.relativeFile||`series/${series.channel}/${series.id}/series.json`);
 // title/guide are the Vietnamese description shown in the manager; deliverable is what the worker receives.
@@ -117,7 +120,7 @@ function plan(root, id) {
   const matches = load(root).series.flatMap(series => series.projects.filter(p=>p.id===id).map(project=>({series,project})));
   if(matches.length!==1) throw new Error('Project must exist exactly once in canonical catalog');
   const {series,project}=matches[0];
-  const profile=profileFor(series);
+  const profile=profileFor(series,project);
   if(!profile) throw new Error('This channel needs its own approved production workflow');
   const expected={source:`src/projects/${id}`,scripts:`scripts/projects/${id}`,docs:`docs/projects/${id}`,assets:`public/${id}`};
   for(const [key,value] of Object.entries(expected)) if(project.paths[key]!==value) throw new Error(`Unexpected canonical path: ${key}`);

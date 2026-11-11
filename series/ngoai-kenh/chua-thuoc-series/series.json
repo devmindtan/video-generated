@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "chua-thuoc-series",
+  "channel": "ngoai-kenh",
+  "title": "Chưa thuộc series",
+  "studioFolder": "Chua-Thuoc-Series",
+  "formats": [
+    "long",
+    "short"
+  ],
+  "defaultDurationSeconds": null,
+  "summary": "Dự án và sách chưa xếp vào series nào (ví dụ video về sách kỹ thuật); chuyển sang series riêng khi đã rõ hướng.",
+  "bookshelf": true,
+  "projects": []
+}

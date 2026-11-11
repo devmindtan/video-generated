@@ -86,9 +86,11 @@ test('new series belongs to a known channel and does not replace existing config
   assert.equal(validate(load(root)).series,2);
   assert.throws(()=>createSeries(load(root),{'--channel':'tam-ly-cuoc-song','--id':'new-series','--title':'Other','--formats':'short'}),/already exists/);
   // A book series of another genre: flagged so projects need a book and the manager gives it a bookshelf.
-  createSeries(load(root),{'--channel':'tam-ly-cuoc-song','--id':'tech-books','--title':'Sách kỹ thuật','--formats':'long,short','--books':'yes','--summary':'Sách kỹ thuật.'});
+  createSeries(load(root),{'--channel':'tam-ly-cuoc-song','--id':'tech-books','--title':'Sách kỹ thuật','--formats':'long,short','--books':'required','--summary':'Sách kỹ thuật.'});
   const tech=load(root).series.find(s=>s.id==='tech-books');assert.equal(tech.requireBook,true);assert.equal(tech.summary,'Sách kỹ thuật.');
-  assert.throws(()=>createSeries(load(root),{'--channel':'tam-ly-cuoc-song','--id':'x-books','--title':'X','--formats':'long','--books':'no'}),/--books yes/);
+  assert.throws(()=>createSeries(load(root),{'--channel':'tam-ly-cuoc-song','--id':'x-books','--title':'X','--formats':'long','--books':'no'}),/--books required\|optional/);
+  createSeries(load(root),{'--channel':'tam-ly-cuoc-song','--id':'loose','--title':'Chưa thuộc series','--formats':'long,short','--books':'optional'});
+  const loose=load(root).series.find(s=>s.id==='loose');assert.equal(loose.bookshelf,true);assert.equal(loose.requireBook,undefined);
 });
 test('an empty title gets a temporary name that only the rename command replaces, together with paths and Studio IDs',t=>{
   const {root,write}=fixture(t);

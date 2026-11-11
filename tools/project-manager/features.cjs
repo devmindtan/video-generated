@@ -82,7 +82,7 @@ function createFeatures(root){
   }
   function newBook(b){
     if(!slug(b.id)||typeof b.title!=='string'||!b.title.trim()||b.title.length>300)throw Error('Tên và mã sách không hợp lệ');
-    const all=load(root).series;if(all.some(s=>s.requireBook===true)&&all.find(s=>s.id===b.series)?.requireBook!==true)throw Error('Hồ sơ sách phải thuộc một series sách.');
+    const all=load(root).series,hasBooks=s=>s?.requireBook===true||s?.bookshelf===true;if(all.some(hasBooks)&&!hasBooks(all.find(s=>s.id===b.series)))throw Error('Hồ sơ sách phải thuộc một series có tủ sách.');
     const folder=bookFolder(b.series,b.id);
     for(const s of load(root).series)if(fs.existsSync(path.join(path.dirname(s.file),'books',b.id)))throw Error('Mã sách đã tồn tại; hãy dùng hồ sơ nguồn hiện có.');
     if(fs.existsSync(folder))throw Error('Thư mục đã tồn tại');

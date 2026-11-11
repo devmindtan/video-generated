@@ -1,7 +1,7 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os');
-const {plan,status,doctor,denied}=require('./cli.cjs');
+const {plan,status,doctor,denied,profileFor}=require('./cli.cjs');
 function fixture(fn){
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'production-plan-'));
  const write=(p,value)=>{fs.mkdirSync(path.dirname(path.join(root,p)),{recursive:true});fs.writeFileSync(path.join(root,p),JSON.stringify(value));};
@@ -343,3 +343,12 @@ test('patches go on before the lock: compared with the package as sent back, dec
  assert.equal(review.decidePatch(root,p,p2.id,{decision:'accepted',by:'u'}).version,2);       // a pre-lock patch still decides
  put(root,`${D}/script.md`,'s4');assert.equal(review.createPatch(root,p,{reason:'Sau chốt',by:'a'}).baseVersion,2);
 }));
+
+test('book workflow follows books: book series, bookshelf series and any project linked to a book',()=>{
+ const loose={id:'chua-thuoc-series',channel:'ngoai-kenh',bookshelf:true};
+ assert.equal(profileFor(loose),'book');
+ assert.equal(profileFor(loose,{id:'tech',book:'clean-code'}),'book');
+ assert.equal(profileFor(loose,{id:'no-book'}),null);
+ assert.equal(profileFor({id:'book-insights',channel:'tam-ly-cuoc-song',requireBook:true},{id:'x'}),'book');
+ assert.equal(profileFor({id:'self-help-shorts',channel:'tam-ly-cuoc-song'},{id:'x'}),'philosophy');
+});

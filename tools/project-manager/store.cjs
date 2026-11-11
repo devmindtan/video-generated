@@ -184,7 +184,7 @@ function createStore(root) {
         thumbnails:project.registrations.filter(r=>r.kind==='Still').length>1?extra.items(project.id,'thumbnail').map(({file,...v})=>v):[]};
     }));
     return {channels:catalog.channels,series:catalog.series.map(s=>({id:s.id,title:s.title,channel:s.channel,summary:s.summary,
-      formats:s.formats,projectCount:s.projects.length,bookSeries:s.requireBook===true})),projects,books:catalog.series.flatMap(books),
+      formats:s.formats,projectCount:s.projects.length,bookSeries:s.requireBook===true||s.bookshelf===true})),projects,books:catalog.series.flatMap(books),
       generatedAt:new Date().toISOString()};
   }
   function detail(id) {
