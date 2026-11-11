@@ -155,7 +155,11 @@ def main():
             sentence_texts=[item if isinstance(item,str) else item['text'] for item in scene['sentences']]
             assert ' '.join(sentence_texts)==scene['text']
             temperature=scene.get('temperature',args.temperature)
-            for pi,sentence in enumerate(sentence_texts):
+            for pi,shown in enumerate(sentence_texts):
+                # "say": what the voice reads when it differs from the caption text (e.g. a phonetic spelling of an
+                # English term such as "CAP" -> "xê a pê"). Captions and alignment keep the shown text.
+                item=scene['sentences'][pi]
+                sentence=item.get('say',shown) if isinstance(item,dict) else shown
                 digest=cache_key(args.voice,sentence,temperature,quality,identity,sampling)
                 path=CACHE/f'{digest}.wav'
                 if not path.exists():
