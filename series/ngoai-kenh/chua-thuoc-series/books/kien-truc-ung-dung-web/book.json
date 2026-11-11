@@ -1,0 +1,25 @@
+{
+  "id": "kien-truc-ung-dung-web",
+  "title": "Kiến trúc ứng dụng web",
+  "authors": [
+    "Nguyễn Thế Huy"
+  ],
+  "status": "research",
+  "sourceSha256": "fd1059a41637391c2c5f0ff5abfbb384e24c0686db9b63621941d856bd71d86a",
+  "note": "Đã đọc đủ 7/7 chương, lời mở đầu và lời kết (2026-11-11). Ghi chú theo trang trong research.md, bản đồ chương trong chapters.json.",
+  "cacheEdition": "fd1059a41637391c2c5f0ff5abfbb384e24c0686db9b63621941d856bd71d86a-de2a45e349f9",
+  "sourceFile": "library/books/kien-truc-ung-dung-web/sources/Kiến trúc ứng dụng web.pdf",
+  "pdfPages": 60,
+  "extractedCharacters": 118779,
+  "textLayer": "native",
+  "ocr": false,
+  "chapterMap": "chapters.json",
+  "research": "research.md",
+  "chaptersTotal": 7,
+  "chaptersRead": 7,
+  "checkedAt": "2026-11-11",
+  "editionDetails": {
+    "edition": "Ebook PDF, tiếng Việt, tác giả tự phát hành",
+    "provenance": "PDF người dùng thêm qua trang quản lý ngày 2026-11-11. Không có trang thông tin xuất bản, năm hay nhà xuất bản."
+  }
+}

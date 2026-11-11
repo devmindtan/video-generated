@@ -1,0 +1,109 @@
+{
+  "book": "kien-truc-ung-dung-web",
+  "sourceSha256": "fd1059a41637391c2c5f0ff5abfbb384e24c0686db9b63621941d856bd71d86a",
+  "edition": "fd1059a41637391c2c5f0ff5abfbb384e24c0686db9b63621941d856bd71d86a-de2a45e349f9",
+  "pageNumberConvention": "Số trang PDF đếm từ 1. Ebook không đánh số trang in; dùng số trang PDF.",
+  "mappingSummary": "Bản đồ chương lấy từ 51 bookmark của PDF và kiểm tra lại trang mở từng chương. Sách không đánh số chương; đánh số theo thứ tự bookmark cấp 1.",
+  "coverage": {
+    "chaptersRead": 7,
+    "chaptersTotal": 7,
+    "status": "complete"
+  },
+  "frontMatter": [
+    {
+      "title": "Bìa",
+      "pdfStart": 1,
+      "pdfEnd": 1,
+      "printedStartVerified": null,
+      "mappingSource": "text-checked"
+    },
+    {
+      "title": "Lời mở đầu",
+      "pdfStart": 2,
+      "pdfEnd": 2,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked"
+    }
+  ],
+  "backMatter": [
+    {
+      "title": "Lời kết",
+      "pdfStart": 60,
+      "pdfEnd": 60,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked"
+    }
+  ],
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Mục tiêu và tầm quan trọng của việc tách biệt core code & infrastructure code",
+      "pdfStart": 3,
+      "pdfEnd": 11,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "summary": "Core code và infrastructure code là gì, năm vấn đề khi trộn lẫn, sáu lợi ích khi tách, năm kỹ thuật tổng quan (DI/IoC, phân tầng, pattern, interface, giới hạn framework ở rìa), ví dụ controller đặt hàng e-book trộn lẫn",
+      "readStatus": "read"
+    },
+    {
+      "number": 2,
+      "title": "Định nghĩa Core Code và Infrastructure Code",
+      "pdfStart": 11,
+      "pdfEnd": 16,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "summary": "Hai quy tắc của core code (không phụ thuộc hệ thống ngoài; không cần môi trường đặc biệt), ví dụ hai loại, abstraction không tự biến hạ tầng thành core, ranh giới trong thực tế, Clock interface",
+      "readStatus": "read"
+    },
+    {
+      "number": 3,
+      "title": "Domain Model và Repository Pattern",
+      "pdfStart": 16,
+      "pdfEnd": 30,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "summary": "Transaction Script vs Domain Model; Entity Order với invariant trong constructor; Entity vs Value Object; OrderRepository interface (save, getById) và SqlOrderRepository; controller sau refactor; lợi ích",
+      "readStatus": "read"
+    },
+    {
+      "number": 4,
+      "title": "Read Models và View Models",
+      "pdfStart": 30,
+      "pdfEnd": 33,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "summary": "Không dùng entity ghi cho việc đọc; read model và read repository riêng; lựa chọn CQRS với lưu trữ đọc riêng; view model/DTO cho UI và API",
+      "readStatus": "read"
+    },
+    {
+      "number": 5,
+      "title": "Application Services và Command Pattern",
+      "pdfStart": 33,
+      "pdfEnd": 38,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "summary": "Tách use case khỏi controller; PlaceOrderCommand gom input; PlaceOrderService.handle; DI thay Service Locator; test không cần framework",
+      "readStatus": "read"
+    },
+    {
+      "number": 6,
+      "title": "Kiến trúc Phân lớp (Layered Architecture)",
+      "pdfStart": 38,
+      "pdfEnd": 48,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "summary": "Mô hình 3-tier và rủi ro rò rỉ, 'mã lasagna'; ba tầng Domain, Application, Infrastructure với luồng phụ thuộc hướng vào trong; cấu trúc thư mục Laravel; luồng đặt hàng với domain event",
+      "readStatus": "read"
+    },
+    {
+      "number": 7,
+      "title": "Ports and Adapters (Hexagon Architecture - Kiến trúc Hình lục giác)",
+      "pdfStart": 48,
+      "pdfEnd": 59,
+      "printedStartVerified": null,
+      "mappingSource": "bookmark-checked",
+      "summary": "Hạn chế còn lại của phân lớp; port đầu vào/đầu ra, adapter thật và giả, ví dụ cổng USB; các bước áp dụng; OrderNotification port; test với adapter in-memory; tích hợp bounded context; lợi ích và cái giá",
+      "readStatus": "read"
+    }
+  ]
+}
