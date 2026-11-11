@@ -19,6 +19,11 @@ const catalog=require('../../scripts/catalog/catalog.cjs');
  assert.equal(view.themes.length,12);assert.equal(view.styles.length,13);assert.equal(view.projects[0].id,'thu-mot');
  assert.deepEqual([view.projects[0].theme.id,view.projects[0].theme.by,view.projects[0].style.id],['dem-stoic','detected','anh-tinh']);
  assert.deepEqual(view.themes.find(t=>t.id==='dem-stoic').usedBy,['thu-mot']);mark('Theme and style are detected from the project code, with no look set');
+ // A composition that reads its colours through themeOf('<id>') names its theme, with no hex colours at all.
+ {const file=path.join(root,'src/projects/thu-mot/Video.tsx'),before=fs.readFileSync(file,'utf8');
+  fs.writeFileSync(file,"const T=themeOf('ban-ve-ky-thuat');export const V=()=> <DiagramNode t={T}/>;");
+  const p=createLooks(root).looks().projects[0];assert.deepEqual([p.theme.id,p.style.id],['ban-ve-ky-thuat','so-do-he-thong']);
+  fs.writeFileSync(file,before);mark('themeOf(<id>) in the code names the theme');}
  const base=structuredClone(view.themes[0]);delete base.id;delete base.usedBy;
  const made=looks.saveTheme({theme:{...base,name:'Biển chiều'},revision:view.revisions.themes});assert.equal(made.theme.id,'bien-chieu');
  assert.throws(()=>looks.saveTheme({theme:{...base,name:'Cũ'},revision:view.revisions.themes}),e=>e.status===409);mark('A new theme gets a slug id; a stale revision is refused (409)');

@@ -52,6 +52,9 @@ function createLooks(root) {
   const distance = (a, b) => Math.hypot(...rgb(a).map((v, i) => v - rgb(b)[i]));
   // Theme: its background, text and accent all appear (within a small colour distance); the closest theme wins.
   function detectTheme(code, themes, style) {
+    // A composition that reads its colours through themeOf('<id>') (docs/looks.md) names its theme outright.
+    const named = [...code.matchAll(/themeOf\(\s*['"]([a-z0-9-]+)['"]\s*\)/g)].map(m => m[1]).find(id => themes.some(t => t.id === id));
+    if (named) return {id: named, why: `code đọc màu qua themeOf('${named}')`};
     const colors = [...new Set((code.match(/#[0-9a-fA-F]{6}\b/g) || []).map(c => c.toLowerCase()))];
     if (!colors.length) return null;
     let best = null;
