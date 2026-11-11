@@ -7,7 +7,7 @@ const {chromium}=require('playwright-core'),{createManager}=require('./server.cj
  const series=[['self-help-shorts','tam-ly-cuoc-song','Self-help và lời nhắc cuộc sống'],['book-insights','tam-ly-cuoc-song','Đọc sách, hiểu mình'],['tiny-dino','kids','Những chuyến phiêu lưu của Tí Hon'],['product-videos','client-work','Video sản phẩm']];
  write('series/catalog.json',{schemaVersion:1,channels:[{id:'tam-ly-cuoc-song',title:'Tâm lý cuộc sống',studioFolder:'Tam-Ly'},{id:'kids',title:'Kênh thiếu nhi',studioFolder:'Kids'},{id:'client-work',title:'Video khách hàng',studioFolder:'Client'}],
   series:series.map(([id,channel])=>({id,channel,path:`series/${channel}/${id}/series.json`}))});
- for(const [id,channel,title] of series)write(`series/${channel}/${id}/series.json`,{schemaVersion:1,id,channel,title,studioFolder:id,formats:['short','long'],summary:'Series thử.',projects:[]});
+ for(const [id,channel,title] of series)write(`series/${channel}/${id}/series.json`,{schemaVersion:1,id,channel,title,studioFolder:id,formats:['short','long'],summary:'Series thử.',...(id==='book-insights'?{requireBook:true}:{}),projects:[]});
  write('src/projects/registry.tsx','export const Projects=()=> <></>;');
  fs.mkdirSync(path.join(root,'public/stoic/fonts'),{recursive:true});for(const name of ['NotoSans-Regular.ttf','NotoSans-Bold.ttf'])fs.copyFileSync(path.resolve('public/stoic/fonts',name),path.join(root,'public/stoic/fonts',name));
  const server=createManager({root});await new Promise(r=>server.listen(0,'127.0.0.1',r));

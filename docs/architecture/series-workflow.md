@@ -105,6 +105,14 @@ Lệnh chuyển bốn thư mục của dự án, thay mã và dạng PascalCase 
 npm run projects -- create-series --channel tam-ly-cuoc-song --id new-series --title 'Tên series mới' --formats long,short
 ```
 
+Series đọc sách thuộc thể loại bất kỳ (tâm lý, kỹ thuật, kinh doanh…) thêm `--books yes` (và có thể `--summary '<mô tả>'`):
+
+```sh
+npm run projects -- create-series --channel <kenh> --id <series-sach> --title '<Tên series>' --formats long,short --books yes
+```
+
+Series đó có `"requireBook": true`: mỗi tập phải gắn một cuốn sách (`--book`), trang quản lý có Tủ sách và nút Thêm sách cho series, automation dùng quy trình sách (bước Nguồn sách đọc `books/` của chính series). Hồ sơ sách nằm ở `series/<kenh>/<series>/books/<sach>/`, PDF vẫn ở `library/books/<sach>/` theo [workflow PDF](../book-pdf-workflow.md). Bố cục tập, giọng, nhạc và hình của mỗi series sách ghi trong README/workflow.json của chính series đó; quy tắc của Đọc sách, hiểu mình (intro, hook, bố cục 12 phần) không tự áp sang series khác.
+
 Lệnh chỉ tạo hồ sơ series và cập nhật danh bạ. Chốt đối tượng, định dạng, âm thanh/thị giác, nguồn và quy trình duyệt trong README của series. Không mặc định mọi series dùng cùng giọng/nhạc/cách dựng. Thêm kênh mới bằng cách cập nhật catalog, chốt chính sách kênh và thêm Folder khi có composition thật.
 
 ## Dùng chung và dùng riêng

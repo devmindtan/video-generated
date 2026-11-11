@@ -8,7 +8,7 @@ function fixture(fn){
  const entries=[['self-help-shorts','tam-ly-cuoc-song'],['book-insights','tam-ly-cuoc-song'],['tiny-dino','kids']];
  write('package.json',{scripts:{'check:tiny-dino':'x',typecheck:'x','projects:check':'x'}});
  write('series/catalog.json',{schemaVersion:1,series:entries.map(([id,channel])=>({id,channel,path:`series/${id}/series.json`}))});
- for(const [id,channel] of entries)write(`series/${id}/series.json`,{id,channel,projects:[{id,status:'existing',paths:{source:`src/projects/${id}`,scripts:`scripts/projects/${id}`,docs:`docs/projects/${id}`,assets:`public/${id}`}}]});
+ for(const [id,channel] of entries)write(`series/${id}/series.json`,{id,channel,...(id==='book-insights'?{requireBook:true}:{}),projects:[{id,status:'existing',paths:{source:`src/projects/${id}`,scripts:`scripts/projects/${id}`,docs:`docs/projects/${id}`,assets:`public/${id}`}}]});
  try{fn(root);}finally{fs.rmSync(root,{recursive:true,force:true});}
 }
 test('profiles preserve human gates and valid dependencies; planning does not write',()=>fixture(root=>{

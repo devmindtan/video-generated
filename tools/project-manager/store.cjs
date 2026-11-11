@@ -10,7 +10,8 @@ const exists = file => fs.existsSync(file);
 const textTypes = new Set(['.md','.txt','.json','.tsx','.ts','.py','.cjs','.mjs']);
 const imageTypes = new Set(['.png','.jpg','.jpeg','.webp']);
 const posterVideoTypes = new Set(['.mp4','.webm','.mov','.mkv','.m4v']);
-const contentChannels = new Set(['tam-ly-cuoc-song','kids']);
+// Client work is the only group that is not a content channel; a newly added channel is one by default.
+const externalChannels = new Set(['client-work']);
 const {VIDEO_FORMATS,videoLabel} = require('./video-formats.cjs');
 
 function secureFile(root, file, extensions = textTypes) {
@@ -183,7 +184,7 @@ function createStore(root) {
         thumbnails:project.registrations.filter(r=>r.kind==='Still').length>1?extra.items(project.id,'thumbnail').map(({file,...v})=>v):[]};
     }));
     return {channels:catalog.channels,series:catalog.series.map(s=>({id:s.id,title:s.title,channel:s.channel,summary:s.summary,
-      formats:s.formats,projectCount:s.projects.length})),projects,books:catalog.series.flatMap(books),
+      formats:s.formats,projectCount:s.projects.length,bookSeries:s.requireBook===true})),projects,books:catalog.series.flatMap(books),
       generatedAt:new Date().toISOString()};
   }
   function detail(id) {
@@ -252,7 +253,7 @@ function createStore(root) {
   }
   async function createWithVideo(body,name,request) {
     const catalog=load(root);validate(catalog);const series=catalog.series.find(s=>s.id===body.series),id=body.id?checkedId(body.id):null,ext=path.extname(String(name||'')).toLowerCase();
-    if(!series||contentChannels.has(series.channel))throw new Error('Chỉ import video có sẵn cho dự án thuộc kênh ngoài');
+    if(!series||!externalChannels.has(series.channel))throw new Error('Chỉ import video có sẵn cho dự án thuộc kênh ngoài');
     if(typeof body.title!=='string'||!series.formats.includes(body.format))throw new Error('Tên dự án và định dạng không hợp lệ');
     if(typeof name!=='string'||name!==path.basename(name)||name.length>180||/[\x00-\x1f\\/]/.test(name)||!VIDEO_FORMATS[ext])throw new Error(`Chỉ nhận video ${videoLabel} có tên hợp lệ`);
     if(id&&catalog.series.some(s=>s.projects.some(p=>p.id===id)))throw new Error(`Project slug already exists: ${id}`);

@@ -87,14 +87,16 @@ async function refresh(initial=false){
   catch(error){$('#load-error').textContent=`Chưa kết nối được: ${error.message}`;$('#load-error').hidden=false;$('#connection').classList.add('offline');}
   finally{refreshing=false;$('#refresh-button').disabled=false;}
 }
-// Only the two content channels are channels; other catalog groups (client work) are listed apart.
-const contentChannels=['tam-ly-cuoc-song','kids'];
+// Every catalog channel is a content channel except client work, which is listed apart.
+const contentChannels={includes:id=>id!=='client-work'};
+// A book series (series.json "requireBook") has a bookshelf, whatever its genre or channel.
+const isBookSeries=id=>Boolean(state.data?.series.find(s=>s.id===id)?.bookSeries);
 function renderNav(){
   const {channels,series,projects,books}=state.data;
   const channelNav=channel=>{
     const items=series.filter(s=>s.channel===channel.id);
     let html=`<button class="nav-button nav-channel ${state.channel===channel.id&&!state.series&&state.view==='projects'?'active':''}" data-channel="${esc(channel.id)}"><span class="nav-icon">${icon(channel.id==='kids'?'spark':contentChannels.includes(channel.id)?'channel':'folder')}</span>${esc(channel.title)}<span class="nav-count">${projects.filter(p=>p.channel===channel.id).length}</span></button>`;
-    if(items.length>1)for(const item of items)html+=`<button class="nav-button nav-sub ${state.series===item.id&&state.view==='projects'?'active':''}" data-series="${esc(item.id)}">${esc(item.id==='self-help-shorts'?'Self-help Shorts':item.id==='book-insights'?'Đọc sách, hiểu mình':item.title)}<span class="nav-count">${item.projectCount}</span></button>`;
+    if(items.length>1)for(const item of items)html+=`<button class="nav-button nav-sub ${state.series===item.id&&state.view==='projects'?'active':''}" data-series="${esc(item.id)}">${esc(item.id==='self-help-shorts'?'Self-help Shorts':item.title)}<span class="nav-count">${item.projectCount}</span></button>`;
     return html;
   };
   const others=channels.filter(c=>!contentChannels.includes(c.id));
@@ -124,7 +126,7 @@ function render(){
     renderResources();return;
   }
   $('#resource-view').replaceChildren();state.resourceKey='';state.backupView='';
-  $('#new-book-button').hidden=state.view!=='books'&&state.series!=='book-insights';
+  $('#new-book-button').hidden=state.view!=='books'&&!isBookSeries(state.series);
   const channel=state.data.channels.find(c=>c.id===state.channel),series=state.data.series.find(s=>s.id===state.series);
   $('#page-title').textContent=state.view==='books'?'Tủ sách nghiên cứu':series?.title||channel?.title||'Không gian sáng tạo';
   renderBreadcrumbs();
@@ -141,7 +143,7 @@ function render(){
   const filteredSeries=state.data.series.filter(s=>!state.channel||s.channel===state.channel);
   $('#series-filter').innerHTML='<option value="">Tất cả series</option>'+filteredSeries.map(s=>`<option value="${esc(s.id)}">${esc(s.title)}</option>`).join('');$('#series-filter').value=state.series;
   $('#series-filter').hidden=state.view==='books';$('#status-filter').hidden=state.view==='books';
-  const banner=state.series==='book-insights'&&state.view!=='books';$('#book-banner').hidden=!banner;
+  const banner=isBookSeries(state.series)&&state.view!=='books';$('#book-banner').hidden=!banner;
   if(banner)$('#book-banner').innerHTML=`<div><h2>Nhiều cuốn sách, nhiều góc nhìn</h2><p>${state.data.books.filter(b=>b.series===state.series).length} hồ sơ sách. Mỗi cuốn giữ nguồn riêng và có thể phát triển thành nhiều tập.</p></div><button class="button secondary" data-books>Mở tủ sách</button>`;
   $('#library-title').innerHTML=(state.view==='books'?'Tủ sách của bạn':'Dự án')+' <span id="project-count"></span>';
   $('#library-caption').textContent=state.view==='books'?'Một hồ sơ nguồn, nhiều câu chuyện để phát triển.':'Những câu chuyện bạn đang xây dựng.';
@@ -931,7 +933,7 @@ function showCreate(mode='project',book=null){
   $('#create-description').textContent='Chỉ tạo hồ sơ chuẩn bị. Kịch bản, hình ảnh và giọng đọc được làm sau.';
   if(mode==='book'){
     $('#create-title').textContent='Thêm sách';$('#submit-create').textContent='Tạo hồ sơ sách';$('#create-description').textContent='Một hồ sơ cho mỗi cuốn; thêm PDF sau khi tạo.';
-    $('#create-fields').innerHTML=`<label class="field"><span>Series</span><select name="series">${state.data.series.filter(s=>s.id==='book-insights').map(s=>`<option value="${esc(s.id)}" ${s.id===(state.series||'book-insights')?'selected':''}>${esc(s.title)}</option>`).join('')}</select></label>${field('title','Tên sách')}${field('id','Mã sách')}${field('authors','Tác giả (phân cách bằng dấu phẩy)')}`;
+    $('#create-fields').innerHTML=`<label class="field"><span>Series</span><select name="series">${state.data.series.filter(s=>s.bookSeries).map(s=>`<option value="${esc(s.id)}" ${s.id===state.series?'selected':''}>${esc(s.title)}</option>`).join('')}</select></label>${field('title','Tên sách')}${field('id','Mã sách')}${field('authors','Tác giả (phân cách bằng dấu phẩy)')}`;
   }else{
     const selected=book?.series||state.series||state.data.series.find(s=>s.channel===state.channel)?.id||state.data.series[0].id;
     $('#create-fields').innerHTML=`<label class="field"><span>Series</span><select name="series" id="create-series">${state.data.series.map(s=>`<option value="${esc(s.id)}" ${s.id===selected?'selected':''}>${esc(state.data.channels.find(c=>c.id===s.channel)?.title)} / ${esc(s.title)}</option>`).join('')}</select></label>${field('title','Tên dự án (không bắt buộc)','text','','Để trống thì hệ thống đặt tên tạm “Chưa đặt tên N”; tên sẽ được đổi cho hợp nội dung khi bắt đầu làm.')}${field('id','Mã dự án (không bắt buộc)','text','','Tự tạo theo tên. Để trống cùng tên để nhận mã tạm chua-dat-ten-N.')}<div class="field-row"><label class="field"><span>Định dạng</span><select name="format" id="create-format"></select></label>${field('duration','Thời lượng (giây)','number','','Để trống nếu chưa chốt video dài.')}</div><label class="field" id="create-book-field"><span>Gắn với sách</span><select name="book" id="create-book"><option value="">Chưa gắn sách</option></select></label><section class="create-import" id="create-import" hidden><label class="create-import-choice"><input type="checkbox" id="create-import-toggle"><span><strong>Import video có sẵn của khách hàng</strong><small>Tùy chọn · chép một bản vào workspace, không thay đổi file gốc.</small></span></label><label class="field create-video-field" id="create-video-field" hidden><span>Video ${esc(state.data.videoFormats?.label||'MP4, WebM')} (tối đa 8 GB)</span><input id="create-video-file" name="projectVideo" type="file" accept="${esc((state.data.videoFormats?.extensions||['.mp4','.webm']).join(','))},video/*" autocomplete="off"><small>Video được lưu tại <code>public/&lt;mã-dự-án&gt;/</code> . MP4, MOV, M4V, WebM, MKV xem được ngay trong hồ sơ; định dạng khác (AVI, WMV, MPG, TS…) vẫn lưu được và mở bằng thư mục.</small></label></section>`;

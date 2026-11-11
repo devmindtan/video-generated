@@ -19,9 +19,10 @@ const globRe=g=>new RegExp('^'+g.split(/(\*\*\/|\/\*\*|\*)/).map(t=>t==='**/'?'(
 const DENY=policy.deniedPaths.map(globRe);
 const denied=rel=>DENY.some(re=>re.test(rel.replace(/\/\*\*$/,'/x')));
 
-// Each profile is an approved production workflow; a channel without one has no automated stages.
+// Each profile is an approved production workflow; a channel without one has no automated stages. Every series
+// marked "requireBook" (any genre, any channel) is a book series and gets the source-grounded book profile.
 function profileFor(series){
-  return series.id==='book-insights'?'book':series.channel==='kids'?'kids':series.channel==='tam-ly-cuoc-song'?'philosophy':null;
+  return series.requireBook===true?'book':series.channel==='kids'?'kids':series.channel==='tam-ly-cuoc-song'?'philosophy':null;
 }
 const seriesDirOf=series=>path.posix.dirname(series.relativeFile||`series/${series.channel}/${series.id}/series.json`);
 // title/guide are the Vietnamese description shown in the manager; deliverable is what the worker receives.
