@@ -5,17 +5,161 @@
     "00-mo-dau": {
       "file": "00-mo-dau-voice-full.wav",
       "start": 6.5,
-      "length": 51.07,
-      "duration": 51.07,
-      "speechEndsAt": 49.853,
+      "length": 51.68,
+      "duration": 51.68,
+      "speechEndsAt": 50.448,
       "sentences": [
         0.0,
-        4.66,
-        8.44,
-        17.34,
-        20.24,
-        30.54,
-        41.28
+        4.68,
+        8.5,
+        17.54,
+        20.44,
+        30.92,
+        41.72
+      ]
+    },
+    "01-vibe-coding-va-cai-bay-cua-toc-do": {
+      "file": "01-vibe-coding-va-cai-bay-cua-toc-do-voice-full.wav",
+      "start": 58.18,
+      "length": 107.72,
+      "duration": 107.72,
+      "speechEndsAt": 106.427,
+      "sentences": [
+        0.0,
+        6.48,
+        13.68,
+        20.0,
+        26.68,
+        34.36,
+        39.82,
+        50.28,
+        60.1,
+        71.64,
+        75.26,
+        83.18,
+        85.12,
+        95.56
+      ]
+    },
+    "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung": {
+      "file": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung-voice-full.wav",
+      "start": 165.9,
+      "length": 103.63,
+      "duration": 103.63,
+      "speechEndsAt": 102.349,
+      "sentences": [
+        0.0,
+        3.92,
+        16.6,
+        19.28,
+        23.86,
+        31.48,
+        40.68,
+        47.28,
+        53.2,
+        61.18,
+        65.56,
+        77.48,
+        88.66,
+        95.42
+      ]
+    },
+    "03-sau-nguyen-tac-spec-driven": {
+      "file": "03-sau-nguyen-tac-spec-driven-voice-full.wav",
+      "start": 269.53,
+      "length": 77.34,
+      "duration": 77.34,
+      "speechEndsAt": 76.066,
+      "sentences": [
+        0.0,
+        4.54,
+        6.66,
+        15.84,
+        19.5,
+        29.36,
+        32.04,
+        39.66,
+        42.78,
+        51.92,
+        55.54,
+        63.56,
+        65.96
+      ]
+    },
+    "04-greenfield-bat-dau-tu-con-so-khong": {
+      "file": "04-greenfield-bat-dau-tu-con-so-khong-voice-full.wav",
+      "start": 346.87,
+      "length": 88.25,
+      "duration": 88.25,
+      "speechEndsAt": 86.994,
+      "sentences": [
+        0.0,
+        7.54,
+        16.14,
+        23.5,
+        33.82,
+        38.6,
+        48.24,
+        57.54,
+        67.32,
+        76.18
+      ]
+    },
+    "05-brownfield-lam-voi-ma-cu": {
+      "file": "05-brownfield-lam-voi-ma-cu-voice-full.wav",
+      "start": 435.12,
+      "length": 90.63,
+      "duration": 90.63,
+      "speechEndsAt": 89.365,
+      "sentences": [
+        0.0,
+        3.34,
+        10.7,
+        12.86,
+        18.64,
+        27.26,
+        31.0,
+        38.94,
+        46.5,
+        54.64,
+        65.7,
+        76.52,
+        79.42,
+        83.32
+      ]
+    },
+    "06-van-hanh-team-spec-driven-hang-ngay": {
+      "file": "06-van-hanh-team-spec-driven-hang-ngay-voice-full.wav",
+      "start": 525.75,
+      "length": 63.56,
+      "duration": 63.56,
+      "speechEndsAt": 62.324,
+      "sentences": [
+        0.82,
+        6.68,
+        11.32,
+        17.28,
+        23.84,
+        29.24,
+        38.92,
+        52.32
+      ]
+    },
+    "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho": {
+      "file": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho-voice-full.wav",
+      "start": 589.31,
+      "length": 59.45,
+      "duration": 59.45,
+      "speechEndsAt": 58.189,
+      "sentences": [
+        0.0,
+        3.76,
+        11.78,
+        22.28,
+        34.76,
+        45.16,
+        53.52,
+        55.96
       ]
     }
   }

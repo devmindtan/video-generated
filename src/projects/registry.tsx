@@ -394,7 +394,7 @@ export const ProjectCompositions: FC = () => (
           <Composition id="KienTrucUngDungWebTongQuan" calculateMetadata={renderTo('kien-truc-ung-dung-web-tong-quan', kienTrucMetadata)} component={KienTrucUngDungWebVideo} durationInFrames={22755} fps={30} width={1920} height={1080} />
         </Folder>
         <Folder name="spec-driven-development-tong-quan">
-          <Composition id="SpecDrivenDevelopmentTongQuan" calculateMetadata={renderTo('spec-driven-development-tong-quan', specDrivenMetadata)} component={SpecDrivenDevelopmentVideo} durationInFrames={1764} fps={30} width={1920} height={1080} />
+          <Composition id="SpecDrivenDevelopmentTongQuan" calculateMetadata={renderTo('spec-driven-development-tong-quan', specDrivenMetadata)} component={SpecDrivenDevelopmentVideo} durationInFrames={19500} fps={30} width={1920} height={1080} />
         </Folder>
       </Folder>
     </Folder>

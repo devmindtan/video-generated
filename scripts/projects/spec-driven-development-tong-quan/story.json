@@ -35,8 +35,418 @@
     "leadIn": 0.4,
     "tail": 1.2,
     "maxTail": 3,
-    "duration": 51.07,
+    "duration": 51.68,
     "minWordMatchRatio": 0.75,
     "start": 0
+  },
+  {
+    "id": "01-vibe-coding-va-cai-bay-cua-toc-do",
+    "text": "Sách mở bằng câu chuyện của Nam và Linh trong một đội nhỏ làm sản phẩm cho vay. Nam đưa cho AI một câu nhắc, hai mươi phút sau đã có đủ các lớp, test và tài liệu, kịp giao đúng hạn. Vài tuần trôi qua, trạng thái xác minh khách hàng bị đặt ở ba chỗ với ba cách hiểu khác nhau. Không có ghi chú, không có bản đặc tả, hỏi lại AI thì nó chỉ giải thích dựa trên đống code đang có. Đến lúc thêm một tính năng mới, việc tưởng chỉ mất ba ngày kéo thành mười một ngày, vì ai cũng phải đoán lại. Tác giả gọi cách làm thử nhanh, sửa nhanh, gộp nhanh đó là vibe coding. Khi yêu cầu còn hở, AI thường lấp chỗ trống bằng lựa chọn trông hợp lý, và với tiền, quyền truy cập hay dữ liệu khách hàng, cái hợp lý ấy có thể rất đắt. Ngay cả bộ test do AI sinh từ chính đoạn code vừa viết cũng dễ tạo cảm giác an toàn giả: nó chứng minh code làm đúng… code. Spec Driven Development, hay SDD, đặt một tấm spec ở giữa: con người thống nhất ý định, AI dựa vào đó để viết code, test và tài liệu. Khi có gì sai, sửa spec trước rồi mới sửa code. Tuần đầu có thể chậm hơn một chút vì phải viết spec, nhưng về sau, việc đọc lại, sửa đổi và bàn giao đỡ phải đoán. Đây không phải quay về waterfall. Spec là file văn bản trong kho mã, ngắn vừa đủ để bắt đầu, sai thì sửa, và được kiểm bằng tiêu chí nghiệm thu chứ không phải bằng chữ ký. Trước khi đi tiếp, cuốn sách gợi ba câu hỏi: người mới hiểu logic quan trọng bằng cách nào, sửa code AI viết dựa vào đâu, và khi yêu cầu đổi thì biết phải đụng file nào.",
+    "sentences": [
+      {
+        "text": "Sách mở bằng câu chuyện của Nam và Linh trong một đội nhỏ làm sản phẩm cho vay.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Nam đưa cho AI một câu nhắc, hai mươi phút sau đã có đủ các lớp, test và tài liệu, kịp giao đúng hạn.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Vài tuần trôi qua, trạng thái xác minh khách hàng bị đặt ở ba chỗ với ba cách hiểu khác nhau.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Không có ghi chú, không có bản đặc tả, hỏi lại AI thì nó chỉ giải thích dựa trên đống code đang có.",
+        "pauseAfter": 0.45,
+        "say": "Không có ghi chú, không có bản đặc tả, hỏi lại AI, thì nó chỉ giải thích dựa trên đống code đang có."
+      },
+      {
+        "text": "Đến lúc thêm một tính năng mới, việc tưởng chỉ mất ba ngày kéo thành mười một ngày, vì ai cũng phải đoán lại.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Tác giả gọi cách làm thử nhanh, sửa nhanh, gộp nhanh đó là vibe coding.",
+        "pauseAfter": 0.45,
+        "say": "Tác giả gọi cách làm thử nhanh, sửa nhanh, gộp nhanh đó là vai bờ cô đinh."
+      },
+      {
+        "text": "Khi yêu cầu còn hở, AI thường lấp chỗ trống bằng lựa chọn trông hợp lý, và với tiền, quyền truy cập hay dữ liệu khách hàng, cái hợp lý ấy có thể rất đắt.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Ngay cả bộ test do AI sinh từ chính đoạn code vừa viết cũng dễ tạo cảm giác an toàn giả: nó chứng minh code làm đúng… code.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Spec Driven Development, hay SDD, đặt một tấm spec ở giữa: con người thống nhất ý định, AI dựa vào đó để viết code, test và tài liệu.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Khi có gì sai, sửa spec trước rồi mới sửa code.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Tuần đầu có thể chậm hơn một chút vì phải viết spec, nhưng về sau, việc đọc lại, sửa đổi và bàn giao đỡ phải đoán.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Đây không phải quay về waterfall.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Spec là file văn bản trong kho mã, ngắn vừa đủ để bắt đầu, sai thì sửa, và được kiểm bằng tiêu chí nghiệm thu chứ không phải bằng chữ ký.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Trước khi đi tiếp, cuốn sách gợi ba câu hỏi: người mới hiểu logic quan trọng bằng cách nào, sửa code AI viết dựa vào đâu, và khi yêu cầu đổi thì biết phải đụng file nào.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 107.72,
+    "minWordMatchRatio": 0.75,
+    "start": 51.68
+  },
+  {
+    "id": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+    "text": "Một câu chuyện người dùng ba dòng chưa phải là spec. Khách muốn quét mã để thanh toán, nhưng mã hết hạn sau năm phút hay mười lăm phút, tiền về chậm thì xử lý ra sao, đó là những khoảng trống AI sẽ tự điền nếu mình im lặng. Sách chia yêu cầu thành bốn tầng. Đầu tiên là yêu cầu nghiệp vụ, nói vì sao phải làm và đo thành công bằng gì. Tiếp là use case, nói ai làm gì: tác nhân, điểm bắt đầu, luồng chính, luồng khác và ngoại lệ. Rồi tới mô hình thực thể, đặt tên cho những \"danh từ\" của nghiệp vụ như Đơn hàng, Thanh toán hay Phiên mã, cùng trạng thái và quan hệ của chúng. Cuối cùng là tiêu chí nghiệm thu: cho trước điều kiện nào, khi làm việc gì, thì kết quả phải ra sao. Bốn tầng này nối câu chuyện của người làm sản phẩm với thứ có thể kiểm thử được. Sách cũng tách hai loại spec: spec mô tả hệ thống đang chạy như thế nào, và spec mô tả thay đổi sắp làm. Nhờ vậy, mình không trộn \"sự thật hiện tại\" với \"đề xuất đang bàn\". Khi đặt tên, cuốn sách mượn ý của Domain-Driven Design: dùng cùng một ngôn ngữ với nghiệp vụ, và chia ranh giới khi một từ như \"Đơn hàng\" mang nghĩa khác nhau ở các ngữ cảnh khác nhau. Còn kiến trúc lục giác gợi một cách sắp xếp: lõi nghiệp vụ ở giữa, những thứ như giao diện web, cơ sở dữ liệu hay cổng thanh toán cắm vào như adapter bên ngoài. Làm vậy, khi phải thay một đầu nối hay nhờ AI viết lại một phần, phần lõi ít bị kéo theo. Sách cũng nói rõ: script chạy một lần, trang quản trị đơn giản hay bản thử nghiệm thì chưa cần làm đủ mọi tầng.",
+    "sentences": [
+      {
+        "text": "Một câu chuyện người dùng ba dòng chưa phải là spec.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Khách muốn quét mã để thanh toán, nhưng mã hết hạn sau năm phút hay mười lăm phút, tiền về chậm thì xử lý ra sao, đó là những khoảng trống AI sẽ tự điền nếu mình im lặng.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Sách chia yêu cầu thành bốn tầng.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Đầu tiên là yêu cầu nghiệp vụ, nói vì sao phải làm và đo thành công bằng gì.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Tiếp là use case, nói ai làm gì: tác nhân, điểm bắt đầu, luồng chính, luồng khác và ngoại lệ.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Rồi tới mô hình thực thể, đặt tên cho những \"danh từ\" của nghiệp vụ như Đơn hàng, Thanh toán hay Phiên mã, cùng trạng thái và quan hệ của chúng.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Cuối cùng là tiêu chí nghiệm thu: cho trước điều kiện nào, khi làm việc gì, thì kết quả phải ra sao.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Bốn tầng này nối câu chuyện của người làm sản phẩm với thứ có thể kiểm thử được.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Sách cũng tách hai loại spec: spec mô tả hệ thống đang chạy như thế nào, và spec mô tả thay đổi sắp làm.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Nhờ vậy, mình không trộn \"sự thật hiện tại\" với \"đề xuất đang bàn\".",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Khi đặt tên, cuốn sách mượn ý của Domain-Driven Design: dùng cùng một ngôn ngữ với nghiệp vụ, và chia ranh giới khi một từ như \"Đơn hàng\" mang nghĩa khác nhau ở các ngữ cảnh khác nhau.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Còn kiến trúc lục giác gợi một cách sắp xếp: lõi nghiệp vụ ở giữa, những thứ như giao diện web, cơ sở dữ liệu hay cổng thanh toán cắm vào như adapter bên ngoài.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Làm vậy, khi phải thay một đầu nối hay nhờ AI viết lại một phần, phần lõi ít bị kéo theo.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Sách cũng nói rõ: script chạy một lần, trang quản trị đơn giản hay bản thử nghiệm thì chưa cần làm đủ mọi tầng.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 103.63,
+    "minWordMatchRatio": 0.75,
+    "start": 159.4
+  },
+  {
+    "id": "03-sau-nguyen-tac-spec-driven",
+    "text": "Từ thực hành, cuốn sách rút ra sáu nguyên tắc. Một, yêu cầu dẫn dắt. Khi một quy tắc mới chỉ nằm trong code, nó sẽ bị rải ra nhiều chỗ; có spec thì người và AI cùng biết phải sửa ở đâu. Hai, AI hỗ trợ, người giữ quyết định. AI rất hợp với việc lặp lại, tạo khung, viết test theo tiêu chí, nhưng chuyện tiền, quyền truy cập, pháp lý hay kiến trúc lớn phải có người chịu trách nhiệm. Ba, cải tiến theo vòng lặp. Spec không cần hoàn hảo ngay từ đầu: viết vừa đủ, thử, nhận phản hồi, rồi sửa, nhưng nên giữ lịch sử những gì đã thay đổi. Bốn, được bảo vệ bằng kiểm thử. Điều quan trọng không phải có nhiều test, mà là test bám vào hành vi nghiệp vụ và tiêu chí nghiệm thu, để sau này sửa hay viết lại vẫn có hàng rào. Năm, lấy người liên quan làm trung tâm. Spec phải đọc được với người chịu hậu quả: một câu \"đương nhiên là như vậy\" mà không ai viết ra, chính là nơi bug hay trú. Sáu, truy vết được. Khi mỗi thay đổi gắn với mã yêu cầu, lần tới có sự cố hay cần bàn giao, mình lần ngược từ code về spec, về lý do ban đầu, thay vì đoán trong đêm.",
+    "sentences": [
+      {
+        "text": "Từ thực hành, cuốn sách rút ra sáu nguyên tắc.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Một, yêu cầu dẫn dắt.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Khi một quy tắc mới chỉ nằm trong code, nó sẽ bị rải ra nhiều chỗ; có spec thì người và AI cùng biết phải sửa ở đâu.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Hai, AI hỗ trợ, người giữ quyết định.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "AI rất hợp với việc lặp lại, tạo khung, viết test theo tiêu chí, nhưng chuyện tiền, quyền truy cập, pháp lý hay kiến trúc lớn phải có người chịu trách nhiệm.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Ba, cải tiến theo vòng lặp.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Spec không cần hoàn hảo ngay từ đầu: viết vừa đủ, thử, nhận phản hồi, rồi sửa, nhưng nên giữ lịch sử những gì đã thay đổi.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Bốn, được bảo vệ bằng kiểm thử.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Điều quan trọng không phải có nhiều test, mà là test bám vào hành vi nghiệp vụ và tiêu chí nghiệm thu, để sau này sửa hay viết lại vẫn có hàng rào.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Năm, lấy người liên quan làm trung tâm.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Spec phải đọc được với người chịu hậu quả: một câu \"đương nhiên là như vậy\" mà không ai viết ra, chính là nơi bug hay trú.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Sáu, truy vết được.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Khi mỗi thay đổi gắn với mã yêu cầu, lần tới có sự cố hay cần bàn giao, mình lần ngược từ code về spec, về lý do ban đầu, thay vì đoán trong đêm.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 77.34,
+    "minWordMatchRatio": 0.75,
+    "start": 263.03
+  },
+  {
+    "id": "04-greenfield-bat-dau-tu-con-so-khong",
+    "text": "Phần thực hành đầu tiên là một dự án mới: công cụ chấm công và nghỉ phép nội bộ, ba người, một tuần. Ngày đầu, đội ngồi với người làm nhân sự, hỏi việc hằng ngày đau ở đâu, và viết ra mục tiêu đo được cùng những thứ nằm ngoài phạm vi. Chỉ sau buổi nói chuyện đó, họ mới chốt một bản yêu cầu nghiệp vụ và khoảng năm use case cốt lõi. Ngày thứ hai, họ vẽ sơ đồ tác nhân, dựng mô hình thực thể, và phát hiện câu hỏi tưởng nhỏ: ngày lễ xử lý thế nào, ghi rõ là chưa làm ở bản đầu. Ngày thứ ba và thứ tư, họ viết spec chi tiết cho một use case mẫu. Khi AI đề xuất trừ phép ngay lúc nhân viên gửi đơn, spec nói rõ là chỉ trừ khi quản lý duyệt, nên kế hoạch bị sửa trước khi sinh code. Hai bài test lỗi sau đó không bị vá lặng trong code, mà dẫn ngược về việc bổ sung tiêu chí nghiệm thu và quy tắc còn thiếu. Ngày cuối, bản chạy thử nhận phản hồi: cái gì ngoài phạm vi thì ghi vào phiên bản tiếp theo, cái gì thiếu trong tiêu chí thì bổ sung rồi mới chỉnh. Cuốn sách kể lại kết quả như một ví dụ: đội có một bộ spec, bộ test bám theo, và quan trọng hơn, họ biết sửa yêu cầu mới ở đâu. Những lỗi hay gặp cũng rất đời: viết spec quá chi tiết từ ngày một, quên tiêu chí nghiệm thu, để AI viết code trước rồi mới bổ sung spec, hoặc người viết tự duyệt.",
+    "sentences": [
+      {
+        "text": "Phần thực hành đầu tiên là một dự án mới: công cụ chấm công và nghỉ phép nội bộ, ba người, một tuần.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Ngày đầu, đội ngồi với người làm nhân sự, hỏi việc hằng ngày đau ở đâu, và viết ra mục tiêu đo được cùng những thứ nằm ngoài phạm vi.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Chỉ sau buổi nói chuyện đó, họ mới chốt một bản yêu cầu nghiệp vụ và khoảng năm use case cốt lõi.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Ngày thứ hai, họ vẽ sơ đồ tác nhân, dựng mô hình thực thể, và phát hiện câu hỏi tưởng nhỏ: ngày lễ xử lý thế nào, ghi rõ là chưa làm ở bản đầu.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Ngày thứ ba và thứ tư, họ viết spec chi tiết cho một use case mẫu.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Khi AI đề xuất trừ phép ngay lúc nhân viên gửi đơn, spec nói rõ là chỉ trừ khi quản lý duyệt, nên kế hoạch bị sửa trước khi sinh code.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Hai bài test lỗi sau đó không bị vá lặng trong code, mà dẫn ngược về việc bổ sung tiêu chí nghiệm thu và quy tắc còn thiếu.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Ngày cuối, bản chạy thử nhận phản hồi: cái gì ngoài phạm vi thì ghi vào phiên bản tiếp theo, cái gì thiếu trong tiêu chí thì bổ sung rồi mới chỉnh.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Cuốn sách kể lại kết quả như một ví dụ: đội có một bộ spec, bộ test bám theo, và quan trọng hơn, họ biết sửa yêu cầu mới ở đâu.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Những lỗi hay gặp cũng rất đời: viết spec quá chi tiết từ ngày một, quên tiêu chí nghiệm thu, để AI viết code trước rồi mới bổ sung spec, hoặc người viết tự duyệt.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 88.25,
+    "minWordMatchRatio": 0.75,
+    "start": 340.37
+  },
+  {
+    "id": "05-brownfield-lam-voi-ma-cu",
+    "text": "Sang hệ thống cũ, bài toán khác hẳn. Tâm nhận một kho mã tính phí lớn, tài liệu gần như trống, người viết ban đầu đã nghỉ, và mọi thay đổi đều đáng sợ. Sách cảnh báo hai sai lầm. Một là đập đi viết lại toàn bộ bằng AI khi chưa hiểu hệ thống đang chạy đúng điều gì. Hai là để AI đọc code rồi sinh ra spec, sau đó tin spec đó là sự thật, vì một lỗi sống trong code ba năm vẫn chỉ là lỗi. Cách đi được đề xuất gồm năm bước. Bước một, dựng lại mô hình thực thể từ cơ sở dữ liệu, rồi ngồi với người vận hành để hiểu từng trường thực sự nghĩa là gì. Bước hai, lần ra các use case từ code, nhật ký và giao diện, rồi tạm đánh dấu những luồng chưa ai giải thích được. Bước ba, kiểm chứng với nghiệp vụ: cái nào là hành vi đúng hiện tại, cái nào là thay đổi cần bàn, tách rõ trước khi sửa. Bước bốn, bọc quanh hành vi hiện tại bằng các bài test đặc tả từ dữ liệu thật đã ẩn danh, không để chứng minh đúng sai, mà để refactor không làm lệch những gì đang chạy. Bước năm, mới tái cấu trúc có bảo vệ: mỗi lần một phần, có cờ bật tắt, có so sánh, và không vừa refactor lớn vừa đổi quy tắc nghiệp vụ. Không cần viết spec cho toàn bộ kho mã. Ưu tiên chỗ nóng, chỗ hay đổi; chỗ lạnh thì tạm để yên. Cuốn sách gọi việc này rất thực tế: không phải trả hết nợ kỹ thuật, mà là dừng vay thêm.",
+    "sentences": [
+      {
+        "text": "Sang hệ thống cũ, bài toán khác hẳn.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Tâm nhận một kho mã tính phí lớn, tài liệu gần như trống, người viết ban đầu đã nghỉ, và mọi thay đổi đều đáng sợ.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Sách cảnh báo hai sai lầm.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Một là đập đi viết lại toàn bộ bằng AI khi chưa hiểu hệ thống đang chạy đúng điều gì.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Hai là để AI đọc code rồi sinh ra spec, sau đó tin spec đó là sự thật, vì một lỗi sống trong code ba năm vẫn chỉ là lỗi.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Cách đi được đề xuất gồm năm bước.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Bước một, dựng lại mô hình thực thể từ cơ sở dữ liệu, rồi ngồi với người vận hành để hiểu từng trường thực sự nghĩa là gì.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Bước hai, lần ra các use case từ code, nhật ký và giao diện, rồi tạm đánh dấu những luồng chưa ai giải thích được.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Bước ba, kiểm chứng với nghiệp vụ: cái nào là hành vi đúng hiện tại, cái nào là thay đổi cần bàn, tách rõ trước khi sửa.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Bước bốn, bọc quanh hành vi hiện tại bằng các bài test đặc tả từ dữ liệu thật đã ẩn danh, không để chứng minh đúng sai, mà để refactor không làm lệch những gì đang chạy.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Bước năm, mới tái cấu trúc có bảo vệ: mỗi lần một phần, có cờ bật tắt, có so sánh, và không vừa refactor lớn vừa đổi quy tắc nghiệp vụ.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Không cần viết spec cho toàn bộ kho mã.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Ưu tiên chỗ nóng, chỗ hay đổi; chỗ lạnh thì tạm để yên.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Cuốn sách gọi việc này rất thực tế: không phải trả hết nợ kỹ thuật, mà là dừng vay thêm.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 90.63,
+    "minWordMatchRatio": 0.75,
+    "start": 428.62
+  },
+  {
+    "id": "06-van-hanh-team-spec-driven-hang-ngay",
+    "text": "SDD không chỉ là kỹ thuật viết tài liệu, mà là cách đội làm việc cùng nhau. Người làm sản phẩm giữ mục tiêu và hỏi những câu \"đương nhiên là thế nào\". Kỹ sư dẫn dắt giữ kiến trúc, quyết chỗ nào giao cho AI và chỗ nào cần người. Lập trình viên phát hiện khoảng hở, nối test với tiêu chí, và không âm thầm quyết định nghiệp vụ trong code. Người quản lý giữ nhịp, còn kiểm thử bước vào từ lúc viết spec để soi ca biên. Trong kho mã, spec, mã nguồn và test soi vào nhau theo use case; mỗi bình luận sửa code đáng ra nên dẫn được về một yêu cầu cụ thể. Cuốn sách gợi vài chỉ số để biết đội đang đi đúng hướng: bao nhiêu use case có spec dùng được, bao nhiêu tiêu chí có test, có viết lại được an toàn không, và bao nhiêu thay đổi truy vết được về yêu cầu. Lộ trình thực tế cũng đi dần: ba mươi ngày đầu thử một use case nhỏ, sáu mươi ngày mở rộng và đo, chín mươi ngày nhìn lại dữ liệu rồi quyết định tiếp hay dừng.",
+    "sentences": [
+      {
+        "text": "SDD không chỉ là kỹ thuật viết tài liệu, mà là cách đội làm việc cùng nhau.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Người làm sản phẩm giữ mục tiêu và hỏi những câu \"đương nhiên là thế nào\".",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Kỹ sư dẫn dắt giữ kiến trúc, quyết chỗ nào giao cho AI và chỗ nào cần người.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Lập trình viên phát hiện khoảng hở, nối test với tiêu chí, và không âm thầm quyết định nghiệp vụ trong code.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Người quản lý giữ nhịp, còn kiểm thử bước vào từ lúc viết spec để soi ca biên.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Trong kho mã, spec, mã nguồn và test soi vào nhau theo use case; mỗi bình luận sửa code đáng ra nên dẫn được về một yêu cầu cụ thể.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Cuốn sách gợi vài chỉ số để biết đội đang đi đúng hướng: bao nhiêu use case có spec dùng được, bao nhiêu tiêu chí có test, có viết lại được an toàn không, và bao nhiêu thay đổi truy vết được về yêu cầu.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Lộ trình thực tế cũng đi dần: ba mươi ngày đầu thử một use case nhỏ, sáu mươi ngày mở rộng và đo, chín mươi ngày nhìn lại dữ liệu rồi quyết định tiếp hay dừng.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 63.56,
+    "minWordMatchRatio": 0.75,
+    "start": 519.25
+  },
+  {
+    "id": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+    "text": "Sách không khuyên dùng SDD cho mọi thứ. Một bản thử nghiệm ném đi sau một tuần, một đoạn script chạy một lần, hay dự án một người tự biết hết, thường không cần. Nhưng với hệ thống sống lâu, nhiều người cùng chạm vào, quy tắc nghiệp vụ quan trọng, hoặc AI đang sinh ra phần lớn mã, việc thiếu spec sẽ sớm thành cái giá phải trả. Cuốn sách cũng gỡ vài hiểu nhầm: spec không phải quay về làm việc chậm, không chỉ dành cho doanh nghiệp lớn, và càng có AI giỏi thì câu hỏi \"viết đúng thứ gì\" càng đáng tiền. Ba việc nhỏ để bắt đầu trong tuần tới: chọn một use case, làm trọn một vòng trong một lần làm việc ngắn, một người kỹ thuật và một người hiểu nghiệp vụ cùng ngồi lại. Tạo chỗ để spec sống trong kho mã, và đo một điều đơn giản, chẳng hạn bao nhiêu thay đổi gắn được với một yêu cầu. Spec không làm AI chậm đi. Nó chỉ giúp tốc độ đi về đúng chỗ.",
+    "sentences": [
+      {
+        "text": "Sách không khuyên dùng SDD cho mọi thứ.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Một bản thử nghiệm ném đi sau một tuần, một đoạn script chạy một lần, hay dự án một người tự biết hết, thường không cần.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Nhưng với hệ thống sống lâu, nhiều người cùng chạm vào, quy tắc nghiệp vụ quan trọng, hoặc AI đang sinh ra phần lớn mã, việc thiếu spec sẽ sớm thành cái giá phải trả.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Cuốn sách cũng gỡ vài hiểu nhầm: spec không phải quay về làm việc chậm, không chỉ dành cho doanh nghiệp lớn, và càng có AI giỏi thì câu hỏi \"viết đúng thứ gì\" càng đáng tiền.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Ba việc nhỏ để bắt đầu trong tuần tới: chọn một use case, làm trọn một vòng trong một lần làm việc ngắn, một người kỹ thuật và một người hiểu nghiệp vụ cùng ngồi lại.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Tạo chỗ để spec sống trong kho mã, và đo một điều đơn giản, chẳng hạn bao nhiêu thay đổi gắn được với một yêu cầu.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Spec không làm AI chậm đi.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Nó chỉ giúp tốc độ đi về đúng chỗ.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 59.45,
+    "minWordMatchRatio": 0.75,
+    "start": 582.81
   }
 ]

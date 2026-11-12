@@ -5,133 +5,1771 @@
    "part": "00-mo-dau",
    "text": "Bạn nhờ AI viết gần xong một",
    "startMs": 6500,
-   "endMs": 9380
+   "endMs": 9420
   },
   {
    "part": "00-mo-dau",
    "text": "tính năng trong mười phút.",
-   "startMs": 9380,
-   "endMs": 10900
+   "startMs": 9420,
+   "endMs": 10960
   },
   {
    "part": "00-mo-dau",
    "text": "Code chạy, test xanh, rồi ai cũng mừng.",
-   "startMs": 11160,
-   "endMs": 14340
+   "startMs": 11180,
+   "endMs": 14540
   },
   {
    "part": "00-mo-dau",
    "text": "Hai tuần sau, một lỗi nhỏ xuất",
-   "startMs": 14940,
-   "endMs": 16860
+   "startMs": 15000,
+   "endMs": 16980
   },
   {
    "part": "00-mo-dau",
    "text": "hiện, và không ai trả lời nổi:",
-   "startMs": 16860,
-   "endMs": 18820
+   "startMs": 16980,
+   "endMs": 19000
   },
   {
    "part": "00-mo-dau",
    "text": "đoạn này chạy như vậy vì đúng",
-   "startMs": 19100,
-   "endMs": 20720
+   "startMs": 19260,
+   "endMs": 20880
   },
   {
    "part": "00-mo-dau",
    "text": "nghiệp vụ, hay vì lúc đó AI đoán bừa?",
-   "startMs": 20720,
-   "endMs": 23240
+   "startMs": 20880,
+   "endMs": 23440
   },
   {
    "part": "00-mo-dau",
    "text": "Mình cũng từng rơi vào cảm giác ấy.",
-   "startMs": 23840,
-   "endMs": 25780
+   "startMs": 24040,
+   "endMs": 26000
   },
   {
    "part": "00-mo-dau",
    "text": "Cuốn Spec Driven Development bàn đúng",
-   "startMs": 26740,
-   "endMs": 29480
+   "startMs": 26940,
+   "endMs": 29740
   },
   {
    "part": "00-mo-dau",
    "text": "chỗ đó: khi AI viết code ngày",
-   "startMs": 29480,
-   "endMs": 32260
+   "startMs": 29740,
+   "endMs": 32620
   },
   {
    "part": "00-mo-dau",
    "text": "càng nhanh, thứ dễ mất không phải",
-   "startMs": 32260,
-   "endMs": 34300
+   "startMs": 32620,
+   "endMs": 34620
   },
   {
    "part": "00-mo-dau",
    "text": "là code, mà là ý định phía sau.",
-   "startMs": 34300,
-   "endMs": 36580
+   "startMs": 34620,
+   "endMs": 36900
   },
   {
    "part": "00-mo-dau",
    "text": "Video này tóm tắt cả cuốn sách,",
-   "startMs": 37040,
-   "endMs": 39160
+   "startMs": 37420,
+   "endMs": 39540
   },
   {
    "part": "00-mo-dau",
    "text": "đi từ cái bẫy của tốc độ,",
-   "startMs": 39400,
-   "endMs": 41100
+   "startMs": 39800,
+   "endMs": 41500
   },
   {
    "part": "00-mo-dau",
    "text": "tới cách viết spec, sáu nguyên tắc",
-   "startMs": 41100,
-   "endMs": 43320
+   "startMs": 41500,
+   "endMs": 43740
   },
   {
    "part": "00-mo-dau",
    "text": "vận hành, rồi cách áp dụng cho",
-   "startMs": 43320,
-   "endMs": 45240
+   "startMs": 43740,
+   "endMs": 45700
   },
   {
    "part": "00-mo-dau",
    "text": "dự án mới lẫn mã cũ.",
-   "startMs": 45240,
-   "endMs": 46780
+   "startMs": 45700,
+   "endMs": 47140
   },
   {
    "part": "00-mo-dau",
    "text": "Không cần biến quy trình thành giấy",
-   "startMs": 47780,
-   "endMs": 49800
+   "startMs": 48220,
+   "endMs": 50300
   },
   {
    "part": "00-mo-dau",
    "text": "tờ nặng nề.",
-   "startMs": 49800,
-   "endMs": 51020
+   "startMs": 50300,
+   "endMs": 51500
   },
   {
    "part": "00-mo-dau",
    "text": "Ý của cuốn sách đơn giản hơn:",
-   "startMs": 51260,
-   "endMs": 52960
+   "startMs": 51780,
+   "endMs": 53620
   },
   {
    "part": "00-mo-dau",
    "text": "trước khi bảo AI viết, hãy nói",
-   "startMs": 53300,
-   "endMs": 55260
+   "startMs": 53840,
+   "endMs": 55820
   },
   {
    "part": "00-mo-dau",
    "text": "rõ mình muốn gì.",
-   "startMs": 55260,
-   "endMs": 56200
+   "startMs": 55820,
+   "endMs": 56780
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "Sách mở bằng câu chuyện của Nam",
+   "startMs": 58180,
+   "endMs": 60580
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "và Linh trong một đội nhỏ làm",
+   "startMs": 60580,
+   "endMs": 62900
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "sản phẩm cho vay.",
+   "startMs": 62900,
+   "endMs": 64120
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "Nam đưa cho AI một câu nhắc,",
+   "startMs": 64660,
+   "endMs": 66520
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "hai mươi phút sau đã có đủ",
+   "startMs": 66520,
+   "endMs": 68100
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "các lớp, test và tài liệu, kịp",
+   "startMs": 68100,
+   "endMs": 70560
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "giao đúng hạn.",
+   "startMs": 70560,
+   "endMs": 71620
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "Vài tuần trôi qua, trạng thái xác",
+   "startMs": 71860,
+   "endMs": 73960
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "minh khách hàng bị đặt ở ba",
+   "startMs": 73960,
+   "endMs": 75680
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "chỗ với ba cách hiểu khác nhau.",
+   "startMs": 75680,
+   "endMs": 78040
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "Không có ghi chú, không có bản",
+   "startMs": 78180,
+   "endMs": 80000
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "đặc tả, hỏi lại AI thì nó",
+   "startMs": 80000,
+   "endMs": 82600
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "chỉ giải thích dựa trên đống code đang có.",
+   "startMs": 82600,
+   "endMs": 84860
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "Đến lúc thêm một tính năng mới,",
+   "startMs": 84860,
+   "endMs": 87000
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "việc tưởng chỉ mất ba ngày kéo",
+   "startMs": 87260,
+   "endMs": 88800
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "thành mười một ngày, vì ai cũng",
+   "startMs": 88800,
+   "endMs": 90660
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "phải đoán lại.",
+   "startMs": 90660,
+   "endMs": 91460
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "Tác giả gọi cách làm thử nhanh,",
+   "startMs": 92540,
+   "endMs": 94380
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "sửa nhanh, gộp nhanh đó là vibe coding.",
+   "startMs": 94500,
+   "endMs": 97380
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "Khi yêu cầu còn hở, AI thường",
+   "startMs": 98000,
+   "endMs": 100360
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "lấp chỗ trống bằng lựa chọn trông",
+   "startMs": 100360,
+   "endMs": 102020
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "hợp lý, và với tiền, quyền truy",
+   "startMs": 102020,
+   "endMs": 104360
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "cập hay dữ liệu khách hàng, cái",
+   "startMs": 104360,
+   "endMs": 106460
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "hợp lý ấy có thể rất đắt.",
+   "startMs": 106460,
+   "endMs": 108180
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "Ngay cả bộ test do AI sinh",
+   "startMs": 108460,
+   "endMs": 110320
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "từ chính đoạn code vừa viết cũng",
+   "startMs": 110320,
+   "endMs": 112300
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "dễ tạo cảm giác an toàn giả:",
+   "startMs": 112300,
+   "endMs": 114020
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "nó chứng minh code làm đúng… code.",
+   "startMs": 114020,
+   "endMs": 118280
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "Spec Driven Development, hay SDD, đặt",
+   "startMs": 118280,
+   "endMs": 122480
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "một tấm spec ở giữa: con người",
+   "startMs": 122480,
+   "endMs": 124560
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "thống nhất ý định, AI dựa vào",
+   "startMs": 124560,
+   "endMs": 126700
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "đó để viết code, test và tài liệu.",
+   "startMs": 126700,
+   "endMs": 129320
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "Khi có gì sai, sửa spec trước",
+   "startMs": 129820,
+   "endMs": 131880
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "rồi mới sửa code.",
+   "startMs": 131880,
+   "endMs": 133440
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "Tuần đầu có thể chậm hơn một",
+   "startMs": 133440,
+   "endMs": 134900
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "chút vì phải viết spec, nhưng về",
+   "startMs": 134900,
+   "endMs": 137080
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "sau, việc đọc lại, sửa đổi và",
+   "startMs": 137080,
+   "endMs": 139560
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "bàn giao đỡ phải đoán.",
+   "startMs": 139560,
+   "endMs": 141060
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "Đây không phải quay về waterfall.",
+   "startMs": 141360,
+   "endMs": 143300
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "Spec là file văn bản trong kho",
+   "startMs": 143300,
+   "endMs": 145760
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "mã, ngắn vừa đủ để bắt đầu,",
+   "startMs": 145760,
+   "endMs": 147820
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "sai thì sửa, và được kiểm bằng",
+   "startMs": 148240,
+   "endMs": 150000
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "tiêu chí nghiệm thu chứ không phải",
+   "startMs": 150000,
+   "endMs": 151780
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "bằng chữ ký.",
+   "startMs": 151780,
+   "endMs": 153140
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "Trước khi đi tiếp, cuốn sách gợi",
+   "startMs": 153740,
+   "endMs": 155640
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "ba câu hỏi: người mới hiểu logic",
+   "startMs": 155640,
+   "endMs": 157600
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "quan trọng bằng cách nào, sửa code",
+   "startMs": 157600,
+   "endMs": 159740
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "AI viết dựa vào đâu, và khi",
+   "startMs": 159740,
+   "endMs": 162060
+  },
+  {
+   "part": "01-vibe-coding-va-cai-bay-cua-toc-do",
+   "text": "yêu cầu đổi thì biết phải đụng file nào.",
+   "startMs": 162060,
+   "endMs": 164460
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "Một câu chuyện người dùng ba dòng",
+   "startMs": 165900,
+   "endMs": 168080
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "chưa phải là spec.",
+   "startMs": 168080,
+   "endMs": 169240
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "Khách muốn quét mã để thanh toán,",
+   "startMs": 169820,
+   "endMs": 171600
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "nhưng mã hết hạn sau năm phút",
+   "startMs": 171820,
+   "endMs": 173840
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "hay mười lăm phút, tiền về chậm",
+   "startMs": 173840,
+   "endMs": 176100
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "thì xử lý ra sao, đó là",
+   "startMs": 176100,
+   "endMs": 177940
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "những khoảng trống AI sẽ tự điền",
+   "startMs": 177940,
+   "endMs": 180180
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "nếu mình im lặng.",
+   "startMs": 180180,
+   "endMs": 182260
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "Sách chia yêu cầu thành bốn tầng.",
+   "startMs": 182500,
+   "endMs": 184960
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "Đầu tiên là yêu cầu nghiệp vụ,",
+   "startMs": 185180,
+   "endMs": 186860
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "nói vì sao phải làm và đo",
+   "startMs": 187120,
+   "endMs": 188880
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "thành công bằng gì.",
+   "startMs": 188880,
+   "endMs": 189760
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "Tiếp là use case, nói ai làm",
+   "startMs": 189760,
+   "endMs": 192580
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "gì: tác nhân, điểm bắt đầu, luồng",
+   "startMs": 192580,
+   "endMs": 195100
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "chính, luồng khác và ngoại lệ.",
+   "startMs": 195100,
+   "endMs": 197180
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "Rồi tới mô hình thực thể, đặt",
+   "startMs": 197380,
+   "endMs": 199300
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "tên cho những \"danh từ\" của nghiệp",
+   "startMs": 199300,
+   "endMs": 200920
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "vụ như Đơn hàng, Thanh toán hay",
+   "startMs": 200920,
+   "endMs": 203260
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "Phiên mã, cùng trạng thái và quan",
+   "startMs": 203260,
+   "endMs": 205380
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "hệ của chúng.",
+   "startMs": 205380,
+   "endMs": 206120
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "Cuối cùng là tiêu chí nghiệm thu:",
+   "startMs": 206580,
+   "endMs": 208340
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "cho trước điều kiện nào, khi làm",
+   "startMs": 208340,
+   "endMs": 210320
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "việc gì, thì kết quả phải ra sao.",
+   "startMs": 210320,
+   "endMs": 212580
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "Bốn tầng này nối câu chuyện của",
+   "startMs": 213180,
+   "endMs": 214840
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "người làm sản phẩm với thứ có",
+   "startMs": 214840,
+   "endMs": 217300
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "thể kiểm thử được.",
+   "startMs": 217300,
+   "endMs": 218120
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "Sách cũng tách hai loại spec: spec",
+   "startMs": 219100,
+   "endMs": 221840
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "mô tả hệ thống đang chạy như",
+   "startMs": 221840,
+   "endMs": 223440
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "thế nào, và spec mô tả thay",
+   "startMs": 223440,
+   "endMs": 225740
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "đổi sắp làm.",
+   "startMs": 225740,
+   "endMs": 226540
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "Nhờ vậy, mình không trộn \"sự thật",
+   "startMs": 227080,
+   "endMs": 228860
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "hiện tại\" với \"đề xuất đang bàn\".",
+   "startMs": 228860,
+   "endMs": 230960
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "Khi đặt tên, cuốn sách mượn ý",
+   "startMs": 231460,
+   "endMs": 233260
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "của Domain-Driven Design: dùng cùng",
+   "startMs": 233260,
+   "endMs": 236120
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "một ngôn ngữ với nghiệp vụ, và",
+   "startMs": 236120,
+   "endMs": 237960
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "chia ranh giới khi một từ như",
+   "startMs": 237960,
+   "endMs": 239820
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "\"Đơn hàng\" mang nghĩa khác nhau ở",
+   "startMs": 239820,
+   "endMs": 241900
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "các ngữ cảnh khác nhau.",
+   "startMs": 241900,
+   "endMs": 243380
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "Còn kiến trúc lục giác gợi một",
+   "startMs": 243380,
+   "endMs": 245220
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "cách sắp xếp: lõi nghiệp vụ ở",
+   "startMs": 245220,
+   "endMs": 247140
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "giữa, những thứ như giao diện web,",
+   "startMs": 247140,
+   "endMs": 249240
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "cơ sở dữ liệu hay cổng thanh",
+   "startMs": 249640,
+   "endMs": 251560
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "toán cắm vào như adapter bên ngoài.",
+   "startMs": 251700,
+   "endMs": 254360
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "Làm vậy, khi phải thay một đầu",
+   "startMs": 254560,
+   "endMs": 256220
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "nối hay nhờ AI viết lại một",
+   "startMs": 256220,
+   "endMs": 258280
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "phần, phần lõi ít bị kéo theo.",
+   "startMs": 258280,
+   "endMs": 260640
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "Sách cũng nói rõ: script chạy một",
+   "startMs": 261320,
+   "endMs": 263380
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "lần, trang quản trị đơn giản hay",
+   "startMs": 263380,
+   "endMs": 265660
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "bản thử nghiệm thì chưa cần làm",
+   "startMs": 265660,
+   "endMs": 267380
+  },
+  {
+   "part": "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung",
+   "text": "đủ mọi tầng.",
+   "startMs": 267380,
+   "endMs": 268160
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "Từ thực hành, cuốn sách rút ra",
+   "startMs": 269530,
+   "endMs": 272130
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "sáu nguyên tắc.",
+   "startMs": 272130,
+   "endMs": 273790
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "Một, yêu cầu dẫn dắt.",
+   "startMs": 274070,
+   "endMs": 275930
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "Khi một quy tắc mới chỉ nằm",
+   "startMs": 276190,
+   "endMs": 277950
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "trong code, nó sẽ bị rải ra",
+   "startMs": 277950,
+   "endMs": 279930
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "nhiều chỗ; có spec thì người và",
+   "startMs": 279930,
+   "endMs": 282750
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "AI cùng biết phải sửa ở đâu.",
+   "startMs": 282750,
+   "endMs": 284830
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "Hai, AI hỗ trợ, người giữ quyết định.",
+   "startMs": 285370,
+   "endMs": 288750
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "AI rất hợp với việc lặp lại,",
+   "startMs": 289030,
+   "endMs": 290430
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "tạo khung, viết test theo tiêu chí,",
+   "startMs": 290790,
+   "endMs": 293210
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "nhưng chuyện tiền, quyền truy cập,",
+   "startMs": 293450,
+   "endMs": 295170
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "pháp lý hay kiến trúc lớn phải",
+   "startMs": 295610,
+   "endMs": 297470
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "có người chịu trách nhiệm.",
+   "startMs": 297470,
+   "endMs": 298890
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "Ba, cải tiến theo vòng lặp.",
+   "startMs": 298890,
+   "endMs": 301370
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "Spec không cần hoàn hảo ngay từ",
+   "startMs": 301570,
+   "endMs": 303130
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "đầu: viết vừa đủ, thử, nhận phản",
+   "startMs": 303130,
+   "endMs": 305490
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "hồi, rồi sửa, nhưng nên giữ lịch",
+   "startMs": 305490,
+   "endMs": 307790
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "sử những gì đã thay đổi.",
+   "startMs": 307790,
+   "endMs": 309190
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "Bốn, được bảo vệ bằng kiểm thử.",
+   "startMs": 309190,
+   "endMs": 312090
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "Điều quan trọng không phải có nhiều",
+   "startMs": 312310,
+   "endMs": 313830
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "test, mà là test bám vào hành",
+   "startMs": 313830,
+   "endMs": 315970
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "vi nghiệp vụ và tiêu chí nghiệm",
+   "startMs": 315970,
+   "endMs": 317830
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "thu, để sau này sửa hay viết",
+   "startMs": 317830,
+   "endMs": 320030
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "lại vẫn có hàng rào.",
+   "startMs": 320030,
+   "endMs": 321450
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "Năm, lấy người liên quan làm trung tâm.",
+   "startMs": 321450,
+   "endMs": 325070
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "Spec phải đọc được với người chịu",
+   "startMs": 325070,
+   "endMs": 327270
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "hậu quả: một câu \"đương nhiên là",
+   "startMs": 327270,
+   "endMs": 329150
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "như vậy\" mà không ai viết ra,",
+   "startMs": 329150,
+   "endMs": 330970
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "chính là nơi bug hay trú.",
+   "startMs": 331250,
+   "endMs": 333090
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "Sáu, truy vết được.",
+   "startMs": 333090,
+   "endMs": 334990
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "Khi mỗi thay đổi gắn với mã",
+   "startMs": 335490,
+   "endMs": 337210
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "yêu cầu, lần tới có sự cố",
+   "startMs": 337210,
+   "endMs": 339330
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "hay cần bàn giao, mình lần ngược",
+   "startMs": 339330,
+   "endMs": 341390
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "từ code về spec, về lý do",
+   "startMs": 341390,
+   "endMs": 343670
+  },
+  {
+   "part": "03-sau-nguyen-tac-spec-driven",
+   "text": "ban đầu, thay vì đoán trong đêm.",
+   "startMs": 343670,
+   "endMs": 345490
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "Phần thực hành đầu tiên là một",
+   "startMs": 346870,
+   "endMs": 349110
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "dự án mới: công cụ chấm công",
+   "startMs": 349110,
+   "endMs": 350950
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "và nghỉ phép nội bộ, ba người, một tuần.",
+   "startMs": 350950,
+   "endMs": 354170
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "Ngày đầu, đội ngồi với người làm",
+   "startMs": 354410,
+   "endMs": 356310
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "nhân sự, hỏi việc hằng ngày đau",
+   "startMs": 356310,
+   "endMs": 358210
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "ở đâu, và viết ra mục tiêu",
+   "startMs": 358210,
+   "endMs": 360110
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "đo được cùng những thứ nằm ngoài phạm vi.",
+   "startMs": 360110,
+   "endMs": 362490
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "Chỉ sau buổi nói chuyện đó, họ",
+   "startMs": 363010,
+   "endMs": 364930
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "mới chốt một bản yêu cầu nghiệp",
+   "startMs": 364930,
+   "endMs": 366630
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "vụ và khoảng năm use case cốt lõi.",
+   "startMs": 366630,
+   "endMs": 370370
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "Ngày thứ hai, họ vẽ sơ đồ",
+   "startMs": 370370,
+   "endMs": 372430
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "tác nhân, dựng mô hình thực thể,",
+   "startMs": 372430,
+   "endMs": 374490
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "và phát hiện câu hỏi tưởng nhỏ:",
+   "startMs": 374690,
+   "endMs": 376350
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "ngày lễ xử lý thế nào, ghi",
+   "startMs": 376610,
+   "endMs": 378450
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "rõ là chưa làm ở bản đầu.",
+   "startMs": 378450,
+   "endMs": 380230
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "Ngày thứ ba và thứ tư, họ",
+   "startMs": 380690,
+   "endMs": 382490
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "viết spec chi tiết cho một use case mẫu.",
+   "startMs": 382490,
+   "endMs": 385350
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "Khi AI đề xuất trừ phép ngay",
+   "startMs": 385470,
+   "endMs": 387810
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "lúc nhân viên gửi đơn, spec nói",
+   "startMs": 387810,
+   "endMs": 389930
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "rõ là chỉ trừ khi quản lý",
+   "startMs": 389930,
+   "endMs": 391970
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "duyệt, nên kế hoạch bị sửa trước",
+   "startMs": 391970,
+   "endMs": 394350
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "khi sinh code.",
+   "startMs": 394350,
+   "endMs": 395110
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "Hai bài test lỗi sau đó không",
+   "startMs": 395110,
+   "endMs": 397170
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "bị vá lặng trong code, mà dẫn",
+   "startMs": 397170,
+   "endMs": 399250
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "ngược về việc bổ sung tiêu chí",
+   "startMs": 399250,
+   "endMs": 401270
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "nghiệm thu và quy tắc còn thiếu.",
+   "startMs": 401270,
+   "endMs": 403130
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "Ngày cuối, bản chạy thử nhận phản",
+   "startMs": 404410,
+   "endMs": 406510
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "hồi: cái gì ngoài phạm vi thì",
+   "startMs": 406510,
+   "endMs": 408790
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "ghi vào phiên bản tiếp theo, cái",
+   "startMs": 408790,
+   "endMs": 410730
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "gì thiếu trong tiêu chí thì bổ",
+   "startMs": 410730,
+   "endMs": 412570
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "sung rồi mới chỉnh.",
+   "startMs": 412570,
+   "endMs": 414010
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "Cuốn sách kể lại kết quả như",
+   "startMs": 414190,
+   "endMs": 415810
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "một ví dụ: đội có một bộ",
+   "startMs": 415810,
+   "endMs": 417890
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "spec, bộ test bám theo, và quan",
+   "startMs": 417890,
+   "endMs": 420390
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "trọng hơn, họ biết sửa yêu cầu",
+   "startMs": 420390,
+   "endMs": 422370
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "mới ở đâu.",
+   "startMs": 422370,
+   "endMs": 423050
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "Những lỗi hay gặp cũng rất đời:",
+   "startMs": 423050,
+   "endMs": 425650
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "viết spec quá chi tiết từ ngày",
+   "startMs": 425950,
+   "endMs": 427510
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "một, quên tiêu chí nghiệm thu, để",
+   "startMs": 427510,
+   "endMs": 429970
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "AI viết code trước rồi mới bổ",
+   "startMs": 429970,
+   "endMs": 431870
+  },
+  {
+   "part": "04-greenfield-bat-dau-tu-con-so-khong",
+   "text": "sung spec, hoặc người viết tự duyệt.",
+   "startMs": 431870,
+   "endMs": 433864
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "Sang hệ thống cũ, bài toán khác hẳn.",
+   "startMs": 435120,
+   "endMs": 438320
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "Tâm nhận một kho mã tính phí",
+   "startMs": 438460,
+   "endMs": 439880
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "lớn, tài liệu gần như trống, người",
+   "startMs": 439880,
+   "endMs": 442240
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "viết ban đầu đã nghỉ, và mọi",
+   "startMs": 442240,
+   "endMs": 444080
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "thay đổi đều đáng sợ.",
+   "startMs": 444080,
+   "endMs": 445600
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "Sách cảnh báo hai sai lầm.",
+   "startMs": 445820,
+   "endMs": 447760
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "Một là đập đi viết lại toàn",
+   "startMs": 447980,
+   "endMs": 449520
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "bộ bằng AI khi chưa hiểu hệ",
+   "startMs": 449520,
+   "endMs": 451800
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "thống đang chạy đúng điều gì.",
+   "startMs": 451800,
+   "endMs": 453160
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "Hai là để AI đọc code rồi",
+   "startMs": 453760,
+   "endMs": 455880
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "sinh ra spec, sau đó tin spec",
+   "startMs": 455880,
+   "endMs": 458220
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "đó là sự thật, vì một lỗi",
+   "startMs": 458220,
+   "endMs": 459940
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "sống trong code ba năm vẫn chỉ là lỗi.",
+   "startMs": 459940,
+   "endMs": 462380
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "Cách đi được đề xuất gồm năm bước.",
+   "startMs": 462380,
+   "endMs": 465960
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "Bước một, dựng lại mô hình thực",
+   "startMs": 466120,
+   "endMs": 468080
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "thể từ cơ sở dữ liệu, rồi",
+   "startMs": 468080,
+   "endMs": 469940
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "ngồi với người vận hành để hiểu",
+   "startMs": 469940,
+   "endMs": 471760
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "từng trường thực sự nghĩa là gì.",
+   "startMs": 471760,
+   "endMs": 473540
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "Bước hai, lần ra các use case",
+   "startMs": 474060,
+   "endMs": 476180
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "từ code, nhật ký và giao diện,",
+   "startMs": 476180,
+   "endMs": 478440
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "rồi tạm đánh dấu những luồng chưa",
+   "startMs": 478760,
+   "endMs": 480300
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "ai giải thích được.",
+   "startMs": 480300,
+   "endMs": 481080
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "Bước ba, kiểm chứng với nghiệp vụ:",
+   "startMs": 481620,
+   "endMs": 483760
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "cái nào là hành vi đúng hiện",
+   "startMs": 484020,
+   "endMs": 485520
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "tại, cái nào là thay đổi cần",
+   "startMs": 485520,
+   "endMs": 487460
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "bàn, tách rõ trước khi sửa.",
+   "startMs": 487460,
+   "endMs": 489760
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "Bước bốn, bọc quanh hành vi hiện",
+   "startMs": 489760,
+   "endMs": 491820
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "tại bằng các bài test đặc tả",
+   "startMs": 491820,
+   "endMs": 493740
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "từ dữ liệu thật đã ẩn danh,",
+   "startMs": 493740,
+   "endMs": 495640
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "không để chứng minh đúng sai, mà",
+   "startMs": 495760,
+   "endMs": 497720
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "để refactor không làm lệch những gì đang chạy.",
+   "startMs": 497720,
+   "endMs": 500800
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "Bước năm, mới tái cấu trúc có",
+   "startMs": 500820,
+   "endMs": 502960
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "bảo vệ: mỗi lần một phần, có",
+   "startMs": 502960,
+   "endMs": 505160
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "cờ bật tắt, có so sánh, và",
+   "startMs": 505160,
+   "endMs": 507400
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "không vừa refactor lớn vừa đổi quy",
+   "startMs": 507400,
+   "endMs": 509780
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "tắc nghiệp vụ.",
+   "startMs": 509780,
+   "endMs": 510680
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "Không cần viết spec cho toàn bộ kho mã.",
+   "startMs": 511640,
+   "endMs": 513860
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "Ưu tiên chỗ nóng, chỗ hay đổi;",
+   "startMs": 514540,
+   "endMs": 516620
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "chỗ lạnh thì tạm để yên.",
+   "startMs": 516920,
+   "endMs": 518440
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "Cuốn sách gọi việc này rất thực",
+   "startMs": 518440,
+   "endMs": 520460
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "tế: không phải trả hết nợ kỹ",
+   "startMs": 520460,
+   "endMs": 522620
+  },
+  {
+   "part": "05-brownfield-lam-voi-ma-cu",
+   "text": "thuật, mà là dừng vay thêm.",
+   "startMs": 522620,
+   "endMs": 524340
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "SDD không chỉ là kỹ thuật viết",
+   "startMs": 526570,
+   "endMs": 528330
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "tài liệu, mà là cách đội làm",
+   "startMs": 528330,
+   "endMs": 530390
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "việc cùng nhau.",
+   "startMs": 530390,
+   "endMs": 532110
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "Người làm sản phẩm giữ mục tiêu",
+   "startMs": 532430,
+   "endMs": 534130
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "và hỏi những câu \"đương nhiên là thế nào\".",
+   "startMs": 534130,
+   "endMs": 536590
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "Kỹ sư dẫn dắt giữ kiến trúc,",
+   "startMs": 537070,
+   "endMs": 539310
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "quyết chỗ nào giao cho AI và",
+   "startMs": 539510,
+   "endMs": 541370
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "chỗ nào cần người.",
+   "startMs": 541370,
+   "endMs": 542430
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "Lập trình viên phát hiện khoảng hở,",
+   "startMs": 543030,
+   "endMs": 544730
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "nối test với tiêu chí, và không",
+   "startMs": 545010,
+   "endMs": 547050
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "âm thầm quyết định nghiệp vụ trong code.",
+   "startMs": 547050,
+   "endMs": 549090
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "Người quản lý giữ nhịp, còn kiểm",
+   "startMs": 549590,
+   "endMs": 551810
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "thử bước vào từ lúc viết spec",
+   "startMs": 551810,
+   "endMs": 553470
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "để soi ca biên.",
+   "startMs": 553470,
+   "endMs": 554990
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "Trong kho mã, spec, mã nguồn và",
+   "startMs": 554990,
+   "endMs": 557670
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "test soi vào nhau theo use case;",
+   "startMs": 557670,
+   "endMs": 559450
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "mỗi bình luận sửa code đáng ra",
+   "startMs": 559930,
+   "endMs": 561750
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "nên dẫn được về một yêu cầu cụ thể.",
+   "startMs": 561750,
+   "endMs": 564210
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "Cuốn sách gợi vài chỉ số để",
+   "startMs": 564670,
+   "endMs": 566550
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "biết đội đang đi đúng hướng: bao",
+   "startMs": 566550,
+   "endMs": 568550
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "nhiêu use case có spec dùng được,",
+   "startMs": 568550,
+   "endMs": 570790
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "bao nhiêu tiêu chí có test, có",
+   "startMs": 571130,
+   "endMs": 573010
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "viết lại được an toàn không, và",
+   "startMs": 573010,
+   "endMs": 575170
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "bao nhiêu thay đổi truy vết được",
+   "startMs": 575170,
+   "endMs": 576670
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "về yêu cầu.",
+   "startMs": 576670,
+   "endMs": 577850
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "Lộ trình thực tế cũng đi dần:",
+   "startMs": 578070,
+   "endMs": 579570
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "ba mươi ngày đầu thử một use",
+   "startMs": 579570,
+   "endMs": 581370
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "case nhỏ, sáu mươi ngày mở rộng",
+   "startMs": 581370,
+   "endMs": 583650
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "và đo, chín mươi ngày nhìn lại",
+   "startMs": 583650,
+   "endMs": 585950
+  },
+  {
+   "part": "06-van-hanh-team-spec-driven-hang-ngay",
+   "text": "dữ liệu rồi quyết định tiếp hay dừng.",
+   "startMs": 585950,
+   "endMs": 587930
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "Sách không khuyên dùng SDD cho mọi thứ.",
+   "startMs": 589310,
+   "endMs": 592530
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "Một bản thử nghiệm ném đi sau",
+   "startMs": 593070,
+   "endMs": 594790
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "một tuần, một đoạn script chạy một",
+   "startMs": 594790,
+   "endMs": 597070
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "lần, hay dự án một người tự",
+   "startMs": 597070,
+   "endMs": 599030
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "biết hết, thường không cần.",
+   "startMs": 599030,
+   "endMs": 600530
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "Nhưng với hệ thống sống lâu, nhiều",
+   "startMs": 601090,
+   "endMs": 602910
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "người cùng chạm vào, quy tắc nghiệp",
+   "startMs": 602910,
+   "endMs": 605090
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "vụ quan trọng, hoặc AI đang sinh",
+   "startMs": 605090,
+   "endMs": 607510
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "ra phần lớn mã, việc thiếu spec",
+   "startMs": 607510,
+   "endMs": 609690
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "sẽ sớm thành cái giá phải trả.",
+   "startMs": 609690,
+   "endMs": 611590
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "Cuốn sách cũng gỡ vài hiểu nhầm:",
+   "startMs": 611590,
+   "endMs": 613810
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "spec không phải quay về làm việc",
+   "startMs": 614510,
+   "endMs": 616110
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "chậm, không chỉ dành cho doanh nghiệp",
+   "startMs": 616110,
+   "endMs": 617950
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "lớn, và càng có AI giỏi thì",
+   "startMs": 617950,
+   "endMs": 620430
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "câu hỏi \"viết đúng thứ gì\" càng đáng tiền.",
+   "startMs": 620430,
+   "endMs": 623910
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "Ba việc nhỏ để bắt đầu trong",
+   "startMs": 624070,
+   "endMs": 626110
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "tuần tới: chọn một use case, làm",
+   "startMs": 626110,
+   "endMs": 628790
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "trọn một vòng trong một lần làm",
+   "startMs": 628790,
+   "endMs": 630370
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "việc ngắn, một người kỹ thuật và",
+   "startMs": 630370,
+   "endMs": 632450
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "một người hiểu nghiệp vụ cùng ngồi lại.",
+   "startMs": 632450,
+   "endMs": 634470
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "Tạo chỗ để spec sống trong kho",
+   "startMs": 634470,
+   "endMs": 636890
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "mã, và đo một điều đơn giản,",
+   "startMs": 636890,
+   "endMs": 639070
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "chẳng hạn bao nhiêu thay đổi gắn",
+   "startMs": 639270,
+   "endMs": 640790
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "được với một yêu cầu.",
+   "startMs": 640790,
+   "endMs": 642510
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "Spec không làm AI chậm đi.",
+   "startMs": 642830,
+   "endMs": 644670
+  },
+  {
+   "part": "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho",
+   "text": "Nó chỉ giúp tốc độ đi về đúng chỗ.",
+   "startMs": 645270,
+   "endMs": 647350
   }
  ]
 }

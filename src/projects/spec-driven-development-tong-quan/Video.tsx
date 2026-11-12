@@ -7,7 +7,7 @@ import {FONT, ThemeBackground, ThemeCaption} from '../../looks/looks';
 import {DiagramPacket, DiagramWire, Label, grow} from '../../looks/diagram-kit';
 import {Stage, THEME} from './common';
 import type {Seg} from './common';
-import {MoDau} from './Chapters';
+import {BatDauNho, Brownfield, Greenfield, MoDau, SauNguyenTac, SpecLaGi, VanHanh, VibeCoding} from './Chapters';
 import captionsData from './captions.json';
 import timingData from './timing.json';
 import music from './music.json';
@@ -15,7 +15,7 @@ import music from './music.json';
 // Spec Driven Development: tóm tắt cả cuốn sách. Theme "Bản vẽ kỹ thuật", style "Sơ đồ hệ thống động" (src/looks).
 // Each narration segment is one audio file (make-voice, Minh Đức); picture beats start on sentence times from
 // timing.json (scripts/projects/spec-driven-development-tong-quan/sentence-times.py), so re-voicing keeps them in place.
-// Built part by part: the title card and the opening first (long-video 30-second gate), the rest after review.
+// Built part by part: the title card and the opening first (long-video 30-second gate), the rest after the user's go-ahead.
 
 type Page = {part: string; text: string; startMs: number; endMs: number};
 const TIMING = timingData as {titleSeconds: number; endPadSeconds: number; segments: Record<string, Seg>};
@@ -24,8 +24,15 @@ const CAPTIONS = (captionsData as {pages: Page[]}).pages;
 // Segments in script order; a segment is shown once its narration exists in timing.json.
 const SEGMENTS = [
   {id: '00-mo-dau', label: 'MỞ ĐẦU', node: (s: Seg) => <MoDau s={s} />},
+  {id: '01-vibe-coding-va-cai-bay-cua-toc-do', label: '1 · CÁI BẪY CỦA TỐC ĐỘ', node: (s: Seg) => <VibeCoding s={s} />},
+  {id: '02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung', label: '2 · SPEC LÀ GÌ', node: (s: Seg) => <SpecLaGi s={s} />},
+  {id: '03-sau-nguyen-tac-spec-driven', label: '3 · SÁU NGUYÊN TẮC', node: (s: Seg) => <SauNguyenTac s={s} />},
+  {id: '04-greenfield-bat-dau-tu-con-so-khong', label: '4 · DỰ ÁN MỚI', node: (s: Seg) => <Greenfield s={s} />},
+  {id: '05-brownfield-lam-voi-ma-cu', label: '5 · MÃ CŨ', node: (s: Seg) => <Brownfield s={s} />},
+  {id: '06-van-hanh-team-spec-driven-hang-ngay', label: '6 · VẬN HÀNH HẰNG NGÀY', node: (s: Seg) => <VanHanh s={s} />},
+  {id: '07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho', label: 'KHÉP LẠI', node: (s: Seg) => <BatDauNho s={s} />},
 ].filter((x) => TIMING.segments[x.id]);
-const KEYWORDS = ['Spec Driven Development', 'nghiệp vụ', 'ý định', 'spec', 'test', 'AI'];
+const KEYWORDS = ['Spec Driven Development', 'tiêu chí nghiệm thu', 'vibe coding', 'use case', 'waterfall', 'refactor', 'adapter', 'nghiệp vụ', 'ý định', 'SDD', 'spec', 'test', 'AI'];
 
 // ---- title card -------------------------------------------------------------------------------------------
 const TitleCard: FC = () => {

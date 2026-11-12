@@ -19,6 +19,9 @@ SCRIPT = ROOT / 'docs/projects/spec-driven-development-tong-quan/script.md'
 # Spoken forms for terms Minh Đức misreads, written the way Vietnamese engineers usually say them; filled from this
 # video's recognition check. Captions keep the script's text. Longer keys first.
 SAY = [
+    # 2026-11-12 recognition: "vibe coding" came out as "VIP coding"; "hỏi lại AI" doubled ("AI AI") — the comma forces a
+    # fresh take of that sentence.
+    ('vibe coding', 'vai bờ cô đinh'), ('hỏi lại AI thì', 'hỏi lại AI, thì'),
 ]
 
 

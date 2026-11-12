@@ -14,9 +14,51 @@
   "segments": {
     "00-mo-dau": {
       "file": "spec-driven-development-tong-quan/audio/00-mo-dau-voice-full.wav",
-      "sha256": "97874b84e876fdfe1e551fe408f8a9ddeb77a01d2bb1b56b9c0158524f877daf",
-      "durationSeconds": 51.07,
+      "sha256": "bd571ee822a52e61be2ecb747b7636cf24b2ef5849eb5a58490399ca877d67d4",
+      "durationSeconds": 51.68,
       "wordMatchRatio": 0.9662
+    },
+    "01-vibe-coding-va-cai-bay-cua-toc-do": {
+      "file": "spec-driven-development-tong-quan/audio/01-vibe-coding-va-cai-bay-cua-toc-do-voice-full.wav",
+      "sha256": "302406e70620006933a3ed0aeb5fd9d8d72a7f243bb38d687ead6fed93c534a0",
+      "durationSeconds": 107.72,
+      "wordMatchRatio": 0.9572
+    },
+    "02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung": {
+      "file": "spec-driven-development-tong-quan/audio/02-spec-la-gi-va-vi-sao-can-ngon-ngu-chung-voice-full.wav",
+      "sha256": "6294173a9281f6f633327542eaeceffef5470e5bb7ebc2c78319be870dfcbf2a",
+      "durationSeconds": 103.63,
+      "wordMatchRatio": 0.9752
+    },
+    "03-sau-nguyen-tac-spec-driven": {
+      "file": "spec-driven-development-tong-quan/audio/03-sau-nguyen-tac-spec-driven-voice-full.wav",
+      "sha256": "edb4e3c3023be3ee38a1898d1a234f7ae5718e5979b253481237bfe7a2d7089a",
+      "durationSeconds": 77.34,
+      "wordMatchRatio": 0.9478
+    },
+    "04-greenfield-bat-dau-tu-con-so-khong": {
+      "file": "spec-driven-development-tong-quan/audio/04-greenfield-bat-dau-tu-con-so-khong-voice-full.wav",
+      "sha256": "a0a826741e8feab98ef0c466523b28661366a771c6fa923cb92e3dbc3aa53fdb",
+      "durationSeconds": 88.25,
+      "wordMatchRatio": 0.9611
+    },
+    "05-brownfield-lam-voi-ma-cu": {
+      "file": "spec-driven-development-tong-quan/audio/05-brownfield-lam-voi-ma-cu-voice-full.wav",
+      "sha256": "5780a76c1fd75c21f2b2692f24f140518ae8e6225dfe0318cb8a01aa64744384",
+      "durationSeconds": 90.63,
+      "wordMatchRatio": 0.9757
+    },
+    "06-van-hanh-team-spec-driven-hang-ngay": {
+      "file": "spec-driven-development-tong-quan/audio/06-van-hanh-team-spec-driven-hang-ngay-voice-full.wav",
+      "sha256": "26c1487ff9846cea6d5aec1cfc03e2ada3707a64c9952b3bad79a92544054fc6",
+      "durationSeconds": 63.56,
+      "wordMatchRatio": 0.9505
+    },
+    "07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho": {
+      "file": "spec-driven-development-tong-quan/audio/07-khi-nao-nen-khi-nao-khong-va-bat-dau-nho-voice-full.wav",
+      "sha256": "9a25410fcb9948c29c1a55ac7d9e8748e2a57eb9fa1b7912298c66f7f81cacb5",
+      "durationSeconds": 59.45,
+      "wordMatchRatio": 0.9891
     }
   }
 }

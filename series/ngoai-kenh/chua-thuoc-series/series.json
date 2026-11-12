@@ -57,7 +57,7 @@
       "title": "Spec Driven Development: tóm tắt cả cuốn sách",
       "status": "planning",
       "format": "long",
-      "durationSeconds": 810,
+      "durationSeconds": 650,
       "paths": {
         "source": "src/projects/spec-driven-development-tong-quan",
         "scripts": "scripts/projects/spec-driven-development-tong-quan",

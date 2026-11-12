@@ -4,6 +4,7 @@
 |---|---|
 | Định dạng | Video dài 16:9, 1920×1080, 30 fps |
 | Thời lượng mục tiêu | 13–14 phút (± 1,5 phút); không ép giọng nhanh |
+| Thời lượng thực tế | **10:50** (650,0 giây, 19 500 khung; màn tên 6,5 s + lời 642,3 s + đuôi 1,2 s). Kịch bản đọc đúng nguyên văn ở tốc độ 1× ngắn hơn mục tiêu; không kéo giọng hay thêm lời để bù (xem script-review.md) |
 | Cấu trúc | Màn tên 6,5 s (chỉ nhạc) → Mở đầu (hook, câu chuyện code không có ngữ cảnh) → Ch.1–6 → Phần kết (khi nào nên/không nên, bắt đầu nhỏ) |
 | Giọng | Lựa chọn 1 (preset VieNeu), **Minh Đức**, một giọng cho cả video; không clone. Mẫu nghe đề xuất: đoạn mở đầu (sau khi tạo giọng). `scripts/projects/spec-driven-development-tong-quan/voice.json` (dự kiến) |
 | Nhạc | Aylex – Passionate (freetouse.com) hoặc track nền tương đương: 30% trên màn tên, hạ ~1,2% khi giọng vào, giữ cố định dưới lời; fade theo cạnh clip; `src/projects/spec-driven-development-tong-quan/music.json` (dự kiến) |
