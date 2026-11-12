@@ -148,6 +148,7 @@
     "test:stock": "python3 -m unittest discover -s scripts/shared/tests -p test_stock_media.py -v",
     "media": "python3 scripts/shared/media-analyze.py",
     "visual-sync": "node scripts/shared/visual-sync-sheet.mjs",
+    "layout-check": "node scripts/shared/layout-check.mjs",
     "temp": "node scripts/shared/temp-files.mjs",
     "thumbnail:web": "node scripts/shared/web-thumbnail.mjs",
     "test:media": "python3 -m unittest discover -s scripts/shared/tests -p test_media_analyze.py -v",
