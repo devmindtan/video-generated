@@ -1,0 +1,22 @@
+{
+  "titleSeconds": 6.5,
+  "endPadSeconds": 1.2,
+  "segments": {
+    "00-mo-dau": {
+      "file": "00-mo-dau-voice-full.wav",
+      "start": 6.5,
+      "length": 51.07,
+      "duration": 51.07,
+      "speechEndsAt": 49.853,
+      "sentences": [
+        0.0,
+        4.66,
+        8.44,
+        17.34,
+        20.24,
+        30.54,
+        41.28
+      ]
+    }
+  }
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "00-mo-dau",
+    "text": "Bạn nhờ AI viết gần xong một tính năng trong mười phút. Code chạy, test xanh, rồi ai cũng mừng. Hai tuần sau, một lỗi nhỏ xuất hiện, và không ai trả lời nổi: đoạn này chạy như vậy vì đúng nghiệp vụ, hay vì lúc đó AI đoán bừa? Mình cũng từng rơi vào cảm giác ấy. Cuốn Spec Driven Development bàn đúng chỗ đó: khi AI viết code ngày càng nhanh, thứ dễ mất không phải là code, mà là ý định phía sau. Video này tóm tắt cả cuốn sách, đi từ cái bẫy của tốc độ, tới cách viết spec, sáu nguyên tắc vận hành, rồi cách áp dụng cho dự án mới lẫn mã cũ. Không cần biến quy trình thành giấy tờ nặng nề. Ý của cuốn sách đơn giản hơn: trước khi bảo AI viết, hãy nói rõ mình muốn gì.",
+    "sentences": [
+      {
+        "text": "Bạn nhờ AI viết gần xong một tính năng trong mười phút.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Code chạy, test xanh, rồi ai cũng mừng.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Hai tuần sau, một lỗi nhỏ xuất hiện, và không ai trả lời nổi: đoạn này chạy như vậy vì đúng nghiệp vụ, hay vì lúc đó AI đoán bừa?",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Mình cũng từng rơi vào cảm giác ấy.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Cuốn Spec Driven Development bàn đúng chỗ đó: khi AI viết code ngày càng nhanh, thứ dễ mất không phải là code, mà là ý định phía sau.",
+        "pauseAfter": 0.45
+      },
+      {
+        "text": "Video này tóm tắt cả cuốn sách, đi từ cái bẫy của tốc độ, tới cách viết spec, sáu nguyên tắc vận hành, rồi cách áp dụng cho dự án mới lẫn mã cũ.",
+        "pauseAfter": 1.1
+      },
+      {
+        "text": "Không cần biến quy trình thành giấy tờ nặng nề. Ý của cuốn sách đơn giản hơn: trước khi bảo AI viết, hãy nói rõ mình muốn gì.",
+        "pauseAfter": 0
+      }
+    ],
+    "leadIn": 0.4,
+    "tail": 1.2,
+    "maxTail": 3,
+    "duration": 51.07,
+    "minWordMatchRatio": 0.75,
+    "start": 0
+  }
+]

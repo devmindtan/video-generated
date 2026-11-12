@@ -1,6 +1,7 @@
 import {renderTo} from './render-output';
 import {SystemDesignVideo, metadata as systemDesignMetadata} from './system-design-tong-quan/Video';
 import {KienTrucUngDungWebVideo, metadata as kienTrucMetadata} from './kien-truc-ung-dung-web-tong-quan/Video';
+import {SpecDrivenDevelopmentVideo, metadata as specDrivenMetadata} from './spec-driven-development-tong-quan/Video';
 import type {FC} from 'react';
 import {Composition, Folder, Still} from 'remotion';
 import {BoundariesThumbnail} from './boundaries/Thumbnail';
@@ -391,6 +392,9 @@ export const ProjectCompositions: FC = () => (
         </Folder>
         <Folder name="kien-truc-ung-dung-web-tong-quan">
           <Composition id="KienTrucUngDungWebTongQuan" calculateMetadata={renderTo('kien-truc-ung-dung-web-tong-quan', kienTrucMetadata)} component={KienTrucUngDungWebVideo} durationInFrames={22755} fps={30} width={1920} height={1080} />
+        </Folder>
+        <Folder name="spec-driven-development-tong-quan">
+          <Composition id="SpecDrivenDevelopmentTongQuan" calculateMetadata={renderTo('spec-driven-development-tong-quan', specDrivenMetadata)} component={SpecDrivenDevelopmentVideo} durationInFrames={1764} fps={30} width={1920} height={1080} />
         </Folder>
       </Folder>
     </Folder>

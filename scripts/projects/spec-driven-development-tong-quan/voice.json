@@ -1,0 +1,22 @@
+{
+  "voice": "Minh Đức",
+  "name": "Minh Đức (VieNeu preset)",
+  "option": 1,
+  "engine": "VieNeu-TTS v3 Turbo, local CPU, scripts/shared/make-voice.py, legacy24, tốc độ 1×",
+  "pitchSemitones": 0,
+  "speed": 1,
+  "processing": "Một file mỗi đoạn kịch bản; nghỉ 0,45 giây giữa câu, 1,1 giây khi đổi ý; đuôi cắt sau điểm kết lời + 1,2 giây. Ghi chú nguồn {…} trong script.md không đọc. Chữ bị kéo dài được đọc lại bằng scripts/shared/fix-drag.py. Thuật ngữ tiếng Anh thêm cách đọc riêng (SAY trong build-story.py) khi nhận dạng cho thấy đọc sai.",
+  "selection": "Lựa chọn 1 (preset, không clone) theo đề xuất trong brief: Minh Đức, cùng giọng hai video sách kỹ thuật trước; chờ người dùng nghe mẫu và chốt.",
+  "sample": {
+    "proposed": "spec-driven-development-tong-quan/audio/00-mo-dau-voice-full.wav",
+    "alternatives": []
+  },
+  "segments": {
+    "00-mo-dau": {
+      "file": "spec-driven-development-tong-quan/audio/00-mo-dau-voice-full.wav",
+      "sha256": "97874b84e876fdfe1e551fe408f8a9ddeb77a01d2bb1b56b9c0158524f877daf",
+      "durationSeconds": 51.07,
+      "wordMatchRatio": 0.9662
+    }
+  }
+}

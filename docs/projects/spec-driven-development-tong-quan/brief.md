@@ -6,6 +6,10 @@
 - Project ID (đề xuất): `spec-driven-development-tong-quan`.
 - Định dạng: video dài 16:9, 1920×1080, 30 fps. Thời lượng mục tiêu 13–14 phút.
 - Trạng thái: **thiết kế/kịch bản và kế hoạch** (OpenCode). Chưa dựng, chưa chốt; việc thực hiện giao cho Claude/Codex.
+- Thực hiện (Claude, 2026-11-12, người dùng: "Làm luôn cho cuốn sách kỹ thuật còn lại"): project đã đăng ký
+  (`series.json`, composition `SpecDrivenDevelopmentTongQuan`). Theo luật video dài, làm trước màn tên + phần mở đầu
+  (giọng Minh Đức, hình) rồi chờ người dùng xem trong Studio; các phần sau làm khi người dùng cho đi tiếp. Hình theo
+  hướng giải thích đơn giản của video Kiến trúc ứng dụng web: mỗi ý một sơ đồ lớn, không chữ code, chuyển cảnh lần lượt.
 
 ## Mục tiêu
 

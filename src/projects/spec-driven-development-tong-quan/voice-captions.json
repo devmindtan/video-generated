@@ -1,0 +1,158 @@
+[
+  [
+    {
+      "text": "Bạn nhờ AI viết gần xong một",
+      "startMs": 0,
+      "endMs": 2880,
+      "timestampMs": 0,
+      "confidence": null
+    },
+    {
+      "text": "tính năng trong mười phút.",
+      "startMs": 2880,
+      "endMs": 4400,
+      "timestampMs": 2880,
+      "confidence": null
+    },
+    {
+      "text": "Code chạy, test xanh, rồi ai cũng mừng.",
+      "startMs": 4660,
+      "endMs": 7840,
+      "timestampMs": 4660,
+      "confidence": null
+    },
+    {
+      "text": "Hai tuần sau, một lỗi nhỏ xuất",
+      "startMs": 8440,
+      "endMs": 10360,
+      "timestampMs": 8440,
+      "confidence": null
+    },
+    {
+      "text": "hiện, và không ai trả lời nổi:",
+      "startMs": 10360,
+      "endMs": 12320,
+      "timestampMs": 10360,
+      "confidence": null
+    },
+    {
+      "text": "đoạn này chạy như vậy vì đúng",
+      "startMs": 12600,
+      "endMs": 14220,
+      "timestampMs": 12600,
+      "confidence": null
+    },
+    {
+      "text": "nghiệp vụ, hay vì lúc đó AI đoán bừa?",
+      "startMs": 14220,
+      "endMs": 16740,
+      "timestampMs": 14220,
+      "confidence": null
+    },
+    {
+      "text": "Mình cũng từng rơi vào cảm giác ấy.",
+      "startMs": 17340,
+      "endMs": 19280,
+      "timestampMs": 17340,
+      "confidence": null
+    },
+    {
+      "text": "Cuốn Spec Driven Development bàn đúng",
+      "startMs": 20240,
+      "endMs": 22980,
+      "timestampMs": 20240,
+      "confidence": null
+    },
+    {
+      "text": "chỗ đó: khi AI viết code ngày",
+      "startMs": 22980,
+      "endMs": 25760,
+      "timestampMs": 22980,
+      "confidence": null
+    },
+    {
+      "text": "càng nhanh, thứ dễ mất không phải",
+      "startMs": 25760,
+      "endMs": 27800,
+      "timestampMs": 25760,
+      "confidence": null
+    },
+    {
+      "text": "là code, mà là ý định phía sau.",
+      "startMs": 27800,
+      "endMs": 30080,
+      "timestampMs": 27800,
+      "confidence": null
+    },
+    {
+      "text": "Video này tóm tắt cả cuốn sách,",
+      "startMs": 30540,
+      "endMs": 32660,
+      "timestampMs": 30540,
+      "confidence": null
+    },
+    {
+      "text": "đi từ cái bẫy của tốc độ,",
+      "startMs": 32900,
+      "endMs": 34600,
+      "timestampMs": 32900,
+      "confidence": null
+    },
+    {
+      "text": "tới cách viết spec, sáu nguyên tắc",
+      "startMs": 34600,
+      "endMs": 36820,
+      "timestampMs": 34600,
+      "confidence": null
+    },
+    {
+      "text": "vận hành, rồi cách áp dụng cho",
+      "startMs": 36820,
+      "endMs": 38740,
+      "timestampMs": 36820,
+      "confidence": null
+    },
+    {
+      "text": "dự án mới lẫn mã cũ.",
+      "startMs": 38740,
+      "endMs": 40280,
+      "timestampMs": 38740,
+      "confidence": null
+    },
+    {
+      "text": "Không cần biến quy trình thành giấy",
+      "startMs": 41280,
+      "endMs": 43300,
+      "timestampMs": 41280,
+      "confidence": null
+    },
+    {
+      "text": "tờ nặng nề.",
+      "startMs": 43300,
+      "endMs": 44520,
+      "timestampMs": 43300,
+      "confidence": null
+    },
+    {
+      "text": "Ý của cuốn sách đơn giản hơn:",
+      "startMs": 44760,
+      "endMs": 46460,
+      "timestampMs": 44760,
+      "confidence": null
+    },
+    {
+      "text": "trước khi bảo AI viết, hãy nói",
+      "startMs": 46800,
+      "endMs": 48760,
+      "timestampMs": 46800,
+      "confidence": null
+    },
+    {
+      "text": "rõ mình muốn gì.",
+      "startMs": 48760,
+      "endMs": 49700,
+      "timestampMs": 48760,
+      "confidence": null
+    }
+  ]
+]

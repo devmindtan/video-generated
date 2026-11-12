@@ -1,0 +1,137 @@
+{
+ "source": "SpecDrivenDevelopmentTongQuan defaultProps; scripts/projects/spec-driven-development-tong-quan/sentence-times.py",
+ "pages": [
+  {
+   "part": "00-mo-dau",
+   "text": "Bạn nhờ AI viết gần xong một",
+   "startMs": 6500,
+   "endMs": 9380
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "tính năng trong mười phút.",
+   "startMs": 9380,
+   "endMs": 10900
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Code chạy, test xanh, rồi ai cũng mừng.",
+   "startMs": 11160,
+   "endMs": 14340
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Hai tuần sau, một lỗi nhỏ xuất",
+   "startMs": 14940,
+   "endMs": 16860
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "hiện, và không ai trả lời nổi:",
+   "startMs": 16860,
+   "endMs": 18820
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "đoạn này chạy như vậy vì đúng",
+   "startMs": 19100,
+   "endMs": 20720
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "nghiệp vụ, hay vì lúc đó AI đoán bừa?",
+   "startMs": 20720,
+   "endMs": 23240
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Mình cũng từng rơi vào cảm giác ấy.",
+   "startMs": 23840,
+   "endMs": 25780
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Cuốn Spec Driven Development bàn đúng",
+   "startMs": 26740,
+   "endMs": 29480
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "chỗ đó: khi AI viết code ngày",
+   "startMs": 29480,
+   "endMs": 32260
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "càng nhanh, thứ dễ mất không phải",
+   "startMs": 32260,
+   "endMs": 34300
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "là code, mà là ý định phía sau.",
+   "startMs": 34300,
+   "endMs": 36580
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Video này tóm tắt cả cuốn sách,",
+   "startMs": 37040,
+   "endMs": 39160
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "đi từ cái bẫy của tốc độ,",
+   "startMs": 39400,
+   "endMs": 41100
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "tới cách viết spec, sáu nguyên tắc",
+   "startMs": 41100,
+   "endMs": 43320
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "vận hành, rồi cách áp dụng cho",
+   "startMs": 43320,
+   "endMs": 45240
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "dự án mới lẫn mã cũ.",
+   "startMs": 45240,
+   "endMs": 46780
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Không cần biến quy trình thành giấy",
+   "startMs": 47780,
+   "endMs": 49800
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "tờ nặng nề.",
+   "startMs": 49800,
+   "endMs": 51020
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "Ý của cuốn sách đơn giản hơn:",
+   "startMs": 51260,
+   "endMs": 52960
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "trước khi bảo AI viết, hãy nói",
+   "startMs": 53300,
+   "endMs": 55260
+  },
+  {
+   "part": "00-mo-dau",
+   "text": "rõ mình muốn gì.",
+   "startMs": 55260,
+   "endMs": 56200
+  }
+ ]
+}

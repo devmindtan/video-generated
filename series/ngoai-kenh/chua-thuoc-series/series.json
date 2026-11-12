@@ -51,6 +51,26 @@
         }
       ],
       "book": "kien-truc-ung-dung-web"
+    },
+    {
+      "id": "spec-driven-development-tong-quan",
+      "title": "Spec Driven Development: tóm tắt cả cuốn sách",
+      "status": "planning",
+      "format": "long",
+      "durationSeconds": 810,
+      "paths": {
+        "source": "src/projects/spec-driven-development-tong-quan",
+        "scripts": "scripts/projects/spec-driven-development-tong-quan",
+        "docs": "docs/projects/spec-driven-development-tong-quan",
+        "assets": "public/spec-driven-development-tong-quan"
+      },
+      "registrations": [
+        {
+          "id": "SpecDrivenDevelopmentTongQuan",
+          "kind": "Composition"
+        }
+      ],
+      "book": "spec-driven-development"
     }
   ]
 }
