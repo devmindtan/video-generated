@@ -1,5 +1,23 @@
 # Phản biện kịch bản và bản dựng — Kiến trúc ứng dụng web: tóm tắt cả cuốn sách
 
+## Bản giải thích đơn giản (2026-11-12, bản hiện tại)
+
+Người dùng sau vòng rà đầu: "còn nhiều chỗ đè lên nhau lắm" và "cách làm video khá khó hiểu, bản chất là phải tóm tắt
+được cuốn sách sau đó làm ra 1 video giải thích 1 cách đơn giản nhất" (chọn 12–15 phút, gần như không có code). Kịch
+bản viết lại theo ý chứ không theo chương (commit `dd96b28`), người dùng duyệt "Được tiếp đi"; giọng, hình và phụ đề
+dựng lại toàn bộ:
+
+- Một ý một hình lớn, bộ hình lặp lại: khối vàng nghiệp vụ, khối xanh hạ tầng, ổ cắm = hợp đồng, thiết bị cắm vào.
+- Chồng chữ: nguyên nhân là mỗi lần đổi cảnh, cảnh cũ mờ đi cùng lúc cảnh mới hiện lên (khoảng 0,4 giây hai sơ đồ đè
+  nhau), khung giữa câu không bắt được. Nay đổi cảnh lần lượt (`useBeat` trong `common.tsx`), và công cụ mới
+  `npm run layout-check` đo mọi chữ, viền, dây trên toàn video (mỗi 6 khung): còn 2 chỗ chạm viền 0,1–0,2 giây khi khối
+  đang di chuyển (1:15, 10:19), không còn chỗ đè nào đứng yên.
+- Câu ghi chú dưới hình (`Say`) trước đó gần như vô hình (độ mờ 8% do lỗi tham số); đã sửa.
+- Rà khung giữa từng câu (visual-sync, 163 câu): thêm hình cho các câu mở cảnh còn trống (07 cuối, 09 đầu và giữa), bỏ
+  chấm chạy đè lên chữ trong vòng lặp bốn bước.
+
+Các phần dưới đây ghi lại vòng rà bản trước.
+
 Người dùng 2026-11-12: "Kiểm tra lại video mới làm xong nhưng mà tôi thấy nhiều chỗ chưa đạt". Bản dựng đầu (commit
 `6f6086e`) được rà lại toàn bộ: kịch bản so với sách (research.md, sources.md), giọng đọc (nhận dạng lại từng đoạn), và
 khung hình giữa từng câu (visual-sync, 225 câu).

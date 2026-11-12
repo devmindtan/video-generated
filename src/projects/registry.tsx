@@ -390,7 +390,7 @@ export const ProjectCompositions: FC = () => (
           <Composition id="SystemDesignTongQuan" calculateMetadata={renderTo('system-design-tong-quan', systemDesignMetadata)} component={SystemDesignVideo} durationInFrames={2700} fps={30} width={1920} height={1080} />
         </Folder>
         <Folder name="kien-truc-ung-dung-web-tong-quan">
-          <Composition id="KienTrucUngDungWebTongQuan" calculateMetadata={renderTo('kien-truc-ung-dung-web-tong-quan', kienTrucMetadata)} component={KienTrucUngDungWebVideo} durationInFrames={30315} fps={30} width={1920} height={1080} />
+          <Composition id="KienTrucUngDungWebTongQuan" calculateMetadata={renderTo('kien-truc-ung-dung-web-tong-quan', kienTrucMetadata)} component={KienTrucUngDungWebVideo} durationInFrames={22755} fps={30} width={1920} height={1080} />
         </Folder>
       </Folder>
     </Folder>

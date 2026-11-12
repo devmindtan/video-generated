@@ -2,27 +2,27 @@
 
 ## Tiêu đề (đề xuất)
 
-Kiến trúc ứng dụng web trong 16 phút: tách nghiệp vụ khỏi database, framework và thế giới bên ngoài
+Kiến trúc ứng dụng web, giải thích đơn giản: tách luật kinh doanh khỏi database và framework
 
 ## Mô tả
 
 Sách: Kiến trúc ứng dụng Web
 Tác giả: Nguyễn Thế Huy
 
-Một controller đặt hàng e-book chạy đúng, nhưng nghiệp vụ tính tiền nằm lẫn giữa câu SQL, session và framework. Video đi lần lượt 7 chương của sách với đúng một ví dụ xuyên suốt: ranh giới core và hạ tầng, Domain Model, Repository, tách phần đọc, Application Service và Command, ba tầng với Dependency Rule, rồi Ports and Adapters (Hexagonal Architecture). Mỗi bước có sơ đồ và đoạn code Laravel/PHP theo sách.
+Một hàm đặt mua e-book chừng ba mươi dòng chạy đúng, cho tới khi phải đổi database, thêm API và viết test. Cả cuốn sách gói lại trong một ý: tách luật của việc kinh doanh ra khỏi máy móc chạy nó. Video giải thích ý đó từng bước bằng hình, gần như không có code: phép thử "chạy được chỉ với bộ nhớ và CPU không?", đơn hàng tự giữ luật, nhà kho (Repository), tách phần đọc, mỗi việc một service, ba vòng với mũi tên chỉ vào trong, và ổ cắm USB (Ports and Adapters / Hexagonal Architecture).
 
-Video tóm tắt bằng lời của kênh, không thay cho việc đọc sách. Ví dụ và tên class lấy từ sách; sách là ebook nhập môn, không phải tài liệu đầy đủ về Domain-Driven Design.
+Video tóm tắt bằng lời của kênh, không thay cho việc đọc sách. Ví dụ đặt mua e-book lấy từ sách; các so sánh hợp đồng, nhà kho, ổ cắm USB là cách kênh giải thích. Sách là ebook nhập môn, không phải tài liệu đầy đủ về Domain-Driven Design.
 
 0:00 Giới thiệu
 0:06 Mở đầu
-1:03 Chương 1: Khi nghiệp vụ và hạ tầng nằm chung
-2:51 Chương 2: Ranh giới core và hạ tầng
-4:44 Chương 3: Domain Model, để đối tượng tự bảo vệ
-6:22 Chương 3: Repository, kho của đối tượng nghiệp vụ
-7:50 Chương 4: Đọc và ghi không nhất thiết dùng chung một mô hình
-9:26 Chương 5: Application Service và Command
-10:54 Chương 6: Ba tầng và luật phụ thuộc một chiều
-13:03 Chương 7: Ports and Adapters
-15:31 Khép lại
+1:01 Một hàm làm đủ mọi việc
+2:07 Phép thử: chạy được một mình không?
+3:31 Để đơn hàng tự giữ luật
+5:00 Nhà kho cho đơn hàng: Repository
+6:20 Đọc khác với ghi
+7:19 Mỗi việc một service
+8:31 Mũi tên chỉ hướng vào trong
+10:00 Ổ cắm USB: Ports and Adapters
+11:41 Đừng làm quá, bắt đầu nhỏ
 
 Nhạc: Aylex – Passionate (freetouse.com)

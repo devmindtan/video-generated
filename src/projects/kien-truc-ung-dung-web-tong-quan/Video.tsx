@@ -7,7 +7,7 @@ import {FONT, ThemeBackground, ThemeCaption} from '../../looks/looks';
 import {Chip, DiagramNode, DiagramPacket, DiagramWire, Label, MONO, Mark, fade, grow} from '../../looks/diagram-kit';
 import {Stage, THEME, useBeat} from './common';
 import type {Seg} from './common';
-import {ApplicationService, BaTang, DomainModel, DocVaGhi, KhacPhuc, KhepLai, MoDau, PortsAdapters, Repository, TranLan} from './Chapters';
+import {BatDauNho, DocGhi, MoDau, MoiViec, MotHam, NhaKho, OCam, PhepThu, TuGiuLuat, VaoTrong} from './Chapters';
 import captionsData from './captions.json';
 import timingData from './timing.json';
 import music from './music.json';
@@ -24,21 +24,19 @@ const CAPTIONS = (captionsData as {pages: Page[]}).pages;
 // Segments in script order; a segment is shown once its narration exists in timing.json.
 const SEGMENTS = [
   {id: '00-mo-dau', label: 'MỞ ĐẦU', node: (s: Seg) => <MoDau s={s} />},
-  {id: '01-khi-nghiep-vu-va-ha-tang-nam-chung', label: 'CHƯƠNG 1 · TRỘN LẪN', node: (s: Seg) => <TranLan s={s} />},
-  {id: '02-ranh-gioi-core-va-ha-tang', label: 'CHƯƠNG 2 · RANH GIỚI', node: (s: Seg) => <KhacPhuc s={s} />},
-  {id: '03-domain-model-de-doi-tuong-tu-bao-ve', label: 'CHƯƠNG 3 · DOMAIN MODEL', node: (s: Seg) => <DomainModel s={s} />},
-  {id: '04-repository-kho-cua-doi-tuong-nghiep-vu', label: 'CHƯƠNG 3 · REPOSITORY', node: (s: Seg) => <Repository s={s} />},
-  {id: '05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh', label: 'CHƯƠNG 4 · ĐỌC VÀ GHI', node: (s: Seg) => <DocVaGhi s={s} />},
-  {id: '06-application-service-va-command', label: 'CHƯƠNG 5 · USE CASE', node: (s: Seg) => <ApplicationService s={s} />},
-  {id: '07-ba-tang-va-luat-phu-thuoc-mot-chieu', label: 'CHƯƠNG 6 · BA TẦNG', node: (s: Seg) => <BaTang s={s} />},
-  {id: '08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao', label: 'CHƯƠNG 7 · PORTS & ADAPTERS', node: (s: Seg) => <PortsAdapters s={s} />},
-  {id: '09-khep-lai', label: 'KHÉP LẠI', node: (s: Seg) => <KhepLai s={s} />},
+  {id: '01-mot-ham-lam-du-moi-viec', label: '1 · MỘT HÀM LÀM ĐỦ MỌI VIỆC', node: (s: Seg) => <MotHam s={s} />},
+  {id: '02-phep-thu-chay-duoc-mot-minh-khong', label: '2 · PHÉP THỬ', node: (s: Seg) => <PhepThu s={s} />},
+  {id: '03-de-don-hang-tu-giu-luat', label: '3 · ĐƠN HÀNG TỰ GIỮ LUẬT', node: (s: Seg) => <TuGiuLuat s={s} />},
+  {id: '04-nha-kho-cho-don-hang-repository', label: '4 · NHÀ KHO: REPOSITORY', node: (s: Seg) => <NhaKho s={s} />},
+  {id: '05-doc-khac-voi-ghi', label: '5 · ĐỌC KHÁC VỚI GHI', node: (s: Seg) => <DocGhi s={s} />},
+  {id: '06-moi-viec-mot-service', label: '6 · MỖI VIỆC MỘT SERVICE', node: (s: Seg) => <MoiViec s={s} />},
+  {id: '07-mui-ten-chi-huong-vao-trong', label: '7 · MŨI TÊN VÀO TRONG', node: (s: Seg) => <VaoTrong s={s} />},
+  {id: '08-o-cam-usb-ports-and-adapters', label: '8 · Ổ CẮM USB', node: (s: Seg) => <OCam s={s} />},
+  {id: '09-dung-lam-qua-bat-dau-nho', label: 'KHÉP LẠI', node: (s: Seg) => <BatDauNho s={s} />},
 ].filter((x) => TIMING.segments[x.id]);
-const KEYWORDS = ['Domain Model', 'Value Object', 'value object', 'Application Service', 'Dependency Rule', 'Ports and Adapters', 'Hexagonal',
-  'Repository', 'repository', 'interface', 'adapter', 'Adapter', 'port', 'Port', 'core code', 'hạ tầng', 'nghiệp vụ', 'database',
-  'framework', 'controller', 'Controller', 'entity', 'Entity', 'test', 'SQL', 'MySQL', 'Laravel', 'PHP', 'POPO', 'CQRS', 'DTO',
-  'Read Model', 'View Model', 'Dependency Injection', 'service locator', 'use case', 'aggregate', 'domain event', 'bounded context',
-  'CRUD', 'legacy', 'kiến trúc', 'tách', 'Command', 'transaction', 'session', 'job', 'mail'];
+const KEYWORDS = ['Application Service', 'Dependency Rule', 'Hollywood Principle', 'Hexagonal Architecture', 'Transaction Script', 'value object',
+  'Value object', 'nghiệp vụ', 'hạ tầng', 'hợp đồng', 'nhà kho', 'repository', 'interface', 'Clock', 'entity', 'command', 'Domain', 'Application',
+  'Infrastructure', 'CQRS', 'adapter', 'port', 'core', 'test', 'database', 'framework', 'controller', 'luật', 'máy móc', 'e-book', 'tách'];
 
 // ---- title card -------------------------------------------------------------------------------------------
 const TitleCard: FC = () => {
@@ -60,9 +58,9 @@ const TitleCard: FC = () => {
         <Label t={t} x={1010} y={390} size={28} weight={400} color={p.muted}>lõi</Label>
         <Label t={t} x={1370} y={390} size={28} weight={400} color={p.muted}>adapter</Label>
       </g>
-      <Label t={t} x={960} y={640} size={124} opacity={grow(f, 18, 40)}>Kiến trúc</Label>
-      <Label t={t} x={960} y={740} size={124} color={p.accent} opacity={grow(f, 32, 54)}>ứng dụng web</Label>
-      <Label t={t} x={960} y={825} size={44} weight={400} color={p.ink} opacity={grow(f, 48, 70)}>Tóm tắt cả cuốn sách · Nguyễn Thế Huy</Label>
+      <Label t={t} x={960} y={610} size={124} opacity={grow(f, 18, 40)}>Kiến trúc</Label>
+      <Label t={t} x={960} y={760} size={124} color={p.accent} opacity={grow(f, 32, 54)}>ứng dụng web</Label>
+      <Label t={t} x={960} y={850} size={44} weight={400} color={p.ink} opacity={grow(f, 48, 70)}>Tóm tắt cả cuốn sách · Nguyễn Thế Huy</Label>
     </Stage>
   </AbsoluteFill>;
 };

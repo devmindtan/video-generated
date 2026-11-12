@@ -5,74 +5,74 @@
   "engine": "VieNeu-TTS v3 Turbo, local CPU, scripts/shared/make-voice.py, legacy24, tốc độ 1×",
   "pitchSemitones": 0,
   "speed": 1,
-  "processing": "Một file mỗi đoạn kịch bản; nghỉ 0,45 giây giữa câu, 1,1 giây khi đổi ý; đuôi cắt sau điểm kết lời + 1,2 giây. Thuật ngữ tiếng Anh giữ cách đọc riêng (say) khi cần; phụ đề giữ chữ gốc. Cách đọc riêng cho Port, lasagna, Cockburn, CQRS, HTTP, POST, SMTP, idempotency (2026-11-12); chữ bị kéo dài được đọc lại bằng scripts/shared/fix-drag.py.",
+  "processing": "Một file mỗi đoạn kịch bản; nghỉ 0,45 giây giữa câu, 1,1 giây khi đổi ý; đuôi cắt sau điểm kết lời + 1,2 giây. Thuật ngữ tiếng Anh giữ cách đọc riêng (say) khi cần; phụ đề giữ chữ gốc. Cách đọc riêng cho Port, lasagna, Cockburn, CQRS, HTTP, POST, SMTP, idempotency (2026-11-12); bản giải thích đơn giản đọc lại toàn bộ 2026-11-12 (10 đoạn, 163 câu); chữ bị kéo dài được đọc lại bằng scripts/shared/fix-drag.py.",
   "selection": "Lựa chọn 1 (người dùng 2026-11-11: giọng cơ bản, không clone). Minh Đức, cùng giọng với video System Design; chờ người dùng nghe mẫu và chốt.",
   "sample": {
     "proposed": "kien-truc-ung-dung-web-tong-quan/audio/00-mo-dau-voice-full.wav",
     "alternatives": [
-      "kien-truc-ung-dung-web-tong-quan/audio/01-khi-nghiep-vu-va-ha-tang-nam-chung-voice-full.wav"
+      "kien-truc-ung-dung-web-tong-quan/audio/01-mot-ham-lam-du-moi-viec-voice-full.wav"
     ]
   },
   "segments": {
     "00-mo-dau": {
       "file": "kien-truc-ung-dung-web-tong-quan/audio/00-mo-dau-voice-full.wav",
-      "sha256": "6f5570a66bc7383ff521386a4fb6e3a742a94f2ac10a3309629b48b251651ca0",
-      "durationSeconds": 57.05,
-      "wordMatchRatio": 0.962
+      "sha256": "9599c2550a1207b825a7b170f3b0f3622612a5a1a4c8ed99ab229493a11c19aa",
+      "durationSeconds": 55.07,
+      "wordMatchRatio": 0.96
     },
-    "01-khi-nghiep-vu-va-ha-tang-nam-chung": {
-      "file": "kien-truc-ung-dung-web-tong-quan/audio/01-khi-nghiep-vu-va-ha-tang-nam-chung-voice-full.wav",
-      "sha256": "2ad7244d732dcc9962038727fee59f658e9c114929b1a48e09067898b74b6488",
-      "durationSeconds": 107.5,
-      "wordMatchRatio": 0.9903
+    "01-mot-ham-lam-du-moi-viec": {
+      "file": "kien-truc-ung-dung-web-tong-quan/audio/01-mot-ham-lam-du-moi-viec-voice-full.wav",
+      "sha256": "f13e5079136642c78605846b3092d475c1e96a5b237080076f605609fc0d8e2f",
+      "durationSeconds": 65.44,
+      "wordMatchRatio": 0.98
     },
-    "02-ranh-gioi-core-va-ha-tang": {
-      "file": "kien-truc-ung-dung-web-tong-quan/audio/02-ranh-gioi-core-va-ha-tang-voice-full.wav",
-      "sha256": "6da633d85eaca17e7fad6d3c4b824459bbde1f87cba7d66586a1d12918a097e3",
-      "durationSeconds": 113.62,
-      "wordMatchRatio": 0.9689
+    "02-phep-thu-chay-duoc-mot-minh-khong": {
+      "file": "kien-truc-ung-dung-web-tong-quan/audio/02-phep-thu-chay-duoc-mot-minh-khong-voice-full.wav",
+      "sha256": "18933b104dd7ebe7f50d83df31cc5f542b151a29d2eaa863a9259c60c1b92937",
+      "durationSeconds": 83.97,
+      "wordMatchRatio": 0.99
     },
-    "03-domain-model-de-doi-tuong-tu-bao-ve": {
-      "file": "kien-truc-ung-dung-web-tong-quan/audio/03-domain-model-de-doi-tuong-tu-bao-ve-voice-full.wav",
-      "sha256": "9418a34fdac6bbfaa2d2c64bf43f54aa1fb013e5ba0614a2b6c8349c4a38a7e7",
-      "durationSeconds": 97.12,
-      "wordMatchRatio": 0.9472
+    "03-de-don-hang-tu-giu-luat": {
+      "file": "kien-truc-ung-dung-web-tong-quan/audio/03-de-don-hang-tu-giu-luat-voice-full.wav",
+      "sha256": "3a697cb5a699c64589da6544b609bf453df6f872b1820167f8262082b7080305",
+      "durationSeconds": 89.61,
+      "wordMatchRatio": 0.99
     },
-    "04-repository-kho-cua-doi-tuong-nghiep-vu": {
-      "file": "kien-truc-ung-dung-web-tong-quan/audio/04-repository-kho-cua-doi-tuong-nghiep-vu-voice-full.wav",
-      "sha256": "9e9d7e239d907a914257fa0c7686389116bfe2705220a7aeaed060d33ce6a011",
-      "durationSeconds": 88.9,
-      "wordMatchRatio": 0.9915
+    "04-nha-kho-cho-don-hang-repository": {
+      "file": "kien-truc-ung-dung-web-tong-quan/audio/04-nha-kho-cho-don-hang-repository-voice-full.wav",
+      "sha256": "e2526eb359d65d6f93003610554d77ca17e7d75d35ec13a28da4301d8be89934",
+      "durationSeconds": 80.24,
+      "wordMatchRatio": 1.0
     },
-    "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh": {
-      "file": "kien-truc-ung-dung-web-tong-quan/audio/05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh-voice-full.wav",
-      "sha256": "67c9e8fc16be63eb15c8017c82c1eaeb34c9a937c83b34af5dfec25b279f80a3",
-      "durationSeconds": 95.82,
-      "wordMatchRatio": 0.974
+    "05-doc-khac-voi-ghi": {
+      "file": "kien-truc-ung-dung-web-tong-quan/audio/05-doc-khac-voi-ghi-voice-full.wav",
+      "sha256": "52932dff855673237da0bb0daf18a90beca1ea3150e1ee704700529144c7bde9",
+      "durationSeconds": 58.92,
+      "wordMatchRatio": 0.98
     },
-    "06-application-service-va-command": {
-      "file": "kien-truc-ung-dung-web-tong-quan/audio/06-application-service-va-command-voice-full.wav",
-      "sha256": "669d0c05ed1739f165d40001a7800341d9091040c92d3d68ac13a28457d78c01",
-      "durationSeconds": 87.92,
-      "wordMatchRatio": 0.9776
+    "06-moi-viec-mot-service": {
+      "file": "kien-truc-ung-dung-web-tong-quan/audio/06-moi-viec-mot-service-voice-full.wav",
+      "sha256": "fcd997b23da099c46bdf8691f19627c1591741f898660d4e93a8579426020953",
+      "durationSeconds": 71.62,
+      "wordMatchRatio": 1.0
     },
-    "07-ba-tang-va-luat-phu-thuoc-mot-chieu": {
-      "file": "kien-truc-ung-dung-web-tong-quan/audio/07-ba-tang-va-luat-phu-thuoc-mot-chieu-voice-full.wav",
-      "sha256": "f1c128fe46cff500fb0cb3bf42986c9a7ed47e945626b3685c09a31db76137e3",
-      "durationSeconds": 128.39,
-      "wordMatchRatio": 0.9582
+    "07-mui-ten-chi-huong-vao-trong": {
+      "file": "kien-truc-ung-dung-web-tong-quan/audio/07-mui-ten-chi-huong-vao-trong-voice-full.wav",
+      "sha256": "a13d2edf31edd1594b1dbe55abc3b8796899245feb1bc9e8d2a7e6c6c8bb5451",
+      "durationSeconds": 89.25,
+      "wordMatchRatio": 0.96
     },
-    "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao": {
-      "file": "kien-truc-ung-dung-web-tong-quan/audio/08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao-voice-full.wav",
-      "sha256": "032e548295ebcdff794bd17dc75fd92ee37052652fed63abd177d5a4649dc500",
-      "durationSeconds": 148.59,
-      "wordMatchRatio": 0.9554
+    "08-o-cam-usb-ports-and-adapters": {
+      "file": "kien-truc-ung-dung-web-tong-quan/audio/08-o-cam-usb-ports-and-adapters-voice-full.wav",
+      "sha256": "7f0d130272c5e3ad1f12a2fe87417b07c22bf31fba3217da4fbfa86262a5431a",
+      "durationSeconds": 100.79,
+      "wordMatchRatio": 0.96
     },
-    "09-khep-lai": {
-      "file": "kien-truc-ung-dung-web-tong-quan/audio/09-khep-lai-voice-full.wav",
-      "sha256": "4e1240b9c63ca7af14c0b7fc0a5171d639a2a4c7398954227155f026f8b77d6e",
-      "durationSeconds": 46.31,
-      "wordMatchRatio": 0.9624
+    "09-dung-lam-qua-bat-dau-nho": {
+      "file": "kien-truc-ung-dung-web-tong-quan/audio/09-dung-lam-qua-bat-dau-nho-voice-full.wav",
+      "sha256": "90d233c4f69c59789f5a094e4c97551d32a75331cd1728bd316420d627c1484e",
+      "durationSeconds": 55.86,
+      "wordMatchRatio": 0.97
     }
   }
 }

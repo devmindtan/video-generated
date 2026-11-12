@@ -1,786 +1,655 @@
 import type {FC, ReactNode} from 'react';
 import {Img, staticFile} from 'remotion';
-import {Chip, CodeCard, DiagramNode, DiagramPacket, DiagramWire, Label, MONO, Mark, grow} from '../../looks/diagram-kit';
+import {Chip, DiagramPacket, DiagramWire, Label, Mark, grow} from '../../looks/diagram-kit';
 import {Stage, THEME, useBeat} from './common';
 import type {Seg} from './common';
 
-// Kiến trúc ứng dụng web: tóm tắt cả cuốn sách — one component per narration segment. A beat spans the sentences in its
-// comment (0-based, script.md order); its first picture is on screen from its first sentence, and it keeps moving
-// while the voice talks (packets on wires, lit steps, typed code). Layout rules (user review 2026-11-12): use the
-// whole picture area y 110–870 above the captions, text ≥ 34 px (code ≥ 30 px), no text over borders or icons.
-// Examples, class names and the order of ideas are the book's (docs/projects/kien-truc-ung-dung-web-tong-quan/sources.md).
+// Kiến trúc ứng dụng web — the simple explanation (user 2026-11-12: "tóm tắt được cuốn sách sau đó làm ra 1 video giải
+// thích 1 cách đơn giản nhất"; earlier build too dense and overlapping). One large diagram per idea, few words, almost no
+// code. The same visual words recur: a yellow box is business rules (nghiệp vụ), a cyan box is machinery (hạ tầng), a
+// white "socket" is a contract (interface), and devices plug into it. Callouts sit in one slot above the captions and
+// show one at a time. Beats follow the sentence numbers in script.md (0-based per section); scene changes are sequential
+// (common.tsx). Layout: drawings in y 120–870, words ≥ 34 px; checked with `npm run layout-check`.
 
-const t = THEME, p = t.palette, BAD = '#ff6b6b';
+const t = THEME, p = t.palette, BAD = '#ff6b6b', RULE = p.accent, INFRA = p.accent2;
 type Pt = [number, number];
+const lerp = (a: number, b: number, k: number) => a + (b - a) * k;
 const loop = (f: number, a: number, period: number) => f < a ? 0 : ((f - a) / period) % 1;
 
 const Title: FC<{children: ReactNode; o: number; y?: number; color?: string}> = ({children, o, y = 150, color}) =>
-  <Label t={t} x={960} y={y} size={54} opacity={o} color={color}>{children}</Label>;
-// A panel with an optional heading; children are drawn in Stage coordinates.
-const Panel: FC<{x: number; y: number; w: number; h: number; o?: number; tone?: string; title?: string; titleColor?: string; children?: ReactNode}> =
-  ({x, y, w, h, o = 1, tone, title, titleColor, children}) =>
+  <Label t={t} x={960} y={y} size={52} opacity={o} color={color}>{children}</Label>;
+
+// A centred box with a label and an optional second line.
+const Card: FC<{x: number; y: number; w: number; h: number; o?: number; tone?: string; label?: string; sub?: string; size?: number; subSize?: number;
+  labelColor?: string; subColor?: string; fill?: string; thick?: number}> =
+  ({x, y, w, h, o = 1, tone = INFRA, label, sub, size = 42, subSize = 34, labelColor, subColor, fill, thick = 4}) =>
     <g opacity={o}>
-      <rect x={x} y={y} width={w} height={h} rx={22} fill={p.surface} stroke={tone ?? p.accent2} strokeWidth={3} />
-      {title ? <Label t={t} x={x + w / 2} y={y + 62} size={42} color={titleColor ?? tone ?? p.accent2}>{title}</Label> : null}
-      {children}
+      <rect x={x - w / 2} y={y - h / 2} width={w} height={h} rx={22} fill={fill ?? p.surface} stroke={tone} strokeWidth={thick} />
+      {label ? <Label t={t} x={x} y={sub ? y - 6 : y + size * .36} size={size} color={labelColor ?? p.ink}>{label}</Label> : null}
+      {sub ? <Label t={t} x={x} y={y + subSize + 12} size={subSize} weight={400} color={subColor ?? p.muted}>{sub}</Label> : null}
     </g>;
-// One list row: mark + text; the mark draws when the row appears.
-// `pre`: the row is already on screen, dimmed, from this frame, so a list never starts empty.
-const Row: FC<{f: number; x: number; y: number; text: string; at: number; pre?: number; ok?: boolean; size?: number; color?: string; mono?: boolean}> =
-  ({f, x, y, text, at, pre, ok = true, size = 38, color, mono}) =>
-    <g opacity={Math.max(grow(f, at, at + 10), pre === undefined ? 0 : .32 * grow(f, pre, pre + 10))}>
+
+// A contract (interface): a white socket with two slots on its right side.
+const Socket: FC<{x: number; y: number; w?: number; h?: number; o?: number; label: string; sub?: string; subO?: number; size?: number}> =
+  ({x, y, w = 300, h = 200, o = 1, label, sub, subO = 1, size = 42}) =>
+    <g opacity={o}>
+      <rect x={x - w / 2} y={y - h / 2} width={w} height={h} rx={26} fill={p.background} stroke={p.ink} strokeWidth={4} />
+      {[-1, 1].map((k) => <rect key={k} x={x + w / 2 - 30} y={y + k * 34 - 13} width={16} height={26} rx={4} fill={p.ink} opacity={.85} />)}
+      <Label t={t} x={x - 10} y={sub ? y - 6 : y + size * .36} size={size}>{label}</Label>
+      {sub ? <Label t={t} x={x - 10} y={y + 46} size={34} weight={400} color={p.muted} opacity={subO}>{sub}</Label> : null}
+    </g>;
+
+// The one callout slot, above the captions.
+const Say: FC<{o: number; text: string; tone?: 'accent' | 'accent2' | 'bad' | 'muted'}> = ({o, text, tone = 'accent'}) =>
+  o > 0 ? <g opacity={o}><Chip t={t} f={12} x={960} y={826} text={text} at={0} size={38} tone={tone} /></g> : null;
+
+// A list row: a tick or cross and a few words.
+const Row: FC<{f: number; x: number; y: number; text: string; at: number; ok?: boolean; size?: number; color?: string; pre?: number}> =
+  ({f, x, y, text, at, ok = true, size = 40, color, pre}) =>
+    <g opacity={Math.max(grow(f, at, at + 10), pre === undefined ? 0 : .3 * grow(f, pre, pre + 10))}>
       <Mark t={t} f={f} x={x + 20} y={y - size * .34} ok={ok} at={at + 2} size={size * .9} />
-      <Label t={t} x={x + 64} y={y} anchor="start" size={size} weight={400} color={color ?? p.ink} mono={mono}>{text}</Label>
-    </g>;
-// A labelled box that is only a box (no icon), with an optional second line.
-const Box: FC<{f: number; x: number; y: number; w: number; h: number; at: number; label: string; sub?: string; state?: 'ok' | 'key' | 'hot' | 'dim' | 'down'; size?: number; mono?: boolean}> =
-  ({f, x, y, w, h, at, label, sub, state = 'ok', size = 38, mono}) =>
-    <g>
-      <DiagramNode t={t} f={f} x={x} y={y} w={w} h={h} kind="none" at={at} state={state} />
-      <Label t={t} x={x} y={y + (sub ? -6 : size * .36)} size={size} mono={mono} opacity={grow(f, at, at + 14) * (state === 'dim' ? .5 : 1)}
-        color={state === 'down' ? BAD : p.ink}>{label}</Label>
-      {sub ? <Label t={t} x={x} y={y + 46} size={34} weight={400} color={p.muted} opacity={grow(f, at, at + 14)}>{sub}</Label> : null}
+      <Label t={t} x={x + 64} y={y} anchor="start" size={size} weight={400} color={color ?? p.ink}>{text}</Label>
     </g>;
 
-const CONTROLLER = ['public function orderEbook(Request $request)', '{', "  $price = DB::table('ebooks')", "      ->where('id', $ebookId)->value('price');",
-  '  $amount = $quantity * $price;', "  $orderId = DB::table('orders')", '      ->insertGetId($record);', "  $request->session()", "      ->put('currentOrderId', $orderId);", '}'];
+// Two words that swap in place without ever showing both: the first fades out, then the second fades in.
+const swap = (f: number, a: number): [number, number] => [1 - grow(f, a, a + 8), grow(f, a + 8, a + 16)];
 
-// ---- 00 · opening --------------------------------------------------------------------------------------------
+// Which device sits in a slot: `changes` lists [frame, device index]; returns 0..1 for device k (1 = plugged in).
+const plugged = (f: number, changes: [number, number][], k: number) => {
+  let v = 0;
+  for (let i = 0; i < changes.length; i++) {
+    const [a, idx] = changes[i];
+    if (f < a) break;
+    v = idx === k ? grow(f, a + 8, a + 22) : Math.min(v, 1 - grow(f, a, a + 12));
+  }
+  return v;
+};
+// After `start`, cycle through n devices every `period` frames.
+const cycle = (start: number, n: number, period: number, until: number): [number, number][] =>
+  Array.from({length: Math.max(0, Math.floor((until - start) / period))}, (_, i) => [start + i * period, i % n] as [number, number]);
+
+const hexPath = (cx: number, cy: number, r: number) => Array.from({length: 6}, (_, k) => {const a = Math.PI / 3 * k;return `${k ? 'L' : 'M'}${cx + r * Math.cos(a)} ${cy + r * Math.sin(a)}`;}).join(' ') + ' Z';
+const Hex: FC<{x: number; y: number; r: number; o?: number; label?: string; size?: number}> = ({x, y, r, o = 1, label, size = 44}) =>
+  <g opacity={o}>
+    <path d={hexPath(x, y, r)} fill={p.surface} stroke={RULE} strokeWidth={5} />
+    {label ? <Label t={t} x={x} y={y + size * .36} size={size} color={RULE}>{label}</Label> : null}
+  </g>;
+
+// ---- 00 · opening ------------------------------------------------------------------------------------------------
 export const MoDau: FC<{s: Seg}> = ({s}) => {
-  const {f, at, span, pop} = useBeat(s);
-  const chapters = ['Trộn lẫn', 'Ranh giới', 'Domain + Repository', 'Đọc và ghi', 'Use case', 'Ba tầng', 'Ports & Adapters'];
-  const changes = [['đổi sang PostgreSQL', [2, 3, 5, 6]], ['thêm API JSON', [0, 7, 8]], ['viết test tính tiền', [2, 4, 5, 7]]] as const;
-  const lit = Math.min(2, Math.floor(loop(f, at(4, 1.4), 120) * 3));
+  const {f, at, span, only, pop} = useBeat(s);
+  const stripes: [string, string][] = [['hỏi giá', INFRA], ['tính tiền', RULE], ['ghi đơn', INFRA], ['nhớ mã đơn', INFRA]];
+  const asks = ['đổi database', 'thêm một API', 'viết test tính tiền'];
+  const shake = f > at(7) && f < at(8) ? Math.sin(f * 1.7) * 7 * (1 - grow(f, at(7) + 24, at(8))) : 0;
+  const tech = ['MySQL', 'PostgreSQL', 'Laravel 9', 'Laravel 11'][Math.floor(loop(f, at(11), 120) * 4)];
   return <Stage>
-    {/* A · 0–2: the mixed controller, wired to its database and session; it works */}
-    <g opacity={span(0, 2)}>
-      <CodeCard t={t} f={f} x={110} y={150} w={1060} title="OrderController.php" at={0} cps={3.2} size={32} lines={CONTROLLER} highlight={[2, 3, 5, 6, 7, 8]} />
-      <DiagramNode t={t} f={f} x={1500} y={290} w={300} h={180} kind="db" label="Database" at={at(1, .3)} />
-      <DiagramNode t={t} f={f} x={1500} y={620} w={300} h={180} kind="box" label="Session" at={at(1, 3.4)} />
-      <DiagramWire t={t} f={f} pts={[[1180, 330], [1340, 290]]} at={at(1, .6)} />
-      <DiagramWire t={t} f={f} pts={[[1180, 520], [1340, 330]]} at={at(1, 2.2)} />
-      <DiagramWire t={t} f={f} pts={[[1180, 640], [1340, 620]]} at={at(1, 3.6)} />
-      <DiagramPacket t={t} f={f} pts={[[1340, 290], [1180, 330]]} at={at(1, 1.2)} period={36} label="giá" labelSize={34} />
-      <DiagramPacket t={t} f={f} pts={[[1180, 520], [1340, 330]]} at={at(1, 2.6)} period={40} label="đơn" labelSize={34} />
-      <g opacity={pop(2)}><Mark t={t} f={f} x={1420} y={845} ok at={at(2, .1)} size={52} /><Label t={t} x={1470} y={860} anchor="start" size={46} color={p.accent2}>chạy đúng</Label></g>
+    {/* A · 0–7: one function doing four things; three changes all land on it */}
+    <g opacity={span(0, 7)}>
+      <g transform={`translate(${shake} 0)`}>
+        <rect x={160} y={190} width={860} height={600} rx={28} fill={p.surface} stroke={f > at(7) ? BAD : p.ink} strokeWidth={4} opacity={pop(0, .2)} />
+        <Label t={t} x={590} y={272} size={50} opacity={pop(0, .2)}>Hàm đặt hàng</Label>
+        <Label t={t} x={590} y={330} size={36} weight={400} color={p.muted} opacity={pop(1)}>khoảng 30 dòng</Label>
+        {stripes.map(([x, c], k) => <g key={k} opacity={pop(2, .3 + k * 1.1)}>
+          <rect x={220} y={380 + k * 95} width={740} height={75} rx={14} fill={c} fillOpacity={.16} stroke={c} strokeWidth={3} />
+          <Label t={t} x={590} y={432 + k * 95} size={40}>{x}</Label></g>)}
+      </g>
+      <g opacity={only(3)}><Mark t={t} f={f} x={1330} y={470} ok at={at(3, .1)} size={64} /><Label t={t} x={1390} y={490} anchor="start" size={54} color={INFRA}>chạy đúng</Label></g>
+      {asks.map((x, k) => {const y = 270 + k * 230, a = at(4 + k);return <g key={k} opacity={grow(f, a, a + 12)}>
+        <rect x={1240} y={y - 70} width={560} height={140} rx={20} fill={p.surface} stroke={f > at(7) ? BAD : p.accent} strokeWidth={4} />
+        <Label t={t} x={1520} y={y + 14} size={40}>{x}</Label>
+        <DiagramWire t={t} f={f} pts={[[1236, y], [1032, y]]} at={a + 6} color={f > at(7) ? BAD : p.accent} /></g>;})}
     </g>
-    {/* B · 3–4: where is the business rule, and what would a change touch */}
-    <g opacity={span(3, 4)}>
-      <Title o={pop(3)} y={140}>Nghiệp vụ tính tiền nằm ở đâu?</Title>
-      <CodeCard t={t} f={f} x={110} y={190} w={1060} title="OrderController.php" at={at(3) - 30} cps={40} size={32} lines={CONTROLLER} highlight={[4]} />
-      <rect x={130} y={262 + 4 * 48} width={1020} height={44} rx={10} fill="none" stroke={p.accent} strokeWidth={4} opacity={pop(3, .8) * (.6 + .4 * Math.sin(f / 6))} />
-      {changes.map(([label, lines], k) => <g key={k} opacity={pop(4, .3 + k * 1.6)}>
-        <rect x={1250} y={250 + k * 200} width={560} height={150} rx={20} fill={p.surface} stroke={lit === k ? p.accent : p.accent2} strokeWidth={3} />
-        <Label t={t} x={1530} y={318 + k * 200} size={40}>{label}</Label>
-        <Label t={t} x={1530} y={370 + k * 200} size={34} weight={400} color={BAD}>{`sửa ${lines.length} dòng trong cùng một hàm`}</Label>
-        {lit === k && f > at(4, 1.4) ? lines.map((ln) => <rect key={ln} x={118} y={262 + ln * 48} width={1044} height={44} rx={8} fill={BAD} opacity={.16} />) : null}
-      </g>)}
-    </g>
-    {/* C · 5–6: the book, and the three separations it walks through */}
-    <g opacity={span(5, 6)}>
-      <foreignObject x={300} y={170} width={460} height={660}>
+    {/* B · 8–12: the book, and the whole book in one idea */}
+    <g opacity={span(8, 12)}>
+      <foreignObject x={140} y={220} width={380} height={540}>
         <Img src={staticFile('kien-truc-ung-dung-web-tong-quan/images/book-cover.jpg')} style={{width: '100%', height: '100%', objectFit: 'contain', borderRadius: 12,
-          transform: `translateY(${(1 - grow(f, at(5), at(5) + 16)) * 30}px)`, opacity: grow(f, at(5), at(5) + 16)}} />
+          opacity: grow(f, at(8), at(8) + 16)}} />
       </foreignObject>
-      <Label t={t} x={860} y={300} anchor="start" size={72} opacity={pop(5, .3)}>Kiến trúc ứng dụng web</Label>
-      <Label t={t} x={860} y={380} anchor="start" size={40} color={p.accent} opacity={pop(5, .8)}>Nguyễn Thế Huy · ebook · 7 chương</Label>
-      {['nghiệp vụ ✕ database', 'nghiệp vụ ✕ framework', 'nghiệp vụ ✕ giao tiếp bên ngoài'].map((x, k) =>
-        <Chip key={k} t={t} f={f} x={1180} y={520 + k * 110} text={`tách ${x.split(' ✕ ')[0]} khỏi ${x.split(' ✕ ')[1]}`} at={at(6, 1.6 + k * 1.1)} size={38} tone={k === 0 ? 'accent' : 'accent2'} />)}
-    </g>
-    {/* D · 7: seven chapters, one example travelling through them */}
-    <g opacity={span(7, 7)}>
-      <Title o={pop(7)}>Bảy chương, một ví dụ đặt hàng</Title>
-      {chapters.map((c, k) => {const x = k < 4 ? 270 + k * 460 : 500 + (k - 4) * 460, y = k < 4 ? 380 : 640, on = f > at(7, 1 + k * .6);return <g key={c}>
-         <DiagramNode t={t} f={f} x={x} y={y} w={420} h={170} kind="none" at={at(7, .2 + k * .2)} state={on ? 'key' : 'dim'} />
-        <Label t={t} x={x} y={y - 14} size={34} mono color={on ? p.accent : p.muted} opacity={pop(7, .2 + k * .2)}>{String(k + 1).padStart(2, '0')}</Label>
-        <Label t={t} x={x} y={y + 42} size={36} color={on ? p.ink : p.muted} opacity={pop(7, .2 + k * .2)}>{c}</Label></g>;})}
-      <DiagramPacket t={t} f={f} pts={[[270, 380], [1650, 380], [1650, 520], [500, 520], [500, 640], [1420, 640]]} at={at(7, .8)} period={150} r={12} />
-    </g>
-    {/* E · 8: the one question to take away */}
-    <g opacity={span(8, 8)}>
-      <Panel x={360} y={180} w={1200} h={330} tone={p.accent} o={pop(8)}>
-        <Label t={t} x={960} y={300} size={46}>Đoạn code này có chạy được một mình,</Label>
-        <Label t={t} x={960} y={370} size={46}>trong bộ nhớ, không cần database, framework?</Label>
-        <Label t={t} x={960} y={450} size={34} weight={400} color={p.muted}>câu hỏi dùng được mỗi ngày</Label>
-      </Panel>
-      <DiagramWire t={t} f={f} pts={[[760, 520], [560, 650]]} at={at(8, 3)} />
-      <DiagramWire t={t} f={f} pts={[[1160, 520], [1360, 650]]} at={at(8, 3.6)} />
-      <Box f={f} x={520} y={740} w={460} h={150} at={at(8, 3.4)} label="có → nghiệp vụ" state="key" size={42} />
-      <Box f={f} x={1400} y={740} w={460} h={150} at={at(8, 4)} label="không → hạ tầng" size={42} />
+      <Label t={t} x={1180} y={280} size={60} opacity={pop(8, .3)}>Kiến trúc ứng dụng web</Label>
+      <Label t={t} x={1180} y={340} size={36} weight={400} color={p.muted} opacity={pop(8, .6)}>Nguyễn Thế Huy</Label>
+      <Label t={t} x={1180} y={428} size={40} color={p.accent} opacity={pop(9)}>cả cuốn sách, một ý:</Label>
+      <Card x={880} y={570} w={480} h={220} o={pop(10)} tone={RULE} label="luật kinh doanh" sub="nghiệp vụ" />
+      <Card x={1480} y={570} w={480} h={220} o={pop(10, .8)} tone={INFRA} label="máy móc chạy nó" sub="hạ tầng" />
+      <Label t={t} x={880} y={735} size={40} color={RULE} opacity={pop(11)}>sống lâu</Label>
+      <Label t={t} x={1480} y={735} size={40} color={INFRA} opacity={pop(11, 1)}>{`thay liên tục: ${tech}`}</Label>
+      <Say o={only(12)} text="ví dụ xuyên suốt: đặt mua một cuốn e-book" tone="accent2" />
     </g>
   </Stage>;
 };
 
-// ---- 01 · when business logic and infrastructure live together ---------------------------------------------
-export const TranLan: FC<{s: Seg}> = ({s}) => {
-  const {f, at, span, pop} = useBeat(s);
-  const tags: [number, string, boolean][] = [[2, 'SQL', false], [4, 'tính tiền', true], [5, 'SQL', false], [7, 'session', false], [0, 'framework', false]];
-  const problems = ['chỉ thấy công nghệ, không thấy nghiệp vụ', 'đổi công nghệ kéo theo sửa logic', 'test phải mang theo cả môi trường', 'dữ liệu sai lọt thẳng vào database', 'thành legacy: không ai dám sửa'];
-  const gains: [string, string][] = [['đọc như một câu chuyện', 'tạo đơn → kiểm tra → lưu'], ['test chạy trong bộ nhớ', 'không cần dựng MySQL'], ['đổi hạ tầng', 'chỉ sửa đúng phần hạ tầng'], ['chung một quy ước', 'biết code nào đặt ở đâu']];
-  const knot = Math.sin(f / 9) * 18;
+// ---- 01 · one function doing everything -------------------------------------------------------------------------
+export const MotHam: FC<{s: Seg}> = ({s}) => {
+  const {f, at, span, only, pop} = useBeat(s);
+  const tasks: [string, string][] = [['hỏi giá', 'database'], ['tính tiền', ''], ['ghi đơn', 'database'], ['nhớ mã đơn', 'session']];
+  const g = grow(f, at(5), at(5) + 24);
+  const db = swap(f, at(11));
+  const k13 = 1 - .45 * grow(f, at(14), at(14) + 12);
   return <Stage>
-    {/* A · 0–3: the same controller, each line tagged by what it really is */}
-    <g opacity={span(0, 3)}>
-      <Title o={pop(0)} y={140}>Một hàm, bốn thứ khác nhau</Title>
-      <CodeCard t={t} f={f} x={110} y={190} w={1060} title="OrderController.php" at={4} cps={40} size={32} lines={CONTROLLER} highlight={[4]} />
-      {tags.map(([line, text, core], k) => {const row = [0, 2, 4, 5, 7].indexOf(line), cy = 300 + row * 115;return <g key={k} opacity={pop(3, k * 1.1)}>
-        <DiagramWire t={t} f={f} pts={[[1180, 290 + line * 48], [1310, cy]]} at={at(3, k * 1.1)} dur={10} color={core ? p.accent : p.accent2} />
-        <Chip t={t} f={f} x={1560} y={cy} text={core ? `${text} = nghiệp vụ` : `${text} = hạ tầng`} at={at(3, .2 + k * 1.1)} size={36} tone={core ? 'accent' : 'accent2'} />
-      </g>;})}
-      <Label t={t} x={640} y={830} size={36} weight={400} color={p.muted} opacity={pop(1, 2)}>đặt hàng: lấy giá → tính tiền → lưu → session</Label>
+    {/* A · 0–8: four jobs; the one that is the shop's own (business) moves left, the tools (infrastructure) right */}
+    <g opacity={span(0, 8)}>
+      {tasks.map(([name, sub], k) => {
+        const rule = k === 1, j = [0, -1, 1, 2][k];
+        const x = lerp(300 + k * 440, rule ? 470 : 1360, g), y = lerp(430, rule ? 500 : 330 + j * 175, g);
+        const w = lerp(380, rule ? 460 : 480, g), h = lerp(150, rule ? 200 : 140, g);
+        const o = Math.max(.3 * pop(0, .3), pop(1 + k));
+        return <Card key={k} x={x} y={y} w={w} h={h} o={o} tone={rule ? RULE : INFRA} label={name} sub={!rule && f > at(7) ? sub : undefined} />;})}
+      <Label t={t} x={470} y={350} size={50} color={RULE} opacity={pop(6)}>NGHIỆP VỤ</Label>
+      <Label t={t} x={470} y={660} size={36} weight={400} color={p.muted} opacity={pop(5, 1)}>đơn gồm gì, giá, tổng</Label>
+      <Label t={t} x={1360} y={205} size={50} color={INFRA} opacity={pop(8)}>HẠ TẦNG</Label>
+      <Say o={only(7)} text="đồ nghề để chạy nó: database, session, framework" tone="accent2" />
     </g>
-    {/* B · 4–6: three costs, each shown working */}
-    <g opacity={span(4, 6)}>
-      <Title o={pop(4)}>Cái giá của việc dính chung</Title>
-      <Panel x={110} y={230} w={540} h={580} title="muốn test" o={pop(4)}>
-        <DiagramNode t={t} f={f} x={380} y={420} w={260} h={130} kind="none" at={at(4, .3)} />
-        <Label t={t} x={380} y={432} size={36} mono opacity={pop(4, .3)}>test tính tiền</Label>
-        <DiagramWire t={t} f={f} pts={[[380, 490], [380, 580]]} at={at(4, .8)} color={BAD} />
-        <DiagramNode t={t} f={f} x={380} y={670} w={260} h={150} kind="db" label="MySQL thật" at={at(4, 1)} state="hot" />
-      </Panel>
-      <Panel x={690} y={230} w={540} h={580} title="muốn đổi cách lưu" o={pop(5)}>
-        <CodeCard t={t} f={f} x={730} y={340} w={460} at={at(5) - 40} cps={40} size={30} lines={['orderEbook()', '  giá, tiền,', '  INSERT orders', '  session']} highlight={[2]} />
-        <Label t={t} x={960} y={660} size={36} weight={400} color={BAD} opacity={pop(5, 1.5)}>sửa giữa hàm đặt hàng</Label>
-        <Label t={t} x={960} y={720} size={34} weight={400} color={p.muted} opacity={pop(5, 1.5)}>nơi không nói gì về lưu trữ</Label>
-      </Panel>
-      <Panel x={1270} y={230} w={540} h={580} title="không ai kiểm tra" o={pop(6)}>
-        <DiagramNode t={t} f={f} x={1540} y={690} w={260} h={150} kind="db" label="orders" at={at(6)} state="down" />
-        <DiagramWire t={t} f={f} pts={[[1540, 360], [1540, 600]]} at={at(6, .3)} color={BAD} />
-        <DiagramPacket t={t} f={f} pts={[[1540, 360], [1540, 600]]} at={at(6, .6)} period={44} count={2} color={BAD} label="email: abc@" />
-        <Label t={t} x={1540} y={340} size={34} mono color={BAD} opacity={pop(6, 1.6)}>quantity = 0</Label>
-      </Panel>
+    {/* B · 9–14: tangled together, trouble comes fast */}
+    <g opacity={span(9, 14)}>
+      <g opacity={k13}>
+        <Card x={700} y={470} w={440} h={200} tone={RULE} label="tính tiền" o={pop(9)} />
+        <Card x={1400} y={470} w={400} h={200} tone={INFRA} o={pop(9, .3)} />
+        <Label t={t} x={1400} y={485} size={42} opacity={pop(9, .3) * db[0]}>MySQL</Label>
+        <Label t={t} x={1400} y={485} size={42} opacity={db[1]}>PostgreSQL</Label>
+        {[0, 1, 2].map((k) => <path key={k} d={`M920 ${430 + k * 40} C 1010 ${380 + k * 40 + Math.sin(f / 9) * 16} 1110 ${480 + k * 40 - Math.sin(f / 9) * 16} 1200 ${430 + k * 40}`}
+          fill="none" stroke={BAD} strokeWidth={4} opacity={pop(9, .6 + k * .2) * .8} />)}
+        <g opacity={only(10)}>
+          <Card x={220} y={470} w={260} h={140} tone={p.ink} label="bài test" size={40} />
+          <DiagramWire t={t} f={f} pts={[[350, 470], [478, 470]]} at={at(10, .3)} />
+          <path d="M700 360 C 760 250 1340 250 1400 360" fill="none" stroke={BAD} strokeWidth={4} strokeDasharray="12 10" opacity={pop(10, .8)} />
+        </g>
+        {[0, 1, 2].map((k) => <path key={k} d={`M${600 + k * 70} ${585} l 40 -40`} stroke={BAD} strokeWidth={6} strokeLinecap="round" opacity={pop(11, .8 + k * .2)} />)}
+        <DiagramPacket t={t} f={f} pts={[[140, 660], [700, 660], [1400, 660]]} at={at(12, .2)} until={at(13)} period={80} color={BAD} r={12} label="số lượng = 0" labelSize={34} />
+      </g>
+      <Say o={only(10)} text="muốn test phép tính, phải bật cả database" tone="bad" />
+      <Say o={only(11)} text="đổi database → sửa ngay giữa chỗ tính tiền" tone="bad" />
+      <Say o={only(12)} text="không có chỗ nào chặn đơn sai" tone="bad" />
+      <Say o={only(13)} text="đọc code chỉ thấy công nghệ" tone="bad" />
+      <Say o={only(14)} text="không ai dám sửa" tone="bad" />
     </g>
-    {/* C · 7–9: mixed code — one business sentence tangled with infrastructure */}
-    <g opacity={span(7, 9)}>
-      <Title o={pop(7)}>Code trộn lẫn</Title>
-      <Panel x={170} y={290} w={640} h={420} tone={p.accent} title="nghiệp vụ" o={pop(7, .3)}>
-        <g opacity={pop(8)}><Label t={t} x={490} y={470} size={40}>đơn hàng gồm gì,</Label>
-        <Label t={t} x={490} y={530} size={40}>giá bao nhiêu</Label>
-        <Label t={t} x={490} y={630} size={34} weight={400} color={p.muted}>một câu duy nhất</Label></g>
-      </Panel>
-      <Panel x={1110} y={290} w={640} h={420} title="hạ tầng" o={pop(7, .9)}>
-        {['database', 'session', 'framework', 'thư viện'].map((x, k) => <Label key={k} t={t} x={1430} y={430 + k * 66} size={38} weight={400} opacity={pop(9, .3 + k * .5)}>{x}</Label>)}
-      </Panel>
-      {[0, 1, 2].map((k) => <path key={k} d={`M810 ${420 + k * 90} C 900 ${360 + k * 90 + knot} 1020 ${480 + k * 90 - knot} 1110 ${420 + k * 90}`} fill="none" stroke={BAD} strokeWidth={4} opacity={pop(7, 1.4 + k * .3) * .8} />)}
-      <Chip t={t} f={f} x={960} y={800} text="dính vào nhau trong cùng một hàm" at={at(9, 2.4)} size={36} tone="bad" />
-    </g>
-    {/* D · 10–15: five things that go wrong */}
-    <g opacity={span(10, 15)}>
-      <Title o={pop(10)}>Năm chuyện thường xảy ra</Title>
-      {problems.map((x, k) => <Row key={k} f={f} x={420} y={290 + k * 115} text={x} at={at(11 + k)} pre={at(10, .4 + k * .25)} ok={false} size={42} />)}
-    </g>
-    {/* E · 16–20: what separating buys, one card per benefit */}
-    <g opacity={span(16, 20)}>
-      <Title o={pop(16)} color={p.accent2}>Khi tách được</Title>
-      {gains.map(([head, line], k) => {const x = 140 + (k % 2) * 840, y = 230 + Math.floor(k / 2) * 300, a = at(17 + k), b = at(16, .4 + k * .25);return <g key={k} opacity={Math.max(grow(f, a, a + 12), .32 * grow(f, b, b + 10))}>
-        <rect x={x} y={y} width={800} height={260} rx={22} fill={p.surface} stroke={p.accent2} strokeWidth={3} />
-        <Mark t={t} f={f} x={x + 70} y={y + 80} ok at={a + 4} size={50} />
-        <Label t={t} x={x + 130} y={y + 98} anchor="start" size={44}>{head}</Label>
-        <Label t={t} x={x + 130} y={y + 178} anchor="start" size={36} weight={400} color={p.muted} mono={k === 0}>{line}</Label></g>;})}
-    </g>
-    {/* F · 21: the author's two-year rule of thumb — the parts around the business change faster */}
-    <g opacity={span(21, 21)}>
-      <Title o={pop(21)}>Theo tác giả: ứng dụng sống quá 2 năm</Title>
-      <path d="M300 760 H1700" stroke={p.muted} strokeWidth={3} opacity={pop(21)} />
-      {[0, 1, 2].map((y) => <Label key={y} t={t} x={300 + y * 700} y={810} size={34} mono color={p.muted} opacity={pop(21)}>{`năm ${y}`}</Label>)}
+    {/* C · 15–16: the author's two-year rule — tools change, the shop's rules stay */}
+    <g opacity={span(15, 16)}>
+      <Title o={pop(15)}>Ứng dụng sống quá 2 năm</Title>
       {[['framework', 4], ['database', 3], ['dịch vụ ngoài', 5]].map(([name, n], k) => <g key={k}>
-        <Label t={t} x={280} y={318 + k * 120} anchor="end" size={36} weight={400} opacity={pop(21, .4)}>{name as string}</Label>
-        {Array.from({length: n as number}, (_, j) => <rect key={j} x={300 + j * 1400 / (n as number)} y={290 + k * 120} width={1400 / (n as number) - 16} height={44} rx={8}
-          fill={j % 2 ? p.accent2 : p.surface} stroke={p.accent2} strokeWidth={2} opacity={grow(f, at(21, .6 + j * .5), at(21, .9 + j * .5))} />)}</g>)}
-      <Label t={t} x={280} y={678} anchor="end" size={36} color={p.accent} opacity={pop(21, 1)}>nghiệp vụ</Label>
-      <rect x={300} y={650} width={1400 * grow(f, at(21, 1), at(21, 5))} height={44} rx={8} fill={p.accent} opacity={.85} />
+        <Label t={t} x={340} y={318 + k * 120} anchor="end" size={40} weight={400} opacity={pop(15, .4)}>{name as string}</Label>
+        {Array.from({length: n as number}, (_, j) => <rect key={j} x={370 + j * 1380 / (n as number)} y={286 + k * 120} width={1380 / (n as number) - 18} height={48} rx={10}
+          fill={j % 2 ? INFRA : p.surface} stroke={INFRA} strokeWidth={2} opacity={grow(f, at(15, .6 + j * .5), at(15, .9 + j * .5))} />)}</g>)}
+      <Label t={t} x={340} y={678} anchor="end" size={40} color={RULE} opacity={pop(15, 1)}>nghiệp vụ</Label>
+      <rect x={370} y={646} width={1380 * grow(f, at(15, 1), at(16, 1))} height={48} rx={10} fill={RULE} opacity={.85} />
+      <path d="M370 770 H1750" stroke={p.muted} strokeWidth={3} opacity={pop(15)} />
+      {[0, 1, 2].map((y) => <Label key={y} t={t} x={370 + y * 690} y={822} size={36} color={p.muted} opacity={pop(15)}>{`năm ${y}`}</Label>)}
     </g>
   </Stage>;
 };
 
-// ---- 02 · the boundary: core or infrastructure -------------------------------------------------------------
-export const KhacPhuc: FC<{s: Seg}> = ({s}) => {
-  const {f, at, span, pop} = useBeat(s);
-  const outside: ['db' | 'cdn' | 'box' | 'service' | 'queue', string][] = [['db', 'database'], ['cdn', 'gọi mạng'], ['box', 'đọc file'], ['service', 'đồng hồ'], ['queue', 'SMTP']];
-  const core = ['hàm tính VAT', 'Order tự tính tổng tiền', 'OrderService chỉ dùng interface'], infra = ['câu SQL', 'lời gọi HTTP', 'đọc file', 'controller', 'Eloquent model'];
-  const clockHour = f > at(20, 1.2) ? 23 + 59 / 60 : 9 + f / 900;
-  const hand = (v: number, len: number, w: number, c: string) => <path d={`M0 0 L${len * Math.sin(v * Math.PI * 2)} ${-len * Math.cos(v * Math.PI * 2)}`} stroke={c} strokeWidth={w} strokeLinecap="round" />;
+// ---- 02 · the test: can it run on its own? ------------------------------------------------------------------------
+export const PhepThu: FC<{s: Seg}> = ({s}) => {
+  const {f, at, span, only, pop} = useBeat(s);
+  const outside: [string, number][] = [['database', 397], ['mạng', 647], ['file', 837], ['giờ hệ thống', 997], ['framework', 1317]];
+  const drop = (a: number, to: Pt): Pt => {const k = grow(f, a, a + 14);return [lerp(to[0] - 70, to[0], k), to[1]];};
+  const infra: [string, number][] = [['câu lệnh SQL', 650], ['gọi API khác', 710], ['controller', 770]];
+  const real = plugged(f, [[at(14), 0], [at(15), 1]], 0), fake = plugged(f, [[at(14), 0], [at(15), 1]], 1);
+  const dev = (k: number, rest: Pt, label: string, sub: string, v: number) =>
+    <Card key={k} x={lerp(rest[0], 1310, v)} y={lerp(rest[1], 480, v)} w={340} h={150} tone={k ? RULE : INFRA} label={label} sub={sub} size={38} o={pop(12, .6 + k * .4)} />;
   return <Stage>
-    {/* A · 0–2: core code needs only memory and CPU */}
-    <g opacity={span(0, 2)}>
-      <Title o={pop(0)}>Core hay hạ tầng?</Title>
-      <Panel x={460} y={210} w={1000} h={260} tone={p.accent} o={pop(0, .8)}>
-        <Label t={t} x={960} y={320} size={56} color={p.accent}>core code = bộ nhớ + CPU</Label>
-        <Label t={t} x={960} y={400} size={38} weight={400}>chạy được một mình, không cần gì bên ngoài</Label>
-      </Panel>
-      {outside.map(([kind, label], k) => <g key={k}>
-        <DiagramNode t={t} f={f} x={300 + k * 330} y={680} w={280} h={190} kind={kind} label={label} at={at(2, k * .7)} state="dim" />
-        <Mark t={t} f={f} x={300 + k * 330} y={640} ok={false} at={at(2, .3 + k * .7)} size={90} /></g>)}
+    {/* A · 0–7: the test machine — memory and CPU only; what runs goes to core, what needs the outside to infrastructure */}
+    <g opacity={span(0, 7)}>
+      <Title o={pop(0)}>Phép thử của sách</Title>
+      <Card x={960} y={300} w={700} h={160} o={pop(1)} tone={p.ink} label="chỉ có bộ nhớ + CPU" sub={f > at(2) ? 'chạy được không?' : undefined} size={44} />
+      {outside.map(([x, xx], k) => <g key={k} opacity={pop(3, k * .5)}>
+        <Mark t={t} f={f} x={xx + 14} y={458} ok={false} at={at(3, k * .5)} size={30} />
+        <Label t={t} x={xx + 40} y={470} anchor="start" size={36} weight={400} color={BAD}>{x}</Label></g>)}
+      <Card x={560} y={690} w={560} h={300} o={pop(4)} tone={RULE} thick={f > at(4) && f < at(5) ? 7 : 4} />
+      <Label t={t} x={560} y={590} size={44} color={RULE} opacity={pop(4)}>CORE</Label>
+      <Card x={1360} y={690} w={560} h={300} o={pop(5)} tone={INFRA} thick={f > at(5) && f < at(6) ? 7 : 4} />
+      <Label t={t} x={1360} y={590} size={44} color={INFRA} opacity={pop(5)}>HẠ TẦNG</Label>
+      {(() => {const [x, y] = drop(at(6, .4), [560, 710]);return <Label t={t} x={x} y={y} size={40} opacity={pop(6, .2)}>hàm tính VAT</Label>;})()}
+      {infra.map(([name, ty], k) => {const [x, y] = drop(at(7, .3 + k * .9), [1360, ty]);return <Label key={k} t={t} x={x} y={y} size={38} opacity={pop(7, .1 + k * .9)}>{name}</Label>;})}
     </g>
-    {/* B · 3–5: two rules; fail either and it is infrastructure */}
-    <g opacity={span(3, 5)}>
-      <Title o={pop(3)}>Hai quy tắc</Title>
-      <Panel x={130} y={230} w={800} h={430} title="1 · không phụ thuộc hệ thống ngoài" o={pop(3)}>
-        {['database', 'API', 'file', 'đồng hồ hệ thống'].map((x, k) => <Row key={k} f={f} x={210} y={370 + k * 72} text={x} at={at(3, .8 + k * .5)} ok={false} />)}
-      </Panel>
-      <Panel x={990} y={230} w={800} h={430} title="2 · không cần môi trường đặc biệt" o={pop(4)}>
-        {['web server', 'CLI', 'framework', 'biến POST, session'].map((x, k) => <Row key={k} f={f} x={1070} y={370 + k * 72} text={x} at={at(4, 2 + k * .6)} ok={false} />)}
-      </Panel>
-      <Chip t={t} f={f} x={960} y={770} text="thiếu một trong hai → hạ tầng" at={at(5)} size={42} tone="accent" />
+    {/* B · 8–9: the folder does not decide */}
+    <g opacity={span(8, 9)}>
+      <Title o={pop(8)}>Nhìn việc code làm, không nhìn thư mục</Title>
+      <rect x={240} y={250} width={940} height={540} rx={24} fill={p.surface} stroke={p.muted} strokeWidth={3} opacity={pop(8, .3)} />
+      <Label t={t} x={710} y={320} size={38} color={p.muted} opacity={pop(8, .3)}>cùng một thư mục</Label>
+      <Card x={710} y={470} w={760} h={130} o={pop(8, .6)} tone={f > at(9) ? RULE : p.muted} label="tính giá" />
+      <Card x={710} y={650} w={760} h={130} o={pop(8, .9)} tone={f > at(9) ? INFRA : p.muted} label="gọi API tỷ giá" />
+      <Chip t={t} f={f} x={1330} y={470} text="core" at={at(9, .4)} size={40} tone="accent" />
+      <DiagramWire t={t} f={f} pts={[[1094, 650], [1446, 650]]} at={at(9, .8)} />
+      <Card x={1600} y={650} w={300} h={130} o={pop(9, 1)} tone={INFRA} label="API ngoài" size={40} />
+      <Chip t={t} f={f} x={1600} y={775} text="hạ tầng" at={at(9, 1.4)} size={38} tone="accent2" />
     </g>
-    {/* C · 6–10: sorting real examples; infrastructure is what is left */}
-    <g opacity={span(6, 10)}>
-      <Panel x={130} y={190} w={780} h={600} tone={p.accent} title="core" titleColor={p.accent} o={pop(6)}>
-        {core.map((x, k) => <Row key={k} f={f} x={180} y={340 + k * 100} text={x} at={at(6 + k)} size={38} />)}
-      </Panel>
-      <Panel x={1010} y={190} w={780} h={600} title="hạ tầng" o={pop(9)}>
-        {infra.map((x, k) => <Row key={k} f={f} x={1060} y={320 + k * 90} text={x} at={at(9, k * .7)} ok={false} size={38} />)}
-      </Panel>
-      <g opacity={pop(10)}>
-        <rect x={430} y={810} width={1060} height={70} rx={14} fill={p.background} stroke={p.accent} strokeWidth={3} />
-        <Label t={t} x={960} y={858} size={40} color={p.accent}>hạ tầng = toàn bộ code − core</Label>
+    {/* C · 10–17: the clock — rules ask a contract for the time; a real or a fake clock plugs in */}
+    <g opacity={span(10, 17)}>
+      <Title o={pop(10)}>Ví dụ: giờ hiện tại</Title>
+      <Card x={380} y={480} w={420} h={200} o={pop(10, .4)} tone={RULE} label="luật bán hàng" />
+      <g opacity={only(11)}>
+        <Card x={1650} y={300} w={340} h={150} tone={INFRA} label="đồng hồ máy" sub="giờ thật" size={38} />
+        <DiagramWire t={t} f={f} pts={[[594, 440], [1476, 310]]} at={at(11, .3)} color={BAD} />
       </g>
-    </g>
-    {/* D · 11–13: same folder, two natures */}
-    <g opacity={span(11, 13)}>
-      <Title o={pop(11)}>Đừng nhầm thư mục với bản chất</Title>
-      <Panel x={260} y={230} w={900} h={560} title="app/Services/" o={pop(11, .4)}>
-        <Box f={f} x={710} y={430} w={760} h={130} at={at(11, .8)} label="PriceCalculator.php" sub="chỉ tính toán" state={f > at(12, .5) ? 'key' : 'ok'} size={38} mono />
-        <Box f={f} x={710} y={640} w={760} h={130} at={at(11, 1.2)} label="RateClient.php" sub="gọi API tỷ giá" size={38} mono />
-      </Panel>
-      <DiagramNode t={t} f={f} x={1560} y={640} w={300} h={190} kind="cdn" label="API ngoài" at={at(13)} />
-      <DiagramWire t={t} f={f} pts={[[1090, 640], [1410, 640]]} at={at(13, .3)} color={BAD} />
-      <DiagramPacket t={t} f={f} pts={[[1090, 640], [1410, 640]]} at={at(13, .8)} period={34} color={BAD} />
-      <Chip t={t} f={f} x={1290} y={430} text="core" at={at(12, .6)} size={40} tone="accent" />
-      <Chip t={t} f={f} x={1560} y={800} text="hạ tầng" at={at(13, 1)} size={40} />
-    </g>
-    {/* E · 14–16: an interface over infrastructure is still infrastructure */}
-    <g opacity={span(14, 16)}>
-      <Title o={pop(14)}>Interface chưa chắc là core</Title>
-      <CodeCard t={t} f={f} x={140} y={240} w={800} title="Connection.php" at={at(14, .8)} cps={2.6} size={34} lines={['interface Connection', '{', '  insert($table, $data);', '}']} highlight={[2]} />
-      <Chip t={t} f={f} x={540} y={640} text="vẫn lộ: bảng, dòng dữ liệu" at={at(15, 1)} size={36} tone="bad" />
-      <CodeCard t={t} f={f} x={980} y={240} w={800} title="OrderRepository.php" at={at(16, .4)} cps={2.6} size={34} lines={['interface OrderRepository', '{', '  save(Order $order);', '}']} highlight={[2]} />
-      <Chip t={t} f={f} x={1380} y={640} text="nói bằng nghiệp vụ: lưu đơn hàng" at={at(16, 1.6)} size={36} tone="accent" />
-    </g>
-    {/* F · 17–21: the clock — logic asks an interface, a fake clock can jump to midnight */}
-    <g opacity={span(17, 21)}>
-      <Title o={pop(17)}>Ví dụ: đồng hồ</Title>
-      <Box f={f} x={420} y={480} w={420} h={170} at={at(17, .3)} label="logic đặt hàng" state="key" size={40} />
-      <g opacity={1 - grow(f, at(19), at(19) + 10)}>
-        <DiagramWire t={t} f={f} pts={[[630, 440], [1380, 340]]} at={at(18, .2)} color={BAD} />
-        <Label t={t} x={1000} y={330} size={34} weight={400} color={BAD} opacity={pop(18, .6)}>gọi thẳng giờ thật</Label></g>
-      <DiagramWire t={t} f={f} pts={[[630, 480], [800, 480]]} at={at(19, .2)} />
-      <Box f={f} x={1000} y={480} w={380} h={170} at={at(19)} label="interface Clock" size={38} mono />
-      <DiagramWire t={t} f={f} pts={[[1190, 440], [1380, 330]]} at={at(19, 1.4)} arrow={false} />
-      <DiagramWire t={t} f={f} pts={[[1190, 520], [1458, 664]]} at={at(20)} arrow={false} />
-      <Box f={f} x={1580} y={330} w={400} h={150} at={at(17, .8)} label="giờ hệ thống" sub="hạ tầng" size={38} />
-      <g transform="translate(1580 680)" opacity={pop(20)}>
-        <circle r={120} fill={p.surface} stroke={p.accent} strokeWidth={4} />
-        {hand(clockHour / 12, 60, 8, p.ink)}{hand(clockHour % 1, 95, 5, p.accent)}
-        <Label t={t} x={0} y={170} size={34} color={p.accent}>{f > at(20, 1.2) ? 'đồng hồ giả · 23:59' : 'đồng hồ giả'}</Label>
+      <Socket x={900} y={480} o={pop(12)} label="Clock" sub="hợp đồng" subO={pop(13)} />
+      <DiagramWire t={t} f={f} pts={[[594, 480], [746, 480]]} at={at(12, .3)} />
+      <g opacity={f > at(12) ? 1 : 0}>
+        {dev(0, [1650, 300], 'đồng hồ máy', 'giờ thật', real)}
+        {dev(1, [1650, 680], 'đồng hồ giả', '23:59', fake)}
       </g>
-      <Chip t={t} f={f} x={420} y={760} text="ranh giới nhỏ, giữ được lâu" at={at(21, .5)} size={36} tone="accent2" />
+      <path d="M1052 480 H1138" stroke={p.ink} strokeWidth={6} strokeLinecap="round" opacity={Math.max(real, fake)} />
+      <Say o={only(11)} text="mọi bài test phụ thuộc giờ thật" tone="bad" />
+      <Say o={only(13)} text="hợp đồng: chỉ nói cần gì, không nói lấy từ đâu" tone="muted" />
+      <Say o={only(16, 17)} text="hợp đồng ở giữa, đồ thật cắm vào sau" />
     </g>
   </Stage>;
 };
 
-// ---- 03 · Domain Model: the object protects itself --------------------------------------------------------------
-export const DomainModel: FC<{s: Seg}> = ({s}) => {
-  const {f, at, span, pop} = useBeat(s);
-  const rules = ['mã e-book > 0', 'email hợp lệ', 'số lượng > 0', 'giá ≥ 0'];
-  const sources = ['Controller', 'API', 'CLI', 'Test'];
-  const bad = loop(f, at(10, .6), 70);
-  const passed = [5, 6, 7, 8].filter((i) => f > at(i)).length, ruleLines = passed ? [3 + passed] : [];
+// ---- 03 · the order keeps its own rules -------------------------------------------------------------------------
+export const TuGiuLuat: FC<{s: Seg}> = ({s}) => {
+  const {f, at, span, only, pop} = useBeat(s);
+  const steps = ['lấy giá', 'tính tiền', 'gom vào mảng', 'lưu'];
+  const rules = ['mã e-book hợp lệ', 'email đúng định dạng', 'số lượng > 0', 'giá không âm'];
+  const b = loop(f, at(7, .2), 70), slipX = 200 + 480 * Math.sin(Math.min(1, b * 1.4) * Math.PI);
+  const sources = ['trang web', 'API', 'bài test'];
   return <Stage>
-    {/* A · 0–2: Transaction Script vs Domain Model */}
-    <g opacity={span(0, 2)}>
-      <Title o={pop(0)}>Hai cách viết cùng một nghiệp vụ</Title>
-      <Panel x={120} y={230} w={820} h={580} title="Transaction Script" o={pop(0, .5)}>
-        {['1 · lấy giá', '2 · tính tiền', '3 · tạo mảng $record', '4 · INSERT', '5 · session'].map((x, k) => <Label key={k} t={t} x={210} y={370 + k * 76} anchor="start" size={38} weight={400} mono={k > 1} opacity={pop(1, .6 + k * .5)}>{x}</Label>)}
-        <Label t={t} x={530} y={780} size={34} weight={400} color={BAD} opacity={pop(1, 3.4)}>dữ liệu là mảng, không ai giữ luật</Label>
-      </Panel>
-      <Panel x={980} y={230} w={820} h={580} tone={p.accent} title="Domain Model" o={pop(0, 1)}>
-        <rect x={1100} y={340} width={580} height={360} rx={18} fill={p.background} stroke={p.accent} strokeWidth={3} opacity={pop(2, .4)} />
-        <Label t={t} x={1390} y={400} size={40} mono color={p.accent} opacity={pop(2, .4)}>Order</Label>
-        <Label t={t} x={1150} y={480} anchor="start" size={34} weight={400} opacity={pop(2, .8)}>dữ liệu: email, số lượng, giá</Label>
-        <Label t={t} x={1150} y={560} anchor="start" size={34} weight={400} opacity={pop(2, 1.4)}>hành vi: tự kiểm tra, tự tính</Label>
-        <Label t={t} x={1390} y={660} size={34} weight={400} color={p.accent2} opacity={pop(2, 2)}>ở chung một đối tượng</Label>
-      </Panel>
+    {/* A · 0–3: Transaction Script — steps in a row, the data is a bare array */}
+    <g opacity={span(0, 3)}>
+      <Title o={pop(0)}>Viết phần nghiệp vụ thế nào?</Title>
+      <Label t={t} x={960} y={250} size={44} color={INFRA} opacity={pop(2)}>Transaction Script</Label>
+      {steps.map((x, k) => <g key={k}>
+        <Card x={300 + k * 440} y={380} w={360} h={130} o={pop(1, k * .7)} tone={INFRA} label={x} size={40} />
+        {k < 3 ? <DiagramWire t={t} f={f} pts={[[484 + k * 440, 380], [516 + k * 440, 380]]} at={at(1, .3 + k * .7)} dur={8} /> : null}</g>)}
+      <Card x={960} y={640} w={640} h={200} o={pop(3)} tone={BAD} />
+      <Label t={t} x={960} y={620} size={38} mono color={p.ink} opacity={pop(3)}>email: "abc@"</Label>
+      <Label t={t} x={960} y={680} size={38} mono color={BAD} opacity={pop(3, .3)}>số lượng: 0</Label>
+      <Say o={only(3)} text="chỉ là một cái mảng, chẳng ai giữ luật" tone="bad" />
     </g>
-    {/* B · 3–9: entity Order — every rule checked in the constructor, total computed inside */}
-    <g opacity={span(3, 9)}>
-      <Title o={pop(3)}>Entity Order</Title>
-      <CodeCard t={t} f={f} x={100} y={220} w={1020} title="Order.php" at={at(3, .3)} cps={3} size={32}
-        lines={['public function __construct(', '  int $ebookId, string $email,', '  int $quantity, int $pricePerUnit', ') {', '  if ($ebookId <= 0) throw ...', '  if (!valid($email)) throw ...',
-          '  if ($quantity <= 0) throw ...', '  if ($pricePerUnit < 0) throw ...', '  $this->total = $quantity * $pricePerUnit;', '}']} highlight={f > at(9) ? [8] : ruleLines} />
-      {rules.map((x, k) => <Row key={k} f={f} x={1220} y={330 + k * 100} text={x} at={at(5 + k)} size={42} />)}
-      <Chip t={t} f={f} x={1500} y={780} text="tổng tiền do Order tính" at={at(9, .3)} size={40} tone="accent" />
+    {/* B · 4–8: the Order checks itself when it is made; a wrong order is refused */}
+    <g opacity={span(4, 8)}>
+      <Title o={pop(4)}>Đơn hàng tự giữ luật</Title>
+      <Card x={1240} y={500} w={760} h={560} o={pop(4, .3)} tone={RULE} />
+      <Label t={t} x={1240} y={290} size={50} color={RULE} opacity={pop(5)}>Order</Label>
+      <Label t={t} x={1240} y={335} size={34} weight={400} color={p.muted} opacity={pop(5, .4)}>entity</Label>
+      {rules.map((x, k) => <Row key={k} f={f} x={920} y={420 + k * 70} text={x} at={at(6, .4 + k * .9)} size={38} />)}
+      <Label t={t} x={1240} y={720} size={40} color={RULE} opacity={pop(8)}>tổng tiền: tự tính</Label>
+      <g opacity={only(7)}>
+        <rect x={slipX - 140} y={440} width={280} height={120} rx={16} fill={p.surface} stroke={BAD} strokeWidth={4} />
+        <Label t={t} x={slipX} y={512} size={34} color={BAD}>số lượng: 0</Label>
+        <Mark t={t} f={f} x={760} y={370} ok={false} at={at(7, .6)} size={60} />
+      </g>
+      <Say o={only(7)} text="sai một điều, nó từ chối ra đời" tone="bad" />
     </g>
-    {/* C · 10–12: one door — every source goes through the constructor; a bad order bounces */}
-    <g opacity={span(10, 12)}>
-      <Title o={pop(10)}>Không có đường tắt để tạo Order sai</Title>
+    {/* C · 9–11: one door for every caller */}
+    <g opacity={span(9, 11)}>
+      <Title o={pop(9)}>Chỉ có một cửa</Title>
       {sources.map((x, k) => <g key={k}>
-        <Box f={f} x={330 + k * 420} y={300} w={340} h={110} at={at(11, k * .3)} label={x} size={38} />
-        <DiagramWire t={t} f={f} pts={[[330 + k * 420, 355], [960, 520]]} at={at(11, .4 + k * .3)} /></g>)}
-      <Box f={f} x={960} y={580} w={460} h={130} at={at(10, .2)} label="constructor" state="key" size={42} mono />
-      <DiagramWire t={t} f={f} pts={[[960, 645], [960, 760]]} at={at(10, .5)} />
-      <Chip t={t} f={f} x={960} y={810} text="Order hợp lệ" at={at(10, .8)} size={40} tone="accent2" />
-      {f > at(10, .6) ? <g opacity={Math.min(1, bad * 6, (1 - bad) * 6)}>
-        <circle cx={1500} cy={520 + 60 * Math.sin(bad * Math.PI)} r={14} fill={BAD} />
-        <Label t={t} x={1500} y={480 + 60 * Math.sin(bad * Math.PI)} size={34} mono color={BAD}>quantity = 0</Label></g> : null}
-      <Label t={t} x={1500} y={700} size={36} weight={400} color={p.muted} opacity={pop(12)}>luật chỉ nằm một chỗ</Label>
+        <Card x={300} y={300 + k * 180} w={300} h={120} o={pop(10, k * .5)} tone={INFRA} label={x} size={40} />
+        <DiagramWire t={t} f={f} pts={[[454, 300 + k * 180], [806, 420 + k * 60]]} at={at(10, .3 + k * .5)} />
+        <DiagramPacket t={t} f={f} pts={[[454, 300 + k * 180], [806, 420 + k * 60]]} at={at(10, .8 + k * .5)} period={50} /></g>)}
+      <Card x={960} y={480} w={300} h={220} o={pop(9, .3)} tone={RULE} label="Order" sub="kiểm tra" size={46} />
+      <DiagramWire t={t} f={f} pts={[[1114, 480], [1346, 480]]} at={at(9, .8)} />
+      <Card x={1550} y={480} w={380} h={140} o={pop(9, 1)} tone={RULE} label="đơn hợp lệ" />
+      <Say o={only(9)} text="không còn cách nào tạo ra một đơn sai" />
+      <Say o={only(11)} text="luật nằm một chỗ" />
     </g>
-    {/* D · 13–18: entity vs value object */}
-    <g opacity={span(13, 18)}>
-      <Title o={pop(13)}>Entity và value object</Title>
-      <Panel x={120} y={220} w={820} h={600} title="Entity · có danh tính" o={pop(13, .3)}>
-        {[0, 1].map((k) => <Box key={k} f={f} x={330 + k * 400} y={430} w={320} h={170} at={at(14, .5 + k * .4)} label={`Order #${101 + k}`} sub="2 × e-book A" size={38} mono />)}
-        <Label t={t} x={530} y={445} size={64} color={BAD} opacity={pop(14, 1.4)}>≠</Label>
-        <Label t={t} x={530} y={640} size={36} weight={400} opacity={pop(14, 1.8)}>khác id thì khác nhau</Label>
-        <Label t={t} x={530} y={700} size={34} weight={400} color={p.muted} opacity={pop(14, 1.8)}>dù nội dung giống hệt</Label>
-      </Panel>
-      <Panel x={980} y={220} w={820} h={600} tone={p.accent} title="Value object · so bằng giá trị" titleColor={p.accent} o={pop(13, .8)}>
-        <Label t={t} x={1390} y={400} size={34} mono opacity={pop(15, .3)}>Email("an@shop.vn") ==</Label>
-        <Label t={t} x={1390} y={450} size={34} mono opacity={pop(15, .3)}>Email("an@shop.vn")</Label>
-        <Row f={f} x={1050} y={560} text="định dạng kiểm tra lúc tạo" at={at(16)} size={36} />
-        <Label t={t} x={1390} y={660} size={34} mono opacity={pop(17)}>Money(120000, "VND")</Label>
-        <Row f={f} x={1050} y={740} text="đi kèm đơn vị tiền tệ" at={at(17, .4)} size={36} />
-      </Panel>
-      <Chip t={t} f={f} x={960} y={870} text="đặt luật vào nơi sinh ra giá trị" at={at(18)} size={34} tone="accent" />
-    </g>
-    {/* E · 19–20: saving is someone else's job */}
-    <g opacity={span(19, 20)}>
-      <Title o={pop(19)}>Nhưng Order vẫn cần được lưu</Title>
-      <Box f={f} x={420} y={520} w={420} h={190} at={at(19)} label="Order" sub="PHP thuần" state="key" size={46} mono />
-      <DiagramNode t={t} f={f} x={1500} y={520} w={340} h={220} kind="db" label="Database" at={at(19, .4)} />
-      <DiagramWire t={t} f={f} pts={[[630, 420], [1330, 420]]} at={at(20)} color={BAD} />
-      <Mark t={t} f={f} x={980} y={420} ok={false} at={at(20, .6)} size={80} />
-      <Label t={t} x={980} y={360} size={34} weight={400} color={BAD} opacity={pop(20, .6)}>entity không tự gọi database</Label>
-      <Box f={f} x={980} y={680} w={420} h={130} at={at(20, 1.6)} label="Repository ?" state="hot" size={42} />
-      <DiagramWire t={t} f={f} pts={[[630, 600], [770, 680]]} at={at(20, 2)} />
-      <DiagramWire t={t} f={f} pts={[[1190, 680], [1330, 600]]} at={at(20, 2.4)} />
+    {/* D · 12–17: entity vs value object */}
+    <g opacity={span(12, 17)}>
+      <Title o={pop(12)}>Hai loại đối tượng</Title>
+      <Card x={525} y={505} w={810} h={550} o={pop(13)} tone={INFRA} />
+      <Label t={t} x={525} y={295} size={40} color={INFRA} opacity={pop(13)}>Entity · có danh tính</Label>
+      {[0, 1].map((k) => <Card key={k} x={330 + k * 390} y={450} w={320} h={180} o={pop(13, .4 + k * .4)} tone={p.ink} label={`Đơn #${41 + k}`} sub="2 × e-book A" />)}
+      <Label t={t} x={525} y={472} size={64} color={BAD} opacity={pop(13, 1.2)}>≠</Label>
+      <Label t={t} x={525} y={650} size={38} opacity={pop(13, 1.6)}>khác mã → hai đơn</Label>
+      <Card x={1395} y={505} w={810} h={550} o={pop(14)} tone={RULE} />
+      <Label t={t} x={1395} y={295} size={40} color={RULE} opacity={pop(14)}>Value object · là giá trị</Label>
+      <Label t={t} x={1395} y={410} size={36} mono opacity={pop(14, .4)}>an@shop.vn = an@shop.vn</Label>
+      <Label t={t} x={1395} y={470} size={38} opacity={pop(14, .8)}>giống nhau → là một</Label>
+      <Row f={f} x={1050} y={590} text="email: kiểm tra lúc tạo" at={at(15)} size={38} />
+      <Row f={f} x={1050} y={680} text="tiền kèm đơn vị: 120.000 VND" at={at(16)} size={38} />
+      <Say o={only(17)} text="đặt luật ở đúng nơi giá trị sinh ra" />
     </g>
   </Stage>;
 };
 
-// ---- 04 · Repository ----------------------------------------------------------------------------------------
-export const Repository: FC<{s: Seg}> = ({s}) => {
-  const {f, at, span, pop} = useBeat(s);
-  const impls: [string, string][] = [['SqlOrderRepository', 'query builder / Eloquent'], ['MemoryOrderRepository', 'mảng trong bộ nhớ · test'], ['RemoteOrderRepository', 'gọi API hệ thống khác']];
-  const active = f > at(9) ? Math.floor(loop(f, at(9), 210) * 3) : f > at(8) ? 1 : 0;
-  const steps = ['lấy giá e-book qua repository khác', 'tạo Order, bắt lỗi nếu dữ liệu sai', 'lưu đơn qua repository', 'ghi mã đơn vào session', 'trả về trang tiếp theo'];
+// ---- 04 · a warehouse for orders: Repository --------------------------------------------------------------------------
+export const NhaKho: FC<{s: Seg}> = ({s}) => {
+  const {f, at, span, only, pop} = useBeat(s);
+  const stores = ['kho MySQL', 'kho bộ nhớ', 'kho qua API'];
+  const changes: [number, number][] = [[at(9), 0], [at(10), 1], [at(11), 2], ...cycle(at(12), 3, 75, at(13))];
+  const steps = ['lấy giá', 'tạo Order', 'cất vào kho', 'nhớ mã đơn', 'chuyển trang'];
+  const anyIn = Math.max(...stores.map((_, k) => plugged(f, changes, k)));
   return <Stage>
-    {/* A · 0–2: the interface speaks business, not tables */}
-    <g opacity={span(0, 2)}>
-      <Title o={pop(0)}>Repository: một interface phía nghiệp vụ</Title>
-      <CodeCard t={t} f={f} x={360} y={230} w={1200} title="OrderRepository.php" at={at(0, .6)} cps={3} size={38}
-        lines={['interface OrderRepository', '{', '  public function save(Order $order): int;', '  public function getById(int $id): Order;', '}']} highlight={f > at(2) ? [2, 3] : []} />
-      {['bảng nào?', 'cột nào?', 'SQL ra sao?'].map((x, k) => <g key={k} opacity={pop(1, k * .6)}>
-        <Label t={t} x={560 + k * 400} y={700} size={40} color={p.muted}>{x}</Label>
-        <path d={`M${470 + k * 400} 690 H${650 + k * 400}`} stroke={BAD} strokeWidth={5} opacity={pop(1, .4 + k * .6)} /></g>)}
-      <Chip t={t} f={f} x={960} y={810} text="lưu → nhận mã đơn · đưa mã → nhận Order" at={at(2, .8)} size={38} tone="accent" />
+    {/* A · 0–12: the order talks to a warehouse contract; real warehouses plug in behind it */}
+    <g opacity={span(0, 12)}>
+      <Card x={330} y={480} w={380} h={200} o={pop(0, .3)} tone={RULE} label="Order" sub="đã giữ luật" size={46} />
+      <g opacity={only(1)}>
+        <Card x={1600} y={480} w={340} h={180} tone={INFRA} label="database" />
+        <DiagramWire t={t} f={f} pts={[[524, 480], [1426, 480]]} at={at(1, .3)} color={BAD} />
+        <Mark t={t} f={f} x={975} y={480} ok={false} at={at(1, 1)} size={90} />
+      </g>
+      <Socket x={960} y={480} o={pop(2)} label="Repository" sub="nhà kho" subO={pop(3)} size={40} />
+      <DiagramWire t={t} f={f} pts={[[524, 480], [806, 480]]} at={at(2, .3)} />
+      <Chip t={t} f={f} x={665} y={330} text="cất đơn này" at={at(4, .2)} size={36} tone="accent" />
+      <Chip t={t} f={f} x={665} y={630} text="đưa tôi đơn số 42" at={at(4, 1.6)} size={36} tone="accent" />
+      {stores.map((x, k) => {const v = plugged(f, changes, k);return <Card key={k} x={lerp(1700, 1340, v)} y={lerp(250 + k * 230, 480, v)} w={300} h={130}
+        o={pop(8, .2 + k * .4)} tone={INFRA} label={x} size={38} />;})}
+      <path d="M1112 480 H1188" stroke={p.ink} strokeWidth={6} strokeLinecap="round" opacity={anyIn} />
+      <DiagramPacket t={t} f={f} pts={[[524, 480], [806, 480]]} at={at(9, .5)} period={60} r={11} />
+      <Say o={only(5)} text="không nói bảng nào, cột nào, câu SQL nào" tone="muted" />
+      <Say o={only(6)} text="interface = một bản hợp đồng" />
+      <Say o={only(7)} text="viết dòng mình muốn gọi trước" tone="accent2" />
+      <Say o={only(12)} text="phía nghiệp vụ không cần biết đang dùng kho nào" />
     </g>
-    {/* B · 3–6: write the call you wish you had, then the interface */}
-    <g opacity={span(3, 6)}>
-      <Title o={pop(3)}>Viết dòng mình muốn gọi trước</Title>
-      <CodeCard t={t} f={f} x={240} y={230} w={1440} title="OrderController.php" at={at(3, .4)} cps={2} size={40} lines={['$this->orders->save($order);']} highlight={[0]} />
-      <DiagramWire t={t} f={f} pts={[[960, 400], [960, 520]]} at={at(5)} />
-      <CodeCard t={t} f={f} x={420} y={540} w={1080} title="OrderRepository.php" at={at(5, .5)} cps={2.4} size={36} lines={['interface OrderRepository {', '  save(Order $order): int;', '}']} highlight={[1]} />
-      <Chip t={t} f={f} x={960} y={850} text="phần cài đặt để sau" at={at(6)} size={38} tone="accent2" />
-    </g>
-    {/* C · 7–10: one interface, several implementations; the controller never knows which */}
-    <g opacity={span(7, 10)}>
-      <Box f={f} x={960} y={200} w={420} h={120} at={at(7) - 10} label="Controller" size={40} />
-      <DiagramWire t={t} f={f} pts={[[960, 260], [960, 360]]} at={at(7)} />
-      <Box f={f} x={960} y={420} w={620} h={120} at={at(7) - 6} label="OrderRepository" state="key" size={40} mono />
-      {impls.map(([name, sub], k) => {const x = 340 + k * 620, on = active === k, a = at(7 + k, .2);return <g key={k}>
-        <DiagramWire t={t} f={f} pts={[[960, 480], [x, 640]]} at={a} dashed={!on} opacity={on ? 1 : .5} />
-        <Box f={f} x={x} y={720} w={560} h={170} at={a} label={name} sub={sub} state={on ? 'key' : 'ok'} size={34} mono /></g>;})}
-      <DiagramPacket t={t} f={f} pts={[[960, 260], [960, 480], [340 + active * 620, 640]]} at={at(7, .6)} period={50} r={11} />
-      <Chip t={t} f={f} x={1560} y={250} text="controller không biết bản nào" at={at(10)} size={34} tone="accent2" />
-    </g>
-    {/* D · 11–16: the controller after the split — every step ticks */}
-    <g opacity={span(11, 16)}>
-      <Title o={pop(11)}>Controller sau khi tách</Title>
-      {steps.map((x, k) => <Row key={k} f={f} x={360} y={300 + k * 110} text={x} at={at(12 + k)} pre={at(11, .4 + k * .2)} size={44} />)}
-    </g>
-    {/* E · 17–20: MySQL lives in one class, the business object is plain PHP; each tested alone */}
-    <g opacity={span(17, 20)}>
-      <Panel x={140} y={210} w={780} h={520} title="SqlOrderRepository" o={pop(17)}>
-        <DiagramNode t={t} f={f} x={530} y={470} w={300} h={190} kind="db" label="MySQL" at={at(17, .4)} />
-        <Label t={t} x={530} y={660} size={36} weight={400} opacity={pop(17, .8)}>mọi câu SQL ở đây</Label>
-      </Panel>
-      <Panel x={1000} y={210} w={780} h={520} tone={p.accent} title="Order" titleColor={p.accent} o={pop(18)}>
-        {['PHP thuần', 'không kế thừa framework', 'không gọi database'].map((x, k) => <Row key={k} f={f} x={1060} y={390 + k * 90} text={x} at={at(18, .3 + k * .9)} size={40} />)}
-      </Panel>
-      {[530, 1390].map((x, k) => <Chip key={k} t={t} f={f} x={x} y={800} text={k ? 'unit test' : 'integration test'} at={at(19, k * .6)} size={38} tone="accent2" />)}
-      <Label t={t} x={960} y={880} size={34} weight={400} color={p.muted} opacity={pop(20)}>lần tách đầu tiên, các chương sau xây tiếp</Label>
+    {/* B · 13–17: the original function after the split */}
+    <g opacity={span(13, 17)}>
+      <Title o={pop(13)}>Hàm đặt hàng sau khi tách</Title>
+      {steps.map((x, k) => <g key={k}>
+        <Card x={240 + k * 360} y={330} w={320} h={120} o={pop(13, .3 + k * .4)} tone={k === 1 ? RULE : INFRA} label={x} size={36} />
+        {k < 4 ? <DiagramWire t={t} f={f} pts={[[402 + k * 360, 330], [438 + k * 360, 330]]} at={at(13, .5 + k * .4)} dur={8} /> : null}</g>)}
+      <Card x={560} y={600} w={560} h={180} o={pop(14)} tone={INFRA} label="MySQL" sub="mọi câu SQL ở đây" />
+      <Card x={1360} y={600} w={560} h={180} o={pop(15)} tone={RULE} label="Order" sub="code thuần" />
+      <Chip t={t} f={f} x={560} y={760} text="test riêng" at={at(16)} size={36} tone="accent2" />
+      <Chip t={t} f={f} x={1360} y={760} text="test riêng" at={at(16, .4)} size={36} tone="accent2" />
     </g>
   </Stage>;
 };
 
-// ---- 05 · reading and writing need not share one model ----------------------------------------------------------
-export const DocVaGhi: FC<{s: Seg}> = ({s}) => {
-  const {f, at, span, pop} = useBeat(s);
-  const json = ['{ "orderId": 1042,', '  "orderDate": "2026-11-12",', '  "customerName": "An",', '  "totalAmount": 240000 }'];
+// ---- 05 · reading is not writing ---------------------------------------------------------------------------------
+export const DocGhi: FC<{s: Seg}> = ({s}) => {
+  const {f, at, span, only, pop} = useBeat(s);
+  const buttons = ['đổi giá', 'ẩn sản phẩm', 'đổi trạng thái'];
   return <Stage>
-    {/* A · 0–4: handing the write entity to the view */}
+    {/* A · 0–4: the page only shows, yet gets the whole writable e-book */}
     <g opacity={span(0, 4)}>
-      <Title o={pop(0)}>Phần đọc hay bị bỏ qua</Title>
-      <Panel x={160} y={230} w={760} h={560} tone={p.accent} title="Ebook (entity ghi)" titleColor={p.accent} o={pop(0, .5)}>
-        {['title, price', 'changePrice()', 'hide()', 'changeStatus()'].map((x, k) => <Label key={k} t={t} x={220} y={380 + k * 80} anchor="start" size={38} mono
-          color={k ? BAD : p.ink} opacity={pop(k ? 2 : 1, k ? (k - 1) * .6 : .4)}>{x}</Label>)}
-        <Label t={t} x={540} y={740} size={34} weight={400} color={p.muted} opacity={pop(4)}>class phình to vì làm cả hai việc</Label>
-      </Panel>
-      <DiagramWire t={t} f={f} pts={[[920, 510], [1190, 510]]} at={at(1, 1)} />
-      <DiagramPacket t={t} f={f} pts={[[920, 510], [1190, 510]]} at={at(1, 1.4)} period={40} />
-      <Box f={f} x={1460} y={510} w={500} h={190} at={at(1, 1.2)} label="View" sub="chỉ cần hiển thị" size={44} />
-      <Chip t={t} f={f} x={1460} y={720} text="cầm cả quyền sửa dữ liệu" at={at(3, .4)} size={36} tone="bad" />
+      <Title o={pop(0)}>Khi chỉ cần đọc</Title>
+      <Card x={500} y={500} w={640} h={520} o={pop(2)} tone={f > at(4) ? BAD : RULE} />
+      <Label t={t} x={500} y={310} size={42} opacity={pop(2)}>e-book đầy đủ</Label>
+      <Label t={t} x={500} y={385} size={38} weight={400} opacity={pop(2, .3)}>mã · tên · giá</Label>
+      {buttons.map((x, k) => <Chip key={k} t={t} f={f} x={500} y={470 + k * 85} text={x} at={at(2, .8 + k * .6)} size={36} tone="bad" />)}
+      <DiagramWire t={t} f={f} pts={[[824, 500], [1136, 500]]} at={at(2, 2)} />
+      <Card x={1450} y={500} w={600} h={420} o={pop(1)} tone={INFRA} />
+      <Label t={t} x={1450} y={350} size={42} color={INFRA} opacity={pop(1)}>trang e-book</Label>
+      <Label t={t} x={1450} y={460} size={38} weight={400} opacity={pop(1, .4)}>cần: mã · tên · giá</Label>
+      <Say o={only(3)} text="chỉ cần nhìn, lại cầm cả quyền sửa" tone="bad" />
+      <Say o={only(4)} text="class phình dần vì phục vụ cả hai việc" tone="bad" />
     </g>
-    {/* B · 5–7: a read model, or just one function */}
-    <g opacity={span(5, 7)}>
-      <Title o={pop(5)}>Tách read model</Title>
-      <CodeCard t={t} f={f} x={140} y={240} w={800} title="EbookReadModel" at={at(5, .3)} cps={2.4} size={36} lines={['id', 'title', 'price']} />
-      <Box f={f} x={540} y={680} w={720} h={130} at={at(6, 2)} label="EbookReadRepository" sub="chỉ để đọc" size={38} mono />
-      <CodeCard t={t} f={f} x={1000} y={240} w={800} title="nhẹ hơn" at={at(7)} cps={2.4} size={36} lines={['interface GetPrice {', '  ofEbook($id): int;', '}']} highlight={[1]} />
+    {/* B · 5–6: a read-only model from a read-only store */}
+    <g opacity={span(5, 6)}>
+      <Title o={pop(5)}>Tách phần đọc ra riêng</Title>
+      <Card x={330} y={500} w={400} h={180} o={pop(5, .3)} tone={INFRA} label="kho chỉ để đọc" size={40} />
+      <DiagramWire t={t} f={f} pts={[[534, 500], [686, 500]]} at={at(5, .8)} />
+      <Card x={900} y={500} w={420} h={280} o={pop(5, 1)} tone={RULE} />
+      <Label t={t} x={900} y={430} size={40} color={RULE} opacity={pop(5, 1)}>chỉ để đọc</Label>
+      <Label t={t} x={900} y={505} size={38} weight={400} opacity={pop(5, 1.3)}>mã · tên · giá</Label>
+      <Label t={t} x={900} y={585} size={44} color={RULE} opacity={pop(6)}>120.000 ₫</Label>
+      <DiagramWire t={t} f={f} pts={[[1114, 500], [1266, 500]]} at={at(5, 1.6)} />
+      <Card x={1520} y={500} w={480} h={300} o={pop(5, 1.8)} tone={INFRA} />
+      <Label t={t} x={1520} y={440} size={40} color={INFRA} opacity={pop(5, 1.8)}>trang e-book</Label>
+      <Label t={t} x={1520} y={540} size={44} opacity={pop(6, .4)}>120.000 ₫</Label>
     </g>
-    {/* C · 8–10: CQRS exists; the book picks the simple way */}
-    <g opacity={span(8, 10)}>
-      <Title o={pop(8)}>CQRS hay cách đơn giản</Title>
-      <g opacity={1 - .6 * grow(f, at(10) - 6, at(10) + 6)}>
-        <Box f={f} x={360} y={360} w={420} h={150} at={at(8, .3)} label="kho ghi" size={42} />
-        <Box f={f} x={1560} y={360} w={420} h={150} at={at(8, .6)} label="kho đọc" size={42} />
-        <DiagramWire t={t} f={f} pts={[[570, 360], [1350, 360]]} at={at(8, 1.2)} />
-        <DiagramPacket t={t} f={f} pts={[[570, 360], [1350, 360]]} at={at(8, 1.6)} period={60} label="domain event" />
-        <Chip t={t} f={f} x={960} y={480} text="phải giữ nhất quán giữa hai kho" at={at(9, .4)} size={34} tone="bad" />
+    {/* C · 7–10: CQRS exists; the book takes the light way */}
+    <g opacity={span(7, 10)}>
+      <Title o={pop(7)}>CQRS, hay cách nhẹ hơn</Title>
+      <g opacity={1 - .7 * grow(f, at(9), at(9) + 12)}>
+        <Card x={520} y={330} w={360} h={130} o={pop(7, .3)} tone={INFRA} label="kho ghi" />
+        <Card x={1400} y={330} w={360} h={130} o={pop(7, .6)} tone={INFRA} label="kho đọc" />
+        <DiagramWire t={t} f={f} pts={[[704, 330], [1216, 330]]} at={at(7, 1)} />
+        <DiagramPacket t={t} f={f} pts={[[704, 330], [1216, 330]]} at={at(7, 1.4)} period={60} />
       </g>
-      <g opacity={pop(10)}>
-        <DiagramNode t={t} f={f} x={960} y={720} w={360} h={190} kind="db" label="một database" at={at(10)} state="key" />
-        <Box f={f} x={420} y={720} w={480} h={130} at={at(10, .6)} label="repository ghi" size={38} />
-        <Box f={f} x={1500} y={720} w={480} h={130} at={at(10, .9)} label="repository đọc" size={38} />
-        <DiagramWire t={t} f={f} pts={[[660, 720], [780, 720]]} at={at(10, .8)} />
-        <DiagramWire t={t} f={f} pts={[[1260, 720], [1140, 720]]} at={at(10, 1.1)} />
-        <Chip t={t} f={f} x={1500} y={850} text="+ integration test" at={at(10, 2.4)} size={34} tone="accent2" />
+      <Chip t={t} f={f} x={960} y={445} text="giữ hai kho khớp nhau là cả một việc" at={at(8, .3)} size={34} tone="bad" />
+      <g opacity={pop(9)}>
+        <Card x={960} y={650} w={360} h={160} tone={RULE} label="một database" />
+        <Card x={440} y={650} w={380} h={120} tone={INFRA} label="đường ghi" size={40} />
+        <Card x={1480} y={650} w={380} h={120} tone={INFRA} label="đường đọc" size={40} />
+        <DiagramWire t={t} f={f} pts={[[634, 650], [776, 650]]} at={at(9, .4)} />
+        <DiagramWire t={t} f={f} pts={[[1286, 650], [1144, 650]]} at={at(9, .7)} />
       </g>
-    </g>
-    {/* D · 11–15: view models shaped for the screen and the API */}
-    <g opacity={span(11, 15)}>
-      <Title o={pop(11)}>View model: đúng thứ màn hình cần</Title>
-      <Panel x={120} y={230} w={760} h={560} tone={p.accent} title="trang e-book" titleColor={p.accent} o={pop(11, .3)}>
-        <Label t={t} x={500} y={420} size={38} mono opacity={pop(13, .4)}>price: 120000</Label>
-        <DiagramWire t={t} f={f} pts={[[500, 450], [500, 540]]} at={at(13, .8)} />
-        <Label t={t} x={500} y={610} size={52} color={p.accent} opacity={pop(13, 1.2)}>120.000 ₫</Label>
-        <Label t={t} x={500} y={700} size={34} weight={400} color={p.muted} opacity={pop(13, 1.2)}>formattedPrice, định dạng sẵn</Label>
-      </Panel>
-      <Panel x={920} y={230} w={880} h={560} title="API danh sách đơn" o={pop(11, .8)}>
-        <CodeCard t={t} f={f} x={960} y={300} w={800} at={at(14, .6)} cps={3} size={32} lines={json} />
-        <Label t={t} x={1360} y={640} size={34} mono opacity={pop(14, 3)}>OrderListViewRepository</Label>
-        <Label t={t} x={1360} y={690} size={34} mono color={p.muted} opacity={pop(14, 3.4)}>findRecentOrders($limit)</Label>
-      </Panel>
-      <Chip t={t} f={f} x={960} y={860} text="không lộ cấu trúc bên trong của domain" at={at(15)} size={36} tone="accent2" />
-    </g>
-    {/* E · 16–17: the rule */}
-    <g opacity={span(16, 17)}>
-      <Panel x={260} y={300} w={1400} h={380} tone={p.accent} o={pop(16)}>
-        <Label t={t} x={960} y={430} size={48}>Đừng dùng đối tượng thay đổi được,</Label>
-        <Label t={t} x={960} y={500} size={48}>có logic phức tạp, cho việc chỉ đọc</Label>
-        <Label t={t} x={960} y={610} size={44} color={p.accent} opacity={pop(17)}>đọc thì trả đúng thứ cần đọc</Label>
-      </Panel>
+      <Say o={only(10)} text="đọc thì trả đúng thứ cần đọc" />
     </g>
   </Stage>;
 };
 
-// ---- 06 · Application Service and Command -------------------------------------------------------------------
-export const ApplicationService: FC<{s: Seg}> = ({s}) => {
-  const {f, at, span, pop} = useBeat(s);
-  const blocks = ['xử lý HTTP', 'kiểm tra input', 'tính tiền', 'trừ tồn kho', 'lưu DB', 'gửi mail'];
-  const grown = Math.min(blocks.length, Math.floor(grow(f, at(0, .4), at(1, 4)) * blocks.length + .5));
-  const entries = ['web', 'CLI', 'job', 'test'];
-  const steps = ['lấy sản phẩm', 'kiểm tồn kho', 'tính tiền', 'mã đơn mới', 'tạo Order', 'lưu'];
-  const stepAt = (k: number) => at(8 + k);
+// ---- 06 · one job, one service ------------------------------------------------------------------------------------
+export const MoiViec: FC<{s: Seg}> = ({s}) => {
+  const {f, at, span, only, pop} = useBeat(s);
+  const blocks = ['nhận request', 'kiểm tra', 'tính tiền', 'trừ kho', 'lưu', 'gửi mail'];
+  const grown = Math.min(blocks.length, Math.floor(grow(f, at(0, .4), at(1, 3)) * blocks.length + .5));
+  const callers = ['trang web', 'API', 'lệnh chạy nền', 'bài test'];
+  const steps = ['lấy sản phẩm', 'kiểm tra còn hàng', 'tính tiền', 'tạo đơn', 'cất vào kho'];
+  const [store0, store1] = swap(f, at(10)), [mail0, mail1] = swap(f, at(10, .5));
   return <Stage>
-    {/* A · 0–1: the controller keeps swallowing use cases */}
+    {/* A · 0–1: the controller keeps swallowing jobs */}
     <g opacity={span(0, 1)}>
       <Title o={pop(0)}>Controller phình to</Title>
-      <rect x={560} y={230} width={800} height={110 + grown * 92} rx={22} fill={p.surface} stroke={grown > 4 ? BAD : p.accent2} strokeWidth={3} />
-      <Label t={t} x={960} y={300} size={40} mono>OrderController</Label>
-      {blocks.slice(0, grown).map((x, k) => <g key={k}><rect x={610} y={330 + k * 92} width={700} height={76} rx={12} fill={p.background} stroke={p.muted} strokeWidth={2} />
-        <Label t={t} x={960} y={380 + k * 92} size={36} weight={400}>{x}</Label></g>)}
+      <rect x={610} y={220} width={700} height={110 + grown * 76} rx={22} fill={p.surface} stroke={grown > 4 ? BAD : INFRA} strokeWidth={4} opacity={pop(0, .2)} />
+      <Label t={t} x={960} y={290} size={42} opacity={pop(0, .2)}>Controller</Label>
+      {blocks.slice(0, grown).map((x, k) => <g key={k}><rect x={660} y={318 + k * 76} width={600} height={62} rx={12} fill={p.background} stroke={p.muted} strokeWidth={2} />
+        <Label t={t} x={960} y={362 + k * 76} size={36} weight={400}>{x}</Label></g>)}
     </g>
-    {/* B · 2–3: one Application Service per use case, called from anywhere */}
+    {/* B · 2–3: one Application Service per job, callable from anywhere */}
     <g opacity={span(2, 3)}>
-      <Title o={pop(2)}>Application Service</Title>
-      <Box f={f} x={1300} y={520} w={560} h={190} at={at(2, .3)} label="PlaceOrderService" sub="một use case" state="key" size={40} mono />
-      {entries.map((x, k) => <g key={k}>
-        <Box f={f} x={420} y={280 + k * 160} w={320} h={120} at={at(3, k * .9)} label={x} size={42} />
-        <DiagramWire t={t} f={f} pts={[[580, 280 + k * 160], [1020, 520]]} at={at(3, .3 + k * .9)} />
-        <DiagramPacket t={t} f={f} pts={[[580, 280 + k * 160], [1020, 520]]} at={at(3, .6 + k * .9)} period={46} /></g>)}
+      <Title o={pop(2)}>Mỗi việc một service</Title>
+      <Card x={1320} y={480} w={600} h={220} o={pop(2, .3)} tone={RULE} label="Đặt hàng" sub="Application Service" size={48} />
+      {callers.map((x, k) => <g key={k}>
+        <Card x={400} y={270 + k * 140} w={340} h={110} o={pop(3, k * .5)} tone={INFRA} label={x} size={38} />
+        <DiagramWire t={t} f={f} pts={[[574, 270 + k * 140], [1014, 440 + k * 27]]} at={at(3, .3 + k * .5)} /></g>)}
     </g>
-    {/* C · 4–6: input packed into a Command; one handle method returns an id */}
-    <g opacity={span(4, 6)}>
-      <Title o={pop(4)}>Đầu vào gói thành Command</Title>
-      <CodeCard t={t} f={f} x={120} y={240} w={760} title="PlaceOrderCommand" at={at(4, .3)} cps={2.4} size={36} lines={['customerId', 'items', 'email']} />
-      <DiagramWire t={t} f={f} pts={[[880, 420], [1020, 420]]} at={at(6)} />
-      <Box f={f} x={1360} y={420} w={660} h={170} at={at(6, .2)} label="handle($command)" sub="PlaceOrderService" state="key" size={40} mono />
-      <DiagramWire t={t} f={f} pts={[[1360, 505], [1360, 640]]} at={at(6, 1.2)} />
-      <Chip t={t} f={f} x={1360} y={700} text="OrderId" at={at(6, 1.6)} size={42} mono tone="accent" />
-      <DiagramPacket t={t} f={f} pts={[[880, 420], [1030, 420]]} at={at(6, .6)} period={36} />
-    </g>
-    {/* D · 7–13: inside the service, step by step */}
-    <g opacity={span(7, 13)}>
-      <Title o={pop(7)}>Bên trong service</Title>
-      {steps.map((x, k) => {const xx = 210 + k * 300, on = f > stepAt(k);return <g key={k}>
-        <Box f={f} x={xx} y={480} w={270} h={170} at={at(7, .3 + k * .15)} label={x} state={on ? (k === 1 && f < stepAt(1) + 45 ? 'hot' : 'key') : 'dim'} size={34} />
-        {k < 5 ? <DiagramWire t={t} f={f} pts={[[xx + 135, 480], [xx + 165, 480]]} at={at(7, .4 + k * .15)} dur={8} /> : null}</g>;})}
-      <DiagramPacket t={t} f={f} pts={[[210, 400], [210 + 300 * Math.max(0, steps.filter((_, k) => f > stepAt(k)).length - 1), 400]]} at={at(8)} period={60} r={12} />
-      <Chip t={t} f={f} x={510} y={680} text="hết hàng → OutOfStockException" at={at(9, .6)} size={34} mono tone="bad" />
-    </g>
-    {/* E · 14: a thin controller */}
-    <g opacity={span(14, 14)}>
-      <Title o={pop(14)}>Controller còn hai việc</Title>
-      {['request', 'command', 'service', 'response'].map((x, k) => <g key={k}>
-        <Box f={f} x={300 + k * 440} y={500} w={340} h={150} at={at(14, k * .6)} label={x} state={k === 2 ? 'key' : 'ok'} size={42} />
-        {k < 3 ? <DiagramWire t={t} f={f} pts={[[470 + k * 440, 500], [570 + k * 440, 500]]} at={at(14, .3 + k * .6)} /> : null}</g>)}
-      <DiagramPacket t={t} f={f} pts={[[300, 400], [1620, 400]]} at={at(14, 2)} period={90} r={11} />
-    </g>
-    {/* F · 15–18: dependencies come in through the constructor */}
-    <g opacity={span(15, 18)}>
-      <Title o={pop(15)}>Phụ thuộc đi vào qua constructor</Title>
-      <CodeCard t={t} f={f} x={120} y={230} w={1000} title="PlaceOrderService.php" at={at(15, .3)} cps={2.6} size={34}
-        lines={['public function __construct(', '  OrderRepository $orders,', '  ProductRepository $products,', '  Mailer $mailer', ') {}']} highlight={[1, 2, 3]} />
-      <CodeCard t={t} f={f} x={1180} y={230} w={620} title="service locator" at={at(16, 1.6)} cps={2.6} size={34} lines={["app()->make(...)"]} />
-      <path d="M1220 340 L1760 380" stroke={BAD} strokeWidth={6} opacity={pop(16, 2.4)} />
-      <Chip t={t} f={f} x={1490} y={480} text="không dính container toàn cục" at={at(17)} size={34} tone="accent2" />
-      {['InMemoryOrderRepository', 'FakeMailer'].map((x, k) => <Chip key={k} t={t} f={f} x={420 + k * 560} y={720} text={x} at={at(18, .4 + k * .5)} size={34} mono tone="accent" />)}
-      <Label t={t} x={700} y={820} size={34} weight={400} color={p.muted} opacity={pop(18, 1)}>khi test: truyền thẳng bản giả</Label>
-    </g>
-    {/* G · 19–22: a test that needs nothing outside */}
-    <g opacity={span(19, 22)}>
-      <Title o={pop(19)}>Lợi ích nằm ở test</Title>
-      <Panel x={160} y={230} w={980} h={580} title="PlaceOrderServiceTest" o={pop(19, .3)}>
-        {['repository trong bộ nhớ', 'bản giả của phần gửi mail', 'đặt 2 e-book → đơn được lưu'].map((x, k) => <Row key={k} f={f} x={220} y={380 + k * 110} text={x} at={at(20, .4 + k * 1.2)} size={40} />)}
-        <Label t={t} x={650} y={760} size={40} color={p.accent2} opacity={pop(20, 4)}>PASS</Label>
-      </Panel>
-      {['framework', 'database', 'mạng'].map((x, k) => <g key={k} opacity={pop(21, k * .5)}>
-        <Label t={t} x={1500} y={360 + k * 130} size={42} color={p.muted}>{x}</Label>
-        <path d={`M1360 ${348 + k * 130} H1640`} stroke={BAD} strokeWidth={5} /></g>)}
-      <Chip t={t} f={f} x={1500} y={800} text="dễ test → dám sửa code" at={at(22)} size={36} tone="accent" />
-    </g>
-  </Stage>;
-};
-
-// ---- 07 · three layers and the one-way dependency rule ---------------------------------------------------------
-export const BaTang: FC<{s: Seg}> = ({s}) => {
-  const {f, at, span, pop} = useBeat(s);
-  const tiers = ['Giao diện', 'Nghiệp vụ', 'Truy cập dữ liệu'];
-  const layers: [string, string, string[]][] = [['Domain', p.accent, ['entity, value object', 'domain service, event', 'interface repository']],
-    ['Application', p.accent2, ['use case handler', 'command, query', 'transaction · "lớp keo"']], ['Infrastructure', p.muted, ['framework, ORM', 'adapter dịch vụ ngoài', 'test kiểu integration']]];
-  const flow: [string, number, number][] = [['Request', 260, 330], ['Controller', 610, 330], ['Handler', 960, 330], ['Repository', 1310, 330], ['MySQL', 1660, 330], ['OrderPlaced', 960, 640], ['Listener', 1310, 640], ['Email', 1660, 640]];
-  const step = Math.floor(loop(f, at(21, .4), 240) * 8);
-  return <Stage>
-    {/* A · 0–5: the classic three tiers, a leak, and lasagna */}
-    <g opacity={span(0, 5)}>
-      <Title o={pop(0)}>Cách chia cũ: ba tầng</Title>
-      {tiers.map((x, k) => <g key={k} opacity={pop(0, .4 + k * .4) * (f > at(5) ? 1 - grow(f, at(5), at(5) + 15) * .7 : 1)}>
-        <rect x={460} y={240 + k * 190} width={1000} height={150} rx={18} fill={p.surface} stroke={p.accent2} strokeWidth={3} />
-        <Label t={t} x={960} y={330 + k * 190} size={44}>{x}</Label></g>)}
-      <Chip t={t} f={f} x={1700} y={330} text="biết đặt code ở đâu" at={at(2)} size={34} tone="accent2" />
-      <path d="M520 300 C 300 480 300 640 520 760" fill="none" stroke={BAD} strokeWidth={6} strokeDasharray="14 10" opacity={pop(4)} />
-      <Label t={t} x={250} y={540} size={36} color={BAD} opacity={pop(4, .4)}>rò rỉ</Label>
-      {Array.from({length: 12}, (_, k) => <rect key={k} x={560} y={250 + k * 50} width={800} height={36} rx={6} fill={k % 2 ? p.accent : p.surface} stroke={p.muted}
-        opacity={grow(f, at(5, .4 + k * .12), at(5, .6 + k * .12)) * .9} />)}
-      <Chip t={t} f={f} x={960} y={880} text="quá nhiều tầng: mã lasagna" at={at(5, 2)} size={36} tone="bad" />
-    </g>
-    {/* B · 6–11: Domain, Application, Infrastructure and what each holds */}
-    <g opacity={span(6, 11)}>
-      <Title o={pop(6)}>Ba tầng, nghiệp vụ ở giữa</Title>
-      {layers.map(([name, color, items], k) => {const a = at([7, 9, 10][k]), b = at(6, .4 + k * .3);return <g key={k} opacity={Math.max(grow(f, a, a + 12), .32 * grow(f, b, b + 10))}>
-        <rect x={120 + k * 600} y={230} width={560} height={580} rx={22} fill={p.surface} stroke={color} strokeWidth={4} />
-        <Label t={t} x={400 + k * 600} y={300} size={46} color={color}>{name}</Label>
-        {items.map((x, j) => <Label key={j} t={t} x={400 + k * 600} y={420 + j * 100} size={36} weight={400} opacity={grow(f, a + 10 + j * 12, a + 22 + j * 12)}>{x}</Label>)}</g>;})}
-      <Chip t={t} f={f} x={400} y={760} text="không import framework" at={at(8)} size={32} tone="accent" />
-    </g>
-    {/* C · 12–16: dependency rule — every arrow points inward, Domain points nowhere */}
-    <g opacity={span(12, 16)}>
-      <Title o={pop(12)}>Dependency Rule: chỉ hướng vào trong</Title>
-      <rect x={210} y={220} width={1500} height={640} rx={30} fill="none" stroke={p.muted} strokeWidth={3} opacity={pop(12, .3)} />
-      <Label t={t} x={260} y={280} anchor="start" size={36} color={p.muted} opacity={pop(12, .3)}>Giao diện · Infrastructure</Label>
-      <rect x={510} y={330} width={900} height={440} rx={26} fill={p.surface} stroke={p.accent2} strokeWidth={3} opacity={pop(12, .6)} />
-      <Label t={t} x={560} y={390} anchor="start" size={38} color={p.accent2} opacity={pop(12, .6)}>Application</Label>
-      <rect x={760} y={450} width={400} height={240} rx={22} fill={p.background} stroke={p.accent} strokeWidth={4} opacity={pop(12, .9)} />
-      <Label t={t} x={960} y={565} size={46} color={p.accent} opacity={pop(12, .9)}>Domain</Label>
-      <Label t={t} x={960} y={620} size={32} weight={400} color={p.muted} opacity={pop(12, .9)}>không biết ai bên ngoài</Label>
-      <DiagramWire t={t} f={f} pts={[[360, 420], [500, 420]]} at={at(13)} width={5} />
-      <Label t={t} x={330} y={480} size={34} opacity={pop(13)}>Controller</Label>
-      <DiagramWire t={t} f={f} pts={[[960, 400], [960, 440]]} at={at(14)} width={5} />
-      <DiagramWire t={t} f={f} pts={[[1460, 790], [1460, 740], [1170, 640]]} at={at(15)} width={5} color={p.accent} />
-      <Label t={t} x={1460} y={838} size={34} mono opacity={pop(15)}>EloquentOrderRepository</Label>
-      <Chip t={t} f={f} x={800} y={815} text="Hollywood Principle: đừng gọi chúng tôi" at={at(16, 1.2)} size={34} tone="accent" />
-    </g>
-    {/* D · 17–20: a service provider binds the interface; real vs test */}
-    <g opacity={span(17, 20)}>
-      <Title o={pop(17)}>Nối các tầng bằng service provider</Title>
-      <CodeCard t={t} f={f} x={120} y={240} w={1040} title="OrderServiceProvider.php" at={at(18) - 6} cps={2.8} size={34}
-        lines={['$this->app->bind(', '  OrderRepository::class,', '  EloquentOrderRepository::class', ');']} highlight={[2]} />
-      <Box f={f} x={1500} y={330} w={520} h={150} at={at(19)} label="Eloquent · MySQL" sub="chạy thật" state={f < at(20) ? 'key' : 'dim'} size={38} />
-      <Box f={f} x={1500} y={620} w={520} h={150} at={at(20)} label="InMemory" sub="khi test" state={f > at(20) ? 'key' : 'dim'} size={38} />
-      <DiagramWire t={t} f={f} pts={[[1160, 400], [1240, 330]]} at={at(19, .2)} opacity={f < at(20) ? 1 : .4} />
-      <DiagramWire t={t} f={f} pts={[[1160, 420], [1240, 620]]} at={at(20, .2)} opacity={f > at(20) ? 1 : .4} />
-    </g>
-    {/* E · 21–22: the order flow, every arrow inward */}
-    <g opacity={span(21, 22)}>
-      <Title o={pop(21)}>Luồng đặt hàng</Title>
-      {flow.map(([name, x, y], k) => <Box key={k} f={f} x={x} y={y} w={300} h={140} at={at(21, k * .35)} label={name} state={step === k ? 'key' : 'ok'} size={36} mono={k > 0} />)}
-      {[[0, 1], [1, 2], [2, 3], [3, 4]].map(([a, b], k) => <DiagramWire key={k} t={t} f={f} pts={[[flow[a][1] + 150, 330], [flow[b][1] - 150, 330]]} at={at(21, .2 + k * .35)} />)}
-      <DiagramWire t={t} f={f} pts={[[960, 400], [960, 570]]} at={at(21, 2)} />
-      <DiagramWire t={t} f={f} pts={[[1110, 640], [1160, 640]]} at={at(21, 2.3)} />
-      <DiagramWire t={t} f={f} pts={[[1460, 640], [1510, 640]]} at={at(21, 2.6)} />
-      <DiagramPacket t={t} f={f} pts={[[flow[Math.min(step, 7)][1], flow[Math.min(step, 7)][2] - 90], [flow[Math.min(step, 7)][1], flow[Math.min(step, 7)][2] - 82]]} at={at(21, .4)} period={30} r={12} />
-      <Chip t={t} f={f} x={960} y={830} text="Domain không trỏ ra database" at={at(22)} size={36} tone="accent" />
-    </g>
-    {/* F · 23–25: not every feature needs every layer */}
-    <g opacity={span(23, 25)}>
-      <Title o={pop(23)}>Không phải việc gì cũng cần nhiều lớp</Title>
-      <Panel x={160} y={250} w={760} h={520} title="việc đơn giản" o={pop(23, .4)}>
-        <Box f={f} x={540} y={520} w={480} h={170} at={at(24, .4)} label="một lớp là đủ" size={40} />
-      </Panel>
-      <Panel x={1000} y={250} w={760} h={520} tone={p.accent} title="module lõi, phức tạp" titleColor={p.accent} o={pop(23, .9)}>
-        {['Domain', 'Application', 'Infrastructure'].map((x, k) => <Box key={k} f={f} x={1380} y={400 + k * 120} w={480} h={100} at={at(25, .3 + k * .4)} label={x} state={k ? 'ok' : 'key'} size={36} />)}
-      </Panel>
-    </g>
-  </Stage>;
-};
-
-// ---- 08 · Ports and Adapters ----------------------------------------------------------------------------------
-const hexPath = (cx: number, cy: number, r: number) => Array.from({length: 6}, (_, k) => {const a = Math.PI / 3 * k;return `${k ? 'L' : 'M'}${cx + r * Math.cos(a)} ${cy + r * Math.sin(a)}`;}).join(' ') + ' Z';
-export const PortsAdapters: FC<{s: Seg}> = ({s}) => {
-  const {f, at, span, pop} = useBeat(s);
-  const devices = ['chuột', 'bàn phím', 'ổ cứng'];
-  const dev = Math.floor(loop(f, at(4), 90) * 3);
-  const issues = ['phụ thuộc vẫn nằm ngầm', 'thêm kênh CLI vẫn phải sửa nhiều', 'test application chậm vì khởi động framework', 'tích hợp hệ thống khác làm bẩn domain'];
-  const inPorts = ['UI', 'API', 'CLI', 'test'], outPorts = ['lưu trữ', 'thông báo', 'bên thứ ba'];
-  const fourSteps = ['xác định port', 'interface trong core', 'viết adapter', 'nối bằng DI'];
-  return <Stage>
-    {/* A · 0–6: a hexagon is a metaphor; ports are standards, adapters are devices */}
-    <g opacity={span(0, 6)}>
-      <Title o={pop(0)}>Hexagonal Architecture</Title>
-      <path d={hexPath(700, 520, 260)} fill={p.surface} stroke={p.accent} strokeWidth={5} opacity={pop(0, .5)} />
-      <Label t={t} x={700} y={535} size={48} color={p.accent} opacity={pop(0, .5)}>lõi ứng dụng</Label>
-      <Label t={t} x={700} y={850} size={36} weight={400} color={p.muted} opacity={pop(1)}>Alistair Cockburn · 2005</Label>
-      <Label t={t} x={700} y={230} size={34} weight={400} color={p.muted} opacity={pop(2)}>sáu cạnh chỉ là ẩn dụ</Label>
-      <rect x={1180} y={470} width={120} height={100} rx={12} fill={p.background} stroke={p.accent2} strokeWidth={5} opacity={pop(3)} />
-      <Label t={t} x={1240} y={630} size={36} color={p.accent2} opacity={pop(3)}>cổng USB = port</Label>
-      <path d={`M ${960} 520 H 1180`} stroke={p.accent2} strokeWidth={4} opacity={pop(3)} />
-      {devices.map((x, k) => <g key={k} opacity={pop(4, k * .5) * (dev === k ? 1 : .45)}>
-        <rect x={1460} y={300 + k * 170} width={360} height={130} rx={18} fill={p.surface} stroke={dev === k ? p.accent : p.muted} strokeWidth={3} />
-        <Label t={t} x={1640} y={378 + k * 170} size={40}>{x}</Label></g>)}
-      <DiagramWire t={t} f={f} pts={[[1460, 365 + dev * 170], [1300, 520]]} at={at(4, .4)} color={p.accent} />
-      <Chip t={t} f={f} x={1640} y={830} text="adapter = từng thiết bị" at={at(6, 1)} size={36} tone="accent" />
-    </g>
-    {/* B · 7–11: what layering still leaves open */}
-    <g opacity={span(7, 11)}>
-      <Title o={pop(7)}>Phân lớp còn để ngỏ</Title>
-      {issues.map((x, k) => <Row key={k} f={f} x={300} y={320 + k * 130} text={x} at={at(8 + k)} pre={at(7, .4 + k * .25)} ok={false} size={44} />)}
-    </g>
-    {/* C · 12–18: input ports, output ports, real and fake adapters */}
-    <g opacity={span(12, 18)}>
-      <path d={hexPath(960, 520, 230)} fill={p.surface} stroke={p.accent} strokeWidth={5} opacity={pop(12)} />
-      <Label t={t} x={960} y={510} size={44} color={p.accent} opacity={pop(12)}>core</Label>
-      <Label t={t} x={960} y={565} size={32} weight={400} color={p.muted} opacity={pop(15)}>port = interface</Label>
-      <Label t={t} x={260} y={190} size={38} color={p.accent2} opacity={pop(13)}>port đầu vào</Label>
-      <Label t={t} x={1660} y={190} size={38} color={p.accent2} opacity={pop(14)}>port đầu ra</Label>
-      {inPorts.map((x, k) => <g key={k}>
-        <Box f={f} x={260} y={290 + k * 160} w={300} h={110} at={at(13, k * .5)} label={x} size={38} />
-        <DiagramWire t={t} f={f} pts={[[410, 290 + k * 160], [760, 420 + k * 40]]} at={at(13, .3 + k * .5)} />
-        <DiagramPacket t={t} f={f} pts={[[410, 290 + k * 160], [760, 420 + k * 40]]} at={at(13, .8 + k * .5)} period={50} /></g>)}
-      {outPorts.map((x, k) => <g key={k}>
-        <Box f={f} x={1660} y={330 + k * 190} w={340} h={120} at={at(14, k * .6)} label={x} size={38} />
-        <DiagramWire t={t} f={f} pts={[[1160, 440 + k * 60], [1490, 330 + k * 190]]} at={at(14, .3 + k * .6)} />
-        <DiagramPacket t={t} f={f} pts={[[1160, 440 + k * 60], [1490, 330 + k * 190]]} at={at(14, .8 + k * .6)} period={56} /></g>)}
-      <Chip t={t} f={f} x={1600} y={870} text="adapter ở Infrastructure" at={at(16)} size={34} tone="accent2" />
-      <Chip t={t} f={f} x={860} y={870} text="mỗi port: một adapter thật + một adapter giả" at={at(17)} size={34} tone="accent" />
-    </g>
-    {/* D · 19–23: four steps */}
-    <g opacity={span(19, 23)}>
-      <Title o={pop(19)}>Bốn bước áp dụng</Title>
-      {fourSteps.map((x, k) => <g key={k}>
-        <Box f={f} x={300 + k * 440} y={500} w={400} h={200} at={at(19, .3 + k * .2)} label={x} state={f > at(20 + k) ? 'key' : 'dim'} size={34} />
-        <Label t={t} x={300 + k * 440} y={360} size={56} mono color={f > at(20 + k) ? p.accent : p.muted} opacity={pop(19, .3 + k * .2)}>{k + 1}</Label>
-        {k < 3 ? <DiagramWire t={t} f={f} pts={[[500 + k * 440, 500], [540 + k * 440, 500]]} at={at(21 + k)} dur={10} /> : null}</g>)}
-    </g>
-    {/* E · 24–28: the book's example — two ports, real and fake adapters, a provider, a fast test */}
-    <g opacity={span(24, 28)}>
-      <Title o={pop(24)}>Ví dụ trong sách</Title>
-      {[['OrderRepository', 'Eloquent', 'InMemory', 25], ['OrderNotification', 'Email', 'Log', 26]].map(([port, real, fake, sen], k) => {const y = 360 + k * 290, a = at(sen as number);return <g key={k}>
-        <Box f={f} x={560} y={y} w={560} h={150} at={k ? a : at(24, .3)} label={port as string} sub="port" state="key" size={38} mono />
-        <DiagramWire t={t} f={f} pts={[[840, y - 30], [1200, y - 60]]} at={a + 12} />
-        <DiagramWire t={t} f={f} pts={[[840, y + 30], [1200, y + 60]]} at={a + 20} />
-        <Box f={f} x={1440} y={y - 60} w={440} h={100} at={a + 14} label={`${real} · thật`} size={36} />
-        <Box f={f} x={1440} y={y + 60} w={440} h={100} at={a + 22} label={`${fake} · test`} size={36} state={f > at(28) ? 'key' : 'ok'} /></g>;})}
-      <Chip t={t} f={f} x={560} y={830} text="service provider nối port ↔ adapter" at={at(27)} size={34} tone="accent2" />
-      <Chip t={t} f={f} x={1440} y={830} text="test: không khởi động Laravel" at={at(28)} size={34} tone="accent" />
-    </g>
-    {/* F · 29–32: extending without touching the core */}
-    <g opacity={span(29, 32)}>
-      <Title o={pop(29)}>Mở rộng mà không đụng vào lõi</Title>
-      <path d={hexPath(960, 540, 200)} fill={p.surface} stroke={p.accent} strokeWidth={5} opacity={pop(29)} />
-      <Label t={t} x={960} y={555} size={42} color={p.accent} opacity={pop(29)}>lõi đặt hàng</Label>
-      <Box f={f} x={300} y={540} w={420} h={150} at={at(30)} label="nhập đơn từ CSV" sub="adapter mới" state="key" size={36} />
-      <DiagramWire t={t} f={f} pts={[[510, 540], [760, 540]]} at={at(30, .5)} />
-      <DiagramPacket t={t} f={f} pts={[[510, 540], [760, 540]]} at={at(30, 1)} period={40} label="dòng CSV" labelSize={34} />
-      {[0, 1].map((k) => <g key={k}><DiagramNode t={t} f={f} x={1560} y={330 + k * 230} w={300} h={170} kind="db" label={k ? 'database B' : 'database A'} at={at(31, k * .5)} />
-        <DiagramWire t={t} f={f} pts={[[1160, 500 + k * 80], [1410, 330 + k * 230]]} at={at(31, .3 + k * .5)} /></g>)}
-      <Box f={f} x={1560} y={810} w={420} h={110} at={at(32)} label="phân hệ khách hàng" size={34} />
-      <DiagramWire t={t} f={f} pts={[[1110, 680], [1350, 800]]} at={at(32, .4)} dashed />
-      <Label t={t} x={1180} y={830} size={32} weight={400} color={p.muted} opacity={pop(32, .8)}>qua một port</Label>
-    </g>
-    {/* G · 33–37: the price */}
-    <g opacity={span(33, 37)}>
-      <Title o={pop(33)}>Cái giá</Title>
-      <Panel x={160} y={240} w={760} h={420} title="nhiều interface và class hơn" o={pop(33, .3)}>
-        {Array.from({length: 15}, (_, k) => <rect key={k} x={220 + (k % 5) * 130} y={350 + Math.floor(k / 5) * 90} width={110} height={70} rx={10}
-          fill={k % 3 ? p.background : p.surface} stroke={k % 3 ? p.accent2 : p.accent} strokeWidth={2} opacity={grow(f, at(34, k * .15), at(34, .3 + k * .15))} />)}
-      </Panel>
-      <Panel x={1000} y={240} w={760} h={420} tone={p.accent} o={pop(33, .7)}>
-        <Row f={f} x={1050} y={360} text="quy ước đặt tên" at={at(35)} size={40} />
-        <Row f={f} x={1050} y={460} text="đừng trừu tượng hóa mọi thứ" at={at(36)} ok={false} size={40} />
-        <Row f={f} x={1050} y={560} text="tách chỗ dễ đổi, khó test" at={at(37)} size={40} />
-      </Panel>
-    </g>
-  </Stage>;
-};
-
-// ---- 09 · closing ---------------------------------------------------------------------------------------------
-export const KhepLai: FC<{s: Seg}> = ({s}) => {
-  const {f, at, span, pop} = useBeat(s);
-  const loopSteps = ['chọn một use case', 'tách phụ thuộc khó test', 'viết test không cần DB', 'lặp lại'];
-  const lit = Math.floor(loop(f, at(8), 120) * 4);
-  const pts: Pt[] = [[600, 380], [1320, 380], [1320, 720], [600, 720], [600, 380]];
-  return <Stage>
-    {/* A · 0–3: the question sorts code into two places */}
-    <g opacity={span(0, 3)}>
-      <Panel x={360} y={170} w={1200} h={260} tone={p.accent} o={pop(0, .4)}>
-        <Label t={t} x={960} y={280} size={44}>Chạy được một mình, trong bộ nhớ,</Label>
-        <Label t={t} x={960} y={350} size={44}>không cần gì bên ngoài?</Label>
-      </Panel>
-      <DiagramWire t={t} f={f} pts={[[760, 440], [560, 560]]} at={at(2)} />
-      <DiagramWire t={t} f={f} pts={[[1160, 440], [1360, 560]]} at={at(3)} />
-      <Box f={f} x={520} y={680} w={560} h={190} at={at(2, .2)} label="có → nghiệp vụ" sub="giữ sạch" state="key" size={42} />
-      <Box f={f} x={1400} y={680} w={560} h={190} at={at(3, .2)} label="không → hạ tầng" sub="đẩy ra rìa, sau interface" size={42} />
-    </g>
-    {/* B · 4–8: one use case at a time, on repeat */}
+    {/* C · 4–8: a request slip goes in, the steps run, an order number comes out */}
     <g opacity={span(4, 8)}>
-      <Title o={pop(4)}>Không cần làm hết trong một tuần</Title>
-      {loopSteps.map((x, k) => {const [x0, y0] = pts[k];return <Box key={k} f={f} x={x0} y={y0} w={520} h={150} at={at(5 + k)} label={x} state={f > at(8) && lit === k ? 'key' : 'ok'} size={36} />;})}
-      {[0, 1, 2, 3].map((k) => {const [ax, ay] = pts[k], [bx, by] = pts[k + 1], sx = Math.sign(bx - ax), sy = Math.sign(by - ay);
-        return <DiagramWire key={k} t={t} f={f} pts={[[ax + sx * 260, ay + sy * 75], [bx - sx * 260, by - sy * 75]]} at={k < 3 ? at(6 + k, .3) : at(8, .8)} />;})}
-      <DiagramPacket t={t} f={f} pts={pts} at={at(8)} period={120} r={12} />
+      <Title o={pop(4)}>Phiếu yêu cầu vào, mã đơn ra</Title>
+      <Card x={330} y={480} w={400} h={340} o={pop(4, .3)} tone={INFRA} />
+      <Label t={t} x={330} y={365} size={40} color={INFRA} opacity={pop(4, .3)}>phiếu yêu cầu</Label>
+      <Label t={t} x={330} y={410} size={34} weight={400} color={p.muted} opacity={pop(4, .3)}>command</Label>
+      {['mã khách', 'sản phẩm', 'email'].map((x, k) => <Label key={k} t={t} x={330} y={480 + k * 60} size={38} weight={400} opacity={pop(4, .8 + k * .4)}>{x}</Label>)}
+      <DiagramWire t={t} f={f} pts={[[534, 480], [756, 480]]} at={at(4, 1.6)} />
+      <Card x={1060} y={480} w={600} h={560} o={pop(4, .6)} tone={RULE} />
+      <Label t={t} x={1060} y={260} size={44} color={RULE} opacity={pop(4, .6)}>Đặt hàng</Label>
+      {steps.map((x, k) => {const a = at(5, .3 + k * .9), bad = k === 1 && only(6) > 0;return <g key={k}
+        opacity={Math.max(.3 * pop(4, 1), grow(f, a, a + 10))}>
+        <Label t={t} x={1060} y={360 + k * 78} size={38} color={bad ? BAD : p.ink}>{x}</Label></g>;})}
+      <DiagramWire t={t} f={f} pts={[[1364, 480], [1476, 480]]} at={at(7)} />
+      <Card x={1640} y={480} w={320} h={150} o={pop(7, .3)} tone={RULE} label="mã đơn" sub="#42" />
+      <Say o={only(6)} text="hết hàng → báo lỗi" tone="bad" />
+      <Say o={only(8)} text="controller: đổi yêu cầu thành phiếu, trả kết quả" tone="accent2" />
     </g>
-    {/* C · 9–12: knowing where to change */}
+    {/* D · 9–12: what the service needs is handed in from outside — real at run time, fakes in a test */}
     <g opacity={span(9, 12)}>
-      <Label t={t} x={960} y={190} size={44} color={p.muted} opacity={pop(9)}>không hứa code chạy nhanh hơn</Label>
-      <path d={hexPath(960, 520, 200)} fill={p.surface} stroke={p.accent} strokeWidth={5} opacity={pop(9, .4)} />
-      <Label t={t} x={960} y={535} size={40} color={p.accent} opacity={pop(9, .4)}>nghiệp vụ</Label>
-      {['web', 'database', 'email', 'API'].map((x, k) => {const pos: Pt = [[400, 360], [1520, 360], [1520, 680], [400, 680]][k] as Pt, on = k === 1;return <g key={k}>
-        <Box f={f} x={pos[0]} y={pos[1]} w={380} h={120} at={at(10, .3 + k * .2)} label={x} state={on && f > at(10, 1.6) ? 'hot' : 'ok'} size={38} />
-        <DiagramWire t={t} f={f} pts={[[pos[0] + (k % 3 ? -190 : 190), pos[1]], [960 + (k % 3 ? 170 : -170), 520 + (k > 1 ? 60 : -60)]]} at={at(10, .5 + k * .2)} /></g>;})}
-      <Chip t={t} f={f} x={1520} y={490} text="đổi database: sửa đúng chỗ này" at={at(10, 1.8)} size={34} tone="accent" />
+      <Title o={pop(9)}>Đưa đồ nghề vào từ bên ngoài</Title>
+      <Card x={300} y={480} w={320} h={200} o={pop(10)} tone={p.ink} label="bài test" sub={f > at(11) ? 'PASS' : undefined} subColor={INFRA} />
+      <DiagramWire t={t} f={f} pts={[[464, 480], [636, 480]]} at={at(10, .3)} />
+      <Card x={900} y={480} w={520} h={240} o={pop(9, .3)} tone={RULE} label="Đặt hàng" size={46} />
+      <Card x={1520} y={340} w={460} h={130} o={pop(9, .6)} tone={INFRA} />
+      <Label t={t} x={1520} y={354} size={40} opacity={pop(9, .6) * store0}>kho MySQL</Label>
+      <Label t={t} x={1520} y={354} size={40} opacity={store1}>kho bộ nhớ</Label>
+      <Card x={1520} y={620} w={460} h={130} o={pop(9, .9)} tone={INFRA} />
+      <Label t={t} x={1520} y={634} size={40} opacity={pop(9, .9) * mail0}>gửi mail thật</Label>
+      <Label t={t} x={1520} y={634} size={40} opacity={mail1}>bộ gửi mail giả</Label>
+      <DiagramWire t={t} f={f} pts={[[1286, 340], [1164, 420]]} at={at(9, 1)} />
+      <DiagramWire t={t} f={f} pts={[[1286, 620], [1164, 540]]} at={at(9, 1.3)} />
+      <Say o={only(11)} text="không framework · không database · không mạng" tone="accent2" />
+      <Say o={only(12)} text="test dễ viết thì người ta mới dám sửa code" />
     </g>
   </Stage>;
 };
 
+// ---- 07 · arrows point inward ----------------------------------------------------------------------------------------
+export const VaoTrong: FC<{s: Seg}> = ({s}) => {
+  const {f, at, span, only, pop} = useBeat(s);
+  const tiers = ['Giao diện', 'Nghiệp vụ', 'Dữ liệu'];
+  const cx = 1180, cy = 500;
+  const notes: [number, number, string, string, string?][] = [[6, 7, 'Domain', 'đơn hàng · giá trị', 'luật bán hàng'], [8, 8, 'Application', 'service cho từng việc', 'lớp keo nối mọi thứ'],
+    [9, 9, 'Infrastructure', 'framework · database', 'gửi mail · các nhà kho'], [10, 10, 'Dependency Rule', 'mũi tên phụ thuộc', 'chỉ hướng vào trong'],
+    [11, 11, 'Vòng ngoài', 'biết vòng trong', ''], [12, 12, 'Vòng trong', 'không biết vòng ngoài', ''], [13, 13, 'Kho MySQL', 'làm theo hợp đồng', 'của Domain'],
+    [14, 14, 'Hollywood Principle', 'đừng gọi chúng tôi,', 'chúng tôi sẽ gọi bạn']];
+  const real = f < at(16) ? 0 : Math.floor(loop(f, at(16), 90) * 2);
+  const lasagna = grow(f, at(4), at(4) + 8);
+  return <Stage>
+    {/* A · 0–4: three stacked tiers; logic leaks; too many layers become lasagna */}
+    <g opacity={span(0, 4)}>
+      <Title o={pop(0)}>Cách chia quen thuộc: ba tầng</Title>
+      <g opacity={1 - lasagna}>
+        {tiers.map((x, k) => <Card key={k} x={960} y={320 + k * 190} w={1000} h={150} o={pop(1, k * .5)} tone={k === 1 ? RULE : INFRA} label={x} size={44} />)}
+        <path d="M440 330 C 260 500 260 650 440 700" fill="none" stroke={BAD} strokeWidth={6} strokeDasharray="14 10" opacity={pop(3)} />
+        <Label t={t} x={250} y={530} size={38} color={BAD} opacity={pop(3, .4)}>rò rỉ</Label>
+      </g>
+      {Array.from({length: 11}, (_, k) => <rect key={k} x={560} y={250 + k * 52} width={800} height={38} rx={6} fill={k % 2 ? RULE : p.surface} stroke={p.muted}
+        opacity={grow(f, at(4, .4 + k * .1), at(4, .6 + k * .1)) * .9} />)}
+      <Say o={only(2)} text="giúp biết đặt code ở đâu" tone="accent2" />
+      <Say o={only(4)} text="quá nhiều lớp: mã lasagna" tone="bad" />
+    </g>
+    {/* B · 5–14: three rings, business in the middle; every arrow points inward */}
+    <g opacity={span(5, 14)}>
+      <circle cx={cx} cy={cy} r={350} fill={p.surface} stroke={p.muted} strokeWidth={4} opacity={pop(5, .2)} />
+      <circle cx={cx} cy={cy} r={240} fill={p.background} stroke={INFRA} strokeWidth={4} opacity={pop(5, .5)} />
+      <circle cx={cx} cy={cy} r={130} fill={p.surface} stroke={RULE} strokeWidth={5} opacity={pop(5, .8)} />
+      <Label t={t} x={cx} y={cy + 16} size={44} color={RULE} opacity={pop(5, .8)}>Domain</Label>
+      <Label t={t} x={cx} y={318} size={38} color={INFRA} opacity={pop(5, .5)}>Application</Label>
+      <Label t={t} x={cx} y={208} size={38} color={p.muted} opacity={pop(5, .2)}>Infrastructure</Label>
+      <rect x={70} y={250} width={680} height={460} rx={24} fill={p.surface} stroke={p.muted} strokeWidth={3} opacity={pop(6)} />
+      {notes.map(([a, b, head, l1, l2], k) => {const o = only(a, b);return o > 0 ? <g key={k} opacity={o}>
+        <Label t={t} x={410} y={380} size={46} color={k === 0 ? RULE : k === 1 ? INFRA : k === 2 ? p.muted : p.ink}>{head}</Label>
+        <Label t={t} x={410} y={480} size={40} weight={400}>{l1}</Label>
+        {l2 ? <Label t={t} x={410} y={550} size={40} weight={400}>{l2}</Label> : null}
+        {a === 6 && f > at(7) ? <Row f={f} x={170} y={640} text="không dùng framework" at={at(7)} size={38} /> : null}</g> : null;})}
+      {[[cx + 350, cx + 240], [cx + 240, cx + 130], [cx - 350, cx - 240], [cx - 240, cx - 130]].map(([a, b], k) =>
+        <DiagramWire key={k} t={t} f={f} pts={[[a + (a > cx ? 6 : -6), cy], [b + (b > cx ? 8 : -8), cy]]} at={at(10, .3 + (k % 2) * .4)} width={5} color={p.accent} />)}
+      <g opacity={only(12)}>
+        <path d={`M${cx} ${cy + 136} V${cy + 300}`} stroke={BAD} strokeWidth={5} strokeDasharray="12 10" />
+        <Mark t={t} f={f} x={cx} y={cy + 220} ok={false} at={at(12, .5)} size={70} />
+      </g>
+      <g opacity={only(13, 14)}>
+        <Card x={1720} y={620} w={260} h={90} tone={INFRA} label="kho MySQL" size={36} />
+        <DiagramWire t={t} f={f} pts={[[1588, 610], [cx + 136, cy + 30]]} at={at(13, .4)} width={5} color={p.accent} />
+      </g>
+    </g>
+    {/* C · 15–16: one place wires it all — real store at run time, memory in tests */}
+    <g opacity={span(15, 16)}>
+      <Title o={pop(15)}>Ráp ở một chỗ duy nhất</Title>
+      <Card x={700} y={480} w={440} h={200} o={pop(15, .3)} tone={p.ink} label="chỗ khai báo" />
+      {['kho MySQL · chạy thật', 'kho bộ nhớ · chạy test'].map((x, k) => {const on = real === k && f > at(15, 1);return <g key={k}>
+        <Card x={1420} y={350 + k * 260} w={520} h={130} o={pop(15, .6 + k * .3) * (on || f < at(15, 1) ? 1 : .5)} tone={on ? p.accent : INFRA} label={x} size={38} />
+        <DiagramWire t={t} f={f} pts={[[924, 480], [1156, 350 + k * 260]]} at={at(15, 1 + k * .2)} opacity={on ? 1 : .35} /></g>;})}
+    </g>
+    {/* D · 17–18: not everything needs three rings */}
+    <g opacity={span(17, 18)}>
+      <Title o={pop(17)}>Không phải việc gì cũng cần đủ ba vòng</Title>
+      <Card x={510} y={520} w={760} h={520} o={pop(17, .4)} tone={INFRA} />
+      <Label t={t} x={510} y={330} size={42} color={INFRA} opacity={pop(17, .4)}>việc đơn giản</Label>
+      <Card x={510} y={540} w={420} h={150} o={pop(18)} tone={INFRA} label="gộp lại" />
+      <Card x={1410} y={520} w={760} h={520} o={pop(17, .8)} tone={RULE} />
+      <Label t={t} x={1410} y={330} size={42} color={RULE} opacity={pop(17, .8)}>phần lõi phức tạp</Label>
+      {[170, 115, 60].map((r, k) => <circle key={k} cx={1410} cy={560} r={r} fill={k === 2 ? p.surface : 'none'} stroke={[p.muted, INFRA, RULE][k]} strokeWidth={4} opacity={pop(18, .6 + k * .3)} />)}
+    </g>
+  </Stage>;
+};
+
+// ---- 08 · a USB port: Ports and Adapters --------------------------------------------------------------------------
+export const OCam: FC<{s: Seg}> = ({s}) => {
+  const {f, at, span, only, pop} = useBeat(s);
+  const devices = ['chuột', 'bàn phím', 'ổ cứng'];
+  const usb: [number, number][] = [[at(4), 0], ...cycle(at(4, 1.6), 3, 50, at(6))].map(([a, k], i) => [a, i === 0 ? 0 : (k + 1) % 3] as [number, number]);
+  const ins = ['trang web', 'API', 'dòng lệnh', 'bài test'], outs = ['lưu đơn', 'gửi thông báo', 'dịch vụ ngoài'];
+  const flip = (row: number) => {const a = at(11 + row), on = f > a && f < at(13);return on ? Math.floor(loop(f, a + 20, 80) * 2) : f >= at(13) ? 1 : 0;};
+  const pairs: [string, string, string][] = [['lưu đơn', 'MySQL', 'bộ nhớ'], ['gửi xác nhận', 'email thật', 'chỉ ghi log']];
+  const fourSteps = ['tìm các port', 'viết hợp đồng', 'viết adapter', 'ráp ở một chỗ'];
+  return <Stage>
+    {/* A · 0–5: Hexagonal Architecture; a computer only knows the USB standard */}
+    <g opacity={span(0, 5)}>
+      <Title o={pop(0)}>Hexagonal Architecture</Title>
+      <Label t={t} x={960} y={215} size={36} weight={400} color={p.muted} opacity={pop(1)}>Alistair Cockburn · 2005</Label>
+      <Hex x={500} y={500} r={210} o={pop(0, .5)} label="lõi" />
+      <Card x={1100} y={500} w={460} h={300} o={pop(3)} tone={p.ink} label="máy tính" />
+      <rect x={1312} y={470} width={30} height={60} rx={6} fill={p.background} stroke={INFRA} strokeWidth={4} opacity={pop(3, .4)} />
+      {devices.map((x, k) => {const v = plugged(f, usb, k);return <Card key={k} x={lerp(1740, 1470, v)} y={lerp(300 + k * 200, 500, v)} w={240} h={120}
+        o={pop(4, k * .4)} tone={v > .5 ? p.accent : INFRA} label={x} size={38} />;})}
+      <Say o={only(2)} text="lục giác chỉ là cách vẽ" tone="muted" />
+      <Say o={only(5)} text="nó chỉ biết một chuẩn cắm" />
+    </g>
+    {/* B · 6–10: business in the middle; ports for the world to call in, ports for the core to call out */}
+    <g opacity={span(6, 10)}>
+      <Hex x={960} y={500} r={220} o={pop(6)} label="nghiệp vụ" size={46} />
+      {ins.map((x, k) => <g key={k}>
+        <Card x={330} y={290 + k * 140} w={360} h={100} o={pop(9, k * .4)} tone={INFRA} label={x} size={38} />
+        <DiagramWire t={t} f={f} pts={[[514, 290 + k * 140], [736, 470 + k * 20]]} at={at(9, .2 + k * .4)} /></g>)}
+      {outs.map((x, k) => <g key={k}>
+        <Card x={1600} y={330 + k * 170} w={380} h={110} o={pop(10, k * .5)} tone={INFRA} label={x} size={38} />
+        <DiagramWire t={t} f={f} pts={[[1184, 480 + k * 20], [1406, 330 + k * 170]]} at={at(10, .2 + k * .5)} /></g>)}
+      <Label t={t} x={330} y={200} size={40} color={INFRA} opacity={pop(9)}>gọi vào</Label>
+      <Label t={t} x={1600} y={225} size={40} color={INFRA} opacity={pop(10)}>gọi ra</Label>
+      <Say o={only(7)} text="port = chuẩn cắm" tone="accent2" />
+      <Say o={only(8)} text="adapter = thiết bị cắm vào" />
+    </g>
+    {/* C · 11–14: the book's example — two ports, a real and a fake adapter for each */}
+    <g opacity={span(11, 14)}>
+      <Title o={pop(11)}>Ví dụ trong sách</Title>
+      <Hex x={420} y={490} r={190} o={pop(11, .2)} label="đặt hàng" size={40} />
+      {pairs.map(([port, real, fake], k) => {const y = 340 + k * 300, side = flip(k), on = pop(11 + k);const [a0, a1] = side ? [0, 1] : [1, 0];return <g key={k}>
+        <DiagramWire t={t} f={f} pts={[[612, 490], [756, y]]} at={at(11 + k, .2)} />
+        <Socket x={900} y={y} w={280} h={150} o={on} label={port} size={36} />
+        <path d={`M1040 ${y} H1226`} stroke={p.ink} strokeWidth={6} strokeLinecap="round" opacity={pop(11 + k, .6)} />
+        <Card x={1440} y={y} w={420} h={140} o={pop(11 + k, .5)} tone={side ? p.accent : INFRA} />
+        <Label t={t} x={1440} y={y + 15} size={40} opacity={pop(11 + k, .5) * a0}>{real}</Label>
+        <Label t={t} x={1440} y={y + 15} size={40} opacity={a1}>{fake}</Label></g>;})}
+      <Say o={only(13)} text="test: hai adapter giả, không khởi động Laravel" tone="accent2" />
+      <Say o={only(14)} text="Cockburn: trước hết để test cho dễ" />
+    </g>
+    {/* D · 15–18: extending without touching the core */}
+    <g opacity={span(15, 18)}>
+      <Title o={pop(15)}>Mở rộng, lõi giữ nguyên</Title>
+      <Hex x={960} y={480} r={200} o={pop(15, .3)} label="đặt hàng" size={42} />
+      <Card x={330} y={480} w={380} h={150} o={pop(16)} tone={p.accent} label="đọc file CSV" sub="adapter mới" size={40} />
+      <DiagramWire t={t} f={f} pts={[[524, 480], [756, 480]]} at={at(16, .4)} />
+      {[0, 1].map((k) => <g key={k}>
+        <Card x={1600} y={300 + k * 200} w={340} h={120} o={pop(17, k * .5)} tone={INFRA} label={`database ${'AB'[k]}`} size={38} />
+        <DiagramWire t={t} f={f} pts={[[1164, 470 + k * 20], [1426, 300 + k * 200]]} at={at(17, .3 + k * .5)} /></g>)}
+      <Card x={1600} y={720} w={380} h={130} o={pop(18)} tone={INFRA} label="phần khách hàng" sub="qua một port" size={38} />
+      <DiagramWire t={t} f={f} pts={[[1070, 650], [1406, 720]]} at={at(18, .4)} dashed />
+    </g>
+    {/* E · 19: four steps */}
+    <g opacity={span(19, 19)}>
+      <Title o={pop(19)}>Áp dụng trong bốn bước</Title>
+      {fourSteps.map((x, k) => <g key={k}>
+        <Label t={t} x={300 + k * 440} y={370} size={60} mono color={RULE} opacity={pop(19, .3 + k * 1.1)}>{k + 1}</Label>
+        <Card x={300 + k * 440} y={520} w={400} h={170} o={Math.max(.3 * pop(19, .2), pop(19, .3 + k * 1.1))} tone={RULE} label={x} size={38} />
+        {k < 3 ? <DiagramWire t={t} f={f} pts={[[504 + k * 440, 520], [536 + k * 440, 520]]} at={at(19, .9 + k * 1.1)} dur={8} /> : null}</g>)}
+    </g>
+  </Stage>;
+};
+
+// ---- 09 · don't overdo it, start small ------------------------------------------------------------------------------
+export const BatDauNho: FC<{s: Seg}> = ({s}) => {
+  const {f, at, span, only, pop} = useBeat(s);
+  const keep = [9, 22];
+  const loopSteps = ['chọn một việc thật', 'tách phụ thuộc khó test', 'viết test không cần DB', 'làm tiếp việc sau'];
+  const lp: Pt[] = [[600, 360], [1320, 360], [1320, 690], [600, 690], [600, 360]];
+  const lit = Math.floor(loop(f, at(12, .5), 120) * 4);
+  const ends: [string, Pt][] = [['web', [400, 340]], ['database', [1520, 340]], ['email', [1520, 660]], ['API', [400, 660]]];
+  return <Stage>
+    {/* A · 0–3: the price — many interfaces; keep only the useful ones */}
+    <g opacity={span(0, 3)}>
+      <Title o={pop(0)}>Cái giá</Title>
+      {Array.from({length: 32}, (_, k) => {const x = 480 + (k % 8) * 130, y = 290 + Math.floor(k / 8) * 110, kept = keep.includes(k);
+        return <rect key={k} x={x} y={y} width={110} height={76} rx={12} fill={p.background} stroke={kept ? RULE : INFRA} strokeWidth={3}
+          opacity={grow(f, at(0, .8 + k * .04), at(0, 1.1 + k * .04)) * (kept ? 1 : 1 - .8 * grow(f, at(3, .5), at(3, 1)))} />;})}
+      <Say o={only(1)} text="nhiều interface hơn, nhiều class hơn" tone="accent2" />
+      <Say o={only(2)} text="cần quy ước đặt tên" tone="muted" />
+      <Say o={only(3)} text="chỉ tách chỗ hay thay đổi hoặc khó test" />
+    </g>
+    {/* B · 4–7: the one question to keep */}
+    <g opacity={span(4, 7)}>
+      <Card x={960} y={300} w={1200} h={240} o={pop(4, .3)} tone={RULE} />
+      <Label t={t} x={960} y={285} size={46} opacity={pop(4, .5)}>Chạy được một mình, trong bộ nhớ,</Label>
+      <Label t={t} x={960} y={350} size={46} opacity={pop(4, .9)}>không cần gì bên ngoài?</Label>
+      <DiagramWire t={t} f={f} pts={[[760, 424], [560, 560]]} at={at(6)} />
+      <DiagramWire t={t} f={f} pts={[[1160, 424], [1360, 560]]} at={at(7)} />
+      <Card x={520} y={680} w={560} h={190} o={pop(6, .2)} tone={RULE} label="có → nghiệp vụ" sub="giữ sạch ở giữa" />
+      <Card x={1400} y={680} w={560} h={190} o={pop(7, .2)} tone={INFRA} label="không → hạ tầng" sub="ra rìa, sau hợp đồng" />
+    </g>
+    {/* C · 8–12: start small, one job at a time, on repeat */}
+    <g opacity={span(8, 12)}>
+      <Title o={pop(8)}>Không cần đập đi làm lại</Title>
+      {loopSteps.map((x, k) => {const [x0, y0] = lp[k];return <Card key={k} x={x0} y={y0} w={540} h={150} o={Math.max(.3 * pop(8, .5), pop(9 + k))} tone={f > at(12, .5) && lit === k ? RULE : INFRA} label={x} size={38} />;})}
+      {[0, 1, 2, 3].map((k) => {const [ax, ay] = lp[k], [bx, by] = lp[k + 1], sx = Math.sign(bx - ax), sy = Math.sign(by - ay);
+        return <DiagramWire key={k} t={t} f={f} pts={[[ax + sx * 274, ay + sy * 79], [bx - sx * 274, by - sy * 79]]} at={at(10 + Math.min(k, 2), .2)} />;})}
+    </g>
+    {/* D · 13–15: what the book promises — knowing where to change */}
+    <g opacity={span(13, 15)}>
+      <Title o={pop(13)} color={p.muted}>Sách không hứa code chạy nhanh hơn</Title>
+      <Hex x={960} y={500} r={190} o={pop(13, .5)} label="nghiệp vụ" size={42} />
+      {ends.map(([x, pos], k) => {const hot = k === 1 && f > at(14, 1.6);return <g key={k}>
+        <Card x={pos[0]} y={pos[1]} w={380} h={120} o={pop(14, .3 + k * .2)} tone={hot ? p.accent : INFRA} label={x} size={40} thick={hot ? 6 : 4} />
+        <DiagramWire t={t} f={f} pts={[[pos[0] + (k % 3 ? -194 : 194), pos[1]], [960 + (k % 3 ? 160 : -160), 500 + (k > 1 ? 70 : -70)]]} at={at(14, .5 + k * .2)} /></g>;})}
+      <Say o={only(14)} text="khi yêu cầu đổi, biết phải sửa ở đâu" />
+    </g>
+  </Stage>;
+};
