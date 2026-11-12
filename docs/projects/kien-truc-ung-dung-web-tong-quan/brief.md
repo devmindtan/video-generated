@@ -3,11 +3,20 @@
 - Nhóm: Chưa thuộc kênh / Chưa thuộc series (`ngoai-kenh/chua-thuoc-series`); nối sách `kien-truc-ung-dung-web`
   (*Kiến trúc ứng dụng web*, Nguyễn Thế Huy), hồ sơ nghiên cứu đã đọc đủ 7/7 chương.
 - Project ID: `kien-truc-ung-dung-web-tong-quan`.
-- Định dạng: video dài 16:9, 1920×1080, 30 fps. Thời lượng thực 16:19 (978,9 giây); dự kiến ban đầu 12–13 phút nhưng
-  kịch bản đủ 7 chương cần dài hơn, vẫn dưới 18 phút.
-- Trạng thái (2026-11-12): đã có bản dựng cả video (commit `6f6086e`); người dùng thấy nhiều chỗ chưa đạt nên đã rà và
-  sửa lại kịch bản, giọng và hình ([script-review.md](script-review.md)); chờ người dùng xem lại trong Studio và chốt
-  gói ban đầu.
+- Định dạng: video dài 16:9, 1920×1080, 30 fps. Mục tiêu 12–15 phút (người dùng 2026-11-12).
+- Trạng thái (2026-11-12): bản dựng đầu (16 phút, đi lần lượt 7 chương, nhiều code) được người dùng thấy khó hiểu và
+  nhiều chỗ đè nhau. Làm lại theo hướng giải thích đơn giản: kịch bản mới theo ý (163 câu, ước ~14 phút) và kế hoạch
+  hình mới đã viết, **chờ người dùng đọc kịch bản trước khi đọc lại giọng và vẽ lại hình**. Gói ban đầu chưa chốt.
+
+## Hướng làm lại (người dùng 2026-11-12)
+
+- "Ngoài ra tôi thấy cách làm video khá khó hiểu bản chất là phải tóm tắt được cuốn sách sau đó làm ra 1 video giải
+  thích 1 cách đơn giản nhất." Chọn: 12–15 phút; trên hình gần như không có code; video System Design giữ nguyên.
+- Cả cuốn gói vào một ý: tách luật của việc kinh doanh (nghiệp vụ) khỏi máy móc chạy nó (hạ tầng). Mười phần theo ý,
+  không theo chương; một ví dụ của sách (đặt mua e-book); so sánh đời thường (hợp đồng, nhà kho, phiếu yêu cầu, cổng
+  USB) để giải thích, không gán cho sách.
+- Hình: một sơ đồ lớn cho một ý, ít chữ, chuyển cảnh lần lượt (không chồng hai sơ đồ), kiểm chồng chữ bằng công cụ đo
+  trên toàn video trước khi gửi.
 
 ## Yêu cầu của người dùng (2026-11-11)
 
