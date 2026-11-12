@@ -3,7 +3,7 @@
 | Mục | Giá trị |
 |---|---|
 | Định dạng | Video dài 16:9, 1920×1080, 30 fps |
-| Thời lượng mục tiêu | 16:50 ± 1:30 (bản dựng hiện tại ~1010,5 s / 10 đoạn; không ép giọng nhanh để vừa thời lượng) |
+| Thời lượng mục tiêu | 16:19 ± 1:00 (bản dựng 2026-11-12: 978,9 s, 10 đoạn, 213 câu; dưới 18 phút; không ép giọng nhanh để vừa thời lượng) |
 | Cấu trúc | Màn tên video 6,5 s (chỉ nhạc, bìa sách) → Mở đầu (hook, controller đặt hàng) → 7 chương theo thứ tự sách gộp thành 8 đoạn nội dung (Domain+Repository, Đọc/ghi, Application Service, Ba tầng, Ports & Adapters) → Khép lại |
 | Giọng | Lựa chọn 1, Minh Đức (VieNeu preset), một giọng cho cả video; `scripts/projects/kien-truc-ung-dung-web-tong-quan/voice.json` |
 | Nhạc | Aylex – Passionate (freetouse.com), cùng track video System Design: 30% trên màn tên, hạ về 1,2% khi giọng vào, giữ cố định dưới lời; fade theo cạnh clip, chỉnh đầu/cuối trong Studio; `src/projects/kien-truc-ung-dung-web-tong-quan/music.json` |
@@ -27,7 +27,7 @@
 
 ## Thành phần kỹ thuật
 
-- Composition: `KienTrucUngDungWebTongQuan` (1920×1080, 30 fps, 30315 khung) trong `src/projects/registry.tsx`, `renderTo('kien-truc-ung-dung-web-tong-quan')`.
+- Composition: `KienTrucUngDungWebTongQuan` (1920×1080, 30 fps, 29368 khung) trong `src/projects/registry.tsx`, `renderTo('kien-truc-ung-dung-web-tong-quan')`.
 - Mã hình: `src/projects/kien-truc-ung-dung-web-tong-quan/` (`Video.tsx`, `Chapters.tsx`, `common.tsx`, `timing.json`, `captions.json`, `music.json`).
 - Lời đọc: `public/kien-truc-ung-dung-web-tong-quan/audio/*.wav` (10 đoạn), mốc câu `src/projects/kien-truc-ung-dung-web-tong-quan/timing.json`.
 - Nhạc: `public/system-design-tong-quan/music/aylex-passionate-cut.wav` (dùng chung track đã có; chỉnh đầu/cuối trong Studio).

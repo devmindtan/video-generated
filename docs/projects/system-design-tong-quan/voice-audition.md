@@ -27,7 +27,7 @@ a ép", CPU → "xi pi iu", Metrics → "mét trích", Logs → "lóc". 21 câu 
 ## Chữ bị kéo dài (người dùng 2026-11-11)
 
 Người dùng nghe "ví dụ đời... thường": giọng giữ chữ "đời" 0,44 giây, gấp đôi các chữ bên cạnh. VieNeu đọc mỗi lần
-một khác, nên đây là một lần đọc xấu chứ không phải lỗi chữ. `scripts/projects/system-design-tong-quan/fix-drag.py` đo
+một khác, nên đây là một lần đọc xấu chứ không phải lỗi chữ. `scripts/shared/fix-drag.py --story scripts/projects/system-design-tong-quan/story.json` đo
 thời lượng từng chữ trong mọi câu (faster-whisper), câu nào có chữ giữ ≥ 0,42 giây và ≥ 1,8 lần chữ trung vị (bỏ chữ đầu,
 chữ cuối, chữ đứng trước dấu câu, thuật ngữ dài) thì đọc lại tối đa 4 lần và giữ lần mượt nhất; bản cũ còn trong cache.
 Kết quả: câu "ví dụ đời thường" giờ đọc "đời" 0,22 giây; 49 câu trong cả video được thay. Phép đo chỉ là gợi ý, vẫn cần

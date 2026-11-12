@@ -1,0 +1,1667 @@
+1
+00:00:06,500 --> 00:00:10,300
+Một controller đặt hàng e-book, gần ba mươi dòng.
+
+2
+00:00:10,840 --> 00:00:13,040
+Nó lấy giá từ database, nhân với
+
+3
+00:00:13,040 --> 00:00:15,560
+số lượng, ghi vào bảng orders, rồi
+
+4
+00:00:15,560 --> 00:00:17,320
+nhét mã đơn vào session.
+
+5
+00:00:17,860 --> 00:00:18,480
+Chạy đúng.
+
+6
+00:00:19,700 --> 00:00:21,680
+Nhưng thử hỏi: nghiệp vụ tính tiền
+
+7
+00:00:21,680 --> 00:00:22,420
+nằm ở đâu?
+
+8
+00:00:23,000 --> 00:00:26,000
+Nếu ngày mai đổi sang PostgreSQL, thêm
+
+9
+00:00:26,000 --> 00:00:29,060
+một API JSON bên cạnh trang web,
+
+10
+00:00:29,440 --> 00:00:31,040
+hay chỉ muốn viết một test cho
+
+11
+00:00:31,040 --> 00:00:33,640
+phần tính tiền, bạn sẽ phải sửa những đâu?
+
+12
+00:00:34,640 --> 00:00:36,680
+Cuốn Kiến trúc ứng dụng web trả
+
+13
+00:00:36,680 --> 00:00:37,940
+lời đúng câu hỏi đó.
+
+14
+00:00:38,480 --> 00:00:40,040
+Sách kể một chức năng đặt hàng,
+
+15
+00:00:40,340 --> 00:00:42,080
+rồi mổ nó ra từng lớp: tách
+
+16
+00:00:42,080 --> 00:00:44,160
+nghiệp vụ khỏi database, khỏi
+
+17
+00:00:44,160 --> 00:00:46,740
+framework, khỏi cách giao tiếp bên ngoài.
+
+18
+00:00:47,040 --> 00:00:49,160
+Mình sẽ đi qua bảy chương, giữ
+
+19
+00:00:49,160 --> 00:00:51,260
+đúng một ví dụ xuyên suốt, và
+
+20
+00:00:51,260 --> 00:00:53,020
+dừng ở những chỗ đáng lấy.
+
+21
+00:00:53,240 --> 00:00:54,660
+Thứ đáng mang về là một câu
+
+22
+00:00:54,660 --> 00:00:56,780
+hỏi dùng được mỗi ngày: đoạn code
+
+23
+00:00:56,780 --> 00:00:58,880
+này có chạy được một mình, trong
+
+24
+00:00:58,880 --> 00:01:01,580
+bộ nhớ, không cần database, không cần
+
+25
+00:01:01,580 --> 00:01:02,220
+framework không?
+
+26
+00:01:03,550 --> 00:01:05,930
+Bắt đầu bằng đúng đoạn code đó.
+
+27
+00:01:06,470 --> 00:01:08,310
+Hàm đặt hàng nhận request, gọi
+
+28
+00:01:08,310 --> 00:01:11,270
+database lấy giá, nhân với số lượng,
+
+29
+00:01:11,510 --> 00:01:13,470
+ghi vào bảng orders, rồi lưu mã
+
+30
+00:01:13,470 --> 00:01:14,370
+đơn vào session.
+
+31
+00:01:15,130 --> 00:01:16,190
+Nhìn qua thì gọn.
+
+32
+00:01:17,350 --> 00:01:18,970
+Nhưng trong cùng một hàm có đủ
+
+33
+00:01:18,970 --> 00:01:21,670
+thứ: một câu SQL, một phép tính
+
+34
+00:01:21,670 --> 00:01:24,210
+tiền, một quy ước lưu session, và
+
+35
+00:01:24,210 --> 00:01:25,930
+cả cách trả về của framework.
+
+36
+00:01:25,930 --> 00:01:29,290
+Muốn test phần tính tiền, bạn phải dựng database.
+
+37
+00:01:29,910 --> 00:01:31,930
+Muốn đổi cách lưu đơn, bạn phải
+
+38
+00:01:31,930 --> 00:01:33,630
+sửa một chỗ không hề nói gì
+
+39
+00:01:33,630 --> 00:01:35,550
+về việc lưu trữ.
+
+40
+00:01:35,550 --> 00:01:37,210
+Và không ai kiểm tra email có
+
+41
+00:01:37,210 --> 00:01:39,610
+đúng không, số lượng có lớn hơn không.
+
+42
+00:01:40,890 --> 00:01:43,530
+Sách gọi phần này là code trộn lẫn.
+
+43
+00:01:43,770 --> 00:01:45,430
+Phần nghiệp vụ thật sự chỉ có
+
+44
+00:01:45,430 --> 00:01:47,530
+một câu: đơn hàng này gồm gì,
+
+45
+00:01:47,730 --> 00:01:48,750
+giá bao nhiêu.
+
+46
+00:01:48,930 --> 00:01:51,050
+Phần còn lại là hạ tầng: database,
+
+47
+00:01:51,410 --> 00:01:53,770
+session, framework, thư viện.
+
+48
+00:01:53,770 --> 00:01:55,710
+Khi hai thứ dính vào nhau, có
+
+49
+00:01:55,710 --> 00:01:57,410
+năm chuyện thường xảy ra.
+
+50
+00:01:57,570 --> 00:01:59,570
+Đọc code không thấy câu chuyện nghiệp
+
+51
+00:01:59,570 --> 00:02:01,390
+vụ, chỉ thấy công nghệ.
+
+52
+00:02:01,650 --> 00:02:03,530
+Đổi công nghệ kéo theo sửa logic.
+
+53
+00:02:04,110 --> 00:02:06,190
+Test tự động khó, vì mỗi test
+
+54
+00:02:06,190 --> 00:02:08,210
+phải mang theo cả môi trường.
+
+55
+00:02:08,490 --> 00:02:09,930
+Dữ liệu không được bảo đảm hợp
+
+56
+00:02:09,930 --> 00:02:11,910
+lệ, vì chẳng có chỗ nào đứng
+
+57
+00:02:11,910 --> 00:02:12,650
+ra kiểm tra.
+
+58
+00:02:13,170 --> 00:02:15,110
+Và code nhanh chóng thành thứ không
+
+59
+00:02:15,110 --> 00:02:17,230
+ai dám sửa, tức là legacy.
+
+60
+00:02:18,510 --> 00:02:20,770
+Ngược lại, khi tách được, lợi ích
+
+61
+00:02:20,770 --> 00:02:21,670
+cũng rất cụ thể.
+
+62
+00:02:21,670 --> 00:02:23,830
+Code nghiệp vụ đọc như một câu
+
+63
+00:02:23,830 --> 00:02:26,730
+chuyện: tạo đơn, kiểm tra, lưu.
+
+64
+00:02:26,990 --> 00:02:29,990
+Test chạy trong bộ nhớ, không cần dựng MySQL.
+
+65
+00:02:30,710 --> 00:02:33,650
+Đổi hạ tầng chỉ sửa đúng phần hạ tầng.
+
+66
+00:02:33,910 --> 00:02:35,470
+Và cả team có chung một quy
+
+67
+00:02:35,470 --> 00:02:37,510
+ước: ai cũng biết code nào đặt
+
+68
+00:02:37,510 --> 00:02:39,710
+ở đâu, người mới vào nắm nhanh hơn.
+
+69
+00:02:40,270 --> 00:02:42,190
+Theo tác giả, ứng dụng nào sống
+
+70
+00:02:42,190 --> 00:02:43,910
+quá hai năm thì việc tách khỏi
+
+71
+00:02:43,910 --> 00:02:46,150
+hạ tầng rất đáng làm, vì framework,
+
+72
+00:02:46,750 --> 00:02:49,090
+database và dịch vụ ngoài đổi nhanh
+
+73
+00:02:49,090 --> 00:02:49,650
+hơn nghiệp vụ.
+
+74
+00:02:51,050 --> 00:02:52,990
+Vậy lấy gì để biết một đoạn
+
+75
+00:02:52,990 --> 00:02:55,250
+code là core hay hạ tầng?
+
+76
+00:02:55,490 --> 00:02:56,870
+Sách đưa một định nghĩa rất thực
+
+77
+00:02:56,870 --> 00:02:58,970
+dụng: core code là code chạy được
+
+78
+00:02:59,270 --> 00:03:00,930
+chỉ với bộ nhớ và CPU.
+
+79
+00:03:01,670 --> 00:03:03,990
+Không database, không gọi mạng, không
+
+80
+00:03:03,990 --> 00:03:08,070
+đọc file, không đồng hồ hệ thống, không SMTP.
+
+81
+00:03:08,070 --> 00:03:09,730
+Quy tắc thứ nhất: không phụ thuộc
+
+82
+00:03:09,730 --> 00:03:11,890
+trực tiếp vào hệ thống bên ngoài.
+
+83
+00:03:12,090 --> 00:03:13,870
+Quy tắc thứ hai: không cần môi
+
+84
+00:03:13,870 --> 00:03:14,830
+trường đặc biệt.
+
+85
+00:03:14,830 --> 00:03:17,790
+Không cần web server, không cần CLI,
+
+86
+00:03:17,970 --> 00:03:19,990
+không cần framework, không cần biến
+
+87
+00:03:19,990 --> 00:03:21,130
+POST hay session.
+
+88
+00:03:21,750 --> 00:03:23,930
+Thiếu một trong hai, nó là hạ tầng.
+
+89
+00:03:25,170 --> 00:03:27,190
+Một hàm tính VAT là core.
+
+90
+00:03:27,850 --> 00:03:29,530
+Một đối tượng Order tự tính tổng
+
+91
+00:03:29,530 --> 00:03:30,690
+tiền là core.
+
+92
+00:03:31,290 --> 00:03:33,810
+Một OrderService chỉ dùng entity và
+
+93
+00:03:33,810 --> 00:03:35,290
+interface là core.
+
+94
+00:03:35,830 --> 00:03:39,210
+Còn câu SQL, lời gọi HTTP, đoạn
+
+95
+00:03:39,210 --> 00:03:43,290
+đọc file, controller, Eloquent model: hạ tầng.
+
+96
+00:03:43,290 --> 00:03:45,230
+Có một cách nói dễ nhớ: hạ
+
+97
+00:03:45,230 --> 00:03:47,190
+tầng là phần còn lại sau khi trừ core.
+
+98
+00:03:47,790 --> 00:03:50,090
+Và đừng nhầm thư mục với bản chất.
+
+99
+00:03:50,210 --> 00:03:52,210
+Cùng nằm trong thư mục Service, một
+
+100
+00:03:52,210 --> 00:03:54,390
+file có thể là core, file bên
+
+101
+00:03:54,390 --> 00:03:56,450
+cạnh có thể là hạ tầng.
+
+102
+00:03:56,690 --> 00:03:58,610
+Điều quyết định là nó có chạm
+
+103
+00:03:58,610 --> 00:04:00,170
+vào thế giới bên ngoài hay không.
+
+104
+00:04:01,410 --> 00:04:03,290
+Sách còn cảnh báo một cái bẫy:
+
+105
+00:04:03,290 --> 00:04:05,510
+đặt interface lên trên hạ tầng không
+
+106
+00:04:05,510 --> 00:04:07,010
+tự biến nó thành core.
+
+107
+00:04:07,010 --> 00:04:09,930
+Một interface Connection với hàm
+
+108
+00:04:09,930 --> 00:04:12,110
+insert bảng và dữ liệu vẫn lộ
+
+109
+00:04:12,110 --> 00:04:13,490
+nguyên khái niệm database.
+
+110
+00:04:14,250 --> 00:04:16,030
+Che bằng tên gọi không đủ; phải
+
+111
+00:04:16,030 --> 00:04:17,550
+che bằng ý nghĩa nghiệp vụ.
+
+112
+00:04:17,850 --> 00:04:20,150
+Ví dụ dễ thấy nhất là đồng hồ.
+
+113
+00:04:20,410 --> 00:04:22,010
+Gọi thẳng thư viện thời gian ở
+
+114
+00:04:22,010 --> 00:04:24,430
+giữa logic thì test nào cũng phụ
+
+115
+00:04:24,430 --> 00:04:25,310
+thuộc giờ thật.
+
+116
+00:04:25,670 --> 00:04:27,510
+Sách thay bằng một interface Clock,
+
+117
+00:04:27,970 --> 00:04:29,450
+còn bản gọi thư viện thời gian
+
+118
+00:04:29,450 --> 00:04:31,450
+nằm ở ngoài, trong hạ tầng.
+
+119
+00:04:31,950 --> 00:04:33,810
+Khi test, bạn đưa vào một đồng
+
+120
+00:04:33,810 --> 00:04:35,770
+hồ giả và chỉnh giờ tùy ý.
+
+121
+00:04:36,810 --> 00:04:38,710
+Đó là toàn bộ tinh thần của
+
+122
+00:04:38,710 --> 00:04:41,070
+chương này: tìm đúng đường ranh giới,
+
+123
+00:04:41,070 --> 00:04:43,310
+rồi giữ nó bằng những thứ nhỏ như vậy.
+
+124
+00:04:44,670 --> 00:04:47,130
+Sang chương ba, sách so hai cách
+
+125
+00:04:47,130 --> 00:04:48,650
+viết cùng một nghiệp vụ.
+
+126
+00:04:48,830 --> 00:04:51,010
+Cách thứ nhất là Transaction Script:
+
+127
+00:04:51,370 --> 00:04:53,910
+mọi bước nằm trong controller, dữ liệu
+
+128
+00:04:53,910 --> 00:04:55,870
+chỉ là mảng, không ai giữ luật.
+
+129
+00:04:56,410 --> 00:04:59,210
+Cách thứ hai là Domain Model: dữ
+
+130
+00:04:59,210 --> 00:05:01,850
+liệu và hành vi nằm chung trong đối tượng.
+
+131
+00:05:02,030 --> 00:05:03,790
+Ví dụ là entity Order.
+
+132
+00:05:03,790 --> 00:05:06,510
+Constructor nhận đủ bốn thứ: mã
+
+133
+00:05:06,510 --> 00:05:09,070
+e-book, email, số lượng và đơn giá.
+
+134
+00:05:09,070 --> 00:05:11,810
+Nếu mã e-book nhỏ hơn hoặc bằng
+
+135
+00:05:11,810 --> 00:05:13,070
+không, ném lỗi.
+
+136
+00:05:13,690 --> 00:05:16,150
+Nếu email sai định dạng, ném lỗi.
+
+137
+00:05:16,290 --> 00:05:18,390
+Nếu số lượng nhỏ hơn hoặc bằng
+
+138
+00:05:18,390 --> 00:05:19,610
+không, ném lỗi.
+
+139
+00:05:19,870 --> 00:05:21,730
+Nếu giá âm, ném lỗi.
+
+140
+00:05:21,930 --> 00:05:24,190
+Và tổng tiền do chính Order tính,
+
+141
+00:05:24,450 --> 00:05:25,910
+không phải controller tính.
+
+142
+00:05:26,730 --> 00:05:29,130
+Điều quan trọng hơn mấy câu if:
+
+143
+00:05:29,130 --> 00:05:32,210
+không có cách nào tạo ra một Order sai.
+
+144
+00:05:32,210 --> 00:05:33,810
+Mọi chỗ trong hệ thống muốn có
+
+145
+00:05:33,810 --> 00:05:36,950
+đơn hàng, đều phải đi qua cái constructor đó.
+
+146
+00:05:37,530 --> 00:05:39,350
+Luật nghiệp vụ chỉ nằm một chỗ,
+
+147
+00:05:39,590 --> 00:05:41,410
+thay vì rải khắp các controller.
+
+148
+00:05:42,710 --> 00:05:45,910
+Sách phân biệt thêm entity và value object.
+
+149
+00:05:46,490 --> 00:05:48,650
+Entity có danh tính: hai đơn hàng
+
+150
+00:05:48,650 --> 00:05:51,090
+khác id thì khác nhau, dù nội
+
+151
+00:05:51,090 --> 00:05:52,090
+dung giống hệt.
+
+152
+00:05:52,090 --> 00:05:54,710
+Value object không có danh tính, so
+
+153
+00:05:54,710 --> 00:05:56,490
+bằng giá trị, như một địa chỉ
+
+154
+00:05:56,490 --> 00:05:58,410
+email hay một số tiền.
+
+155
+00:05:58,650 --> 00:06:00,790
+Địa chỉ email bọc trong value object
+
+156
+00:06:00,790 --> 00:06:03,210
+được kiểm tra định dạng ngay lúc tạo.
+
+157
+00:06:03,490 --> 00:06:05,130
+Số tiền đi kèm đơn vị tiền
+
+158
+00:06:05,130 --> 00:06:07,130
+tệ thì khó tính nhầm đơn vị.
+
+159
+00:06:07,590 --> 00:06:09,710
+Đó là cùng một ý: đặt luật
+
+160
+00:06:09,710 --> 00:06:11,130
+vào nơi sinh ra giá trị.
+
+161
+00:06:12,370 --> 00:06:14,190
+Nhưng đối tượng đẹp đến mấy vẫn
+
+162
+00:06:14,190 --> 00:06:15,270
+cần được lưu.
+
+163
+00:06:15,510 --> 00:06:17,990
+Sách không để entity tự gọi database;
+
+164
+00:06:18,530 --> 00:06:20,410
+việc lưu thuộc về một thành phần khác.
+
+165
+00:06:22,790 --> 00:06:25,370
+Repository là một interface đứng về
+
+166
+00:06:25,370 --> 00:06:27,510
+phía nghiệp vụ, mô tả việc lưu
+
+167
+00:06:27,510 --> 00:06:28,890
+và lấy đối tượng.
+
+168
+00:06:29,110 --> 00:06:31,030
+Nó không nói bảng nào, cột nào,
+
+169
+00:06:31,350 --> 00:06:32,350
+SQL ra sao.
+
+170
+00:06:32,950 --> 00:06:34,930
+Nó chỉ nói hai việc: lưu một
+
+171
+00:06:34,930 --> 00:06:36,710
+đơn hàng và nhận lại mã đơn;
+
+172
+00:06:37,030 --> 00:06:39,270
+đưa một mã đơn và nhận lại đơn hàng.
+
+173
+00:06:40,430 --> 00:06:42,450
+Có một mẹo viết rất hay: cứ
+
+174
+00:06:42,450 --> 00:06:44,270
+giả định thành phần mình cần đã
+
+175
+00:06:44,270 --> 00:06:46,110
+tồn tại, rồi định nghĩa nó.
+
+176
+00:06:46,570 --> 00:06:48,810
+Trong controller, bạn muốn viết đúng
+
+177
+00:06:48,810 --> 00:06:50,410
+một dòng: lưu đơn hàng này.
+
+178
+00:06:50,410 --> 00:06:53,110
+Vậy thì viết interface đúng như cách
+
+179
+00:06:53,110 --> 00:06:53,990
+bạn muốn gọi.
+
+180
+00:06:54,410 --> 00:06:55,670
+Phần cài đặt để sau.
+
+181
+00:06:56,890 --> 00:06:59,170
+Bản chạy thật dùng query builder, hoặc
+
+182
+00:06:59,170 --> 00:07:01,210
+giấu một Eloquent model bên trong.
+
+183
+00:07:01,710 --> 00:07:03,570
+Bản dùng để test chỉ giữ đơn
+
+184
+00:07:03,570 --> 00:07:04,630
+hàng trong bộ nhớ.
+
+185
+00:07:05,230 --> 00:07:07,110
+Sau này nếu đơn hàng phải lưu
+
+186
+00:07:07,110 --> 00:07:08,970
+sang một hệ thống khác qua API,
+
+187
+00:07:09,510 --> 00:07:11,190
+chỉ cần thêm một bản cài đặt nữa.
+
+188
+00:07:11,830 --> 00:07:14,310
+Controller không cần biết đang dùng cái nào.
+
+189
+00:07:15,130 --> 00:07:18,470
+Sau khi tách, controller chỉ còn vài bước.
+
+190
+00:07:18,750 --> 00:07:21,630
+Lấy giá e-book qua một repository khác.
+
+191
+00:07:22,130 --> 00:07:25,070
+Tạo Order, và bắt lỗi nếu dữ liệu sai.
+
+192
+00:07:25,710 --> 00:07:27,410
+Lưu đơn qua repository.
+
+193
+00:07:28,050 --> 00:07:29,610
+Ghi mã đơn vào session.
+
+194
+00:07:30,250 --> 00:07:31,530
+Trả về trang tiếp theo.
+
+195
+00:07:31,990 --> 00:07:34,550
+Phần MySQL nằm gọn trong một lớp.
+
+196
+00:07:34,990 --> 00:07:36,510
+Phần nghiệp vụ là một đối tượng
+
+197
+00:07:36,510 --> 00:07:39,070
+PHP thuần, không kế thừa framework,
+
+198
+00:07:39,490 --> 00:07:40,570
+không gọi database.
+
+199
+00:07:41,330 --> 00:07:43,630
+Và mỗi phần có thể test riêng.
+
+200
+00:07:44,270 --> 00:07:46,170
+Đó là lần tách đầu tiên trong
+
+201
+00:07:46,170 --> 00:07:48,670
+sách, và các chương sau đều xây
+
+202
+00:07:48,670 --> 00:07:49,290
+tiếp trên nó.
+
+203
+00:07:50,690 --> 00:07:53,210
+Đến chương bốn, sách chỉ ra một
+
+204
+00:07:53,210 --> 00:07:55,630
+chỗ hay bị bỏ qua: phần đọc.
+
+205
+00:07:55,750 --> 00:07:57,830
+Thường thì ta lấy luôn entity dùng
+
+206
+00:07:57,830 --> 00:07:59,010
+để ghi, đưa cho view.
+
+207
+00:07:59,710 --> 00:08:01,770
+Nhưng entity đó mang theo đủ phương
+
+208
+00:08:01,770 --> 00:08:04,670
+thức đổi giá, ẩn sản phẩm, đổi trạng thái.
+
+209
+00:08:05,090 --> 00:08:06,990
+View chỉ cần hiển thị, lại cầm
+
+210
+00:08:06,990 --> 00:08:09,450
+một đối tượng có thể thay đổi dữ liệu.
+
+211
+00:08:09,710 --> 00:08:12,170
+Lâu dần, class phình to vì phục
+
+212
+00:08:12,170 --> 00:08:13,110
+vụ cả hai việc.
+
+213
+00:08:13,970 --> 00:08:16,350
+Sách đề nghị tách read model.
+
+214
+00:08:16,590 --> 00:08:17,910
+Có thể là một lớp đọc riêng
+
+215
+00:08:17,910 --> 00:08:20,670
+cho e-book, chỉ gồm mã, tên và
+
+216
+00:08:20,670 --> 00:08:23,910
+giá, đi kèm một repository chỉ để đọc.
+
+217
+00:08:23,990 --> 00:08:26,270
+Cũng có thể nhẹ hơn: một interface
+
+218
+00:08:26,270 --> 00:08:28,270
+chỉ có một hàm trả về giá
+
+219
+00:08:28,270 --> 00:08:29,310
+của một e-book.
+
+220
+00:08:29,590 --> 00:08:32,350
+Cách nặng hơn là CQRS: lưu trữ
+
+221
+00:08:32,350 --> 00:08:34,970
+đọc riêng, cập nhật qua domain event.
+
+222
+00:08:35,550 --> 00:08:37,670
+Sách không đẩy bạn vào đó, vì
+
+223
+00:08:37,670 --> 00:08:39,250
+phải giữ nhất quán giữa hai kho.
+
+224
+00:08:39,250 --> 00:08:41,650
+Sách chọn cách đơn giản: chung
+
+225
+00:08:41,650 --> 00:08:45,050
+database, chỉ tách repository đọc, kèm
+
+226
+00:08:45,050 --> 00:08:47,590
+integration test để hai bên không hiểu
+
+227
+00:08:47,590 --> 00:08:48,290
+lệch dữ liệu.
+
+228
+00:08:49,470 --> 00:08:50,690
+Rồi đến view model.
+
+229
+00:08:51,290 --> 00:08:53,490
+Đây là một DTO được tạo đúng
+
+230
+00:08:53,490 --> 00:08:54,610
+theo thứ màn hình cần.
+
+231
+00:08:55,230 --> 00:08:57,910
+View model của e-book có sẵn giá
+
+232
+00:08:57,910 --> 00:08:59,470
+đã định dạng thành chuỗi tiền.
+
+233
+00:08:59,470 --> 00:09:02,210
+API danh sách đơn hàng thì trả
+
+234
+00:09:02,210 --> 00:09:04,650
+về view model chỉ gồm mã đơn,
+
+235
+00:09:04,910 --> 00:09:07,610
+ngày, tên khách và tổng tiền, lấy
+
+236
+00:09:07,610 --> 00:09:10,170
+qua một repository riêng cho màn hình đó.
+
+237
+00:09:10,710 --> 00:09:12,670
+Nhờ vậy tầng hiển thị không phải
+
+238
+00:09:12,670 --> 00:09:15,230
+biết cấu trúc dữ liệu bên trong của domain.
+
+239
+00:09:16,530 --> 00:09:18,510
+Nguyên tắc gói lại một câu: đừng
+
+240
+00:09:18,510 --> 00:09:20,390
+dùng một đối tượng có thể thay
+
+241
+00:09:20,390 --> 00:09:22,510
+đổi và có logic phức tạp cho
+
+242
+00:09:22,510 --> 00:09:23,510
+việc chỉ đọc.
+
+243
+00:09:23,730 --> 00:09:25,290
+Đọc thì trả đúng thứ cần đọc.
+
+244
+00:09:26,690 --> 00:09:30,070
+Chương năm xử lý một chỗ phình khác: controller.
+
+245
+00:09:30,410 --> 00:09:32,670
+Lý do controller phình rất dễ hiểu:
+
+246
+00:09:32,910 --> 00:09:34,490
+nó là nơi duy nhất ai cũng
+
+247
+00:09:34,490 --> 00:09:35,730
+nhét use case vào.
+
+248
+00:09:36,310 --> 00:09:39,710
+Sách tách use case ra thành Application Service.
+
+249
+00:09:40,210 --> 00:09:42,010
+Một service điều phối đúng một use
+
+250
+00:09:42,010 --> 00:09:44,310
+case, và gọi được từ web, từ
+
+251
+00:09:44,310 --> 00:09:46,790
+CLI, từ job, hay từ test.
+
+252
+00:09:47,350 --> 00:09:49,110
+Đầu vào được gói thành Command.
+
+253
+00:09:49,650 --> 00:09:51,570
+Ví dụ lệnh đặt hàng gồm mã
+
+254
+00:09:51,570 --> 00:09:53,710
+khách, danh sách sản phẩm và email.
+
+255
+00:09:54,310 --> 00:09:56,710
+Service đặt hàng có một hàm nhận
+
+256
+00:09:56,710 --> 00:09:58,710
+lệnh đó và trả về mã đơn.
+
+257
+00:09:59,990 --> 00:10:03,210
+Bên trong service làm những việc của nghiệp vụ.
+
+258
+00:10:03,470 --> 00:10:04,510
+Lấy sản phẩm.
+
+259
+00:10:04,790 --> 00:10:07,270
+Kiểm tra tồn kho, hết hàng thì báo lỗi.
+
+260
+00:10:07,770 --> 00:10:08,550
+Tính tiền.
+
+261
+00:10:09,030 --> 00:10:10,190
+Xin một mã đơn mới.
+
+262
+00:10:10,830 --> 00:10:11,530
+Tạo Order.
+
+263
+00:10:12,230 --> 00:10:12,890
+Lưu.
+
+264
+00:10:13,290 --> 00:10:15,630
+Controller chỉ còn hai việc: đổi
+
+265
+00:10:15,630 --> 00:10:18,410
+request thành command, và trả response.
+
+266
+00:10:18,410 --> 00:10:21,190
+Chương này cũng nhắc cách đưa các
+
+267
+00:10:21,190 --> 00:10:22,590
+phụ thuộc vào service.
+
+268
+00:10:22,590 --> 00:10:25,410
+Truyền chúng qua constructor, thay vì
+
+269
+00:10:25,410 --> 00:10:28,870
+để service tự đi lấy từ container của framework.
+
+270
+00:10:29,430 --> 00:10:31,490
+Như vậy service không dính vào
+
+271
+00:10:31,490 --> 00:10:33,550
+container toàn cục.
+
+272
+00:10:33,550 --> 00:10:36,250
+Và khi test, bạn truyền thẳng bản giả vào.
+
+273
+00:10:37,310 --> 00:10:39,290
+Và lợi ích đo được nằm ở test.
+
+274
+00:10:39,790 --> 00:10:41,870
+Test service đặt hàng chỉ cần một
+
+275
+00:10:41,870 --> 00:10:44,310
+repository trong bộ nhớ và một bản
+
+276
+00:10:44,310 --> 00:10:45,570
+giả của phần gửi mail.
+
+277
+00:10:46,170 --> 00:10:47,910
+Không cần framework, không cần
+
+278
+00:10:47,910 --> 00:10:49,950
+database, không cần mạng.
+
+279
+00:10:49,950 --> 00:10:52,010
+Test dễ viết thì đội ngũ mới
+
+280
+00:10:52,010 --> 00:10:53,115
+tự tin sửa code.
+
+281
+00:10:54,610 --> 00:10:57,830
+Chương sáu lùi lại nhìn toàn bộ hệ thống.
+
+282
+00:10:58,070 --> 00:10:59,930
+Cách chia cũ là ba tầng: giao
+
+283
+00:10:59,930 --> 00:11:02,230
+diện, nghiệp vụ, truy cập dữ liệu.
+
+284
+00:11:02,590 --> 00:11:04,310
+Nó vẫn hữu ích: biết đặt code
+
+285
+00:11:04,310 --> 00:11:06,110
+ở đâu, đổi một tầng thì ít
+
+286
+00:11:06,110 --> 00:11:06,790
+đụng tầng khác.
+
+287
+00:11:07,270 --> 00:11:08,530
+Nhưng nó có hai rủi ro.
+
+288
+00:11:09,190 --> 00:11:11,470
+Logic rò rỉ giữa các tầng, và
+
+289
+00:11:11,470 --> 00:11:13,450
+chỉ có kỷ luật con người mới ngăn được.
+
+290
+00:11:13,990 --> 00:11:15,910
+Còn chia quá nhiều tầng thì thành
+
+291
+00:11:15,910 --> 00:11:18,630
+mã lasagna, lớp chồng lên lớp, khó
+
+292
+00:11:18,630 --> 00:11:20,190
+lần theo luồng xử lý.
+
+293
+00:11:21,070 --> 00:11:22,950
+Sách đề nghị ba tầng theo hướng
+
+294
+00:11:22,950 --> 00:11:23,890
+nghiệp vụ đứng giữa.
+
+295
+00:11:23,890 --> 00:11:27,550
+Domain: entity, aggregate, value
+
+296
+00:11:27,550 --> 00:11:30,570
+object, domain service, domain event,
+
+297
+00:11:30,870 --> 00:11:33,550
+interface repository, factory.
+
+298
+00:11:33,750 --> 00:11:35,650
+Tầng này không import framework.
+
+299
+00:11:36,010 --> 00:11:38,350
+Application: use case handler,
+
+300
+00:11:38,650 --> 00:11:41,450
+command, query, transaction; sách gọi
+
+301
+00:11:41,450 --> 00:11:42,510
+là lớp keo.
+
+302
+00:11:43,030 --> 00:11:45,790
+Infrastructure: framework, ORM,
+
+303
+00:11:45,790 --> 00:11:48,850
+adapter gọi dịch vụ ngoài, phần cài đặt interface.
+
+304
+00:11:49,450 --> 00:11:51,290
+Tầng này test kiểu integration.
+
+305
+00:11:52,370 --> 00:11:55,370
+Điểm cốt lõi là Dependency Rule: phụ
+
+306
+00:11:55,370 --> 00:11:56,990
+thuộc chỉ được hướng vào trong.
+
+307
+00:11:57,530 --> 00:11:59,430
+Giao diện biết Application.
+
+308
+00:12:00,030 --> 00:12:01,770
+Application biết Domain.
+
+309
+00:12:02,530 --> 00:12:04,790
+Infrastructure cũng trỏ vào Domain,
+
+310
+00:12:05,230 --> 00:12:07,570
+nhưng Domain không biết ai đang cài đặt mình.
+
+311
+00:12:08,170 --> 00:12:10,170
+Domain không tự gọi ra ngoài; sách
+
+312
+00:12:10,170 --> 00:12:12,810
+gọi đó là Hollywood Principle: đừng
+
+313
+00:12:12,810 --> 00:12:14,990
+gọi chúng tôi, chúng tôi sẽ gọi bạn.
+
+314
+00:12:16,130 --> 00:12:18,570
+Nối các tầng bằng một service provider.
+
+315
+00:12:18,570 --> 00:12:21,870
+Service provider khai báo: chỗ nào cần
+
+316
+00:12:21,870 --> 00:12:25,610
+repository đơn hàng thì đưa bản dùng Eloquent.
+
+317
+00:12:25,610 --> 00:12:28,930
+Khi chạy thật, container đưa bản Eloquent.
+
+318
+00:12:28,930 --> 00:12:31,230
+Khi test, đưa bản trong bộ nhớ.
+
+319
+00:12:31,550 --> 00:12:33,710
+Luồng đặt hàng đi như sau: request
+
+320
+00:12:33,710 --> 00:12:35,770
+vào controller, controller gọi
+
+321
+00:12:35,770 --> 00:12:38,010
+handler, handler lưu đơn qua
+
+322
+00:12:38,010 --> 00:12:40,870
+repository, phát sự kiện đơn đã đặt,
+
+323
+00:12:40,990 --> 00:12:42,890
+rồi một listener gửi email.
+
+324
+00:12:42,890 --> 00:12:45,090
+Mỗi mũi tên đều đi vào trong,
+
+325
+00:12:45,510 --> 00:12:47,590
+không có mũi tên nào từ Domain
+
+326
+00:12:47,590 --> 00:12:48,650
+trỏ ra database.
+
+327
+00:12:50,070 --> 00:12:51,890
+Nhưng sách cũng nhắc: không phải việc
+
+328
+00:12:51,890 --> 00:12:53,830
+gì cũng cần nhiều lớp.
+
+329
+00:12:53,990 --> 00:12:55,790
+Việc rất đơn giản thì gộp bớt
+
+330
+00:12:55,790 --> 00:12:57,050
+cho đỡ rối.
+
+331
+00:12:57,050 --> 00:12:59,230
+Những module phức tạp, nằm ở lõi
+
+332
+00:12:59,230 --> 00:13:01,330
+hệ thống, mới đáng chia đủ ba tầng.
+
+333
+00:13:03,000 --> 00:13:05,400
+Chương bảy đưa cách nhìn cuối cùng:
+
+334
+00:13:05,580 --> 00:13:07,200
+Hexagonal Architecture.
+
+335
+00:13:07,200 --> 00:13:10,720
+Alistair Cockburn đề xuất năm 2005.
+
+336
+00:13:11,420 --> 00:13:13,080
+Cái tên lục giác chỉ là ẩn
+
+337
+00:13:13,080 --> 00:13:14,740
+dụ; không có nghĩa là hệ thống
+
+338
+00:13:14,740 --> 00:13:15,860
+phải có sáu cạnh.
+
+339
+00:13:16,360 --> 00:13:18,160
+Hình dung một cổng USB.
+
+340
+00:13:18,680 --> 00:13:20,320
+Lõi máy không biết bạn cắm chuột,
+
+341
+00:13:20,640 --> 00:13:21,800
+bàn phím hay ổ cứng.
+
+342
+00:13:22,400 --> 00:13:24,100
+Nó chỉ biết một chuẩn cắm.
+
+343
+00:13:24,620 --> 00:13:27,260
+Port là chuẩn đó; adapter là từng
+
+344
+00:13:27,260 --> 00:13:28,280
+thiết bị cụ thể.
+
+345
+00:13:29,440 --> 00:13:31,040
+Sách chỉ ra những chỗ phân lớp
+
+346
+00:13:31,040 --> 00:13:32,420
+còn chưa giải quyết.
+
+347
+00:13:32,420 --> 00:13:34,680
+Phụ thuộc vẫn có thể nằm ngầm.
+
+348
+00:13:34,880 --> 00:13:37,200
+Thêm một kênh mới, ví dụ CLI,
+
+349
+00:13:37,360 --> 00:13:38,440
+vẫn phải sửa nhiều.
+
+350
+00:13:38,900 --> 00:13:41,680
+Test tầng application vẫn có thể chậm
+
+351
+00:13:41,680 --> 00:13:43,280
+nếu khởi động framework.
+
+352
+00:13:43,280 --> 00:13:45,180
+Và tích hợp với hệ thống khác
+
+353
+00:13:45,180 --> 00:13:46,620
+dễ làm bẩn domain.
+
+354
+00:13:48,460 --> 00:13:49,980
+Hexagonal tách hai loại port.
+
+355
+00:13:50,560 --> 00:13:51,980
+Port đầu vào là cách thế giới
+
+356
+00:13:51,980 --> 00:13:56,040
+gọi vào lõi: UI, API, CLI, bộ test.
+
+357
+00:13:56,640 --> 00:13:58,320
+Port đầu ra là cách lõi gọi
+
+358
+00:13:58,320 --> 00:14:00,620
+ra ngoài: lưu trữ, gửi thông báo,
+
+359
+00:14:00,860 --> 00:14:01,860
+dịch vụ bên thứ ba.
+
+360
+00:14:02,420 --> 00:14:05,800
+Cả hai đều là interface nằm trong core.
+
+361
+00:14:05,800 --> 00:14:08,740
+Adapter là code cụ thể ở Infrastructure.
+
+362
+00:14:09,400 --> 00:14:11,200
+Và mỗi port nên có ít nhất
+
+363
+00:14:11,200 --> 00:14:14,540
+một adapter thật, một adapter giả cho test.
+
+364
+00:14:15,060 --> 00:14:17,040
+Theo sách, Cockburn đề xuất mô hình
+
+365
+00:14:17,040 --> 00:14:19,180
+này trước hết để test cho dễ.
+
+366
+00:14:20,440 --> 00:14:22,420
+Cách áp dụng có bốn bước.
+
+367
+00:14:22,660 --> 00:14:23,720
+Xác định port.
+
+368
+00:14:24,060 --> 00:14:26,280
+Định nghĩa interface trong core.
+
+369
+00:14:26,280 --> 00:14:27,460
+Viết adapter.
+
+370
+00:14:27,900 --> 00:14:30,120
+Nối bằng dependency injection.
+
+371
+00:14:31,000 --> 00:14:32,680
+Ví dụ trong sách.
+
+372
+00:14:32,960 --> 00:14:34,960
+Lưu đơn hàng là một port, với
+
+373
+00:14:34,960 --> 00:14:37,580
+hai adapter: Eloquent khi chạy thật,
+
+374
+00:14:37,860 --> 00:14:38,880
+bộ nhớ khi test.
+
+375
+00:14:39,440 --> 00:14:41,000
+Gửi xác nhận đơn là port thứ
+
+376
+00:14:41,000 --> 00:14:44,040
+hai: một adapter gửi email thật, một
+
+377
+00:14:44,040 --> 00:14:46,020
+adapter chỉ ghi log khi test.
+
+378
+00:14:46,600 --> 00:14:49,460
+Một service provider nối mỗi port với
+
+379
+00:14:49,460 --> 00:14:50,680
+adapter cần dùng.
+
+380
+00:14:50,680 --> 00:14:53,620
+Test use case đặt hàng chỉ cần
+
+381
+00:14:53,620 --> 00:14:57,480
+hai adapter giả, không cần khởi động Laravel.
+
+382
+00:14:57,480 --> 00:14:59,220
+Sách còn mở rộng.
+
+383
+00:14:59,340 --> 00:15:01,260
+Thêm lệnh nhập đơn từ file CSV:
+
+384
+00:15:01,840 --> 00:15:03,980
+đọc file là một adapter mới, phần
+
+385
+00:15:03,980 --> 00:15:06,060
+xử lý đơn vẫn là lõi cũ.
+
+386
+00:15:06,300 --> 00:15:08,540
+Lưu hai database song song: hai
+
+387
+00:15:08,540 --> 00:15:09,880
+adapter cùng một port.
+
+388
+00:15:10,460 --> 00:15:12,140
+Hai phân hệ như đặt hàng và
+
+389
+00:15:12,140 --> 00:15:13,920
+khách hàng nói chuyện qua một port,
+
+390
+00:15:14,100 --> 00:15:16,380
+thay vì gọi thẳng vào database của nhau.
+
+391
+00:15:17,580 --> 00:15:19,160
+Cái giá cũng được nói rõ.
+
+392
+00:15:19,540 --> 00:15:21,700
+Nhiều interface và class hơn.
+
+393
+00:15:22,280 --> 00:15:24,520
+Cần quy ước đặt tên, nếu không sẽ rối.
+
+394
+00:15:24,520 --> 00:15:27,060
+Và đừng trừu tượng hóa mọi thứ.
+
+395
+00:15:27,400 --> 00:15:29,160
+Chỉ tách ở chỗ dễ thay đổi
+
+396
+00:15:29,160 --> 00:15:29,920
+hoặc khó test.
+
+397
+00:15:31,410 --> 00:15:33,830
+Đọc hết bảy chương, câu hỏi quay
+
+398
+00:15:33,830 --> 00:15:35,250
+lại rất đơn giản.
+
+399
+00:15:35,470 --> 00:15:37,130
+Đoạn code này có chạy được một
+
+400
+00:15:37,130 --> 00:15:39,530
+mình, trong bộ nhớ, không cần gì
+
+401
+00:15:39,530 --> 00:15:40,410
+bên ngoài không?
+
+402
+00:15:40,890 --> 00:15:43,110
+Nếu có, nó là nghiệp vụ, và
+
+403
+00:15:43,110 --> 00:15:44,510
+nên được giữ sạch.
+
+404
+00:15:44,690 --> 00:15:46,870
+Nếu không, nó là hạ tầng, và
+
+405
+00:15:46,870 --> 00:15:49,010
+nên bị đẩy ra rìa sau một interface.
+
+406
+00:15:49,610 --> 00:15:51,330
+Bạn không cần biến cả dự án
+
+407
+00:15:51,330 --> 00:15:53,450
+thành hexagonal trong một tuần.
+
+408
+00:15:53,450 --> 00:15:55,610
+Chọn một use case thật.
+
+409
+00:15:55,890 --> 00:15:57,530
+Tách một phụ thuộc khó test nhất.
+
+410
+00:15:58,110 --> 00:16:00,090
+Viết một test chạy không cần database.
+
+411
+00:16:00,850 --> 00:16:01,730
+Rồi lặp lại.
+
+412
+00:16:02,870 --> 00:16:05,150
+Sách không hứa code sẽ chạy nhanh hơn.
+
+413
+00:16:05,730 --> 00:16:07,710
+Điều sách hứa khiêm tốn hơn: khi
+
+414
+00:16:07,710 --> 00:16:10,190
+yêu cầu đổi, bạn biết phải sửa ở đâu.
+
+415
+00:16:10,810 --> 00:16:12,650
+Và đó thường là thứ đắt nhất
+
+416
+00:16:12,650 --> 00:16:14,470
+trong một hệ thống sống đủ lâu.
+
+417
+00:16:14,910 --> 00:16:16,370
+Cảm ơn bạn đã nghe đến đây.

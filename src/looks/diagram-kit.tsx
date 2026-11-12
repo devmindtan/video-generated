@@ -60,8 +60,9 @@ export const DiagramNode: FC<{t: Theme; f: number; x: number; y: number; w?: num
   return <g transform={`translate(${x} ${y}) scale(${scale * (.86 + .14 * k)})`} opacity={k * (state === 'dim' ? .45 : 1)}>
     {state === 'hot' ? <rect x={-w / 2 - 10} y={-h / 2 - 10} width={w + 20} height={h + 20} rx={22} fill={p.accent} opacity={.12 + .14 * pulse} /> : null}
     <rect x={-w / 2} y={-h / 2} width={w} height={h} rx={16} fill={p.surface} stroke={edge} strokeWidth={3} />
-    <g transform={`translate(0 ${icon})`}><Glyph kind={kind} c={edge} w={3} /></g>
-    {label ? <text y={h / 2 - (sub ? 54 : 22)} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={labelSize} fill={p.ink}>{label}</text> : null}
+    {/* A short box with a label has no room for the icon too: the label alone (icon and text never overlap). */}
+    {label && h < 130 ? null : <g transform={`translate(0 ${icon})`}><Glyph kind={kind} c={edge} w={3} /></g>}
+    {label ? <text y={label && h < 130 && !sub ? labelSize * .36 : h / 2 - (sub ? 54 : 22)} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={labelSize} fill={p.ink}>{label}</text> : null}
     {sub ? <text y={h / 2 - 16} textAnchor="middle" fontFamily={FONT} fontSize={30} fill={p.muted}>{sub}</text> : null}
     {state === 'down' ? <path d={`M${-w / 2 + 18} ${-h / 2 + 16} L${w / 2 - 18} ${h / 2 - (label ? 66 : 16)} M${w / 2 - 18} ${-h / 2 + 16} L${-w / 2 + 18} ${h / 2 - (label ? 66 : 16)}`} stroke="#ff6b6b" strokeWidth={5} strokeLinecap="round" opacity={.8} /> : null}
   </g>;
@@ -81,14 +82,14 @@ export const DiagramWire: FC<{t: Theme; f: number; pts: Pt[]; at?: number; dur?:
   };
 
 // Data packets running along a wire: `count` evenly spaced dots, one lap per `period` frames, from frame `at`.
-export const DiagramPacket: FC<{t: Theme; f: number; pts: Pt[]; at?: number; until?: number; period?: number; count?: number; color?: string; r?: number; label?: string}> =
-  ({t, f, pts, at = 0, until = Infinity, period = 45, count = 1, color, r = 9, label}) => {
+export const DiagramPacket: FC<{t: Theme; f: number; pts: Pt[]; at?: number; until?: number; period?: number; count?: number; color?: string; r?: number; label?: string; labelSize?: number}> =
+  ({t, f, pts, at = 0, until = Infinity, period = 45, count = 1, color, r = 9, label, labelSize = 28}) => {
     if (f < at || f > until) return null;
     const c = color ?? t.palette.accent, life = fade(f, at, until === Infinity ? 1e9 : until, 8);
     return <g opacity={life}>{Array.from({length: count}, (_, i) => {
       const phase = ((f - at) / period + i / count) % 1, [x, y] = along(pts, phase), o = Math.min(1, phase * 8, (1 - phase) * 8);
       return <g key={i} opacity={o}><circle cx={x} cy={y} r={r * 1.9} fill={c} opacity={.18} /><circle cx={x} cy={y} r={r} fill={c} />
-        {label ? <text x={x} y={y - r - 10} textAnchor="middle" fontFamily={MONO} fontSize={28} fill={c}>{label}</text> : null}</g>;
+        {label ? <text x={x} y={y - r - 10} textAnchor="middle" fontFamily={MONO} fontSize={labelSize} fill={c}>{label}</text> : null}</g>;
     })}</g>;
   };
 

@@ -18,7 +18,16 @@ SCRIPT = ROOT / 'docs/projects/kien-truc-ung-dung-web-tong-quan/script.md'
 
 # Spoken forms for terms the preset voice misreads in the ASR check; written the way Vietnamese engineers usually say
 # them. Order matters: longer keys first.
-SAY = []
+# Spoken forms for terms Minh Đức misreads (probes on the System Design video 2026-11-11, and this video's recognition
+# 2026-11-12: "Port" heard as "Pod", "lasagna" as "lô gian nhà", "Cockburn" as "CodeBurn"); written the way
+# Vietnamese engineers usually say them. Captions keep the script's text. Longer keys first.
+SAY = [
+    ('Alistair Cockburn', 'A lít tơ Cô bơn'), ('Cockburn', 'Cô bơn'),
+    ('lasagna', 'la da nha'), ('CQRS', 'xê kiu a ét'),
+    ('Port', 'Pót'), ('port', 'pót'),
+    ('HTTP', 'hát tê tê pê'), ('POST', 'pốt'), ('SMTP', 'ét em ti pi'),
+    ('idempotency', 'ai đem pô tần xi'),
+]
 
 
 def spoken(text):

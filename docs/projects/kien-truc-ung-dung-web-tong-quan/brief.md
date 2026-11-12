@@ -3,8 +3,11 @@
 - Nhóm: Chưa thuộc kênh / Chưa thuộc series (`ngoai-kenh/chua-thuoc-series`); nối sách `kien-truc-ung-dung-web`
   (*Kiến trúc ứng dụng web*, Nguyễn Thế Huy), hồ sơ nghiên cứu đã đọc đủ 7/7 chương.
 - Project ID: `kien-truc-ung-dung-web-tong-quan`.
-- Định dạng: video dài 16:9, 1920×1080, 30 fps. Thời lượng mục tiêu 12–13 phút (lời đọc khoảng 11 phút).
-- Trạng thái: mới bắt đầu; chưa có bản dựng, chưa chốt gói ban đầu.
+- Định dạng: video dài 16:9, 1920×1080, 30 fps. Thời lượng thực 16:19 (978,9 giây); dự kiến ban đầu 12–13 phút nhưng
+  kịch bản đủ 7 chương cần dài hơn, vẫn dưới 18 phút.
+- Trạng thái (2026-11-12): đã có bản dựng cả video (commit `6f6086e`); người dùng thấy nhiều chỗ chưa đạt nên đã rà và
+  sửa lại kịch bản, giọng và hình ([script-review.md](script-review.md)); chờ người dùng xem lại trong Studio và chốt
+  gói ban đầu.
 
 ## Yêu cầu của người dùng (2026-11-11)
 
@@ -17,8 +20,8 @@
 
 - Lập trình viên junior–middle đang làm web/Laravel hoặc bất kỳ framework nào, đã từng thấy controller trộn SQL với
   nghiệp vụ; người chuẩn bị phỏng vấn về clean architecture, DDD nhẹ, hexagonal.
-- Thông điệp: tách code nghiệp vụ khỏi hạ tầng để test nhanh, đổi công nghệ rẻ và biết sửa ở đâu. Kiến trúc là công cụ,
-  không phải tôn giáo: chỉ tách ở chỗ dễ đổi hoặc khó test.
+- Thông điệp: tách code nghiệp vụ khỏi hạ tầng để test nhanh, đổi công nghệ rẻ và biết sửa ở đâu. Theo sách, chỉ tách ở
+  chỗ dễ đổi hoặc khó test; việc đơn giản thì gộp bớt (PDF 48, 59).
 
 ## Cách làm
 
@@ -47,7 +50,6 @@ nối ý. Không đọc tên tác giả, email hay thông tin ấn bản thành 
 ## Hoàn thành
 
 - [ ] Gói chốt ban đầu được người dùng chốt (kịch bản, nhạc, giọng + mẫu, thông tin chốt, kế hoạch animation)
-- [ ] Bản dựng 30 giây đầu sau mở đầu để duyệt trong Studio (không render)
-- [ ] Các chương còn lại và đoạn kết
-- [ ] description.md, captions.srt (đề xuất)
+- [x] Bản dựng cả video (bản đầu bỏ qua bước duyệt 30 giây đầu; bản sửa 2026-11-12 chờ người dùng xem trong Studio)
+- [x] description.md, captions.srt (đề xuất), voice-audition.md
 - [ ] Thumbnail web, QA; render chỉ khi người dùng yêu cầu

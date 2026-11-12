@@ -1,7 +1,7 @@
 [
   {
     "id": "00-mo-dau",
-    "text": "Một controller đặt hàng e-book, gần ba mươi dòng. Nó lấy giá từ database, nhân với số lượng, ghi vào bảng orders, rồi nhét mã đơn vào session. Chạy đúng. Nhưng thử hỏi: nghiệp vụ tính tiền nằm ở đâu? Nếu ngày mai đổi sang PostgreSQL, thêm một job gửi mail, hay chỉ muốn viết một test cho phần tính tiền, bạn sẽ phải sửa những đâu? Đó là câu hỏi cuốn Kiến trúc ứng dụng web đi tìm lời giải. Sách kể một chức năng đặt hàng, rồi mổ nó ra từng lớp: tách nghiệp vụ khỏi database, khỏi framework, khỏi cách giao tiếp bên ngoài. Mình sẽ đi qua bảy chương, giữ đúng một ví dụ xuyên suốt, và dừng ở những chỗ đáng lấy. Cái đáng lấy không phải một cây thư mục đẹp. Mà là một câu hỏi dùng được mỗi ngày: đoạn code này có chạy được một mình, trong bộ nhớ, không cần database, không cần framework không?",
+    "text": "Một controller đặt hàng e-book, gần ba mươi dòng. Nó lấy giá từ database, nhân với số lượng, ghi vào bảng orders, rồi nhét mã đơn vào session. Chạy đúng. Nhưng thử hỏi: nghiệp vụ tính tiền nằm ở đâu? Nếu ngày mai đổi sang PostgreSQL, thêm một API JSON bên cạnh trang web, hay chỉ muốn viết một test cho phần tính tiền, bạn sẽ phải sửa những đâu? Cuốn Kiến trúc ứng dụng web trả lời đúng câu hỏi đó. Sách kể một chức năng đặt hàng, rồi mổ nó ra từng lớp: tách nghiệp vụ khỏi database, khỏi framework, khỏi cách giao tiếp bên ngoài. Mình sẽ đi qua bảy chương, giữ đúng một ví dụ xuyên suốt, và dừng ở những chỗ đáng lấy. Thứ đáng mang về là một câu hỏi dùng được mỗi ngày: đoạn code này có chạy được một mình, trong bộ nhớ, không cần database, không cần framework không?",
     "sentences": [
       {
         "text": "Một controller đặt hàng e-book, gần ba mươi dòng.",
@@ -20,11 +20,11 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Nếu ngày mai đổi sang PostgreSQL, thêm một job gửi mail, hay chỉ muốn viết một test cho phần tính tiền, bạn sẽ phải sửa những đâu?",
+        "text": "Nếu ngày mai đổi sang PostgreSQL, thêm một API JSON bên cạnh trang web, hay chỉ muốn viết một test cho phần tính tiền, bạn sẽ phải sửa những đâu?",
         "pauseAfter": 1.1
       },
       {
-        "text": "Đó là câu hỏi cuốn Kiến trúc ứng dụng web đi tìm lời giải.",
+        "text": "Cuốn Kiến trúc ứng dụng web trả lời đúng câu hỏi đó.",
         "pauseAfter": 0.45
       },
       {
@@ -36,31 +36,27 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Cái đáng lấy không phải một cây thư mục đẹp.",
-        "pauseAfter": 0.45
-      },
-      {
-        "text": "Mà là một câu hỏi dùng được mỗi ngày: đoạn code này có chạy được một mình, trong bộ nhớ, không cần database, không cần framework không?",
+        "text": "Thứ đáng mang về là một câu hỏi dùng được mỗi ngày: đoạn code này có chạy được một mình, trong bộ nhớ, không cần database, không cần framework không?",
         "pauseAfter": 0
       }
     ],
     "leadIn": 0.4,
     "tail": 1.2,
     "maxTail": 3,
-    "duration": 59.08,
+    "duration": 57.05,
     "minWordMatchRatio": 0.75,
     "start": 0
   },
   {
     "id": "01-khi-nghiep-vu-va-ha-tang-nam-chung",
-    "text": "Bắt đầu bằng đúng đoạn code đó. Hàm orderEbook nhận request, gọi database lấy giá, nhân với số lượng, insert vào bảng orders, lưu id vào session. Nhìn qua thì gọn. Nhưng trong cùng một hàm có đủ thứ: một câu SQL, một phép tính tiền, một quy ước lưu session, và cả cách trả về của framework. Muốn test phần tính tiền, bạn phải dựng database. Muốn đổi cách lưu đơn, bạn phải sửa một chỗ không hề nói gì về việc lưu trữ. Và không ai kiểm tra email có đúng không, số lượng có lớn hơn không. Sách gọi phần này là code trộn lẫn. Phần nghiệp vụ thật sự chỉ có một câu: đơn hàng này gồm gì, giá bao nhiêu. Phần còn lại là hạ tầng: database, session, framework, thư viện. Khi hai thứ dính vào nhau, có năm chuyện thường xảy ra. Đọc code không thấy câu chuyện nghiệp vụ, chỉ thấy công nghệ. Đổi công nghệ kéo theo sửa logic. Test tự động khó, vì mỗi test phải mang theo cả môi trường. Dữ liệu không được bảo đảm hợp lệ, vì chẳng có chỗ nào đứng ra kiểm tra. Và code nhanh chóng thành thứ không ai dám sửa, tức là legacy. Ngược lại, khi tách được, lợi ích cũng rất cụ thể. Code nghiệp vụ đọc như một câu chuyện: tạo đơn, kiểm tra, lưu. Test chạy trong bộ nhớ, không cần dựng MySQL. Đổi hạ tầng chỉ sửa đúng phần hạ tầng. Và người mới vào đọc một file là hiểu quy tắc, không phải lần theo mười lớp. Sách nhắc một câu đáng nhớ: nếu ứng dụng sống dài hơn hai năm, việc tách khỏi hạ tầng rất đáng làm. Đó là nhận định của tác giả, không phải một con số đo được.",
+    "text": "Bắt đầu bằng đúng đoạn code đó. Hàm đặt hàng nhận request, gọi database lấy giá, nhân với số lượng, ghi vào bảng orders, rồi lưu mã đơn vào session. Nhìn qua thì gọn. Nhưng trong cùng một hàm có đủ thứ: một câu SQL, một phép tính tiền, một quy ước lưu session, và cả cách trả về của framework. Muốn test phần tính tiền, bạn phải dựng database. Muốn đổi cách lưu đơn, bạn phải sửa một chỗ không hề nói gì về việc lưu trữ. Và không ai kiểm tra email có đúng không, số lượng có lớn hơn không. Sách gọi phần này là code trộn lẫn. Phần nghiệp vụ thật sự chỉ có một câu: đơn hàng này gồm gì, giá bao nhiêu. Phần còn lại là hạ tầng: database, session, framework, thư viện. Khi hai thứ dính vào nhau, có năm chuyện thường xảy ra. Đọc code không thấy câu chuyện nghiệp vụ, chỉ thấy công nghệ. Đổi công nghệ kéo theo sửa logic. Test tự động khó, vì mỗi test phải mang theo cả môi trường. Dữ liệu không được bảo đảm hợp lệ, vì chẳng có chỗ nào đứng ra kiểm tra. Và code nhanh chóng thành thứ không ai dám sửa, tức là legacy. Ngược lại, khi tách được, lợi ích cũng rất cụ thể. Code nghiệp vụ đọc như một câu chuyện: tạo đơn, kiểm tra, lưu. Test chạy trong bộ nhớ, không cần dựng MySQL. Đổi hạ tầng chỉ sửa đúng phần hạ tầng. Và cả team có chung một quy ước: ai cũng biết code nào đặt ở đâu, người mới vào nắm nhanh hơn. Theo tác giả, ứng dụng nào sống quá hai năm thì việc tách khỏi hạ tầng rất đáng làm, vì framework, database và dịch vụ ngoài đổi nhanh hơn nghiệp vụ.",
     "sentences": [
       {
         "text": "Bắt đầu bằng đúng đoạn code đó.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Hàm orderEbook nhận request, gọi database lấy giá, nhân với số lượng, insert vào bảng orders, lưu id vào session.",
+        "text": "Hàm đặt hàng nhận request, gọi database lấy giá, nhân với số lượng, ghi vào bảng orders, rồi lưu mã đơn vào session.",
         "pauseAfter": 0.45
       },
       {
@@ -136,28 +132,24 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Và người mới vào đọc một file là hiểu quy tắc, không phải lần theo mười lớp.",
+        "text": "Và cả team có chung một quy ước: ai cũng biết code nào đặt ở đâu, người mới vào nắm nhanh hơn.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Sách nhắc một câu đáng nhớ: nếu ứng dụng sống dài hơn hai năm, việc tách khỏi hạ tầng rất đáng làm.",
-        "pauseAfter": 0.45
-      },
-      {
-        "text": "Đó là nhận định của tác giả, không phải một con số đo được.",
+        "text": "Theo tác giả, ứng dụng nào sống quá hai năm thì việc tách khỏi hạ tầng rất đáng làm, vì framework, database và dịch vụ ngoài đổi nhanh hơn nghiệp vụ.",
         "pauseAfter": 0
       }
     ],
     "leadIn": 0.4,
     "tail": 1.2,
     "maxTail": 3,
-    "duration": 107.35,
+    "duration": 107.5,
     "minWordMatchRatio": 0.75,
-    "start": 59.08
+    "start": 57.05
   },
   {
     "id": "02-ranh-gioi-core-va-ha-tang",
-    "text": "Vậy lấy gì để biết một đoạn code là core hay hạ tầng? Sách đưa một định nghĩa rất thực dụng: core code là code chạy được chỉ với bộ nhớ và CPU. Không database, không gọi mạng, không đọc file, không đồng hồ hệ thống, không SMTP. Quy tắc thứ nhất: không phụ thuộc trực tiếp vào hệ thống bên ngoài. Quy tắc thứ hai: không cần môi trường đặc biệt. Không cần web server, không cần CLI, không cần framework, không cần biến POST hay session. Thiếu một trong hai, nó là hạ tầng. Một hàm tính VAT là core. Một đối tượng Order tự tính tổng tiền là core. Một OrderService chỉ dùng entity và interface là core. Còn câu SQL, lời gọi HTTP, đoạn đọc file, controller, Eloquent model: hạ tầng. Có một cách nói dễ nhớ: hạ tầng là phần còn lại sau khi trừ core. Và đừng nhầm thư mục với bản chất. Cùng nằm trong thư mục Service, một file có thể là core, file bên cạnh có thể là hạ tầng. Điều quyết định là nó có chạm vào thế giới bên ngoài hay không. Sách còn cảnh báo một cái bẫy: đặt interface lên trên hạ tầng không tự biến nó thành core. Một interface Connection với hàm insert bảng và dữ liệu vẫn lộ nguyên khái niệm database. Che bằng tên gọi không đủ; phải che bằng ý nghĩa nghiệp vụ. Ví dụ dễ thấy nhất là đồng hồ. Gọi Carbon::now ở giữa logic thì test nào cũng phụ thuộc thời gian thật. Thay bằng một interface Clock, rồi SystemClock ở ngoài, trong test dùng FakeClock. Giờ muốn kiểm tra chuyện gì xảy ra lúc nửa đêm, bạn chỉ cần chỉnh cái đồng hồ giả. Đó là toàn bộ tinh thần của chương này: tìm đúng đường ranh giới, rồi giữ nó bằng những thứ nhỏ như vậy.",
+    "text": "Vậy lấy gì để biết một đoạn code là core hay hạ tầng? Sách đưa một định nghĩa rất thực dụng: core code là code chạy được chỉ với bộ nhớ và CPU. Không database, không gọi mạng, không đọc file, không đồng hồ hệ thống, không SMTP. Quy tắc thứ nhất: không phụ thuộc trực tiếp vào hệ thống bên ngoài. Quy tắc thứ hai: không cần môi trường đặc biệt. Không cần web server, không cần CLI, không cần framework, không cần biến POST hay session. Thiếu một trong hai, nó là hạ tầng. Một hàm tính VAT là core. Một đối tượng Order tự tính tổng tiền là core. Một OrderService chỉ dùng entity và interface là core. Còn câu SQL, lời gọi HTTP, đoạn đọc file, controller, Eloquent model: hạ tầng. Có một cách nói dễ nhớ: hạ tầng là phần còn lại sau khi trừ core. Và đừng nhầm thư mục với bản chất. Cùng nằm trong thư mục Service, một file có thể là core, file bên cạnh có thể là hạ tầng. Điều quyết định là nó có chạm vào thế giới bên ngoài hay không. Sách còn cảnh báo một cái bẫy: đặt interface lên trên hạ tầng không tự biến nó thành core. Một interface Connection với hàm insert bảng và dữ liệu vẫn lộ nguyên khái niệm database. Che bằng tên gọi không đủ; phải che bằng ý nghĩa nghiệp vụ. Ví dụ dễ thấy nhất là đồng hồ. Gọi thẳng thư viện thời gian ở giữa logic thì test nào cũng phụ thuộc giờ thật. Sách thay bằng một interface Clock, còn bản gọi thư viện thời gian nằm ở ngoài, trong hạ tầng. Khi test, bạn đưa vào một đồng hồ giả và chỉnh giờ tùy ý. Đó là toàn bộ tinh thần của chương này: tìm đúng đường ranh giới, rồi giữ nó bằng những thứ nhỏ như vậy.",
     "sentences": [
       {
         "text": "Vậy lấy gì để biết một đoạn code là core hay hạ tầng?",
@@ -169,7 +161,8 @@
       },
       {
         "text": "Không database, không gọi mạng, không đọc file, không đồng hồ hệ thống, không SMTP.",
-        "pauseAfter": 0.45
+        "pauseAfter": 0.45,
+        "say": "Không database, không gọi mạng, không đọc file, không đồng hồ hệ thống, không ét em ti pi."
       },
       {
         "text": "Quy tắc thứ nhất: không phụ thuộc trực tiếp vào hệ thống bên ngoài.",
@@ -177,7 +170,8 @@
       },
       {
         "text": "Quy tắc thứ hai: không cần môi trường đặc biệt. Không cần web server, không cần CLI, không cần framework, không cần biến POST hay session.",
-        "pauseAfter": 0.45
+        "pauseAfter": 0.45,
+        "say": "Quy tắc thứ hai: không cần môi trường đặc biệt. Không cần web server, không cần CLI, không cần framework, không cần biến pốt hay session."
       },
       {
         "text": "Thiếu một trong hai, nó là hạ tầng.",
@@ -197,7 +191,8 @@
       },
       {
         "text": "Còn câu SQL, lời gọi HTTP, đoạn đọc file, controller, Eloquent model: hạ tầng.",
-        "pauseAfter": 0.45
+        "pauseAfter": 0.45,
+        "say": "Còn câu SQL, lời gọi hát tê tê pê, đoạn đọc file, controller, Eloquent model: hạ tầng."
       },
       {
         "text": "Có một cách nói dễ nhớ: hạ tầng là phần còn lại sau khi trừ core.",
@@ -232,15 +227,15 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Gọi Carbon::now ở giữa logic thì test nào cũng phụ thuộc thời gian thật.",
+        "text": "Gọi thẳng thư viện thời gian ở giữa logic thì test nào cũng phụ thuộc giờ thật.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Thay bằng một interface Clock, rồi SystemClock ở ngoài, trong test dùng FakeClock.",
+        "text": "Sách thay bằng một interface Clock, còn bản gọi thư viện thời gian nằm ở ngoài, trong hạ tầng.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Giờ muốn kiểm tra chuyện gì xảy ra lúc nửa đêm, bạn chỉ cần chỉnh cái đồng hồ giả.",
+        "text": "Khi test, bạn đưa vào một đồng hồ giả và chỉnh giờ tùy ý.",
         "pauseAfter": 1.1
       },
       {
@@ -251,13 +246,13 @@
     "leadIn": 0.4,
     "tail": 1.2,
     "maxTail": 3,
-    "duration": 115.93,
+    "duration": 113.62,
     "minWordMatchRatio": 0.75,
-    "start": 166.43
+    "start": 164.55
   },
   {
     "id": "03-domain-model-de-doi-tuong-tu-bao-ve",
-    "text": "Sang chương ba, sách so hai cách viết cùng một nghiệp vụ. Cách thứ nhất là Transaction Script: mọi bước nằm trong controller, dữ liệu chỉ là mảng, không ai giữ luật. Cách thứ hai là Domain Model: dữ liệu và hành vi nằm chung trong đối tượng. Ví dụ là entity Order. Constructor nhận ebookId, email, quantity, pricePerUnit. Nếu id nhỏ hơn hoặc bằng không, ném lỗi. Nếu email sai định dạng, ném lỗi. Nếu số lượng nhỏ hơn hoặc bằng không, ném lỗi. Nếu giá âm, ném lỗi. Và tổng tiền do chính Order tính, không phải controller tính. Điểm đáng chú ý không phải là mấy câu if. Mà là không có cách nào tạo ra một Order sai. Mọi chỗ trong hệ thống muốn có đơn hàng, đều phải đi qua cái constructor đó. Luật nghiệp vụ chỉ nằm một chỗ, thay vì rải ở controller, ở job, ở seeder. Sách phân biệt thêm entity và value object. Entity có danh tính: hai đơn hàng khác id thì khác nhau, dù nội dung giống hệt. Value object không có danh tính, so bằng giá trị: EmailAddress, Money. Một EmailAddress đã tạo được thì chắc chắn hợp lệ. Một Money đã tạo được thì không tự nhiên thành số âm. Đó là cùng một ý: đặt luật vào nơi sinh ra giá trị. Nhưng đối tượng đẹp đến mấy vẫn cần được lưu. Và đây là chỗ nhiều người dừng lại: để entity gọi thẳng database. Sách đề nghị đi xa hơn một bước.",
+    "text": "Sang chương ba, sách so hai cách viết cùng một nghiệp vụ. Cách thứ nhất là Transaction Script: mọi bước nằm trong controller, dữ liệu chỉ là mảng, không ai giữ luật. Cách thứ hai là Domain Model: dữ liệu và hành vi nằm chung trong đối tượng. Ví dụ là entity Order. Constructor nhận đủ bốn thứ: mã e-book, email, số lượng và đơn giá. Nếu mã e-book nhỏ hơn hoặc bằng không, ném lỗi. Nếu email sai định dạng, ném lỗi. Nếu số lượng nhỏ hơn hoặc bằng không, ném lỗi. Nếu giá âm, ném lỗi. Và tổng tiền do chính Order tính, không phải controller tính. Điều quan trọng hơn mấy câu if: không có cách nào tạo ra một Order sai. Mọi chỗ trong hệ thống muốn có đơn hàng, đều phải đi qua cái constructor đó. Luật nghiệp vụ chỉ nằm một chỗ, thay vì rải khắp các controller. Sách phân biệt thêm entity và value object. Entity có danh tính: hai đơn hàng khác id thì khác nhau, dù nội dung giống hệt. Value object không có danh tính, so bằng giá trị, như một địa chỉ email hay một số tiền. Địa chỉ email bọc trong value object được kiểm tra định dạng ngay lúc tạo. Số tiền đi kèm đơn vị tiền tệ thì khó tính nhầm đơn vị. Đó là cùng một ý: đặt luật vào nơi sinh ra giá trị. Nhưng đối tượng đẹp đến mấy vẫn cần được lưu. Sách không để entity tự gọi database; việc lưu thuộc về một thành phần khác.",
     "sentences": [
       {
         "text": "Sang chương ba, sách so hai cách viết cùng một nghiệp vụ.",
@@ -276,11 +271,11 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Constructor nhận ebookId, email, quantity, pricePerUnit.",
+        "text": "Constructor nhận đủ bốn thứ: mã e-book, email, số lượng và đơn giá.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Nếu id nhỏ hơn hoặc bằng không, ném lỗi.",
+        "text": "Nếu mã e-book nhỏ hơn hoặc bằng không, ném lỗi.",
         "pauseAfter": 0.45
       },
       {
@@ -300,11 +295,7 @@
         "pauseAfter": 1.1
       },
       {
-        "text": "Điểm đáng chú ý không phải là mấy câu if.",
-        "pauseAfter": 0.45
-      },
-      {
-        "text": "Mà là không có cách nào tạo ra một Order sai.",
+        "text": "Điều quan trọng hơn mấy câu if: không có cách nào tạo ra một Order sai.",
         "pauseAfter": 0.45
       },
       {
@@ -312,7 +303,7 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Luật nghiệp vụ chỉ nằm một chỗ, thay vì rải ở controller, ở job, ở seeder.",
+        "text": "Luật nghiệp vụ chỉ nằm một chỗ, thay vì rải khắp các controller.",
         "pauseAfter": 1.1
       },
       {
@@ -324,15 +315,15 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Value object không có danh tính, so bằng giá trị: EmailAddress, Money.",
+        "text": "Value object không có danh tính, so bằng giá trị, như một địa chỉ email hay một số tiền.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Một EmailAddress đã tạo được thì chắc chắn hợp lệ.",
+        "text": "Địa chỉ email bọc trong value object được kiểm tra định dạng ngay lúc tạo.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Một Money đã tạo được thì không tự nhiên thành số âm.",
+        "text": "Số tiền đi kèm đơn vị tiền tệ thì khó tính nhầm đơn vị.",
         "pauseAfter": 0.45
       },
       {
@@ -344,24 +335,20 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Và đây là chỗ nhiều người dừng lại: để entity gọi thẳng database.",
-        "pauseAfter": 0.45
-      },
-      {
-        "text": "Sách đề nghị đi xa hơn một bước.",
+        "text": "Sách không để entity tự gọi database; việc lưu thuộc về một thành phần khác.",
         "pauseAfter": 0
       }
     ],
     "leadIn": 0.4,
     "tail": 1.2,
     "maxTail": 3,
-    "duration": 99.22,
+    "duration": 97.12,
     "minWordMatchRatio": 0.75,
-    "start": 282.36
+    "start": 278.17
   },
   {
     "id": "04-repository-kho-cua-doi-tuong-nghiep-vu",
-    "text": "Repository là một interface đứng về phía nghiệp vụ, mô tả việc lưu và lấy đối tượng. Nó không nói bảng nào, cột nào, SQL ra sao. Nó chỉ nói: save một Order, trả về id; getById một id, trả về Order. Có một mẹo viết rất hay: cứ giả định thành phần mình cần đã tồn tại, rồi định nghĩa nó. Trong controller, bạn muốn gọi orderRepository->save(order). Vậy thì viết interface đúng như cách bạn muốn gọi. Phần cài đặt để sau. Ngoài đời, SqlOrderRepository dùng query builder, hoặc giấu một Eloquent model bên trong. Trong test, MemoryOrderRepository giữ đơn hàng trong một mảng. Sau này nếu chuyển sang gọi API của hệ thống khác, thêm RemoteOrderRepository. Controller không cần biết đang dùng cái nào. Sau khi tách, controller chỉ còn vài bước. Lấy giá qua EbookRepository. Tạo Order trong một khối try catch, vì constructor có thể ném lỗi. Gọi save. Lưu id vào session. Trả về trang tiếp theo. Phần MySQL nằm gọn trong một lớp. Phần nghiệp vụ là một đối tượng PHP thuần, không kế thừa framework, không gọi database. Và mỗi phần có thể test riêng. Đó là lần tách đầu tiên, và cũng là lần tạo ra khác biệt lớn nhất.",
+    "text": "Repository là một interface đứng về phía nghiệp vụ, mô tả việc lưu và lấy đối tượng. Nó không nói bảng nào, cột nào, SQL ra sao. Nó chỉ nói hai việc: lưu một đơn hàng và nhận lại mã đơn; đưa một mã đơn và nhận lại đơn hàng. Có một mẹo viết rất hay: cứ giả định thành phần mình cần đã tồn tại, rồi định nghĩa nó. Trong controller, bạn muốn viết đúng một dòng: lưu đơn hàng này. Vậy thì viết interface đúng như cách bạn muốn gọi. Phần cài đặt để sau. Bản chạy thật dùng query builder, hoặc giấu một Eloquent model bên trong. Bản dùng để test chỉ giữ đơn hàng trong bộ nhớ. Sau này nếu đơn hàng phải lưu sang một hệ thống khác qua API, chỉ cần thêm một bản cài đặt nữa. Controller không cần biết đang dùng cái nào. Sau khi tách, controller chỉ còn vài bước. Lấy giá e-book qua một repository khác. Tạo Order, và bắt lỗi nếu dữ liệu sai. Lưu đơn qua repository. Ghi mã đơn vào session. Trả về trang tiếp theo. Phần MySQL nằm gọn trong một lớp. Phần nghiệp vụ là một đối tượng PHP thuần, không kế thừa framework, không gọi database. Và mỗi phần có thể test riêng. Đó là lần tách đầu tiên trong sách, và các chương sau đều xây tiếp trên nó.",
     "sentences": [
       {
         "text": "Repository là một interface đứng về phía nghiệp vụ, mô tả việc lưu và lấy đối tượng.",
@@ -372,7 +359,7 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Nó chỉ nói: save một Order, trả về id; getById một id, trả về Order.",
+        "text": "Nó chỉ nói hai việc: lưu một đơn hàng và nhận lại mã đơn; đưa một mã đơn và nhận lại đơn hàng.",
         "pauseAfter": 1.1
       },
       {
@@ -380,7 +367,7 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Trong controller, bạn muốn gọi orderRepository->save(order).",
+        "text": "Trong controller, bạn muốn viết đúng một dòng: lưu đơn hàng này.",
         "pauseAfter": 0.45
       },
       {
@@ -392,15 +379,15 @@
         "pauseAfter": 1.1
       },
       {
-        "text": "Ngoài đời, SqlOrderRepository dùng query builder, hoặc giấu một Eloquent model bên trong.",
+        "text": "Bản chạy thật dùng query builder, hoặc giấu một Eloquent model bên trong.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Trong test, MemoryOrderRepository giữ đơn hàng trong một mảng.",
+        "text": "Bản dùng để test chỉ giữ đơn hàng trong bộ nhớ.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Sau này nếu chuyển sang gọi API của hệ thống khác, thêm RemoteOrderRepository.",
+        "text": "Sau này nếu đơn hàng phải lưu sang một hệ thống khác qua API, chỉ cần thêm một bản cài đặt nữa.",
         "pauseAfter": 0.45
       },
       {
@@ -412,19 +399,19 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Lấy giá qua EbookRepository.",
+        "text": "Lấy giá e-book qua một repository khác.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Tạo Order trong một khối try catch, vì constructor có thể ném lỗi.",
+        "text": "Tạo Order, và bắt lỗi nếu dữ liệu sai.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Gọi save.",
+        "text": "Lưu đơn qua repository.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Lưu id vào session.",
+        "text": "Ghi mã đơn vào session.",
         "pauseAfter": 0.45
       },
       {
@@ -444,20 +431,20 @@
         "pauseAfter": 1.1
       },
       {
-        "text": "Đó là lần tách đầu tiên, và cũng là lần tạo ra khác biệt lớn nhất.",
+        "text": "Đó là lần tách đầu tiên trong sách, và các chương sau đều xây tiếp trên nó.",
         "pauseAfter": 0
       }
     ],
     "leadIn": 0.4,
     "tail": 1.2,
     "maxTail": 3,
-    "duration": 93.38,
+    "duration": 88.9,
     "minWordMatchRatio": 0.75,
-    "start": 381.58
+    "start": 375.29
   },
   {
     "id": "05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh",
-    "text": "Đến chương bốn, sách chỉ ra một chỗ hay bị bỏ qua: phần đọc. Thường thì ta lấy luôn entity dùng để ghi, đưa cho view. Nhưng entity đó mang theo đủ phương thức đổi giá, ẩn sản phẩm, đổi trạng thái. View chỉ cần hiển thị, lại cầm một đối tượng có thể thay đổi dữ liệu. Lâu dần, class phình to vì phục vụ cả hai việc. Sách đề nghị tách read model. Có thể là một EbookReadModel với EbookReadRepository riêng. Cũng có thể nhẹ hơn: một interface GetPrice với hàm ofEbook, chỉ trả về con số cần dùng. Cách nặng hơn là CQRS: lưu trữ đọc riêng, cập nhật qua domain event. Sách không đẩy bạn vào đó, vì phải giữ nhất quán giữa hai kho. Với đa số dự án, chung database nhưng repository đọc riêng là đủ; chỉ cần thêm integration test. Rồi đến view model. Đây là một DTO được tạo đúng theo thứ màn hình cần. EbookViewModel có formattedPrice, đã format sẵn. OrderListViewModel có findRecentOrders và toArray, hoặc JsonSerializable. Không phải để bọc cho đẹp, mà để tầng hiển thị không phải biết cấu trúc dữ liệu bên trong. Nguyên tắc gói lại một câu: đừng dùng một đối tượng có thể thay đổi và có logic phức tạp cho việc chỉ đọc. Đọc thì trả đúng thứ cần đọc.",
+    "text": "Đến chương bốn, sách chỉ ra một chỗ hay bị bỏ qua: phần đọc. Thường thì ta lấy luôn entity dùng để ghi, đưa cho view. Nhưng entity đó mang theo đủ phương thức đổi giá, ẩn sản phẩm, đổi trạng thái. View chỉ cần hiển thị, lại cầm một đối tượng có thể thay đổi dữ liệu. Lâu dần, class phình to vì phục vụ cả hai việc. Sách đề nghị tách read model. Có thể là một lớp đọc riêng cho e-book, chỉ gồm mã, tên và giá, đi kèm một repository chỉ để đọc. Cũng có thể nhẹ hơn: một interface chỉ có một hàm trả về giá của một e-book. Cách nặng hơn là CQRS: lưu trữ đọc riêng, cập nhật qua domain event. Sách không đẩy bạn vào đó, vì phải giữ nhất quán giữa hai kho. Sách chọn cách đơn giản: chung database, chỉ tách repository đọc, kèm integration test để hai bên không hiểu lệch dữ liệu. Rồi đến view model. Đây là một DTO được tạo đúng theo thứ màn hình cần. View model của e-book có sẵn giá đã định dạng thành chuỗi tiền. API danh sách đơn hàng thì trả về view model chỉ gồm mã đơn, ngày, tên khách và tổng tiền, lấy qua một repository riêng cho màn hình đó. Nhờ vậy tầng hiển thị không phải biết cấu trúc dữ liệu bên trong của domain. Nguyên tắc gói lại một câu: đừng dùng một đối tượng có thể thay đổi và có logic phức tạp cho việc chỉ đọc. Đọc thì trả đúng thứ cần đọc.",
     "sentences": [
       {
         "text": "Đến chương bốn, sách chỉ ra một chỗ hay bị bỏ qua: phần đọc.",
@@ -484,23 +471,24 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Có thể là một EbookReadModel với EbookReadRepository riêng.",
+        "text": "Có thể là một lớp đọc riêng cho e-book, chỉ gồm mã, tên và giá, đi kèm một repository chỉ để đọc.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Cũng có thể nhẹ hơn: một interface GetPrice với hàm ofEbook, chỉ trả về con số cần dùng.",
+        "text": "Cũng có thể nhẹ hơn: một interface chỉ có một hàm trả về giá của một e-book.",
         "pauseAfter": 0.45
       },
       {
         "text": "Cách nặng hơn là CQRS: lưu trữ đọc riêng, cập nhật qua domain event.",
-        "pauseAfter": 0.45
+        "pauseAfter": 0.45,
+        "say": "Cách nặng hơn là xê kiu a ét: lưu trữ đọc riêng, cập nhật qua domain event."
       },
       {
         "text": "Sách không đẩy bạn vào đó, vì phải giữ nhất quán giữa hai kho.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Với đa số dự án, chung database nhưng repository đọc riêng là đủ; chỉ cần thêm integration test.",
+        "text": "Sách chọn cách đơn giản: chung database, chỉ tách repository đọc, kèm integration test để hai bên không hiểu lệch dữ liệu.",
         "pauseAfter": 1.1
       },
       {
@@ -512,15 +500,15 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "EbookViewModel có formattedPrice, đã format sẵn.",
+        "text": "View model của e-book có sẵn giá đã định dạng thành chuỗi tiền.",
         "pauseAfter": 0.45
       },
       {
-        "text": "OrderListViewModel có findRecentOrders và toArray, hoặc JsonSerializable.",
+        "text": "API danh sách đơn hàng thì trả về view model chỉ gồm mã đơn, ngày, tên khách và tổng tiền, lấy qua một repository riêng cho màn hình đó.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Không phải để bọc cho đẹp, mà để tầng hiển thị không phải biết cấu trúc dữ liệu bên trong.",
+        "text": "Nhờ vậy tầng hiển thị không phải biết cấu trúc dữ liệu bên trong của domain.",
         "pauseAfter": 1.1
       },
       {
@@ -535,13 +523,13 @@
     "leadIn": 0.4,
     "tail": 1.2,
     "maxTail": 3,
-    "duration": 90.91,
+    "duration": 95.82,
     "minWordMatchRatio": 0.75,
-    "start": 474.96
+    "start": 464.19
   },
   {
     "id": "06-application-service-va-command",
-    "text": "Chương năm xử lý một chỗ phình khác: controller. Lý do controller phình rất dễ hiểu: nó là nơi duy nhất ai cũng nhét use case vào. Sách tách use case ra thành Application Service. Một service điều phối đúng một use case, và gọi được từ web, từ CLI, từ job, hay từ test. Đầu vào được gói thành Command. Ví dụ PlaceOrderCommand gồm customerId, danh sách món, email. PlaceOrderService có hàm handle nhận command, trả về OrderId. Bên trong service làm những việc của nghiệp vụ. Lấy sản phẩm. Kiểm tra tồn kho, ném OutOfStockException nếu hết. Tính tiền. Lấy id mới. Tạo Order. Lưu. Controller chỉ còn hai việc: đổi request thành command, và trả response. Chương này cũng nói rõ cách nối dependency. Dùng constructor injection thay cho service locator kiểu app()->make. Lý do rất thực dụng: nhìn constructor là biết class cần gì. Còn service locator giấu dependency đi, muốn biết phải đọc hết bên trong. Và lợi ích đo được nằm ở test. Test PlaceOrderService với một repository trong bộ nhớ và một stub gửi mail. Không cần framework, không cần database, không cần mạng. Use case chạy trong vài mili giây. Đó mới là thứ khiến người ta dám sửa code.",
+    "text": "Chương năm xử lý một chỗ phình khác: controller. Lý do controller phình rất dễ hiểu: nó là nơi duy nhất ai cũng nhét use case vào. Sách tách use case ra thành Application Service. Một service điều phối đúng một use case, và gọi được từ web, từ CLI, từ job, hay từ test. Đầu vào được gói thành Command. Ví dụ lệnh đặt hàng gồm mã khách, danh sách sản phẩm và email. Service đặt hàng có một hàm nhận lệnh đó và trả về mã đơn. Bên trong service làm những việc của nghiệp vụ. Lấy sản phẩm. Kiểm tra tồn kho, hết hàng thì báo lỗi. Tính tiền. Xin một mã đơn mới. Tạo Order. Lưu. Controller chỉ còn hai việc: đổi request thành command, và trả response. Chương này cũng nhắc cách đưa các phụ thuộc vào service. Truyền chúng qua constructor, thay vì để service tự đi lấy từ container của framework. Như vậy service không dính vào container toàn cục. Và khi test, bạn truyền thẳng bản giả vào. Và lợi ích đo được nằm ở test. Test service đặt hàng chỉ cần một repository trong bộ nhớ và một bản giả của phần gửi mail. Không cần framework, không cần database, không cần mạng. Test dễ viết thì đội ngũ mới tự tin sửa code.",
     "sentences": [
       {
         "text": "Chương năm xử lý một chỗ phình khác: controller.",
@@ -564,11 +552,11 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Ví dụ PlaceOrderCommand gồm customerId, danh sách món, email.",
+        "text": "Ví dụ lệnh đặt hàng gồm mã khách, danh sách sản phẩm và email.",
         "pauseAfter": 0.45
       },
       {
-        "text": "PlaceOrderService có hàm handle nhận command, trả về OrderId.",
+        "text": "Service đặt hàng có một hàm nhận lệnh đó và trả về mã đơn.",
         "pauseAfter": 1.1
       },
       {
@@ -580,7 +568,7 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Kiểm tra tồn kho, ném OutOfStockException nếu hết.",
+        "text": "Kiểm tra tồn kho, hết hàng thì báo lỗi.",
         "pauseAfter": 0.45
       },
       {
@@ -588,7 +576,7 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Lấy id mới.",
+        "text": "Xin một mã đơn mới.",
         "pauseAfter": 0.45
       },
       {
@@ -604,19 +592,19 @@
         "pauseAfter": 1.1
       },
       {
-        "text": "Chương này cũng nói rõ cách nối dependency.",
+        "text": "Chương này cũng nhắc cách đưa các phụ thuộc vào service.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Dùng constructor injection thay cho service locator kiểu app()->make.",
+        "text": "Truyền chúng qua constructor, thay vì để service tự đi lấy từ container của framework.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Lý do rất thực dụng: nhìn constructor là biết class cần gì.",
+        "text": "Như vậy service không dính vào container toàn cục.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Còn service locator giấu dependency đi, muốn biết phải đọc hết bên trong.",
+        "text": "Và khi test, bạn truyền thẳng bản giả vào.",
         "pauseAfter": 1.1
       },
       {
@@ -624,7 +612,7 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Test PlaceOrderService với một repository trong bộ nhớ và một stub gửi mail.",
+        "text": "Test service đặt hàng chỉ cần một repository trong bộ nhớ và một bản giả của phần gửi mail.",
         "pauseAfter": 0.45
       },
       {
@@ -632,24 +620,20 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Use case chạy trong vài mili giây.",
-        "pauseAfter": 0.45
-      },
-      {
-        "text": "Đó mới là thứ khiến người ta dám sửa code.",
+        "text": "Test dễ viết thì đội ngũ mới tự tin sửa code.",
         "pauseAfter": 0
       }
     ],
     "leadIn": 0.4,
     "tail": 1.2,
     "maxTail": 3,
-    "duration": 94.38,
+    "duration": 87.92,
     "minWordMatchRatio": 0.75,
-    "start": 565.87
+    "start": 560.01
   },
   {
     "id": "07-ba-tang-va-luat-phu-thuoc-mot-chieu",
-    "text": "Chương sáu lùi lại nhìn toàn bộ hệ thống. Cách chia cũ là ba tầng: giao diện, nghiệp vụ, truy cập dữ liệu. Nó vẫn hữu ích: biết đặt code ở đâu, đổi một tầng thì ít đụng tầng khác. Nhưng nó có hai rủi ro. Logic rò rỉ giữa các tầng, và chỉ có kỷ luật con người mới ngăn được. Thêm tầng nữa thì thành một mớ lasagna, đi qua bảy lớp mới tới câu SQL. Sách đề nghị ba tầng theo hướng nghiệp vụ đứng giữa. Domain: entity, aggregate, value object, domain service, domain event, interface repository, factory. Tầng này không import framework. Application: use case handler, command, query, transaction; sách gọi là lớp keo. Infrastructure: framework, ORM, adapter gọi dịch vụ ngoài, phần cài đặt interface. Tầng này test kiểu integration. Điểm cốt lõi là Dependency Rule: phụ thuộc chỉ được hướng vào trong. Giao diện biết Application. Application biết Domain. Infrastructure cũng trỏ vào Domain, nhưng Domain không biết ai đang cài đặt mình. Sách vẽ nó thành một mũi tên vòng vào trong, và nhắc Hollywood Principle: đừng gọi tôi, tôi sẽ gọi bạn. Nối các tầng bằng một service provider. OrderServiceProvider bind interface OrderRepository với EloquentOrderRepository. Khi chạy thật, container đưa bản Eloquent. Khi test, đưa bản trong bộ nhớ. Luồng đặt hàng đi như sau: request vào controller, controller gọi PlaceOrderHandler, handler dùng repository, lưu xong phát OrderPlaced, listener gửi email. Mỗi mũi tên đều đi vào trong, không có mũi tên nào từ Domain trỏ ra database. Nhưng sách cũng nhắc: không phải việc gì cũng cần nhiều lớp. Một chức năng CRUD đơn giản mà bắt đi qua đủ bốn tầng thì chỉ làm chậm team. Kiến trúc để giảm chi phí thay đổi, không phải để trông có vẻ chuyên nghiệp.",
+    "text": "Chương sáu lùi lại nhìn toàn bộ hệ thống. Cách chia cũ là ba tầng: giao diện, nghiệp vụ, truy cập dữ liệu. Nó vẫn hữu ích: biết đặt code ở đâu, đổi một tầng thì ít đụng tầng khác. Nhưng nó có hai rủi ro. Logic rò rỉ giữa các tầng, và chỉ có kỷ luật con người mới ngăn được. Còn chia quá nhiều tầng thì thành mã lasagna, lớp chồng lên lớp, khó lần theo luồng xử lý. Sách đề nghị ba tầng theo hướng nghiệp vụ đứng giữa. Domain: entity, aggregate, value object, domain service, domain event, interface repository, factory. Tầng này không import framework. Application: use case handler, command, query, transaction; sách gọi là lớp keo. Infrastructure: framework, ORM, adapter gọi dịch vụ ngoài, phần cài đặt interface. Tầng này test kiểu integration. Điểm cốt lõi là Dependency Rule: phụ thuộc chỉ được hướng vào trong. Giao diện biết Application. Application biết Domain. Infrastructure cũng trỏ vào Domain, nhưng Domain không biết ai đang cài đặt mình. Domain không tự gọi ra ngoài; sách gọi đó là Hollywood Principle: đừng gọi chúng tôi, chúng tôi sẽ gọi bạn. Nối các tầng bằng một service provider. Service provider khai báo: chỗ nào cần repository đơn hàng thì đưa bản dùng Eloquent. Khi chạy thật, container đưa bản Eloquent. Khi test, đưa bản trong bộ nhớ. Luồng đặt hàng đi như sau: request vào controller, controller gọi handler, handler lưu đơn qua repository, phát sự kiện đơn đã đặt, rồi một listener gửi email. Mỗi mũi tên đều đi vào trong, không có mũi tên nào từ Domain trỏ ra database. Nhưng sách cũng nhắc: không phải việc gì cũng cần nhiều lớp. Việc rất đơn giản thì gộp bớt cho đỡ rối. Những module phức tạp, nằm ở lõi hệ thống, mới đáng chia đủ ba tầng.",
     "sentences": [
       {
         "text": "Chương sáu lùi lại nhìn toàn bộ hệ thống.",
@@ -672,8 +656,9 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Thêm tầng nữa thì thành một mớ lasagna, đi qua bảy lớp mới tới câu SQL.",
-        "pauseAfter": 1.1
+        "text": "Còn chia quá nhiều tầng thì thành mã lasagna, lớp chồng lên lớp, khó lần theo luồng xử lý.",
+        "pauseAfter": 1.1,
+        "say": "Còn chia quá nhiều tầng thì thành mã la da nha, lớp chồng lên lớp, khó lần theo luồng xử lý."
       },
       {
         "text": "Sách đề nghị ba tầng theo hướng nghiệp vụ đứng giữa.",
@@ -716,7 +701,7 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Sách vẽ nó thành một mũi tên vòng vào trong, và nhắc Hollywood Principle: đừng gọi tôi, tôi sẽ gọi bạn.",
+        "text": "Domain không tự gọi ra ngoài; sách gọi đó là Hollywood Principle: đừng gọi chúng tôi, chúng tôi sẽ gọi bạn.",
         "pauseAfter": 1.1
       },
       {
@@ -724,7 +709,7 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "OrderServiceProvider bind interface OrderRepository với EloquentOrderRepository.",
+        "text": "Service provider khai báo: chỗ nào cần repository đơn hàng thì đưa bản dùng Eloquent.",
         "pauseAfter": 0.45
       },
       {
@@ -736,7 +721,7 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Luồng đặt hàng đi như sau: request vào controller, controller gọi PlaceOrderHandler, handler dùng repository, lưu xong phát OrderPlaced, listener gửi email.",
+        "text": "Luồng đặt hàng đi như sau: request vào controller, controller gọi handler, handler lưu đơn qua repository, phát sự kiện đơn đã đặt, rồi một listener gửi email.",
         "pauseAfter": 0.45
       },
       {
@@ -748,24 +733,24 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Một chức năng CRUD đơn giản mà bắt đi qua đủ bốn tầng thì chỉ làm chậm team.",
+        "text": "Việc rất đơn giản thì gộp bớt cho đỡ rối.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Kiến trúc để giảm chi phí thay đổi, không phải để trông có vẻ chuyên nghiệp.",
+        "text": "Những module phức tạp, nằm ở lõi hệ thống, mới đáng chia đủ ba tầng.",
         "pauseAfter": 0
       }
     ],
     "leadIn": 0.4,
     "tail": 1.2,
     "maxTail": 3,
-    "duration": 133.76,
+    "duration": 128.39,
     "minWordMatchRatio": 0.75,
-    "start": 660.25
+    "start": 647.93
   },
   {
     "id": "08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao",
-    "text": "Chương bảy đưa cách nhìn cuối cùng: Hexagonal Architecture. Alistair Cockburn đề xuất năm 2005. Cái tên lục giác chỉ là ẩn dụ; không có nghĩa là hệ thống phải có sáu cạnh. Hình dung một cổng USB. Lõi máy không biết bạn cắm chuột, bàn phím hay ổ cứng. Nó chỉ biết một chuẩn cắm. Port là chuẩn đó; adapter là từng thiết bị cụ thể. Sách chỉ ra những chỗ phân lớp còn chưa giải quyết. Phụ thuộc vẫn có thể nằm ngầm. Thêm một kênh mới, ví dụ CLI, vẫn phải sửa nhiều. Test tầng application vẫn có thể chậm nếu khởi động framework. Và tích hợp với hệ thống khác dễ làm bẩn domain. Hexagonal tách hai loại port. Port đầu vào là cách thế giới gọi vào lõi: UI, API, CLI, bộ test. Port đầu ra là cách lõi gọi ra ngoài: lưu trữ, gửi thông báo, dịch vụ bên thứ ba. Cả hai đều là interface nằm trong core. Adapter là code cụ thể ở Infrastructure. Và mỗi port nên có ít nhất một adapter thật, một adapter giả cho test. Cockburn đề xuất mô hình này chủ yếu vì testing. Cách áp dụng có bốn bước. Xác định port. Định nghĩa interface trong core. Viết adapter. Nối bằng dependency injection. Ví dụ trong sách. OrderRepository là port; EloquentOrderRepository và InMemoryOrderRepository là hai adapter. OrderNotification là port với hàm sendOrderConfirmation; EmailOrderNotification và LogOrderNotification là hai adapter. HexagonBindings nối tất cả lại. Test PlaceOrderHandler chỉ cần hai adapter giả, không cần khởi động Laravel. Sách còn mở rộng. Một ImportOrderCommand đọc file CSV: đọc file là adapter, phần xử lý đơn vẫn là core. Lưu hai database song song: hai adapter cùng một port. Hai bounded context nói chuyện với nhau qua một port CustomerContext, thay vì gọi thẳng vào database của nhau. Cái giá cũng được nói rõ. Nhiều interface và class hơn. Cần quy ước đặt tên, nếu không sẽ rối. Và đừng trừu tượng hóa mọi thứ. Chỉ tách ở chỗ dễ thay đổi hoặc khó test. Đó là lý do sách nhắc đi nhắc lại: kiến trúc là công cụ, không phải tôn giáo.",
+    "text": "Chương bảy đưa cách nhìn cuối cùng: Hexagonal Architecture. Alistair Cockburn đề xuất năm 2005. Cái tên lục giác chỉ là ẩn dụ; không có nghĩa là hệ thống phải có sáu cạnh. Hình dung một cổng USB. Lõi máy không biết bạn cắm chuột, bàn phím hay ổ cứng. Nó chỉ biết một chuẩn cắm. Port là chuẩn đó; adapter là từng thiết bị cụ thể. Sách chỉ ra những chỗ phân lớp còn chưa giải quyết. Phụ thuộc vẫn có thể nằm ngầm. Thêm một kênh mới, ví dụ CLI, vẫn phải sửa nhiều. Test tầng application vẫn có thể chậm nếu khởi động framework. Và tích hợp với hệ thống khác dễ làm bẩn domain. Hexagonal tách hai loại port. Port đầu vào là cách thế giới gọi vào lõi: UI, API, CLI, bộ test. Port đầu ra là cách lõi gọi ra ngoài: lưu trữ, gửi thông báo, dịch vụ bên thứ ba. Cả hai đều là interface nằm trong core. Adapter là code cụ thể ở Infrastructure. Và mỗi port nên có ít nhất một adapter thật, một adapter giả cho test. Theo sách, Cockburn đề xuất mô hình này trước hết để test cho dễ. Cách áp dụng có bốn bước. Xác định port. Định nghĩa interface trong core. Viết adapter. Nối bằng dependency injection. Ví dụ trong sách. Lưu đơn hàng là một port, với hai adapter: Eloquent khi chạy thật, bộ nhớ khi test. Gửi xác nhận đơn là port thứ hai: một adapter gửi email thật, một adapter chỉ ghi log khi test. Một service provider nối mỗi port với adapter cần dùng. Test use case đặt hàng chỉ cần hai adapter giả, không cần khởi động Laravel. Sách còn mở rộng. Thêm lệnh nhập đơn từ file CSV: đọc file là một adapter mới, phần xử lý đơn vẫn là lõi cũ. Lưu hai database song song: hai adapter cùng một port. Hai phân hệ như đặt hàng và khách hàng nói chuyện qua một port, thay vì gọi thẳng vào database của nhau. Cái giá cũng được nói rõ. Nhiều interface và class hơn. Cần quy ước đặt tên, nếu không sẽ rối. Và đừng trừu tượng hóa mọi thứ. Chỉ tách ở chỗ dễ thay đổi hoặc khó test.",
     "sentences": [
       {
         "text": "Chương bảy đưa cách nhìn cuối cùng: Hexagonal Architecture.",
@@ -773,7 +758,8 @@
       },
       {
         "text": "Alistair Cockburn đề xuất năm 2005.",
-        "pauseAfter": 0.45
+        "pauseAfter": 0.45,
+        "say": "A lít tơ Cô bơn đề xuất năm 2005."
       },
       {
         "text": "Cái tên lục giác chỉ là ẩn dụ; không có nghĩa là hệ thống phải có sáu cạnh.",
@@ -793,7 +779,8 @@
       },
       {
         "text": "Port là chuẩn đó; adapter là từng thiết bị cụ thể.",
-        "pauseAfter": 1.1
+        "pauseAfter": 1.1,
+        "say": "Pót là chuẩn đó; adapter là từng thiết bị cụ thể."
       },
       {
         "text": "Sách chỉ ra những chỗ phân lớp còn chưa giải quyết.",
@@ -817,15 +804,18 @@
       },
       {
         "text": "Hexagonal tách hai loại port.",
-        "pauseAfter": 0.45
+        "pauseAfter": 0.45,
+        "say": "Hexagonal tách hai loại pót."
       },
       {
         "text": "Port đầu vào là cách thế giới gọi vào lõi: UI, API, CLI, bộ test.",
-        "pauseAfter": 0.45
+        "pauseAfter": 0.45,
+        "say": "Pót đầu vào là cách thế giới gọi vào lõi: UI, API, CLI, bộ test."
       },
       {
         "text": "Port đầu ra là cách lõi gọi ra ngoài: lưu trữ, gửi thông báo, dịch vụ bên thứ ba.",
-        "pauseAfter": 0.45
+        "pauseAfter": 0.45,
+        "say": "Pót đầu ra là cách lõi gọi ra ngoài: lưu trữ, gửi thông báo, dịch vụ bên thứ ba."
       },
       {
         "text": "Cả hai đều là interface nằm trong core.",
@@ -837,11 +827,13 @@
       },
       {
         "text": "Và mỗi port nên có ít nhất một adapter thật, một adapter giả cho test.",
-        "pauseAfter": 0.45
+        "pauseAfter": 0.45,
+        "say": "Và mỗi pót nên có ít nhất một adapter thật, một adapter giả cho test."
       },
       {
-        "text": "Cockburn đề xuất mô hình này chủ yếu vì testing.",
-        "pauseAfter": 1.1
+        "text": "Theo sách, Cockburn đề xuất mô hình này trước hết để test cho dễ.",
+        "pauseAfter": 1.1,
+        "say": "Theo sách, Cô bơn đề xuất mô hình này trước hết để test cho dễ."
       },
       {
         "text": "Cách áp dụng có bốn bước.",
@@ -849,7 +841,8 @@
       },
       {
         "text": "Xác định port.",
-        "pauseAfter": 0.45
+        "pauseAfter": 0.45,
+        "say": "Xác định pót."
       },
       {
         "text": "Định nghĩa interface trong core.",
@@ -868,19 +861,22 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "OrderRepository là port; EloquentOrderRepository và InMemoryOrderRepository là hai adapter.",
-        "pauseAfter": 0.45
+        "text": "Lưu đơn hàng là một port, với hai adapter: Eloquent khi chạy thật, bộ nhớ khi test.",
+        "pauseAfter": 0.45,
+        "say": "Lưu đơn hàng là một pót, với hai adapter: Eloquent khi chạy thật, bộ nhớ khi test."
       },
       {
-        "text": "OrderNotification là port với hàm sendOrderConfirmation; EmailOrderNotification và LogOrderNotification là hai adapter.",
-        "pauseAfter": 0.45
+        "text": "Gửi xác nhận đơn là port thứ hai: một adapter gửi email thật, một adapter chỉ ghi log khi test.",
+        "pauseAfter": 0.45,
+        "say": "Gửi xác nhận đơn là pót thứ hai: một adapter gửi email thật, một adapter chỉ ghi log khi test."
       },
       {
-        "text": "HexagonBindings nối tất cả lại.",
-        "pauseAfter": 0.45
+        "text": "Một service provider nối mỗi port với adapter cần dùng.",
+        "pauseAfter": 0.45,
+        "say": "Một service provider nối mỗi pót với adapter cần dùng."
       },
       {
-        "text": "Test PlaceOrderHandler chỉ cần hai adapter giả, không cần khởi động Laravel.",
+        "text": "Test use case đặt hàng chỉ cần hai adapter giả, không cần khởi động Laravel.",
         "pauseAfter": 1.1
       },
       {
@@ -888,16 +884,18 @@
         "pauseAfter": 0.45
       },
       {
-        "text": "Một ImportOrderCommand đọc file CSV: đọc file là adapter, phần xử lý đơn vẫn là core.",
+        "text": "Thêm lệnh nhập đơn từ file CSV: đọc file là một adapter mới, phần xử lý đơn vẫn là lõi cũ.",
         "pauseAfter": 0.45
       },
       {
         "text": "Lưu hai database song song: hai adapter cùng một port.",
-        "pauseAfter": 0.45
+        "pauseAfter": 0.45,
+        "say": "Lưu hai database song song: hai adapter cùng một pót."
       },
       {
-        "text": "Hai bounded context nói chuyện với nhau qua một port CustomerContext, thay vì gọi thẳng vào database của nhau.",
-        "pauseAfter": 1.1
+        "text": "Hai phân hệ như đặt hàng và khách hàng nói chuyện qua một port, thay vì gọi thẳng vào database của nhau.",
+        "pauseAfter": 1.1,
+        "say": "Hai phân hệ như đặt hàng và khách hàng nói chuyện qua một pót, thay vì gọi thẳng vào database của nhau."
       },
       {
         "text": "Cái giá cũng được nói rõ.",
@@ -917,23 +915,19 @@
       },
       {
         "text": "Chỉ tách ở chỗ dễ thay đổi hoặc khó test.",
-        "pauseAfter": 0.45
-      },
-      {
-        "text": "Đó là lý do sách nhắc đi nhắc lại: kiến trúc là công cụ, không phải tôn giáo.",
         "pauseAfter": 0
       }
     ],
     "leadIn": 0.4,
     "tail": 1.2,
     "maxTail": 3,
-    "duration": 161.23,
+    "duration": 148.59,
     "minWordMatchRatio": 0.75,
-    "start": 794.01
+    "start": 776.32
   },
   {
     "id": "09-khep-lai",
-    "text": "Đọc hết bảy chương, câu hỏi quay lại rất đơn giản. Đoạn code này có chạy được một mình, trong bộ nhớ, không cần gì bên ngoài không? Nếu có, nó là nghiệp vụ, và nên được giữ sạch. Nếu không, nó là hạ tầng, và nên bị đẩy ra rìa sau một interface. Bạn không cần biến cả dự án thành hexagonal trong một tuần. Chọn một use case thật. Tách một phụ thuộc khó test nhất. Viết một test chạy không cần database. Rồi lặp lại. Cuốn sách này không hứa kiến trúc đẹp sẽ làm code chạy nhanh hơn. Nó hứa một điều khiêm tốn hơn: khi yêu cầu đổi, bạn biết phải sửa ở đâu. Và đó thường là thứ đắt nhất trong một hệ thống sống đủ lâu. Cảm ơn bạn đã nghe đến đây.",
+    "text": "Đọc hết bảy chương, câu hỏi quay lại rất đơn giản. Đoạn code này có chạy được một mình, trong bộ nhớ, không cần gì bên ngoài không? Nếu có, nó là nghiệp vụ, và nên được giữ sạch. Nếu không, nó là hạ tầng, và nên bị đẩy ra rìa sau một interface. Bạn không cần biến cả dự án thành hexagonal trong một tuần. Chọn một use case thật. Tách một phụ thuộc khó test nhất. Viết một test chạy không cần database. Rồi lặp lại. Sách không hứa code sẽ chạy nhanh hơn. Điều sách hứa khiêm tốn hơn: khi yêu cầu đổi, bạn biết phải sửa ở đâu. Và đó thường là thứ đắt nhất trong một hệ thống sống đủ lâu. Cảm ơn bạn đã nghe đến đây.",
     "sentences": [
       {
         "text": "Đọc hết bảy chương, câu hỏi quay lại rất đơn giản.",
@@ -972,11 +966,11 @@
         "pauseAfter": 1.1
       },
       {
-        "text": "Cuốn sách này không hứa kiến trúc đẹp sẽ làm code chạy nhanh hơn.",
+        "text": "Sách không hứa code sẽ chạy nhanh hơn.",
         "pauseAfter": 0.45
       },
       {
-        "text": "Nó hứa một điều khiêm tốn hơn: khi yêu cầu đổi, bạn biết phải sửa ở đâu.",
+        "text": "Điều sách hứa khiêm tốn hơn: khi yêu cầu đổi, bạn biết phải sửa ở đâu.",
         "pauseAfter": 0.45
       },
       {
@@ -991,8 +985,8 @@
     "leadIn": 0.4,
     "tail": 1.2,
     "maxTail": 3,
-    "duration": 47.61,
+    "duration": 46.31,
     "minWordMatchRatio": 0.75,
-    "start": 955.24
+    "start": 924.91
   }
 ]

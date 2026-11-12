@@ -1,74 +1,104 @@
 # Kế hoạch hình/animation từng cảnh (chưa có ảnh)
 
-Video dài 16:9, 1920×1080, 30 fps, theme **Bản vẽ kỹ thuật** (`ban-ve-ky-thuat`) + style **Sơ đồ hệ thống động** (`so-do-he-thong`). Mọi hình vẽ bằng code (SVG/React, `src/looks/diagram-kit.tsx`, màu `themeOf`); không dùng ảnh tạo AI. Tài sản tĩnh duy nhất: bìa sách `public/kien-truc-ung-dung-web-tong-quan/images/book-cover.jpg` (người dùng cung cấp). Hình đổi theo câu (mốc `timing.json`), phần tử chạy liên tục (gói dữ liệu, luồng), phụ đề dưới y ≈ 930.
+Video dài 16:9, 1920×1080, 30 fps, theme **Bản vẽ kỹ thuật** (`ban-ve-ky-thuat`) + style **Sơ đồ hệ thống động**
+(`so-do-he-thong`). Mọi hình vẽ bằng code (`src/projects/kien-truc-ung-dung-web-tong-quan/Chapters.tsx`,
+`src/looks/diagram-kit.tsx`, màu `themeOf`); không dùng ảnh tạo AI. Tài sản tĩnh duy nhất: bìa sách
+`public/kien-truc-ung-dung-web-tong-quan/images/book-cover.jpg` (người dùng cung cấp).
+
+Quy tắc dàn hình (sửa 2026-11-12 sau khi người dùng thấy nhiều chỗ chưa đạt): mỗi cảnh có hình ngay từ câu đầu (danh
+sách và sơ đồ nhiều bước hiện mờ trước, sáng dần theo lời); hình nằm trong vùng y 110–870, trên phụ đề; chữ ≥ 34 px,
+code ≥ 30 px; không chữ nào đè viền, icon hay chữ khác; dòng code được tô đúng dòng.
 
 ## Màn tên (0–6,5 s, chỉ nhạc)
-- Lưới nền bản vẽ, sơ đồ thu gọn Controller → lõi → Database với gói dữ liệu chạy.
-- Tiêu đề "Kiến trúc ứng dụng web" (nhấn màu accent), dòng phụ "Tóm tắt cả cuốn sách · Nguyễn Thế Huy".
+- Lưới nền bản vẽ, tiêu đề "Kiến trúc ứng dụng web", dòng phụ "Tóm tắt cả cuốn sách · Nguyễn Thế Huy".
 
-## 00 · Mở đầu (`00-mo-dau`, 59,1 s)
-- Thẻ code `OrderController.php`: lấy giá `DB::table('ebooks')`, tính tiền, `insert orders`, `session()->put(...)`; đường nối tới Database/Session, gói dữ liệu và chip "giá"/"order id".
-- Ba câu hỏi đổi: PostgreSQL, job gửi mail, test phần tính tiền — mỗi câu một thẻ có dấu hỏi/cảnh báo.
-- Sơ đồ khái niệm "nghiệp vụ" (đơn, giá) nối chéo "hạ tầng" (database, session, framework), nhấn xung đột.
-- Bìa sách bên trái, giới thiệu 7 chương thành lưới ô (01–07) và gói chạy qua lộ trình.
-- Câu hỏi lõi: "chạy được một mình, trong bộ nhớ, không cần database, không cần framework?" với hai nhánh "có → nghiệp vụ" / "không → hạ tầng".
+## 00 · Mở đầu (`00-mo-dau`)
+- `OrderController.php` gõ dần; dây nối Database và Session, gói "giá"/"đơn" chạy trên dây; dấu ✓ "chạy đúng".
+- "Nghiệp vụ tính tiền nằm ở đâu?": khung vàng quanh dòng `$amount`; ba thẻ thay đổi (đổi PostgreSQL, thêm API JSON,
+  viết test tính tiền) lần lượt sáng, mỗi thẻ tô đỏ đúng các dòng phải sửa.
+- Bìa sách, tên sách, ba chip "tách nghiệp vụ khỏi database / framework / giao tiếp bên ngoài".
+- Bảy ô chương sáng lần lượt, một gói chạy qua cả bảy.
+- Câu hỏi mang về, rẽ hai nhánh "có → nghiệp vụ" / "không → hạ tầng".
 
-## 01 · Khi nghiệp vụ và hạ tầng nằm chung (`01-khi-nghiep-vu-va-ha-tang-nam-chung`, 107,3 s)
-- Thẻ code hàm trộn lẫn, bốn đường nối sang Database/Session/Framework/Tính tiền (một câu nghiệp vụ, ba thứ hạ tầng).
-- Ba thẻ giá: test phải dựng DB, đổi lưu trữ phải sửa chỗ khác, dữ liệu không ai kiểm — dấu X.
-- Hai hộp nghiệp vụ/hạ tầng bị buộc chồng, nhãn "hai thứ dính vào nhau".
-- Năm vấn đề (check đỏ) và bốn lợi ích khi tách (check xanh).
-- Chip chốt "nghiệp vụ sống lâu · hạ tầng hay thay".
+## 01 · Khi nghiệp vụ và hạ tầng nằm chung
+- Cùng controller; năm chip tách hàng, mỗi chip nối về đúng dòng của nó: SQL, session, framework = hạ tầng; tính tiền =
+  nghiệp vụ.
+- Ba khung giá phải trả: test tính tiền phải dựng MySQL thật; đổi cách lưu phải sửa giữa hàm đặt hàng; dữ liệu sai
+  (email "abc@", quantity = 0) lọt thẳng vào bảng orders.
+- Code trộn lẫn: khung "nghiệp vụ" (một câu) và "hạ tầng" (database, session, framework, thư viện) bị dây rối buộc vào
+  nhau.
+- Năm chuyện thường xảy ra: năm dòng hiện mờ ngay câu giới thiệu, mỗi dòng sáng kèm dấu ✕ theo lời.
+- Khi tách được: bốn thẻ lợi ích hiện mờ, sáng lần lượt kèm dấu ✓.
+- Theo tác giả, ứng dụng sống quá 2 năm: dòng thời gian, framework/database/dịch vụ ngoài đổi nhiều lần, thanh nghiệp vụ
+  chạy liền một mạch.
 
-## 02 · Ranh giới core và hạ tầng (`02-ranh-gioi-core-va-ha-tang`, 115,9 s)
-- Hai vùng: CORE (VAT, `Order.calculateTotalAmount()`, `OrderService.placeOrder()`) và HẠ TẦNG (SQL, HTTP, file, controller, Eloquent) với đánh dấu đúng/sai.
-- Công thức "tổng code − core = hạ tầng"; thẻ thư mục `app/Services/` cho thấy `PriceCalculator` (core) và `OrderRepository` (hạ tầng) cùng chỗ.
-- Bẫy interface: `Connection.insert(table, data)` nối thẳng Database, chip "vẫn lộ khái niệm database".
-- Ví dụ Clock: `Carbon::now()` (sai) → interface `Clock` → `SystemClock` / `FakeClock` cho test nửa đêm.
+## 02 · Ranh giới core và hạ tầng
+- "core code = bộ nhớ + CPU", năm thứ bên ngoài (database, gọi mạng, đọc file, đồng hồ, SMTP) bị gạch.
+- Hai quy tắc, mỗi quy tắc một khung với các thứ bị loại; chip "thiếu một trong hai → hạ tầng".
+- Hai cột core / hạ tầng điền theo lời; công thức "hạ tầng = toàn bộ code − core".
+- Thư mục `app/Services/`: `PriceCalculator.php` (core) và `RateClient.php` gọi API ngoài (hạ tầng).
+- `interface Connection { insert($table, $data) }` (vẫn lộ database) đặt cạnh `interface OrderRepository { save(Order) }`.
+- Đồng hồ: logic gọi thẳng giờ thật (dây đỏ), rồi `interface Clock` chen vào giữa; giờ hệ thống ở hạ tầng, đồng hồ giả
+  nhảy tới 23:59 khi test.
 
-## 03 · Domain Model: để đối tượng tự bảo vệ (`03-domain-model-de-doi-tuong-tu-bao-ve`, 99,2 s)
-- So sánh Transaction Script (các bước rời) với Domain Model (entity `Order` gom dữ liệu + hành vi + bảo vệ).
-- Thuộc tính và `__construct` kiểm tra (id ≤ 0, email sai, số lượng ≤ 0, giá âm) → ném exception.
-- Entity có danh tính (hai đơn #42 cùng dữ liệu); Value object `EmailAddress`, `Money` so bằng giá trị, tạo được là hợp lệ.
-- Nguyên tắc: đối tượng mutable có logic phức tạp không dùng cho việc chỉ đọc.
+## 03 · Domain Model: để đối tượng tự bảo vệ
+- Hai khung ngay câu đầu: Transaction Script (5 bước rời, dữ liệu là mảng) và Domain Model (Order gom dữ liệu + hành vi).
+- `Order.php` constructor: mỗi câu "nếu … ném lỗi" tô đúng dòng `if` và tick một luật bên phải; dòng tổng tiền tô cuối.
+- Bốn nguồn (Controller, API, CLI, Test) đều đi qua một constructor; đơn `quantity = 0` bật ra.
+- Entity (`Order #101` ≠ `Order #102` dù cùng nội dung) và value object (`Email(...) == Email(...)`,
+  `Money(120000, "VND")`).
+- Order không tự gọi database (dây đỏ bị gạch); "Repository ?" xuất hiện ở giữa.
 
-## 04 · Repository: kho của đối tượng nghiệp vụ (`04-repository-kho-cua-doi-tuong-nghiep-vu`, 93,4 s)
-- Interface `OrderRepository { save(Order): int; getById(int): Order }` — không bảng, không cột, không SQL.
-- Ba cài đặt rẽ từ cùng interface: `SqlOrderRepository` (DB), `MemoryOrderRepository` (mảng, test), `RemoteOrderRepository` (API).
-- Controller sau tách: các bước lấy giá, tạo Order, save, lưu session (dạng danh sách kiểm).
-- So sánh: lưu trực tiếp trong controller vs giao cho repository (chip "lưu được ở đâu: kho lo").
+## 04 · Repository: kho của đối tượng nghiệp vụ
+- `interface OrderRepository { save(Order): int; getById(int): Order }`; "bảng nào? cột nào? SQL ra sao?" bị gạch.
+- Viết dòng mình muốn gọi trước (`$this->orders->save($order);`) rồi mới đến interface.
+- Một interface, ba cài đặt (Sql / Memory / Remote); gói dữ liệu đổi đường giữa các bản, controller không biết bản nào.
+- Controller sau khi tách: năm bước hiện mờ, tick theo lời.
+- `SqlOrderRepository` (mọi câu SQL, integration test) cạnh `Order` thuần PHP (unit test).
 
-## 05 · Đọc và ghi không nhất thiết dùng chung một mô hình (`05-doc-va-ghi-khong-nhat-thiet-dung-chung-mot-mo-hinh`, 90,9 s)
-- Entity ghi `Order` với hành vi `changePrice()/hide()` bị gắn vào luồng đọc — dấu X.
-- Tách `EbookReadModel` + `EbookReadRepository` (truy vấn), view model/DTO định dạng hiển thị (`formattedPrice`, `toArray`).
-- Nhấn CQRS nhẹ: chung DB, repository đọc riêng, integration test; không cần hạ tầng CQRS nặng.
+## 05 · Đọc và ghi không nhất thiết dùng chung một mô hình
+- Entity ghi `Ebook` mang `changePrice() / hide() / changeStatus()` được đưa thẳng cho View.
+- `EbookReadModel` + `EbookReadRepository` chỉ để đọc; bản nhẹ hơn `interface GetPrice`.
+- CQRS (kho ghi, kho đọc, domain event, phải giữ nhất quán) mờ đi; cách sách chọn: một database, repository đọc riêng,
+  integration test.
+- View model: trang e-book (`price: 120000` → `120.000 ₫`) và JSON API danh sách đơn qua `OrderListViewRepository`.
+- Nguyên tắc chốt chương.
 
-## 06 · Application Service và Command (`06-application-service-va-command`, 94,4 s)
-- Controller phình với nhiều trách nhiệm (validate, lấy SP, tồn kho, tính tiền, tạo Order, mail, response).
-- `PlaceOrderService` ở giữa, bốn lối vào Web/CLI/Job/Test cùng gọi một use case.
-- `PlaceOrderCommand` (customerId, items, email) → `handle(cmd): OrderId`.
-- Bên trong service: từng bước nghiệp vụ, nhánh `OutOfStockException`; constructor injection vs `app()->make()` (dấu X); test với repository in-memory, không framework.
+## 06 · Application Service và Command
+- `OrderController` phình dần sáu khối trách nhiệm.
+- `PlaceOrderService` một use case, gọi từ web/CLI/job/test.
+- `PlaceOrderCommand` (customerId, items, email) → `handle($command)` → `OrderId`.
+- Sáu bước trong service sáng lần lượt theo lời, gói chạy theo; nhánh `OutOfStockException`.
+- Controller còn hai việc: request → command → service → response.
+- Constructor injection (`OrderRepository`, `ProductRepository`, `Mailer`) thay `app()->make(...)`; khi test truyền
+  `InMemoryOrderRepository`, `FakeMailer`.
+- `PlaceOrderServiceTest`: PASS, không framework, database hay mạng.
 
-## 07 · Ba tầng và luật phụ thuộc một chiều (`07-ba-tang-va-luat-phu-thuoc-mot-chieu`, 133,8 s)
-- Ba tầng cũ Presentation/Business/Data xếp chồng.
-- Ba tầng theo nghiệp vụ: Domain (entity, value object, domain service/event, interface), Application (use case, command/query, transaction), Infrastructure (framework, ORM, adapter).
-- Vòng tròn phụ thuộc lồng nhau: Infrastructure → Application → Domain; mũi tên chỉ vào trong, hạ tầng cũng trỏ vào Domain; "Đừng gọi tôi, tôi sẽ gọi bạn" (Hollywood Principle).
-- `OrderServiceProvider` bind interface → cài đặt (chạy thật/test); luồng `/orders/place` → Controller → Handler → Repository và sự kiện `OrderPlaced`.
-- Cảnh báo: CRUD đơn giản không cần đủ bốn tầng; kiến trúc để giảm chi phí thay đổi.
+## 07 · Ba tầng và luật phụ thuộc một chiều
+- Ba tầng cũ, đường rò rỉ giữa các tầng, chồng lớp thành mã lasagna.
+- Domain / Application / Infrastructure hiện mờ ngay câu đầu, sáng theo lời; Domain "không import framework".
+- Dependency Rule: ba vòng lồng; Controller → Application → Domain, `EloquentOrderRepository` trỏ vào Domain; chip
+  Hollywood Principle.
+- `OrderServiceProvider` bind interface → Eloquent (chạy thật) / InMemory (khi test).
+- Luồng đặt hàng: Request → Controller → Handler → Repository → MySQL, OrderPlaced → Listener → Email; gói chạy qua.
+- Việc đơn giản một lớp là đủ; module lõi phức tạp mới chia đủ tầng.
 
-## 08 · Ports and Adapters: lõi ở giữa, mọi thứ cắm vào (`08-ports-and-adapters-loi-o-giua-moi-thu-cam-vao`, 161,2 s)
-- Lục giác Domain ở giữa, các thiết bị USB/Database/API/CLI cắm vào; port = chuẩn, adapter = thiết bị cụ thể.
-- Bốn hạn chế còn lại của phân lớp (dấu X).
-- Hai loại port: đầu vào (UI/API/CLI/test gọi vào lõi) và đầu ra (lưu trữ/thông báo/dịch vụ), cả hai là interface trong core; adapter ở Infrastructure, mỗi port có adapter thật + adapter giả.
-- Bốn bước: xác định port → định nghĩa interface trong core → viết adapter → nối bằng DI.
-- Ví dụ: `OrderRepository` ← Eloquent/InMemory, `OrderNotification` ← Email/Log, `HexagonBindings`; test handler với adapter giả không boot Laravel.
-- Mở rộng: `ImportOrderCommand` (CSV adapter), hai DB, `CustomerContext` giữa bounded context — không đụng lõi.
-- Cái giá: nhiều interface/class, cần quy ước, không trừu tượng hóa mọi thứ.
+## 08 · Ports and Adapters: lõi ở giữa, mọi thứ cắm vào
+- Lục giác "lõi ứng dụng", Alistair Cockburn · 2005, "sáu cạnh chỉ là ẩn dụ"; cổng USB = port, chuột/bàn phím/ổ cứng
+  thay nhau cắm = adapter.
+- Bốn chỗ phân lớp còn để ngỏ: hiện mờ, sáng kèm ✕ theo lời.
+- Port đầu vào (UI, API, CLI, test) và port đầu ra (lưu trữ, thông báo, bên thứ ba), gói chạy vào/ra lõi; adapter ở
+  Infrastructure, mỗi port một adapter thật + một adapter giả.
+- Bốn bước hiện mờ, sáng lần lượt: xác định port → interface trong core → viết adapter → nối bằng DI.
+- Ví dụ sách: `OrderRepository` (Eloquent / InMemory), `OrderNotification` (Email / Log); service provider; test
+  không khởi động Laravel.
+- Mở rộng: nhập đơn từ CSV, hai database, phân hệ khách hàng qua một port; lõi giữ nguyên.
+- Cái giá: nhiều interface và class hơn, cần quy ước đặt tên, đừng trừu tượng hóa mọi thứ, chỉ tách chỗ dễ đổi/khó test.
 
-## 09 · Khép lại (`09-khep-lai`, 47,6 s)
-- Câu hỏi phân loại: chạy một mình trong bộ nhớ? có → giữ sạch / không → đẩy ra rìa.
-- Ba bước bắt đầu nhỏ: một use case, tách một phụ thuộc khó test, viết một test không cần database — rồi lặp lại.
-- Kết: không hứa chạy nhanh hơn, mà biết phải sửa ở đâu; cảm ơn.
+## 09 · Khép lại
+- Câu hỏi phân loại, hai nhánh nghiệp vụ (giữ sạch) / hạ tầng (đẩy ra rìa, sau interface).
+- Vòng lặp bốn bước: chọn một use case → tách phụ thuộc khó test → viết test không cần DB → lặp lại; gói chạy vòng.
+- Lục giác nghiệp vụ với web/API/database/email; đổi database chỉ sửa đúng chỗ đó.
 
 ## Caption
-- Phụ đề một dòng, bám thời gian câu (`captions.json`), đặt thấp, không che sơ đồ (nội dung chính dưới ~880 px). Style theo caption chung dự án (chữ rõ, nền/viền đọc được trên nền xanh).
+- Phụ đề một dòng, bám thời gian từng chữ của giọng (`captions.json`), đặt thấp dưới y ≈ 900; từ khóa vàng.

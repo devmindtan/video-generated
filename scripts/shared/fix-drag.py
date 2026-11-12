@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Find and replace dragged-out words in the cached sentence takes make-voice uses for this project.
+"""Find and replace dragged-out words in the cached sentence takes make-voice uses for a story (VieNeu presets).
 
-User 2026-11-11: "Ví dụ đời thường chứ không phải là ví dụ đời... thường" (the preset voice held "đời" 0.44 s). VieNeu
+User 2026-11-11 (system-design-tong-quan): "Ví dụ đời thường chứ không phải là ví dụ đời... thường" (the preset voice held "đời" 0.44 s). VieNeu
 samples differently on every draw, so a dragged word is a bad draw, not the text. For every sentence of the chosen
 segments this reads the cached take (the exact file make-voice will reuse), asks faster-whisper for word timings and
 flags a word held >= 0.42 s and >= 1.8x the sentence's median word. Skipped: the first and last word (ASR folds
@@ -10,7 +10,7 @@ punctuation is used because ASR drops commas), and long words such as English te
 the take with the smallest drag that still reads the sentence (>= 85 % word match) replaces the cache file. The old take
 stays next to it as <key>.drag-<n>.wav. Then re-run make-voice: it reuses the cache and re-times the segment.
 
-Usage: fix-drag.py [segment-prefix ...] [--tries 4] [--check-only]
+Usage: fix-drag.py --story <story.json> [--voice 'Minh Đức'] [segment-prefix ...] [--tries 4] [--check-only]
 """
 import importlib.util
 import json
@@ -22,7 +22,7 @@ from difflib import SequenceMatcher
 from importlib.metadata import version
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = Path(__file__).resolve().parents[2]
 os.environ.setdefault('HF_HOME', str(ROOT / '.cache/huggingface'))
 os.environ.setdefault('HF_HUB_DISABLE_XET', '1')
 os.environ.setdefault('HF_HUB_OFFLINE', '1')
@@ -36,16 +36,20 @@ spec = importlib.util.spec_from_file_location('make_voice', ROOT / 'scripts/shar
 make_voice = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(make_voice)
 
-VOICE, TEMPERATURE, QUALITY = 'Minh Đức', .5, PROFILES['legacy24']
-SAMPLING = {'top_k': 25, 'top_p': .95, 'repetition_penalty': 1.2}
-STORY = ROOT / 'scripts/projects/system-design-tong-quan/story.json'
-CACHE = ROOT / '.cache/stoic-audio' / STORY.stem
-MIN_HOLD, RATIO = .42, 1.8
-
 args = sys.argv[1:]
-tries = int(args[args.index('--tries') + 1]) if '--tries' in args else 4
+if '-h' in args or '--help' in args:
+    print(__doc__)
+    sys.exit(0)
+option = lambda name, default=None: args[args.index(name) + 1] if name in args else default
+TEMPERATURE, QUALITY = .5, PROFILES['legacy24']
+VOICE = option('--voice', 'Minh Đức')
+SAMPLING = {'top_k': 25, 'top_p': .95, 'repetition_penalty': 1.2}
+STORY = ROOT / option('--story', 'scripts/projects/system-design-tong-quan/story.json')
+CACHE = ROOT / '.cache/stoic-audio' / STORY.stem  # make-voice's cache for this story
+MIN_HOLD, RATIO = .42, 1.8
+tries = int(option('--tries', 4))
 check_only = '--check-only' in args
-prefixes = [a for i, a in enumerate(args) if not a.startswith('--') and (i == 0 or args[i - 1] != '--tries')]
+prefixes = [a for i, a in enumerate(args) if not a.startswith('--') and (i == 0 or args[i - 1] not in ('--tries', '--story', '--voice'))]
 
 
 def plain(word):
@@ -129,7 +133,7 @@ def main():
     finally:
         if tts:
             tts.close()
-    out = ROOT / '.cache/system-design-tong-quan-drag.json'
+    out = ROOT / '.cache' / f'{STORY.parent.name}-drag.json'
     out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     flagged = [r for r in report if 'dragged' in r]
     print(f'{len(flagged)} dragged sentences, {sum(1 for r in flagged if r.get("replaced"))} replaced; report {out.relative_to(ROOT)}')
