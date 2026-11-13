@@ -126,6 +126,19 @@ Mức độ: **Cao / Trung bình / Thấp** (ảnh hưởng × khả năng xảy
 | 3.2 | **Dung lượng đĩa** (P3) | Báo cáo/cảnh báo dung lượng `public`/cache/run artifacts, quy trình dọn có kiểm chứng (không xóa dữ liệu người dùng/nguồn) | `temp -- status`/đo cho thấy áp lực |
 | 3.3 | **Manager chậm đo được** | Cache đọc catalog/index trong bộ nhớ với invalidation theo mtime, giảm parse lặp, streaming hợp lý | Có độ trễ quan sát được trên thao tác thực |
 
+### Increment triển khai 2026-11-13
+
+Phạm vi được chọn sau khi đối chiếu kế hoạch với code là **P0 + lát cắt đầu tiên của P1.3**. P1.1 chưa triển khai vì kiểm kê cho thấy các lệnh voice/render chứa nhiều tham số riêng theo tập; chưa có một schema chung đủ rõ để thay alias cũ an toàn.
+
+Acceptance criteria của increment:
+
+- **SYS-EVAL AC-P0.1:** ghi baseline tái lập cho typecheck, test manager, dung lượng và điều kiện máy; chỗ chưa đo phải ghi rõ, không chạy render/voice khi chưa được yêu cầu.
+- **SYS-EVAL AC-P0.2:** thống kê lệnh npm, mẫu file per-project và điểm tập trung route để quyết định phạm vi refactor.
+- **SYS-EVAL AC-P1.3:** tách bootstrap/security, GET, POST và HTTP streaming thành module riêng mà không đổi route, status, header, payload hay data path; toàn bộ test manager phải đạt.
+- **SYS-EVAL AC-SAFE:** chỉ stage/commit file thuộc increment; không chạm các thay đổi approval, workflow, book và cover đang có từ tiến trình khác.
+
+Kết quả và số đo nằm tại [performance-baseline.md](performance-baseline.md). P0.1/P0.2 đã hoàn tất trong phạm vi an toàn; benchmark render/voice được ghi là chưa đo. P1.3 đã hoàn tất lát cắt routing/HTTP, chưa hoàn tất việc tách từng handler theo miền.
+
 ## 6. Thứ tự thực hiện gợi ý cho agent tối ưu
 
 1. **Đọc & chốt ràng buộc:** `AGENTS.md`, `docs/architecture.md`, `series-workflow.md`, `production-automation.md`, `gpu-host.md`, tài liệu voice/book-PDF/review liên quan.
@@ -146,3 +159,7 @@ Mức độ: **Cao / Trung bình / Thấp** (ảnh hưởng × khả năng xảy
 - **Cần tái cấu trúc/tối ưu?** Có — **có chọn lọc**, tập trung vào **khả năng bảo trì và giảm lặp** (script npm per-project, trùng lặp pipeline per-project, monolith manager) và **hoàn thiện lộ trình automation**.
 - **Cần đại tu vì hiệu năng?** **Chưa**. Hệ thống chịu tải bởi TTS/render/media (workload-bound) và đã có các biện pháp giảm thiểu phù hợp; bước tiếp theo đúng là **đo baseline rồi tối ưu cục bộ**.
 - **Cách làm an toàn:** refactor dần, ưu tiên tập mới, giữ nguyên ID/đường dẫn/bản đã duyệt, bám kiểm tra tự động và cổng duyệt hiện có.
+
+## 9. History
+
+- **2026-11-13:** thêm acceptance criteria và trạng thái increment P0 + P1.3; liên kết baseline đo thực tế; ghi rõ render/voice chưa được benchmark và P1.3 mới hoàn tất ranh giới routing/HTTP.
