@@ -72,6 +72,14 @@ test('mutations require origin and session token; planning creates no render or 
   assert.equal((await f.post('/api/projects',body)).status,400);
   assert.equal((await f.post('/api/render',{})).status,404);
 });
+test('SYS-EVAL AC-P1.3 preserves JSON validation and unknown-route responses after routing split',async t=>{
+  const f=await fixture(t),headers={Origin:f.base,'X-Workspace-Token':f.workspace.token};
+  const post=(body,contentType='application/json')=>fetch(f.base+'/api/unknown',{method:'POST',headers:{...headers,'Content-Type':contentType},body});
+  assert.equal((await post('null')).status,404);
+  assert.equal((await post('{')).status,400);
+  assert.equal((await post('{}','text/plain')).status,415);
+  assert.equal((await post(JSON.stringify({value:'x'.repeat(100001)}))).status,413);
+});
 test('external client projects can import an existing video without a fake Composition',async t=>{
   const f=await fixture(t),catalog=JSON.parse(fs.readFileSync(path.join(f.root,'series/catalog.json'),'utf8'));
   catalog.channels.push({id:'client-work',title:'Video khách hàng',studioFolder:'Client-Work'});catalog.series.push({id:'product-videos',channel:'client-work',path:'series/client-work/product-videos/series.json'});f.write('series/catalog.json',catalog);
