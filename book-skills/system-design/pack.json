@@ -1,0 +1,38 @@
+{
+  "book": "system-design",
+  "title": "System Design",
+  "authors": [
+    "Nguyễn Thế Huy"
+  ],
+  "bookDir": "series/ngoai-kenh/chua-thuoc-series/books/system-design",
+  "sourceSha256": "f119d2b346861c620b66bed8afb5bb6a51c42906cafbe269133d8a9fb0f5400b",
+  "prefix": "sysdesign",
+  "createdAt": "2026-11-13",
+  "skills": [
+    {
+      "name": "sysdesign-approach",
+      "purpose": "Khung tiếp cận bài thiết kế hệ thống, khái niệm nền, các khối cơ bản",
+      "pages": "6-21, 31-33, 76"
+    },
+    {
+      "name": "sysdesign-data-storage",
+      "purpose": "SQL/NoSQL, nhất quán, replication, quorum, CAP, sharding, index, chọn lưu trữ",
+      "pages": "21-44"
+    },
+    {
+      "name": "sysdesign-scaling",
+      "purpose": "Load balancer, cache, message queue, idempotency, khóa bi quan/lạc quan",
+      "pages": "45-62"
+    },
+    {
+      "name": "sysdesign-reliability",
+      "purpose": "Chịu lỗi, failover, retry, circuit breaker, HA/FT, SLA/MTBF/MTTR, monitoring và observability",
+      "pages": "71-79, 86-93"
+    },
+    {
+      "name": "sysdesign-api-security",
+      "purpose": "HTTP/REST, gRPC, TCP/UDP; xác thực, phân quyền, bảo vệ API và dữ liệu",
+      "pages": "62-70, 80-85"
+    }
+  ]
+}
