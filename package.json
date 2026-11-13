@@ -192,6 +192,7 @@
     "test:manager:loudness": "node --test tools/project-manager/loudness.test.cjs",
     "test:render-loudness": "node scripts/shared/tests/render-loudness.test.cjs",
     "test:manager:thumbnails": "node --test tools/project-manager/thumbnails.test.cjs",
+    "test:manager:book-skills": "node --test tools/project-manager/book-skills.test.cjs && node tools/project-manager/book-skills-ui.test.cjs",
     "check:book-hvtt-001-overview": ".venv/bin/python scripts/projects/book-hvtt-001-overview/qa.py",
     "check:book-ah-001-overview": ".venv/bin/python scripts/projects/book-hvtt-001-overview/qa.py --project book-ah-001-overview",
     "check:book-dnt-001-overview": ".venv/bin/python scripts/projects/book-hvtt-001-overview/qa.py --project book-dnt-001-overview",

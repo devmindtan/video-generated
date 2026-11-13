@@ -293,3 +293,25 @@ TODO một hai câu: skill giúp việc gì. Kiến thức rút từ sách "${pa
   }
   return pack;
 };
+
+// ---- one book's pack as data (project manager's "Bộ skill" tab) ---------------------------------------------------
+// Never throws for a missing pack: a technical book without one is a normal state the page explains.
+export const packInfo = (id, {check = true} = {}) => {
+  const book = findBook(id);
+  const reading = book ? {read: book.book.chaptersRead ?? null, total: book.book.chaptersTotal ?? null} : null;
+  const base = {book: id, technical: book?.book.kind === 'technical', reading,
+    targets: targets().map((t) => ({name: t.name, dir: t.dir})), pack: null, check: null};
+  if (!fs.existsSync(path.join(packDir(id), 'pack.json'))) return base;
+  const pack = loadPack(id);
+  const rows = status([id]);
+  const skills = pack.skills.map((s) => {
+    const dir = skillDir(id, s.name), file = path.join(dir, 'SKILL.md');
+    const fm = fs.existsSync(file) ? parseFrontmatter(fs.readFileSync(file, 'utf8')) : null;
+    return {name: s.name, purpose: s.purpose ?? '', pages: s.pages ?? '', description: fm?.data.description ?? '',
+      files: fs.existsSync(dir) ? walk(dir).filter((f) => f.endsWith('.md')) : [],
+      states: Object.fromEntries(rows.filter((r) => r.skill === s.name).map((r) => [r.target, r.state]))};
+  });
+  const result = check ? checkPack(id) : null;
+  return {...base, pack: {title: pack.title, prefix: pack.prefix, createdAt: pack.createdAt ?? null, source: rel(packDir(id)), skills},
+    check: result && {errors: result.errors, warnings: result.warnings}};
+};

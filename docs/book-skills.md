@@ -15,6 +15,13 @@ không phụ thuộc video, kịch bản hay series. Làm xong thì cài vào th
 
 `BOOK_SKILLS_TARGETS="tên=/đường/dẫn,..."` đổi nơi cài (máy khác, kiểm thử).
 
+## Trên trang quản lý
+
+Sách kỹ thuật là sách có `"kind": "technical"` trong `book.json` (đánh dấu ở trang quản lý: Sửa tên sách → ô "Sách kỹ
+thuật"; agent nạp một sách kỹ thuật mới thì ghi luôn trường này) hoặc đã có bộ skill. Mỗi sách kỹ thuật có tab **Bộ skill**:
+trạng thái cài ở từng agent, mục đích và "khi nào agent dùng" của từng skill, trang PDF, các tệp để đọc, nút **Cài lại** (kiểm
+tra rồi cài, lỗi kiểm tra hiện trên tab). Sách chưa có bộ skill thì tab ghi cần làm gì và câu để nhờ agent.
+
 ## Quy trình cho agent
 
 1. **Sách phải được đọc hết** theo `docs/book-pdf-workflow.md`: `book.json` có `chaptersRead == chaptersTotal`,

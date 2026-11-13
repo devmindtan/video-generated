@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // npm run book-skills -- <command>. See docs/book-skills.md.
-import {checkPack, findBooks, install, listPacks, loadPack, scaffold, status, targets, uninstall} from './lib.mjs';
+import {checkPack, findBooks, install, listPacks, loadPack, packInfo, scaffold, status, targets, uninstall} from './lib.mjs';
 
 const [cmd, ...args] = process.argv.slice(2);
 const flag = (name) => {const i = args.indexOf(`--${name}`); return i >= 0 ? args[i + 1] : undefined;};
@@ -13,6 +13,7 @@ const usage = `Usage: npm run book-skills -- <command>
                                         tạo book-skills/<book>/ với khung SKILL.md (còn TODO)
   check [book]                          kiểm tra frontmatter, nguồn trang PDF, liên kết, chép nguyên văn sách
   install [book] [--dry-run]            kiểm tra rồi chép skill vào thư mục skill toàn cục của mọi agent
+  info <book> [--json]                  một bộ skill: mô tả, tệp, trạng thái từng agent, kết quả kiểm tra
   status [book]                         skill đã cài, cũ, thiếu hay trùng tên ở từng agent
   uninstall <book>                      gỡ skill do bộ này cài (chỉ thư mục có dấu .book-skill.json)
 Targets: ${targets().map((t) => `${t.name}=${t.dir}`).join(', ')}`;
@@ -38,6 +39,15 @@ try {
       bad += errors.length;
     }
     process.exitCode = bad ? 1 : 0;
+  } else if (cmd === 'info') {
+    if (!args[0] || args[0].startsWith('--')) throw new Error('Cần tên sách');
+    const info = packInfo(args[0]);
+    console.log(has('json') ? JSON.stringify(info) : JSON.stringify(info, null, 2));
+  } else if (cmd === 'install' && has('json')) {
+    // Project manager: install one pack, answer with the refreshed info, or the check errors that blocked it.
+    const id = args[0];
+    try {install(id); console.log(JSON.stringify({ok: true, info: packInfo(id)}));}
+    catch (e) {console.log(JSON.stringify({ok: false, error: e.message, info: packInfo(id)}));}
   } else if (cmd === 'install') {
     for (const id of ids()) {
       const plan = install(id, {dryRun: has('dry-run')});

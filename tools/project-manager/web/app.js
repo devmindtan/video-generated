@@ -893,12 +893,12 @@ function bindBookCoverFallbacks(){document.querySelectorAll('[data-book-cover]')
   img.addEventListener('load',()=>fitBookCover(img));if(img.complete)fitBookCover(img);
   img.addEventListener('error',()=>{const book=state.data.books.find(b=>b.id===img.dataset.bookCover&&b.series===img.dataset.coverSeries);if(book)(img.closest('.book-image-frame')||img).outerHTML=bookArtwork({...book,cover:null});},{once:true});
 });}
-// Book title and authors, editable in place (only those two fields of book.json are written).
+// Book title, authors and the technical flag, editable in place (only those fields of book.json are written).
 function bookIdentity(book,status){
   return `<div class="identity-row"><h2 id="drawer-title" tabindex="-1">${esc(book.title)}</h2><button class="button quiet edit-inline" data-edit-book aria-label="Sửa tên sách và tác giả">Sửa</button></div><div class="drawer-meta"><span id="book-authors">${book.authors.length?esc(book.authors.join(', ')):'<span class="warn">Chưa ghi tác giả</span>'}</span><span class="status ${book.hasSource?'production':'planning'}">${esc(status)}</span></div>`;
 }
 function bookIdentityForm(book){
-  return `<form id="book-identity-form" class="inline-edit"><label class="field"><span>Tên sách</span><input id="book-title-input" maxlength="300" required value="${esc(book.title)}" autocomplete="off"></label><label class="field"><span>Tác giả <small>(cách nhau bằng dấu phẩy)</small></span><input id="book-authors-input" maxlength="600" value="${esc(book.authors.join(', '))}" autocomplete="off"></label><div class="inline-edit-actions"><p id="book-identity-status" role="status"></p><button type="button" class="button quiet" data-cancel-book>Hủy</button><button type="submit" class="button primary">Lưu</button></div></form>`;
+  return `<form id="book-identity-form" class="inline-edit"><label class="field"><span>Tên sách</span><input id="book-title-input" maxlength="300" required value="${esc(book.title)}" autocomplete="off"></label><label class="field"><span>Tác giả <small>(cách nhau bằng dấu phẩy)</small></span><input id="book-authors-input" maxlength="600" value="${esc(book.authors.join(', '))}" autocomplete="off"></label><label class="check-field"><input id="book-technical-input" type="checkbox"${book.technical?' checked':''}${book.skillPack?' disabled':''}><span>Sách kỹ thuật <small>${book.skillPack?'(đã có bộ skill)':'(hiện tab Bộ skill cho agent)'}</small></span></label><div class="inline-edit-actions"><p id="book-identity-status" role="status"></p><button type="button" class="button quiet" data-cancel-book>Hủy</button><button type="submit" class="button primary">Lưu</button></div></form>`;
 }
 const currentBook=()=>state.drawer?.book&&state.data.books.find(b=>b.id===state.drawer.id&&b.series===state.drawer.series);
 const bookStatusText=book=>book.hasSource&&book.status==='awaiting-source'?'Chờ kiểm tra nguồn':bookStatusNames[book.status]||book.status;
@@ -906,7 +906,7 @@ function editBook(on){const book=currentBook();if(!book)return;$('#book-identity
 async function saveBookIdentity(event){
   event.preventDefault();const book=currentBook();if(!book)return;const status=$('#book-identity-status');
   try{
-    const result=await api('/api/book-meta',{series:book.series,id:book.id,title:$('#book-title-input').value,authors:$('#book-authors-input').value,revision:book.revision});
+    const result=await api('/api/book-meta',{series:book.series,id:book.id,title:$('#book-title-input').value,authors:$('#book-authors-input').value,revision:book.revision,...($('#book-technical-input').disabled?{}:{technical:$('#book-technical-input').checked})});
     Object.assign(book,{title:result.title,authors:result.authors,revision:result.revision});
     // Re-read the workspace and redraw the page so the cover artwork and book record show the new name.
     await refresh();await openBook(book.series,book.id,false);toast('Đã lưu tên sách và tác giả.');
@@ -920,12 +920,61 @@ async function openBook(series,id,record=true){
   $('#drawer-eyebrow').textContent='TỦ SÁCH · HỒ SƠ NGHIÊN CỨU';
   const names={'research.md':'Nghiên cứu','season-plan.md':'Kế hoạch series','chapters.json':'Bản đồ chương','book.json':'Thông tin nguồn'};
   const status=book.hasSource&&book.status==='awaiting-source'?'Chờ kiểm tra nguồn':bookStatusNames[book.status]||book.status;
-  $('#drawer-content').innerHTML=`<header class="book-page-head"><div id="book-identity">${bookIdentity(book,status)}</div><div class="book-notice">${esc(book.note||'Hồ sơ nghiên cứu dùng chung cho các tập trong series.')}</div></header><div class="book-page-layout"><aside class="book-page-aside"><section class="book-cover-editor"><div class="book-cover-preview">${bookArtwork(book)}</div><div><h3>Ảnh bìa</h3><p>JPG, PNG hoặc WebP · tối đa 8 MB.</p><label class="button secondary cover-picker">${book.cover?'Thay ảnh bìa':'Thêm ảnh bìa'}<input id="book-cover-upload" type="file" accept="image/jpeg,image/png,image/webp" aria-label="Chọn ảnh bìa sách"></label><p id="cover-upload-status" role="status"></p></div></section><button class="button primary" data-project-from-book>＋ Lên ý tưởng một tập</button>${bookEpisodes(book)}<section class="drawer-section"><h3>Nguồn sách</h3><p>Chép PDF vào thư mục riêng của cuốn sách trên máy. Không tự đọc, OCR hoặc gửi ra dịch vụ khác.</p><ul>${(book.sources||[]).map(f=>`<li>${esc(f.name)} · ${(f.size/1048576).toFixed(1)} MB</li>`).join('')||'<li>Chưa có PDF nguồn.</li>'}</ul><label class="field"><span>Thêm PDF (tối đa 200 MB/file)</span><input id="book-upload" type="file" accept=".pdf,application/pdf" multiple></label><p id="upload-status" role="status"></p></section></aside><div class="book-page-main"><section class="drawer-section"><h3>Tài liệu nghiên cứu</h3><div class="document-tabs">${bookEps(book).eps.length?`<button data-book-document="__episodes">Các tập <span class="tab-count">${bookEps(book).eps.length}</span></button>`:''}${book.documents.map(file=>`<button data-book-document="${esc(file)}">${esc(names[file]||file)}</button>`).join('')}</div><div id="document-view" class="document-view">Đang mở…</div></section></div></div>`;
+  $('#drawer-content').innerHTML=`<header class="book-page-head"><div id="book-identity">${bookIdentity(book,status)}</div><div class="book-notice">${esc(book.note||'Hồ sơ nghiên cứu dùng chung cho các tập trong series.')}</div></header><div class="book-page-layout"><aside class="book-page-aside"><section class="book-cover-editor"><div class="book-cover-preview">${bookArtwork(book)}</div><div><h3>Ảnh bìa</h3><p>JPG, PNG hoặc WebP · tối đa 8 MB.</p><label class="button secondary cover-picker">${book.cover?'Thay ảnh bìa':'Thêm ảnh bìa'}<input id="book-cover-upload" type="file" accept="image/jpeg,image/png,image/webp" aria-label="Chọn ảnh bìa sách"></label><p id="cover-upload-status" role="status"></p></div></section><button class="button primary" data-project-from-book>＋ Lên ý tưởng một tập</button>${bookEpisodes(book)}<section class="drawer-section"><h3>Nguồn sách</h3><p>Chép PDF vào thư mục riêng của cuốn sách trên máy. Không tự đọc, OCR hoặc gửi ra dịch vụ khác.</p><ul>${(book.sources||[]).map(f=>`<li>${esc(f.name)} · ${(f.size/1048576).toFixed(1)} MB</li>`).join('')||'<li>Chưa có PDF nguồn.</li>'}</ul><label class="field"><span>Thêm PDF (tối đa 200 MB/file)</span><input id="book-upload" type="file" accept=".pdf,application/pdf" multiple></label><p id="upload-status" role="status"></p></section></aside><div class="book-page-main"><section class="drawer-section"><h3>Tài liệu nghiên cứu</h3><div class="document-tabs">${bookEps(book).eps.length?`<button data-book-document="__episodes">Các tập <span class="tab-count">${bookEps(book).eps.length}</span></button>`:''}${book.technical?'<button data-book-document="__skills">Bộ skill</button>':''}${book.documents.map(file=>`<button data-book-document="${esc(file)}">${esc(names[file]||file)}</button>`).join('')}</div><div id="document-view" class="document-view">Đang mở…</div></section></div></div>`;
   bindBookCoverFallbacks();
   showDrawer('book');if(bookEps(book).eps.length)openBookDocument('__episodes');else if(book.documents.length)openBookDocument(book.documents.includes('season-plan.md')?'season-plan.md':book.documents[0]);
 }
-async function openBookDocument(file){const book=state.drawer;if(!book?.book)return;const request=++state.documentRequest;document.querySelectorAll('.document-tabs [data-book-document]').forEach(b=>b.classList.toggle('active',b.dataset.bookDocument===file));
+async function openBookDocument(file){const book=state.drawer;if(!book?.book)return;const request=++state.documentRequest;document.querySelectorAll('.document-tabs [data-book-document]').forEach(b=>b.classList.toggle('active',b.dataset.bookDocument===file.split(':')[0]));
+  if(file==='__skills'||file.startsWith('__skills:'))return openBookSkills(file.slice(9),request);
   if(file==='__episodes'){const record=state.data.books.find(b=>b.id===book.id&&b.series===book.series);$('#document-view').innerHTML=bookEpisodesView(record);$('#document-view').lastDocument=null;$('.document-tabs [data-book-document="__episodes"]')?.scrollIntoView({block:'nearest',inline:'nearest'});return;}try{const doc=await api(`/api/book-document?series=${encodeURIComponent(book.series)}&book=${encodeURIComponent(book.id)}&file=${encodeURIComponent(file)}`);if(request===state.documentRequest)renderDocument(doc);}catch(error){if(request===state.documentRequest)$('#document-view').textContent=error.message;}}
+// "Bộ skill" tab of a technical book: the agent skills made from it (book-skills/<book>/), their install state in
+// each agent's global folder, their files, and a reinstall button. Opening the tab only reads; installing is a click.
+const skillStateText={installed:'Đã cài',outdated:'Cần cài lại',missing:'Chưa cài',conflict:'Trùng tên skill khác'};
+async function openBookSkills(file,request){
+  const book=state.drawer,view=$('#document-view');view.lastDocument=null;
+  try{
+    if(file){const [skill,...rest]=file.split('/');
+      const doc=await api(`/api/book-skill-file?series=${encodeURIComponent(book.series)}&book=${encodeURIComponent(book.id)}&skill=${encodeURIComponent(skill)}&file=${encodeURIComponent(rest.join('/'))}`);
+      if(request!==state.documentRequest)return;
+      // SKILL.md opens with a YAML header for agents; the reader sees it as the raw file only.
+      renderDocument({...doc,text:doc.text.replace(/^---\n[\s\S]*?\n---\n/,'')});
+      view.prepend(h('div',{class:'skill-file-head'},h('button',{class:'button quiet','data-book-document-open':'__skills'},'← Bộ skill'),h('code',{},doc.name)));
+      return;}
+    view.textContent='Đang đọc bộ skill…';
+    const info=await api(`/api/book-skills?series=${encodeURIComponent(book.series)}&book=${encodeURIComponent(book.id)}`);
+    if(request===state.documentRequest)view.innerHTML=bookSkillsView(info);
+  }catch(error){if(request===state.documentRequest)view.textContent=error.message;}
+}
+function bookSkillsView(info){
+  const record=currentBook(),title=record?.title||info.book,prompt=`Làm bộ skill cho sách ${title}`;
+  if(!info.pack){
+    const read=info.reading,done=read?.total&&read.read===read.total;
+    return `<div class="skills-empty"><h3>Chưa có bộ skill</h3><p>Bộ skill gói kiến thức của sách thành hướng dẫn mà Claude Code, Codex và OpenCode tự dùng khi phát triển phần mềm. Nó không liên quan tới video tóm tắt.</p>${read?.total?`<p class="${done?'':'warn'}">${done?`Đã đọc đủ ${read.total}/${read.total} chương, có thể làm bộ skill.`:`Mới đọc ${read.read??0}/${read.total} chương: cần đọc hết sách trước.`}</p>`:'<p class="warn">Chưa có bản đồ chương: cần đọc hết sách trước.</p>'}<p>Nhờ agent bằng câu:</p><div class="skills-prompt"><code>${esc(prompt)}</code><button class="button secondary" data-copy-text="${esc(prompt)}">Chép câu này</button></div></div>`;
+  }
+  const skills=info.pack.skills,targets=info.targets;
+  const count=(t,st)=>skills.filter(s=>s.states[t]===st).length;
+  const agentCells=targets.map(t=>{const ok=count(t.name,'installed'),bad=skills.length-ok,worst=['conflict','missing','outdated'].find(st=>count(t.name,st));
+    return `<li class="skill-agent state-${worst||'installed'}"><strong>${esc(t.label)}</strong><span>${bad?`${ok}/${skills.length} đã cài · ${esc(skillStateText[worst])}`:`Đã cài đủ ${skills.length} skill`}</span></li>`;}).join('');
+  const needsInstall=skills.some(s=>Object.values(s.states).some(st=>st!=='installed'));
+  const errors=info.check?.errors||[];
+  const check=errors.length?`<div class="skills-check warn-callout"><strong>Chưa đạt kiểm tra (${errors.length} lỗi): chưa cài được bản mới.</strong><ul>${errors.slice(0,8).map(e=>`<li>${esc(e)}</li>`).join('')}</ul>${errors.length>8?`<p>…và ${errors.length-8} lỗi khác. Nhờ agent chạy <code>npm run book-skills -- check ${esc(info.book)}</code>.</p>`:''}</div>`:'';
+  const rows=skills.map(s=>{const states=targets.map(t=>s.states[t.name]),all=states.every(x=>x==='installed');
+    const badge=all?`<span class="skill-state state-installed">Đã cài cho ${targets.length} agent</span>`:targets.filter(t=>s.states[t.name]!=='installed').map(t=>`<span class="skill-state state-${esc(s.states[t.name])}">${esc(t.label)}: ${esc(skillStateText[s.states[t.name]]||s.states[t.name])}</span>`).join('');
+    const files=s.files.map(f=>`<button class="link-button" data-book-document-open="__skills:${esc(s.name)}/${esc(f)}">${esc(f)}</button>`).join('');
+    return `<li class="skill-row"><div class="skill-row-head"><code class="skill-name">${esc(s.name)}</code><div class="skill-states">${badge}</div></div><p class="skill-purpose">${esc(s.purpose)}</p><details class="skill-when"><summary>Khi nào agent dùng</summary><p>${esc(s.description)}</p></details><dl class="skill-facts"><div><dt>Trang sách</dt><dd>PDF ${esc(s.pages)}</dd></div><div><dt>Tệp</dt><dd class="skill-files">${files}</dd></div></dl></li>`;}).join('');
+  return `<section class="skills-pack" aria-labelledby="skills-title"><header class="skills-head"><div><h3 id="skills-title">${skills.length} skill cho agent</h3><p>Rút từ sách, cài vào thư mục skill chung của từng agent trên máy. Agent tự mở skill khi việc đang làm khớp phần “Khi nào agent dùng”. Muốn sửa: nhờ agent sửa ở <code>${esc(info.pack.source)}/</code> rồi cài lại.</p></div><button class="button ${needsInstall?'primary':'secondary'}" data-skills-install>${needsInstall?'Cài cho các agent':'Cài lại'}</button></header><ul class="skill-agents">${agentCells}</ul><p id="skills-install-status" role="status"></p>${check}<ul class="skill-list">${rows}</ul></section>`;
+}
+async function installBookSkills(button){
+  const book=state.drawer;if(!book?.book)return;const status=$('#skills-install-status');
+  button.disabled=true;button.textContent='Đang kiểm tra và cài…';status.textContent='';
+  try{const result=await api('/api/book-skills/install',{series:book.series,book:book.id});
+    if(state.drawer?.id!==book.id)return;$('#document-view').innerHTML=bookSkillsView(result.info);
+    if(result.ok){toast('Đã cài bộ skill cho các agent.');$('#skills-install-status').textContent='Đã cài xong. Agent nhận skill ở phiên làm việc mới.';}
+    // A failed check is already listed in the red box under the agents; other failures (name conflicts) go here.
+    else if(!result.info.check?.errors?.length)$('#skills-install-status').textContent=result.error;
+    $('[data-skills-install]')?.focus();
+  }catch(error){status.textContent=error.message;button.disabled=false;button.textContent='Cài lại';}
+}
 async function saveNotes(){if(!state.drawer||state.drawer.book)return;const button=$('#save-notes'),text=$('#notes-text').value,id=state.drawer.id;button.disabled=true;try{const result=await api('/api/notes',{id,text,revision:state.drawer.notesRevision});if(state.drawer?.id===id){state.drawer.notes=text;state.drawer.notesRevision=result.revision;$('#notes-status').textContent='Đã lưu trên máy · '+new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'});}toast('Đã lưu ghi chú.');}catch(error){toast(error.message);}finally{button.disabled=false;}}
 function field(name,label,type='text',value='',hint=''){return `<label class="field"><span>${esc(label)}</span><input name="${esc(name)}" type="${esc(type)}" autocomplete="off" ${name==='id'?'spellcheck="false"':''} value="${esc(value)}" ${name==='title'||name==='id'?'required':''} ${name==='id'?'pattern="[a-z0-9]+(-[a-z0-9]+)*"':''} ${type==='number'?'min="1" max="36000"':''}>${hint?`<small>${esc(hint)}</small>`:''}</label>`;}
 function showCreate(mode='project',book=null){
@@ -1115,7 +1164,7 @@ $('#grid-view').addEventListener('click',()=>{state.layout='grid';updateUrl();$(
 $('#list-view').addEventListener('click',()=>{state.layout='list';updateUrl();$('#grid-view').classList.remove('active');$('#list-view').classList.add('active');renderCards();});
 $('#drawer-content').addEventListener('submit',event=>{if(event.target.id==='book-identity-form')saveBookIdentity(event);});
 $('#drawer-content').addEventListener('keydown',event=>{if(event.key!=='Escape')return;if(event.target.closest('#book-identity-form')){event.stopPropagation();editBook(false);}});
-$('#drawer-content').addEventListener('click',event=>{if(event.target.closest('[data-edit-book]'))editBook(true);if(event.target.closest('[data-cancel-book]'))editBook(false);if(event.target.closest('#save-notes'))saveNotes();if(event.target.closest('#save-workflow'))saveWorkflowStage();});
+$('#drawer-content').addEventListener('click',event=>{const skillsButton=event.target.closest('[data-skills-install]');if(skillsButton)installBookSkills(skillsButton);const open=event.target.closest('[data-book-document-open]');if(open)openBookDocument(open.dataset.bookDocumentOpen);const copy=event.target.closest('[data-copy-text]');if(copy)navigator.clipboard?.writeText(copy.dataset.copyText).then(()=>toast('Đã chép câu nhờ agent.'),()=>toast('Không chép được, hãy bôi đen để chép.'));if(event.target.closest('[data-edit-book]'))editBook(true);if(event.target.closest('[data-cancel-book]'))editBook(false);if(event.target.closest('#save-notes'))saveNotes();if(event.target.closest('#save-workflow'))saveWorkflowStage();});
 $('#close-drawer').addEventListener('click',closeDrawer);$('#drawer-backdrop').addEventListener('click',closeDrawer);
 $('#help-button').addEventListener('click',()=>$('#help-dialog').showModal());$('#close-help').addEventListener('click',()=>$('#help-dialog').close());
 $('#mobile-menu').addEventListener('click',()=>setMenu(!$('#sidebar').classList.contains('open')));

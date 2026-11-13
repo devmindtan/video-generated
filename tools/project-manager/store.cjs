@@ -26,6 +26,7 @@ function checkedId(value) {
 function createStore(root) {
   const workspaceRoot=fs.realpathSync(root);
   const extra={...require('./features.cjs').features(root),...require('./workflow.cjs').createWorkflow(root),...require('./library.cjs').createLibrary(root),...require('./voice-references.cjs').createVoiceReferences(root),...require('./approvals-view.cjs').createApprovals(root),...require('./channels.cjs').createChannels(root)};
+  const skills=require('./book-skills.cjs').createBookSkills(root);
   const posters=require('./video-poster.cjs').createPosters(root);
   const playback=require('./video-playback.cjs').createPlayback(root);
   function location(relative) {
@@ -123,6 +124,8 @@ function createStore(root) {
       const text = fs.readFileSync(secureFile(folder,file),'utf8'), book = JSON.parse(text);
       return [{id:d.name,revision:hash(text),title:book.title,authors:book.authors||[],status:book.status,series:series.id,channel:series.channel,
         cover:extra.bookCover(series.id,d.name)?.revision||null,hasSource:Boolean(book.sourceSha256)||extra.sources(series.id,d.name).length>0,sources:extra.sources(series.id,d.name),note:book.note||'',
+        // Technical books (kind "technical" in book.json, or a skill pack already made) get the "Bộ skill" tab.
+        technical:book.kind==='technical'||skills.hasPack(d.name),skillPack:skills.hasPack(d.name),
         documents:['book.json','research.md','chapters.json','season-plan.md'].filter(f=>exists(path.join(folder,d.name,f))),chapters:chapterCoverage(path.join(folder,d.name,'chapters.json'))}];
     });
   }
@@ -211,6 +214,16 @@ function createStore(root) {
     if (fs.statSync(target).size>1024*1024) throw new Error('Document too large');
     return {filename:file,name:file,text:fs.readFileSync(target,'utf8')};
   }
+  // The book must belong to the series it is opened from, like book documents.
+  function ownBook(seriesId,bookId){
+    checkedId(seriesId);checkedId(bookId);
+    const series=load(root).series.find(s=>s.id===seriesId),book=series&&books(series).find(b=>b.id===bookId);
+    if(!book)throw Object.assign(new Error('Book not found'),{status:404});
+    return book;
+  }
+  const bookSkills=(seriesId,bookId)=>{ownBook(seriesId,bookId);return skills.bookSkills(bookId);};
+  const installBookSkills=(seriesId,bookId)=>{ownBook(seriesId,bookId);return skills.installBookSkills(bookId);};
+  const bookSkillFile=(seriesId,bookId,skill,file)=>{ownBook(seriesId,bookId);return skills.bookSkillFile(bookId,skill,file);};
   function saveNotes(id,text,revision) {
     if (typeof text!=='string'||Buffer.byteLength(text)>50000) throw new Error('Notes must be under 50 KB');
     const {project}=context(id),folder=location(project.paths.docs);
@@ -272,6 +285,6 @@ function createStore(root) {
     }catch(error){await handle.close().catch(()=>{});if(dest&&fs.existsSync(dest))fs.unlinkSync(dest);throw error;}
     finally{if(fs.existsSync(temp))fs.unlinkSync(temp);try{if(fs.existsSync(staging)&&!fs.readdirSync(staging).length)fs.rmdirSync(staging);}catch{}}
   }
-  return {...extra,list,detail,document,bookDocument,saveNotes,folder,create,createWithVideo,preview:servedPreview,videoPlayback,mediaFile};
+  return {...extra,list,detail,document,bookDocument,bookSkills,installBookSkills,bookSkillFile,saveNotes,folder,create,createWithVideo,preview:servedPreview,videoPlayback,mediaFile};
 }
 module.exports={createStore,hash};

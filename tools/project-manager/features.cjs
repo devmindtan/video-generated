@@ -149,12 +149,14 @@ function createFeatures(root){
     if(!title||title.length>300)throw Error('Tên sách cần từ 1 đến 300 ký tự');
     if(authors.length>10||authors.some(a=>a.length>120))throw Error('Tối đa 10 tác giả, mỗi tên dưới 120 ký tự');
     const data=JSON.parse(before);data.title=title;data.authors=authors;
-    const text=JSON.stringify(data,null,2)+'\n';if(text===before)return {revision:digest(text),title,authors};
+    // Optional: mark or unmark a technical book (shows the "Bộ skill" tab). Other kinds are left as they are.
+    if(typeof b.technical==='boolean'){if(b.technical)data.kind='technical';else if(data.kind==='technical')delete data.kind;}
+    const text=JSON.stringify(data,null,2)+'\n';if(text===before)return {revision:digest(text),title,authors,technical:data.kind==='technical'};
     const folder=path.dirname(file),history=path.join(folder,'.manager-history');fs.mkdirSync(history,{recursive:true});
     fs.writeFileSync(path.join(history,`book-${Date.now()}-${crypto.randomBytes(4).toString('hex')}.json`),before,{flag:'wx'});
     const temp=path.join(folder,`.book-${crypto.randomBytes(8).toString('hex')}.tmp`);fs.writeFileSync(temp,text,{flag:'wx'});
     if(digest(fs.readFileSync(file,'utf8'))!==b.revision){fs.unlinkSync(temp);throw conflict();}
-    fs.renameSync(temp,file);return {revision:digest(text),title,authors};
+    fs.renameSync(temp,file);return {revision:digest(text),title,authors,technical:data.kind==='technical'};
   }
   return {batch,bookCover,uploadCover,media,items,exportsFor,newBook,updateBook,sources,upload,deletion,remove};
 }

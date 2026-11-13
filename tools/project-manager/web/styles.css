@@ -966,3 +966,26 @@ mark.pd-del{background:#f6d5c8;color:inherit;text-decoration:line-through;text-d
 .usage-series summary::-webkit-details-marker{display:none}.usage-series summary:before{content:'›';display:inline-block;margin-right:6px;transition:transform .15s;color:var(--muted)}.usage-series[open] summary:before{transform:rotate(90deg)}.usage-series summary>span:first-child{flex:1}
 .usage-n{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:700}.usage-series ul{list-style:none;margin:0;padding:2px 12px 10px;max-height:220px;overflow-y:auto;columns:2 220px;column-gap:20px}
 .usage-series li{break-inside:avoid;font-size:14px;line-height:1.45;padding:4px 0}.usage-series a{color:#2f5688;text-underline-offset:3px}.usage-tag{margin-left:6px;font-size:12px;color:#7a5b1c;background:#f6ecd1;border-radius:999px;padding:1px 7px}.usage-empty{margin:0;font-size:14px;color:var(--muted)}
+/* "Bộ skill" tab of a technical book: install state per agent on top, then a plain list of skills. */
+.check-field{display:flex;align-items:flex-start;gap:10px;margin:4px 0 14px;font-size:14px;color:var(--ink);min-height:44px}.check-field input{width:20px;height:20px;margin:3px 0 0;flex-shrink:0;accent-color:var(--forest)}.check-field small{display:block;font-size:13px;color:var(--muted)}
+.skills-pack{display:grid;gap:18px;line-height:1.65}
+.skills-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}.skills-head h3{margin:0 0 4px;font-size:18px;color:var(--ink)}.skills-head p{margin:0;font-size:14px;color:var(--muted);max-width:68ch;white-space:normal}.skills-head .button{flex-shrink:0}
+.document-view .skill-agents{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}.document-view .skill-agents li{margin:0}
+.skill-agent{display:grid;gap:2px;padding:10px 14px;border-radius:8px;border-left:4px solid currentColor;background:#e6f1e0;color:#2f6a2a}.skill-agent strong{font-size:14px}.skill-agent span{font-size:13px}
+.skill-agent.state-outdated{background:#f8f0dc;color:#795a1d}.skill-agent.state-missing,.skill-agent.state-conflict{background:#fbe9e2;color:#8a3b22}
+#skills-install-status{margin:0;font-size:14px;color:var(--muted)}#skills-install-status:empty{display:none}
+.skills-check{margin:0;padding:12px 16px;border-left:4px solid;border-radius:8px;font-size:14px}.skills-check ul{margin:6px 0 0;padding-left:20px}.skills-check li{margin:2px 0}
+.document-view .skill-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}.document-view .skill-list>li{margin:0}
+.skill-row{padding:16px 0;border-bottom:1px solid var(--line);display:grid;gap:6px}
+.skill-row-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.skill-name{font:700 15px/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--forest);background:none;padding:0}
+.skill-states{display:flex;gap:6px;flex-wrap:wrap}
+.skill-state{font-size:12px;border-radius:4px;padding:2px 8px;background:#e6f1e0;color:#2f6a2a}.skill-state.state-outdated{background:#f8f0dc;color:#795a1d}.skill-state.state-missing,.skill-state.state-conflict{background:#fbe9e2;color:#8a3b22}
+.document-view .skill-purpose{margin:0;font-size:15px;color:var(--ink);white-space:normal}
+.skill-when summary{cursor:pointer;font-size:14px;color:#4e6a3d;min-height:32px;display:flex;align-items:center}.skill-when summary:focus-visible{outline:3px solid #7f9f86;outline-offset:2px}.document-view .skill-when p{margin:4px 0 6px;font-size:14px;color:var(--muted);white-space:normal;max-width:80ch}
+.skill-facts{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:2px 0 0;font-size:14px}.skill-facts>div{display:contents}.skill-facts dt{color:var(--muted)}.skill-facts dd{margin:0}
+.skill-files{display:flex;flex-wrap:wrap;gap:4px 14px}.skill-files .link-button{font-size:14px;min-height:32px;color:var(--forest)}
+.skill-file-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:-6px 0 10px}.skill-file-head code{font-size:13px;color:var(--muted)}
+.skills-empty{display:grid;gap:10px;max-width:70ch}.skills-empty h3{margin:0;font-size:18px}.document-view .skills-empty p{margin:0;white-space:normal}
+.skills-prompt{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.skills-prompt code{font-size:14px;background:#f3f6f0;padding:8px 12px;border-radius:6px;color:var(--ink)}
+@media(max-width:760px){.skill-agent{padding:8px 12px}.skills-head{flex-direction:column;align-items:stretch}.skills-head .button{width:100%}.skill-facts{grid-template-columns:1fr}.skill-facts dt{margin-top:4px}.skills-prompt .button{width:100%}}
