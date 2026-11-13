@@ -1,0 +1,33 @@
+{
+  "book": "spec-driven-development",
+  "title": "Spec Driven Development",
+  "authors": [
+    "Nguyễn Thế Huy"
+  ],
+  "bookDir": "series/ngoai-kenh/chua-thuoc-series/books/spec-driven-development",
+  "sourceSha256": "cca3fe77fc99d14775427da1576462aebeed1599e310c8c5a8b5b09842d8c696",
+  "prefix": "sdd",
+  "createdAt": "2026-11-13",
+  "skills": [
+    {
+      "name": "sdd-write-spec",
+      "purpose": "Viết/rà spec bốn tầng (BR, Use Case, Entity Model, AC) trước khi để AI viết code",
+      "pages": "3, 7-19, 21, 23-25, 42, 59-60, 64, 69-72"
+    },
+    {
+      "name": "sdd-feature-loop",
+      "purpose": "Vòng spec → plan → đối chiếu → tasks → code → test theo AC, quy ước repo/commit/PR, review",
+      "pages": "9-10, 19-43, 55-60, 72-74"
+    },
+    {
+      "name": "sdd-legacy-code",
+      "purpose": "Áp SDD lên hệ thống cũ: năm bước, characterization test, module nóng, khi nào dừng",
+      "pages": "44-52, 67"
+    },
+    {
+      "name": "sdd-team-adoption",
+      "purpose": "Có nên dùng SDD, vai trò, bốn chỉ số, lộ trình 30/60/90, nhịp hằng ngày",
+      "pages": "4, 10, 53-55, 60-66, 68"
+    }
+  ]
+}

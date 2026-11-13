@@ -149,6 +149,8 @@
     "media": "python3 scripts/shared/media-analyze.py",
     "visual-sync": "node scripts/shared/visual-sync-sheet.mjs",
     "layout-check": "node scripts/shared/layout-check.mjs",
+    "book-skills": "node scripts/book-skills/cli.mjs",
+    "test:book-skills": "node --test scripts/book-skills/book-skills.test.mjs",
     "temp": "node scripts/shared/temp-files.mjs",
     "thumbnail:web": "node scripts/shared/web-thumbnail.mjs",
     "test:media": "python3 -m unittest discover -s scripts/shared/tests -p test_media_analyze.py -v",
