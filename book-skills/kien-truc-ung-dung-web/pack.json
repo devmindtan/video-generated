@@ -1,0 +1,33 @@
+{
+  "book": "kien-truc-ung-dung-web",
+  "title": "Kiến trúc ứng dụng web",
+  "authors": [
+    "Nguyễn Thế Huy"
+  ],
+  "bookDir": "series/ngoai-kenh/chua-thuoc-series/books/kien-truc-ung-dung-web",
+  "sourceSha256": "fd1059a41637391c2c5f0ff5abfbb384e24c0686db9b63621941d856bd71d86a",
+  "prefix": "webarch",
+  "createdAt": "2026-11-13",
+  "skills": [
+    {
+      "name": "webarch-core-boundary",
+      "purpose": "Phép thử core/hạ tầng, lộ trình refactor controller làm đủ mọi việc, khi nào đáng tách",
+      "pages": "3-16, 48, 59"
+    },
+    {
+      "name": "webarch-domain-model",
+      "purpose": "Entity giữ luật, value object, repository, read model và view model",
+      "pages": "16-33, 35-37"
+    },
+    {
+      "name": "webarch-layers",
+      "purpose": "Ba tầng Domain/Application/Infrastructure, application service + command, controller mỏng, DI, domain event",
+      "pages": "33-48"
+    },
+    {
+      "name": "webarch-ports-adapters",
+      "purpose": "Ports and Adapters: port vào/ra, adapter thật và giả, bốn bước, tích hợp giữa bounded context",
+      "pages": "48-59"
+    }
+  ]
+}

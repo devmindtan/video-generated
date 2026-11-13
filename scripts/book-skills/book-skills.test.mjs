@@ -66,6 +66,10 @@ test('a clean pack passes; copied book text, missing pages and broken links fail
   assert.ok(lib.checkPack('demo').errors.some((e) => /chưa ghi trang PDF/.test(e)));
   fs.writeFileSync(file, skillText('demo-a').replace('references/mau.md', 'references/khong-co.md'));
   assert.ok(lib.checkPack('demo').errors.some((e) => /liên kết hỏng/.test(e)));
+  fs.writeFileSync(file, skillText('demo-a', 'Liên hệ tacgia@gmail.com.'));
+  assert.ok(lib.checkPack('demo').errors.some((e) => /email/.test(e)));
+  fs.writeFileSync(file, skillText('demo-a', "Ví dụ: EmailAddress.of('khach@example.com')."));
+  assert.deepEqual(lib.checkPack('demo').errors, []);
   fs.writeFileSync(file, skillText('demo-a').replace('name: demo-a', 'name: other'));
   assert.ok(lib.checkPack('demo').errors.some((e) => /trùng tên thư mục/.test(e)));
 });

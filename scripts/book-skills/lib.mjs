@@ -172,7 +172,9 @@ export const checkPack = (id, {index} = {}) => {
     for (const f of files) {
       const t = fs.readFileSync(path.join(dir, f), 'utf8');
       if (/\bTODO\b/.test(t)) errors.push(`${where}/${f}: còn TODO`);
-      if (/library\/books|\.pdf\b|[\w.+-]+@[\w-]+\.[\w.]+/i.test(t)) errors.push(`${where}/${f}: có đường dẫn sách/PDF riêng hoặc email`);
+      // Example addresses (example.com/.org/.net, .test, .example) are fine in sample code; real emails are not.
+      const emails = (t.match(/[\w.+-]+@[\w-]+(\.[\w-]+)+/g) ?? []).filter((e) => !/@(example\.(com|org|net)|[\w.-]+\.(test|example))$/i.test(e));
+      if (/library\/books|\.pdf\b/i.test(t) || emails.length) errors.push(`${where}/${f}: có đường dẫn sách/PDF riêng hoặc email`);
       for (const [, link] of t.matchAll(/\]\(([^)#\s]+)(#[^)]*)?\)/g)) {
         if (/^[a-z]+:/i.test(link)) continue;
         if (!fs.existsSync(path.resolve(path.dirname(path.join(dir, f)), link))) errors.push(`${where}/${f}: liên kết hỏng ${link}`);
